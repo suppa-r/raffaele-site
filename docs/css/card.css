@@ -1,0 +1,420 @@
+/* --------------------------------------- */
+/* ---------- Custom Properties ---------- */
+/* --------------------------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
+
+
+@import "https://unpkg.com/open-props/normalize.min.css";
+@import "https://unpkg.com/open-props/open-props.min.css";
+
+
+
+body {
+  font-family: 'Caveat', cursive;
+  perspective: 100vmin;
+  margin: 0; /* Ensure no default margin */
+  height: 100vh; /* Ensure body takes full viewport height */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  padding: 0 0em;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  scale: 1;
+  translate: 0 0;
+  filter: grayscale(0);
+}
+
+.card:not(:hover) img {
+  transition: translate 0.2s;
+}
+
+.card:hover img {
+  translate:
+    calc((var(--ratio-x) - 0.5) * 20%)
+    calc((var(--ratio-y) - 0.5) * 20%);
+}
+
+.card {
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  --ratio-x: 0;
+  --ratio-y: 0;
+  overflow: hidden;
+  aspect-ratio: 1 / 2;
+  width: clamp(260px, 50vmin, 320px);
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  touch-action: none;
+  transition: transform 0.2s;
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  flex-direction: column;
+  height: 100vh; /* Ensure container takes full viewport height */
+  margin: 0; /* Remove margin */
+}
+
+.hello {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+.wrapper-gradient-text {
+  font-family: "Caveat", cursive;
+  font-size: 2.3em;
+  display: flex;
+  color: transparent;
+  perspective: 100%;
+  margin-bottom: 0em;
+}
+
+.wrapper-gradient-text-1 {
+  font-family: "Caveat", cursive;
+  font-size: 1.3em;
+  display: flex;
+  color: transparent;
+  perspective: 100%;
+  margin-bottom: 2em;
+}
+
+.text-layer {
+  position: relative;
+  transform: rotateX(-30deg) translateZ(70px);
+  background: linear-gradient(109.6deg,
+        rgb(110, 139, 156, 0.9) 20%,
+        rgb(142, 186, 211, 0.3) 42%,
+        rgba(146, 165, 189, 0.5) 71.5%,
+        rgb(106, 131, 143, 0.7) 100.2%);
+  text-shadow: 0px 15px 0px rgb(126, 159, 172);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  margin-bottom: 0.5em;
+}
+
+@keyframes melt {
+  0% {
+    transform: scaleY(1) translateY(0);
+  }
+
+  100% {
+    transform: scaleY(1.1) translateY(5px);
+  }
+}
+
+@keyframes shadowDrip {
+  0% {
+    text-shadow: 0px 5px 0px rgba(78, 136, 170, 0.853);
+  }
+
+  100% {
+    text-shadow: 0px 20px 30px rgba(80, 121, 148, 0.996),
+      0px 30px 40px rgba(70, 118, 138, 0.822),
+      0px 70px 5px rgba(69, 107, 150, 0.781);
+  }
+}
+
+@import "https://unpkg.com/open-props/normalize.min.css";
+@import "https://unpkg.com/open-props/open-props.min.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  perspective: 100vmin;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  scale: 1.2;
+  translate: 0 0;
+  filter: grayscale(1);
+}
+
+.card:not(:hover) img {
+  transition: translate 0.2s;
+}
+
+.card:hover img {
+  translate:
+    calc((var(--ratio-x) - 0.5) * 20%)
+    calc((var(--ratio-y) - 0.5) * 20%);
+}
+
+.card {
+  --ratio-x: 0;
+  --ratio-y: 0;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  width: clamp(260px, 50vmin, 320px);
+  border-radius: 8px;
+  transform-style: preserve-3d;
+  touch-action: none;
+  transition: transform 0.2s;
+}
+
+.card[data-active="true"][data-parallax="true"] {
+  transition: transform 0s;
+}
+
+.card:hover {
+/*   transition: transform 0s; */
+  transform:
+    rotateX(calc((var(--ratio-y) - 0.5) * 50deg))
+    rotateY(calc((var(--ratio-x) - 0.5) * -40deg));
+}
+
+.card:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at calc(var(--ratio-x) * 100%) calc(var(--ratio-y) * 100%), hsl(0 0% 100% / 0.5), transparent 50%);
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light;
+  z-index: 2;
+}
+
+.card:before {
+  content: "";
+  background:
+   url(https://assets.codepen.io/605876/code-icon-bg.svg) 0 0 / 18% 18%,
+   linear-gradient(115deg,
+     transparent 20%,
+     color-mix(in hsl, canvasText, transparent 70%) 100%,
+     /*var(--green-8) 30%,*/
+     transparent 48% 52%,
+     color-mix(in hsl, canvasText, transparent 70%) 10%,
+     /*var(--indigo-8) 70%,*/
+     transparent
+   )
+   80% 80% / 300% 300%;
+  filter: brightness(2) contrast(1);
+  background-blend-mode: overlay;
+  mix-blend-mode: color-dodge;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.05;
+  transition: opacity 0.2s;
+}
+
+.card:hover:before {
+  background-position:
+    calc(var(--ratio-x) * 10%) calc(var(--ratio-y) * 10%),
+    calc(80% + (var(--ratio-x) * -50%)) calc(80% + (var(--ratio-y) * -50%));
+  opacity: 1;
+}
+
+html {
+  color-scheme: dark only;
+}
+@layer base {
+  :root {
+    --font-size-min: 16;
+    --font-size-max: 20;
+    --font-ratio-min: 1.2;
+    --font-ratio-max: 1.33;
+    --font-width-min: 375;
+    --font-width-max: 1500;
+  }
+
+  html {
+    color-scheme: dark only;
+  }
+
+  [data-theme='light'] {
+    color-scheme: light only;
+  }
+
+  [data-theme='dark'] {
+    color-scheme: dark only;
+  }
+
+  :where(.fluid) {
+    --fluid-min: calc(
+      var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+    );
+    --fluid-max: calc(
+      var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+    );
+    --fluid-preferred: calc(
+      (var(--fluid-max) - var(--fluid-min)) /
+        (var(--font-width-max) - var(--font-width-min))
+    );
+    --fluid-type: clamp(
+      (var(--fluid-min) / 16) * 1rem,
+      ((var(--fluid-min) / 16) * 1rem) -
+        (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+        (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+      (var(--fluid-max) / 16) * 1rem
+    );
+    font-size: var(--fluid-type);
+  }
+
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: light-dark(#fff, #000);
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+      Helvetica, Arial, sans-serif, system-ui;
+  }
+
+  body::before {
+    --size: 45px;
+    --line: color-mix(in hsl, canvasText, transparent 70%);
+    content: '';
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: linear-gradient(
+          90deg,
+          var(--line) 1px,
+          transparent 1px var(--size)
+        )
+        50% 50% / var(--size) var(--size),
+      linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+        var(--size) var(--size);
+    mask: linear-gradient(-20deg, transparent 50%, white);
+    top: 0;
+    transform-style: flat;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .bear-link {
+    color: canvasText;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 48px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    opacity: 0.8;
+  }
+
+  :where(.x-link, .bear-link):is(:hover, :focus-visible) {
+    opacity: 1;
+  }
+
+  .bear-link svg {
+    width: 75%;
+  }
+
+  /* Utilities */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+ *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: light-dark(#fff, #000);
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    /*font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+      Helvetica, Arial, sans-serif, system-ui;*/
+  }
+
+  body::before {
+    --size: 45px;
+    --line: color-mix(in hsl, canvasText, transparent 70%);
+    content: '';
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: linear-gradient(
+          90deg,
+          var(--line) 1px,
+          transparent 1px var(--size)
+        )
+        50% 50% / var(--size) var(--size),
+      linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+        var(--size) var(--size);
+    mask: linear-gradient(-20deg, transparent 50%, white);
+    top: 0;
+    transform-style: flat;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .bear-link {
+    color: canvasText;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 48px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    opacity: 0.8;
+  }
+
+  :where(.x-link, .bear-link):is(:hover, :focus-visible) {
+    opacity: 1;
+  }
+
+  .bear-link svg {
+    width: 75%;
+  }
+
+
+ 
+
+  /* Utilities *
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}*/

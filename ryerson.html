@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="png" sizes="32x32" href="favicon-32x32.png">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+      rel="stylesheet">
+      
+  <!-- Our custom CSS -->
+  <link rel="stylesheet" href="index.css">
+  <title>Raffaele Suppa | Website</title>
+  <script src="navigation.js" defer></script>
+  <script src="tabs.js" defer></script>
+
+</head>
+
+<body class="crew">
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="primary-header flex">
+    <div>
+      <img src="logo.svg" alt="space tourism logo" class="logo">
+    </div>
+    <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
+    <nav> 
+        <ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex">
+          <!--<li class="active"><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="ryerson.html"><span aria-hidden="true"></span>Ryerson</a>-->
+           
+            <li><ion-icon name="heart"></ion-icon>
+              <a class="ff-sans-cond uppercase text-white letter-spacing-2" href="skills.html"><span aria-hidden="true"></span>Skills</a>
+              <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="genesis.html"><span aria-hidden="true"></span>Bio</a>
+              <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="index.html"><span aria-hidden="true"></span>Home</a>
+              </ul>
+        </ul>
+    </nav>
+ 
+  </header>
+  
+  <main id="main" class="grid-container grid-container--crew flow">
+   <h2>Then and There</h2>
+ 
+  
+      <!--<header class="flow--space-small">-->
+        <article class="crew-details flow" id="escape-tab" role="tabpanel" tabindex="0">
+          <header>
+        
+             
+       <h2>HENCE .. and .. VOILA</h2><br>
+       <p>The Subject Matter</p><br>
+       <h2>DESIGN and CAREER</h2><br>
+      </header>
+      <div class="dot-indicators flex" role="tablist" aria-label="crew member list">
+        <button aria-selected="true" aria-controls="genesis-tab" role="tab" data-image="genesis-image" tabindex="0"><span class="sr-only">Genesis</span></button>
+        <button aria-selected="false" aria-controls="beginnings-tab" role="tab" data-image="beginnings-image" tabindex="-1"><span class="sr-only">Beginnings</span></button>
+        <button aria-selected="false" aria-controls="escape-tab" role="tab" data-image="escape-image" tabindex="-1"><span class="sr-only">The Great Escape</span></button>
+        <button aria-selected="false" aria-controls="ryerson-tab" role="tab" data-image="ryerson-image" tabindex="-1"><span class="sr-only">Ryerson</span></button>
+      </div>
+      <p>My pilgramage began when while I was studying Architecture At Ryerson Polytechnical Institute.<br>Us students in the Faculty of Architecture called it 'Rye High'....
+        we were affirmed.... our Curriculum warranted that name.  Our timetables included 9 courses per semester</p><p>To start a debate.<br> Ryerson prepared me for life in the 19th Century</p>
+
+        <p>One thing, The Admistration deemed the few Crash Courses in The Liberal Arts as sufficient enrichment and would hone our thought processes.Hence, I'm qualified. <br> If you want to talk Shakespeare....maybe....Frued,now you're chance!</p>
+       <p>The Ryerson name endured but fast became Politically Incorrect, and a target of our fickle Culture.The name was relinquished for a more tolerable and appeasing substitute.
+      Poor Egerton. Suddendly, he became the red-neck Fall Guy for a misfortune way way back!</p>
+
+
+      <h2>He won't have any babies named after Him</h2>
+      
+    </article> 
+    <picture id="escape-image">
+      <source srcset="Adolphus_Egerton_Ryerson.webp" type="image/webp">
+      <img src="Adolphus_Egerton_Ryerson.png" alt="Douglas Hurley">
+    </picture>
+    
+<!-- <div class="dot-indicators flex" role="tablist" aria-label="crew member list">
+      <button aria-selected="true" aria-controls="genesis-tab" role="tab" data-image="genesis-image" tabindex="0"><span class="sr-only">Genesis</span></button>
+      <button aria-selected="false" aria-controls="beginnings-tab" role="tab" data-image="beginnings-image" tabindex="-1"><span class="sr-only">Beginnings</span></button>
+      <button aria-selected="false" aria-controls="escape-tab" role="tab" data-image="escape-image" tabindex="-1"><span class="sr-only">The Great Escape</span></button>
+      <button aria-selected="false" aria-controls="ryerson-tab" role="tab" data-image="ryerson-image" tabindex="-1"><span class="sr-only">Ryerson</span></button>
+    </div>-->
+    
+
+    
+    
+ 
+  </main>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+
+</html>
