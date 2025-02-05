@@ -1,14 +1,11 @@
-/* --------------------------------------- */
-/* ---------- Custom Properties ---------- */
-/* --------------------------------------- */
-
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
-
 
 @import "https://unpkg.com/open-props/normalize.min.css";
 @import "https://unpkg.com/open-props/open-props.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
-
+/* --------------------------------------- */
+/* ---------- Custom Properties ---------- */
+/* --------------------------------------- */
 
 body {
   font-family: 'Caveat', cursive;
@@ -133,8 +130,7 @@ img {
   }
 }
 
-@import "https://unpkg.com/open-props/normalize.min.css";
-@import "https://unpkg.com/open-props/open-props.min.css";
+
 
 * {
   box-sizing: border-box;

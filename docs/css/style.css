@@ -745,17 +745,4 @@ header::after {
   }
 }
 
-/* --------------------------------------- */
-/* --- Page Specific -- Intro-Welcome ---- */
-/* --------------------------------------- */
-
-blockquote {
-  min-height: 100%;
-  font-size: var(--fs-400);
-  font-family: var(--ff-serif);
-  color: hsl(var(--clr-accent));
-  text-align: center;
-  justify-content: center; /* Center horizontally */
-  padding-inline: 0 auto;
-}
 
