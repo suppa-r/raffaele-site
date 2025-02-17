@@ -69,15 +69,15 @@ svg {
 	filter: url(#smoke) drop-shadow(0 0 40px #ffffff) blur(40px);
 }
 
-@container (inline-size >600px) {
+@container (inline-size >400px) {
                    
 }
 
-@container (inline-size > 800px) {
+@container (inline-size > 600px) {
 }
 
 
-@container (inline-size > 1200px) {
+@container (inline-size > 1000px) {
 	.wrapper {
 		& p {
 			font-size: 10rem;
