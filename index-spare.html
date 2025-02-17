@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+<body>
+    <main class="index-content">
+<a href="intro.html">
+    <svg viewport="0 0 0 0" width="10000" height="0">
+        <filter id="water">
+            <feImage xlink:href="https://moxsim.ru/codepen/016-text-art/ocean.jpg" result="IMAGE"></feImage>
+            <feTurbulence id="turbulence" in="IMAGE" baseFrequency="0.01" numOctaves="2" result="NOISE"></feTurbulence>
+            <feDisplacementMap in="IMAGE" in2="NOISE" scale="50" result="DISPLACE"></feDisplacementMap>
+            <animate xlink:href="#turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
+            <feComposite operator="in" in="DISPLACE" in2="SourceGraphic"></feComposite>
+        </filter>
+    
+        <filter id="smoke">
+            <feTurbulence id="smoke-turbulence" type="fractalNoise" baseFrequency="0.01" numOctaves="3"></feTurbulence>
+            <animate xlink:href="#smoke-turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
+            <feDisplacementMap in="SourceGraphic" scale="10"></feDisplacementMap>
+        </filter>
+    </svg>
+    <div class="wrapper">
+        <quote class="title">there will be an answer --let it be!</quote><br>
+        <quote class="author">--the beatles</quote>
+        <p class="smoke" data-text="SMOKE">raffaele</p>
+        <p class="water">raffaele</p>
+        <p class="smoke" data-text="SMOKE">designer</p>
+        <p class="water">designer</p>
+    </div>
+</a>
+    </main>
+</body>
+</html>

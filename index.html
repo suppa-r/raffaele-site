@@ -1,44 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/docs/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style> 
+
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
+
+:root {
+	--sp: 4s;
+	--white: #ffffff;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+html, body{
+  height: 100%;
+}
+body{
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: #171717;
+  color: #ffffff;
+  line-height: 1.6;
+  position: relative;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+.lines{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 90vw;
+} 
+.line{
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+  .line::after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+    animation: drop 7s 0s infinite;;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  }
+  .line:nth-child(1){
+    margin-left: -25%;
+  }
+  .line:nth-child(1)::after{
+    animation-delay: 1s;
+  }
+
+  .line:nth-child(3){
+    margin-left: 25%;
+  }
+  .line:nth-child(3)::after{
+    animation-delay: 1s;
+  }
+    
+@keyframes drop{
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+
+body {
+	margin: 0;
+	font-family: "Kanit", sans-serif;
+	font-size: 5vmin;
+	box-sizing: border-box;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: #203a43;
+	background: radial-gradient(ellipse at 50% 50%, #011116 0%, #000000 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	display: flex;
+    flex-direction: row;
+	align-items: center;
+	justify-content: center;
+    gap: 10vmin;
+	
+	width: 90vmin;
+}
+
+.name {
+    position: relative;
+    display: flex;
+    gap: 6rem;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content div {
+	position: absolute;
+	display: flex;
+	animation: show-hide var(--sp) ease-in-out 0s infinite;
+	mix-blend-mode: plus-lighter;
+}
+
+@keyframes show-hide {
+	0%,
+	100% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	20%,
+	80% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.content div span {
+	width: 5vmin;
+	position: relative;
+	text-align: center;
+	box-sizing: border-box;
+	color: #ffffff90;
+	text-shadow: 0 0 1px var(--white);
+}
+
+.up:before,
+.down:before {
+	width: 80%;
+	height: 0.1vmin;
+	background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
+	content: "";
+	position: absolute;
+	border-radius: 100%;
+	filter: blur(2px);
+	left: 10%;
+	top: 49%;
+	box-shadow: 0 0 100px 0 var(--white);
+	animation: shadow var(--sp) ease 0s infinite;
+}
+
+.down:before {
+	width: 1vmin;
+	height: 0.5vmin;
+	filter: blur(3px);
+	left: calc(50% - 0.5vmin);
+	top: 45%;
+	box-shadow: 0 0 10px 0 var(--white);
+}
+
+@keyframes shadow {
+	0%,
+	10%,
+	90%,
+	100% {
+		opacity: 0;
+	}
+	45%,
+	55% {
+		opacity: 0.25;
+		height: 0.25vmin;
+	}
+}
+
+.up span,
+.down span {
+	animation-duration: var(--sp);
+	animation-timing-function: ease-in-out;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+}
+
+/*up*/
+.up-2-8 {
+	animation-name: go-up-2-8;
+}
+
+.up-3-7 {
+	animation-name: go-up-3-7;
+}
+
+.up-4-6 {
+	animation-name: go-up-4-6;
+}
+
+.up-5 {
+	animation-name: go-up-5;
+}
+
+/*down*/
+.down-2-8 {
+	animation-name: go-down-2-8;
+}
+
+.down-3-7 {
+	animation-name: go-down-3-7;
+}
+
+.down-4-6 {
+	animation-name: go-down-4-6;
+}
+
+.down-5 {
+	animation-name: go-down-5;
+}
+
+@keyframes go-up-2-8 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -0.6vmin;
+	}
+}
+
+@keyframes go-up-3-7 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -1.2vmin;
+	}
+}
+
+@keyframes go-up-4-6 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -1.8vmin;
+	}
+}
+
+@keyframes go-up-5 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -2.4vmin;
+	}
+}
+
+@keyframes go-down-2-8 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 0.6vmin;
+	}
+}
+
+@keyframes go-down-3-7 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 1.2vmin;
+	}
+}
+
+@keyframes go-down-4-6 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 1.8vmin;
+	}
+}
+
+@keyframes go-down-5 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 2.4vmin;
+	}
+}
+
+</style> 
 </head>
 <body>
-    <main class="index-content">
-<a href="intro.html">
-    <svg viewport="0 0 1024 362" width="1024" height="100svh">
-        <filter id="water">
-            <feImage xlink:href="https://moxsim.ru/codepen/016-text-art/ocean.jpg" result="IMAGE"></feImage>
+
+ <section class="content"> 
+	<a href="intro.html">
+  <div class="name">
+        <div class="up">
+            <span class="up-0">r</span>
+            <span class="up-2-8">a</span>
+            <span class="up-3-7">f</span>
+            <span class="up-4-6">f</span>
+            <span class="up-5">a</span>
+            <span class="up-4-6">e</span>
+            <span class="up-3-7">l</span>
+            <span class="up-2-8">l</span>
+            <span class="up-0">e</span>
+            <span class="up-0"></span>
+            <span class="up-0">d</span>
+            <span class="up-0">e</span>
+            <span class="up-0">s</span>
+            <span class="up-0">i</span>
+            <span class="up-0">g</span>
+            <span class="up-0">n</span>
+        </div>
+        <div class="down">
+            <span class="up-0">r</span>
+            <span class="up-2-8">a</span>
+            <span class="up-3-7">f</span>
+            <span class="up-4-6">f</span>
+            <span class="up-5">a</span>
+            <span class="up-4-6">e</span>
+            <span class="up-3-7">l</span>
+            <span class="up-2-8">l</span>
+            <span class="up-0">e</span>
+            <span class="up-0"></span>
+            <span class="up-0">d</span>
+            <span class="up-0">e</span>
+            <span class="up-0">s</span>
+            <span class="up-0">i</span>
+            <span class="up-0">g</span>
+            <span class="up-0">n</span>
+		</div>
+  </div>
+  <div class="lines">
+	<div class="lines"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+</div></a></section>
+
+	
+
+
+
+
+
+</body></html>
+ 
+	
+	
+
+
+           
+
+   
+       
     
-            <feTurbulence id="turbulence" in="IMAGE" baseFrequency="0.01" numOctaves="2" result="NOISE"></feTurbulence>
+
+
+
+
+
+
+
     
-            <feDisplacementMap in="IMAGE" in2="NOISE" scale="30" result="DISPLACE"></feDisplacementMap>
-            <animate xlink:href="#turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
-            <feComposite operator="in" in="DISPLACE" in2="SourceGraphic"></feComposite>
-        </filter>
-    
-        <filter id="smoke">
-            <feTurbulence id="smoke-turbulence" type="fractalNoise" baseFrequency="0.01" numOctaves="3"></feTurbulence>
-            <animate xlink:href="#smoke-turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" scale="30"></feDisplacementMap>
-        </filter>
-    </svg>
-    <div class="wrapper">
-    <quote class="title">there will be an answer --let it be!</quote><br>
-    <quote class="author">--the beatles</quote>
-    <p class="smoke" data-text="SMOKE">aweSome</p>
-    <p class="water">aweSome</p>
-    <p class="smoke" data-text="SMOKE">DESIGN</p>
-    <p class="water">DESIGN</p>
-</div>
-</a>
-    </main>
-</body>
-</html>
