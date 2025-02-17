@@ -4,38 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/docs/css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+            color: #ffffff;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .word, .clone {
+            position: relative;
+            background: #000;
+            font-size: 20px;
+            line-height: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 15px #000;
+        }
+
+		a{
+			text-decoration: none;
+			color: #ffffff;
+		}
+		
+		.stage, .stage-1 {
+			position: relative;
+			width: 600px;
+			height: 300px;
+			overflow: hidden;
+		}
+		
+		.bg {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+    </style>
+    <!-- Include GSAP library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
-    <main class="index-content">
-<a href="intro.html">
-    <svg viewport="0 0 0 0" width="10000" height="0">
-        <filter id="water">
-            <feImage xlink:href="https://moxsim.ru/codepen/016-text-art/ocean.jpg" result="IMAGE"></feImage>
-            <feTurbulence id="turbulence" in="IMAGE" baseFrequency="0.01" numOctaves="2" result="NOISE"></feTurbulence>
-            <feDisplacementMap in="IMAGE" in2="NOISE" scale="50" result="DISPLACE"></feDisplacementMap>
-            <animate xlink:href="#turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
-            <feComposite operator="in" in="DISPLACE" in2="SourceGraphic"></feComposite>
-        </filter>
-    
-        <filter id="smoke">
-            <feTurbulence id="smoke-turbulence" type="fractalNoise" baseFrequency="0.01" numOctaves="3"></feTurbulence>
-            <animate xlink:href="#smoke-turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
-            <feDisplacementMap in="SourceGraphic" scale="10"></feDisplacementMap>
-        </filter>
-    </svg>
-    <div class="wrapper">
-        <quote class="title">there will be an answer --let it be!</quote><br>
-        <quote class="author">--the beatles</quote>
-        <p class="smoke" data-text="SMOKE">raffaele</p>
-        <p class="water">raffaele</p>
-        <p class="smoke" data-text="SMOKE">designer</p>
-        <p class="water">designer</p>
+	<a href="intro.html">
+    <div class="stage">
+		
+        <div class="bg"></div>
+        <div class="word">aweSome DESIGN</div>
     </div>
-</a>
-    </main>
+	<br>
+	<div class="stage-1">
+        <div class="bg"></div>
+        <div class="word"> raffaele SUPPA</div>
+		
+    </div>
+	</a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stage = document.querySelector('.stage');
+			const stage1 = document.querySelector('.stage-1');
+            const bg = document.querySelector('.bg');
+            const word = document.querySelector('.word');
+            const nClones = 12;
+            
+            for (let i = 0; i < nClones; i++) {
+                const clone1 = word.cloneNode(true);
+                const clone2 = word.cloneNode(true);
+                bg.prepend(clone1);
+                bg.prepend(clone2);
+                gsap.timeline({
+                    repeat: -1,
+                    onRepeat: () => { bg.append(clone1); bg.append(clone2); }
+                }).fromTo([clone1, clone2], {
+                    position: 'absolute',
+                    attr: { class: 'clone' },
+                    /*scaleY: 0.7*/
+					scaleY: 0.8,
+                }, {
+                    duration: 7,
+                    y: (j) => (j % 2) ? 200 : -200,
+                    /*scaleY: 1.2,*/
+					scaleY: .5,
+                    ease: 'power3'
+                }).play(i / nClones * 4);
+            }
+        });
+    </script>
 </body>
 </html>
+  
+  

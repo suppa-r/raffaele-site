@@ -1,111 +1,227 @@
+<!--<style
+/*@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto:700');
+
+.text-with-animation {
+  font-size: 6vw;
+  text-transform: uppercase;
+  font-family: 'Gochi Hand', sans-serif;
+  text-align: center;
+  /*line-height: 100vh;*
+  animation: main-text-animation 1.7s ease-in-out forwards;
+  font-weight: 700;
+  color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  margin-left: -200vw;
+}
+
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.text-with-animation {
+  font-size: 2vw;
+  position: relative; /* Ensure it is positioned relative to its normal 
+  font-family: 'Gochi Hand', cursive;
+  text-align: center;
+  bottom: 6rem; /* Add margin to space out the text elements *
+  animation: main-text-animation 1.7s ease-in-out forwards;
+  font-weight: 700;
+  color: #ffffff;
+  overflow: hidden;
+  display: block;
+  width: 100%; /* Adjust width to fit the container *
+}
+
+.subtext-with-animation {
+  padding: 3rem 0;
+  position: absolute; /* Ensure it is positioned absolutely *
+  z-index: 1; /* Lower z-index to be below text-with-animation *
+  font-size: 5vw;
+  text-align: center;
+  line-height: 100vh;
+  top: 0;
+  width: 100%;
+  font-family: 'Gochi Hand', cursive;
+  color: #fff;
+  letter-spacing: 2px;
+  user-select: none;
+  overflow: hidden;
+}
+
+.subtext-with-animation-1 {
+  padding: 0rem 0;
+  position: absolute; /* Ensure it is positioned absolutely *
+  font-size: 6rem;
+  text-align: center;
+  line-height: 100vh;
+  top: 20;
+  width: 100%;
+  font-family: 'Gochi Hand', cursive;
+  color: #fff;
+  letter-spacing: 2px;
+  user-select: none;
+  overflow: hidden;
+}
+
+.subtext-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.7s forwards;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  background: linear-gradient(to bottom right, #e3915d 20%, #be3956);
+}
+
+body, html {
+  width: 100vw;
+  max-width: 100vw;
+}
+
+@keyframes main-text-animation {
+  0% {
+    letter-spacing: 25vw;
+    word-spacing: 100vw;
+    opacity: 0;
+  }
+  100% {
+    letter-spacing: 4px;
+    word-spacing: 1vw;
+    opacity: 1;
+  }
+}
+
+@keyframes word-animation {
+  0% {
+    top: 10vw;
+    opacity: 0;
+  }
+  100% {
+    top: 3.5vw;
+    opacity: 1;
+  }
+}</style>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
-        
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: #000;
-            color: #ffffff;
-            font-family: "Comfortaa", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 500;
-        }
-        
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .word, .clone {
-            position: relative;
-            background: #000;
-            font-size: 20px;
-            line-height: 5px;
-            padding: 20px;
-            box-shadow: 0px 0px 15px #000;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
 
-		a{
-			text-decoration: none;
-			color: #ffffff;
-		}
-		
-		.stage, .stage-1 {
-			position: relative;
-			width: 600px;
-			height: 300px;
-			overflow: hidden;
-		}
-		
-		.bg {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background: #000;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-    </style>
-    <!-- Include GSAP library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto:700'); 
+
+.text-with-animation { font-size: 6vw;
+   text-transform: uppercase; 
+   font-family: 'Roboto', sans-serif; 
+   text-align: center; 
+   line-height: 100vh; 
+ 
+   animation: main-text-animation 1.7s ease-in-out forwards;
+  font-weight: 700; 
+  color: #f19578;
+   overflow: hidden;
+
+     width: 500vw;
+      margin-left: -200vw; } 
+      
+      .container { height: 100vh;
+         line-height: 100vh;
+          vertical-align: middle;
+         } 
+         
+         .subtext-with-animation {
+           position: absolute; 
+           font-size: 3vw;
+            text-align: center; 
+            /*line-height: 100vh;*/
+             bottom: 0;
+              width: 100%;
+               font-family: 'Gochi Hand', cursive; 
+               color: #fff;
+                letter-spacing: 4px;
+                 user-select: none;
+                  overflow: hidden;
+                 
+                   }
+
+                   .subtext-with-animation-1 {
+           position: absolute; 
+           font-size: 3vw;
+            text-align: center; 
+            /*line-height: 100vh;*/
+             bottom: 0;
+              width: 100%;
+               font-family: 'Gochi Hand', cursive; 
+               color: #fff;
+                letter-spacing: 4px;
+                 user-select: none;
+                  overflow: hidden;
+                 
+                   }
+                    .subtext-with-animation span:first-of-type { position: relative;
+                       opacity: 0; animation: word-animation 0.5s ease-out 1.5s forwards; 
+                      } 
+                      .subtext-with-animation span:nth-of-type(2) {
+                         position: relative; 
+                         opacity: 0;
+                          animation: word-animation 0.5s ease-out 1.7s forwards; 
+                        }
+                           body { 
+                            overflow: hidden;
+                             margin: 0;
+                              background: linear-gradient(to bottom right, #e3915d 20%, #be3956);
+                             }
+                               body, html { 
+                                width: 100vw;
+                                 max-width: 100vw; 
+                                }
+                                @keyframes main-text-animation 
+                                {
+                                   0% 
+                                   { 
+                                    letter-spacing: 25vw;
+                                     word-spacing: 100vw; 
+                                     opacity: 0; 
+                                    }
+                                     100% 
+                                     { 
+                                      letter-spacing: 4px;
+                                       word-spacing: 1vw; 
+                                       opacity: 1;
+                                       }
+                                       } 
+                                       @keyframes word-animation
+                                       { 
+                                        0% 
+                                        { top: 10vw; 
+                                          opacity: 0;
+                                         }
+                                          100% 
+                                          { 
+                                            top: 3.5vw; 
+                                            opacity: 1;
+                                           } 
+                                          }
+</style>
 </head>
 <body>
-	<a href="intro.html">
-    <div class="stage">
-		
-        <div class="bg"></div>
-        <div class="word">aweSome DESIGN</div>
-    </div>
-	<br>
-	<div class="stage-1">
-        <div class="bg"></div>
-        <div class="word"> raffaele SUPPA</div>
-		
-    </div>
-	</a>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const stage = document.querySelector('.stage');
-			const stage1 = document.querySelector('.stage-1');
-            const bg = document.querySelector('.bg');
-            const word = document.querySelector('.word');
-            const nClones = 12;
-            
-            for (let i = 0; i < nClones; i++) {
-                const clone1 = word.cloneNode(true);
-                const clone2 = word.cloneNode(true);
-                bg.prepend(clone1);
-                bg.prepend(clone2);
-                gsap.timeline({
-                    repeat: -1,
-                    onRepeat: () => { bg.append(clone1); bg.append(clone2); }
-                }).fromTo([clone1, clone2], {
-                    position: 'absolute',
-                    attr: { class: 'clone' },
-                    /*scaleY: 0.7*/
-					scaleY: 0.8,
-                }, {
-                    duration: 7,
-                    y: (j) => (j % 2) ? 200 : -200,
-                    /*scaleY: 1.2,*/
-					scaleY: .5,
-                    ease: 'power3'
-                }).play(i / nClones * 4);
-            }
-        });
-    </script>
+
+<div class="container">
+  <div class="text-with-animation">raffaele SUPPA</div>
+  <div class="subtext-with-animation">
+    <span>take</span> <span>it!</spanspan>
+  </div>
+  <div class="subtext-with-animation-1">
+    <span>aweSOME</span> <span>DESIGN</span>
+  </div>
+</div>
 </body>
-</html>
-  
-  
