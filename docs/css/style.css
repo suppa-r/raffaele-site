@@ -84,6 +84,7 @@ body {
 /* --------------------------------------- */
 /* -------------- Reset Margins----------- */
 /* --------------------------------------- */
+html,
 body,
 main,
 h1,
@@ -99,14 +100,10 @@ p
 
 h1,
 h2,
-h3 {
-  overflow-wrap: break-word;
-  line-height: 1.2;
-}
-
+h3,
 p {
   overflow-wrap: break-word;
-  margin-block: 0.275em;
+  line-height: 1.1;
 }
 
 /* Set core root defaults */
@@ -117,6 +114,11 @@ html:focus-within {
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* make images easier to work with */
@@ -263,28 +265,58 @@ select {
 /* --------- Page Specific Index --------- */
 /* --------------------------------------- */
 
-.home {
-  container-type: inline-size;
-  margin-inline: 0 auto;
-  overflow: hidden; /* Hide any overflowing content */
- 
+.index{
+  display: grid;
+  width: 100%;
+/* Center items horizontally and vertically */
+  overflow: clip;
+  align-content: center;
 }
 
-.main {
+.index-content{
   container-type: inline-size;
-  container-name: main;
-  overflow: hidden; /* Hide any overflowing content */
-  inline-size: 100%; /* Set the width of the container to 100% of the viewport width */
+  display: grid;
+  place-items: center;
+/* Center items horizontally and vertically */
 }
 
-/* --------------------------------------- */
-/* --------- Page Specific Intro --------- */
-/* --------------------------------------- */
-picture {
-  display: block;
-  max-width: 100%;
-height: auto;
-  object-fit: cover;
+.index a {
+  container-type: inline-size;
+  display: flex;
+  /* Center items vertically */
+  transition: color 0.3s ease-in-out;
+}
+
+.index::before {
+  content: '';
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  background:
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 45px) 50% 50% / 45px 45px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 45px) 50% 50% / 45px 45px;
+  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
+}
+
+.card {
+  display: flex;
+  overflow: hidden;
+  height: clamp(650px, 50vmin, 650px);
+  width: clamp(350px, 35vmin, 350px);
+  border-radius:var(--space-l);
+  transform-style: preserve-3d;
+  touch-action: pan-x pan-y manipulation;
+  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+    background-position 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.card img {
+  filter: grayscale(1);
 }
 
 .intro {

@@ -1,64 +1,32 @@
 npm run build<!DOCTYPE html>
 <html lang="en">
-
 <head>
-   <meta charset="UTF-8" />
-   <meta name="description" content="Raffaele Suppa Web Portfolio" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta name="author" content="Raffaele Suppa" />
-   <title>Raffaele Suppa | WebPage</title>
-   <link rel="icon" href="docs/images/favicon-32x32-min.png" />
-  <link rel="stylesheet" href="docs/css/style.css" />
-   <link rel="stylesheet" href="docs/css/card.css" />
-   <script type="module" src="docs/js/card.js"></script>
-
-   </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/docs/css/smoke.css">
 </head>
+<body>
 
-<body class="home">
-   <main class="main">
-<div class="container">
-  <div class="hello">
-    <a href="intro.html">
-      <div class="card" data-active="false">
-        <div class="wrapper-gradient-text">
-          <span class="text-layer">h</span>
-          <span class="text-layer">e</span>
-          <span class="text-layer">l</span>
-          <span class="text-layer">l</span>
-          <span class="text-layer">o</span>
-          <span class="text-layer">&nbsp;&nbsp;&nbsp;</span> <!-- Add this line for space -->
-          <span class="text-layer">w</span>
-          <span class="text-layer">e</span>
-          <span class="text-layer">l</span>
-          <span class="text-layer">c</span>
-          <span class="text-layer">o</span>
-          <span class="text-layer">m</span>
-          <span class="text-layer">e</span>
-          <span class="text-layer">!</span>
-        </div>
+<svg viewport="0 0 1700 200" width="1700" height="200">
+    <filter id="water">
+        <feImage xlink:href="https://moxsim.ru/codepen/016-text-art/ocean.jpg" result="IMAGE"></feImage>
+        <feTurbulence id="turbulence" in="IMAGE" baseFrequency="0.01" numOctaves="2" result="NOISE"></feTurbulence>
+        <feDisplacementMap in="IMAGE" in2="NOISE" scale="100" result="DISPLACE"></feDisplacementMap>
+        <animate xlink:href="#turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
+        <feComposite operator="in" in="DISPLACE" in2="SourceGraphic"></feComposite>
+    </filter>
+</svg>
 
-        <div class="wrapper-gradient-text-1">
-          <span class="text-layer">h</span>
-          <span class="text-layer">o</span>
-          <span class="text-layer">v</span>
-          <span class="text-layer">e</span>
-          <span class="text-layer">r</span>
-          <span class="text-layer">&nbsp;&nbsp;&nbsp;</span> <!-- Add this line for space -->
-          <span class="text-layer">c</span>
-          <span class="text-layer">l</span>
-          <span class="text-layer">i</span>
-          <span class="text-layer">c</span>
-          <span class="text-layer">k</span>
-         </div>
-        <img src="docs/images/genius-desktop.png" alt="Raffaele" />
-      </div>
-    </a>
-  </div>
+<div class="wrapper">
+    <p class="smoke" data-text="SMOKE">aweSome</p>
+    <p class="water">aweSome</p>
+    <p class="smoke" data-text="SMOKE">design</p>
+    <p class="water">design</p>
 </div>
-   </main>
-   <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
-   <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
-</body>
 
+</body>
 </html>
