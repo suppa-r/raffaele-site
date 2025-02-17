@@ -27,6 +27,11 @@ body {
 	overflow: hidden;
 }
 
+a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
 svg {
 	position: absolute;
 }
@@ -57,8 +62,8 @@ svg {
 	filter: url(#smoke) drop-shadow(0 0 40px #ffffff) blur(40px);
 }
 
-/*@media (max-width: 968px) {
-	html {
+@media (max-width: 968px) {
+	html{
 		font-size: 10px;
 	}
 }
