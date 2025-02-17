@@ -7,22 +7,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/docs/css/smoke.css">
+    <link rel="stylesheet" href="/docs/css/style.css">
 </head>
 <body>
     <main class="index-content">
 <a href="intro.html">
-<svg viewport="0 0 1700 200" width="1700" height="200">
-    <filter id="water">
-        <feImage xlink:href="https://moxsim.ru/codepen/016-text-art/ocean.jpg" result="IMAGE"></feImage>
-        <feTurbulence id="turbulence" in="IMAGE" baseFrequency="0.01" numOctaves="2" result="NOISE"></feTurbulence>
-        <feDisplacementMap in="IMAGE" in2="NOISE" scale="100" result="DISPLACE"></feDisplacementMap>
-        <animate xlink:href="#turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
-        <feComposite operator="in" in="DISPLACE" in2="SourceGraphic"></feComposite>
-    </filter>
-</svg>
-
-<div class="wrapper">
+    <svg viewport="0 0 1024 362" width="1024" height="362">
+        <filter id="water">
+            <feImage xlink:href="https://moxsim.ru/codepen/016-text-art/ocean.jpg" result="IMAGE"></feImage>
+    
+            <feTurbulence id="turbulence" in="IMAGE" baseFrequency="0.01" numOctaves="2" result="NOISE"></feTurbulence>
+    
+            <feDisplacementMap in="IMAGE" in2="NOISE" scale="30" result="DISPLACE"></feDisplacementMap>
+            <animate xlink:href="#turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
+            <feComposite operator="in" in="DISPLACE" in2="SourceGraphic"></feComposite>
+        </filter>
+    
+        <filter id="smoke">
+            <feTurbulence id="smoke-turbulence" type="fractalNoise" baseFrequency="0.01" numOctaves="3"></feTurbulence>
+            <animate xlink:href="#smoke-turbulence" attributeName="baseFrequency" dur="40s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="30"></feDisplacementMap>
+        </filter>
+    </svg>
+    <div class="wrapper">
+    <quote class="title">there will be an answer --let it be!</quote><br>
+    <quote class="author">--the beatles</quote>
     <p class="smoke" data-text="SMOKE">aweSome</p>
     <p class="water">aweSome</p>
     <p class="smoke" data-text="SMOKE">DESIGN</p>
