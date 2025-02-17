@@ -1,465 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+            color: #ffffff;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .word, .clone {
+            position: relative;
+            background: #000;
+            font-size: 20px;
+            line-height: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 15px #000;
+        }
 
-  <style>
-   /* * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      min-height: 100%;
-    }
-
-    body {
-      display: table;
-      width: 100%;
-      background-color: #171717;
-      color: #ffffff;
-      position: relative;
-      font-family: sans-serif;
-      overflow: hidden;
-    }
-
-    .main-page {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-      width: 100%;
-      min-height: 100%;
-      background: #171717;
-      overflow: hidden;
-    }
-
-    .lines {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
-      margin: auto;
-      width: 80vw;
-    }
-
-    .line {
-      position: absolute;
-      width: 1px;
-      height: 100%;
-      top: 0;
-      background: rgba(255, 255, 255, 0.1);
-      overflow: hidden;
-    }
-
-    .line::after {
-      content: '';
-      display: block;
-      position: absolute;
-      height: 15vh;
-      width: 100%;
-      top: -50%;
-      left: 0;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
-      animation: drop 2s 0s infinite;
-      animation-fill-mode: forwards;
-      animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-    }
-
-    .line:nth-child(1) {
-      left: 10%;
-    }
-
-    .line:nth-child(1)::after {
-      animation-delay: .3s;
-    }
-
-    .line:nth-child(2) {
-      left: 20%;
-    }
-
-    .line:nth-child(2)::after {
-      animation-delay: 1s;
-    }
-
-    .line:nth-child(3) {
-      left: 30%;
-    }
-
-    .line:nth-child(3)::after {
-      animation-delay: 1s;
-    }
-    .line:nth-child(4) {
-      left: 40%;
-    }
-
-    .line:nth-child(4)::after {
-      animation-delay: 2s;
-    }
-
-    .line:nth-child(5) {
-      left: 50%;
-    }
-
-    .line:nth-child(5)::after {
-      animation-delay: 1s;
-    }
-
-    .line:nth-child(6) {
-      left: 60%;
-    }
-
-    .line:nth-child(6)::after {
-      animation-delay: 2s;
-    }
-
-    .line:nth-child(7) {
-      left: 70%;
-    }
-
-    .line:nth-child(7)::after {
-      animation-delay: 2s;
-    }
-
-    .line:nth-child(8) {
-      left: 80%;
-    }
-
-    .line:nth-child(8)::after {
-      animation-delay: 1s;
-    }
-
-    @keyframes drop {
-      0% {
-        top: -50%;
-      }
-      100% {
-        top: 110%;
-      }
-    }*/
-/*----------curvature text----------*/
-.root{
-  --sp: 3s;
-}
-* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      min-height: 100%;
-    }
-
-   .main-page {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-      width: 100%;
-      min-height: 100%;
-      background: #171717;
-      overflow: hidden;
-    }
-
-
-  .content {
-	min-height: 100svh;
-	margin: 0;
-    display: flex;
-	flex-direction: column;
-    align-content:center ;
-	justify-content: center;
-	width: 100%;
-	font-family: "Kanit", sans-serif;
-    font-size: 5vmin;
-	box-sizing: border-box;
-	background: radial-gradient(ellipse at 50% 50%, #011116 0%, #000000 100%);
-	}
-
-.content a {
-    position: relative;
-	display: flex;
-	align-content: center;
-	justify-content:center; 
-	text-decoration: none;
-	color: #ffffff;
-}
-
-.content div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease-in-out 0s infinite;
-	mix-blend-mode: plus-lighter;
-}
-
-@keyframes show-hide {
-	0%,
-	100% {
-		opacity: 0;
-		transform: scale(0.8);
-	}
-	20%,
-	80% {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-.content div span {
-	width: 5vmin;
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	color: #ffffff90;
-	text-shadow: 0 0 1px var(--white);
-}
-
-.up:before,
-.down:before {
-	width: 80%;
-	height: 0.1vmin;
-	background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
-	content: "";
-	position: absolute;
-	border-radius: 100%;
-	filter: blur(2px);
-	left: 10%;
-	top: 49%;
-	box-shadow: 0 0 100px 0 var(--white);
-	animation: shadow var(--sp) ease 0s infinite;
-}
-
-.down:before {
-	width: 1vmin;
-	height: 0.5vmin;
-	filter: blur(3px);
-	left: calc(50% - 0.5vmin);
-	top: 45%;
-	box-shadow: 0 0 10px 0 var(--white);
-}
-
-@keyframes shadow {
-	0%,
-	10%,
-	90%,
-	100% {
-		opacity: 0;
-	}
-	45%,
-	55% {
-		opacity: 0.25;
-		height: 0.25vmin;
-	}
-}
-
-.up span,
-.down span {
-	animation-duration: var(--sp);
-	animation-timing-function: ease-in-out;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
-}
-
-/*up*/
-.up-1-2 {
-	animation-name: go-up-1-2;
-}
-
-.up-2-3 {
-	animation-name: go-up-2-3;
-}
-
-.up-3-4 {
-	animation-name: go-up-3-4;
-}
-
-.up-5 {
-	animation-name: go-up-5;
-}
-
-/*down*/
-.down-1-2 {
-	animation-name: go-down-1-2;
-}
-
-.down-3-4 {
-	animation-name: go-down-3-4;
-}
-
-.down-4-5 {
-	animation-name: go-down-4-5;
-}
-
-.down-5 {
-	animation-name: go-down-5;
-}
-
-@keyframes go-up-2-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -0.6vmin;
-	}
-}
-
-@keyframes go-up-5-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.2vmin;
-	}
-}
-
-@keyframes go-up-5-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.8vmin;
-	}
-}
-
-@keyframes go-up-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -2.4vmin;
-	}
-}
-
-@keyframes go-down-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 0.6vmin;
-	}
-}
-
-@keyframes go-down-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.2vmin;
-	}
-}
-
-@keyframes go-down-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.8vmin;
-	}
-}
-
-@keyframes go-down-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 2.4vmin;
-	}
-}
- </style>
+		a{
+			text-decoration: none;
+			color: #ffffff;
+		}
+		
+		.stage, .stage-1 {
+			position: relative;
+			width: 600px;
+			height: 300px;
+			overflow: hidden;
+		}
+		
+		.bg {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+    </style>
+    <!-- Include GSAP library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
-  <section class="main-page">
-    <section class="content">
-      <a href="intro.html">
-        <div class="up">
-          <span class="up-0">r</span>
-          <span class="up-2-8">a</span>
-          <span class="up-3-7">f</span>
-          <span class="up-4-6">f</span>
-          <span class="up-5">a</span>
-          <span class="up-4-6">e</span>
-          <span class="up-3-7">l</span>
-          <span class="up-2-8">l</span>
-          <span class="up-0">e</span>
-          <span class="up-0"></span>
-          <span class="up-0">d</span>
-          <span class="up-0">e</span>
-          <span class="up-0">s</span>
-          <span class="up-0">i</span>
-          <span class="up-0">g</span>
-          <span class="up-0">n</span>
-        </div>
-        <div class="down">
-          <span class="up-0">r</span>
-          <span class="up-2-8">a</span>
-          <span class="up-3-7">f</span>
-          <span class="up-4-6">f</span>
-          <span class="up-5">a</span>
-          <span class="up-4-6">e</span>
-          <span class="up-3-7">l</span>
-          <span class="up-2-8">l</span>
-          <span class="up-0">e</span>
-          <span class="up-0"></span>
-          <span class="up-0">d</span>
-          <span class="up-0">e</span>
-          <span class="up-0">s</span>
-          <span class="up-0">i</span>
-          <span class="up-0">g</span>
-          <span class="up-0">n</span>
-        </div>
-      </a>
-    </section>
-    <section class="lines">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </section>
-  </section>
+	<a href="intro.html">
+    <div class="stage">
+		
+        <div class="bg"></div>
+        <div class="word">aweSome DESIGN</div>
+    </div>
+	<br>
+	<div class="stage-1">
+        <div class="bg"></div>
+        <div class="word"> raffaele SUPPA</div>
+		
+    </div>
+	</a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stage = document.querySelector('.stage');
+			const stage1 = document.querySelector('.stage-1');
+            const bg = document.querySelector('.bg');
+            const word = document.querySelector('.word');
+            const nClones = 12;
+            
+            for (let i = 0; i < nClones; i++) {
+                const clone1 = word.cloneNode(true);
+                const clone2 = word.cloneNode(true);
+                bg.prepend(clone1);
+                bg.prepend(clone2);
+                gsap.timeline({
+                    repeat: -1,
+                    onRepeat: () => { bg.append(clone1); bg.append(clone2); }
+                }).fromTo([clone1, clone2], {
+                    position: 'absolute',
+                    attr: { class: 'clone' },
+                    /*scaleY: 0.7*/
+					scaleY: 0.8,
+                }, {
+                    duration: 7,
+                    y: (j) => (j % 2) ? 200 : -200,
+                    /*scaleY: 1.2,*/
+					scaleY: .5,
+                    ease: 'power3'
+                }).play(i / nClones * 4);
+            }
+        });
+    </script>
 </body>
 </html>
-
-
- 
+  
+  
