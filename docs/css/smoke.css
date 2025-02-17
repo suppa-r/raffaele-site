@@ -15,11 +15,10 @@ html {
 }
 
 body {
+	container-type: inline-size;
+	inline-size: 100svh;
+	inline-size: 100%;
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
 	font-weight: 700;
 	color: #ffffff;
 	font-family: "Monoton", sans-serif;
@@ -27,7 +26,17 @@ body {
 	overflow: hidden;
 }
 
+.index-content {
+	container-type: inline-size;
+	inline-size: 100%;
+	min-height: 100svh;
+    margin:0 auto;
+	position: relative;
+
+}
+
 a {
+	margin: 0 auto;
 	color: #ffffff;
 	text-decoration: none;
 }
@@ -37,8 +46,6 @@ svg {
 }
 
 .wrapper {
-	position: relative;
-	width: 100%;
 	text-align: center;
 
 	& p {
@@ -62,8 +69,18 @@ svg {
 	filter: url(#smoke) drop-shadow(0 0 40px #ffffff) blur(40px);
 }
 
-@media (max-width: 968px) {
-	html{
-		font-size: 10px;
+@container (inline-size >600px) {
+                   
+}
+
+@container (inline-size > 800px) {
+}
+
+
+@container (inline-size > 1200px) {
+	.wrapper {
+		& p {
+			font-size: 10rem;
+		}
 	}
 }
