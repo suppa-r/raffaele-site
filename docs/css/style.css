@@ -289,31 +289,36 @@ a{
 /* --------------------------------------- */
 
 
-  
-
-
-
-
-body {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 1rem;
-  min-height: 100vh;
+.index-content {
+  container-type: inline-size;
+  max-inline-size: 100%;
   font-weight: 700;
-  font-family: "Monoton", sans-serif;
-  color: #ffffff;
+  font-family: var(--ff-mono);
   background-color: var(--main-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
+.index-content a {
+  container-type: inline-size;
+  max-inline-size: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--clr-white);
+}
 svg {
   position: absolute;
 }
 
 .wrapper {
+  container-type: inline-size;
+  max-inline-size: 100%;
   position: relative;
   width: 100%;
   text-align: center;
@@ -337,6 +342,25 @@ svg {
   content: attr(data-text);
   position: absolute;
   filter: url(#smoke) drop-shadow(0 0 40px #ffffff) blur(40px);
+}
+
+.title{
+  container-type: inline-size;
+  max-inline-size: 100%;
+  font-size: var(--fs-500);
+  font-family: var(--ff-serif);
+  color: hsl(var(--clr-white));
+  text-align: center;
+}
+
+
+.author {
+  container-type: inline-size;
+  max-inline-size: 100%;
+  font-size: var(--fs-400);
+  font-family: var(--ff-serif);
+  color: hsl(var(--clr-white));
+  text-align: center;
 }
 
 @media (max-width: 968px) {
