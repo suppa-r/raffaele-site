@@ -1,227 +1,213 @@
-<!--<style
-/*@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto:700');
-
-.text-with-animation {
-  font-size: 6vw;
-  text-transform: uppercase;
-  font-family: 'Gochi Hand', sans-serif;
-  text-align: center;
-  /*line-height: 100vh;*
-  animation: main-text-animation 1.7s ease-in-out forwards;
-  font-weight: 700;
-  color: #ffffff;
-  overflow: hidden;
-  width: 100%;
-  margin-left: -200vw;
-}
-
-
-.container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.text-with-animation {
-  font-size: 2vw;
-  position: relative; /* Ensure it is positioned relative to its normal 
-  font-family: 'Gochi Hand', cursive;
-  text-align: center;
-  bottom: 6rem; /* Add margin to space out the text elements *
-  animation: main-text-animation 1.7s ease-in-out forwards;
-  font-weight: 700;
-  color: #ffffff;
-  overflow: hidden;
-  display: block;
-  width: 100%; /* Adjust width to fit the container *
-}
-
-.subtext-with-animation {
-  padding: 3rem 0;
-  position: absolute; /* Ensure it is positioned absolutely *
-  z-index: 1; /* Lower z-index to be below text-with-animation *
-  font-size: 5vw;
-  text-align: center;
-  line-height: 100vh;
-  top: 0;
-  width: 100%;
-  font-family: 'Gochi Hand', cursive;
-  color: #fff;
-  letter-spacing: 2px;
-  user-select: none;
-  overflow: hidden;
-}
-
-.subtext-with-animation-1 {
-  padding: 0rem 0;
-  position: absolute; /* Ensure it is positioned absolutely *
-  font-size: 6rem;
-  text-align: center;
-  line-height: 100vh;
-  top: 20;
-  width: 100%;
-  font-family: 'Gochi Hand', cursive;
-  color: #fff;
-  letter-spacing: 2px;
-  user-select: none;
-  overflow: hidden;
-}
-
-.subtext-with-animation span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.7s forwards;
-}
-
-body {
-  overflow: hidden;
-  margin: 0;
-  background: linear-gradient(to bottom right, #e3915d 20%, #be3956);
-}
-
-body, html {
-  width: 100vw;
-  max-width: 100vw;
-}
-
-@keyframes main-text-animation {
-  0% {
-    letter-spacing: 25vw;
-    word-spacing: 100vw;
-    opacity: 0;
-  }
-  100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
-    opacity: 1;
-  }
-}
-
-@keyframes word-animation {
-  0% {
-    top: 10vw;
-    opacity: 0;
-  }
-  100% {
-    top: 3.5vw;
-    opacity: 1;
-  }
-}</style>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-<style>
+  <style>
+    .root {
+      --sp:1s;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: table;
+      width: 100%;
+      height: 100%;
+      background-color: #171717;
+      color: #ffffff;
+      line-height: .7;
+      position: relative;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
 
-@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto:700'); 
+.line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 10%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
 
-.text-with-animation { font-size: 6vw;
-   font-family: 'Gochi Hand', sans-serif; 
-   text-align: center; 
-   line-height: 100vh; 
- 
-  animation: main-text-animation 1.7s ease-in-out forwards;
-  font-weight: 700; 
-  color: #ffffff;
-   overflow: hidden;
+.line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+  animation: drop 3s 3s ease-in-out infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
 
-     width: 500vw;
-      margin-left: -200vw;
-    opacity: .01;} 
-      
-      .container { height: 100vh;
-         line-height: 100vh;
-          vertical-align: middle;
-         } 
-         
-         .subtext-with-animation {
-           position: absolute; 
-           font-size: 3vw;
-            text-align: center; 
-            /*line-height: 100vh;*/
-             bottom: 0;
-              width: 100%;
-               font-family: 'Gochi Hand', cursive; 
-               color: #fff;
-                letter-spacing: 4px;
-                 user-select: none;
-                  overflow: hidden;
-                 
-                   }
+.line:nth-child(1) {
+  margin-left: 5%;
+}
 
-                   .subtext-with-animation-1 {
-           position: absolute; 
-           font-size: 3vw;
-            text-align: center; 
-            /*line-height: 100vh;*/
-             bottom: 0;
-              width: 100%;
-               font-family: 'Gochi Hand', cursive; 
-               color: #fff;
-                letter-spacing: 4px;
-                 user-select: none;
-                  overflow: hidden;
-                 
-                   }
-                    .subtext-with-animation span:first-of-type { position: relative;
-                       opacity: 0; animation: word-animation 0.5s ease-out 1.5s forwards; 
-                      } 
-                      .subtext-with-animation span:nth-of-type(2) {
-                         position: relative; 
-                         opacity: 0;
-                          animation: word-animation 0.5s ease-out 1.7s forwards; 
-                        }
-                           body { 
-                            overflow: hidden;
-                             margin: 0;
-                              background: linear-gradient(to bottom right, #3a3938 20%, #050505);
-                             }
-                               body, html { 
-                                width: 100vw;
-                                 max-width: 100vw; 
-                                }
-                                @keyframes main-text-animation 
-                                {
-                                   0% 
-                                   { 
-                                    letter-spacing: 10vw;
-                                     word-spacing: 100vw; 
-                                     opacity: 0; 
-                                    }
-                                     100% 
-                                     { 
-                                      letter-spacing: 4px;
-                                       word-spacing: 1vw; 
-                                       opacity: .2;
-                                       }
-                                       } 
-                                       @keyframes word-animation
-                                       { 
-                                        0% 
-                                        { top: 10vw; 
-                                          opacity: 0;
-                                         }
-                                          100% 
-                                          { 
-                                            top: 3.5vw; 
-                                            opacity: .2;
-                                           } 
-                                          }
-</style>
+.line:nth-child(1)::after {
+  animation-delay: 2s;
+}
+
+.line:nth-child(2) {
+  margin-left: 10%;
+}
+
+.line:nth-child(2)::after {
+  animation-delay: 1.8s;
+}
+
+.line:nth-child(3) {
+  margin-left: 15%;
+}
+
+.line:nth-child(3)::after {
+  animation-delay: 1.6s;
+}
+
+.line:nth-child(4) {
+  margin-left: 20%;
+}
+
+.line:nth-child(4)::after {
+  animation-delay: 1.4s;
+}
+
+.line:nth-child(5) {
+  margin-left: 25%;
+}
+
+.line:nth-child(5)::after {
+  animation-delay: 1.2s;
+}
+
+.line:nth-child(6) {
+  margin-left: 30%;
+}
+
+.line:nth-child(6)::after {
+  animation-delay: 1s;
+}
+
+.line:nth-child(7) {
+  margin-left: 45%;
+}
+
+.line:nth-child(7)::after {
+  animation-delay: 1s;
+}
+
+.line:nth-child(8) {
+  margin-left: 60%;
+}
+
+.line:nth-child(8)::after {
+  animation-delay: 1s;
+}
+
+.line:nth-child(9) {
+  margin-left: 75%;
+}
+
+.line:nth-child(9)::after {
+  animation-delay: 1s;
+}
+
+.line:nth-child(10) {
+  margin-left: 90%;
+}
+
+.line:nth-child(10)::after {
+  animation-delay: 1s;
+}
+.line:nth-child(11) {
+  margin-left: 110%;
+}
+
+.line:nth-child(11)::after {
+  animation-delay: 1s;
+}
+
+.line:nth-child(12) {
+  margin-left: 130%;
+}
+
+.line:nth-child(12)::after {
+  animation-delay: 1s;
+}
+
+.line:nth-child(13) {
+  margin-left: 150%;
+}
+
+.line:nth-child(13)::after {
+  animation-delay: 1s;
+}
+
+.line:nth-child(14) {
+  margin-left: 170%;
+}
+
+.line:nth-child(14)::after {
+  animation-delay: 1s;
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+   }
+
+  </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="text-with-animation">raffaele SUPPA</div>
-  <div class="subtext-with-animation">
-    <span>take</span> <span>it!</spanspan>
+    <a href="intro.html">
+  <div class="lines">
+   
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    
   </div>
-  <div class="subtext-with-animation-1">
-    <span>aweSOME</span> <span>DESIGN</span>
-  </div>
-</div>
+</a>
 </body>
+</html>
+
+	
+
+
+
+
+
+
+ 
