@@ -120,18 +120,18 @@ body, html {
 @import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto:700'); 
 
 .text-with-animation { font-size: 6vw;
-   text-transform: uppercase; 
-   font-family: 'Roboto', sans-serif; 
+   font-family: 'Gochi Hand', sans-serif; 
    text-align: center; 
    line-height: 100vh; 
  
-   animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.7s ease-in-out forwards;
   font-weight: 700; 
-  color: #f19578;
+  color: #ffffff;
    overflow: hidden;
 
      width: 500vw;
-      margin-left: -200vw; } 
+      margin-left: -200vw;
+    opacity: .01;} 
       
       .container { height: 100vh;
          line-height: 100vh;
@@ -178,7 +178,7 @@ body, html {
                            body { 
                             overflow: hidden;
                              margin: 0;
-                              background: linear-gradient(to bottom right, #e3915d 20%, #be3956);
+                              background: linear-gradient(to bottom right, #3a3938 20%, #050505);
                              }
                                body, html { 
                                 width: 100vw;
@@ -188,7 +188,7 @@ body, html {
                                 {
                                    0% 
                                    { 
-                                    letter-spacing: 25vw;
+                                    letter-spacing: 10vw;
                                      word-spacing: 100vw; 
                                      opacity: 0; 
                                     }
@@ -196,7 +196,7 @@ body, html {
                                      { 
                                       letter-spacing: 4px;
                                        word-spacing: 1vw; 
-                                       opacity: 1;
+                                       opacity: .2;
                                        }
                                        } 
                                        @keyframes word-animation
@@ -208,7 +208,7 @@ body, html {
                                           100% 
                                           { 
                                             top: 3.5vw; 
-                                            opacity: 1;
+                                            opacity: .2;
                                            } 
                                           }
 </style>
