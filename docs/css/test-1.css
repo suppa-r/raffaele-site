@@ -6,6 +6,7 @@
 }
 
 body {
+  container-type: inline-size;  
   min-height:100vh;
   justify-content: center;
   align-items: center;
@@ -13,6 +14,11 @@ body {
   background-color: #171717;
   color: #ffffff;
   overflow: hidden;
+}
+
+body >*{
+    container-type: inline-size;
+    inline-size:100%;
 }
 
 .line {
@@ -231,11 +237,16 @@ a {
   min-height: 100vh;
   margin-inline: 0 auto;
   display:grid;
-grid-template-rows: 3rem 1fr;
+  grid-template-rows: 3rem 1fr;
   align-items: center;
   justify-content: center;
   font-family: "Kanit", sans-serif;
   overflow: hidden;
+}
+
+.curvature >*{
+    container-type: inline-size;
+    inline-size: 100%;
 }
 
 .content {
