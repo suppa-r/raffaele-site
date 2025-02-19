@@ -5,11 +5,8 @@
 
 .root {
     --animation-speed: 1s;
-
-    html,
-    body {
-        min-height: 100vh;
-    }
+    --ff-mono: "Monoton", cursive;
+    --ff-serif: "Gochi Hand", serif;
 
     /* --------------------------------------- */
     /* ------------ Custom Colors ------------ */
@@ -48,11 +45,11 @@
     --space-6xl: clamp(10.125rem, 9.7337rem + 1.9565cqi, 11.25rem);
     --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
 
-    --ff-mono: "Monoton", serif;
-
-}
-
-
+    /* --------------------------------------- */
+    /* ------------ Custom Fonts ------------ */
+ --ff-mono: font-family:'Monoton', cursive;
+     }
+    
 .background {
     container-type: inline-size;
     inline-size: 100%;
@@ -274,18 +271,14 @@
      } 
 
 .text-with-animation { 
- 
    font-family:var(--ff-mono);
-    font-size: 10vw;
+   font-size: 6vw;
    text-align: center; 
    line-height: 100vh; 
- 
    animation: main-text-animation 1.7s ease-in-out forwards;
- 
    color: #ffffff;
    overflow: hidden;
-
-width: 500vw;
+   width: 500vw;
     margin-left: -200vw;
     opacity: .01;
 } 
