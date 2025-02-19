@@ -1,8 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
+
+@import url('https://fonts.googleapis.com/css2?family=Kranky&display=swap');
+
+
 :root {
   --sp: 5s;
   --white: #ffffff;
+
+font-size: 1.125rem;
+
+/* --------------------------------------- */
+/* ------------ Custom Colors ------------ */
+/* --------------------------------------- */
+
+  --clr-dark: 0, 0%, 0%;
+  --clr-light:195, 70%, 90%;
+  --clr-span: 195, 100%, 25%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
+  --main-bg: #1d1e22;
+
+/* --------------------------------------- */
+/* ---------- Custom Font Sizes ---------- */
+/* --------------------------------------- */
+
+
+  --fs-400: clamp(1.125rem, 1.125rem + 0cqi, 1.125rem);
+  --fs-500: clamp(1.4063rem, 1.4063rem + 0cqi, 1.4063rem);
+  --fs-600:  clamp(1.7578rem, 1.7578rem + 0cqi, 1.7578rem);
+  --fs-700:  clamp(2.1973rem, 2.1973rem + 0cqi, 2.1973rem);
+  --fs-800:  clamp(2.7466rem, 2.7466rem + 0cqi, 2.7466rem);
+  --fs-900:  clamp(3.4333rem, 3.4333rem + 0cqi, 3.4333rem);
+  --fs-1000: clamp(4.2916rem, 4.2916rem + 0cqi, 4.2916rem);
+
+
+/* --------------------------------------- */
+/* ----------- Custom Margins ------------ */
+/* --------------------------------------- */
+
+  --space-s: clamp(1.125rem,
+      1.0815rem + 0.2174cqi,
+      1.25rem);
+  --space-m: clamp(1.6875rem,
+      1.6223rem + 0.3261cqi,
+      1.875rem);
+  --space-l: clamp(2.25rem, 2.163rem + 0.4348cqi, 2.5rem);
+  --space-xl: clamp(3.375rem,
+      3.2446rem + 0.6522cqi,
+      3.75rem);
+  --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696cqi, 5rem);
+  --space-3xl: clamp(6.75rem,
+      6.4891rem + 1.3043cqi,
+      7.5rem);
+  --space-4xl: clamp(7.875rem,
+      7.5707rem + 1.5217cqi,
+      8.75rem);
+  --space-5xl: clamp(9rem, 8.6522rem + 1.7391cqi, 10rem);
+  --space-6xl: clamp(10.125rem,
+      9.7337rem + 1.9565cqi,
+      11.25rem);
+/* --------------------------------------- */
+/* ------------ Custom Fonts ------------- */
+/* --------------------------------------- */
+
+--ff-sans: "Kranky", sans-serif;
+--ff-serif: "Caveat", serif;
+--ff-mono: "Monoton", monospace;
+
 }
 
 body {
@@ -200,14 +265,11 @@ body {
   }
 }
 
-a {
-  text-decoration: none;
-  color: #fff;
-}
+/*-------------title-----------------*/ 
 
 .title {
   font-family: 'Caveat', sans-serif;
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: #ffffff;
   text-align: center;
   line-height: 1.2;
@@ -234,11 +296,13 @@ a {
   grid-template-rows: 3rem 1fr;
   align-items: center;
   justify-content: center;
-  font-family: "Kanit", sans-serif;
+  font-family:var(--ff-sans);
+  font-size: var(--fs-900);
+  color: var(--white);
+  text-align: center;
   overflow: hidden;
   width: 100%; /* Ensure the container takes full width */
-  max-width: 1200px; /* Set a maximum width */
-}
+ }
 
 .content {
   min-height: 100vh;
@@ -247,19 +311,20 @@ a {
   justify-content: center;
   position: relative;
   width: 100%; /* Ensure the container takes full width */
-  max-width: 1200px; /* Set a maximum width */
+  overflow: hidden;
 }
 
 .content a {
   margin-inline: 0 auto;
-  max-width: 10rem;
-  max-height: 4rem;
+  max-width: 5rem;
+  max-height: 2rem;
   display: flex;
   justify-content: center;
   align-content: center;
 }
 
 .content div {
+  width: 100%;
   position: absolute;
   display: flex;
   animation: show-hide var(--sp) ease 0s infinite;
@@ -280,13 +345,13 @@ a {
 }
 
 .content div span {
-  font-size: 2rem;
-  min-width: 10vmin;
+  font-size: 3rem;
+  width: 12vmin;
   position: relative;
   text-align: center;
   box-sizing: border-box;
   color: #ffffff90;
-  text-shadow: 0 0 1px #fff;
+  text-shadow: 0 0 100px #fff;
 }
 
 .up:before,
