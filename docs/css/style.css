@@ -272,6 +272,19 @@ a{
   transform: scale(1.5);
 }
 
+.main{
+  container-type: inline-size;
+  container-name: main;
+  inline-size: 100%; /* Set the width of the container to 100% of the viewport width */
+  min-height: 100dvh;
+  margin-inline: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
 /* --------------------------------------- */
 /* --------- Page Specific Index --------- */
 /* --------------------------------------- */
@@ -280,7 +293,7 @@ a{
   position: relative;
   container-type: inline-size;
   min-height: 100svh;
-  max-inline-size: 1100px;
+  max-inline-size:100%;
   margin: 0 auto;
   font-weight: 700;
   font-family: var(--ff-mono);
@@ -293,6 +306,8 @@ a{
   flex-wrap: wrap;
   overflow: hidden;
 }
+
+
 
 .index-content a {
   text-decoration: none;
@@ -376,20 +391,36 @@ filter: url("#water");
 }
 
 .intro {
-  container-type: inline-size;
+  /*container-type: inline-size;
   container-name: intro;
-  display: grid;
-  grid-template-rows:60px 1fr;
-  min-height: 100dvh;
   inline-size: 100%; /* Set the width of the container to 100% of the viewport width */
+  display: grid;
+  grid-template-rows:var(--space-2xl) 1fr;
+  min-height: 100dvh;
   margin-inline: 0 auto;
   overflow: hidden; /* Hide any overflowing content */
 }
 
  .intro-content {
-  display: block;
-  margin:var(--space-3xl) auto;
-  position: relative; /* Ensure the container is positioned relative */
+  container-type: inline-size;
+  container-name: intro-content;
+  inline-size: 100%; /* Set the width of the container to 100% of the viewport width */
+  min-height: 100dvh;
+  margin-inline: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden; /* Hide any overflowing content */
+  padding-inline: 0 auto;
+}
+
+.intro-content h1{
+  font-family: var(--ff-serif);
+  color: hsl(var(--clr-accent));
+  padding:.5em;
+  font-size: var(--fs-500);
+  letter-spacing: .2em;
   text-align: center;
 }
 
