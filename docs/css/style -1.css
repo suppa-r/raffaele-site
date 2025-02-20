@@ -23,27 +23,52 @@
 /* ---------- Custom Font Sizes ---------- */
 /* --------------------------------------- */
 
-/* Step -1: 16px → 16px */
-  --fs-300: clamp(1rem, 1rem + 0cqi, 1rem);
-  /* Step 0: 18px → 18px */
-  --fs-400: clamp(1.125rem, 1.125rem + 0cqi, 1.125rem);
-  /* Step 1: 20.25px → 20.25px */
-  --fs-500: clamp(1.2656rem, 1.2656rem + 0cqi, 1.2656rem);
-  /* Step 2: 22.7813px → 22.7813px */
-  --fs-600: clamp(1.4238rem, 1.4238rem + 0cqi, 1.4238rem);
+/* Step 0: 16px → 20px */
+  --fs-300: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+  /* Step 1: 19.2px → 25px */
+  --fs-400: clamp(1.2rem, 1.0739rem + 0.6304cqi, 1.5625rem);
+  /* Step 2: 23.04px → 31.25px */
+  --fs-500: clamp(1.44rem, 1.2615rem + 0.8924cqi, 1.9531rem);
+  /* Step 3: 27.648px → 39.0625px */
+  --fs-600: clamp(1.728rem, 1.4799rem + 1.2407cqi, 2.4414rem);
+  /* Step 4: 33.1776px → 48.8281px */
+  --fs-700: clamp(2.0736rem, 1.7334rem + 1.7011cqi, 3.0518rem);
+  /* Step 5: 39.8131px → 61.0352px */
+  --fs-800: clamp(2.4883rem, 2.027rem + 2.3067cqi, 3.8147rem);
+  /* Step 6: 47.7757px → 76.2939px */
+  --fs-900: clamp(2.986rem, 2.366rem + 3.0998cqi, 4.7684rem);
+  /* Step 7: 57.3309px → 95.3674px */
+  --fs-1000: clamp(3.5832rem, 2.7563rem + 4.1344cqi, 5.9605rem);
+  /* Step 8: 68.7971px → 119.2093px */
+  --fs-1100: clamp(4.2998rem, 3.2039rem + 5.4796cqi, 7.4506rem);
 
 /* --------------------------------------- */
 /* ----------- Custom Margins ------------ */
 /* --------------------------------------- */
-  --space-s: clamp(1.125rem, 1.125rem + 0cqi, 1.125rem);
-  --space-m: clamp(1.6875rem, 1.6875rem + 0cqi, 1.6875rem);
-  --space-l: clamp(2.25rem, 2.25rem + 0cqi, 2.25rem);
-  --space-xl: clamp(3.375rem, 3.375rem + 0cqi, 3.375rem);
-  --space-2xl: clamp(4.5rem, 4.5rem + 0cqi, 4.5rem);
-  --space-3xl: clamp(6.75rem, 6.75rem + 0cqi, 6.75rem);
-  --space-4xl: clamp(7.875rem, 7.875rem + 0cqi, 7.875rem);
-  --space-5xl: clamp(9rem, 9rem + 0cqi, 9rem);
-  --space-6xl: clamp(10.125rem, 10.125rem + 0cqi, 10.125rem);
+ /* Space xs: 12px → 15px */
+  --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
+  /* Space s: 16px → 20px */
+  --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+  /* Space m: 24px → 30px */
+  --space-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
+  /* Space l: 32px → 40px */
+  --space-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
+  /* Space xl: 48px → 60px */
+  --space-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
+  /* Space 2xl: 64px → 80px */
+  --space-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
+  /* Space 3xl: 96px → 120px */
+  --space-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
+  /* Space 4xl: 112px → 140px */
+  --space-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
+  /* Space 5xl: 128px → 160px */
+  --space-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
+  /* Space 6xl: 144px → 180px */
+  --space-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
+  /* Space 7xl: 160px → 200px */
+  --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
+  /* Space 8xl: 192px → 240px */
+  --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
 
 /* --------------------------------------- */
 /* ------------- Typography -------------- */
@@ -65,7 +90,8 @@
 /* -------------- Reset Margins----------- */
 /* --------------------------------------- */
 body,
-html {
+html,
+main {
   height: 100svh;
   margin: 0;
   padding: 0;
@@ -242,213 +268,6 @@ a {
 /* ------- Page Specific Index Home ------ */
 /* --------------------------------------- */
 
-.main{
-min-height: 100svh;
-}
-
-.index {
-  display: grid;
-  min-height: 100svh;
-/* Center items horizontally and vertically */
-  overflow: clip;
-}
-
-.index>* {
-  container-type: inline-size;
-}
-
-.index-container {
-  display: flex;
-  /* Use flexbox to center items */
-  justify-content: center;
-  /* Center items horizontally */
-}
-
-.index a {
-  display: flex;
-  align-items: center;
-  /* Center items vertically */
-  transition: color 0.3s ease-in-out;
-}
-
-.index::before {
-  content: '';
-  min-height: 100vh;
-  width: 100%;
-  position: fixed;
-  background:
-    linear-gradient(90deg,
-      color-mix(in hsl, canvasText, transparent 70%) 1px,
-      transparent 1px 45px) 50% 50% / 45px 45px,
-    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 45px) 50% 50% / 45px 45px;
-  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
-}
-
-.card {
-  display: flex;
-  overflow: hidden;
-  height: clamp(650px, 50vmin, 650px);
-  width: clamp(350px, 35vmin, 350px);
-  border-radius:var(--space-l);
-  transform-style: preserve-3d;
-  touch-action: pan-x pan-y manipulation;
-  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-    background-position 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.card img {
-  filter: grayscale(1);
-}
-
-.card[data-active="true"][data-parallax="true"] {
-  transition: transform 0s;
-}
-
-.card:hover {
-  transform:
-    rotateX(calc((var(--ratio-y) - 0.5) * 50deg)) rotateY(calc((var(--ratio-x) - 0.5) * -40deg));
-}
-
-.card:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at calc(var(--ratio-x) * 100%) calc(var(--ratio-y) * 100%), hsl(0 0% 100% / 0.5), transparent 50%);
-  background-blend-mode: soft-light;
-  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-    background-position 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.card:before {
-  content: "";
-  background:
-    url(https://assets.codepen.io/605876/code-icon-bg.svg) 0 0 / 8% 8%,
-    linear-gradient(115deg,
-      transparent 20%,
-      white 30%,
-      transparent 48% 52%,
-      white 70%,
-      transparent) 80% 80% / 300% 300%;
-  filter: invert(1) brightness(2);
-  /* Invert colors and adjust brightness to make the SVG white */
-  background-blend-mode: overlay;
-  mix-blend-mode: soft-light;
-  position: absolute;
-  inset: 0;
-  opacity: 1;
-  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-    background-position 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.card:hover:before {
-  background-position:
-    calc(var(--ratio-x) * 10%) calc(var(--ratio-y) * 10%),
-    calc(80% + (var(--ratio-x) * -50%)) calc(80% + (var(--ratio-y) * -50%));
-  opacity: 1;
-}
-
-.card:hover:after {
-  background-position:
-    calc(var(--ratio-x) * 100%) calc(var(--ratio-y) * 100%);
-}
-
-[data-theme='light'] {
-  color-scheme: light only;
-}
-
-[data-theme='dark'] {
-  color-scheme: dark only;
-}
-
-@layer base {
-  [data-theme='light'] {
-    color-scheme: light only;
-  }
-}
-
-.card-content {
-  font-family: var(--ff-serif);
-  color: hsl(var(--clr-accent));
-  display: grid;
-  width: 100%;
-  place-items: center;
-  padding:var(--space-l);
-}
-
-.card-title {
-  color: hsl(var(--clr-accent));
-  padding-top: var(--space-s);
-  font-size: var(--fs-400);
-  font-style: italic;
-}
-
-.card-quote {
-  color: hsl(var(--clr-accent));
-  padding-top: var(--space-s);
-  font-size: var(--fs-300);
-  font-style: italic;
-}
-
-.wrapper-gradient-text {
-  color: hsl(var(--clr-accent));
-  padding-top: var(--space-s);
-  font-size: var(--fs-400);
-  font-style: italic;
-}
-
-.wrapper-gradient-text-1 {
-  color: hsl(var(--clr-accent));
-  padding-top: var(--space-s);
-  font-size: var(--fs-00);
-  font-style: italic;
-}
-
-.wrapper-gradient-text-2 {
-  color: hsl(var(--clr-accent));
-  padding-top: var(--space-s);
-  font-size: var(--fs-400);
-  font-style: italic;
-}
- 
-.text-layer {
-  transform: rotateX(10deg) translateY(0px);
-  background: linear-gradient(109.6deg,
- hsl(var(--clr-accent)) chsl(var(--clr-accent))  hsl(var(--clr-accent)));
-  padding-top: var(--space-s);
-  font-size: var(--fs-400);
-  font-style: italic;
-  text-shadow: 0px 15px 0px rgb(32, 96, 112);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: hsl(var(--clr-accent));
-  animation: shadowDrip 3s infinite alternate ease-in-out;
-}
-
-@keyframes melt {
-  0% {
-    transform: scaleY(1) translateY(0);
-  }
-
-  100% {
-    transform: scaleY(1) translateY(0px);
-  }
-}
-
-@keyframes shadowDrip {
-  0% {
-    text-shadow: 0px 5px 0px rgba(211, 223, 229, 0.853);
-  }
-
-  100% {
-    text-shadow: 0px 20px 30px rgba(227, 233, 236, 0.996), 0px 30px 40px rgba(209, 221, 226, 0.932), 0px 70px 5px rgba(219, 225, 231, 0.781);
-  }
-}
 /* --------------------------------------- */
 /* ---------- End of Index Home ---------- */
 /* --------------------------------------- */
