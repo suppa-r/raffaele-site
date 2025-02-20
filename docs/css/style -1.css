@@ -505,33 +505,24 @@ ul {
 }
 
 .intro-content p {
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
   color: hsl(var(--clr-accent));
   text-align: center;
   font-family: var(--ff-serif);
 }
 
 .intro-content p span {
-  font-size: var(--fs-500);
+  padding: 1rem 0;
+  font-size: var(--fs-400);
   font-family: var(--ff-serif);
   color: hsl(var(--clr-span));
 }
 
-.intro-content h1 {
+.intro-content h1, h2, h3 {
   font-size: var(--fs-400);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: var(--ff-serif);
   letter-spacing: 0.08em;
-  padding: 0.6em 0;
-  color: hsl(var(--clr-accent));
-  font-style: italic;
-  text-align: center;
-}
-
-.intro-content h2 {
-  font-size: var(--fs-400);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  letter-spacing: 0.1em;
-  padding: .5em 0;
+  padding: 0.6rem 0;
   color: hsl(var(--clr-accent));
   font-style: italic;
   text-align: center;
@@ -543,20 +534,20 @@ ul {
   justify-content: center;
   align-items: center;
   margin-inline: 0 auto;
-  padding-inline: 0 var(--space-s);
+  padding-inline: 0 var(--space-xl);
 }
 
 .streamers svg {
   width: var(--space-s);
   height: var(--space-s);
-  padding: var(--space-s);
+  padding:0 var(--space-s);
 }
 
 .streamers a {
   position: relative;
   display: inline-block;
-  margin: 0.5em;
-  padding: 0.5em 1em;
+  margin: 1.2rem;
+  padding: 2rem;
   text-decoration: none;
   color: hsl(var(--clr-accent));
   font-family: var(--ff-serif);
@@ -587,7 +578,7 @@ ul {
 /* --------- Container Query Intro  ------ */
 /* --------------------------------------- */
 
-@container (max-width: 450px) {
+@container (max-width: 400px) {
  .main {
   min-height: 100svh;
   }
@@ -610,6 +601,7 @@ ul {
 
   .streamers a {
     display: flex;
+    flex-direction: column;
    svg {
       margin-inline: 0 auto;
     }
