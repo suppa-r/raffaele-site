@@ -72,7 +72,7 @@ html {
 }
 
 body,
-#main,
+main,
 h1,
 h2,
 h3,
@@ -673,6 +673,16 @@ ul {
   mask: linear-gradient(-20deg, transparent 50%, white) 100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
+}
+
+.intro-content h1, h2 {
+  font-size: var(--fs-500);
+  font-family:var(--ff-serif);
+  letter-spacing: 0.08em;
+  padding: 0.6em 0;
+  color: hsl(var(--clr-accent));
+  font-style: italic;
+  text-align: center;
 }
 
 .intro-content p {

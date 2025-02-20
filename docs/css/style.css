@@ -8,9 +8,6 @@
 
 
 :root {
-
-  font-size: 1.125rem;
-
 /* --------------------------------------- */
 /* ------------ Custom Colors ------------ */
 /* --------------------------------------- */
@@ -99,11 +96,9 @@ h1,
 h2,
 h3,
 p
-
- {
- 
-  margin: 0;
-  padding: 0;
+{
+ margin: 0;
+ padding: 0;
 }
 
 h1,
@@ -124,13 +119,7 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* make images easier to work with */
-img
- {
-  max-width: 100%;
-  display: block;
-  object-fit: contain;
-}
+
 
 /* make form elements easier to work with */
 input,
@@ -278,10 +267,7 @@ a{
   inline-size: 100%; /* Set the width of the container to 100% of the viewport width */
   min-height: 100dvh;
   margin-inline: 0 auto;
-  flex-direction: column;
-  justify-content: center;
   align-content: center;
-  flex-wrap: wrap;
   overflow: hidden;
 }
 
