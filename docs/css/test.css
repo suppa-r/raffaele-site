@@ -215,7 +215,6 @@ a {
 
 .title {
   font-family: 'Caveat',sans-serif;
-  /*font-size: 1vw;*/
   font-size: 2rem;
   color: #ffffff;
   font-family: 'Caveat', sans-serif;
@@ -227,7 +226,6 @@ a {
 
 .author {
   font-family: 'Caveat',sans-serif;
-	/*font-size: 1vw;*/
   font-size: 1rem;
   color: #ffffff;
   text-align: center;
@@ -236,14 +234,16 @@ a {
 }
 
 /*-------------curvature-----------------*/
-.curvature {
-  container-type: inline-size;
-  inline-size: 100%;
-  min-height: 100vh;
-  align-items: center;
 
-  font-family: "Kanit", sans-serif;
+.curvature {
+  min-height: 100vh;
+  font-size: 2rem;
+  font-family: 'Caveat', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
   overflow: hidden;
+  position: relative;
 }
 
 .curvature .content {
@@ -251,7 +251,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*width: 90vmin;*/
 }
 
 .curvature .content a {
@@ -269,7 +268,6 @@ a {
 
 .curvature .content div span {
   font-size:3rem;
-  /*width: 10vmin;*/
   min-width: 10vmin;
   position: relative;
   text-align: center;
@@ -293,7 +291,6 @@ a {
 
 .content div span {
 	font-size: 2rem;
-	/*width: 10vmin;*/
 	min-width:10vmin;
 	position: relative;
 	text-align: center;
@@ -306,7 +303,6 @@ a {
 .down:before {
 	width: 80%;
 	height:5vmin;
-	/*height: 0.1vmin;*/
 	background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
 	content: "";
 	position: absolute;
@@ -318,8 +314,6 @@ a {
 }
 
 .down:before {
-	/*width: 1vmin;
-	height: 0.5vmin;*/
 	width:3vmin;
 	height: 7vmin;
 	filter: blur(3px);
@@ -342,21 +336,13 @@ a {
 	}
 }
 
-/*.up span,
-.down span {
-	animation-duration: var(--sp);
-	animation-timing-function: ease;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
-}*/
 .up span,
 .down span {
 	animation-duration: var(--sp);
 	animation-timing-function: ease-in-out;
 	animation-delay: 0s;
 	animation-iteration-count: infinite;
-}*
-
+}
 
 /*up*/
 .up-2-8 {
@@ -507,106 +493,3 @@ a {
 
 
 
-/*@keyframes go-up-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -0.6vmin;
-	}
-}
-
-@keyframes go-up-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.2vmin;
-	}
-}
-
-@keyframes go-up-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.8vmin;
-	}
-}
-
-@keyframes go-up-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -2.4vmin;
-	}
-}
-
-@keyframes go-down-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 0.6vmin;
-	}
-}
-
-@keyframes go-down-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.2vmin;
-	}
-}
-
-@keyframes go-down-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.8vmin;
-	}
-}
-
-@keyframes go-down-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 2.4vmin;
-	}
-}*/
