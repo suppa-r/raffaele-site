@@ -1,374 +1,495 @@
-@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto:700'); 
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+:root {
+	--sp: 5s;
+	--white: #ffffff;
+}
 
+body {
+  min-height:100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #171717;
+  color: #ffffff;
+  overflow: hidden;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Monoton&display=swap');
-
-
-
-.root {
-    --animation-speed: 1s;
-    --ff-mono: "Monoton", cursive;
-    --ff-serif: "Gochi Hand", serif;
-
-
-    --ff-amatic {
-        font-family: "Amatic SC", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-      
-    /* --------------------------------------- */
-    /* ------------ Custom Colors ------------ */
-    /* --------------------------------------- */
-
-    --clr-dark: 0, 0%, 0%;
-    --clr-light: 195, 70%, 90%;
-    --clr-span: 195, 100%, 25%;
-    --clr-white: 0, 0%, 100%;
-    --clr-accent: 231, 77%, 90%;
-   
-
-   /* --------------------------------------- */
-   /* --------- Custom Font Sizes  ---------- */
-   /* --------------------------------------- */
-    --fs-400: clamp(1.125rem, 1.125rem + 0cqi, 1.125rem);
-    --fs-500: clamp(1.4063rem, 1.4063rem + 0cqi, 1.4063rem);
-    --fs-600: clamp(1.7578rem, 1.7578rem + 0cqi, 1.7578rem);
-    --fs-700: clamp(2.1973rem, 2.1973rem + 0cqi, 2.1973rem);
-    --fs-800: clamp(2.7466rem, 2.7466rem + 0cqi, 2.7466rem);
-    --fs-900: clamp(3.4333rem, 3.4333rem + 0cqi, 3.4333rem);
-    --fs-1000: clamp(4.2916rem, 4.2916rem + 0cqi, 4.2916rem);
-
-    
-   /* --------------------------------------- */
-   /* --------- Custom Margin Sizes  -------- */
-   /* --------------------------------------- */
-    --space-s: clamp(1.125rem, 1.0815rem + 0.2174cqi, 1.25rem);
-    --space-m: clamp(1.6875rem, 1.6223rem + 0.3261cqi, 1.875rem);
-    --space-l: clamp(2.25rem, 2.163rem + 0.4348cqi, 2.5rem);
-    --space-xl: clamp(3.375rem, 3.2446rem + 0.6522cqi, 3.75rem);
-    --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696cqi, 5rem);
-    --space-3xl: clamp(6.75rem, 6.4891rem + 1.3043cqi, 7.5rem);
-    --space-4xl: clamp(7.875rem, 7.5707rem + 1.5217cqi, 8.75rem);
-    --space-5xl: clamp(9rem, 8.6522rem + 1.7391cqi, 10rem);
-    --space-6xl: clamp(10.125rem, 9.7337rem + 1.9565cqi, 11.25rem);
-    --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
-
-    /* --------------------------------------- */
-    /* ------------ Custom Fonts ------------ */
-    /* --------------------------------------- */
-     }
-    
-.background {
+.main {
     container-type: inline-size;
     inline-size: 100%;
-    max-width:100%;
-    display: table;
-    margin: 0 auto;
-    background-color: #000;
-    color: #fff;
-    height: 100vh;
-    line-height: 100vh;
-    overflow: hidden;
-}
-
-.quote {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center;
+    min-height: 100vh;
     align-items: center;
-    width: 100%; /* Ensure the container takes full width */
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.quote p {
-    width: 100%; /* Ensure the paragraphs take full width */
-    font-size: var(--fs-400);
-    font-family: 'Caveat', sans-serif;
-    color: #ffffff;
-    text-align: center;
-    margin: 0;
-}
+    font-family: "Kanit", sans-serif;
+    overflow: hidden;
+  }
 
 .line {
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    top: 0;
-    left: 0%;
-    background: rgba(255, 255, 255, 0.1);
-    overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 0%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
 .line::after {
-    content: '';
-    display: block;
-    position: absolute;
-    height: 15vh;
-    width: 100%;
-    top: -50%;
-    left: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
-    animation: drop var(--animation-speed) var(--animation-speed) ease-in-out infinite;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+  animation: drop 3s 3s ease infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
 }
 
 .line:nth-child(1) {
-    margin-left: 5%;
+  margin-left: 5%;
 }
 
 .line:nth-child(1)::after {
-    animation-delay: 1s;
+  animation-delay: 2s;
 }
 
 .line:nth-child(2) {
-    margin-left: 10%;
+  margin-left: 10%;
 }
 
 .line:nth-child(2)::after {
-    animation-delay: 1s;
+  animation-delay: 1.8s;
 }
 
 .line:nth-child(3) {
-    margin-left: 15%;
+  margin-left: 15%;
 }
 
 .line:nth-child(3)::after {
-    animation-delay: 1s;
+  animation-delay: 1.6s;
 }
 
 .line:nth-child(4) {
-    margin-left: 20%;
+  margin-left: 20%;
 }
 
 .line:nth-child(4)::after {
-    animation-delay: 1s;
+  animation-delay: 1.6s;
 }
 
 .line:nth-child(5) {
-    margin-left: 25%;
+  margin-left: 25%;
 }
 
 .line:nth-child(5)::after {
-    animation-delay: 1s;
+  animation-delay: 1.2s;
 }
 
 .line:nth-child(6) {
-    margin-left: 30%;
+  margin-left: 30%;
 }
 
 .line:nth-child(6)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(7) {
-    margin-left: 35%;
+  margin-left: 35%;
 }
 
 .line:nth-child(7)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(8) {
-    margin-left: 40%;
+  margin-left: 40%;
 }
 
 .line:nth-child(8)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(9) {
-    margin-left: 45%;
+  margin-left: 45%;
 }
 
 .line:nth-child(9)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(10) {
-    margin-left: 50%;
+  margin-left: 50%;
 }
 
 .line:nth-child(10)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
-
 .line:nth-child(11) {
-    margin-left: 55%;
+  margin-left: 55%;
 }
 
 .line:nth-child(11)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(12) {
-    margin-left: 60%;
+  margin-left: 60%;
 }
 
 .line:nth-child(12)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(13) {
-    margin-left: 65%;
+  margin-left: 65%;
 }
 
 .line:nth-child(13)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(14) {
-    margin-left: 70%;
+  margin-left: 70%;
 }
 
 .line:nth-child(14)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(15) {
-    margin-left: 75%;
+  margin-left: 75%;
 }
 
 .line:nth-child(15)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(16) {
-    margin-left: 80%;
+  margin-left: 80%;
 }
 
 .line:nth-child(16)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(17) {
-    margin-left: 85%;
+  margin-left: 85%;
 }
 
 .line:nth-child(17)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(18) {
-    margin-left: 90%;
+  margin-left: 90%;
 }
 
 .line:nth-child(18)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(19) {
-    margin-left: 95%;
+  margin-left: 95%;
 }
 
 .line:nth-child(19)::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
-@keyframes drop { 0% { top: -50%; } 100% { top: 110%; } }
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+   }
+
+.title {
+  font-family: 'Caveat',sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
+  font-family: 'Caveat', sans-serif;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 0rem; /* Add margin to space out the text elements */
+  overflow: hidden;
+}
+
+.author {
+  font-family: 'Caveat',sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/*-------------curvature-----------------*/
+
+.curvature {
+  min-height: 100vh;
+  font-size: 2rem;
+  font-family: 'Caveat', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
+  overflow: hidden;
+  position: relative;
+}
+
+.curvature .content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.curvature .content a {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.curvature .content div {
+  position: absolute;
+  display: flex;
+  animation: show-hide var(--sp) ease 0s infinite;
+  mix-blend-mode: plus-lighter;
+}
+
+.curvature .content div span {
+  font-size:3rem;
+  min-width: 10vmin;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  color: #ffffff90;
+  text-shadow: 0 0 1px #fff;
+}
+
+@keyframes show-hide {
+	0%,
+	100% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	20%,
+	80% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.content div span {
+	font-size: 2rem;
+	min-width:10vmin;
+	position: relative;
+	text-align: center;
+	box-sizing: border-box;
+	color: #ffffff90;
+	text-shadow: 0 0 1px #fff;
+}
+
+.up:before,
+.down:before {
+	width: 80%;
+	height:5vmin;
+	background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
+	content: "";
+	position: absolute;
+	border-radius: 100%;
+	filter: blur(20px);
+	left: 100%;
+	box-shadow: 0 0 100px 0 #fff;
+	animation: shadow var(--sp) ease-in-out 4s infinite;
+}
+
+.down:before {
+	width:3vmin;
+	height: 7vmin;
+	filter: blur(3px);
+	left: calc(50% - 0.5vmin);
+	top: 45%;
+	box-shadow: 0 0 10px 0 var(--white);
+}
+
+@keyframes shadow {
+	0%,
+	10%,
+	90%,
+	100% {
+		opacity: 0;
+	}
+	45%,
+	55% {
+		opacity: 0.25;
+		height: 0.25vmin;
+	}
+}
+
+.up span,
+.down span {
+	animation-duration: var(--sp);
+	animation-timing-function: ease-in-out;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+}
+
+/*up*/
+.up-2-8 {
+	animation-name: go-up-2-8;
+}
+
+.up-3-7 {
+	animation-name: go-up-3-7;
+}
+
+.up-4-6 {
+	animation-name: go-up-4-6;
+}
+
+.up-5 {
+	animation-name: go-up-5;
+}
+
+/*down*/
+.down-2-8 {
+	animation-name: go-down-2-8;
+}
+
+.down-3-7 {
+	animation-name: go-down-3-7;
+}
+
+.down-4-6 {
+	animation-name: go-down-4-6;
+}
+
+.down-5 {
+	animation-name: go-down-5;
+}
+
+@keyframes go-up-2-8 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -2.0vmin;
+	}
+}
+
+@keyframes go-up-3-7 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -2.2vmin;
+	}
+}
+
+@keyframes go-up-4-6 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -2.6vmin;
+	}
+}
+
+@keyframes go-up-5 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -3vmin;
+	}
+}
+
+@keyframes go-down-2-8 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 1.4vmin;
+	}
+}
+
+@keyframes go-down-3-7 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 2.6vmin;
+	}
+}
+
+@keyframes go-down-4-6 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 2.8vmin;
+	}
+}
+
+@keyframes go-down-5 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 3.2vmin;
+	}
+}
 
 
-.container { 
-    container-type: inline-size;
-    inline-size: 100%;
-    max-width:100%;
-    height: 100vh;
-    line-height: 100vh;
-    /*vertical-align: middle;*/
 
-     } 
 
-.text-with-animation { 
-   font-family:var(--ff-amatic-bold);
-   font-size:var(--fs-1000);
-   text-align: center; 
-   line-height: 100vh; 
-   animation: main-text-animation 1.7s ease-in-out forwards;
-   color: #ffffff;
-   overflow: hidden;
-   width: 500vw;
-    margin-left: -200vw;
-    opacity: .01;
-} 
-      
-     .subtext-with-animation {
-           position: absolute; 
-        
-            text-align: center; 
-            line-height: 100vh;
-             bottom: 0;
-              width: 100%;
-              font-size: var(--fs-700);
-               font-family:var(--ff-amatic); 
-               color: #fff;
-                letter-spacing: 4px;
-                /* user-select: none;*/
-                  overflow: hidden;
-                 
-                   }
 
-                   .subtext-with-animation-1 {
-           position: absolute; 
-           font-size: 3vw;
-            text-align: center; 
-            /*line-height: 100vh;*/
-             bottom: 0;
-              width: 100%;
-               font-family: 'Gochi Hand', cursive; 
-               color: #fff;
-                letter-spacing: 4px;
-                 /*ser-select: none;*/
-                  overflow: hidden;
-                 
-                   }
-                    .subtext-with-animation span:first-of-type { position: relative;
-                       opacity: 0; animation: word-animation 0.5s ease-out 1.5s forwards; 
-                      } 
-                      .subtext-with-animation span:nth-of-type(2) {
-                         position: relative; 
-                         opacity: 0;
-                          animation: word-animation 0.5s ease-out 1.7s forwards; 
-                        }
-                           body { 
-                            overflow: hidden;
-                             margin: 0;
-                              background: linear-gradient(to bottom right, #3a3938 20%, #050505);
-                             }
-                               body, html { 
-                                width: 100vw;
-                                 max-width: 100vw; 
-                                }
-                                @keyframes main-text-animation 
-                                {
-                                   0% 
-                                   { 
-                                    letter-spacing: 10vw;
-                                     word-spacing: 100vw; 
-                                     opacity: 0; 
-                                    }
-                                     100% 
-                                     { 
-                                      letter-spacing: 4px;
-                                       word-spacing: 1vw; 
-                                       opacity: .2;
-                                       }
-                                       } 
-                                       @keyframes word-animation
-                                       { 
-                                        0% 
-                                        { top: 10vw; 
-                                          opacity: 0;
-                                         }
-                                          100% 
-                                          { 
-                                            top: 3.5vw; 
-                                            opacity: .2;
-                                           } 
-                                          }
+
+
+
+
 
 
 
