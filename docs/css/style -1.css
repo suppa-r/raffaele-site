@@ -291,6 +291,14 @@ header {
   position: relative;
 }
 
+header h1 {
+  font-size: var(--fs-300);
+  font-family: var(--ff-serif);
+  color: hsl(var(--clr-accent));
+  margin: 0;
+  padding: 0;
+}
+
 header::after {
   content: "";
   clear: both;
@@ -299,7 +307,7 @@ header::after {
 
 .logo {
   font-family: var(--ff-serif);
-  font-size: var(--fs-400);
+  /*font-size: var(--fs-400);*/
   color: hsl(var(--clr-accent));
   margin: 0;
   padding: 0 0 0 0.6em;
@@ -308,7 +316,7 @@ header::after {
 .logo span {
   font-family: var(--ff-serif);
   color:hsl(var(--clr-span));
-  font-size: var(--fs-400);
+  /*font-size: var(--fs-400);*/
   margin: 0 0.5em 0 0.5em;
 }
 
