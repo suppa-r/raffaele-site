@@ -620,39 +620,14 @@ ul {
   min-height: 100svh;
   }
 
-  .intro {
-    place-items: center;
-    grid-template-columns: 1fr;
-    margin-inline: 0 var(--space-xl);
-  }
-
-  .intro-content{
-    padding-bottom: var(--space-7xl);
-  }
-
-  .intro-content h1,h2,h3 {
-    padding: 0;
-  }
-
- .logo {
+  .logo {
     opacity: 0;
     display: none;
     /* Hide logo on small screens */
   }
-
-  .streamers a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-   svg {
-      margin-inline:0 auto;
-    }
-   
-  }
 }
+
+ 
 
 @container (max-width:768px) {
   .intro {
