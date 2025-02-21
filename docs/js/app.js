@@ -25,10 +25,8 @@ function closeMenu() {
 
   // Ensure main is displayed and set background properties
   main.style.display= "block"; //
-  introContents.style.display = "block"; // Hide intro content
-  main.display.backgroundImage = 'url("/docs/images/header-desktop-min.wepb")'; // Set background image
-  main.display.backgroundSize = "cover"; // Set background size
-
+  //introContents.style.display = "block"; // Hide intro content
+ 
   siteNavigation.addEventListener('animationend', () => {
     siteNavigation.setAttribute('data-state', "closed");
   }, {once: true});
