@@ -507,7 +507,7 @@ ul {
   font-size: var(--fs-400);
   font-family:var(--ff-serif);
   letter-spacing: 0.06em;
-  padding: 0.3rem 0;
+  padding: 0.1rem 0;
   color: hsl(var(--clr-accent));
   font-style: italic;
   text-align: center;
@@ -625,6 +625,10 @@ ul {
 
   .intro-content{
     padding-bottom: var(--space-7xl);
+  }
+
+  .intro-content h1,h2,h3 {
+    padding: 0;
   }
 
  .logo {
