@@ -86,8 +86,12 @@ body {
 .main {
     container-type: inline-size;
     inline-size: 100%;
-    min-height: 100vh;
-    align-items: center;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows:var(--space-2xl) 1fr;
+	gap: 0px 0px;
+    background: #171717;
+	color: #ffffff;
     font-family: "Kanit", sans-serif;
     overflow: hidden;
   }
@@ -302,37 +306,42 @@ a {
 }
 
 /*-------------curvature-----------------*/
-
-.curvature {
-  min-height: 100vh;
+.wrapper{
+ container-type: inline-size;
+ inline-size: 100%;
+ min-height: 100vh;
+ display: grid;
+ grid-template-rows: repeat(2, 1fr);
+ gap: 0px 0px;
+  background: #171717;
   color: #ffffff;
+  font-family: 'Caveat', sans-serif;
   text-align: center;
   line-height: 1.5;
   overflow: hidden;
-  position: relative;
 }
 
-.curvature .content {
-  min-height: 100vh;
+.wrapper .content {
+	  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.curvature .content a {
+.wrapper .content a {
   display: flex;
   justify-content: center;
   align-content: center;
 }
 
-.curvature .content div {
+.wraper .content div {
   position: absolute;
   display: flex;
   animation: show-hide var(--sp) ease-in 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
-.curvature .content div span {
+.wrapper .content div span {
   font-family: var(--ff-serif);
   font-size:var(--fs-1000);
   min-width: 10vmin;
@@ -356,7 +365,7 @@ a {
 	}
 }
 
-.content div span {
+.wrapper .content div span {
 	font-size: 2rem;
 	min-width:10vmin;
 	position: relative;
@@ -389,7 +398,85 @@ a {
 	box-shadow: 0 0 10px 0 var(--white);
 }
 
-@keyframes shadow {
+.wrapper .content-1 {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .wrapper .content-1 a {
+
+	display: flex;
+	justify-content: center;
+	align-content: center;
+  }
+  
+  .wraper .content-1 div {
+	position: absolute;
+	display: flex;
+	animation: show-hide var(--sp) ease-in 0s infinite;
+	mix-blend-mode: plus-lighter;
+  }
+  
+  .wrapper .content-1 div span {
+	font-family: var(--ff-serif);
+	font-size:var(--fs-1000);
+	min-width: 10vmin;
+	position: relative;
+	text-align: center;
+	box-sizing: border-box;
+	color: #ffffff90;
+	text-shadow: 5px -10px 5px #6e939967;
+  }
+  
+  @keyframes show-hide {
+	  0%,
+	  100% {
+		  opacity: 0;
+		  transform: scale(0.8);
+	  }
+	  20%,
+	  80% {
+		  opacity: 1;
+		  transform: scale(1);
+	  }
+  }
+  
+  .wrapper .content-1 div span {
+	  font-size: 2rem;
+	  min-width:10vmin;
+	  position: relative;
+	  text-align: center;
+	  box-sizing: border-box;
+	  color: #ffffff90;
+	  text-shadow: 0 0 1px #fff;
+  }
+  
+  .up:before,
+  .down:before {
+	  width: 80%;
+	  height:5vmin;
+	  background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
+	  content: "";
+	  position: absolute;
+	  border-radius: 100%;
+	  filter: blur(20px);
+	  left: 100%;
+	  box-shadow: 0 0 100px 0 #fff;
+	  animation: shadow var(--sp) ease-in-out 4s infinite;
+  }
+  
+  .down:before {
+	  width:3vmin;
+	  height: 7vmin;
+	  filter: blur(3px);
+	  left: calc(50% - 0.5vmin);
+	  top: 45%;
+	  box-shadow: 0 0 10px 0 var(--white);
+  }
+  
+  @keyframes shadow {
 	0%,
 	10%,
 	90%,
