@@ -558,7 +558,6 @@ ul {
   --ionicon-stroke-width: 32px;
   color:hsl(var(--clr-span));
   text-align: center;
-  margin-inline: 0 auto;
   vertical-align: middle;
 }
 
@@ -601,61 +600,6 @@ ul {
   }
 }
 
-
-/*.streamers {
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.streamers p{
-  font-size: var(--fs-400);
-  color: hsl(var(--clr-accent));
-  font-family: var(--ff-serif);
-  text-align: center;
-}
-
-.streamers svg {
-  width: var(--space-s);
-  height: var(--space-s);
-  padding:0;
-}
-
-.streamers a {
-  text-decoration: none;
-  color: hsl(var(--clr-accent));
-  font-family: var(--ff-serif);
-  font-size: var(--fs-400);
-  text-align: center;
-}
-
-.streamers a:hover {
-  background: hsl(var(--clr-span));
-  opacity: 1;
-  transform: translateX(-50%, -50%) scale(1.5) translateY(-50%, -50%);
-  border-radius: 50%;
-}
-
-/*.streamers a:hover {
-  color: hsl(var(--clr-span)); 
-  opacity: 1;
-  transform: translateX(-50%, -50%) scale(1) translateY(-50%, -50%);
-  background: hsl(var(--clr-span));
-  border-radius: 50%;
-  }*
-
-@keyframes pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(2.8);
-    opacity: 0.75;
-  }
-
-  100% {
-    transform: translate(-50%, -50%) scale(2.8);
-    opacity: 0;
-  }
-}*/
-
 /* --------------------------------------- */
 /* --------- Container Query Intro  ------ */
 /* --------------------------------------- */
@@ -686,10 +630,10 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1.2rem;
-    padding: 2rem;
+    margin: 0;
+    padding: 0;
    svg {
-      margin-inline: var(--space-2xl) auto;
+      margin-inline:0 auto;
     }
    
   }
