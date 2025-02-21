@@ -503,11 +503,11 @@ ul {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
-.intro-content h1, h2 {
-  font-size: var(--fs-500);
+.intro-content h1, h2, h3 {
+  font-size: var(--fs-400);
   font-family:var(--ff-serif);
-  letter-spacing: 0.08em;
-  padding: 0.6em 0;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0;
   color: hsl(var(--clr-accent));
   font-style: italic;
   text-align: center;
@@ -521,7 +521,7 @@ ul {
 }
 
 .intro-content p span {
-  padding: 1rem 0;
+  padding: 0.5em;
   font-size: var(--fs-400);
   font-family: var(--ff-serif);
   color: hsl(var(--clr-span));
