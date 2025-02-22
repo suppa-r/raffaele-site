@@ -513,10 +513,10 @@ svg {
 }
 
 .game .front a {
+    width:100%;
+    height:100%;
     text-decoration: none;
-    font-size: var(--fs-400);
-    color: hsl(var(--clr-white));
-}
+  }
 
 .back {
     opacity: 0;
@@ -537,6 +537,8 @@ svg {
     -webkit-transform: translateY(35%);
     transform: translateY(35%);
 }
+
+
 
 .back .streaming-info {
     margin: 2em;

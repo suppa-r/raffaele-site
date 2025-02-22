@@ -81,8 +81,8 @@
 
 
 body,
-html,
-.container {
+html
+ {
   min-height: 100svh;
   overflow:clip;
 }
@@ -104,6 +104,7 @@ body {
 .container > *{
 /*box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.4);*/
 container-type: inline-size;
+padding-inline: var(--space-2xl);
 width: 100%;
 }
 
@@ -137,6 +138,7 @@ color: #ffffff;
 margin-top: var(--space-4xl);
 position:relative;
 font-size:var(--fs-500);
+letter-spacing: var(--space-m);
 font-family: 'Monoton', sans-serif;
 text-align: center;
 animation: main-text-animation 1.7s ease-in-out forwards;
@@ -220,8 +222,10 @@ opacity: 1;
 }
 
 
-@container (max-width < 500px) {
+@container (min-width < 450px) {
 .container {
+  padding-inline: var(--space-xl);
+
 min-height: 100vh;
 }
 .text-with-animation {
