@@ -228,17 +228,7 @@ opacity: 1;
 
 min-height: 100vh;
 }
-.text-with-animation {
-font-size:var(--fs-400);
-}
 
-.subtext-with-animation {
-font-size: var(--fs-400);
-}
-
-.subtext-with-animation-1 {
-font-size: var(--fs-400);
-}
 }
 
 
