@@ -102,9 +102,8 @@ body {
     }
 
 .container > *{
-/*box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.4);*/
 container-type: inline-size;
-padding-inline: var(--space-2xl);
+padding-inline: var(--space-4xl);
 width: 100%;
 }
 
@@ -222,116 +221,6 @@ opacity: 1;
 }
 
 
-@container (min-width < 450px) {
-.container {
-  padding-inline: var(--space-xl);
-
-min-height: 100vh;
-}
-
-}
 
 
 
-/*.text-with-animation {
-font-size: 1.5vw;
-font-family: 'Monoton', sans-serif;
-text-align: center;
-/*line-height: 100vh;*
-box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.4);
-
-animation: main-text-animation 1.7s ease-in-out forwards;
-font-weight: 400;
-color: #ffffff;
-overflow: hidden;
-transform: translateY(-4rem);
-/*bottom:50;*
-width: 500vw;
-margin-left: -200vw;
-opacity: .1;
-}
-
-.subtext-with-animation {
-  position: absolute;
-  font-size: 2vw;
-  text-align: center;
-  /*line-height: 100vh;*
-  bottom: 0;
-  width: 100%;
-  font-family: 'Monoton', sans-serif;
-  color: #fff;
-  letter-spacing: 4px;
-  user-select: none;
-  overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-
-}
-
-.subtext-with-animation-1 {
-  position: absolute;
-  font-size: 1.75vw;
-  text-align: center;
-  /*line-height: 100vh;*
-  top: 0;
-  width: 100%;
-  font-family: 'Monoton', sans-serif;
-  color: #fff;
-  letter-spacing: 4px;
-  user-select: none;
-  overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-
-}
-
-.subtext-with-animation span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
-
-.subtext-with-animation span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.7s forwards;
-}
-
-
-@keyframes main-text-animation {
-  0% {
-    letter-spacing: 25vw;
-    word-spacing: 100vw;
-    opacity: 0;
-  }
-
-  100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
-    opacity: 1;
-  }
-}
-
-@keyframes word-animation {
-  0% {
-    top: 10vw;
-    opacity: 0;
-  }
-
-  100% {
-    top: 3.5vw;
-    opacity: 1;
-  }
-}
-
-@container(max-width: 600px) {
-  .text-with-animation {
-    font-size: 3vw;
-  }
-
-  .subtext-with-animation {
-    font-size: 4vw;
-  }
-
-  .subtext-with-animation-1 {
-    font-size: 3.5vw;
-  }
-}*/
