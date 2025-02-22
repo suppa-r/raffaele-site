@@ -278,16 +278,25 @@
     }
 
     @media(max-width: 500px) {
+      .container {
+        display: grid;
+        grid-template-rows: 1rem 1fr;
+        width: 100%;
+        line-height: 100vh;
+        padding-inline: 0 1rem;
+        overflow: hidden;
+      }
+
       .text-with-animation {
-        font-size: var(--fs-400);
+        font-size: var(--fs-300);
       }
 
       .subtext-with-animation {
-        font-size: var(--fs-400);
+        font-size: var(--fs-300);
       }
 
       .subtext-with-animation-1 {
-        font-size: var(--fs-400);
+        font-size: var(--fs-300);
       }
     }
 
