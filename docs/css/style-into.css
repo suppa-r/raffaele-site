@@ -456,37 +456,23 @@ svg {
 /************ Page  Specific ***********/
 /***********  Home--Page  *************/
 
-.home {
-    container-type: inline-size;
-    container-name: home;
-    width: 100%;
-    min-height: 100dvh;
-    margin-inline: 0 auto;
-    place-items: center;
-    background: linear-gradient(#000, #000 20px, transparent),
-        linear-gradient(transparent, #fff 100%),
-        linear-gradient(#fff,
-            #fff 1px,
-            transparent 1px,
-            transparent 40px),
-        repeating-linear-gradient(to right,
-            #fff,
-            #ffff 1px,
-            transparent 40px) #3b3636;
-    background: fixed linear-gradient(#000, #000 20px, transparent),
-        fixed linear-gradient(transparent, #fff 100%),
-        fixed linear-gradient(#fff,
-            #fff 1px,
-            transparent 1px,
-            transparent 40px),
-        fixed repeating-linear-gradient(to right,
-            #fff,
-            #ffff,
-            1px,
-            transparent 40px) #3b3636;
-
+body,
+html {
+  min-height: 100svh;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
+body {
+min-height:100vh;
+justify-content: center;
+align-items: center;
+margin: 0;
+background-color: #000;
+color: #ffffff;
+overflow: hidden;
+}
 
 .hello {
     padding-top: 0em;
@@ -556,13 +542,15 @@ svg {
 
 .wrapper-home {
     container-type: inline-size;
+    display: grid;
+
+    
+   
     width: 100%;
     min-height: 100dvh;
     margin-inline: 0 auto;
     place-items: center;
-    margin: 5em;
-
-}
+ }
 
 .game {
     position: relative;
