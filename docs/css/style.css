@@ -734,10 +734,10 @@ ul {
 }
 
 .streamers ion-icon {
-  font-size: var(--fs-600);
+  font-size: var(--fs-500);
   z-index: 5; 
   --ionicon-stroke-width: 32px;
-  color:hsl(var(--clr-span));
+  color:hsl(var(--clr-white));
   text-align: center;
   vertical-align: middle;
 }
@@ -756,9 +756,9 @@ ul {
   content: "";
   position: absolute;
   top: 0;
-  left: 15%;
-  width: 70%;
-  height: 100%;
+  left: 30%;
+  width: 40%;
+  height: 70%;
   transform: translate(-50%, -0%); /* Center the pseudo-elements */
   border-radius: 50%;
 }
