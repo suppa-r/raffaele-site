@@ -285,58 +285,13 @@
     }
 
 
-    @container index(min-width < 350px) {
+    @container index(min-width < 330px) {
       .container {
         padding:var(--space-2xl);
       }
-
-      .index-text {
-        padding:var(--space-1xl);
-        font-weight: 400;
-        color: #ffffff;
-        overflow: hidden;
-        width: 500vw;
-        margin-left: -200vw;
-      }
-
-      .subtext-with-animation {
-        font-size: var(--fs-400);
-        text-align: center;
-        padding-bottom: var(--space-3xl);
-        bottom: 0;
-        width: 100%;
-        font-family:var(--ff-Kanit);
-        color: #fff;
-        letter-spacing: 4px;
-        overflow: hidden;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .subtext-with-animation-1 {
-        font-size: var(--fs-400);
-        text-align: center;
-        top: 0;
-        width: 100%;
-        font-family:var(--ff-Kanit);
-        color: #fff;
-        letter-spacing: 4px;
-        user-select: none;
-        overflow: hidden;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .subtext-with-animation span:first-of-type {
-        position: relative;
-        opacity: 0;
-        animation: word-animation 0.5s ease-out 1.5s forwards;
-      }
-
-      .subtext-with-animation span:nth-of-type(2) {
-        position: relative;
-        opacity: 0;
-        animation: word-animation 0.5s ease-out 1.7s forwards;
-      }
     }
+
+    
   </style>
 </head>
 
