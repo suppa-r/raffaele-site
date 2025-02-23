@@ -1,49 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
-
-:root {
-
-    font-size: 1.25rem;
+  @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
 
 
-    --clr-black: 0, 0%, 0%;
-    --clr-white: 0, 0%, 100%;
-    --clr-accent: 231, 77%, 90%;
-    --clr-span: 209, 37%, 43%;
-    --clr-primary: 206, 41%, 26%;
+    :root {
 
-    --br: 0.5em;
-    --transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
+      /* --------------------------------------- */
+      /* ------------ Custom Colors ------------ */
+      /* --------------------------------------- */
 
-    font-family: 'Kalam', serif;
+      --clr-dark: 0, 0%, 0%;
+      --clr-light: 195, 70%, 90%;
+      --clr-span: 187, 42%, 64%;
+      --clr-white: 0, 0%, 100%;
+      --clr-accent: 231, 77%, 90%;
 
+      /* --------------------------------------- */
+      /* ---------- Custom Font Sizes ---------- */
+      /* --------------------------------------- */
+      
+      
+      /* Step -1: 12.8px → 16px */
+      --fs-200: clamp(0.8rem, 0.6848rem + 0.3261cqi, 1rem);
+      /* Step 0: 16px → 20px */
+      --fs-300: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+      /* Step 1: 19.2px → 25px */
+      --fs-400: clamp(1.2rem, 1.0739rem + 0.6304cqi, 1.5625rem);
+      /* Step 2: 23.04px → 31.25px */
+      --fs-500: clamp(1.44rem, 1.2615rem + 0.8924cqi, 1.9531rem);
+      /* Step 3: 27.648px → 39.0625px */
+      --fs-600: clamp(1.728rem, 1.4799rem + 1.2407cqi, 2.4414rem);
+      /* Step 4: 33.1776px → 48.8281px */
+      --fs-700: clamp(2.0736rem, 1.7334rem + 1.7011cqi, 3.0518rem);
+      /* Step 5: 39.8131px → 61.0352px */
+      --fs-800: clamp(2.4883rem, 2.027rem + 2.3067cqi, 3.8147rem);
+      /* Step 6: 47.7757px → 76.2939px */
+      --fs-900: clamp(2.986rem, 2.366rem + 3.0998cqi, 4.7684rem);
+      /* Step 7: 57.3309px → 95.3674px */
+      --fs-1000: clamp(3.5832rem, 2.7563rem + 4.1344cqi, 5.9605rem);
+      /* Step 8: 68.7971px → 119.2093px */
+      --fs-1100: clamp(4.2998rem, 3.2039rem + 5.4796cqi, 7.4506rem);
 
-    /********************      Font-Sizes    ***********************/
-    --fs-300: clamp(0.8rem, 0.8rem + 0cqi, 0.8rem);
-    --fs-400: clamp(1rem, 1rem + 0cqi, 1rem);
-    --fs-500: clamp(1.25rem, 1.25rem + 0cqi, 1.25rem);
-    --fs-600: clamp(1.5625rem, 1.5625rem + 0cqi, 1.5625rem);
-    --fs-700: clamp(1.9531rem, 1.9531rem + 0cqi, 1.9531rem);
-    --fs-800: clamp(2.4414rem, 2.4414rem + 0cqi, 2.4414rem);
-    --fs-900: clamp(3.0518rem, 3.0518rem + 0cqi, 3.0518rem);
+      /* --------------------------------------- */
+      /* ----------- Custom Margins ------------ */
+      /* --------------------------------------- */
+      /* Space xs: 12px → 15px */
+      --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
+      /* Space s: 16px → 20px */
+      --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+      /* Space m: 24px → 30px */
+      --space-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
+      /* Space l: 32px → 40px */
+      --space-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
+      /* Space xl: 48px → 60px */
+      --space-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
+      /* Space 2xl: 64px → 80px */
+      --space-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
+      /* Space 3xl: 96px → 120px */
+      --space-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
+      /* Space 4xl: 112px → 140px */
+      --space-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
+      /* Space 5xl: 128px → 160px */
+      --space-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
+      /* Space 6xl: 144px → 180px */
+      --space-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
+      /* Space 7xl: 160px → 200px */
+      --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
+      /* Space 8xl: 192px → 240px */
+      --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
+      /* --------------------------------------- */
+      /* ------------ Custom Fonts ------------- */
+      /* --------------------------------------- */
 
-    /********************       Spaces       ***********************/
+     
+     --ff-Kanit: "Kanit", sans-serif;
 
-    --space-4xs: clamp(0.125rem, 0.125rem + 0cqi, 0.125rem);
-    --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
-    --space-2xs: clamp(0.5rem, 0.5rem + 0cqi, 0.5rem);
-    --space-xs: clamp(0.75rem, 0.75rem + 0cqi, 0.75rem);
-    --space-s: clamp(1rem, 1rem + 0cqi, 1rem);
-    --space-m: clamp(1.5rem, 1.5rem + 0cqi, 1.5rem);
-    --space-l: clamp(2rem, 2rem + 0cqi, 2rem);
-    --space-xl: clamp(3rem, 3rem + 0cqi, 3rem);
-    --space-2xl: clamp(4rem, 4rem + 0cqi, 4rem);
-    --space-3xl: clamp(5rem, 5rem + 0cqi, 5rem);
-    --space-4xl: clamp(6rem, 6rem + 0cqi, 6rem);
-    --space-5xl: clamp(7rem, 7rem + 0cqi, 7rem);
-    --space-6xl: clamp(8rem, 8rem + 0cqi, 8rem);
-}
-
-/*https://piccalil.li/blog/a-modern-css-reset*/
+    }
 
 /* Box sizing rules */
 *,
@@ -58,8 +88,7 @@ html {
 
 /* Set core body defaults */
 body {
-    container-type: inline-size;
-    container-name: body;
+  
     min-height: 100vh;
     overflow: hidden;
     text-rendering: optimizeSpeed;
@@ -465,17 +494,28 @@ html {
 }
 
 body {
-min-height:100vh;
-justify-content: center;
-align-items: center;
-margin: 0;
-background-color: #000;
-color: #ffffff;
-overflow: hidden;
+  min-height:100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #000;
+  color: #ffffff;
+  overflow: hidden;
 }
 
-.hello {
-    padding-top: 0em;
+
+.wrapper-home {
+    container-type: inline-size;
+    display: grid;
+    width: 100%;
+    min-height: 100dvh;
+    margin-inline: 0 auto;
+ }
+
+ .hello {
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
 
  .wrapper-gradient-text {
@@ -486,8 +526,8 @@ overflow: hidden;
  }
 
  .wrapper-gradient-text {
-    font-family: "Merriweather";
-    font-size: 2em;
+    font-family:var(--ff-Kanit);
+    font-size:var(--fs-400);
     font-weight: bold;
     display: flex;
     color: transparent;
@@ -540,21 +580,11 @@ overflow: hidden;
     }
  }
 
-.wrapper-home {
-    container-type: inline-size;
-    display: grid;
 
-    
-   
-    width: 100%;
-    min-height: 100dvh;
-    margin-inline: 0 auto;
-    place-items: center;
- }
 
 .game {
     position: relative;
-    width: 15em;
+    width:var(--space-8xl);
     cursor: pointer;
 }
 
@@ -597,7 +627,7 @@ overflow: hidden;
 
 
 .back .streaming-info {
-    margin: 2em;
+    margin:var(--space-2xl);
     -webkit-columns: 2;
     columns: 2;
     -webkit-column-rule: 3px solid rgba(255, 255, 255, 0.25);
@@ -605,7 +635,7 @@ overflow: hidden;
 }
 
 .back .game-stat {
-    font-size: 1.125rem;
+    font-size:var(--fs-400);
     text-align: center;
     color: hsl(var(--clr-accent));
 }
@@ -743,6 +773,10 @@ overflow: hidden;
         transform: scale(1.2);
     }
 }
+
+
+
+
 
 /************ Page  Specific ***********/
 /***********  Intro--Page  *************/
