@@ -117,54 +117,61 @@
       container-name: index;
       container-type: inline-size;
       display: grid;
-      grid-template-rows: var(--space-1xl) 1fr;
-      align-content: center;
-      justify-content: center;
-      place-items: center;
-      min-height: 100vh;
+      grid-template-rows: 1fr 1fr 1fr;
+       min-height: 100vh;
       background: var(--main-bg);
       color: #fff;
       font-family: var(--ff-Kanit);
       overflow: clip;
     }
 
-    .text {
+    .text{
+      padding-top: var(--space-xl);
       display: grid;
-    }
+      grid-template-rows:2rem 2rem;
+      align-content: center;
+      justify-content: center;
+      place-items: center;
+      width: 100%;
+   }
+
 
     .title {
       display: block;
-      font-size: var(--fs-300);
+      font-size: var(--fs-400);
       color: #ffffff;
-      font-family: var(--ff-Kanit);
+      font-family: 'Caveat', sans-serif;
       text-align: center;
+
+    
+      /* Add margin to space out the text elements */
+      overflow: hidden;
     }
 
     .author {
       display: block;
-      font-size: var(--fs-200);
+      font-size: var(--fs-300);
       color: #ffffff;
-      font-family: var(--ff-Kanit);
+      font-family: 'Caveat', sans-serif;
       text-align: center;
+
+   
+      /* Add margin to space out the text elements */
+      overflow: hidden;
     }
 
     .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100%;
+      display: grid;
+      grid-template-rows: 4rem 1fr;
       width: 100%;
       line-height: 100vh;
       overflow: hidden;
     }
 
-
     .container a {
       max-width: 100%;
       text-decoration: none;
     }
-
 
     .subtext-with-animation span:first-of-type {
       position: relative;
@@ -205,8 +212,9 @@
     }
 
     .text-with-animation {
+      position:absolute;
       font-size: var(--fs-600);
-      font-family: 'Monoton', sans-serif;
+      font-family:var(--ff-Kanit);
       text-align: center;
       animation: main-text-animation 1.7s ease-in-out forwards;
       font-weight: 400;
@@ -217,21 +225,19 @@
     }
 
     .subtext-with-animation {
-      position: absolute;
+      position:absolute;
       font-size: var(--fs-600);
       text-align: center;
-      padding-bottom: var(--space-3xl);
       bottom: 0;
       width: 100%;
       font-family:var(--ff-Kanit);
       color: #fff;
       letter-spacing: 4px;
       overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-    }
+     }
 
     .subtext-with-animation-1 {
-      position: absolute;
+      position:absolute;
       font-size: var(--fs-600);
       text-align: center;
       top: 0;
@@ -239,11 +245,8 @@
       font-family:var(--ff-Kanit);
       color: #fff;
       letter-spacing: 4px;
-      user-select: none;
       overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-
-    }
+     }
 
     .subtext-with-animation span:first-of-type {
       position: relative;
@@ -283,18 +286,8 @@
         opacity: 1;
       }
     }
-
-
-   /* @container index(max-width < 400px) {
-      .container {
-        padding:var(--space-2xl);
-      }
-    }*/
-
-    
   </style>
 </head>
-
 <body>
   <section class="index">
     <section class="text">
@@ -339,3 +332,21 @@
 </body>
 
 </html>
+<!--</html>
+<body>
+  <div class="container">
+    <div>
+      <div class="title">"there will be an answer -- let it be!"</div>
+      <div class="author">--the beatles</div>
+    </div>
+    <a href="intro.html">
+      <div class="text-with-animation">raffaele SUPPA</div>
+      <div class="subtext-with-animation">
+        <span>take</span> <span>it!</span>
+      </div>
+      <div class="subtext-with-animation-1">
+        <span>aweSOME</span> <span>DESIGN</span>
+      </div>
+    </a>
+  </div>
+</body>
