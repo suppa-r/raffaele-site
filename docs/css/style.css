@@ -2,12 +2,10 @@
 /* ---------- Custom Properties ---------- */
 /* --------------------------------------- */
 
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
 @import "https://unpkg.com/open-props/easings.min.css" layer(support.demo);
 
 :root {
-
-  font-size: 1.125rem;
 
 /* --------------------------------------- */
 /* ------------ Custom Colors ------------ */
@@ -74,7 +72,7 @@
 /* ------------- Typography -------------- */
 /* --------------------------------------- */
 
---ff-serif: "Caveat", "Times New Roman", serif;
+--ff-kanit: 'Kanit', sans-serif;
 }
 
 /* --------------------------------------- */
@@ -230,41 +228,6 @@ a {
 }
 
 /* --------------------------------------- */
-/* ------------- Components -------------- */
-/* --------------------------------------- */
-
-.large-button {
-  font-size: 2rem;
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  place-items: center;
-  padding: 0 2em;
-  border-radius: 50%;
-  aspect-ratio: 2 / 1;
-  text-decoration: none;
-}
-
-.large-button::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 50%;
-  height: 50%;
-  background: hsl(var(--clr-white) / 0.8);
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 500ms linear,
-    transform 750ms ease-in-out;
-}
-
-.large-button:hover::after,
-.large-button:focus::after {
-  opacity: 1;
-  transform: scale(1.5);
-}
-
-/* --------------------------------------- */
 /* ------- Page Specific Index Home ------ */
 /* --------------------------------------- */
 
@@ -293,7 +256,7 @@ header {
 
 header h1 {
   font-size: var(--fs-300);
-  font-family: var(--ff-serif);
+  font-family:var(--ff-kanit);
   color: hsl(var(--clr-accent));
   margin: 0;
   padding: 0;
@@ -306,7 +269,7 @@ header::after {
 }
 
 .logo {
-  font-family: var(--ff-serif);
+  font-family:var(--ff-kanit);
   /*font-size: var(--fs-400);*/
   color: hsl(var(--clr-accent));
   margin: 0;
@@ -314,7 +277,7 @@ header::after {
   }
 
 .logo span {
-  font-family: var(--ff-serif);
+  font-family:var(--ff-kanit);
   color:hsl(var(--clr-span));
   /*font-size: var(--fs-400);*/
   margin: 0 0.5em 0 0.5em;
@@ -713,30 +676,30 @@ ul {
 
 .intro-content h1, h2, h3 {
   font-size: var(--fs-400);
-  font-family:var(--ff-serif);
+  font-family:var(--ff-kanit);
   letter-spacing: 0.06em;
   padding: 0.1rem 0;
-  color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
   font-style: italic;
   text-align: center;
 }
 
 .intro-content p {
   font-size: var(--fs-300);
-  color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
   text-align: center;
-  font-family: var(--ff-serif);
+  font-family:var(--ff-kanit);
 }
 
 .intro-content p span {
   padding: 0.5em;
   font-size: var(--fs-500);
-  font-family: var(--ff-serif);
-  color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
+  text-align: center;
+  font-family:var(--ff-kanit);
 }
 
 .merci{
-   
     max-width: 100%;
     height: auto;
     display: block;
@@ -755,8 +718,8 @@ ul {
 
 .streamers p {
   font-size: var(--fs-300);
-  font-family: var(--ff-serif);
-  color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
+  font-family:var(--ff-kanit);
   text-align: center;
   /*justify-content: center; /* Center horizontally *
   padding-inline: 0 auto; */
@@ -764,7 +727,7 @@ ul {
 }
 
 .streamers a {
-  color:hsl(var(--clr-accent));
+  color:hsl(var(--clr-white));
   text-decoration: none;
  /* position: relative; /* Ensure the link is positioned relative */
  /*display: inline-block; /* Ensure the link is treated as a block element */
@@ -778,14 +741,6 @@ ul {
   text-align: center;
   vertical-align: middle;
 }
-
-/*.streamers a:hover {
-  transform: translateY(0%) scale(.5);
-}
-
-.streamers a:hover::before {
-  opacity: .5;
-}*/
 
 .streamers a:hover::after {
   transform: translate(-50%, -0%) scale(1);
@@ -824,7 +779,13 @@ ul {
 /* --------------------------------------- */
 
 @container (max-width: 500px) {
- .main {
+  .intro {
+    grid-template-rows: 1fr;
+    padding: var(--space-s);
+  }
+
+  .main {
+  place-items: center;
   min-height: 100svh;
   }
 
@@ -833,7 +794,9 @@ ul {
     display: none;
     /* Hide logo on small screens */
   }
+
 }
+
 
  
 
