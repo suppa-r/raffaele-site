@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="/docs/css/index-lines.css">
   <style>
     /* --------------------------------------- */
     /* ---------- Custom Properties ---------- */
@@ -12,12 +13,12 @@
 
     @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
+    @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
+
     @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
 
     :root {
-
-      font-size: 1.125rem;
 
       /* --------------------------------------- */
       /* ------------ Custom Colors ------------ */
@@ -28,7 +29,7 @@
       --clr-span: 195, 100%, 25%;
       --clr-white: 0, 0%, 100%;
       --clr-accent: 231, 77%, 90%;
-      --main-bg: #1d1e22;
+      --main-bg: #000;
 
 
 
@@ -46,6 +47,8 @@
       /* ---------- Custom Font Sizes ---------- */
       /* --------------------------------------- */
 
+      /* Step -1: 12.8px → 16px */
+      --fs-200: clamp(0.8rem, 0.6848rem + 0.3261cqi, 1rem);
       /* Step 0: 16px → 20px */
       --fs-300: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
       /* Step 1: 19.2px → 25px */
@@ -98,66 +101,70 @@
 
       --ff-serif: "Caveat", serif;
       --ff-mono: "Monoton", monospace;
+      --ff-Kanit: "Kanit", sans-serif;
 
     }
 
     body,
     html {
       min-height: 100svh;
-      width: 100vw;
-      max-width: 100vw;
-      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      overflow: clip;
     }
 
-    body {
-      margin-inline: 0 auto;
-      background: linear-gradient(#000, #000 20px, transparent),
-        linear-gradient(transparent, #fff 100%),
-        linear-gradient(#fff,
-          #fff 1px,
-          transparent 1px,
-          transparent 40px),
-        repeating-linear-gradient(to right,
-          #fff,
-          #ffff 1px,
-          transparent 40px) #3b3636;
-      overflow: hidden;
+    .index {
+      container-name: index;
+      container-type: inline-size;
+      display: grid;
+      grid-template-rows: var(--space-1xl) 1fr;
+      align-content: center;
+      justify-content: center;
+      place-items: center;
+      min-height: 100vh;
+      background: var(--main-bg);
+      color: #fff;
+      font-family: var(--ff-Kanit);
+      overflow: clip;
+    }
+
+    .text {
+      display: grid;
     }
 
     .title {
-      font-size: var(--fs-400);
+      display: block;
+      font-size: var(--fs-300);
       color: #ffffff;
-      font-family: 'Caveat', sans-serif;
+      font-family: var(--ff-Kanit);
       text-align: center;
-
-      margin-top: 2rem;
-      /* Add margin to space out the text elements */
-      overflow: hidden;
     }
 
     .author {
-      font-size: var(--fs-300);
+      display: block;
+      font-size: var(--fs-200);
       color: #ffffff;
-      font-family: 'Caveat', sans-serif;
+      font-family: var(--ff-Kanit);
       text-align: center;
-
-      margin-top: 0rem;
-      /* Add margin to space out the text elements */
-      overflow: hidden;
     }
 
     .container {
-      display: grid;
-      grid-template-rows: 4rem 1fr;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100%;
       width: 100%;
       line-height: 100vh;
       overflow: hidden;
     }
 
+
     .container a {
       max-width: 100%;
       text-decoration: none;
     }
+
 
     .subtext-with-animation span:first-of-type {
       position: relative;
@@ -216,7 +223,7 @@
       padding-bottom: var(--space-3xl);
       bottom: 0;
       width: 100%;
-      font-family: 'Monoton', sans-serif;
+      font-family:var(--ff-Kanit);
       color: #fff;
       letter-spacing: 4px;
       overflow: hidden;
@@ -229,7 +236,7 @@
       text-align: center;
       top: 0;
       width: 100%;
-      font-family: 'Monoton', sans-serif;
+      font-family:var(--ff-Kanit);
       color: #fff;
       letter-spacing: 4px;
       user-select: none;
@@ -276,23 +283,59 @@
         opacity: 1;
       }
     }
+
+
+   /* @container index(max-width < 400px) {
+      .container {
+        padding:var(--space-2xl);
+      }
+    }*/
+
+    
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div>
-      <div class="title">"there will be an answer -- let it be!"</div>
-      <div class="author">--the beatles</div>
+  <section class="index">
+    <section class="text">
+      <p class="title">"there will be an answer -- let it be!"</p>
+      <p class="author">--the beatles</p>
+    </section>
+    <div class="lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
     </div>
-    <a href="intro.html">
-      <div class="text-with-animation">raffaele SUPPA</div>
-      <div class="subtext-with-animation">
-        <span>take</span> <span>it!</span>
-      </div>
-      <div class="subtext-with-animation-1">
-        <span>aweSOME</span> <span>DESIGN</span>
-      </div>
-    </a>
-  </div>
+    <div class="container">
+      <a href="intro.html">
+        <section class="index-text">
+          <div class="text-with-animation">raffaele suppa</div>
+          <div class="subtext-with-animation">
+            <span>take</span> <span>it!</span>
+          </div>
+          <div class="subtext-with-animation-1">
+            <span>designer</span> <span>SOMETIMES!</span>
+          </div>
+        </section>
+      </a>
+    </div>
+  </section>
 </body>
+
+</html>
