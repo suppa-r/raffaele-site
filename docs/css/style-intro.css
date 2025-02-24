@@ -225,7 +225,6 @@ header::after {
   color: #ebebd3;
   display: block;
   padding: 0.3rem 4rem 0 1.5rem;
-
   text-decoration: none;
 }
 
@@ -697,7 +696,6 @@ ul {
 /* --------------------------------------- */
 /* --------- Container Query Intro  ------ */
 /* --------------------------------------- */
-
 
 /* --------------------------------------- */
 /* ---------- End of Intro Home ---------- */
