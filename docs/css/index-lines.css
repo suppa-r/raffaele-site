@@ -1,11 +1,6 @@
-
-.lines{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  }
-
-
+:root {
+	--sp: 5s;
+}
 .line {
   position: absolute;
   width: 1px;

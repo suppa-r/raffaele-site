@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Raffaele Suppa | WebPage</title>
   <link rel="stylesheet" href="/docs/css/index-lines.css">
   <style>
+
     /* --------------------------------------- */
     /* ---------- Custom Properties ---------- */
     /* --------------------------------------- */
@@ -15,10 +14,10 @@
 
     @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
 
-    @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-
 
     :root {
+
+      font-size: 1.125rem;
 
       /* --------------------------------------- */
       /* ------------ Custom Colors ------------ */
@@ -47,8 +46,6 @@
       /* ---------- Custom Font Sizes ---------- */
       /* --------------------------------------- */
 
-      /* Step -1: 12.8px → 16px */
-      --fs-200: clamp(0.8rem, 0.6848rem + 0.3261cqi, 1rem);
       /* Step 0: 16px → 20px */
       --fs-300: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
       /* Step 1: 19.2px → 25px */
@@ -100,7 +97,6 @@
       /* --------------------------------------- */
 
       --ff-serif: "Caveat", serif;
-      --ff-mono: "Monoton", monospace;
       --ff-Kanit: "Kanit", sans-serif;
 
     }
@@ -108,64 +104,39 @@
     body,
     html {
       min-height: 100svh;
-      margin: 0;
-      padding: 0;
-      overflow: clip;
-    }
-
-    .index {
-      container-name: index;
-      container-type: inline-size;
-      display: grid;
-      grid-template-rows: 1fr 1fr 1fr;
-       min-height: 100vh;
-      background: var(--main-bg);
-      color: #fff;
-      font-family: var(--ff-Kanit);
-      overflow: clip;
-    }
-
-    .text{
-      padding-top: var(--space-xl);
-      display: grid;
-      grid-template-rows:2rem 2rem;
-      align-content: center;
-      justify-content: center;
-      place-items: center;
       width: 100%;
+      max-width: 100vw;
+      overflow: clip;
+      }
+
+    body {
+      background-color: #000;
+      color: #fff;
    }
 
-
     .title {
-      display: block;
-      font-size: var(--fs-400);
+      font-size: var(--fs-300);
       color: #ffffff;
-      font-family: 'Caveat', sans-serif;
+      font-family:var(--ff-Kanit);
       text-align: center;
-
-    
-      /* Add margin to space out the text elements */
       overflow: hidden;
     }
 
     .author {
-      display: block;
       font-size: var(--fs-300);
       color: #ffffff;
-      font-family: 'Caveat', sans-serif;
+      font-family:var(--ff-Kanit);
       text-align: center;
-
-   
-      /* Add margin to space out the text elements */
       overflow: hidden;
     }
 
     .container {
-      display: grid;
-      grid-template-rows: 4rem 1fr;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 100%;
-      line-height: 100vh;
-      overflow: hidden;
+      text-align: center;
     }
 
     .container a {
@@ -173,48 +144,12 @@
       text-decoration: none;
     }
 
-    .subtext-with-animation span:first-of-type {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.5s forwards;
-    }
-
-    .subtext-with-animation span:nth-of-type(2) {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.7s forwards;
-    }
-
-    @keyframes main-text-animation {
-      0% {
-        letter-spacing: 25vw;
-        word-spacing: 100vw;
-        opacity: 0;
-      }
-
-      100% {
-        letter-spacing: 4px;
-        word-spacing: 1vw;
-        opacity: 1;
-      }
-    }
-
-    @keyframes word-animation {
-      0% {
-        top: 10vw;
-        opacity: 0;
-      }
-
-      100% {
-        top: 3.5vw;
-        opacity: 1;
-      }
-    }
-
     .text-with-animation {
-      position:absolute;
+      position: relative;
       font-size: var(--fs-600);
       font-family:var(--ff-Kanit);
+      top: 0;
+      margin-top: var(--space-8xl);
       text-align: center;
       animation: main-text-animation 1.7s ease-in-out forwards;
       font-weight: 400;
@@ -224,42 +159,83 @@
       margin-left: -200vw;
     }
 
-    .subtext-with-animation {
-      position:absolute;
-      font-size: var(--fs-600);
-      text-align: center;
-      bottom: 0;
-      width: 100%;
-      font-family:var(--ff-Kanit);
-      color: #fff;
-      letter-spacing: 4px;
-      overflow: hidden;
-     }
-
-    .subtext-with-animation-1 {
-      position:absolute;
+    .subtext-with-animation span {
       font-size: var(--fs-600);
       text-align: center;
       top: 0;
+      margin-top: var(--space-8xl);
       width: 100%;
       font-family:var(--ff-Kanit);
       color: #fff;
       letter-spacing: 4px;
       overflow: hidden;
-     }
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .subtext-with-animation-1 {
+      position:relative;
+      font-size: var(--fs-600);
+      text-align: center;
+      bottom: 0;
+      margin-bottom: var(--space-3xl);
+      width: 100%;
+      font-family:var(--ff-Kanit);
+      color: #fff;
+      letter-spacing: 4px;
+      user-select: none;
+      overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+
+    }
+
+   @keyframes main-text-animation {
+      0% {
+        letter-spacing: 25vw;
+        word-spacing: 100vw;
+        opacity: 0;
+      }
+
+      100% {
+        letter-spacing: 4px;
+        word-spacing: 1vw;
+        opacity: 1;
+      }
+    }
+
+    @keyframes word-animation {
+      0% {
+        top: 10vw;
+        opacity: 0;
+      }
+
+      100% {
+        top: 3.5vw;
+        opacity: 1;
+      }
+    }
 
     .subtext-with-animation span:first-of-type {
-      position: relative;
+    
       opacity: 0;
       animation: word-animation 0.5s ease-out 1.5s forwards;
     }
 
     .subtext-with-animation span:nth-of-type(2) {
-      position: relative;
+   
       opacity: 0;
       animation: word-animation 0.5s ease-out 1.7s forwards;
     }
 
+    .subtext-with-animation-1 span:first-of-type {
+      opacity: 0;
+      animation: word-animation 0.5s ease-out 1.5s forwards;
+    }
+
+    .subtext-with-animation-1 span:nth-of-type(2) {
+   
+      opacity: 0;
+      animation: word-animation 0.5s ease-out 1.7s forwards;
+    }
 
     @keyframes main-text-animation {
       0% {
@@ -286,66 +262,49 @@
         opacity: 1;
       }
     }
+
+
+   
+    
+    
   </style>
 </head>
-<body>
-  <section class="index">
-    <section class="text">
-      <p class="title">"there will be an answer -- let it be!"</p>
-      <p class="author">--the beatles</p>
-    </section>
-    <div class="lines">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-    <div class="container">
-      <a href="intro.html">
-        <section class="index-text">
-          <div class="text-with-animation">raffaele suppa</div>
-          <div class="subtext-with-animation">
-            <span>take</span> <span>it!</span>
-          </div>
-          <div class="subtext-with-animation-1">
-            <span>designer</span> <span>SOMETIMES!</span>
-          </div>
-        </section>
-      </a>
-    </div>
-  </section>
-</body>
 
-</html>
-<!--</html>
 <body>
+  <div>
+    <div class="title">"there will be an answer -- let it be!"</div>
+    <div class="author">--the beatles</div>
+  </div>
+  <div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
   <div class="container">
-    <div>
-      <div class="title">"there will be an answer -- let it be!"</div>
-      <div class="author">--the beatles</div>
-    </div>
+   
     <a href="intro.html">
       <div class="text-with-animation">raffaele SUPPA</div>
       <div class="subtext-with-animation">
-        <span>take</span> <span>it!</span>
+        <span>take it!</span>
       </div>
       <div class="subtext-with-animation-1">
-        <span>aweSOME</span> <span>DESIGN</span>
+        <span>aweSOME DESIGN</span>
       </div>
     </a>
   </div>

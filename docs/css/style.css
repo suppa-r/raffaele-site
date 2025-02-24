@@ -1,15 +1,27 @@
-/* --------------------------------------- */
-/* ---------- Custom Properties ---------- */
-/* --------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
-@import "https://unpkg.com/open-props/easings.min.css" layer(support.demo);
+
 
 :root {
 
-/* --------------------------------------- */
-/* ------------ Custom Colors ------------ */
-/* --------------------------------------- */
+
+  /* --------------------------------------- */
+  /* ------------ Custom Colors ------------ */
+  /* --------------------------------------- */
+
+  --clr-dark: 0, 0%, 0%;
+  --clr-light: 195, 70%, 90%;
+  --clr-span: 195, 100%, 25%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
+  --main-bg: #000;
+
+
+
+  /* --------------------------------------- */
+  /* ------------ Custom Colors ------------ */
+  /* --------------------------------------- */
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -17,11 +29,11 @@
   --clr-white: 0, 0%, 100%;
   --clr-accent: 231, 77%, 90%;
 
-/* --------------------------------------- */
-/* ---------- Custom Font Sizes ---------- */
-/* --------------------------------------- */
+  /* --------------------------------------- */
+  /* ---------- Custom Font Sizes ---------- */
+  /* --------------------------------------- */
 
-/* Step 0: 16px → 20px */
+  /* Step 0: 16px → 20px */
   --fs-300: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
   /* Step 1: 19.2px → 25px */
   --fs-400: clamp(1.2rem, 1.0739rem + 0.6304cqi, 1.5625rem);
@@ -40,10 +52,10 @@
   /* Step 8: 68.7971px → 119.2093px */
   --fs-1100: clamp(4.2998rem, 3.2039rem + 5.4796cqi, 7.4506rem);
 
-/* --------------------------------------- */
-/* ----------- Custom Margins ------------ */
-/* --------------------------------------- */
- /* Space xs: 12px → 15px */
+  /* --------------------------------------- */
+  /* ----------- Custom Margins ------------ */
+  /* --------------------------------------- */
+  /* Space xs: 12px → 15px */
   --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
   /* Space s: 16px → 20px */
   --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
@@ -67,100 +79,14 @@
   --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
   /* Space 8xl: 192px → 240px */
   --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
+  /* --------------------------------------- */
+  /* ------------ Custom Fonts ------------- */
+  /* --------------------------------------- */
 
-/* --------------------------------------- */
-/* ------------- Typography -------------- */
-/* --------------------------------------- */
-
---ff-kanit: 'Kanit', sans-serif;
+  --ff-serif: "Caveat", serif;
+  --ff-Kanit: "Kanit", sans-serif;
 }
 
-/* --------------------------------------- */
-/* ----------------- Reset --------------- */
-/* --------------------------------------- */
-
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* --------------------------------------- */
-/* -------------- Reset Margins----------- */
-/* --------------------------------------- */
-body,
-html,
-main {
-  height: 100svh;
-  margin: 0;
-  padding: 0;
-}
-
-body,
-main,
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h2,
-h3 {
-  overflow-wrap: break-word;
-  line-height: 1;
-}
-
-p {
-  overflow-wrap: break-word;
-  line-height: 1.2;
-}
-
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* make images easier to work with */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* make form elements easier to work with */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* remove animations for people who've turned them off */
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
 
 /* --------------------------------------- */
 /* ----------- Utility Classes ----------- */
@@ -644,7 +570,7 @@ ul {
   display: grid;
   grid-template-rows: 3rem 1fr;
   min-height: 100svh;
-  padding: var(--space-l);
+  /*padding: var(--space-l);*/
   /* Center items horizontally and vertically */
   overflow: clip;
 }
@@ -676,9 +602,8 @@ ul {
 
 .intro-content h1, h2, h3 {
   font-size: var(--fs-400);
-  font-family:var(--ff-kanit);
+  font-family:var(--ff-Kanit);
   letter-spacing: 0.06em;
-  padding: 0.1rem 0;
   color: hsl(var(--clr-white));
   font-style: italic;
   text-align: center;
@@ -687,16 +612,15 @@ ul {
 .intro-content p {
   font-size: var(--fs-300);
   color: hsl(var(--clr-white));
+  color: hsl(var(--clr-white));
   text-align: center;
-  font-family:var(--ff-kanit);
+  font-family: var(--ff-Kanit);
 }
 
 .intro-content p span {
-  padding: 0.5em;
   font-size: var(--fs-500);
+  font-family: var(--ff-Kanit);
   color: hsl(var(--clr-white));
-  text-align: center;
-  font-family:var(--ff-kanit);
 }
 
 .merci{
@@ -712,14 +636,15 @@ ul {
 .streamers {
   display: block;
   text-align: center;
-  margin-inline:0 auto;
+ 
   position: relative; /* Ensure the container is positioned relative */
 }
 
 .streamers p {
+  margin:var(--space-2xl);
   font-size: var(--fs-300);
+  font-family: var(--ff-Kanit);
   color: hsl(var(--clr-white));
-  font-family:var(--ff-kanit);
   text-align: center;
   /*justify-content: center; /* Center horizontally *
   padding-inline: 0 auto; */
@@ -727,6 +652,7 @@ ul {
 }
 
 .streamers a {
+ 
   color:hsl(var(--clr-white));
   text-decoration: none;
  /* position: relative; /* Ensure the link is positioned relative */
@@ -735,8 +661,10 @@ ul {
 
 .streamers ion-icon {
   font-size: var(--fs-500);
+  font-size: var(--fs-500);
   z-index: 5; 
   --ionicon-stroke-width: 32px;
+  color:hsl(var(--clr-white));
   color:hsl(var(--clr-white));
   text-align: center;
   vertical-align: middle;

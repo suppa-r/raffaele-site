@@ -1,300 +1,61 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Raffaele Suppa | WebPage</title>
-  <link rel="stylesheet" href="/docs/css/index-lines.css">
-  <style>
-
-    /* --------------------------------------- */
-    /* ---------- Custom Properties ---------- */
-    /* --------------------------------------- */
-
-   @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
-
-
-    :root {
-
-      /* --------------------------------------- */
-      /* ------------ Custom Colors ------------ */
-      /* --------------------------------------- */
-
-      --clr-dark: 0, 0%, 0%;
-      --clr-light: 195, 70%, 90%;
-      --clr-span: 187, 42%, 64%;
-      --clr-white: 0, 0%, 100%;
-      --clr-accent: 231, 77%, 90%;
-
-      /* --------------------------------------- */
-      /* ---------- Custom Font Sizes ---------- */
-      /* --------------------------------------- */
-      
-      
-      /* Step -1: 12.8px → 16px */
-      --fs-200: clamp(0.8rem, 0.6848rem + 0.3261cqi, 1rem);
-      /* Step 0: 16px → 20px */
-      --fs-300: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
-      /* Step 1: 19.2px → 25px */
-      --fs-400: clamp(1.2rem, 1.0739rem + 0.6304cqi, 1.5625rem);
-      /* Step 2: 23.04px → 31.25px */
-      --fs-500: clamp(1.44rem, 1.2615rem + 0.8924cqi, 1.9531rem);
-      /* Step 3: 27.648px → 39.0625px */
-      --fs-600: clamp(1.728rem, 1.4799rem + 1.2407cqi, 2.4414rem);
-      /* Step 4: 33.1776px → 48.8281px */
-      --fs-700: clamp(2.0736rem, 1.7334rem + 1.7011cqi, 3.0518rem);
-      /* Step 5: 39.8131px → 61.0352px */
-      --fs-800: clamp(2.4883rem, 2.027rem + 2.3067cqi, 3.8147rem);
-      /* Step 6: 47.7757px → 76.2939px */
-      --fs-900: clamp(2.986rem, 2.366rem + 3.0998cqi, 4.7684rem);
-      /* Step 7: 57.3309px → 95.3674px */
-      --fs-1000: clamp(3.5832rem, 2.7563rem + 4.1344cqi, 5.9605rem);
-      /* Step 8: 68.7971px → 119.2093px */
-      --fs-1100: clamp(4.2998rem, 3.2039rem + 5.4796cqi, 7.4506rem);
-
-      /* --------------------------------------- */
-      /* ----------- Custom Margins ------------ */
-      /* --------------------------------------- */
-      /* Space xs: 12px → 15px */
-      --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
-      /* Space s: 16px → 20px */
-      --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
-      /* Space m: 24px → 30px */
-      --space-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
-      /* Space l: 32px → 40px */
-      --space-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
-      /* Space xl: 48px → 60px */
-      --space-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
-      /* Space 2xl: 64px → 80px */
-      --space-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
-      /* Space 3xl: 96px → 120px */
-      --space-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
-      /* Space 4xl: 112px → 140px */
-      --space-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
-      /* Space 5xl: 128px → 160px */
-      --space-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
-      /* Space 6xl: 144px → 180px */
-      --space-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
-      /* Space 7xl: 160px → 200px */
-      --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
-      /* Space 8xl: 192px → 240px */
-      --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
-      /* --------------------------------------- */
-      /* ------------ Custom Fonts ------------- */
-      /* --------------------------------------- */
-
-     
-     --ff-Kanit: "Kanit", sans-serif;
-
-    }
-
-    body,
-    html {
-      min-height: 100svh;
-      width: 100vw;
-      max-width: 100vw;
-      overflow: hidden;
-    }
-
-    body {
-      min-height:100vh;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      background-color: #000;
-      color: #ffffff;
-      overflow: hidden;
-    }
-
-
-
-    .title {
-      font-size: var(--fs-300);
-      color:var(--clr-white);
-      font-family:var(--ff-Kanit);
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .author {
-      font-size: var(--fs-200);
-      color:var(--clr-white);
-      font-family:var(--ff-Kanit);
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .container {
-      display: grid;
-      width: 100%;
-      line-height: 100vh;
-      overflow: hidden;
-    }
-
-    .container a {
-      color: var(--clr-white);
-      max-width: 100%;
-      text-decoration: none;
-    }
-
-    .subtext-with-animation span:first-of-type {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.5s forwards;
-    }
-
-    .subtext-with-animation span:nth-of-type(2) {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.7s forwards;
-    }
-
-    @keyframes main-text-animation {
-      0% {
-        letter-spacing: 25vw;
-        word-spacing: 100vw;
-        opacity: 0;
-      }
-
-      100% {
-        letter-spacing: 4px;
-        word-spacing: 1vw;
-        opacity: 1;
-      }
-    }
-
-    @keyframes word-animation {
-      0% {
-        top: 10vw;
-        opacity: 0;
-      }
-
-      100% {
-        top: 3.5vw;
-        opacity: 1;
-      }
-    }
-
-    .text-with-animation {
-      font-size: var(--fs-600);
-      font-family:var(--ff-Kanit);
-      color: var(--clr-white);
-      text-align: center;
-      animation: main-text-animation 1.7s ease-in-out forwards;
-      font-weight: 400;
-      letter-spacing: 4px;
-      overflow: hidden;
-      width: 500vw;
-      margin-left: -200vw;
-    }
-
-    .subtext-with-animation {
-      position: absolute;
-      font-size: var(--fs-500);
-      text-align: center;
-      padding-bottom: var(--space-3xl);
-      bottom: 0;
-      width: 100%;
-      font-family:var(--ff-Kanit);
-      color:var(--clr-white);
-      letter-spacing: 4px;
-      overflow: hidden;
-     }
-
-    .subtext-with-animation-1 {
-      position: absolute;
-      font-size: var(--fs-500);
-      text-align: center;
-      top: 0;
-      width: 100%;
-      font-family:var(--ff-Kanit);
-      color:var(--clr-white);
-      letter-spacing: 4px;
-      user-select: none;
-      overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
-
-    }
-
-    .subtext-with-animation span:first-of-type {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.5s forwards;
-    }
-
-    .subtext-with-animation span:nth-of-type(2) {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.7s forwards;
-    }
-
-
-    @keyframes main-text-animation {
-      0% {
-        letter-spacing: 25vw;
-        word-spacing: 100vw;
-        opacity: 0;
-      }
-
-      100% {
-        letter-spacing: 4px;
-        word-spacing: 1vw;
-        opacity: 1;
-      }
-    }
-
-    @keyframes word-animation {
-      0% {
-        top: 10vw;
-        opacity: 0;
-      }
-
-      100% {
-        top: 3.5vw;
-        opacity: 1;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Raffaele Suppa Web Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Raffaele Suppa" />
+    <title>Raffaele Suppa | WebPage</title>
+    <link rel="icon" href="docs/images/favicon-32x32-min.png" />
+    <link rel="stylesheet" href="docs/css/reset.css" />
+    <link rel="stylesheet" href="docs/css/style.css" />
+    <script type="module" src="docs/js/app.js"></script>
 </head>
 
-<body>
-  <section>
-    <section class="text">
-      <p class="title">"there will be an answer -- let it be!"</p>
-      <p class="author">--the beatles</p>
-    </section>
-    <div class="lines">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-    <div class="container">
-      <a href="intro.html">
-        <section>
-          <div class="text-with-animation">raffaele suppa</div>
-          <div class="subtext-with-animation">
-            <span>take</span> <span>it!</span>
-          </div>
-          <div class="subtext-with-animation-1">
-            <span>designer</span> <span>SOMETIMES!</span>
-          </div>
+<body class="intro">
+<header>
+        <h1 class="logo">raffaele<span>SUPPA</span>sometime<span>DESIGNER</span></h1>
+        <nav class="site-nav">
+            <button class="menu-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="visually-hidden">Menu</span>
+                <div class="hamburger" aria-hidden="true"></div>
+            </button>
+            <ul data-state="closed" class="primary-navigation" id="primary-navigation">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+       <section class="intro-content">
+            <p>The way it began ... the way it is.</p>
+            <p>If I had a secret .. I'm not gonna take it the grave!</p>
+            <p>I'm gonna tell it; right now!</p>
+            <p>you can't microwave it;&nbsp;&nbsp; ie:<em>life!</em><p><br>
+            <p>it's one prayer, one Blessing, one Miracle, at a time.</p>
+            <p><em>(or dramas; depending on perspectives,and consensus of whether God saved the Queen.)</em></p>
+            <h1>.. needless .. I'll add .. </h1>
+            <p><em>With a whole lotta Grace from<span>3:16</span><em></p>
+            <p><em>I walked the streets paved with gold .. and touched all the bases!</em></p>
+            <h3>.. enjoy the stay ..<br>
+            let me show you around!</h3>
+            <img src="docs/images/merci beaucoup-min.png" alt="merci"class="merci" />
+            <p>or ring the bell to get off</p><br><br>
+            <div class="streamers">
+                <p><a href="index.html">but be my guest .. go on .. it's OK!<br>
+                        <ion-icon name="arrow-redo-outline"></ion-icon>
+                        <br> <span>Ya!</span> 
+                    </a></p><ion-icon name="arrow-redo-outline"></ion-icon>
+            </div>
         </section>
-      </a>
-    </div>
-  </section>
+    </main>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
 </body>
+
+</html>
