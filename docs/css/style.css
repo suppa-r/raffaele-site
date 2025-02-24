@@ -580,9 +580,8 @@ ul {
 }
 
 .intro-content {
-  display: grid;
-  place-items: center;
-/* Center items horizontally and vertically */
+ padding:0;
+ margin: 0;
 }
 
 .intro::before {
@@ -671,7 +670,7 @@ ul {
 }
 
 .streamers a:hover::after {
-  transform: translate(-50%, -0%) scale(1);
+  transform: translate(-50%, -50%) scale(3);
   opacity: 1;
   background: hsl(var(--clr-white));
   z-index: 1;
@@ -686,18 +685,18 @@ ul {
   top: 0;
   left: 30%;
   width: 40%;
-  height: 70%;
-  transform: translate(-50%, -0%); /* Center the pseudo-elements */
+  height: 100%;
+  transform: translate(-50%, -50%); /* Center the pseudo-elements */
   border-radius: 50%;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(2);
+    transform: scale(.5);
     opacity: 0.75;
   }
   100% {
-    transform: scale(2); /* Reduced scale for smaller pulsing */
+    transform: scale(.5); /* Reduced scale for smaller pulsing */
     opacity: 0;
   }
 }
