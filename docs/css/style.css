@@ -539,6 +539,213 @@ ul {
 }
 
 /* --------------------------------------- */
+/* ------- Page Specific Intro ------ */
+/* --------------------------------------- */
+
+
+.wrapper-home {
+  container-type: inline-size;
+  width: 100%;
+  min-height: 100dvh;
+  margin-inline: 0 auto;
+  place-items: center;
+  margin: 5em;
+
+}
+
+.game {
+  position: relative;
+  width: 15em;
+  cursor: pointer;
+}
+
+
+.front {
+  -webkit-transition: 250ms;
+  transition: 250ms;
+}
+
+.game .front>img {
+  padding-bottom: 0em;
+}
+
+.game .front a {
+  width:50%;
+  height:50%;
+  text-decoration: none;
+}
+
+.back {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform: translateY(35%);
+  transform: translateY(35%);
+}
+
+
+
+.back .streaming-info {
+  margin: 2em;
+  -webkit-columns: 2;
+  columns: 2;
+  -webkit-column-rule: 3px solid rgba(255, 255, 255, 0.25);
+  column-rule: 3px solid rgba(255, 255, 255, 0.25);
+}
+
+.back .game-stat {
+  font-size: 1.125rem;
+  text-align: center;
+  color: hsl(var(--clr-accent));
+}
+
+.back .streaming-info .game-stat p {
+  font-size: var(--fs-500);
+  color: hsl(var(--clr-white));
+}
+
+.back .streaming-info h3 {
+  color: hsl(var(--clr-white));
+  font-size: var(--fs-500);
+  margin: 0.2em;
+}
+
+.back .streaming-info span {
+  font-size: var(--fs-500);
+  display: block;
+  color: hsl(var(--clr-span));
+}
+
+.background {
+  background: #000000;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  -webkit-transform: scale(0.2, 0.9);
+  transform: scale(0.2, 0.9);
+  opacity: 0;
+  border-radius: var(--br);
+  overflow: hidden;
+}
+
+.background img {
+  opacity: 0.8;
+  margin-inline: 0 auto;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.game:hover .front {
+  -webkit-transform: translateY(-30%) scale(0.8);
+  transform: translateY(-30%) scale(0.8);
+}
+
+.game:hover .front .name {
+  -webkit-animation: gameName 250ms forwards;
+  animation: gameName 250ms forwards;
+}
+
+.game:hover .front .stats {
+  opacity: 0;
+  color: hsl(var(--clr-white));
+}
+
+.game:hover .back {
+  opacity: 1;
+  -webkit-transition: opacity 150ms linear,
+      -webkit-transform 250ms ease;
+  transition: opacity 150ms linear,
+      -webkit-transform 250ms ease;
+  transition: transform 250ms ease, opacity 150ms linear;
+  transition: transform 250ms ease, opacity 150ms linear,
+      -webkit-transform 250ms ease;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.game:hover .back .name {
+  font-weight: bold;
+}
+
+.game:hover .background {
+  -webkit-transition: var(--transition),
+      opacity 100ms linear;
+  transition: var(--transition), opacity 100ms linear;
+  opacity: 1;
+  -webkit-transform: scale(1.35, 1.3) translateY(5%);
+  transform: scale(1.35, 1.3) translateY(5%);
+}
+
+@-webkit-keyframes gameName {
+  0% {
+      text-align: left;
+      opacity: 1;
+  }
+
+  20% {
+      text-align: left;
+      opacity: 0;
+  }
+
+  50% {
+      text-align: center;
+      opacity: 0;
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+
+  100% {
+      text-align: center;
+      opacity: 1;
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+}
+
+@keyframes gameName {
+  0% {
+      text-align: left;
+      opacity: 1;
+  }
+
+  20% {
+      text-align: left;
+      opacity: 0;
+  }
+
+  50% {
+      text-align: center;
+      opacity: 0;
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+
+  100% {
+      text-align: center;
+      opacity: 1;
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+}
+
+/* --------------------------------------- */
 /* ------------- Intro Page -------------- */
 /* --------------------------------------- */
 
