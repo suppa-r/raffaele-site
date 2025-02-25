@@ -1,6 +1,16 @@
 :root {
 	--sp: 5s;
 }
+
+body{
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .line {
   position: absolute;
   width: 1px;
