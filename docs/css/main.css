@@ -53,6 +53,7 @@ img {
 .game a {
   text-decoration: none;
   color: inherit;
+  touch-action: manipulation;
 }
 
 .rank {
@@ -136,11 +137,23 @@ img {
   display:flex;
   flex-direction:row;
   align-items: center;
+  justify-content: center;
   gap: 1.5em;
+  margin: 1em;
   -webkit-columns: 2;
           columns: 2;
   -webkit-column-rule: 1px solid rgba(255, 255, 255, 0.25);
           column-rule: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.front .name-1 {
+  font-family: var(--ff-Kanit);
+  font-size: 1.25rem;
+  color: aliceblue;
+  font-weight: bold;
+  text-align: center;
+  transition: 250ms;
+  margin: 0.75em 0;
 }
 
 .back .streaming-info .game-stat{
@@ -192,6 +205,10 @@ img {
   transition: var(--transition), opacity 100ms linear;
   opacity: 1;
   transform: scale(1.35, 0.8) translateY(5%); /* Adjusted scale values */
+}
+
+.game:hover .front .name-1 {
+ display: none;
 }
 
 .game:hover .front {

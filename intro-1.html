@@ -218,7 +218,7 @@
 
     .subtext-with-animation-1 {
       position: absolute;
-      font-size: var(--fs-600);
+      font-size: var(--fs-300);
       text-align: center;
       animation: main-text-animation 1.7s ease-in-out forwards;
       top: 0;
@@ -229,6 +229,25 @@
       user-select: none;
       overflow: hidden;
    }
+
+   .subtext-with-animation-2 {
+      position: absolute;
+      font-size: var(--fs-300);
+      text-align: center;
+      animation: main-text-animation 1.7s ease-in-out forwards;
+      top: 2rem;
+      width: 100%;
+      font-family:var(--ff-sans);
+      color: #fff;
+      letter-spacing: 4px;
+      user-select: none;
+      overflow: hidden;
+   }
+
+   .subtext-with-animation-1 span{
+     display: block;
+     margin: 0.5 0;
+    }
 
     .subtext-with-animation span:first-of-type {
       position: relative;
@@ -249,6 +268,18 @@
     }
 
     .subtext-with-animation-1 span:nth-of-type(2) {
+      position: relative;
+      opacity: 0;
+      animation: word-animation 2s ease-in-out 1.7s forwards;
+    }
+
+    .subtext-with-animation-2 span:first-of-type {
+      position: relative;
+      opacity: 0;
+      animation: word-animation 2s ease-in-out 1s forwards;
+    }
+
+    .subtext-with-animation-2 span:nth-of-type(2) {
       position: relative;
       opacity: 0;
       animation: word-animation 2s ease-in-out 1.7s forwards;
@@ -317,8 +348,13 @@
         <span>take</span> <span>it!</span>
       </div>
       <div class="subtext-with-animation-1">
-        <span>aweSOME</span><span>.. ! ..</span>
+        <span>"there will be an answer --let it be!"</span>
+       </div>
+
+      <div class="subtext-with-animation-2">
+        <span>--the beatles</span>
       </div>
+    
     </a>
   </div>
 </body>
