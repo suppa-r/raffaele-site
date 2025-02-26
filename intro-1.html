@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Raffaele Suppa | Webpage</title>
+    <link rel="stylesheet" href="/docs/css/reset.css" />
+    <link rel="stylesheet" href="/docs/css/index-lines.css" />
+  </head>
   <style>
     /* --------------------------------------- */
     /* ---------- Custom Properties ---------- */
@@ -109,20 +112,7 @@
       overflow: hidden;
     }
 
-    body {
-      margin-inline: 0 auto;
-      background: linear-gradient(#000, #000 20px, transparent),
-        linear-gradient(transparent, #fff 100%),
-        linear-gradient(#fff,
-          #fff 1px,
-          transparent 1px,
-          transparent 40px),
-        repeating-linear-gradient(to right,
-          #fff,
-          #ffff 1px,
-          transparent 40px) #3b3636;
-      overflow: hidden;
-    }
+  
 
     .title {
       font-size: var(--fs-400);
@@ -241,14 +231,27 @@
     .subtext-with-animation span:first-of-type {
       position: relative;
       opacity: 0;
-      animation: word-animation 0.5s ease-out 1.5s forwards;
+      animation: word-animation 1s ease-in 1s forwards;
     }
 
     .subtext-with-animation span:nth-of-type(2) {
       position: relative;
       opacity: 0;
-      animation: word-animation 0.5s ease-out 1.7s forwards;
+      animation: word-animation 1s ease-in 1.3s forwards;
     }
+
+    .subtext-with-animation-1 span:first-of-type {
+      position: relative;
+      opacity: 0;
+      animation: word-animation 2s ease-in-out 1s forwards;
+    }
+
+    .subtext-with-animation-1 span:nth-of-type(1.7) {
+      position: relative;
+      opacity: 0;
+      animation: word-animation 2s ease-in-out 1.7s forwards;
+    }
+
 
 
     @keyframes main-text-animation {
@@ -272,7 +275,8 @@
       }
 
       100% {
-        top: 3.5vw;
+        top: 0vw;
+        /*top: 3.5vw;*/
         opacity: 1;
       }
     }
@@ -280,19 +284,39 @@
 </head>
 
 <body>
+  <div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
   <div class="container">
     <div>
       <div class="title">"there will be an answer -- let it be!"</div>
       <div class="author">--the beatles</div>
     </div>
     <a href="intro-2.html">
-      <div class="text-with-animation">raffaele SUPPA</div>
       <div class="subtext-with-animation">
         <span>take</span> <span>it!</span>
       </div>
-      <!--<div class="subtext-with-animation-1">
-        <span>aweSOME</span> <span>DESIGN</span>
-      </div>-->
+      <div class="subtext-with-animation-1">
+        <span>aweSOME</span> <!--<span>DESIGN</span>-->
+      </div>
     </a>
   </div>
 </body>
