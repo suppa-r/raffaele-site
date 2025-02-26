@@ -66,7 +66,7 @@ img {
   font-weight: bold;
   font-size: 1.125rem;
   background: rgb(214, 206, 206);
-  color: white;
+  color: #000;
   padding: 0.9em 0.5em 0.75em;
   clip-path: polygon(100% 0%, 100% 100%, 50% 85%, 0 100%, 0 0);
   transition:150ms ease-in-out;
