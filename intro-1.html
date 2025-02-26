@@ -17,6 +17,8 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
+    @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
+
 
     :root {
 
@@ -101,6 +103,7 @@
 
       --ff-serif: "Caveat", serif;
       --ff-mono: "Monoton", monospace;
+      --ff-sans: "Kanit", sans-serif;
 
     }
 
@@ -117,7 +120,7 @@
     .title {
       font-size: var(--fs-400);
       color: #ffffff;
-      font-family: 'Caveat', sans-serif;
+      font-family:var(--ff-sans);
       text-align: center;
 
       margin-top: 2rem;
@@ -128,7 +131,7 @@
     .author {
       font-size: var(--fs-300);
       color: #ffffff;
-      font-family: 'Caveat', sans-serif;
+      font-family:var(--ff-sans);
       text-align: center;
 
       margin-top: 0rem;
@@ -189,7 +192,7 @@
 
     .text-with-animation {
       font-size: var(--fs-600);
-      font-family: 'Monoton', sans-serif;
+      font-family:var(--ff-sans);
       text-align: center;
       animation: main-text-animation 1.7s ease-in-out forwards;
       font-weight: 400;
@@ -206,7 +209,7 @@
       padding-bottom: var(--space-3xl);
       bottom: 0;
       width: 100%;
-      font-family: 'Monoton', sans-serif;
+      font-family:var(--ff-sans);
       color: #fff;
       letter-spacing: 4px;
       overflow: hidden;
@@ -219,7 +222,7 @@
       text-align: center;
       top: 0;
       width: 100%;
-      font-family: 'Monoton', sans-serif;
+      font-family:var(--ff-sans);
       color: #fff;
       letter-spacing: 4px;
       user-select: none;
@@ -246,7 +249,7 @@
       animation: word-animation 2s ease-in-out 1s forwards;
     }
 
-    .subtext-with-animation-1 span:nth-of-type(1.7) {
+    .subtext-with-animation-1 span:nth-of-type(2) {
       position: relative;
       opacity: 0;
       animation: word-animation 2s ease-in-out 1.7s forwards;
@@ -315,7 +318,7 @@
         <span>take</span> <span>it!</span>
       </div>
       <div class="subtext-with-animation-1">
-        <span>aweSOME</span> <!--<span>DESIGN</span>-->
+        <span>aweSOME</span><span>.. ! ..</span>
       </div>
     </a>
   </div>
