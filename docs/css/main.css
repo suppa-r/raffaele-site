@@ -150,9 +150,6 @@ p {
    margin: 0;
 }
 
-
-
-
 .game {
   position: relative;
   width:var(--space-6xl);
@@ -244,14 +241,14 @@ p {
 }
 
 .back .game-stat {
-  font-size:var(--fs-300);
+  font-size:var(--fs-200);
   font-family: var(--ff-kanit-regular);
   color: hsl(var(--clr-white));
   text-align: center;
 }
 
 .back .game-stat span {
-  font-size:var(--fs-400);
+  font-size:var(--fs-300);
   font-family: var(--ff-kanit-regular);
   color: hsl(var(--clr-white));
   display: block;
