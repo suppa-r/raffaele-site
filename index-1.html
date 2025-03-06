@@ -114,11 +114,9 @@
     }
 
     .index {
-      container-name: index;
       container-type: inline-size;
-      display: grid;
-      grid-template-rows: 1fr 1fr 1fr;
-       min-height: 100vh;
+      container-name: index;
+      min-height: 100vh;
       background: var(--main-bg);
       color: #fff;
       font-family: var(--ff-Kanit);
@@ -212,13 +210,15 @@
     }
 
     .text-with-animation {
-      position:absolute;
+      position:relative;
+      top: -10%;
       font-size: var(--fs-600);
       font-family:var(--ff-Kanit);
       text-align: center;
       animation: main-text-animation 1.7s ease-in-out forwards;
       font-weight: 400;
-      color: #ffffff;
+      color: #fff;
+      letter-spacing: 4px;
       overflow: hidden;
       width: 500vw;
       margin-left: -200vw;
@@ -240,7 +240,7 @@
       position:absolute;
       font-size: var(--fs-600);
       text-align: center;
-      top: 0;
+      top: -20%;
       width: 100%;
       font-family:var(--ff-Kanit);
       color: #fff;
@@ -248,13 +248,25 @@
       overflow: hidden;
      }
 
-    .subtext-with-animation span:first-of-type {
+     .text-with-animation span:first-of-type {
       position: relative;
       opacity: 0;
       animation: word-animation 0.5s ease-out 1.5s forwards;
     }
 
-    .subtext-with-animation span:nth-of-type(2) {
+    .text-with-animation span:nth-of-type(2) {
+      position: relative;
+      opacity: 0;
+      animation: word-animation 0.5s ease-out 1.7s forwards;
+    }
+
+    .subtext-with-animation-1 span:first-of-type {
+      position: relative;
+      opacity: 0;
+      animation: word-animation 0.5s ease-out 1.5s forwards;
+    }
+
+    .subtext-with-animation-1 span:nth-of-type(2) {
       position: relative;
       opacity: 0;
       animation: word-animation 0.5s ease-out 1.7s forwards;
@@ -289,12 +301,7 @@
   </style>
 </head>
 <body>
-  <section class="index">
-    <section class="text">
-      <p class="title">"there will be an answer -- let it be!"</p>
-      <p class="author">--the beatles</p>
-    </section>
-    <div class="lines">
+ <div class="lines">
       <div class="line"></div>
       <div class="line"></div>
       <div class="line"></div>
@@ -315,10 +322,13 @@
       <div class="line"></div>
       <div class="line"></div>
     </div>
+    <section class="index">
+      <p class="title">"there will be an answer -- let it be!"</p>
+      <p class="author">--the beatles</p>
     <div class="container">
       <a href="intro.html">
         <section class="index-text">
-          <div class="text-with-animation">raffaele suppa</div>
+          <div class="text-with-animation">raffaele SUPPA</div>
           <div class="subtext-with-animation">
             <span>take</span> <span>it!</span>
           </div>
