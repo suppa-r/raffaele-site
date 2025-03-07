@@ -49,13 +49,6 @@
     font-style: normal;
   }
   
-  --ff-kanit-thin-italic {
-    font-family: "Kanit", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-
   --ff-kanit-regular-italic {
     font-family: "Kanit", sans-serif;
     font-weight: 400;
@@ -67,9 +60,8 @@
     font-weight: 700;
     font-style: italic;
   }
-} 
 
-  
+
 
 
 /* For browsers that support clamp and container queries */
@@ -106,8 +98,10 @@
       --fs-800: 3.05rem;
     }
   }
+
 }
 
+}
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
 /* --------------------------------------- */
@@ -134,8 +128,8 @@
   
 
 body {
-  font-family:var(--ff-kanit-regular);
-  min-height: 100vh;
+  font-family:var(--ff-kanit-regular-italic);
+  min-height: 100svh;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -148,34 +142,47 @@ h2,
 h3,
 p {
    margin: 0;
+   padding: 0;
+   text-wrap: balance;
 }
+
+
+
 
 .game {
   position: relative;
-  width:var(--space-6xl);
+  width:15rem;
+  border-radius: var(--br);
+  overflow: hidden;
   cursor: pointer;
 }
 
 .game .front a {
+  color: hsl(var(--clr-white));
+  font-size: var(--fs-600);
   text-decoration: none;
+  text-align: center;
   display: block;
   position: relative;
   overflow: hidden;
   border-radius: var(--br);
 }
 
-.game .front h1 {
-  font-size:var(--fs-400);
-  color: hsl(var(--clr-white));
-  font-family: var(--ff-kanit-regular-italic);
-  text-align: center;
-  padding:0;
+.front p {
+  font-family: var(--ff-kanit-bold-italic);
+  font-size: var(--fs-700);
+  position: relative;
+  z-index: 1;
+}
+
+.game .front a:hover {
+  text-decoration: none;
 }
 
 .rank {
-  z-index: 1000;
-  font-family: var(--ff-kanit-regular);
-  font-size:var(--fs-400);
+  font-family: var(--ff-kanit-regular-italic);
+  font-size:var(--fs-600);
+  text-align: center;
   background: hsl(var(--clr-white));
   color: hsl(var(--clr-dark));
   padding: 0.5em 0.75em 0.5em 0.75em;
@@ -197,12 +204,12 @@ p {
  }
  
  .game:hover .rank {
-  transform: translate(0%, -100%);
+  transform: translate(-150%, -60%);
   /*transform: translate(150%, -61%);*/
 }
 
 .game:hover .front .thumbnail {
-  transform: translateY(0%) scale(0.8);
+  transform: translateY(0%) scale(1);
 }
 
 .game:hover .back {
@@ -230,29 +237,6 @@ p {
   transform: translateY(35%);
 }
 
-.back .streaming-info {
-  display: flex;
-  min-height: 50%;
-  gap: 1em;
-  -webkit-columns: 2;
-          columns: 2;
-  -webkit-column-rule: 1px solid rgba(255, 255, 255, 0.25);
-          column-rule: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.back .game-stat {
-  font-size:var(--fs-200);
-  font-family: var(--ff-kanit-regular);
-  color: hsl(var(--clr-white));
-  text-align: center;
-}
-
-.back .game-stat span {
-  font-size:var(--fs-300);
-  font-family: var(--ff-kanit-regular);
-  color: hsl(var(--clr-white));
-  display: block;
-}
 
 .background {
   min-height: 100%;
