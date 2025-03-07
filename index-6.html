@@ -187,68 +187,77 @@ body {
     max-height: 100%;
     }
 
-    
-    .text-with-animation {
-      top:20%;
-      position:relative;
-      font-size: var(--fs-600);
-      font-family:var(--ff-kanit-regular-italic);
-      text-align: center;
-      animation: main-text-animation 1.7s ease-in-out forwards;
-      color: hsl(var(--clr-white));
-      letter-spacing: 4px;
-      overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-      width: 600vw;
-      margin-left: -200vw;
+  .text-with-animation {
+    top:20%;
+    position:relative;
+    font-size: var(--fs-600);
+    font-family:var(--ff-kanit-regular-italic);
+    text-align: center;
+    animation: main-text-animation 1.7s ease-in-out forwards;
+    color: hsl(var(--clr-white));
+    letter-spacing: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 600vw;
+    margin-left: -200vw;
     }
 
-    .subtext-with-animation {
-      top:20;
-      position:relative;
-      font-size: var(--fs-600);
-      font-family:var(--ff-kanit-regular-italic);
-      text-align: center;
-      animation: main-text-animation 1.7s ease-in-out forwards;
-      color: hsl(var(--clr-white));
-      letter-spacing: 4px;
-      overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-      width: 600vw;
-      margin-left: -200vw;
+  .subtext-with-animation {
+    top:20;
+    position:relative;
+    font-size: var(--fs-600);
+    font-family:var(--ff-kanit-regular-italic);
+    text-align: center;
+    animation: main-text-animation 1.7s ease-in-out forwards;
+    color: hsl(var(--clr-white));
+    letter-spacing: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-left: -200vw;
     }
 
-    .subtext-with-animation span:first-of-type {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.5s forwards;
+  .subtext-with-animation span:first-of-type {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-out 1.5s forwards;
     }
 
-    .subtext-with-animation span:nth-of-type(2) {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.7s forwards;
-    }
-
-
-    .subtext-with-animation-1 {
-      position: absolute;
-      font-size: var(--fs-600);
-      text-align: center;
-      top: 0;
-      width: 100%;
-      font-family:var(--ff-kanit-regular-italic);
-      color: #fff;
-      letter-spacing: 4px;
-      user-select: none;
-      overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-
+  .subtext-with-animation span:nth-of-type(2) {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-out 1.7s forwards;
     }
 
 
+  .subtext-with-animation-1 {
+    position: absolute;
+    font-size: var(--fs-600);
+    text-align: center;
+    top: 0;
+    width: 100%;
+    font-family:var(--ff-kanit-regular-italic);
+    color: #fff;
+    letter-spacing: 4px;
+    user-select: none;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: main-text-animation 1.7s ease-in-out forwards;
+    margin-left: -200vw;
+}
 
-    @keyframes main-text-animation {
+  .subtext-with-animation-1 span:first-of-type {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-out 1.5s forwards;
+    }
+
+  .subtext-with-animation-1 span:nth-of-type(2) {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-out 1.7s forwards;
+    }
+
+   @keyframes main-text-animation {
       0% {
         letter-spacing: 25vw;
         word-spacing: 100vw;
@@ -274,45 +283,8 @@ body {
       }
     }
 
-    .subtext-with-animation-1 span:first-of-type {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.5s forwards;
-    }
 
-    .subtext-with-animation-1 span:nth-of-type(2) {
-      position: relative;
-      opacity: 0;
-      animation: word-animation 0.5s ease-out 1.7s forwards;
-    }
-
-   /*@keyframes main-text-animation {
-      0% {
-        letter-spacing: 25vw;
-        word-spacing: 100vw;
-        opacity: 0;
-      }
-
-      100% {
-        letter-spacing: 4px;
-        word-spacing: 1vw;
-        opacity: 1;
-      }
-    }
-
-    @keyframes word-animation {
-      0% {
-        top: 10vw;
-        opacity: 0;
-      }
-
-      100% {
-        top: 3.5vw;
-        opacity: 1;
-      }
-    }*/
-
-  </style>
+</style>
 </head>
 
 <body>
