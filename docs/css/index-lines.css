@@ -2,6 +2,10 @@
 	--sp: 5s;
 }
 
+body {
+  background: #000;
+  overflow: hidden;
+}
 
 .line {
   position: absolute;
