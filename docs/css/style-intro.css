@@ -1,7 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
-
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
 
 :root {
   /* --------------------------------------- */
@@ -14,64 +19,173 @@
   --clr-white: 0, 0%, 100%;
   --clr-accent: 231, 77%, 90%;
 
-  /* --------------------------------------- */
-  /* ---------- Custom Font Sizes ---------- */
-  /* --------------------------------------- */
+  --br: 0.5em;
+  --transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
 
-  /* Step 0: 16px → 20px */
-  --fs-300: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
-  /* Step 1: 19.2px → 25px */
-  --fs-400: clamp(1.2rem, 1.0739rem + 0.6304cqi, 1.5625rem);
-  /* Step 2: 23.04px → 31.25px */
-  --fs-500: clamp(1.44rem, 1.2615rem + 0.8924cqi, 1.9531rem);
-  /* Step 3: 27.648px → 39.0625px */
-  --fs-600: clamp(1.728rem, 1.4799rem + 1.2407cqi, 2.4414rem);
-  /* Step 4: 33.1776px → 48.8281px */
-  --fs-700: clamp(2.0736rem, 1.7334rem + 1.7011cqi, 3.0518rem);
-  /* Step 5: 39.8131px → 61.0352px */
-  --fs-800: clamp(2.4883rem, 2.027rem + 2.3067cqi, 3.8147rem);
-  /* Step 6: 47.7757px → 76.2939px */
-  --fs-900: clamp(2.986rem, 2.366rem + 3.0998cqi, 4.7684rem);
-  /* Step 7: 57.3309px → 95.3674px */
-  --fs-1000: clamp(3.5832rem, 2.7563rem + 4.1344cqi, 5.9605rem);
-  /* Step 8: 68.7971px → 119.2093px */
-  --fs-1100: clamp(4.2998rem, 3.2039rem + 5.4796cqi, 7.4506rem);
+  --ff-kanit-thin {
+    font-family: "Kanit", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
 
-  /* --------------------------------------- */
-  /* ----------- Custom Margins ------------ */
-  /* --------------------------------------- */
-  /* Space xs: 12px → 15px */
-  --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
-  /* Space s: 16px → 20px */
-  --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
-  /* Space m: 24px → 30px */
-  --space-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
-  /* Space l: 32px → 40px */
-  --space-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
-  /* Space xl: 48px → 60px */
-  --space-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
-  /* Space 2xl: 64px → 80px */
-  --space-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
-  /* Space 3xl: 96px → 120px */
-  --space-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
-  /* Space 4xl: 112px → 140px */
-  --space-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
-  /* Space 5xl: 128px → 160px */
-  --space-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
-  /* Space 6xl: 144px → 180px */
-  --space-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
-  /* Space 7xl: 160px → 200px */
-  --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
-  /* Space 8xl: 192px → 240px */
-  --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
-  /* --------------------------------------- */
-  /* ------------ Custom Fonts ------------- */
-  /* --------------------------------------- */
+  --ff-kanit-regular {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
 
-  --ff-serif: "Caveat", serif;
-  --ff-Kanit: "Kanit", sans-serif;
+  --ff-kanit-bold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+
+  --ff-kanit-black {
+    font-family: "Kanit", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  --ff-kanit-regular-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  --ff-kanit-bold-italic {
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+
+/* For browsers that support clamp and container queries */
+@supports (font-size: clamp(1rem, 1cqi, 1rem)) {
+  :root {
+		--fs-200: clamp(0.8rem, 0.17cqi + 0.76rem, 0.89rem);
+		--fs-300: clamp(1rem, 0.34cqi + 0.91rem, 1.19rem);
+		--fs-400: clamp(1.25rem, 0.61cqi + 1.1rem, 1.58rem);
+		--fs-500: clamp(1.56rem, 1cqi + 1.31rem, 2.11rem);
+		--fs-600: clamp(1.95rem, 1.56cqi + 1.56rem, 2.81rem);
+		--fs-700: clamp(2.44rem, 2.38cqi + 1.85rem, 3.75rem);
+		--fs-800: clamp(3.05rem, 3.54cqi + 2.17rem, 5rem);
+  }
+}
+/* For browsers that don't support clamp or container queries */
+@supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
+  :root {
+		--fs-200: 0.8rem;
+		--fs-300: 1rem;
+		--fs-400: 1.25rem;
+		--fs-500: 1.56rem;
+		--fs-600: 1.95rem;
+		--fs-700: 2.44rem;
+		--fs-800: 3.05rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    :root {
+      --fs-200: 0.8rem;
+      --fs-300: 1rem;
+      --fs-400: 1.25rem;
+      --fs-500: 1.56rem;
+      --fs-600: 1.95rem;
+      --fs-700: 2.44rem;
+      --fs-800: 3.05rem;
+    }
+  }
+
 }
 
+}
+
+/* --------------------------------------- */
+/* ----------------- Reset --------------- */
+/* --------------------------------------- */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* --------------------------------------- */
+/* ---------------- Set Body ------------- */
+/* --------------------------------------- */
+html, body {
+  background-color:hsl(var(--clr-dark));
+  box-sizing: border-box;
+}
+
+/* --------------------------------------- */
+/* -------------- Reset Margins----------- */
+/* --------------------------------------- */
+html,
+body,
+main,
+h1,
+h2,
+h3
+{
+ margin: 0;
+ padding: 0;
+}
+
+h1,
+h2,
+h3
+ {
+   margin: 0;
+   padding: 0;
+   text-wrap: balance;
+   overflow-wrap: break-word;
+}
+
+p {
+  margin-block: 0.7em;
+  text-wrap: balance;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+     
+}
 
 /* --------------------------------------- */
 /* ----------- Utility Classes ----------- */
@@ -86,7 +200,8 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border-width: 0;
+  /* added line */
+  border: 0;
 }
 
 .skip-to-content {
@@ -138,193 +253,8 @@
   color: hsl(var(--clr-accent));
 }
 
-/* --------------------------------------- */
-/* --------------- Navigation ------------ */
-/* --------------------------------------- */
-
-.container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-header {
-  background:transparent;
-  color: hsl(var(--clr-white));
-  padding: 0.5rem;
-  position: relative;
-}
-
-header h1 {
-  font-size: var(--fs-300);
-  font-family:var(--ff-Kanit);
-  color: hsl(var(--clr-white));
-  margin: 0;
-  padding: 0;
-}
-
-header::after {
-  content: "";
-  clear: both;
-  display: block;
-}
-
-.logo {
-  font-family:var(--ff-Kanit);
-  color: hsl(var(--clr-white));
-  margin: 0;
-  padding: 0 0 0 0.6em;
-  }
-
-.logo span {
-  font-family:var(--ff-Kanit);
-  color:hsl(var(--clr-span));
-  margin: 0 0.5em 0 0.5em;
-}
-
-.primary-navigation {
-  position: absolute;
-  top: 100%;
-  right: 0%;
-  background: #464655;
-  transition: clip-path ease-in-out 700ms;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.primary-navigation[data-state="opened"] {
-  animation: clipPathCircleOpen 750ms ease-in-out forwards;
-  display: block;
-}
-
-.primary-navigation[data-state="closing"] {
-  animation: clipPathCircleClose 750ms ease-in-out forwards;
-}
-.primary-navigation[data-state="closed"] {
-  display: none;
-}
-
-@keyframes clipPathCircleOpen {
-  0% { clip-path: circle(0% at top right); }
-  100% { clip-path: circle(250% at top right); }
-}
-@keyframes clipPathCircleClose {
-  0% { clip-path: circle(250% at top right); }
-  100% { clip-path: circle(0% at top right); }
-}
-
-.site-nav li {
-  border-bottom: 1px solid #575766;
-}
-
-.site-nav li:last-child {
-  border-bottom: none;
-}
-
-.site-nav a {
-  color: #ebebd3;
-  display: block;
-  padding: 0.3rem 4rem 0 1.5rem;
-  text-decoration: none;
-}
-
-.site-nav a:hover,
-.site-nav a:focus {
-  background: #e4b363;
-  color: #464655;
-}
-
-.site-nav--icon {
-  display: inline-block;
-  font-size: 1.5em;
-  margin-right: 1em;
-  width: 1.1em;
-  text-align: right;
-  color: rgba(255, 255, 255, 0.4);
-}
 
 
-.menu-toggle {
-  padding: 1em;
-  background: transparent;
-  border: 0;
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  cursor: pointer;
-}
-
-.menu-toggle:focus-visible {
-  outline: 4px solid #e4b363;
-}
-
-.hamburger,
-.hamburger::before,
-.hamburger::after {
-  content: "";
-  display: block;
-  background: #ebebd3;
-  height: 3px;
-  width: 1.75em;
-  border-radius: 3px;
-  transition: all ease-in-out 500ms;
-}
-
-.hamburger::before {
-  transform: translateY(-6px);
-}
-
-.hamburger::after {
-  transform: translateY(3px);
-}
-
-[aria-expanded="true"] .hamburger {
-  transform: rotate(45deg);
-}
-
-[aria-expanded="true"] .hamburger::before {
-  opacity: 0;
-}
-
-[aria-expanded="true"] .hamburger::after {
-  transform: translateY(-3px) rotate(-90deg);
-}
-
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-ul {
-  @media (hover) and (prefers-reduced-motion: no-preference) {
-    &>li {
-      opacity: 1;
-      transform-origin: left center;
-      transition:
-        transform 1s var(--ease-spring-3),
-        opacity .3s var(--ease-3);
-    }
-
-    &:hover>li:not(:hover) {
-      opacity: .25;
-      transform: scale(0.8);
-    }
-  }
-}
-
-@layer support.demo {
-  ul {
-     list-style: none;
-  }
-}
-/* --------------------------------------- */
-/* ---------- End of Navigation ---------- */
-/* --------------------------------------- */
 
 
 /* --------------------------------------- */
@@ -391,7 +321,7 @@ header {
 
 header h1 {
   font-size: var(--fs-300);
-  font-family:var(--ff-Kanit);
+  font-family:var(--ff-kanit-regular-italic);
   color: hsl(var(--clr-white));
   margin: 0;
   padding: 0;
@@ -404,14 +334,14 @@ header::after {
 }
 
 .logo {
-  font-family:var(--ff-Kanit);
+  font-family:var(--ff-kanit-regular-italic);
   color: hsl(var(--clr-white));
   margin: 0;
   padding: 0 0 0 0.6em;
   }
 
 .logo span {
-  font-family:var(--ff-Kanit);
+  font-family:var(--ff-kanit-regular-italic);
   color:hsl(var(--clr-span));
   margin: 0 0.5em 0 0.5em;
 }
@@ -599,7 +529,7 @@ ul {
 
 .intro-content h1, h2, h3 {
   font-size: var(--fs-400);
-  font-family:var(--ff-Kanit);
+  font-family:var(--ff-kanit-regular-italic);
   letter-spacing: 0.05em;
   padding:0;
   color: hsl(var(--clr-white));
@@ -609,13 +539,13 @@ ul {
 
 .intro-content p {
   font-size: var(--fs-300);
-  font-family:var(--ff-Kanit);
+  font-family:var(--ff-kanit-regular-italic);
   letter-spacing: 0.05em;
  }
 
 .intro-content p span {
   font-size: var(--fs-400);
-  font-family:var(--ff-Kanit);
+  font-family:var(--ff-kanit-regular-italic);
   letter-spacing:var(--letter-spacing);
   color: hsl(var(--clr-white));
 }
@@ -640,7 +570,7 @@ ul {
 
 .streamers p {
   font-size: var(--fs-300);
-  font-family:var(--ff-Kanit);
+  font-family:var(--ff-kanit-regular-italic);
   color: hsl(var(--clr-white));
   text-align: center;
   margin: 0 auto;
@@ -692,6 +622,80 @@ ul {
     opacity: 0;
   }
 }
+
+
+
+.hello {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-gradient-text {
+  position: relative;
+  top: -50px;
+  right: -50px;
+  z-index: 0;
+}
+
+.wrapper-gradient-text {
+  font-family:var(--ff-Kanit);
+  font-size:var(--fs-400);
+  font-weight: bold;
+  display: flex;
+  color: transparent;
+  /*perspective: 270px;*/
+  perspective: 100%;
+}
+
+.text-layer {
+  position: relative;
+  transform: rotateX(-30deg) translateZ(70px);
+  background: linear-gradient(
+     109.6deg,
+     rgb(110, 139, 156, 0.9) 20%,
+     rgb(142, 186, 211, 0.3) 42%,
+     rgba(146, 165, 189, 0.5) 71.5%,
+     rgb(106, 131, 143, 0.7) 100.2%
+  );
+  text-shadow: 0px 15px 0px rgb(94, 134, 150);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  animation: shadowDrip 3s infinite alternate
+     ease-in-out;
+  margin-bottom: 0.5em;
+}
+
+@keyframes melt {
+  0% {
+     transform: scaleY(1) translateY(0);
+  }
+
+  100% {
+     transform: scaleY(1.1) translateY(5px);
+  }
+}
+
+@keyframes shadowDrip {
+  0% {
+     text-shadow: 0px 5px 0px
+        rgba(78, 136, 170, 0.853);
+  }
+
+  100% {
+     text-shadow: 0px 20px 30px
+           rgba(80, 121, 148, 0.996),
+        0px 30px 40px rgba(70, 118, 138, 0.822),
+        0px 70px 5px rgba(69, 107, 150, 0.781);
+  }
+}
+
+
+
+
 
 /* --------------------------------------- */
 /* --------- Container Query Intro  ------ */
