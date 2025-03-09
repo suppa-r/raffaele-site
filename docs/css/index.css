@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
+
+
 :root {
   /* --------------------------------------- */
   /* ------------ Custom Colors ------------ */
@@ -16,13 +19,7 @@
   --br: 0.5em;
   --transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
 
-  /* --------------------------------------- */
-  /* ------------ Custom Fonts ------------- */
-  /* --------------------------------------- */
 
-  --ff-Kanit: "Kanit", sans-serif;
-  --ff-Caveat: "Caveat", sans-serif;  
- 
   /* --------------------------------------- */
   /* ----------- Custom Margins ------------ */
   /* --------------------------------------- */
@@ -258,7 +255,8 @@ a{
   display: block;
   font-size: var(--fs-300);
   color:hsl(var(--clr-accent));
-  font-family: 'Caveat', sans-serif;
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 100;
   text-align: center;
   letter-spacing: 10px;
 }
@@ -267,7 +265,8 @@ a{
   display: block;
   font-size: var(--fs-200);
   color:hsl(var(--clr-accent));
-  font-family: 'Caveat', sans-serif;
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 100;
   text-align: center;
   letter-spacing: 10px;
 }
@@ -285,7 +284,8 @@ a{
 
 .text-with-animation {
   font-size: var(--fs-600);
-  font-family:var(--ff-Caveat);
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 400;
   color: hsl(var(--clr-accent));
   text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
@@ -297,7 +297,8 @@ a{
   font-size: var(--fs-800);
   color: hsl(var(--clr-accent));
   text-align: center;
-  font-family:var(--ff-Kanit);
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 400;
   width: 500vw;
   margin-left: -200vw;
 }
@@ -318,7 +319,8 @@ a{
 .subtext-with-animation-1 {
   font-size: var(--fs-600);
   text-align: center;
-  font-family:var(--ff-Kanit);
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 400;
   color:hsl(var(--clr-accent));
   letter-spacing: 3px;
   width: 500vw;
