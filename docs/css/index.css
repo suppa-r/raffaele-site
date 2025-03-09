@@ -264,6 +264,11 @@ html {
 color:hsl(var(--clr-white));
 }
 
+.content{
+justify-content: center;
+align-content: center;
+}
+
 .text-with-animation {
   margin-inline: auto;
   font-size: var(--fs-600);
@@ -356,7 +361,7 @@ color:hsl(var(--clr-white));
    @container(max-width: 768px) {
     .wrapper-index{
       margin-inline: auto;
-      padding: var(--space-2xl);
+      padding-top: var(--space-2xl);
     }
 }
 
