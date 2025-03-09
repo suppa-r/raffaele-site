@@ -260,7 +260,7 @@ a{
   color:hsl(var(--clr-accent));
   font-family: 'Caveat', sans-serif;
   text-align: center;
-  animation:main-text-animation  1.7s ease-in;
+  letter-spacing: 10px;
 }
 
 .author {
@@ -269,13 +269,13 @@ a{
   color:hsl(var(--clr-accent));
   font-family: 'Caveat', sans-serif;
   text-align: center;
-  animation:main-text-animation  1.7s ease-in;
+  letter-spacing: 10px;
 }
 
 .container {
   min-height: 100svh;
-  margin-top:var(--space-6xl);
-  padding-inline:0 var(--space-6xl);
+  margin-top:var(--space-8xl);
+  margin-inline: auto;
  }
 
 .container a {
@@ -289,7 +289,6 @@ a{
   color: hsl(var(--clr-accent));
   text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
-  letter-spacing: 10px;
   width: 500vw;
   margin-left: -200vw;
 }
@@ -299,7 +298,6 @@ a{
   color: hsl(var(--clr-accent));
   text-align: center;
   font-family:var(--ff-Kanit);
-  letter-spacing: 10px;
   width: 500vw;
   margin-left: -200vw;
 }
@@ -322,7 +320,7 @@ a{
   text-align: center;
   font-family:var(--ff-Kanit);
   color:hsl(var(--clr-accent));
-  letter-spacing: 10px;
+  letter-spacing: 3px;
   width: 500vw;
   margin-left: -200vw;
  }
@@ -370,6 +368,7 @@ a{
 @container (max-width:500px){
  .index{
    padding-inline: var(--space-4xl);
+   
  }
 }
 
