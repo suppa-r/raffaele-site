@@ -1,12 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*,
-*::before,
-*::after {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
+
 
 :root {
   /* --------------------------------------- */
@@ -22,45 +19,39 @@
   --br: 0.5em;
   --transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
 
-  --ff-kanit-thin {
-    font-family: "Kanit", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
 
-  --ff-kanit-regular {
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
+  /* --------------------------------------- */
+  /* ----------- Custom Margins ------------ */
+  /* --------------------------------------- */
 
-  --ff-kanit-bold {
-    font-family: "Kanit", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-
-  --ff-kanit-black {
-    font-family: "Kanit", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  --ff-kanit-regular-italic {
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  --ff-kanit-bold-italic {
-    font-family: "Kanit", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-
+  /* Space xs: 12px → 15px */
+  --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
+  /* Space s: 16px → 20px */
+  --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+  /* Space m: 24px → 30px */
+  --space-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
+  /* Space l: 32px → 40px */
+  --space-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
+  /* Space xl: 48px → 60px */
+  --space-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
+  /* Space 2xl: 64px → 80px */
+  --space-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
+  /* Space 3xl: 96px → 120px */
+  --space-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
+  /* Space 4xl: 112px → 140px */
+  --space-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
+  /* Space 5xl: 128px → 160px */
+  --space-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
+  /* Space 6xl: 144px → 180px */
+  --space-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
+  /* Space 7xl: 160px → 200px */
+  --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
+  /* Space 8xl: 192px → 240px */
+  --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
+}
+ /* --------------------------------------- */
+ /* ---------- Custom Font Sizes ---------- */
+ /* --------------------------------------- */
 
 /* For browsers that support clamp and container queries */
 @supports (font-size: clamp(1rem, 1cqi, 1rem)) {
@@ -85,31 +76,28 @@
 		--fs-700: 2.44rem;
 		--fs-800: 3.05rem;
   }
+}
 
   @media screen and (min-width: 1280px) {
     :root {
-      --fs-200: 0.8rem;
-      --fs-300: 1rem;
-      --fs-400: 1.25rem;
-      --fs-500: 1.56rem;
-      --fs-600: 1.95rem;
-      --fs-700: 2.44rem;
-      --fs-800: 3.05rem;
+			--fs-200: 0.89rem;
+			--fs-300: 1.19rem;
+			--fs-400: 1.58rem;
+			--fs-500: 2.11rem;
+			--fs-600: 2.81rem;
+			--fs-700: 3.75rem;
+			--fs-800: 5rem;
     }
   }
-
-}
-
-}
 
 /* --------------------------------------- */
 /* ----------------- Reset --------------- */
 /* --------------------------------------- */
-
-/* Box sizing */
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -117,8 +105,10 @@
 /* ---------------- Set Body ------------- */
 /* --------------------------------------- */
 html, body {
+  min-height: 100svh;
+  overflow: clip;
   background-color:hsl(var(--clr-dark));
-  box-sizing: border-box;
+  color: hsl(var(--clr-accent));
 }
 
 /* --------------------------------------- */
@@ -129,7 +119,8 @@ body,
 main,
 h1,
 h2,
-h3
+h3,
+p
 {
  margin: 0;
  padding: 0;
@@ -137,17 +128,16 @@ h3
 
 h1,
 h2,
-h3
- {
-   margin: 0;
-   padding: 0;
-   text-wrap: balance;
-   overflow-wrap: break-word;
+h3,
+p {
+  word-wrap: balance;
+  overflow-wrap: break-word;
+  line-height: 1.2;
+  color: hsl(var(--clr-accent));
 }
 
 p {
-  margin-block: 0.7em;
-  text-wrap: balance;
+  margin-block: 0.3em;
 }
 
 /* Set core root defaults */
@@ -184,7 +174,6 @@ a{
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-     
 }
 
 /* --------------------------------------- */
@@ -200,7 +189,6 @@ a{
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  /* added line */
   border: 0;
 }
 
@@ -253,10 +241,6 @@ a{
   color: hsl(var(--clr-accent));
 }
 
-
-
-
-
 /* --------------------------------------- */
 /* ------------- Components -------------- */
 /* --------------------------------------- */
@@ -293,36 +277,22 @@ a{
 }
 
 /* --------------------------------------- */
-/* ------- Page Specific Index Home ------ */
-/* --------------------------------------- */
-
-/* --------------------------------------- */
-/* ---------- End of Index Home ---------- */
-/* --------------------------------------- */
-
-
-
-/* --------------------------------------- */
 /* --------------- Navigation ------------ */
 /* --------------------------------------- */
 
-.container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 header {
   background:transparent;
-  color: hsl(var(--clr-white));
+  color: hsl(var(--clr-accent));
   padding: 0.5rem;
   position: relative;
 }
 
 header h1 {
   font-size: var(--fs-300);
-  font-family:var(--ff-kanit-regular-italic);
-  color: hsl(var(--clr-white));
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  color: hsl(var(--clr-accent));
   margin: 0;
   padding: 0;
 }
@@ -334,14 +304,20 @@ header::after {
 }
 
 .logo {
-  font-family:var(--ff-kanit-regular-italic);
-  color: hsl(var(--clr-white));
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: var(--fs-300);
+  color: hsl(var(--clr-accent));
   margin: 0;
   padding: 0 0 0 0.6em;
   }
 
 .logo span {
-  font-family:var(--ff-kanit-regular-italic);
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: var(--fs-300);
   color:hsl(var(--clr-span));
   margin: 0 0.5em 0 0.5em;
 }
@@ -351,6 +327,7 @@ header::after {
   top: 100%;
   right: 0%;
   background: #464655;
+  color: hsl(var(--clr-accent));
   transition: clip-path ease-in-out 700ms;
   margin: 0;
   padding: 0;
@@ -500,11 +477,14 @@ ul {
   grid-template-rows: 3rem 1fr;
   min-height: 100svh;
   overflow: clip;
+  color: hsl(var(--clr-accent));
 }
 
 .intro>* {
   container-type: inline-size;
 }
+
+
 
 .intro-content {
   display: grid;
@@ -528,26 +508,36 @@ ul {
 }
 
 .intro-content h1, h2, h3 {
-  font-size: var(--fs-400);
-  font-family:var(--ff-kanit-regular-italic);
+
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: var(--fs-300);
   letter-spacing: 0.05em;
   padding:0;
-  color: hsl(var(--clr-white));
+  color: hsl(var(--clr-accent));
   font-style: italic;
   text-align: center;
 }
 
 .intro-content p {
   font-size: var(--fs-300);
-  font-family:var(--ff-kanit-regular-italic);
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  font-style: italic;
   letter-spacing: 0.05em;
+  color: hsl(var(--clr-accent));
+  text-align: center;
  }
 
 .intro-content p span {
-  font-size: var(--fs-400);
-  font-family:var(--ff-kanit-regular-italic);
+  font-size: var(--fs-500);
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  font-style: italic;
   letter-spacing:var(--letter-spacing);
-  color: hsl(var(--clr-white));
+  padding-left: 0.5em;
+  color: hsl(var(--clr-accent));
 }
 
 .intro-content img
@@ -562,6 +552,7 @@ ul {
 }
 
 .streamers {
+  margin-top: var(--space-2xl);
   display: block;
   text-align: center;
   position: relative; /* Ensure the container is positioned relative */
@@ -569,23 +560,25 @@ ul {
 
 .streamers p {
   font-size: var(--fs-300);
-  font-family:var(--ff-kanit-regular-italic);
-  color: hsl(var(--clr-white));
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  color: hsl(var(--clr-accent));
   text-align: center;
   margin: 0 auto;
 }
 
 .streamers a {
-  color:hsl(var(--clr-white));
+  color: hsl(var(--clr-accent));
   text-decoration: none;
   touch-action: manipulation;
  }
 
 .streamers ion-icon {
-  font-size: var(--fs-400);
+  font-size: var(--fs-500);
   z-index: 5; 
   --ionicon-stroke-width: 32px;
-  color:hsl(var(--clr-white));
+  color: hsl(var(--clr-accent));
   text-align: center;
   vertical-align: middle;
 }
@@ -593,7 +586,7 @@ ul {
 .streamers a:hover::after {
   transform: translate(-50%, -0%) scale(1);
   opacity: 1;
-  background: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-accent));
   z-index: 1;
   animation: pulse 1000ms ease-in-out infinite; /* Apply pulsing animation */
 }
