@@ -232,18 +232,19 @@ html {
 }
 
 .wrapper-index {
+  border: 3px solid hsl(var(--clr-accent));
+  max-inline-size:90%;
   min-height: 100svh;
-  max-inline-size:95%;
   display:grid;
   grid-template-rows:5em 1fr;
   margin-inline: auto;
+  padding-inline:auto;
   overflow: hidden;
 }
 
 .wrapper-index >* {
   container-type: inline-size;
-  max-inline-size: 100%;
-}
+ }
 
 .title {
   font-size: var(--fs-300);
@@ -251,7 +252,6 @@ html {
   font-family:var(--ff-Caveat);
   text-align: center;
 }
-
 
 .author {
   font-size: var(--fs-300);
@@ -265,12 +265,13 @@ color:hsl(var(--clr-white));
 }
 
 .content{
-justify-content: center;
-align-content: center;
+  padding-inline:auto;
+  overflow: hidden;
 }
 
 .text-with-animation {
-  margin-inline: auto;
+  border: 3px solid hsl(var(--clr-accent));
+  margin-inline:5rem;
   font-size: var(--fs-600);
   font-family:var(--ff-Kanit);
   text-align: center;
