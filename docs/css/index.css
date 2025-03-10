@@ -352,14 +352,16 @@ a{
     letter-spacing: var(--padding-xs);
     word-spacing: var(--padding-s);
     opacity: 0;
-    transform: translateY(0px);
+    transform: translateY(-500px);
+   
    }
   100% {
     
     letter-spacing: var(--padding-xs);
     word-spacing: var(--padding-s);
     opacity: 1;
-    transform: translateY(-200px);
+    transform: translateY(100px);
+    transform: translateX(100px);
    }
 }
 
