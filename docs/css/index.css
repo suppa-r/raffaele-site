@@ -292,7 +292,7 @@ a{
   font-weight: 400;
   text-align: center;
   animation: main-text-animation 0.8s ease forwards;
-  letter-spacing:var(--padding-s);
+  letter-spacing:var(--padding-xs);
   width: 500vw;
   margin-left: -200vw;
 }
@@ -304,7 +304,7 @@ a{
   font-family: "Big Shoulders Inline", sans-serif;
   animation: main-text-animation 0.8s ease forwards;
   /*animation: main-text-animation 0.8s ease-out, forwards infinite;*/
-  letter-spacing:var(--padding-s);
+  letter-spacing:var(--padding-xs);
   font-weight: 400;
   width: 500vw;
   margin-left: -200vw;
@@ -327,6 +327,7 @@ a{
   font-size: var(--fs-500);
   color: hsl(var(--clr-white));
   text-align: center;
+  letter-spacing:var(--padding-xs);
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 400;
   animation: main-text-animation 0.8s ease forwards;
