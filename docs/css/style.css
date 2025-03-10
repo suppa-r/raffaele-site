@@ -632,7 +632,7 @@ ul {
 .streamers a {
   font-size: var(--fs-400);
   text-decoration: none;
-  touch-action:auto;
+  color: hsl(var(--clr-white));
   position: relative;
   border-radius: 0.5em;
   overflow: hidden;
