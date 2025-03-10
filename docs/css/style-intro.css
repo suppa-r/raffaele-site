@@ -113,6 +113,7 @@ main {
   overflow: clip;
   background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
+  line-height: 1.1;
 }
 
 /* --------------------------------------- */
@@ -138,6 +139,7 @@ h3
   font-size: var(--fs-400);
   text-wrap: balance;
   overflow-wrap: break-word;
+  line-height: 1.1;
 }
 
 p {
@@ -146,7 +148,7 @@ p {
   font-size: var(--fs-300);
   text-wrap: balance;
   overflow-wrap: break-word;
-}
+ }
 
 /* Set core root defaults */
 html:focus-within {
@@ -320,17 +322,16 @@ header::after {
 }
 
 .logo {
-  font-family: "Kanit", sans-serif;
-  font-size: var(--fs-300);
+  font-family:'Big Shoulders Inline', sans-serif;
   font-weight: 100;
-  font-style: normal;
-  color: hsl(var(--clr-white));
+  font-size: var(--fs-300);
   margin: 0;
   padding: 0 0 0 0.6em;
   }
 
 .logo span {
-  font-family: "Kanit", sans-serif;
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
   font-size: var(--fs-400);
   font-weight: 100;
   font-style: normal;
@@ -342,7 +343,7 @@ header::after {
   position: absolute;
   top: 100%;
   right: 0%;
-  background: #464655;
+  background:transparent;
   transition: clip-path ease-in-out 700ms;
   margin: 0;
   padding: 0;
@@ -378,7 +379,7 @@ header::after {
 }
 
 .site-nav a {
-  color: #ebebd3;
+  color:hsl(var(--clr-white));
   display: block;
   padding: 0.3rem 4rem 0 1.5rem;
   text-decoration: none;
@@ -386,7 +387,7 @@ header::after {
 
 .site-nav a:hover,
 .site-nav a:focus {
-  background: #bdeeb1;
+  background:transparent;
   color:hsl(var(--clr-white));
 }
 
@@ -501,7 +502,7 @@ ul {
 }
 
 .intro-content {
-  padding: 4rem;
+  padding-bottom:var(--padding-6xl);
   place-items: center;
   min-height: 100%;
   }
