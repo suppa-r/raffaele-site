@@ -504,6 +504,8 @@ ul {
 
 .intro>* {
   container-type: inline-size;
+  width: 100%;
+  margin-inline: 0 auto;
 }
 
 .intro-content {
@@ -511,6 +513,8 @@ ul {
   place-items: center;
 /* Center items horizontally and vertically */
 }
+
+
 
 .intro::before {
   content: '';
@@ -541,6 +545,7 @@ ul {
   font-size: var(--fs-300);
   font-family:var(--ff-kanit-regular-italic);
   letter-spacing: 0.05em;
+  line-height: 1.2;
  }
 
 .intro-content p span {
@@ -562,28 +567,36 @@ ul {
 }
 
 .streamers {
+  margin-top: 2em;
   display: block;
   text-align: center;
-  margin-inline:0 auto;
-  position: relative; /* Ensure the container is positioned relative */
-}
+ }
 
 .streamers p {
-  font-size: var(--fs-300);
+  font-size: var(--fs-400);
   font-family:var(--ff-kanit-regular-italic);
   color: hsl(var(--clr-white));
   text-align: center;
   margin: 0 auto;
 }
 
-.streamers a {
+.streamers p a {
+  font-size: var(--fs-800);
   color:hsl(var(--clr-white));
   text-decoration: none;
   touch-action: manipulation;
  }
 
+ .streamers p a span{
+  font-size: var(--fs-700);
+  font-family:var(--ff-kanit-regular-italic);
+  color: hsl(var(--clr-white));
+  text-align: center;
+  margin: 0 auto;
+ }
+
 .streamers ion-icon {
-  font-size: var(--fs-400);
+  font-size: var(--fs-800);
   z-index: 5; 
   --ionicon-stroke-width: 32px;
   color:hsl(var(--clr-white));
@@ -592,11 +605,11 @@ ul {
 }
 
 .streamers a:hover::after {
-  transform: translate(-50%, -0%) scale(1);
+  transform: translate(-0%, -0%) scale(.3); /* Adjusted translate values */
   opacity: 1;
   background: hsl(var(--clr-white));
   z-index: 1;
-  animation: pulse 1000ms ease-in-out infinite; /* Apply pulsing animation */
+  animation: pulse 500ms ease-in-out infinite; /* Apply pulsing animation */
 }
 
 .streamers a::before,
@@ -604,24 +617,56 @@ ul {
   opacity: 0;
   content: "";
   position: absolute;
-  top: 0;
-  left: 15%;
-  width: 70%;
-  height: 100%;
-  transform: translate(-50%, -0%); /* Center the pseudo-elements */
+  top: 40%; /* Center vertically */
+  left: 25%; /* Center horizontally */
+  width: 50%;
+  height: 60%;
+  transform: translate(-50%, -50%); /* Center the pseudo-elements */
   border-radius: 50%;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(2);
+    transform: scale(.3);
     opacity: 0.75;
   }
   100% {
-    transform: scale(2); /* Reduced scale for smaller pulsing */
+    transform: scale(.3); /* Reduced scale for smaller pulsing */
     opacity: 0;
   }
 }
+
+/*.streamers a:hover::after {
+  transform: translate(-50%, -0%) scale(.3);
+  opacity: 1;
+  background: hsl(var(--clr-white));
+  z-index: 1;
+  animation: pulse 500ms ease-in-out infinite; 
+}
+
+.streamers a::before,
+.streamers a::after {
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-0%, -0%); /* Center the pseudo-elements *
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(.3);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(.3); /* Reduced scale for smaller pulsing *
+    opacity: 0;
+  }
+}*/
 
 
 
