@@ -1,13 +1,7 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
-
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-
 
 :root {
   /* --------------------------------------- */
@@ -22,7 +16,6 @@
 
   --br: 0.5em;
   --transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
-
 
   /* --------------------------------------- */
   /* ----------- Custom Margins ------------ */
@@ -54,71 +47,73 @@
   --padding-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
 }
 
- /* --------------------------------------- */
- /* ---------- Custom Font Sizes ---------- */
- /* --------------------------------------- */
+/* --------------------------------------- */
+/* ---------- Custom Font Sizes ---------- */
+/* --------------------------------------- */
 
 /* For browsers that support clamp and container queries */
 @supports (font-size: clamp(1rem, 1cqi, 1rem)) {
   :root {
-		--fs-200: clamp(0.8rem, 0.17cqi + 0.76rem, 0.89rem);
-		--fs-300: clamp(1rem, 0.34cqi + 0.91rem, 1.19rem);
-		--fs-400: clamp(1.25rem, 0.61cqi + 1.1rem, 1.58rem);
-		--fs-500: clamp(1.56rem, 1cqi + 1.31rem, 2.11rem);
-		--fs-600: clamp(1.95rem, 1.56cqi + 1.56rem, 2.81rem);
-		--fs-700: clamp(2.44rem, 2.38cqi + 1.85rem, 3.75rem);
-		--fs-800: clamp(3.05rem, 3.54cqi + 2.17rem, 5rem);
-  }
-}
-/* For browsers that don't support clamp or container queries */
-@supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
-  :root {
-		--fs-200: 0.8rem;
-		--fs-300: 1rem;
-		--fs-400: 1.25rem;
-		--fs-500: 1.56rem;
-		--fs-600: 1.95rem;
-		--fs-700: 2.44rem;
-		--fs-800: 3.05rem;
+    --fs-200: clamp(0.8rem, 0.17cqi + 0.76rem, 0.89rem);
+    --fs-300: clamp(1rem, 0.34cqi + 0.91rem, 1.19rem);
+    --fs-400: clamp(1.25rem, 0.61cqi + 1.1rem, 1.58rem);
+    --fs-500: clamp(1.56rem, 1cqi + 1.31rem, 2.11rem);
+    --fs-600: clamp(1.95rem, 1.56cqi + 1.56rem, 2.81rem);
+    --fs-700: clamp(2.44rem, 2.38cqi + 1.85rem, 3.75rem);
+    --fs-800: clamp(3.05rem, 3.54cqi + 2.17rem, 5rem);
   }
 }
 
-  @media screen and (min-width: 1280px) {
-    :root {
-			--fs-200: 0.89rem;
-			--fs-300: 1.19rem;
-			--fs-400: 1.58rem;
-			--fs-500: 2.11rem;
-			--fs-600: 2.81rem;
-			--fs-700: 3.75rem;
-			--fs-800: 5rem;
-    }
+
+/* For browsers that don't support clamp or container queries */
+@supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
+  :root {
+    --fs-200: 0.8rem;
+    --fs-300: 1rem;
+    --fs-400: 1.25rem;
+    --fs-500: 1.56rem;
+    --fs-600: 1.95rem;
+    --fs-700: 2.44rem;
+    --fs-800: 3.05rem;
   }
+}
+
+@media screen and (min-width: 1280px) {
+  :root {
+    --fs-200: 0.89rem;
+    --fs-300: 1.19rem;
+    --fs-400: 1.58rem;
+    --fs-500: 2.11rem;
+    --fs-600: 2.81rem;
+    --fs-700: 3.75rem;
+    --fs-800: 5rem;
+  }
+}
 
 /* --------------------------------------- */
 /* ----------------- Reset --------------- */
 /* --------------------------------------- */
+
+/* Box sizing */
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 /* --------------------------------------- */
 /* ---------------- Set Body ------------- */
 /* --------------------------------------- */
-html, body {
+html,
+body,
+main {
+  font-family:'big shoulders inline', sans-serif;
+  font-weight: 100;
   min-height: 100svh;
   overflow: clip;
-  background-color:hsl(var(--clr-dark));
+  background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight:100;
-  font-style: normal;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 /* --------------------------------------- */
@@ -129,8 +124,7 @@ body,
 main,
 h1,
 h2,
-h3,
-p
+h3
 {
  margin: 0;
  padding: 0;
@@ -140,21 +134,21 @@ h1,
 h2,
 h3
  {
-  color: hsl(var(--clr-white));
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight:100;
-  font-style: normal;
-  word-wrap: balance;
+  font-family:'big shoulders inline', sans-serif;
+  font-weight: 100;
+  font-size: var(--fs-400);
+  text-wrap: balance;
   overflow-wrap: break-word;
-  line-height: 1.2;
-  margin-block: 0.4em;
-  margin-inline: 0;
+  line-height: 1.1;
 }
 
 p {
-  margin-block: 0.3em;
-}
+  margin-block: 0.5em;
+  margin-inline: 0;
+  font-size: var(--fs-300);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+ }
 
 /* Set core root defaults */
 html:focus-within {
@@ -190,6 +184,7 @@ a{
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+     
 }
 
 /* --------------------------------------- */
@@ -205,6 +200,7 @@ a{
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+  /* added line */
   border: 0;
 }
 
@@ -293,8 +289,24 @@ a{
 }
 
 /* --------------------------------------- */
+/* ------- Page Specific Index Home ------ */
+/* --------------------------------------- */
+
+/* --------------------------------------- */
+/* ---------- End of Index Home ---------- */
+/* --------------------------------------- */
+
+
+
+/* --------------------------------------- */
 /* --------------- Navigation ------------ */
 /* --------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
 
 header {
   background:transparent;
@@ -312,8 +324,7 @@ header::after {
 .logo {
   font-family:'Big Shoulders Inline', sans-serif;
   font-weight: 100;
-  font-style: italic;
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
   margin: 0;
   padding: 0 0 0 0.6em;
   }
@@ -321,10 +332,11 @@ header::after {
 .logo span {
   font-family:'Big Shoulders Inline', sans-serif;
   font-weight: 100;
-  font-style: italic;
   font-size: var(--fs-400);
+  font-weight: 100;
+  font-style: normal;
   color:hsl(var(--clr-span));
-  margin: 0 0.5em 0 0.5em;
+  margin: 0 1em 0 0.3em;
 }
 
 .primary-navigation {
@@ -359,11 +371,7 @@ header::after {
 }
 
 .site-nav li {
-  font-family:'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
-  font-style: italic;
-  font-size: var(--fs-300);
-  border-bottom: 1px solid #858596;
+  border-bottom: 1px solid #575766;
 }
 
 .site-nav li:last-child {
@@ -404,7 +412,7 @@ header::after {
 }
 
 .menu-toggle:focus-visible {
-  outline: 4px solid hsl(var(--clr-accent));
+  outline: 4px solid hsl(var(--clr-white));
 }
 
 .hamburger,
@@ -412,7 +420,7 @@ header::after {
 .hamburger::after {
   content: "";
   display: block;
-  background: hsl(var(--clr-accent));
+  background: hsl(var(--clr-white));
   height: 3px;
   width: 1.75em;
   border-radius: 3px;
@@ -485,22 +493,19 @@ ul {
   grid-template-rows: 3rem 1fr;
   min-height: 100svh;
   overflow: clip;
- }
+}
 
 .intro>* {
   container-type: inline-size;
+  max-inline-size: 100%;
+ 
 }
 
 .intro-content {
-  display: grid;
+  padding-bottom:var(--padding-6xl);
   place-items: center;
-  font-size: var(--fs-300);
-  text-align: center;
-  color: hsl(var(--clr-white));
-  margin: 0 auto;
-  padding-inline: var(--space-xl);
-/* Center items horizontally and vertically */
-}
+  min-height: 100%;
+  }
 
 .intro::before {
   content: '';
@@ -510,29 +515,25 @@ ul {
   background:
     linear-gradient(90deg,
       color-mix(in hsl, canvasText, transparent 70%) 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px,
-    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 30px) 50% 50% / 30px 30px;
+      transparent 1px 45px) 50% 50% / 45px 45px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 45px) 50% 50% / 45px 45px;
   mask: linear-gradient(-20deg, transparent 50%, white) 100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
-.intro-content h1, h2, h3 {
-  font-size: var(--fs-400);
-  letter-spacing: 0.05em;
-  text-align: center;
-}
+
 
 .intro-content p {
-  letter-spacing: 0.05em;
   text-align: center;
  }
 
 .intro-content p span {
-  font-size: var(--fs-500);
-  letter-spacing:var(--letter-spacing);
-  padding-left: 0.5em;
-  }
+  font-size: var(--fs-400);
+  color: hsl(var(--clr-span));
+  padding-left: var(--padding-s);
+  letter-spacing:0.05em;
+} 
 
 .intro-content img
 {
@@ -546,40 +547,47 @@ ul {
 }
 
 .streamers {
-  margin-top: var(--space-xl);
-  display: block;
-  text-align: center;
-  position: relative; /* Ensure the container is positioned relative */
-}
+  display: flex;
+  flex-direction:column;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-content: center;
+  }
 
-.streamers p {
-  font-size: var(--fs-300);
-  color: hsl(var(--clr-white));
-  text-align: center;
-  margin: 0 auto;
-}
 
 .streamers a {
-  color: hsl(var(--clr-white));
+  font-size: var(--fs-400);
   text-decoration: none;
   touch-action: manipulation;
+  position: relative;
+  border-radius: 0.5em;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  z-index: 2;
+  
+ }
+
+ .streamers p span{
+  font-size: var(--fs-700);
+  text-align: center;
+  margin: 0 auto;
  }
 
 .streamers ion-icon {
   font-size: var(--fs-700);
-  z-index: 5; 
   --ionicon-stroke-width: 32px;
-  color: hsl(var(--clr-white));
+  color:hsl(var(--clr-white));
   text-align: center;
   vertical-align: middle;
 }
 
 .streamers a:hover::after {
-  transform: translate(-50%, -0%) scale(1);
+  transform: translate(-0%, -0%) scale(4); /* Adjusted translate values */
   opacity: 1;
-  background-color: hsl(var(--clr-accent));
+  background: hsl(var(--clr-span));
   z-index: 1;
-  animation: pulse 1000ms ease-in-out infinite; /* Apply pulsing animation */
+  animation: pulse 500ms ease-in-out infinite; /* Apply pulsing animation */
 }
 
 .streamers a::before,
@@ -587,25 +595,31 @@ ul {
   opacity: 0;
   content: "";
   position: absolute;
-  top: 0;
-  left: 15%;
-  width: 70%;
-  height: 70%;
-  transform: translate(-50%, -0%); /* Center the pseudo-elements */
+  top: 38%; /* Center vertically */
+  left: 0%; /* Center horizontally */
+  width: 60%;
+  height: 100%;
+  transform: translate(-50%, -50%); /* Center the pseudo-elements */
   border-radius: 50%;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(2);
+    transform: scale(4);
     opacity: 0.75;
   }
   100% {
-    transform: scale(2); /* Reduced scale for smaller pulsing */
+    transform: scale(4); /* Reduced scale for smaller pulsing */
     opacity: 0;
   }
 }
 
+@container (max-width: 500px) {
+  .logo {
+    display: none
+   
+  }
+}
 
 .hello {
   display: flex;
@@ -675,21 +689,13 @@ ul {
   }
 }
 
+
+
+
+
 /* --------------------------------------- */
 /* --------- Container Query Intro  ------ */
 /* --------------------------------------- */
-@container (max-width: 500px) {
-  .intro {
-    padding-inline: var(--space-2xl);
-    font-size: var(--fs-200);
-  }
-  .streamers {
-    margin-top: var(--space-xl);
-    display: block;
-    text-align: center;
-    position: relative; /* Ensure the container is positioned relative */
-  }
-}
 
 /* --------------------------------------- */
 /* ---------- End of Intro Home ---------- */
@@ -698,6 +704,35 @@ ul {
 /* --------------------------------------- */
 /* ------ Page Specific -- Profile ------- */
 /* --------------------------------------- */
+
+.profile {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  transition: 300ms ease-in-out;
+  overflow: hidden;
+}
+
+.profile > *:not(.sidebar) {
+  container-type: inline-size;
+  width: 100%;
+  margin-inline: 0 auto;
+}
+
+.profile::before {
+  content: '';
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  background:
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 45px) 50% 50% / 45px 45px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 45px) 50% 50% / 45px 45px;
+  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
+}
 
 [data-theme='light'] {
   color-scheme: light only;
@@ -708,84 +743,40 @@ ul {
 }
 
 @layer base {
-  html {
-    color-scheme: dark only;
-  }
-
   [data-theme='light'] {
     color-scheme: light only;
   }
 
-}
+  #main {
+    display: flex;
+    min-height: 100dvh;
+    width: 100%;
+    overflow: hidden;
+    transition: 300ms ease-in-out;
+  }
 
-.genesis {
-  min-height: 100dvh;
-  overflow: hidden;
-}
-
-.genesis >* {
-  container-type: inline-size;
-  max-inline-size: 100%;
-}
-
-.genesis::before {
-  content: '';
-  min-height: 100svh;
-  width: 100%;
-  position: fixed;
-  background:
-    linear-gradient(90deg,
-      color-mix(in hsl, canvasText, transparent 70%) 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px,
-    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 30px) 50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
-}
-
-
-.genesis-main {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    max-inline-size: 80%;
-    margin-inline: auto;
-    gap: var(--space-2xl);
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
     justify-content: center;
-    align-content: center;
-   }
+    align-items: center;
+    margin-inline: 0 auto;
+    gap: var(--space-5xl);
+    font-family: var(--ff-serif);
+    font-size: var(--fs-400);
+    text-align: left;
+  }
 
-  .genesis-main img {
+  .profile img {
     max-width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
     object-position: center;
-    border-radius: 100%;
-    justify-content: center;
-    align-content: center;
-    margin:var(--space-3xl);
+    border-radius: 50%;
   }
 
-  .genesis-content{
-    display: grid;
-    gap: var(--space-m);
-    justify-content: center;
-    align-content: center;
-  }
-
-  .row {
-    justify-content: center;
-    align-content: center;
-    max-width:60ch;
-    margin-inline: 0 auto;
-  }
-
-.row p{
-  font-size: var(--fs-300);
-  line-height: 1.2;
-  margin-block: 0.5em;
-}
-   #sidebar {
+  #sidebar {
     box-sizing: border-box;
     height: 100vh;
     width: 250px;
@@ -800,7 +791,7 @@ ul {
     overflow: hidden;
     text-wrap: nowrap;
   }
-
+}
 
 /* --------------------------------------- */
 /* --- Page Specific -- Intro-Welcome ---- */
@@ -887,8 +878,72 @@ ul {
   }
 }
 
+.profile>*::not .sidebar {
+  container-type: inline-size;
+  width: 100%;
+  margin-inline: 0 auto;
+}
 
+.profile::before {
+  content: '';
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  background:
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 45px) 50% 50% / 45px 45px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 45px) 50% 50% / 45px 45px;
+  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
+}
 
+[data-theme='light'] {
+  color-scheme: light only;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark only;
+}
+
+@layer base {
+  html {
+    color-scheme: dark only;
+  }
+
+  [data-theme='light'] {
+    color-scheme: light only;
+  }
+
+  #main {
+    display: flex;
+    min-height: 100dvh;
+    width: 100%;
+    overflow: hidden;
+    transition: 300ms ease-in-out;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+    justify-content: center;
+    align-items: center;
+    margin-inline: 0 auto;
+    gap: var(--space-5xl);
+    font-family: var(--ff-serif);
+    font-size: var(--fs-400);
+    text-align: left;
+  }
+
+  .profile img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
 
 #sidebar .sub-menu.show {
     grid-template-rows: 1fr;
@@ -922,7 +977,7 @@ ul {
   #toggle-btn:hover {
     background-color: var(--hover-clr);
   }
-
+}
 
 /* --------------------------------------- */
 /* --------- End of Profile Page --------- */
