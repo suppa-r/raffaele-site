@@ -108,6 +108,7 @@ html, body {
   min-height: 100svh;
   overflow: clip;
   background-color:hsl(var(--clr-dark));
+  color: hsl(var(--clr-white));
 }
 
 /* --------------------------------------- */
@@ -242,8 +243,7 @@ a{
 .index {
   min-height: 100vh;
   background:hsl(var(--clr-dark));
-  color:hsl(var(--clr-accent));
-  font-family: var(--ff-Kanit);
+  color: hsl(var(--clr-white));
   overflow: clip;
 }
 
@@ -254,21 +254,21 @@ a{
 .title {
   display: block;
   font-size: var(--fs-300);
-  color:hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
-  letter-spacing: 10px;
+  letter-spacing: 7px;
 }
 
 .author {
   display: block;
   font-size: var(--fs-200);
-  color:hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
-  letter-spacing: 10px;
+  letter-spacing: 7px;
 }
 
 .container {
@@ -284,9 +284,9 @@ a{
 
 .text-with-animation {
   font-size: var(--fs-600);
+  color: hsl(var(--clr-white));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 400;
-  color: hsl(var(--clr-accent));
   text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
   width: 500vw;
@@ -295,9 +295,10 @@ a{
 
 .subtext-with-animation {
   font-size: var(--fs-800);
-  color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
+  animation: main-text-animation 1.7s ease-in-out forwards;
   font-weight: 400;
   width: 500vw;
   margin-left: -200vw;
@@ -318,10 +319,11 @@ a{
 
 .subtext-with-animation-1 {
   font-size: var(--fs-600);
+  color: hsl(var(--clr-white));
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 400;
-  color:hsl(var(--clr-accent));
+  animation: main-text-animation 1.7s ease-in-out forwards;
   letter-spacing: 3px;
   width: 500vw;
   margin-left: -200vw;
