@@ -1,13 +1,12 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
 
 :root {
-/* --------------------------------------- */
-/* ------------ Custom Colors ------------ */
-/* --------------------------------------- */
+  /* --------------------------------------- */
+  /* ------------ Custom Colors ------------ */
+  /* --------------------------------------- */
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -18,9 +17,9 @@
   --br: 0.5em;
   --transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
 
-/* --------------------------------------- */
-/* ----------- Custom Margins ------------ */
-/* --------------------------------------- */
+  /* --------------------------------------- */
+  /* ----------- Custom Margins ------------ */
+  /* --------------------------------------- */
 
   /* Space xs: 12px → 15px */
   --padding-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
@@ -55,13 +54,13 @@
 /* For browsers that support clamp and container queries */
 @supports (font-size: clamp(1rem, 1cqi, 1rem)) {
   :root {
-		--fs-200: clamp(0.8rem, 0.17cqi + 0.76rem, 0.89rem);
-		--fs-300: clamp(1rem, 0.34cqi + 0.91rem, 1.19rem);
-		--fs-400: clamp(1.25rem, 0.61cqi + 1.1rem, 1.58rem);
-		--fs-500: clamp(1.56rem, 1cqi + 1.31rem, 2.11rem);
-		--fs-600: clamp(1.95rem, 1.56cqi + 1.56rem, 2.81rem);
-		--fs-700: clamp(2.44rem, 2.38cqi + 1.85rem, 3.75rem);
-		--fs-800: clamp(3.05rem, 3.54cqi + 2.17rem, 5rem);
+    --fs-200: clamp(0.8rem, 0.17cqi + 0.76rem, 0.89rem);
+    --fs-300: clamp(1rem, 0.34cqi + 0.91rem, 1.19rem);
+    --fs-400: clamp(1.25rem, 0.61cqi + 1.1rem, 1.58rem);
+    --fs-500: clamp(1.56rem, 1cqi + 1.31rem, 2.11rem);
+    --fs-600: clamp(1.95rem, 1.56cqi + 1.56rem, 2.81rem);
+    --fs-700: clamp(2.44rem, 2.38cqi + 1.85rem, 3.75rem);
+    --fs-800: clamp(3.05rem, 3.54cqi + 2.17rem, 5rem);
   }
 }
 
@@ -69,27 +68,27 @@
 /* For browsers that don't support clamp or container queries */
 @supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
   :root {
-		--fs-200: 0.8rem;
-		--fs-300: 1rem;
-		--fs-400: 1.25rem;
-		--fs-500: 1.56rem;
-		--fs-600: 1.95rem;
-		--fs-700: 2.44rem;
-		--fs-800: 3.05rem;
+    --fs-200: 0.8rem;
+    --fs-300: 1rem;
+    --fs-400: 1.25rem;
+    --fs-500: 1.56rem;
+    --fs-600: 1.95rem;
+    --fs-700: 2.44rem;
+    --fs-800: 3.05rem;
   }
 }
 
-  @media screen and (min-width: 1280px) {
-    :root {
-			--fs-200: 0.89rem;
-			--fs-300: 1.19rem;
-			--fs-400: 1.58rem;
-			--fs-500: 2.11rem;
-			--fs-600: 2.81rem;
-			--fs-700: 3.75rem;
-			--fs-800: 5rem;
-    }
+@media screen and (min-width: 1280px) {
+  :root {
+    --fs-200: 0.89rem;
+    --fs-300: 1.19rem;
+    --fs-400: 1.58rem;
+    --fs-500: 2.11rem;
+    --fs-600: 2.81rem;
+    --fs-700: 3.75rem;
+    --fs-800: 5rem;
   }
+}
 
 
 
@@ -109,11 +108,14 @@
 /* ---------------- Set Body ------------- */
 /* --------------------------------------- */
 
-html, body, main {
-  font-family: 'Kanit', sans-serif;
+html,
+body,
+main {
+  font-family:'big shoulders inline', sans-serif;
+  font-weight: 100;
   min-height: 100svh;
   overflow: clip;
-  background-color:hsl(var(--clr-dark));
+  background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
 }
 
@@ -123,19 +125,17 @@ html, body, main {
 
 h1,
 h2,
-h3
- {
-  font-family: 'Kanit', sans-serif;
-  font-weight: 400;
+h3 {
+  margin-block: 0;
+  margin-inline: 0;
   word-wrap: balance;
   overflow-wrap: break-word;
   line-height: 1.3;
 }
 
 p {
-  font-family: 'Kanit', sans-serif;
-  font-weight: 100;
-  margin-block: 0.3em;
+  margin-block: 0.5em;
+  margin-inline: 0;
   word-wrap: balance;
   overflow-wrap: break-word;
   line-height: 1.1;
@@ -159,7 +159,7 @@ select {
   font: inherit;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -249,12 +249,12 @@ a{
 
 .index {
   min-height: 100vh;
-  background:hsl(var(--clr-dark));
+  background: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
   overflow: clip;
 }
 
-.index >*{
+.index>* {
   container-type: inline-size;
 }
 
@@ -262,8 +262,7 @@ a{
   display: block;
   font-size: var(--fs-300);
   color: hsl(var(--clr-white));
-  font-family: "Big Shoulders Inline", sans-serif;
-  font-weight: 100;
+  margin-block: 0.4em;
   text-align: center;
   letter-spacing: 0.2em;
 }
@@ -272,69 +271,58 @@ a{
   display: block;
   font-size: var(--fs-200);
   color: hsl(var(--clr-white));
-  font-family: "Big Shoulders Inline", sans-serif;
-  font-weight: 100;
+  margin-block: 0.4em;
   text-align: center;
   letter-spacing: 0.2em;
-  }
+}
 
 .container {
-  font-family: "Big Shoulders Inline", sans-serif;
-  color: hsl(var(--clr-white));
-  font-weight: 100;
   text-align: center;
-  padding-top: var(--padding-8xl);
-  letter-spacing: var(--padding-s);
+  padding-top: var(--padding-5xl);
+  letter-spacing: var(--padding-xs);
 }
 
 .container a {
   text-decoration: none;
   color: inherit;
- }
+}
 
 .text-with-animation {
   font-size: var(--fs-500);
-  animation: main-text-animation 0.8s ease backwards;
-  transition: var(--transition);
+  animation: main-text-animation 0.5s ease-in-out forwards;
   width: 500vw;
   margin-left: -200vw;
 }
 
 .subtext-with-animation {
   font-size: var(--fs-600);
-  animation: main-text-animation 0.8s ease backwards;
-  transition: var(--transition);
-  /*animation: main-text-animation 0.8s ease-out, forwards infinite;*/
-  font-weight: 400;
+  animation: main-text-animation 1s ease-in-out forwards;
   width: 500vw;
   margin-left: -200vw;
 }
 
 .subtext-with-animation-1 {
   font-size: var(--fs-500);
-  animation: main-text-animation 0.8s ease backwards;
-  transition: var(--transition);
+  animation: main-text-animation 1.2s ease-in-out forwards;
   width: 500vw;
   margin-left: -200vw;
- }
+}
 
 @keyframes main-text-animation {
   0% {
     letter-spacing: var(--padding-xs);
     word-spacing: var(--padding-s);
     opacity: 0;
-    transform: translateY(0px);
-    transform: translateX(0px);
-   }
+    transform: translateY(-200px);
+  }
+
   100% {
     letter-spacing: var(--padding-xs);
     word-spacing: var(--padding-s);
     opacity: 1;
-    transform: translateY(200px);
-    }
+    transform: translateY(300px);
+  }
 }
-
-
 
 
 
