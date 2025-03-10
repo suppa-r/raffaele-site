@@ -13,22 +13,55 @@
 }
 
 body{
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
+ 
   background-color: var(--base-clr);
   color: var(--text-clr);
   display: grid;
   grid-template-columns: auto 1fr;
+  overflow: hidden;
+}
+
+[data-theme='light'] {
+  color-scheme: light only;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark only;
+}
+
+@layer base {
+  html {
+    color-scheme: dark only;
+  }
+
+  [data-theme='light'] {
+    color-scheme: light only;
+  }
+
+}
+
+body::before {
+  content: '';
+  min-height: 100svh;
+  width: 100%;
+  position: fixed;
+  background:
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 30px) 50% 50% / 30px 30px;
+  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
 #sidebar{
   box-sizing: border-box;
   height: 100vh;
-  width: 250px;
+  width: 200px;
   padding: 5px 1em;
   background-color: var(--base-clr);
-  border-right: 1px solid var(--line-clr);
-
   position: sticky;
   top: 0;
   align-self: start;
@@ -37,7 +70,7 @@ body{
   text-wrap: nowrap;
 }
 #sidebar.close{
-  padding: 5px;
+  padding: 7px;
   width: 60px;
 }
 #sidebar ul{
@@ -134,6 +167,7 @@ main >*{
  }
 
 .container{
+  min-height: 100svh;
   max-inline-size: 900px;
 
   display: grid;
