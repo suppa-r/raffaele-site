@@ -25,29 +25,29 @@
   /* --------------------------------------- */
 
   /* Space xs: 12px → 15px */
-  --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
+  --padding-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
   /* Space s: 16px → 20px */
-  --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+  --padding-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
   /* Space m: 24px → 30px */
-  --space-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
+  --padding-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
   /* Space l: 32px → 40px */
-  --space-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
+  --padding-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
   /* Space xl: 48px → 60px */
-  --space-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
+  --padding-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
   /* Space 2xl: 64px → 80px */
-  --space-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
+  --padding-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
   /* Space 3xl: 96px → 120px */
-  --space-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
+  --padding-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
   /* Space 4xl: 112px → 140px */
-  --space-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
+  --padding-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
   /* Space 5xl: 128px → 160px */
-  --space-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
+  --padding-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
   /* Space 6xl: 144px → 180px */
-  --space-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
+  --padding-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
   /* Space 7xl: 160px → 200px */
-  --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
+  --padding-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
   /* Space 8xl: 192px → 240px */
-  --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
+  --padding-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
 }
  /* --------------------------------------- */
  /* ---------- Custom Font Sizes ---------- */
@@ -65,6 +65,7 @@
 		--fs-800: clamp(3.05rem, 3.54cqi + 2.17rem, 5rem);
   }
 }
+
 /* For browsers that don't support clamp or container queries */
 @supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
   :root {
@@ -93,6 +94,7 @@
 /* --------------------------------------- */
 /* ----------------- Reset --------------- */
 /* --------------------------------------- */
+
 *,
 *::before,
 *::after {
@@ -104,7 +106,9 @@
 /* --------------------------------------- */
 /* ---------------- Set Body ------------- */
 /* --------------------------------------- */
-html, body {
+
+html, body, main {
+  font-family: 'Kanit', sans-serif;
   min-height: 100svh;
   overflow: clip;
   background-color:hsl(var(--clr-dark));
@@ -114,29 +118,21 @@ html, body {
 /* --------------------------------------- */
 /* -------------- Reset Margins----------- */
 /* --------------------------------------- */
-html,
-body,
-main,
-h1,
-h2,
-h3,
-p
-{
- margin: 0;
- padding: 0;
-}
 
 h1,
 h2,
-h3,
-p {
+h3
+ {
   word-wrap: balance;
   overflow-wrap: break-word;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 p {
   margin-block: 0.3em;
+  word-wrap: balance;
+  overflow-wrap: break-word;
+  line-height: 1.1;
 }
 
 /* Set core root defaults */
@@ -240,6 +236,11 @@ a{
   color: hsl(var(--clr-accent));
 }
 
+
+/* --------------------------------------- */
+/* ----------- Custom Margins ------------ */
+/* --------------------------------------- */
+
 .index {
   min-height: 100vh;
   background:hsl(var(--clr-dark));
@@ -258,7 +259,7 @@ a{
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
-  letter-spacing: 7px;
+  letter-spacing: 0.3em;
 }
 
 .author {
@@ -268,37 +269,41 @@ a{
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
-  letter-spacing: 7px;
-}
+  letter-spacing: 0.3em;
+  }
 
 .container {
+  justify-content: center;
+  align-content: center;
   min-height: 100svh;
-  margin-top:var(--space-8xl);
-  margin-inline: auto;
+  margin-inline:auto;
  }
 
 .container a {
   text-decoration: none;
   color: inherit;
-}
+  margin-inline:auto;
+ }
 
 .text-with-animation {
-  font-size: var(--fs-600);
+  font-size: var(--fs-500);
   color: hsl(var(--clr-white));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 400;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 0.8s ease-out, forwards;
+  letter-spacing:var(--padding-s);
   width: 500vw;
   margin-left: -200vw;
 }
 
 .subtext-with-animation {
-  font-size: var(--fs-800);
+  font-size: var(--fs-600);
   color: hsl(var(--clr-white));
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 0.8s ease-out, forwards;
+  letter-spacing:var(--padding-s);
   font-weight: 400;
   width: 500vw;
   margin-left: -200vw;
@@ -307,73 +312,91 @@ a{
 
 .subtext-with-animation span:first-of-type {
   position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.5s forwards;
+  opacity: 1;
+  animation: main-text-animation 0.8s ease-out, forwards;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
   position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.7s forwards;
+  opacity: 1;
+  animation: main-text-animation 0.8s ease-out, forwards;
 }
 
 .subtext-with-animation-1 {
-  font-size: var(--fs-600);
+  font-size: var(--fs-500);
   color: hsl(var(--clr-white));
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 400;
-  animation: main-text-animation 1.7s ease-in-out forwards;
-  letter-spacing: 3px;
+  animation: main-text-animation 0.8s ease-out, forwards;
+  letter-spacing:var(--padding-s);
   width: 500vw;
   margin-left: -200vw;
  }
 
 .subtext-with-animation-1 span:first-of-type {
   position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.5s forwards;
+  opacity: 1;
+  animation: main-text-animation 0.8s ease-out, forwards;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
   position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.7s forwards;
+  opacity: 1;
+  animation: main-text-animation 0.8s ease-out, forwards;
 }
-
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 30vw;
-    word-spacing: 100vw;
+    letter-spacing: var(--padding-l);
+    word-spacing: var(--padding-l);
     opacity: 0;
-  }
-
+    transform: translateY(0px);
+   }
   100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
+    letter-spacing: var(--padding-l);
+    word-spacing: var(--padding-l);
     opacity: 1;
-  }
+    transform: translateY(400px);
+   }
 }
 
-@keyframes word-animation {
-  0% {
-    top: 10vw;
-    opacity: 0;
-  }
+@keyframes word-animation
+       { 
+        0% 
+        { top: var(--padding-xl); 
+          opacity: 0;
+         }
+          100% 
+          { 
+            top:var(--padding-xl); 
+            opacity: 1;
+           } 
+          }
 
-  100% {
-    top: 3.5vw;
-    opacity: 1;
-  }
+
+
+
+@container (max-width:600px){
+ .index{
+   letter-spacing: var(--padding-xs);
+   padding-inline: var(--padding-4xl);
+   font-size: var(--fs-400);
+   }
 }
 
 
-@container (max-width:500px){
+
+
+
+
+
+
+
+/*@container (max-width:500px){
  .index{
    padding-inline: var(--space-4xl);
-   
- }
+   }
 }
 
 

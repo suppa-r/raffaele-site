@@ -24,38 +24,36 @@
   --transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
 
 
-  
-
-
   /* --------------------------------------- */
   /* ----------- Custom Margins ------------ */
   /* --------------------------------------- */
 
   /* Space xs: 12px → 15px */
-  --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
+  --padding-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
   /* Space s: 16px → 20px */
-  --space-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+  --padding-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
   /* Space m: 24px → 30px */
-  --space-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
+  --padding-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
   /* Space l: 32px → 40px */
-  --space-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
+  --padding-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
   /* Space xl: 48px → 60px */
-  --space-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
+  --padding-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
   /* Space 2xl: 64px → 80px */
-  --space-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
+  --padding-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
   /* Space 3xl: 96px → 120px */
-  --space-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
+  --padding-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
   /* Space 4xl: 112px → 140px */
-  --space-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
+  --padding-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
   /* Space 5xl: 128px → 160px */
-  --space-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
+  --padding-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
   /* Space 6xl: 144px → 180px */
-  --space-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
+  --padding-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
   /* Space 7xl: 160px → 200px */
-  --space-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
+  --padding-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
   /* Space 8xl: 192px → 240px */
-  --space-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
+  --padding-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
 }
+
  /* --------------------------------------- */
  /* ---------- Custom Font Sizes ---------- */
  /* --------------------------------------- */
