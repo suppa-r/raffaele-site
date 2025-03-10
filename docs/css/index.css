@@ -291,7 +291,7 @@ a{
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 400;
   text-align: center;
-  animation: main-text-animation 0.8s ease-out, forwards;
+  animation: main-text-animation 0.8s ease forwards;
   letter-spacing:var(--padding-s);
   width: 500vw;
   margin-left: -200vw;
@@ -302,7 +302,8 @@ a{
   color: hsl(var(--clr-white));
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
-  animation: main-text-animation 0.8s ease-out, forwards;
+  animation: main-text-animation 0.8s ease forwards;
+  /*animation: main-text-animation 0.8s ease-out, forwards infinite;*/
   letter-spacing:var(--padding-s);
   font-weight: 400;
   width: 500vw;
@@ -313,13 +314,13 @@ a{
 .subtext-with-animation span:first-of-type {
   position: relative;
   opacity: 1;
-  animation: main-text-animation 0.8s ease-out, forwards;
+  animation: main-text-animation 0.8s ease forwards;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
   position: relative;
   opacity: 1;
-  animation: main-text-animation 0.8s ease-out, forwards;
+  animation: main-text-animation 0.8s ease forwards;
 }
 
 .subtext-with-animation-1 {
@@ -328,8 +329,7 @@ a{
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 400;
-  animation: main-text-animation 0.8s ease-out, forwards;
-  letter-spacing:var(--padding-s);
+  animation: main-text-animation 0.8s ease forwards;
   width: 500vw;
   margin-left: -200vw;
  }
@@ -337,39 +337,42 @@ a{
 .subtext-with-animation-1 span:first-of-type {
   position: relative;
   opacity: 1;
-  animation: main-text-animation 0.8s ease-out, forwards;
+  animation: main-text-animation 0.8s ease forwards;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
   position: relative;
   opacity: 1;
-  animation: main-text-animation 0.8s ease-out, forwards;
+  animation: main-text-animation 0.8s ease forwards;
 }
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: var(--padding-l);
-    word-spacing: var(--padding-l);
+    letter-spacing: var(--padding-xs);
+    word-spacing: var(--padding-s);
     opacity: 0;
     transform: translateY(0px);
    }
   100% {
-    letter-spacing: var(--padding-l);
-    word-spacing: var(--padding-l);
+    
+    letter-spacing: var(--padding-xs);
+    word-spacing: var(--padding-s);
     opacity: 1;
-    transform: translateY(400px);
+    transform: translateY(-200px);
    }
 }
 
 @keyframes word-animation
+
        { 
         0% 
-        { top: var(--padding-xl); 
+        { 
+          top: var(--padding-l); 
           opacity: 0;
          }
           100% 
           { 
-            top:var(--padding-xl); 
+            top:var(--padding-2xl); 
             opacity: 1;
            } 
           }
