@@ -320,7 +320,7 @@ a {
     letter-spacing: var(--padding-xs);
     word-spacing: var(--padding-s);
     opacity: 1;
-    transform: translateY(300px);
+    transform: translateY(0px);
   }
 }
 

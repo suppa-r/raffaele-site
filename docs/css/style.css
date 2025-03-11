@@ -380,6 +380,9 @@ a{
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background:transparent;
   color: hsl(var(--clr-white));
   padding: 0.5rem;
@@ -622,14 +625,16 @@ ul {
 .streamers {
   display: flex;
   flex-direction:column;
-  gap: 1rem;
-  padding: 1rem;
+  padding:0 var(--padding-l);
   justify-content: center;
   align-content: center;
   }
 
 
 .streamers a {
+  
+  width:50%;
+  height:50%;
   font-size: var(--fs-400);
   text-decoration: none;
   color: hsl(var(--clr-white));
