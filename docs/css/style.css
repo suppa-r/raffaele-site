@@ -605,12 +605,12 @@ html {
   margin: 0 auto;
 }
 
-.streamers {
+/*.streamers {
   margin-inline: auto;
   text-align: center;
   padding: var(--padding-l);
-  position: relative; /* Ensure the container is positioned */
-  z-index: 1; /* Ensure the container is on top */
+  position: relative; /* Ensure the container is positioned *
+  z-index: 1; /* Ensure the container is on top *
 }
 .streamers span {
   font-size: var(--fs-600);
@@ -618,30 +618,29 @@ html {
   font-family:'Big Shoulders Inline', sans-serif;
   font-weight: 100;
   padding: 0 1rem;
-}
+}*/
 
  a {
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: var(--fs-400);
   font-family: 'Big Shoulders Inline', sans-serif;
   font-weight: 100;
   color: hsl(var(--clr-white));
-  position: relative; /* Ensure the links are positioned */
-  display:flex; /* Ensure the links are displayed correctly */
-  flex-direction: column;
-  align-items: center;
-  padding:var(--padding-s); /* Add padding for better clickability */
-}
+  padding: 0 1rem;
+  text-decoration: none;
+  margin: 0 auto;
 
-a span{
+  >span{
   font-size: var(--fs-700);
   color: hsl(var(--clr-span));
   font-family: 'Big Shoulders Inline', sans-serif;
   font-weight: 100;
-  padding: 0 1rem;
-}
+ }
 
-ion-icon {
+>ion-icon {
   font-size: var(--fs-800);
   z-index: 5; 
   --ionicon-stroke-width: 32px;
@@ -649,6 +648,13 @@ ion-icon {
   text-align: center;
   vertical-align: middle;
 }
+  
+}
+
+
+
+
+
 
 
 @container (max-width: 600px) {
