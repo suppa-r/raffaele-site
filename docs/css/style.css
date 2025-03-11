@@ -352,7 +352,7 @@ img {
 /* --------------- Navigation ------------ */
 /* --------------------------------------- */
 
-header {
+/*header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -366,7 +366,7 @@ header::after {
   content: "";
   clear: both;
   display: block;
-}
+}*/
 
 .logo {
   font-family:'Big Shoulders Inline', sans-serif;
@@ -563,10 +563,11 @@ html {
     color-scheme: light only;
   }
 }
-.intro-content >*{
+.intro-content > *{
   container-type: inline-size;
   width: 100%;
   margin-inline: 0 auto;
+  padding-inline: 0 auto;
   text-align: center;
 }
 
@@ -585,11 +586,6 @@ html {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
-.intro-content {
-  margin-inline: auto;
-  place-items: center;
-  min-height: 100%;
-}
 
 .intro-content img {
   width: 100px; /* Set the width to 100px */
@@ -646,14 +642,31 @@ html {
 
 
 @container(max-width: 600px) {
-  .intro {
-    grid-template-rows: 3rem 1fr;
-  }
-
-.logo {
+  .logo {
     display: none
    }
+  .intro-content img {
+    width: 50px; /* Set the width to 100px */
+    height: 35px; /* Set the height to 100px */
+  }
+
+  .intro-content p span {
+    font-size: var(--fs-300);
+  }
+
+  .intro-content a {
+    font-size: var(--fs-300);
+  }
+
+  .intro-content a > span {
+    font-size: var(--fs-600);
+  }
+
+  .intro-content ion-icon {
+    font-size: var(--fs-600);
+  }
 }
+
 
 /* --------------------------------------- */
 /* ---------- End of Intro Home ---------- */
