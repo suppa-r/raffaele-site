@@ -540,9 +540,7 @@ ul {
 
 .intro>* {
   container-type: inline-size;
-  max-inline-size: 100%;
- 
-}
+ }
 
 html {
   color-scheme: dark only;
@@ -678,10 +676,26 @@ html {
 }
 
 @container (max-width: 500px) {
+  .intro{
+    grid-template-rows: 3rem 1fr;
+  }
+  .intro-content p span {
+    font-size: var(--fs-300);
+  }
+  .streamers {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-300);
+  }
+  .streamers a {
+    padding: 0.5em;
+  }
+  .streamers p span {
+    font-size: var(--fs-700);
+  }
   .logo {
     display: none
-   
-  }
+   }
 }
 
 /* --------------------------------------- */
