@@ -618,7 +618,6 @@ html {
   text-align: center;
   transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
   position: relative;
-  z-index: 2;
   margin: 0 auto;
   padding: 0.5em;
 }
