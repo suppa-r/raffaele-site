@@ -627,12 +627,21 @@ html {
   font-weight: 100;
   color: hsl(var(--clr-white));
   position: relative; /* Ensure the links are positioned */
-  z-index: 2; /* Ensure the links are on top */
-  display: inline-block; /* Ensure the links are displayed correctly */
+  display:flex; /* Ensure the links are displayed correctly */
+  flex-direction: column;
+  align-items: center;
   padding:var(--padding-s); /* Add padding for better clickability */
 }
 
-.streamers ion-icon {
+a span{
+  font-size: var(--fs-700);
+  color: hsl(var(--clr-span));
+  font-family: 'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  padding: 0 1rem;
+}
+
+ion-icon {
   font-size: var(--fs-800);
   z-index: 5; 
   --ionicon-stroke-width: 32px;
