@@ -620,7 +620,7 @@ html {
   padding: 0 1rem;
 }
 
-.streamers a {
+ a {
   text-decoration: none;
   font-size: var(--fs-400);
   font-family: 'Big Shoulders Inline', sans-serif;
