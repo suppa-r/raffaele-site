@@ -604,77 +604,67 @@ html {
 }
 
 .streamers {
-  display:flex;
-  flex-direction:row;
-  font-size: var(--fs-300);
-}
-
-.streamers a{
-  height: auto;
-  width: auto;
-  padding: 0.5em;
-  text-decoration: none;
-  color: hsl(var(--clr-white));
-  border-radius: var(--br);
-  text-align: center;
-  transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
- }
-
-.streamers a:hover {
-  transform: scale(1.1);
-  opacity: .75;
-}
-
-.streamers p span {
-  font-size: var(--fs-600);
+  display: block;
   text-align: center;
   margin-inline:0 auto;
-  z-index: 3; /* Ensure text is on top */
+  position: relative; /* Ensure the container is positioned relative */
 }
+
+.streamers p {
+  font-size: var(--fs-300);
+  font-family:var(--ff-Kanit);
+  color: hsl(var(--clr-white));
+  text-align: center;
+  margin: 0 auto;
+}
+
+.streamers a {
+  color:hsl(var(--clr-white));
+  text-decoration: none;
+  touch-action: manipulation;
+ }
 
 .streamers ion-icon {
   font-size: var(--fs-600);
+  z-index: 5; 
   --ionicon-stroke-width: 32px;
-  color: hsl(var(--clr-white));
+  color:hsl(var(--clr-white));
   text-align: center;
   vertical-align: middle;
-  margin: 0 auto;
-  padding: 0.5em;
 }
 
-/*.streamers a:hover::after {
-  content: "";
-  position: absolute;
-  transform: translate(-50%, -50%) scale(2); /* Adjusted translate values *
+.streamers a:hover::after {
+  transform: translate(-0%, -0%) scale(1);
   opacity: 1;
   background: hsl(var(--clr-span));
   z-index: 1;
-  animation: pulse 500ms ease-in-out infinite; /* Apply pulsing animation *
+  animation: pulse 500ms ease-in-out infinite; /* Apply pulsing animation */
 }
 
-/*.streamers a::before,
+.streamers a::before,
 .streamers a::after {
   opacity: 0;
   content: "";
-  position: absolute; /* Changed to absolute *
-  top: 0%; /* Center vertically *
-  left: 0%; /* Center horizontally *
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 40%;
+  width: 20%;
   height: 100%;
-  transform: translate(-50%, -50%); /* Center the pseudo-elements *
+  transform: translate(-0%, -0%); /* Center the pseudo-elements */
   border-radius: 50%;
-}*/
+}
 
 @keyframes pulse {
   0% {
-    transform: scale(2);
+    transform: scale(1);
     opacity: 0.75;
   }
   100% {
-    transform: scale(2); /* Reduced scale for smaller pulsing */
+    transform: scale(1); /* Reduced scale for smaller pulsing */
     opacity: 0;
   }
 }
+
 
 @container (max-width: 600px) {
 
