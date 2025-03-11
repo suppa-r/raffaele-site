@@ -589,7 +589,7 @@ html {
 .intro-content p span {
   font-size: var(--fs-400);
   color: hsl(var(--clr-span));
-  letter-spacing:0.05em;
+  letter-spacing:0.1em;
   font-weight: 100;
   font-family:'Big Shoulders Inline', sans-serif;
   padding-left: var(--padding-s);
