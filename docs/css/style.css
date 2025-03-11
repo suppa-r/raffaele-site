@@ -623,20 +623,18 @@ ul {
 }
 
 .streamers {
+text-align: center;
   display: flex;
-  flex-direction:column;
-  padding:0 var(--padding-l);
-  justify-content: center;
-  align-content: center;
-  }
+  flex-direction:row;
+ 
+}
 
 
 .streamers a {
-  
-  width:50%;
-  height:50%;
-  font-size: var(--fs-400);
+  display: inline-block;
+  padding: 1em;
   text-decoration: none;
+  font-size: var(--fs-400);
   color: hsl(var(--clr-white));
   position: relative;
   border-radius: 0.5em;
@@ -646,7 +644,7 @@ ul {
   
  }
 
- .streamers p span{
+ .streamers  span{
   font-size: var(--fs-700);
   text-align: center;
   margin: 0 auto;
