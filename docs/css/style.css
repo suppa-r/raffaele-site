@@ -106,8 +106,7 @@
 /* --------------------------------------- */
 
 html,
-body,
-main {
+body{
   font-family:'big shoulders inline', sans-serif;
   font-weight: 100;
   min-height: 100svh;
@@ -352,22 +351,6 @@ img {
 /* --------------- Navigation ------------ */
 /* --------------------------------------- */
 
-/*header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background:transparent;
-  color: hsl(var(--clr-white));
-  padding: 0.5rem;
-  position: relative;
-}
-
-header::after {
-  content: "";
-  clear: both;
-  display: block;
-}*/
-
 .logo {
   font-family:'Big Shoulders Inline', sans-serif;
   font-weight: 100;
@@ -525,6 +508,7 @@ ul {
      list-style: none;
   }
 }
+
 /* --------------------------------------- */
 /* ---------- End of Navigation ---------- */
 /* --------------------------------------- */
@@ -675,22 +659,36 @@ html {
 /* --------------------------------------- */
 /* ------ Page Specific -- Profile ------- */
 /* --------------------------------------- */
-
-.profile {
-  min-height: 100dvh;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  transition: 300ms ease-in-out;
-  overflow: hidden;
+html {
+  color-scheme: dark only;
 }
 
-.profile > *:not(.sidebar) {
+[data-theme='light'] {
+  color-scheme: light only;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark only;
+}
+
+@layer base {
+  html {
+    color-scheme: dark only;
+  }
+
+  [data-theme='light'] {
+    color-scheme: light only;
+  }
+}
+.profile-page > *{
   container-type: inline-size;
   width: 100%;
   margin-inline: 0 auto;
+  padding-inline: 0 auto;
+  text-align: center;
 }
 
-.profile::before {
+.profile-page::before {
   content: '';
   min-height: 100svh;
   width: 100%;
@@ -705,40 +703,14 @@ html {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
-[data-theme='light'] {
-  color-scheme: light only;
+.main{
+  display: grid;
+ 
 }
 
-[data-theme='dark'] {
-  color-scheme: dark only;
-}
 
-@layer base {
-  [data-theme='light'] {
-    color-scheme: light only;
-  }
 
-  #main {
-    display: flex;
-    min-height: 100dvh;
-    width: 100%;
-    overflow: hidden;
-    transition: 300ms ease-in-out;
-  }
-
-  .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
-    justify-content: center;
-    align-items: center;
-    margin-inline: 0 auto;
-    gap: var(--space-5xl);
-    font-family: var(--ff-serif);
-    font-size: var(--fs-400);
-    text-align: left;
-  }
-
-  .profile img {
+  .profile-page img {
     max-width: 100%;
     height: auto;
     display: block;
@@ -746,6 +718,10 @@ html {
     object-position: center;
     border-radius: 50%;
   }
+
+/* --------------------------------------- */
+/* ------- Page Specific -- SideBar ------ */
+/* --------------------------------------- */
 
   #sidebar {
     box-sizing: border-box;
@@ -762,12 +738,6 @@ html {
     overflow: hidden;
     text-wrap: nowrap;
   }
-}
-
-/* --------------------------------------- */
-/* ------- Page Specific -- SideBar ------ */
-/* --------------------------------------- */
-
 
 #sidebar.close {
   padding: 5px;
