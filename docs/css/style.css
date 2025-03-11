@@ -614,8 +614,6 @@ html {
 .streamers a{
   text-decoration: none;
   color: hsl(var(--clr-white));
-  background-color: hsla(var(--clr-span)/.5);
-  color: hsl(var(--clr-white));
   border-radius: var(--br);
   text-align: center;
   transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
@@ -623,6 +621,13 @@ html {
   z-index: 2;
   margin: 0 auto;
   padding: 0.5em;
+}
+
+.streamers a:hover {
+  transform: scale(1.1);
+  background-color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
+  opacity: .25;
 }
 
 .streamers p span {
