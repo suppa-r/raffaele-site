@@ -64,7 +64,6 @@
   }
 }
 
-
 /* For browsers that don't support clamp or container queries */
 @supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
   :root {
@@ -243,9 +242,7 @@ a {
 }
 
 
-/* --------------------------------------- */
-/* ----------- Custom Margins ------------ */
-/* --------------------------------------- */
+
 
 .index {
   min-height: 100vh;

@@ -326,7 +326,7 @@ html {
 
 }
 
-body::before {
+.intro::before {
   content: '';
   min-height: 100svh;
   width: 100%;

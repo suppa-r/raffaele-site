@@ -64,7 +64,6 @@
   }
 }
 
-
 /* For browsers that don't support clamp or container queries */
 @supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
   :root {
@@ -94,18 +93,18 @@
 /* ----------------- Reset --------------- */
 /* --------------------------------------- */
 
-/* Box sizing */
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  margin:0;
-  padding:0;
 }
 
 /* --------------------------------------- */
 /* ---------------- Set Body ------------- */
 /* --------------------------------------- */
+
 html,
 body,
 main {
@@ -115,43 +114,39 @@ main {
   overflow: clip;
   background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
-  line-height: 1.1;
 }
 
 /* --------------------------------------- */
-/* ---------------- Reset ---------------- */
+/* -------------- Reset Margins----------- */
 /* --------------------------------------- */
 
 h1,
 h2,
-h3
- {
-  font-family:'big shoulders inline', sans-serif;
-  font-weight: 100;
-  font-size: var(--fs-400);
-  text-wrap: balance;
+h3 {
+  margin-block: 0;
+  margin-inline: 0;
+  word-wrap: balance;
   overflow-wrap: break-word;
-  margin-block: 0.5em;
-  text-align: center;
-  line-height: 1.1;
-  margin-inline: auto;
+  line-height: 1.3;
 }
 
 p {
-  margin-block: 0.2em;
-  margin-inline: auto;
-  text-align: center;
-  font-size: var(--fs-300);
-  text-wrap: balance;
+  margin-block: 0.5em;
+  margin-inline: 0;
+  word-wrap: balance;
   overflow-wrap: break-word;
- }
+  line-height: 1.1;
+}
 
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
 
-
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
 
 /* make form elements easier to work with */
 input,
@@ -159,6 +154,19 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* remove animations for people who've turned them off */
@@ -172,7 +180,6 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-     
 }
 
 /* --------------------------------------- */
@@ -188,7 +195,6 @@ select {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  /* added line */
   border: 0;
 }
 
@@ -535,9 +541,6 @@ ul {
   overflow: clip;
 }
 
-.intro-content>* {
-  container-type: inline-size;
- }
 
 html {
   color-scheme: dark only;
@@ -559,7 +562,12 @@ html {
   [data-theme='light'] {
     color-scheme: light only;
   }
-
+}
+.intro-content >*{
+  container-type: inline-size;
+  width: 100%;
+  margin-inline: 0 auto;
+  text-align: center;
 }
 
 .intro::before {
@@ -583,6 +591,15 @@ html {
   min-height: 100%;
 }
 
+.intro-content img {
+  width: 100px; /* Set the width to 100px */
+  height: 70px; /* Set the height to 100px */
+  display: block;
+  margin: 0 auto; /* Center the image */
+  object-fit: cover; /* Ensure the image covers the specified dimensions */
+  object-position: center;
+}
+
 .intro-content p span {
   font-size: var(--fs-400);
   color: hsl(var(--clr-span));
@@ -592,15 +609,6 @@ html {
   padding-left: var(--padding-s);
 } 
 
-.intro-content img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-  margin: 0 auto;
-}
 
 .intro-content >a {
   font-size: var(--fs-400);
