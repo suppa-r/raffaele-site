@@ -164,11 +164,6 @@ select {
   font: inherit;
 }
 
-a{
-  text-decoration: none;
-  color: inherit;
-}
-
 /* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {
 
@@ -610,12 +605,12 @@ html {
   margin: 0 auto;
 }
 
-.streamers {
-  text-align: center;
-  z-index: 1;
+.streamers a{
+  text-decoration: none;
+  color: hsl(var(--clr-white));
 }
 
-.streamers a {
+.streamers{
   display:flex;
   flex-direction: column;
   font-size: var(--fs-300);
@@ -632,6 +627,7 @@ html {
   z-index: 2;
   align-items: center; /* Center text vertically */
   justify-content: center; /* Center text horizontally */
+  border-radius: var(--br);
 }
 
 .streamers p span {
