@@ -13,6 +13,8 @@ menuToggle.addEventListener('click', () => {
 function openMenu() {
   menuToggle.setAttribute('aria-expanded', "true");
   siteNavigation.setAttribute('data-state', "opened");
+  siteNavigation.style.display = "block"; // Show navigation
+  introContents.style.display = "none"; // Hide intro content
   main.style.display = "none"; // Hide main content
  
  

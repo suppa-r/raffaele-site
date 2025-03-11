@@ -429,7 +429,7 @@ html {
   color:hsl(var(--clr-span));
 
   svg{
-    fill: hsl(var(--clr-white));
+    fill: hsl(var(--clr-span));
   }
 }
 
@@ -452,7 +452,7 @@ html {
 }
 #sidebar svg{
   flex-shrink: 0;
-  fill: hsl(var(--clr-white));
+  fill: hsl(var(--clr-span));
 }
 #sidebar a span, #sidebar .dropdown-btn span{
   flex-grow: 1;
@@ -501,7 +501,7 @@ html {
 /* ------------- Media Query ------------- */
 /* --------------------------------------- */
 
-@media(max-width: 800px){
+@media(max-width: 600px){
 
   .profile-page {
     display: grid;

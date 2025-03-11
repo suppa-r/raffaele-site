@@ -16,6 +16,7 @@ function openMenu() {
   main.style.display = "none"; // Hide main content
  
  
+ 
 
 }
 

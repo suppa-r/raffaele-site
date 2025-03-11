@@ -351,22 +351,45 @@ img {
 /* --------------- Navigation ------------ */
 /* --------------------------------------- */
 
-.logo {
-  font-family:'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  background:transparent;
+  color: hsl(var(--clr-light));
+  padding: 0.5rem;
+  position: relative;
+}
+
+header h1 {
   font-size: var(--fs-300);
+  font-family:var(--ff-kanit);
+  color: hsl(var(--clr-accent));
+  margin: 0;
+  padding: 0;
+}
+
+header::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.logo {
+  font-family:var(--ff-kanit);
+  /*font-size: var(--fs-400);*/
+  color: hsl(var(--clr-accent));
   margin: 0;
   padding: 0 0 0 0.6em;
   }
 
 .logo span {
-  font-family:'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
-  font-size: var(--fs-400);
-  font-weight: 100;
-  font-style: normal;
+  font-family:var(--ff-kanit);
   color:hsl(var(--clr-span));
-  margin: 0 1em 0 0.3em;
+  margin: 0 0.5em 0 0.5em;
 }
 
 .primary-navigation {
@@ -409,16 +432,18 @@ img {
 }
 
 .site-nav a {
-  color:hsl(var(--clr-white));
+  color:hsl(var(--clr-span));
+  background: transparent;
   display: block;
   padding: 0.3rem 4rem 0 1.5rem;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
 .site-nav a:hover,
 .site-nav a:focus {
-  background:transparent;
-  color:hsl(var(--clr-white));
+  background: transparent;
+  color:transparent;
 }
 
 .site-nav--icon {
@@ -427,10 +452,11 @@ img {
   margin-right: 1em;
   width: 1.1em;
   text-align: right;
-  color:hsl(var(--clr-light));
+  color: rgba(255, 255, 255, 0.4);
 }
 
-.menu-toggle{
+
+.menu-toggle {
   padding: 1em;
   background: transparent;
   border: 0;
@@ -441,7 +467,7 @@ img {
 }
 
 .menu-toggle:focus-visible {
-  outline: 4px solid hsl(var(--clr-white));
+  outline: 4px solid hsl(var(--clr-span));
 }
 
 .hamburger,
@@ -449,7 +475,7 @@ img {
 .hamburger::after {
   content: "";
   display: block;
-  background: hsl(var(--clr-white));
+  background:hsl(var(--clr-white));
   height: 3px;
   width: 1.75em;
   border-radius: 3px;
@@ -508,11 +534,9 @@ ul {
      list-style: none;
   }
 }
-
 /* --------------------------------------- */
 /* ---------- End of Navigation ---------- */
 /* --------------------------------------- */
-
 
 /* --------------------------------------- */
 /* ------------- Intro Page -------------- */
@@ -708,15 +732,13 @@ html {
  
 }
 
-
-
-  .profile-page img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
+.profile-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
   }
 
 /* --------------------------------------- */
@@ -724,19 +746,19 @@ html {
 /* --------------------------------------- */
 
   #sidebar {
-    box-sizing: border-box;
-    height: 100vh;
-    width: 250px;
-    padding: 5px 1em;
-    background-color: var(--base-clr);
-    border-right: 1px solid var(--line-clr);
+  box-sizing: border-box;
+  height: 100vh;
+  width: 250px;
+  padding: 5px 1em;
+  background-color: var(--base-clr);
+  border-right: 1px solid var(--line-clr);
 
-    position: sticky;
-    top: 0;
-    align-self: start;
-    transition: 300ms ease-in-out;
-    overflow: hidden;
-    text-wrap: nowrap;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  transition: 300ms ease-in-out;
+  overflow: hidden;
+  text-wrap: nowrap;
   }
 
 #sidebar.close {
