@@ -632,11 +632,15 @@ html {
   padding:var(--padding-s); /* Add padding for better clickability */
 }
 
-.streamers ionicon {
-  font-size:var(--fs-500);
-  color: hsl(var(--clr-span));
-  margin-right: 0.5em;
+.streamers ion-icon {
+  font-size: var(--fs-800);
+  z-index: 5; 
+  --ionicon-stroke-width: 32px;
+  color:hsl(var(--clr-white));
+  text-align: center;
+  vertical-align: middle;
 }
+
 
 @container (max-width: 600px) {
    .logo {
