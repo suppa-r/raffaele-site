@@ -606,71 +606,37 @@ html {
 }
 
 .streamers {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-inline: auto;
   text-align: center;
-  margin: 0 auto;
-  padding: 0 1em;
+  padding: var(--padding-l);
+  position: relative; /* Ensure the container is positioned */
+  z-index: 1; /* Ensure the container is on top */
 }
-
-.streamers p {
-  font-size: var(--fs-300);
+.streamers span {
+  font-size: var(--fs-600);
+  color: hsl(var(--clr-span));
   font-family:'Big Shoulders Inline', sans-serif;
   font-weight: 100;
-  color: hsl(var(--clr-white));
-  text-align: center;
-  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .streamers a {
-  color:hsl(var(--clr-white));
   text-decoration: none;
-  position: relative;
-  display: inline-block;
-  padding: 0.5em 1em;}
-
-.streamers ion-icon {
-  font-size: var(--fs-600);
-  z-index: 5; 
-  --ionicon-stroke-width: 32px;
-  color:hsl(var(--clr-white));
-  text-align: center;
-  vertical-align: middle;
+  font-size: var(--fs-400);
+  font-family: 'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
+  color: hsl(var(--clr-white));
+  position: relative; /* Ensure the links are positioned */
+  z-index: 2; /* Ensure the links are on top */
+  display: inline-block; /* Ensure the links are displayed correctly */
+  padding:var(--padding-s); /* Add padding for better clickability */
 }
 
-.streamers a:hover::after {
-  transform: translate(-0%, -0%) scale(1);
-  opacity: 1;
-  background: hsl(var(--clr-span));
-  z-index: 1;
-  animation: pulse 500ms ease-in-out infinite; /* Apply pulsing animation */
+.streamers ionicon {
+  font-size:var(--fs-500);
+  color: hsl(var(--clr-span));
+  margin-right: 0.5em;
 }
-
-.streamers a::before,
-.streamers a::after {
-  opacity: 0;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 8%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%); /* Center the pseudo-elements */
-  border-radius: 50%;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1.5);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.5); /* Reduced scale for smaller pulsing */
-    opacity:0 ;
-  }
-}
-
 
 @container (max-width: 600px) {
    .logo {
