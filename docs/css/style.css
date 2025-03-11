@@ -589,8 +589,10 @@ html {
 .intro-content p span {
   font-size: var(--fs-400);
   color: hsl(var(--clr-span));
-  padding-left: var(--padding-s);
   letter-spacing:0.05em;
+  font-weight: 100;
+  font-family:'Big Shoulders Inline', sans-serif;
+  padding-left: var(--padding-s);
 } 
 
 .intro-content img {
@@ -604,7 +606,9 @@ html {
 }
 
 .streamers {
-  display: block;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   margin-inline:0 auto;
   position: relative; /* Ensure the container is positioned relative */
@@ -612,7 +616,8 @@ html {
 
 .streamers p {
   font-size: var(--fs-300);
-  font-family:var(--ff-Kanit);
+  font-family:'Big Shoulders Inline', sans-serif;
+  font-weight: 100;
   color: hsl(var(--clr-white));
   text-align: center;
   margin: 0 auto;
@@ -621,11 +626,12 @@ html {
 .streamers a {
   color:hsl(var(--clr-white));
   text-decoration: none;
-  touch-action: manipulation;
+  position: relative;
+
  }
 
 .streamers ion-icon {
-  font-size: var(--fs-600);
+  font-size: var(--fs-700);
   z-index: 5; 
   --ionicon-stroke-width: 32px;
   color:hsl(var(--clr-white));
@@ -647,28 +653,27 @@ html {
   content: "";
   position: absolute;
   top: 0;
-  left: 40%;
-  width: 20%;
+  left: 20%;
+  width: 100%;
   height: 100%;
-  transform: translate(-0%, -0%); /* Center the pseudo-elements */
+  transform: translate(-50%, -50%); /* Center the pseudo-elements */
   border-radius: 50%;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(1);
-    opacity: 0.75;
+    transform: scale(1.5);
+    opacity: 0.5;
   }
   100% {
-    transform: scale(1); /* Reduced scale for smaller pulsing */
-    opacity: 0;
+    transform: scale(1.5); /* Reduced scale for smaller pulsing */
+    opacity:0 ;
   }
 }
 
 
 @container (max-width: 600px) {
-
-  .logo {
+   .logo {
     display: none
    }
 }
