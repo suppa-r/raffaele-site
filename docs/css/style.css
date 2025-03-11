@@ -99,6 +99,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin:0;
+  padding:0;
 }
 
 /* --------------------------------------- */
@@ -117,18 +119,8 @@ main {
 }
 
 /* --------------------------------------- */
-/* -------------- Reset Margins----------- */
+/* ---------------- Reset ---------------- */
 /* --------------------------------------- */
-html,
-body,
-main,
-h1,
-h2,
-h3
-{
- margin: 0;
- padding: 0;
-}
 
 h1,
 h2,
@@ -139,13 +131,14 @@ h3
   font-size: var(--fs-400);
   text-wrap: balance;
   overflow-wrap: break-word;
+  margin-block: 0.5em;
   text-align: center;
   line-height: 1.1;
   margin-inline: auto;
 }
 
 p {
-  margin-block: 0.5em;
+  margin-block: 0.2em;
   margin-inline: auto;
   text-align: center;
   font-size: var(--fs-300);
@@ -325,11 +318,9 @@ a{
      rgb(106, 131, 143, 0.7) 100.2%
   );
   text-shadow: 0px 15px 0px rgb(94, 134, 150);
-
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
   animation: shadowDrip 3s infinite alternate
      ease-in-out;
   margin-bottom: 0.5em;
@@ -360,24 +351,8 @@ a{
 }
 
 /* --------------------------------------- */
-/* ------- Page Specific Index Home ------ */
-/* --------------------------------------- */
-
-/* --------------------------------------- */
-/* ---------- End of Index Home ---------- */
-/* --------------------------------------- */
-
-
-
-/* --------------------------------------- */
 /* --------------- Navigation ------------ */
 /* --------------------------------------- */
-
-.container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
 
 header {
   display: flex;
@@ -471,11 +446,10 @@ header::after {
   margin-right: 1em;
   width: 1.1em;
   text-align: right;
-  color: rgba(255, 255, 255, 0.4);
+  color:hsl(var(--clr-light));
 }
 
-
-.menu-toggle {
+.menu-toggle{
   padding: 1em;
   background: transparent;
   border: 0;
@@ -575,13 +549,28 @@ ul {
  
 }
 
-.intro-content {
-  margin-inline: auto;
-  padding: 0 1rem;
-  padding-bottom:var(--padding-6xl);
-  place-items: center;
-  min-height: 100%;
+html {
+  color-scheme: dark only;
+}
+
+[data-theme='light'] {
+  color-scheme: light only;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark only;
+}
+
+@layer base {
+  html {
+    color-scheme: dark only;
   }
+
+  [data-theme='light'] {
+    color-scheme: light only;
+  }
+
+}
 
 .intro::before {
   content: '';
@@ -591,18 +580,18 @@ ul {
   background:
     linear-gradient(90deg,
       color-mix(in hsl, canvasText, transparent 70%) 1px,
-      transparent 1px 45px) 50% 50% / 45px 45px,
-    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 45px) 50% 50% / 45px 45px;
+      transparent 1px 30px) 50% 50% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 30px) 50% 50% / 30px 30px;
   mask: linear-gradient(-20deg, transparent 50%, white) 100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
-
-
-.intro-content p {
-  text-align: center;
- }
+.intro-content {
+  margin-inline: auto;
+  place-items: center;
+  min-height: 100%;
+}
 
 .intro-content p span {
   font-size: var(--fs-400);
@@ -611,8 +600,7 @@ ul {
   letter-spacing:0.05em;
 } 
 
-.intro-content img
-{
+.intro-content img {
   max-width: 100%;
   height: auto;
   display: block;
@@ -630,12 +618,11 @@ ul {
 .streamers a {
   display:flex;
   flex-direction: column;
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
   position: relative;
-  margin: 0 1rem;
-  padding: 2rem;
-  border-radius: 50%;
-  background-color: hsla(var(--clr-span)/.25);
+  margin:0 1rem;
+  padding:0 1rem;
+  background-color: hsla(var(--clr-span)/.5);
   color: hsl(var(--clr-white));
   text-decoration: none;
   transition: transform 500ms ease-in-out;
@@ -643,20 +630,19 @@ ul {
   text-align: center;
   opacity: 1; /* Make the text fully visible */
   z-index: 2;
-  display: flex;
   align-items: center; /* Center text vertically */
   justify-content: center; /* Center text horizontally */
 }
 
-.streamers span {
-  font-size: var(--fs-800);
+.streamers p span {
+  font-size: var(--fs-600);
   text-align: center;
-  margin: 0 auto;
+  margin-inline:0 auto;
   z-index: 3; /* Ensure text is on top */
 }
 
 .streamers ion-icon {
-  font-size: var(--fs-700);
+  font-size: var(--fs-500);
   --ionicon-stroke-width: 32px;
   color: hsl(var(--clr-white));
   text-align: center;
@@ -727,14 +713,14 @@ ul {
 
 .profile::before {
   content: '';
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   position: fixed;
   background:
     linear-gradient(90deg,
       color-mix(in hsl, canvasText, transparent 70%) 1px,
-      transparent 1px 45px) 50% 50% / 45px 45px,
-    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 45px) 50% 50% / 45px 45px;
+      transparent 1px 30px) 50% 50% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px, transparent 1px 30px) 50% 50% / 30px 30px;
   mask: linear-gradient(-20deg, transparent 50%, white) 100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
