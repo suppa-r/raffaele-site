@@ -461,8 +461,8 @@ header::after {
   background: transparent;
   border: 0;
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  top: 2em;
+  right: 0.9em;
   cursor: pointer;
 }
 
@@ -653,6 +653,8 @@ html {
   .logo {
     display: none
    }
+
+  
   .intro-content img {
     width: 50px; /* Set the width to 100px */
     height: 35px; /* Set the height to 100px */
