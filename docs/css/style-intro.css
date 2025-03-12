@@ -129,9 +129,23 @@ h3
  padding: 0;
 }
 
-h1,
+h1{
+  font-family:'big shoulders inline', sans-serif;
+  font-weight: 100;
+  font-size: var(--fs-400);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  text-align: center;
+  line-height: 1.1;
+  margin-inline: auto;
+  margin-block:1em;
+  padding: 0 auto;
+}
+
+
 h2,
-h3
+h3,
+h4
  {
   font-family:'big shoulders inline', sans-serif;
   font-weight: 100;
@@ -141,7 +155,8 @@ h3
   text-align: center;
   line-height: 1.1;
   margin-inline: auto;
-  margin-block: var(--padding-xs);
+  margin-block:0.2em;
+  padding: 0 auto;
 }
 
 p {
@@ -511,19 +526,12 @@ html {
     grid-template-columns:1fr;
   }
 
- 
-
-
-  .row p{
-  margin-block: 0.2em;
-  margin-inline: auto;
+  .row{
+    grid-template-columns:1fr;
+    max-inline-size: 100%;
+    justify-content: center;
+    align-content: center;
   }
-
-  .row h1, h2 ,h3{
-   
-    margin-block: 0.2em;
-
-   }
 
   .row img{
     max-inline-size:100px;
