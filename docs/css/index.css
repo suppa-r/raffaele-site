@@ -126,35 +126,31 @@
   width: 100%;
 }
 
-.container-index {
-  overflow: clip;
-}
-
-.container-index>* {
-  container-type: inline-size;
-  width: 100%;
+.quote{
+  margin-block:.5em;
+  letter-spacing: 0.3em;
 }
 
 .title {
   display: block;
   font-size: var(--fs-300);
-  margin-block: 0.4em;
+  margin-block:0.03em;
   text-align: center;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.3em;
 }
 
 .author {
   display: block;
   font-size: var(--fs-200);
-  margin-block: 0.4em;
+  margin-block:0.03em;
   text-align: center;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.3em;
 }
 
 
-.container a {
+.wrapper-index a {
+  padding: var(--padding-7xl) 0;
   display: block;
-  margin-block: var(--padding-l);
   text-decoration: none;
 }
 
