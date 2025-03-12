@@ -126,15 +126,15 @@
   width: 100%;
 }
 
-.quote{
-  margin-block:.5em;
+.quote {
+  margin-block: .5em;
   letter-spacing: 0.3em;
 }
 
 .title {
   display: block;
   font-size: var(--fs-300);
-  margin-block:0.03em;
+  margin-block: 0.03em;
   text-align: center;
   letter-spacing: 0.3em;
 }
@@ -142,7 +142,7 @@
 .author {
   display: block;
   font-size: var(--fs-200);
-  margin-block:0.03em;
+  margin-block: 0.03em;
   text-align: center;
   letter-spacing: 0.3em;
 }
@@ -179,21 +179,19 @@
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing:0.5em;
+    letter-spacing: 0.5em;
     word-spacing: var(--padding-s);
     opacity: 0;
     transform: translateY(-200px);
   }
 
   100% {
-    letter-spacing:0.5em;
+    letter-spacing: 0.5em;
     word-spacing: var(--padding-s);
     opacity: 1;
     transform: translateY(0px);
   }
 }
-
-
 
 
 
