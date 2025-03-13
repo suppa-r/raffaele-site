@@ -211,10 +211,12 @@ body
 /* --------------------------------------- */
 
 header {
+  width: 100%;
   display: flex;
   background:transparent;
   padding: 0.5rem;
   position: relative;
+ 
 }
 
 header::before,
@@ -225,6 +227,8 @@ header::after {
 }
 
 .logo {
+  width: 100%;
+  text-align: left;
   font-size: var(--fs-300);
   margin: 0 7em 0 0; 
   }
