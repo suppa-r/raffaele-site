@@ -130,7 +130,7 @@
 }
 
 .quote {
-  margin-block: .5em;
+  margin-block:var(--padding-3xl);
   letter-spacing: 0.3em;
 }
 
@@ -154,16 +154,12 @@
   display: flex;
   /* Use flexbox */
   flex-direction: column;
-  gap: var(--padding-2xl);
-  /* Add space between elements */
-  padding-inline: auto;
+  /* Stack elements vertically */
+  padding-bottom: var(--padding-7xl);
   text-decoration: none;
   color: hsl(var(--clr-white));
 }
 
-.wrapper-index a:hover {
-  color: hsl(var(--clr-accent));
-}
 
 .text-with-animation {
   font-size: var(--fs-500);
@@ -200,6 +196,24 @@
     letter-spacing: 0.3em;
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+@container(max-width:500px) {
+.wrapper-index a {
+    padding-bottom: var(--padding-4xl);
+  }
+
+  .text-with-animation {
+    font-size: var(--fs-400);
+  }
+
+  .subtext-with-animation {
+    font-size: var(--fs-500);
+  }
+
+  .subtext-with-animation-1 {
+    font-size: var(--fs-400);
   }
 }
 
