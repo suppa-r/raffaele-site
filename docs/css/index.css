@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
 
 :root {
@@ -5,11 +6,11 @@
   /* ------------ Custom Colors ------------ */
   /* --------------------------------------- */
 
-  --clr-dark: 0, 0%, 0%;
-  --clr-light: 195, 70%, 90%;
-  --clr-span: 187, 42%, 64%;
-  --clr-white: 0, 0%, 100%;
-  --clr-accent: 231, 77%, 90%;
+    --clr-dark: 0, 0%, 0%;
+    --clr-light: 195, 70%, 90%;
+    --clr-span: 195, 36%, 45%;
+    --clr-white: 0, 0%, 100%;
+    --clr-accent: 231, 77%, 90%;
 
   /* --------------------------------------- */
   /* ----------- Custom Margins ------------ */
@@ -83,29 +84,6 @@
   }
 }
 
-/* --------------------------------------- */
-/* ------------  Custom Colors ----------- */
-/* --------------------------------------- */
-
-.text-dark {
-  color: hsl(var(--clr-dark));
-}
-
-.text-light {
-  color: hsl(var(--clr-light));
-}
-
-.text-span {
-  color: hsl(var(--clr-span));
-}
-
-.text-white {
-  color: hsl(var(--clr-white));
-}
-
-.text-accent {
-  color: hsl(var(--clr-accent));
-}
 
 /*-----------------------------------------*/
 /*-------------Index-Home Page-------------*/
@@ -118,7 +96,7 @@
   text-align: center;
   font-family: 'Big Shoulders Inline', cursive;
   font-weight: 100;
-  color: hsl(var(--clr-white));
+  color:hsl(var(--clr-white));
   overflow: clip;
 }
 
@@ -136,6 +114,7 @@
 
 .title {
   display: block;
+  color:var(--clr-white);
   font-size: var(--fs-300);
   margin-block: 0.03em;
   text-align: center;
@@ -144,6 +123,7 @@
 
 .author {
   display: block;
+  color:var(--clr-white);
   font-size: var(--fs-200);
   margin-block: 0.03em;
   text-align: center;
@@ -157,12 +137,13 @@
   /* Stack elements vertically */
   padding-bottom: var(--padding-7xl);
   text-decoration: none;
-  color: hsl(var(--clr-white));
+  color:var(--clr-white);
 }
 
 
 .text-with-animation {
   font-size: var(--fs-500);
+  color:var(--clr-white);
   animation: main-text-animation 0.5s ease-in-out forwards;
   width: 500vw;
   margin-left: -200vw;
@@ -170,6 +151,7 @@
 }
 
 .subtext-with-animation {
+  color:var(--clr-white);
   font-size: var(--fs-600);
   animation: main-text-animation 1s ease-in-out forwards;
   width: 500vw;
@@ -177,6 +159,7 @@
 }
 
 .subtext-with-animation-1 {
+  color:var(--clr-white);
   font-size: var(--fs-500);
   animation: main-text-animation 0.5s ease-in-out forwards;
   width: 500vw;

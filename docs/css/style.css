@@ -5,11 +5,11 @@
   /* ------------ Custom Colors ------------ */
   /* --------------------------------------- */
 
-  --clr-dark: 0, 0%, 0%;
-  --clr-light: 195, 70%, 90%;
-  --clr-span: 187, 42%, 64%;
-  --clr-white: 0, 0%, 100%;
-  --clr-accent: 231, 77%, 90%;
+    --clr-dark: 0, 0%, 0%;
+    --clr-light: 195, 70%, 90%;
+    --clr-span: 195, 36%, 45%;
+    --clr-white: 0, 0%, 100%;
+    --clr-accent: 231, 77%, 90%;
 
   /* --------------------------------------- */
   /* ----------- Custom Margins ------------ */
@@ -81,30 +81,6 @@
     --fs-700: 3.75rem;
     --fs-800: 5rem;
   }
-}
-
-/* --------------------------------------- */
-/* ------------  Custom Colors ----------- */
-/* --------------------------------------- */
-
-.text-dark {
-  color: hsl(var(--clr-dark));
-}
-
-.text-light {
-  color: hsl(var(--clr-light));
-}
-
-.text-span {
-  color: hsl(var(--clr-span));
-}
-
-.text-white {
-  color: hsl(var(--clr-white));
-}
-
-.text-accent {
-  color: hsl(var(--clr-accent));
 }
 
 /* --------------------------------------- */
