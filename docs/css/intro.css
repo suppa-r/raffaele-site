@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
 
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rock+Salt&display=swap');
+
+
 :root {
   /* --------------------------------------- */
   /* ------------ Custom Colors ------------ */
@@ -177,10 +181,29 @@
   }
 }
 
-body{
+body
+{
     font-family: 'Big Shoulders Inline', sans-serif;
     font-weight: 100;
-    color: hsl(var(--clr-light));
+    color: hsl(var(--clr-white));
+  }
+
+  [data-theme='light'] {
+    color-scheme: light only;
+  }
+  
+  [data-theme='dark'] {
+    color-scheme: dark only;
+  }
+  
+  @layer base {
+    html {
+      color-scheme: dark only;
+    }
+  
+    [data-theme='light'] {
+      color-scheme: light only;
+    }
   }
 
 /* --------------------------------------- */
@@ -188,7 +211,7 @@ body{
 /* --------------------------------------- */
 
 header {
-
+  display: flex;
   background:transparent;
   padding: 0.5rem;
   position: relative;
@@ -209,7 +232,7 @@ header::after {
 .logo span {
   font-size: var(--fs-300);
   color:hsl(var(--clr-span));
-  margin: 0 0.6em 0 0em;
+  margin: 0 0.6em 0 0.2em;
 }
 
 .primary-navigation {
@@ -365,47 +388,27 @@ ul {
 /* --------------------------------------- */
 
 .intro {
+  min-height: 100svh;
+  margin-inline: auto;
+  padding:0 var(--padding-m);
   display: grid;
   grid-template-rows: 3rem 1fr;
-  min-height: 100svh;
-  overflow: clip;
+  background: hsl(var(--clr-dark));
+  font-size: var(--fs-300);
+  color: hsl(var(--clr-white));
+  text-align: center;
 }
 
 .intro >*{
   container-type: inline-size;
   width: 100%;
-  margin-inline: 0 auto;
-  }
-
+}
 
 html {
   color-scheme: dark only;
 }
 
-[data-theme='light'] {
-  color-scheme: light only;
-}
 
-[data-theme='dark'] {
-  color-scheme: dark only;
-}
-
-@layer base {
-  html {
-    color-scheme: dark only;
-  }
-
-  [data-theme='light'] {
-    color-scheme: light only;
-  }
-}
-.intro-content > *{
-  container-type: inline-size;
-  width: 100%;
-  margin-inline: 0 auto;
-  padding-inline: 0 auto;
-  text-align: center;
-}
 
 .intro::before {
   content: '';
@@ -422,51 +425,74 @@ html {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
+img {
+    width: 100px;
+    height: 70px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
 
-.intro-content img {
-  width: 100px; /* Set the width to 100px */
-  height: 70px; /* Set the height to 100px */
-  display: block;
-  margin: 0 auto; /* Center the image */
-  object-fit: cover; /* Ensure the image covers the specified dimensions */
-  object-position: center;
-}
+  .intro h1{
+    font-size: var(--fs-400);
+    color: hsl(var(--clr-white));
+    font-family: 'Big Shoulders Inline', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    margin-block: 0.8em;
+  }
 
-.intro-content p span {
-  font-size: var(--fs-400);
-  color: hsl(var(--clr-span));
-  letter-spacing:0.1em;
-  font-weight: 100;
-  font-family:'Big Shoulders Inline', sans-serif;
-  padding-left: var(--padding-s);
-} 
-
-
-.intro-content >a {
+.intro h2{
   font-size: var(--fs-400);
   color: hsl(var(--clr-white));
   font-family: 'Big Shoulders Inline', sans-serif;
   font-weight: 100;
-  margin-inline: auto;
-  display:flex;
-  flex-direction:column;
-  align-items: center;
   text-align: center;
-  padding: var(--padding-s) var(--padding-m);
-  text-decoration: none;
-  color: hsl(var(--clr-white));
+  margin-block: 0.2.5em;
 }
 
+.intro h4{
+    font-size: var(--fs-400);
+    color: #b2b49d; 
+    font-family:'Playfair Display', serif;
+    font-optical-sizing: auto;
+    font-weight:400;
+    font-style:italic;
+    text-align: center;
+    margin-block: 0.7em;
+  }
 
+.intro p span {
+  font-size: var(--fs-300);
+  color: hsl(var(--clr-span));
+  letter-spacing:0.3em;
+  font-weight: 100;
+  font-family:'Big Shoulders Inline', sans-serif;
+  padding-left: var(--padding-xs);
+} 
 
-.intro-content a > span {
+.link{
+  display: flex;
+  margin-inline: auto;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--fs-400);
+  }
+
+.link a {
+  color: hsl(var(--clr-white));
+  text-decoration: none;
+ }
+
+.intro a span {
   font-size: var(--fs-700);
   color: hsl(var(--clr-span));
   font-family: 'Big Shoulders Inline', sans-serif;
   font-weight: 100;
 }
 
-.intro-content ion-icon {
+.link ion-icon {
   font-size: var(--fs-700);
   z-index: 5;
   --ionicon-stroke-width: 32px;
@@ -476,32 +502,35 @@ html {
 }
 
 
-
 @container(max-width: 600px) {
   .logo {
     display: none
    }
 
-  
-  .intro-content img {
+  .intro {
+    grid-template-columns:1fr ;
+    padding:0 var(--padding-l);
+  }
+
+  .main img {
     width: 50px; /* Set the width to 100px */
     height: 35px; /* Set the height to 100px */
   }
 
-  .intro-content p span {
+  .main p span {
     font-size: var(--fs-300);
   }
 
-  .intro-content a {
+  .main a {
     font-size: var(--fs-300);
   }
 
-  .intro-content a > span {
-    font-size: var(--fs-600);
+  .main a > span {
+    font-size: var(--fs-500);
   }
 
-  .intro-content ion-icon {
-    font-size: var(--fs-600);
+  .main ion-icon {
+    font-size: var(--fs-500);
   }
 }
 
@@ -513,27 +542,7 @@ html {
 /* --------------------------------------- */
 /* ------ Page Specific -- Profile ------- */
 /* --------------------------------------- */
-html {
-  color-scheme: dark only;
-}
 
-[data-theme='light'] {
-  color-scheme: light only;
-}
-
-[data-theme='dark'] {
-  color-scheme: dark only;
-}
-
-@layer base {
-  html {
-    color-scheme: dark only;
-  }
-
-  [data-theme='light'] {
-    color-scheme: light only;
-  }
-}
 .profile-page > *{
   container-type: inline-size;
   width: 100%;
@@ -555,11 +564,6 @@ html {
   mask: linear-gradient(-20deg, transparent 50%, white) 100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
-}
-
-.main{
-  display: grid;
- 
 }
 
 .profile-page img {

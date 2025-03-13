@@ -153,11 +153,12 @@ a {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  max-width:100px;
+  height:75px;
   display: block;
   object-fit: cover;
-  object-position: center;
+  background-position: center;
+  background-size: cover;
 }
 
 /* remove animations for people who've turned them off */
