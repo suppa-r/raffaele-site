@@ -226,13 +226,13 @@ header::after {
 
 .logo {
   font-size: var(--fs-300);
-  margin: 0 0 0 0.3em; 
+  margin: 0 7em 0 0; 
   }
 
 .logo span {
   font-size: var(--fs-300);
   color:hsl(var(--clr-span));
-  margin: 0 0.1em 0 0em; 
+  margin: 0 0.9em 0 0; 
 }
 
 .primary-navigation {
