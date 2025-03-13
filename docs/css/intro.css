@@ -272,8 +272,8 @@ header::after {
 
 .ul{
   list-style: none;
-  margin-top: var(--padding-m);
-}
+ }
+
 .site-nav li {
   border-bottom: 1px solid #575766;
 }
@@ -376,8 +376,8 @@ ul{
     }
 
     &:hover>li:not(:hover) {
-      opacity: .25;
-      transform: scale(0.8);
+      opacity: .8;
+      transform: scale(0.6);
     }
   }
 }

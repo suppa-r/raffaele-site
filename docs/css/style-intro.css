@@ -335,6 +335,10 @@ html {
   overflow: hidden;
 }
 
+.profile-page >* {
+  container-type: inline-size;
+}
+
 .profile-page::before {
   content: '';
   min-height: 100svh;
@@ -353,15 +357,11 @@ html {
 .profile-main{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1em;
-  max-inline-size: 80%;
-  margin-inline: auto;
-  justify-content: center;
-  align-content: center;
-}
+ }
+
+
 
 .row{
-  max-inline-size: 100%;
   justify-content: center;
   align-content: center;
 }
