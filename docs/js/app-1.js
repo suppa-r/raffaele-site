@@ -14,12 +14,9 @@ function openMenu() {
   menuToggle.setAttribute('aria-expanded', "true");
   siteNavigation.setAttribute('data-state', "opened");
   siteNavigation.style.display = "block"; // Show navigation
-  introContents.style.display = "none"; // Hide intro content
+  //introContents.style.display = "none"; // Hide intro content
   main.style.display = "none"; // Hide main content
- 
- 
-
-}
+ }
 
 function closeMenu() {
   menuToggle.setAttribute('aria-expanded', "false");
@@ -28,6 +25,7 @@ function closeMenu() {
   // Ensure main is displayed and set background properties
   main.style.display= "block"; //
   //introContents.style.display = "block"; // Hide intro content
+  siteNavigation.style.display = "none"; // Hide navigation
  
   siteNavigation.addEventListener('animationend', () => {
     siteNavigation.setAttribute('data-state', "closed");
