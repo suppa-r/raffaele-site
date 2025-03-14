@@ -325,6 +325,7 @@ html {
 .profile-page {
   display: grid;
   grid-template-columns: 250px 1fr;
+  color: hsl(var(--clr-white));
   overflow: hidden;
 }
 
@@ -349,9 +350,8 @@ html {
 
 .profile-main{
   display:grid;
-  grid-template-columns: 1fr 1fr;
- }
-
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+}
 
 
 .row{
@@ -414,6 +414,7 @@ html {
   transition: 300ms ease-in-out;
   overflow: hidden;
   text-wrap: nowrap;
+  color: hsl(var(--clr-white));
 }
 
 #sidebar.close{
@@ -435,10 +436,10 @@ html {
 }
 
 #sidebar ul li.active a{
-  color:hsl(var(--clr-light));
+  color:hsl(var(--clr-white));
 
   svg{
-    fill:hsl(var(--clr-light));
+    fill:hsl(var(--clr-white));
   }
 }
 
@@ -446,7 +447,6 @@ html {
   border-radius: .5em;
   padding: .85em;
   text-decoration: none;
-  color:hsl(var(--clr-light));
   display: flex;
   align-items: center;
   gap: 1em;
@@ -461,7 +461,7 @@ html {
 }
 #sidebar svg{
   flex-shrink: 0;
-  fill:hsl(var(--clr-light));
+  fill:hsl(var(--clr-white));
 }
 #sidebar a span, #sidebar .dropdown-btn span{
   flex-grow: 1;
@@ -600,6 +600,97 @@ html {
   }
 }
 
+@media(max-width: 800px){
+
+  .profile-main{
+    grid-template-rows:1fr;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+    max-inline-size: 100%;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .row img{
+    max-inline-size:200px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+   
+  }
+  
+ /*#sidebar {
+    height: 55px; /* Set a specific height *
+    width: 100%;
+   
+    margin-inline: auto;
+    display: flex; /* Use flexbox *
+    justify-content: center; /* Center horizontally *
+    align-items: center; /* Center vertically *
+
+   
+    > ul{
+      padding: 0;
+      display: grid;
+      grid-auto-columns: 60px;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    ul li{
+      height: 100%;
+    }
+    ul a, ul .dropdown-btn{
+      width: 60px;
+      height: 60px;
+      padding: 0;
+      border-radius: 0;
+      justify-content: center;
+    }
+
+    ul li span, ul li:first-child, .dropdown-btn svg:last-child{
+      display: none;
+    }
+
+    ul li .sub-menu.show{
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      box-sizing: border-box;
+      height: 60px;
+      width: 100%;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+
+      > div{
+        overflow-x: auto;
+      }
+      li{
+        display: inline-flex;
+      }
+      a{
+        box-sizing: border-box;
+        padding: 1em;
+        width: auto;
+        justify-content: center;
+      }
+    }
+  }*/
+}
+
+
+
+
+  
 
 
 
