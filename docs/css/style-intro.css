@@ -131,7 +131,7 @@ h1{
   text-align: center;
   line-height: 1;
   margin-inline: auto;
-  margin-block:.5em;
+  margin-block:.4em;
   padding: 0 auto;
 }
 
@@ -142,7 +142,7 @@ h4
  {
   font-family:'big shoulders inline', sans-serif;
   font-weight: 100;
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
   text-wrap: balance;
   overflow-wrap: break-word;
   text-align: center;
@@ -322,18 +322,25 @@ html {
 
 }
 
-.profile-page {
+.intro-page {
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns:14rem 1fr;
   color: hsl(var(--clr-white));
   overflow: hidden;
 }
 
-.profile-page >* {
+.intro-page >* {
   container-type: inline-size;
 }
 
-.profile-page::before {
+.intro-main{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  /*grid-template-columns:repeat(auto-fit, minmax(min(400px,100%), 1fr));*/
+}
+
+
+.intro-page::before {
   content: '';
   min-height: 100svh;
   width: 100%;
@@ -348,29 +355,23 @@ html {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-position 0.3s ease-in-out;
 }
 
-.profile-main{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-}
-
-
 .row{
   justify-content: center;
   align-content: center;
+  text-align: center;
+  margin-inline: auto;
+  padding: 0 auto;
 }
 
 .row img{
-  max-inline-size:350px;
+  max-inline-size:100%;
   height: auto;
   display: block;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
-  justify-content: center;
-  align-content: center;
-  margin: 0 auto;
-  padding: 0 auto;
-}
+  margin-inline: auto;
+ }
 
 .row p{
   font-family: 'Big Shoulders Inline', sans-serif;
@@ -378,25 +379,7 @@ html {
   font-size: var(--fs-300);
   text-wrap: balance;
   overflow-wrap: break-word;
-  margin-block: 0.5em;
-  text-align: center;
-  line-height: 1.1;
-  margin-inline: auto;
-  padding: 0 auto;
  }
-
- .row h1, h2 ,h3{
-  font-family: 'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
-  font-size: var(--fs-400);
-  text-wrap: balance;
-  overflow-wrap: break-word;
-  text-align: center;
-  line-height: 1.2;
-  margin-inline: auto;
-  padding: 0 auto;
- }
-
 
 /* --------------------------------------- */
 /* ------------- Sidebar Nav ------------- */
@@ -437,6 +420,8 @@ html {
 
 #sidebar ul li.active a{
   color:hsl(var(--clr-white));
+  height: auto;
+  
 
   svg{
     fill:hsl(var(--clr-white));
@@ -473,6 +458,7 @@ html {
   display: grid;
   grid-template-rows: 0fr;
   transition: 300ms ease-in-out;
+ 
 
   > div{
     overflow: hidden;
@@ -510,24 +496,24 @@ html {
 /* ------------- Media Query ------------- */
 /* --------------------------------------- */
 
-@media(max-width: 600px){
-  .profile-page{
-    grid-template-columns:1fr;
+@media(max-width: 600px) {
+  .intro-page {
+    grid-template-columns: 1fr;
     overflow: hidden;
   }
-  .profile-main{
-    grid-template-columns:1fr;
+  .intro-main {
+    grid-template-columns: 1fr;
   }
 
-  .row{
-    grid-template-columns:1fr;
+  .row {
+    grid-template-columns: 1fr;
     max-inline-size: 100%;
     justify-content: center;
     align-content: center;
   }
 
-  .row img{
-    max-inline-size:80px;
+  .row img {
+    max-inline-size: 80px;
     height: auto;
     display: block;
     object-fit: cover;
@@ -536,162 +522,213 @@ html {
     justify-content: center;
     align-content: center;
     margin: 0 auto;
-   
   }
-  
- #sidebar {
-    height: 55px; /* Set a specific height */
+
+  #sidebar {
+    height: 100px;
     width: 100%;
-   
     margin-inline: auto;
     display: flex; /* Use flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
+  }
 
-   
-    > ul{
-      padding: 0;
-      display: grid;
-      grid-auto-columns: 60px;
-      grid-auto-flow: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-    }
-    ul li{
-      height: 100%;
-    }
-    ul a, ul .dropdown-btn{
-      width: 60px;
-      height: 60px;
-      padding: 0;
-      border-radius: 0;
-      justify-content: center;
-    }
+  #sidebar > ul {
+    padding: 1em 0;
+    display: grid;
+    grid-auto-columns: 60px;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
 
-    ul li span, ul li:first-child, .dropdown-btn svg:last-child{
-      display: none;
-    }
+  #sidebar ul li {
+    height: auto;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange children in a column */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+  }
 
-    ul li .sub-menu.show{
-      position: fixed;
-      bottom: 60px;
-      left: 0;
-      box-sizing: border-box;
-      height: 60px;
-      width: 100%;
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
+  #sidebar ul li.active a {
+    color: hsl(var(--clr-white));
+    height: auto;
+  }
 
-      > div{
-        overflow-x: auto;
-      }
-      li{
-        display: inline-flex;
-      }
-      a{
-        box-sizing: border-box;
-        padding: 1em;
-        width: auto;
-        justify-content: center;
-      }
-    }
+  #sidebar ul li.active a svg {
+    fill: hsl(var(--clr-white));
+  }
+
+  #sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  ul a, ul .dropdown-btn {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 0;
+    justify-content: center;
+    align-items: center;
+    color: hsl(var(--clr-white));
+  }
+
+  li a span {
+    color: hsl(var(--clr-white));
+    font-size: var(--fs-200);
+  }
+
+  ul li span, ul li:first-child, .dropdown-btn svg:last-child {
+    display: none;
+  }
+
+  ul li a span {
+    display: flex;
+    flex-direction: row; /* Arrange children in a row */
+    color: hsl(var(--clr-white));
+    font-size: var(--fs-200);
+  }
+
+  ul li .sub-menu.show {
+    position: fixed;
+    bottom: 60px;
+    left: 0;
+    box-sizing: border-box;
+    height: auto; /* Adjust height to auto */
+    width: 100%;
+    background-color: hsl(var(--clr-dark)); /* Ensure background color is set */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+  }
+
+ul li .sub-menu.show > div {
+  overflow-x: auto;
+  margin-bottom: var(--padding-8xl);
+  padding-block-end: var(--padding-8xl);
+}
+
+ul li .sub-menu.show ~ .row {
+  display: none;
+}
+
+  ul li .sub-menu.show li {
+    display: inline-flex;
+  }
+
+  ul li .sub-menu.show a {
+    box-sizing: border-box;
+    padding: 1em;
+    width: auto;
+    justify-content: center;
   }
 }
 
-@media(max-width: 800px){
-
-  .profile-main{
-    grid-template-rows:1fr;
-  }
-
-  .row{
-    grid-template-columns:1fr;
-    max-inline-size: 100%;
-    justify-content: center;
-    align-content: center;
-  }
-
-  .row img{
-    max-inline-size:200px;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    justify-content: center;
-    align-content: center;
-    margin: 0 auto;
-   
-  }
-  
- /*#sidebar {
-    height: 55px; /* Set a specific height *
+   /* #sidebar {
+    height: 100px;
     width: 100%;
-   
     margin-inline: auto;
     display: flex; /* Use flexbox *
     justify-content: center; /* Center horizontally *
     align-items: center; /* Center vertically *
-
-   
-    > ul{
-      padding: 0;
-      display: grid;
-      grid-auto-columns: 60px;
-      grid-auto-flow: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-    }
-    ul li{
-      height: 100%;
-    }
-    ul a, ul .dropdown-btn{
-      width: 60px;
-      height: 60px;
-      padding: 0;
-      border-radius: 0;
-      justify-content: center;
-    }
-
-    ul li span, ul li:first-child, .dropdown-btn svg:last-child{
-      display: none;
-    }
-
-    ul li .sub-menu.show{
-      position: fixed;
-      bottom: 60px;
-      left: 0;
-      box-sizing: border-box;
-      height: 60px;
-      width: 100%;
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-
-      > div{
-        overflow-x: auto;
-      }
-      li{
-        display: inline-flex;
-      }
-      a{
-        box-sizing: border-box;
-        padding: 1em;
-        width: auto;
-        justify-content: center;
-      }
-    }
-  }*/
-}
-
-
-
-
+  }
   
-
-
-
+  #sidebar > ul {
+    padding: 1em 0;
+    display: grid;
+    grid-auto-columns: 60px;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
   
+  #sidebar ul li {
+    height: auto;
+    display: flex; /* Use flexbox *
+    flex-direction:column; /* Arrange children in a row *
+    align-items: center; /* Center vertically *
+    justify-content: center; /* Center horizontally *
+  }
+  
+  #sidebar ul li.active a {
+    color: hsl(var(--clr-white));
+    height: auto;
+  }
+  
+  #sidebar ul li.active a svg {
+    fill: hsl(var(--clr-white));
+  }
+  
+  #sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    gap: 1em;
+  }
+  
+  ul a, ul .dropdown-btn {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 0;
+    justify-content: center;
+    align-items: center;
+    color: hsl(var(--clr-white));
+  }
+  
+  li a span {
+    color: hsl(var(--clr-white));
+    font-size: var(--fs-200);
+  }
+  
+  ul li span, ul li:first-child, .dropdown-btn svg:last-child {
+    display: none;
+  }
+  
+  ul li a span {
+    display: flex;
+    flex-direction: row; /* Arrange children in a row *
+    color: hsl(var(--clr-white));
+    font-size: var(--fs-200);
+  }
+  
+  ul li .sub-menu.show {
+    position: fixed;
+    bottom: 60px;
+    left: 0;
+    box-sizing: border-box;
+    height: 60px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+  }
+  
+  ul li .sub-menu.show > div {
+    overflow-x: auto;
+  }
+  
+  ul li .sub-menu.show li {
+    display: inline-flex;
+  }
+  
+  ul li .sub-menu.show a {
+    box-sizing: border-box;
+    padding: 1em;
+    width: auto;
+    justify-content: center;
+  }
+}*/
+  
+ 
