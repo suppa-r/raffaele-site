@@ -84,6 +84,31 @@
 }
 
 /* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
+
+
+/* --------------------------------------- */
 /* -------------- Reset Margins----------- */
 /* --------------------------------------- */
 

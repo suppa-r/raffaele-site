@@ -87,6 +87,31 @@
 /* --------------- General --------------- */
 /* --------------------------------------- */
 
+/* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
+
+
 .hello {
   display: flex;
   justify-content: center;
@@ -185,7 +210,6 @@ body
 /* --------------------------------------- */
 
 header {
-  width: 100%;
   display: flex;
   background:transparent;
   padding: 0.5rem;
@@ -213,7 +237,7 @@ header .logo {
 header .logo span {
   font-size: var(--fs-300);
   color:var(--clr-span);
-  margin: 0 4em 0 0em; 
+  margin: 0 2em 0 0em; 
 }
 
 .primary-navigation {
@@ -265,8 +289,7 @@ header .logo span {
   background: transparent;
   display: block;
   text-align: left;
-  padding:0.4 .5em 0 0 ;
-  text-transform: uppercase;
+  padding:0.6em .5em 0 0 ;
   text-decoration: none;
 }
 
@@ -355,7 +378,7 @@ ul{
 
     &:hover>li:not(:hover) {
       opacity: .8;
-      transform: scale(0.6);
+      transform: scale(0.9);
     }
   }
 }
