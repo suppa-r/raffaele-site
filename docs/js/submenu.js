@@ -10,9 +10,16 @@ btn.addEventListener('click', () => {
 function showSubMenu() {
     intromain.style.display = "none"; // Hide main content
     ul.style.display = "block"; // Show submenu
+    refreshSubMenu(); // Refresh the submenu
 }
 
 function hideSubMenu() {
     intromain.style.display = "block"; // Show main content
     ul.style.display = "none"; // Hide submenu
+}
+
+function refreshSubMenu() {
+    ul.style.display = 'none'; // Temporarily hide the submenu
+    void ul.offsetHeight; // Trigger a reflow
+    ul.style.display = 'block'; // Show the submenu again
 }
