@@ -543,13 +543,22 @@ html {
     gap: 0;
   }
 
+  #sidebar > ul > li:first-child{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom:1em;
+    margin-right: 2em;
+    .logo{
+      font-weight: 600;
+    }
+  
+
   #sidebar ul li {
-    height: auto;
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Arrange children in a column */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+  padding: var(--padding-4xl);
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children in a row */}
   }
+
 
   #sidebar ul li.active a {
     color: hsl(var(--clr-white));
@@ -560,7 +569,7 @@ html {
     fill: hsl(var(--clr-white));
   }
 
-  #sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
+  #sidebar a, #sidebar #sidebar .logo {
     border-radius: .5em;
     padding: .85em;
     text-decoration: none;
@@ -580,13 +589,27 @@ html {
     color: hsl(var(--clr-white));
   }
 
+ .dropdown-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  margin-top: 2.5em;
+ }
+
   li a span {
     color: hsl(var(--clr-white));
     font-size: var(--fs-200);
   }
 
-  ul li span, ul li:first-child, .dropdown-btn svg:last-child {
-    display: none;
+  ul li span, .dropdown-btn svg:last-child {
+    display:block;
   }
 
   ul li a span {
@@ -598,28 +621,28 @@ html {
 
   ul li .sub-menu.show {
     position: fixed;
-    bottom: 60px;
-    left: 0;
+    top: 100px;
+    left: 60px;
     box-sizing: border-box;
-    height: auto; /* Adjust height to auto */
-    width: 100%;
-    background-color: hsl(var(--clr-dark)); /* Ensure background color is set */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center vertically */
-  }
+   }
 
-ul li .sub-menu.show > div {
-  overflow-x: auto;
-  margin-bottom: var(--padding-8xl);
-  padding-block-end: var(--padding-8xl);
+
+
+ul li .sub-menu.show li {
+  display:flex;
+  flex-direction: column; /* Arrange items in a column */
+  gap: 0.5em; /* Adjust the gap between items */
+  padding: 0.5em 0; /* Adjust the padding for vertical spacing */
 }
 
-ul li .sub-menu.show ~ .row {
-  display: none;
+ul li .sub-menu.show a {
+  box-sizing: border-box;
+  padding: 0.5em 1em; /* Adjust the padding for vertical spacing */
+  width: auto;
+  justify-content: center;
 }
 
-  ul li .sub-menu.show li {
+ul li .sub-menu.show li {
     display: inline-flex;
   }
 
@@ -628,6 +651,9 @@ ul li .sub-menu.show ~ .row {
     padding: 1em;
     width: auto;
     justify-content: center;
+  }
+  #toggle-btn{
+    display: none;
   }
 }
 

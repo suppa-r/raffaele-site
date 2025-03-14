@@ -10,15 +10,7 @@ menuToggle.addEventListener('click', () => {
   isOpened ? closeMenu() : openMenu();
 });
 
-function openMenu() {
-  menuToggle.setAttribute('aria-expanded', "true");
-  siteNavigation.setAttribute('data-state', "opened");
-  main.style.display = "none"; // Hide main content
- 
- 
- 
 
-}
 
 function closeMenu() {
   menuToggle.setAttribute('aria-expanded', "false");
