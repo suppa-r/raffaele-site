@@ -15,6 +15,7 @@ function showSubMenu() {
 
 function hideSubMenu() {
     intromain.style.display = "block"; // Show main content
+    intromain.style.display="flex";
     ul.style.display = "none"; // Hide submenu
 }
 
