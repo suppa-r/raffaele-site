@@ -227,13 +227,13 @@ display: flex;
 align-items: center;
 text-align: left;
 text-wrap: balance;
-font-size: var(--fs-300);
+font-size: var(--fs-400);
 color:var(--clr-white);
-margin: 0 0em 0 0; 
+margin: 0 0em 0 2em; 
 }
 
 header .logo span {
-font-size: var(--fs-300);
+font-size: var(--fs-400);
 color:var(--clr-span);
 margin: 0 2em 0 0em; 
 }
@@ -283,7 +283,7 @@ border-bottom: none;
 
 .site-nav a {
 color:hsl(var(--clr-span));
-font-size: var(--fs-300);
+font-size: var(--fs-400);
 background: transparent;
 display: block;
 text-align: left;
@@ -399,7 +399,7 @@ list-style: none;
 display: grid;
 grid-template-rows: 3rem 1fr;
 background: hsl(var(--clr-dark));
-font-size: var(--fs-300);
+font-size: var(--fs-400);
 color: hsl(var(--clr-white));
 }
 
@@ -428,12 +428,12 @@ transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-pos
 }
 
 .intro p  {
-  font-size: var(--fs-300);
+  font-size: var(--fs-400);
   color: hsl(var(--clr-white));
  } 
 
 .intro p span {
-  font-size: var(--fs-300);
+  font-size: var(--fs-500);
   color: hsl(var(--clr-span));
   padding-left:.3em;
   } 
@@ -442,15 +442,12 @@ transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-pos
 text-align: center;
 }
 
-.merci {
+.main img {
 background-color:hsl(var(--clr-dark));
-max-inline-size: 100%;
+max-width: 100%;
 height: auto;
-display: block;
 object-fit: cover;
 object-position: center;
-box-shadow: 0 10px 60px 10px rgba(253, 251, 251, 0.9);
-margin: 0 auto;
 }
 
 .main h1, h2, h3{
@@ -464,7 +461,7 @@ margin-block: 0.3em;
 .link{
 display: flex;
 justify-content: center;
-font-size: var(--fs-300);
+font-size: var(--fs-400);
 }
 
 .link a {
@@ -473,7 +470,7 @@ text-decoration: none;
 }
 
 .intro a span {
-font-size: var(--fs-700);
+font-size: var(--fs-800);
 color: hsl(var(--clr-span));
 font-family: 'Big Shoulders Inline', sans-serif;
 font-weight: 100;
@@ -499,27 +496,15 @@ grid-template-columns:1fr ;
 padding:0 var(--padding-l);
 }
 
-
-.main p span {
-font-size: var(--fs-300);
 }
-
-.main a {
-font-size: var(--fs-300);
-}
-
-.main a > span {
-font-size: var(--fs-500);
-}
-
 .main ion-icon {
-font-size: var(--fs-500);
+font-size: var(--fs-600);
 }
 
 .merci {
-margin:var(--padding-2xl) auto;
+margin:var(--padding-4xl) auto;
 }
-}
+
 
 
 

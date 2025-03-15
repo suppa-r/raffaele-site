@@ -48,19 +48,7 @@ a:not([class]) {
     text-decoration-skip-ink: auto;
 }
 
-/* Make images easier to work with */
-img,
-picture {
-    font-style: italic;
-    max-inline-size: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: block;
-    object-fit: cover;
-    margin-inline: auto;
-    margin-block: auto;
-}
+
 
 /* Inherit fonts for inputs and buttons */
 input,
