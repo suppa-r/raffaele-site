@@ -499,10 +499,6 @@ grid-template-columns:1fr ;
 padding:0 var(--padding-l);
 }
 
-.main img {
-width: 50px; /* Set the width to 100px */
-height: 35px; /* Set the height to 100px */
-}
 
 .main p span {
 font-size: var(--fs-300);
@@ -520,6 +516,7 @@ font-size: var(--fs-500);
 font-size: var(--fs-500);
 }
 }
+
 
 
 /* --------------------------------------- */
