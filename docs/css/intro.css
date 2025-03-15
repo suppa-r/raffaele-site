@@ -517,12 +517,6 @@ font-size: var(--fs-500);
 }
 
 .merci {
-max-inline-size: 100%;
-height: auto;
-display: block;
-object-fit: cover;
-object-position: center;
-box-shadow: 0 10px 60px 10px rgba(253, 251, 251, 0.9);
 margin:var(--padding-2xl) auto;
 }
 }
