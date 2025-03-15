@@ -516,7 +516,7 @@ font-size: var(--fs-500);
 font-size: var(--fs-500);
 }
 
-.main .merci {
+.merci {
 max-inline-size: 100%;
 height: auto;
 display: block;
