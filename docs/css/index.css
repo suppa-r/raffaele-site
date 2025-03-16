@@ -131,32 +131,24 @@
 /* ------------------------------------------------------- */
 
 
-body,
-html {
-    min-height: 100svh;
-    margin: 0;
-    padding: 0;
-    overflow: clip;
-}
-
-p {
-    margin: 0;
-    padding: 0;
-}
+/* ------------------------------------------------------- */
+/* -------------------------- Start ---------------------- */
+/* ------------------------------------------------------- */
 
 .index {
+    background-color: hsl(var(--clr-dark));
     color: hsl(var(--clr-white));
     font-family: 'Big Shoulders Inline', sans-serif;
     font-weight: 100;
-    padding-inline: 0 auto;
     overflow: clip;
 }
 
-.index>* {
+.index > * {
     container-type: inline-size;
 }
 
 .title {
+
     padding-inline: 0 auto;
     margin-block: var(--space-xs);
     font-size: var(--step-0);

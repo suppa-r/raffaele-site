@@ -1,15 +1,15 @@
-:root {
-	--sp: 5s;
-}
-
 body {
-  background: #000;
+  background-color: #000000;
   overflow: hidden;
 }
 
-.lines{
-  inset: 0;
-  margin:auto;
+.lines {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
 .line {
@@ -18,7 +18,7 @@ body {
   height: 100%;
   top: 0;
   left: 0%;
-  background: hsla(0, 0%, 100%, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
@@ -65,7 +65,7 @@ body {
 }
 
 .line:nth-child(4)::after {
-  animation-delay: 1.2s;
+  animation-delay: 1.6s;
 }
 
 .line:nth-child(5) {
@@ -73,7 +73,7 @@ body {
 }
 
 .line:nth-child(5)::after {
-  animation-delay: 1s;
+  animation-delay: 1.2s;
 }
 
 .line:nth-child(6) {
@@ -81,7 +81,7 @@ body {
 }
 
 .line:nth-child(6)::after {
-  animation-delay: .8s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(7) {
@@ -89,7 +89,7 @@ body {
 }
 
 .line:nth-child(7)::after {
-  animation-delay: .1s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(8) {
@@ -97,7 +97,7 @@ body {
 }
 
 .line:nth-child(8)::after {
-  animation-delay: 1.9s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(9) {
@@ -105,7 +105,7 @@ body {
 }
 
 .line:nth-child(9)::after {
-  animation-delay: 1.6s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(10) {
@@ -113,14 +113,15 @@ body {
 }
 
 .line:nth-child(10)::after {
-  animation-delay: 1.2s;
+  animation-delay: 1s;
 }
+
 .line:nth-child(11) {
   margin-left: 55%;
 }
 
 .line:nth-child(11)::after {
-  animation-delay: .8s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(12) {
@@ -128,7 +129,7 @@ body {
 }
 
 .line:nth-child(12)::after {
-  animation-delay: .4s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(13) {
@@ -136,7 +137,7 @@ body {
 }
 
 .line:nth-child(13)::after {
-  animation-delay: 1.7s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(14) {
@@ -144,7 +145,7 @@ body {
 }
 
 .line:nth-child(14)::after {
-  animation-delay: 1.2s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(15) {
@@ -152,7 +153,7 @@ body {
 }
 
 .line:nth-child(15)::after {
-  animation-delay: .8s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(16) {
@@ -160,7 +161,7 @@ body {
 }
 
 .line:nth-child(16)::after {
-  animation-delay: .4s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(17) {
@@ -168,7 +169,7 @@ body {
 }
 
 .line:nth-child(17)::after {
-  animation-delay: 1.8s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(18) {
@@ -176,7 +177,7 @@ body {
 }
 
 .line:nth-child(18)::after {
-  animation-delay: 1.4s;
+  animation-delay: 1s;
 }
 
 .line:nth-child(19) {
@@ -191,14 +192,8 @@ body {
   0% {
     top: -50%;
   }
+
   100% {
     top: 110%;
   }
 }
-
-
-
-
-
-
-
