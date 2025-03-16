@@ -1,267 +1,300 @@
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
 
 :root {
-/* ------------------------------------------------- */
-/* ------------------ Custom Colors ---------------- */
-/* ------------------------------------------------- */
+    /* ------------------------------------------------- */
+    /* ------------------ Custom Colors ---------------- */
+    /* ------------------------------------------------- */
 
---clr-dark: 0, 0%, 0%;
---clr-light: 195, 70%, 90%;
---clr-span: 195, 36%, 45%;
---clr-white: 0, 0%, 100%;
---clr-accent: 231, 77%, 90%;
-
-
-
-/* ---------------------------------------------------- */
-/* ---------------- Custom Font-Sizes ----------------- */
-/* ---------------------------------------------------- */
-
-/* Step -1: 15px → 16px */
---step--1: clamp(0.9375rem, 0.9077rem + 0.119vw, 1rem);
-/* Step 0: 18px → 20px */
---step-0: clamp(1.125rem, 1.0655rem + 0.2381vw, 1.25rem);
-/* Step 1: 21.6px → 25px */
---step-1: clamp(1.35rem, 1.2488rem + 0.4048vw, 1.5625rem);
-/* Step 2: 25.92px → 31.25px */
---step-2: clamp(1.62rem, 1.4614rem + 0.6345vw, 1.9531rem);
-/* Step 3: 31.104px → 39.0625px */
---step-3: clamp(1.944rem, 1.7071rem + 0.9474vw, 2.4414rem);
-/* Step 4: 37.3248px → 48.8281px */
---step-4: clamp(2.3328rem, 1.9904rem + 1.3694vw, 3.0518rem);
-/* Step 5: 44.7898px → 61.0352px */
---step-5: clamp(2.7994rem, 2.3159rem + 1.934vw, 3.8147rem);
-/* Step 6: 53.7477px → 76.2939px */
---step-6: clamp(3.3592rem, 2.6882rem + 2.6841vw, 4.7684rem);
-/* Step 7: 64.4973px → 95.3674px */
---step-7: clamp(4.0311rem, 3.1123rem + 3.675vw, 5.9605rem);
+    --clr-dark: 0, 0%, 0%;
+    --clr-light: 195, 70%, 90%;
+    --clr-span: 195, 36%, 45%;
+    --clr-white: 0, 0%, 100%;
+    --clr-accent: 231, 77%, 90%;
 
 
-/* ---------------------------------------------------- */
-/* ---------------- Custom Space-Sizes ---------------- */
-/* ---------------------------------------------------- */
+    /* -------------------------------------------------------- */
+    /* ------------------ Custom Font-Sizes ------------------- */
+    /* -------------------------------------------------------- */
 
-/* Space xs: 9px → 10px */
---space-xs: clamp(0.5625rem, 0.5446rem + 0.119vw, 0.625rem);
-/* Space s: 18px → 20px */
---space-s: clamp(1.125rem, 1.0655rem + 0.2381vw, 1.25rem);
-/* Space m: 27px → 30px */
---space-m: clamp(1.6875rem, 1.5982rem + 0.3571vw, 1.875rem);
-/* Space l: 36px → 40px */
---space-l: clamp(2.25rem, 2.131rem + 0.4762vw, 2.5rem);
-/* Space xl: 54px → 60px */
---space-xl: clamp(3.375rem, 3.1964rem + 0.7143vw, 3.75rem);
-/* Space 2xl: 72px → 80px */
---space-2xl: clamp(4.5rem, 4.2619rem + 0.9524vw, 5rem);
-/* Space 3xl: 108px → 120px */
---space-3xl: clamp(6.75rem, 6.3929rem + 1.4286vw, 7.5rem);
-/* Space 4xl: 126px → 140px */
---space-4xl: clamp(7.875rem, 7.4583rem + 1.6667vw, 8.75rem);
-/* Space 5xl: 144px → 160px */
---space-5xl: clamp(9rem, 8.5238rem + 1.9048vw, 10rem);
-/* Space 6xl: 162px → 180px */
---space-6xl: clamp(10.125rem, 9.5893rem + 2.1429vw, 11.25rem);
-/* Space 7xl: 180px → 200px */
---space-7xl: clamp(11.25rem, 10.6548rem + 2.381vw, 12.5rem);
+    /* Step -1: 13.3333px → 15.0038px */
+    --step--1: clamp(0.8333rem, 0.797rem + 0.1816vw, 0.9377rem);
+    /* Step 0: 16px → 20px */
+    --step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
+    /* Step 1: 19.2px → 26.66px */
+    --step-1: clamp(1.2rem, 1.0378rem + 0.8109vw, 1.6663rem);
+    /* Step 2: 23.04px → 35.5378px */
+    --step-2: clamp(1.44rem, 1.1683rem + 1.3585vw, 2.2211rem);
+    /* Step 3: 27.648px → 47.3719px */
+    --step-3: clamp(1.728rem, 1.2992rem + 2.1439vw, 2.9607rem);
+    /* Step 4: 33.1776px → 63.1467px */
+    --step-4: clamp(2.0736rem, 1.4221rem + 3.2575vw, 3.9467rem);
+    /* Step 5: 39.8131px → 84.1745px */
+    --step-5: clamp(2.4883rem, 1.5239rem + 4.8219vw, 5.2609rem);
+    /* Step 6: 47.7757px → 112.2047px */
+    --step-6: clamp(2.986rem, 1.5854rem + 7.0031vw, 7.0128rem);
+    /* Step 7: 57.3309px → 149.5688px */
+    --step-7: clamp(3.5832rem, 1.578rem + 10.0259vw, 9.3481rem);
+    /* Step 8: 68.7971px → 199.3752px */
+    --step-8: clamp(4.2998rem, 1.4612rem + 14.1933vw, 12.461rem);
+    /* Step 9: 82.5565px → 264.2502px */
+    --step-9: clamp(5.1598rem, 1.1914rem + 19.4381vw, 16.602rem);
 
-/* One-up pairs */
-/* Space s-m: 18px → 30px */
---space-s-m: clamp(1.125rem, 0.7679rem + 1.4286vw, 1.875rem);
-/* Space m-l: 27px → 40px */
---space-m-l: clamp(1.6875rem, 1.3006rem + 1.5476vw, 2.5rem);
-/* Space l-xl: 36px → 60px */
---space-l-xl: clamp(2.25rem, 1.5357rem + 2.8571vw, 3.75rem);
-/* Space xl-2xl: 54px → 80px */
---space-xl-2xl: clamp(3.375rem, 2.6012rem + 3.0952vw, 5rem);
-/* Space 2xl-3xl: 72px → 120px */
---space-2xl-3xl: clamp(4.5rem, 3.0714rem + 5.7143vw, 7.5rem);
-/* Space 3xl-4xl: 108px → 140px */
---space-3xl-4xl: clamp(6.75rem, 5.7976rem + 3.8095vw, 8.75rem);
-/* Space 4xl-5xl: 126px → 160px */
---space-4xl-5xl: clamp(7.875rem, 6.8631rem + 4.0476vw, 10rem);
-/* Space 5xl-6xl: 144px → 180px */
---space-5xl-6xl: clamp(9rem, 7.9286rem + 4.2857vw, 11.25rem);
-/* Space 6xl-7xl: 162px → 200px */
---space-6xl-7xl: clamp(10.125rem, 8.994rem + 4.5238vw, 12.5rem);
+    /* ------------------------------------------------------- */
+    /* ----------------- Custom Space-Sizes ------------------ */
+    /* ------------------------------------------------------- */
+
+    /* Space xs: 12px → 15px */
+    --space-xs: clamp(0.75rem, 0.6848rem + 0.3261vw, 0.9375rem);
+    /* Space s: 16px → 20px */
+    --space-s: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
+    /* Space m: 24px → 30px */
+    --space-m: clamp(1.5rem, 1.3696rem + 0.6522vw, 1.875rem);
+    /* Space l: 32px → 40px */
+    --space-l: clamp(2rem, 1.8261rem + 0.8696vw, 2.5rem);
+    /* Space xl: 48px → 60px */
+    --space-xl: clamp(3rem, 2.7391rem + 1.3043vw, 3.75rem);
+    /* Space 2xl: 64px → 80px */
+    --space-2xl: clamp(4rem, 3.6522rem + 1.7391vw, 5rem);
+    /* Space 3xl: 96px → 120px */
+    --space-3xl: clamp(6rem, 5.4783rem + 2.6087vw, 7.5rem);
+    /* Space 4xl: 112px → 140px */
+    --space-4xl: clamp(7rem, 6.3913rem + 3.0435vw, 8.75rem);
+    /* Space 5xl: 128px → 160px */
+    --space-5xl: clamp(8rem, 7.3043rem + 3.4783vw, 10rem);
+    /* Space 6xl: 144px → 180px */
+    --space-6xl: clamp(9rem, 8.2174rem + 3.913vw, 11.25rem);
+    /* Space 7xl: 160px → 200px */
+    --space-7xl: clamp(10rem, 9.1304rem + 4.3478vw, 12.5rem);
+    /* Space 8xl: 176px → 220px */
+    --space-8xl: clamp(11rem, 10.0435rem + 4.7826vw, 13.75rem);
+    /* Space 9xl: 192px → 240px */
+    --space-9xl: clamp(12rem, 10.9565rem + 5.2174vw, 15rem);
+
+    /* One-up pairs */
+    /* Space xs-s: 12px → 20px */
+    --space-xs-s: clamp(0.75rem, 0.5761rem + 0.8696vw, 1.25rem);
+    /* Space s-m: 16px → 30px */
+    --space-s-m: clamp(1rem, 0.6957rem + 1.5217vw, 1.875rem);
+    /* Space m-l: 24px → 40px */
+    --space-m-l: clamp(1.5rem, 1.1522rem + 1.7391vw, 2.5rem);
+    /* Space l-xl: 32px → 60px */
+    --space-l-xl: clamp(2rem, 1.3913rem + 3.0435vw, 3.75rem);
+    /* Space xl-2xl: 48px → 80px */
+    --space-xl-2xl: clamp(3rem, 2.3043rem + 3.4783vw, 5rem);
+    /* Space 2xl-3xl: 64px → 120px */
+    --space-2xl-3xl: clamp(4rem, 2.7826rem + 6.087vw, 7.5rem);
+    /* Space 3xl-4xl: 96px → 140px */
+    --space-3xl-4xl: clamp(6rem, 5.0435rem + 4.7826vw, 8.75rem);
+    /* Space 4xl-5xl: 112px → 160px */
+    --space-4xl-5xl: clamp(7rem, 5.9565rem + 5.2174vw, 10rem);
+    /* Space 5xl-6xl: 128px → 180px */
+    --space-5xl-6xl: clamp(8rem, 6.8696rem + 5.6522vw, 11.25rem);
+    /* Space 6xl-7xl: 144px → 200px */
+    --space-6xl-7xl: clamp(9rem, 7.7826rem + 6.087vw, 12.5rem);
+    /* Space 7xl-8xl: 160px → 220px */
+    --space-7xl-8xl: clamp(10rem, 8.6957rem + 6.5217vw, 13.75rem);
+    /* Space 8xl-9xl: 176px → 240px */
+    --space-8xl-9xl: clamp(11rem, 9.6087rem + 6.9565vw, 15rem);
+
+    /* Custom pairs */
+    /* Space s-l: 16px → 40px */
+    --space-s-l: clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem);
 }
 
-/* --------------------------------------- */
-/* ------------  Custom Colors ----------- */
-/* --------------------------------------- */
+/* ------------------------------------------------------- */
+/* ------------------- Custom Colors --------------------- */
+/* ------------------------------------------------------- */
+
 
 .text-dark {
-color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-dark));
 }
 
 .text-light {
-color: hsl(var(--clr-light));
+    color: hsl(var(--clr-light));
 }
 
 .text-span {
-color: hsl(var(--clr-span));
+    color: hsl(var(--clr-span));
 }
 
 .text-white {
-color: hsl(var(--clr-white));
+    color: hsl(var(--clr-white));
 }
 
 .text-accent {
-color: hsl(var(--clr-accent));
+    color: hsl(var(--clr-accent));
 }
 
-/*-----------------------------------------*/
-/*-------------Index-Home Page-------------*/
-/*-----------------------------------------*/
+/* ------------------------------------------------------- */
+/* -------------------Index Home Page--------------------- */
+/* ------------------------------------------------------- */
+
 
 body,
 html {
-  min-height: 100svh;
-  margin: 0;
-  padding: 0;
-  overflow: clip;
+    min-height: 100svh;
+    margin: 0;
+    padding: 0;
+    overflow: clip;
 }
 
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .index {
-    
-  min-height: 100vh;
-  color:hsl(var(--clr-white));
-  font-family:'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
-  overflow: clip;
+    color: hsl(var(--clr-white));
+    font-family: 'Big Shoulders Inline', sans-serif;
+    font-weight: 100;
+    padding-inline: 0 auto;
+    overflow: clip;
 }
 
-.index >*{
-  container-type: inline-size;
+.index>* {
+    container-type: inline-size;
 }
 
 .title {
-  display: block;
-  margin-block: var(--space-xs);
-  font-size: var(--step-1);
-  color:hsl(var(--clr-white));
-  font-family:'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
-  text-align: center;
+    padding-inline: 0 auto;
+    margin-block: var(--space-xs);
+    font-size: var(--step-0);
+    color: hsl(var(--clr-white));
+    font-family: 'Big Shoulders Inline', sans-serif;
+    font-weight: 100;
+    text-align: center;
 }
 
 .author {
-    display: block;
+    padding-inline: 0 auto;
     margin-block: var(--space-xs);
     font-size: var(--step--1);
-    color:hsl(var(--clr-white));
-    font-family:'Big Shoulders Inline', sans-serif;
+    color: hsl(var(--clr-white));
+    font-family: 'Big Shoulders Inline', sans-serif;
     font-weight: 100;
     text-align: center;
 }
 
 .container {
-  min-height: 100svh;
-  padding-top: var(--space-6xl);
- }
+    min-height: 100svh;
+    padding-inline: 0 auto;
+    padding-top: var(--space-6xl);
+}
 
 .container a {
-  max-width: 100%;
-  height: auto;
-  text-decoration: none;
+    padding-inline: 0 auto;
+    max-width: 100%;
+    height: auto;
+    text-decoration: none;
 }
 
 .text-with-animation {
-  color: hsl(var(--clr-white));
-  font-size: var(--step-6);
-  font-family:'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
-  text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+    color: hsl(var(--clr-white));
+    font-size: var(--step-5);
+    font-family: 'Big Shoulders Inline', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    animation: main-text-animation 1.7s ease-in-out forwards;
 
-  letter-spacing: 4px;
-  width: 500vw;
-  margin-left: -200vw;
+    letter-spacing: 4px;
+    width: 500vw;
+    margin-left: -200vw;
 }
 
 .subtext-with-animation {
     color: hsl(var(--clr-white));
-    font-size: var(--step-7);
-    font-family:'Big Shoulders Inline', sans-serif;
+    font-size: var(--step-5);
+    font-family: 'Big Shoulders Inline', sans-serif;
     font-weight: 100;
     text-align: center;
-  letter-spacing: 4px;
-  width: 500vw;
-  margin-left: -200vw;
+    letter-spacing: 4px;
+    width: 500vw;
+    margin-left: -200vw;
 }
 
-
 .subtext-with-animation span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.5s forwards;
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-in-out 1.5s forwards;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.7s forwards;
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-in-out 1.7s forwards;
 }
 
 .subtext-with-animation-1 {
     color: hsl(var(--clr-white));
-  font-size: var(--step-6);
-  font-family:'Big Shoulders Inline', sans-serif;
-  font-weight: 100;
-  text-align: center;
-  letter-spacing: 4px;
-  width: 500vw;
-  margin-left: -200vw;
- }
+    font-size: var(--step-4);
+    font-family: 'Big Shoulders Inline', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    letter-spacing: 4px;
+    width: 500vw;
+    margin-left: -200vw;
+}
+
+.subtext-with-animation-2 {
+    color: hsl(var(--clr-white));
+    font-size: var(--step-4);
+    font-family: 'Big Shoulders Inline', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    letter-spacing: 4px;
+    width: 500vw;
+    margin-left: -200vw;
+}
 
 .subtext-with-animation-1 span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.5s forwards;
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-in-out 1.5s forwards;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.7s forwards;
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-in-out 1.7s forwards;
 }
 
+.subtext-with-animation-2 span:first-of-type {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-in-out 1.5s forwards;
+}
+
+.subtext-with-animation-2 span:nth-of-type(2) {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-in-out 1.7s forwards;
+}
 
 @keyframes main-text-animation {
-  0% {
-    letter-spacing: 25vw;
-    word-spacing: 100vw;
-    opacity: 0;
-  }
+    0% {
+        letter-spacing: 25vw;
+        word-spacing: 100vw;
+        opacity: 0;
+    }
 
-  100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
-    opacity: 1;
-  }
+    100% {
+        letter-spacing: 4px;
+        word-spacing: 1vw;
+        opacity: 1;
+    }
 }
 
 @keyframes word-animation {
-  0% {
-    top: 10vw;
-    opacity: 0;
-  }
+    0% {
+        top: 10vw;
+        opacity: 0;
+    }
 
-  100% {
-    top: 3.5vw;
-    opacity: 1;
-  }
-}
-
-
-@container (max-width=500px){
- .index{
-   padding-inline: var(--space-4xl);
- }
+    100% {
+        top: 3.5vw;
+        opacity: 1;
+    }
 }
 
 /* --------------------------------------- */
