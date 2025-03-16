@@ -1,86 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap');
 
 :root {
-  /* --------------------------------------- */
-  /* ------------ Custom Colors ------------ */
-  /* --------------------------------------- */
+/* ------------------------------------------------- */
+/* ------------------ Custom Colors ---------------- */
+/* ------------------------------------------------- */
 
-    --clr-dark: 0, 0%, 0%;
-    --clr-light: 195, 70%, 90%;
-    --clr-span: 195, 36%, 45%;
-    --clr-white: 0, 0%, 100%;
-    --clr-accent: 231, 77%, 90%;
+--clr-dark: 0, 0%, 0%;
+--clr-light: 195, 70%, 90%;
+--clr-span: 195, 36%, 45%;
+--clr-white: 0, 0%, 100%;
+--clr-accent: 231, 77%, 90%;
 
-  /* --------------------------------------- */
-  /* ----------- Custom Margins ------------ */
-  /* --------------------------------------- */
 
-  /* Space xs: 12px → 15px */
-  --padding-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
-  /* Space s: 16px → 20px */
-  --padding-s: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
-  /* Space m: 24px → 30px */
-  --padding-m: clamp(1.5rem, 1.3696rem + 0.6522cqi, 1.875rem);
-  /* Space l: 32px → 40px */
-  --padding-l: clamp(2rem, 1.8261rem + 0.8696cqi, 2.5rem);
-  /* Space xl: 48px → 60px */
-  --padding-xl: clamp(3rem, 2.7391rem + 1.3043cqi, 3.75rem);
-  /* Space 2xl: 64px → 80px */
-  --padding-2xl: clamp(4rem, 3.6522rem + 1.7391cqi, 5rem);
-  /* Space 3xl: 96px → 120px */
-  --padding-3xl: clamp(6rem, 5.4783rem + 2.6087cqi, 7.5rem);
-  /* Space 4xl: 112px → 140px */
-  --padding-4xl: clamp(7rem, 6.3913rem + 3.0435cqi, 8.75rem);
-  /* Space 5xl: 128px → 160px */
-  --padding-5xl: clamp(8rem, 7.3043rem + 3.4783cqi, 10rem);
-  /* Space 6xl: 144px → 180px */
-  --padding-6xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
-  /* Space 7xl: 160px → 200px */
-  --padding-7xl: clamp(10rem, 9.1304rem + 4.3478cqi, 12.5rem);
-  /* Space 8xl: 192px → 240px */
-  --padding-8xl: clamp(12rem, 10.9565rem + 5.2174cqi, 15rem);
-}
 
-/* --------------------------------------- */
-/* ---------- Custom Font Sizes ---------- */
-/* --------------------------------------- */
+/* ---------------------------------------------------- */
+/* ---------------- Custom Font-Sizes ----------------- */
+/* ---------------------------------------------------- */
 
-/* For browsers that support clamp and container queries */
-@supports (font-size: clamp(1rem, 1cqi, 1rem)) {
-  :root {
-    --fs-200: clamp(0.8rem, 0.17cqi + 0.76rem, 0.89rem);
-    --fs-300: clamp(1rem, 0.34cqi + 0.91rem, 1.19rem);
-    --fs-400: clamp(1.25rem, 0.61cqi + 1.1rem, 1.58rem);
-    --fs-500: clamp(1.56rem, 1cqi + 1.31rem, 2.11rem);
-    --fs-600: clamp(1.95rem, 1.56cqi + 1.56rem, 2.81rem);
-    --fs-700: clamp(2.44rem, 2.38cqi + 1.85rem, 3.75rem);
-    --fs-800: clamp(3.05rem, 3.54cqi + 2.17rem, 5rem);
-  }
-}
+/* Step -1: 15px → 16px */
+--step--1: clamp(0.9375rem, 0.9077rem + 0.119vw, 1rem);
+/* Step 0: 18px → 20px */
+--step-0: clamp(1.125rem, 1.0655rem + 0.2381vw, 1.25rem);
+/* Step 1: 21.6px → 25px */
+--step-1: clamp(1.35rem, 1.2488rem + 0.4048vw, 1.5625rem);
+/* Step 2: 25.92px → 31.25px */
+--step-2: clamp(1.62rem, 1.4614rem + 0.6345vw, 1.9531rem);
+/* Step 3: 31.104px → 39.0625px */
+--step-3: clamp(1.944rem, 1.7071rem + 0.9474vw, 2.4414rem);
+/* Step 4: 37.3248px → 48.8281px */
+--step-4: clamp(2.3328rem, 1.9904rem + 1.3694vw, 3.0518rem);
+/* Step 5: 44.7898px → 61.0352px */
+--step-5: clamp(2.7994rem, 2.3159rem + 1.934vw, 3.8147rem);
+/* Step 6: 53.7477px → 76.2939px */
+--step-6: clamp(3.3592rem, 2.6882rem + 2.6841vw, 4.7684rem);
+/* Step 7: 64.4973px → 95.3674px */
+--step-7: clamp(4.0311rem, 3.1123rem + 3.675vw, 5.9605rem);
 
-/* For browsers that don't support clamp or container queries */
-@supports not (font-size: clamp(1rem, 1cqi, 1rem)) {
-  :root {
-    --fs-200: 0.8rem;
-    --fs-300: 1rem;
-    --fs-400: 1.25rem;
-    --fs-500: 1.56rem;
-    --fs-600: 1.95rem;
-    --fs-700: 2.44rem;
-    --fs-800: 3.05rem;
-  }
-}
 
-@media screen and (min-width: 1280px) {
-  :root {
-    --fs-200: 0.89rem;
-    --fs-300: 1.19rem;
-    --fs-400: 1.58rem;
-    --fs-500: 2.11rem;
-    --fs-600: 2.81rem;
-    --fs-700: 3.75rem;
-    --fs-800: 5rem;
-  }
+/* ---------------------------------------------------- */
+/* ---------------- Custom Space-Sizes ---------------- */
+/* ---------------------------------------------------- */
+
+/* Space xs: 9px → 10px */
+--space-xs: clamp(0.5625rem, 0.5446rem + 0.119vw, 0.625rem);
+/* Space s: 18px → 20px */
+--space-s: clamp(1.125rem, 1.0655rem + 0.2381vw, 1.25rem);
+/* Space m: 27px → 30px */
+--space-m: clamp(1.6875rem, 1.5982rem + 0.3571vw, 1.875rem);
+/* Space l: 36px → 40px */
+--space-l: clamp(2.25rem, 2.131rem + 0.4762vw, 2.5rem);
+/* Space xl: 54px → 60px */
+--space-xl: clamp(3.375rem, 3.1964rem + 0.7143vw, 3.75rem);
+/* Space 2xl: 72px → 80px */
+--space-2xl: clamp(4.5rem, 4.2619rem + 0.9524vw, 5rem);
+/* Space 3xl: 108px → 120px */
+--space-3xl: clamp(6.75rem, 6.3929rem + 1.4286vw, 7.5rem);
+/* Space 4xl: 126px → 140px */
+--space-4xl: clamp(7.875rem, 7.4583rem + 1.6667vw, 8.75rem);
+/* Space 5xl: 144px → 160px */
+--space-5xl: clamp(9rem, 8.5238rem + 1.9048vw, 10rem);
+/* Space 6xl: 162px → 180px */
+--space-6xl: clamp(10.125rem, 9.5893rem + 2.1429vw, 11.25rem);
+/* Space 7xl: 180px → 200px */
+--space-7xl: clamp(11.25rem, 10.6548rem + 2.381vw, 12.5rem);
+
+/* One-up pairs */
+/* Space s-m: 18px → 30px */
+--space-s-m: clamp(1.125rem, 0.7679rem + 1.4286vw, 1.875rem);
+/* Space m-l: 27px → 40px */
+--space-m-l: clamp(1.6875rem, 1.3006rem + 1.5476vw, 2.5rem);
+/* Space l-xl: 36px → 60px */
+--space-l-xl: clamp(2.25rem, 1.5357rem + 2.8571vw, 3.75rem);
+/* Space xl-2xl: 54px → 80px */
+--space-xl-2xl: clamp(3.375rem, 2.6012rem + 3.0952vw, 5rem);
+/* Space 2xl-3xl: 72px → 120px */
+--space-2xl-3xl: clamp(4.5rem, 3.0714rem + 5.7143vw, 7.5rem);
+/* Space 3xl-4xl: 108px → 140px */
+--space-3xl-4xl: clamp(6.75rem, 5.7976rem + 3.8095vw, 8.75rem);
+/* Space 4xl-5xl: 126px → 160px */
+--space-4xl-5xl: clamp(7.875rem, 6.8631rem + 4.0476vw, 10rem);
+/* Space 5xl-6xl: 144px → 180px */
+--space-5xl-6xl: clamp(9rem, 7.9286rem + 4.2857vw, 11.25rem);
+/* Space 6xl-7xl: 162px → 200px */
+--space-6xl-7xl: clamp(10.125rem, 8.994rem + 4.5238vw, 12.5rem);
 }
 
 /* --------------------------------------- */
@@ -88,159 +90,157 @@
 /* --------------------------------------- */
 
 .text-dark {
-  color: hsl(var(--clr-dark));
+color: hsl(var(--clr-dark));
 }
 
 .text-light {
-  color: hsl(var(--clr-light));
+color: hsl(var(--clr-light));
 }
 
 .text-span {
-  color: hsl(var(--clr-span));
+color: hsl(var(--clr-span));
 }
 
 .text-white {
-  color: hsl(var(--clr-white));
+color: hsl(var(--clr-white));
 }
 
 .text-accent {
-  color: hsl(var(--clr-accent));
+color: hsl(var(--clr-accent));
 }
 
 
-  
-
 body {
-  font-family:var(--ff-kanit-regular-italic);
-  min-height: 100svh;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  background:hsl(var(--clr-dark));
-  color: var(--clr-white);
+font-family:var(--ff-kanit-regular-italic);
+min-height: 100svh;
+display: grid;
+justify-content: center;
+align-content: center;
+background:hsl(var(--clr-dark));
+color: var(--clr-white);
 }
 
 h1,
 h2,
 h3,
 p {
-   margin: 0;
-   padding: 0;
-   text-wrap: balance;
+margin: 0;
+padding: 0;
+text-wrap: balance;
 }
 
 
 
 
 .game {
-  position: relative;
-  width:15rem;
-  border-radius: var(--br);
-  overflow: hidden;
-  cursor: pointer;
+position: relative;
+width:15rem;
+border-radius: var(--br);
+overflow: hidden;
+cursor: pointer;
 }
 
 .game .front a {
-  color: hsl(var(--clr-white));
-  font-size: var(--fs-600);
-  text-decoration: none;
-  text-align: center;
-  display: block;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--br);
+color: hsl(var(--clr-white));
+font-size: var(--fs-600);
+text-decoration: none;
+text-align: center;
+display: block;
+position: relative;
+overflow: hidden;
+border-radius: var(--br);
 }
 
 .front p {
-  font-family: var(--ff-kanit-bold-italic);
-  font-size: var(--fs-700);
-  position: relative;
-  z-index: 1;
+font-family: var(--ff-kanit-bold-italic);
+font-size: var(--fs-700);
+position: relative;
+z-index: 1;
 }
 
 .game .front a:hover {
-  text-decoration: none;
+text-decoration: none;
 }
 
 .rank {
-  font-family: var(--ff-kanit-regular-italic);
-  font-size:var(--fs-600);
-  text-align: center;
-  background: hsl(var(--clr-white));
-  color: hsl(var(--clr-dark));
-  padding: 0.5em 0.75em 0.5em 0.75em;
-  clip-path: polygon(100% 0%, 100% 100%, 50% 85%, 0 100%, 0 0);
-  transition: var(--transition);
+font-family: var(--ff-kanit-regular-italic);
+font-size:var(--fs-600);
+text-align: center;
+background: hsl(var(--clr-white));
+color: hsl(var(--clr-dark));
+padding: 0.5em 0.75em 0.5em 0.75em;
+clip-path: polygon(100% 0%, 100% 100%, 50% 85%, 0 100%, 0 0);
+transition: var(--transition);
 }
 
 .front {
-  transition: 250ms;
- }
- 
- .front .thumbnail {
-   display: block;
-   opacity:1;
-   width: 100%;
-   height: auto;
-   object-fit: cover;
-   border-radius: var(--br);
- }
- 
- .game:hover .rank {
-  transform: translate(-150%, -60%);
-  /*transform: translate(150%, -61%);*/
+transition: 250ms;
+}
+
+.front .thumbnail {
+display: block;
+opacity:1;
+width: 100%;
+height: auto;
+object-fit: cover;
+border-radius: var(--br);
+}
+
+.game:hover .rank {
+transform: translate(-150%, -60%);
+/*transform: translate(150%, -61%);*/
 }
 
 .game:hover .front .thumbnail {
-  transform: translateY(0%) scale(1);
+transform: translateY(0%) scale(1);
 }
 
 .game:hover .back {
-  opacity: 1;
-  transition: transform 250ms ease, opacity 150ms linear;
-  transform: translateY(0);
+opacity: 1;
+transition: transform 250ms ease, opacity 150ms linear;
+transform: translateY(0);
 }
 
 .game:hover .background {
-  transition: var(--transition), opacity 100ms linear;
-  opacity: 1;
-  transform: scale(1.35, 1.3) translateY(5%);
+transition: var(--transition), opacity 100ms linear;
+opacity: 1;
+transform: scale(1.35, 1.3) translateY(5%);
 }
 
 .back {
-  opacity: 0;
-  position: absolute;
-  top: 55%;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5em;
-  transform: translateY(35%);
+opacity: 0;
+position: absolute;
+top: 55%;
+left: 0;
+right: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1.5em;
+transform: translateY(35%);
 }
 
 
 .background {
-  min-height: 100%;
-  background:hsl(var(--clr-dark));
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  transform: scale(0.2, 0.9);
-  opacity: 0;
-  border-radius: var(--br);
-  overflow: hidden;
+min-height: 100%;
+background:hsl(var(--clr-dark));
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: -1;
+transform: scale(0.2, 0.9);
+opacity: 0;
+border-radius: var(--br);
+overflow: hidden;
 }
 
 .background img {
-  opacity:1;
-  height:auto;
-  width: 100%;
-  object-fit: cover;
+opacity:1;
+height:auto;
+width: 100%;
+object-fit: cover;
 }
 
 
