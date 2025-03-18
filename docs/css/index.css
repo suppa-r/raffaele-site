@@ -132,13 +132,18 @@
 /* -------------------------- Start ---------------------- */
 /* ------------------------------------------------------- */
 
-.index-home {
-  min-height: 100svh;
+.index-container {
+  display: grid;
   background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
-  overflow: clip;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.index-container > * {
+  container-type: inline-size;
 }
 
 .quote {
@@ -158,14 +163,12 @@
   text-align: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: var(--space-4xl);
+.index-content {
+  padding-inline: 0 var(--space-2xl);
+  text-align: center;
 }
 
-.container a {
+.index-content a {
   padding-inline: 0 auto;
   max-width: 100%;
   height: auto;
@@ -179,7 +182,6 @@
   font-weight: 100;
   text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
-
   letter-spacing: 4px;
   width: 500vw;
   margin-left: -200vw;
