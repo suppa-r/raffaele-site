@@ -7,6 +7,7 @@
 *,
 body,
 html,
+section,
 div,
 span,
 applet,
@@ -16,6 +17,8 @@ blockquote,
 pre *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Prevent font size inflation */
@@ -64,10 +67,6 @@ h2,
 h3,
 h4 {
   text-wrap: balance;
-}
-
-p {
-  letter-spacing: var(--letter-spacing);
 }
 
 /* A elements that don't have a class get default styles */

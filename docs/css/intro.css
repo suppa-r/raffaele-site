@@ -197,8 +197,6 @@ body {
   background: hsl(var(--clr-dark));
   text-wrap: balance;
   color: hsl(var(--clr-white));
-  margin: 0;
-  padding: 0;
   overflow: hidden;
 }
 
@@ -226,12 +224,13 @@ body {
 
 .intro {
   display: grid;
+  max-width: 40rem;
+  margin: auto;
   overflow: hidden;
+   >*{
+    container-type: inline-size;
+   }
 }
-
-.intro > * {
-  container-type: inline-size;
- }
 
 html {
   color-scheme: dark only;
@@ -239,9 +238,11 @@ html {
 
 .intro::before {
   content: "";
-  min-height: 100svh;
-  width: 100%;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
   position: fixed;
+  top: 0;
+  left: 0;
   background: linear-gradient(
         90deg,
         color-mix(in hsl, canvasText, transparent 70%) 1px,
@@ -257,6 +258,7 @@ html {
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-position 0.3s ease-in-out;
+  z-index: -1; /* Ensure it is behind other content */
 }
 
 /* --------------------------------------- */
@@ -271,7 +273,7 @@ header {
 header .logo {
   font-size: var(--step-0);
   color: hsl(var(--clr-white));
-  margin-left: var(--space-xl);
+  margin-left: var(--space-l);
 }
 
 header .logo span {
@@ -325,7 +327,7 @@ header .logo span {
   
   .site-nav a {
   color:hsl(var(--clr-span));
-  font-size: var(--fs-400);
+  font-size: var(--step-0);
   background: transparent;
   display: block;
   text-align: left;
@@ -347,7 +349,6 @@ header .logo span {
   text-align: right;
   color: rgba(255, 255, 255, 0.4);
   }
-  
   
   .menu-toggle {
   padding: 1em;
@@ -417,7 +418,7 @@ header .logo span {
   
   &:hover>li:not(:hover) {
   opacity: .8;
-  transform: scale(0.9);
+  transform: scale(.7);
   }
   }
   }
@@ -449,7 +450,7 @@ ul {
 
     &:hover > li:not(:hover) {
       opacity: 0.8;
-      transform: scale(0.9);
+      transform: scale(.7);
     }
   }
 }
@@ -468,6 +469,7 @@ ul {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
+  padding-block: var(--space-l);
  }
 
 .intro-content p {
@@ -482,13 +484,13 @@ ul {
   margin-block: 0.1em;
 }
 
-.intro-content img {
-  background-color: hsl(var(--clr-dark));
-  max-width: 100%;
-  height: auto;
+.intro-content .merci {
   object-fit: cover;
   object-position: center;
-  padding-bottom: var(--space-l);
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  margin-inline: 0 auto; /* Center the image horizontally */
+  margin-bottom: var(--space-3xl); /* Add margin at the bottom */
 }
 
 h1,
@@ -500,28 +502,25 @@ h3 {
   margin-block: 0.3em;
 }
 
-.link {
+.intro-content a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-}
-
-.link a {
+  align-items: center;
   color: hsl(var(--clr-white));
   text-decoration: none;
   font-size: var(--step-1);
 }
 
-.link a span {
+.intro-content a span {
   font-size: var(--step-3);
   color: hsl(var(--clr-span));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
 }
 
-.link a ion-icon {
-  font-size: var(--step-3);
+.intro-content a ion-icon {
+  font-size: var(--step-2);
   z-index: 5;
   --ionicon-stroke-width: 32px;
   color: hsl(var(--clr-span));
@@ -529,12 +528,15 @@ h3 {
   vertical-align: middle;
 }
 
-@container(max-width: 500px) {
+/*@container(max-width: 500px) {
   .logo {
-   padding: var(--space-s);
+   padding: var(--space-xs);
   }
   .intro {
     margin-top: var(--space-3xl);
+  }
+  .merci{
+    margin:auto;
   }
 }
 
