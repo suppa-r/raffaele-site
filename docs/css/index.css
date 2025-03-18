@@ -221,17 +221,6 @@
   margin-left: -200vw;
 }
 
-.subtext-with-animation-2 {
-  color: hsl(var(--clr-white));
-  font-size: var(--step-4);
-  font-family: "Big Shoulders Inline", sans-serif;
-  font-weight: 100;
-  text-align: center;
-  letter-spacing: 4px;
-  width: 500vw;
-  margin-left: -200vw;
-}
-
 .subtext-with-animation-1 span:first-of-type {
   position: relative;
   opacity: 0;
@@ -239,18 +228,6 @@
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.7s forwards;
-}
-
-.subtext-with-animation-2 span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.5s forwards;
-}
-
-.subtext-with-animation-2 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
   animation: word-animation 0.5s ease-in-out 1.7s forwards;
