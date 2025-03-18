@@ -351,7 +351,7 @@ header .logo span {
   }
   
   .menu-toggle {
-  padding: 1em;
+  padding:var(--space-l);
   background: transparent;
   border: 0;
   position: absolute;
@@ -482,6 +482,7 @@ ul {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
   margin-block: 0.1em;
+  padding-left: var(--space-xs);
 }
 
 .intro-content .merci {
