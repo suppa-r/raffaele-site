@@ -351,12 +351,12 @@ header .logo span {
   }
   
   .menu-toggle {
-  padding:var(--space-l);
+  padding:var(--space-s);
   background: transparent;
   border: 0;
   position: absolute;
-  top: 0em;
-  right: 0.9em;
+  top:2rem;
+  right: 2rem;
   cursor: pointer;
   }
   
@@ -469,7 +469,7 @@ ul {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
-  padding-block: var(--space-l);
+  padding-block: var(--space-xl);
  }
 
 .intro-content p {
