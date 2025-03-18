@@ -479,7 +479,7 @@ h3 {
   font-size: var(--step-1);
   color: hsl(var(--clr-white));
   font-weight: 100;
-  margin-block: 0.3em;
+  margin-block: 0.4em;
 }
 
 .link {
