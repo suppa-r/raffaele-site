@@ -474,12 +474,6 @@ h3 {
   vertical-align: middle;
 }
 
-@container (max-width:500px) {
-  .intro-content {
-    padding: var(--space-m);
-  }
-}
-
 /* --------------------------------------- */
 /* ---------- End of Intro Home ---------- */
 /* --------------------------------------- */
