@@ -227,20 +227,20 @@ html {
 header {
   display: flex;
   background: transparent;
-  margin:0 0 0 0.3em;
- }
+  margin: 0 0 0 0.3em;
+}
 
 header .logo {
   font-size: var(--step-0);
   color: hsl(var(--clr-white));
   font-weight: 100;
- }
+}
 
 header .logo span {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
-  padding: 0 .2em 0 .4em;
- }
+  padding: 0 0.2em 0 0.4em;
+}
 
 .primary-navigation {
   position: absolute;
@@ -413,8 +413,7 @@ ul {
 .intro-content {
   display: grid;
   text-align: center;
- }
-
+}
 
 .intro-content p {
   font-size: var(--step-0);
@@ -455,7 +454,7 @@ h3 {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   display: inline-block;
- }
+}
 
 .intro-content a span {
   font-size: var(--step-4);
@@ -472,12 +471,6 @@ h3 {
   color: hsl(var(--clr-span));
   text-align: center;
   vertical-align: middle;
-}
-
-@container(max-width:500px) {
-  .intro-content {
-    padding-bottom: var(--space-3xl);
-  }
 }
 
 /* --------------------------------------- */
