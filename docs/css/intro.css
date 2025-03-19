@@ -182,6 +182,7 @@ body {
 
 .intro {
   display: grid;
+  grid-template-rows: 3em 1fr;
   max-width: 40rem;
   margin: auto;
   overflow: hidden;
@@ -226,20 +227,20 @@ html {
 header {
   display: flex;
   background: transparent;
-  padding-block: var(--space-xs);
-}
+  margin:0 0 0 0.3em;
+ }
 
 header .logo {
   font-size: var(--step-0);
   color: hsl(var(--clr-white));
-  margin-left: var(--space-m);
-}
+  font-weight: 100;
+ }
 
 header .logo span {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
-  margin: 0 1em 0 0.3em;
-}
+  padding: 0 .2em 0 .4em;
+ }
 
 .primary-navigation {
   position: absolute;
@@ -410,10 +411,10 @@ ul {
 /* --------------------------------------- */
 
 .intro-content {
-  font-family: "Big Shoulders Inline", sans-serif;
-  font-weight: 100;
+  display: grid;
   text-align: center;
-}
+ }
+
 
 .intro-content p {
   font-size: var(--step-0);
@@ -472,6 +473,12 @@ h3 {
   color: hsl(var(--clr-span));
   text-align: center;
   vertical-align: middle;
+}
+
+@container(max-width:500px) {
+  .intro-content {
+    padding-bottom: var(--space-3xl);
+  }
 }
 
 /* --------------------------------------- */
