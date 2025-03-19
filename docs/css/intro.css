@@ -455,8 +455,7 @@ h3 {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   display: inline-block;
-  padding: 0.5em 1em;
-}
+ }
 
 .intro-content a span {
   font-size: var(--step-4);
