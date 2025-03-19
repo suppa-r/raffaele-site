@@ -2,25 +2,6 @@
   --letter-spacing: 0.03em;
 }
 
-/* Box sizing rules */
-
-*,
-body,
-html,
-section,
-div,
-span,
-applet,
-object,
-iframe,
-blockquote,
-pre *::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 /* Prevent font size inflation */
 html {
   -moz-text-size-adjust: none;
@@ -44,10 +25,14 @@ ol[role="list"] {
 
 /* Set core body defaults */
 body,
-html {
+html,
+main,
+section
+ {
   margin: 0;
   padding: 0;
   line-height: 1.1;
+  box-sizing: border-box;
 }
 
 /* Set shorter line heights on headings and interactive elements */
