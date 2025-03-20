@@ -243,8 +243,8 @@ header .logo span {
 
 .primary-navigation {
   position: absolute;
-  top: 6%;
-  right: 7%;
+  top: 19%;
+  right: 10%;
   background: transparent;
   transition: clip-path ease-in-out 700ms;
   margin: 0;
