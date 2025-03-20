@@ -474,6 +474,12 @@ h3 {
 }
 
 @container (max-width:500px) {
+  header .logo {
+    font-size: var(--step-1);
+  } /* 21.6px */
+  header .logo span {
+    font-size: var(--step-2);
+  } /* 25.92px */
   .primary-navigation {
     position: absolute;
     top: 10%;
