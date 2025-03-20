@@ -67,22 +67,21 @@ nav {
   --space-6xl: clamp(10.125rem, 9.7337rem + 1.9565cqi, 11.25rem);
   /* Space 7xl: 180px → 200px */
   --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
+}
+/* ------------------------------------------------------- */
+/* ------------------- Custom Colors --------------------- */
+/* ------------------------------------------------------- */
 
-  /* ------------------------------------------------------- */
-  /* ------------------- Custom Colors --------------------- */
-  /* ------------------------------------------------------- */
+--clr-dark {
+  color: hsl(var(--clr-dark));
+}
 
-  --clr-dark {
-    color: hsl(var(--clr-dark));
-  }
+--clr-span {
+  color: hsl(var(--clr-span));
+}
 
-  --clr-span {
-    color: hsl(var(--clr-span));
-  }
-
-  --clr-white {
-    color: hsl(var(--clr-white));
-  }
+--clr-white {
+  color: hsl(var(--clr-white));
 }
 
 /* ------------------------------------------------------- */
@@ -183,7 +182,7 @@ body {
 .intro {
   display: grid;
   grid-template-rows: 3em 1fr;
-  max-width: 40rem;
+  height: 100vh;
   margin: auto;
   overflow: hidden;
   > * {
@@ -475,7 +474,7 @@ h3 {
 
 @container (max-width:500px) {
   .intro-content {
-    padding: var(--space-l) var(--space-s);
+    display: block;
   }
 }
 
