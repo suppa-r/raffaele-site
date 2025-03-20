@@ -25,7 +25,7 @@ function closeMenu() {
 
   siteNavigation.style.display = "none"; // Temporarily hide navigation to force reflow
   void siteNavigation.offsetHeight; // Trigger a reflow
-  siteNavigation.style.display = "none"; // Show navigation again
+  siteNavigation.style.display = "block"; // Show navigation again
   logo.style.display = "block"; //  logo
 
   siteNavigation.addEventListener(
