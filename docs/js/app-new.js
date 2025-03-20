@@ -10,14 +10,22 @@ menuToggle.addEventListener("click", () => {
 function openMenu() {
   menuToggle.setAttribute("aria-expanded", "true");
   siteNavigation.setAttribute("data-state", "opened");
-  introcontent.setAttribute("data-state", "hidden");
+
+  siteNavigation.addEventListener(
+    "animationend",
+    () => {
+      siteNavigation.setAttribute("data-state", "open");
+    },
+    { once: true }
+  );
   introcontent.style.display = "none";
+  siteNavigation.style.display = "block";
 }
 function closeMenu() {
   menuToggle.setAttribute("aria-expanded", "false");
   siteNavigation.setAttribute("data-state", "closing");
-  introcontent.setAttribute("data-state", "visible");
   introcontent.style.display = "block";
+  siteNavigation.style.display = "none";
 
   siteNavigation.addEventListener(
     "animationend",
