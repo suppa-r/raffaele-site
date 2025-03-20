@@ -175,6 +175,33 @@ body {
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark));
+  padding: 0.5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
 /* --------------------------------------- */
 /* ------------- Intro Page -------------- */
 /* --------------------------------------- */
@@ -225,34 +252,53 @@ html {
 
 header {
   display: flex;
-  background: transparent;
-  margin: 0 0 0 0.3em;
+  justify-content: flex-start;
+  gap: 2em;
 }
 
-header .logo {
+/*header::after {
+  content: "";
+  clear: both;
+  display: block;
+}*/
+
+.header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star {
+  padding-left: var(--space-l);
+  width: 2em;
+  height: 2em;
+}
+
+.logo {
   font-size: var(--step-0);
-  color: var(--clr-white);
   font-weight: 100;
+  color: var(--clr-white);
+  padding-left: var(--space-l);
 }
 
-header .logo span {
+.logo span {
   font-size: var(--step-1);
+  font-weight: 100;
   color: var(--clr-span);
-  padding: 0 0.2em 0 0.4em;
+  padding-left: var(--space-s);
+  padding-right: var(--space-xs);
 }
 
 .primary-navigation {
   position: absolute;
-  top: 10%;
-  right: 10%;
-  clip-path: circle(0% at top right);
-  background: transparent;
-  padding: 1em;
+  top: 100%;
+  right: 0%;
+  background: #464655;
+  transition: clip-path ease-in-out 700ms;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 .primary-navigation[data-state="opened"] {
   animation: clipPathCircleOpen 750ms ease-in-out forwards;
   display: block;
@@ -282,10 +328,6 @@ header .logo span {
   }
 }
 
-.ul {
-  list-style: none;
-}
-
 .site-nav li {
   border-bottom: 1px solid #575766;
 }
@@ -295,19 +337,17 @@ header .logo span {
 }
 
 .site-nav a {
-  color: var(--clr-span);
-  font-size: var(--step-0);
-  background: transparent;
+  color: #ebebd3;
   display: block;
-  text-align: left;
-  padding: 0.6em 0.5em 0 0;
+  padding: 2em 4em 2em 1.5em;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
 .site-nav a:hover,
 .site-nav a:focus {
-  background: transparent;
-  color: transparent;
+  background: #e4b363;
+  color: #464655;
 }
 
 .site-nav--icon {
@@ -320,17 +360,17 @@ header .logo span {
 }
 
 .menu-toggle {
-  padding: var(--space-s);
+  padding: 1em;
   background: transparent;
   border: 0;
   position: absolute;
-  top: 0;
-  right: 1rem;
+  top: 0.5em;
+  right: 0.5em;
   cursor: pointer;
 }
 
 .menu-toggle:focus-visible {
-  outline: 4px solid var(--clr-span);
+  outline: 4px solid #e4b363;
 }
 
 .hamburger,
@@ -338,7 +378,7 @@ header .logo span {
 .hamburger::after {
   content: "";
   display: block;
-  background: var(--clr-white);
+  background: #ebebd3;
   height: 3px;
   width: 1.75em;
   border-radius: 3px;
@@ -474,23 +514,8 @@ h3 {
 }
 
 @container (max-width:500px) {
-  header .logo {
+  .header-text {
     display: none;
-  }
-
-  .primary-navigation {
-    position: absolute;
-    top: 10%;
-    right: 10%;
-    clip-path: circle(0% at top right);
-    background: transparent;
-    padding: 1em;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .intro-content {
-    display: block;
   }
 }
 
