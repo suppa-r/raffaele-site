@@ -21,7 +21,7 @@ function closeMenu() {
 
   // Ensure main is displayed and set background properties
   introContents.style.display = "block"; // Show main content
-  introContents.style.padding = "4rem"; // Set padding
+
   siteNavigation.style.display = "none"; // Temporarily hide navigation to force reflow
   void siteNavigation.offsetHeight; // Trigger a reflow
   siteNavigation.style.display = "none"; // Show navigation again

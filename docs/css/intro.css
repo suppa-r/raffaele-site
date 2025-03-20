@@ -1,15 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
-
+section,
+main,
+article,
+aside,
+header,
+footer,
+nav {
+  margin: 0;
+  padding: 0;
+}
 :root {
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
 
-  --clr-dark: 0, 0%, 0%;
-  --clr-light: 195, 70%, 90%;
-  --clr-span: 195, 36%, 45%;
-  --clr-white: 0, 0%, 100%;
-  --clr-accent: 231, 77%, 90%;
+  --clr-dark: hsl(0, 0%, 0%);
+  --clr-span: hsla(187, 28%, 54%, 0.842);
+  --clr-white: hsl(0, 0%, 100%);
 
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
@@ -60,32 +67,25 @@
   --space-6xl: clamp(10.125rem, 9.7337rem + 1.9565cqi, 11.25rem);
   /* Space 7xl: 180px → 200px */
   --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
+
+  /* ------------------------------------------------------- */
+  /* ------------------- Custom Colors --------------------- */
+  /* ------------------------------------------------------- */
+
+  --clr-dark {
+    color: hsl(var(--clr-dark));
+  }
+
+  --clr-span {
+    color: hsl(var(--clr-span));
+  }
+
+  --clr-white {
+    color: hsl(var(--clr-white));
+  }
 }
 
 /* ------------------------------------------------------- */
-/* ------------------- Custom Colors --------------------- */
-/* ------------------------------------------------------- */
-
-.text-dark {
-  color: hsl(var(--clr-dark));
-}
-
-.text-light {
-  color: hsl(var(--clr-light));
-}
-
-.text-span {
-  color: hsl(var(--clr-span));
-}
-
-.text-white {
-  color: hsl(var(--clr-white));
-}
-
-.text-accent {
-  color: hsl(var(--clr-accent));
-}
-
 .hello {
   display: flex;
   justify-content: center;
@@ -152,9 +152,9 @@
 body {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
-  background: hsl(var(--clr-dark));
+  background: var(--clr-dark);
   text-wrap: balance;
-  color: hsl(var(--clr-white));
+  color: var(--clr-white);
   overflow: hidden;
 }
 
@@ -232,13 +232,13 @@ header {
 
 header .logo {
   font-size: var(--step-0);
-  color: hsl(var(--clr-white));
+  color: var(--clr-white);
   font-weight: 100;
 }
 
 header .logo span {
   font-size: var(--step-1);
-  color: hsl(var(--clr-span));
+  color: var(--clr-span);
   padding: 0 0.2em 0 0.4em;
 }
 
@@ -295,7 +295,7 @@ header .logo span {
 }
 
 .site-nav a {
-  color: hsl(var(--clr-span));
+  color: var(--clr-span);
   font-size: var(--step-0);
   background: transparent;
   display: block;
@@ -330,7 +330,7 @@ header .logo span {
 }
 
 .menu-toggle:focus-visible {
-  outline: 4px solid hsl(var(--clr-span));
+  outline: 4px solid var(--clr-span);
 }
 
 .hamburger,
@@ -338,7 +338,7 @@ header .logo span {
 .hamburger::after {
   content: "";
   display: block;
-  background: hsl(var(--clr-white));
+  background: var(--clr-white);
   height: 3px;
   width: 1.75em;
   border-radius: 3px;
@@ -417,13 +417,13 @@ ul {
 
 .intro-content p {
   font-size: var(--step-0);
-  color: hsl(var(--clr-white));
+  color: var(--clr-white);
   margin-block: 0.1em;
 }
 
 .intro-content p span {
   font-size: var(--step-1);
-  color: hsl(var(--clr-span));
+  color: var(--clr-span);
   margin-block: 0.1em;
   padding-left: 0.3em;
 }
@@ -442,13 +442,13 @@ h1,
 h2,
 h3 {
   font-size: var(--step-1);
-  color: hsl(var(--clr-white));
+  color: var(--clr-white);
   font-weight: 100;
   margin-block: 0.3em;
 }
 
 .intro-content a {
-  color: hsl(var(--clr-white));
+  color: var(--clr-white);
   text-decoration: none;
   font-size: var(--step-1);
   font-family: "Big Shoulders Inline", sans-serif;
@@ -458,7 +458,7 @@ h3 {
 
 .intro-content a span {
   font-size: var(--step-4);
-  color: hsl(var(--clr-span));
+  color: var(--clr-span);
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
@@ -468,9 +468,15 @@ h3 {
   font-size: var(--step-2);
   z-index: 5;
   --ionicon-stroke-width: 32px;
-  color: hsl(var(--clr-span));
+  color: var(--clr-span);
   text-align: center;
   vertical-align: middle;
+}
+
+@container (max-width:500px) {
+  .intro-content {
+    padding: var(--space-l) var(--space-s);
+  }
 }
 
 /* --------------------------------------- */
