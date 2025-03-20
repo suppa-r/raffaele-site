@@ -13,6 +13,7 @@ function openMenu() {
   siteNavigation.setAttribute("data-state", "opened");
   siteNavigation.style.display = "block"; // Show navigation
   introContents.style.display = "none"; // Hide main content
+  logo.style.display = "none"; // Hide logo
 }
 
 function closeMenu() {
