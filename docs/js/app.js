@@ -44,13 +44,15 @@ function closeMenu() {
   logo.style.display = "flex";
 
   // Only show the logo if the screen width is greater than 500px
-  if (window.innerWidth < 500) {
+  if (window.innerWidth < 501) {
     logo.style.display = "none";
+    siteNavigation.style.display = "block";
     //logo.style.display = "flex";
     //logo.style.justifyContent = "flex-start";
   } else {
+    siteNavigation.style.display = "block";
     logo.style.display = "block";
     logo.style.display = "flex";
-    logo.style.justifyContent = "flex-start";
+    logo.style.justifyContent = "flex-end";
   }
 }

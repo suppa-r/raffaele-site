@@ -17,6 +17,7 @@ nav {
   --clr-dark: hsl(0, 0%, 0%);
   --clr-span: hsl(286, 28%, 76%);
   --clr-white: hsl(0, 0%, 100%);
+  --clr-accent: hsl(262, 29%, 85%);
 
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
@@ -82,6 +83,10 @@ nav {
 
 --clr-white {
   color: hsl(var(--clr-white));
+}
+
+--clr-accent {
+  color: hsl(var(--clr-accent));
 }
 
 /* ------------------------------------------------------- */
@@ -190,8 +195,8 @@ body {
 .skip-to-content {
   position: absolute;
   z-index: 9999;
-  background: hsl(var(--clr-white));
-  color: hsl(var(--clr-dark));
+  background: var(--clr-white);
+  color: var(--clr-dark);
   padding: 0.5em 1em;
   margin-inline: auto;
   transform: translateY(-100%);
@@ -283,6 +288,14 @@ header h1 span {
   padding-right: var(--space-s);
 }
 
+.site-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 .primary-navigation {
   position: absolute;
   top: 10%;
@@ -322,8 +335,13 @@ header h1 span {
   }
 }
 
+.site-nav ul {
+  list-style: none;
+}
+
 .site-nav li {
   border-bottom: 3px solid #575766;
+  padding: 0em 2em 0em 0em;
 }
 
 .site-nav li:last-child {
@@ -331,6 +349,8 @@ header h1 span {
 }
 
 .site-nav a {
+  display: block;
+  width: 100%;
   color: var(--clr-dark);
   display: inline-flex;
   padding: 1em 2em 1em 0em;
@@ -339,7 +359,8 @@ header h1 span {
 
 .site-nav a:hover,
 .site-nav a:focus {
-  background: var(--clr-span);
+  background: var(--clr-accent);
+
   color: var(--clr-dark);
 }
 
@@ -412,17 +433,19 @@ ul {
   @media (hover) and (prefers-reduced-motion: no-preference) {
     & > li {
       opacity: 1;
-      transform-origin: left center;
+      transform-origin: left right;
       transition: transform 1s var(--ease-spring-3), opacity 0.3s var(--ease-3);
     }
 
     &:hover > li:not(:hover) {
+      width: 100%;
       opacity: 0.8;
-      transform: scale(0.8);
+      transform: scale(1.2) translate(-50%, -50%); /* Combine translateX and translateY */
+      background-color: var(--clr-accent);
+      padding: 0em 0em 0em 0em;
     }
   }
 }
-
 @layer support.demo {
   ul {
     list-style: none;
@@ -511,9 +534,9 @@ h3 {
     display: none;
   }
 
-  .site-nav {
-    top: 10%;
-    right: 10%;
+  .primary-navigation {
+    top: 15%;
+    right: 15%;
   }
 }
 
