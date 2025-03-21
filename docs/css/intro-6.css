@@ -1,0 +1,468 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
+
+:root {
+  /* ------------------------------------------------- */
+  /* ------------------ Custom Colors ---------------- */
+  /* ------------------------------------------------- */
+
+  --clr-dark: 0, 0%, 0%;
+  --clr-light: 195, 70%, 90%;
+  --clr-span: 195, 36%, 45%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
+
+  /* -------------------------------------------------------- */
+  /* ------------------ Custom Font-Sizes ------------------- */
+  /* -------------------------------------------------------- */
+
+  /* Step -1: 15px → 15.0038px */
+  --step--1: clamp(0.9375rem, 0.9374rem + 0.0004cqi, 0.9377rem);
+  /* Step 0: 18px → 20px */
+  --step-0: clamp(1.125rem, 1.0815rem + 0.2174cqi, 1.25rem);
+  /* Step 1: 21.6px → 26.66px */
+  --step-1: clamp(1.35rem, 1.24rem + 0.55cqi, 1.6663rem);
+  /* Step 2: 25.92px → 35.5378px */
+  --step-2: clamp(1.62rem, 1.4109rem + 1.0454cqi, 2.2211rem);
+  /* Step 3: 31.104px → 47.3719px */
+  --step-3: clamp(1.944rem, 1.5904rem + 1.7682cqi, 2.9607rem);
+  /* Step 4: 37.3248px → 63.1467px */
+  --step-4: clamp(2.3328rem, 1.7715rem + 2.8067cqi, 3.9467rem);
+  /* Step 5: 44.7898px → 84.1745px */
+  --step-5: clamp(2.7994rem, 1.9432rem + 4.281cqi, 5.2609rem);
+  /* Step 6: 53.7477px → 112.2047px */
+  --step-6: clamp(3.3592rem, 2.0884rem + 6.354cqi, 7.0128rem);
+  /* Step 7: 64.4973px → 149.5688px */
+  --step-7: clamp(4.0311rem, 2.1817rem + 9.2469cqi, 9.3481rem);
+
+  /* ------------------------------------------------------- */
+  /* ----------------- Custom Space-Sizes ------------------ */
+  /* ------------------------------------------------------- */
+
+  /* Space xs: 18px → 20px */
+  --space-xs: clamp(1.125rem, 1.0815rem + 0.2174cqi, 1.25rem);
+  /* Space s: 18px → 20px */
+  --space-s: clamp(1.125rem, 1.0815rem + 0.2174cqi, 1.25rem);
+  /* Space m: 27px → 30px */
+  --space-m: clamp(1.6875rem, 1.6223rem + 0.3261cqi, 1.875rem);
+  /* Space l: 36px → 40px */
+  --space-l: clamp(2.25rem, 2.163rem + 0.4348cqi, 2.5rem);
+  /* Space xl: 54px → 60px */
+  --space-xl: clamp(3.375rem, 3.2446rem + 0.6522cqi, 3.75rem);
+  /* Space 2xl: 72px → 80px */
+  --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696cqi, 5rem);
+  /* Space 3xl: 108px → 120px */
+  --space-3xl: clamp(6.75rem, 6.4891rem + 1.3043cqi, 7.5rem);
+  /* Space 4xl: 126px → 140px */
+  --space-4xl: clamp(7.875rem, 7.5707rem + 1.5217cqi, 8.75rem);
+  /* Space 5xl: 144px → 160px */
+  --space-5xl: clamp(9rem, 8.6522rem + 1.7391cqi, 10rem);
+  /* Space 6xl: 162px → 180px */
+  --space-6xl: clamp(10.125rem, 9.7337rem + 1.9565cqi, 11.25rem);
+  /* Space 7xl: 180px → 200px */
+  --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
+}
+
+/* ------------------------------------------------------- */
+/* ------------------- Custom Colors --------------------- */
+/* ------------------------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
+
+/* --------------------------------------- */
+/* ----------------- Reset --------------- */
+/* --------------------------------------- */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* --------------------------------------- */
+/* ---------------- Set Body ------------- */
+/* --------------------------------------- */
+html,
+body,
+main {
+  font-family: "big shoulders inline", sans-serif;
+  font-weight: 100;
+  overflow: clip;
+  background-color: hsl(var(--clr-dark));
+  color: hsl(var(--clr-white));
+  line-height: 1.2;
+}
+
+/* --------------------------------------- */
+/* -------------- Reset Margins----------- */
+/* --------------------------------------- */
+html,
+body,
+main,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-block: 0.2em;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------- */
+/* ----------- Utility Classes ----------- */
+/* --------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  background: hsl(var(--clr-accent) / 1);
+  color: hsl(var(--clr-dark));
+  padding: 0.5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
+.numbered-title {
+  font-size: var(--fs-400);
+  letter-spacing: 2.72px;
+}
+
+.numbered-title span {
+  margin-right: 0.5em;
+  font-size: var(--fs-500);
+  color: hsl(var(--clr-accent) / 0.25);
+}
+
+/* --------------------------------------- */
+/* ------------- Components -------------- */
+/* --------------------------------------- */
+
+.large-button {
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  place-items: center;
+  padding: 0 2em;
+  border-radius: 50%;
+  aspect-ratio: 2 / 1;
+  text-decoration: none;
+}
+
+.large-button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 50%;
+  height: 50%;
+  background: hsl(var(--clr-white) / 0.8);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+html {
+  color-scheme: dark only;
+}
+
+[data-theme="light"] {
+  color-scheme: light only;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark only;
+}
+
+@layer base {
+  html {
+    color-scheme: dark only;
+  }
+
+  [data-theme="light"] {
+    color-scheme: light only;
+  }
+}
+
+.flex-layout {
+  display: flex;
+}
+
+.nav-sidebar {
+  flex-basis: 200px;
+  flex-grow: 1;
+  background-color: hsl(var(--clr-dark));
+  color: hsl(var(--clr-white));
+  transition: 300ms ease-in-out;
+}
+
+.flex-layout::before {
+  content: "";
+  min-height: 100svh;
+  width: 100vw;
+  position: fixed;
+  background: linear-gradient(
+        90deg,
+        color-mix(in hsl, canvasText, transparent 70%) 1px,
+        transparent 1px 30px
+      )
+      50% 50% / 30px 30px,
+    linear-gradient(
+        color-mix(in hsl, canvasText, transparent 70%) 1px,
+        transparent 1px 30px
+      )
+      50% 50% / 30px 30px;
+  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
+}
+
+main {
+  display: flex;
+  flex-grow: 9999;
+  flex-basis: 90%;
+  justify-content: center;
+}
+
+main > * {
+  width: 100%;
+  padding: 8rem;
+}
+
+.row img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  margin-inline: auto;
+  box-shadow: 0px 10px 30px 10px rgba(248, 246, 246, 0.5);
+}
+
+.row {
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 1;
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+/* --------------------------------------- */
+/* ------------- Sidebar Nav ------------- */
+/* --------------------------------------- */
+
+#sidebar {
+  min-height: 100vh;
+  display: flex;
+  box-sizing: border-box;
+  background-color: transparent;
+  transition: 300ms ease-in-out;
+  overflow: hidden;
+  color: hsl(var(--clr-white));
+}
+
+#sidebar.close {
+  padding-left: 11px;
+  width: 81px;
+}
+
+#sidebar.close {
+  .logo {
+    display: none;
+  }
+}
+
+#sidebar ul {
+  list-style: none;
+}
+
+#sidebar > ul > li:first-child {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+  .logo {
+    font-weight: 600;
+  }
+}
+
+#sidebar ul li a {
+  color: hsl(var(--clr-white));
+  height: auto;
+  width: auto;
+
+  svg {
+    fill: hsl(var(--clr-white));
+  }
+}
+
+#sidebar a,
+#sidebar .dropdown-btn,
+#sidebar .logo {
+  color: hsl(var(--clr-white));
+  font-size: var(--fs-300);
+
+  font-weight: 100;
+
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  padding: 0.3em;
+}
+.dropdown-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+#sidebar svg {
+  flex-shrink: 0;
+  fill: hsl(var(--clr-white));
+}
+#sidebar a span,
+#sidebar .dropdown-btn span {
+  flex-grow: 1;
+}
+#sidebar a:hover,
+#sidebar .dropdown-btn:hover {
+  background-color: transparent;
+}
+#sidebar .sub-menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
+
+  > div {
+    overflow: hidden;
+  }
+}
+#sidebar .sub-menu.show {
+  grid-template-rows: 1fr;
+  color: hsl(var(--clr-white));
+}
+.dropdown-btn svg {
+  transition: 200ms ease;
+}
+.rotate svg:last-child {
+  rotate: 180deg;
+}
+#sidebar .sub-menu a {
+  padding-left: 2em;
+}
+#toggle-btn {
+  margin-left: auto;
+  padding: 1em;
+  border: none;
+  border-radius: 0.5em;
+  background: none;
+  cursor: pointer;
+
+  svg {
+    transition: rotate 150ms ease;
+  }
+}
+#toggle-btn:hover {
+  background-color: transparent;
+}
+
+/* --------------------------------------- */
+/* ------------- Media Query ------------- */
+/* --------------------------------------- */
+
+@container (max-width:500px) {
+  .intro-page {
+    flex-direction: column;
+    gap: var(--space-l);
+  }
+
+  .intro-main {
+    flex-direction: column;
+  }
+
+  #sidebar {
+    flex-direction: row;
+  }
+}
