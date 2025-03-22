@@ -1,23 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
-section,
-main,
-article,
-aside,
-header,
-footer,
-nav {
-  margin: 0;
-  padding: 0;
-}
+
 :root {
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
 
-  --clr-dark: hsl(0, 0%, 0%);
-  --clr-span: hsl(286, 28%, 76%);
-  --clr-white: hsl(0, 0%, 100%);
-  --clr-accent: hsl(262, 29%, 85%);
+  --clr-dark: 0, 0%, 0%;
+  --clr-light: 195, 70%, 90%;
+  --clr-span: 195, 36%, 45%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
 
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
@@ -69,23 +61,28 @@ nav {
   /* Space 7xl: 180px → 200px */
   --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
 }
+
 /* ------------------------------------------------------- */
 /* ------------------- Custom Colors --------------------- */
 /* ------------------------------------------------------- */
 
---clr-dark {
+.text-dark {
   color: hsl(var(--clr-dark));
 }
 
---clr-span {
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
   color: hsl(var(--clr-span));
 }
 
---clr-white {
+.text-white {
   color: hsl(var(--clr-white));
 }
 
---clr-accent {
+.text-accent {
   color: hsl(var(--clr-accent));
 }
 
@@ -277,13 +274,13 @@ header {
 
 header h1 {
   font-size: var(--step-0);
-  color: var(--clr-white);
+  color: hsl(var(--clr-white));
   padding-left: var(--space-s);
 }
 
 header h1 span {
   font-size: var(--step-1);
-  color: var(--clr-span);
+  color: hsl(var(--clr-span));
   padding-left: var(--space-s);
   padding-right: var(--space-s);
 }
@@ -300,7 +297,7 @@ header h1 span {
   position: absolute;
   top: 10%;
   right: 5%;
-  background: var(--clr-span);
+  background: hsl(var(--clr-white));
   transition: clip-path ease-in-out 500ms;
   margin: 0;
   padding: 0;
@@ -351,7 +348,7 @@ header h1 span {
 .site-nav a {
   display: block;
   width: 100%;
-  color: var(--clr-dark);
+  color: hsl(var(--clr-dark));
   display: inline-flex;
   padding: 1em 2em 1em 0em;
   text-decoration: none;
@@ -359,9 +356,9 @@ header h1 span {
 
 .site-nav a:hover,
 .site-nav a:focus {
-  background: var(--clr-accent);
+  background: hsl(var(--clr-accent));
 
-  color: var(--clr-dark);
+  color: hsl(var(--clr-dark));
 }
 
 .site-nav--icon {
@@ -384,7 +381,7 @@ header h1 span {
 }
 
 .menu-toggle:focus-visible {
-  outline: 4px solid var(--clr-span);
+  outline: 4px solid hsl(var(--clr-span));
 }
 
 .hamburger,
@@ -392,7 +389,7 @@ header h1 span {
 .hamburger::after {
   content: "";
   display: block;
-  background: var(--clr-white);
+  background: hsl(var(--clr-accent));
   height: 3px;
   width: 1.75em;
   border-radius: 3px;
@@ -433,16 +430,16 @@ ul {
   @media (hover) and (prefers-reduced-motion: no-preference) {
     & > li {
       opacity: 1;
-      transform-origin: left right;
+      transform-origin: right left;
       transition: transform 1s var(--ease-spring-3), opacity 0.3s var(--ease-3);
     }
 
     &:hover > li:not(:hover) {
       width: 100%;
       opacity: 0.8;
-      transform: scale(1.2) translate(-50%, -50%); /* Combine translateX and translateY */
+      transform: scale(0.8) translate(15%); /* Combine translateX and translateY */
       background-color: var(--clr-accent);
-      padding: 0em 0em 0em 0em;
+      padding: 0.2em 1em 0em 1em;
     }
   }
 }
@@ -494,13 +491,82 @@ ul {
   margin-block-end: var(--space-xl); /* Add margin at the bottom */
 }
 
-h1,
 h2,
 h3 {
   font-size: var(--step-1);
   color: var(--clr-white);
   font-weight: 100;
   margin-block: 0.3em;
+}
+
+@property --color-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsl(193, 26%, 82%);
+}
+
+@property --color-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsla(204, 100%, 59%, 0.63);
+}
+
+/* keyframes that change the color variable */
+@keyframes gradient-change {
+  to {
+    --color-1: hsla(210, 51%, 69%, 0.712);
+    --color-2: hsl(251, 35%, 61%);
+  }
+}
+
+article {
+  display: grid;
+  /*gap: 1lh;*/
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  height: 9rem;
+  /* apply variable changes over time */
+  animation: gradient-change 1s linear infinite alternate;
+}
+
+article .beaucoup {
+  font-family: "Dank Mono", ui-monospace, monospace;
+  font-size: clamp(2.5rem, 3vw, 2.5rem); /* Responsive font size */
+  line-height: 1.1;
+  padding-bottom: var(--space-xl);
+
+  background: linear-gradient(
+    /* 
+    in oklch produces more vibrant gradient results 
+    learn more https://developer.chrome.com/docs/css-ui/access-colors-spaces#color_interpolation
+  */
+      to right in oklch,
+    /* use the variables in a gradient (or wherever!) */ var(--color-1),
+    var(--color-2)
+  );
+
+  /* old browser support */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* modern browser version */
+  background-clip: text;
+  color: transparent;
+}
+
+@layer demo.support {
+  .beaucoup {
+    font-family: "Dank Mono", ui-monospace, monospace;
+    font-size: min(200%, 4vmin);
+    line-height: 1.1;
+  }
+
+  /*body {
+    font-family: system-ui, sans-serif;
+    font-size: min(200%, 20vmin);
+  }*/
 }
 
 .intro-content a {
