@@ -44,7 +44,7 @@ h4 {
 /*improve readability with max-width on paragraphs and lists */
 /* prevent orphans in supported browsers */
 li {
-  max-width: var(--p-max-width, 65ch);
+  margin-block: 0.25em;
   text-wrap: pretty;
 }
 
