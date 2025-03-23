@@ -268,12 +268,13 @@ header {
 .logo {
   display: flex;
   justify-content: flex-start;
-  padding-left: var(--space-xl);
+  padding-left: var(--space-3xl-4xl);
 }
 
 .star {
   width: 2em;
   height: 2em;
+  padding-left: var(--space-3xl-4xl);
 }
 
 header h1 {
@@ -480,20 +481,13 @@ ul {
 
 .intro-content p span {
   font-size: var(--step-1);
-  color: var(--clr-span);
+  color: hsl(var(--clr-span));
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 100;
   margin-block: 0.1em;
   padding-left: 0.3em;
 }
 
-.intro-content img {
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  max-width: 100%; /* Ensure the image is responsive */
-  height: auto; /* Maintain aspect ratio */
-  margin: auto; /* Center the image horizontally */
-  margin-block-end: var(--space-xl); /* Add margin at the bottom */
-}
 h1,
 h2,
 h3,
@@ -501,7 +495,7 @@ h4 {
   font-size: var(--step-1);
   color: var(--clr-white);
   font-weight: 100;
-  margin-block: 0.3em;
+  margin-block: 0.2em;
 }
 
 @property --color-1 {
@@ -526,12 +520,11 @@ h4 {
 
 article {
   display: grid;
-  /*gap: 1lh;*/
   text-align: center;
   justify-content: center;
   align-items: center;
 
-  height: 9rem;
+  height: 5rem;
   /* apply variable changes over time */
   animation: gradient-change 1s linear infinite alternate forwards running
     ease-in-out 1s;
@@ -539,10 +532,8 @@ article {
 
 article .beaucoup {
   font-family: "Dank Mono", ui-monospace, monospace;
-  font-size: clamp(2.5rem, 3vw, 2.5rem); /* Responsive font size */
+  font-size: clamp(2rem, 2.6vw, 2rem); /* Responsive font size */
   line-height: 1.1;
-  padding-bottom: var(--space-xl);
-
   background: linear-gradient(
     /* 
     in oklch produces more vibrant gradient results 
@@ -552,8 +543,7 @@ article .beaucoup {
     /* use the variables in a gradient (or wherever!) */ var(--color-1),
     var(--color-2)
   );
-  animation: gradient-change 1s linear infinite alternate forwards running
-    ease-in-out 0.3s;
+  animation: gradient-change 1s linear infinite alternate ease-in-out 0.3s;
 
   /* old browser support */
   -webkit-background-clip: text;
@@ -570,15 +560,10 @@ article .beaucoup {
     font-size: min(200%, 4vmin);
     line-height: 1.1;
   }
-
-  /*body {
-    font-family: system-ui, sans-serif;
-    font-size: min(200%, 20vmin);
-  }*/
 }
 
 .intro-content a {
-  color: var(--clr-white);
+  color: hsl(var(--clr-white));
   text-decoration: none;
   font-size: var(--step-1);
   font-family: "Big Shoulders Inline", sans-serif;
@@ -586,19 +571,19 @@ article .beaucoup {
   display: inline-block;
 }
 
-.intro-content a span {
-  font-size: var(--step-4);
-  color: var(--clr-span);
+.intro-content a ion-icon span {
+  font-size: var(--step-7);
+  color: hsl(var(--clr-span));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
   text-align: center;
 }
 
 .intro-content a ion-icon {
-  font-size: var(--step-2);
+  font-size: var(--step-4);
   z-index: 5;
   --ionicon-stroke-width: 32px;
-  color: var(--clr-span);
+  color: hsl(var(--clr-span));
   text-align: center;
   vertical-align: middle;
 }
@@ -609,8 +594,8 @@ article .beaucoup {
   }
 
   .primary-navigation {
-    top: 30%;
-    right: 30%;
+    top: 20%;
+    right: 20%;
   }
 }
 
