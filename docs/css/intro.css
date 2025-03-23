@@ -15,53 +15,57 @@
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
 
-  /* Step -1: 15px → 15.0038px */
-  --step--1: clamp(0.9375rem, 0.9374rem + 0.0004cqi, 0.9377rem);
-  /* Step 0: 18px → 20px */
-  --step-0: clamp(1.125rem, 1.0815rem + 0.2174cqi, 1.25rem);
-  /* Step 1: 21.6px → 26.66px */
-  --step-1: clamp(1.35rem, 1.24rem + 0.55cqi, 1.6663rem);
-  /* Step 2: 25.92px → 35.5378px */
-  --step-2: clamp(1.62rem, 1.4109rem + 1.0454cqi, 2.2211rem);
-  /* Step 3: 31.104px → 47.3719px */
-  --step-3: clamp(1.944rem, 1.5904rem + 1.7682cqi, 2.9607rem);
-  /* Step 4: 37.3248px → 63.1467px */
-  --step-4: clamp(2.3328rem, 1.7715rem + 2.8067cqi, 3.9467rem);
-  /* Step 5: 44.7898px → 84.1745px */
-  --step-5: clamp(2.7994rem, 1.9432rem + 4.281cqi, 5.2609rem);
-  /* Step 6: 53.7477px → 112.2047px */
-  --step-6: clamp(3.3592rem, 2.0884rem + 6.354cqi, 7.0128rem);
-  /* Step 7: 64.4973px → 149.5688px */
-  --step-7: clamp(4.0311rem, 2.1817rem + 9.2469cqi, 9.3481rem);
+  /* Step 0: 16px → 16px */
+  --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
+  /* Step 1: 18px → 21.328px */
+  --step-1: clamp(1.125rem, 1.0348rem + 0.3847cqi, 1.333rem);
+  /* Step 2: 20.25px → 28.4302px */
+  --step-2: clamp(1.2656rem, 1.044rem + 0.9457cqi, 1.7769rem);
+  /* Step 3: 22.7813px → 37.8975px */
+  --step-3: clamp(1.4238rem, 1.0142rem + 1.7475cqi, 2.3686rem);
+  /* Step 4: 25.6289px → 50.5174px */
+  --step-4: clamp(1.6018rem, 0.9274rem + 2.8773cqi, 3.1573rem);
+  /* Step 5: 28.8325px → 67.3396px */
+  --step-5: clamp(1.802rem, 0.7587rem + 4.4517cqi, 4.2087rem);
+  /* Step 6: 32.4366px → 89.7637px */
+  --step-6: clamp(2.0273rem, 0.474rem + 6.6274cqi, 5.6102rem);
+  /* Step 7: 36.4912px → 119.655px */
+  --step-7: clamp(2.2807rem, 0.0273rem + 9.6143cqi, 7.4784rem);
+  /* Step 8: 41.0526px → 159.5002px */
+  --step-8: clamp(2.5658rem, -0.6436rem + 13.6934cqi, 9.9688rem);
 
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
 
-  /* Space xs: 18px → 20px */
-  --space-xs: clamp(1.125rem, 1.0815rem + 0.2174cqi, 1.25rem);
-  /* Space s: 18px → 20px */
-  --space-s: clamp(1.125rem, 1.0815rem + 0.2174cqi, 1.25rem);
-  /* Space m: 27px → 30px */
-  --space-m: clamp(1.6875rem, 1.6223rem + 0.3261cqi, 1.875rem);
-  /* Space l: 36px → 40px */
-  --space-l: clamp(2.25rem, 2.163rem + 0.4348cqi, 2.5rem);
-  /* Space xl: 54px → 60px */
-  --space-xl: clamp(3.375rem, 3.2446rem + 0.6522cqi, 3.75rem);
-  /* Space 2xl: 72px → 80px */
-  --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696cqi, 5rem);
-  /* Space 3xl: 108px → 120px */
-  --space-3xl: clamp(6.75rem, 6.4891rem + 1.3043cqi, 7.5rem);
-  /* Space 4xl: 126px → 140px */
-  --space-4xl: clamp(7.875rem, 7.5707rem + 1.5217cqi, 8.75rem);
-  /* Space 5xl: 144px → 160px */
-  --space-5xl: clamp(9rem, 8.6522rem + 1.7391cqi, 10rem);
-  /* Space 6xl: 162px → 180px */
-  --space-6xl: clamp(10.125rem, 9.7337rem + 1.9565cqi, 11.25rem);
-  /* Space 7xl: 180px → 200px */
-  --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
+  /* One-up pairs */
+  /* Space s-m: 16px → 24px */
+  --space-s-m: clamp(1rem, 0.7832rem + 0.9249cqi, 1.5rem);
+  /* Space m-l: 24px → 32px */
+  --space-m-l: clamp(1.5rem, 1.2832rem + 0.9249cqi, 2rem);
+  /* Space l-xl: 32px → 48px */
+  --space-l-xl: clamp(2rem, 1.5665rem + 1.8497cqi, 3rem);
+  /* Space xl-2xl: 48px → 64px */
+  --space-xl-2xl: clamp(3rem, 2.5665rem + 1.8497cqi, 4rem);
+  /* Space 2xl-3xl: 64px → 96px */
+  --space-2xl-3xl: clamp(4rem, 3.1329rem + 3.6994cqi, 6rem);
+  /* Space 3xl-4xl: 96px → 112px */
+  --space-3xl-4xl: clamp(6rem, 5.5665rem + 1.8497cqi, 7rem);
+  /* Space 4xl-5xl: 112px → 128px */
+  --space-4xl-5xl: clamp(7rem, 6.5665rem + 1.8497cqi, 8rem);
+  /* Space 5xl-6xl: 128px → 144px */
+  --space-5xl-6xl: clamp(8rem, 7.5665rem + 1.8497cqi, 9rem);
+  /* Space 6xl-7xl: 144px → 160px */
+  --space-6xl-7xl: clamp(9rem, 8.5665rem + 1.8497cqi, 10rem);
+  /* Space 7xl-8xl: 160px → 176px */
+  --space-7xl-8xl: clamp(10rem, 9.5665rem + 1.8497cqi, 11rem);
+  /* Space 8xl-9xl: 176px → 192px */
+  --space-8xl-9xl: clamp(11rem, 10.5665rem + 1.8497cqi, 12rem);
+  /* Space 9xl-10xl: 192px → 208px */
+  --space-9xl-10xl: clamp(12rem, 11.5665rem + 1.8497cqi, 13rem);
+  /* Space 10xl-11xl: 208px → 224px */
+  --space-10xl-11xl: clamp(13rem, 12.5665rem + 1.8497cqi, 14rem);
 }
-
 /* ------------------------------------------------------- */
 /* ------------------- Custom Colors --------------------- */
 /* ------------------------------------------------------- */
