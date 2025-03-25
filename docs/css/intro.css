@@ -555,7 +555,7 @@ article {
   justify-content: center;
   align-items: center;
 
-  height: 5rem;
+  height: var(--space-2xl);
   /* apply variable changes over time */
   animation: gradient-change 1s linear infinite alternate forwards running
     ease-in-out 1s;
@@ -563,8 +563,9 @@ article {
 
 article .beaucoup {
   font-family: "Dank Mono", ui-monospace, monospace;
-  font-size: clamp(2rem, 2.6vw, 2rem); /* Responsive font size */
-  line-height: 1.1;
+  font-size: var(--step-3);
+  /*font-size: clamp(2rem, 2.6vw, 2rem); /* Responsive font size */
+  line-height: 1;
   background: linear-gradient(
     /* 
     in oklch produces more vibrant gradient results 
@@ -588,8 +589,9 @@ article .beaucoup {
 @layer demo.support {
   .beaucoup {
     font-family: "Dank Mono", ui-monospace, monospace;
-    font-size: min(200%, 4vmin);
-    line-height: 1.1;
+    font-size: var(--step-3);
+    /*font-size: min(200%, 4vmin);*/
+    line-height: 1;
   }
 }
 
@@ -604,8 +606,8 @@ article .beaucoup {
   }
 
   article .beaucoup {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
-    margin-bottom: var(--space-xl);
+    /*font-size: clamp(1.5rem, 2.6vw, 2rem);*/
+    margin-bottom: var(--space-2xl);
   }
 }
 
