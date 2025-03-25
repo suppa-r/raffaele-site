@@ -73,6 +73,7 @@ function closeMenu() {
 function updateLogoDisplay() {
   if (window.innerWidth < 600) {
     logo.style.display = "none";
+    //siteNavigation.style.display = "block";
   } else {
     logo.style.display = "block";
   }

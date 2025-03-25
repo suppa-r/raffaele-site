@@ -153,7 +153,6 @@
 body {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
-  background: hsl(var(--clr-dark));
   text-wrap: balance;
   color: hsl(var(--clr-white));
   overflow: hidden;
@@ -344,7 +343,7 @@ header h1 span {
 }
 
 .site-nav li {
-  border-bottom: 5px solid #575766;
+  border-bottom: 5px solid #58759bee;
   padding: 0em 2em 0em 0em;
 }
 
@@ -602,6 +601,11 @@ article .beaucoup {
   .primary-navigation {
     top: 20%;
     right: 20%;
+  }
+
+  article .beaucoup {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    margin-bottom: var(--space-xl);
   }
 }
 
