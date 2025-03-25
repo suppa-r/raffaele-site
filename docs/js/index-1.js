@@ -48,7 +48,6 @@ function openMenu() {
   logo.style.display = "none";
   introcontent.style.display = "none";
   siteNavigation.style.display = "block";
-  updateLogoDisplay(); // Update logo display based on screen width
 }
 
 function closeMenu() {
@@ -67,22 +66,22 @@ function closeMenu() {
   // Ensure main content and logo are displayed correctly
   introcontent.style.display = "block";
   siteNavigation.style.display = "block";
-  updateLogoDisplay(); // Update logo display based on screen width
+  logo.style.display = "block";
+  logo.style.display = "flex-start";
 }
 
-function updateLogoDisplay() {
-  if (window.innerWidth < 600) {
-    logo.style.display = "none";
-  } else {
-    logo.style.display = "block";
-  }
-}
-
-// Call updateLogoDisplay on window resize
-window.addEventListener("resize", updateLogoDisplay);
-
-// Initial call to set the correct display state on page load
-updateLogoDisplay();
+// Only show the logo if the screen width is greater than 500px
+//if (window.innerWidth < 400) {
+//logo.style.display = "none";
+//siteNavigation.style.display = "block";
+//logo.style.display = "flex";
+//logo.style.justifyContent = "flex-start";
+//} else {
+// siteNavigation.style.display = "block";
+//logo.style.display = "block";
+//logo.style.display = "flex";
+//logo.style.justifyContent = "flex-start";
+//}
 
 /* -----------------------------------------
   Handle submenu

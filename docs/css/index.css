@@ -34,7 +34,6 @@
   /* Step 7: 64.4973px → 149.5688px */
   --step-7: clamp(4.0311rem, 2.1817rem + 9.2469cqi, 9.3481rem);
 
-
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
@@ -62,7 +61,6 @@
   /* Space 7xl: 180px → 200px */
   --space-7xl: clamp(11.25rem, 10.8152rem + 2.1739cqi, 12.5rem);
 }
-
 
 /* ------------------------------------------------------- */
 /* ------------------- Custom Colors --------------------- */
@@ -92,32 +90,33 @@
 /* -------------------Index Home Page--------------------- */
 /* ------------------------------------------------------- */
 
-.index-container {
-  display: grid;
+main {
   background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
-  padding: var(--space-5xl) 0;
+
+  margin: 0 auto;
+  padding: 0;
   height: 100vh;
   overflow: hidden;
   > * {
     container-type: inline-size;
   }
-  
 }
 
 .quote {
+  margin: 0 auto;
   text-align: center;
   color: hsl(var(--clr-white));
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
-  text-align: center;
 }
 
 .title {
   font-size: var(--step-0);
   text-align: center;
+  padding-top: var(--space-xs);
 }
 
 .author {
@@ -126,7 +125,8 @@
 }
 
 .index-content {
-  padding-inline: 0 var(--space-2xl);
+  margin: 0 auto;
+  padding: var(--space-3xl) 0;
   text-align: center;
 }
 
