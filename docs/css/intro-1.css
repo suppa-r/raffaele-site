@@ -450,7 +450,8 @@ h5 {
   .row-1 h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5 {
     padding-block: 0.2em;
     margin: 0;
   }
