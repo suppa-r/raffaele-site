@@ -99,7 +99,7 @@ main {
 }
 
 .quote {
-  margin: 0 auto;
+  margin: var(--space-2xl) auto;
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
@@ -108,7 +108,6 @@ main {
 .title {
   font-size: var(--step-0);
   text-align: center;
-  padding-top: var(--space-xs);
 }
 
 .author {
@@ -117,8 +116,7 @@ main {
 }
 
 .index-content {
-  margin: 0 auto;
-  padding: var(--space-5xl) 0;
+  margin: var(--space-2xl) auto;
   text-align: center;
 }
 

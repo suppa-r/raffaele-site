@@ -50,7 +50,6 @@ function openMenu() {
   siteNavigation.style.display = "block";
   updateLogoDisplay(); // Update logo display based on screen width
 }
-
 function closeMenu() {
   menuToggle.setAttribute("aria-expanded", "false");
   siteNavigation.setAttribute("data-state", "closing");
@@ -64,21 +63,25 @@ function closeMenu() {
     { once: true }
   );
 
-  // Ensure main content and logo are displayed correctly
   introcontent.style.display = "block";
-  siteNavigation.style.display = "block";
   updateLogoDisplay(); // Update logo display based on screen width
 }
 
 function updateLogoDisplay() {
   if (window.innerWidth < 600) {
     logo.style.display = "none";
-    //siteNavigation.style.display = "block";
+    siteNavigation.style.display = "block"; // Always hide navigation on small screens
   } else {
     logo.style.display = "block";
+
+    // Only display the navigation if its state is "opened"
+    if (siteNavigation.getAttribute("data-state") === "opened") {
+      siteNavigation.style.display = "block";
+    } else {
+      siteNavigation.style.display = "none";
+    }
   }
 }
-
 // Call updateLogoDisplay on window resize
 window.addEventListener("resize", updateLogoDisplay);
 
