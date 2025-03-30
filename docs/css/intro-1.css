@@ -38,6 +38,8 @@
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
 
+  /* Space 0: 4px → 4.5px */
+  --space-xs: clamp(0.25rem, 0.2174rem + 0.0522cqi, 0.2813rem);
   /* Space s: 16px → 18px */
   --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
   /* Space m: 24px → 27px */
@@ -58,43 +60,18 @@
   --space-6xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
   /* Space 7xl: 160px → 180px */
   --space-7xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
-
-  /* One-up pairs */
-
-  /* Space xs-s: 8px → 9px */
-  --space-xs-s: clamp(0.5rem, 0.4783rem + 0.1087cqi, 0.5625rem);
-  /* Space s-m: 16px → 27px */
-  --space-s-m: clamp(1rem, 0.7609rem + 1.1957cqi, 1.6875rem);
-  /* Space m-l: 24px → 36px */
-  --space-m-l: clamp(1.5rem, 1.2391rem + 1.3043cqi, 2.25rem);
-  /* Space l-xl: 32px → 54px */
-  --space-l-xl: clamp(2rem, 1.5217rem + 2.3913cqi, 3.375rem);
-  /* Space xl-2xl: 48px → 72px */
-  --space-xl-2xl: clamp(3rem, 2.4783rem + 2.6087cqi, 4.5rem);
-  /* Space 2xl-3xl: 64px → 108px */
-  --space-2xl-3xl: clamp(4rem, 3.0435rem + 4.7826cqi, 6.75rem);
-  /* Space 3xl-4xl: 96px → 126px */
-  --space-3xl-4xl: clamp(6rem, 5.3478rem + 3.2609cqi, 7.875rem);
-  /* Space 4xl-5xl: 112px → 144px */
-  --space-4xl-5xl: clamp(7rem, 6.3043rem + 3.4783cqi, 9rem);
-  /* Space 5xl-6xl: 128px → 162px */
-  --space-5xl-6xl: clamp(8rem, 7.2609rem + 3.6957cqi, 10.125rem);
-  /* Space 6xl-7xl: 144px → 180px */
-  --space-6xl-7xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
 }
 
 /* ------------------------------------------------------- */
 
-body {
-  min-height: 100vh;
+.intro-1 {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
-  background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
   display: grid;
   grid-template-columns: auto 1fr;
   overflow: hidden;
-  line-height: 1.1;
+  text-align: center;
 }
 
 html {
@@ -119,7 +96,7 @@ html {
   }
 }
 
-body::before {
+.intro-1::before {
   content: "";
   min-height: 100svh;
   width: 100vw;
@@ -141,7 +118,7 @@ body::before {
     background-position 0.3s ease-in-out;
 }
 
-#sidebar {
+.sidebar {
   box-sizing: border-box;
   height: 100vh;
   width: 250px;
@@ -157,16 +134,16 @@ body::before {
   text-wrap: nowrap;
 }
 
-#sidebar.close {
+.sidebar.close {
   padding: 5px;
   width: 60px;
 }
 
-#sidebar ul {
+.sidebar ul {
   list-style: none;
 }
 
-#sidebar > ul > li:first-child {
+.sidebar > ul > li:first-child {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 16px;
@@ -175,7 +152,7 @@ body::before {
   }
 }
 
-#sidebar ul li.active a {
+.sidebar ul li.active a {
   color: hsl(var(--clr-accent));
 
   svg {
@@ -183,9 +160,9 @@ body::before {
   }
 }
 
-#sidebar a,
-#sidebar .dropdown-btn,
-#sidebar .logo {
+.sidebar a,
+.sidebar .dropdown-btn,
+.sidebar .logo {
   border-radius: 0.5em;
   padding: 0.85em;
   text-decoration: none;
@@ -202,19 +179,19 @@ body::before {
   font: inherit;
   cursor: pointer;
 }
-#sidebar svg {
+.sidebar svg {
   flex-shrink: 0;
   fill: hsl(var(--clr-accent));
 }
-#sidebar a span,
-#sidebar .dropdown-btn span {
+.sidebar a span,
+.sidebar .dropdown-btn span {
   flex-grow: 1;
 }
-#sidebar a:hover,
-#sidebar .dropdown-btn:hover {
+.sidebar a:hover,
+.sidebar .dropdown-btn:hover {
   background-color: transparent;
 }
-#sidebar .sub-menu {
+.sidebar .sub-menu {
   display: grid;
   grid-template-rows: 0fr;
   transition: 300ms ease-in-out;
@@ -223,7 +200,7 @@ body::before {
     overflow: hidden;
   }
 }
-#sidebar .sub-menu.show {
+.sidebar .sub-menu.show {
   grid-template-rows: 1fr;
 }
 .dropdown-btn svg {
@@ -232,10 +209,10 @@ body::before {
 .rotate svg:last-child {
   rotate: 180deg;
 }
-#sidebar .sub-menu a {
+.sidebar .sub-menu a {
   padding-left: 2em;
 }
-#toggle-btn {
+.toggle-btn {
   margin-left: auto;
   padding: 1em;
   border: none;
@@ -247,7 +224,7 @@ body::before {
     transition: rotate 150ms ease;
   }
 }
-#toggle-btn:hover {
+.toggle-btn:hover {
   background-color: transparent;
 }
 
@@ -255,7 +232,7 @@ main {
   align-self: center;
 }
 
-.container {
+.intro-1-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   font-size: var(--step-0);
@@ -270,15 +247,7 @@ h3,
 h4 {
   font-weight: 100;
   font-size: var(--step-1);
-  padding-block: 0.4em;
-  margin: 0;
-  text-align: center;
-}
-
-h5 {
-  font-weight: 100;
-  font-size: var(--step-0);
-  letter-spacing: 0.14em;
+  padding-block: 0.3em;
   margin: 0;
   text-align: center;
 }
@@ -286,7 +255,7 @@ h5 {
 .row-1 p {
   text-align: center;
   font-size: var(--step-0);
-  padding-block: 0.1em;
+  padding-block: 0.15em;
   margin-inline: auto;
 }
 
@@ -300,7 +269,8 @@ h5 {
   object-fit: cover;
   object-position: center;
   border-radius: 100%;
-  box-shadow: 40px 40px 40px 40px rgba(248, 246, 246, 0.3);
+  box-shadow: 10px 10px 25px 25px rgba(248, 246, 246, 0.5);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* --------------------------------------- */

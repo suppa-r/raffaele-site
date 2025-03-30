@@ -83,68 +83,6 @@
 }
 
 /* ------------------------------------------------------- */
-/* ------------------- Custom Colors --------------------- */
-/* ------------------------------------------------------- */
-
-.text-dark {
-  color: hsl(var(--clr-dark));
-}
-
-.text-light {
-  color: hsl(var(--clr-light));
-}
-
-.text-span {
-  color: hsl(var(--clr-span));
-}
-
-.text-white {
-  color: hsl(var(--clr-white));
-}
-
-.text-accent {
-  color: hsl(var(--clr-accent));
-}
-
-/* remove animations for people who've turned them off */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.skip-to-content {
-  position: absolute;
-  background: hsl(var(--clr-light));
-  color: hsl(var(--clr-dark));
-  padding: 0.5em 1em;
-  margin-inline: auto;
-  transform: translateY(-100%);
-  transition: transform 250ms ease-in;
-}
-
-.skip-to-content:focus {
-  transform: translateY(0);
-}
-
-/* ------------------------------------------------------- */
 .hello {
   display: flex;
   justify-content: center;
