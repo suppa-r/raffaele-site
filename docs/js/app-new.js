@@ -51,6 +51,8 @@ function closeMenu() {
   );
   introcontent.style.display = "flex";
   introcontent.style.flexDirection = "column";
+  introcontent.style.alignItems = "center";
+  introcontent.style.justifyContent = "flex-end";
   siteNavigation.style.display = "none";
-  logo.style.display = "block";
+  logo.style.display = "none";
 }
