@@ -432,7 +432,7 @@ ul {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: var(--space-xl);
+  padding-bottom: var(--space-4xl);
   margin: 0 auto;
   max-width: 100%;
   overflow: hidden;
