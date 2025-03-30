@@ -61,26 +61,6 @@
   --space-6xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
   /* Space 7xl: 160px → 180px */
   --space-7xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
-
-  /* One-up pairs */
-  /* Space s-m: 16px → 27px */
-  --space-s-m: clamp(1rem, 0.7609rem + 1.1957cqi, 1.6875rem);
-  /* Space m-l: 24px → 36px */
-  --space-m-l: clamp(1.5rem, 1.2391rem + 1.3043cqi, 2.25rem);
-  /* Space l-xl: 32px → 54px */
-  --space-l-xl: clamp(2rem, 1.5217rem + 2.3913cqi, 3.375rem);
-  /* Space xl-2xl: 48px → 72px */
-  --space-xl-2xl: clamp(3rem, 2.4783rem + 2.6087cqi, 4.5rem);
-  /* Space 2xl-3xl: 64px → 108px */
-  --space-2xl-3xl: clamp(4rem, 3.0435rem + 4.7826cqi, 6.75rem);
-  /* Space 3xl-4xl: 96px → 126px */
-  --space-3xl-4xl: clamp(6rem, 5.3478rem + 3.2609cqi, 7.875rem);
-  /* Space 4xl-5xl: 112px → 144px */
-  --space-4xl-5xl: clamp(7rem, 6.3043rem + 3.4783cqi, 9rem);
-  /* Space 5xl-6xl: 128px → 162px */
-  --space-5xl-6xl: clamp(8rem, 7.2609rem + 3.6957cqi, 10.125rem);
-  /* Space 6xl-7xl: 144px → 180px */
-  --space-6xl-7xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
 }
 
 /* ------------------------------------------------------- */
@@ -173,7 +153,7 @@ header {
 header .star {
   width: 2em;
   height: 2em;
-  margin-left: var(--space-l-xl);
+  margin-left: var(--space-xl);
 }
 
 header .header-text {
@@ -202,11 +182,10 @@ header h1 span {
 
 .primary-navigation {
   color: hsl(var(--clr-white));
-  /*background: hsl(var(--clr-white));*/
   background: transparent;
   position: absolute;
   top: 30%;
-  right: 30%;
+  right: 20%;
   transition: clip-path ease-in-out 500ms;
   margin: 0;
   padding: 0;
@@ -248,7 +227,7 @@ header h1 span {
 .site-nav li {
   flex: 1; /* Make all list items take equal width */
   width: 100%; /* Ensure each list item spans the full width */
-  border-bottom: 5px solid #5f7899ee;
+  border-bottom: 3px solid #5f7899ee;
 }
 
 .site-nav li:last-child {
@@ -369,19 +348,19 @@ ul {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 0 var(--space-l);
+  padding: 0 var(--space-s);
 }
 
 .intro-content p {
   font-size: var(--step-0);
-  margin-block: 0.2em;
+  margin-block: 0.15em;
   text-align: center;
 }
 
 .intro-content p span {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
-  margin-block: 0.2em;
+  margin-block: 0.18em;
   padding-left: 0.3em;
 }
 
@@ -389,23 +368,18 @@ ul {
 h2 {
   font-size: var(--step-1);
   font-weight: 100;
-  margin-block: 0.2em;
+  margin-block: 0.17em;
 }
 
 .intro-content h3,
 h4 {
   font-size: var(--step-0);
   font-weight: 100;
-  margin-block: 0.2em;
+  margin-block: 0.17em;
 }
 
 .intro-content a {
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
 }
 
 .intro-content a p {
@@ -415,6 +389,7 @@ h4 {
   color: hsl(var(--clr-white));
   text-decoration: none;
   background-color: transparent;
+  margin-bottom: var(--space-l);
 }
 
 .intro-content a ion-icon {
@@ -424,25 +399,22 @@ h4 {
   color: hsl(var(--clr-span));
   text-align: center;
   vertical-align: middle;
+  margin-bottom: var(--space-l);
 }
 
 .intro-content a p span {
-  font-size: var(--step-5); /* Adjust the font size */
+  font-size: var(--step-4); /* Adjust the font size */
   color: hsl(var(--clr-span)); /* Adjust the text color */
-  font-weight: 100; /* Adjust the font weight */
+  font-weight: 200; /* Adjust the font weight */
   text-align: center; /* Center the text */
+  margin-bottom: var(--space-l);
 }
 
 .wrapper-gradient-text {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 600;
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   line-height: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: var(--space-4xl);
-  padding: 0 var(--space-xxs);
   text-align: center;
   text-decoration: none;
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
