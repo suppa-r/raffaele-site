@@ -1,33 +1,44 @@
-const menuToggle = document.querySelector('.menu-toggle');
-const siteNavigation = document.querySelector('.primary-navigation');
-const main = document.querySelector('main');
-const introContents = document.querySelector('.intro-content');
-const intro = document.querySelector('.intro');
+const menuToggle = document.querySelector(".menu-toggle");
+const siteNavigation = document.querySelector(".primary-navigation");
+const introcontent = document.querySelector(".intro-content");
+const star = document.querySelector("header .star");
+const headertext = document.querySelector("header .header-text");
 
-
-menuToggle.addEventListener('click', () => {
-  const isOpened = menuToggle.getAttribute('aria-expanded') === "true";
+menuToggle.addEventListener("click", () => {
+  const isOpened = menuToggle.getAttribute("aria-expanded") === "true";
   isOpened ? closeMenu() : openMenu();
 });
 
 function openMenu() {
-  menuToggle.setAttribute('aria-expanded', "true");
-  siteNavigation.setAttribute('data-state', "opened");
-  siteNavigation.style.display = "block"; // Show navigation
-  //introContents.style.display = "none"; // Hide intro content
-  main.style.display = "none"; // Hide main content
- }
+  menuToggle.setAttribute("aria-expanded", "true");
+  siteNavigation.setAttribute("data-state", "opened");
+
+  siteNavigation.addEventListener(
+    "animationend",
+    () => {
+      siteNavigation.setAttribute("data-state", "open");
+    },
+    { once: true }
+  );
+  introcontent.style.display = "none";
+  siteNavigation.style.display = "block";
+  star.style.display = "none";
+  headertext.style.display = "none";
+}
 
 function closeMenu() {
-  menuToggle.setAttribute('aria-expanded', "false");
-  siteNavigation.setAttribute('data-state', "closing");
+  menuToggle.setAttribute("aria-expanded", "false");
+  siteNavigation.setAttribute("data-state", "closing");
 
-  // Ensure main is displayed and set background properties
-  main.style.display= "block"; //
-  //introContents.style.display = "block"; // Hide intro content
-  siteNavigation.style.display = "none"; // Hide navigation
- 
-  siteNavigation.addEventListener('animationend', () => {
-    siteNavigation.setAttribute('data-state', "closed");
-  }, {once: true});
+  siteNavigation.addEventListener(
+    "animationend",
+    () => {
+      siteNavigation.setAttribute("data-state", "closed");
+    },
+    { once: true }
+  );
+  introcontent.style.display = "block";
+  siteNavigation.style.display = "block";
+  star.style.display = "block";
+  headertext.style.display = "block";
 }

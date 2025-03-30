@@ -231,13 +231,13 @@ header {
   max-width: 100%;
 }
 
-.star {
+header .star {
   width: 2.5em;
   height: 2.5em;
   margin-left: var(--space-l-xl);
 }
 
-header h1 {
+header .header-text {
   font-size: var(--step-0);
   font-weight: 100;
   color: hsl(var(--clr-white));
@@ -266,8 +266,8 @@ header h1 span {
   /*background: hsl(var(--clr-white));*/
   background: transparent;
   position: absolute;
-  top: 10%;
-  right: 5%;
+  top: 30%;
+  right: 30%;
   transition: clip-path ease-in-out 500ms;
   margin: 0;
   padding: 0;
@@ -418,16 +418,23 @@ ul {
     list-style: none;
   }
 }
-
 /* --------------------------------------- */
 /* ---------- End of Navigation ---------- */
+/* --------------------------------------- */
+
+/* --------------------------------------- */
+/* ------------- Intro Home Page --------- */
 /* --------------------------------------- */
 
 .intro-content {
   display: flex;
   flex-direction: column;
-  padding-top: var(--space-1xl);
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: var(--space-xl);
+  margin: 0 auto;
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -487,39 +494,39 @@ h4 {
 @property --color-1 {
   syntax: "<color>";
   inherits: false;
-  initial-value: hsl(193, 26%, 82%);
+  initial-value: hsl(184, 39%, 62%);
 }
 
 @property --color-2 {
   syntax: "<color>";
   inherits: false;
-  initial-value: hsla(204, 100%, 59%, 0.63);
+  initial-value: hsla(0, 0%, 100%, 0.87);
 }
 
 /* keyframes that change the color variable */
 @keyframes gradient-change {
-  to {
-    --color-1: hsla(210, 51%, 69%, 0.712);
-    --color-2: hsla(251, 35%, 61%, 0.534);
+  0% {
+    --color-1: hsl(0, 0%, 100%);
+    --color-2: hsl(0, 0%, 100%);
+  }
+  50% {
+    --color-1: hsl(199, 52%, 76%);
+    --color-2: hsl(184, 39%, 62%);
+  }
+  100% {
+    --color-1: hsl(184, 39%, 43%);
+    --color-2: hsl(204, 41%, 40%);
   }
 }
 
-article {
-  display: grid;
+.intro-content .beaucoup {
+  height: 100%;
+  width: 100%;
   text-align: center;
-  justify-content: center;
-  align-items: center;
-
-  height: var(--space-2xl);
-  /* apply variable changes over time */
-  animation: gradient-change 1s linear infinite alternate forwards running
-    ease-in-out 1s;
-}
-
-article .beaucoup {
-  font-family: "Dank Mono", ui-monospace, monospace;
-  font-size: var(--step-3);
-  /*font-size: clamp(2rem, 2.6vw, 2rem); /* Responsive font size */
+  margin: 0 auto;
+  font-family: "BIg Shoulders Inline", sans-serif;
+  font-weight: 100;
+  font-size: var(--step-6);
   line-height: 1;
   background: linear-gradient(
     /* 
@@ -530,7 +537,7 @@ article .beaucoup {
     /* use the variables in a gradient (or wherever!) */ var(--color-1),
     var(--color-2)
   );
-  animation: gradient-change 1s linear infinite alternate ease-in-out 0.3s;
+  animation: gradient-change 1s linear infinite ease-in-out 0.3s;
 
   /* old browser support */
   -webkit-background-clip: text;
@@ -542,31 +549,11 @@ article .beaucoup {
 }
 
 @layer demo.support {
-  .beaucoup {
-    font-family: "Dank Mono", ui-monospace, monospace;
-    font-size: var(--step-3);
-    /*font-size: min(200%, 4vmin);*/
+  .intro-content .beaucoup {
+    font-family: "BIg Shoulders Inline", sans-serif;
+    font-weight: 100;
+    font-size: var(--step-6);
     line-height: 1;
-  }
-}
-
-@container (max-width: 450px) {
-  .logo {
-    display: none;
-  }
-
-  .intro-content {
-    padding-top: 0;
-  }
-
-  .primary-navigation {
-    top: 40%;
-    right: 30%;
-  }
-
-  article .beaucoup {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
-    margin-bottom: var(--space-1xl);
   }
 }
 

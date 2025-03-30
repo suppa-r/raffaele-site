@@ -6,13 +6,25 @@
   margin: 0;
   padding: 0;
 }
+
+/* Prevent font size inflation */
 html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   color-scheme: dark light;
   hanging-punctuation: first last;
 }
+
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+\par ul[role="list"],
+ol[role="list"] {
+  list-style: none;
 }
 
 /* min body height */
@@ -21,15 +33,38 @@ body {
   line-height: 1.25;
 }
 
+/* Remove default margin in favour of better control in authored CSS */
+\par body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
 /* responsive images/videos */
 img,
-picture,
-svg,
-video {
-  display: block;
+picture {
   max-width: 100%;
+  display: block;
   height: auto;
-  object-fit: cover;
+  object-fit: cover; /* cover, contain, fill, none, scale-down */
   background-position: center;
   background-size: cover;
 }
@@ -49,6 +84,7 @@ h6 {
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+  color: currentColor;
 }
 
 /* make form elements easier to work with */
@@ -56,12 +92,23 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
 }
 
 /* remove animations for people who've turned them off */
@@ -101,3 +148,5 @@ a {
 .skip-to-content:focus {
   transform: translateY(0);
 }
+
+/* End of CSS Reset */
