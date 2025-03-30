@@ -37,7 +37,8 @@
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
-
+  /* Space 1: 4px → 4.5px */
+  --space-xxs: clamp(0.25rem, 0.2174rem + 0.1009cqi, 0.2813rem);
   /* Space xs: 8px → 9px */
   --space-xs: clamp(0.5rem, 0.4348rem + 0.1009cqi, 0.5625rem);
   /* Space s: 16px → 18px */
@@ -83,68 +84,6 @@
 }
 
 /* ------------------------------------------------------- */
-.hello {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.wrapper-gradient-text {
-  position: relative;
-  top: -50px;
-  right: -50px;
-  z-index: 0;
-}
-
-.wrapper-gradient-text {
-  font-family: var(--ff-Kanit);
-  font-size: var(--fs-400);
-  font-weight: bold;
-  display: flex;
-  color: transparent;
-  /*perspective: 270px;*/
-  perspective: 100%;
-}
-
-.text-layer {
-  position: relative;
-  transform: rotateX(-30deg) translateZ(70px);
-  background: linear-gradient(
-    109.6deg,
-    rgb(110, 139, 156, 0.9) 20%,
-    rgb(142, 186, 211, 0.3) 42%,
-    rgba(146, 165, 189, 0.5) 71.5%,
-    rgb(106, 131, 143, 0.7) 100.2%
-  );
-  text-shadow: 0px 15px 0px rgb(94, 134, 150);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shadowDrip 3s infinite alternate ease-in-out;
-  margin-bottom: 0.5em;
-}
-
-@keyframes melt {
-  0% {
-    transform: scaleY(1) translateY(0);
-  }
-
-  100% {
-    transform: scaleY(1.1) translateY(5px);
-  }
-}
-
-@keyframes shadowDrip {
-  0% {
-    text-shadow: 0px 5px 0px rgba(78, 136, 170, 0.853);
-  }
-
-  100% {
-    text-shadow: 0px 20px 30px rgba(80, 121, 148, 0.996),
-      0px 30px 40px rgba(70, 118, 138, 0.822),
-      0px 70px 5px rgba(69, 107, 150, 0.781);
-  }
-}
 
 body {
   font-family: "Big Shoulders Inline", sans-serif;
@@ -434,6 +373,9 @@ ul {
   text-align: center;
   padding-bottom: var(--space-4xl);
   margin: 0 auto;
+  padding-inline: 0 auto;
+  margin-inline: 0 auto;
+  width: 100%;
   max-width: 100%;
   overflow: hidden;
 }
@@ -466,13 +408,20 @@ h4 {
 }
 
 .intro-content a {
-  font-size: var(--step-0);
-  margin: 0 auto;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.intro-content a p {
+  font-size: var(--step-0);
+  margin-block: 0.1em;
+  text-align: center;
+  color: hsl(var(--clr-white));
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .intro-content a ion-icon {
@@ -491,72 +440,64 @@ h4 {
   text-align: center; /* Center the text */
 }
 
-@property --color-1 {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: hsl(184, 39%, 62%);
-}
-
-@property --color-2 {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: hsla(0, 0%, 100%, 0.87);
-}
-
-/* keyframes that change the color variable */
-@keyframes gradient-change {
-  0% {
-    --color-1: hsl(0, 0%, 100%);
-    --color-2: hsl(0, 0%, 100%);
-  }
-  50% {
-    --color-1: hsl(199, 52%, 76%);
-    --color-2: hsl(184, 39%, 62%);
-  }
-  100% {
-    --color-1: hsl(184, 39%, 43%);
-    --color-2: hsl(204, 41%, 40%);
-  }
-}
-
-.intro-content .beaucoup {
-  height: 100%;
-  width: 100%;
-  text-align: center;
+.wrapper-gradient-text {
+  font-family: "Big Shoulders Inline", sans-serif;
+  font-weight: 600;
+  font-size: var(--step-4);
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
-  font-family: "BIg Shoulders Inline", sans-serif;
-  font-weight: 100;
-  font-size: var(--step-6);
-  line-height: 1;
+  padding: 0 var(--space-xxs);
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+}
+
+.text-layer {
+  position: relative;
+  transform: rotateX(-30deg) translateZ(70px);
   background: linear-gradient(
-    /* 
-    in oklch produces more vibrant gradient results 
-    learn more https://developer.chrome.com/docs/css-ui/access-colors-spaces#color_interpolation
-  */
-      to right in oklch,
-    /* use the variables in a gradient (or wherever!) */ var(--color-1),
-    var(--color-2)
+    109.6deg,
+    rgba(255, 255, 255) 20%,
+    rgb(142, 186, 211, 0.3) 42%,
+    rgba(146, 165, 189, 0.5) 71.5%,
+    rgb(106, 131, 143, 0.7) 100.2%
   );
-  animation: gradient-change 1s linear infinite ease-in-out 0.3s;
-
-  /* old browser support */
+  background-size: 200% 200%;
+  background-position: 0% 0%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* modern browser version */
   background-clip: text;
   color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  margin-bottom: 0em;
+  padding: 0 var(--space-xxs);
 }
 
-@layer demo.support {
-  .intro-content .beaucoup {
-    font-family: "BIg Shoulders Inline", sans-serif;
-    font-weight: 100;
-    font-size: var(--step-6);
-    line-height: 1;
+@keyframes melt {
+  0% {
+    transform: scaleY(1) translateY(0);
+  }
+
+  100% {
+    transform: scaleY(1) translateY(5px);
   }
 }
 
+@keyframes shadowDrip {
+  0% {
+    text-shadow: 0px 5px 0px rgba(78, 136, 170, 0.853);
+  }
+
+  100% {
+    text-shadow: 0px 20px 30px rgba(80, 121, 148, 0.996),
+      0px 30px 40px rgba(70, 118, 138, 0.822),
+      0px 70px 5px rgba(69, 107, 150, 0.781);
+  }
+}
 /* --------------------------------------- */
 /* ---------- End of Intro Home ---------- */
 /* --------------------------------------- */
