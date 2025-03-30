@@ -194,33 +194,6 @@ body {
   }
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* added line */
-  border: 0;
-}
-
-.skip-to-content {
-  position: absolute;
-  z-index: 9999;
-  background: hsl(var(--clr-accent));
-  color: hsl(var(--clr-dark));
-  padding: 0.5em 1em;
-  margin-inline: auto;
-  transform: translateY(-100%);
-  transition: transform 250ms ease-in;
-}
-
-.skip-to-content:focus {
-  transform: translateY(0);
-}
-
 /* --------------------------------------- */
 /* ------------- Intro Page -------------- */
 /* --------------------------------------- */
@@ -282,6 +255,15 @@ header {
   max-width: 100%;
   padding: 0;
   margin: 0;
+}
+
+/* Default styles for desktop */
+.logo {
+  display: block; /* Ensure the logo is visible by default */
+}
+
+.primary-navigation {
+  display: block; /* Ensure the navigation is visible by default */
 }
 
 .logo {
@@ -488,13 +470,22 @@ ul {
 /* --------------------------------------- */
 
 .intro-content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2xl);
+  margin: 0 auto;
   text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  color: hsl(var(--clr-white));
 }
 
 .intro-content p {
   font-size: var(--step-0);
   margin-block: 0.1em;
+  text-align: center;
 }
 
 .intro-content p span {
@@ -564,7 +555,7 @@ h4 {
 @keyframes gradient-change {
   to {
     --color-1: hsla(210, 51%, 69%, 0.712);
-    --color-2: hsl(251, 35%, 61%);
+    --color-2: hsla(251, 35%, 61%, 0.534);
   }
 }
 
@@ -614,7 +605,7 @@ article .beaucoup {
   }
 }
 
-@container (max-width: 600px) {
+@container (max-width: 700px) {
   .logo {
     display: none;
   }
@@ -625,7 +616,7 @@ article .beaucoup {
   }
 
   article .beaucoup {
-    /*font-size: clamp(1.5rem, 2.6vw, 2rem);*/
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
     margin-bottom: var(--space-2xl);
   }
 }

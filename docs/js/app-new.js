@@ -1,6 +1,7 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNavigation = document.querySelector(".primary-navigation");
 const introcontent = document.querySelector(".intro-content");
+const logo = document.querySelector(".logo");
 
 menuToggle.addEventListener("click", () => {
   const isOpened = menuToggle.getAttribute("aria-expanded") === "true";
@@ -20,12 +21,11 @@ function openMenu() {
   );
   introcontent.style.display = "none";
   siteNavigation.style.display = "block";
+  logo.style.display = "none";
 }
 function closeMenu() {
   menuToggle.setAttribute("aria-expanded", "false");
   siteNavigation.setAttribute("data-state", "closing");
-  introcontent.style.display = "block";
-  siteNavigation.style.display = "none";
 
   siteNavigation.addEventListener(
     "animationend",
@@ -34,4 +34,8 @@ function closeMenu() {
     },
     { once: true }
   );
+  introcontent.style.display = "flex";
+  introcontent.style.flexDirection = "column";
+  siteNavigation.style.display = "none";
+  logo.style.display = "block";
 }

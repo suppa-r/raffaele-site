@@ -11,11 +11,20 @@
   padding: 0;
   font: inherit;
 }
-
-/* min body height */
+/* dark mode user-agent-styles */
+/* improves punctuation in supported browsers */
+html {
+  color-scheme: dark light;
+  hanging-punctuation: first last;
+}
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+/* min body height *
 body {
   min-height: 100svh;
-}
+}*/
 /* responsive images/videos */
 img,
 picture,
@@ -23,6 +32,10 @@ svg,
 video {
   display: block;
   max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
 }
 /* Improved heading in supported browsers */
 h1,
@@ -43,14 +56,10 @@ h4 {
 }
 /*improve readability with max-width on paragraphs and lists */
 /* prevent orphans in supported browsers */
+p,
 li {
-  margin-block: 0.25em;
+  max-width: var(--p-max-width, 60ch);
   text-wrap: pretty;
-}
-
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
 }
 
 /* A elements that don't have a class get default styles */
@@ -83,10 +92,6 @@ a {
   }
 }
 
-/* --------------------------------------- */
-/* ----------- Utility Classes ----------- */
-/* --------------------------------------- */
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -96,7 +101,6 @@ a {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  /* added line */
   border: 0;
 }
 
@@ -112,15 +116,4 @@ a {
 
 .skip-to-content:focus {
   transform: translateY(0);
-}
-
-.numbered-title {
-  font-size: var(--fs-400);
-  letter-spacing: 2.72px;
-}
-
-.numbered-title span {
-  margin-right: 0.5em;
-  font-size: var(--fs-500);
-  color: hsl(var(--clr-accent) / 0.25);
 }

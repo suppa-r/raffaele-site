@@ -99,10 +99,17 @@ main {
 }
 
 .quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: var(--space-2xl) auto;
+  padding: var(--space-2xl) var(--space-xl);
+  max-width: 100%;
   text-align: center;
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
+  color: hsl(var(--clr-white));
 }
 
 .title {
