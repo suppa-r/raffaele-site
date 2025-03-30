@@ -10,6 +10,27 @@ menuToggle.addEventListener("click", () => {
   isOpened ? closeMenu() : openMenu();
 });
 
+// Function to update visibility based on screen width
+function updateVisibility() {
+  if (window.matchMedia("(max-width: 700px)").matches) {
+    // If screen width is 700px or less
+    siteNavigation.style.display = "block"; // Hide navigation
+    introContents.style.display = "none"; // Show intro content
+    star.style.display = "none"; // Show star
+    headertext.style.display = "none"; // Show header text
+    beaucoup.style.display = "block"; // Show .beaucoup
+  } else {
+    // If screen width is greater than 700px
+    siteNavigation.style.display = "none"; // Hide navigation
+    introContents.style.display = "block"; // Show intro content
+    star.style.display = "block"; // Show star
+    headertext.style.display = "block"; // Show header text
+    beaucoup.style.display = "block"; // Hide .beaucoup
+  }
+}
+// Initial call to set visibility based on current screen width
+updateVisibility();
+
 function openMenu() {
   menuToggle.setAttribute("aria-expanded", "true");
   siteNavigation.setAttribute("data-state", "opened");
@@ -22,28 +43,19 @@ function openMenu() {
     { once: true }
   );
 
-  introContents.style.display = "none"; // Hide intro content
-  siteNavigation.style.display = "block"; // Show navigation
-  star.style.display = "none"; // Hide star
-  headertext.style.display = "none"; // Hide header text
-  beaucoup.style.display = "block"; // Show .beaucoup
-}
+  function closeMenu() {
+    menuToggle.setAttribute("aria-expanded", "false");
+    siteNavigation.setAttribute("data-state", "closing");
 
-function closeMenu() {
-  menuToggle.setAttribute("aria-expanded", "false");
-  siteNavigation.setAttribute("data-state", "closing");
+    siteNavigation.addEventListener(
+      "animationend",
+      () => {
+        siteNavigation.setAttribute("data-state", "closed");
+      },
+      { once: true }
+    );
 
-  siteNavigation.addEventListener(
-    "animationend",
-    () => {
-      siteNavigation.setAttribute("data-state", "closed");
-    },
-    { once: true }
-  );
-
-  siteNavigation.style.display = "none"; // Hide navigation
-  introContents.style.display = "block"; // Show intro content
-  star.style.display = "block"; // Show star
-  headertext.style.display = "block"; // Show header text
-  beaucoup.style.display = "block"; // Hide .beaucoup
+    // Add event listener for window resize
+    window.addEventListener("resize", updateVisibility);
+  }
 }

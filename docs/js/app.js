@@ -1,8 +1,9 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNavigation = document.querySelector(".primary-navigation");
-const introcontent = document.querySelector(".intro-content");
+const introContents = document.querySelector(".intro-content");
 const star = document.querySelector("header .star");
 const headertext = document.querySelector("header .header-text");
+const beaucoup = document.querySelector(".beaucoup"); // Declare .beaucoup
 
 menuToggle.addEventListener("click", () => {
   const isOpened = menuToggle.getAttribute("aria-expanded") === "true";
@@ -20,10 +21,12 @@ function openMenu() {
     },
     { once: true }
   );
-  introcontent.style.display = "none";
-  siteNavigation.style.display = "block";
-  star.style.display = "none";
-  headertext.style.display = "none";
+
+  introContents.style.display = "none"; // Hide intro content
+  siteNavigation.style.display = "block"; // Show navigation
+  star.style.display = "none"; // Hide star
+  headertext.style.display = "none"; // Hide header text
+  beaucoup.style.display = "block"; // Show .beaucoup
 }
 
 function closeMenu() {
@@ -37,8 +40,10 @@ function closeMenu() {
     },
     { once: true }
   );
-  introcontent.style.display = "block";
-  siteNavigation.style.display = "block";
-  star.style.display = "block";
-  headertext.style.display = "block";
+
+  siteNavigation.style.display = "none"; // Hide navigation
+  introContents.style.display = "block"; // Show intro content
+  star.style.display = "block"; // Show star
+  headertext.style.display = "block"; // Show header text
+  beaucoup.style.display = "block"; // Hide .beaucoup
 }
