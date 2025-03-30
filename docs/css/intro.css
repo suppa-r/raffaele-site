@@ -253,42 +253,29 @@ header {
   background: transparent;
   width: 100%;
   max-width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-/* Default styles for desktop */
-.logo {
-  display: block; /* Ensure the logo is visible by default */
-}
-
-.primary-navigation {
-  display: block; /* Ensure the navigation is visible by default */
-}
-
-.logo {
-  display: flex;
-  justify-content: flex-start;
-  padding-left: var(--space-3xl);
 }
 
 .star {
   width: 2em;
   height: 2em;
-  padding-left: var(--space-3xl);
-  color: hsl(var(--clr-span));
+  padding-left: var(--space-xl);
 }
 
 header h1 {
   font-size: var(--step-0);
+  font-weight: 100;
+  color: hsl(var(--clr-white));
+  padding-right: var(--space-m);
   padding-left: var(--space-s);
+  margin: 0;
 }
 
 header h1 span {
   font-size: var(--step-1);
+  font-weight: 100;
   color: hsl(var(--clr-span));
   padding-left: var(--space-s);
-  padding-right: var(--space-s);
+  padding-right: var(--space-m);
 }
 
 .site-nav {
@@ -605,7 +592,7 @@ article .beaucoup {
   }
 }
 
-@container (max-width: 700px) {
+@container (max-width: 450px) {
   .logo {
     display: none;
   }

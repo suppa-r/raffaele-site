@@ -3,6 +3,14 @@ const siteNavigation = document.querySelector(".primary-navigation");
 const introcontent = document.querySelector(".intro-content");
 const logo = document.querySelector(".logo");
 
+const mediaQuery = window.matchMedia("(width < 500px)");
+// Check if the media query is already matched
+if (mediaQuery.matches) {
+  // If it is, close the menu
+  closeMenu();
+}
+// Add a listener for when the media query changes
+
 menuToggle.addEventListener("click", () => {
   const isOpened = menuToggle.getAttribute("aria-expanded") === "true";
   isOpened ? closeMenu() : openMenu();
