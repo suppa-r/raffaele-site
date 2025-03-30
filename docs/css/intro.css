@@ -38,6 +38,8 @@
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
 
+  /* Space xs: 8px → 9px */
+  --space-xs: clamp(0.5rem, 0.4348rem + 0.1009cqi, 0.5625rem);
   /* Space s: 16px → 18px */
   --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
   /* Space m: 24px → 27px */
@@ -237,7 +239,7 @@ body {
 
 .intro {
   display: grid;
-  grid-template-rows: 3em 1fr;
+  grid-template-rows: 5em 1fr;
   min-height: 100svh;
   text-align: center;
   padding: 0;
@@ -289,30 +291,28 @@ header {
   background: transparent;
   width: 100%;
   max-width: 100%;
-  padding-block: var(--space-l);
-  margin: 0 auto;
 }
 
 .star {
   width: 2.5em;
   height: 2.5em;
+  margin-left: var(--space-l-xl);
 }
 
 header h1 {
   font-size: var(--step-0);
   font-weight: 100;
   color: hsl(var(--clr-white));
+  padding-left: var(--space-m);
   padding-right: var(--space-m);
-  padding-left: var(--space-s);
-  margin: 0;
 }
 
 header h1 span {
   font-size: var(--step-1);
   font-weight: 100;
   color: hsl(var(--clr-span));
-  padding-left: var(--space-s);
-  padding-right: var(--space-m);
+  padding-left: var(--space-xs);
+  padding-right: var(--space-s);
 }
 
 .site-nav {
@@ -366,11 +366,6 @@ header h1 span {
 
 .site-nav ul {
   list-style: none;
-  display: flex; /* Use flexbox to align items */
-  flex-direction: column; /* Stack items vertically */
-  /*width: 100%; /* Ensure the parent container takes full width */
-  padding: 0;
-  margin: 0;
 }
 
 .site-nav li {
@@ -385,11 +380,10 @@ header h1 span {
 
 .site-nav a {
   display: flex; /* Use flexbox for alignment */
-  align-items: left; /* Vertically center content */
-  justify-content: flex-start; /* Space out content if needed */
-  width: 100%; /* Ensure links take full width of their parent */
+  align-items: center; /* Center items vertically */
+  justify-content: flex-start; /* Align items to the left */
   color: hsl(var(--clr-white));
-  padding: 0.6em 3em 0.6em 0em; /* Add consistent padding */
+  padding: 0.5em 3em 0.4em 0; /* Add consistent padding */
   text-decoration: none;
 }
 
@@ -487,16 +481,6 @@ ul {
   }
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
 /* --------------------------------------- */
 /* ---------- End of Navigation ---------- */
 /* --------------------------------------- */
@@ -504,12 +488,8 @@ ul {
 .intro-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: var(--space-2xl);
-  margin: 0 auto;
+  padding-top: var(--space-1xl);
   text-align: center;
-  /*max-width: 100%;*/
   overflow: hidden;
 }
 
@@ -560,7 +540,7 @@ h4 {
 }
 
 .intro-content a p span {
-  font-size: var(--step-3); /* Adjust the font size */
+  font-size: var(--step-5); /* Adjust the font size */
   color: hsl(var(--clr-span)); /* Adjust the text color */
   font-weight: 100; /* Adjust the font weight */
   text-align: center; /* Center the text */
@@ -635,6 +615,10 @@ article .beaucoup {
 @container (max-width: 450px) {
   .logo {
     display: none;
+  }
+
+  .intro-content {
+    padding-top: 0;
   }
 
   .primary-navigation {
