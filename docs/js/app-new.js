@@ -3,12 +3,19 @@ const siteNavigation = document.querySelector(".primary-navigation");
 const introcontent = document.querySelector(".intro-content");
 const logo = document.querySelector(".logo");
 
-const mediaQuery = window.matchMedia("(width < 500px)");
+const mediaQuery = window.matchMedia("(width < 600px)");
 // Check if the media query is already matched
-if (mediaQuery.matches) {
-  // If it is, close the menu
-  closeMenu();
-}
+
+// Add a listener for when the media query matches
+mediaQuery.addEventListener("change", (event) => {
+  if (event.matches) {
+    // If it does, close the menu
+    closeMenu();
+  } else {
+    // If it doesn't, open the menu
+    openMenu();
+  }
+});
 // Add a listener for when the media query changes
 
 menuToggle.addEventListener("click", () => {

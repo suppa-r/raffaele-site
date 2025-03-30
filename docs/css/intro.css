@@ -104,6 +104,44 @@
   color: hsl(var(--clr-accent));
 }
 
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  background: hsl(var(--clr-light));
+  color: hsl(var(--clr-dark));
+  padding: 0.5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
 /* ------------------------------------------------------- */
 .hello {
   display: flex;
@@ -171,7 +209,6 @@
 body {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 100;
-  text-wrap: balance;
   color: hsl(var(--clr-white));
   overflow: hidden;
 }
@@ -201,8 +238,7 @@ body {
 .intro {
   display: grid;
   grid-template-rows: 3em 1fr;
-  font-family: "Big Shoulders Inline", sans-serif;
-  font-weight: 100;
+  min-height: 100svh;
   text-align: center;
   padding: 0;
   color: hsl(var(--clr-white));
@@ -253,12 +289,13 @@ header {
   background: transparent;
   width: 100%;
   max-width: 100%;
+  padding-block: var(--space-l);
+  margin: 0 auto;
 }
 
 .star {
-  width: 2em;
-  height: 2em;
-  padding-left: var(--space-xl);
+  width: 2.5em;
+  height: 2.5em;
 }
 
 header h1 {
@@ -287,8 +324,9 @@ header h1 span {
 }
 
 .primary-navigation {
-  color: hsl(var(--clr-dark));
-  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-white));
+  /*background: hsl(var(--clr-white));*/
+  background: transparent;
   position: absolute;
   top: 10%;
   right: 5%;
@@ -328,23 +366,30 @@ header h1 span {
 
 .site-nav ul {
   list-style: none;
+  display: flex; /* Use flexbox to align items */
+  flex-direction: column; /* Stack items vertically */
+  /*width: 100%; /* Ensure the parent container takes full width */
+  padding: 0;
+  margin: 0;
 }
 
 .site-nav li {
-  border-bottom: 5px solid #58759bee;
-  padding: 0em 2em 0em 0em;
+  flex: 1; /* Make all list items take equal width */
+  width: 100%; /* Ensure each list item spans the full width */
+  border-bottom: 5px solid #5f7899ee;
 }
 
 .site-nav li:last-child {
-  border-bottom: none;
+  border-bottom: none; /* Remove border for the last item */
 }
 
 .site-nav a {
-  display: block;
-  width: 100%;
-  color: hsl(var(--clr-dark));
-  display: inline-flex;
-  padding: 1em 2em 1em 0em;
+  display: flex; /* Use flexbox for alignment */
+  align-items: left; /* Vertically center content */
+  justify-content: flex-start; /* Space out content if needed */
+  width: 100%; /* Ensure links take full width of their parent */
+  color: hsl(var(--clr-white));
+  padding: 0.6em 3em 0.6em 0em; /* Add consistent padding */
   text-decoration: none;
 }
 
@@ -464,30 +509,26 @@ ul {
   padding: var(--space-2xl);
   margin: 0 auto;
   text-align: center;
-  max-width: 100%;
+  /*max-width: 100%;*/
   overflow: hidden;
-  color: hsl(var(--clr-white));
 }
 
 .intro-content p {
   font-size: var(--step-0);
-  margin-block: 0.1em;
+  margin-block: 0.2em;
   text-align: center;
 }
 
 .intro-content p span {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
-  font-family: "Big Shoulders Inline", sans-serif;
-  font-weight: 100;
-  margin-block: 0.1em;
+  margin-block: 0.2em;
   padding-left: 0.3em;
 }
 
 .intro-content h1,
 h2 {
   font-size: var(--step-1);
-  color: var(--clr-white);
   font-weight: 100;
   margin-block: 0.2em;
 }
@@ -495,7 +536,6 @@ h2 {
 .intro-content h3,
 h4 {
   font-size: var(--step-0);
-  color: var(--clr-white);
   font-weight: 100;
   margin-block: 0.2em;
 }
@@ -604,7 +644,7 @@ article .beaucoup {
 
   article .beaucoup {
     font-size: clamp(1.5rem, 2.6vw, 2rem);
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-1xl);
   }
 }
 

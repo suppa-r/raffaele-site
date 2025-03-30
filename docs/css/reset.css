@@ -1,6 +1,11 @@
 /* CSS Reset */
 /* dark mode user-agent-styles */
 /* improves punctuation in supported browsers */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 html {
   color-scheme: dark light;
   hanging-punctuation: first last;
@@ -44,10 +49,6 @@ p {
   margin-inline: 0;
   text-wrap: balance;
 }
-/* prevent widows in supported browsers */
-li {
-  text-wrap: pretty;
-}
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
@@ -65,42 +66,4 @@ select {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-/* remove animations for people who've turned them off */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.skip-to-content {
-  position: absolute;
-  background: hsl(var(--clr-accent) / 1);
-  color: hsl(var(--clr-dark));
-  padding: 0.5em 1em;
-  margin-inline: auto;
-  transform: translateY(-100%);
-  transition: transform 250ms ease-in;
-}
-
-.skip-to-content:focus {
-  transform: translateY(0);
 }
