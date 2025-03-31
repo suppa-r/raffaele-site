@@ -360,8 +360,8 @@ ul {
 .intro-content p span {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
-  margin-block: 0.18em;
-  padding-left: 0.3em;
+  margin-block: 2em;
+  padding-left: 0;
 }
 
 .intro-content h1,
@@ -382,16 +382,6 @@ h4 {
   text-decoration: none;
 }
 
-.intro-content a p {
-  font-size: var(--step-0);
-  margin-block: 0.1em;
-  text-align: center;
-  color: hsl(var(--clr-white));
-  text-decoration: none;
-  background-color: transparent;
-  margin-bottom: var(--space-l);
-}
-
 .intro-content a ion-icon {
   font-size: var(--step-4);
   z-index: 5;
@@ -399,36 +389,37 @@ h4 {
   color: hsl(var(--clr-span));
   text-align: center;
   vertical-align: middle;
-  margin-bottom: var(--space-l);
+  margin-block: var(--space-s);
 }
 
 .intro-content a p span {
   font-size: var(--step-4); /* Adjust the font size */
   color: hsl(var(--clr-span)); /* Adjust the text color */
-  font-weight: 200; /* Adjust the font weight */
+  font-family: "Big Shoulders Inline", sans-serif; /* Use the same font */
+  font-weight: 700; /* Adjust the font weight */
   text-align: center; /* Center the text */
-  margin-bottom: var(--space-l);
+  margin-block: var(--space-m);
 }
 
 .wrapper-gradient-text {
   font-family: "Big Shoulders Inline", sans-serif;
   font-weight: 600;
   font-size: var(--step-2);
-  line-height: 1;
+  line-height: 0.9;
   text-align: center;
   text-decoration: none;
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
 }
 
 .text-layer {
-  position: relative;
-  transform: rotateX(-30deg) translateZ(70px);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out;
   background: linear-gradient(
-    109.6deg,
+    -100deg,
     rgba(255, 255, 255) 20%,
-    rgb(142, 186, 211, 0.3) 42%,
-    rgba(146, 165, 189, 0.5) 71.5%,
-    rgb(106, 131, 143, 0.7) 100.2%
+    rgba(142, 186, 211, 0.74) 30%,
+    rgba(146, 165, 189, 0.788) 40%,
+    rgba(106, 131, 143, 0) 100.2%
   );
   background-size: 200% 200%;
   background-position: 0% 0%;
@@ -437,7 +428,12 @@ h4 {
   color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
   margin-bottom: 0em;
-  padding: 0 var(--space-xxs);
+  padding: 0 0.06em;
+  text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
+  transition: filter 0.3s ease-in-out;
+  will-change: filter;
+  z-index: 1;
+  text-align: center;
 }
 
 @keyframes shadowDrip {
