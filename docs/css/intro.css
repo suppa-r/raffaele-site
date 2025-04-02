@@ -72,41 +72,60 @@
   --font-big-shoulders-inline-light: 100;
 }
 
+/* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
 /* ------------------------------------------------- */
 /* ------------------ Global Styles ---------------- */
 
 header {
-  position: relative;
-  height: 4rem;
-  width: 100%;
-  padding: 0 1rem;
-  padding-block: 1rem;
   display: flex;
   justify-content: space-between;
   background-color: transparent;
+  padding-top: var(--space-l);
 }
-header h2 {
+
+header .logo {
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-xl);
+}
+
+header .logo h2 {
   color: hsl(var(--clr-white));
   font-size: var(--step-1);
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
 }
-header .logo {
-  display: flex;
-  align-items: center;
-  padding: var(--space-s) var(--space-s);
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
-  font-size: var(--step-2);
-}
 
-.header .logo span {
+.header .logo h2 span {
   font-family: var(--font-turret-road-regular);
-  font-weight: var(--font-big-shoulders-inline-light);
+  font-weight: var(--font-turret-road-light);
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
   margin-left: var(--space-m);
 }
+
 header .bars {
   position: relative;
   height: 3px;
@@ -131,7 +150,9 @@ header .bars::before {
   left: 0;
   width: 20px;
   border-radius: 2px;
-  background: hsl(var(--clr-span));
+  background-color: #888888;
+  transition: 0.5s;
+  transform-origin: right;
   cursor: pointer;
 }
 header .bars::after {
@@ -143,6 +164,8 @@ header .bars::before {
 
 .nav-links {
   display: flex;
+  margin: 0 0 0 auto;
+  padding: 0;
 }
 .nav-links li {
   position: relative;
@@ -153,7 +176,7 @@ header .bars::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
 }
 .nav-links li a span {
   font-family: "Turret Road", sans-serif;
@@ -161,7 +184,7 @@ header .bars::before {
   font-size: 0.9rem;
   letter-spacing: 1px;
   margin-top: 0.2rem;
-  color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
 }
 
 section {
@@ -170,19 +193,15 @@ section {
 }
 section span {
   color: hsl(var(--clr-span));
+  font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  margin-left: var(--space-s);
 }
 section span i {
   margin: 0 1.2vw;
   font-size: 1.2rem;
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
-}
-section img {
-  height: 3rem;
-  width: 3rem;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 0 0.7vw;
 }
 
 /* --------------------------------------- */
@@ -235,6 +254,9 @@ html {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--space-xl);
 }
 
 .intro-content p {
@@ -251,7 +273,7 @@ html {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
   margin-block: 2em;
-  padding-left: 0;
+  padding-left: var(--space-s);
 }
 
 .intro-content h1,
@@ -301,6 +323,7 @@ h4 {
   text-align: center;
   text-decoration: none;
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
+  margin-bottom: var(--space-l);
 }
 
 .text-layer {
@@ -365,11 +388,22 @@ h4 {
     opacity: 0;
   }
 
+  .nav-links li:last-child {
+    display: none;
+  }
+
   .nav-links li {
     margin: 1.5vw 0;
   }
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
+  }
+  .nav-links.open li {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-links.open li a {
+    color: hsl(var(--clr-white));
   }
 }

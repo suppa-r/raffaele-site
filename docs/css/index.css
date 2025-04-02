@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
 
 :root {
   /* ------------------------------------------------- */
@@ -37,7 +38,10 @@
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
-
+  /* Space 1: 4px → 4.5px */
+  --space-xxs: clamp(0.25rem, 0.2174rem + 0.1009cqi, 0.2813rem);
+  /* Space xs: 8px → 9px */
+  --space-xs: clamp(0.5rem, 0.4348rem + 0.1009cqi, 0.5625rem);
   /* Space s: 16px → 18px */
   --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
   /* Space m: 24px → 27px */
@@ -58,6 +62,38 @@
   --space-6xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
   /* Space 7xl: 160px → 180px */
   --space-7xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
+
+  --font-turret-road: "Turret Road", sans-serif;
+  --font-turret-road-light: 300;
+  --font-turret-road-regular: 400;
+  --font-turret-road-bold: 700;
+
+  --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
+  --font-big-shoulders-inline-light: 100;
+}
+
+/* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
 }
 
 /* ------------------------------------------------------- */
