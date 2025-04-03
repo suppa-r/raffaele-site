@@ -106,9 +106,8 @@ header {
 }
 
 header .logo {
-  display: flex;
-  align-items: center;
-  padding-left: var(--space-xl);
+  display: inline-block;
+  padding-left: var(--space-s);
 }
 
 header .logo h2 {
@@ -127,12 +126,15 @@ header .logo h2 {
 }
 
 header .bars {
+  display: inline-block;
   position: relative;
   height: 3px;
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin-right: 10px;
+  margin: var(--space-l) var(--space-xxs);
+  cursor: pointer;
+  /*margin-right: 10px;*/
   display: none;
 }
 
@@ -157,6 +159,7 @@ header .bars::before {
 }
 header .bars::after {
   bottom: 7px;
+  /*bottom: 7px;*/
 }
 header .bars::before {
   top: 7px;
@@ -195,7 +198,8 @@ section span {
   color: hsl(var(--clr-span));
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
-  margin-left: var(--space-s);
+  margin-left: var(--space-xxs);
+  margin-right: var(--space-s);
 }
 section span i {
   margin: 0 1.2vw;
@@ -318,12 +322,12 @@ h4 {
 .wrapper-gradient-text {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   line-height: 0.9;
   text-align: center;
   text-decoration: none;
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
-  margin-bottom: var(--space-l);
+  margin-bottom: var(--space-xl);
 }
 
 .text-layer {
@@ -365,7 +369,7 @@ h4 {
 
 @container (max-width: 768px) {
   header .logo {
-    margin-right: 50px;
+    margin-right: 10px;
   }
   header .bars {
     display: block;
@@ -373,6 +377,7 @@ h4 {
   }
   nav {
     position: fixed;
+    top: 10%;
     z-index: 3;
   }
   .nav-links {
