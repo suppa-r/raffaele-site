@@ -176,7 +176,7 @@ header h2 span {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
   margin-left: var(--space-m);
-  text-shadow: 0px 10px 10px rgb(255, 255, 255);
+  text-shadow: 0px 5px 10px rgb(177, 235, 230);
 }
 header .bars {
   position: relative;
