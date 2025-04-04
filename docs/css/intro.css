@@ -81,6 +81,7 @@ ul {
   list-style: none;
 }
 a {
+  color: inherit;
   text-decoration: none;
 }
 
@@ -141,22 +142,19 @@ a {
   overflow: hidden;
 }
 
-/*body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-}*/
+body {
+  color: #d6d6d6;
+  overflow: hidden;
+}
 
 header {
-  width: 100%;
-  height: var(--space-1xl);
+  position: relative;
+  height: 4rem;
+  width: 100vw;
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 header h2 {
   color: #d6d6d6;
@@ -166,7 +164,19 @@ header .logo {
   display: flex;
   align-items: center;
   padding: 1vh 1vw;
+  font-size: var(--step-1);
   font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  letter-spacing: 9px;
+}
+
+header h2 span {
+  font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  font-size: var(--step-1);
+  color: hsl(var(--clr-span));
+  margin-left: var(--space-m);
+  text-shadow: 0px 10px 10px rgb(255, 255, 255);
 }
 header .bars {
   position: relative;
@@ -204,30 +214,16 @@ header .bars::before {
 
 .nav-links {
   display: flex;
-  content: "";
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  position: fixed;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(
-        90deg,
-        color-mix(in hsl, canvasText, transparent 70%) 1px,
-        transparent 1px 30px
-      )
-      50% 50% / 30px 30px,
-    linear-gradient(
-        color-mix(in hsl, canvasText, transparent 70%) 1px,
-        transparent 1px 30px
-      )
-      50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
-    background-position 0.3s ease-in-out;
-  z-index: -1; /* Ensure it is behind other content */
-  color: hsl(var(--clr-white));
-  overflow: hidden;
+  padding: 0.5rem 0;
+  width: 100%;
+  height: 4rem;
+  z-index: 2;
+  transition: all ease-in-out 0.5s;
 }
 .nav-links li {
   position: relative;
@@ -264,7 +260,7 @@ section img {
   width: 3rem;
   object-fit: cover;
   border-radius: 50%;
-  margin: var(--space-s) var(--space-l) 0 0;
+  margin: 0 0.7vw;
 }
 
 html {
@@ -272,10 +268,7 @@ html {
 }
 
 .intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-inline: auto;
 }
 
 .intro-content {
@@ -404,7 +397,6 @@ h4 {
     z-index: 3;
   }
   .nav-links {
-    background: #111111;
     position: fixed;
     top: 4rem;
     left: 0;
