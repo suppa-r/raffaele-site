@@ -81,7 +81,6 @@ ul {
   list-style: none;
 }
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -110,12 +109,17 @@ a {
 }
 /* --------------------------------------- */
 
+body {
+  color: hsl(var(--clr-white));
+  overflow: hidden;
+}
+
+.intro > * {
+  container-type: inline-size;
+  z-index: 1; /* Ensure it is above the background */
+}
+
 .intro::before {
-  /*background-image: url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG5hdmF8ZW58MHx8fHwxNjg3NTY1MjQy&ixlib=rb-4.0.3&q=80&w=1080");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: "Poppins", sans-serif;*/
   content: "";
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
@@ -142,11 +146,6 @@ a {
   overflow: hidden;
 }
 
-body {
-  color: #d6d6d6;
-  overflow: hidden;
-}
-
 header {
   position: relative;
   height: 4rem;
@@ -158,24 +157,26 @@ header {
 }
 header h2 {
   color: #d6d6d6;
-  font-size: 1.2rem;
+  font-size: var(--step-0);
+  margin-left: var(--space-s);
 }
 header .logo {
   display: flex;
   align-items: center;
   padding: 1vh 1vw;
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
-  letter-spacing: 9px;
+  letter-spacing: 4px;
 }
 
 header h2 span {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   color: hsl(var(--clr-span));
-  margin-left: var(--space-m);
+  margin-left: var(--space-xxs);
+  margin-right: var(--space-s);
   text-shadow: 0px 5px 10px rgb(177, 235, 230);
 }
 header .bars {
@@ -275,9 +276,7 @@ html {
   display: flex;
   flex-direction: column;
   text-align: center;
-  justify-content: center;
-  align-items: center;
-  padding: var(--space-2xl);
+  padding-inline: var(--space-l);
 }
 
 .intro-content p {
@@ -293,7 +292,7 @@ html {
   font-weight: var(--font-turret-road-light);
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
-  margin-block: 2em;
+  margin-block: 3em;
   padding-left: var(--space-s);
 }
 
@@ -303,6 +302,8 @@ h2 {
   font-weight: var(--font-turret-road-light);
   font-size: var(--step-1);
   font-weight: 100;
+  margin-block: var(--space-xs);
+  text-align: center;
 }
 
 .intro-content h3,
@@ -311,29 +312,35 @@ h4 {
   font-weight: var(--font-turret-road-light);
   font-size: var(--step-0);
   font-weight: 100;
+  margin-block: var(--space-xs);
+  text-align: center;
 }
 
 .intro-content a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
+  font-size: var(--step-0);
+  color: hsl(var(--clr-white));
+  font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  visibility: visible; /* Ensure the parent is visible */
 }
 
-.intro-content a ion-icon {
-  font-size: var(--step-4);
-  z-index: 5;
-  --ionicon-stroke-width: 32px;
+.intro-content a span {
+  font-size: var(--step-6);
   color: hsl(var(--clr-span));
-  text-align: center;
-  vertical-align: middle;
   margin-block: var(--space-s);
 }
 
-.intro-content a p span {
-  font-size: var(--step-4); /* Adjust the font size */
-  color: hsl(var(--clr-span)); /* Adjust the text color */
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
-  text-align: center; /* Center the text */
-  margin-block: var(--space-m);
+.intro-content a i {
+  font-size: var(--step-5);
+  z-index: 5;
+  color: hsl(var(--clr-span));
+  text-align: center;
+  vertical-align: middle;
 }
 
 .wrapper-gradient-text {
@@ -384,9 +391,19 @@ h4 {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@container (max-width: 600px) {
+  /* Mobile Styles */
+  body {
+    overflow: hidden;
+  }
+
+  .intro-content {
+    padding: var(--space-xl) 0;
+  }
+
   header .logo {
-    margin-right: 50px;
+    font-size: var(--step--1);
+    letter-spacing: 0;
   }
   header .bars {
     display: block;
