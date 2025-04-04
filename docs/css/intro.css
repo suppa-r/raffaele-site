@@ -96,7 +96,9 @@
   color: hsl(var(--clr-accent));
 }
 /* --------------------------------------- */
-
+.intro {
+  overflow: clip;
+}
 .intro > * {
   container-type: inline-size;
   z-index: 1; /* Ensure it is above the background */
@@ -250,10 +252,6 @@ html {
   color-scheme: dark only;
 }
 
-.intro {
-  margin-inline: auto;
-}
-
 .intro-content {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
@@ -359,11 +357,17 @@ h4 {
 }
 
 @container (max-width: 768px) {
+  .intro-content {
+    margin-bottom: var(--space-3xl);
+  }
+
   header .bars {
     display: block;
     transition: 0.5s;
-    margin: 0 0 0 auto;
+    margin: 0 0 0 var(--space-m);
+    cursor: pointer;
   }
+
   nav {
     position: fixed;
     z-index: 3;
