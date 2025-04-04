@@ -370,7 +370,7 @@ h4 {
   }
 
   100% {
-    text-shadow: 0px 20px 30px rgba(80, 121, 148, 0.996),
+    text-shadow: 0px 10px 20px rgba(80, 121, 148, 0.6),
       0px 30px 40px rgba(178, 193, 199, 0.74),
       0px 70px 5px rgba(76, 109, 145, 0.664);
   }
