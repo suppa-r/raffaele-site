@@ -376,18 +376,9 @@ h4 {
   }
 }
 
-@container (max-width: 600px) {
-  /* Mobile Styles */
-  body {
-    overflow: hidden;
-  }
-
-  .intro-content {
-    padding: var(--space-xl) 0;
-  }
-
+@container (max-width: 768px) {
   header .logo {
-    letter-spacing: 0;
+    margin-right: 50px;
   }
   header .bars {
     display: block;
@@ -398,6 +389,7 @@ h4 {
     z-index: 3;
   }
   .nav-links {
+    background: #111111;
     position: fixed;
     top: 4rem;
     left: 0;
@@ -416,6 +408,5 @@ h4 {
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
-    top: 0rem;
   }
 }
