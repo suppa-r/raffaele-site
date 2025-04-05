@@ -233,20 +233,20 @@ section {
   display: flex;
   align-items: center;
 }
-section span {
+/*section span {
   color: #888888;
 }
 section span i {
   margin: 0 var(--space-xs);
   font-size: var(--step-0);
   font-family: "Turret Road", sans-serif;
-}
+}*/
 section img {
   height: 3rem;
   width: 3rem;
   object-fit: cover;
   border-radius: 50%;
-  margin: 0 var(--space-xs);
+  /*margin: 0 var(--space-xs);*/
 }
 
 html {
