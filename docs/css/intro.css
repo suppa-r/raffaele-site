@@ -273,7 +273,7 @@ html {
 .intro-content p span {
   font-size: var(--step-0);
   color: hsl(var(--clr-span));
-  padding-left: var(--space-s);
+  padding-left: var(--space-xs);
 }
 
 .intro-content h1,
