@@ -134,7 +134,7 @@
 header {
   position: relative;
   display: flex;
-  padding-top: var(--space-xs);
+  padding-block: var(--space-xxs);
 }
 
 header .logo {
@@ -145,12 +145,13 @@ header .logo {
   font-weight: var(--font-turret-road-light);
   color: hsl(var(--clr-white));
   text-shadow: 0px 5px 10px rgb(177, 235, 230);
+  margin-left: var(--space-l);
 }
 
 header h2 {
   color: hsl(var(--clr-white));
   font-size: var(--step-0);
-  margin: 0 0 0 var(--space-xl);
+  margin: var(--space-l) var(--space-l) 0 var(--space-1xl);
 }
 
 header h2 span {
@@ -258,8 +259,7 @@ html {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: var(--space-xl);
-  padding-inline: var(--space-m);
+  overflow: hidden;
 }
 
 .intro-content p {
@@ -356,17 +356,24 @@ h4 {
   }
 }
 
-@container (max-width: 768px) {
+@container (max-width: 600px) {
   /* Mobile styles */
+  header {
+    padding-right: var(--space-m);
+  }
+
+  header h2 {
+    margin: 0 var(--space-l) 0 0;
+  }
 
   .intro-content {
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-4xl);
   }
 
   header .bars {
     display: block;
     transition: 0.5s;
-    margin: 0 0 0 var(--space-m);
+    margin: var(--space-xs) var(--space-m) 0 0;
     cursor: pointer;
   }
 
@@ -376,7 +383,7 @@ h4 {
   }
   .nav-links {
     position: fixed;
-    top: 4rem;
+    top: 2rem;
     left: 0;
     padding-top: 1rem;
     flex-direction: column;
