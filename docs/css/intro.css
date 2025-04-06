@@ -399,4 +399,7 @@ h4 {
     background-size: cover;
     margin: auto;
   }
+  .intro-content {
+    padding: 0 0 var(--space-xl) 0;
+  }
 }
