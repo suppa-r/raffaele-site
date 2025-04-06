@@ -96,9 +96,14 @@
   color: hsl(var(--clr-accent));
 }
 /* --------------------------------------- */
+html {
+  color-scheme: dark only;
+}
+
 .intro {
   overflow: clip;
 }
+
 .intro > * {
   container-type: inline-size;
   z-index: 1; /* Ensure it is above the background */
@@ -133,9 +138,11 @@
 
 header {
   width: 100%;
-  padding: 2rem;
+  padding: 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-block: var(--space-xxs);
 }
 
 header .logo {
@@ -152,7 +159,7 @@ header .logo {
 header h2 {
   color: hsl(var(--clr-white));
   font-size: var(--step-0);
-  margin: var(--space-l) var(--space-l) 0 var(--space-1xl);
+  margin: var(--space-xxs) var(--space-l) 0 0;
 }
 
 header h2 span {
@@ -205,7 +212,7 @@ header .bars::before {
   position: relative;
   top: 0;
   left: 0;
-  padding: 0.1rem 0;
+  padding: 0;
   width: 100%;
   height: 4rem;
   z-index: 2;
@@ -218,6 +225,7 @@ header .bars::before {
   list-style: none;
 }
 .nav-links li a {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,55 +233,40 @@ header .bars::before {
 }
 .nav-links li a span {
   font-family: "Turret Road", sans-serif;
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   font-weight: var(--font-turret-road-light);
   letter-spacing: 1px;
-  margin-top: 0.2rem;
+  margin-top: var(--space-xxs);
 }
 
-/*section {
-  display: flex;
-  align-items: center;
-}
-section span {
-  color: #888888;
-}
-section span i {
-  margin: 0 var(--space-xs);
-  font-size: var(--step-0);
-  font-family: "Turret Road", sans-serif;
-}*/
-section img {
-  /*height: 3rem;
-  width: 3rem;*/
-  object-fit: cover;
-  border-radius: 50%;
-  margin: auto;
-}
-
-html {
-  color-scheme: dark only;
+.nav-links li img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover; /* cover, contain, fill, none, scale-down */
+  background-position: center;
+  background-size: cover;
+  margin-right: var(--space-2xl);
 }
 
 .intro-content {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
-  display: flex;
-  flex-direction: column;
   text-align: center;
   overflow: hidden;
-  margin-inline: 0 auto;
-  padding: var(--space-m) var(--space-m);
+  margin: auto;
+  padding: var(--space-3xl);
+  min-height: 100svh;
 }
 
 .intro-content p {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   margin-block: 0.15em;
   text-align: center;
 }
 
 .intro-content p span {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs);
 }
@@ -294,7 +287,7 @@ h4 {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   color: hsl(var(--clr-white));
   visibility: visible; /* Ensure the parent is visible */
 }
@@ -320,7 +313,7 @@ h4 {
   line-height: 0.6em;
   text-align: center;
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
-  margin-bottom: var(--space-l);
+  margin-bottom: 0em;
 }
 
 .text-layer {
@@ -338,11 +331,11 @@ h4 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shadowDrip 5s infinite alternate ease-in-out;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
   margin-bottom: 0em;
-  /*padding: 0 0.06em;*/
+  padding: 0;
   text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
-  transition: filter 0.7s ease-in-out;
+  transition: filter 0.4s ease-in-out;
   will-change: filter;
   z-index: 1;
   text-align: center;
@@ -350,27 +343,19 @@ h4 {
 
 @keyframes shadowDrip {
   0% {
-    text-shadow: 0px 5px 0px rgba(255, 255, 255, 0.853);
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.853);
   }
-
   100% {
-    text-shadow: 0px 10px 20px rgba(80, 121, 148, 0.6),
+    text-shadow: 0px 10px 20px rgba(207, 217, 224, 0.6),
       0px 30px 40px rgba(178, 193, 199, 0.74),
-      0px 70px 5px rgba(76, 109, 145, 0.664);
+      0px 70px 5px rgba(232, 235, 238, 0.664);
   }
 }
 
 @container (max-width: 600px) {
   /* Mobile styles */
   header {
-    margin-block: var(--space-m);
-  }
-  header h2 {
-    margin: var(--space-xs) var(--space-l) 0 0;
-  }
-
-  .intro-content {
-    margin-bottom: var(--space-4xl);
+    margin-block: var(--space-s);
   }
 
   header .bars {
@@ -386,7 +371,7 @@ h4 {
   }
   .nav-links {
     position: fixed;
-    top: 2rem;
+    top: 0;
     left: 0;
     padding-top: 1rem;
     flex-direction: column;
@@ -398,10 +383,19 @@ h4 {
   }
 
   .nav-links li {
-    margin: 1.5vw 0;
+    margin: var(--space-s) 0;
   }
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
+  }
+  .nav-links li img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    object-fit: cover; /* cover, contain, fill, none, scale-down */
+    background-position: center;
+    background-size: cover;
+    margin: auto;
   }
 }
