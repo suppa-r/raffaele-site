@@ -64,7 +64,7 @@
   --space-7xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
 
   --font-turret-road: "Turret Road", sans-serif;
-  --font-turret-road-light: 300;
+  --font-turret-road-light: 100;
   --font-turret-road-regular: 400;
   --font-turret-road-bold: 700;
 
@@ -159,6 +159,7 @@ header .logo {
 header h2 {
   color: hsl(var(--clr-white));
   font-size: var(--step-0);
+  font-weight: var(--font-turret-road-light);
   margin: var(--space-xxs) var(--space-l) 0 0;
 }
 
@@ -218,10 +219,11 @@ header .bars::before {
   z-index: 2;
   transition: all ease-in-out 0.5s;
 }
+
 .nav-links li {
   position: relative;
-  padding: var(--space-xxs) var(--space-xs);
-  margin: var(--space-xxs) var(--space-xs);
+  /*padding: var(--space-xxs) var(--space-xs);*/
+  margin: var(--space-xxs) var(--space-s);
   list-style: none;
 }
 .nav-links li a {
@@ -233,8 +235,8 @@ header .bars::before {
 }
 .nav-links li a span {
   font-family: "Turret Road", sans-serif;
-  font-size: var(--step--1);
   font-weight: var(--font-turret-road-light);
+  font-size: var(--step--1);
   letter-spacing: 1px;
   margin-top: var(--space-xxs);
 }
@@ -255,7 +257,7 @@ header .bars::before {
   text-align: center;
   overflow: hidden;
   margin: auto;
-  padding: var(--space-3xl);
+  padding: var(--space-m) 0 0 0;
   min-height: 100svh;
 }
 
@@ -266,6 +268,7 @@ header .bars::before {
 }
 
 .intro-content p span {
+  font-weight: var(--font-turret-road-regular);
   font-size: var(--step--1);
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs);
@@ -276,7 +279,7 @@ h2,
 h3,
 h4 {
   font-size: var(--step-0);
-  font-weight: 300;
+  font-weight: var(--font-turret-road-regular);
   margin-block: 0.2em;
   text-align: center;
 }
@@ -308,9 +311,9 @@ h4 {
 
 .wrapper-gradient-text {
   font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
+  font-weight: var(--font-turret-road-bold);
   font-size: var(--step-1);
-  line-height: 0.6em;
+  line-height: 1;
   text-align: center;
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
   margin-bottom: 0em;
@@ -321,9 +324,9 @@ h4 {
   transition: transform 0.3s ease-in-out;
   background: linear-gradient(
     -100deg,
-    rgba(142, 186, 211),
-    rgba(142, 186, 211, 1),
-    rgba(142, 186, 211, 0.6),
+    rgb(105, 142, 163),
+    rgb(78, 115, 136),
+    rgba(65, 90, 105, 0.6),
     rgba(142, 186, 211, 0.1)
   );
   background-size: 200% 200%;
@@ -346,9 +349,8 @@ h4 {
     text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.853);
   }
   100% {
-    text-shadow: 0px 10px 20px rgba(207, 217, 224, 0.6),
-      0px 30px 40px rgba(178, 193, 199, 0.74),
-      0px 70px 5px rgba(232, 235, 238, 0.664);
+    text-shadow: 0px 10px 20px rgb(255, 255, 255),
+      0px 30px 40px rgb(255, 255, 255), 0px 70px 5px rgb(232, 235, 238);
   }
 }
 
@@ -373,17 +375,17 @@ h4 {
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 1rem;
+    margin: auto;
     flex-direction: column;
     height: 100vh;
     width: 100%;
     pointer-events: none;
-    transition: 0.5s;
+    transition: 0.7s;
     opacity: 0;
   }
 
   .nav-links li {
-    margin: var(--space-s) 0;
+    margin: var(--space-xxs) 0;
   }
   .nav-links.open {
     opacity: 1;
