@@ -199,6 +199,7 @@ header .bars::before {
   position: relative;
   top: 0;
   left: 0;
+  gap: var(--space-xl);
   padding: var(--space-xxs) var(--space-m);
   width: 100%;
   height: 4rem;
@@ -210,11 +211,9 @@ header .bars::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   align-items: center;
-
-  margin: var(--space-xxs) var(--space-l);
-  padding: var(--space-xxs) var(--space-l);
+  margin: var(--space-xxs) var(--space-xxs);
+  padding: var(--space-xxs) var(--space-xxs);
   text-decoration: none;
 }
 
@@ -226,14 +225,14 @@ header .bars::before {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #888888;
+  color: hsl(var(--clr-accent));
 }
 .nav-links li a span {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
   font-size: var(--step-0);
   letter-spacing: 3px;
-  margin: var(--space-xs) 0 0 0;
+  margin: var(--space-xxs) 0 0 0;
 }
 
 .nav-links li img {
