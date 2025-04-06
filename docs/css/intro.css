@@ -204,7 +204,7 @@ header .bars::before {
   position: relative;
   top: 0;
   left: 0;
-  padding: 0.5rem 0;
+  padding: 0.1rem 0;
   width: 100%;
   height: 4rem;
   z-index: 2;
@@ -212,8 +212,8 @@ header .bars::before {
 }
 .nav-links li {
   position: relative;
-  padding: var(--space-xs) var(--space-s);
-  margin: var(--space-xs) var(--space-s);
+  padding: var(--space-xxs) var(--space-xs);
+  margin: var(--space-xxs) var(--space-xs);
   list-style: none;
 }
 .nav-links li a {
@@ -224,7 +224,8 @@ header .bars::before {
 }
 .nav-links li a span {
   font-family: "Turret Road", sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--step-0);
+  font-weight: var(--font-turret-road-light);
   letter-spacing: 1px;
   margin-top: 0.2rem;
 }
@@ -298,13 +299,13 @@ h4 {
 }
 
 .intro-content a span {
-  font-size: var(--step-6);
+  font-size: var(--step-4);
   color: hsl(var(--clr-span));
-  margin-block: var(--space-s);
+  margin-block: var(--space-xs);
 }
 
 .intro-content a i {
-  font-size: var(--step-5);
+  font-size: var(--step-3);
   z-index: 5;
   color: hsl(var(--clr-span));
   text-align: center;
@@ -361,11 +362,10 @@ h4 {
 @container (max-width: 600px) {
   /* Mobile styles */
   header {
-    padding-right: var(--space-m);
+    margin-block: var(--space-m);
   }
-
   header h2 {
-    margin: 0 var(--space-l) 0 0;
+    margin: var(--space-xs) var(--space-l) 0 0;
   }
 
   .intro-content {
@@ -375,7 +375,7 @@ h4 {
   header .bars {
     display: block;
     transition: 0.5s;
-    margin: var(--space-xs) var(--space-m) 0 0;
+    margin: var(--space-xs) var(--space-s) 0 0;
     cursor: pointer;
   }
 
