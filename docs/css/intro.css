@@ -219,7 +219,7 @@ header .bars::before {
 }
 
 .nav-links li a {
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -285,7 +285,7 @@ h4 {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  font-size: var(--step--1);
+  font-size: var(--step-1);
   color: hsl(var(--clr-white));
   visibility: visible; /* Ensure the parent is visible */
 }
