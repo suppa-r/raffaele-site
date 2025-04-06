@@ -252,7 +252,7 @@ header .bars::before {
   text-align: center;
   overflow: hidden;
   margin: auto;
-  padding: var(--space-m) 0 0 0;
+  padding: 0 var(--space-l);
   min-height: 100svh;
 }
 
@@ -362,7 +362,7 @@ h4 {
   header .bars {
     display: block;
     transition: 0.5s;
-    margin-left: var(--space-m);
+    margin: 0 0 0 var(--space-m);
     cursor: pointer;
   }
 
@@ -398,8 +398,5 @@ h4 {
     background-position: center;
     background-size: cover;
     margin: auto;
-  }
-  .intro-content {
-    padding: 0 0 var(--space-xl) 0;
   }
 }
