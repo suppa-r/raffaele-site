@@ -33,7 +33,10 @@ ul {
 
 /* min body height */
 body {
+  min-height: 100vh;
+  min-block-size: 100vh;
   line-height: 1.25;
+  overflow: hidden;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
