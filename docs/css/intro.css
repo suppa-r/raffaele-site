@@ -251,7 +251,7 @@ header .bars::before {
 }
 
 .intro-content {
-  width: 70em;
+  width: 75em;
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -266,10 +266,7 @@ header .bars::before {
 }
 
 .intro-content > * {
-  align-self: center;
-  justify-self: center;
-  margin: 0 var(--space-m);
-  padding: 0 var(--space-m);
+  margin: auto;
   text-align: center;
   color: hsl(var(--clr-white));
 }
@@ -391,15 +388,15 @@ header .bars::before {
     align-items: center;
     justify-content: center;
     height: auto;
-    padding: var(--space-xs) var(--space-s);
+    margin: var(--space-m);
   }
 
   header .logo {
-    padding-left: var(--space-l);
+    padding-left: var(--space-s);
   }
 
   header h2 {
-    margin: 0 0 0 var(--space-l);
+    margin: 0 0 0 var(--space-s);
   }
 
   header h2 span {
@@ -410,7 +407,7 @@ header .bars::before {
   header .bars {
     display: block;
     transition: 0.5s;
-    margin: 0 0 0 var(--space-l);
+    margin: var(--space-m) var(--space-m);
     height: 3px;
     width: 20px;
     border-radius: 2px;
@@ -456,5 +453,8 @@ header .bars::before {
 
   .intro-content {
     margin: auto;
+    padding: 0 var(--space-s);
+    width: 100%;
+    max-width: 100%;
   }
 }
