@@ -411,6 +411,6 @@ h3 {
   }
 
   .intro-content {
-    padding-bottom: var(--space-1xl);
+    margin-bottom: var(--space-3xl);
   }
 }
