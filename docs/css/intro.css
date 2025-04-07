@@ -108,10 +108,9 @@ html {
 
 .intro > * {
   container-type: inline-size;
-  z-index: 1; /* Ensure it is above the background */
 }
 
-.intro::before {
+.intro-content::before {
   content: "";
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
@@ -148,7 +147,7 @@ header {
 
 header h2 {
   font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-big-shoulders-inline-light);
+  font-weight: var(--font-turret-road-light);
   font-size: var(--step-1);
   color: hsl(var(--clr-accent));
   margin: var(--space-xs) var(--space-l);
@@ -157,7 +156,7 @@ header h2 {
 
 header h2 span {
   font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
+  font-weight: var(--font-turret-road-regular);
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
   margin: var(--space-xs) var(--space-l) 0 0;
@@ -252,7 +251,7 @@ header .bars::before {
 }
 
 .intro-content {
-  width: 75em;
+  width: 70em;
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -261,7 +260,7 @@ header .bars::before {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
   margin: auto;
-  padding: 0 var(--space-3xl);
+  padding: 0 var(--space-l);
   min-height: 100svh;
   overflow: hidden;
 }
@@ -269,8 +268,8 @@ header .bars::before {
 .intro-content > * {
   align-self: center;
   justify-self: center;
-  margin: var(--space-1xl);
-  padding: var(--space-1xl);
+  margin: 0 var(--space-m);
+  padding: 0 var(--space-m);
   text-align: center;
   color: hsl(var(--clr-white));
 }
@@ -293,14 +292,9 @@ header .bars::before {
 .intro-content h3 {
   margin: 0; /* Remove default margins */
   padding: 0; /* Remove default padding */
-  text-align: center; /* Align text to the left */
-}
-
-.intro-content h1,
-.intro-content h2,
-.intro-content h3 {
   font-size: var(--step-1); /* Match font size with <p> if needed */
   font-weight: var(--font-turret-road-regular); /* Use consistent font weight */
+  text-align: center; /* Align text to the left */
 }
 
 .intro-content p {
@@ -329,6 +323,7 @@ header .bars::before {
   color: hsl(var(--clr-white));
   margin: auto;
 }
+
 .icon {
   margin: 0; /* Remove default margins */
   padding: 0; /* Remove default padding */
@@ -370,7 +365,6 @@ header .bars::before {
   background-clip: text;
   color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
-
   padding: 0;
   text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
   transition: filter 0.5s ease-in-out;
@@ -416,6 +410,13 @@ header .bars::before {
   header .bars {
     display: block;
     transition: 0.5s;
+    margin: 0 0 0 var(--space-l);
+    height: 3px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: #888888;
+    cursor: pointer;
+    touch-action: manipulation;
   }
 
   nav {
@@ -431,7 +432,7 @@ header .bars::before {
     height: 100vh;
     width: 100%;
     pointer-events: none;
-    transition: 0.7s;
+    transition: 0.5s;
     opacity: 0;
   }
 
@@ -454,6 +455,6 @@ header .bars::before {
   }
 
   .intro-content {
-    margin-bottom: var(--space-1xl);
+    margin: auto;
   }
 }
