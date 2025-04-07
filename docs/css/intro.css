@@ -257,7 +257,7 @@ header .bars::before {
 
 .intro-content p {
   font-size: var(--step-1);
-  margin-block: 0.15em;
+  margin-block: 0.1em;
   text-align: center;
 }
 
@@ -270,7 +270,6 @@ header .bars::before {
 
 .intro-content h1,
 h2,
-h3,
 h4 {
   font-size: var(--step-1);
   font-weight: var(--font-turret-road-regular);
@@ -278,12 +277,19 @@ h4 {
   text-align: center;
 }
 
+h3 {
+  font-size: var(--step-1);
+  font-weight: var(--font-turret-road-regular);
+  margin-block: 0;
+  text-align: center;
+}
+
 .little {
   font-size: var(--step-0);
   font-weight: var(--font-turret-road-light);
-  margin-block: 0.2em;
+  margin-block: 0.1em;
   text-align: center;
-  letter-spacing: var(--space-xs);
+  letter-spacing: var(--space-xxs);
 }
 
 .intro-content a {
@@ -297,7 +303,7 @@ h4 {
   visibility: visible; /* Ensure the parent is visible */
 }
 .icon {
-  margin-block: var(--space-xxs);
+  margin-block: 0;
   margin-right: var(--space-s);
   color: hsl(var(--clr-span));
 }
@@ -316,7 +322,7 @@ h4 {
   line-height: 1;
   text-align: center;
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
-  margin-bottom: 0em;
+  margin-bottom: var(--space-xs);
 }
 
 .text-layer {
