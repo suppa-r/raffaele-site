@@ -251,7 +251,7 @@ header .bars::before {
   text-align: center;
   overflow: hidden;
   margin: auto;
-  padding: 0 var(--space-l);
+  padding: 0 var(--space-s);
   min-height: 100svh;
 }
 
@@ -408,5 +408,9 @@ h3 {
     background-position: center;
     background-size: cover;
     margin: auto;
+  }
+
+  .intro-content {
+    padding-bottom: var(--space-1xl);
   }
 }
