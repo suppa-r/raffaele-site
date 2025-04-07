@@ -2,165 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Raffaele Suppa Web Portfolio" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Raffaele Suppa" />
-    <title>Raffaele Suppa | WebPage</title>
-    <link rel="icon" href="docs/images/favicon-32x32-min.png" />
+    <title>Document</title>
+    <link rel="stylesheet" href="responsive nav-1.css" />
     <link rel="stylesheet" href="/docs/css/reset.css" />
-    <link rel="stylesheet" href="/docs/css/intro-1.css" />
-    <script type="text/javascript" src="/docs/js/script.js" defer></script>
+    <script type="text/javascript" src="responsive nav.js" defer></script>
   </head>
   <body>
-    <a class="skip-to-content" href="#main">Skip to content</a>
-    <section class="intro-1">
-    <nav class="sidebar">
-      <ul>
-        <li>
-          <span class="logo">design2go</span>
-          <button onclick="toggleSidebar()" class="toggle-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#e8eaed"
-            >
-              <path
-                d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"
-              />
-            </svg>
-          </button>
-        </li>
-        <li>
-          <a href="index.html" aria-label="go to home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M22 5.616v12.769q0 .666-.475 1.14t-1.14.475H16.5q-.213
-               0-.356-.144T16 19.499t.144-.356T16.5 19h3.885q.269 0 .442-.173t.173-.442V5.615q0-.269-.173-.442T20.385 5H12q-.27
-              0-.442.173q-.173.173-.173.443v1.173q0 .212-.144.356t-.357.144t-.356-.144t-.144-.356V5.604q0-.658.474-1.131Q11.33 4 11.988 4h8.397q.666
-             0 1.14.475T22 5.615M2 12.334q0-.385.177-.742q.177-.358.5-.575l4.385-3.114q.224-.159.458-.228q.234-.07.478-.07t.48.07t.46.228l4.385
-              3.114q.323.217.5.575q.177.357.177.742v6.052q0 .666-.475 1.14t-1.14.475h-1.5q-.667 0-1.141-.475t-.475-1.14V15.5H6.731v2.885q0 .666-.475
-              1.14T5.116 20h-1.5q-.667 0-1.141-.475T2 18.386zm1-.006v6.058q0 .269.173.442t.443.173h1.5q.269 0 .442-.173t.173-.442v-2.847q0-.44.299-.739t.74-.299h2.46q.441 
-              0 .74.299t.3.74v2.845q0 .27.172.443q.173.173.442.173h1.5q.27 0 .443-.173t.173-.443v-6.057q0-.154-.067-.289t-.202-.23l-4.385-3.07Q8.192 8.624 8 8.624t-.346.116l-4.385 3.069q-.134.096-.202.23q-.067.135-.067.289M10.27 19v-4.5H5.73V19v-4.5h4.54zm7.365-10.23h.73q.162 0
-              .283-.122q.121-.121.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162
-              0 .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162 0 
-              .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.283v.73q0 .162.121.283t.283.121"/></svg>
-            <span>home</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.html" aria-label="go to home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M22 5.616v12.769q0 .666-.475 1.14t-1.14.475H16.5q-.213
-               0-.356-.144T16 19.499t.144-.356T16.5 19h3.885q.269 0 .442-.173t.173-.442V5.615q0-.269-.173-.442T20.385 5H12q-.27
-              0-.442.173q-.173.173-.173.443v1.173q0 .212-.144.356t-.357.144t-.356-.144t-.144-.356V5.604q0-.658.474-1.131Q11.33 4 11.988 4h8.397q.666
-             0 1.14.475T22 5.615M2 12.334q0-.385.177-.742q.177-.358.5-.575l4.385-3.114q.224-.159.458-.228q.234-.07.478-.07t.48.07t.46.228l4.385
-              3.114q.323.217.5.575q.177.357.177.742v6.052q0 .666-.475 1.14t-1.14.475h-1.5q-.667 0-1.141-.475t-.475-1.14V15.5H6.731v2.885q0 .666-.475
-              1.14T5.116 20h-1.5q-.667 0-1.141-.475T2 18.386zm1-.006v6.058q0 .269.173.442t.443.173h1.5q.269 0 .442-.173t.173-.442v-2.847q0-.44.299-.739t.74-.299h2.46q.441 
-              0 .74.299t.3.74v2.845q0 .27.172.443q.173.173.442.173h1.5q.27 0 .443-.173t.173-.443v-6.057q0-.154-.067-.289t-.202-.23l-4.385-3.07Q8.192 8.624 8 8.624t-.346.116l-4.385 3.069q-.134.096-.202.23q-.067.135-.067.289M10.27 19v-4.5H5.73V19v-4.5h4.54zm7.365-10.23h.73q.162 0
-              .283-.122q.121-.121.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162
-              0 .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162 0 
-              .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.283v.73q0 .162.121.283t.283.121"/></svg>
-            <span>home</span>
-          </a>
-        </li>
-        <li>
-          <button onclick="toggleSubMenu(this)" class="dropdown-btn">
-            <li>
-              <a href="index.html" aria-label="go to home">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M22 5.616v12.769q0 .666-.475 1.14t-1.14.475H16.5q-.213
-                   0-.356-.144T16 19.499t.144-.356T16.5 19h3.885q.269 0 .442-.173t.173-.442V5.615q0-.269-.173-.442T20.385 5H12q-.27
-                  0-.442.173q-.173.173-.173.443v1.173q0 .212-.144.356t-.357.144t-.356-.144t-.144-.356V5.604q0-.658.474-1.131Q11.33 4 11.988 4h8.397q.666
-                 0 1.14.475T22 5.615M2 12.334q0-.385.177-.742q.177-.358.5-.575l4.385-3.114q.224-.159.458-.228q.234-.07.478-.07t.48.07t.46.228l4.385
-                  3.114q.323.217.5.575q.177.357.177.742v6.052q0 .666-.475 1.14t-1.14.475h-1.5q-.667 0-1.141-.475t-.475-1.14V15.5H6.731v2.885q0 .666-.475
-                  1.14T5.116 20h-1.5q-.667 0-1.141-.475T2 18.386zm1-.006v6.058q0 .269.173.442t.443.173h1.5q.269 0 .442-.173t.173-.442v-2.847q0-.44.299-.739t.74-.299h2.46q.441 
-                  0 .74.299t.3.74v2.845q0 .27.172.443q.173.173.442.173h1.5q.27 0 .443-.173t.173-.443v-6.057q0-.154-.067-.289t-.202-.23l-4.385-3.07Q8.192 8.624 8 8.624t-.346.116l-4.385 3.069q-.134.096-.202.23q-.067.135-.067.289M10.27 19v-4.5H5.73V19v-4.5h4.54zm7.365-10.23h.73q.162 0
-                  .283-.122q.121-.121.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162
-                  0 .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162 0 
-                  .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.283v.73q0 .162.121.283t.283.121"/></svg>
-                <span>home</span>
-              </a>
-            </li>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#e8eaed"
-            >
-              <path
-                d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"
-              />
-            </svg>
-          </button>
-          <ul class="sub-menu">
-            <div>
-              <li><a href="#">residential</a></li>
-              <li><a href="#">commercial</a></li>
-              <li><a href="#">abstract</a></li>
-            </div>
-          </ul>
-        </li>
-        <li>
-          <a href="index.html" aria-label="go to home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M22 5.616v12.769q0 .666-.475 1.14t-1.14.475H16.5q-.213
-               0-.356-.144T16 19.499t.144-.356T16.5 19h3.885q.269 0 .442-.173t.173-.442V5.615q0-.269-.173-.442T20.385 5H12q-.27
-              0-.442.173q-.173.173-.173.443v1.173q0 .212-.144.356t-.357.144t-.356-.144t-.144-.356V5.604q0-.658.474-1.131Q11.33 4 11.988 4h8.397q.666
-             0 1.14.475T22 5.615M2 12.334q0-.385.177-.742q.177-.358.5-.575l4.385-3.114q.224-.159.458-.228q.234-.07.478-.07t.48.07t.46.228l4.385
-              3.114q.323.217.5.575q.177.357.177.742v6.052q0 .666-.475 1.14t-1.14.475h-1.5q-.667 0-1.141-.475t-.475-1.14V15.5H6.731v2.885q0 .666-.475
-              1.14T5.116 20h-1.5q-.667 0-1.141-.475T2 18.386zm1-.006v6.058q0 .269.173.442t.443.173h1.5q.269 0 .442-.173t.173-.442v-2.847q0-.44.299-.739t.74-.299h2.46q.441 
-              0 .74.299t.3.74v2.845q0 .27.172.443q.173.173.442.173h1.5q.27 0 .443-.173t.173-.443v-6.057q0-.154-.067-.289t-.202-.23l-4.385-3.07Q8.192 8.624 8 8.624t-.346.116l-4.385 3.069q-.134.096-.202.23q-.067.135-.067.289M10.27 19v-4.5H5.73V19v-4.5h4.54zm7.365-10.23h.73q.162 0
-              .283-.122q.121-.121.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162
-              0 .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162 0 
-              .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.283v.73q0 .162.121.283t.283.121"/></svg>
-            <span>home</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.html" aria-label="go to home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M22 5.616v12.769q0 .666-.475 1.14t-1.14.475H16.5q-.213
-               0-.356-.144T16 19.499t.144-.356T16.5 19h3.885q.269 0 .442-.173t.173-.442V5.615q0-.269-.173-.442T20.385 5H12q-.27
-              0-.442.173q-.173.173-.173.443v1.173q0 .212-.144.356t-.357.144t-.356-.144t-.144-.356V5.604q0-.658.474-1.131Q11.33 4 11.988 4h8.397q.666
-             0 1.14.475T22 5.615M2 12.334q0-.385.177-.742q.177-.358.5-.575l4.385-3.114q.224-.159.458-.228q.234-.07.478-.07t.48.07t.46.228l4.385
-              3.114q.323.217.5.575q.177.357.177.742v6.052q0 .666-.475 1.14t-1.14.475h-1.5q-.667 0-1.141-.475t-.475-1.14V15.5H6.731v2.885q0 .666-.475
-              1.14T5.116 20h-1.5q-.667 0-1.141-.475T2 18.386zm1-.006v6.058q0 .269.173.442t.443.173h1.5q.269 0 .442-.173t.173-.442v-2.847q0-.44.299-.739t.74-.299h2.46q.441 
-              0 .74.299t.3.74v2.845q0 .27.172.443q.173.173.442.173h1.5q.27 0 .443-.173t.173-.443v-6.057q0-.154-.067-.289t-.202-.23l-4.385-3.07Q8.192 8.624 8 8.624t-.346.116l-4.385 3.069q-.134.096-.202.23q-.067.135-.067.289M10.27 19v-4.5H5.73V19v-4.5h4.54zm7.365-10.23h.73q.162 0
-              .283-.122q.121-.121.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162
-              0 .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162 0 
-              .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.283v.73q0 .162.121.283t.283.121"/></svg>
-            <span>home</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.html" aria-label="go to home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M22 5.616v12.769q0 .666-.475 1.14t-1.14.475H16.5q-.213
-               0-.356-.144T16 19.499t.144-.356T16.5 19h3.885q.269 0 .442-.173t.173-.442V5.615q0-.269-.173-.442T20.385 5H12q-.27
-              0-.442.173q-.173.173-.173.443v1.173q0 .212-.144.356t-.357.144t-.356-.144t-.144-.356V5.604q0-.658.474-1.131Q11.33 4 11.988 4h8.397q.666
-             0 1.14.475T22 5.615M2 12.334q0-.385.177-.742q.177-.358.5-.575l4.385-3.114q.224-.159.458-.228q.234-.07.478-.07t.48.07t.46.228l4.385
-              3.114q.323.217.5.575q.177.357.177.742v6.052q0 .666-.475 1.14t-1.14.475h-1.5q-.667 0-1.141-.475t-.475-1.14V15.5H6.731v2.885q0 .666-.475
-              1.14T5.116 20h-1.5q-.667 0-1.141-.475T2 18.386zm1-.006v6.058q0 .269.173.442t.443.173h1.5q.269 0 .442-.173t.173-.442v-2.847q0-.44.299-.739t.74-.299h2.46q.441 
-              0 .74.299t.3.74v2.845q0 .27.172.443q.173.173.442.173h1.5q.27 0 .443-.173t.173-.443v-6.057q0-.154-.067-.289t-.202-.23l-4.385-3.07Q8.192 8.624 8 8.624t-.346.116l-4.385 3.069q-.134.096-.202.23q-.067.135-.067.289M10.27 19v-4.5H5.73V19v-4.5h4.54zm7.365-10.23h.73q.162 0
-              .283-.122q.121-.121.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162
-              0 .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162 0 
-              .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.283v.73q0 .162.121.283t.283.121"/></svg>
-            <span>home</span>
-          </a>
-        </li>
-      </ul>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          sometimes<span> DESIGNER</span> sometimes<span>NOT</span>
+        </div>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">home</a></li>
+          <li><a href="#about">genesis</a></li>
+          <li><a href="#services">begininnins</a></li>
+          <li><a href="#portfolio">ryerson</a></li>
+        </ul>
+      </div>
     </nav>
-    <main>
-      <div class="intro-1-content">
+    <div class="overlay"></div>
+
+    <section id="home">
+      <div class="bg-effect bg-effect-1"></div>
+      <div class="section-content">
         <div class="row">
+          <!--<h1 class="section-title">genesis</h1>-->
           <img src="/docs/images/ralph.png" alt="raffaele" />
         </div>
         <div class="row-1">
           <p>This is the moment The Divine Spark of Genius, was seeded.</p>
           <p>fast-forward and into 2024</p>
-          <h1><strong><em>Suddenly&nbsp;&nbsp;Though</em></strong></h1>
+          <h1>
+            <strong><em>Suddenly&nbsp;&nbsp;Though</em></strong>
+          </h1>
           <p>I started teaching myself Web Design in Late-2024.</p>
           <p>
             I had changed all the light bulbs, patched all the cracks, read all
@@ -173,10 +54,54 @@
           <p>to my mounting boredom and completely outmatched it.</p>
           <h3>What a Relief Web Design Became</h3>
           <p>That education became the start of this on your screen.</p>
-          <h4> <strong><em>I hope it's a success</em></strong></h4>
-          <p>it takes my rust away, and becames systematic for this stage of life</p>
+          <h4>
+            <strong><em>I hope it's a success</em></strong>
+          </h4>
+          <p>
+            it takes my rust away, and becames systematic for this stage of life
+          </p>
         </div>
       </div>
-    </main>
+    </section>
+
+    <section id="about">
+      <div class="bg-effect bg-effect-2"></div>
+      <div class="section-content">
+        <h1 class="section-title">About Us</h1>
+        <p class="section-description">
+          Pushing boundaries and creating extraordinary experiences since 2024
+        </p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="bg-effect bg-effect-1"></div>
+      <div class="section-content">
+        <h1 class="section-title">Services</h1>
+        <p class="section-description">
+          Innovative solutions tailored to your unique needs
+        </p>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="bg-effect bg-effect-2"></div>
+      <div class="section-content">
+        <h1 class="section-title">Portfolio</h1>
+        <p class="section-description">
+          Discover our groundbreaking projects and success stories
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="bg-effect bg-effect-1"></div>
+      <div class="section-content">
+        <h1 class="section-title">Contact</h1>
+        <p class="section-description">
+          Let's create something amazing together
+        </p>
+      </div>
+    </section>
   </body>
 </html>

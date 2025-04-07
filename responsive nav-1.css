@@ -113,7 +113,7 @@ html {
   --gradient: linear-gradient(45deg, #85ff33, #6bdcffc5, #d1d434, #686de0);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --border: 1px solid rgba(255, 255, 255, 0.1);
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow: 0 8px 32px 0 rgba(87, 123, 128, 0.904);
 }
 
 body {
@@ -371,29 +371,23 @@ body {
   }
 }
 
-.section-title {
-  font-size: 3rem;
-}
-
 .section-description {
   font-size: 1rem;
   padding: 0 1rem;
 }
 
 .section-title {
-  font-size: var(--step-4);
-  font-weight: 800;
-  margin: var(--space-3xl) var(--space-2xl);
   font-family: var(--font-big-shoulders-inline);
+  font-weight: var(--font-big-shoulders-inline-light);
+  font-size: var(--step-6);
   background: var(--gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 8s linear infinite;
-  background-size: 100%;
-  line-height: 1.5;
+  background-size: 300%;
   text-align: center;
-  letter-spacing: -2px;
+  margin: 0 0 0 var(--space-2xl);
+  padding: 0 0 0 var(--space-2xl);
 }
 
 .section-description {
