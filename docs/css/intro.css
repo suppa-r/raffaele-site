@@ -399,6 +399,7 @@ h3 {
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
+    margin-block: var(--space-xs);
   }
   .nav-links li img {
     max-width: 100%;
