@@ -288,20 +288,17 @@ h4 {
   color: hsl(var(--clr-white));
   visibility: visible; /* Ensure the parent is visible */
 }
+.icon {
+  margin-block: var(--space-xxs);
+  margin-right: var(--space-s);
+  color: hsl(var(--clr-span));
+}
 
 .intro-content a span {
   font-weight: var(--font-turret-road-bold);
   font-size: var(--step-4);
   color: hsl(var(--clr-span));
   margin-block: var(--space-xs);
-}
-
-.intro-content a i {
-  font-size: var(--step-3);
-  z-index: 5;
-  color: hsl(var(--clr-span));
-  text-align: center;
-  vertical-align: middle;
 }
 
 .wrapper-gradient-text {
