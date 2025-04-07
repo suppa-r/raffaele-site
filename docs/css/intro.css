@@ -266,6 +266,8 @@ header .bars::before {
 }
 
 .intro-content > * {
+  width: 100%;
+  max-width: 100%;
   margin: auto;
   text-align: center;
   color: hsl(var(--clr-white));
@@ -452,9 +454,6 @@ header .bars::before {
   }
 
   .intro-content {
-    margin: auto;
     padding: 0 var(--space-s);
-    width: 100%;
-    max-width: 100%;
   }
 }
