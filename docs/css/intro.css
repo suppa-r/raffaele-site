@@ -368,15 +368,28 @@ h3 {
   header {
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0 var(--space-m);
+    justify-content: center;
+    height: auto;
+    padding: var(--space-xs) var(--space-s);
+  }
+
+  header .logo {
+    padding-left: var(--space-l);
+    gap: var(--space-s);
+  }
+
+  header h2 {
+    margin: 0 0 0 var(--space-l);
+  }
+
+  header h2 span {
+    font-size: var(--step-0);
+    margin: 0 0 0 var(--space-xs);
   }
 
   header .bars {
     display: block;
     transition: 0.5s;
-    margin: 0 0 0 var(--space-m);
-    cursor: pointer;
   }
 
   nav {
@@ -402,7 +415,7 @@ h3 {
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
-    margin-block: var(--space-xs);
+    margin-block: var(--space-xxs);
   }
   .nav-links li img {
     max-width: 100%;
