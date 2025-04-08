@@ -103,7 +103,8 @@ html {
 }
 
 .intro {
-  overflow: clip;
+  display: grid;
+  overflow: hidden;
 }
 
 .intro > * {
@@ -260,14 +261,13 @@ header .bars::before {
 .intro-content {
   width: 70em;
   max-width: 100%;
+  min-height: 100svh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  place-self: center;
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
   margin: auto;
-  padding: var(--space-2xl) var(--space-l);
   overflow: hidden;
 }
 
@@ -476,5 +476,12 @@ header .bars::before {
     background-position: center;
     background-size: cover;
     margin: auto;
+  }
+
+  .intro-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin: auto;
+    padding: 0 var(--space-s);
   }
 }
