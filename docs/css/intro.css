@@ -258,7 +258,7 @@ header .bars::before {
 }
 
 .intro-content {
-  width: 75em;
+  width: 70em;
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -267,8 +267,7 @@ header .bars::before {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
   margin: auto;
-  padding: 0 var(--space-l);
-  min-height: 100svh;
+  padding: var(--space-2xl) var(--space-l);
   overflow: hidden;
 }
 
@@ -402,7 +401,7 @@ header .bars::before {
   }
 
   header .logo {
-    padding-left: var(--space-s);
+    padding-right: var(--space-l);
   }
 
   header h2 {
@@ -477,14 +476,5 @@ header .bars::before {
     background-position: center;
     background-size: cover;
     margin: auto;
-  }
-
-  .intro-content {
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-    gap: 0;
-    justify-content: center;
-    align-items: center;
-    padding: 0 var(--space-m);
   }
 }
