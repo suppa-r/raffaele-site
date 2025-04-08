@@ -145,6 +145,14 @@ header {
   justify-content: space-between;
 }
 
+header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--space-s) var(--space-xl);
+  padding: var(--space-s) var(--space-xl);
+}
+
 header h2 {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
@@ -164,7 +172,6 @@ header h2 span {
 
 header .bars {
   position: relative;
-  margin: 0 0 0 var(--space-l);
   height: 3px;
   width: 20px;
   border-radius: 2px;
@@ -266,6 +273,7 @@ header .bars::before {
 }
 
 .intro-content > * {
+  container-type: inline-size;
   width: 100%;
   max-width: 100%;
   margin: auto;
@@ -408,14 +416,32 @@ header .bars::before {
 
   header .bars {
     display: block;
-    transition: 0.5s;
-    margin: var(--space-m) var(--space-m);
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+  header .bars.is-active {
+    transform: rotate(90deg);
+    width: 35px;
+    transform-origin: right;
+    transform: translateY(15px) rotate(45deg);
+  }
+  header .bars::after,
+  header .bars::before {
+    position: absolute;
+    content: "";
     height: 3px;
+    left: 0;
     width: 20px;
     border-radius: 2px;
-    background-color: #888888;
+    background: #888888;
     cursor: pointer;
-    touch-action: manipulation;
+  }
+  header .bars::after {
+    bottom: 7px;
+  }
+  header .bars::before {
+    top: 7px;
   }
 
   nav {
@@ -454,6 +480,11 @@ header .bars::before {
   }
 
   .intro-content {
-    padding: 0 var(--space-s);
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    gap: var(--space-s);
+    justify-content: center;
+    align-items: center;
+    padding: 0 var(--space-m);
   }
 }
