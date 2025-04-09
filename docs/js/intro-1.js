@@ -10,7 +10,7 @@ function showMenu() {
     intro.style.display = "none";
   } else {
     menu.classList.remove("is-active");
-    document.querySelector(".nav-links").classList.remove("open");
+    document.querySelector(".nav-links").classList.add("close");
     menustate = false;
     intro.style.display = "block";
   }
