@@ -237,15 +237,21 @@ section img {
 }*/
 
 .intro {
+  width: 70em;
+  max-width: 100%;
+  margin: auto;
   font-family: "Turret Road", sans-serif;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
   color: hsl(var(--clr-white));
+  padding: var(--space-3xl) var(--space-xl);
 }
 
 .intro::before {
+  opacity: 1;
+  pointer-events: all;
   content: "";
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
@@ -253,6 +259,12 @@ section img {
   top: 0;
   left: 0;
   background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.664) 100%,
+      /* Transparent at the top */ rgba(20, 20, 20, 0.447) 100%
+        /* Darker at the bottom */
+    ),
+    linear-gradient(
         90deg,
         color-mix(in hsl, canvasText, transparent 70%) 1px,
         transparent 1px 30px
@@ -263,12 +275,12 @@ section img {
         transparent 1px 30px
       )
       50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 50%, white) 100%;
+
+  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-position 0.3s ease-in-out;
   z-index: -1; /* Ensure it is behind other content */
-  color: hsl(var(--clr-white));
   overflow: hidden;
 }
 
@@ -393,19 +405,25 @@ section img {
     margin-right: 50px;
   }
   header .bars {
+    position: relative;
+    height: 3px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: #888888;
+    margin-right: 10px;
     display: block;
     transition: 0.5s;
   }
+
   nav {
     position: fixed;
     z-index: 3;
   }
   .nav-links {
-    background: #111111;
     position: fixed;
-    top: 4rem;
+    top: 6rem;
     left: 0;
-    padding-top: 1rem;
+    padding-top: 3rem;
     flex-direction: column;
     height: 100vh;
     width: 100%;
@@ -414,15 +432,64 @@ section img {
     opacity: 0;
   }
 
-  .nav-links li {
-    margin: 1.5vw 0;
+  .nav-links li a {
+    color: hsl(var(--clr-white));
+    font-size: var(--step-0);
+    font-weight: var(--font-turret-road-light);
+    text-decoration: none;
   }
+  .nav-links li a span {
+    font-size: var(--step-0);
+    font-weight: var(--font-turret-road-light);
+    color: hsl(var(--clr-white));
+  }
+
+  .nav-links li:last-child {
+    margin: auto;
+    margin-bottom: 15rem;
+  }
+
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
     content: "";
     width: 100vw; /* Full viewport width */
     height: 100vh; /* Full viewport height */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.664) 100%,
+        /* Transparent at the top */ rgba(20, 20, 20, 0.447) 100%
+          /* Darker at the bottom */
+      ),
+      linear-gradient(
+          90deg,
+          color-mix(in hsl, canvasText, transparent 70%) 1px,
+          transparent 1px 30px
+        )
+        50% 50% / 30px 30px,
+      linear-gradient(
+          color-mix(in hsl, canvasText, transparent 70%) 1px,
+          transparent 1px 30px
+        )
+        50% 50% / 30px 30px;
+
+    mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+      background-position 0.3s ease-in-out;
+    z-index: -1; /* Ensure it is behind other content */
+    overflow: hidden;
+  }
+
+  /*.nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+    content: "";
+    width: 100vw; /* Full viewport width *
+    height: 100vh; /* Full viewport height *
     position: fixed;
     top: 0;
     left: 0;
@@ -437,14 +504,14 @@ section img {
           transparent 1px 30px
         )
         50% 50% / 30px 30px;
+
     mask: linear-gradient(-20deg, transparent 50%, white) 100%;
     transform-style: preserve-3d;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
       background-position 0.3s ease-in-out;
-    z-index: -1; /* Ensure it is behind other content */
-    color: hsl(var(--clr-white));
+    z-index: -1; /* Ensure it is behind other content *
     overflow: hidden;
-  }
+  }*/
   .intro {
     grid-template-columns: 1fr;
     padding: var(--space-xxl) var(--space-xl);

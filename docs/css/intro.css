@@ -97,21 +97,155 @@
 .text-accent {
   color: hsl(var(--clr-accent));
 }
+
 /* --------------------------------------- */
 html {
   color-scheme: dark only;
 }
 
-.intro {
-  display: grid;
+html,
+body {
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100svh;
+  color: hsl(var(--clr-white));
   overflow: hidden;
 }
 
-.intro > * {
-  container-type: inline-size;
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+  z-index: -1;
 }
 
-.intro-content::before {
+header {
+  position: relative;
+  font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-l);
+}
+
+header h2 {
+  color: hsl(var(--clr-accent));
+  font-size: var(--step-0);
+}
+
+header h2 span {
+  color: hsl(var(--clr-span));
+  font-weight: var(--font-turret-road-regular);
+  font-size: var(--step-0);
+  padding-left: var(--space-xxs);
+  padding-right: var(--space-xs);
+}
+
+header .bars {
+  position: relative;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background-color: #888888;
+  margin-right: 10px;
+  display: none;
+}
+
+header .bars.is-active {
+  transform: rotate(90deg);
+  width: 35px;
+  transform-origin: right;
+  transform: translateY(15px) rotate(45deg);
+}
+
+header .bars::after,
+header .bars::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  left: 0;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+  cursor: pointer;
+}
+
+header .bars::after {
+  bottom: 7px;
+}
+
+header .bars::before {
+  top: 7px;
+}
+
+.nav-links {
+  display: flex;
+  padding: var(--space-xl);
+}
+
+.nav-links li {
+  position: relative;
+  padding: var(--space-s) var(--space-xs);
+  margin: 0 var(--space-xxs);
+}
+.nav-links li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: hsl(var(--clr-accent));
+  text-decoration: none;
+}
+.nav-links li a span {
+  font-family: "Turret Road", sans-serif;
+  font-size: var(--step-0);
+  font-weight: var(--font-turret-road-light);
+  letter-spacing: 1px;
+  margin-top: var(--space-xxs);
+  color: hsl(var(--clr-accent));
+}
+
+/*section {
+  display: flex;
+  align-items: center;
+}
+section span {
+  color: #888888;
+}
+section span i {
+  margin: 0 var(--space-s);
+  font-size: var(--step-0);
+  font-family: "Turret Road", sans-serif;
+}
+section img {
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 var(--space-s);
+}*/
+
+.intro {
+  font-family: "Turret Road", sans-serif;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  color: hsl(var(--clr-white));
+}
+
+.intro::before {
   content: "";
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
@@ -138,173 +272,32 @@ html {
   overflow: hidden;
 }
 
-header {
-  width: 100%;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: var(--space-xs) var(--space-xl) var(--space-xs) 0;
-  padding: var(--space-xs) var(--space-xl) var(--space-xs) 0;
-}
-
-header h2 {
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
-  font-size: var(--step-1);
-  color: hsl(var(--clr-accent));
-  margin: var(--space-xs) var(--space-l);
-  text-align: center;
-}
-
-header h2 span {
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-regular);
-  font-size: var(--step-1);
-  color: hsl(var(--clr-span));
-  margin: var(--space-xs) var(--space-l) 0 0;
-}
-
-header .bars {
-  position: relative;
-  height: 3px;
-  width: 20px;
-  border-radius: 2px;
-  background-color: #888888;
-  cursor: pointer;
-  display: none;
-}
-
-header .bars.is-active {
-  transform: rotate(90deg);
-  width: 35px;
-  transform-origin: right;
-  transform: translateY(15px) rotate(45deg);
-}
-header .bars::after,
-header .bars::before {
-  position: absolute;
-  content: "";
-  height: 3px;
-  left: 0;
-  width: 20px;
-  border-radius: 2px;
-  background: #888888;
-  cursor: pointer;
-}
-header .bars::after {
-  bottom: 7px;
-}
-header .bars::before {
-  top: 7px;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  gap: var(--space-m);
-  padding: var(--space-xxs) var(--space-m);
-  width: 100%;
-  height: 4rem;
-  z-index: 2;
-  transition: all ease-in-out 0.5s;
-}
-
-.nav-links li {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: var(--space-xxs) var(--space-xxs);
-  padding: var(--space-xxs) var(--space-xxs);
-  text-decoration: none;
-}
-
-.nav-links li a {
+.intro p {
   font-size: var(--step-0);
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: hsl(var(--clr-accent));
-}
-.nav-links li a span {
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
-  font-size: var(--step-0);
-  letter-spacing: 1px;
-  margin: 0;
-}
-
-.nav-links li img {
-  max-width: 100%;
-  display: block;
-  height: auto;
-  object-fit: cover; /* cover, contain, fill, none, scale-down */
-  background-position: center;
-  background-size: cover;
-  margin-right: var(--space-2xl);
-}
-
-.intro-content {
-  width: 70em;
-  max-width: 100%;
-  min-height: 100svh;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  place-self: center;
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
-  margin: auto;
-  overflow: hidden;
-}
-
-.intro-content > * {
-  container-type: inline-size;
-  width: 100%;
-  max-width: 100%;
-  margin: auto;
-  text-align: center;
-  color: hsl(var(--clr-white));
-}
-
-.intro-content p {
-  font-size: var(--step-1);
   margin-block: 0.1em;
   text-align: center;
   font-weight: var(--font-turret-road-light);
 }
 
-.intro-content p span {
+.intro p span {
   font-weight: var(--font-turret-road-regular);
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs);
 }
-.intro-content h1,
-.intro-content h2,
-.intro-content h3 {
+.intro h1,
+.intro h2,
+.intro h3 {
   margin: 0; /* Remove default margins */
   padding: 0; /* Remove default padding */
   font-size: var(--step-1); /* Match font size with <p> if needed */
   font-weight: var(--font-turret-road-regular); /* Use consistent font weight */
   text-align: center; /* Align text to the left */
+  margin-block: var(--space-xs); /* Add margin for spacing */
 }
 
-.intro-content p {
-  margin-block: 0.1em;
+.intro p {
+  margin-block: 0.3em;
   font-size: var(--step-0); /* Ensure font size matches headings */
   text-align: center;
   font-weight: var(
@@ -315,12 +308,12 @@ header .bars::before {
 .little {
   font-size: var(--step-0);
   font-weight: var(--font-turret-road-light);
-  margin-block: 0.1em;
+  margin-block: 0.3em;
   text-align: center;
   letter-spacing: var(--space-xxs);
 }
 
-.intro-content a {
+.intro a {
   display: flex; /* Use Flexbox */
   flex-direction: column; /* Stack children vertically */
   justify-content: center; /* Center vertically */
@@ -328,6 +321,7 @@ header .bars::before {
   text-decoration: none;
   color: hsl(var(--clr-white));
   margin: auto;
+  text-align: center;
 }
 
 .icon {
@@ -339,7 +333,7 @@ header .bars::before {
   align-items: center; /* Center vertically */
 }
 
-.intro-content a span {
+.intro a span {
   font-weight: var(--font-turret-road-bold);
   font-size: var(--step-3);
   color: hsl(var(--clr-span));
@@ -390,68 +384,28 @@ header .bars::before {
   }
 }
 
-@container (max-width: 600px) {
-  /* Mobile styles */
+@media only screen and (max-width: 500px) {
   header {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    margin: var(--space-m);
+    padding: var(--space-xl);
   }
 
   header .logo {
-    padding-right: var(--space-l);
+    margin-right: 50px;
   }
-
-  header h2 {
-    margin: 0 0 0 var(--space-s);
-  }
-
-  header h2 span {
-    font-size: var(--step-0);
-    margin: 0 0 0 var(--space-xs);
-  }
-
   header .bars {
     display: block;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
+    transition: 0.5s;
   }
-  header .bars.is-active {
-    transform: rotate(90deg);
-    width: 35px;
-    transform-origin: right;
-    transform: translateY(15px) rotate(45deg);
-  }
-  header .bars::after,
-  header .bars::before {
-    position: absolute;
-    content: "";
-    height: 3px;
-    left: 0;
-    width: 20px;
-    border-radius: 2px;
-    background: #888888;
-    cursor: pointer;
-  }
-  header .bars::after {
-    bottom: 7px;
-  }
-  header .bars::before {
-    top: 7px;
-  }
-
   nav {
     position: fixed;
     z-index: 3;
   }
   .nav-links {
+    background: #111111;
     position: fixed;
-    top: 0;
+    top: 4rem;
     left: 0;
-    margin: auto;
+    padding-top: 1rem;
     flex-direction: column;
     height: 100vh;
     width: 100%;
@@ -461,27 +415,38 @@ header .bars::before {
   }
 
   .nav-links li {
-    margin: var(--space-xxs) 0;
+    margin: 1.5vw 0;
   }
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
-    margin-block: var(--space-xxs);
+    content: "";
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+          90deg,
+          color-mix(in hsl, canvasText, transparent 70%) 1px,
+          transparent 1px 30px
+        )
+        50% 50% / 30px 30px,
+      linear-gradient(
+          color-mix(in hsl, canvasText, transparent 70%) 1px,
+          transparent 1px 30px
+        )
+        50% 50% / 30px 30px;
+    mask: linear-gradient(-20deg, transparent 50%, white) 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+      background-position 0.3s ease-in-out;
+    z-index: -1; /* Ensure it is behind other content */
+    color: hsl(var(--clr-white));
+    overflow: hidden;
   }
-  .nav-links li img {
-    max-width: 100%;
-    display: block;
-    height: auto;
-    object-fit: cover; /* cover, contain, fill, none, scale-down */
-    background-position: center;
-    background-size: cover;
-    margin: auto;
-  }
-
-  .intro-content {
+  .intro {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    margin: auto;
-    padding: 0 var(--space-s);
+    padding: var(--space-xxl) var(--space-xl);
   }
 }
