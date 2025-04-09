@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
 
@@ -5,6 +6,11 @@
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
+
+  --gradient: linear-gradient(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
+  --glass-bg: rgba(227, 228, 184, 0.979);
+  --border: 1px solid rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -68,8 +74,13 @@
 
   --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
   --font-big-shoulders-inline-light: 100;
-}
 
+  --font-kanit: "Kanit", sans-serif;
+  --font-kanit-light: 100;
+
+  --sp: 12s;
+  --white: #ffffff;
+}
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
 /* --------------------------------------- */
@@ -94,21 +105,21 @@
   color: hsl(var(--clr-accent));
 }
 
-/* ------------------------------------------------------- */
-/* -------------------Index Home Page--------------------- */
-/* ------------------------------------------------------- */
+body {
+  overflow: hidden;
+  background: #00000000;
+  background: radial-gradient(ellipse at 50% 50%, #011116 0%, #918383 100%);
+}
 
 main {
-  background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
   font-family: "Turret Road", sans-serif;
   font-weight: 100;
   margin: 0 auto;
-  padding: 0;
-  height: 100vh;
   overflow: hidden;
   > * {
     container-type: inline-size;
+    width: 100%;
   }
 }
 
@@ -117,23 +128,247 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: var(--space-2xl) auto;
-  padding: var(--space-2xl) var(--space-xl);
-  max-width: 100%;
+  width: 100%;
   text-align: center;
   font-family: "Turret Road", sans-serif;
   font-weight: 100;
   color: hsl(var(--clr-white));
+  padding-block: var(--space-s);
 }
 
 .title {
   font-size: var(--step-0);
-  text-align: center;
 }
 
 .author {
   font-size: var(--step--1);
+}
+
+.content {
+  font-family: var(--font-kanit);
+  font-weight: var(--font-kanit-light);
+  font-weight: 100;
+  font-size: var(--step-5);
+  margin: auto;
+  padding: var(--space-3xl) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.content div {
+  position: absolute;
+  display: flex;
+  animation: show-hide var(--sp) ease 0s infinite;
+  mix-blend-mode: plus-lighter;
+}
+
+@keyframes show-hide {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.content div span {
+  width: 10vmin;
+  position: relative;
   text-align: center;
+  box-sizing: border-box;
+  color: #ffffff90;
+  text-shadow: 0 0 1px var(--white);
+}
+
+.up:before,
+.down:before {
+  width: 80%;
+  height: 0.1vmin;
+  background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  filter: blur(2px);
+  left: 10%;
+  top: 49%;
+  box-shadow: 0 0 100px 0 var(--white);
+  animation: shadow var(--sp) ease 0s infinite;
+}
+
+.down:before {
+  width: 1vmin;
+  height: 0.5vmin;
+  filter: blur(3px);
+  left: calc(50% - 0.5vmin);
+  top: 45%;
+  box-shadow: 0 0 10px 0 var(--white);
+}
+
+@keyframes shadow {
+  0%,
+  10%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  45%,
+  55% {
+    opacity: 0.25;
+    height: 0.25vmin;
+  }
+}
+
+.up span,
+.down span {
+  animation-duration: var(--sp);
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+
+/*up*/
+.up-2-8 {
+  animation-name: go-up-2-8;
+}
+
+.up-3-7 {
+  animation-name: go-up-3-7;
+}
+
+.up-4-6 {
+  animation-name: go-up-4-6;
+}
+
+.up-5 {
+  animation-name: go-up-5;
+}
+
+/*down*/
+.down-2-8 {
+  animation-name: go-down-2-8;
+}
+
+.down-3-7 {
+  animation-name: go-down-3-7;
+}
+
+.down-4-6 {
+  animation-name: go-down-4-6;
+}
+
+.down-5 {
+  animation-name: go-down-5;
+}
+
+@keyframes go-up-2-8 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: -0.6vmin;
+  }
+}
+
+@keyframes go-up-3-7 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: -1.2vmin;
+  }
+}
+
+@keyframes go-up-4-6 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: -1.8vmin;
+  }
+}
+
+@keyframes go-up-5 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: -2.4vmin;
+  }
+}
+
+@keyframes go-down-2-8 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: 0.6vmin;
+  }
+}
+
+@keyframes go-down-3-7 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: 1.2vmin;
+  }
+}
+
+@keyframes go-down-4-6 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: 1.8vmin;
+  }
+}
+
+@keyframes go-down-5 {
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+  40%,
+  60% {
+    top: 2.4vmin;
+  }
 }
 
 .index-content {
@@ -228,7 +463,3 @@ main {
     opacity: 1;
   }
 }
-
-/* --------------------------------------- */
-/* ------------------ End ---------------- */
-/* --------------------------------------- */
