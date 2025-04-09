@@ -459,37 +459,8 @@ header .bars::before {
     z-index: -1; /* Ensure it is behind other content */
     overflow: hidden;
   }
-
-  /*.nav-links.open {
-    opacity: 1;
-    pointer-events: all;
-    content: "";
-    width: 100vw; /* Full viewport width *
-    height: 100vh; /* Full viewport height *
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: linear-gradient(
-          90deg,
-          color-mix(in hsl, canvasText, transparent 70%) 1px,
-          transparent 1px 30px
-        )
-        50% 50% / 30px 30px,
-      linear-gradient(
-          color-mix(in hsl, canvasText, transparent 70%) 1px,
-          transparent 1px 30px
-        )
-        50% 50% / 30px 30px;
-
-    mask: linear-gradient(-20deg, transparent 50%, white) 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
-      background-position 0.3s ease-in-out;
-    z-index: -1; /* Ensure it is behind other content *
-    overflow: hidden;
-  }*/
   .intro {
     grid-template-columns: 1fr;
-    padding: var(--space-xxl) var(--space-xl);
+    padding: 0 0 var(--space-xl) 0;
   }
 }
