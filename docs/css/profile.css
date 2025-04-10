@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
 
@@ -5,6 +6,11 @@
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
+
+  --gradient: linear-gradient(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
+  --glass-bg: rgba(227, 228, 184, 0.979);
+  --border: 1px solid rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -15,24 +21,13 @@
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
-
-  /* Step -2: 9.7222px → 11.1111px */
-  --step--2: clamp(0.6076rem, 0.5735rem + 0.1561vw, 0.6944rem);
-  /* Step -1: 11.6667px → 13.3333px */
-  --step--1: clamp(0.7292rem, 0.6882rem + 0.1873vw, 0.8333rem);
-  /* Step 0: 14px → 16px */
-  --step-0: clamp(0.875rem, 0.8258rem + 0.2247vw, 1rem);
-  /* Step 1: 16.8px → 19.2px */
-  --step-1: clamp(1.05rem, 0.991rem + 0.2697vw, 1.2rem);
-  /* Step 2: 20.16px → 23.04px */
-  --step-2: clamp(1.26rem, 1.1892rem + 0.3236vw, 1.44rem);
-  /* Step 3: 24.192px → 27.648px */
-  --step-3: clamp(1.512rem, 1.4271rem + 0.3883vw, 1.728rem);
-  /* Step 4: 29.0304px → 33.1776px */
-  --step-4: clamp(1.8144rem, 1.7125rem + 0.466vw, 2.0736rem);
-  /* Step 5: 34.8365px → 39.8131px */
-  --step-5: clamp(2.1773rem, 2.055rem + 0.5592vw, 2.4883rem);
-  /* Step 6: 41.8038px → 47.7757px */
+  --step-01: clamp(0.8rem, 0.682rem + 0.59vw, 1.125rem);
+  --step-0: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.159rem + 0.45vw, 1.5rem);
+  --step-2: clamp(2rem, 1.818rem + 0.91vw, 2.5rem);
+  --step-3: clamp(2.5rem, 2.409rem + 0.45vw, 2.75rem);
+  --step-3: clamp(2.75rem, 2.614rem + 0.68vw, 3.125rem);
+  --step-4: clamp(3rem, 2.909rem + 0.45vw, 3.25rem);
 
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
@@ -68,8 +63,12 @@
 
   --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
   --font-big-shoulders-inline-light: 100;
-}
 
+  --font-kanit: "Kanit", sans-serif;
+  --font-kanit-light: 100;
+
+  --sp: 6s;
+}
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
 /* --------------------------------------- */
@@ -93,18 +92,12 @@
 .text-accent {
   color: hsl(var(--clr-accent));
 }
-/* -------------------------------------------------------- */
 
-* {
-  margin: 0;
-  padding: 0;
-  color: #fff;
-}
-
+/* --------------------------------------- */
 html {
-  font-size: 100%;
-  scroll-behavior: smooth;
+  color-scheme: dark only;
 }
+/* -------------------------------------------------------- */
 
 body {
   background-color: black;
