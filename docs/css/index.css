@@ -78,8 +78,7 @@
   --font-kanit: "Kanit", sans-serif;
   --font-kanit-light: 100;
 
-  --sp: 12s;
-  --white: #ffffff;
+  --sp: 6s;
 }
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
@@ -146,11 +145,10 @@ main {
 
 .content {
   font-family: var(--font-kanit);
-  font-weight: var(--font-kanit-light);
   font-weight: 100;
-  font-size: var(--step-5);
+  font-size: var(--step-3);
   margin: auto;
-  padding: var(--space-3xl) 0;
+  padding-top: var(--space-4xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,7 +159,8 @@ main {
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
+  animation: show-hide 2s cubic-bezier(0.25, 0.1, 0.25, 1) ease infinite;
+  /*animation: show-hide var(--sp) ease-in-out infinite;*/
   mix-blend-mode: plus-lighter;
 }
 
@@ -169,7 +168,7 @@ main {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.7);
+    transform: scale(0.5);
   }
   20%,
   80% {
@@ -179,12 +178,12 @@ main {
 }
 
 .content div span {
-  width: 10vmin;
+  width: var(--space-xl);
   position: relative;
   text-align: center;
   box-sizing: border-box;
   color: #ffffff90;
-  text-shadow: 0 0 1px var(--white);
+  text-shadow: 0 0 1px var(--clr-white);
 }
 
 .up:before,
@@ -228,7 +227,7 @@ main {
 .up span,
 .down span {
   animation-duration: var(--sp);
-  animation-timing-function: ease;
+  animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: infinite;
 }
@@ -372,7 +371,7 @@ main {
 }
 
 .index-content {
-  margin: var(--space-2xl) auto;
+  margin: var(--space-3xl) auto;
   text-align: center;
 }
 
@@ -384,18 +383,18 @@ main {
 }
 
 .text-with-animation {
-  font-size: var(--step-5);
+  font-size: var(--step-3);
   font-family: "Turret Road", sans-serif;
   font-weight: 100;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; /* Faster and smoother */
   letter-spacing: 4px;
   width: 500vw;
   margin-left: -200vw;
 }
 
 .subtext-with-animation {
-  font-size: var(--step-5);
+  font-size: var(--step-3);
   font-family: "Turret Road", sans-serif;
   font-weight: 100;
   text-align: center;
@@ -407,17 +406,17 @@ main {
 .subtext-with-animation span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.5s forwards;
+  animation: word-animation 0.3s ease-in-out 1.2s forwards;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.7s forwards;
+  animation: word-animation 0.25s cubic-bezier(0.25, 0.1, 0.25, 1) 1s forwards; /* Faster and smoother */
 }
 
 .subtext-with-animation-1 {
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   font-family: "Turret Road", sans-serif;
   font-weight: 100;
   text-align: center;
@@ -429,13 +428,13 @@ main {
 .subtext-with-animation-1 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.5s forwards;
+  animation: word-animation 0.3s ease-in-out 1.2s forwards;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-in-out 1.7s forwards;
+  animation: word-animation 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) 1.5s forwards; /* Faster and smoother */
 }
 
 @keyframes main-text-animation {
@@ -454,7 +453,7 @@ main {
 
 @keyframes word-animation {
   0% {
-    top: 10vw;
+    top: 8vw;
     opacity: 0;
   }
 
