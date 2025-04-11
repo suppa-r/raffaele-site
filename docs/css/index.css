@@ -105,20 +105,12 @@
 }
 
 body {
-  margin: 0;
+  margin: auto;
   font-family: "Kanit", sans-serif;
   font-weight: var(--font-kanit-light);
   box-sizing: border-box;
-  height: 100svh;
-  overflow: hidden;
-  background: #203a43;
-  background: radial-gradient(ellipse at 50% 50%, #011116 0%, #000000 100%);
-  /*display: flex;
-  align-items: center;
-  justify-content: center;*/
-}
 
-main {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,12 +121,17 @@ main {
   }
 }
 
+main {
+  margin: auto;
+  height: 100%;
+}
+
 .quote {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: var(--space-2xl);
   text-align: center;
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
@@ -151,10 +148,13 @@ main {
 }
 
 .content {
-  margin: auto;
+  margin-inline: auto;
+  padding: var(--space-xl);
   display: flex;
+  align-items: center;
   justify-content: center;
   position: relative;
+  width: 100vmin;
 }
 
 .content div {
@@ -208,28 +208,6 @@ main {
   left: calc(50% - 0.5vmin);
   top: 45%;
   box-shadow: 0 0 10px 0 var(--white);
-}
-
-@keyframes shadow {
-  0%,
-  10%,
-  90%,
-  100% {
-    opacity: 0;
-  }
-  45%,
-  55% {
-    opacity: 0.25;
-    height: 0.25vmin;
-  }
-}
-
-.up span,
-.down span {
-  animation-duration: var(--sp);
-  animation-timing-function: ease;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
 }
 
 /*up*/
