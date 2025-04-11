@@ -93,18 +93,13 @@
   color: hsl(var(--clr-accent));
 }
 
-body {
-  overflow: hidden;
-  background: #00000000;
-  background: radial-gradient(ellipse at 50% 50%, #011116 0%, #918383 100%);
-}
-
 main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: hsl(var(--clr-white));
-  font-family: "Turret Road", sans-serif;
-  font-weight: 100;
-  margin: 0 auto;
-  overflow: hidden;
+  margin-inline: auto;
   > * {
     container-type: inline-size;
     width: 100%;
@@ -132,24 +127,29 @@ main {
   font-size: var(--step-01);
 }
 
+.content-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-inline: auto;
+}
+
 .content {
-  font-family: var(--font-kanit);
-  font-weight: 100;
-  font-size: var(--step-2);
-  margin: auto;
-  padding-top: var(--space-4xl);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--space-2xl);
+  margin-block: var(--space-xl);
+  width: 90vmin;
 }
 
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide 2s cubic-bezier(0.25, 0.1, 0.25, 1) ease infinite;
-  /*animation: show-hide var(--sp) ease-in-out infinite;*/
+  animation: show-hide var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -157,7 +157,7 @@ main {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.8);
   }
   20%,
   80% {
@@ -167,12 +167,15 @@ main {
 }
 
 .content div span {
-  width: var(--space-xl);
+  width: 10vmin;
   position: relative;
   text-align: center;
   box-sizing: border-box;
-  color: #ffffff90;
-  text-shadow: 0 0 1px var(--clr-white);
+  color: hsl(var(--clr-light));
+  font-family: "kanit", sans-serif;
+  font-weight: var(--font-kanit-light);
+  font-size: var(--step-2);
+  text-shadow: 0 0 1px var(--clr-light);
 }
 
 .up:before,
@@ -216,7 +219,7 @@ main {
 .up span,
 .down span {
   animation-duration: var(--sp);
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease;
   animation-delay: 0s;
   animation-iteration-count: infinite;
 }
@@ -359,16 +362,8 @@ main {
   }
 }
 
-.index-content {
-  margin: var(--space-3xl) auto;
-  text-align: center;
-}
-
-.index-content a {
-  padding-inline: 0 auto;
-  max-width: 100%;
-  height: auto;
-  text-decoration: none;
+.content-1 {
+  margin-block: var(--space-xl);
 }
 
 .text-with-animation {
@@ -380,6 +375,16 @@ main {
   letter-spacing: 4px;
   width: 500vw;
   margin-left: -200vw;
+}
+
+.content a {
+  text-decoration: none;
+  color: hsl(var(--clr-white));
+  font-size: var(--step-01);
+  font-family: "Turret Road", sans-serif;
+  font-weight: 100;
+  text-align: center;
+  letter-spacing: 4px;
 }
 
 .subtext-with-animation {
