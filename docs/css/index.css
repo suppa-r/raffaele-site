@@ -122,8 +122,8 @@ body {
 }
 
 main {
-  margin: auto;
-  height: 100%;
+  margin-inline: auto;
+  min-height: 100%;
 }
 
 .quote {
@@ -131,12 +131,12 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--space-2xl);
+
   text-align: center;
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
   color: hsl(var(--clr-white));
-  padding-block: var(--space-s);
+  padding-block: var(--space-3xl);
 }
 
 .title {
@@ -148,19 +148,17 @@ main {
 }
 
 .content {
-  margin-inline: auto;
-  padding: var(--space-xl);
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: relative;
-  width: 100vmin;
+  margin-inline: auto;
+  margin-block: var(--space-4xl);
 }
 
 .content div {
+  padding: auto;
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
+  animation: show-hide var(--sp) ease-out 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -178,27 +176,29 @@ main {
 }
 
 .content div span {
-  width: 10vmin;
+  padding: auto;
+  font-size: var(--step-2);
+  font-family: var(--font-big-shoulders-inline);
+  width: var(--space-3xl);
   position: relative;
+  display: flex;
+  justify-content: center;
   text-align: center;
-  box-sizing: border-box;
   color: #ffffff90;
-  text-shadow: 0 0 1px var(--white);
+  text-shadow: 0 0 1px var(--clr-span);
 }
 
 .up:before,
 .down:before {
-  width: 80%;
+  width: 0.1vmin;
   height: 0.1vmin;
   background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
   content: "";
   position: absolute;
   border-radius: 100%;
   filter: blur(2px);
-  left: 10%;
-  top: 49%;
-  box-shadow: 0 0 100px 0 var(--white);
-  animation: shadow var(--sp) ease 0s infinite;
+  box-shadow: 0 0 100px 0 var(--clr-span);
+  animation: shadow var(--sp) ease-out 0s infinite;
 }
 
 .down:before {
@@ -207,7 +207,29 @@ main {
   filter: blur(3px);
   left: calc(50% - 0.5vmin);
   top: 45%;
-  box-shadow: 0 0 10px 0 var(--white);
+  box-shadow: 0 0 10px 0 var(--clr-span);
+}
+
+@keyframes shadow {
+  0%,
+  10%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  45%,
+  55% {
+    opacity: 0.25;
+    height: 0.25vmin;
+  }
+}
+
+.up span,
+.down span {
+  animation-duration: var(--sp);
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
 }
 
 /*up*/
@@ -347,10 +369,9 @@ main {
     top: 2.4vmin;
   }
 }
-
 .content-1 {
   margin: 0 auto;
-  margin-top: var(--space-4xl);
+  margin-block: var(--space-4xl);
 }
 
 .text-with-animation {
