@@ -114,26 +114,26 @@ body {
 }
 
 main {
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
+  display: flex;
+  height: 100svh;
 }
 
 .index-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 0 auto;
   width: 100%;
-  height: 100vh;
+  justify-content: space-between;
 }
 
 .quote {
+  height: auto;
   width: 100%;
   text-align: center;
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
   color: hsl(var(--clr-white));
+  padding-block: 0;
 }
 
 .title {
@@ -145,19 +145,21 @@ main {
 }
 
 .content {
-  margin: 0 auto;
-  position: relative;
-  width: 80%;
-  height: var(--space-1xl);
   display: flex;
+  flex-direction: column;
+  padding: var(--space-1xl) auto;
+
   justify-content: center;
-  align-items: center;
-  margin-block: var(--space-2xl);
 }
 
 .content div {
-  position: absolute;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-m) auto;
+  width: 100%;
+  justify-content: space-between;
   animation: show-hide var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
@@ -176,28 +178,26 @@ main {
 }
 
 .content div span {
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  height: auto;
   font-size: var(--step-1);
-  width: 10vmin;
+  width: var(--space-xs);
   position: relative;
-
   color: hsl(var(--clr-white));
   text-shadow: 0 0 1px var(--clr-span);
 }
 
 .up:before,
 .down:before {
-  width: 80%;
+  width: 100%;
   height: 0.1vmin;
   background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
-
+  margin: 0 auto;
   content: "";
   position: absolute;
   border-radius: 100%;
   filter: blur(2px);
-  left: 10%;
-  top: 49%;
+
   box-shadow: 0 0 100px 0 var(--white);
   animation: shadow var(--sp) ease 0s infinite;
 }
@@ -372,8 +372,13 @@ main {
 }
 
 .content-index {
+  height: auto;
   width: 100%;
-  margin: 0 auto;
+  text-align: center;
+  font-family: var(--font-turret-road);
+  font-weight: var(--font-turret-road-light);
+  color: hsl(var(--clr-white));
+  padding-block: var(--space-5xl);
 }
 
 .content-index a {
