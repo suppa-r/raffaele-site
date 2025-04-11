@@ -13,7 +13,6 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   color-scheme: dark light;
-  hanging-punctuation: first last;
 }
 
 /* Set core root defaults */

@@ -1,6 +1,5 @@
 body {
   background-color: #000000;
-  overflow: hidden;
 }
 
 .lines {
@@ -187,13 +186,6 @@ body {
 .line:nth-child(19)::after {
   animation-delay: 1.4s;
 }
-
-
-
-
-
-
-
 
 @keyframes drop {
   0% {
