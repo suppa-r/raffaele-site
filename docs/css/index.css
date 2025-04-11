@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
 
 :root {
+  --sp: 8s;
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
@@ -79,9 +80,8 @@
 
   --font-kanit: "Kanit", sans-serif;
   --font-kanit-light: 100;
-
-  --sp: 6s;
 }
+
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
 /* --------------------------------------- */
@@ -107,59 +107,71 @@
 }
 
 body {
-  display: grid;
-  > * {
-    container-type: inline-size;
-  }
-}
-
-main {
-  display: flex;
-  height: 100svh;
-}
-
-.index-content {
-  display: flex;
-  flex-direction: column;
-  padding: 0 auto;
-  width: 100%;
-  justify-content: space-between;
+  margin: 0;
+  font-family: "Kanit", sans-serif;
+  font-size: 3vmin;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #203a43;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    #011116 0%,
+    hsl(206, 4%, 34%) 100%
+  );
 }
 
 .quote {
+  display: flex;
+  flex-direction: column;
   height: auto;
-  width: 100%;
   text-align: center;
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
   color: hsl(var(--clr-white));
-  padding-block: 0;
+  padding-block: var(--space-l);
 }
 
 .title {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
 }
 
 .author {
-  font-size: var(--step-01);
+  font-size: var(--step-0);
 }
 
 .content {
   display: flex;
-  flex-direction: column;
-  padding: var(--space-1xl) auto;
-
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   justify-content: center;
+  align-items: center;
+  font-size: var(--step-3);
+}
+
+.content-1 {
+  display: flex;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--step-3);
 }
 
 .content div {
+  position: absolute;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-m) auto;
-  width: 100%;
-  justify-content: space-between;
   animation: show-hide var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
@@ -178,26 +190,54 @@ main {
 }
 
 .content div span {
-  margin: 0 auto;
-  height: auto;
-  font-size: var(--step-1);
-  width: var(--space-xs);
+  width: 10vmin;
   position: relative;
-  color: hsl(var(--clr-white));
-  text-shadow: 0 0 1px var(--clr-span);
+  text-align: center;
+  box-sizing: border-box;
+  color: #ffffff90;
+  text-shadow: 0 0 1px var(--white);
+}
+
+.content-1 div {
+  position: absolute;
+  display: flex;
+  animation: show-hide var(--sp) ease 0s infinite;
+  mix-blend-mode: plus-lighter;
+}
+
+@keyframes show-hide {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.content-1 div span {
+  width: 10vmin;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  color: #ffffff90;
+  text-shadow: 0 0 1px var(--white);
 }
 
 .up:before,
 .down:before {
-  width: 100%;
+  width: 80%;
   height: 0.1vmin;
   background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
-  margin: 0 auto;
   content: "";
   position: absolute;
   border-radius: 100%;
   filter: blur(2px);
-
+  left: 10%;
+  top: 49%;
   box-shadow: 0 0 100px 0 var(--white);
   animation: shadow var(--sp) ease 0s infinite;
 }
@@ -378,7 +418,7 @@ main {
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
   color: hsl(var(--clr-white));
-  padding-block: var(--space-5xl);
+  padding-block: 0;
 }
 
 .content-index a {
