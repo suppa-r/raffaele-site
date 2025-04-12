@@ -441,6 +441,9 @@ h4 {
 }
 
 @media (max-width: 500px) {
+  .logo {
+    margin-right: var(--space-xl);
+  }
   .section-content img {
     margin-top: var(--space-xl);
     width: 100px;
