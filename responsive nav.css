@@ -334,6 +334,9 @@ h4 {
 }
 
 @media (max-width: 768px) {
+  .logo {
+    margin-right: var(--space-xl);
+  }
   .nav-links {
     position: fixed;
     top: 0;
@@ -401,6 +404,7 @@ h4 {
 
   .mobile-nav-toggle {
     display: block;
+    margin-right: var(--space-xl);
   }
 
   .mobile-nav-toggle.active .bar:nth-child(1) {
@@ -434,20 +438,11 @@ h4 {
     opacity: 1;
     visibility: visible;
   }
-  .section-content img {
-    width: 100px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    box-shadow: 10px 10px 20px 20px rgba(248, 246, 246, 0.5);
-  }
 }
 
 @media (max-width: 500px) {
   .section-content img {
+    margin-top: var(--space-xl);
     width: 100px;
     max-width: 100%;
     height: auto;
