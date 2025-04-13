@@ -1,5 +1,5 @@
 const menu = document.querySelector(".bars");
-const intro = document.querySelector(".intro-content");
+const intro = document.querySelector(".section-content");
 const nav = document.querySelector(".nav-links");
 let menustate = false;
 menu.addEventListener("click", showMenu);

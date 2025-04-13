@@ -110,7 +110,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: var(--space-m) var(--space-xl);
+  padding: var(--space-s) var(--space-xl);
   backdrop-filter: blur(12px);
   background: var(--glass-bg);
   border-bottom: var(--shadow-1);
@@ -424,19 +424,22 @@ h4 {
 
 @media (max-width: 500px) {
   .navbar {
-    padding: 0 var(--space-l) 0 0;
+    padding: 0 var(--space-m) 0 0;
+  }
+  .navbar-container {
+    padding: 0 var(--space-m) 0 var(--space-xs);
   }
 
   .logo {
-    margin-right: var(--space-l);
+    margin: 0 var(--space-l) 0 0;
   }
 
   .logo span {
-    margin: 0 var(--space-xs) 0 var(--space-xs);
+    margin: 0 0 0 var(--space-xs);
   }
 
   .mobile-nav-toggle {
-    margin-right: var(--space-2xl);
+    margin-right: var(--space-3xl);
   }
 
   .section-content img {
