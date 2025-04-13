@@ -3,14 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
 
 :root {
+  --gradient: linear-gradient(45deg, #33ff99f1, #6bfff3c9, #90a2d3, #68b0e098);
+  --glass-bg: rgba(255, 255, 255, 0.11);
+  --border: 1px solid rgba(255, 255, 255, 0.1);
+  --shadow-1: 30px 30px 30px 0 rgba(99, 103, 161, 0.733),
+    30px 30px 30px 0 rgba(255, 255, 255, 0.507);
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
-
-  --gradient: linear-gradient(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
-  --glass-bg: rgba(227, 228, 184, 0.979);
-  --border: 1px solid rgba(255, 255, 255, 0.1);
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -21,40 +21,44 @@
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
-  --step-01: clamp(0.8rem, 0.682rem + 0.59vw, 1.125rem);
-  --step-0: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
-  --step-1: clamp(1.25rem, 1.159rem + 0.45vw, 1.5rem);
-  --step-2: clamp(2rem, 1.818rem + 0.91vw, 2.5rem);
-  --step-3: clamp(2.5rem, 2.409rem + 0.45vw, 2.75rem);
-  --step-3: clamp(2.75rem, 2.614rem + 0.68vw, 3.125rem);
-  --step-4: clamp(3rem, 2.909rem + 0.45vw, 3.25rem);
+
+  /* Step -1: 12.8px → 14.4px */
+  --step--1: clamp(0.8rem, 0.7652rem + 0.1739cqi, 0.9rem);
+  /* Step 0: 16px → 18px */
+  --step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+  /* Step 1: 20px → 22.5px */
+  --step-1: clamp(1.25rem, 1.1957rem + 0.2717cqi, 1.4063rem);
+  /* Step 2: 25px → 28.125px */
+  --step-2: clamp(1.5625rem, 1.4946rem + 0.3397cqi, 1.7578rem);
+  /* Step 3: 31.25px → 35.1563px */
+  --step-3: clamp(1.9531rem, 1.8682rem + 0.4246cqi, 2.1973rem);
+  /* Step 4: 39.0625px → 43.9453px */
+  --step-4: clamp(2.4414rem, 2.3353rem + 0.5307cqi, 2.7466rem);
+  /* Step 5: 48.8281px → 54.9316px */
+  --step-5: clamp(3.0518rem, 2.9191rem + 0.6634cqi, 3.4332rem);
+  /* Step 6: 61.0352px → 68.6646px */
+  --step-6: clamp(3.8147rem, 3.6488rem + 0.8293cqi, 4.2915rem);
 
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
 
-  /* Space 3xs: 4px → 4px */
-  --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
-  /* Space 2xs: 7px → 8px */
-  --space-2xs: clamp(0.4375rem, 0.4129rem + 0.1124cqi, 0.5rem);
-  /* Space xs: 11px → 12px */
-  --space-xs: clamp(0.6875rem, 0.6629rem + 0.1124cqi, 0.75rem);
-  /* Space s: 14px → 16px */
-  --space-s: clamp(0.875rem, 0.8258rem + 0.2247cqi, 1rem);
-  /* Space m: 21px → 24px */
-  --space-m: clamp(1.3125rem, 1.2388rem + 0.3371cqi, 1.5rem);
-  /* Space l: 28px → 32px */
-  --space-l: clamp(1.75rem, 1.6517rem + 0.4494cqi, 2rem);
-  /* Space xl: 42px → 48px */
-  --space-xl: clamp(2.625rem, 2.4775rem + 0.6742cqi, 3rem);
-  /* Space 2xl: 56px → 64px */
-  --space-2xl: clamp(3.5rem, 3.3034rem + 0.8989cqi, 4rem);
-  /* Space 3xl: 84px → 96px */
-  --space-3xl: clamp(5.25rem, 4.9551rem + 1.3483cqi, 6rem);
-  /* Space 4xl: 112px → 128px */
-  --space-4xl: clamp(7rem, 6.6068rem + 1.7977cqi, 8rem);
-  /* Space 5xl: 168px → 192px */
-  --space-5xl: clamp(10.5rem, 9.9094rem + 2.6961cqi, 12rem);
+  /* Space 2xs: 12px → 14px */
+  --space-2xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
+  /* Space xs: 12px → 14px */
+  --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
+  /* Space s: 16px → 18px */
+  --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+  /* Space m: 24px → 27px */
+  --space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
+  /* Space l: 32px → 36px */
+  --space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
+  /* Space xl: 48px → 54px */
+  --space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
+  /* Space 2xl: 64px → 72px */
+  --space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
+  /* Space 3xl: 96px → 108px */
+  --space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
 
   --font-turret-road: "Turret Road", sans-serif;
   --font-turret-road-light: 100;
@@ -63,12 +67,8 @@
 
   --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
   --font-big-shoulders-inline-light: 100;
-
-  --font-kanit: "Kanit", sans-serif;
-  --font-kanit-light: 100;
-
-  --sp: 6s;
 }
+
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
 /* --------------------------------------- */
