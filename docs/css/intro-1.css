@@ -443,14 +443,14 @@ h4 {
   }
 
   .section-content img {
-    margin-top: var(--space-l);
-    width: 100px;
+    margin-bottom: var(--space-l);
+    width: 120px;
     max-width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
-    box-shadow: 10px 10px 20px 20px rgba(248, 246, 246, 0.5);
+    box-shadow: 10px 10px 20px 20px rgba(248, 246, 246, 0.534);
   }
 }
