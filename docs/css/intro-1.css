@@ -119,11 +119,6 @@ body {
   box-shadow: var(--shadow-1);
 }
 
-/*.navbar.scrolled {
-  padding: 0.8rem 5%;
-  background: rgba(10, 10, 10, 0.95);
-}*/
-
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -433,7 +428,7 @@ h4 {
   }
 
   .logo {
-    margin-right: var(--space-xl);
+    margin-right: var(--space-l);
   }
 
   .logo span {
@@ -441,11 +436,11 @@ h4 {
   }
 
   .mobile-nav-toggle {
-    margin-right: var(--space-1xl);
+    margin-right: var(--space-2xl);
   }
 
   .section-content img {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-l);
     width: 100px;
     max-width: 100%;
     height: auto;
