@@ -438,24 +438,13 @@ h4 {
 
 @media (max-width: 500px) {
   .navbar-container {
-    padding: var(--space-xxs) var(--space-xl);
-  }
-  .logo {
-    margin: 0 0 0 var(--space-xs);
-  }
-
-  .logo span {
-    margin: 0 0 0 var(--space-xs);
-  }
-
-  .mobile-nav-toggle {
-    margin-left: var(--space-xs);
+    padding: var(--space-xxs) var(--space-1xl);
   }
 
   .section-content {
     margin-inline: 0;
-    padding: 0 var(--space-l);
-    width: 100%;
+    padding: 0 var(--space-m);
+    max-width: 100%;
   }
 
   .section-content img {
@@ -467,5 +456,7 @@ h4 {
     object-position: center;
     border-radius: 50%;
     box-shadow: 10px 10px 20px 20px rgba(248, 246, 246, 0.534);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: var(--space-2xl);
   }
 }
