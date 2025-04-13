@@ -437,6 +437,9 @@ h4 {
 }
 
 @media (max-width: 500px) {
+  .navbar-container {
+    padding: var(--space-xxs) var(--space-xl);
+  }
   .logo {
     margin: 0 0 0 var(--space-xs);
   }
