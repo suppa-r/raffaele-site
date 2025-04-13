@@ -424,14 +424,14 @@ h4 {
 
 @media (max-width: 500px) {
   .navbar {
-    padding: 0 var(--space-m) 0 0;
+    padding: 0 var(--space-s) 0 var(--space-m);
   }
   .navbar-container {
-    padding: 0 var(--space-m) 0 var(--space-xs);
+    padding: 0;
   }
 
   .logo {
-    margin: 0 var(--space-l) 0 0;
+    margin: 0 0 0 var(--space-m);
   }
 
   .logo span {
@@ -443,7 +443,7 @@ h4 {
   }
 
   .section-content img {
-    margin-bottom: var(--space-l);
+    margin-bottom: var(--space-2xl);
     width: 120px;
     max-width: 100%;
     height: auto;
