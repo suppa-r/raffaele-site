@@ -452,7 +452,7 @@ h4 {
   }
 
   .mobile-nav-toggle {
-    margin-left: var(--space-s);
+    margin-left: var(--space-xs);
   }
 
   .section-content {
