@@ -253,7 +253,7 @@ body {
   width: 60em;
   max-width: 100%;
   margin-inline: auto;
-  padding: var(--space-2xl) var(--space-xl);
+  padding: var(--space-2xl) var(--space-1xl);
   display: flex;
   font-size: var(--step-0);
   color: hsl(var(--clr-white));
