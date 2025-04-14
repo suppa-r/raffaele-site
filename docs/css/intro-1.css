@@ -4,7 +4,7 @@
 
 :root {
   --gradient: linear-gradient(45deg, #33ff99f1, #6bfff3c9, #90a2d3, #68b0e098);
-  --glass-bg: rgba(255, 255, 255, 0.11);
+  --glass-bg: linear-gradient(45deg, #021f10f1, #6bfff31f, #445174, #68b0e027);
   --border: 1px solid rgba(255, 255, 255, 0.1);
   --shadow-1: 30px 30px 30px 0 rgba(99, 103, 161, 0.733),
     30px 30px 30px 0 rgba(255, 255, 255, 0.507);
@@ -104,19 +104,18 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-
+  padding: var(--space-s) var(--space-xl);
   backdrop-filter: blur(12px);
   background: var(--glass-bg);
-  border-bottom: var(--shadow-1);
+  border-bottom: var(--border);
   z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow);
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  padding: var(--space-s) var(--space-2xl);
   align-items: center;
   margin: 0 auto;
 }
@@ -127,7 +126,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 2s linear infinite;
+  animation: gradient 1s linear infinite;
   background-size: 300%;
 }
 
@@ -137,7 +136,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 2s linear infinite;
+  animation: gradient 1s linear infinite;
   background-size: 300%;
   margin: 0 3rem 0 0.2rem;
 }
@@ -149,14 +148,18 @@ body {
 }
 
 .nav-links a {
-  color: white;
+  color: hsl(var(--clr-light));
   text-decoration: none;
-  font-weight: 500;
   position: relative;
   padding: var(--space-xs) 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   font-size: var(--step-0);
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
+}
+
+.nav-links a:hover {
+  color: hsl(var(--clr-light));
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .nav-links a::before {
@@ -168,7 +171,7 @@ body {
   height: 2px;
   background: var(--gradient);
   background-size: 300%;
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
 }
 
 .nav-links a::after {
@@ -180,7 +183,7 @@ body {
   height: 2px;
   background: var(--gradient);
   background-size: 300%;
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
 }
 
 .nav-links a:hover {
@@ -248,7 +251,6 @@ body {
   width: 60em;
   max-width: 100%;
   margin-inline: auto;
-  padding: var(--space-1xl) var(--space-1xl);
   display: flex;
   font-size: var(--step-0);
   color: hsl(var(--clr-white));
@@ -258,7 +260,7 @@ body {
 
   > * {
     container-type: inline-size;
-    flex: 1 1 350px;
+    flex: 1 1 300px;
     margin-inline: 0 auto;
     box-sizing: border-box;
     text-align: center;
@@ -299,7 +301,7 @@ h4 {
   font-size: var(--step-2);
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 0;
+  margin-top: var(--space-s);
   background: var(--gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -415,48 +417,38 @@ h4 {
     opacity: 1;
     visibility: visible;
   }
-  .navbar-container {
-    padding: var(--space-xxs) var(--space-xl);
-  }
-
-  .section-content {
-    width: 90%;
-    padding: var(--space-s) var(--space-2xl);
-  }
-
-  .section-content h1,
-  h2,
-  h3,
-  h4 {
-    font-size: var(--step-0);
-  }
-
-  .section-content p {
-    font-size: var(--step--1);
-  }
 }
 
 @media (max-width: 500px) {
-  .navbar-container {
-    padding: var(--space-xxs) var(--space-1xl);
+  .navbar {
+    padding: 0 var(--space-l) 0 0;
+  }
+
+  .logo {
+    margin-right: var(--space-xl);
+  }
+
+  .logo span {
+    margin: 0 var(--space-xs) 0 var(--space-xs);
+  }
+
+  .mobile-nav-toggle {
+    margin-right: var(--space-1xl);
   }
 
   .section-content {
-    margin-inline: 0;
-    padding: 0 var(--space-m);
-    max-width: 100%;
+    width: 100%;
+    padding: 0 var(--space-s) var(--space-xl) var(--space-s);
   }
 
-  .section-content img {
-    width: 120px;
+  .row-1 img {
+    width: 140px;
     max-width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
-    box-shadow: 10px 10px 20px 20px rgba(248, 246, 246, 0.534);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin-bottom: var(--space-2xl);
+    transition: transform 0.3s ease-in-out;
   }
 }

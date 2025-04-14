@@ -223,11 +223,11 @@ header .bars::before {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
   display: flex;
-  gap: var(--space-xl);
+  gap: var(--space-m);
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100svh;
+  width: 100%;
 }
 
 .intro p {
@@ -346,6 +346,7 @@ header .bars::before {
     transition: 0.5s;
   }
   nav {
+    margin: 0 auto;
     position: fixed;
     z-index: 3;
   }
@@ -366,14 +367,18 @@ header .bars::before {
     margin: 1.5vw 0;
   }
   .nav-links.open {
-    opacity: 0.6;
+    background-color: hsl(var(--clr-light));
+    color: hsl(var(--clr-dark));
+    opacity: 0.5;
     pointer-events: all;
-    width: auto;
-    margin: 0 var(--space-4xl);
+    transform: translateX(50%);
+    transition: 0.5s;
+    z-index: 2;
+    padding: var(--space-xs) var(--space-2xl);
   }
 
   .intro {
-    padding-bottom: var(--space-5xl);
+    padding: 0 0 var(--space-5xl) 0;
     flex-direction: column;
   }
 }
