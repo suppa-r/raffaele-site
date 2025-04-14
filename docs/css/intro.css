@@ -412,6 +412,7 @@ header .bars::before {
   }
 
   .intro {
+    padding: 0 var(--space-xs) var(--space-2xs) var(--space-xs);
     flex-direction: column;
   }
 }
