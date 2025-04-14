@@ -43,9 +43,8 @@
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
 
-  /* Space 2xs: 12px → 14px */
-  --space-2xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
-  /* Space xs: 12px → 14px */
+  --space-xxs: clamp(0.3rem, 0.4rem + 0.2174cqi, 0.4rem);
+  /* Space 2xs: 4px → 4.5px */
   --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
   /* Space s: 16px → 18px */
   --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
@@ -100,11 +99,16 @@ body {
 }
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs) var(--space-m) var(--space-xs) 0;
+  margin: 0 auto;
+  max-width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: var(--space-xs) var(--space-xl) var(--space-xs) 0;
   backdrop-filter: blur(12px);
   background: var(--glass-bg);
   border-bottom: var(--border);
@@ -120,7 +124,7 @@ body {
   margin: 0 auto;
 }
 
-.logo {
+.logo p {
   font-size: var(--step-1);
   background: var(--gradient);
   -webkit-background-clip: text;
@@ -131,14 +135,10 @@ body {
 }
 
 .logo span {
-  font-size: var(--step-1);
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient 1s linear infinite;
-  background-size: 300%;
-  margin: 0 3rem 0 0.2rem;
+  font-size: var(--step-3); /* Adjust font size */
+  color: hsl(var(--clr-span)); /* Set text color */
+  letter-spacing: 6px; /* Add spacing between letters */
+  margin: 0; /* Add horizontal margin */
 }
 
 .nav-links {
@@ -261,7 +261,7 @@ body {
 
   > * {
     container-type: inline-size;
-    flex: 1 1 300px;
+    flex: 1 1 350px;
     margin-inline: 0 auto;
     box-sizing: border-box;
     text-align: center;
@@ -273,7 +273,7 @@ h2,
 h3,
 h4 {
   font-size: var(--step-1);
-  padding-block: var(--space-xs);
+  padding-block: var(--space-xxs);
   margin: auto;
   text-align: center;
 }
@@ -281,7 +281,7 @@ h4 {
 .section-content p {
   font-size: var(--step-0);
   text-align: center;
-  padding-block: var(--space-xxs);
+  padding-block: 0.2em;
   margin: auto;
 }
 
@@ -301,8 +301,8 @@ h4 {
 .section-title {
   font-size: var(--step-2);
   text-align: center;
-  margin: 0 auto;
-  margin-top: var(--space-s);
+  margin: var(--space-s) 0 0 0;
+  padding: var(--space-xxs) 0;
   background: var(--gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -418,10 +418,30 @@ h4 {
 
 @media (max-width: 420px) {
   .navbar {
-    padding: var(--space-xxs) 0 0 var(--space-xxs);
+    padding: 0;
   }
-  .navbar-container {
-    padding-left: 0;
+  .section-content {
+    width: 100%;
+    padding: 0 var(--space-m);
+  }
+
+  .section-content p {
+    font-size: var(--step--1);
+  }
+
+  .row-1 {
+    padding-top: var(--space-xl);
+  }
+
+  .section-title {
+    font-size: var(--step-0);
+  }
+  .section-content img {
+    width: 140px;
+  }
+  .section-content img:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 20px 20px rgba(248, 246, 246, 0.5);
   }
 
   .mobile-nav-toggle {
@@ -429,31 +449,7 @@ h4 {
     transform: translateX(60%);
     position: absolute; /* Position it relative to the navbar */
     top: 0rem; /* Adjust vertical position */
-    right: 1rem; /* Adjust horizontal position */
+    right: 1.75rem; /* Adjust horizontal position */
     z-index: 1001; /* Ensure it appears above other elements */
-  }
-
-  .logo {
-    margin-right: var(--space-l);
-  }
-
-  .logo span {
-    margin: 0 var(--space-xs) 0 var(--space-xs);
-  }
-
-  .section-content {
-    width: 100%;
-    padding: 0 var(--space-s) var(--space-xl) var(--space-s);
-  }
-
-  .row-1 img {
-    width: 140px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
   }
 }

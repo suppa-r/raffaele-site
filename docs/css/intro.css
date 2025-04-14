@@ -237,8 +237,8 @@ header .bars::before {
   font-family: "Turret Road", sans-serif;
   font-weight: var(--font-turret-road-light);
   display: flex;
-  padding-block: var(--space-4xl);
-  gap: var(--space-s);
+  padding-block: var(--space-2xl);
+  gap: var(--space-xs);
   justify-content: center;
   align-items: center;
 }
