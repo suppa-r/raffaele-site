@@ -287,21 +287,10 @@ header .bars::before {
   text-align: center;
 }
 
-.icon {
-  margin: 0; /* Remove default margins */
-  padding: 0; /* Remove default padding */
-  color: hsl(var(--clr-span));
-  display: flex; /* Use Flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  padding-right: 0.5em;
-}
-
 .intro a span {
   font-weight: var(--font-turret-road-bold);
-  font-size: var(--step-2);
+  font-size: var(--step-4);
   color: hsl(var(--clr-span));
-  margin-block: 0.2em; /* Add margin for spacing */
   text-align: center; /* Align text to the left */
 }
 
