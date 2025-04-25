@@ -1,0 +1,407 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
+
+:root {
+  --sp: 8s;
+  /* ------------------------------------------------- */
+  /* ------------------ Custom Colors ---------------- */
+  /* ------------------------------------------------- */
+
+  --gradient: linear-gradient(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
+  --glass-bg: rgba(227, 228, 184, 0.979);
+  --border: 1px solid rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  --clr-dark: 0, 0%, 0%;
+  --clr-light: 195, 70%, 90%;
+  --clr-span: 195, 36%, 45%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
+
+  /* -------------------------------------------------------- */
+  /* ------------------ Custom Font-Sizes ------------------- */
+  /* -------------------------------------------------------- */
+
+  /* Step -2: 9.7222px → 11.1111px */
+  --step--2: clamp(0.6076rem, 0.5735rem + 0.1561vw, 0.6944rem);
+  /* Step -1: 11.6667px → 13.3333px */
+  --step--1: clamp(0.7292rem, 0.6882rem + 0.1873vw, 0.8333rem);
+  /* Step 0: 14px → 16px */
+  --step-0: clamp(0.875rem, 0.8258rem + 0.2247vw, 1rem);
+  /* Step 1: 16.8px → 19.2px */
+  --step-1: clamp(1.05rem, 0.991rem + 0.2697vw, 1.2rem);
+  /* Step 2: 20.16px → 23.04px */
+  --step-2: clamp(1.26rem, 1.1892rem + 0.3236vw, 1.44rem);
+  /* Step 3: 24.192px → 27.648px */
+  --step-3: clamp(1.512rem, 1.4271rem + 0.3883vw, 1.728rem);
+  /* Step 4: 29.0304px → 33.1776px */
+  --step-4: clamp(1.8144rem, 1.7125rem + 0.466vw, 2.0736rem);
+  /* Step 5: 34.8365px → 39.8131px */
+  --step-5: clamp(2.1773rem, 2.055rem + 0.5592vw, 2.4883rem);
+  /* Step 6: 41.8038px → 47.7757px */
+
+  /* ------------------------------------------------------- */
+  /* ----------------- Custom Space-Sizes ------------------ */
+  /* ------------------------------------------------------- */
+
+  /* Space 3xs: 4px → 4px */
+  --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
+  /* Space 2xs: 7px → 8px */
+  --space-2xs: clamp(0.4375rem, 0.4129rem + 0.1124cqi, 0.5rem);
+  /* Space xs: 11px → 12px */
+  --space-xs: clamp(0.6875rem, 0.6629rem + 0.1124cqi, 0.75rem);
+  /* Space s: 14px → 16px */
+  --space-s: clamp(0.875rem, 0.8258rem + 0.2247cqi, 1rem);
+  /* Space m: 21px → 24px */
+  --space-m: clamp(1.3125rem, 1.2388rem + 0.3371cqi, 1.5rem);
+  /* Space l: 28px → 32px */
+  --space-l: clamp(1.75rem, 1.6517rem + 0.4494cqi, 2rem);
+  /* Space xl: 42px → 48px */
+  --space-xl: clamp(2.625rem, 2.4775rem + 0.6742cqi, 3rem);
+  /* Space 2xl: 56px → 64px */
+  --space-2xl: clamp(3.5rem, 3.3034rem + 0.8989cqi, 4rem);
+  /* Space 3xl: 84px → 96px */
+  --space-3xl: clamp(5.25rem, 4.9551rem + 1.3483cqi, 6rem);
+  /* Space 4xl: 112px → 128px */
+  --space-4xl: clamp(7rem, 6.6068rem + 1.7977cqi, 8rem);
+  /* Space 5xl: 168px → 192px */
+  --space-5xl: clamp(10.5rem, 9.9094rem + 2.6961cqi, 12rem);
+  /* Space 6xl: 224px → 256px */
+  --space-6xl: clamp(14rem, 13.2121rem + 3.5945cqi, 16rem);
+
+  --font-turret-road: "Turret Road", sans-serif;
+  --font-turret-road-light: 100;
+  --font-turret-road-regular: 400;
+  --font-turret-road-bold: 700;
+
+  --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
+  --font-big-shoulders-inline-light: 100;
+
+  --font-kanit: "Kanit", sans-serif;
+  --font-kanit-light: 100;
+}
+
+/* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
+
+/* --------------------------------------- */
+html {
+  color-scheme: dark only;
+}
+
+body:before {
+  opacity: 1;
+  pointer-events: all;
+  content: "";
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.664) 100%,
+      /* Transparent at the top */ rgba(20, 20, 20, 0.447) 100%
+        /* Darker at the bottom */
+    ),
+    linear-gradient(
+        90deg,
+        color-mix(in hsl, canvasText, transparent 70%) 1px,
+        transparent 1px 30px
+      )
+      50% 50% / 30px 30px,
+    linear-gradient(
+        color-mix(in hsl, canvasText, transparent 70%) 1px,
+        transparent 1px 30px
+      )
+      50% 50% / 30px 30px;
+
+  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: -1; /* Ensure it is behind other content */
+  overflow: hidden;
+}
+
+header {
+  position: relative;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h2 {
+  color: hsl(var(--clr-white));
+  font-size: var(--step-01);
+  font-weight: var(--font-turret-road-light);
+}
+
+header h2 span {
+  color: hsl(var(--clr-span));
+  font-size: var(--step-0);
+  font-weight: var(--font-turret-road-bold);
+  padding-left: var(--space-xxs);
+  padding-right: var(--space-xs);
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-xs);
+  font-family: "Turret Road", sans-serif;
+}
+header .bars {
+  position: relative;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background-color: #888888;
+  margin-right: 10px;
+  display: none;
+}
+
+header .bars.is-active {
+  transform: rotate(90deg);
+  width: 35px;
+  transform-origin: right;
+  transform: translateY(15px) rotate(45deg);
+}
+header .bars::after,
+header .bars::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  left: 0;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+  cursor: pointer;
+}
+header .bars::after {
+  bottom: 7px;
+}
+header .bars::before {
+  top: 7px;
+}
+
+.nav-links {
+  font-family: "Turret Road", sans-serif;
+  display: flex;
+  margin-inline: auto;
+}
+.nav-links li {
+  position: relative;
+  padding: var(--space-xs);
+  margin: 0 var(--space-xs);
+}
+.nav-links li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: hsl(var(--clr-accent));
+  font-weight: var(--font-turret-road-light);
+}
+.nav-links li a span {
+  font-size: var(--step-01);
+  font-weight: var(--font-turret-road-light);
+  letter-spacing: 1px;
+  margin-top: var(--space-xxs);
+}
+
+.intro {
+  font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  display: flex;
+  padding-block: var(--space-2xl);
+  gap: var(--space-xs);
+  justify-content: center;
+  align-items: center;
+}
+
+.intro p {
+  font-size: var(--step-01);
+  margin-block: 0.12em;
+  text-align: center;
+}
+
+.intro p span {
+  font-weight: var(--font-turret-road-regular);
+  font-size: var(--step-01);
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs);
+}
+.intro h1,
+.intro h2,
+.intro h3 {
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+  font-size: var(--step-0); /* Match font size with <p> if needed */
+  font-weight: var(--font-turret-road-regular); /* Use consistent font weight */
+  text-align: center; /* Align text to the left */
+  margin-block: 0.2em; /* Add margin for spacing */
+}
+
+.little {
+  font-size: var(--step-01);
+  font-weight: var(--font-turret-road-light);
+  margin-block: 0.2em;
+  text-align: center;
+  letter-spacing: var(--space-xxs);
+}
+
+.intro a {
+  display: flex; /* Use Flexbox */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-decoration: none;
+  font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  color: hsl(var(--clr-white));
+  margin: auto;
+  text-align: center;
+}
+
+.intro a span {
+  font-weight: var(--font-turret-road-bold);
+  font-size: var(--step-4);
+  color: hsl(var(--clr-span));
+  text-align: center; /* Align text to the left */
+}
+
+.wrapper-gradient-text {
+  font-family: "Turret Road", sans-serif;
+  font-weight: var(--font-turret-road-light);
+  font-size: var(--step-1);
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+  text-align: center; /* Align text to the left */
+  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+}
+
+.text-layer {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-in-out;
+  background: linear-gradient(
+    0deg,
+    rgb(213, 223, 230),
+    rgb(78, 115, 136),
+    rgba(65, 90, 105, 0.6),
+    rgba(142, 186, 211, 0.1)
+  );
+  background-size: 100% 100%;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  padding: 0;
+  text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
+  transition: filter 0.5s ease-in-out;
+  will-change: filter;
+  z-index: 1;
+  text-align: center;
+}
+
+@keyframes shadowDrip {
+  0% {
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.853);
+  }
+  100% {
+    text-shadow: 0px 5px 10px rgb(255, 255, 255),
+      /* Reduced vertical offset */ 0px 15px 20px rgb(255, 255, 255),
+      /* Reduced vertical offset */ 0px 25px 5px rgb(232, 235, 238); /* Reduced vertical offset */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  header .logo {
+    margin-right: 50px;
+  }
+  header .bars {
+    display: block;
+    transition: 0.5s;
+  }
+  nav {
+    padding-inline: 0 auto;
+    position: fixed;
+    z-index: 3;
+  }
+  .nav-links {
+    background: var(--glass-bg);
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    padding-top: 1rem;
+    flex-direction: column;
+    pointer-events: none;
+    transition: 0.5s;
+    opacity: 0;
+  }
+
+  .nav-links li a {
+    padding: var(--space-xs);
+    margin: 0 var(--space-xs);
+    color: hsl(var(--clr-dark));
+  }
+
+  .nav-links.open {
+    margin: 0 var(--space-l) 0 var(--space-l);
+    padding: var(--space-xxs) var(--space-xs);
+    background-color: hsl(var(--clr-light));
+    color: hsl(var(--clr-dark));
+    opacity: 0.5;
+    pointer-events: all;
+    transform: translateX(40%);
+    transition: 0.5s;
+    z-index: 2;
+  }
+
+  .nav-links.open li {
+    color: hsl(var(--clr-dark));
+    opacity: 1;
+    pointer-events: all;
+    padding: 0 auto;
+    transition: 0.5s;
+  }
+
+  .nav-links.open li:last-child {
+    display: none;
+  }
+
+  .nav-links.open li a {
+    padding: var(--space-xs);
+    margin: 0 var(--space-xs);
+    color: hsl(var(--clr-dark));
+  }
+
+  .intro {
+    padding: 0 var(--space-xs) var(--space-2xs) var(--space-xs);
+    flex-direction: column;
+  }
+}

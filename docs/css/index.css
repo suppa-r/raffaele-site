@@ -107,38 +107,159 @@
 }
 
 body {
-  margin: 0;
-  font-family: "Kanit", sans-serif;
-  font-size: 3vmin;
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  display: grid;
 }
 
 .quote {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  text-align: center;
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
   color: hsl(var(--clr-white));
-  padding-block: var(--space-l);
+  margin: 0 auto;
+  text-align: center;
+
+  /* Add these properties */
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .title {
-  font-size: var(--step--1);
+  font-size: var(--step-2);
 }
 
 .author {
-  font-size: var(--step-0);
+  font-size: var(--step-1);
+}
+
+.index-content {
+  padding: var(--space-2xl);
+}
+
+a {
+  min-height: 100svh;
+  text-decoration: none;
+  font-family: var(--font-turret-road);
+  font-weight: var(--font-turret-road-light);
+}
+
+.text-with-animation {
+  font-size: var(--step-2);
+  font-family: "Turret Road", sans-serif;
+  font-weight: 100;
+  text-align: center;
+  padding-top: var(--space-4xl);
+  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.text-with-animation-1 {
+  font-size: var(--step-2);
+  font-family: "Turret Road", sans-serif;
+  font-weight: 100;
+  color: hsl(var(--clr-white));
+
+  margin: 0 auto;
+
+  text-align: center;
+  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  text-shadow: 0 0 1px var(--white);
+}
+
+.text-with-animation-1 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s forwards;
+}
+
+.text-with-animation-1 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 1.5s forwards;
+}
+
+.subtext-with-animation {
+  font-size: var(--step-2);
+  font-family: "Turret Road", sans-serif;
+  font-weight: 100;
+  color: hsl(var(--clr-white));
+
+  margin: 0 auto;
+
+  text-align: center;
+  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.subtext-with-animation span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards;
+}
+
+.subtext-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.8s forwards;
+}
+
+.subtext-with-animation-1 {
+  font-size: var(--step-2);
+  font-family: "Turret Road", sans-serif;
+  font-weight: 100;
+  color: hsl(var(--clr-white));
+  padding-top: var(--space-2xl);
+  margin: 0 auto;
+
+  text-align: center;
+  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.subtext-with-animation-1 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards;
+}
+
+.subtext-with-animation-1 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.8s forwards;
+}
+
+.space {
+  padding-right: var(--space-s);
+}
+
+@keyframes main-text-animation {
+  0% {
+    letter-spacing: 25vw;
+    word-spacing: 100vw;
+    opacity: 0;
+  }
+
+  100% {
+    letter-spacing: 2px;
+    /*word-spacing: 2vw;*/
+    word-spacing: var(--space-xs);
+    opacity: 1;
+  }
+}
+
+@keyframes word-animation {
+  0% {
+    top: 8vw;
+    opacity: 0;
+  }
+
+  100% {
+    top: 3.5vw;
+    opacity: 1;
+  }
 }
 
 .content {
   display: flex;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -152,7 +273,7 @@ body {
 .content-1 {
   display: flex;
   position: absolute;
-  top: 60%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -402,126 +523,5 @@ body {
   40%,
   60% {
     top: 2.4vmin;
-  }
-}
-
-.content-index {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.content-index a {
-  text-decoration: none;
-  margin: 0 auto;
-}
-
-.text-with-animation {
-  font-size: var(--step-2);
-  font-family: "Turret Road", sans-serif;
-  font-weight: 100;
-  text-align: center;
-  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-}
-
-.subtext-with-animation {
-  font-size: var(--step-2);
-  font-family: "Turret Road", sans-serif;
-  font-weight: 100;
-  color: hsl(var(--clr-white));
-  padding-block: var(--space-xs);
-  margin: 0 auto;
-  width: 100%;
-  letter-spacing: 6px;
-  text-align: center;
-  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  text-shadow: 0 0 1px var(--white);
-}
-
-.subtext-with-animation span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards;
-}
-
-.subtext-with-animation span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.8s forwards;
-}
-
-.text-with-animation-1 {
-  font-size: var(--step-2);
-  font-family: "Turret Road", sans-serif;
-  font-weight: 100;
-  color: hsl(var(--clr-white));
-  padding-block: var(--space-xs);
-  margin: 0 auto;
-  width: 100%;
-  letter-spacing: 6px;
-  text-align: center;
-  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  text-shadow: 0 0 1px var(--white);
-}
-
-.text-with-animation-1 span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s forwards;
-}
-
-.text-with-animation-1 span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 1.5s forwards;
-}
-
-.subtext-with-animation-1 {
-  font-size: var(--step-2);
-  font-family: "Turret Road", sans-serif;
-  font-weight: 100;
-  color: hsl(var(--clr-white));
-  padding-block: var(--space-xs);
-  margin: 0 auto;
-  width: 100%;
-  letter-spacing: 6px;
-  text-align: center;
-  animation: main-text-animation 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-}
-.subtext-with-animation-1 span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s forwards;
-}
-.subtext-with-animation-1 span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 1.5s forwards;
-}
-
-@keyframes main-text-animation {
-  0% {
-    letter-spacing: 25vw;
-    word-spacing: 100vw;
-    opacity: 0;
-  }
-
-  100% {
-    letter-spacing: 2px;
-    word-spacing: 2vw;
-    opacity: 1;
-  }
-}
-
-@keyframes word-animation {
-  0% {
-    top: 8vw;
-    opacity: 0;
-  }
-
-  100% {
-    top: 3.5vw;
-    opacity: 1;
   }
 }
