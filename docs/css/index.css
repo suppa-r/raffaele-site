@@ -24,23 +24,19 @@
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
 
-  /* Step -2: 9.7222px → 11.1111px */
-  --step--2: clamp(0.6076rem, 0.5735rem + 0.1561vw, 0.6944rem);
-  /* Step -1: 11.6667px → 13.3333px */
-  --step--1: clamp(0.7292rem, 0.6882rem + 0.1873vw, 0.8333rem);
-  /* Step 0: 14px → 16px */
-  --step-0: clamp(0.875rem, 0.8258rem + 0.2247vw, 1rem);
-  /* Step 1: 16.8px → 19.2px */
-  --step-1: clamp(1.05rem, 0.991rem + 0.2697vw, 1.2rem);
-  /* Step 2: 20.16px → 23.04px */
-  --step-2: clamp(1.26rem, 1.1892rem + 0.3236vw, 1.44rem);
-  /* Step 3: 24.192px → 27.648px */
-  --step-3: clamp(1.512rem, 1.4271rem + 0.3883vw, 1.728rem);
-  /* Step 4: 29.0304px → 33.1776px */
-  --step-4: clamp(1.8144rem, 1.7125rem + 0.466vw, 2.0736rem);
-  /* Step 5: 34.8365px → 39.8131px */
+  /* Step --0: 14px → 16px */
+  --step--0: clamp(0.875rem, 0.8258rem + 0.2247vw, 1rem);
+  /* Step 0: 16.8px → 19.2px */
+  --step-0: clamp(1.05rem, 0.991rem + 0.2697vw, 1.2rem);
+  /* Step 1: 20.16px → 23.04px */
+  --step-1: clamp(1.26rem, 1.1892rem + 0.3236vw, 1.44rem);
+  /* Step 2: 24.192px → 27.648px */
+  --step-2: clamp(1.512rem, 1.4271rem + 0.3883vw, 1.728rem);
+  /* Step 3: 29.0304px → 33.1776px */
+  --step-3: clamp(1.8144rem, 1.7125rem + 0.466vw, 2.0736rem);
+  /* Step 4: 34.8365px → 39.8131px */
   --step-5: clamp(2.1773rem, 2.055rem + 0.5592vw, 2.4883rem);
-  /* Step 6: 41.8038px → 47.7757px */
+  /* Step 5: 41.8038px → 47.7757px */
 
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
@@ -133,7 +129,7 @@ main {
 }
 
 .title {
-  font-size: var(--step--1);
+  font-size: var(--step-1);
 }
 
 .author {
