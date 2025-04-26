@@ -133,7 +133,6 @@ main {
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
   justify-content: center;
   font-size: var(--step-3);
   color: hsl(var(--clr-white));
@@ -143,10 +142,9 @@ main {
 .content-1 {
   display: flex;
   position: absolute;
-  top: 20%;
+  top: 18%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
   justify-content: center;
   font-size: var(--step-3);
   color: hsl(var(--clr-white));
@@ -419,8 +417,7 @@ main {
   font-size: var(--step-1);
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
-  padding-inline: var(--space-2xl);
-  padding-block: var(--space-3xl);
+  padding-inline: var(--space-3xl);
 }
 
 .quote {
@@ -452,110 +449,110 @@ main {
   position: absolute;
   top: 35%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.7s ease-in forwards;
   width: 100%;
 }
 
 .text-with-animation-1 {
   display: block;
   position: absolute;
-  top: 37%;
+  top: 40%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.7s ease-in forwards;
   width: 100%;
 }
 
 .text-with-animation-2 {
   display: block;
   position: absolute;
-  top: 40%;
+  top: 45%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.7s ease-in forwards;
   width: 100%;
 }
 
-.text-with-animation-2 span:first-of-type {
+/*.text-with-animation-2 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 0.5s ease 1.5s forwards;
 }
 .text-with-animation-2 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
+  animation: word-animation 0.5s ease 1.5s forwards;
+}*/
 
 .text-with-animation-3 {
   display: block;
   position: absolute;
-  top: 45%;
+  top: 50%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.7s ease-in forwards;
   width: 100%;
 }
 
-.text-with-animation-3 span:first-of-type {
+/*.text-with-animation-3 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 0.5s ease 1.5s forwards;
 }
 
 .text-with-animation-3 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
+  animation: word-animation 0.5s ease 1.5s forwards;
+}*/
 
 .text-with-animation-4 {
   display: block;
   position: absolute;
-  top: 48%;
+  top: 55%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.7s ease-in forwards;
   width: 100%;
 }
 
-.text-with-animation-4 span:first-of-type {
+/*.text-with-animation-4 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 0.5s ease 1.5s forwards;
 }
 .text-with-animation-4 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
+  animation: word-animation 0.5s ease 1.5s forwards;
+}*/
 
 .text-with-animation-5 {
   display: block;
   position: absolute;
-  top: 52%;
+  top: 65%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.7s ease-in forwards;
   width: 100%;
 }
 
-.text-with-animation-5 span:first-of-type {
+/*.text-with-animation-5 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 0.5s ease 1.5s forwards;
 }
 
 .text-with-animation-5 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
+  animation: word-animation 0.5s ease 1.5s forwards;
+}*/
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 10vw;
-    word-spacing: 50vw;
+    letter-spacing: var(--space-m);
+    word-spacing: var(--space-4xl);
     opacity: 0;
   }
   100% {
-    letter-spacing: 10px;
-    word-spacing: 0.25vw;
+    letter-spacing: var(--space-xs);
+    word-spacing: var(--space-xxs);
     opacity: 1;
   }
 }
@@ -565,7 +562,7 @@ main {
     opacity: 0;
   }
   100% {
-    top: 3.5vw;
+    top: 4vw; /*top: 3.5vw;*/
     opacity: 1;
   }
 }
