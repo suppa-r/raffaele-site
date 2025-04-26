@@ -128,8 +128,11 @@ main {
 
 .content {
   display: flex;
-  position: relative;
-  top: 20%;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   justify-content: center;
   font-size: var(--step-3);
   color: hsl(var(--clr-white));
@@ -138,12 +141,15 @@ main {
 
 .content-1 {
   display: flex;
-  position: relative;
-  top: 35%;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   justify-content: center;
   font-size: var(--step-3);
   color: hsl(var(--clr-white));
-  box-shadow: 10px 10px 20px 0 rgb(177, 167, 167);
+  box-shadow: 10px 10px 20px 0 rgba(226, 222, 222, 0.541);
 }
 
 .content div {
@@ -437,28 +443,25 @@ main {
 }
 
 .text-with-animation {
-  margin-block: var(--space-s);
+  display: block;
+  position: absolute;
+  top: 50%;
+  text-align: center;
   font-size: var(--step-2);
-  text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
-  width: 500vw;
-  margin-left: -200vw;
-  opacity: 1;
-  letter-spacing: 4px;
-  text-align: center;
+  width: 100%;
+  letter-spacing: var(--space-xs);
 }
 
 .text-with-animation-1 {
+  display: block;
+  position: absolute;
+  top: 55%;
+  text-align: center;
   font-size: var(--step-2);
-  text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
-  width: 500vw;
-  margin-left: -200vw;
-  opacity: 1;
-  letter-spacing: 4px;
-  text-align: center;
-  margin-block: var(--space-s);
-  padding-bottom: var(--space-1xl);
+  width: 100%;
+  letter-spacing: var(--space-xs);
 }
 
 .text-with-animation-1 span:first-of-type {
@@ -473,55 +476,77 @@ main {
   animation: word-animation 0.5s ease-out 1.5s forwards;
 }
 
-.subtext-with-animation-1 {
+.text-with-animation-2 {
+  display: block;
+  position: absolute;
+  top: 60%;
+  text-align: center;
   font-size: var(--step-2);
-  text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
-  width: 500vw;
-  margin-left: -200vw;
-  opacity: 1;
-  letter-spacing: 4px;
+  width: 100%;
+  letter-spacing: var(--space-xs);
+}
+.text-with-animation-2 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+.text-with-animation-2 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
+.text-with-animation-3 {
+  display: block;
+  position: absolute;
+  top: 70%;
   text-align: center;
-}
-.subtext-with-animation-1 span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
-.subtext-with-animation-1 span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
-
-.subtext-with-animation-1 span:nth-of-type(3) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
-.subtext-with-animation-1 span:nth-of-type(4) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
-
-.subtext-with-animation-2 {
   font-size: var(--step-2);
-  text-align: center;
   animation: main-text-animation 1.7s ease-in-out forwards;
-  width: 500vw;
-  margin-left: -200vw;
-  opacity: 1;
-  letter-spacing: 4px;
-  text-align: center;
+  width: 100%;
+  letter-spacing: var(--space-xs);
 }
-.subtext-with-animation-2 span:first-of-type {
+.text-with-animation-3 span:first-of-type {
   position: relative;
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.5s forwards;
 }
 
-.subtext-with-animation-2 span:nth-of-type(2) {
+.text-with-animation-3 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
+.text-with-animation-3 span:nth-of-type(3) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+.text-with-animation-3 span:nth-of-type(4) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
+.text-with-animation-4 {
+  display: block;
+  position: absolute;
+  top: 80%;
+  text-align: center;
+  font-size: var(--step-2);
+  animation: main-text-animation 1.7s ease-in-out forwards;
+  width: 100%;
+  letter-spacing: var(--space-xs);
+}
+
+.text-with-animation-4 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+.text-with-animation-4 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.5s forwards;
