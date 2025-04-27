@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
 
 :root {
-  --sp: 5s;
+  --sp: 12s;
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
@@ -104,6 +104,9 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: hsl(var(--clr-dark));
   font-family: var(--font-turret-road);
   font-weight: var(--font-turret-road-light);
@@ -112,10 +115,9 @@ body {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensure the parent container takes up the full viewport height */
+  min-height: 100vh;
   min-height: 100svh;
+  margin: auto;
 }
 
 .clickable-area {
@@ -127,34 +129,29 @@ main {
   z-index: 1;
 }
 
-.content {
+.curve-container {
   display: flex;
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  justify-content: center;
-  font-size: var(--step-3);
-  color: hsl(var(--clr-white));
-  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.541);
+  flex-direction: column;
+  justify-content: space-between;
+  margin-inline: auto;
+  row-gap: 5rem;
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-3xl);
+  font-size: var(--step-2);
 }
 
-.content-1 {
+.content {
   display: flex;
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-items: center;
   justify-content: center;
-  font-size: var(--step-3);
-  color: hsl(var(--clr-white));
-  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.541);
+  position: relative;
+  margin-inline: auto;
 }
 
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease-out 0s infinite;
+  animation: show-hide var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -164,7 +161,6 @@ main {
     opacity: 0;
     transform: scale(0.4);
   }
-
   20%,
   80% {
     opacity: 1;
@@ -177,28 +173,23 @@ main {
   position: relative;
   text-align: center;
   box-sizing: border-box;
-  color: hsl(var(--clr-accent));
+  color: #ffffff90;
+  text-shadow: 0 0 1px var(--white);
+}
+
+.content-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-inline: auto;
 }
 
 .content-1 div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease-out 0s infinite;
+  animation: show-hide var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
-}
-
-@keyframes show-hide {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-
-  20%,
-  80% {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 .content-1 div span {
@@ -206,35 +197,32 @@ main {
   position: relative;
   text-align: center;
   box-sizing: border-box;
-  color: hsl(var(--clr-accent));
+  color: #ffffff90;
+  text-shadow: 0 0 1px var(--white);
 }
 
 .up:before,
 .down:before {
   width: 80%;
   height: 0.1vmin;
-  background: radial-gradient(
-    ellipse at 50% 50%,
-    hsl(var(--clr-white)),
-    #aaa6a67c 70%
-  );
+  background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
   content: "";
   position: absolute;
   border-radius: 100%;
-  filter: blur(8px);
+  filter: blur(2px);
   left: 10%;
   top: 49%;
-  box-shadow: 0 0 100px 0 hsl(var(--clr-white));
-  animation: shadow var(--sp) ease-out 0s infinite;
+  box-shadow: 0 0 100px 0 var(--white);
+  animation: shadow var(--sp) ease 0s infinite;
 }
 
 .down:before {
   width: 1vmin;
   height: 0.5vmin;
-  filter: blur(12px);
+  filter: blur(3px);
   left: calc(50% - 0.5vmin);
   top: 45%;
-  box-shadow: 0 0 10px 0 hsl(var(--clr-white));
+  box-shadow: 0 0 10px 0 var(--white);
 }
 
 @keyframes shadow {
@@ -244,7 +232,6 @@ main {
   100% {
     opacity: 0;
   }
-
   45%,
   55% {
     opacity: 0.25;
@@ -255,7 +242,7 @@ main {
 .up span,
 .down span {
   animation-duration: var(--sp);
-  animation-timing-function: ease-out;
+  animation-timing-function: ease;
   animation-delay: 0s;
   animation-iteration-count: infinite;
 }
@@ -301,7 +288,6 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: -0.6vmin;
@@ -315,7 +301,6 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: -1.2vmin;
@@ -329,7 +314,6 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: -1.8vmin;
@@ -343,7 +327,6 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: -2.4vmin;
@@ -357,7 +340,6 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: 0.6vmin;
@@ -371,7 +353,6 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: 1.2vmin;
@@ -385,7 +366,6 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: 1.8vmin;
@@ -399,27 +379,11 @@ main {
   100% {
     top: 0;
   }
-
   40%,
   60% {
     top: 2.4vmin;
   }
 }
-
-.index-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-inline: auto;
-  min-height: 100vh; /* Ensure the parent container takes up the full viewport height */
-  min-height: 100svh;
-  font-size: var(--step-1);
-  font-family: var(--font-turret-road);
-  font-weight: var(--font-turret-road-light);
-  padding-inline: var(--space-3xl);
-}
-
 .quote {
   display: flex;
   flex-direction: column;
@@ -441,118 +405,112 @@ main {
 }
 
 .space {
-  padding-right: var(--space-s);
+  padding-right: var(--space-xxs);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-xl);
+  font-size: var(--step-2);
+  font-family: var(--font-turret-road);
+  font-weight: var(--font-turret-road-light);
+  color: hsl(var(--clr-white));
 }
 
 .text-with-animation {
-  display: block;
-  position: absolute;
-  top: 35%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in forwards;
+  animation: main-text-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   width: 100%;
 }
 
 .text-with-animation-1 {
-  display: block;
-  position: absolute;
-  top: 40%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in forwards;
+  animation: main-text-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   width: 100%;
 }
 
 .text-with-animation-2 {
-  display: block;
-  position: absolute;
-  top: 45%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in forwards;
+  animation: main-text-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   width: 100%;
 }
 
-/*.text-with-animation-2 span:first-of-type {
+.text-with-animation-2 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 .text-with-animation-2 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
-}*/
-
-.text-with-animation-3 {
-  display: block;
-  position: absolute;
-  top: 50%;
-  text-align: center;
-  animation: main-text-animation 1.7s ease-in forwards;
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   width: 100%;
 }
 
-/*.text-with-animation-3 span:first-of-type {
+.text-with-animation-3 {
+  text-align: center;
+  animation: main-text-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  width: 100%;
+}
+
+.text-with-animation-3 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 .text-with-animation-3 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
-}*/
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
 
 .text-with-animation-4 {
-  display: block;
-  position: absolute;
-  top: 55%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in forwards;
+  animation: main-text-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   width: 100%;
 }
 
-/*.text-with-animation-4 span:first-of-type {
+.text-with-animation-4 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 .text-with-animation-4 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
-}*/
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
 
 .text-with-animation-5 {
-  display: block;
-  position: absolute;
-  top: 65%;
   text-align: center;
-  animation: main-text-animation 1.7s ease-in forwards;
+  animation: main-text-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   width: 100%;
 }
 
-/*.text-with-animation-5 span:first-of-type {
+.text-with-animation-5 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 .text-with-animation-5 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease 1.5s forwards;
-}*/
+  animation: word-animation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: var(--space-m);
-    word-spacing: var(--space-4xl);
+    letter-spacing: 10vw;
+    word-spacing: 5vw;
     opacity: 0;
   }
   100% {
-    letter-spacing: var(--space-xs);
-    word-spacing: var(--space-xxs);
+    letter-spacing: 4px;
+    word-spacing: 1vw;
     opacity: 1;
   }
 }
@@ -562,7 +520,7 @@ main {
     opacity: 0;
   }
   100% {
-    top: 4vw; /*top: 3.5vw;*/
+    top: 3.5vw;
     opacity: 1;
   }
 }

@@ -1,5 +1,10 @@
 .lines {
-  margin-inline: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 .line {
@@ -26,8 +31,7 @@
     #ffffff 75%,
     #ffffff 100%
   );
-  animation: drop var(--animation-speed) var(--animation-speed) ease-in-out
-    infinite;
+  animation: drop 3s 3s ease infinite;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
 }
@@ -37,7 +41,7 @@
 }
 
 .line:nth-child(1)::after {
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 
 .line:nth-child(2) {
@@ -45,7 +49,7 @@
 }
 
 .line:nth-child(2)::after {
-  animation-delay: 1s;
+  animation-delay: 1.8s;
 }
 
 .line:nth-child(3) {
@@ -53,7 +57,7 @@
 }
 
 .line:nth-child(3)::after {
-  animation-delay: 1s;
+  animation-delay: 1.6s;
 }
 
 .line:nth-child(4) {
@@ -61,7 +65,7 @@
 }
 
 .line:nth-child(4)::after {
-  animation-delay: 1s;
+  animation-delay: 1.6s;
 }
 
 .line:nth-child(5) {
@@ -69,7 +73,7 @@
 }
 
 .line:nth-child(5)::after {
-  animation-delay: 1s;
+  animation-delay: 1.2s;
 }
 
 .line:nth-child(6) {
@@ -188,6 +192,7 @@
   0% {
     top: -50%;
   }
+
   100% {
     top: 110%;
   }
