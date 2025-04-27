@@ -422,7 +422,7 @@ main {
   justify-content: center;
   font-size: var(--step-2);
   color: hsl(var(--clr-white));
-  padding-block: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
   padding-inline: auto;
 }
 
@@ -516,6 +516,7 @@ main {
   text-align: center;
   animation: main-text-animation 1.5s ease-out forwards;
   width: 100%;
+  padding-top: var(--space-1xl);
 }
 
 .text-with-animation-5 span:first-of-type {
