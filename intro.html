@@ -15,6 +15,7 @@
     <link rel="icon" href="docs/images/favicon-32x32-min.png" />
     <link rel="stylesheet" href="/docs/css/reset.css" />
     <link rel="stylesheet" href="/docs/css/intro.css" />
+
     <script src="/docs/js/index.js"></script>
   </head>
   <body>
@@ -142,8 +143,13 @@
         </ul>
       </nav>
     </header>
-    <section class="intro">
-      <a href="intro-1.html">
+    <div
+      class="clickable-area"
+      role="button"
+      tabindex="0"
+      onclick="location.href='intro-1.html';"
+    >
+      <section class="intro">
         <div>
           <p>The way it began ... the way it is.</p>
           <p>If I had a secret .. I'm not gonna take it to my grave!</p>
@@ -157,9 +163,6 @@
           </p>
           <h1><em>no kidding&nbsp;&nbsp;Finally</em></h1>
           <p>it's one prayer, one Blessing, one Miracle at a time.</p>
-        </div>
-
-        <div>
           <h2>in a gist</h2>
           <p>you can't microwave it</p>
           <p>
@@ -193,8 +196,8 @@
           <span class="text-layer">u</span>
           <span class="text-layer">p</span>
         </div>
-      </a>
-    </section>
+      </section>
+    </div>
     <script src="/docs/js/intro.js"></script>
   </body>
 </html>

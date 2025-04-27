@@ -1,17 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
-
 :root {
-  --gradient: linear-gradient(45deg, #d3ff33a4, #6bfff3c9, #90a2d3, #68b0e098);
-  --glass-bg: linear-gradient(45deg, #021f10f1, #6bfff31f, #445174, #68b0e027);
-  --border: 10px solid rgba(255, 255, 255, 0.1);
-  --shadow: 10px 10px 25px #5d808f, -10px -10px 25px #ffffff;
-
+  --sp: 12s;
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
 
+  --gradient: linear-gradient(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
+  --glass-bg: rgba(184, 228, 217, 0.979);
+  --border: 1px solid rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  --color-scheme: dark light;
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
   --clr-span: 195, 36%, 45%;
@@ -22,30 +20,27 @@
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
 
-  /* Step -1: 12.8px → 14.4px */
-  --step--1: clamp(0.8rem, 0.7652rem + 0.1739cqi, 0.9rem);
+  /* Step -1: 13.3333px → 13.5034px */
+  --step--1: clamp(0.8333rem, 0.8296rem + 0.0185cqi, 0.844rem);
   /* Step 0: 16px → 18px */
   --step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-  /* Step 1: 20px → 22.5px */
-  --step-1: clamp(1.25rem, 1.1957rem + 0.2717cqi, 1.4063rem);
-  /* Step 2: 25px → 28.125px */
-  --step-2: clamp(1.5625rem, 1.4946rem + 0.3397cqi, 1.7578rem);
-  /* Step 3: 31.25px → 35.1563px */
-  --step-3: clamp(1.9531rem, 1.8682rem + 0.4246cqi, 2.1973rem);
-  /* Step 4: 39.0625px → 43.9453px */
-  --step-4: clamp(2.4414rem, 2.3353rem + 0.5307cqi, 2.7466rem);
-  /* Step 5: 48.8281px → 54.9316px */
-  --step-5: clamp(3.0518rem, 2.9191rem + 0.6634cqi, 3.4332rem);
-  /* Step 6: 61.0352px → 68.6646px */
-  --step-6: clamp(3.8147rem, 3.6488rem + 0.8293cqi, 4.2915rem);
+  /* Step 1: 19.2px → 23.994px */
+  --step-1: clamp(1.2rem, 1.0958rem + 0.5211cqi, 1.4996rem);
+  /* Step 2: 23.04px → 31.984px */
+  --step-2: clamp(1.44rem, 1.2456rem + 0.9722cqi, 1.999rem);
+  /* Step 3: 27.648px → 42.6347px */
+  --step-3: clamp(1.728rem, 1.4022rem + 1.629cqi, 2.6647rem);
+  /* Step 4: 33.1776px → 56.832px */
+  --step-4: clamp(2.0736rem, 1.5594rem + 2.5711cqi, 3.552rem);
+  /* Step 5: 39.8131px → 75.7571px */
+  --step-5: clamp(2.4883rem, 1.7069rem + 3.907cqi, 4.7348rem);
+  /* Step 6: 47.7757px → 100.9842px */
+  --step-6: clamp(2.986rem, 1.8293rem + 5.7835cqi, 6.3115rem);
 
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
 
-  --space-xxs: clamp(0.3rem, 0.4rem + 0.2174cqi, 0.4rem);
-  /* Space 2xs: 4px → 4.5px */
-  --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
   /* Space s: 16px → 18px */
   --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
   /* Space m: 24px → 27px */
@@ -58,14 +53,28 @@
   --space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
   /* Space 3xl: 96px → 108px */
   --space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
+  /* Space 4xl: 112px → 126px */
+  --space-4xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
+  /* Space 5xl: 112px → 126px */
+  --space-5xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
+  /* Space 6xl: 128px → 144px */
+  --space-6xl: clamp(8rem, 7.6522rem + 1.7391cqi, 9rem);
+  /* Space 7xl: 144px → 162px */
+  --space-7xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
+  /* Space 8xl: 160px → 180px */
+  --space-8xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
+  /* Space 9xl: 176px → 198px */
+  --space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
 
-  --font-turret-road: "Turret Road", sans-serif;
-  --font-turret-road-light: 100;
-  --font-turret-road-regular: 400;
-  --font-turret-road-bold: 700;
+  /* ------------------------------------------------------- */
+  /* ----------------- Custom Font-Families ----------- ---- */
+  /* ----------------------------------------------- ------- */
 
-  --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
-  --font-big-shoulders-inline-light: 100;
+  --ff-monoton-regular: "Monoton", sans-serif;
+  --ff-kanit: "Kanit", sans-serif;
+  --fw-100: 100;
+  --fw-regular: 400;
+  --fs-normal: normal;
 }
 
 /* --------------------------------------- */
@@ -91,7 +100,6 @@
 .text-accent {
   color: hsl(var(--clr-accent));
 }
-
 body {
   background: hsl(var(--clr-dark));
   font-family: var(--font-turret-road);
