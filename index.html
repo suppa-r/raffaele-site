@@ -191,6 +191,7 @@
     justify-content: space-between;
     margin-inline: auto;
     padding-top: var(--space-2xl);
+    padding-inline: var(--space-3xl);
     row-gap: 5rem;
     font-family: var(--ff-kanit);
     font-weight: var(--fw-100);
@@ -545,6 +546,17 @@
       opacity: 1;
     }
   }
+
+  @media(max-width:400px){
+    .quote{
+        padding-inline: var(--space-xl);
+        width: 100%;
+        max-width: 100%;
+    }
+    .container{
+       padding-inline: var(--space-xl);
+    }
+}
 </style>
   </head>
   <body>
