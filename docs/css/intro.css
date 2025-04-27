@@ -1,18 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
-
 :root {
-  --sp: 8s;
+  --sp: 12s;
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
 
   --gradient: linear-gradient(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
-  --glass-bg: rgba(227, 228, 184, 0.979);
+  --glass-bg: rgba(184, 228, 217, 0.979);
   --border: 1px solid rgba(255, 255, 255, 0.1);
   --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
+  --color-scheme: dark light;
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
   --clr-span: 195, 36%, 45%;
@@ -23,23 +20,19 @@
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
 
-  /* Step -2: 9.7222px → 11.1111px */
-  --step--2: clamp(0.6076rem, 0.5735rem + 0.1561vw, 0.6944rem);
-  /* Step -1: 11.6667px → 13.3333px */
-  --step--1: clamp(0.7292rem, 0.6882rem + 0.1873vw, 0.8333rem);
-  /* Step 0: 14px → 16px */
-  --step-0: clamp(0.875rem, 0.8258rem + 0.2247vw, 1rem);
-  /* Step 1: 16.8px → 19.2px */
-  --step-1: clamp(1.05rem, 0.991rem + 0.2697vw, 1.2rem);
-  /* Step 2: 20.16px → 23.04px */
-  --step-2: clamp(1.26rem, 1.1892rem + 0.3236vw, 1.44rem);
-  /* Step 3: 24.192px → 27.648px */
-  --step-3: clamp(1.512rem, 1.4271rem + 0.3883vw, 1.728rem);
-  /* Step 4: 29.0304px → 33.1776px */
-  --step-4: clamp(1.8144rem, 1.7125rem + 0.466vw, 2.0736rem);
-  /* Step 5: 34.8365px → 39.8131px */
+  /* Step --0: 14px → 16px */
+  --step--0: clamp(0.875rem, 0.8258rem + 0.2247vw, 1rem);
+  /* Step 0: 16.8px → 19.2px */
+  --step-0: clamp(1.05rem, 0.991rem + 0.2697vw, 1.2rem);
+  /* Step 1: 20.16px → 23.04px */
+  --step-1: clamp(1.26rem, 1.1892rem + 0.3236vw, 1.44rem);
+  /* Step 2: 24.192px → 27.648px */
+  --step-2: clamp(1.512rem, 1.4271rem + 0.3883vw, 1.728rem);
+  /* Step 3: 29.0304px → 33.1776px */
+  --step-3: clamp(1.8144rem, 1.7125rem + 0.466vw, 2.0736rem);
+  /* Step 4: 34.8365px → 39.8131px */
   --step-5: clamp(2.1773rem, 2.055rem + 0.5592vw, 2.4883rem);
-  /* Step 6: 41.8038px → 47.7757px */
+  /* Step 5: 41.8038px → 47.7757px */
 
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
@@ -70,16 +63,15 @@
   /* Space 6xl: 224px → 256px */
   --space-6xl: clamp(14rem, 13.2121rem + 3.5945cqi, 16rem);
 
-  --font-turret-road: "Turret Road", sans-serif;
-  --font-turret-road-light: 100;
-  --font-turret-road-regular: 400;
-  --font-turret-road-bold: 700;
+  /* ------------------------------------------------------- */
+  /* ----------------- Custom Font-Families ----------- ---- */
+  /* ----------------------------------------------- ------- */
 
-  --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
-  --font-big-shoulders-inline-light: 100;
-
-  --font-kanit: "Kanit", sans-serif;
-  --font-kanit-light: 100;
+  --ff-monoton-regular: "Monoton", sans-serif;
+  --ff-kanit: "Kanit", sans-serif;
+  --fw-100: 100;
+  --fw-regular: 400;
+  --fs-normal: normal;
 }
 
 /* --------------------------------------- */
@@ -105,10 +97,11 @@
 .text-accent {
   color: hsl(var(--clr-accent));
 }
-
 /* --------------------------------------- */
 html {
   color-scheme: dark only;
+  font-family: var(--ff-kanit);
+  font-weight: 100;
 }
 
 body:before {
@@ -147,6 +140,8 @@ body:before {
 }
 
 header {
+  font-family: var(--ff-kanit);
+  font-weight: 100;
   position: relative;
   height: 4rem;
   width: 100%;
@@ -158,13 +153,11 @@ header {
 header h2 {
   color: hsl(var(--clr-white));
   font-size: var(--step-01);
-  font-weight: var(--font-turret-road-light);
 }
 
 header h2 span {
   color: hsl(var(--clr-span));
   font-size: var(--step-0);
-  font-weight: var(--font-turret-road-bold);
   padding-left: var(--space-xxs);
   padding-right: var(--space-xs);
 }
@@ -173,7 +166,8 @@ header .logo {
   display: flex;
   align-items: center;
   padding: var(--space-xs) var(--space-xs);
-  font-family: "Turret Road", sans-serif;
+  font-family: var(--ff-kanit);
+  font-weight: 100;
 }
 header .bars {
   position: relative;
@@ -210,7 +204,8 @@ header .bars::before {
 }
 
 .nav-links {
-  font-family: "Turret Road", sans-serif;
+  font-family: var(--ff-kanit);
+  font-weight: 100;
   display: flex;
   margin-inline: auto;
 }
@@ -224,18 +219,22 @@ header .bars::before {
   flex-direction: column;
   align-items: center;
   color: hsl(var(--clr-accent));
-  font-weight: var(--font-turret-road-light);
+  font-weight: 100;
+  font-size: var(--step-1);
+  text-decoration: none;
+  text-align: center;
 }
 .nav-links li a span {
   font-size: var(--step-01);
-  font-weight: var(--font-turret-road-light);
+  font-family: var(--ff-kanit);
+  font-weight: 100;
   letter-spacing: 1px;
   margin-top: var(--space-xxs);
 }
 
 .intro {
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
+  font-family: var(--ff-kanit);
+  font-weight: 100;
   display: flex;
   padding-block: var(--space-2xl);
   gap: var(--space-xs);
@@ -250,7 +249,8 @@ header .bars::before {
 }
 
 .intro p span {
-  font-weight: var(--font-turret-road-regular);
+  font-weight: var(--ff-kanit);
+  font-weight: 100;
   font-size: var(--step-01);
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs);
@@ -261,17 +261,20 @@ header .bars::before {
   margin: 0; /* Remove default margins */
   padding: 0; /* Remove default padding */
   font-size: var(--step-0); /* Match font size with <p> if needed */
-  font-weight: var(--font-turret-road-regular); /* Use consistent font weight */
+  font-weight: var(--ff-kanit); /* Use consistent font weight */
+  font-weight: 100;
   text-align: center; /* Align text to the left */
   margin-block: 0.2em; /* Add margin for spacing */
 }
 
-.little {
-  font-size: var(--step-01);
-  font-weight: var(--font-turret-road-light);
-  margin-block: 0.2em;
+.ya {
+  font-size: var(--step-6);
+  font-family: var(--ff-kanit);
+  font-weight: 100;
+  color: hsl(var(--clr-white));
   text-align: center;
-  letter-spacing: var(--space-xxs);
+  margin-block: 0.5em;
+  letter-spacing: var(--space-xs);
 }
 
 .intro a {
@@ -280,15 +283,17 @@ header .bars::before {
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
   text-decoration: none;
-  font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
+  font-family: var(--ff-kanit);
+  font-size: var(--step-0);
+  font-weight: 100;
   color: hsl(var(--clr-white));
   margin: auto;
   text-align: center;
 }
 
 .intro a span {
-  font-weight: var(--font-turret-road-bold);
+  font-weight: var(--ff-kanit);
+  font-weight: 100;
   font-size: var(--step-4);
   color: hsl(var(--clr-span));
   text-align: center; /* Align text to the left */
@@ -296,7 +301,8 @@ header .bars::before {
 
 .wrapper-gradient-text {
   font-family: "Turret Road", sans-serif;
-  font-weight: var(--font-turret-road-light);
+  font-weight: var(--ff-kanit);
+  font-weight: 100;
   font-size: var(--step-1);
   margin: 0; /* Remove default margins */
   padding: 0; /* Remove default padding */
