@@ -386,23 +386,23 @@ header .bars::before {
   .nav-links li a {
     padding: var(--space-xs);
     margin: 0 var(--space-xs);
-    color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-white));
   }
 
   .nav-links.open {
-    margin: 0 var(--space-l) 0 var(--space-l);
-    padding: var(--space-xxs) var(--space-xs);
-    background-color: hsl(var(--clr-light));
-    color: hsl(var(--clr-dark));
-    opacity: 0.5;
+    background-color: transparent;
+    color: hsl(var(--clr-white));
+    opacity: 1;
     pointer-events: all;
-    transform: translateX(40%);
-    transition: 0.5s;
+    position: fixed; /* Ensure it is positioned relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    transition: 0.3s;
     z-index: 2;
   }
-
   .nav-links.open li {
-    color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-white));
     opacity: 1;
     pointer-events: all;
     padding: 0 auto;
@@ -416,7 +416,7 @@ header .bars::before {
   .nav-links.open li a {
     padding: var(--space-xs);
     margin: 0 var(--space-xs);
-    color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-white));
   }
 
   .intro {

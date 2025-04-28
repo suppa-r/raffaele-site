@@ -483,13 +483,13 @@ html {
 
 .text-with-animation-4 {
   animation: main-text-animation 1.5s ease-in-out forwards;
-  margin-block: var(--space-xxs);
+  margin-top: var(--space-2xl);
   user-select: none;
 }
 
 .text-with-animation-5 {
   animation: main-text-animation 1.5s ease-in-out forwards;
-  margin-block: var(--space-s);
+  margin-block: var(--space-xxs);
   user-select: none;
 }
 
