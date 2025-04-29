@@ -4,8 +4,9 @@
 	/* ------------------ Custom Colors ---------------- */
 	/* ------------------------------------------------- */
 
-	--gradient: linear-gradient(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
-	--glass-bg: rgba(184, 228, 217, 0.979);
+	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
+	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
+
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
@@ -159,8 +160,10 @@ html {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	align-items: center; /* Center content horizontally */
-	width: 100%; /* Full width */
+	align-items: center;
+	/* Center content horizontally */
+	width: 100%;
+	/* Full width */
 	row-gap: var(--space-2xl);
 	margin-top: var(--space-xl);
 	color: hsl(var(--clr-white));
@@ -296,7 +299,8 @@ html {
 
 	40%,
 	60% {
-		top: var(--space-xxs); /* Updated to move down */
+		top: var(--space-xxs);
+		/* Updated to move down */
 	}
 }
 
@@ -468,6 +472,7 @@ html {
 		transform: scale(0);
 		opacity: 0.4;
 	}
+
 	100% {
 		background-color: transparent;
 		transform: scale(1);
@@ -532,6 +537,7 @@ html {
 		word-spacing: 100vw;
 		opacity: 0;
 	}
+
 	/*50% {
 		letter-spacing: 8vw;
 		word-spacing: 25vw;
@@ -543,11 +549,13 @@ html {
 		opacity: 1;
 	}
 }
+
 @keyframes step-start {
 	0% {
 		opacity: 0;
 		transform: translateY(100px);
 	}
+
 	100% {
 		opacity: 1;
 		transform: translateY(0);
@@ -559,6 +567,7 @@ html {
 		background: hsl(var(--clr-dark));
 	}
 }
+
 @media (prefers-color-scheme: light) {
 	.wrapper {
 		background: hsl(var(--clr-light));
@@ -571,6 +580,7 @@ html {
 		margin-inline: auto;
 		font-size: var(--step-0);
 	}
+
 	.author {
 		padding-inline: var(--space-s);
 		margin-inline: auto;
@@ -585,18 +595,23 @@ html {
 	.text-with-animation {
 		font-size: var(--step-1);
 	}
+
 	.text-with-animation-1 {
 		font-size: var(--step-0);
 	}
+
 	.text-with-animation-2 {
 		font-size: var(--step-0);
 	}
+
 	.text-with-animation-3 {
 		font-size: var(--step-0);
 	}
+
 	.text-with-animation-4 {
 		font-size: var(--step-0);
 	}
+
 	.text-with-animation-5 {
 		font-size: var(--step-1);
 	}
