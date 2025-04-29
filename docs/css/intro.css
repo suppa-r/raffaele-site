@@ -219,40 +219,32 @@ header .bars::before {
 .nav-links {
 	display: flex;
 	margin-inline: auto;
-	gap: var(--space-xl);
-	padding-inline: var(--space-xs);
-	padding-block: var(--space-xs);
 	justify-content: center;
 }
 
 .nav-links li {
 	position: relative;
-	padding: var(--space-xs);
-	margin: 0 var(--space-xs);
+	padding-inline: var(--space-s);
+	margin-inline: 0 var(--space-m);
 }
 .nav-links li a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	color: hsl(var(--clr-accent));
-	font-weight: 100;
 	font-size: var(--step-0);
 	text-decoration: none;
 	text-align: center;
 }
 .nav-links li a span {
 	font-size: var(--step-01);
-	font-family: var(--ff-kanit);
-	font-weight: 100;
+	color: hsl(var(--clr-span));
 	letter-spacing: 1px;
-	margin-top: var(--space-xxs);
 }
 
 .intro {
 	display: flex;
 	flex-direction: column;
-	padding-block: var(--space-2xl);
-	padding-inline: var(--space-xs);
 	margin-inline: auto;
 	justify-content: center;
 	align-items: center;
@@ -260,15 +252,17 @@ header .bars::before {
 }
 
 .intro p {
-	font-size: var(--step-01);
-	margin-block: 0.12em;
+	font-size: var(--step-0);
+	margin-block: 0.15em;
 }
 
 .intro p span {
 	font-size: var(--step-01);
+	letter-spacing: var(--space-xs);
 	color: hsl(var(--clr-span));
 	padding-left: var(--space-xs);
 }
+
 .intro h1,
 .intro h2,
 .intro h3 {
@@ -278,41 +272,42 @@ header .bars::before {
 	margin-block: 0.2em; /* Add margin for spacing */
 }
 
-.ya {
-	font-size: var(--step-6);
-	font-family: var(--ff-kanit);
-	font-weight: 100;
+.intro .ya {
+	font-size: var(--step-4);
+	font-family: var(--ff-monoton-regular);
 	color: hsl(var(--clr-white));
 	margin-block: 0.5em;
 	letter-spacing: var(--space-xs);
 }
 
-.intro a {
-	display: flex; /* Use Flexbox */
-	flex-direction: column; /* Stack children vertically */
-	justify-content: center; /* Center vertically */
-	text-decoration: none;
-	font-size: var(--step-0);
-	font-weight: 100;
-	color: hsl(var(--clr-white));
-	margin: auto;
-	text-align: center;
-}
-
-.intro a span {
-	font-size: var(--step-4);
-	color: hsl(var(--clr-span));
-	text-align: center; /* Align text to the left */
-}
-
 .wrapper-gradient-text {
 	font-family: "Turret Road", sans-serif;
-	font-size: var(--step-1);
+	font-size: var(--step-3);
 	margin: 0; /* Remove default margins */
 	padding: 0; /* Remove default padding */
 	text-shadow: 0px 0px 0px rgb(255, 255, 255);
+	animation: fadeIn 1s ease-in-out;
 }
-
+@keyframes fadeIn {
+	0% {
+		text-shadow: 0px 0px 0px rgb(255, 255, 255);
+	}
+	100% {
+		text-shadow: 0px 5px 10px rgb(255, 255, 255),
+			/* Reduced vertical offset */ 0px 15px 20px rgb(255, 255, 255),
+			/* Reduced vertical offset */ 0px 25px 5px rgb(232, 235, 238); /* Reduced vertical offset */
+	}
+}
+@keyframes fadeInText {
+	0% {
+		text-shadow: 0px 0px 0px rgb(255, 255, 255);
+	}
+	100% {
+		text-shadow: 0px 5px 10px rgb(255, 255, 255),
+			/* Reduced vertical offset */ 0px 15px 20px rgb(255, 255, 255),
+			/* Reduced vertical offset */ 0px 25px 5px rgb(232, 235, 238); /* Reduced vertical offset */
+	}
+}
 .text-layer {
 	transform-style: preserve-3d;
 	transition: transform 0.2s ease-in-out;
