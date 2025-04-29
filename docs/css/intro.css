@@ -113,7 +113,7 @@ html {
 	color-scheme: dark only;
 	font-family: var(--ff-kanit);
 	font-weight: 100;
-	overflow: hidden;
+	color: hsl(var(--clr-white));
 }
 
 body:before {
@@ -152,27 +152,15 @@ body:before {
 }
 
 header {
-	font-family: var(--ff-kanit);
-	font-weight: 100;
 	position: relative;
 	height: 4rem;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-inline: var(--space-xl);
-}
-
-header .logo {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: var(--ff-kanit);
-	font-weight: 100;
 }
 
 header h2 {
-	color: hsl(var(--clr-white));
 	font-size: var(--step-01);
 }
 
@@ -180,7 +168,13 @@ header h2 span {
 	color: hsl(var(--clr-span));
 	font-size: var(--step-0);
 	padding-left: var(--space-xxs);
-	padding-right: var(--space-s);
+	padding-right: var(--space-xs);
+}
+
+header .logo {
+	display: flex;
+	align-items: center;
+	padding: var(--space-xs) var(--space-xs);
 }
 
 header .bars {
@@ -189,7 +183,7 @@ header .bars {
 	width: 20px;
 	border-radius: 2px;
 	background-color: #888888;
-	margin-right: 20px;
+	margin-right: 10px;
 	display: none;
 }
 
@@ -198,6 +192,7 @@ header .bars.is-active {
 	transform-origin: right;
 	transform: translateY(15px) rotate(45deg);
 }
+
 header .bars::after,
 header .bars::before {
 	position: absolute;
@@ -209,9 +204,11 @@ header .bars::before {
 	background: #888888;
 	cursor: pointer;
 }
+
 header .bars::after {
 	bottom: 7px;
 }
+
 header .bars::before {
 	top: 7px;
 }
@@ -219,27 +216,25 @@ header .bars::before {
 .nav-links {
 	display: flex;
 	margin-inline: auto;
-	justify-content: center;
 }
-
 .nav-links li {
 	position: relative;
-	padding-inline: var(--space-s);
-	margin-inline: 0 var(--space-m);
+	padding: var(--space-xs);
+	margin: 0 var(--space-xs);
 }
+
 .nav-links li a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	color: hsl(var(--clr-accent));
+	justify-content: center;
 	font-size: var(--step-0);
 	text-decoration: none;
 	text-align: center;
 }
 .nav-links li a span {
-	font-size: var(--step-01);
-	color: hsl(var(--clr-span));
 	letter-spacing: 1px;
+	margin-top: var(--space-xxs);
 }
 
 .intro {
@@ -248,66 +243,47 @@ header .bars::before {
 	margin-inline: auto;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
 }
 
 .intro p {
-	font-size: var(--step-0);
-	margin-block: 0.15em;
+	font-size: var(--step-01);
+	margin-block: 0.12em;
+	text-align: center;
 }
 
 .intro p span {
 	font-size: var(--step-01);
-	letter-spacing: var(--space-xs);
 	color: hsl(var(--clr-span));
 	padding-left: var(--space-xs);
 }
-
 .intro h1,
 .intro h2,
 .intro h3 {
 	margin: 0; /* Remove default margins */
 	padding: 0; /* Remove default padding */
 	font-size: var(--step-0); /* Match font size with <p> if needed */
-	margin-block: 0.2em; /* Add margin for spacing */
+	margin-block: 0.5em; /* Add margin for spacing */
 }
 
 .intro .ya {
-	font-size: var(--step-4);
-	font-family: var(--ff-monoton-regular);
-	color: hsl(var(--clr-white));
+	font-size: var(--step-3);
+	color: hsl(var(--clr-span));
 	margin-block: 0.5em;
 	letter-spacing: var(--space-xs);
 }
 
+.intro .bottom {
+	margin-top: var(--space-3xl);
+}
+
 .wrapper-gradient-text {
-	font-family: "Turret Road", sans-serif;
-	font-size: var(--step-3);
+	font-size: var(--step-1);
 	margin: 0; /* Remove default margins */
 	padding: 0; /* Remove default padding */
+	text-align: center; /* Align text to the left */
 	text-shadow: 0px 0px 0px rgb(255, 255, 255);
-	animation: fadeIn 1s ease-in-out;
 }
-@keyframes fadeIn {
-	0% {
-		text-shadow: 0px 0px 0px rgb(255, 255, 255);
-	}
-	100% {
-		text-shadow: 0px 5px 10px rgb(255, 255, 255),
-			/* Reduced vertical offset */ 0px 15px 20px rgb(255, 255, 255),
-			/* Reduced vertical offset */ 0px 25px 5px rgb(232, 235, 238); /* Reduced vertical offset */
-	}
-}
-@keyframes fadeInText {
-	0% {
-		text-shadow: 0px 0px 0px rgb(255, 255, 255);
-	}
-	100% {
-		text-shadow: 0px 5px 10px rgb(255, 255, 255),
-			/* Reduced vertical offset */ 0px 15px 20px rgb(255, 255, 255),
-			/* Reduced vertical offset */ 0px 25px 5px rgb(232, 235, 238); /* Reduced vertical offset */
-	}
-}
+
 .text-layer {
 	transform-style: preserve-3d;
 	transition: transform 0.2s ease-in-out;
@@ -342,15 +318,7 @@ header .bars::before {
 	}
 }
 
-.bottom {
-	padding-top: var(--space-6xl);
-}
-
 @media only screen and (max-width: 768px) {
-	header {
-		padding-inline: var(--space-xs);
-	}
-
 	header .logo {
 		margin-left: var(--space-l);
 	}
@@ -363,47 +331,44 @@ header .bars::before {
 		position: fixed;
 		z-index: 3;
 	}
-	nav {
-		padding-inline: 0 auto;
-		position: fixed;
-		z-index: 3;
-	}
 	.nav-links {
-		background: var(--glass-bg);
+		background: transparent;
 		position: fixed;
 		top: 4rem;
-		left: 0;
+		left: 50%;
 		padding-top: 1rem;
 		flex-direction: column;
 		pointer-events: none;
 		transition: 0.5s;
 		opacity: 0;
+		transform: translateX(-50%);
 	}
 
 	.nav-links li a {
 		padding: var(--space-xs);
 		margin: 0 var(--space-xs);
-		color: hsl(var(--clr-white));
+		color: hsl(var(--clr-dark));
+		text-decoration: none;
 	}
 
 	.nav-links.open {
+		margin: 0 var(--space-l) 0 var(--space-l);
+		padding: var(--space-xxs) var(--space-xs);
 		background-color: transparent;
-		color: hsl(var(--clr-white));
+		color: hsl(var(--clr-accent));
 		opacity: 1;
 		pointer-events: all;
-		position: fixed; /* Ensure it is positioned relative to the viewport */
-		top: 50%; /* Center vertically */
-		left: 50%; /* Center horizontally */
-		transform: translate(-50%, -50%); /* Adjust for centering */
-		transition: 0.3s;
+		transform: translateX(50%);
+		transition: 1s;
 		z-index: 2;
 	}
+
 	.nav-links.open li {
-		color: hsl(var(--clr-white));
+		color: hsl(var(--clr-accent));
 		opacity: 1;
 		pointer-events: all;
 		padding: 0 auto;
-		transition: 0.5s;
+		transition: 1s;
 	}
 
 	.nav-links.open li:last-child {
@@ -413,7 +378,7 @@ header .bars::before {
 	.nav-links.open li a {
 		padding: var(--space-xs);
 		margin: 0 var(--space-xs);
-		color: hsl(var(--clr-white));
+		color: hsl(var(--clr-accent));
 	}
 
 	.intro {
