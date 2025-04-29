@@ -103,7 +103,9 @@
 .text-accent {
 	color: hsl(var(--clr-accent));
 }
+
 /* --------------------------------------- */
+
 .clickable-area {
 	> * {
 		container-type: inline-size;

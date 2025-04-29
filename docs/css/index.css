@@ -10,7 +10,7 @@
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
-	--color-scheme: dark light;
+	--color-scheme: dark;
 	--clr-dark: 0, 0%, 0%;
 	--clr-light: 195, 70%, 90%;
 	--clr-span: 195, 36%, 45%;
@@ -103,98 +103,57 @@
 .text-accent {
 	color: hsl(var(--clr-accent));
 }
-/* --------------------------------------- */
-.clickable-area {
-	> * {
-		container-type: inline-size;
-		margin-inline: auto;
-		text-align: center;
-	}
-}
 
 html {
 	color-scheme: dark only;
-	font-family: var(--ff-kanit);
-	font-weight: 100;
-	color: hsl(var(--clr-white));
 }
 
 /* --------------------------------------- */
 
-body,
-html {
+.wrapper {
 	font-family: var(--ff-kanit);
 	font-weight: 100;
-	color: hsl(var(--clr-white));
-	background: hsl(var(--clr-dark));
+	font-size: var(--step-0);
+	text-align: center;
 	margin-inline: auto;
+	min-height: 100svh;
+	overflow: hidden;
 }
 
-html {
-	color-scheme: var(--color-scheme);
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-
-	> * {
-		container-type: inline-size;
-		margin-inline: auto;
-		width: 100svw;
-		max-width: 100%;
-		min-height: 100svh;
-		overflow: hidden;
-	}
-}
-
-.clickable-area {
-	margin-inline: auto;
+.wrapper > * {
+	container-type: inline-size;
+	container-name: wrapper;
+	padding: var(--space-xs);
 }
 
 .quote {
-	margin-top: var(--space-m);
+	margin-top: var(--space-s);
 	text-align: center;
 	margin-inline: auto;
-	font-size: var(--step--1);
 	color: hsl(var(--clr-white));
 }
 
 .title {
-	font-size: var(--step-0);
+	font-size: var(--step--1);
 }
 
 .author {
 	font-size: var(--step--1);
-	margin-block: var(--space-s);
+	margin-block: var(--space-xs);
 }
 
 .curve-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	align-items: center;
 	/* Center content horizontally */
 	width: 100%;
 	/* Full width */
 	row-gap: var(--space-2xl);
-	margin-top: var(--space-xl);
+	margin-top: var(--space-l); /* Updated to use --space-l */
 	color: hsl(var(--clr-white));
 	font-size: var(--step-0);
 	animation: 1s ease-out infinite forwards;
-}
-
-.curve-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	margin-inline: auto;
-	row-gap: var(--space-2xl);
-	margin-top: var(--space-l);
-	color: hsl(var(--clr-white));
-	font-size: var(--step-0);
 }
 
 .content {
@@ -461,19 +420,17 @@ html {
 }
 
 .container {
-	margin-top: var(--space-l);
+	margin-top: var(--space-1xl);
 	text-align: center;
 	margin-inline: auto;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	font-size: var(--step-0);
 	color: hsl(var(--clr-white));
 }
 
 .text-with-animation {
 	position: relative;
-	top: 0%;
 	font-family: var(--ff-monoton-regular);
 	font-size: var(--step-1);
 	animation: main-text-animation 1.7s ease-in-out forwards;
@@ -498,7 +455,7 @@ html {
 .text-with-animation-1 {
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	position: relative;
-	top: 0;
+
 	font-size: var(--step-0);
 	text-align: center;
 	margin-top: var(--space-m);
@@ -507,7 +464,7 @@ html {
 
 .text-with-animation-2 {
 	position: relative;
-	top: 0%;
+
 	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
@@ -517,7 +474,7 @@ html {
 
 .text-with-animation-3 {
 	position: relative;
-	top: 0%;
+
 	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
@@ -527,7 +484,7 @@ html {
 
 .text-with-animation-4 {
 	position: relative;
-	top: 0%;
+
 	font-size: var(--step-1);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
@@ -537,7 +494,7 @@ html {
 
 .text-with-animation-5 {
 	position: relative;
-	top: 0%;
+
 	font-family: var(--ff-monoton-regular);
 	font-size: var(--step-1);
 	text-align: center;
