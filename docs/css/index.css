@@ -103,6 +103,21 @@
 .text-accent {
 	color: hsl(var(--clr-accent));
 }
+/* --------------------------------------- */
+.clickable-area {
+	> * {
+		container-type: inline-size;
+		margin-inline: auto;
+		text-align: center;
+	}
+}
+
+html {
+	color-scheme: dark only;
+	font-family: var(--ff-kanit);
+	font-weight: 100;
+	color: hsl(var(--clr-white));
+}
 
 /* --------------------------------------- */
 

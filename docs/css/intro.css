@@ -10,7 +10,7 @@
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
-	--color-scheme: dark light;
+	--color-scheme: dark;
 	--clr-dark: 0, 0%, 0%;
 	--clr-light: 195, 70%, 90%;
 	--clr-span: 195, 36%, 45%;
@@ -103,20 +103,55 @@
 .text-accent {
 	color: hsl(var(--clr-accent));
 }
-
 /* --------------------------------------- */
-
-body,
-html {
-	font-family: var(--ff-kanit);
-	font-weight: 100;
-	color: hsl(var(--clr-white));
-	background: hsl(var(--clr-dark));
-	margin-inline: auto;
+.clickable-area {
+	> * {
+		container-type: inline-size;
+		margin-inline: auto;
+		text-align: center;
+	}
 }
 
 html {
-	color-scheme: var(--color-scheme);
+	color-scheme: dark only;
+	font-family: var(--ff-kanit);
+	font-weight: 100;
+	color: hsl(var(--clr-white));
+}
+
+body:before {
+	opacity: 1;
+	pointer-events: all;
+	content: "";
+	width: 100vw; /* Full viewport width */
+	height: 100vh; /* Full viewport height */
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0.664) 100%,
+			/* Transparent at the top */ rgba(20, 20, 20, 0.447) 100%
+				/* Darker at the bottom */
+		),
+		linear-gradient(
+				90deg,
+				color-mix(in hsl, canvasText, transparent 70%) 1px,
+				transparent 1px 30px
+			)
+			50% 50% / 30px 30px,
+		linear-gradient(
+				color-mix(in hsl, canvasText, transparent 70%) 1px,
+				transparent 1px 30px
+			)
+			50% 50% / 30px 30px;
+
+	mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+		background-position 0.3s ease-in-out;
+	z-index: -1; /* Ensure it is behind other content */
+	overflow: hidden;
 }
 
 .wrapper {
