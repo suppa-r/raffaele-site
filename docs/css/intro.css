@@ -184,10 +184,22 @@ header {
 }
 
 .logo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-right: var(--space-xl);
+	padding-left: var(--space-xl);
+}
+
+.logo h2 {
+	color: hsl(var(--clr-white));
+	font-size: var(--step-1);
+	padding-right: var(--space-s);
+	padding-left: var(--space-xs);
+}
+
+.logo h2 span {
+	font-size: var(--step-1);
+	padding-left: var(--space-xs);
+	padding-right: var(--space-s);
+	color: hsl(var(--clr-span));
+	letter-spacing: 6px;
 }
 
 /*******************Navigation***************/
@@ -487,7 +499,7 @@ svg {
 @container (max-width: 600px) {
 	.logo h2,
 	.logo h2 span {
-		padding-left: var(--space-m);
-		font-size: var(--step-01); /* Corrected from --step--1 to --step-1 */
+		padding-left: var(--space-s);
+		font-size: var(--step-0); /* Corrected from --step--1 to --step-1 */
 	}
 }
