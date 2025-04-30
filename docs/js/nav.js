@@ -2,7 +2,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const siteNavigation = document.querySelector(".primary-navigation");
 const content = document.querySelector(".intro");
 const logo = document.querySelector(".logo");
-const mediaQuery = window.matchMedia("(width < 600px)");
+const mediaQuery = window.matchMedia("(width < 450px)");
 const clickableArea = document.querySelector(".clickable-area");
 
 // Ensure the menu starts hidden on small screens
