@@ -1,17 +1,25 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNavigation = document.querySelector(".primary-navigation");
-const content = document.querySelector(".intro");
+
 const logo = document.querySelector(".logo");
-const mediaQuery = window.matchMedia("(width < 600px)");
-const clickableArea = document.querySelector(".clickable-area");
+const mediaQuery = window.matchMedia("(max-width: 600px)");
+const content = document.querySelector(".intro");
 
 // Ensure the menu starts hidden on small screens
 if (mediaQuery.matches) {
-	logo.style.display = "none";
-	siteNavigation.setAttribute("data-state", "closed");
-	siteNavigation.style.display = "none";
-	content.style.display = "block";
-}
+	// If the media query matches, it means the viewport is 600px or smaller
+	siteNavigation.setAttribute("data-state", "opened");
+	menuToggle.setAttribute("aria-expanded", "true");
+	siteNavigation.style.display = "block";
+	content.style.display = "none";
+} else {
+	// If the media query does not match, it means the viewport is larger than 600px
+	menuToggle.setAttribute("aria-expanded", "false");
+
+	siteNavigation.setAttribute("data-state", "opened");
+	siteNavigation.style.display = "block";
+	content.style.display = "none";
+} // Ensure the menu starts visible on larger screens//
 
 // Add a listener for when the media query matches
 mediaQuery.addEventListener("change", (event) => {

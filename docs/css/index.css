@@ -1,5 +1,5 @@
 :root {
-	--sp: 4s;
+	--sp: 6s;
 	/* ------------------------------------------------- */
 	/* ------------------ Custom Colors ---------------- */
 	/* ------------------------------------------------- */
@@ -431,13 +431,19 @@ html {
 .text-with-animation {
 	position: relative;
 	font-family: var(--ff-monoton-regular);
+	font-weight: var(--fs-normal);
 	font-size: var(--step-1);
 	text-align: center;
+	letter-spacing: var(--space-s);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	margin-top: var(--space-l);
 	user-select: none;
 	width: 500vw;
 	margin-left: -200vw;
+}
+
+.text-with-animation span {
+	padding-left: var(--space-s);
 }
 
 .text-with-animation-1 {
@@ -470,7 +476,7 @@ html {
 .text-with-animation-4 {
 	position: relative;
 	font-size: var(--step-1);
-
+	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
 	margin-top: var(--space-m);
 	user-select: none;
@@ -479,6 +485,7 @@ html {
 .text-with-animation-5 {
 	position: relative;
 	font-family: var(--ff-monoton-regular);
+	font-weight: var(--fs-normal);
 	font-size: var(--step-1);
 	text-align: center;
 	animation: main-text-animation 1.3s ease-in-out forwards;
