@@ -1,8 +1,12 @@
 :root {
 	--sp: 4s;
+	--sp: 4s;
 	/* ------------------------------------------------- */
 	/* ------------------ Custom Colors ---------------- */
 	/* ------------------------------------------------- */
+
+	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
+	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
 
 	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
 	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
@@ -50,6 +54,10 @@
 	--space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
 	/* Space xl: 48px → 54px */
 	--space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
+	/* Space 1xl: 48px → 54px */
+	--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
+	/* Space xxl: 56px → 63px */
+	--space-xxl: clamp(3.5rem, 3.2174rem + 0.7391cqi, 3.9375rem);
 	/* Space 1xl: 48px → 54px */
 	--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
 	/* Space xxl: 56px → 63px */
@@ -225,6 +233,7 @@ header {
 }
 
 .logo h2 {
+.logo h2 {
 	color: hsl(var(--clr-white));
 	font-size: var(--step-1);
 	padding-right: var(--space-s);
@@ -234,7 +243,43 @@ header {
 .logo h2 span {
 	font-size: var(--step-1);
 	padding-left: var(--space-xs);
+	font-size: var(--step-1);
 	padding-right: var(--space-s);
+	padding-left: var(--space-xs);
+}
+
+.logo h2 span {
+	font-size: var(--step-1);
+	padding-left: var(--space-xs);
+	padding-right: var(--space-s);
+	color: hsl(var(--clr-span));
+	letter-spacing: 6px;
+}
+
+/*******************Navigation***************/
+.primary-navigation {
+	width: 8em;
+	position: absolute;
+	top: 100%;
+	right: 0%;
+	background: transparent;
+	transition: clip-path ease-in-out 700ms;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: none;
+}
+
+.primary-navigation[data-state="opened"] {
+	animation: clipPathCircleOpen 750ms ease-in-out forwards;
+	display: block;
+}
+
+.primary-navigation[data-state="closing"] {
+	animation: clipPathCircleClose 750ms ease-in-out forwards;
+}
+
+.primary-navigation[data-state="closed"] {
 	color: hsl(var(--clr-span));
 	letter-spacing: 6px;
 }
@@ -375,10 +420,31 @@ svg {
 .hamburger,
 .hamburger::before,
 .hamburger::after {
+	top: var(--space-l);
+	right: var(--space-s);
+	cursor: pointer;
+}
+
+.menu-toggle:focus-visible {
+	outline: 4px solid hsl(var(--clr-span));
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
 	content: "";
 	display: block;
 	background: #ebebd3;
+	display: block;
+	background: #ebebd3;
 	height: 3px;
+	width: 1.75em;
+	border-radius: 3px;
+	transition: all ease-in-out 500ms;
+}
+
+.hamburger::before {
+	transform: translateY(-6px);
 	width: 1.75em;
 	border-radius: 3px;
 	transition: all ease-in-out 500ms;
@@ -390,7 +456,21 @@ svg {
 
 .hamburger::after {
 	transform: translateY(3px);
+
+.hamburger::after {
+	transform: translateY(3px);
 }
+
+[aria-expanded="true"] .hamburger {
+	transform: rotate(45deg);
+}
+
+[aria-expanded="true"] .hamburger::before {
+	opacity: 0;
+}
+
+[aria-expanded="true"] .hamburger::after {
+	transform: translateY(-3px) rotate(-90deg);
 
 [aria-expanded="true"] .hamburger {
 	transform: rotate(45deg);
@@ -423,10 +503,39 @@ svg {
 	background: hsl(var(--clr-white));
 	color: hsl(var(--clr-dark));
 	padding: 0.5em 1em;
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	/* added line */
+	border: 0;
+}
+
+.skip-to-content {
+	position: absolute;
+	z-index: 9999;
+	background: hsl(var(--clr-white));
+	color: hsl(var(--clr-dark));
+	padding: 0.5em 1em;
 	margin-inline: auto;
 	transform: translateY(-100%);
 	transition: transform 250ms ease-in;
+	transform: translateY(-100%);
+	transition: transform 250ms ease-in;
 }
+
+.skip-to-content:focus {
+	transform: translateY(0);
+}
+
+.numbered-title {
+	font-size: var(--fs-400);
+	letter-spacing: 2.72px;
 
 .skip-to-content:focus {
 	transform: translateY(0);
@@ -455,9 +564,30 @@ svg {
 
 .tab-list {
 	--gap: 2rem;
+
+.numbered-title span {
+	margin-right: 0.5em;
+	font-size: var(--fs-500);
+	color: hsl(var(--clr-white) / 0.25);
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.tab-list {
+	--gap: 2rem;
 }
 
 .intro {
+	width: 100%;
+	max-width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -471,11 +601,13 @@ svg {
 
 .intro p {
 	margin-block: 0.12em;
+	margin-block: 0.12em;
 }
 
 .intro p span {
 	font-size: var(--step-01);
 	color: hsl(var(--clr-span));
+	padding-left: var(--space-s);
 	padding-left: var(--space-s);
 }
 
@@ -491,7 +623,14 @@ svg {
 .intro .ya {
 	font-size: var(--step-2);
 	color: hsl(var(--clr-span));
+	font-size: var(--step-2);
+	color: hsl(var(--clr-span));
 	margin-block: 0.5em;
+	letter-spacing: var(--space-l);
+}
+
+.intro .bottom {
+	margin-top: var(--space-xl);
 	letter-spacing: var(--space-l);
 }
 
@@ -501,10 +640,14 @@ svg {
 
 .wrapper-gradient-text {
 	font-size: var(--step-1);
+	font-size: var(--step-1);
 	margin: 0; /* Remove default margins */
 	padding: 0; /* Remove default padding */
 	text-align: center; /* Align text to the left */
+	text-align: center; /* Align text to the left */
 	text-shadow: 0px 0px 0px rgb(255, 255, 255);
+}
+
 }
 
 .text-layer {

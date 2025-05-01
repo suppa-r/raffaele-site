@@ -7,6 +7,9 @@
 	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
 	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
 
+	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
+	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
+
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
@@ -16,6 +19,13 @@
 	--clr-span: 195, 36%, 45%;
 	--clr-white: 0, 0%, 100%;
 	--clr-accent: 231, 77%, 90%;
+
+	/* ------------------------------------------------------- */
+	/* ----------------- Custom Font-Families ----------- ---- */
+	/* ----------------------------------------------- ------- */
+
+	--ff-roboto: "Roboto", sans-serif;
+	--ff-monoton: "Monoton", sans-serif;
 
 	/* -------------------------------------------------------- */
 	/* ------------------ Custom Font-Sizes ------------------- */
@@ -54,6 +64,10 @@
 	--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
 	/* Space xxl: 56px → 63px */
 	--space-xxl: clamp(3.5rem, 3.2174rem + 0.7391cqi, 3.9375rem);
+	/* Space 1xl: 48px → 54px */
+	--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
+	/* Space xxl: 56px → 63px */
+	--space-xxl: clamp(3.5rem, 3.2174rem + 0.7391cqi, 3.9375rem);
 	/* Space 2xl: 64px → 72px */
 	--space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
 	/* Space 3xl: 96px → 108px */
@@ -80,35 +94,35 @@
 	--fs-normal: normal;
 }
 
-/* --------------------------------------- */
-/* ------------  Custom Colors ----------- */
-/* --------------------------------------- */
+	/* --------------------------------------- */
+	/* ------------  Custom Colors ----------- */
+	/* --------------------------------------- */
 
-.text-dark {
-	color: hsl(var(--clr-dark));
-}
+	.text-dark {
+		color: hsl(var(--clr-dark));
+	}
 
-.text-light {
-	color: hsl(var(--clr-light));
-}
+	.text-light {
+		color: hsl(var(--clr-light));
+	}
 
-.text-span {
-	color: hsl(var(--clr-span));
-}
+	.text-span {
+		color: hsl(var(--clr-span));
+	}
 
-.text-white {
-	color: hsl(var(--clr-white));
-}
+	.text-white {
+		color: hsl(var(--clr-white));
+	}
 
-.text-accent {
-	color: hsl(var(--clr-accent));
-}
+	.text-accent {
+		color: hsl(var(--clr-accent));
+	}
 
 html {
 	color-scheme: dark only;
 }
 
-/* --------------------------------------- */
+	/* --------------------------------------- */
 
 .wrapper {
 	font-family: var(--ff-kanit);
@@ -156,13 +170,13 @@ html {
 	animation: 1s ease-out infinite forwards;
 }
 
-.content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	margin-inline: auto;
-}
+	.content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		margin-inline: auto;
+	}
 
 .content div {
 	position: absolute;
@@ -248,13 +262,13 @@ html {
 	}
 }
 
-@keyframes shadow {
-	0%,
-	10%,
-	90%,
-	100% {
-		opacity: 0;
-	}
+	@keyframes shadow {
+		0%,
+		10%,
+		90%,
+		100% {
+			opacity: 0;
+		}
 
 	45%,
 	55% {
@@ -278,146 +292,146 @@ html {
 	}
 }
 
-.up-3-7 {
-	animation-name: go-up-3-7;
-}
-
-.up-4-6 {
-	animation-name: go-up-4-6;
-}
-
-.up-5 {
-	animation-name: go-up-5;
-}
-
-/*down*/
-.down-2-8 {
-	animation-name: go-down-2-8;
-}
-
-.down-3-7 {
-	animation-name: go-down-3-7;
-}
-
-.down-4-6 {
-	animation-name: go-down-4-6;
-}
-
-.down-5 {
-	animation-name: go-down-5;
-}
-
-@keyframes go-up-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.up-3-7 {
+		animation-name: go-up-3-7;
 	}
 
-	40%,
-	60% {
-		top: -0.6vmin;
-	}
-}
-
-@keyframes go-up-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.up-4-6 {
+		animation-name: go-up-4-6;
 	}
 
-	40%,
-	60% {
-		top: -1.2vmin;
-	}
-}
-
-@keyframes go-up-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.up-5 {
+		animation-name: go-up-5;
 	}
 
-	40%,
-	60% {
-		top: -1.8vmin;
-	}
-}
-
-@keyframes go-up-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	/*down*/
+	.down-2-8 {
+		animation-name: go-down-2-8;
 	}
 
-	40%,
-	60% {
-		top: -2.4vmin;
-	}
-}
-
-@keyframes go-down-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.down-3-7 {
+		animation-name: go-down-3-7;
 	}
 
-	40%,
-	60% {
-		top: 0.6vmin;
-	}
-}
-
-@keyframes go-down-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.down-4-6 {
+		animation-name: go-down-4-6;
 	}
 
-	40%,
-	60% {
-		top: 1.2vmin;
-	}
-}
-
-@keyframes go-down-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.down-5 {
+		animation-name: go-down-5;
 	}
 
-	40%,
-	60% {
-		top: 1.8vmin;
-	}
-}
+	@keyframes go-up-2-8 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
 
-@keyframes go-down-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+		40%,
+		60% {
+			top: -0.6vmin;
+		}
 	}
 
-	40%,
-	60% {
-		top: 2.4vmin;
+	@keyframes go-up-3-7 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: -1.2vmin;
+		}
 	}
-}
+
+	@keyframes go-up-4-6 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: -1.8vmin;
+		}
+	}
+
+	@keyframes go-up-5 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: -2.4vmin;
+		}
+	}
+
+	@keyframes go-down-2-8 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 0.6vmin;
+		}
+	}
+
+	@keyframes go-down-3-7 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 1.2vmin;
+		}
+	}
+
+	@keyframes go-down-4-6 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 1.8vmin;
+		}
+	}
+
+	@keyframes go-down-5 {
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 2.4vmin;
+		}
+	}
 
 .container {
 	margin-top: var(--space-1xl);
