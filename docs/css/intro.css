@@ -1,6 +1,6 @@
 :root {
 	--sp: 4s;
-	--sp: 4s;
+
 	/* ------------------------------------------------- */
 	/* ------------------ Custom Colors ---------------- */
 	/* ------------------------------------------------- */
@@ -8,9 +8,7 @@
 	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
 	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
 
-	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
-	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
-
+	
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
@@ -55,10 +53,7 @@
 	/* Space xl: 48px → 54px */
 	--space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
 	/* Space 1xl: 48px → 54px */
-	--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
-	/* Space xxl: 56px → 63px */
-	--space-xxl: clamp(3.5rem, 3.2174rem + 0.7391cqi, 3.9375rem);
-	/* Space 1xl: 48px → 54px */
+	
 	--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
 	/* Space xxl: 56px → 63px */
 	--space-xxl: clamp(3.5rem, 3.2174rem + 0.7391cqi, 3.9375rem);
@@ -232,7 +227,7 @@ header {
 	padding-left: var(--space-xl);
 }
 
-.logo h2 {
+
 .logo h2 {
 	color: hsl(var(--clr-white));
 	font-size: var(--step-1);
@@ -241,8 +236,7 @@ header {
 }
 
 .logo h2 span {
-	font-size: var(--step-1);
-	padding-left: var(--space-xs);
+	
 	font-size: var(--step-1);
 	padding-right: var(--space-s);
 	padding-left: var(--space-xs);
@@ -345,7 +339,7 @@ li:hover {
 li a {
 	display: block;
 	padding: 0em 1em 0.05em 0em;
-	width: 100%;
+
 	/* Make the anchor element take up the full width of the li */
 	text-decoration: none;
 	color: black;
@@ -360,11 +354,11 @@ li a:hover {
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	width: 75%;
+	
 	gap: 0;
 	margin: var(--space-xs);
-	height: var(--space-m);
-	padding: 0em 1em 0.05em 0em;
+
+
 	border-bottom: 1px solid #abb5be;
 }
 
@@ -384,8 +378,7 @@ svg {
 	display: inline-block;
 	margin-left: 0.5em;
 	padding: 0em 1em 0.8em 0em;
-	height: 2.1em;
-	width: 2.1em;
+	
 	fill: black;
 }
 
@@ -435,7 +428,7 @@ svg {
 	content: "";
 	display: block;
 	background: #ebebd3;
-	display: block;
+	
 	background: #ebebd3;
 	height: 3px;
 	width: 1.75em;
@@ -456,6 +449,7 @@ svg {
 
 .hamburger::after {
 	transform: translateY(3px);
+}
 
 .hamburger::after {
 	transform: translateY(3px);
@@ -471,6 +465,7 @@ svg {
 
 [aria-expanded="true"] .hamburger::after {
 	transform: translateY(-3px) rotate(-90deg);
+}
 
 [aria-expanded="true"] .hamburger {
 	transform: rotate(45deg);
@@ -503,6 +498,7 @@ svg {
 	background: hsl(var(--clr-white));
 	color: hsl(var(--clr-dark));
 	padding: 0.5em 1em;
+}
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -525,8 +521,7 @@ svg {
 	margin-inline: auto;
 	transform: translateY(-100%);
 	transition: transform 250ms ease-in;
-	transform: translateY(-100%);
-	transition: transform 250ms ease-in;
+	
 }
 
 .skip-to-content:focus {
@@ -536,6 +531,7 @@ svg {
 .numbered-title {
 	font-size: var(--fs-400);
 	letter-spacing: 2.72px;
+}
 
 .skip-to-content:focus {
 	transform: translateY(0);
@@ -564,6 +560,7 @@ svg {
 
 .tab-list {
 	--gap: 2rem;
+}
 
 .numbered-title span {
 	margin-right: 0.5em;
@@ -571,22 +568,11 @@ svg {
 	color: hsl(var(--clr-white) / 0.25);
 }
 
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-}
 
-.tab-list {
-	--gap: 2rem;
-}
+
 
 .intro {
-	width: 100%;
+	
 	max-width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -601,13 +587,13 @@ svg {
 
 .intro p {
 	margin-block: 0.12em;
-	margin-block: 0.12em;
 }
+	
 
 .intro p span {
 	font-size: var(--step-01);
 	color: hsl(var(--clr-span));
-	padding-left: var(--space-s);
+	
 	padding-left: var(--space-s);
 }
 
@@ -621,8 +607,7 @@ svg {
 }
 
 .intro .ya {
-	font-size: var(--step-2);
-	color: hsl(var(--clr-span));
+	
 	font-size: var(--step-2);
 	color: hsl(var(--clr-span));
 	margin-block: 0.5em;
@@ -639,16 +624,16 @@ svg {
 }
 
 .wrapper-gradient-text {
-	font-size: var(--step-1);
+	
 	font-size: var(--step-1);
 	margin: 0; /* Remove default margins */
 	padding: 0; /* Remove default padding */
-	text-align: center; /* Align text to the left */
+
 	text-align: center; /* Align text to the left */
 	text-shadow: 0px 0px 0px rgb(255, 255, 255);
 }
 
-}
+
 
 .text-layer {
 	background: linear-gradient(
