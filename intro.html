@@ -1,142 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Raffaele Suppa Web Portfolio" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="author" content="Raffaele Suppa" />
-		<title>Raffaele Suppa | WebPage</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,100;1,200&family=Monoton&display=swap"
-			rel="stylesheet" />
-		<link rel="icon" href="docs/images/favicon-32x32-min.png" />
-		<link rel="stylesheet" href="/docs/css/reset.css" />
-		<link rel="stylesheet" href="/docs/css/intro.css" />
 
-		<script src="/docs/js/index.js"></script>
-	</head>
-	<body>
-		<header>
-			<div class="logo">
-				<div class="bars"></div>
-				<h2>sometimes<span>DESIGNER</span>sometimes<span>NOT</span></h2>
-			</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Raffaele Suppa Web Portfolio" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="Raffaele Suppa" />
+	<title>Raffaele Suppa | WebPage</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,100;1,200&family=Monoton&display=swap"
+		rel="stylesheet" />
+	<link rel="icon" href="docs/images/favicon-32x32-min.png" />
+	<link rel="stylesheet" href="/docs/css/reset.css" />
+	<link rel="stylesheet" href="/docs/css/intro.css" />
 
-			<nav>
-				<ul class="nav-links">
-					<li>
-						<a href="index.html" aria-label="go to home">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="30"
-								height="30"
-								viewBox="0 0 30 30">
-								<path
-									fill="currentColor"
-									d="M22 5.616v12.769q0 .666-.475 1.14t-1.14.475H16.5q-.213
-                 0-.356-.144T16 19.499t.144-.356T16.5 19h3.885q.269 0 .442-.173t.173-.442V5.615q0-.269-.173-.442T20.385 5H12q-.27
-                0-.442.173q-.173.173-.173.443v1.173q0 .212-.144.356t-.357.144t-.356-.144t-.144-.356V5.604q0-.658.474-1.131Q11.33 4 11.988 4h8.397q.666
-               0 1.14.475T22 5.615M2 12.334q0-.385.177-.742q.177-.358.5-.575l4.385-3.114q.224-.159.458-.228q.234-.07.478-.07t.48.07t.46.228l4.385
-                3.114q.323.217.5.575q.177.357.177.742v6.052q0 .666-.475 1.14t-1.14.475h-1.5q-.667 0-1.141-.475t-.475-1.14V15.5H6.731v2.885q0 .666-.475
-                1.14T5.116 20h-1.5q-.667 0-1.141-.475T2 18.386zm1-.006v6.058q0 .269.173.442t.443.173h1.5q.269 0 .442-.173t.173-.442v-2.847q0-.44.299-.739t.74-.299h2.46q.441
-                0 .74.299t.3.74v2.845q0 .27.172.443q.173.173.442.173h1.5q.27 0 .443-.173t.173-.443v-6.057q0-.154-.067-.289t-.202-.23l-4.385-3.07Q8.192 8.624 8 8.624t-.346.116l-4.385 3.069q-.134.096-.202.23q-.067.135-.067.289M10.27 19v-4.5H5.73V19v-4.5h4.54zm7.365-10.23h.73q.162 0
-                .283-.122q.121-.121.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162
-                0 .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.282v.731q0 .162.121.283t.283.121m0 4h.73q.162 0
-                .283-.121t.121-.283v-.73q0-.162-.121-.283t-.283-.121h-.73q-.162 0-.283.121t-.121.283v.73q0 .162.121.283t.283.121" />
-							</svg>
+	<script src="/docs/js/intro.js">defer</script>
+	<script src="/doc/js/nav.js">defer</script>
+</head>
+
+<body>
+	<div class="clickable-area" role="button" tabindex="0" onclick="location.href='intro-1.html';">
+		<div class="wrapper">
+
+			<header>
+				<div class="logo">
+					<h2>sometimes<span>DESIGNER</span>sometimes<span>NOT</span></h2>
+				</div>
+				<nav class="site-nav">
+					<button class="menu-toggle" aria-controls="primary-navigation" aria-expanded="false">
+						<span class="visually-hidden">Menu</span>
+						<div class="hamburger" aria-hidden="true"></div>
+					</button>
+					<ul data-state="closed" class="primary-navigation" id="primary-navigation">
+						<li onclick="location.href='index.html';" style="cursor: pointer">
+							<a href="index.html" aria-label="go to home">
+								<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+									<path fill="currentColor"
+										d="m243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160v8c0 13.3 10.7 24 24 24h400c13.3 0 24-10.7 24-24v-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0M128 224H64v196.3c-.6.3-1.2.7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512h448c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1L448 224h-64v192h-40V224h-64v192h-48V224h-64v192h-40zM256 64a32 32 0 1 1 0 64a32 32 0 1 1 0-64" />
+								</svg>
+							</a>
 							<span>home</span>
-						</a>
-					</li>
-					<li>
-						<a href="index.html" aria-label="go to architecture">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="30"
-								height="30"
-								viewBox="0 0 30 30">
-								<path
-									fill="currentColor"
-									d="M2.5 20.5v-5.623q0-.296.164-.537t.44-.365l3.396-1.52v-2.69q0-.289.148-.521t.394-.37L11.5 6.635v-2.29H10q-.213
-              0-.356-.144T9.5 3.845t.144-.356t.356-.143h1.5v-1.5q0-.212.144-.356t.357-.144t.356.144t.143.356v1.5H14q.213 0 .356.144q.144.144.144.357t-.144.356t-.356.143h-1.5v2.288l4.458
-               2.239q.246.138.394.37t.148.52v2.693l3.396 1.519q.277.124.44.365t.164.537V20.5q0 .402-.299.701t-.701.299h-6.192q-.344
-               0-.576-.232t-.232-.576v-2.769q0-.617-.441-1.059q-.442-.441-1.059-.441t-1.059.442q-.441.44-.441 1.058v2.77q0 .342-.232.575t-.576.232H3.5q-.402
-               0-.701-.299T2.5 20.5m1 0h6v-2.588q0-1.05.729-1.781q.728-.731 1.769-.731t1.771.73q.731.732.731 1.782V20.5h6v-5.627l-4-1.793V9.742l-4.5-2.3l-4.5 2.3v3.338l-4
-               1.793zm8.505-7.384q.466
-              0 .788-.327q.323-.327.323-.793q0-.467-.327-.79q-.327-.321-.793-.321q-.467 0-.79.326q-.321.327-.321.793q0 .467.326.79q.327.322.793.322m-.004.846" />
-							</svg>
-							<span>revit</span>
-						</a>
-					</li>
-					<li>
-						<a href="index.html" aria-label="go to photos">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="30"
-								height="30"
-								viewBox="0 0 30 30">
-								<path
-									fill="currentColor"
-									d="M12 16.73q1.567
-                 0 2.649-1.081T15.731 13t-1.082-2.649T12 9.269t-2.649 1.082T8.269 13t1.082 2.649T12 16.731m0-1q-1.165 0-1.948-.783T9.269
-                  13t.783-1.948T12 10.269t1.948.783t.783 1.948t-.783 1.948t-1.948.783M4.616 20q-.691 0-1.153-.462T3 18.384V7.616q0-.691.463-1.153T4.615
-                   6h2.958l1.85-2h5.154l1.85 2h2.958q.69 0 1.152.463T21 7.616v10.769q0 .69-.463 1.153T19.385 20zm0-1h14.769q.269
-                 0 .442-.173t.173-.442V7.615q0-.269-.173-.442T19.385 7h-3.397l-1.844-2H9.856L8.012 7H4.615q-.269 0-.442.173T4
-                  7.616v10.769q0 .269.173.442t.443.173M12 13" />
-							</svg>
-							<span>photos</span>
-						</a>
-					</li>
-					<li>
-						<a href="index.html" aria-label="go to stuff">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="30"
-								height="30"
-								viewBox="0 0 30 30">
-								<path
-									fill="currentColor"
-									d="M15.784 19q-.995 0-1.688-.69q-.692-.69-.692-1.675q0-1.002.695-1.703q.696-.701
-                 1.69-.701q.384 0 .733.143t.651.384V7H21v1.462h-2.827v8.172q0 .986-.697
-                  1.676t-1.692.69M4 14.77v-1h7.039v1zm0-3.385v-1h10.789v1zM4 8V7h10.789v1z" />
-							</svg>
-							<span>stuff</span>
-						</a>
-					</li>
-					<li>
-						<a href="index.html" aria-label="go to call me">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="30"
-								height="30"
-								viewBox="0 0 30 30">
-								<path
-									fill="currentColor"
-									d="M2.616 19.616q-.691 0-1.153-.463T1 18V6q0-.69.463-1.153t1.152-.463h18.77q.69 0 1.153.463T23
-                 6v12q0 .69-.462 1.153t-1.153.463zm12.169-1h6.6q.23 0 .423-.193Q22 18.231 22 18V6q0-.23-.192-.423q-.193-.192-.424-.192H2.616q-.231
-                  0-.424.192T2 6v12q0 .23.192.423t.423.193h.6q1.05-1.356 2.554-2.178T9 15.616t3.23.822t2.555 2.178M9 14.23q1.039
-                   0 1.77-.731t.73-1.77t-.73-1.768T9
-                   9.23t-1.77.73t-.73 1.77t.73 1.769t1.77.73m9.308 3.193l1.615-1.615l-1.23-1.654h-1.728q-.188-.565-.269-1.078T16.616
-                    12t.08-1.051t.27-1.103h1.726l1.231-1.654l-1.615-1.615q-1.216.992-1.897 2.413q-.68 1.42-.68 3.01t.68 3.01t1.897 2.413M4.55
-                     18.616h8.9q-.87-.95-2.022-1.475q-1.153-.525-2.428-.525t-2.425.525t-2.025
-                 1.475M9 13.23q-.617 0-1.059-.441q-.441-.442-.441-1.06t.441-1.058T9 10.231t1.059.441t.441
-                 1.059t-.441 1.059q-.442.44-1.059.44M12 12" />
-							</svg>
-							<span>call me</span>
-						</a>
-					</li>
-					<li>
-						<img src="/docs/images/logo.svg" alt="profile image" />
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<div
-			class="clickable-area"
-			role="button"
-			tabindex="0"
-			onclick="location.href='intro-1.html';">
+						</li>
+						<li>
+							<a href="profile.html" aria-label="go to profile">
+								<svg xmlns="http://www.w3.org/2000/svg" width="448" height="512" viewBox="0 0 448 512">
+									<path fill="currentColor"
+										d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6" />
+								</svg> </a><span>profile</span>
+						</li>
+						<li>
+							<a href="revit.html" aria-label="go to revit">
+								<svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+									<path fill="currentColor"
+										d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+								</svg> </a><span>revit</span>
+						</li>
+						<li>
+							<a href="contact.html" aria-label="go to contact me">
+								<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+									<path fill="currentColor"
+										d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+								</svg> </a><span>call</span>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+
 			<section class="intro">
 				<div>
 					<p>The way it began ... the way it is.</p>
@@ -193,6 +124,8 @@
 				<p>the path back Home became free to walk</p>
 			</section>
 		</div>
-		<script src="/docs/js/intro.js"></script>
-	</body>
+	</div>
+
+</body>
+
 </html>
