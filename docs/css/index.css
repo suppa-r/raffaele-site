@@ -1,5 +1,21 @@
 :root {
-	--sp: 4s;
+
+    --ff-roboto-serif-italic: {
+        font-family: "Roboto Serif", serif;
+        font-optical-sizing: auto;
+        font-weight: 100;
+        font-style: italic;
+        font-variation-settings: "wdth" 62.5, "GRAD" -50;
+    };
+
+    --ff-monoton-regular: {
+        font-family: "Monoton", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    };
+
+
+  --sp: 4s;
 	/* ------------------------------------------------- */
 	/* ------------------ Custom Colors ---------------- */
 	/* ------------------------------------------------- */
@@ -18,11 +34,7 @@
 	--clr-white: 0, 0%, 100%;
 	--clr-accent: 231, 77%, 90%;
 
-
-
-
-
-	/* -------------------------------------------------------- */
+    /* -------------------------------------------------------- */
 	/* ------------------ Custom Font-Sizes ------------------- */
 	/* -------------------------------------------------------- */
 
@@ -75,30 +87,7 @@
 	--space-8xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
 	/* Space 9xl: 176px → 198px */
 	--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
-
 }
-
-/* ------------------------------------------------------- */
-/* ----------------- Custom Font-Families ----------- ---- */
-/* ----------------------------------------------- ------- */
-
-
---ff-roboto-serif-italic {
-	font-family: "Roboto Serif", serif;
-	font-optical-sizing: auto;
-	font-weight: 100;
-	font-style: italic;
-	font-variation-settings:
-	  "wdth" 62.5,
-	  "GRAD" -50;
-  }
-
---ff-monoton-regular {
-	font-family: "Monoton", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-}
-
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
 /* --------------------------------------- */
