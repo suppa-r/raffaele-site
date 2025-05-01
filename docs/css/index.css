@@ -18,12 +18,9 @@
 	--clr-white: 0, 0%, 100%;
 	--clr-accent: 231, 77%, 90%;
 
-	/* ------------------------------------------------------- */
-	/* ----------------- Custom Font-Families ----------- ---- */
-	/* ----------------------------------------------- ------- */
 
-	--ff-roboto: "Roboto", sans-serif;
-	--ff-monoton: "Monoton", sans-serif;
+
+
 
 	/* -------------------------------------------------------- */
 	/* ------------------ Custom Font-Sizes ------------------- */
@@ -79,13 +76,27 @@
 	/* Space 9xl: 176px → 198px */
 	--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
 
-	/* ------------------------------------------------------- */
-	/* ----------------- Custom Font-Families ----------- ---- */
-	/* ----------------------------------------------- ------- */
+}
 
-	--ff-monoton-regular: "Monoton", sans-serif;
-	--ff-kanit: "Kanit", sans-serif;
-	--fs-normal: normal;
+/* ------------------------------------------------------- */
+/* ----------------- Custom Font-Families ----------- ---- */
+/* ----------------------------------------------- ------- */
+
+
+--ff-roboto-serif-italic {
+	font-family: "Roboto Serif", serif;
+	font-optical-sizing: auto;
+	font-weight: 100;
+	font-style: italic;
+	font-variation-settings:
+	  "wdth" 62.5,
+	  "GRAD" -50;
+  }
+
+--ff-monoton-regular {
+	font-family: "Monoton", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 /* --------------------------------------- */
@@ -119,7 +130,7 @@ html {
 /* --------------------------------------- */
 
 .wrapper {
-	font-family: var(--ff-kanit);
+	font-family: var(--ff-roboto-serif-italic);
 	font-weight: 100;
 	font-size: var(--step-0);
 	text-align: center;
@@ -160,6 +171,7 @@ html {
 	row-gap: var(--space-2xl);
 	margin-top: var(--space-l);
 	/* Updated to use --space-l */
+	font-family: var(--ff-roboto-serif);
 	color: hsl(var(--clr-white));
 	font-size: var(--step-0);
 	animation: 1s ease-out infinite forwards;
@@ -443,6 +455,7 @@ html {
 	margin-inline: auto;
 	display: flex;
 	flex-direction: column;
+	font-family: var(--ff-roboto-serif);
 	font-size: var(--step-0);
 	color: hsl(var(--clr-white));
 }
