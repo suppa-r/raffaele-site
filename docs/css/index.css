@@ -1,40 +1,34 @@
 :root {
 
-    --ff-roboto-serif-italic: {
-        font-family: "Roboto Serif", serif;
-        font-optical-sizing: auto;
-        font-weight: 100;
-        font-style: italic;
-        font-variation-settings: "wdth" 62.5, "GRAD" -50;
-    };
-
-    --ff-monoton-regular: {
-        font-family: "Monoton", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-    };
-
-
-  --sp: 4s;
-	/* ------------------------------------------------- */
-	/* ------------------ Custom Colors ---------------- */
-	/* ------------------------------------------------- */
+	--sp: 4s;
+	/* ------------------------------------------------------- */
+	/* --------------------- Custom Colors ------------------- */
+	/* ------------------------------------------------------- */
 
 	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
-	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
 
-
-	--border: 1px solid rgba(255, 255, 255, 0.1);
-	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
-	--color-scheme: dark;
 	--clr-dark: 0, 0%, 0%;
 	--clr-light: 195, 70%, 90%;
 	--clr-span: 195, 36%, 45%;
-	--clr-white: 0, 0%, 100%;
 	--clr-accent: 231, 77%, 90%;
 
-    /* -------------------------------------------------------- */
+	--border: 1px solid rgba(255, 255, 255, 0.1);
+	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	--background-color: #000;
+	--background-color-light: #fff;
+	color-scheme: dark;
+
+	--ff-roboto-serif: "Roboto Serif", serif;
+	--ff-monoton-regular: "Monoton", sans-serif;
+	--font-wight-regular: 400;
+	--font-style-regular: normal;
+
+	--font-optical-sizing: auto;
+	--font-weight: 100;
+	--font-style: italic;
+	--font-variation-settings:"wdth" 100,"GRAD" -50;
+
+	/* -------------------------------------------------------- */
 	/* ------------------ Custom Font-Sizes ------------------- */
 	/* -------------------------------------------------------- */
 
@@ -59,6 +53,8 @@
 	/* ----------------- Custom Space-Sizes ------------------ */
 	/* ------------------------------------------------------- */
 
+	/* Space xxs: 4px → 4.5px */
+	--space-xs: clamp(0.25rem, 0.2174rem + 0.0435cqi, 0.2813rem);
 	/* Space s: 16px → 18px */
 	--space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
 	/* Space m: 24px → 27px */
@@ -87,34 +83,32 @@
 	--space-8xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
 	/* Space 9xl: 176px → 198px */
 	--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
-}
-/* --------------------------------------- */
-/* ------------  Custom Colors ----------- */
-/* --------------------------------------- */
 
-.text-dark {
-	color: hsl(var(--clr-dark));
-}
 
-.text-light {
-	color: hsl(var(--clr-light));
-}
 
-.text-span {
-	color: hsl(var(--clr-span));
-}
+	/* --------------------------------------- */
+	/* ------------  Custom Colors ----------- */
+	/* --------------------------------------- */
 
-.text-white {
-	color: hsl(var(--clr-white));
-}
+    .text-dark {
+		color: hsl(var(--clr-dark));
+	}
 
-.text-accent {
-	color: hsl(var(--clr-accent));
-}
+	.text-light {
+		color: hsl(var(--clr-light));
+	}
 
-html {
-	color-scheme: dark only;
-}
+	.text-span {
+		color: hsl(var(--clr-span));
+	}
+
+	.text-white {
+		color: hsl(var(--clr-white));
+	}
+
+	.text-accent {
+		color: hsl(var(--clr-accent));
+	}
 
 /* --------------------------------------- */
 
@@ -607,4 +601,5 @@ html {
 	.text-with-animation-5 {
 		font-size: var(--step-1);
 	}
+}
 }

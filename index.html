@@ -1,108 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8" />
-	<meta name="description" content="Raffaele Suppa Web Portfolio" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="author" content="Raffaele Suppa" />
-	<title>Raffaele Suppa | WebPage</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Serif:ital,opsz,wdth,wght,GRAD@1,8..144,62.5,100,-50&display=swap" rel="stylesheet">
-	<link rel="icon" href="docs/images/favicon-32x32-min.png" />
-	<link rel="stylesheet" href="/docs/css/reset.css" />
-	<link rel="stylesheet" href="/docs/css/index-lines.css" />
-	<link rel="stylesheet" href="/docs/css/index.css" />
-	<script src="/docs/js/index.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/docs/css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Monoton&family=Roboto+Serif:ital,opsz,wght@1,8..144,100&display=swap" rel="stylesheet">
+  
+    
+
+
+<style>
+    
+
+
+:root {
+	--sp: 6s;
+	--white: #ffffff;
+
+/*------ff-font-family: "Kanit", sans-serif;*/
+
+  --ff-font-family: "Kanit", sans-serif;
+  --ff-font-weight: 100;
+  --ff-font-style: normal;
+
+
+/*-----ff-font-roboto: "Roboto", sans-serif;*/
+
+  --ff-font-roboto: "Roboto Serif", serif;
+  --ff-font-optical-sizing: auto;
+  --ff-font-style-roboto: italic;
+  --ff-font-variation-settings:
+    "wdth" 100,
+    "GRAD" 0;
+}
+body {
+	margin: 0;
+	font-family:var(--ff-font-roboto);
+	font-weight: var(--ff-font-weight);
+	font-style: var(--ff-font-style-roboto);
+    font-variant: var(--ff-font-variation-settings);
+	font-optical-sizing: var(--ff-font-optical-sizing);
+	font-size: 3vmin;
+	box-sizing: border-box;
+    height: 100vh;
+	overflow: hidden;
+	background: radial-gradient(ellipse at 50% 50%, #011116 0%, #000000 100%);
+	}
+
+.wrapper {
+	display:grid;
+	grid-template-rows: 5rem 1fr;
+	grid-template-columns: 1fr;
+	grid-template-areas: "quote" "content";
+	grid-gap: 4rem;
+	min-height: 100svh;
+	margin-inline: auto;
+	overflow: hidden;
+}
+
+.wrapper>* {
+	container-type: inline-size;
+	container-name: wrapper;
+	container: inline-size 100%;
+    margin-inline: auto;
+}
+
+.quote {
+    margin-top: 1vw;
+    text-align: center;
+    width: 100%; /* Make it span the full width */
+    color: white;
+}
+
+.title {
+	font-size:1vw ;
+}
+
+.author {
+	font-size:1vw ;
+}
+
+.curve-container {
+	display: flex;
+	flex-direction: column;
+	row-gap: 6rem;
+	align-items: center;
+	justify-content: center;
+    margin-inline: auto;
+}
+
+.content {
+	display: flex;
+	justify-content: center;
+}
+
+.content div {
+	position: absolute;
+    display: flex;
+	animation: show-hide var(--sp) ease 0s infinite;
+	mix-blend-mode: plus-lighter;
+}
+
+@keyframes show-hide {
+	0%,
+	100% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	20%,
+	80% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.content div span {
+	width: 10vmin;
+	position: relative;
+	text-align: center;
+	box-sizing: border-box;
+	color: #ffffff90;
+	text-shadow: 0 0 1px white;
+}
+
+.content-1 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	/*width: 90vmin;*/
+}
+
+.content-1 div {
+	position: absolute;
+	display: flex;
+	animation: show-hide var(--sp) ease 0s infinite;
+	mix-blend-mode: plus-lighter;
+}
+
+@keyframes show-hide {
+	0%,
+	100% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	20%,
+	80% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.content-1 div span {
+	width: 10vmin;
+	position: relative;
+	text-align: center;
+	box-sizing: border-box;
+	color: #ffffff90;
+	text-shadow: 0 0 1px white;
+}
+
+.up:before,
+.down:before {
+	width: 80%;
+	height: 0.1vmin;
+	background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
+	content: "";
+	position: absolute;
+	border-radius: 100%;
+	filter: blur(2px);
+	left: 10%;
+	top: 49%;
+	box-shadow: 0 0 100px 0 var(--white);
+	animation: shadow var(--sp) ease 0s infinite;
+}
+
+.down:before {
+	width: 1vmin;
+	height: 0.5vmin;
+	filter: blur(3px);
+	left: calc(50% - 0.5vmin);
+	top: 45%;
+	box-shadow: 0 0 10px 0 var(--white);
+}
+
+@keyframes shadow {
+	0%,
+	10%,
+	90%,
+	100% {
+		opacity: 0;
+	}
+	45%,
+	55% {
+		opacity: 0.25;
+		height: 0.25vmin;
+	}
+}
+
+.up span,
+.down span {
+	animation-duration: var(--sp);
+	animation-timing-function: ease;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+}
+
+/*up*/
+.up-2-8 {
+	animation-name: go-up-2-8;
+}
+
+.up-3-7 {
+	animation-name: go-up-3-7;
+}
+
+.up-4-6 {
+	animation-name: go-up-4-6;
+}
+
+.up-5 {
+	animation-name: go-up-5;
+}
+
+/*down*/
+.down-2-8 {
+	animation-name: go-down-2-8;
+}
+
+.down-3-7 {
+	animation-name: go-down-3-7;
+}
+
+.down-4-6 {
+	animation-name: go-down-4-6;
+}
+
+.down-5 {
+	animation-name: go-down-5;
+}
+
+@keyframes go-up-2-8 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -0.6vmin;
+	}
+}
+
+@keyframes go-up-3-7 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -1.2vmin;
+	}
+}
+
+@keyframes go-up-4-6 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -1.8vmin;
+	}
+}
+
+@keyframes go-up-5 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: -2.4vmin;
+	}
+}
+
+@keyframes go-down-2-8 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 0.6vmin;
+	}
+}
+
+@keyframes go-down-3-7 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 1.2vmin;
+	}
+}
+
+@keyframes go-down-4-6 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 1.8vmin;
+	}
+}
+
+@keyframes go-down-5 {
+	0%,
+	10%,
+	90%,
+	100% {
+		top: 0;
+	}
+	40%,
+	60% {
+		top: 2.4vmin;
+	}
+}
+
+
+
+
+.line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 0%;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.line::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+    animation: drop var(--animation-speed) var(--animation-speed) ease-in-out infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1) {
+    margin-left: 5%;
+}
+
+.line:nth-child(1)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(2) {
+    margin-left: 10%;
+}
+
+.line:nth-child(2)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(3) {
+    margin-left: 15%;
+}
+
+.line:nth-child(3)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(4) {
+    margin-left: 20%;
+}
+
+.line:nth-child(4)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(5) {
+    margin-left: 25%;
+}
+
+.line:nth-child(5)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(6) {
+    margin-left: 30%;
+}
+
+.line:nth-child(6)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(7) {
+    margin-left: 35%;
+}
+
+.line:nth-child(7)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(8) {
+    margin-left: 40%;
+}
+
+.line:nth-child(8)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(9) {
+    margin-left: 45%;
+}
+
+.line:nth-child(9)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(10) {
+    margin-left: 50%;
+}
+
+.line:nth-child(10)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(11) {
+    margin-left: 55%;
+}
+
+.line:nth-child(11)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(12) {
+    margin-left: 60%;
+}
+
+.line:nth-child(12)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(13) {
+    margin-left: 65%;
+}
+
+.line:nth-child(13)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(14) {
+    margin-left: 70%;
+}
+
+.line:nth-child(14)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(15) {
+    margin-left: 75%;
+}
+
+.line:nth-child(15)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(16) {
+    margin-left: 80%;
+}
+
+.line:nth-child(16)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(17) {
+    margin-left: 85%;
+}
+
+.line:nth-child(17)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(18) {
+    margin-left: 90%;
+}
+
+.line:nth-child(18)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(19) {
+    margin-left: 95%;
+}
+
+.line:nth-child(19)::after {
+    animation-delay: 1s;
+}
+
+.line:nth-child(20) {
+	margin-left: 100%;
+}
+
+
+@keyframes drop { 0% { top: -50%; } 100% { top: 110%; } }
+</style>
 </head>
-
 <body>
-	<div class="lines">
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
+<div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>    
+    <div class="line"></div>
+    <div class="line"></div>    
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+	<div class="line"></div>
+    <div class="line"></div>
+	<div class="line"></div>
+    <div class="line"></div>
+	<div class="line"></div>
+    </div>
+</div>
+<div class="wrapper" role="button" tabindex="0" onclick="location.href='intro.html';">
+	<div class="quote">
+		<p class="title">"there will be an answer"</p>
+		<p class="title">"let it be!"</p>
+		<p class="author">--the beatles!</p>
 	</div>
-
-	<div class="wrapper" role="button" tabindex="0" onclick="location.href='intro.html';">
-		<div class="quote">
-			<p class="title">"there will be an answer --</p>
-			<p class="title">let it be!"</p>
-			<p class="author">the beatles!</p>
-		</div>
-		<section class="curve-container">
-			<div class="content">
-				<div class="up">
-					<span class="up-0">r</span>
-					<span class="up-2-8">a</span>
-					<span class="up-3-7">f</span>
-					<span class="up-4-6">f</span>
-					<span class="up-5">a</span>
-					<span class="up-4-6">e</span>
-					<span class="up-3-7">l</span>
-					<span class="up-2-8">e</span>
-				</div>
-				<div class="down">
-					<span class="down-0">r</span>
-					<span class="down-2-8">a</span>
-					<span class="down-3-7">f</span>
-					<span class="down-4-6">f</span>
-					<span class="down-5">a</span>
-					<span class="down-4-6">e</span>
-					<span class="down-3-7">l</span>
-					<span class="down-2-8">e</span>
-				</div>
-			</div>
-			<div class="content-1">
-				<div class="up">
-					<span class="up-0"></span>
-					<span class="up-2-8"></span>
-					<span class="up-3-7">s</span>
-					<span class="up-4-6">u</span>
-					<span class="up-5">p</span>
-					<span class="up-4-6">p</span>
-					<span class="up-3-7">a</span>
-					<span class="up-2-8"></span>
-					<span class="up-0"></span>
-				</div>
-				<div class="down">
-					<span class="down-0"></span>
-					<span class="down-2-8"></span>
-					<span class="down-3-7">s</span>
-					<span class="down-4-6">u</span>
-					<span class="down-5">p</span>
-					<span class="down-4-6">p</span>
-					<span class="down-3-7">a</span>
-					<span class="down-2-8"></span>
-					<span class="down-0"></span>
-				</div>
-			</div>
-		</section>
-		<div class="container">
-			<div class="text-with-animation">you're in</div>
-			<div class="text-with-animation-1">one by one the Dances all end</div>
-			<div class="text-with-animation-2">but the Song will always continues</div>
-			<div class="text-with-animation-3">walk across the moments</div>
-			<div class="text-with-animation-4">with me</div>
-			<div class="text-with-animation-5">aweSOME</div>
-		</div>
+	<div class="curve-container">
+<div class="content">
+	<div class="up">
+		<span class="up-0">r</span>
+		<span class="up-2-8">a</span>
+		<span class="up-3-7">f</span>
+		<span class="up-4-6">f</span>
+		<span class="up-5">a</span>
+		<span class="up-4-6">l</span>
+		<span class="up-3-7">l</span>
+		<span class="up-2-8">e</span>
+		<span class="up-0"></span>
 	</div>
-</body>
+	<div class="down">
+		<span class="down-0">r</span>
+		<span class="down-2-8">a</span>
+		<span class="down-3-7">f</span>
+		<span class="down-4-6">f</span>
+		<span class="down-5">a</span>
+		<span class="down-4-6">l</span>
+		<span class="down-3-7">l</span>
+		<span class="down-2-8">e</span>
+		<span class="down-0"></span>
+	</div>
+</div>
+<div class="content-1">
+	<div class="up">
+		<span class="up-0"></span>
+		<span class="up-2-8"></span>
+		<span class="up-3-7">s</span>
+		<span class="up-4-6">u</span>
+		<span class="up-5">p</span>
+		<span class="up-4-6">p</span>
+		<span class="up-3-7">a</span>
+		<span class="up-2-8"></span>
+		<span class="up-0"></span>
+	</div>
+	<div class="down">
+		<span class="down-0"></span>
+		<span class="down-2-8"></span>
+		<span class="down-3-7">s</span>
+		<span class="down-4-6">u</span>
+		<span class="down-5">p</span>
+		<span class="down-4-6">p</span>
+		<span class="down-3-7">a</span>
+		<span class="down-2-8"></span>
+		<span class="down-0"></span>
+	</div>
+</div>
+</div>
+</div>
+</body</html>
 
-</html>
+
+
+
+
+
+
+
+
+
