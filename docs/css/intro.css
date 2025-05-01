@@ -616,7 +616,7 @@ svg {
 
 .intro .bottom {
 	margin-top: var(--space-xl);
-	letter-spacing: var(--space-l);
+	letter-spacing: var(--space-xs);
 }
 
 .intro .bottom {
