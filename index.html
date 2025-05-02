@@ -132,27 +132,27 @@
 body {
 	background: radial-gradient(ellipse at 50% 50%, #011116 0%, #000000 100%);
 	font-family:var(--ff-roboto-serif);
-	font-optical-sizing: var(--font-optical-sizing);
-	font-weight: var(--font-weight);
-	font-style: var(--font-style);
-    font-variation-settings: var(--font-variation-settings);
-	font-size: var(--step-0);
+    font-weight: var(--font-weight); /* If you need a specific weight */
+    font-style: var(--font-style);   /* If you need italic or other styles */
+	margin-inline: auto;
+    text-align: center;
 	}
 
 	.wrapper {
-	font-family: var(--ff-roboto-serif-italic);
-	font-weight: 100;
-	font-size: var(--step-0);
+    max-inline-size:50ch;
+    margin-inline: auto;
 	text-align: center;
-	margin-inline: auto;
 	min-height: 100svh;
 	overflow: hidden;
 }
 
-.wrapper>* {
+.wrapper >* {
 	container-type: inline-size;
-	container-name: wrapper;
-	padding: var(--space-xs);
+    container-name: wrapper;
+    margin-inline: auto;
+	text-align: center;
+    padding-inline: auto;
+    padding-block: var(--space-xl);
 }
 
 .quote {
@@ -172,14 +172,11 @@ body {
 }
 
 .curve-container {
-    max-inline-size: 100%;
-	margin-inline: auto;
-	text-align: center;
-    padding-inline: auto;
-	padding-block: var(--space-1xl);
+    max-inline-size: 50ch;
+    margin-inline: auto;
 	display: flex;
 	flex-direction: column;
-	font-family: var(--ff-roboto-serif);
+    justify-content: center;
 	font-size: var(--step-0);
 	color: hsl(var(--clr-white));
 	row-gap: var(--space-3xl);
@@ -191,6 +188,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	max-inline-size: 100%;
+    overflow: hidden;
 	margin-inline: auto;
 }
 
@@ -202,12 +200,12 @@ body {
 }
 
 .content div span {
-	width: 10vmin;
+    width: var(--space-xl);
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	color: #ffffff90;
-	text-shadow: 0 0 1px var(--white);
+	color:hsl(var(--clr-white));
+	text-shadow: 0 0 1px hsl(var(--clr-white));
 }
 
 .content-1 {
@@ -226,12 +224,12 @@ body {
 }
 
 .content-1 div span {
-	width: 10vmin;
+	width: var(--space-xl);
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	color: #ffffff90;
-	text-shadow: 0 0 1px var(--white);
+	color:hsl(var(--clr-white));
+	text-shadow: 0 0 1px hsl(var(--clr-white));
 }
 
 @keyframes show-hide {
