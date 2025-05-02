@@ -1,37 +1,21 @@
 :root {
 	--sp: 4s;
-	--animation-speed: 4s;
-	/* ------------------------------------------------------- */
-	/* --------------------- Custom Colors ------------------- */
-	/* ------------------------------------------------------- */
+	/* ------------------------------------------------- */
+	/* ------------------ Custom Colors ---------------- */
+	/* ------------------------------------------------- */
 
 	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
-
-	--clr-dark: 0, 0%, 0%;
-	--clr-light: 195, 70%, 90%;
-	--clr-span: 195, 36%, 45%;
-	--clr-accent: 231, 77%, 90%;
+	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
 
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	--background-color: #000;
-	--background-color-light: #fff;
-	color-scheme: dark;
 
-
-	/*--------Roboto Serif Font Family--------*/
-
-	--ff-roboto-serif: "Roboto Serif", serif;
-	--font-optical-sizing: auto;
-	--font-weight: 100;
-	--font-style: italic;
-	--font-variation-settings: "wdth" 100, "GRAD" -50;
-
-	/*----------Monoton Font Family-----------*/
-
-	--ff-monoton-regular: "Monoton", sans-serif;
-	--font-wight-regular: 400;
-	--font-style-regular: normal;
+	--color-scheme: dark light;
+	--clr-dark: 0, 0%, 0%;
+	--clr-light: 195, 70%, 90%;
+	--clr-span: 195, 36%, 45%;
+	--clr-white: 0, 0%, 100%;
+	--clr-accent: 231, 77%, 90%;
 
 	/* -------------------------------------------------------- */
 	/* ------------------ Custom Font-Sizes ------------------- */
@@ -58,8 +42,6 @@
 	/* ----------------- Custom Space-Sizes ------------------ */
 	/* ------------------------------------------------------- */
 
-	/* Space xxs: 4px → 4.5px */
-	--space-xs: clamp(0.25rem, 0.2174rem + 0.0435cqi, 0.2813rem);
 	/* Space s: 16px → 18px */
 	--space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
 	/* Space m: 24px → 27px */
@@ -89,6 +71,13 @@
 	/* Space 9xl: 176px → 198px */
 	--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
 
+	/* ------------------------------------------------------- */
+	/* ----------------- Custom Font-Families ----------- ---- */
+	/* ----------------------------------------------- ------- */
+
+	--ff-monoton-regular: "Monoton", sans-serif;
+	--ff-kanit: "Kanit", sans-serif;
+	--fs-normal: normal;
 }
 
 /* --------------------------------------- */
@@ -116,29 +105,36 @@
 }
 
 /* --------------------------------------- */
+.clickable-area {
+	>* {
+		container-type: inline-size;
+		margin-inline: auto;
+		text-align: center;
+	}
+}
 
-body {
-	font-family: var(--ff-roboto-serif);
-	font-weight: var(--font-weight);
-	font-optical-sizing: var(--font-optical-sizing);
-	font-style: var(--font-style);
-	font-feature-settings: var(--font-variation-settings);
-	background-color: hsl(var(--clr-dark));
+html {
+	color-scheme: dark only;
+	font-family: var(--ff-kanit);
+	font-weight: 100;
 	color: hsl(var(--clr-white));
 }
 
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	min-height: 100svh;
+body {
+	display: grid;
+	grid-template-rows: 5rem 1fr;
+	grid-template-columns: 1fr;
 	overflow: hidden;
-}
-
-.wrapper>* {
-	width: 100%;
-	text-align: center;
-	margin-inline: auto;
+	background-color: hsl(var(--clr-dark));
+	/* Dark background color */
+	color: hsl(var(--clr-white) / 0.8);
+	/* Light text color */
+	font-size: var(--step-1);
+	/* Base font size */
+	line-height: 1.5;
+	/* Line height for readability */
+	font-family: var(--ff-kanit);
+	/* Font family for the body text */
 }
 
 body:before {
@@ -173,6 +169,21 @@ body:before {
 	overflow: hidden;
 }
 
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	>* {
+		container-type: inline-size;
+		margin-inline: auto;
+		width: 100svw;
+		max-width: 100%;
+		min-height: 100svh;
+		overflow: hidden;
+	}
+}
 
 header {
 	position: relative;
@@ -211,7 +222,34 @@ header {
 }
 
 /*******************Navigation***************/
+.primary-navigation {
+	width: 8em;
+	position: absolute;
+	top: 100%;
+	right: 0%;
+	background: transparent;
+	transition: clip-path ease-in-out 700ms;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: none;
+}
 
+.primary-navigation[data-state="opened"] {
+	animation: clipPathCircleOpen 750ms ease-in-out forwards;
+	display: block;
+}
+
+.primary-navigation[data-state="closing"] {
+	animation: clipPathCircleClose 750ms ease-in-out forwards;
+}
+
+.primary-navigation[data-state="closed"] {
+	color: hsl(var(--clr-span));
+	letter-spacing: 6px;
+}
+
+/*******************Navigation***************/
 .primary-navigation {
 	width: 8em;
 	position: absolute;
@@ -272,6 +310,8 @@ li:hover {
 li a {
 	display: block;
 	padding: 0em 1em 0.05em 0em;
+
+	/* Make the anchor element take up the full width of the li */
 	text-decoration: none;
 	color: black;
 }
@@ -285,8 +325,11 @@ li a:hover {
 	position: relative;
 	display: flex;
 	flex-direction: row;
+
 	gap: 0;
 	margin: var(--space-xs);
+
+
 	border-bottom: 1px solid #abb5be;
 }
 
@@ -306,6 +349,7 @@ svg {
 	display: inline-block;
 	margin-left: 0.5em;
 	padding: 0em 1em 0.8em 0em;
+
 	fill: black;
 }
 
@@ -497,18 +541,22 @@ svg {
 }
 
 .intro {
+	max-width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: var(--space-3xl) var(--space-s);
-	color: hsl(var(--clr-white) / 0.8);
+	margin-inline: auto;
+	padding-inline: var(--space-xl);
+	font-size: var(--step-01);
+	overflow: hidden;
 }
 
 .intro p {
 	margin-block: 0.12em;
 }
+
 
 .intro p span {
 	font-size: var(--step-01);
@@ -520,12 +568,17 @@ svg {
 .intro h2,
 .intro h3 {
 	margin: 0;
+	/* Remove default margins */
 	padding: 0;
+	/* Remove default padding */
 	font-size: var(--step-1);
+	/* Match font size with <p> if needed */
 	margin-block: 0.5em;
+	/* Add margin for spacing */
 }
 
 .intro .ya {
+
 	font-size: var(--step-2);
 	color: hsl(var(--clr-span));
 	margin-block: 0.5em;
@@ -538,16 +591,23 @@ svg {
 }
 
 .intro .bottom {
-	margin-top: var(--space-xl);
+	margin-block: var(--space-m);
 }
 
 .wrapper-gradient-text {
+
 	font-size: var(--step-1);
 	margin: 0;
+	/* Remove default margins */
 	padding: 0;
+	/* Remove default padding */
+
 	text-align: center;
+	/* Align text to the left */
 	text-shadow: 0px 0px 0px rgb(255, 255, 255);
 }
+
+
 
 .text-layer {
 	background: linear-gradient(0deg,
@@ -569,8 +629,11 @@ svg {
 
 	100% {
 		text-shadow: 0px 5px 10px rgb(255, 255, 255),
+			/* Reduced vertical offset */
 			0px 15px 20px rgb(255, 255, 255),
+			/* Reduced vertical offset */
 			0px 25px 5px rgb(232, 235, 238);
+		/* Reduced vertical offset */
 	}
 }
 
