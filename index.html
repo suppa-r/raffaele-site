@@ -1,671 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-	<link rel="stylesheet" href="/docs/css/index-lines.css">
-    <link rel="stylesheet" href="/docs/css/reset.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<meta charset="UTF-8" />
+	<meta name="description" content="Raffaele Suppa Web Portfolio" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="Raffaele Suppa" />
+	<title>Raffaele Suppa | WebPage</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Monoton&family=Roboto+Serif:ital,opsz,wght@1,8..144,100&display=swap" rel="stylesheet">
-  <style>
-    :root {
-	--sp: 4s;
-	--animation-speed: 4s;
-	/* ------------------------------------------------------- */
-	/* --------------------- Custom Colors ------------------- */
-	/* ------------------------------------------------------- */
-
-	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
-
-	--clr-dark: 0, 0%, 0%;
-	--clr-light: 195, 70%, 90%;
-	--clr-span: 195, 36%, 45%;
-	--clr-accent: 231, 77%, 90%;
-
-	--border: 1px solid rgba(255, 255, 255, 0.1);
-	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	--background-color: #000;
-	--background-color-light: #fff;
-	color-scheme: dark;
-
-
-	/*--------Roboto Serif Font Family--------*/
-
-	--ff-roboto-serif: "Roboto Serif", serif;
-	--font-optical-sizing: auto;
-	--font-weight: 100;
-	--font-style: italic;
-	--font-variation-settings:"wdth" 100,"GRAD" -50;
-
-	/*----------Monoton Font Family-----------*/
-
-    --ff-monoton-regular: "Monoton", sans-serif;
-	--font-wight-regular: 400;
-	--font-style-regular: normal;
-
-	/* -------------------------------------------------------- */
-	/* ------------------ Custom Font-Sizes ------------------- */
-	/* -------------------------------------------------------- */
-
-	/* Step -1: 13.3333px → 13.5034px */
-	--step--1: clamp(0.8333rem, 0.8296rem + 0.0185cqi, 0.844rem);
-	/* Step 0: 16px → 18px */
-	--step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-	/* Step 1: 19.2px → 23.994px */
-	--step-1: clamp(1.2rem, 1.0958rem + 0.5211cqi, 1.4996rem);
-	/* Step 2: 23.04px → 31.984px */
-	--step-2: clamp(1.44rem, 1.2456rem + 0.9722cqi, 1.999rem);
-	/* Step 3: 27.648px → 42.6347px */
-	--step-3: clamp(1.728rem, 1.4022rem + 1.629cqi, 2.6647rem);
-	/* Step 4: 33.1776px → 56.832px */
-	--step-4: clamp(2.0736rem, 1.5594rem + 2.5711cqi, 3.552rem);
-	/* Step 5: 39.8131px → 75.7571px */
-	--step-5: clamp(2.4883rem, 1.7069rem + 3.907cqi, 4.7348rem);
-	/* Step 6: 47.7757px → 100.9842px */
-	--step-6: clamp(2.986rem, 1.8293rem + 5.7835cqi, 6.3115rem);
-
-	/* ------------------------------------------------------- */
-	/* ----------------- Custom Space-Sizes ------------------ */
-	/* ------------------------------------------------------- */
-
-	/* Space xxs: 4px → 4.5px */
-	--space-xs: clamp(0.25rem, 0.2174rem + 0.0435cqi, 0.2813rem);
-	/* Space s: 16px → 18px */
-	--space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-	/* Space m: 24px → 27px */
-	--space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
-	/* Space l: 32px → 36px */
-	--space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
-	/* Space xl: 48px → 54px */
-	--space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
-	/* Space 1xl: 48px → 54px */
-	--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
-	/* Space xxl: 56px → 63px */
-	--space-xxl: clamp(3.5rem, 3.2174rem + 0.7391cqi, 3.9375rem);
-	/* Space 2xl: 64px → 72px */
-	--space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
-	/* Space 3xl: 96px → 108px */
-	--space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
-	/* Space 4xl: 112px → 126px */
-	--space-4xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
-	/* Space 5xl: 112px → 126px */
-	--space-5xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
-	/* Space 6xl: 128px → 144px */
-	--space-6xl: clamp(8rem, 7.6522rem + 1.7391cqi, 9rem);
-	/* Space 7xl: 144px → 162px */
-	--space-7xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
-	/* Space 8xl: 160px → 180px */
-	--space-8xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
-	/* Space 9xl: 176px → 198px */
-	--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
-
-}
-
-	/* --------------------------------------- */
-	/* ------------  Custom Colors ----------- */
-	/* --------------------------------------- */
-
-    .text-dark {
-		color: hsl(var(--clr-dark));
-	}
-
-	.text-light {
-		color: hsl(var(--clr-light));
-	}
-
-	.text-span {
-		color: hsl(var(--clr-span));
-	}
-
-	.text-white {
-		color: hsl(var(--clr-white));
-	}
-
-	.text-accent {
-		color: hsl(var(--clr-accent));
-	}
-
-/* --------------------------------------- */
-
-body {
-	background: radial-gradient(ellipse at 50% 50%, #011116 0%, #000000 100%);
-	font-family:var(--ff-roboto-serif);
-    font-weight: var(--font-weight); /* If you need a specific weight */
-    font-style: var(--font-style);   /* If you need italic or other styles */
-	margin-inline: auto;
-    text-align: center;
-	}
-
-	.wrapper {
-    max-inline-size:50ch;
-    margin-inline: auto;
-	text-align: center;
-	min-height: 100svh;
-	overflow: hidden;
-}
-
-.wrapper >* {
-	container-type: inline-size;
-    container-name: wrapper;
-    margin-inline: auto;
-	text-align: center;
-    padding-inline: auto;
-    padding-block: var(--space-xl);
-}
-
-.quote {
-	margin-top: var(--space-s);
-	text-align: center;
-	margin-inline: auto;
-	color: hsl(var(--clr-white));
-}
-
-.title {
-	font-size: var(--step--1);
-}
-
-.author {
-	font-size: var(--step--1);
-	margin-block: var(--space-xs);
-}
-
-.curve-container {
-    max-inline-size: 50ch;
-    margin-inline: auto;
-	display: flex;
-	flex-direction: column;
-    justify-content: center;
-	font-size: var(--step-0);
-	color: hsl(var(--clr-white));
-	row-gap: var(--space-3xl);
-	overflow: hidden;
-}
-
-.content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	max-inline-size: 100%;
-    overflow: hidden;
-	margin-inline: auto;
-}
-
-.content div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
-}
-
-.content div span {
-    width: var(--space-xl);
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	color:hsl(var(--clr-white));
-	text-shadow: 0 0 1px hsl(var(--clr-white));
-}
-
-.content-1 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	max-inline-size: 100%;
-	margin-inline: auto;
-}
-
-.content-1 div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
-}
-
-.content-1 div span {
-	width: var(--space-xl);
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	color:hsl(var(--clr-white));
-	text-shadow: 0 0 1px hsl(var(--clr-white));
-}
-
-@keyframes show-hide {
-	0%,
-	100% {
-		opacity: 0;
-		transform: scale(0.8);
-	}
-	20%,
-	80% {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-.up:before,
-.down:before {
-	width: 80%;
-	height: 0.1vmin;
-	background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
-	content: "";
-	position: absolute;
-	border-radius: 100%;
-	filter: blur(2px);
-	left: 10%;
-	top: 49%;
-	box-shadow: 0 0 100px 0 var(--white);
-	animation: shadow var(--sp) ease 0s infinite;
-}
-
-.down:before {
-	width: 1vmin;
-	height: 0.5vmin;
-	filter: blur(3px);
-	left: calc(50% - 0.5vmin);
-	top: 45%;
-	box-shadow: 0 0 10px 0 var(--white);
-}
-
-@keyframes shadow {
-	0%,
-	10%,
-	90%,
-	100% {
-		opacity: 0;
-	}
-	45%,
-	55% {
-		opacity: 0.25;
-		height: 0.25vmin;
-	}
-}
-
-.up span,
-.down span {
-	animation-duration: var(--sp);
-	animation-timing-function: ease;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
-}
-
-/*up*/
-.up-2-8 {
-	animation-name: go-up-2-8;
-}
-
-.up-3-7 {
-	animation-name: go-up-3-7;
-}
-
-.up-4-6 {
-	animation-name: go-up-4-6;
-}
-
-.up-5 {
-	animation-name: go-up-5;
-}
-
-/*down*/
-.down-2-8 {
-	animation-name: go-down-2-8;
-}
-
-.down-3-7 {
-	animation-name: go-down-3-7;
-}
-
-.down-4-6 {
-	animation-name: go-down-4-6;
-}
-
-.down-5 {
-	animation-name: go-down-5;
-}
-
-@keyframes go-up-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -0.6vmin;
-	}
-}
-
-@keyframes go-up-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.2vmin;
-	}
-}
-
-@keyframes go-up-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.8vmin;
-	}
-}
-
-@keyframes go-up-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -2.4vmin;
-	}
-}
-
-@keyframes go-down-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 0.6vmin;
-	}
-}
-
-@keyframes go-down-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.2vmin;
-	}
-}
-
-@keyframes go-down-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.8vmin;
-	}
-}
-
-@keyframes go-down-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 2.4vmin;
-	}
-}
-
-
-.container {
-	margin-top: var(--space-1xl);
-	text-align: center;
-	margin-inline: auto;
-	display: flex;
-	flex-direction: column;
-	font-family: var(--ff-roboto-serif);
-	font-size: var(--step-0);
-	color: hsl(var(--clr-white));
-	}
-
-.text-with-animation {
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-    font-family: var(--ff-monoton-regular);
-	font-size: var(--step-1);
-	text-align: center;
-    margin-top: var(--space-l);
-	user-select: none;
-	white-space: nowrap;
-	letter-spacing: var(--space-m);
-	overflow: hidden;
-	
-}
-
-.text-with-animation-1 {
-	position: relative;
-    font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	margin-top: var(--space-m);
-	user-select: none;
-}
-
-.text-with-animation-2 {
-	position: relative;
-    font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	margin-top: var(--space-m);
-	user-select: none;
-}
-
-.text-with-animation-3 {
-	position: relative;
-    font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	margin-top: var(--space-m);
-	user-select: none;
-}
-
-.text-with-animation-4 {
-	position: relative;
-    font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	margin-top: var(--space-m);
-	user-select: none;
-}
-
-.text-with-animation-5 {
-	position: relative;
-    font-family: var(--ff-monoton-regular);
-	font-size: var(--step-1);
-	text-align: center;
-	animation: main-text-animation 1.3s ease-in-out forwards;
-	margin-top: var(--space-l);
-	user-select: none;
-}
-
-@keyframes test-animation {
-	0% {
-		background-color: transparent;
-		transform: scale(0);
-		opacity: 0.4;
-	}
-
-	100% {
-		background-color: transparent;
-		transform: scale(1);
-		opacity: 1;
-	}
-}
-
-
-@keyframes main-text-animation {
-	0% {
-		letter-spacing: 10vw;
-		word-spacing: 100vw;
-		opacity: 0;
-	}
-
-100% {
-		letter-spacing: var(--space-l);
-		word-spacing: 100vw;
-		opacity: 1;
-	}
-}
-
-@keyframes step-start {
-	0% {
-		opacity: 0;
-		transform: translateY(100px);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@container(max-width:500px) {
-	.container {
-	margin-inline: auto;
-		}
-
-	.text-with-animation {
-		font-size: var(--step-0);
-	}
-
-	.text-with-animation-1 {
-		font-size: var(--step-0);
-	}
-
-	.text-with-animation-2 {
-		font-size: var(--step-0);
-	}
-
-	.text-with-animation-3 {
-		font-size: var(--step-0);
-	}
-
-	.text-with-animation-4 {
-		font-size: var(--step-0);
-	}
-}
-	.text-with-animation-5 {
-		font-size: var(--step-0);
-	}
-
-
-</style>
-</head>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
+		rel="stylesheet">
+	<link rel="icon" href="docs/images/favicon-32x32-min.png" />
+	<link rel="stylesheet" href="/docs/css/reset.css" />
+	<link rel="stylesheet" href="/docs/css/index-lines.css" />
+
+	<head>
+		<style>
+			:root {
+				--sp: 4s;
+				--animation-speed: 4s;
+				/* ------------------------------------------------------- */
+				/* --------------------- Custom Colors ------------------- */
+				/* ------------------------------------------------------- */
+
+				--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
+
+				--clr-dark: 0, 0%, 0%;
+				--clr-light: 195, 70%, 90%;
+				--clr-span: 195, 36%, 45%;
+				--clr-accent: 231, 77%, 90%;
+
+				--border: 1px solid rgba(255, 255, 255, 0.1);
+				--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+				--background-color: #000;
+				--background-color-light: #fff;
+				color-scheme: dark;
+
+
+				/*--------Roboto Serif Font Family--------*/
+
+				--ff-roboto-serif: "Roboto Serif", serif;
+				--font-optical-sizing: auto;
+				--font-weight: 100;
+				--font-style: italic;
+				--font-variation-settings: "wdth" 100, "GRAD" -50;
+
+				/*----------Monoton Font Family-----------*/
+
+				--ff-monoton-regular: "Monoton", sans-serif;
+				--font-wight-regular: 400;
+				--font-style-regular: normal;
+
+				/* -------------------------------------------------------- */
+				/* ------------------ Custom Font-Sizes ------------------- */
+				/* -------------------------------------------------------- */
+
+				/* Step -1: 13.3333px → 13.5034px */
+				--step--1: clamp(0.8333rem, 0.8296rem + 0.0185cqi, 0.844rem);
+				/* Step 0: 16px → 18px */
+				--step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+				/* Step 1: 19.2px → 23.994px */
+				--step-1: clamp(1.2rem, 1.0958rem + 0.5211cqi, 1.4996rem);
+				/* Step 2: 23.04px → 31.984px */
+				--step-2: clamp(1.44rem, 1.2456rem + 0.9722cqi, 1.999rem);
+				/* Step 3: 27.648px → 42.6347px */
+				--step-3: clamp(1.728rem, 1.4022rem + 1.629cqi, 2.6647rem);
+				/* Step 4: 33.1776px → 56.832px */
+				--step-4: clamp(2.0736rem, 1.5594rem + 2.5711cqi, 3.552rem);
+				/* Step 5: 39.8131px → 75.7571px */
+				--step-5: clamp(2.4883rem, 1.7069rem + 3.907cqi, 4.7348rem);
+				/* Step 6: 47.7757px → 100.9842px */
+				--step-6: clamp(2.986rem, 1.8293rem + 5.7835cqi, 6.3115rem);
+
+				/* ------------------------------------------------------- */
+				/* ----------------- Custom Space-Sizes ------------------ */
+				/* ------------------------------------------------------- */
+
+				/* Space xxs: 4px → 4.5px */
+				--space-xs: clamp(0.25rem, 0.2174rem + 0.0435cqi, 0.2813rem);
+				/* Space s: 16px → 18px */
+				--space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+				/* Space m: 24px → 27px */
+				--space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
+				/* Space l: 32px → 36px */
+				--space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
+				/* Space xl: 48px → 54px */
+				--space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
+				/* Space 1xl: 48px → 54px */
+				--space-1xl: clamp(3.5rem, 3.2rem + 0.8522cqi, 3.675rem);
+				/* Space xxl: 56px → 63px */
+				--space-xxl: clamp(3.5rem, 3.2174rem + 0.7391cqi, 3.9375rem);
+				/* Space 2xl: 64px → 72px */
+				--space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
+				/* Space 3xl: 96px → 108px */
+				--space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
+				/* Space 4xl: 112px → 126px */
+				--space-4xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
+				/* Space 5xl: 112px → 126px */
+				--space-5xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
+				/* Space 6xl: 128px → 144px */
+				--space-6xl: clamp(8rem, 7.6522rem + 1.7391cqi, 9rem);
+				/* Space 7xl: 144px → 162px */
+				--space-7xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
+				/* Space 8xl: 160px → 180px */
+				--space-8xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
+				/* Space 9xl: 176px → 198px */
+				--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
+
+			}
+
+			/* --------------------------------------- */
+			/* ------------  Custom Colors ----------- */
+			/* --------------------------------------- */
+
+			.text-dark {
+				color: hsl(var(--clr-dark));
+			}
+
+			.text-light {
+				color: hsl(var(--clr-light));
+			}
+
+			.text-span {
+				color: hsl(var(--clr-span));
+			}
+
+			.text-white {
+				color: hsl(var(--clr-white));
+			}
+
+			.text-accent {
+				color: hsl(var(--clr-accent));
+			}
+
+			/* --------------------------------------- */
+
+			body {
+				background: radial-gradient(ellipse at 50% 50%, #011116 0%, #000000 100%);
+				font-family: var(--ff-roboto-serif);
+				font-weight: var(--font-weight);
+				font-optical-sizing: var(--font-optical-sizing);
+				/* If you need a specific weight */
+				font-style: var(--font-style);
+				font-feature-settings: var(--font-variation-settings);
+				/* If you need italic or other styles */
+			}
+
+			.wrapper {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				/* Ensure the wrapper spans the full width */
+				min-height: 100svh;
+				overflow: hidden;
+				margin: 0;
+				/* Remove auto margins */
+			}
+
+			.wrapper>* {
+				width: 100%;
+				/* Make child elements span the full width */
+				text-align: center;
+				margin: 0;
+				/* Remove auto margins */
+			}
+
+			.quote {
+				padding-block: var(--space-s);
+				color: hsl(var(--clr-white));
+			}
+
+			.title {
+				font-size: var(--step--1);
+			}
+
+			.author {
+				font-size: var(--step--1);
+			}
+
+			.curve-container {
+				display: flex;
+				flex-direction: column;
+				row-gap: var(--space-3xl);
+				justify-content: center;
+				padding-block: var(--space-3xl);
+			}
+
+			.content {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				max-inline-size: 50ch;
+				overflow: hidden;
+				margin-inline: auto;
+			}
+
+			.content div {
+				position: absolute;
+				display: flex;
+				animation: show-hide var(--sp) ease 0s infinite;
+				mix-blend-mode: plus-lighter;
+			}
+
+			.content div span {
+				margin-inline: auto;
+				animation-duration: var(--sp);
+				width: var(--space-xl);
+				position: relative;
+				text-align: center;
+				box-sizing: border-box;
+				color: hsl(var(--clr-white));
+				text-shadow: 0 0 1px hsl(var(--clr-white));
+			}
+
+			.content-1 {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				max-inline-size: 50ch;
+				overflow: hidden;
+				margin-inline: auto;
+			}
+
+			.content-1 div {
+				position: absolute;
+				display: flex;
+				animation: show-hide var(--sp) ease 0s infinite;
+				mix-blend-mode: plus-lighter;
+			}
+
+			.content-1 div span {
+				margin-inline: auto;
+				animation-duration: var(--sp);
+				width: var(--space-xl);
+				position: relative;
+				text-align: center;
+				box-sizing: border-box;
+				color: hsl(var(--clr-white));
+				text-shadow: 0 0 1px hsl(var(--clr-white));
+			}
+
+
+			@keyframes show-hide {
+
+				0%,
+				100% {
+					opacity: 0;
+					transform: scale(0.8);
+				}
+
+				20%,
+				80% {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+
+
+			.up:before,
+			.down:before {
+				width: 80%;
+				height: 0.1vmin;
+				background: radial-gradient(ellipse at 50% 50%, var(--white), #ffffff00 70%);
+				content: "";
+				position: absolute;
+				border-radius: 100%;
+				filter: blur(2px);
+				left: 10%;
+				top: 49%;
+				box-shadow: 0 0 100px 0 var(--white);
+				animation: shadow var(--sp) ease 0s infinite;
+			}
+
+			.down:before {
+				width: 1vmin;
+				height: 0.5vmin;
+				filter: blur(3px);
+				left: calc(50% - 0.5vmin);
+				top: 45%;
+				box-shadow: 0 0 10px 0 var(--white);
+			}
+
+			@keyframes shadow {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					opacity: 0;
+				}
+
+				45%,
+				55% {
+					opacity: 0.25;
+					height: 0.25vmin;
+				}
+			}
+
+			.up span,
+			.down span {
+				animation-duration: var(--sp);
+				animation-timing-function: ease;
+				animation-delay: 0s;
+				animation-iteration-count: infinite;
+			}
+
+			/*up*/
+			.up-2-8 {
+				animation-name: go-up-2-8;
+			}
+
+			.up-3-7 {
+				animation-name: go-up-3-7;
+			}
+
+			.up-4-6 {
+				animation-name: go-up-4-6;
+			}
+
+			.up-5 {
+				animation-name: go-up-5;
+			}
+
+			/*down*/
+			.down-2-8 {
+				animation-name: go-down-2-8;
+			}
+
+			.down-3-7 {
+				animation-name: go-down-3-7;
+			}
+
+			.down-4-6 {
+				animation-name: go-down-4-6;
+			}
+
+			.down-5 {
+				animation-name: go-down-5;
+			}
+
+			@keyframes go-up-2-8 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: -0.6vmin;
+				}
+			}
+
+			@keyframes go-up-3-7 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: -1.2vmin;
+				}
+			}
+
+			@keyframes go-up-4-6 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: -1.8vmin;
+				}
+			}
+
+			@keyframes go-up-5 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: -2.4vmin;
+				}
+			}
+
+			@keyframes go-down-2-8 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: 0.6vmin;
+				}
+			}
+
+			@keyframes go-down-3-7 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: 1.2vmin;
+				}
+			}
+
+			@keyframes go-down-4-6 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: 1.8vmin;
+				}
+			}
+
+			@keyframes go-down-5 {
+
+				0%,
+				10%,
+				90%,
+				100% {
+					top: 0;
+				}
+
+				40%,
+				60% {
+					top: 2.4vmin;
+				}
+			}
+
+			@media (max-width: 768px) {
+				body {
+					display: flex;
+					justify-content: space-between;
+				}
+
+				.line::after {
+					height: 10vh;
+				}
+			}
+
+			@media (max-width: 480px) {
+				body {
+					display: flex;
+					justify-content: space-between;
+				}
+
+				.line::after {
+					height: 5vh;
+				}
+			}
+		</style>
+	</head>
+
 <body>
-<div class="lines">
-    <div class="line"></div>
-    <div class="line"></div>    
-    <div class="line"></div>
-    <div class="line"></div>    
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-	<div class="line"></div>
-    <div class="line"></div>
-	<div class="line"></div>
-    <div class="line"></div>
-	<div class="line"></div>
-    </div>
-<div class="wrapper" role="button" tabindex="0" onclick="location.href='intro.html';">
-	<div class="quote">
-		<p class="title">"there will be an answer</p>
-		<p class="title">--let it be!"</p>
-		<p class="author">the beatles!</p>
+	<div class="lines">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
 	</div>
-	<div class="curve-container">
-<div class="content">
-	<div class="up">
-		<span class="up-0">r</span>
-		<span class="up-2-8">a</span>
-		<span class="up-3-7">f</span>
-		<span class="up-4-6">f</span>
-		<span class="up-5">a</span>
-		<span class="up-4-6">l</span>
-		<span class="up-3-7">l</span>
-		<span class="up-2-8">e</span>
-		<span class="up-0"></span>
+	<div class="wrapper" role="button" tabindex="0" onclick="location.href='intro.html';">
+		<div class="quote">
+			<p class="title">"there will be an answer</p>
+			<p class="title">--let it be!"</p>
+			<p class="author">the beatles!</p>
+		</div>
+		<div class="curve-container">
+			<div class="content">
+				<div class="up">
+					<span class="up-0">r</span>
+					<span class="up-2-8">a</span>
+					<span class="up-3-7">f</span>
+					<span class="up-4-6">f</span>
+					<span class="up-5">a</span>
+					<span class="up-4-6">l</span>
+					<span class="up-3-7">l</span>
+					<span class="up-2-8">e</span>
+				</div>
+
+				<div class="down">
+					<span class="down-0">r</span>
+					<span class="down-2-8">a</span>
+					<span class="down-3-7">f</span>
+					<span class="down-4-6">f</span>
+					<span class="down-5">a</span>
+					<span class="down-4-6">l</span>
+					<span class="down-3-7">l</span>
+					<span class="down-2-8">e</span>
+				</div>
+			</div>
+
+
+			<div class="content-1">
+				<div class="up">
+					<span class="up-3-7">s</span>
+					<span class="up-4-6">u</span>
+					<span class="up-5">p</span>
+					<span class="up-4-6">p</span>
+					<span class="up-3-7">a</span>
+				</div>
+
+				<div class="down">
+					<span class="down-3-7">s</span>
+					<span class="down-4-6">u</span>
+					<span class="down-5">p</span>
+					<span class="down-4-6">p</span>
+					<span class="down-3-7">a</span>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="down">
-		<span class="down-0">r</span>
-		<span class="down-2-8">a</span>
-		<span class="down-3-7">f</span>
-		<span class="down-4-6">f</span>
-		<span class="down-5">a</span>
-		<span class="down-4-6">l</span>
-		<span class="down-3-7">l</span>
-		<span class="down-2-8">e</span>
-		<span class="down-0"></span>
-	</div>
-</div>
-	
-<div class="content-1">
-	<div class="up">
-		<span class="up-0"></span>
-		<span class="up-2-8"></span>
-		<span class="up-3-7">s</span>
-		<span class="up-4-6">u</span>
-		<span class="up-5">p</span>
-		<span class="up-4-6">p</span>
-		<span class="up-3-7">a</span>
-		<span class="up-2-8"></span>
-		<span class="up-0"></span>
-	</div>
-
-	<div class="down">
-		<span class="down-0"></span>
-		<span class="down-2-8"></span>
-		<span class="down-3-7">s</span>
-		<span class="down-4-6">u</span>
-		<span class="down-5">p</span>
-		<span class="down-4-6">p</span>
-		<span class="down-3-7">a</span>
-		<span class="down-2-8"></span>
-		<span class="down-0"></span>
-	</div>
-</div>
-</div>
-
-	<div class="container">
-	<div class="text-with-animation">you're in</div>
-	<div class="text-with-animation-1">one by one the Dances all end</div>
-	<div class="text-with-animation-2">but the Song will always continues</div>
-	<div class="text-with-animation-3">walk across the moments</div>
-	<div class="text-with-animation-4">with me</div>
-	<div class="text-with-animation-5">aweSOME</div>
-	</div>
-	
-	
-	
-</body</html>
 
 
 
@@ -674,5 +566,6 @@ body {
 
 
 
+</body>
 
-
+</html>
