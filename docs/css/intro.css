@@ -114,13 +114,6 @@
 
 html {
 	color-scheme: dark only;
-}
-
-body {
-	display: grid;
-
-	/* Center content vertically and horizontally */
-	overflow: hidden;
 	/* Prevent scrolling */
 	background-color: hsl(var(--clr-dark));
 	/* Dark background color */
@@ -136,7 +129,13 @@ body {
 	/* Font style */
 	font-feature-settings: var(--font-variation-settings);
 	/* Font feature settings */
+}
 
+body {
+	display: grid;
+	grid-template-rows: 4rem 1fr;
+	grid-template-columns: 1fr;
+	overflow: hidden;
 }
 
 body:before {
@@ -157,11 +156,11 @@ body:before {
 			/* Darker at the bottom */
 		),
 		linear-gradient(90deg,
-			color-mix(in hsl, canvasText, transparent 70%) 1px,
+			color-mix(in hsl, canvasText, transparent 40%) 1px,
 			transparent 1px 30px) 50% 50% / 30px 30px,
-		linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
+		linear-gradient(color-mix(in hsl, canvasText, transparent 30%) 1px,
 			transparent 1px 30px) 50% 50% / 30px 30px;
-	mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+	mask: linear-gradient(-20deg, transparent 0%, white) 100%;
 	transform-style: preserve-3d;
 	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
 		background-position 0.3s ease-in-out;
@@ -176,20 +175,30 @@ header {
 	padding-inline: var(--space-xl);
 }
 
-header h2 {
+header .logo {
+	display: flex;
+	padding-left: var(--space-l);
+	padding-block: var(--space-s);
+	/* Padding for the logo */
+}
+
+header .logo p {
 	color: hsl(var(--clr-white));
 	font-size: var(--step-1);
 }
 
-header .logo {
-	display: flex;
-
-	padding: 1vh 1vw;
-	font-family: "Turret Road", sans-serif;
+header .logo p span {
+	color: hsl(var(--clr-span));
+	/* Span color */
+	font-size: var(--step-1);
+	padding-left: var(--space-xs);
+	padding-right: var(--space-m);
 }
 
 header .bars {
 	position: relative;
+	cursor: pointer;
+	transition: 0.5s;
 	height: 3px;
 	width: 20px;
 	border-radius: 2px;
@@ -226,6 +235,9 @@ header .bars::before {
 
 .nav-links {
 	display: flex;
+	gap: var(--space-m);
+	padding-block: var(--space-s);
+	justify-content: center;
 	font-family: var(--ff-roboto-serif);
 	font-size: var(--step--1);
 	letter-spacing: 1px;
@@ -233,8 +245,7 @@ header .bars::before {
 
 .nav-links li {
 	position: relative;
-	padding: 0.7vw;
-	margin: 0 0.7vw;
+	margin: 0 var(--space-s);
 }
 
 .nav-links li a {
@@ -248,7 +259,7 @@ header .bars::before {
 	font-family: var(--ff-roboto-serif);
 	font-size: var(--step--1);
 	letter-spacing: 1px;
-	margin-top: 0.1rem;
+	margin-top: var(--space-s);
 }
 
 .nav-links li a:hover {
@@ -257,9 +268,9 @@ header .bars::before {
 }
 
 .nav-links svg {
-	width: 2rem;
-	height: 2rem;
-	margin: 0.2rem;
+	width: var(--space-s);
+	height: var(--space-s);
+	margin: 0;
 	fill: hsl(var(--clr-white));
 }
 
@@ -271,19 +282,19 @@ header .bars::before {
 	left: 0;
 	width: 100vw;
 	/* Full viewport width */
-	margin-block: var(--space-xxl);
+	margin-top: var(--space-5xl);
 	/* Full viewport height */
 	display: flex;
 	/* Optional: Flexbox for layout */
 	flex-direction: column;
 	/* Optional: Arrange children vertically */
-	justify-content: space-around;
-	/* Optional: Center content vertically */
 	cursor: pointer;
 	/* Change cursor to indicate it's clickable */
 }
 
 .intro>* {
+	container-type: inline-size;
+	/* Enable container queries for child elements */
 	width: 100%;
 	/* Make children span the full width */
 	max-width: 100%;
@@ -320,8 +331,6 @@ header .bars::before {
 .intro .bottom {
 	letter-spacing: var(--space-xs);
 }
-
-
 
 .wrapper-gradient-text {
 	font-size: var(--step-1);

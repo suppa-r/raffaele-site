@@ -580,8 +580,9 @@ html {
 	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
+	letter-spacing: var(--space-xs);
 	user-select: none;
-	margin-top: var(--space-xs);
+	margin-top: var(--space-s);
 }
 
 .text-with-animation-5 {
@@ -589,10 +590,10 @@ html {
 	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
-	margin-top: var(--space-m);
+	margin-top: var(--space-xs);
 	user-select: none;
 	white-space: nowrap;
-	letter-spacing: var(--space-m);
+	letter-spacing: var(--space-s);
 	overflow: hidden;
 }
 
