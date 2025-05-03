@@ -111,19 +111,29 @@
 }
 
 /* --------------------------------------- */
-.clickable-area {
-	>* {
-		container-type: inline-size;
-		margin-inline: auto;
-		text-align: center;
-	}
-}
 
 html {
 	color-scheme: dark only;
-	font-family: var(--ff-kanit);
-	font-weight: 100;
+}
+
+body {
+	overflow: hidden;
+	/* Prevent scrolling */
+	background-color: hsl(var(--clr-dark));
+	/* Dark background color */
 	color: hsl(var(--clr-white));
+	/* White text color */
+	font-family: var(--ff-roboto-serif);
+	/* Font family */
+	font-weight: var(--font-weight);
+	/* Font weight */
+	font-optical-sizing: var(--font-optical-sizing);
+	/* Optical sizing */
+	font-style: var(--font-style);
+	/* Font style */
+	font-feature-settings: var(--font-variation-settings);
+	/* Font feature settings */
+
 }
 
 body:before {
@@ -148,7 +158,6 @@ body:before {
 			transparent 1px 30px) 50% 50% / 30px 30px,
 		linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
 			transparent 1px 30px) 50% 50% / 30px 30px;
-
 	mask: linear-gradient(-20deg, transparent 25%, white) 100%;
 	transform-style: preserve-3d;
 	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
@@ -160,6 +169,9 @@ body:before {
 
 .wrapper {
 	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	min-height: 100svh;
 }
 
 .wrapper>* {
@@ -187,18 +199,11 @@ header {
 	padding-left: var(--space-xl);
 }
 
-
 .logo h2 {
 	color: hsl(var(--clr-white));
-	font-size: var(--step-1);
+	font-size: var(--step-0);
 	padding-right: var(--space-s);
-	padding-left: var(--space-xs);
-}
-
-.logo h2 span {
-	font-size: var(--step-1);
-	padding-right: var(--space-s);
-	padding-left: var(--space-xs);
+	padding-left: var(--space-s);
 }
 
 .logo h2 span {
@@ -506,17 +511,11 @@ svg {
 
 
 .intro {
-
-	max-width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	margin-inline: auto;
-	padding-inline: var(--space-xl);
-	font-size: var(--step-01);
-	overflow: hidden;
 }
 
 .intro p {
@@ -527,25 +526,19 @@ svg {
 .intro p span {
 	font-size: var(--step-01);
 	color: hsl(var(--clr-span));
-
 	padding-left: var(--space-s);
 }
 
 .intro h1,
 .intro h2,
 .intro h3 {
-	margin: 0;
-	/* Remove default margins */
-	padding: 0;
-	/* Remove default padding */
 	font-size: var(--step-1);
 	/* Match font size with <p> if needed */
-	margin-block: 0.5em;
-	/* Add margin for spacing */
+	text-align: center;
+	/* Align text to the left */
 }
 
 .intro .ya {
-
 	font-size: var(--step-2);
 	color: hsl(var(--clr-span));
 	margin-block: 0.5em;
@@ -553,28 +546,16 @@ svg {
 }
 
 .intro .bottom {
-	margin-top: var(--space-xl);
+	margin-block: var(--space-m);
 	letter-spacing: var(--space-xs);
 }
 
-.intro .bottom {
-	margin-top: var(--space-xl);
-}
-
 .wrapper-gradient-text {
-
 	font-size: var(--step-1);
-	margin: 0;
-	/* Remove default margins */
-	padding: 0;
-	/* Remove default padding */
-
 	text-align: center;
 	/* Align text to the left */
 	text-shadow: 0px 0px 0px rgb(255, 255, 255);
 }
-
-
 
 .text-layer {
 	background: linear-gradient(0deg,
@@ -599,7 +580,7 @@ svg {
 			/* Reduced vertical offset */
 			0px 15px 20px rgb(255, 255, 255),
 			/* Reduced vertical offset */
-			0px 25px 5px rgb(232, 235, 238);
+			0px 40px 5px rgb(232, 235, 238);
 		/* Reduced vertical offset */
 	}
 }

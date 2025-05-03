@@ -13,6 +13,7 @@
 
 * {
 	margin: 0;
+	padding: 0;
 }
 
 /* remove animations for people who've turned them off */
@@ -29,21 +30,8 @@ select {
 	font: inherit;
 }
 
-p {
-	text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin-block: 0.3em;
-	margin-inline: 0;
-	text-wrap: balance;
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-}
+
+
 
 /* Set core root defaults */
 html:focus-within {
@@ -66,7 +54,6 @@ body {
 	min-height: 100svh;
 	min-block-size: 100svh;
 	line-height: 1.25;
-	-webkit-font-smoothing: antialiased;
 	overflow: hidden;
 }
 
@@ -89,7 +76,8 @@ canvas {
 	max-width: 100%;
 	display: block;
 	height: auto;
-	object-fit: cover; /* cover, contain, fill, none, scale-down */
+	object-fit: cover;
+	/* cover, contain, fill, none, scale-down */
 	background-position: center;
 	background-size: cover;
 }
@@ -104,6 +92,12 @@ h6 {
 	margin-block: 0.3em;
 	margin-inline: 0;
 	text-wrap: balance;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+p {
+	text-wrap: pretty;
 }
 
 /* A elements that don't have a class get default styles */
@@ -129,32 +123,6 @@ textarea:not([rows]) {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
 	scroll-margin-block: 5ex;
-}
-
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
-}
-
-.skip-to-content {
-	position: absolute;
-	background: hsl(var(--clr-light));
-	color: hsl(var(--clr-dark));
-	padding: 0.5em 1em;
-	margin-inline: auto;
-	transform: translateY(-100%);
-	transition: transform 250ms ease-in;
-}
-
-.skip-to-content:focus {
-	transform: translateY(0);
 }
 
 /* End of CSS Reset */

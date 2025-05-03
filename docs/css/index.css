@@ -127,27 +127,41 @@ html {
 	font-style: var(--font-style);
 	font-feature-settings: var(--font-variation-settings);
 	background-color: var(--background-color);
+	height: 100%;
+	overflow: hidden;
+	/* Prevent scrolling */
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
+	position: absolute;
+	/* Position the wrapper relative to the viewport */
+	top: 0;
+	left: 0;
 	width: 100%;
+	/* Full width */
 	min-height: 100svh;
-	margin-inline: auto;
-	justify-content: center;
-	overflow: hidden;
+
+	display: flex;
+	/* Optional: Flexbox for layout */
+	flex-direction: column;
+	/* Optional: Arrange children vertically */
+	justify-content: space-around;
+	/* Optional: Center content vertically */
+
+	cursor: pointer;
+	/* Change cursor to indicate it's clickable */
 }
 
 .wrapper>* {
-	width: 100%;
+	container-type: inline-size;
+	/* Allow child elements to be sized based on the container */
 	text-align: center;
-	margin-inline: auto;
+	pointer-events: all;
+	/* Prevent child elements from intercepting clicks */
 }
 
 .quote {
 	color: hsl(var(--clr-white));
-	padding-bottom: var(--space-xxl);
 }
 
 .title {
@@ -163,8 +177,7 @@ html {
 	flex-direction: column;
 	row-gap: var(--space-3xl);
 	justify-content: center;
-	padding-bottom: var(--space-l);
-	overflow: hidden;
+
 	margin-inline: auto;
 	color: hsl(var(--clr-white));
 	font-size: var(--step-1);
@@ -441,12 +454,11 @@ html {
 }
 
 .container {
-	text-align: center;
-	margin-inline: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-top: var(--space-xl);
+	margin-bottom: var(--space-3xl);
+	overflow: hidden;
 }
 
 .text-with-animation {
@@ -501,19 +513,7 @@ html {
 	font-family: var(--ff-monoton-regular);
 	font-size: var(--step-1);
 	text-align: center;
-	margin-top: var(--space-xs);
-	user-select: none;
-	white-space: nowrap;
-	letter-spacing: var(--space-l);
-	overflow: hidden;
-}
-
-.text-with-animation-6 {
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	font-family: var(--ff-monoton-regular);
-	font-size: var(--step-1);
-	text-align: center;
-	margin-top: var(--space-l);
+	margin-top: var(--space-m);
 	user-select: none;
 	white-space: nowrap;
 	letter-spacing: var(--space-m);
