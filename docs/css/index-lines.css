@@ -13,8 +13,7 @@
   height: 100%;
   top: 0;
   left: 0%;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
+  background: rgba(53, 51, 51, 0.905);
 }
 
 .line::after {
@@ -25,12 +24,10 @@
   width: 100%;
   top: -50%;
   left: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    #ffffff 75%,
-    #ffffff 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      #ffffff 75%,
+      #ffffff 100%);
   animation: drop 3s 3s ease infinite;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
