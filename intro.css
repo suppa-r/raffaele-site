@@ -229,6 +229,7 @@ header .bars::before {
   font-family: var(--ff-roboto-serif);
   font-size: var(--step--1);
   letter-spacing: 1px;
+  list-style: none;
 }
 
 .nav-links li {
@@ -271,7 +272,8 @@ header .bars::before {
   left: 0;
   width: 100vw;
   /* Full viewport width */
-  margin-block: var(--space-xxl);
+  margin-inline: auto;
+  margin-block: var(--space-4xl);
   /* Full viewport height */
   display: flex;
   /* Optional: Flexbox for layout */
@@ -290,6 +292,10 @@ header .bars::before {
   text-align: center;
   pointer-events: all;
   /* Prevent child elements from intercepting clicks */
+}
+
+.intro>* {
+  container-type: inline-size;
 }
 
 .intro p {
@@ -382,13 +388,13 @@ header .bars::before {
     position: fixed;
     top: 4rem;
     left: 0;
-    padding-top: 1rem;
     flex-direction: column;
     height: 100vh;
     width: 100%;
     pointer-events: none;
     transition: 0.5s;
     opacity: 0;
+    list-style: none;
   }
 
   .nav-links li {
