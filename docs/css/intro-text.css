@@ -1,37 +1,21 @@
 :root {
 	--sp: 4s;
-	--animation-speed: 4s;
-	/* ------------------------------------------------------- */
-	/* --------------------- Custom Colors ------------------- */
-	/* ------------------------------------------------------- */
+	/* ------------------------------------------------- */
+	/* ------------------ Custom Colors ---------------- */
+	/* ------------------------------------------------- */
 
 	--gradient: linear-gradient(45deg, #33ffdd, #6bfff388, #9db6db, #686ce0c5);
-
-	--clr-dark: 0, 0%, 0%;
-	--clr-light: 195, 70%, 90%;
-	--clr-span: 195, 36%, 45%;
-	--clr-accent: 231, 77%, 90%;
-	--clr-white: 0, 0%, 100%;
+	--gradient-2: ellipse(45deg, #33ffdd, #6bfff3c9, #8c81d3, #686ce0c5);
 
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	--background-color: #000;
-	--background-color-light: #fff;
 
-
-	/*--------Roboto Serif Font Family--------*/
-
-	--ff-roboto-serif: "Roboto Serif", serif;
-	--font-optical-sizing: auto;
-	--font-weight: 100;
-	--font-style: italic;
-	--font-variation-settings: "wdth" 100, "GRAD" -50;
-
-	/*----------Monoton Font Family-----------*/
-
-	--ff-monoton-regular: "Monoton", sans-serif;
-	--font-wight-regular: 400;
-	--font-style-regular: normal;
+	--color-scheme: dark light;
+	--clr-dark: 0, 0%, 0%;
+	--clr-light: 195, 70%, 90%;
+	--clr-span: 195, 36%, 45%;
+	--clr-white: 0, 0%, 100%;
+	--clr-accent: 231, 77%, 90%;
 
 	/* -------------------------------------------------------- */
 	/* ------------------ Custom Font-Sizes ------------------- */
@@ -58,8 +42,6 @@
 	/* ----------------- Custom Space-Sizes ------------------ */
 	/* ------------------------------------------------------- */
 
-	/* Space xxs: 4px → 4.5px */
-	--space-xs: clamp(0.25rem, 0.2174rem + 0.0435cqi, 0.2813rem);
 	/* Space s: 16px → 18px */
 	--space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
 	/* Space m: 24px → 27px */
@@ -89,6 +71,19 @@
 	/* Space 9xl: 176px → 198px */
 	--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
 
+	/*--------Roboto Serif Font Family--------*/
+
+	--ff-roboto-serif: "Roboto Serif", serif;
+	--font-optical-sizing: auto;
+	--font-weight: 100;
+	--font-style: italic;
+	--font-variation-settings: "wdth" 100, "GRAD" -50;
+
+	/*----------Monoton Font Family-----------*/
+
+	--ff-monoton-regular: "Monoton", sans-serif;
+	--font-wight-regular: 400;
+	--font-style-regular: normal;
 }
 
 /* --------------------------------------- */
@@ -116,24 +111,19 @@
 }
 
 /* --------------------------------------- */
-
-/* --------------------------------------- */
-body,
-html {
-	color-scheme: dark only;
-	font-family: var(--ff-roboto-serif);
-	color: hsl(var(--clr-white));
-	font-weight: var(--font-weight);
-	font-optical-sizing: var(--font-optical-sizing);
-	font-style: var(--font-style);
-	font-feature-settings: var(--font-variation-settings);
-	background-color: var(--background-color);
+.clickable-area {
+	>* {
+		container-type: inline-size;
+		margin-inline: auto;
+		text-align: center;
+	}
 }
 
-body {
-	display: grid;
-	grid-template-rows: 4rem 1fr;
-	grid-template-columns: 1fr;
+html {
+	color-scheme: dark only;
+	font-family: var(--ff-kanit);
+	font-weight: 100;
+	color: hsl(var(--clr-white));
 }
 
 body:before {
@@ -169,13 +159,7 @@ body:before {
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	min-height: 100svh;
 	margin-inline: auto;
-	justify-content: space-between;
-	overflow: hidden;
 }
 
 .wrapper>* {
@@ -184,9 +168,13 @@ body:before {
 	margin-inline: auto;
 }
 
-
-
 header {
+	font-family: var(--ff-roboto-serif);
+	color: hsl(var(--clr-white));
+	font-weight: var(--font-weight);
+	font-optical-sizing: var(--font-optical-sizing);
+	font-style: var(--font-style);
+	font-feature-settings: var(--font-variation-settings);
 	position: relative;
 	height: 4rem;
 	width: 100%;
@@ -208,7 +196,6 @@ header {
 }
 
 .logo h2 span {
-
 	font-size: var(--step-1);
 	padding-right: var(--space-s);
 	padding-left: var(--space-xs);
@@ -222,9 +209,7 @@ header {
 	letter-spacing: 6px;
 }
 
-
 /*******************Navigation***************/
-
 
 .primary-navigation {
 	width: 8em;
@@ -249,7 +234,8 @@ header {
 }
 
 .primary-navigation[data-state="closed"] {
-	display: none;
+	color: hsl(var(--clr-span));
+	letter-spacing: 6px;
 }
 
 @keyframes clipPathCircleOpen {
@@ -301,8 +287,11 @@ li a:hover {
 	position: relative;
 	display: flex;
 	flex-direction: row;
+
 	gap: 0;
 	margin: var(--space-xs);
+
+
 	border-bottom: 1px solid #abb5be;
 }
 
@@ -423,7 +412,26 @@ svg {
 	transform: translateY(-3px) rotate(-90deg);
 }
 
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	/* added line */
+	border: 0;
+}
 
+.skip-to-content {
+	position: absolute;
+	z-index: 9999;
+	background: hsl(var(--clr-white));
+	color: hsl(var(--clr-dark));
+	padding: 0.5em 1em;
+}
 
 .sr-only {
 	position: absolute;
@@ -494,23 +502,32 @@ svg {
 	color: hsl(var(--clr-white) / 0.25);
 }
 
+
+
+
 .intro {
+
+	max-width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	text-align: center;
 	margin-inline: auto;
-	padding-inline: var(--space-m);
-	min-height: 100%;
+	padding-inline: var(--space-xl);
+	font-size: var(--step-01);
+	overflow: hidden;
 }
 
 .intro p {
 	margin-block: 0.12em;
 }
 
+
 .intro p span {
 	font-size: var(--step-01);
 	color: hsl(var(--clr-span));
+
 	padding-left: var(--space-s);
 }
 
@@ -528,6 +545,7 @@ svg {
 }
 
 .intro .ya {
+
 	font-size: var(--step-2);
 	color: hsl(var(--clr-span));
 	margin-block: 0.5em;
@@ -540,19 +558,23 @@ svg {
 }
 
 .intro .bottom {
-	margin-block: var(--space-m);
+	margin-top: var(--space-xl);
 }
 
 .wrapper-gradient-text {
+
 	font-size: var(--step-1);
 	margin: 0;
 	/* Remove default margins */
 	padding: 0;
 	/* Remove default padding */
+
 	text-align: center;
 	/* Align text to the left */
 	text-shadow: 0px 0px 0px rgb(255, 255, 255);
 }
+
+
 
 .text-layer {
 	background: linear-gradient(0deg,
