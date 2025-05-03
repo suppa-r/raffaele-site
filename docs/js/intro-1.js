@@ -1,8 +1,7 @@
 const navbar = document.querySelector(".navbar");
 const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
-const navLinks = document.querySelector(".nav-links");
-const overlay = document.querySelector(".overlay");
-const intro = document.querySelector(".section-content");
+const navLinks = document.querySelector(".step-nav");
+const intro = document.querySelector(".intro");
 let isMenuOpen = false;
 
 // Scroll effect
@@ -19,7 +18,6 @@ function toggleMenu() {
   isMenuOpen = !isMenuOpen;
   mobileNavToggle.classList.toggle("active");
   navLinks.classList.toggle("active");
-  overlay.classList.toggle("active");
   document.body.style.overflow = isMenuOpen ? "hidden" : "";
 }
 

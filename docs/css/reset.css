@@ -30,9 +30,6 @@ select {
 	font: inherit;
 }
 
-
-
-
 /* Set core root defaults */
 html:focus-within {
 	scroll-behavior: smooth;
@@ -87,9 +84,8 @@ h1,
 h2,
 h3,
 h4,
-h5,
-h6 {
-	margin-block: 0.3em;
+h h6 {
+	margin-block: 0.1em;
 	margin-inline: 0;
 	text-wrap: balance;
 	overflow-wrap: break-word;
