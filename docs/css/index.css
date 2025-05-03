@@ -584,11 +584,10 @@ main {
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
 	user-select: none;
-	margin-top: var(--space-xs);
+	margin-block: var(--space-m);
 }
 
 .text-with-animation-6 {
-	margin-top: var(--space-m);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	font-family: var(--ff-monoton-regular);
 	font-size: var(--step-1);
