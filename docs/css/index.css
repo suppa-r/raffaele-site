@@ -1,6 +1,7 @@
 :root {
 	--sp: 4s;
 	--animation-speed: 4s;
+	--animation-speed: 4s;
 	/* ------------------------------------------------------- */
 	/* --------------------- Custom Colors ------------------- */
 	/* ------------------------------------------------------- */
@@ -12,6 +13,7 @@
 	--clr-span: 195, 36%, 45%;
 	--clr-accent: 231, 77%, 90%;
 	--clr-white: 0, 0%, 100%;
+	--clr-white: 0, 0%, 100%;
 
 	--border: 1px solid rgba(255, 255, 255, 0.1);
 	--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -21,7 +23,17 @@
 
 	/*--------Roboto Serif Font Family--------*/
 
+
+	/*--------Roboto Serif Font Family--------*/
+
 	--ff-roboto-serif: "Roboto Serif", serif;
+	--font-optical-sizing: auto;
+	--font-weight: 100;
+	--font-style: italic;
+	--font-variation-settings: "wdth" 100, "GRAD" -50;
+
+	/*----------Monoton Font Family-----------*/
+
 	--font-optical-sizing: auto;
 	--font-weight: 100;
 	--font-style: italic;
@@ -90,13 +102,25 @@
 	--space-9xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
 
 }
+}
 
+/* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
 /* --------------------------------------- */
 /* ------------  Custom Colors ----------- */
 /* --------------------------------------- */
 
 .text-dark {
 	color: hsl(var(--clr-dark));
+}
+
+.text-dark {
+	color: hsl(var(--clr-dark));
+}
+
+.text-light {
+	color: hsl(var(--clr-light));
 }
 
 .text-light {
@@ -107,8 +131,20 @@
 	color: hsl(var(--clr-span));
 }
 
+.text-span {
+	color: hsl(var(--clr-span));
+}
+
 .text-white {
 	color: hsl(var(--clr-white));
+}
+
+.text-white {
+	color: hsl(var(--clr-white));
+}
+
+.text-accent {
+	color: hsl(var(--clr-accent));
 }
 
 .text-accent {
@@ -129,12 +165,29 @@ html {
 	background-color: var(--background-color);
 }
 
+
+body,
+html {
+	font-family: var(--ff-roboto-serif);
+	color: hsl(var(--clr-white));
+	font-weight: var(--font-weight);
+	font-optical-sizing: var(--font-optical-sizing);
+	font-style: var(--font-style);
+	font-feature-settings: var(--font-variation-settings);
+	background-color: var(--background-color);
+}
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100svh;
 	margin-inline: auto;
+	justify-content: center;
 	justify-content: center;
 	overflow: hidden;
 }
@@ -147,8 +200,11 @@ html {
 	margin-inline: auto;
 }
 
+.quote {}
+
 .quote {
 	color: hsl(var(--clr-white));
+	padding-bottom: var(--space-xxl);
 	padding-bottom: var(--space-xxl);
 }
 
@@ -168,7 +224,13 @@ html {
 	padding-bottom: var(--space-l);
 	overflow: hidden;
 	margin-inline: auto;
+	row-gap: var(--space-3xl);
+	justify-content: center;
+	padding-bottom: var(--space-l);
+	overflow: hidden;
+	margin-inline: auto;
 	color: hsl(var(--clr-white));
+	font-size: var(--step-1);
 	font-size: var(--step-1);
 }
 
@@ -178,6 +240,8 @@ html {
 	justify-content: center;
 	max-inline-size: 50ch;
 	overflow: hidden;
+	max-inline-size: 50ch;
+	overflow: hidden;
 	margin-inline: auto;
 }
 
@@ -185,16 +249,20 @@ html {
 	position: absolute;
 	display: flex;
 	animation: show-hide var(--sp) ease 0s infinite;
+	animation: show-hide var(--sp) ease 0s infinite;
 	mix-blend-mode: plus-lighter;
 }
 
 .content div span {
 	margin-inline: auto;
 	animation-duration: var(--sp);
+	margin-inline: auto;
+	animation-duration: var(--sp);
 	width: var(--space-xl);
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
+	text-shadow: 0 0 1px hsl(var(--clr-white));
 	text-shadow: 0 0 1px hsl(var(--clr-white));
 }
 
@@ -204,6 +272,8 @@ html {
 	justify-content: center;
 	max-inline-size: 50ch;
 	overflow: hidden;
+	max-inline-size: 50ch;
+	overflow: hidden;
 	margin-inline: auto;
 }
 
@@ -211,10 +281,13 @@ html {
 	position: absolute;
 	display: flex;
 	animation: show-hide var(--sp) ease 0s infinite;
+	animation: show-hide var(--sp) ease 0s infinite;
 	mix-blend-mode: plus-lighter;
 }
 
 .content-1 div span {
+	margin-inline: auto;
+	animation-duration: var(--sp);
 	margin-inline: auto;
 	animation-duration: var(--sp);
 	width: var(--space-xl);
@@ -224,12 +297,16 @@ html {
 	text-shadow: 0 0 1px hsl(var(--clr-white));
 }
 
+text-shadow: 0 0 1px hsl(var(--clr-white));
+}
+
 
 @keyframes show-hide {
 
 	0%,
 	100% {
 		opacity: 0;
+		transform: scale(0.8);
 		transform: scale(0.8);
 	}
 
@@ -238,6 +315,30 @@ html {
 		opacity: 1;
 		transform: scale(1);
 	}
+}
+
+.up:before,
+.down:before {
+	width: 80%;
+	height: 0.1vmin;
+	background: radial-gradient(ellipse at 50% 50%, hsl(var(--clr-white)), #ffffff00 70%);
+	content: "";
+	position: absolute;
+	border-radius: 100%;
+	filter: blur(2px);
+	left: 10%;
+	top: 49%;
+	box-shadow: 0 0 100px 0 hsl(var(--clr-white));
+	animation: shadow var(--sp) ease 0s infinite;
+}
+
+.down:before {
+	width: 1vmin;
+	height: 0.5vmin;
+	filter: blur(3px);
+	left: calc(50% - 0.5vmin);
+	top: 45%;
+	box-shadow: 0 0 10px 0 hsl(var(--clr-white));
 }
 
 .up:before,
@@ -277,6 +378,8 @@ html {
 	55% {
 		opacity: 0.25;
 		height: 0.25vmin;
+		opacity: 0.25;
+		height: 0.25vmin;
 	}
 }
 
@@ -291,261 +394,338 @@ html {
 /*up*/
 .up-2-8 {
 	animation-name: go-up-2-8;
-}
 
-.up-3-7 {
-	animation-name: go-up-3-7;
-}
-
-.up-4-6 {
-	animation-name: go-up-4-6;
-}
-
-.up-5 {
-	animation-name: go-up-5;
-}
-
-/*down*/
-.down-2-8 {
-	animation-name: go-down-2-8;
-}
-
-.down-3-7 {
-	animation-name: go-down-3-7;
-}
-
-.down-4-6 {
-	animation-name: go-down-4-6;
-}
-
-.down-5 {
-	animation-name: go-down-5;
-}
-
-@keyframes go-up-2-8 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.up span,
+	.down span {
+		animation-duration: var(--sp);
+		animation-timing-function: ease;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
 	}
 
-	40%,
-	60% {
-		top: -0.6vmin;
-	}
-}
-
-@keyframes go-up-3-7 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	/*up*/
+	.up-2-8 {
+		animation-name: go-up-2-8;
 	}
 
-	40%,
-	60% {
-		top: -1.2vmin;
-	}
-}
-
-@keyframes go-up-4-6 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.up-3-7 {
+		animation-name: go-up-3-7;
 	}
 
-	40%,
-	60% {
-		top: -1.8vmin;
-	}
-}
-
-@keyframes go-up-5 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.up-4-6 {
+		animation-name: go-up-4-6;
 	}
 
-	40%,
-	60% {
-		top: -2.4vmin;
-	}
-}
-
-@keyframes go-down-2-8 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.up-5 {
+		animation-name: go-up-5;
 	}
 
-	40%,
-	60% {
-		top: 0.6vmin;
-	}
-}
-
-@keyframes go-down-3-7 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	/*down*/
+	.down-2-8 {
+		animation-name: go-down-2-8;
 	}
 
-	40%,
-	60% {
-		top: 1.2vmin;
-	}
-}
-
-@keyframes go-down-4-6 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.down-3-7 {
+		animation-name: go-down-3-7;
 	}
 
-	40%,
-	60% {
-		top: 1.8vmin;
-	}
-}
-
-@keyframes go-down-5 {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
+	.down-4-6 {
+		animation-name: go-down-4-6;
 	}
 
-	40%,
-	60% {
-		top: 2.4vmin;
-	}
-}
-
-.container {
-	text-align: center;
-	margin-inline: auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin-top: var(--space-xl);
-}
-
-.text-with-animation {
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	font-family: var(--ff-monoton-regular);
-	font-size: var(--step-1);
-	text-align: center;
-	user-select: none;
-	white-space: nowrap;
-	letter-spacing: var(--space-m);
-	overflow: hidden;
-}
-
-.text-with-animation-1 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	user-select: none;
-	margin-top: var(--space-s);
-}
-
-.text-with-animation-2 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	user-select: none;
-	margin-top: var(--space-xs);
-}
-
-.text-with-animation-3 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	user-select: none;
-	margin-top: var(--space-xs);
-}
-
-.text-with-animation-4 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	user-select: none;
-	margin-top: var(--space-xs);
-}
-
-.text-with-animation-5 {
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	font-family: var(--ff-monoton-regular);
-	font-size: var(--step-1);
-	text-align: center;
-	margin-top: var(--space-xs);
-	user-select: none;
-	white-space: nowrap;
-	letter-spacing: var(--space-l);
-	overflow: hidden;
-}
-
-.text-with-animation-6 {
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	font-family: var(--ff-monoton-regular);
-	font-size: var(--step-1);
-	text-align: center;
-	margin-top: var(--space-l);
-	user-select: none;
-	white-space: nowrap;
-	letter-spacing: var(--space-m);
-	overflow: hidden;
-}
-
-@keyframes test-animation {
-	0% {
-		background-color: transparent;
-		transform: scale(0);
-		opacity: 0.4;
+	.down-5 {
+		animation-name: go-down-5;
 	}
 
-	100% {
-		background-color: transparent;
-		transform: scale(1);
-		opacity: 1;
-	}
-}
+	@keyframes go-up-2-8 {
 
-@keyframes main-text-animation {
-	0% {
-		letter-spacing: 10vw;
-		word-spacing: 100vw;
-		opacity: 0;
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: -0.6vmin;
+		}
 	}
 
-	100% {
+	@keyframes go-up-3-7 {
+
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: -1.2vmin;
+		}
+	}
+
+	@keyframes go-up-4-6 {
+
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: -1.8vmin;
+		}
+	}
+
+	@keyframes go-up-5 {
+
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: -2.4vmin;
+		}
+	}
+
+	@keyframes go-down-2-8 {
+
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 0.6vmin;
+		}
+	}
+
+	@keyframes go-down-3-7 {
+
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 1.2vmin;
+		}
+	}
+
+	@keyframes go-down-4-6 {
+
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 1.8vmin;
+		}
+	}
+
+	@keyframes go-down-5 {
+
+		0%,
+		10%,
+		90%,
+		100% {
+			top: 0;
+		}
+
+		40%,
+		60% {
+			top: 2.4vmin;
+		}
+	}
+
+	.container {
+		text-align: center;
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-top: var(--space-xl);
+		justify-content: center;
+		margin-top: var(--space-xl);
+	}
+
+	.text-with-animation {
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		font-family: var(--ff-monoton-regular);
+		font-size: var(--step-1);
+		text-align: center;
+		user-select: none;
+		white-space: nowrap;
+		letter-spacing: var(--space-m);
+		overflow: hidden;
+	}
+
+	.text-with-animation-1 {
+		position: relative;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-s);
+	}
+
+	.text-with-animation-2 {
+		position: relative;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-xs);
+	}
+
+	.text-with-animation-3 {
+		position: relative;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-xs);
+	}
+
+	.text-with-animation-4 {
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		font-family: var(--ff-monoton-regular);
+		font-size: var(--step-1);
+		text-align: center;
+		user-select: none;
+		white-space: nowrap;
+		letter-spacing: var(--space-m);
+		overflow: hidden;
+	}
+
+	.text-with-animation-1 {
+		position: relative;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-s);
+	}
+
+	.text-with-animation-2 {
+		position: relative;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-xs);
+	}
+
+	.text-with-animation-3 {
+		position: relative;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-xs);
+	}
+
+	.text-with-animation-4 {
+		position: relative;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-xs);
+	}
+
+	.text-with-animation-5 {
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		font-family: var(--ff-monoton-regular);
+		font-size: var(--step-1);
+		text-align: center;
+		margin-top: var(--space-xs);
+		user-select: none;
+		white-space: nowrap;
 		letter-spacing: var(--space-l);
-		word-spacing: 100vw;
-		opacity: 1;
+		overflow: hidden;
 	}
-}
+
+	.text-with-animation-6 {
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		font-size: var(--step-0);
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		text-align: center;
+		user-select: none;
+		margin-top: var(--space-xs);
+	}
+
+	.text-with-animation-5 {
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		font-family: var(--ff-monoton-regular);
+		font-size: var(--step-1);
+		text-align: center;
+		margin-top: var(--space-xs);
+		user-select: none;
+		white-space: nowrap;
+		letter-spacing: var(--space-l);
+		overflow: hidden;
+	}
+
+	.text-with-animation-6 {
+		animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		font-family: var(--ff-monoton-regular);
+		font-size: var(--step-1);
+		text-align: center;
+		text-align: center;
+		margin-top: var(--space-l);
+		user-select: none;
+		white-space: nowrap;
+		letter-spacing: var(--space-m);
+		overflow: hidden;
+		white-space: nowrap;
+		letter-spacing: var(--space-m);
+		overflow: hidden;
+	}
+
+	@keyframes test-animation {
+		0% {
+			background-color: transparent;
+			transform: scale(0);
+			opacity: 0.4;
+		}
+
+		100% {
+			background-color: transparent;
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	@keyframes main-text-animation {
+		0% {
+			letter-spacing: 10vw;
+			word-spacing: 100vw;
+			opacity: 0;
+		}
+
+		100% {
+			letter-spacing: var(--space-l);
+			word-spacing: 100vw;
+			opacity: 1;
+		}
+	}
