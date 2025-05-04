@@ -383,4 +383,8 @@ section img {
     min-height: 100svh;
   }
 
+  .intro {
+    padding-bottom: var(--space-5xl);
+  }
+
 }
