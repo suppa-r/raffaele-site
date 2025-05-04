@@ -14,18 +14,20 @@
     rel="stylesheet">
   <link rel="icon" href="docs/images/favicon-32x32-min.png" />
   <link rel="stylesheet" href="/docs/css/reset.css" />
-  <link rel="stylesheet" href="/docs/css/intro.css" />
+  <link rel="stylesheet" href="responsive nav.css" />
+  <script src="responsive nav.js" defer></script>
   <script src="/docs/js/index.js" defer></script>
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <div class="bars"></div>
-      <p>sometimes<span>DESIGNER</span>sometimes<span>NOT</span></p>
-    </div>
-
-    <nav>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">sometimes<span>DESIGNER</span>sometimes<span>NOT</span></div>
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
       <ul class="nav-links">
         <li>
           <a href="index.html" aria-label="go to profile">
@@ -58,56 +60,13 @@
         <li><img src="/docs/images/logo.svg" alt="profile image" />
         </li>
       </ul>
-    </nav>
-  </header>
-  <section class="intro" role="button" tabindex="0" onclick="location.href='intro-1.html';">
-    <p>The way it began ... the way it is.</p>
-    <p>
-      If I had a secret .. I'm not gonna take it to my
-      grave! <br />
-      I'm gonna tell it. Right here.
-    </p>
-    <p>With a whole lotta Grace from<span>3:16</span></p>
-    <p>A rabbit and a Hat</p>
-    <p>I walked the streets paved with gold ..<br />
-      touched all the bases, and painted my Masterpiece!
-    </p>
-    <p>everything I needed to know, found me.</p>
-    <p><em>no kidding,&nbsp;&nbsp;Finally</em></p>
-    <p>it's one prayer, one Blessing, one Miracle at a time.</p>
-    <p class="enjoy">in a gist</p>
-    <p>you can't microwave it</p>
-    <p>
-      <em>or give it just half a damn</em>
-    </p>
-    <p class="bottom">the path back Home always becomes free to walk</p>
-    <p>
-      Go tell St. Peter to open the Gates!&nbsp; &nbsp; I'm coming
-      thru!
-    </p>
-    <p class="enjoy"><em>.. enjoy the stay ..</em></p>
-    <p>or ring the bell to off</p>
-    <p>but, please, be my guest .. go on .. it's OK!</p>
-    <p class="ya">-Ya-</p>
-    <div class="wrapper-gradient-text">
-      <span class="text-layer">m</span>
-      <span class="text-layer">e</span>
-      <span class="text-layer">r</span>
-      <span class="text-layer">c</span>
-      <span class="text-layer">i</span>
-
-      <span class="text-layer">b</span>
-      <span class="text-layer">e</span>
-      <span class="text-layer">a</span>
-      <span class="text-layer">u</span>
-      <span class="text-layer">c</span>
-      <span class="text-layer">o</span>
-      <span class="text-layer">u</span>
-      <span class="text-layer">p</span>
     </div>
-  </section>
+  </nav>
+  <div class="overlay"></div>
 
-  <script src="responsive nav.js" defer></script>
+  <section id="home">
+    <div class="section-content"></div>
+  </section>
 </body>
 
 </html>
