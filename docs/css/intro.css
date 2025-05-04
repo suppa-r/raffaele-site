@@ -136,17 +136,6 @@ html {
 
 /* --------------------------------------- */
 
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-body {
-  height: 100vh;
-}
 
 body>* {
   container-type: inline-size;
@@ -187,7 +176,6 @@ body:before {
   overflow: hidden;
 }
 
-
 header {
   display: flex;
   justify-content: space-between;
@@ -198,7 +186,7 @@ header {
 header .logo {
   display: flex;
   padding-block: var(--space-xs);
-  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+  text-shadow: 20px 40px 20px rgb(255, 255, 255);
 }
 
 header .logo p {
@@ -208,7 +196,7 @@ header .logo p {
 
 header .logo p span {
   color: hsl(var(--clr-span));
-  padding-left: var(--space-xs);
+  padding-left: 5px;
   padding-right: var(--space-s);
 }
 
@@ -290,19 +278,43 @@ section img {
 }
 
 .intro {
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-inline: auto;
   text-align: center;
-  padding: var(--space-xl) var(--space-m);
+  padding: var(--space-2xl) var(--space-m);
+}
+
+.intro p span {
+  font-size: var(--step-1);
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs);
+  padding-right: var(--space-xs);
+}
+
+.intro p {
+  font-size: var(--step-0);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.intro .ya {
+  color: hsl(var(--clr-span));
+  font-size: var(--step-2);
+  padding-block: var(--space-s);
 }
 
 .intro .bottom {
   margin-block: var(--space-m);
   letter-spacing: var(--space-xs);
+}
+
+.intro .enjoy {
+  font-size: var(--step-1);
+  padding-block: var(--space-xs);
 }
 
 .wrapper-gradient-text {

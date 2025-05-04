@@ -84,7 +84,7 @@ h1,
 h2,
 h3,
 h4,
-h h6 {
+h6 {
 	margin-block: 0.1em;
 	margin-inline: 0;
 	text-wrap: balance;
@@ -92,9 +92,6 @@ h h6 {
 	word-wrap: break-word;
 }
 
-p {
-	text-wrap: pretty;
-}
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
