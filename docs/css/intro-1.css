@@ -127,17 +127,28 @@ html {
 
 /* --------------------------------------- */
 
+/* --------------------------------------- */
+
+header {
+	position: relative;
+	z-index: 1000;
+	display: flex;
+	justify-content: space-between;
+	padding-inline: var(--space-l);
+	padding-block: var(--space-xs);
+}
+
+/* --------------------------------------- */
+
 .navbar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
 	backdrop-filter: blur(12px);
 	background: black;
 	border-bottom: var(--border);
 	z-index: 1000;
 	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 	box-shadow: var(--shadow);
+	width: 100%;
+	max-width: 100%;
 }
 
 .navbar.scrolled {
@@ -158,18 +169,31 @@ html {
 	font-size: var(--step-0);
 	font-weight: 700;
 	background: var(--gradient);
-	background-size: 300%;
-	animation: gradient 8s linear infinite;
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
+	animation: gradient 8s linear infinite;
+	background-size: 300%;
 	letter-spacing: -0.5px;
+}
+
+.logo span {
+	font-size: var(--step-0);
+	color: hsl(var(--clr-white));
+	padding-right: var(--space-xs);
 }
 
 .nav-links {
 	display: flex;
 	gap: var(--space-xl);
 	list-style: none;
+}
+
+.nav-links {
+	display: flex;
+	gap: var(--space-1xl);
+	list-style: none;
+	padding: 0 var(--space-xs);
 }
 
 .nav-links li {
@@ -185,9 +209,9 @@ html {
 	color: hsl(var(--clr-white));
 	text-decoration: none;
 	position: relative;
-	padding: 0.5rem 0;
+	padding: 0.5rem var(--space-s);
 	transition: all 0.3s ease;
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 	letter-spacing: 0.3px;
 }
 
@@ -195,8 +219,10 @@ html {
 	position: relative;
 	z-index: 1;
 	color: hsl(var(--clr-white));
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 	padding-top: var(--space-xs);
+	transition: all 0.3s ease;
+	padding-inline: var(--space-xs);
 }
 
 .nav-links li a svg {
@@ -299,15 +325,85 @@ html {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	align-items: center;
-	height: 100vh;
+	text-align: center;
+	margin-inline: auto;
+	gap: var(--space-2xl);
+	padding-inline: var(--space-s);
+	padding-top: var(--space-7xl);
+	min-height: 100%;
+}
+
+.intro .row-1 img {
 	width: 100%;
+	height: auto;
+	max-width: 100%;
+	/* Set max width to 100% of the parent container */
+	object-fit: cover;
+	/* Maintain aspect ratio */
+	border-radius: 50%;
+	/* Add border radius for rounded corners */
+	box-shadow: var(--shadow);
+	/* Add shadow effect */
+}
+
+
+.intro p {
+	margin-block: 0.12em;
+}
+
+.intro p span {
+	font-size: var(--step-01);
+	color: hsl(var(--clr-span));
+	padding-left: var(--space-s);
+}
+
+.intro h1,
+.intro h2,
+.intro h3 {
+	margin: 0;
+	/* Remove default margins */
+	padding: 0;
+	/* Remove default padding */
+	font-size: var(--step-1);
+	/* Match font size with <p> if needed */
+	margin-block: 0.5em;
+	/* Add margin for spacing */
+}
+
+.intro .ya {
+	font-size: var(--step-2);
+	color: hsl(var(--clr-span));
+	margin-block: 0.5em;
+	letter-spacing: var(--space-l);
+}
+
+.intro .bottom {
+	margin-top: var(--space-xl);
+	letter-spacing: var(--space-xs);
+}
+
+.intro .bottom {
+	margin-block: var(--space-m);
 }
 
 @media (max-width: 768px) {
+	.intro {
+		flex-direction: column;
+		padding-top: var(--space-3xl);
+		gap: var(--space-xl);
+	}
+
+	.intro .row-1 img {
+		width: 100px;
+		height: auto;
+		max-width: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+		box-shadow: var(--shadow);
+	}
+
 	.nav-links {
-		position: fixed;
-		top: 0;
+
 		right: -100%;
 		height: 100vh;
 		width: 80%;
