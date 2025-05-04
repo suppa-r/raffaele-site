@@ -114,13 +114,6 @@
 
 html {
 	color-scheme: dark only;
-}
-
-body {
-	overflow: hidden;
-	/* Prevent scrolling */
-	background-color: hsl(var(--clr-dark));
-	/* Dark background color */
 	color: hsl(var(--clr-white));
 	/* White text color */
 	font-family: var(--ff-roboto-serif);
@@ -133,6 +126,14 @@ body {
 	/* Font style */
 	font-feature-settings: var(--font-variation-settings);
 	/* Font feature settings */
+}
+
+body {
+	overflow: hidden;
+	/* Prevent scrolling */
+	background-color: hsl(var(--clr-dark));
+	/* Dark background color */
+
 
 }
 

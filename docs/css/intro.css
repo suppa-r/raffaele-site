@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
 :root {
   --sp: 4s;
   /* ------------------------------------------------- */
@@ -109,25 +116,23 @@
   color: hsl(var(--clr-accent));
 }
 
+html {
+  scroll-behavior: smooth;
+  line-height: 1.2;
+  /* Base line height */
+  color-scheme: dark only;
+  /* Enable dark mode for the entire document */
+  font-family: var(--ff-roboto-serif);
+  color: hsl(var(--clr-white));
+  font-weight: var(--font-weight);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-style: var(--font-style);
+  font-feature-settings: var(--font-variation-settings);
+}
+
 /* --------------------------------------- */
 
-html {
-  background-color: hsl(var(--clr-dark));
-  /* Dark background color */
-  color: hsl(var(--clr-white));
-  /* White text color */
-  color-scheme: dark only;
-  font-family: var(--ff-roboto-serif);
-  /* Font family */
-  font-weight: var(--font-weight);
-  /* Font weight */
-  font-optical-sizing: var(--font-optical-sizing);
-  /* Optical sizing */
-  font-style: var(--font-style);
-  /* Font style */
-  font-feature-settings: var(--font-variation-settings);
-  /* Font feature settings */
-}
+/* ------------  Custom Backgrounds ------- */
 
 /* --------------------------------------- */
 
@@ -140,11 +145,14 @@ a {
 }
 
 body {
-  width: 100vw;
-  max-width: 100%;
   height: 100vh;
-  color: #d6d6d6;
-  overflow: hidden;
+}
+
+body>* {
+  container-type: inline-size;
+  /* Ensure all children are inline containers */
+  container-name: body;
+  max-inline-size: 100%;
 }
 
 body:before {
@@ -179,23 +187,29 @@ body:before {
   overflow: hidden;
 }
 
+
 header {
-  position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-header h2 {
-  color: #d6d6d6;
-  font-size: 1.2rem;
+  padding-inline: var(--space-s);
+  font-size: var(--step--1);
 }
 
 header .logo {
   display: flex;
-  align-items: center;
-  padding: 1vh 1vw;
-  font-family: "Turret Road", sans-serif;
+  padding-block: var(--space-xs);
+  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+}
+
+header .logo p {
+  margin-left: var(--space-xs);
+  margin-block: var(--space-xs);
+}
+
+header .logo p span {
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs);
+  padding-right: var(--space-s);
 }
 
 header .bars {
@@ -209,7 +223,6 @@ header .bars {
 }
 
 header .bars.is-active {
-  /*transform: rotate(90deg);*/
   width: 35px;
   transform-origin: right;
   transform: translateY(15px) rotate(45deg);
@@ -237,70 +250,107 @@ header .bars::before {
 
 .nav-links {
   display: flex;
-  margin-block: var(--space-xs);
 }
 
 .nav-links li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
   position: relative;
-  padding: 0.7vw;
-  margin: 0 0.7vw;
+  padding: var(--space-s) var(--space-m);
+  margin: 0 var(--space-xs);
 }
 
 .nav-links li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #888888;
+  color: hsl(var(--clr-white));
 }
 
 .nav-links li a span {
-  font-family: "Turret Road", sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--step--1);
   letter-spacing: 1px;
-  margin-top: 0.2rem;
+  margin-top: 1rem;
 }
 
-section {
-  display: flex;
-  align-items: center;
-}
-
-section span {
-  color: #888888;
-}
-
-section span i {
-  margin: 0 1.2vw;
-  font-size: 1.2rem;
-  font-family: "Turret Road", sans-serif;
+.nav-links li svg {
+  height: 1.2rem;
+  width: 1.2rem;
+  object-fit: cover;
 }
 
 section img {
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
   object-fit: cover;
   border-radius: 50%;
-  margin: 0 0.7vw;
+  margin: 0 var(--space-xs);
 }
 
 .intro {
-  font-family: "Turret Road", sans-serif;
-  font-size: 2rem;
+  font-size: var(--step--1);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  margin-inline: auto;
+  text-align: center;
+  padding: var(--space-6xl) var(--space-m);
 }
 
-@media only screen and (max-width: 768px) {
+.intro .bottom {
+  margin-block: var(--space-m);
+  letter-spacing: var(--space-xs);
+}
+
+.wrapper-gradient-text {
+  font-size: var(--step-1);
+  text-align: center;
+  /* Align text to the left */
+  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+}
+
+.text-layer {
+  background: linear-gradient(0deg,
+      rgb(213, 223, 230),
+      rgb(78, 115, 136),
+      rgba(65, 90, 105, 0.6),
+      rgba(142, 186, 211, 0.1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
+}
+
+@keyframes shadowDrip {
+  0% {
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.853);
+  }
+
+  100% {
+    text-shadow: 0px 5px 10px rgb(255, 255, 255),
+      /* Reduced vertical offset */
+      0px 15px 20px rgb(255, 255, 255),
+      /* Reduced vertical offset */
+      0px 40px 5px rgb(232, 235, 238);
+    /* Reduced vertical offset */
+  }
+}
+
+@container (max-width: 768px) {
   header .logo {
-    margin-right: 50px;
+    margin-right: 0;
   }
 
   header .bars {
     display: block;
     transition: 0.5s;
+    cursor: pointer;
+    margin-right: 0;
+    margin-top: var(--space-s);
   }
 
   nav {
@@ -311,22 +361,25 @@ section img {
   .nav-links {
     background: #111111;
     position: fixed;
-    top: 4rem;
+    top: var(--space-5xl);
+    min-height: 100svh;
     left: 0;
     flex-direction: column;
-    height: 100vh;
     width: 100%;
     pointer-events: none;
-    transition: 0.5s;
+    transition: 0.3s;
     opacity: 0;
   }
 
   .nav-links li {
-    margin: 1.5vw 0;
+    margin: var(--space-s) 0;
   }
 
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
+    transform: translateY(0%);
+    transition: 0.3s;
+    min-height: 100svh;
   }
 }
