@@ -21,8 +21,8 @@
             overlay.classList.toggle('active');
             document.body.style.overflow = isMenuOpen ? 'hidden' : '';
         }
-
-        mobileNavToggle.addEventListener('click', toggleMenu);
+        
+        menuToggle.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
 
         // Close mobile menu when clicking a link
