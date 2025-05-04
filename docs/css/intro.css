@@ -297,7 +297,7 @@ section img {
   align-items: center;
   margin-inline: auto;
   text-align: center;
-  padding: var(--space-6xl) var(--space-m);
+  padding: var(--space-xl) var(--space-m);
 }
 
 .intro .bottom {
@@ -382,4 +382,5 @@ section img {
     transition: 0.3s;
     min-height: 100svh;
   }
+
 }
