@@ -278,42 +278,36 @@ section img {
 }
 
 .intro {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-inline: auto;
   text-align: center;
-  padding: var(--space-2xl) var(--space-m);
+  padding: var(--space-2xl) var(--space-s);
+  line-height: 1.3;
 }
 
 .intro p span {
-  font-size: var(--step-1);
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs);
   padding-right: var(--space-xs);
 }
 
-.intro p {
-  font-size: var(--step-0);
-  text-align: center;
-  line-height: 1.5;
-}
-
 .intro .ya {
   color: hsl(var(--clr-span));
   font-size: var(--step-2);
-  padding-block: var(--space-s);
+  padding-block: var(--space-xs);
 }
 
 .intro .bottom {
-  margin-block: var(--space-m);
-  letter-spacing: var(--space-xs);
+  margin-block: var(--space-xs);
+  letter-spacing: 6px;
 }
 
 .intro .enjoy {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   padding-block: var(--space-xs);
 }
 
