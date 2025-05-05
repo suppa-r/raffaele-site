@@ -131,7 +131,7 @@ body {
   /* Font style */
   font-feature-settings: var(--font-variation-settings);
   /* Font feature settings */
-
+  font-size: var(--step--1);
 }
 
 body:before {
@@ -166,28 +166,129 @@ body:before {
 }
 
 header {
+  height: var(--space-xl);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--space-m);
+  padding: 0 var(--space-l);
 }
 
-header p {
-  color: hsl(var(--clr-white));
-  font-size: var(--step-0);
+header h2 {
+  color: #d6d6d6;
+  font-size: 1.2rem;
 }
 
 header .logo {
   display: flex;
   align-items: center;
-  padding: var(--space-xs) var(--space-xs);
-  font-size: var(--step-0);
+  gap: 0.4rem;
 }
 
-header .logo span {
-  font-size: var(--step-0);
+header .bars {
+  position: relative;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background-color: #888888;
+  margin-right: 10px;
+  display: none;
+}
+
+header .bars.is-active {
+  width: 35px;
+  transform-origin: right;
+  transform: translateY(15px) rotate(45deg);
+}
+
+header .bars::after,
+header .bars::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  left: 0;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+  cursor: pointer;
+}
+
+header .bars::after {
+  bottom: 7px;
+}
+
+header .bars::before {
+  top: 7px;
+}
+
+nav {
+  transition: all var(--sp) ease-in-out;
+}
+
+nav.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links li {
+  position: relative;
+  padding: 0.7vw;
+  margin: 0 0.7vw;
+}
+
+.nav-links li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888888;
+}
+
+.nav-links li a span {
+  font-family: "Turret Road", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+.nav-links svg {
+  height: 1.2rem;
+  width: 1.2rem;
+  color: hsl(var(--clr-white));
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-s);
+}
+
+header .logo p {
+  color: hsl(var(--clr-white));
+
+}
+
+header .logo p span {
   color: hsl(var(--clr-span));
-  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+  padding-right: var(--space-xs);
 }
 
 header .bars {
@@ -243,12 +344,12 @@ header .bars::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #888888;
+  color: hsl(var(--clr-white));
+  text-decoration: none;
 }
 
 .nav-links li a span {
-  font-family: "Turret Road", sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--step-0);
   letter-spacing: 1px;
   margin-top: 0.2rem;
 }
@@ -256,11 +357,11 @@ header .bars::before {
 .nav-links svg {
   height: 1.2rem;
   width: 1.2rem;
-  color: #888888;
+  color: hsl(var(--clr-white));
   transition: all 0.3s ease-in-out;
 }
 
-section {
+/*section {
   display: flex;
   align-items: center;
 }
@@ -281,7 +382,7 @@ section img {
   object-fit: cover;
   border-radius: 50%;
   margin: 0 0.7vw;
-}
+}*/
 
 .intro {
   display: flex;
@@ -289,7 +390,7 @@ section img {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding-inline: var(--space-xs);
+  padding-inline: auto;
   padding-bottom: var(--space-9xl);
   min-height: 100%;
 }
@@ -299,9 +400,8 @@ section img {
 }
 
 .intro p span {
-  font-size: var(--step-01);
   color: hsl(var(--clr-span));
-  padding-left: var(--space-s);
+  padding-left: var(--space-xs);
 }
 
 .intro h1,
@@ -311,9 +411,7 @@ section img {
   /* Remove default margins */
   padding: 0;
   /* Remove default padding */
-  font-size: var(--step-1);
-  /* Match font size with <p> if needed */
-  margin-block: 0.5em;
+  margin-block: 0.3em;
   /* Add margin for spacing */
 }
 
@@ -369,7 +467,7 @@ section img {
 
 @media only screen and (max-width: 768px) {
   header .logo {
-    margin-left: var(--space-xl);
+    margin-right: 50px;
   }
 
   header .bars {
@@ -383,32 +481,24 @@ section img {
   }
 
   .nav-links {
-    display: flex;
-    flex-direction: row;
+    background: #111111;
     position: fixed;
-    top: 40%;
-
+    top: 4rem;
+    left: 0;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
     pointer-events: none;
-    transition: 0.3s;
+    transition: 0.5s;
     opacity: 0;
-    transform: translateX(-150%);
-    background-color: hsl(var(--clr-dark));
-  }
-
-  .nav-links li:last-child {
-    display: none;
   }
 
   .nav-links li {
-    margin: 1.5vw 0.3vw;
-    padding: 0.3vw;
+    margin: 1.5vw 0;
   }
 
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
-    transition: 0.5s;
-    transform: translateX(0);
-
   }
 }
