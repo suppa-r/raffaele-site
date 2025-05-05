@@ -124,6 +124,20 @@ html {
   font-feature-settings: var(--font-variation-settings);
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg,
+      rgba(10, 10, 10, 0.99),
+      rgba(20, 20, 20, 0.99));
+  color: hsl(var(--clr-white));
+  font-family: var(--ff-roboto-serif);
+  font-weight: var(--font-weight);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-style: var(--font-style);
+  font-feature-settings: var(--font-variation-settings);
+}
+
 /* --------------------------------------- */
 
 header {
@@ -411,6 +425,21 @@ header {
 
 @media (max-width: 768px) {
 
+  .navbar {
+    padding: 0.5rem 2%;
+    background: rgba(10, 10, 10, 0.95);
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .navbar.scrolled {
+    padding: 0.5rem 2%;
+    background: rgba(10, 10, 10, 0.95);
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+
   header {
     padding: 0.5rem 2%;
   }
@@ -421,7 +450,7 @@ header {
 
   .nav-links {
     position: fixed;
-    top: 0;
+    top: 40%;
     right: -100%;
     height: 100vh;
     width: 80%;
@@ -451,11 +480,15 @@ header {
   }
 
   .nav-links.active {
+    background-color: transparent;
     right: 0;
+    top: 100%;
+    /* Lowered from 40% to 60% */
     transform: translateX(0);
     pointer-events: all;
-    opacity: .4;
+    opacity: 1;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow);
   }
 
   .nav-links a {
