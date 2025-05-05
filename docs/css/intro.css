@@ -111,28 +111,26 @@
 }
 
 html {
-  color-scheme: dark only;
+  scroll-behavior: smooth;
+  line-height: 1.2;
+  /* Base line height */
+  color-scheme: dark light;
+  /* Enable dark mode for the entire document */
+  font-family: var(--ff-roboto-serif);
+  color: hsl(var(--clr-white));
+  font-weight: var(--font-weight);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-style: var(--font-style);
+  font-feature-settings: var(--font-variation-settings);
 }
 
 body {
-  overflow: hidden;
-  /* Prevent scrolling */
-  background-color: hsl(var(--clr-dark));
-  /* Dark background color */
-  color: hsl(var(--clr-white));
-  /* White text color */
-  font-family: var(--ff-roboto-serif);
-  /* Font family */
-  font-weight: var(--font-weight);
-  /* Font weight */
-  font-optical-sizing: var(--font-optical-sizing);
-  /* Optical sizing */
-  font-style: var(--font-style);
-  /* Font style */
-  font-feature-settings: var(--font-variation-settings);
-  /* Font feature settings */
-  font-size: var(--step--1);
+  display: flex;
+  flex-direction: column;
+  /* Stack elements vertically */
+  margin-inline: auto;
 }
+
 
 body:before {
   opacity: 1;
@@ -171,14 +169,10 @@ header {
   padding: 0 var(--space-m);
 }
 
-header .logo {
-  margin-block: var(--space-s);
-}
-
 header .logo p {
   color: hsl(var(--clr-white));
   font-size: var(--step-0);
-  padding: 0 var(--space-xs);
+  padding: var(--space-m) var(--space-l);
 }
 
 header .logo span {
@@ -269,9 +263,7 @@ nav.open {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding-inline: auto;
   padding-bottom: var(--space-8xl);
-  min-height: 100svh;
 }
 
 .intro p {
@@ -346,9 +338,27 @@ nav.open {
   }
 }
 
+@media(prefers-color-scheme: dark) {
+  body {
+    background-color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-white));
+  }
+}
+
+@media(prefers-color-scheme: light) {
+  body {
+    background-color: hsl(var(--clr-light));
+    color: hsl(var(--clr-dark));
+  }
+}
+
+
+
 @media only screen and (max-width: 768px) {
   header .logo {
-    margin: 0 var(--space-s);
+    margin: 0 var(--space-xl);
+    padding: var(--space-s) 0;
+    display: flex;
   }
 
   header .bars {
@@ -382,5 +392,11 @@ nav.open {
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .intro {
+    padding-bottom: var(--space-3xl);
   }
 }

@@ -114,7 +114,7 @@ html {
 	scroll-behavior: smooth;
 	line-height: 1.2;
 	/* Base line height */
-	color-scheme: dark only;
+	color-scheme: dark light;
 	/* Enable dark mode for the entire document */
 	font-family: var(--ff-roboto-serif);
 	color: hsl(var(--clr-white));
@@ -507,4 +507,11 @@ header {
 	text-align: center;
 	position: relative;
 	z-index: 1;
+}
+
+@media (max-width: 450px) {
+	.intro {
+		padding-top: var(--space-3xl);
+		gap: var(--space-xl);
+	}
 }
