@@ -91,17 +91,16 @@
 }
 
 html {
+  color-scheme: var(--color-scheme);
+  /* Set the color scheme for the document */
   scroll-behavior: smooth;
-  line-height: 1.2;
-  /* Base line height */
-  color-scheme: dark light;
-  /* Enable dark mode for the entire document */
   font-family: var(--ff-roboto-serif);
   color: hsl(var(--clr-white));
   font-weight: var(--font-weight);
   font-optical-sizing: var(--font-optical-sizing);
   font-style: var(--font-style);
   font-feature-settings: var(--font-variation-settings);
+  font-size: var(--step-0);
 }
 
 body {
@@ -145,23 +144,27 @@ body:before {
 header {
   position: relative;
   height: 4rem;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #111111;
-}
-
-header h2 {
-  color: #d6d6d6;
-  font-size: 1.2rem;
 }
 
 header .logo {
   display: flex;
   align-items: center;
   padding: 1vh 1vw;
-  font-family: "Turret Road", sans-serif;
+}
+
+header .logo p {
+  font-size: var(--step-1);
+}
+
+header .logo span {
+  font-size: var(--step-1);
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-3xs);
+  padding-right: var(--space-s);
 }
 
 header .bars {
@@ -205,6 +208,9 @@ header .bars::before {
 }
 
 .nav-links li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   padding: 0.7vw;
   margin: 0 0.7vw;
@@ -225,33 +231,16 @@ header .bars::before {
 }
 
 .nav-links li svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #888888;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(hsl(--clr-white));
   transition: all 0.3s ease-in-out;
 }
 
-section {
-  display: flex;
-  align-items: center;
-}
-
-section span {
-  color: #888888;
-}
-
-section span i {
-  margin: 0 1.2vw;
-  font-size: 1.2rem;
-  font-family: "Turret Road", sans-serif;
-}
-
-section img {
-  height: 3rem;
-  width: 3rem;
-  object-fit: cover;
+.nav-links li:last-child {
+  width: 4rem;
+  height: auto;
   border-radius: 50%;
-  margin: 0 0.7vw;
 }
 
 .intro {
@@ -351,23 +340,25 @@ section img {
   }
 
   .nav-links {
-    background: #111111;
     position: fixed;
-    top: 4rem;
+    top: var(--space-2xl);
     left: 0;
     flex-direction: column;
     height: 100vh;
     width: 100%;
     pointer-events: none;
-    transition: 0.5s;
+    transition: 0.3s;
     opacity: 0;
   }
 
   .nav-links li {
-    margin: 1.5vw 0;
+    margin: var(--space-2xs) 0;
   }
 
   .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     opacity: 1;
     pointer-events: all;
   }
@@ -375,8 +366,7 @@ section img {
 
 @media (prefers-color-scheme: dark) {
 
-  body,
-  html {
+  body {
     background-color: #111111;
     color: #d6d6d6;
   }
@@ -386,8 +376,7 @@ section img {
 
 @media (prefers-color-scheme: light) {
 
-  body,
-  html {
+  body {
     background-color: #ffffff;
     color: #111111;
   }
