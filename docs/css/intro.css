@@ -166,11 +166,10 @@ body:before {
 }
 
 header {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-s) var(--space-m);
+  padding: 0 var(--space-m);
 }
 
 header p {
@@ -181,7 +180,7 @@ header p {
 header .logo {
   display: flex;
   align-items: center;
-  padding: 1vh 1vw;
+  padding: var(--space-xs) var(--space-xs);
   font-size: var(--step-0);
 }
 
@@ -290,8 +289,8 @@ section img {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding-inline: var(--space-s);
-  padding-bottom: var(--space-7xl);
+  padding-inline: var(--space-xs);
+  padding-bottom: var(--space-9xl);
   min-height: 100%;
 }
 
@@ -324,18 +323,13 @@ section img {
   letter-spacing: var(--space-l);
 }
 
-p .bottom {
+.intro .bottom {
   margin-block: var(--space-xs);
   letter-spacing: 3.5px;
 }
 
-.intro .bottom {
-  margin-block: 0.5em;
-  letter-spacing: .3em;
-}
-
 .wrapper-gradient-text {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   margin: 0;
   /* Remove default margins */
   padding: 0;
@@ -375,7 +369,7 @@ p .bottom {
 
 @media only screen and (max-width: 768px) {
   header .logo {
-    margin-left: var(--space-l);
+    margin-left: var(--space-xl);
   }
 
   header .bars {
