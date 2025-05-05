@@ -3,32 +3,29 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Raffaele Suppa Web Portfolio" />
+  <meta name="description"
+    content="Raffaele Suppa's web development portfolio showcasing innovative projects, creative designs, and coding expertise." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Raffaele Suppa" />
-  <title>Raffaele Suppa | WebPage</title>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
     rel="stylesheet">
-  <link rel="icon" href="docs/images/favicon-32x32-min.png" />
+  <link rel="icon" href="/docs/images/favicon-32x32-min.png" />
   <link rel="stylesheet" href="/docs/css/reset.css" />
   <link rel="stylesheet" href="/docs/css/intro.css" />
-  <script src="/docs/js/intro.js" defer></script>
-  <script src="/docs/js/index.js" defer></script>
 </head>
 
 <body>
+  <header>
+    <div class="logo">
+      <div class="bars"></div>
+      <p>sometimes<span>DESIGN</span>sometimes<span>NOT</span></p>
+    </div>
 
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="logo">sometimes<span>DESIGNER</span>sometimes<span>NOT</span></div>
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
+    <nav>
       <ul class="nav-links">
         <li>
           <a href="index.html" aria-label="go to profile">
@@ -75,9 +72,8 @@
         <li><img src="/docs/images/logo.svg" alt="profile image" />
         </li>
       </ul>
-    </div>
-  </nav>
-  <div class="overlay"></div>
+    </nav>
+  </header>
   <section class="intro">
     <p>The way it began ... the way it is.</p>
     <p>
@@ -124,6 +120,8 @@
       <span class="text-layer">p</span>
     </div>
   </section>
+
+  <script src="/docs/js/intro.js"></script>
 </body>
 
 </html>
