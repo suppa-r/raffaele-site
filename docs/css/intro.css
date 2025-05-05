@@ -1,0 +1,383 @@
+:root {
+  --sp: 4s;
+  /* ------------------------------------------------- */
+  /* ------------------ Custom Colors ---------------- */
+  /* ------------------------------------------------- */
+
+  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --border: 1px solid rgba(255, 255, 255, 0.1);
+  --shadow: 0 32px 60px 0 rgba(85, 89, 134, 0.5);
+  /*--shadow: 0 8px 32px 0 rgb(85, 89, 134);*/
+
+
+  --color-scheme: dark light;
+  --clr-dark: 0, 0%, 0%;
+  --clr-light: 195, 70%, 90%;
+  --clr-span: 195, 36%, 45%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
+
+  /* -------------------------------------------------------- */
+  /* ------------------ Custom Font-Sizes ------------------- */
+  /* -------------------------------------------------------- */
+
+  /* Step -1: 13.3333px → 13.5034px */
+  --step--1: clamp(0.8333rem, 0.8296rem + 0.0185cqi, 0.844rem);
+  /* Step 0: 16px → 18px */
+  --step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+  /* Step 1: 19.2px → 23.994px */
+  --step-1: clamp(1.2rem, 1.0958rem + 0.5211cqi, 1.4996rem);
+  /* Step 2: 23.04px → 31.984px */
+  --step-2: clamp(1.44rem, 1.2456rem + 0.9722cqi, 1.999rem);
+  /* Step 3: 27.648px → 42.6347px */
+  --step-3: clamp(1.728rem, 1.4022rem + 1.629cqi, 2.6647rem);
+
+  /* ------------------------------------------------------- */
+  /* ----------------- Custom Space-Sizes ------------------ */
+  /* ------------------------------------------------------- */
+
+  --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087cqi, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4783rem + 0.1087cqi, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
+  --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
+  --space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
+  --space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
+  --space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
+  --space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
+  --space-4xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
+  --space-5xl: clamp(8rem, 7.6522rem + 1.7391cqi, 9rem);
+  --space-6xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
+  --space-7xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
+
+  /*--------Roboto Serif Font Family--------*/
+
+  --ff-roboto-serif: "Roboto Serif", serif;
+  --font-optical-sizing: auto;
+  --font-weight: 100;
+  --font-style: italic;
+  --font-variation-settings: "wdth" 100, "GRAD" -50;
+
+  /*----------Monoton Font Family-----------*/
+
+  --ff-monoton-regular: "Monoton", sans-serif;
+  --font-wight-regular: 400;
+  --font-style-regular: normal;
+}
+
+/* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
+
+html {
+  color-scheme: var(--color-scheme);
+  /* Set the color scheme for the document */
+  scroll-behavior: smooth;
+  font-family: var(--ff-roboto-serif);
+  color: hsl(var(--clr-white));
+  font-weight: var(--font-weight);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-style: var(--font-style);
+  font-feature-settings: var(--font-variation-settings);
+  font-size: var(--step-0);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* Stack elements vertically */
+  margin-inline: auto;
+}
+
+body:before {
+  opacity: 1;
+  pointer-events: all;
+  content: "";
+  width: 100vw;
+  /* Full viewport width */
+  height: 100vh;
+  /* Full viewport height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.664) 100%,
+      /* Transparent at the top */
+      rgba(20, 20, 20, 0.447) 100%
+      /* Darker at the bottom */
+    ),
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px;
+  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: -1;
+  /* Ensure it is behind other content */
+  overflow: hidden;
+}
+
+header {
+  position: relative;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  padding: 1vh 1vw;
+}
+
+header .logo p {
+  font-size: var(--step-1);
+}
+
+header .logo span {
+  font-size: var(--step-1);
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-3xs);
+  padding-right: var(--space-s);
+}
+
+header .bars {
+  position: relative;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background-color: #888888;
+  margin-right: 10px;
+  display: none;
+}
+
+header .bars.is-active {
+  width: 35px;
+  transform-origin: right;
+  transform: translateY(15px) rotate(45deg);
+}
+
+header .bars::after,
+header .bars::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  left: 0;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+  cursor: pointer;
+}
+
+header .bars::after {
+  bottom: 7px;
+}
+
+header .bars::before {
+  top: 7px;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 0.7vw;
+  margin: 0 0.7vw;
+}
+
+.nav-links li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888888;
+}
+
+.nav-links li a span {
+  font-family: "Turret Road", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+.nav-links li svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(hsl(--clr-white));
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links li:last-child {
+  width: 4rem;
+  height: auto;
+  border-radius: 50%;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-inline: auto;
+  padding-bottom: var(--space-8xl);
+}
+
+.intro p {
+  margin-block: 0.12em;
+}
+
+.intro p span {
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs);
+}
+
+.intro h1,
+.intro h2,
+.intro h3 {
+  margin: 0;
+  /* Remove default margins */
+  padding: 0;
+  /* Remove default padding */
+  margin-block: 0.3em;
+  /* Add margin for spacing */
+}
+
+.intro .ya {
+  font-size: var(--step-2);
+  color: hsl(var(--clr-span));
+  letter-spacing: var(--space-l);
+  margin-inline: auto;
+  padding-inline: auto;
+}
+
+.intro .bottom {
+  margin-block: var(--space-s);
+  letter-spacing: 3px;
+}
+
+.wrapper-gradient-text {
+  font-size: var(--step-0);
+  margin: 0;
+  /* Remove default margins */
+  padding: 0;
+  /* Remove default padding */
+  text-align: center;
+  /* Align text to the left */
+  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+}
+
+.text-layer {
+  background: linear-gradient(0deg,
+      rgb(213, 223, 230),
+      rgb(78, 115, 136),
+      rgba(65, 90, 105, 0.6),
+      rgba(142, 186, 211, 0.1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
+}
+
+@keyframes shadowDrip {
+  0% {
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.853);
+  }
+
+  100% {
+    text-shadow: 0px 5px 10px rgb(255, 255, 255),
+      /* Reduced vertical offset */
+      0px 15px 20px rgb(255, 255, 255),
+      /* Reduced vertical offset */
+      0px 25px 5px rgb(232, 235, 238);
+    /* Reduced vertical offset */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  header .logo {
+    margin-right: 50px;
+  }
+
+  header .bars {
+    display: block;
+    transition: 0.5s;
+  }
+
+  nav {
+    position: fixed;
+    z-index: 3;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--space-2xl);
+    left: 0;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+    transition: 0.3s;
+    opacity: 0;
+  }
+
+  .nav-links li {
+    margin: var(--space-2xs) 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background-color: #111111;
+    color: #d6d6d6;
+  }
+}
+
+
+
+@media (prefers-color-scheme: light) {
+
+  body {
+    background-color: #ffffff;
+    color: #111111;
+  }
+}
