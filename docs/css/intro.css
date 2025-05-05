@@ -90,8 +90,16 @@
   color: hsl(var(--clr-accent));
 }
 
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background-color: #111111;
+    color: white;
+  }
+}
+
 html {
-  color-scheme: var(--color-scheme);
+  color-scheme: dark light;
   /* Set the color scheme for the document */
   scroll-behavior: smooth;
   font-family: var(--ff-roboto-serif);
@@ -100,7 +108,7 @@ html {
   font-optical-sizing: var(--font-optical-sizing);
   font-style: var(--font-style);
   font-feature-settings: var(--font-variation-settings);
-  font-size: var(--step-0);
+  font-size: var(--step--1);
 }
 
 body {
@@ -114,9 +122,9 @@ body:before {
   opacity: 1;
   pointer-events: all;
   content: "";
-  width: 100vw;
+  width: 100%;
   /* Full viewport width */
-  height: 100vh;
+  height: 100svh;
   /* Full viewport height */
   position: fixed;
   top: 0;
@@ -143,11 +151,10 @@ body:before {
 
 header {
   position: relative;
-  height: 4rem;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: var(--space-s) 0 0 var(--space-xl);
 }
 
 header .logo {
@@ -157,11 +164,11 @@ header .logo {
 }
 
 header .logo p {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
 }
 
 header .logo span {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   color: hsl(var(--clr-span));
   padding-left: var(--space-3xs);
   padding-right: var(--space-s);
@@ -224,8 +231,7 @@ header .bars::before {
 }
 
 .nav-links li a span {
-  font-family: "Turret Road", sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--step-0);
   letter-spacing: 1px;
   margin-top: 0.2rem;
 }
@@ -249,7 +255,7 @@ header .bars::before {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding-bottom: var(--space-8xl);
+  padding: var(--space-xl) 0 var(--space-7xl) 0;
 }
 
 .intro p {
@@ -361,23 +367,5 @@ header .bars::before {
     align-items: center;
     opacity: 1;
     pointer-events: all;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-
-  body {
-    background-color: #111111;
-    color: #d6d6d6;
-  }
-}
-
-
-
-@media (prefers-color-scheme: light) {
-
-  body {
-    background-color: #ffffff;
-    color: #111111;
   }
 }
