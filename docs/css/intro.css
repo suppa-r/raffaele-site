@@ -11,7 +11,6 @@
   /*--shadow: 0 8px 32px 0 rgb(85, 89, 134);*/
 
 
-  --color-scheme: dark light;
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
   --clr-span: 195, 36%, 45%;
@@ -97,6 +96,14 @@
     color: white;
   }
 }
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
 
 html {
   color-scheme: dark light;
