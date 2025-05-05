@@ -166,30 +166,34 @@ body:before {
 }
 
 header {
-  height: var(--space-xl);
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--space-l);
-}
-
-header h2 {
-  color: #d6d6d6;
-  font-size: 1.2rem;
+  padding: 0 var(--space-m);
 }
 
 header .logo {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  margin-block: var(--space-s);
+}
+
+header .logo p {
+  color: hsl(var(--clr-white));
+  font-size: var(--step-0);
+  padding: 0 var(--space-xs);
+}
+
+header .logo span {
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs);
 }
 
 header .bars {
   position: relative;
-  height: 3px;
+  height: 2px;
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin-right: 10px;
+  cursor: pointer;
+  transition: all var(--sp) ease-in-out;
   display: none;
 }
 
@@ -203,7 +207,7 @@ header .bars::after,
 header .bars::before {
   position: absolute;
   content: "";
-  height: 3px;
+  height: 2px;
   left: 0;
   width: 20px;
   border-radius: 2px;
@@ -247,8 +251,7 @@ nav.open {
 }
 
 .nav-links li a span {
-  font-family: "Turret Road", sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--step--1);
   letter-spacing: 1px;
   margin-top: 0.2rem;
 }
@@ -259,130 +262,6 @@ nav.open {
   color: hsl(var(--clr-white));
   transition: all 0.3s ease-in-out;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--space-s);
-}
-
-header .logo p {
-  color: hsl(var(--clr-white));
-
-}
-
-header .logo p span {
-  color: hsl(var(--clr-span));
-  padding-right: var(--space-xs);
-}
-
-header .bars {
-  position: relative;
-  height: 3px;
-  width: 20px;
-  border-radius: 2px;
-  background-color: #888888;
-  margin-right: 10px;
-  display: none;
-}
-
-header .bars.is-active {
-  width: 35px;
-  transform-origin: right;
-  transform: translateY(15px) rotate(45deg);
-}
-
-header .bars::after,
-header .bars::before {
-  position: absolute;
-  content: "";
-  height: 3px;
-  left: 0;
-  width: 20px;
-  border-radius: 2px;
-  background: #888888;
-  cursor: pointer;
-}
-
-header .bars::after {
-  bottom: 7px;
-}
-
-header .bars::before {
-  top: 7px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-
-}
-
-.nav-links li {
-  position: relative;
-  padding: 0.7vw;
-  margin: 0 0.7vw;
-}
-
-.nav-links li a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: hsl(var(--clr-white));
-  text-decoration: none;
-}
-
-.nav-links li a span {
-  font-size: var(--step-0);
-  letter-spacing: 1px;
-  margin-top: 0.2rem;
-}
-
-.nav-links svg {
-  height: 1.2rem;
-  width: 1.2rem;
-  color: hsl(var(--clr-white));
-  transition: all 0.3s ease-in-out;
-}
-
-/*section {
-  display: flex;
-  align-items: center;
-}
-
-section span {
-  color: #888888;
-}
-
-section span i {
-  margin: 0 1.2vw;
-  font-size: 1.2rem;
-  font-family: "Turret Road", sans-serif;
-}
-
-section img {
-  height: 3rem;
-  width: 3rem;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 0 0.7vw;
-}*/
 
 .intro {
   display: flex;
@@ -391,8 +270,8 @@ section img {
   text-align: center;
   margin-inline: auto;
   padding-inline: auto;
-  padding-bottom: var(--space-9xl);
-  min-height: 100%;
+  padding-bottom: var(--space-8xl);
+  min-height: 100svh;
 }
 
 .intro p {
@@ -419,11 +298,13 @@ section img {
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
   letter-spacing: var(--space-l);
+  margin-inline: auto;
+  padding-inline: auto;
 }
 
 .intro .bottom {
-  margin-block: var(--space-xs);
-  letter-spacing: 3.5px;
+  margin-block: var(--space-s);
+  letter-spacing: 3px;
 }
 
 .wrapper-gradient-text {
@@ -467,12 +348,13 @@ section img {
 
 @media only screen and (max-width: 768px) {
   header .logo {
-    margin-right: 50px;
+    margin: 0 var(--space-s);
   }
 
   header .bars {
     display: block;
     transition: 0.5s;
+    margin-top: var(--space-s);
   }
 
   nav {
