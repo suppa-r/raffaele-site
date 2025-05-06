@@ -360,7 +360,7 @@ header .bars::before {
   }
 
   .row {
-    padding: 0 var(--space-xs) var(--space-s) var(--space-xs);
+    padding: 0;
     /* Add padding to the left and right */
   }
 
