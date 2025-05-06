@@ -366,11 +366,6 @@ header .bars::before {
     margin-bottom: var(--space-xs);
   }
 
-  .row {
-    padding: 0;
-    /* Add padding to the left and right */
-  }
-
   header .bars {
     display: block;
     transition: 0.5s;
