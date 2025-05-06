@@ -271,8 +271,7 @@ header .bars::before {
   justify-content: start;
   margin-inline: auto;
 
-  padding: var(--space-m) var(--space-s) 0 var(--space-s);
-  /* Add padding to the left and right */
+
 }
 
 .intro p {
@@ -356,6 +355,11 @@ header .bars::before {
 
   .intro .row-1 img {
     width: 110px;
+  }
+
+  .row {
+    padding: 0 var(--space-xs) var(--space-6xl) var(--space-xs);
+    /* Add padding to the left and right */
   }
 
   header .bars {
