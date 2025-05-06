@@ -262,7 +262,11 @@ header .bars::before {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding: var(--space-xl) 0 var(--space-7xl) 0;
+  padding: var(--space-xl) var(--space-xs) var(--space-7xl) var(--space-xs);
+}
+
+.intro>div {
+  margin-block: var(--space-s);
 }
 
 .intro p {
@@ -277,6 +281,7 @@ header .bars::before {
 .intro .ya {
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
+  margin-block: var(--space-xs);
 }
 
 .intro .bottom {
