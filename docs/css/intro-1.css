@@ -106,6 +106,7 @@ html {
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   /* Stack elements vertically */
   margin-inline: auto;
 }
@@ -157,11 +158,11 @@ header .logo {
 }
 
 header .logo p {
-  font-size: var(--step-1);
+  font-size: var(--step--1);
 }
 
 header .logo span {
-  font-size: var(--step-1);
+  font-size: var(--step--1);
   color: hsl(var(--clr-span));
   padding-left: var(--space-3xs);
   padding-right: var(--space-s);
@@ -251,16 +252,16 @@ header .bars::before {
   margin-inline: auto;
 }
 
+
 .row-1 img {
-  width: 300px;
+  width: 260px;
   height: auto;
   max-width: 100%;
-  max-height: 100%;
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
   margin-inline: auto;
-  margin-block: var(--space-xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .row {
@@ -269,7 +270,6 @@ header .bars::before {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding-block: var(--space-s);
   padding-inline: var(--space-xs);
 }
 
@@ -348,20 +348,12 @@ header .bars::before {
 @media only screen and (max-width: 768px) {
   .intro {
     flex-direction: column;
-    padding-bottom: var(--space-2xl);
-    padding-inline: 0 var(--space-xs);
-  }
-
-  .logo {
-    margin-inline: auto;
-  }
-
-  .logo p {
-    font-size: var(--step--1);
+    justify-content: center;
+    text-align: center;
   }
 
   .intro .row-1 img {
-    width: 100px;
+    width: 150px;
     height: auto;
     max-width: 100%;
     max-height: 100%;
@@ -369,10 +361,7 @@ header .bars::before {
     object-fit: cover;
     object-position: center;
     margin-inline: auto;
-  }
-
-  header .logo {
-    margin-right: 50px;
+    margin-bottom: var(--space-xl);
   }
 
   header .bars {
