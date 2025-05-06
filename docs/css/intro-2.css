@@ -260,10 +260,8 @@ header .bars::before {
 }
 
 .row {
-
   /* Allow rows to take equal space */
   max-width: 100%;
-  /* Limit each row to half the width of .intro */
 }
 
 .row img {
@@ -348,7 +346,7 @@ header .bars::before {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@container (max-width: 768px) {
   .intro {
     flex-direction: column;
     justify-content: center;
@@ -358,11 +356,11 @@ header .bars::before {
   }
 
   .intro .row img {
-    width: 110px;
+    width: 90px;
   }
 
   .row {
-    padding: 0 var(--space-xs) var(--space-l) var(--space-xs);
+    padding: 0 var(--space-xs) var(--space-m) var(--space-xs);
     /* Add padding to the left and right */
   }
 
