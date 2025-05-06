@@ -106,7 +106,7 @@
 
 
 html {
-  color-scheme: dark light;
+  color-scheme: dark only;
   /* Set the color scheme for the document */
   scroll-behavior: smooth;
   font-family: var(--ff-roboto-serif);
