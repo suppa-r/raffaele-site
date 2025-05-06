@@ -358,7 +358,7 @@ header .bars::before {
   }
 
   .row {
-    padding: 0 var(--space-xs) var(--space-6xl) var(--space-xs);
+    padding: 0 var(--space-xs) var(--space-7xl) var(--space-xs);
     /* Add padding to the left and right */
   }
 
