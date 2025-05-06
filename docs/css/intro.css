@@ -1,15 +1,12 @@
 :root {
-  --sp: 4s;
+  --sp: 5s;
   /* ------------------------------------------------- */
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
 
   --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
   --glass-bg: rgba(255, 255, 255, 0.05);
-  --border: 1px solid rgba(255, 255, 255, 0.1);
-  --shadow: 0 32px 60px 0 rgba(85, 89, 134, 0.5);
-  /*--shadow: 0 8px 32px 0 rgb(85, 89, 134);*/
-
+  --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -162,6 +159,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: var(--space-s) 0 0 var(--space-xl);
+  box-shadow: var(--shadow);
 }
 
 header .logo {

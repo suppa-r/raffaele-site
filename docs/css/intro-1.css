@@ -245,11 +245,32 @@ header .bars::before {
 
 .intro {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.row-1 img {
+  width: 300px;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-inline: auto;
+  margin-block: var(--space-xl);
+}
+
+.row {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding-bottom: var(--space-8xl);
+  padding-block: var(--space-s);
+  padding-inline: var(--space-xs);
 }
 
 .intro p {
@@ -325,6 +346,31 @@ header .bars::before {
 }
 
 @media only screen and (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+    padding-bottom: var(--space-2xl);
+    padding-inline: 0 var(--space-xs);
+  }
+
+  .logo {
+    margin-inline: auto;
+  }
+
+  .logo p {
+    font-size: var(--step--1);
+  }
+
+  .intro .row-1 img {
+    width: 100px;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-inline: auto;
+  }
+
   header .logo {
     margin-right: 50px;
   }
@@ -361,23 +407,5 @@ header .bars::before {
     align-items: center;
     opacity: 1;
     pointer-events: all;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-
-  body {
-    background-color: #111111;
-    color: #d6d6d6;
-  }
-}
-
-
-
-@media (prefers-color-scheme: light) {
-
-  body {
-    background-color: #ffffff;
-    color: #111111;
   }
 }
