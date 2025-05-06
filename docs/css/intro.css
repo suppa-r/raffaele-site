@@ -274,23 +274,9 @@ header .bars::before {
   padding-left: var(--space-xs);
 }
 
-.intro h1,
-.intro h2,
-.intro h3 {
-  margin: 0;
-  /* Remove default margins */
-  padding: 0;
-  /* Remove default padding */
-  margin-block: 0.3em;
-  /* Add margin for spacing */
-}
-
 .intro .ya {
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
-  letter-spacing: var(--space-l);
-  margin-inline: auto;
-  padding-inline: auto;
 }
 
 .intro .bottom {
