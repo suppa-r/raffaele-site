@@ -365,7 +365,7 @@ p .bottom {
   .nav-links {
     background: transparent;
     position: fixed;
-    top: 4rem;
+    top: 0;
     left: 0;
     flex-direction: column;
     height: 100svh;
