@@ -124,7 +124,7 @@ html {
 
 .quote {
 	color: hsl(var(--clr-white));
-	margin-top: var(--space-l);
+	margin-top: var(--space-m);
 }
 
 .title {
