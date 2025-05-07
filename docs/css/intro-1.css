@@ -310,9 +310,8 @@ header .bars::before {
 .intro h2,
 .intro h3 {
   margin: 0;
-  /* Remove default margins */
   padding: 0;
-
+  font-size: var(--step-1);
   margin-block: 0.5em;
   /* Add margin for spacing */
 }
@@ -324,7 +323,7 @@ header .bars::before {
 
 p .bottom {
   margin-block: var(--space-xs);
-  letter-spacing: 3.5px;
+  letter-spacing: 2px;
 }
 
 .intro .bottom {
@@ -372,19 +371,6 @@ p .bottom {
 }
 
 @media only screen and (max-width: 768px) {
-  .intro {
-    flex-direction: column;
-    padding: var(--space-s);
-  }
-
-  .intro .row img {
-    width: 105px;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
 
   header .logo {
     margin-right: var(--space-s);
@@ -420,5 +406,35 @@ p .bottom {
     transition: 0.5s;
   }
 
+  .intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    max-width: 100%;
+    text-align: center;
+    margin-inline: auto;
+    min-height: 100svh;
+  }
 
+  .intro *> {
+    flex: 1;
+    /* Allow children to grow and shrink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    padding: var(--space-xs);
+  }
+
+  .intro .row img {
+    width: 90px;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 }
