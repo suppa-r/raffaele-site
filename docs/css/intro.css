@@ -296,7 +296,6 @@ header .bars::before {
 .intro .ya {
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
-  letter-spacing: var(--space-l);
 }
 
 p .bottom {
@@ -381,5 +380,9 @@ p .bottom {
     pointer-events: all;
     transform: translateY(0);
     transition: 0.5s;
+  }
+
+  .intro {
+    padding: 0 var(--space-s);
   }
 }
