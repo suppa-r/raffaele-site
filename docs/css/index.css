@@ -143,6 +143,7 @@ html {
 	margin-inline: auto;
 	color: hsl(var(--clr-white));
 	font-size: var(--step-1);
+	margin-top: var(--space-xl);
 }
 
 .content {
