@@ -382,7 +382,5 @@ p .bottom {
     transition: 0.5s;
   }
 
-  .intro {
-    padding: 0 var(--space-s);
-  }
+
 }
