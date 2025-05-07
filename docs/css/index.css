@@ -464,6 +464,7 @@ html {
 	margin-inline: auto;
 	overflow: hidden;
 	color: hsl(var(--clr-white));
+	margin-top: var(--space-3xl);
 }
 
 .text-with-animation {
