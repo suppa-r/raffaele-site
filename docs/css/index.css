@@ -105,7 +105,6 @@ html {
 	font-optical-sizing: var(--font-optical-sizing);
 	font-style: var(--font-style);
 	font-feature-settings: var(--font-variation-settings);
-	background-color: var(--background-color);
 }
 
 .wrapper {
@@ -125,7 +124,7 @@ html {
 
 .quote {
 	color: hsl(var(--clr-white));
-	margin-bottom: var(--space-4xl);
+	margin-top: var(--space-l);
 }
 
 .title {
@@ -465,6 +464,7 @@ html {
 	margin-inline: auto;
 	overflow: hidden;
 	color: hsl(var(--clr-white));
+	margin-bottom: var(--space-2xl);
 }
 
 .text-with-animation {
