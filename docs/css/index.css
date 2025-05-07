@@ -86,33 +86,8 @@
 	color: hsl(var(--clr-accent));
 }
 
-@media (prefers-color-scheme: dark) {
-
-	body {
-		background-color: #111111;
-		color: white;
-	}
-}
-
-@media (prefers-color-scheme: light) {
-	body {
-		background-color: #ffffff;
-		color: black;
-	}
-}
-
-
 html {
 	color-scheme: dark only;
-	/* Set the color scheme for the document */
-	scroll-behavior: smooth;
-	font-family: var(--ff-roboto-serif);
-	color: hsl(var(--clr-white));
-	font-weight: var(--font-weight);
-	font-optical-sizing: var(--font-optical-sizing);
-	font-style: var(--font-style);
-	font-feature-settings: var(--font-variation-settings);
-	font-size: var(--step--1);
 }
 
 body {
@@ -131,50 +106,42 @@ html {
 	font-style: var(--font-style);
 	font-feature-settings: var(--font-variation-settings);
 	background-color: var(--background-color);
-	height: 100%;
 	overflow: hidden;
-	/* Prevent scrolling */
 }
 
 .wrapper {
 	position: absolute;
-	/* Position the wrapper relative to the viewport */
 	top: 0;
 	left: 0;
-	width: 100%;
-	/* Full width */
+	right: 0;
+	bottom: 0;
+
+
+	padding: 0 var(--space-s);
 	min-height: 100svh;
-
 	display: flex;
-	/* Optional: Flexbox for layout */
 	flex-direction: column;
-	/* Optional: Arrange children vertically */
 	justify-content: space-around;
-	/* Optional: Center content vertically */
-
 	cursor: pointer;
-	/* Change cursor to indicate it's clickable */
 }
 
 .wrapper>* {
 	container-type: inline-size;
-	/* Allow child elements to be sized based on the container */
 	text-align: center;
 	pointer-events: all;
-	/* Prevent child elements from intercepting clicks */
 }
 
 .quote {
 	color: hsl(var(--clr-white));
-	margin-bottom: var(--space-2xl);
+	margin-bottom: var(--space-4xl);
 }
 
 .title {
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 }
 
 .author {
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 }
 
 .curve-container {
@@ -210,7 +177,7 @@ html {
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	text-shadow: 0 0 1px hsl(var(--clr-white));
+	text-shadow: 0 0 7px hsl(var(--clr-white));
 
 }
 
