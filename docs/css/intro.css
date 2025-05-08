@@ -270,7 +270,7 @@ header .bars::before {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding: var(--space-3xl) var(--space-s);
+  padding: 0 var(--space-s) var(--space-3xl) var(--space-s);
   min-height: 100svh;
 }
 
@@ -299,26 +299,11 @@ header .bars::before {
   color: hsl(var(--clr-span));
 }
 
-p .bottom {
-  margin-block: var(--space-xs);
-  letter-spacing: 3.5px;
-}
-
 .intro .bottom {
-  margin-block: 0.5em;
-  letter-spacing: .3em;
+  margin-block: var(--space-xs);
+  letter-spacing: 4.75px;
 }
 
-.wrapper-gradient-text {
-  font-size: var(--step-1);
-  margin: 0;
-  /* Remove default margins */
-  padding: 0;
-  /* Remove default padding */
-  text-align: center;
-  /* Align text to the left */
-  text-shadow: 0px 0px 0px rgb(255, 255, 255);
-}
 
 .text-layer {
   background: linear-gradient(0deg,
@@ -384,7 +369,9 @@ p .bottom {
   }
 
   .intro {
-    padding: 0 var(--space-2xs) var(--space-8xl) var(--space-2xs);
+
     min-height: 100svh;
+    padding: 0 var(--space-s) var(--space-3xl) var(--space-s);
+    margin-inline: auto;
   }
 }
