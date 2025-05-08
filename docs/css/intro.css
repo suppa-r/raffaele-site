@@ -384,7 +384,7 @@ p .bottom {
   }
 
   .intro {
-    padding: 0 var(--space-2xs) var(--space-6xl) var(--space-2xs);
+    padding: 0 var(--space-2xs) var(--space-8xl) var(--space-2xs);
     min-height: 100svh;
   }
 }
