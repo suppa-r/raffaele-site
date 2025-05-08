@@ -270,7 +270,8 @@ header .bars::before {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  width: 100%;
+  padding: var(--space-3xl) var(--space-s);
+  min-height: 100svh;
 }
 
 .intro p {
