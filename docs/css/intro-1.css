@@ -274,18 +274,18 @@ header .bars::before {
   text-align: center;
   margin-inline: auto;
   min-height: 100svh;
-  gap: var(--space-m);
+  gap: var(--space-xs);
 }
 
 .intro .row-1 img {
   display: block;
   width: 100%;
   max-width: 100%;
-  max-block-size: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: var(--shadow);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
 }
 
 .intro .row {
@@ -411,14 +411,11 @@ p .bottom {
   }
 
   .intro .row-1 img {
-    width: 60%;
+    width: 50%;
     max-width: 100%;
-    max-block-size: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 50%;
-    box-shadow: var(--shadow);
     margin-inline: auto;
-    margin-block: var(--space-s);
+    margin-block: var(--space-xs);
   }
 }
