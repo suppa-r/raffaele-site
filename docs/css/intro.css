@@ -270,7 +270,7 @@ header .bars::before {
   justify-content: center;
   text-align: center;
   margin-inline: auto;
-  padding: 0 var(--space-s) var(--space-3xl) var(--space-s);
+  padding: 0 var(--space-4xl) var(--space-3xl) var(--space-4xl);
   min-height: 100svh;
 }
 
@@ -371,5 +371,6 @@ header .bars::before {
   .intro {
     min-height: 100svh;
     margin-inline: auto;
+    padding-inline: var(--space-2xs);
   }
 }

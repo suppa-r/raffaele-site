@@ -411,11 +411,13 @@ p .bottom {
   }
 
   .intro .row-1 img {
-    width: 50%;
+    display: block;
+    width: 150px;
     max-width: 100%;
     height: auto;
     object-fit: cover;
-    margin-inline: auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
     margin-block: var(--space-xs);
   }
 }
