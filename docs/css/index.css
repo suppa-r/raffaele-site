@@ -526,16 +526,6 @@ html {
 	letter-spacing: var(--space-s);
 }
 
-.text-with-animation-6 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	user-select: none;
-	margin-top: var(--space-s);
-	letter-spacing: var(--space-2xs);
-}
-
 @keyframes test-animation {
 	0% {
 		background-color: transparent;
