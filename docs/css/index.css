@@ -563,3 +563,9 @@ html {
 		opacity: 1;
 	}
 }
+
+@media(max-width:768px) {
+	.container {
+		margin-top: var(--space-2xl);
+	}
+}

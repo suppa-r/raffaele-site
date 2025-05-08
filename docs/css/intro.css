@@ -383,5 +383,8 @@ p .bottom {
     transition: 0.5s;
   }
 
-
+  .intro {
+    padding: 0 var(--space-s)var(--space-6xl) var(--space-s);
+    min-height: 100svh;
+  }
 }
