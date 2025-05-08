@@ -370,7 +370,6 @@ header .bars::before {
 
   .intro {
     min-height: 100svh;
-    padding: 0 var(--space-xs) var(--space-6xl) var(--space-xs);
     margin-inline: auto;
   }
 }
