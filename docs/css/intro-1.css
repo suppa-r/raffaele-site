@@ -4,7 +4,7 @@
   /* ------------------ Custom Colors ---------------- */
   /* ------------------------------------------------- */
 
-  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
+  --gradient: linear-gradient(45deg, #c9f7eba4, #6bdfff, #453d78, #212151);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --border: 1px solid rgba(255, 255, 255, 0.1);
   --shadow: 0 32px 60px 0 rgba(85, 89, 134, 0.5);
@@ -293,6 +293,32 @@ header .bars::before {
   padding: 0 var(--space-xs);
 }
 
+.intro .section-title {
+  font-size: var(--step-1);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s linear infinite;
+  background-size: 300%;
+  letter-spacing: -2px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 .intro p {
   margin-block: 0.12em;
 }
@@ -408,11 +434,12 @@ p .bottom {
     justify-content: flex-start;
     margin-inline: auto;
     min-height: 100svh;
+    padding-inline: auto;
   }
 
   .intro .row-1 img {
     display: block;
-    width: 150px;
+    width: 200px;
     max-width: 100%;
     height: auto;
     object-fit: cover;
