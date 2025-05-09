@@ -294,7 +294,7 @@ header .bars::before {
 }
 
 .intro .section-title {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   background: var(--gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -341,16 +341,6 @@ header .bars::before {
 .intro .ya {
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
-}
-
-p .bottom {
-  margin-block: var(--space-xs);
-  letter-spacing: 2px;
-}
-
-.intro .bottom {
-  margin-block: 0.5em;
-  letter-spacing: .3em;
 }
 
 .wrapper-gradient-text {
@@ -439,12 +429,12 @@ p .bottom {
 
   .intro .row-1 img {
     display: block;
-    width: 140px;
+    width: 120px;
     max-width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
-    margin-block: var(--space-xs);
+    margin-inline: auto;
   }
 }
