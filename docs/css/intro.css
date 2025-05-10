@@ -294,9 +294,21 @@ header .bars::before {
 
 .intro .enjoy {
   font-size: var(--step-1);
+  /* Increase font size to make it wider */
   color: hsl(var(--clr-white));
-  margin-block: var(--space-xs);
-  text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.853);
+
+  /* Add more spacing above and below */
+  text-shadow: 0 10px 10px hsl(var(--clr-white));
+  text-align: center;
+  /* Center the text */
+  padding: 0.5rem 1rem;
+  /* Add padding for a rounded container effect */
+
+  /* Make the container rounded */
+  background: rgba(255, 255, 255, .0);
+  /* Optional: Add a subtle background */
+  margin-inline: auto;
+  /* Ensure the padding and border-radius apply */
 }
 
 
