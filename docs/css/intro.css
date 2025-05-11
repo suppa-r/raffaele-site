@@ -179,7 +179,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: var(--space-l-xl);
+  padding-inline: var(--space-m-l);
 }
 
 header p {
@@ -268,9 +268,9 @@ header .bars::before {
 }
 
 .nav-links svg {
-  height: var(--space-s-m);
-  width: var(--space-s-m);
-  color: hsl(var(--clr-accent));
+  height: var(--space-xs-s);
+  width: var(--space-xs-s);
+  color: hsl(var(--clr-light));
   transition: all 0.3s ease-in-out;
 }
 
@@ -296,8 +296,8 @@ header .bars::before {
   text-shadow: 10px 5px 6px hsl(var(--clr-white));
   text-align: center;
   /* Center the text *
-  padding: 0.2rem 1rem;
-  /* Add padding for a rounded container effect */
+padding: 0.2rem 1rem;
+/* Add padding for a rounded container effect */
   /* Make the container rounded */
   background: transparent;
   /* Optional: Add a subtle background */
@@ -357,14 +357,17 @@ header .bars::before {
     box-shadow: var(--shadow);
   }
 
+  .nav-links li {
+    margin: 0;
+    padding: var(--space-xs);
+    /* Added padding to each item */
+  }
+
   .intro {
-    width: 100%;
-    max-width: 100%;
-    min-height: 100svh;
-    margin-inline: auto;
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding: var(--space-2xs);
     overflow: hidden;
   }
 }
