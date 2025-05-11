@@ -298,10 +298,12 @@ header .bars::before {
 }
 
 .crew-details {
-  padding: var(--space-2xl);
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-inline: auto;
   min-height: 100svh;
+  padding: var(--space-3xs);
 }
 
 .crew-details .row-1 img {
@@ -310,16 +312,6 @@ header .bars::before {
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
-}
-
-.crew-details .row {
-  display: flex;
-
-  flex-shrink: 1;
-  flex-basis: 50%;
-  flex-direction: column;
-  margin-inline: auto;
-  text-align: center;
 }
 
 .section-title {
@@ -348,6 +340,12 @@ header .bars::before {
     background-position: 0% 50%;
   }
 }
+
+.crew-details .row {
+  margin-inline: auto;
+  text-align: center;
+}
+
 
 .crew-details p {
   margin-block: 0.12em;
@@ -457,21 +455,19 @@ header .bars::before {
   }
 
   .crew-details {
-    padding: 0 0 var(--space-6xl) 0;
-    display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     margin-inline: auto;
-    min-height: 100svh;
   }
 
   .crew-details .row-1 img {
     display: block;
-    width: 270px;
+    width: 200px;
     max-width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 50%;
-    margin: var(--space-s) auto;
+    margin: var(--space-3xs) auto;
   }
 
   .crew-details .row {
