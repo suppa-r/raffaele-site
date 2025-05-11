@@ -17,6 +17,7 @@
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
+  /* This link points to the Utopia type calculator, a tool for generating fluid typography values. */
   /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1500,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
   /* Step -1: 13.3333px → 15.0038px */
@@ -72,7 +73,7 @@
   /*----------Monoton Font Family-----------*/
 
   --ff-monoton-regular: "Monoton", sans-serif;
-  --font-wight-regular: 400;
+  --font-weight-regular: 400;
   --font-style-regular: normal;
 }
 
@@ -293,14 +294,14 @@ header .bars::before {
 }
 
 .intro {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100svh;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-}
-
-.intro p {
-  margin-block: 0.15em;
 }
 
 .intro p span {
@@ -312,19 +313,13 @@ header .bars::before {
 .intro h2,
 .intro h3 {
   margin: 0;
-  /* Remove default margins */
   padding: 0;
-  margin-block: 0.5em;
-  /* Add margin for spacing */
 }
 
 .intro .enjoy {
   font-size: var(--step-1);
-  /* Increase font size to make it wider */
   color: hsl(var(--clr-white));
-
-  /* Add more spacing above and below */
-  text-shadow: 0 10px 10px hsl(var(--clr-white));
+  text-shadow: 10px 5px 6px hsl(var(--clr-white));
   text-align: center;
   /* Center the text */
   padding: 0.2rem 1rem;
@@ -361,11 +356,8 @@ header .bars::before {
 
   100% {
     text-shadow: 0px 5px 10px rgb(255, 255, 255),
-      /* Reduced vertical offset */
       0px 15px 20px rgb(255, 255, 255),
-      /* Reduced vertical offset */
       0px 25px 5px rgb(232, 235, 238);
-    /* Reduced vertical offset */
   }
 }
 
@@ -373,14 +365,12 @@ header .bars::before {
   header .bars {
     display: block;
     transition: 0.5s;
+    width: 25px;
+    transform-origin: right;
+    transform: translate(0px 0px) rotate(45deg);
   }
 
-
-  .nav-links.open {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
-    transition: 0.5s;
-
+  .intro {
+    padding: var(--space-xs-s) var(--space-xs-s);
   }
 }
