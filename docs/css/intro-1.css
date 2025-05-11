@@ -167,7 +167,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: var(--shadow);
 }
 
 header .logo {
@@ -459,7 +458,6 @@ header .bars::before {
     margin-inline: auto;
     min-height: 100svh;
   }
-
 
   .crew-details .row-1 img {
     display: block;
