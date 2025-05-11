@@ -249,7 +249,7 @@ header .bars::before {
 .nav-links li a span {
   font-size: var(--step-0);
   letter-spacing: 1px;
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
 }
 
 .nav-links li svg {
@@ -286,10 +286,11 @@ header .bars::before {
 }
 
 .dot-indicators>* {
+  width: var(--space-4xl);
+  height: var(--space-xl);
+  border-radius: 50%;
   cursor: pointer;
   border: 0;
-  border-radius: 50%;
-  padding: var(--space-s);
 }
 
 .dot-indicators>*:hover,
@@ -455,7 +456,7 @@ header .bars::before {
   }
 
   .tab-list {
-    --gap: var(--space-s);
+    --gap: var(--space-xs);
     display: flex;
     justify-content: center;
     margin-inline: auto;
@@ -465,20 +466,23 @@ header .bars::before {
     cursor: pointer;
     border: 0;
     border-radius: 50%;
-    padding: var(--space-s);
+    padding: var(--space-2xs);
   }
 
   .dot-indicators>* {
+    width: var(--space-3xl);
+    height: var(--space-l);
+    font-size: var(--step--1);
+    border-radius: 50%;
     cursor: pointer;
     border: 0;
-    border-radius: 50%;
-    padding: var(--space-s);
   }
 
   .crew-details {
     flex-direction: column;
     justify-content: flex-start;
     margin-inline: auto;
+    font-size: var(--step--1);
   }
 
   .crew-details .row-1 img {
