@@ -313,6 +313,11 @@ header .bars::before {
 }
 
 .crew-details .row {
+  display: flex;
+
+  flex-shrink: 1;
+  flex-basis: 50%;
+  flex-direction: column;
   margin-inline: auto;
   text-align: center;
 }
