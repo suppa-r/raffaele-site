@@ -1,26 +1,24 @@
-const menu = document.querySelector('.bars');
+const logo = document.querySelector('.logo');
 const intro = document.querySelector('.intro');
-let menustate = false;
+const navlinks = document.querySelector('.nav-links');
+const bars = document.querySelector('.bars');
 
-menu.addEventListener('click', showMenu);
 
-function showMenu() {
-    if (!menustate) {
-        menu.classList.add('is-active');
-        document.querySelector('.nav-links').classList.add('open');
-        
-        // Hide .intro
-        intro.style.display = 'none';
-        intro.style.visibility = 'hidden';
-        menustate = true;
+let introState = true;
+
+
+
+bars.addEventListener('click', () => {
+    if (introState) {
+        logo.display = 'block';
+        intro.display = 'none';
+        navlinks.display = 'block';
+        introState = false;
     } else {
-        menu.classList.remove('is-active');
-        document.querySelector('.nav-links').classList.remove('open');
-        
-        // Show .intro
-        intro.style.display = 'block';
-        intro.style.visibility = 'visible';
-        intro.style.opacity = '1';
-        menustate = false;
+        logo.display = 'none';
+        intro.display = 'block';
+        navlinks.display = 'none';
+        introState = true;
     }
-}
+});
+

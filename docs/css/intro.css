@@ -179,7 +179,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: var(--space-m-l);
+  padding-inline: var(--space-s-m);
+  padding-block: var(--space-xs-s);
 }
 
 header .logo {
@@ -245,19 +246,16 @@ header .bars::before {
 }
 
 .nav-links {
+  background: transparent;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: var(--space-xs-s);
   padding: var(--space-xs-s) var(--space-xs-s);
   margin-inline: auto;
-}
-
-.nav-links.open {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateY(0);
   transition: 0.5s;
+  opacity: 1;
 }
 
 .nav-links li {
@@ -375,5 +373,14 @@ header .bars::before {
   header .bars {
     display: block;
     transition: 0.5s;
+  }
+
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+    transition: 0.5s;
+
   }
 }
