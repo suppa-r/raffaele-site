@@ -17,35 +17,49 @@
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1500,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
-  /* Step -1: 13.3333px → 13.5034px */
-  --step--1: clamp(0.8333rem, 0.8296rem + 0.0185cqi, 0.844rem);
-  /* Step 0: 16px → 18px */
-  --step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-  /* Step 1: 19.2px → 23.994px */
-  --step-1: clamp(1.2rem, 1.0958rem + 0.5211cqi, 1.4996rem);
-  /* Step 2: 23.04px → 31.984px */
-  --step-2: clamp(1.44rem, 1.2456rem + 0.9722cqi, 1.999rem);
-  /* Step 3: 27.648px → 42.6347px */
-  --step-3: clamp(1.728rem, 1.4022rem + 1.629cqi, 2.6647rem);
+  /* Step -1: 13.3333px → 15.0038px */
+  --step--1: clamp(0.8333rem, 0.805rem + 0.1416vw, 0.9377rem);
+  /* Step 0: 16px → 20px */
+  --step-0: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
+  /* Step 1: 19.2px → 26.66px */
+  --step-1: clamp(1.2rem, 1.0736rem + 0.6322vw, 1.6663rem);
+  /* Step 2: 23.04px → 35.5378px */
+  --step-2: clamp(1.44rem, 1.2282rem + 1.0591vw, 2.2211rem);
+  /* Step 3: 27.648px → 47.3719px */
+  --step-3: clamp(1.728rem, 1.3937rem + 1.6715vw, 2.9607rem);
+  /* Step 4: 33.1776px → 63.1467px */
+  --step-4: clamp(2.0736rem, 1.5656rem + 2.5398vw, 3.9467rem);
 
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1500,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
-  --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087cqi, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4783rem + 0.1087cqi, 0.5625rem);
-  --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
-  --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-  --space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
-  --space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
-  --space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
-  --space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
-  --space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
-  --space-4xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
-  --space-5xl: clamp(8rem, 7.6522rem + 1.7391cqi, 9rem);
-  --space-6xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
-  --space-7xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
+  --space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4661rem + 0.1695vw, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.6992rem + 0.2542vw, 0.9375rem);
+  --space-s: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.3983rem + 0.5085vw, 1.875rem);
+  --space-l: clamp(2rem, 1.8644rem + 0.678vw, 2.5rem);
+  --space-xl: clamp(3rem, 2.7966rem + 1.0169vw, 3.75rem);
+  --space-2xl: clamp(4rem, 3.7288rem + 1.3559vw, 5rem);
+  --space-3xl: clamp(6rem, 5.5932rem + 2.0339vw, 7.5rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1483rem + 0.5085vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.3814rem + 0.5932vw, 0.9375rem);
+  --space-xs-s: clamp(0.75rem, 0.6144rem + 0.678vw, 1.25rem);
+  --space-s-m: clamp(1rem, 0.7627rem + 1.1864vw, 1.875rem);
+  --space-m-l: clamp(1.5rem, 1.2288rem + 1.3559vw, 2.5rem);
+  --space-l-xl: clamp(2rem, 1.5254rem + 2.3729vw, 3.75rem);
+  --space-xl-2xl: clamp(3rem, 2.4576rem + 2.7119vw, 5rem);
+  --space-2xl-3xl: clamp(4rem, 3.0508rem + 4.7458vw, 7.5rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, 0.5932rem + 2.0339vw, 2.5rem);
+
 
   /*--------Roboto Serif Font Family--------*/
 
@@ -86,6 +100,19 @@
   color: hsl(var(--clr-accent));
 }
 
+html {
+  scroll-behavior: smooth;
+  line-height: 1.2;
+  /* Base line height */
+  color-scheme: dark only;
+  color: hsl(var(--clr-white));
+  font-family: var(--ff-roboto-serif);
+  font-weight: var(--font-weight);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-style: var(--font-style);
+  font-feature-settings: var(--font-variation-settings);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -112,19 +139,6 @@
 
 .skip-to-content:focus {
   transform: translateY(0);
-}
-
-html {
-  scroll-behavior: smooth;
-  line-height: 1.2;
-  /* Base line height */
-  color-scheme: dark only;
-  color: hsl(var(--clr-white));
-  font-family: var(--ff-roboto-serif);
-  font-weight: var(--font-weight);
-  font-optical-sizing: var(--font-optical-sizing);
-  font-style: var(--font-style);
-  font-feature-settings: var(--font-variation-settings);
 }
 
 /* --------------------------------------- */
@@ -172,7 +186,7 @@ header {
 header .logo {
   display: flex;
   align-items: center;
-  padding: var(--space-s) var(--space-s);
+  padding: var(--space-s) var(--space-xs-s);
 }
 
 header .logo p {
@@ -182,7 +196,7 @@ header .logo p {
 header .logo p span {
   color: hsl(var(--clr-span));
   padding-left: 0;
-  padding-right: var(--space-s);
+  padding-right: var(--space-xs-s);
 }
 
 header .bars {
@@ -225,7 +239,7 @@ header .bars::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--space-m);
+  gap: var(--space-s-m);
 }
 
 .nav-links li {
@@ -273,21 +287,21 @@ header .bars::before {
 .dot-indicators {
   display: flex;
   justify-content: center;
-  gap: var(--space-xl);
+  gap: var(--space-xl-2xl);
   background-color: transparent;
   margin-inline: auto;
 }
 
 .tab-list {
-  --gap: var(--space-xl);
+  --gap: var(--space-m-l);
   display: flex;
   justify-content: center;
   margin-inline: auto;
 }
 
 .dot-indicators>* {
-  width: var(--space-4xl);
-  height: var(--space-xl);
+  width: var(--space-2xl-3xl);
+  height: var(--space-xl-2xl);
   border-radius: 50%;
   cursor: pointer;
   border: 0;
@@ -304,7 +318,7 @@ header .bars::before {
   justify-content: center;
   margin-inline: auto;
   min-height: 100svh;
-  padding: var(--space-3xs);
+  padding: var(--space-3xs-2xs);
 }
 
 .crew-details .row-1 img {
@@ -354,7 +368,7 @@ header .bars::before {
 
 .crew-details p span {
   color: hsl(var(--clr-span));
-  padding-left: var(--space-s);
+  padding-left: var(--space-xs-s);
 }
 
 .crew-details h1,
@@ -411,10 +425,10 @@ header .bars::before {
   }
 }
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
 
   header .logo {
-    margin-right: var(--space-s);
+    margin-right: var(--space-xs-s);
   }
 
   header .bars {
@@ -456,7 +470,7 @@ header .bars::before {
   }
 
   .tab-list {
-    --gap: var(--space-xs);
+    --gap: var(--space-2xs-xs);
     display: flex;
     justify-content: center;
     margin-inline: auto;
@@ -466,11 +480,11 @@ header .bars::before {
     cursor: pointer;
     border: 0;
     border-radius: 50%;
-    padding: var(--space-2xs);
+    padding: var(--space-3xs-2xs);
   }
 
   .dot-indicators>* {
-    width: var(--space-3xl);
+    width: var(--space-2xl-3xl);
     height: var(--space-l);
     font-size: var(--step--1);
     border-radius: 50%;
@@ -492,7 +506,7 @@ header .bars::before {
     height: auto;
     object-fit: cover;
     border-radius: 50%;
-    margin: var(--space-3xs) auto;
+    margin: var(--space-3xs-2xs) auto;
   }
 
   .crew-details .row {
