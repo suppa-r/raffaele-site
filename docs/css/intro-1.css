@@ -400,6 +400,20 @@ header .bars::before {
 }
 
 @media only screen and (max-width: 768px) {
+
+  /* Mobile styles */
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-s-m);
+  }
+
+  header .logo {
+    display: flex;
+    align-items: center;
+    padding: var(--space-xs-s) var(--space-xs-s);
+  }
+
   header .bars {
     display: block;
     cursor: pointer;
@@ -427,6 +441,7 @@ header .bars::before {
   }
 
   .crew-details {
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -435,23 +450,24 @@ header .bars::before {
 
   .crew-details>* {
     margin-inline: auto;
+    padding-inline: var(--space-2xs);
     text-align: center;
   }
 
   .crew-details .row {
-    margin-inline: auto;
     margin-bottom: var(--space-3xl);
   }
 
   .crew-details .row-1 img {
     display: block;
-    width: 300px;
+    width: 160px;
     max-width: 100%;
     /* Full width on small screens */
     height: auto;
     /* Maintain aspect ratio */
     border-radius: 50%;
     margin-inline: auto;
-
+    margin-bottom: var(--space-2xs);
+    /* Added margin for spacing */
   }
 }
