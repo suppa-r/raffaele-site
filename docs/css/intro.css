@@ -17,7 +17,6 @@
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
-  /* This link points to the Utopia type calculator, a tool for generating fluid typography values. */
   /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1500,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
   /* Step -1: 13.3333px → 15.0038px */
@@ -73,7 +72,7 @@
   /*----------Monoton Font Family-----------*/
 
   --ff-monoton-regular: "Monoton", sans-serif;
-  --font-weight-regular: 400;
+  --font-wight-regular: 400;
   --font-style-regular: normal;
 }
 
@@ -176,28 +175,26 @@ body:before {
 }
 
 header {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-inline: var(--space-m-l);
-}
-
-header p {
-  color: hsl(var(--clr-white));
-  font-size: var(--step-0);
 }
 
 header .logo {
   display: flex;
-  align-items: center;
-  padding: var(--space-xs-s) var(--space-xs-s);
+}
+
+header .logo p {
+  padding-right: var(--space-xs-s);
+  margin: 0;
   font-size: var(--step-0);
 }
 
-header .logo span {
-  font-size: var(--step-0);
+header .logo p span {
   color: hsl(var(--clr-span));
-  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+  padding-left: 0;
+  font-size: var(--step-0);
+  padding-right: var(--space-xs-s);
 }
 
 header .bars {
@@ -206,15 +203,21 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin-right: 10px;
   display: none;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-25px) rotate(0deg);
 }
 
 header .bars.is-active {
+  display: block;
+  transition: 0.5s;
   width: 35px;
   transform-origin: right;
-  transform: translateY(15px) rotate(45deg);
+  transform: translate(0px 0px) rotate(45deg);
 }
+
 
 header .bars::after,
 header .bars::before {
@@ -237,41 +240,48 @@ header .bars::before {
 }
 
 .nav-links {
+  background: transparent;
   display: flex;
   flex-direction: row;
-  list-style: none;
-  margin: 0;
-}
-
-.nav-links .open {
-  display: none;
+  justify-content: center;
+  gap: var(--space-xs-s);
+  padding: 0 var(--space-xs-s);
+  transition: 0.5s;
+  opacity: 1;
 }
 
 .nav-links li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  padding: 0 var(--space-2xs-xs);
-  margin: 0;
+  transition: all 0.3s ease-in-out;
+  color: hsl(var(--clr-white));
 }
 
 .nav-links li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: hsl(var(--clr-accent));
+  justify-content: center;
+  text-decoration: none;
+  color: hsl(var(--clr-white));
+  font-size: var(--step--1);
 }
 
 .nav-links li a span {
   font-size: var(--step--1);
-  color: hsl(var(--clr-accent));
   letter-spacing: 1px;
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
 }
 
-.nav-links svg {
-  height: var(--space-xs-s);
-  width: var(--space-xs-s);
-  color: hsl(var(--clr-light));
+.nav-links li svg {
+  height: 1.3rem;
+  width: 1.3rem;
+  color: hsl(var(--clr-white));
   transition: all 0.3s ease-in-out;
+  border-radius: 50%;
 }
 
 .intro {
@@ -290,16 +300,23 @@ header .bars::before {
   padding-left: var(--space-xs-s);
 }
 
+.intro h1,
+.intro h2,
+.intro h3 {
+  margin: 0;
+  padding: 0;
+}
+
 .intro .enjoy {
   font-size: var(--step-1);
   color: hsl(var(--clr-white));
   text-shadow: 10px 5px 6px hsl(var(--clr-white));
   text-align: center;
   /* Center the text *
-padding: 0.2rem 1rem;
-/* Add padding for a rounded container effect */
+  padding: 0.2rem 1rem;
+  /* Add padding for a rounded container effect */
   /* Make the container rounded */
-  background: transparent;
+  background: rgba(255, 255, 255, .0);
   /* Optional: Add a subtle background */
   margin-inline: auto;
   /* Ensure the padding and border-radius apply */
@@ -308,9 +325,6 @@ padding: 0.2rem 1rem;
 .intro .ya {
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
-  text-shadow: 10px 5px 6px hsl(var(--clr-white));
-  text-align: center;
-  margin-inline: auto;
 }
 
 .text-layer {
@@ -333,80 +347,56 @@ padding: 0.2rem 1rem;
 
   100% {
     text-shadow: 0px 5px 10px rgb(255, 255, 255),
+      /* Reduced vertical offset */
       0px 15px 20px rgb(255, 255, 255),
+      /* Reduced vertical offset */
       0px 25px 5px rgb(232, 235, 238);
+    /* Reduced vertical offset */
   }
 }
 
 @media only screen and (max-width: 768px) {
-
-  /* Mobile styles */
-  header {
-    flex-direction: column;
-    align-items: center;
-    padding: var(--space-s-m);
-  }
-
   header .logo {
-    display: flex;
-    align-items: center;
-    padding: var(--space-xs-s) var(--space-xs-s);
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 0 var(--space-xs-s);
+    margin-inline: auto;
   }
 
   header .bars {
     display: block;
-    cursor: pointer;
-    margin-right: var(--space-s-m);
+    transition: 0.5s;
+    width: 35px;
+    margin-left: var(--space-l-xl);
+    margin-top: var(--space-s-m);
   }
 
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: hsl(var(--clr-dark));
-    padding: var(--space-s-m);
-    gap: var(--space-m);
-    /* Added gap between items */
-    box-shadow: var(--shadow);
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-m-l);
+
+    transform: translate(-50% 50%);
+    opacity: 0;
+    pointer-events: all;
   }
 
-  .nav-links li {
-    margin: 0;
-    padding: var(--space-xs);
-    /* Added padding to each item */
+  .nav-links .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50% 50%);
+    transition: 0.5s;
+
   }
 
   .intro {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .intro>* {
-    margin-inline: auto;
-    padding-inline: var(--space-2xs);
-    text-align: center;
-  }
-
-  .intro .row {
-    margin-bottom: var(--space-3xl);
-  }
-
-  .intro .row-1 img {
-    display: block;
-    width: 160px;
-    max-width: 100%;
-    /* Full width on small screens */
-    height: auto;
-    /* Maintain aspect ratio */
-    border-radius: 50%;
-    margin-inline: auto;
-    margin-bottom: var(--space-2xs);
-    /* Added margin for spacing */
+    padding: var(--space-xs-s) var(--space-xs-s);
   }
 }
