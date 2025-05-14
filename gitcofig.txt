@@ -1,0 +1,17 @@
+# To resolve issues with your .gitconfig file, ensure it has the correct format.
+# Here is a basic example of a .gitconfig file:
+
+[user]
+  name = suppa-r
+  email = supparaffaele43@gmail.com
+
+[core]
+  editor = code --wait
+
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  cm = commit
+
+# Save this file as .gitconfig in your home directory.
