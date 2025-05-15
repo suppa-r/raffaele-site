@@ -111,6 +111,7 @@ html {
   font-optical-sizing: var(--font-optical-sizing);
   font-style: var(--font-style);
   font-feature-settings: var(--font-variation-settings);
+  font-size: var(--step--1);
 }
 
 .sr-only {
