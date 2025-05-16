@@ -414,6 +414,24 @@ li img {
     margin-inline: auto;
   }
 
+  .dot-indicators>* {
+    width: var(--space-3xl);
+    /* fixed width */
+    height: var(--space-xl);
+    /* fixed height */
+    border-radius: 50%;
+    cursor: pointer;
+    border: 0;
+    background-color: hsl(var(--clr-white) / .5);
+    transition: all 0.3s ease-in-out;
+    /* smooth transition */
+  }
+
+  .dot-indicators>*:hover,
+  .dot-indicators>*:focus {
+    background-color: hsl(var(--clr-white) / .5);
+  }
+
   .crew-details {
     display: grid;
     /* or flex, if you prefer */
