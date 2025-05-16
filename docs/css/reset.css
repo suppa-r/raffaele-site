@@ -53,13 +53,8 @@ a {
 	text-decoration: none;
 	color: inherit;
 	/* Prevent color change on hover */
-	transition: all 0.2s ease;
+	transition: all 0.2s ease-in-out;
 	/* Smooth transition for all properties */
-}
-
-a:hover,
-a:focus {
-	color: inherit;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -82,11 +77,20 @@ label {
 	overflow: hidden;
 }
 
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+}
+
 p {
 	margin-block: 0.1em;
 	margin-inline: 0;
 	line-height: 1.3;
-	letter-spacing: 0.05em;
+	letter-spacing: 0.04em;
 	text-rendering: optimizeLegibility;
 	text-wrap: balance;
 	overflow-wrap: break-word;
@@ -114,15 +118,6 @@ canvas {
 a:not([class]) {
 	text-decoration-skip-ink: auto;
 	color: currentColor;
-}
-
-/* make form elements easier to work with */
-input,
-button,
-textarea,
-select {
-	font-family: inherit;
-	font-size: inherit;
 }
 
 /* Make sure textareas without a rows attribute are not tiny */
