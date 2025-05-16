@@ -300,9 +300,9 @@ li img {
 }
 
 .dot-indicators>* {
-  width: var(--space-2xl-3xl);
+  width: var(--space-3xl);
   /* fixed width */
-  height: var(--space-l-xl);
+  height: var(--space-xl);
   /* fixed height */
   border-radius: 50%;
   cursor: pointer;
@@ -414,29 +414,6 @@ li img {
     margin-inline: auto;
   }
 
-  .dot-indicators>* {
-    width: var(--space-3xl);
-    /* fixed width */
-    height: var(--space-2xl);
-    /* fixed height */
-    border-radius: 50%;
-    cursor: pointer;
-    border: 0;
-    transition: all 0.3s ease-in-out;
-    /* smooth transition */
-  }
-
-  .tab-list {
-    display: flex;
-    justify-content: center;
-    margin-inline: auto;
-  }
-
-  .dot-indicators>*:hover,
-  .dot-indicators>*:focus {
-    background-color: hsl(var(--clr-white) / .5);
-  }
-
   .crew-details {
     display: grid;
     /* or flex, if you prefer */
@@ -444,13 +421,14 @@ li img {
     margin-inline: auto;
     text-align: center;
     min-height: 100%;
+    padding-inline: var(--space-2xs);
     /* Ensure it takes full height */
     overflow: hidden;
   }
 
   .crew-details .row-1 img {
     display: block;
-    width: 200px;
+    width: 170px;
     max-width: 100%;
     height: auto;
     object-fit: cover;
