@@ -283,43 +283,15 @@ li img {
   display: none;
 }
 
+/* Make .intro take full viewport height */
 .intro {
-  display: flex;
-  flex-direction: column;
   min-height: 100svh;
-  margin-inline: auto;
-  text-align: center;
-  overflow: hidden;
-}
-
-.intro p span {
-  color: hsl(var(--clr-span));
-  padding-left: var(--space-xs-s);
-}
-
-.intro h1,
-.intro h2,
-.intro h3 {
-  margin: 0;
-  padding: 0;
-}
-
-.intro .enjoy {
-  font-size: var(--step-1);
-  color: hsl(var(--clr-white));
-  text-shadow: 10px 5px 6px hsl(var(--clr-white));
-  text-align: center;
-  /* Center the text *
-  padding: 0.2rem 1rem;
-  /* Add padding for a rounded container effect */
-  /* Make the container rounded */
-  background: rgba(255, 255, 255, .0);
-  /* Optional: Add a subtle background */
-  margin-inline: auto;
-  /* Ensure the padding and border-radius apply */
+  height: 100svh;
 }
 
 .dot-indicators {
+  max-height: 4rem;
+  /* Set a minimum height */
   display: flex;
   justify-content: center;
   background-color: transparent;
@@ -332,19 +304,9 @@ li img {
   /* fixed width */
   height: var(--space-l-xl);
   /* fixed height */
-  display: flex;
-  /* enable flexbox */
-  align-items: center;
-  /* vertical centering */
-  justify-content: center;
-  /* horizontal centering */
-  font-size: var(--step--1);
   border-radius: 50%;
   cursor: pointer;
   border: 0;
-  background-color: hsl(var(--clr-white));
-  /* semi-transparent */
-  color: hsl(var(--clr-dark));
   transition: all 0.3s ease-in-out;
   /* smooth transition */
 }
@@ -360,26 +322,22 @@ li img {
   background-color: hsl(var(--clr-white) / .5);
 }
 
+/* Make .crew-details fill the grid area */
 .crew-details {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  /* or flex, if you prefer */
+  grid-template-columns: repeat(2, 1fr);
   margin-inline: auto;
-  padding: var(--space-2xl-3xl) var(--space-2xs-xs);
-  gap: var(--space-s-m);
   text-align: center;
-  font-size: var(--step--1);
-  min-height: 100svh;
+  min-height: 100%;
+  /* Ensure it takes full height */
+  overflow: hidden;
 }
 
-.crew-details>* {
-  flex: 1;
-  flex-direction: row;
-  min-width: 0;
-  margin-inline: auto;
-  /*padding: var(--space-2xs-xs) var(--space-2xs-xs);*/
-  text-align: center;
+.crew-details .row-1,
+.crew-details .row {
+  display: flex;
+  flex-direction: column;
 }
 
 .crew-details .row-1 img {
@@ -390,6 +348,11 @@ li img {
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
+}
+
+.crew-details p span {
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs-s);
 }
 
 .section-title {
@@ -440,18 +403,14 @@ li img {
     transition: all 0.3s ease-in-out;
   }
 
-  .intro {
-    flex-direction: column;
-    min-height: 100svh;
-    margin-inline: auto;
-    text-align: center;
-    overflow: hidden;
-  }
-
   .crew-details {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     margin-inline: auto;
     text-align: center;
+    min-height: 100%;
+    /* Ensure it takes full height */
+    overflow: hidden;
   }
 
   .crew-details .row-1 img {
@@ -461,7 +420,7 @@ li img {
     height: auto;
     object-fit: cover;
     border-radius: 50%;
-    margin: auto;
+    margin-inline: auto;
   }
 
   .crew-details .row {
