@@ -424,6 +424,8 @@ li img {
     border: 0;
     transition: all 0.3s ease-in-out;
     /* smooth transition */
+    background-color: hsl(var(--clr-white) / .5);
+    color: hsl(var(--clr-white));
   }
 
   .tab-list {
@@ -437,16 +439,23 @@ li img {
     background-color: hsl(var(--clr-white) / .5);
   }
 
+  /* Make .crew-details fill the grid area */
   .crew-details {
     display: grid;
     /* or flex, if you prefer */
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin-inline: auto;
     text-align: center;
     min-height: 100%;
-    padding-inline: var(--space-2xs);
     /* Ensure it takes full height */
     overflow: hidden;
+  }
+
+  .crew-details .row-1,
+  .crew-details .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   .crew-details .row-1 img {
@@ -457,12 +466,6 @@ li img {
     object-fit: cover;
     border-radius: 50%;
     margin-inline: auto;
-  }
-
-  .crew-details .row {
-    text-align: center;
-    margin-inline: auto;
-    margin-bottom: var(--space-3xl);
   }
 }
 
