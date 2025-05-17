@@ -235,7 +235,7 @@ nav a {
 
 svg {
   width: var(--space-xs-s);
-  fill: hsl(var(--clr-white));
+  git init fill: hsl(var(--clr-white));
   transition: all 0.3s ease-in-out;
   padding-bottom: var(--space-3xs-2xs);
 }
