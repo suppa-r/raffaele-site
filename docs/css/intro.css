@@ -1,0 +1,402 @@
+:root {
+  --sp: 5s;
+  /* ------------------------------------------------- */
+  /* ------------------ Custom Colors ---------------- */
+  /* ------------------------------------------------- */
+
+  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
+
+  --clr-dark: 0, 0%, 0%;
+  --clr-light: 195, 70%, 90%;
+  --clr-span: 195, 36%, 45%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
+
+  /* -------------------------------------------------------- */
+  /* ------------------ Custom Font-Sizes ------------------- */
+  /* -------------------------------------------------------- */
+
+  /* Step -1: 13.3333px → 15.0038px */
+  --step--1: clamp(0.8333rem, 0.805rem + 0.1416vw, 0.9377rem);
+  /* Step 0: 16px → 20px */
+  --step-0: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
+  /* Step 1: 19.2px → 26.66px */
+  --step-1: clamp(1.2rem, 1.0736rem + 0.6322vw, 1.6663rem);
+  /* Step 2: 23.04px → 35.5378px */
+  --step-2: clamp(1.44rem, 1.2282rem + 1.0591vw, 2.2211rem);
+  /* Step 3: 27.648px → 47.3719px */
+  --step-3: clamp(1.728rem, 1.3937rem + 1.6715vw, 2.9607rem);
+  /* Step 4: 33.1776px → 63.1467px */
+  --step-4: clamp(2.0736rem, 1.5656rem + 2.5398vw, 3.9467rem);
+
+  /* ------------------------------------------------------- */
+  /* ----------------- Custom Space-Sizes ------------------ */
+  /* ------------------------------------------------------- */
+
+  /* One-up pairs */
+
+  /* Space 3xs-2xs: 4px → 9px */
+  --space-3xs-2xs: clamp(0.25rem, 0.1394rem + 0.5531vw, 0.5625rem);
+  /* Space 2xs-xs: 8px → 14px */
+  --space-2xs-xs: clamp(0.5rem, 0.3673rem + 0.6637vw, 0.875rem);
+  /* Space xs-s: 12px → 18px */
+  --space-xs-s: clamp(0.75rem, 0.6173rem + 0.6637vw, 1.125rem);
+  /* Space s-m: 16px → 27px */
+  --space-s-m: clamp(1rem, 0.7566rem + 1.2168vw, 1.6875rem);
+  /* Space m-l: 24px → 36px */
+  --space-m-l: clamp(1.5rem, 1.2345rem + 1.3274vw, 2.25rem);
+  /* Space l-xl: 32px → 54px */
+  --space-l-xl: clamp(2rem, 1.5133rem + 2.4336vw, 3.375rem);
+  /* Space xl-2xl: 48px → 72px */
+  --space-xl-2xl: clamp(3rem, 2.469rem + 2.6549vw, 4.5rem);
+  /* Space 2xl-3xl: 64px → 108px */
+  --space-2xl-3xl: clamp(4rem, 3.0265rem + 4.8673vw, 6.75rem);
+  /* Space 3xl-4xl: 96px → 126px */
+  --space-3xl-4xl: clamp(6rem, 5.3363rem + 3.3186vw, 7.875rem);
+  /* Space 4xl-5xl: 112px → 144px */
+  --space-4xl-5xl: clamp(7rem, 6.292rem + 3.5398vw, 9rem);
+  /* Space 5xl-6xl: 128px → 162px */
+  --space-5xl-6xl: clamp(8rem, 7.2478rem + 3.7611vw, 10.125rem);
+  /* Space 6xl-7xl: 144px → 180px */
+  --space-6xl-7xl: clamp(9rem, 8.2035rem + 3.9823vw, 11.25rem);
+  /* Space 7xl-8xl: 160px → 198px */
+  --space-7xl-8xl: clamp(10rem, 9.1593rem + 4.2035vw, 12.375rem);
+  /* Space 8xl-9xl: 176px → 216px */
+  --space-8xl-9xl: clamp(11rem, 10.115rem + 4.4248vw, 13.5rem);
+
+  /*--------Roboto Serif Font Family--------*/
+
+  --ff-roboto-serif: "Roboto Serif", serif;
+  --font-optical-sizing: auto;
+  --font-weight: 100;
+  --font-style: italic;
+  --font-variation-settings: "wdth" 100, "GRAD" -50;
+
+  /*----------Monoton Font Family-----------*/
+
+  --ff-monoton-regular: "Monoton", sans-serif;
+  --font-wight-regular: 400;
+  --font-style-regular: normal;
+}
+
+/* --------------------------------------- */
+/* ------------  Custom Colors ----------- */
+/* --------------------------------------- */
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-span {
+  color: hsl(var(--clr-span));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
+
+html {
+  scroll-behavior: smooth;
+  line-height: 1.3;
+  /* Base line height */
+  color-scheme: dark only;
+  color: hsl(var(--clr-white));
+  font-family: var(--ff-roboto-serif);
+  font-weight: var(--font-weight);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-style: var(--font-style);
+  font-feature-settings: var(--font-variation-settings);
+  font-size: var(--step--1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark));
+  padding: .5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
+/* --------------------------------------- */
+
+body:before {
+  opacity: 1;
+  pointer-events: all;
+  content: "";
+  width: 100%;
+  /* Full viewport width */
+  height: 100vh;
+  /* Full viewport height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.664) 100%,
+      /* Transparent at the top */
+      rgba(20, 20, 20, 0.447) 100%
+      /* Darker at the bottom */
+    ),
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px;
+  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: -1;
+  /* Ensure it is behind other content */
+  overflow: hidden;
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .logo {
+  display: flex;
+  padding-block: var(--space-2xs-xs);
+  padding: var(--space-2xs-xs) 0 var(--space-2xs-xs) var(--space-xs-s);
+  align-items: center;
+}
+
+header .logo p {
+  padding-right: var(--space-xs-s);
+  margin: 0;
+  font-size: var(--step--1);
+}
+
+header .logo p span {
+  color: hsl(var(--clr-span));
+  padding-left: 0;
+  font-size: var(--step--1);
+  padding-right: var(--space-xs-s);
+}
+
+nav {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-m-l);
+  padding: var(--space-2xs-xs) var(--space-s-m) 0 var(--space-s-m);
+  background-color: transparent;
+}
+
+nav li {
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: hsl(var(--clr-white));
+}
+
+nav a {
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: hsl(var(--clr-white));
+}
+
+svg {
+  width: var(--space-m-l);
+  height: var(--space-m-l);
+  fill: hsl(var(--clr-white));
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+  list-style: none;
+  background-color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
+  border-radius: var(--space-3xs-2xs);
+  /* rounded corners */
+  transition: all 0.3s ease-in-out;
+  /* smooth transition */
+  cursor: pointer;
+  /* pointer cursor */
+  padding: 0 var(--space-2xs-xs) 0 var(--space-2xs-xs);
+}
+
+li img {
+  width: var(--space-l);
+  height: var(--space-l);
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  margin-inline: auto;
+
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  width: 100%;
+}
+
+.sidebar li svg {
+  width: var(--space-m-l);
+  height: var(--space-m-l);
+  fill: hsl(var(--clr-white));
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-button {
+  display: none;
+}
+
+main {
+  display: grid;
+  min-height: 100svh;
+}
+
+.intro {
+  margin-inline: auto;
+  padding: var(--space-2xl-3xl) var(--space-2xs-xs);
+  text-align: center;
+  overflow: hidden;
+}
+
+.intro p span {
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs-s);
+}
+
+.intro h1,
+.intro h2,
+.intro h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.intro .enjoy {
+  font-size: var(--step-1);
+  color: hsl(var(--clr-white));
+  text-shadow: 10px 5px 6px hsl(var(--clr-white));
+  text-align: center;
+  /* Center the text *
+  padding: 0.2rem 1rem;
+  /* Add padding for a rounded container effect */
+  /* Make the container rounded */
+  background: rgba(255, 255, 255, .0);
+  /* Optional: Add a subtle background */
+  margin-inline: auto;
+  /* Ensure the padding and border-radius apply */
+}
+
+.intro .ya {
+  font-size: var(--step-2);
+  color: hsl(var(--clr-span));
+}
+
+.text-layer {
+  background: linear-gradient(0deg,
+      rgb(213, 223, 230),
+      rgb(78, 115, 136),
+      rgba(65, 90, 105, 0.6),
+      rgba(142, 186, 211, 0.1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
+}
+
+@keyframes shadowDrip {
+  0% {
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.853);
+  }
+
+  100% {
+    text-shadow: 0px 5px 10px rgb(255, 255, 255),
+      /* Reduced vertical offset */
+      0px 15px 20px rgb(255, 255, 255),
+      /* Reduced vertical offset */
+      0px 25px 5px rgb(232, 235, 238);
+    /* Reduced vertical offset */
+  }
+}
+
+@media(max-width: 800px) {
+
+  .hideOnMobile {
+    display: none;
+
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  svg {
+    width: var(--space-l);
+    height: var(--space-l);
+    fill: hsl(var(--clr-white));
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@media(max-width: 400px) {
+  .sidebar {
+    width: 100%;
+  }
+}

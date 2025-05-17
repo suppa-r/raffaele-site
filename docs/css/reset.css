@@ -12,10 +12,7 @@
 
 /* min body height */
 body {
-<<<<<<< HEAD
-=======
 	display: grid;
->>>>>>> 12f0c54ebb53b69406fdb87bc1c8042ea4c29e79
 	/* Set a minimum height to prevent content from being cut off */
 	min-height: 100svh;
 	min-block-size: 100svh;
@@ -57,22 +54,10 @@ a {
 	text-decoration: none;
 	color: inherit;
 	/* Prevent color change on hover */
-<<<<<<< HEAD
-	transition: all 0.2s ease;
-	/* Smooth transition for all properties */
-}
-
-a:hover,
-a:focus {
-	color: inherit;
-}
-
-=======
 	transition: all 0.2s ease-in-out;
 	/* Smooth transition for all properties */
 }
 
->>>>>>> 12f0c54ebb53b69406fdb87bc1c8042ea4c29e79
 /* Set shorter line heights on headings and interactive elements */
 h1,
 h2,
@@ -93,8 +78,6 @@ label {
 	overflow: hidden;
 }
 
-<<<<<<< HEAD
-=======
 /* make form elements easier to work with */
 input,
 button,
@@ -104,16 +87,11 @@ select {
 	font-size: inherit;
 }
 
->>>>>>> 12f0c54ebb53b69406fdb87bc1c8042ea4c29e79
 p {
 	margin-block: 0.1em;
 	margin-inline: 0;
 	line-height: 1.3;
-<<<<<<< HEAD
-	letter-spacing: 0.05em;
-=======
 	letter-spacing: 0.04em;
->>>>>>> 12f0c54ebb53b69406fdb87bc1c8042ea4c29e79
 	text-rendering: optimizeLegibility;
 	text-wrap: balance;
 	overflow-wrap: break-word;
@@ -143,18 +121,6 @@ a:not([class]) {
 	color: currentColor;
 }
 
-<<<<<<< HEAD
-/* make form elements easier to work with */
-input,
-button,
-textarea,
-select {
-	font-family: inherit;
-	font-size: inherit;
-}
-
-=======
->>>>>>> 12f0c54ebb53b69406fdb87bc1c8042ea4c29e79
 /* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
 	min-height: 10em;
