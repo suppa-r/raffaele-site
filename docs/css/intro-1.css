@@ -17,7 +17,6 @@
   /* -------------------------------------------------------- */
   /* ------------------ Custom Font-Sizes ------------------- */
   /* -------------------------------------------------------- */
-  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1500,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
   /* Step -1: 13.3333px → 15.0038px */
   --step--1: clamp(0.8333rem, 0.805rem + 0.1416vw, 0.9377rem);
@@ -35,27 +34,37 @@
   /* ------------------------------------------------------- */
   /* ----------------- Custom Space-Sizes ------------------ */
   /* ------------------------------------------------------- */
-  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1500,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-
-  --space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4661rem + 0.1695vw, 0.625rem);
-  --space-xs: clamp(0.75rem, 0.6992rem + 0.2542vw, 0.9375rem);
-  --space-s: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
-  --space-m: clamp(1.5rem, 1.3983rem + 0.5085vw, 1.875rem);
-  --space-l: clamp(2rem, 1.8644rem + 0.678vw, 2.5rem);
-  --space-xl: clamp(3rem, 2.7966rem + 1.0169vw, 3.75rem);
-  --space-2xl: clamp(4rem, 3.7288rem + 1.3559vw, 5rem);
-  --space-3xl: clamp(6rem, 5.5932rem + 2.0339vw, 7.5rem);
 
   /* One-up pairs */
-  --space-3xs-2xs: clamp(0.25rem, 0.1483rem + 0.5085vw, 0.625rem);
-  --space-2xs-xs: clamp(0.5rem, 0.3814rem + 0.5932vw, 0.9375rem);
-  --space-xs-s: clamp(0.75rem, 0.6144rem + 0.678vw, 1.25rem);
-  --space-s-m: clamp(1rem, 0.7627rem + 1.1864vw, 1.875rem);
-  --space-m-l: clamp(1.5rem, 1.2288rem + 1.3559vw, 2.5rem);
-  --space-l-xl: clamp(2rem, 1.5254rem + 2.3729vw, 3.75rem);
-  --space-xl-2xl: clamp(3rem, 2.4576rem + 2.7119vw, 5rem);
-  --space-2xl-3xl: clamp(4rem, 3.0508rem + 4.7458vw, 7.5rem);
+
+  /* Space 3xs-2xs: 4px → 9px */
+  --space-3xs-2xs: clamp(0.25rem, 0.1394rem + 0.5531vw, 0.5625rem);
+  /* Space 2xs-xs: 8px → 14px */
+  --space-2xs-xs: clamp(0.5rem, 0.3673rem + 0.6637vw, 0.875rem);
+  /* Space xs-s: 12px → 18px */
+  --space-xs-s: clamp(0.75rem, 0.6173rem + 0.6637vw, 1.125rem);
+  /* Space s-m: 16px → 27px */
+  --space-s-m: clamp(1rem, 0.7566rem + 1.2168vw, 1.6875rem);
+  /* Space m-l: 24px → 36px */
+  --space-m-l: clamp(1.5rem, 1.2345rem + 1.3274vw, 2.25rem);
+  /* Space l-xl: 32px → 54px */
+  --space-l-xl: clamp(2rem, 1.5133rem + 2.4336vw, 3.375rem);
+  /* Space xl-2xl: 48px → 72px */
+  --space-xl-2xl: clamp(3rem, 2.469rem + 2.6549vw, 4.5rem);
+  /* Space 2xl-3xl: 64px → 108px */
+  --space-2xl-3xl: clamp(4rem, 3.0265rem + 4.8673vw, 6.75rem);
+  /* Space 3xl-4xl: 96px → 126px */
+  --space-3xl-4xl: clamp(6rem, 5.3363rem + 3.3186vw, 7.875rem);
+  /* Space 4xl-5xl: 112px → 144px */
+  --space-4xl-5xl: clamp(7rem, 6.292rem + 3.5398vw, 9rem);
+  /* Space 5xl-6xl: 128px → 162px */
+  --space-5xl-6xl: clamp(8rem, 7.2478rem + 3.7611vw, 10.125rem);
+  /* Space 6xl-7xl: 144px → 180px */
+  --space-6xl-7xl: clamp(9rem, 8.2035rem + 3.9823vw, 11.25rem);
+  /* Space 7xl-8xl: 160px → 198px */
+  --space-7xl-8xl: clamp(10rem, 9.1593rem + 4.2035vw, 12.375rem);
+  /* Space 8xl-9xl: 176px → 216px */
+  --space-8xl-9xl: clamp(11rem, 10.115rem + 4.4248vw, 13.5rem);
 
   /*--------Roboto Serif Font Family--------*/
 
@@ -232,17 +241,18 @@ nav a {
 }
 
 svg {
-  width: var(--space-xs-s);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   fill: hsl(var(--clr-white));
   transition: all 0.3s ease-in-out;
-  padding-bottom: var(--space-3xs-2xs);
 }
 
 nav a:hover {
   list-style: none;
   background-color: hsl(var(--clr-span));
   color: hsl(var(--clr-white));
-  border-radius: var(--space-3xs);
+  border-radius: var(--space-3xs-2xs);
+  /* rounded corners */
   transition: all 0.3s ease-in-out;
   /* smooth transition */
   cursor: pointer;
@@ -285,6 +295,13 @@ li img {
 
 }
 
+.sidebar li svg {
+  width: var(--space-m-l);
+  height: var(--space-m-l);
+  fill: hsl(var(--clr-white));
+  transition: all 0.3s ease-in-out;
+}
+
 .menu-button {
   display: none;
 }
@@ -311,15 +328,15 @@ li img {
   background-color: transparent;
   gap: var(--space-m-l);
   margin-inline: auto;
-  padding: 0 var(--space-xs-s) var(--space-2xl-3xl) var(--space-xs-s);
 }
 
 .dot-indicators>* {
-  width: var(--space-3xl);
+  width: var(--space-3xl-4xl);
   /* fixed width */
-  height: var(--space-xl);
+  height: var(--space-1xl-2xl);
   /* fixed height */
   border-radius: 50%;
+  aspect-ratio: 1/2;
   /*background-color: hsl(var(--clr-white) / .5);
   color: hsl(var(--clr-white));*/
   cursor: pointer;
@@ -345,10 +362,10 @@ li img {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* or flex, if you prefer */
+  color: hsl(var(--clr-white));
   margin-inline: auto;
   text-align: center;
-  padding: 0 var(--space-xs-s) var(--space-3xl) var(--space-xs-s);
+  padding: var(--space-3xl) auto;
   min-height: 100vh;
 }
 
@@ -414,8 +431,8 @@ li img {
   }
 
   .crew-details {
-    display: grid;
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    margin-bottom: var(--space-2xl-3xl);
     margin-inline: auto;
   }
 
