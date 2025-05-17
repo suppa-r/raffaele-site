@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description"
+    content="Raffaele Suppa's web development portfolio showcasing innovative projects, creative designs, and coding expertise." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Raffaele Suppa" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="/docs/images/favicon-32x32-min.png" />
+  <link rel="stylesheet" href="/docs/css/reset.css" />
+  <link rel="stylesheet" href="/docs/css/intro-1.css" />
+
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <p>sometimes<span>DESIGNER</span>sometimes<span>NOT</span></p>
+    </div>
+    <nav>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960"
+              width="26">
+              <path
+                d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+            </svg></a></li>
+        <li>
+          <a href="index.html" aria-label="go to profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="448" height="512" viewBox="0 0 448 512">
+              <path fill="currentColor"
+                d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6" />
+            </svg><span>home</span></a>
+        </li>
+        <li>
+          <a href="intro-1.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>about me</span></a>
+        </li>
+        <li>
+          <a href="photography.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>revit</span></a>
+        </li>
+
+        <li>
+          <a href="photography.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>photography</span></a>
+        </li>
+        <li>
+          <a href="stuff.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>stuff</span></a>
+        </li>
+        <li>
+          <a href="contact.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>get in touch</span></a>
+        </li>
+        <li>
+          <img src="/docs/images/logo.svg" alt="profile image" />
+        </li>
+      </ul>
+      <ul>
+
+        <li class="hideOnMobile"><a href="index.html" aria-label="go to profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="448" height="512" viewBox="0 0 448 512">
+              <path fill="currentColor"
+                d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6" />
+            </svg><span>home</span></a></li>
+        <li class="hideOnMobile"><a href="intro-1.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>about me</span></a></li>
+        <li class="hideOnMobile"><a href="photography.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>revit</span></a></li>
+        <li class="hideOnMobile"><a href="photography.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>photography</span></a></li>
+        <li class="hideOnMobile"><a href="stuff.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>stuff</span></a></li>
+        <li class="hideOnMobile"><a href="contact.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>get in touch</span></a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="15"
+              viewBox="0 96 960 960" width="15">
+              <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+            </svg></a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="dot-indicators" role="tablist" aria-label="crew member list">
+      <button aria-selected="true" aria-controls="commander-tab" role="tab" data-image="commander-image"
+        tabindex="0"><span class="sr-only">The commander</span>genesis</button>
+      <button aria-selected="false" aria-controls="mission-tab" role="tab" data-image="mission-image"
+        tabindex="-1"><span class="sr-only">The mission specialist</span>beginnings</button>
+      <button aria-selected="false" aria-controls="pilot-tab" role="tab" data-image="pilot-image" tabindex="-1"><span
+          class="sr-only">The pilot</span>ryerson</button>
+    </div>
+
+    <!-- genesis -->
+    <article class="crew-details" id="commander-tab" role="tabpanel" tabindex="0">
+      <div class="row-1">
+        <h1 class="section-title">genesis</h1>
+        <img src="/docs/images/raf-2-desktop.jpg" alt="raffaele" />
+      </div>
+      <div class="row">
+        <p>This is the moment The Divine Spark of Genius, was seeded.</p>
+        <p>time-machine it into fast-forward and it's 2024</p>
+        <p>with all the bumper crops running out</p>
+        <p><em>and Jesus still loving His sinners!</em></p>
+        <p>I started teaching myself Web Design.</p>
+        <h4><strong><em>Suddenly&nbsp;&nbsp;Though</em></strong></h4>
+        <p>
+          I had changed all the light bulbs, patched all the cracks, re-read all
+          my Superman Comic Books, and was getting overwhelmed by
+        </p>
+        <h4>
+          <strong><em>**MASH** re-runs</em></strong>
+        </h4>
+        <p>(Radar, the psychic---my favorite character)</p>
+        <p>Web Design became the Million Dollar Solution</p>
+        <p>to my mounting boredom and completely outmatched it.</p>
+        <p><em>What a Relief Web Design Became</em></p>
+        <p>That education manifests itself, on this, your screen.</p>
+      </div>
+
+    </article>
+    <!--beginnings -->
+    <article hidden class="crew-details" id="mission-tab" role="tabpanel" tabindex="0">
+      <header class="flow flow--space-small">
+        <h2 class="fs-600 ff-serif uppercase">Mission Specialist</h2>
+        <p class="fs-700 uppercase ff-serif">Mark SHuttleworth</p>
+      </header>
+      <p>Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind
+        the Linux-based Ubuntu operating system. Shuttleworth became the first South
+        African to travel to space as a space tourist.</p>
+    </article>
+
+    <!-- pilot -->
+    <article hidden class="crew-details flow" id="pilot-tab" role="tabpanel" tabindex="0">
+      <header class="flow flow--space-small">
+        <h2 class="fs-600 ff-serif uppercase">Pilot</h2>
+        <p class="fs-700 uppercase ff-serif">Victor Glover</p>
+      </header>
+      <p>Pilot on the first operational flight of the SpaceX Crew Dragon to the
+        International Space Station. Glover is a commander in the U.S. Navy where
+        he pilots an F/A-18.He was a crew member of Expedition 64, and served as a
+        station systems flight engineer.</p>
+    </article>
+
+    <!-- engineer -->
+    <article hidden class="crew-details flow" id="crew-tab" role="tabpanel" tabindex="0">
+      <header class="flow flow--space-small">
+        <h2 class="fs-600 ff-serif uppercase">Flight Engineer</h2>
+        <p class="fs-700 uppercase ff-serif">Anousheh Ansari</p>
+      </header>
+      <p>Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems.
+        Ansari was the fourth self-funded space tourist, the first self-funded woman to
+        fly to the ISS, and the first Iranian in space.</p>
+    </article>
+  </main>
+  <script src="/docs/js/intro.js" defer></script>
+  <script src="/docs/js/tabs.js" defer></script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description"
+    content="Raffaele Suppa's web development portfolio showcasing innovative projects, creative designs, and coding expertise." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Raffaele Suppa" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="/docs/images/favicon-32x32-min.png" />
+  <link rel="stylesheet" href="/docs/css/reset.css" />
+  <link rel="stylesheet" href="/docs/css/intro-1.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <p>sometimes<span>DESIGNER</span>sometimes<span>NOT</span></p>
+    </div>
+    <nav>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960"
+              width="26">
+              <path
+                d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+            </svg></a></li>
+        <li>
+          <a href="index.html" aria-label="go to profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="448" height="512" viewBox="0 0 448 512">
+              <path fill="currentColor"
+                d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6" />
+            </svg><span>home</span></a>
+        </li>
+        <li>
+          <a href="intro-1.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>about me</span></a>
+        </li>
+        <li>
+          <a href="photography.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>revit</span></a>
+        </li>
+
+        <li>
+          <a href="photography.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>photography</span></a>
+        </li>
+        <li>
+          <a href="stuff.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>stuff</span></a>
+        </li>
+        <li>
+          <a href="contact.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>get in touch</span></a>
+        </li>
+        <li>
+          <img src="/docs/images/logo.svg" alt="profile image" />
+        </li>
+      </ul>
+      <ul>
+
+        <li class="hideOnMobile"><a href="index.html" aria-label="go to profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="448" height="512" viewBox="0 0 448 512">
+              <path fill="currentColor"
+                d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6" />
+            </svg><span>home</span></a></li>
+        <li class="hideOnMobile"><a href="intro-1.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>about me</span></a></li>
+        <li class="hideOnMobile"><a href="photography.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>revit</span></a></li>
+        <li class="hideOnMobile"><a href="photography.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>photography</span></a></li>
+        <li class="hideOnMobile"><a href="stuff.html" aria-label="go to contact me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64c0 247.4 200.6 448 448 448c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368c-70.4-33.3-127.4-90.3-160.7-160.7l49.3-40.3c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+            </svg><span>stuff</span></a></li>
+        <li class="hideOnMobile"><a href="contact.html" aria-label="go to revit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+              <path fill="currentColor"
+                d="M344 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24h-32c-13.3 0-24 10.7-24 24s10.7 24 24 24h32v46.4L183.3 210c-14.5 8.7-23.3 24.3-23.3 41.2V512h96v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V251.2c0-16.9-8.8-32.5-23.3-41.2L344 142.4V96h32c13.3 0 24-10.7 24-24s-10.7-24-24-24h-32zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6zM592 512c26.5 0 48-21.5 48-48v-91.6c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512z" />
+            </svg><span>get in touch</span></a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="15"
+              viewBox="0 96 960 960" width="15">
+              <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+            </svg></a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="intro">
+      <div class="dot-indicators" role="tablist" aria-label="crew member list">
+        <button aria-selected="true" aria-controls="commander-tab" role="tab" data-image="commander-image"
+          tabindex="0"><span class="sr-only">The commander</span>genesis</button>
+        <button aria-selected="false" aria-controls="mission-tab" role="tab" data-image="mission-image"
+          tabindex="-1"><span class="sr-only">The mission specialist</span>beginnings</button>
+        <button aria-selected="false" aria-controls="pilot-tab" role="tab" data-image="pilot-image" tabindex="-1"><span
+            class="sr-only">The pilot</span>ryerson</button>
+      </div>
+
+      <!-- genesis -->
+      <article class="crew-details" id="commander-tab" role="tabpanel" tabindex="0">
+        <div class="row-1">
+          <h1 class="section-title">genesis</h1>
+          <img src="/docs/images/raf-2-desktop.jpg" alt="raffaele" />
+        </div>
+        <div class="row">
+          <p>This is the moment The Divine Spark of Genius, was seeded.</p>
+          <p>time-machine it into fast-forward and it's 2024</p>
+          <p>with all the bumper crops running out</p>
+          <p><em>and Jesus still loving His sinners!</em></p>
+          <p>I started teaching myself Web Design.</p>
+          <h4><strong><em>Suddenly&nbsp;&nbsp;Though</em></strong></h4>
+          <p>
+            I had changed all the light bulbs, patched all the cracks, re-read all
+            my Superman Comic Books, and was getting overwhelmed by
+          </p>
+          <h4>
+            <strong><em>**MASH** re-runs</em></strong>
+          </h4>
+          <p>(Radar, the psychic---my favorite character)</p>
+          <p>Web Design became the Million Dollar Solution</p>
+          <p>to my mounting boredom and completely outmatched it.</p>
+          <p><em>What a Relief Web Design Became</em></p>
+          <p>That education manifests itself, on this, your screen.</p>
+        </div>
+
+      </article>
+      <!--beginnings -->
+      <article hidden class="crew-details" id="mission-tab" role="tabpanel" tabindex="0">
+        <header class="flow flow--space-small">
+          <h2 class="fs-600 ff-serif uppercase">Mission Specialist</h2>
+          <p class="fs-700 uppercase ff-serif">Mark SHuttleworth</p>
+        </header>
+        <p>Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind
+          the Linux-based Ubuntu operating system. Shuttleworth became the first South
+          African to travel to space as a space tourist.</p>
+      </article>
+
+      <!-- pilot -->
+      <article hidden class="crew-details flow" id="pilot-tab" role="tabpanel" tabindex="0">
+        <header class="flow flow--space-small">
+          <h2 class="fs-600 ff-serif uppercase">Pilot</h2>
+          <p class="fs-700 uppercase ff-serif">Victor Glover</p>
+        </header>
+        <p>Pilot on the first operational flight of the SpaceX Crew Dragon to the
+          International Space Station. Glover is a commander in the U.S. Navy where
+          he pilots an F/A-18.He was a crew member of Expedition 64, and served as a
+          station systems flight engineer.</p>
+      </article>
+
+      <!-- engineer -->
+      <article hidden class="crew-details flow" id="crew-tab" role="tabpanel" tabindex="0">
+        <header class="flow flow--space-small">
+          <h2 class="fs-600 ff-serif uppercase">Flight Engineer</h2>
+          <p class="fs-700 uppercase ff-serif">Anousheh Ansari</p>
+        </header>
+        <p>Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems.
+          Ansari was the fourth self-funded space tourist, the first self-funded woman to
+          fly to the ISS, and the first Iranian in space.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="/docs/js/intro.js"></script>
+  <script src="/docs/js/index.js"></script>
+</body>
+
+</html>
