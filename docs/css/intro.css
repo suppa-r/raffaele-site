@@ -243,7 +243,15 @@ svg {
 }
 
 nav a:hover {
+  list-style: none;
   background-color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
+  border-radius: var(--space-3xs);
+  transition: all 0.3s ease-in-out;
+  /* smooth transition */
+  cursor: pointer;
+  /* pointer cursor */
+  padding: 0 var(--space-2xs-xs) 0 var(--space-2xs-xs);
 }
 
 li img {
@@ -289,9 +297,7 @@ main {
 }
 
 .intro {
-  min-height: 100svh;
   margin-inline: auto;
-  margin-block: var(--space-2xl-3xl);
   padding: var(--space-2xl-3xl) var(--space-2xs-xs);
   text-align: center;
   overflow: hidden;

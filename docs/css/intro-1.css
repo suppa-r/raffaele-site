@@ -213,6 +213,9 @@ nav li {
   justify-content: center;
   align-items: center;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50%;
   margin: 0;
   padding: 0;
   color: hsl(var(--clr-white));
@@ -236,7 +239,15 @@ svg {
 }
 
 nav a:hover {
+  list-style: none;
   background-color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
+  border-radius: var(--space-3xs);
+  transition: all 0.3s ease-in-out;
+  /* smooth transition */
+  cursor: pointer;
+  /* pointer cursor */
+  padding: 0 var(--space-2xs-xs) 0 var(--space-2xs-xs);
 }
 
 li img {
@@ -266,10 +277,12 @@ li img {
 
 .sidebar li {
   width: 100%;
+
 }
 
 .sidebar a {
   width: 100%;
+
 }
 
 .menu-button {
@@ -278,8 +291,16 @@ li img {
 
 /* Make .intro take full viewport height */
 .intro {
-  min-height: 100svh;
-  height: 100svh;
+  margin-inline: auto;
+  margin-block: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: hsl(var(--clr-white));
+  padding: var(--space-2xl-3xl) var(--space-m-l) var(--space-2xl-3xl) var(--space-m-l);
+  text-align: center;
+  min-height: 100vh;
 }
 
 .dot-indicators {
@@ -290,6 +311,7 @@ li img {
   background-color: transparent;
   gap: var(--space-m-l);
   margin-inline: auto;
+  padding: 0 var(--space-s-m) var(--space-2xl-3xl) var(--space-s-m);
 }
 
 .dot-indicators>* {
@@ -317,14 +339,14 @@ li img {
 
 /* Make .crew-details fill the grid area */
 .crew-details {
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   /* or flex, if you prefer */
-  grid-template-columns: repeat(2, 1fr);
   margin-inline: auto;
   text-align: center;
-  min-height: 100%;
-  /* Ensure it takes full height */
-  overflow: hidden;
+  padding: var(--space-2xl-3xl) var(--space-m-l) var(--space-2xl-3xl) var(--space-m-l);
 }
 
 .crew-details .row-1 img {
@@ -392,12 +414,15 @@ li img {
     grid-template-columns: 1fr;
     margin-inline: auto;
     text-align: center;
+    padding: 0 var(--space-m-l) var(--space-2xl-3xl) var(--space-s-m);
     min-height: 100%;
-    /* Ensure it takes full height */
-    overflow: hidden;
-    padding: var(--space-2xs-xs) var(--space-s-m);
-    padding-bottom: var(--space-3xl);
-    /* Add padding at the bottom */
+  }
+
+  .crew-details .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .crew-details .row-1 img {
@@ -409,6 +434,7 @@ li img {
     border-radius: 50%;
     margin-inline: auto;
   }
+
 }
 
 @media(max-width: 400px) {

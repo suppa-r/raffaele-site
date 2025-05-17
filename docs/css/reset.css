@@ -12,6 +12,7 @@
 
 /* min body height */
 body {
+	display: grid;
 	/* Set a minimum height to prevent content from being cut off */
 	min-height: 100svh;
 	min-block-size: 100svh;
