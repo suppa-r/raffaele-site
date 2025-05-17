@@ -1,0 +1,133 @@
+/* 	/* ------------------------------------------------------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* min body height */
+body {
+	/* Set a minimum height to prevent content from being cut off */
+	min-height: 100svh;
+	min-block-size: 100svh;
+	/* Set a minimum height to prevent content from being cut off */
+	line-height: 1.25;
+	overflow: hidden;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		interpolate-size: allow-keywords;
+	}
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Set core root defaults */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	/* Prevent color change on hover */
+	transition: all 0.2s ease-in-out;
+	/* Smooth transition for all properties */
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+	margin-block: 0.2em;
+	margin-inline: 0;
+	line-height: 1.2;
+	letter-spacing: 0.05em;
+	text-rendering: optimizeLegibility;
+	text-wrap: balance;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+	overflow: hidden;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+p {
+	margin-block: 0.1em;
+	margin-inline: 0;
+	line-height: 1.3;
+	letter-spacing: 0.04em;
+	text-rendering: optimizeLegibility;
+	text-wrap: balance;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+	overflow: hidden;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+canvas {
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	height: auto;
+	object-fit: cover;
+	/* cover, contain, fill, none, scale-down */
+	background-position: center;
+	background-size: cover;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+	color: currentColor;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+	min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+	scroll-margin-block: 5ex;
+}
+
+/* End of CSS Reset */
