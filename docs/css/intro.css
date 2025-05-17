@@ -389,6 +389,7 @@ main {
 
   svg {
     width: var(--space-l);
+    height: var(--space-l);
     fill: hsl(var(--clr-white));
     transition: all 0.3s ease-in-out;
   }

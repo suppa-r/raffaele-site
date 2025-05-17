@@ -16,8 +16,6 @@
   <link rel="icon" href="/docs/images/favicon-32x32-min.png" />
   <link rel="stylesheet" href="/docs/css/reset.css" />
   <link rel="stylesheet" href="/docs/css/intro-1.css" />
-  <script src="/docs/js/intro.js" defer></script>
-  <script src="/docs/js/tabs.js" defer></script>
 </head>
 
 <body>
@@ -33,9 +31,8 @@
                 d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
             </svg></a></li>
         <li>
-        <li>
           <a href="index.html" aria-label="go to profile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="300" viewBox="0 0 448 512">
+            <svg xmlns="http://www.w3.org/2000/svg" width="448" height="512" viewBox="0 0 448 512">
               <path fill="currentColor"
                 d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6" />
             </svg><span>home</span></a>
@@ -119,79 +116,83 @@
       </ul>
     </nav>
   </header>
-  <main class="intro">
-    <div class="dot-indicators" role="tablist" aria-label="crew member list">
-      <button aria-selected="true" aria-controls="commander-tab" role="tab" data-image="commander-image"
-        tabindex="0"><span class="sr-only">The commander</span>genesis</button>
-      <button aria-selected="false" aria-controls="mission-tab" role="tab" data-image="mission-image"
-        tabindex="-1"><span class="sr-only">The mission specialist</span>beginnings</button>
-      <button aria-selected="false" aria-controls="pilot-tab" role="tab" data-image="pilot-image" tabindex="-1"><span
-          class="sr-only">The pilot</span>ryerson</button>
-    </div>
-
-    <!-- genesis -->
-    <article class="crew-details" id="commander-tab" role="tabpanel" tabindex="0">
-      <div class="row-1">
-        <h1 class="section-title">genesis</h1>
-        <img src="/docs/images/raf-2-desktop.jpg" alt="raffaele" />
-      </div>
-      <div class="row">
-        <p>This is the moment The Divine Spark of Genius, was seeded.</p>
-        <p>time-machine it into fast-forward and it's 2024</p>
-        <p>with all the bumper crops running out</p>
-        <p><em>and Jesus still loving His sinners!</em></p>
-        <p>I started teaching myself Web Design.</p>
-        <h4><strong><em>Suddenly&nbsp;&nbsp;Though</em></strong></h4>
-        <p>
-          I had changed all the light bulbs, patched all the cracks, re-read all
-          my Superman Comic Books, and was getting overwhelmed by
-        </p>
-        <h4>
-          <strong><em>**MASH** re-runs</em></strong>
-        </h4>
-        <p>(Radar, the psychic---my favorite character)</p>
-        <p>Web Design became the Million Dollar Solution</p>
-        <p>to my mounting boredom and completely outmatched it.</p>
-        <p><em>What a Relief Web Design Became</em></p>
-        <p>That education manifests itself, on this, your screen.</p>
+  <main>
+    <section class="intro">
+      <div class="dot-indicators" role="tablist" aria-label="crew member list">
+        <button aria-selected="true" aria-controls="commander-tab" role="tab" data-image="commander-image"
+          tabindex="0"><span class="sr-only">The commander</span>genesis</button>
+        <button aria-selected="false" aria-controls="mission-tab" role="tab" data-image="mission-image"
+          tabindex="-1"><span class="sr-only">The mission specialist</span>beginnings</button>
+        <button aria-selected="false" aria-controls="pilot-tab" role="tab" data-image="pilot-image" tabindex="-1"><span
+            class="sr-only">The pilot</span>ryerson</button>
       </div>
 
-    </article>
-    <!--beginnings -->
-    <article hidden class="crew-details" id="mission-tab" role="tabpanel" tabindex="0">
-      <header class="flow flow--space-small">
-        <h2 class="fs-600 ff-serif uppercase">Mission Specialist</h2>
-        <p class="fs-700 uppercase ff-serif">Mark SHuttleworth</p>
-      </header>
-      <p>Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind
-        the Linux-based Ubuntu operating system. Shuttleworth became the first South
-        African to travel to space as a space tourist.</p>
-    </article>
+      <!-- genesis -->
+      <article class="crew-details" id="commander-tab" role="tabpanel" tabindex="0">
+        <div class="row-1">
+          <h1 class="section-title">genesis</h1>
+          <img src="/docs/images/raf-2-desktop.jpg" alt="raffaele" />
+        </div>
+        <div class="row">
+          <p>This is the moment The Divine Spark of Genius, was seeded.</p>
+          <p>time-machine it into fast-forward and it's 2024</p>
+          <p>with all the bumper crops running out</p>
+          <p><em>and Jesus still loving His sinners!</em></p>
+          <p>I started teaching myself Web Design.</p>
+          <h4><strong><em>Suddenly&nbsp;&nbsp;Though</em></strong></h4>
+          <p>
+            I had changed all the light bulbs, patched all the cracks, re-read all
+            my Superman Comic Books, and was getting overwhelmed by
+          </p>
+          <h4>
+            <strong><em>**MASH** re-runs</em></strong>
+          </h4>
+          <p>(Radar, the psychic---my favorite character)</p>
+          <p>Web Design became the Million Dollar Solution</p>
+          <p>to my mounting boredom and completely outmatched it.</p>
+          <p><em>What a Relief Web Design Became</em></p>
+          <p>That education manifests itself, on this, your screen.</p>
+        </div>
 
-    <!-- pilot -->
-    <article hidden class="crew-details flow" id="pilot-tab" role="tabpanel" tabindex="0">
-      <header class="flow flow--space-small">
-        <h2 class="fs-600 ff-serif uppercase">Pilot</h2>
-        <p class="fs-700 uppercase ff-serif">Victor Glover</p>
-      </header>
-      <p>Pilot on the first operational flight of the SpaceX Crew Dragon to the
-        International Space Station. Glover is a commander in the U.S. Navy where
-        he pilots an F/A-18.He was a crew member of Expedition 64, and served as a
-        station systems flight engineer.</p>
-    </article>
+      </article>
+      <!--beginnings -->
+      <article hidden class="crew-details" id="mission-tab" role="tabpanel" tabindex="0">
+        <header class="flow flow--space-small">
+          <h2 class="fs-600 ff-serif uppercase">Mission Specialist</h2>
+          <p class="fs-700 uppercase ff-serif">Mark SHuttleworth</p>
+        </header>
+        <p>Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind
+          the Linux-based Ubuntu operating system. Shuttleworth became the first South
+          African to travel to space as a space tourist.</p>
+      </article>
 
-    <!-- engineer -->
-    <article hidden class="crew-details flow" id="crew-tab" role="tabpanel" tabindex="0">
-      <header class="flow flow--space-small">
-        <h2 class="fs-600 ff-serif uppercase">Flight Engineer</h2>
-        <p class="fs-700 uppercase ff-serif">Anousheh Ansari</p>
-      </header>
-      <p>Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems.
-        Ansari was the fourth self-funded space tourist, the first self-funded woman to
-        fly to the ISS, and the first Iranian in space.</p>
-    </article>
+      <!-- pilot -->
+      <article hidden class="crew-details flow" id="pilot-tab" role="tabpanel" tabindex="0">
+        <header class="flow flow--space-small">
+          <h2 class="fs-600 ff-serif uppercase">Pilot</h2>
+          <p class="fs-700 uppercase ff-serif">Victor Glover</p>
+        </header>
+        <p>Pilot on the first operational flight of the SpaceX Crew Dragon to the
+          International Space Station. Glover is a commander in the U.S. Navy where
+          he pilots an F/A-18.He was a crew member of Expedition 64, and served as a
+          station systems flight engineer.</p>
+      </article>
+
+      <!-- engineer -->
+      <article hidden class="crew-details flow" id="crew-tab" role="tabpanel" tabindex="0">
+        <header class="flow flow--space-small">
+          <h2 class="fs-600 ff-serif uppercase">Flight Engineer</h2>
+          <p class="fs-700 uppercase ff-serif">Anousheh Ansari</p>
+        </header>
+        <p>Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems.
+          Ansari was the fourth self-funded space tourist, the first self-funded woman to
+          fly to the ISS, and the first Iranian in space.</p>
+      </article>
+    </section>
   </main>
-  <script src="/docs/js/nav bar for intro.js"></script>
+
+  <script src="/docs/js/intro.js"></script>
+  <script src="/docs/js/index.js"></script>
 </body>
 
 </html>
