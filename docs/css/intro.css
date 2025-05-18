@@ -191,6 +191,14 @@ html {
 
 /* --------------------------------------- */
 
+body {
+  display: grid;
+}
+
+body>* {
+  container-type: inline-size;
+}
+
 body:before {
   opacity: 1;
   pointer-events: all;
@@ -223,6 +231,7 @@ body:before {
 }
 
 nav {
+  padding-block: var(--space-xs-s);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -230,13 +239,15 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  padding-block: var(--space-s);
 }
 
-nav li {
 
-  height: 50px;
+nav li {
+  padding-inline: 0 var(--space-xs-s);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav li svg {
@@ -313,8 +324,7 @@ main {
 }
 
 .intro {
-  display: flex;
-  flex-direction: column;
+  min-height: 100%;
   width: min(90%, 1200px);
   margin-inline: auto;
   text-align: center;

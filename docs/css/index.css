@@ -32,8 +32,6 @@
 	/* ----------------- Custom Space-Sizes ------------------ */
 	/* ------------------------------------------------------- */
 
-	/* One-up pairs */
-
 	/* Space xs: 12px → 14px */
 	--space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
 	/* Space s: 16px → 18px */
@@ -102,15 +100,6 @@
 	--space-11xl-12xl: clamp(14rem, 13rem + 5cqi, 16.875rem);
 	/* Space 12xl-13xl: 240px → 288px */
 	--space-12xl-13xl: clamp(15rem, 13.9565rem + 5.2174cqi, 18rem);
-
-	/* Custom pairs */
-	/* Space m-m: 24px → 27px */
-	--space-m-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
-	/* Space l-l: 32px → 36px */
-	--space-l-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
-	/* Space s-xl: 16px → 54px */
-	--space-s-xl: clamp(1rem, 0.1739rem + 4.1304cqi, 3.375rem);
-
 
 	/*--------Roboto Serif Font Family--------*/
 
@@ -203,11 +192,12 @@ body>* {
 	cursor: pointer;
 	overflow: hidden;
 	text-align: center;
+	min-height: 100svh;
 }
 
 .quote {
 	color: hsl(var(--clr-white));
-	margin-top: var(--space-3xs-2xs);
+	margin-top: var(--space-xl-2xl);
 }
 
 .title {
@@ -226,14 +216,14 @@ body>* {
 	margin-inline: auto;
 	color: hsl(var(--clr-white));
 	font-size: var(--step-1);
-	margin-top: var(--space-l-xl);
+	margin-top: var(--space-xl-2xl);
 }
 
 .content {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	max-inline-size: 50ch;
+	max-inline-size: 60ch;
 	overflow: hidden;
 	margin-inline: auto;
 }
@@ -260,7 +250,7 @@ body>* {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	max-inline-size: 50ch;
+	max-inline-size: 60ch;
 	overflow: hidden;
 	margin-inline: auto;
 }
@@ -562,7 +552,7 @@ body>* {
 
 .text-with-animation-1 {
 	position: relative;
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
 	user-select: none;
@@ -571,7 +561,7 @@ body>* {
 
 .text-with-animation-2 {
 	position: relative;
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
 	user-select: none;
@@ -580,7 +570,7 @@ body>* {
 
 .text-with-animation-3 {
 	position: relative;
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
 	user-select: none;
@@ -589,7 +579,7 @@ body>* {
 
 .text-with-animation-4 {
 	position: relative;
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	text-align: center;
 	letter-spacing: var(--space-2xs-xs);
@@ -601,7 +591,7 @@ body>* {
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	font-family: var(--ff-monoton-regular);
 	color: hsl(var(--clr-white));
-	font-size: var(--step-0);
+	font-size: var(--step-1);
 	text-align: center;
 	margin-top: var(--space-xs-s);
 	user-select: none;
