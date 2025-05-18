@@ -584,16 +584,8 @@ body>* {
 }
 
 .text-with-animation-4 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	letter-spacing: var(--space-2xs-xs);
-	user-select: none;
-	margin-top: var(--space-xs-s);
-}
-
-.text-with-animation-5 {
+	max-width: 60ch;
+	;
 	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 	font-family: var(--ff-monoton-regular);
 	color: hsl(var(--clr-white));
@@ -602,8 +594,9 @@ body>* {
 	margin-top: var(--space-xs-s);
 	user-select: none;
 	white-space: nowrap;
-	letter-spacing: var(--space-2xs-xs);
+	letter-spacing: var(--space-3xs-2xs);
 }
+
 
 @keyframes test-animation {
 	0% {

@@ -334,12 +334,9 @@ header .logo span {
 
 main {
   margin-inline: auto;
-  padding-block: var(--space-3xl);
 }
 
 .dot-indicators {
-  max-height: 4rem;
-  /* Set a minimum height */
   display: flex;
   justify-content: center;
   background-color: transparent;
@@ -348,7 +345,7 @@ main {
 }
 
 .dot-indicators>* {
-  width: var(--space-2xl-3xl);
+  width: var(--space-3xl-4xl);
   /* fixed width */
   height: var(--space-l-xl);
   /* fixed height */
@@ -381,7 +378,6 @@ main {
   color: hsl(var(--clr-white));
   margin-inline: auto;
   text-align: center;
-  padding-block: var(--space-5xl-6xl);
 }
 
 .crew-details .row-1 img {
@@ -443,14 +439,13 @@ main {
 
   .menu-button {
     display: block;
-    width: var(--space-2xl);
-    height: var(--space-2xl);
     margin-top: var(--space-xs);
   }
 
-  .dot-indicators {
+  .menu-button svg {
+    width: var(--space-2xl);
+    height: var(--space-2xl);
     margin-inline: auto;
-    padding-bottom: var(--space-2xl);
   }
 
   .crew-details {
@@ -463,7 +458,7 @@ main {
   }
 
   .crew-details .row-1 img {
-    width: 180px;
+    width: 185px;
     height: auto;
     max-width: 100%;
     object-fit: cover;

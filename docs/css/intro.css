@@ -291,7 +291,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  left: 30%;
+  left: 45%;
   height: 100svh;
   width: 250px;
   display: none;
@@ -334,14 +334,12 @@ header .logo span {
 
 main {
   margin-inline: auto;
-  padding-block: var(--space-3xl);
 }
 
 /* Make .intro take full viewport height */
 .intro {
   margin-inline: auto;
-  display: flex;
-  flex-direction: column;
+  padding-inline: var(--space-3xs);
   text-align: center;
 }
 
@@ -421,9 +419,13 @@ main {
 
   .menu-button {
     display: block;
+    margin-top: var(--space-xs);
+  }
+
+  .menu-button svg {
     width: var(--space-2xl);
     height: var(--space-2xl);
-    margin-top: var(--space-xs);
+    margin-inline: auto;
   }
 
   .intro {
