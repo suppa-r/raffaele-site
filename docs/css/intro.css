@@ -339,17 +339,18 @@ main {
 
 .intro .enjoy {
   font-size: var(--step-1);
-  color: hsl(var(--clr-white));
-  text-shadow: 10px 5px 6px hsl(var(--clr-white));
   text-align: center;
-  /* Center the text *
-  padding: 0.2rem 1rem;
-  /* Add padding for a rounded container effect */
-  /* Make the container rounded */
-  background: rgba(255, 255, 255, .0);
-  /* Optional: Add a subtle background */
   margin-inline: auto;
-  /* Ensure the padding and border-radius apply */
+  padding-block: var(--space-xs-s);
+  padding-inline: 0 var(--space-s);
+  background: linear-gradient(0deg,
+      rgb(123, 143, 158),
+      rgb(174, 190, 199),
+      rgba(186, 197, 204, 0.932),
+      rgba(195, 204, 210, 0.732));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .intro .ya {
@@ -358,6 +359,7 @@ main {
 }
 
 .text-layer {
+  font-size: var(--step-3);
   background: linear-gradient(0deg,
       rgb(213, 223, 230),
       rgb(78, 115, 136),
