@@ -431,12 +431,10 @@ main {
   }
 }
 
-
 @container(max-width: 800px) {
   header .logo {
     max-width: 100%;
     padding-left: var(--space-xs-s);
-    padding-block: var(--space-xs-s);
   }
 
   .hideOnMobile {
@@ -445,16 +443,27 @@ main {
 
   .menu-button {
     display: block;
-    margin-top: var(--space-xs-s);
+    width: var(--space-2xl);
+    height: var(--space-2xl);
+    margin-top: var(--space-xs);
   }
 
   .crew-details {
     flex-direction: column;
     align-items: center;
-    padding-block: var(--space-2xl-3xl);
-    padding-inline: var(--space-xs-s);
+    padding-bottom: var(--space-5xl);
+    padding-inline: var(--space-2xs);
     margin-inline: auto;
     text-align: center;
+  }
+
+  .crew-details .row-1 img {
+    width: 180px;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-inline: auto;
   }
 }
 
