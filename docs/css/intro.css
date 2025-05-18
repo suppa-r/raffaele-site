@@ -203,29 +203,26 @@ body:before {
   pointer-events: all;
   content: "";
   width: 100%;
-  /* Full viewport width */
   height: 100vh;
-  /* Full viewport height */
   position: fixed;
   top: 0;
   left: 0;
-  background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.664) 100%,
-      /* Transparent at the top */
-      rgba(20, 20, 20, 0.447) 100%
-      /* Darker at the bottom */
-    ),
+  background:
+    linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(rgba(0, 0, 0, 0), rgb(255, 255, 255)),
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 100%,
+      rgb(255, 255, 255) 100%),
     linear-gradient(90deg,
-      color-mix(in hsl, canvasText, transparent 70%) 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px,
-    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
+      color-mix(in hsl, canvasText, transparent 50%) 1px,
+      transparent 1px 30px) 60% 60% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px,
       transparent 1px 30px) 50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+  mask: linear-gradient(-60deg, transparent 50%, white) 60%;
   transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+  transition: transform 0.3s ease-in-out, opacity 3s ease-in-out,
     background-position 0.3s ease-in-out;
   z-index: -1;
-  /* Ensure it is behind other content */
   overflow: hidden;
 }
 
@@ -424,9 +421,6 @@ main {
 
   .menu-button {
     display: block;
-    width: var(--space-s-m);
-    height: var(--space-s-m);
-    margin-inline: auto;
     margin-top: var(--space-xs-s);
   }
 
