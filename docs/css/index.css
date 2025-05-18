@@ -18,20 +18,29 @@
 	/* ------------------ Custom Font-Sizes ------------------- */
 	/* -------------------------------------------------------- */
 
+	/* Step -1: 13.3333px → 14.4px */
 	--step--1: clamp(0.8333rem, 0.8101rem + 0.1159cqi, 0.9rem);
+	/* Step 0: 16px → 18px */
 	--step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+	/* Step 1: 19.2px → 22.5px */
 	--step-1: clamp(1.2rem, 1.1283rem + 0.3587cqi, 1.4063rem);
+	/* Step 2: 23.04px → 28.125px */
 	--step-2: clamp(1.44rem, 1.3295rem + 0.5527cqi, 1.7578rem);
+	/* Step 3: 27.648px → 35.1563px */
 	--step-3: clamp(1.728rem, 1.5648rem + 0.8161cqi, 2.1973rem);
+	/* Step 4: 33.1776px → 43.9453px */
 	--step-4: clamp(2.0736rem, 1.8395rem + 1.1704cqi, 2.7466rem);
-	--step-5: clamp(2.4883rem, 2.1597rem + 1.6433cqi, 3.4332rem);
-	--step-6: clamp(2.986rem, 2.5319rem + 2.2705cqi, 4.2915rem);
-
 
 	/* ------------------------------------------------------- */
 	/* ----------------- Custom Space-Sizes ------------------ */
 	/* ------------------------------------------------------- */
 
+	/* Space sizes are based on the Golden Ratio */
+
+	/* Space 3xs: 4px → 5px */
+	--space-3xs: clamp(0.25rem, 0.2283rem + 0.1087cqi, 0.3125rem);
+	/* Space 2xs: 8px → 9px */
+	--space-2xs: clamp(0.5rem, 0.4783rem + 0.1087cqi, 0.5625rem);
 	/* Space xs: 12px → 14px */
 	--space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
 	/* Space s: 16px → 18px */
@@ -64,10 +73,12 @@
 	--space-11xl: clamp(14rem, 13.3913rem + 3.0435cqi, 15.75rem);
 	/* Space 12xl: 240px → 270px */
 	--space-12xl: clamp(15rem, 14.3478rem + 3.2609cqi, 16.875rem);
-	/* Space 13xl: 256px → 288px */
-	--space-13xl: clamp(16rem, 15.3043rem + 3.4783cqi, 18rem);
 
 	/* One-up pairs */
+	/* Space 3xs-2xs: 4px → 9px */
+	--space-3xs-2xs: clamp(0.25rem, 0.1413rem + 0.5435cqi, 0.5625rem);
+	/* Space 2xs-xs: 8px → 14px */
+	--space-2xs-xs: clamp(0.5rem, 0.3696rem + 0.6522cqi, 0.875rem);
 	/* Space xs-s: 12px → 18px */
 	--space-xs-s: clamp(0.75rem, 0.6196rem + 0.6522cqi, 1.125rem);
 	/* Space s-m: 16px → 27px */
@@ -98,8 +109,6 @@
 	--space-10xl-11xl: clamp(13rem, 12.0435rem + 4.7826cqi, 15.75rem);
 	/* Space 11xl-12xl: 224px → 270px */
 	--space-11xl-12xl: clamp(14rem, 13rem + 5cqi, 16.875rem);
-	/* Space 12xl-13xl: 240px → 288px */
-	--space-12xl-13xl: clamp(15rem, 13.9565rem + 5.2174cqi, 18rem);
 
 	/*--------Roboto Serif Font Family--------*/
 
