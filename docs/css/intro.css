@@ -415,7 +415,6 @@ main {
   header .logo {
     max-width: 100%;
     padding-left: var(--space-xs-s);
-    padding-block: var(--space-xs-s);
   }
 
   .hideOnMobile {
@@ -424,6 +423,11 @@ main {
 
   .menu-button {
     display: block;
+  }
+
+  .intro {
+    padding-block: var(--space-3xl);
+    padding-inline: var(--space-xs);
   }
 }
 
