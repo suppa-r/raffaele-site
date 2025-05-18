@@ -190,9 +190,8 @@ html {
 }
 
 /* --------------------------------------- */
-
 body {
-  display: grid;
+  margin-inline: auto;
 }
 
 body>* {
@@ -230,86 +229,104 @@ body:before {
   overflow: hidden;
 }
 
-nav {
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header .logo {
+  max-width: 100%;
+}
+
+header .logo p {
+  max-width: 60ch;
+  padding-left: var(--space-xs-s);
+  padding-block: var(--space-xs-s);
+  font-size: var(--step-0);
+}
+
+header .logo span {
+  padding-block: var(--space-xs-s);
+  font-size: var(--step-1);
+  color: hsl(var(--clr-span));
+}
+
+nav .topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.topbar ul {
   padding-block: var(--space-xs-s);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
+.topbar li {
+  padding: 0;
 }
 
-
-nav li {
-  padding-inline: 0 var(--space-xs-s);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.topbar li svg {
+  width: var(--space-s-m);
+  height: var(--space-s-m);
+  margin-inline: auto;
+  margin-top: var(--space-xs-s);
 }
 
-nav li svg {
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-}
-
-nav a {
-  height: 100%;
-  padding: 0 30px;
+.topbar a {
+  padding: 0 var(--space-xs-s);
   text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
 }
 
-nav a:hover {
+.topbar a:hover {
   background-color: #f0f0f0;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-nav li:first-child {
-  margin-right: auto;
-  margin-left: var(--space-l);
+  border-radius: var(--space-xs-s);
+  color: hsl(var(--clr-dark));
+  transition: background-color 0.2s ease-in-out;
 }
 
 .sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
+  position: relative;
+  z-index: 9999;
+  right: 60%;
   height: 100vh;
   width: 250px;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-  list-style: none;
   display: none;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
 }
 
 .sidebar li {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--space-xs-s);
+  margin: 0 var(--space-xs-s);
+
 }
 
 .sidebar li svg {
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
+  width: var(--space-m-l);
+  height: var(--space-m-l);
+  margin-inline: auto;
 }
 
 .sidebar a {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  text-decoration: none;
+  padding: var(--space-xs-s) var(--space-xs-s);
 }
 
 .sidebar li img {
-  width: 25px;
-  height: 25px;
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   margin-inline: auto;
 }
 
@@ -319,32 +336,33 @@ nav li:first-child {
 }
 
 main {
-  min-height: 100%;
-  /* Padding for the main content */
+  margin-inline: auto;
+  padding-block: var(--space-3xl);
+  padding-inline: var(--space-s);
+  max-width: 1000px;
+  min-height: calc(100vh - var(--space-3xl));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Make .intro take full viewport height */
 .intro {
-  min-height: 100%;
-  width: min(90%, 1200px);
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
 .intro p {
-  max-width: 60ch;
+  max-width: 65ch;
   margin-inline: auto;
 }
 
 .intro p span {
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs-s);
-}
-
-.intro h1,
-.intro h2,
-.intro h3 {
-  margin: 0;
-  padding: 0;
 }
 
 .intro .enjoy {
@@ -366,6 +384,10 @@ main {
 .intro .ya {
   font-size: var(--step-2);
   color: hsl(var(--clr-span));
+}
+
+.wrapper-gradient-text {
+  margin-inline: auto;
 }
 
 .text-layer {
@@ -397,7 +419,7 @@ main {
   }
 }
 
-@media(max-width: 800px) {
+@container(max-width: 800px) {
   .hideOnMobile {
     display: none;
   }
@@ -407,7 +429,7 @@ main {
   }
 }
 
-@media(max-width: 400px) {
+@container(max-width: 400px) {
   .sidebar {
     width: 100%;
   }
