@@ -295,7 +295,7 @@ header .logo span {
   z-index: 9999;
   top: 20%;
   left: 50%;
-  height: 100vh;
+  height: 100svh;
   width: 250px;
   display: none;
   flex-direction: column;
@@ -311,8 +311,8 @@ header .logo span {
 }
 
 .sidebar li svg {
-  width: var(--space-s-m);
-  height: var(--space-s-m);
+  width: var(--space-m-l);
+  height: var(--space-m);
   margin-inline: auto;
   margin-bottom: var(--space-xs-s);
 }
