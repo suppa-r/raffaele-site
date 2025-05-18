@@ -184,20 +184,21 @@ html {
 
 body>* {
 	container-type: inline-size;
+	max-inline-size: 100%;
+	margin-inline: auto;
 }
 
 .wrapper {
-	width: min(90%, 1200px);
 	margin-inline: auto;
 	cursor: pointer;
 	overflow: hidden;
-	text-align: center;
 	min-height: 100svh;
 }
 
 .quote {
+	text-align: center;
 	color: hsl(var(--clr-white));
-	margin-top: var(--space-xl-2xl);
+	margin-top: var(--space-xs-s);
 }
 
 .title {
@@ -211,12 +212,10 @@ body>* {
 .curve-container {
 	display: flex;
 	flex-direction: column;
-	row-gap: var(--space-2xl-3xl);
-	justify-content: center;
-	margin-inline: auto;
+	gap: var(--space-2xl-3xl);
+	padding-top: var(--space-3xl-4xl);
 	color: hsl(var(--clr-white));
 	font-size: var(--step-1);
-	margin-top: var(--space-xl-2xl);
 }
 
 .content {
@@ -238,12 +237,11 @@ body>* {
 .content div span {
 	margin-inline: auto;
 	animation-duration: var(--sp);
-	width: var(--space-l-xl);
+	padding: var(--space-s-m);
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
 	text-shadow: 0 0 7px hsl(var(--clr-white));
-
 }
 
 .content-1 {
@@ -265,11 +263,11 @@ body>* {
 .content-1 div span {
 	margin-inline: auto;
 	animation-duration: var(--sp);
-	width: var(--space-l-xl);
+	padding: var(--space-s-m);
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	text-shadow: 0 0 1px hsl(var(--clr-white));
+	text-shadow: 0 0 7px hsl(var(--clr-white));
 }
 
 @keyframes show-hide {
@@ -277,7 +275,6 @@ body>* {
 	0%,
 	100% {
 		opacity: 0;
-		transform: scale(0.8);
 		transform: scale(0.8);
 	}
 
@@ -537,7 +534,6 @@ body>* {
 	margin-inline: auto;
 	overflow: hidden;
 	color: hsl(var(--clr-white));
-	margin-top: var(--space-2xl-3xl);
 }
 
 .text-with-animation {
