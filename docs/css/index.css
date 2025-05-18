@@ -543,6 +543,7 @@ body>* {
 	margin-inline: auto;
 	overflow: hidden;
 	color: hsl(var(--clr-white));
+	max-width: 70ch;
 }
 
 .text-with-animation {
