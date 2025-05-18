@@ -251,10 +251,11 @@ header .logo span {
   color: hsl(var(--clr-span));
 }
 
-nav .topbar {
+.topbar {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  padding-block: var(--space-2xs-xs);
+  padding-inline: var(--space-xs-s);
 }
 
 .topbar ul {
@@ -271,7 +272,7 @@ nav .topbar {
   width: var(--space-s-m);
   height: var(--space-s-m);
   margin-inline: auto;
-  margin-top: var(--space-xs-s);
+  margin-bottom: var(--space-xs-s);
 }
 
 .topbar a {
@@ -310,9 +311,10 @@ nav .topbar {
 }
 
 .sidebar li svg {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-s-m);
+  height: var(--space-s-m);
   margin-inline: auto;
+  margin-bottom: var(--space-xs-s);
 }
 
 .sidebar a {
@@ -336,7 +338,6 @@ nav .topbar {
 main {
   margin-inline: auto;
   padding-block: var(--space-3xl);
-  padding-inline: var(--space-s);
 }
 
 /* Make .intro take full viewport height */
