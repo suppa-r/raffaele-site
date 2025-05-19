@@ -293,7 +293,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  right: 50%;
+  right: 0;
   height: 100svh;
   width: 250px;
   display: none;
@@ -433,7 +433,7 @@ main {
   }
 
   .intro {
-    padding-bottom: var(--space-7xl);
+    padding-bottom: var(--space-6xl);
     padding-inline: var(--space-3xs);
   }
 }

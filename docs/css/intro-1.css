@@ -293,7 +293,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  right: 50%;
+  right: 0;
   height: 100svh;
   width: 250px;
   display: none;
@@ -460,6 +460,8 @@ main {
 
   .crew-details {
     flex-direction: column;
+    padding-bottom: var(--space-3xl);
+    margin-inline: auto;
   }
 
   .crew-details .row-1 img {
