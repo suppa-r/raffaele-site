@@ -449,13 +449,9 @@ main {
 
   .menu-button {
     display: block;
-    margin-top: var(--space-xs);
-  }
-
-  .menu-button svg {
     width: var(--space-2xl);
     height: var(--space-2xl);
-    margin-inline: auto;
+    margin-top: var(--space-xs);
   }
 
   .crew-details {
@@ -464,8 +460,11 @@ main {
   }
 
   .crew-details .row-1 img {
-    width: 210px;
-    height: auto;
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-xs);
+    display: block;
+    width: 190px;
+
     max-width: 100%;
     object-fit: cover;
     border-radius: 50%;

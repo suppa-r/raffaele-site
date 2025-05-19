@@ -424,13 +424,9 @@ main {
 
   .menu-button {
     display: block;
-    margin-top: var(--space-xs);
-  }
-
-  .menu-button svg {
     width: var(--space-2xl);
     height: var(--space-2xl);
-    margin-inline: auto;
+    margin-top: var(--space-xs);
   }
 
   .intro {
