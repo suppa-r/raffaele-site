@@ -246,6 +246,8 @@ header .logo span {
   padding-block: var(--space-xs-s);
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
+  padding-left: var(--space-3xs);
+  padding-right: var(--space-xs);
 }
 
 .topbar {
@@ -357,16 +359,9 @@ main {
   font-size: var(--step-1);
   text-align: center;
   margin-inline: auto;
-  padding-block: var(--space-xs-s);
+  padding-block: var(--space-3xs-2xs);
   padding-inline: 0 var(--space-s);
-  background: linear-gradient(0deg,
-      rgb(123, 143, 158),
-      rgb(174, 190, 199),
-      rgba(186, 197, 204, 0.932),
-      rgba(195, 204, 210, 0.732));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: hsl(var(--clr-span));
 }
 
 .intro .ya {
