@@ -293,7 +293,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  right: 50%;
+  left: 80%;
   height: 100svh;
   width: 250px;
   display: none;
@@ -377,7 +377,7 @@ main {
   min-height: 100svh;
   display: flex;
   flex-direction: row;
-  padding: var(--space-3xl-4xl) 0;
+  padding-bottom: var(--space-8xl-9xl);
   margin-inline: auto;
   color: hsl(var(--clr-white));
   text-align: center;
@@ -385,7 +385,7 @@ main {
 
 .crew-details>* {
   margin-inline: auto;
-  padding: var(--space-xs-s);
+  padding: 0 var(--space-2xs-xs);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -460,12 +460,11 @@ main {
 
   .crew-details {
     flex-direction: column;
-    padding: var(--space-3xl-4xl) 0;
     margin-inline: auto;
   }
 
   .crew-details .row-1 img {
-    width: 170px;
+    width: 260px;
     height: auto;
     max-width: 100%;
     object-fit: cover;
