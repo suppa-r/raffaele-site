@@ -414,26 +414,31 @@ main {
 }
 
 @container(max-width: 800px) {
-  header .logo {
-    max-width: 100%;
-  }
 
-  .hideOnMobile {
-    display: none;
-  }
-
-  .menu-button {
-    display: block;
-    width: var(--space-2xl);
-    height: var(--space-2xl);
-    margin-top: var(--space-xs);
-  }
-
-  .intro {
-    padding-bottom: var(--space-6xl);
-    padding-inline: var(--space-3xs);
+  header .logo p,
+  header .logo span {
+    font-size: var(--step--1);
+    width: 100%;
+    margin-inline: auto;
   }
 }
+
+.hideOnMobile {
+  display: none;
+}
+
+.menu-button {
+  display: block;
+  width: var(--space-2xl);
+  height: var(--space-2xl);
+  margin-top: var(--space-xs);
+}
+
+.intro {
+  padding-bottom: var(--space-6xl);
+  padding-inline: var(--space-3xs);
+}
+
 
 @container(max-width: 400px) {
   .sidebar {

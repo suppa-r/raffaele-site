@@ -237,7 +237,7 @@ header .logo {
 
 header .logo p {
   max-width: 60ch;
-  padding-left: var(--space-xs-s);
+  padding-left: var(--space-3xs-2xs);
   padding-block: var(--space-xs-s);
   font-size: var(--step-0);
 }
@@ -247,7 +247,7 @@ header .logo span {
   font-size: var(--step-1);
   color: hsl(var(--clr-span));
   padding-left: var(--space-3xs);
-  padding-right: var(--space-xs);
+  padding-right: var(--space-2xs);
 }
 
 .topbar {
@@ -438,10 +438,22 @@ main {
   }
 }
 
+
 @container(max-width: 800px) {
-  header .logo {
-    max-width: 100%;
+
+  header .logo p {
+    font-size: var(--step-0);
+    width: 100%;
+    margin-inline: auto;
   }
+
+  header .logo span {
+    font-size: var(--step-0);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+
 
   .hideOnMobile {
     display: none;
@@ -464,13 +476,15 @@ main {
     padding-bottom: var(--space-xs);
     display: block;
     width: 190px;
-
     max-width: 100%;
     object-fit: cover;
     border-radius: 50%;
     margin-inline: auto;
   }
 }
+
+
+
 
 @container(max-width: 400px) {
   .sidebar {
