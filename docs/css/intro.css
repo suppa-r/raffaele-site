@@ -268,10 +268,10 @@ header .logo span {
 }
 
 .topbar li svg {
-  width: var(--space-s-m);
-  height: var(--space-s-m);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
   margin-inline: auto;
-  margin-bottom: var(--space-xs-s);
+  margin-bottom: var(--space-2xs-xs);
 }
 
 .topbar a {
@@ -310,10 +310,10 @@ header .logo span {
 }
 
 .sidebar li svg {
-  width: var(--space-m-l);
-  height: var(--space-m);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
   margin-inline: auto;
-  margin-bottom: var(--space-xs-s);
+  margin-bottom: var(--space-2xs-xs);
 }
 
 .sidebar a {
