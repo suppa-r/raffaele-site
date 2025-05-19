@@ -293,7 +293,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  left: 50%;
+  left: 60%;
   height: 100svh;
   width: 250px;
   display: none;
@@ -334,6 +334,11 @@ header .logo span {
   display: none;
 }
 
+li .menu-button svg {
+  width: 48px;
+  height: 48px;
+}
+
 main {
   margin-inline: auto;
 }
@@ -349,14 +354,12 @@ main {
 .dot-indicators>* {
   width: var(--space-3xl-4xl);
   /* fixed width */
-  height: var(--space-l-xl);
+  height: var(--space-m-l);
   /* fixed height */
   border-radius: 50%;
-  aspect-ratio: 1/2;
-  /*background-color: hsl(var(--clr-white) / .5);
-  color: hsl(var(--clr-white));*/
+  background-color: hsl(var(--clr-white) / .5);
+  margin-block: var(--space-3xs-2xs);
   cursor: pointer;
-  /*border: 0;*/
   transition: all 0.2s ease-in-out;
   /* smooth transition */
 }
@@ -369,7 +372,7 @@ main {
 
 .dot-indicators>*:hover,
 .dot-indicators>*:focus {
-  background-color: hsl(var(--clr-white) / .5);
+  background-color: hsl(var(--clr-white) / .7);
 }
 
 /* Make .crew-details fill the grid area */

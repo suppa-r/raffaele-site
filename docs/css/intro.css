@@ -293,7 +293,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  left: 50%;
+  left: 60%;
   height: 100svh;
   width: 250px;
   display: none;
@@ -334,10 +334,14 @@ header .logo span {
   display: none;
 }
 
+li .menu-button svg {
+  width: 48px;
+  height: 48px;
+}
+
 main {
   margin-inline: auto;
 }
-
 
 /* Make .crew-details fill the grid area */
 .intro {
