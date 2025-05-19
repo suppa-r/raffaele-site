@@ -401,9 +401,9 @@ main {
   margin-inline: auto;
 }
 
-.crew-details p {
-  max-width: 70ch;
+.crew-details .row {
   margin-inline: auto;
+  padding-inline: var(--space-3xs-2xs);
 }
 
 .crew-details p span {
