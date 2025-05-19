@@ -293,7 +293,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  right: 0%;
+  right: 50%;
   height: 100svh;
   width: 250px;
   display: none;
@@ -441,7 +441,6 @@ main {
 @container(max-width: 800px) {
   header .logo {
     max-width: 100%;
-    padding-left: var(--space-xs-s);
   }
 
   .hideOnMobile {
