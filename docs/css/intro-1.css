@@ -484,23 +484,15 @@ main {
     display: none;
   }
 
-  .menu-button {
-    display: block;
-    width: var(--space-2xl);
-    height: var(--space-2xl);
-  }
-
-
   .crew-details {
     flex-direction: column;
     margin-inline: auto;
   }
 
   .crew-details .row-1 img {
-    padding-top: var(--space-xs);
-    padding-bottom: var(--space-xs);
     display: block;
-    width: 190px;
+    width: 180px;
+    height: auto;
     max-width: 100%;
     object-fit: cover;
     border-radius: 50%;
