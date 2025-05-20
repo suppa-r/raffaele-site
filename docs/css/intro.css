@@ -340,11 +340,6 @@ header .logo span {
   display: none;
 }
 
-li .menu-button svg {
-  width: 48px;
-  height: 48px;
-}
-
 main {
   margin-inline: auto;
 }
