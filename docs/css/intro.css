@@ -293,12 +293,14 @@ header .logo span {
 }
 
 .sidebar {
-  position: relative;
+  position: fixed;
   z-index: 9999;
   top: 10%;
-  left: 45%;
+  left: 50%;
+  transform: translateX(-50%);
   height: 100svh;
-  width: 250px;
+  width: min(90vw, 350px);
+  /* Responsive width, adjust as needed */
   display: none;
   flex-direction: column;
   margin-inline: auto;
