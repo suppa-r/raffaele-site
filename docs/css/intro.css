@@ -296,7 +296,7 @@ header .logo span {
   position: relative;
   z-index: 9999;
   top: 10%;
-  left: 60%;
+  left: 50%;
   height: 100svh;
   width: 250px;
   display: none;
