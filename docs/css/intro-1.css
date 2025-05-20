@@ -269,10 +269,13 @@ header .logo span {
 
 
 .topbar li svg {
+  display: inline-block;
   width: var(--space-l-xl);
   height: var(--space-l-xl);
   margin-inline: auto;
   margin-bottom: var(--space-2xs-xs);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 
@@ -312,11 +315,15 @@ header .logo span {
 }
 
 .sidebar li svg {
+  display: inline-block;
   width: var(--space-l-xl);
   height: var(--space-l-xl);
   margin-inline: auto;
   margin-bottom: var(--space-2xs-xs);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
+
 
 .sidebar a {
   display: flex;
@@ -457,8 +464,6 @@ main {
     width: 100%;
     margin-inline: auto;
   }
-
-
 
   .hideOnMobile {
     display: none;
