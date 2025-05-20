@@ -456,7 +456,6 @@ main {
     display: block;
     width: var(--space-2xl);
     height: var(--space-2xl);
-    margin-top: var(--space-xs);
   }
 
   .crew-details {

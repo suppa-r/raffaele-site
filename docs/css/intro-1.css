@@ -267,12 +267,14 @@ header .logo span {
   padding: 0;
 }
 
+
 .topbar li svg {
-  width: var(--space-s-m);
-  height: var(--space-s-m);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
   margin-inline: auto;
-  margin-bottom: var(--space-xs-s);
+  margin-bottom: var(--space-2xs-xs);
 }
+
 
 .topbar a {
   padding: 0 var(--space-xs-s);
@@ -310,10 +312,10 @@ header .logo span {
 }
 
 .sidebar li svg {
-  width: var(--space-m-l);
-  height: var(--space-m);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
   margin-inline: auto;
-  margin-bottom: var(--space-xs-s);
+  margin-bottom: var(--space-2xs-xs);
 }
 
 .sidebar a {
@@ -466,8 +468,8 @@ main {
     display: block;
     width: var(--space-2xl);
     height: var(--space-2xl);
-    margin-top: var(--space-xs);
   }
+
 
   .crew-details {
     flex-direction: column;
