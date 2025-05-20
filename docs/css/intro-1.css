@@ -299,8 +299,6 @@ header .logo span {
   left: 50%;
   transform: translateX(-50%);
   height: 100svh;
-  width: min(90vw, 350px);
-  /* Responsive width, adjust as needed */
   display: none;
   flex-direction: column;
   margin-inline: auto;
@@ -395,15 +393,13 @@ main {
 
 /* Make .crew-details fill the grid area */
 .crew-details {
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-m-l);
   margin-inline: auto;
-  margin-block: var(--space-2xl-3xl);
+  margin-block: var(--space-8xl-9xl);
   width: 60em;
   max-width: 100%;
-  min-height: 100svh;
 }
 
 .crew-details>* {
@@ -481,6 +477,11 @@ main {
     padding-bottom: var(--space-xs);
   }
 
+  .crew-details {
+    text-align: center;
+    margin-block: var(--space-11xl);
+  }
+
   .crew-details .row-1 img {
     display: block;
     width: 180px;
@@ -491,16 +492,7 @@ main {
     margin-inline: auto;
   }
 
-  .crew-details {
-    display: block;
-  }
 
-  .crew-details>* {
-    margin-inline: auto;
-    max-width: 100%;
-    padding: 0 var(--space-3xs);
-    text-align: center;
-  }
 }
 
 

@@ -299,8 +299,6 @@ header .logo span {
   left: 50%;
   transform: translateX(-50%);
   height: 100svh;
-  width: min(90vw, 350px);
-  /* Responsive width, adjust as needed */
   display: none;
   flex-direction: column;
   margin-inline: auto;
