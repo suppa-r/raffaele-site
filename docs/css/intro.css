@@ -322,13 +322,6 @@ header .logo span {
   background-size: 100% 100%;
 }
 
-/*.sidebar li svg {
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
-  margin-inline: auto;
-  margin-bottom: var(--space-2xs-xs);
-}*/
-
 .sidebar a {
   display: flex;
   flex-direction: column;

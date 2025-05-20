@@ -267,7 +267,6 @@ header .logo span {
   padding: 0;
 }
 
-
 .topbar li svg {
   display: inline-block;
   width: var(--space-l-xl);
@@ -277,7 +276,6 @@ header .logo span {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-
 
 .topbar a {
   padding: 0 var(--space-xs-s);
@@ -324,7 +322,6 @@ header .logo span {
   background-size: 100% 100%;
 }
 
-
 .sidebar a {
   display: flex;
   flex-direction: column;
@@ -356,8 +353,6 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  padding-block: var(--space-2xs-xs);
   padding-inline: var(--space-xs-s);
   margin-inline: auto;
   gap: var(--space-m-l);
@@ -375,7 +370,6 @@ main {
   background-color: hsl(var(--clr-white));
   color: hsl(var(--clr-dark));
   border: none;
-  margin-bottom: var(--space-2xs-xs);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   /* smooth transition */
@@ -478,8 +472,18 @@ main {
     margin-inline: auto;
   }
 
+  .menu-button {
+    display: block;
+  }
+
+
+
   .hideOnMobile {
     display: none;
+  }
+
+  .dot-indicators {
+    padding-bottom: var(--space-xs);
   }
 
   .crew-details {
@@ -497,8 +501,6 @@ main {
     margin-inline: auto;
   }
 }
-
-
 
 
 @container(max-width: 400px) {
