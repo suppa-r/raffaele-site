@@ -354,19 +354,28 @@ main {
 
 .dot-indicators {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  background-color: transparent;
-  gap: var(--space-m-l);
+  align-items: center;
+  padding-block: var(--space-2xs-xs);
+  padding-inline: var(--space-xs-s);
   margin-inline: auto;
+  gap: var(--space-m-l);
+
 }
 
 .dot-indicators>* {
+  appearance: inherit;
+  -webkit-appearance: none;
   width: var(--space-3xl-4xl);
   /* fixed width */
-  height: var(--space-m-l);
+  height: var(--space-l-xl);
   /* fixed height */
   border-radius: 50%;
-  background-color: hsl(var(--clr-white) / .5);
+  background-color: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark));
+  border: none;
+  box-shadow: var(--shadow);
   margin-block: var(--space-3xs-2xs);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -382,6 +391,12 @@ main {
 .dot-indicators>*:hover,
 .dot-indicators>*:focus {
   background-color: hsl(var(--clr-white) / .7);
+  box-shadow: var(--shadow);
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+  /* smooth transition */
+  cursor: pointer;
+  color: hsl(var(--clr-white));
 }
 
 /* Make .crew-details fill the grid area */
