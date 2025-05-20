@@ -369,14 +369,13 @@ main {
   -webkit-appearance: none;
   width: var(--space-3xl-4xl);
   /* fixed width */
-  height: var(--space-l-xl);
+  height: var(--space-xl-2xl);
   /* fixed height */
   border-radius: 50%;
   background-color: hsl(var(--clr-white));
   color: hsl(var(--clr-dark));
   border: none;
-  box-shadow: var(--shadow);
-  margin-block: var(--space-3xs-2xs);
+  margin-bottom: var(--space-2xs-xs);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   /* smooth transition */
@@ -390,9 +389,8 @@ main {
 
 .dot-indicators>*:hover,
 .dot-indicators>*:focus {
-  background-color: hsl(var(--clr-white) / .7);
-  box-shadow: var(--shadow);
-  transform: scale(1.1);
+  background-color: hsl(var(--clr-white) / .4);
+  transform: scale(1.3);
   transition: all 0.2s ease-in-out;
   /* smooth transition */
   cursor: pointer;
