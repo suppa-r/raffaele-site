@@ -286,8 +286,9 @@ header .logo span {
   align-items: center;
 }
 
-.topbar a:hover {
-  background-color: #f0f0f0;
+.topbar a:hover,
+.topbar a :focus {
+  background-color: hsl(var(--clr-white) / .1);
   border-radius: var(--space-xs-s);
   color: hsl(var(--clr-dark));
   transition: background-color 0.2s ease-in-out;
