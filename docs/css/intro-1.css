@@ -483,8 +483,12 @@ main {
   }
 
   .crew-details img {
-    width: 200px;
+    width: 160px;
     height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-inline: auto;
   }
 }
 
