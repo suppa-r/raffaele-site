@@ -357,8 +357,8 @@ main {
   flex-direction: row;
   justify-content: center;
   margin-inline: auto;
+  width: 100%;
   gap: var(--space-m-l);
-
 }
 
 .dot-indicators>* {
@@ -472,7 +472,12 @@ main {
   }
 
   .dot-indicators {
-    padding-bottom: var(--space-xs);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-inline: auto;
+    width: 100%;
+    gap: var(--space-m-l);
   }
 
   .crew-details {
@@ -493,7 +498,7 @@ main {
   }
 
   .crew-details .row {
-    padding-bottom: var(--space-3xl);
+    padding-bottom: var(--space-4xl);
   }
 }
 
