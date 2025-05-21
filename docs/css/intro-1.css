@@ -482,8 +482,8 @@ main {
     text-align: center;
   }
 
-  .crew-details img {
-    width: 160px;
+  .crew-details .row-1 img {
+    width: 170px;
     height: auto;
     max-width: 100%;
     object-fit: cover;
