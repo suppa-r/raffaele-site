@@ -491,6 +491,10 @@ main {
     border-radius: 50%;
     margin-inline: auto;
   }
+
+  .crew-details .row {
+    padding-bottom: var(--space-3xl);
+  }
 }
 
 @container(max-width: 400px) {
