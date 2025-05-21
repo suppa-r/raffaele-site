@@ -480,6 +480,11 @@ main {
     padding: 0;
     text-align: center;
   }
+
+  .crew-details img {
+    width: 200px;
+    height: auto;
+  }
 }
 
 @container(max-width: 400px) {
