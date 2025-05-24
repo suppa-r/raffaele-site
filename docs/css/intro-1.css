@@ -255,13 +255,11 @@ header .logo span {
 .topbar {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 2%;
   display: flex;
-  justify-content: flex-end;
-  /* aligns content to the right */
-  align-items: center;
+  padding-block: var(--space-2xs-xs);
+  padding-inline: var(--space-xs-s);
   z-index: 9999;
-  width: 100%;
   flex-direction: row;
 }
 
