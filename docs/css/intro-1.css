@@ -407,7 +407,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
-  padding-top: var(--space-10xl-11xl);
+  padding-top: var(--space-11xl-12xl);
   min-height: 100svh;
 }
 
@@ -423,6 +423,10 @@ main {
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
+}
+
+.crew-details.genesis p {
+  margin-block: 0.12em;
 }
 
 .crew-details.genesis p span {
@@ -479,9 +483,24 @@ main {
   margin-inline: auto;
 }
 
-.crew-details.beginnings p span {
+.crew-details.beginnings h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  font-size: var(--step-1);
+  margin-block: var(--space-2xs);
+  /* Add margin for spacing */
+}
+
+
+.crew-details.beginnings .ya {
+  font-size: var(--step-2);
   color: hsl(var(--clr-span));
-  padding-left: var(--space-xs-s);
+}
+
+.crew-details.beginnings p {
+  margin-block: 0.12em;
 }
 
 .crew-details.ryerson {
@@ -562,25 +581,23 @@ main {
     display: none;
   }
 
-  .crew-details {
+  .crew-details.genesis,
+  .crew-details.beginnings {
     grid-template-columns: 1fr;
     margin-inline: auto;
     min-height: 100svh;
-    padding: 0;
     text-align: center;
   }
 
-  .crew-details .row-1 img {
+  .crew-details.genesis .row-1 img,
+  .crew-details.beginnings .row img {
+    display: block;
     width: 180px;
     height: auto;
     max-width: 100%;
     object-fit: cover;
     border-radius: 50%;
     margin-inline: auto;
-  }
-
-  .crew-details .row {
-    padding-bottom: var(--space-4xl);
   }
 }
 
