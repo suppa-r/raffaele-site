@@ -1,22 +1,33 @@
-const logo = document.querySelector('.logo');
-const crewdetails = document.querySelectorAll('.crew-details');
-const sidebar = document.querySelector('.sidebar');
-const menubutton = document.querySelector('.menu-button');
-const dotindictors = document.querySelector('.dot-indicators');
+document.querySelectorAll('.dot-indicators button').forEach(btn => {
+  btn.addEventListener('click', function () {
+    // Hide all tab panels
+    document.querySelectorAll('.crew-details').forEach(panel => {
+      panel.hidden = true;
+    });
 
-function showSidebar() {
-  sidebar.style.display = 'flex';
-  logo.style.display = 'none';
-  crewdetails.forEach(el => el.style.display = 'none');
-  menubutton.style.display = 'none';
-  dotindictors.style.display = 'none';
-}
+    // Deselect all buttons
+    document.querySelectorAll('.dot-indicators button').forEach(b => {
+      b.setAttribute('aria-selected', 'false');
+      b.tabIndex = -1;
+    });
 
-function hideSidebar() {
-  sidebar.style.display = 'none';
-  logo.style.display = 'block';
-  crewdetails.forEach(el => el.style.display = 'block');
-  menubutton.style.display = 'block';
-  dotindictors.style.display = 'block';
- }
+    // Show the selected panel (by class)
+    const panelClass = this.getAttribute('aria-controls');
+    const panel = document.querySelector(`.crew-details.${panelClass}`);
+    if (panel) {
+      panel.hidden = false;
+      panel.tabIndex = 0;
+      panel.focus();
+    }
 
+    // Mark this button as selected
+    this.setAttribute('aria-selected', 'true');
+    this.tabIndex = 0;
+    this.focus();
+  });
+});
+
+// Optionally, hide all but the first panel on page load:
+document.querySelectorAll('.crew-details').forEach((panel, i) => {
+  panel.hidden = i !== 0;
+});
