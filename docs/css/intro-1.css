@@ -374,6 +374,7 @@ main {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   /* smooth transition */
+  font-size: var(--step--1);
 }
 
 .tab-list {
