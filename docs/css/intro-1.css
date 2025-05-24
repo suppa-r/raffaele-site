@@ -354,7 +354,7 @@ li .menu-button svg {
 
 main {
   margin-inline: auto;
-  padding: 0;
+  padding-inline: var(--space-8xl-9xl);
 }
 
 .dot-indicators {
@@ -408,7 +408,7 @@ main {
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
   padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-8xl-9xl);
+  padding-inline: var(--space-9xl-10xl);
   min-height: 100svh;
 }
 
@@ -468,7 +468,7 @@ main {
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
   padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-8xl-9xl);
+  padding-inline: var(--space-9xl-10xl);
   min-height: 100svh;
 }
 
@@ -504,6 +504,7 @@ h3 {
 
 .crew-details.beginnings p {
   margin-block: 0.12em;
+  max-width: 55ch;
 }
 
 .crew-details.ryerson {
@@ -511,7 +512,7 @@ h3 {
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
   padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-8xl-9xl);
+  padding-inline: var(--space-9xl-10xl);
   min-height: 100svh;
 }
 
@@ -529,6 +530,11 @@ h3 {
   margin-inline: auto;
 }
 
+.crew-details.ryerson p {
+  margin-block: 0.12em;
+  max-width: 55ch;
+}
+
 .crew-details.ryerson p span {
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs-s);
@@ -539,7 +545,7 @@ h3 {
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
   padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-8xl-9xl);
+  padding-inline: var(--space-9xl-10xl);
   min-height: 100svh;
 }
 
@@ -555,6 +561,11 @@ h3 {
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
+}
+
+.crew-details.skills p {
+  margin-block: 0.12em;
+  max-width: 55ch;
 }
 
 .crew-details.skills p span {
