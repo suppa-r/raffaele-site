@@ -11,6 +11,9 @@ document.querySelectorAll('.dot-indicators button').forEach(btn => {
       b.tabIndex = -1;
     });
 
+    // Show the topbar (if it was hidden)
+    document.querySelector('.topbar').style.display = 'flex';
+
     // Show the selected panel (by class)
     const panelClass = this.getAttribute('aria-controls');
     const panel = document.querySelector(`.crew-details.${panelClass}`);
