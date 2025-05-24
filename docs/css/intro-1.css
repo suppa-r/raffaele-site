@@ -395,19 +395,22 @@ main {
 }
 
 /* Make .crew-details fill the grid area */
-.crew-details {
+.crew-details-genesis {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
-  padding: var(--space-4xl-5xl);
+  padding: var(--space-4xl);
+  padding-block: var(--space-4xl);
+  padding-inline: var(--space-4xl);
+
   min-height: 100svh;
 }
 
-.crew-details>* {
+.crew-details-genesis>* {
   margin-inline: auto;
 }
 
-.crew-details .row-1 img {
+.crew-details-genesis .row-1 img {
   display: block;
   width: 400px;
   height: auto;
@@ -417,7 +420,7 @@ main {
   margin-inline: auto;
 }
 
-.crew-details p span {
+.crew-details-genesis p span {
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs-s);
 }
@@ -447,6 +450,48 @@ main {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.crew-details-beginnings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-inline: auto;
+  padding: var(--space-4xl);
+  padding-block: var(--space-4xl);
+  padding-inline: var(--space-4xl);
+  min-height: 100svh;
+}
+
+.crew-details-beginnings>* {
+  margin-inline: auto;
+}
+
+.crew-details-beginnings .row-1 img {
+  display: block;
+  width: 400px;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-inline: auto;
+}
+
+.crew-details-beginnings p span {
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-xs-s);
+}
+
+.section-title {
+  font-size: var(--step-1);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s linear infinite;
+  background-size: 350%;
+  margin-inline: auto;
+  width: 100%;
+  text-align: center;
 }
 
 
