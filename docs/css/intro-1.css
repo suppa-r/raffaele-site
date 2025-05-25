@@ -432,6 +432,48 @@ h3 {
     display: none
   }
 
+  .dot-indicators {
+    z-index: 99999;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-inline: auto;
+    gap: var(--space-s-m);
+    pointer-events: all;
+  }
+
+  .dot-indicators button[aria-selected=true] {
+    background: hsl(var(--clr-white) / .4);
+    color: hsl(var(--clr-white));
+    border-radius: var(--space-xs-s);
+    border: hsl(var(--clr-light));
+    padding: var(--space-2xs-xs) var(--space-2xs-xs);
+    font-size: var(--step--1)
+  }
+
+  .dot-indicators button {
+    background: hsl(var(--clr-white));
+    border: hsl(var(--clr-light));
+    padding-inline: var(--space-m-l);
+    color: hsl(var(--clr-dark));
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .1s;
+    pointer-events: all
+  }
+
+  .dot-indicators>:focus,
+  .dot-indicators>:hover {
+    background-color: hsl(var(--clr-white) / .4);
+    transform: scale(1.3);
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    color: hsl(var(--clr-light));
+    padding: var(--space-xs-s) var(--space-xs-s);
+    border-radius: var(--space-s-m)
+  }
+
 
   .crew-details.beginnings,
   .crew-details.genesis {

@@ -1,5 +1,5 @@
 document.querySelectorAll('.dot-indicators button').forEach(btn => {
-  btn.addEventListener('click', function () {
+  btn.addEventListener('click', 'touch start', function () {
     // Hide all tab panels
     document.querySelectorAll('.crew-details').forEach(panel => {
       panel.hidden = true;
@@ -34,3 +34,12 @@ document.querySelectorAll('.dot-indicators button').forEach(btn => {
 document.querySelectorAll('.crew-details').forEach((panel, i) => {
   panel.hidden = i !== 0;
 });
+
+
+
+
+
+
+
+
+

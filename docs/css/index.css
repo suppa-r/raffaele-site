@@ -1,19 +1,23 @@
 :root {
 	--sp: 5s;
+
 	--gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
 	--glass-bg: rgba(255, 255, 255, 0.05);
 	--shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
+
 	--clr-dark: 0, 0%, 0%;
 	--clr-light: 195, 70%, 90%;
 	--clr-span: 195, 36%, 45%;
 	--clr-white: 0, 0%, 100%;
 	--clr-accent: 231, 77%, 90%;
+
 	--step--1: clamp(0.8333rem, 0.8101rem + 0.1159cqi, 0.9rem);
 	--step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
 	--step-1: clamp(1.2rem, 1.1283rem + 0.3587cqi, 1.4063rem);
 	--step-2: clamp(1.44rem, 1.3295rem + 0.5527cqi, 1.7578rem);
 	--step-3: clamp(1.728rem, 1.5648rem + 0.8161cqi, 2.1973rem);
 	--step-4: clamp(2.0736rem, 1.8395rem + 1.1704cqi, 2.7466rem);
+
 	--space-3xs: clamp(0.25rem, 0.2283rem + 0.1087cqi, 0.3125rem);
 	--space-2xs: clamp(0.5rem, 0.4783rem + 0.1087cqi, 0.5625rem);
 	--space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
@@ -32,6 +36,7 @@
 	--space-10xl: clamp(13rem, 12.4348rem + 2.8261cqi, 14.625rem);
 	--space-11xl: clamp(14rem, 13.3913rem + 3.0435cqi, 15.75rem);
 	--space-12xl: clamp(15rem, 14.3478rem + 3.2609cqi, 16.875rem);
+
 	--space-3xs-2xs: clamp(0.25rem, 0.1413rem + 0.5435cqi, 0.5625rem);
 	--space-2xs-xs: clamp(0.5rem, 0.3696rem + 0.6522cqi, 0.875rem);
 	--space-xs-s: clamp(0.75rem, 0.6196rem + 0.6522cqi, 1.125rem);
@@ -49,11 +54,13 @@
 	--space-9xl-10xl: clamp(12rem, 11.087rem + 4.5652cqi, 14.625rem);
 	--space-10xl-11xl: clamp(13rem, 12.0435rem + 4.7826cqi, 15.75rem);
 	--space-11xl-12xl: clamp(14rem, 13rem + 5cqi, 16.875rem);
+
 	--ff-roboto-serif: "Roboto Serif", serif;
 	--font-optical-sizing: auto;
 	--font-weight: 100;
 	--font-style: italic;
 	--font-variation-settings: "wdth" 100, "GRAD" -50;
+
 	--ff-monoton-regular: "Monoton", sans-serif;
 	--font-wight-regular: 400;
 	--font-style-regular: normal
