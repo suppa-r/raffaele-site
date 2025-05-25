@@ -1,153 +1,82 @@
 :root {
 	--sp: 5s;
-	/* ------------------------------------------------- */
-	/* ------------------ Custom Colors ---------------- */
-	/* ------------------------------------------------- */
-
 	--gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
 	--glass-bg: rgba(255, 255, 255, 0.05);
 	--shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
-
 	--clr-dark: 0, 0%, 0%;
 	--clr-light: 195, 70%, 90%;
 	--clr-span: 195, 36%, 45%;
 	--clr-white: 0, 0%, 100%;
 	--clr-accent: 231, 77%, 90%;
-
-	/* -------------------------------------------------------- */
-	/* ------------------ Custom Font-Sizes ------------------- */
-	/* -------------------------------------------------------- */
-
-	/* Step -1: 13.3333px → 14.4px */
 	--step--1: clamp(0.8333rem, 0.8101rem + 0.1159cqi, 0.9rem);
-	/* Step 0: 16px → 18px */
 	--step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-	/* Step 1: 19.2px → 22.5px */
 	--step-1: clamp(1.2rem, 1.1283rem + 0.3587cqi, 1.4063rem);
-	/* Step 2: 23.04px → 28.125px */
 	--step-2: clamp(1.44rem, 1.3295rem + 0.5527cqi, 1.7578rem);
-	/* Step 3: 27.648px → 35.1563px */
 	--step-3: clamp(1.728rem, 1.5648rem + 0.8161cqi, 2.1973rem);
-	/* Step 4: 33.1776px → 43.9453px */
 	--step-4: clamp(2.0736rem, 1.8395rem + 1.1704cqi, 2.7466rem);
-
-	/* ------------------------------------------------------- */
-	/* ----------------- Custom Space-Sizes ------------------ */
-	/* ------------------------------------------------------- */
-
-	/* Space sizes are based on the Golden Ratio */
-
-	/* Space 3xs: 4px → 5px */
 	--space-3xs: clamp(0.25rem, 0.2283rem + 0.1087cqi, 0.3125rem);
-	/* Space 2xs: 8px → 9px */
 	--space-2xs: clamp(0.5rem, 0.4783rem + 0.1087cqi, 0.5625rem);
-	/* Space xs: 12px → 14px */
 	--space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
-	/* Space s: 16px → 18px */
 	--space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-	/* Space m: 24px → 27px */
 	--space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
-	/* Space l: 32px → 36px */
 	--space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
-	/* Space xl: 48px → 54px */
 	--space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
-	/* Space 2xl: 64px → 72px */
 	--space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
-	/* Space 3xl: 96px → 108px */
 	--space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
-	/* Space 4xl: 112px → 126px */
 	--space-4xl: clamp(7rem, 6.6957rem + 1.5217cqi, 7.875rem);
-	/* Space 5xl: 128px → 144px */
 	--space-5xl: clamp(8rem, 7.6522rem + 1.7391cqi, 9rem);
-	/* Space 6xl: 144px → 162px */
 	--space-6xl: clamp(9rem, 8.6087rem + 1.9565cqi, 10.125rem);
-	/* Space 7xl: 160px → 180px */
 	--space-7xl: clamp(10rem, 9.5652rem + 2.1739cqi, 11.25rem);
-	/* Space 8xl: 176px → 198px */
 	--space-8xl: clamp(11rem, 10.5217rem + 2.3913cqi, 12.375rem);
-	/* Space 9xl: 192px → 216px */
 	--space-9xl: clamp(12rem, 11.4783rem + 2.6087cqi, 13.5rem);
-	/* Space 10xl: 208px → 234px */
 	--space-10xl: clamp(13rem, 12.4348rem + 2.8261cqi, 14.625rem);
-	/* Space 11xl: 224px → 252px */
 	--space-11xl: clamp(14rem, 13.3913rem + 3.0435cqi, 15.75rem);
-	/* Space 12xl: 240px → 270px */
 	--space-12xl: clamp(15rem, 14.3478rem + 3.2609cqi, 16.875rem);
-
-	/* One-up pairs */
-	/* Space 3xs-2xs: 4px → 9px */
 	--space-3xs-2xs: clamp(0.25rem, 0.1413rem + 0.5435cqi, 0.5625rem);
-	/* Space 2xs-xs: 8px → 14px */
 	--space-2xs-xs: clamp(0.5rem, 0.3696rem + 0.6522cqi, 0.875rem);
-	/* Space xs-s: 12px → 18px */
 	--space-xs-s: clamp(0.75rem, 0.6196rem + 0.6522cqi, 1.125rem);
-	/* Space s-m: 16px → 27px */
 	--space-s-m: clamp(1rem, 0.7609rem + 1.1957cqi, 1.6875rem);
-	/* Space m-l: 24px → 36px */
 	--space-m-l: clamp(1.5rem, 1.2391rem + 1.3043cqi, 2.25rem);
-	/* Space l-xl: 32px → 54px */
 	--space-l-xl: clamp(2rem, 1.5217rem + 2.3913cqi, 3.375rem);
-	/* Space xl-2xl: 48px → 72px */
 	--space-xl-2xl: clamp(3rem, 2.4783rem + 2.6087cqi, 4.5rem);
-	/* Space 2xl-3xl: 64px → 108px */
 	--space-2xl-3xl: clamp(4rem, 3.0435rem + 4.7826cqi, 6.75rem);
-	/* Space 3xl-4xl: 96px → 126px */
 	--space-3xl-4xl: clamp(6rem, 5.3478rem + 3.2609cqi, 7.875rem);
-	/* Space 4xl-5xl: 112px → 144px */
 	--space-4xl-5xl: clamp(7rem, 6.3043rem + 3.4783cqi, 9rem);
-	/* Space 5xl-6xl: 128px → 162px */
 	--space-5xl-6xl: clamp(8rem, 7.2609rem + 3.6957cqi, 10.125rem);
-	/* Space 6xl-7xl: 144px → 180px */
 	--space-6xl-7xl: clamp(9rem, 8.2174rem + 3.913cqi, 11.25rem);
-	/* Space 7xl-8xl: 160px → 198px */
 	--space-7xl-8xl: clamp(10rem, 9.1739rem + 4.1304cqi, 12.375rem);
-	/* Space 8xl-9xl: 176px → 216px */
 	--space-8xl-9xl: clamp(11rem, 10.1304rem + 4.3478cqi, 13.5rem);
-	/* Space 9xl-10xl: 192px → 234px */
 	--space-9xl-10xl: clamp(12rem, 11.087rem + 4.5652cqi, 14.625rem);
-	/* Space 10xl-11xl: 208px → 252px */
 	--space-10xl-11xl: clamp(13rem, 12.0435rem + 4.7826cqi, 15.75rem);
-	/* Space 11xl-12xl: 224px → 270px */
 	--space-11xl-12xl: clamp(14rem, 13rem + 5cqi, 16.875rem);
-
-	/*--------Roboto Serif Font Family--------*/
-
 	--ff-roboto-serif: "Roboto Serif", serif;
 	--font-optical-sizing: auto;
 	--font-weight: 100;
 	--font-style: italic;
 	--font-variation-settings: "wdth" 100, "GRAD" -50;
-
-	/*----------Monoton Font Family-----------*/
-
 	--ff-monoton-regular: "Monoton", sans-serif;
 	--font-wight-regular: 400;
-	--font-style-regular: normal;
+	--font-style-regular: normal
 }
 
-
-/* --------------------------------------- */
-/* ------------  Custom Colors ----------- */
-/* --------------------------------------- */
-
 .text-dark {
-	color: hsl(var(--clr-dark));
+	color: hsl(var(--clr-dark))
 }
 
 .text-light {
-	color: hsl(var(--clr-light));
+	color: hsl(var(--clr-light))
 }
 
 .text-span {
-	color: hsl(var(--clr-span));
+	color: hsl(var(--clr-span))
 }
 
 .text-white {
-	color: hsl(var(--clr-white));
+	color: hsl(var(--clr-white))
 }
 
 .text-accent {
-	color: hsl(var(--clr-accent));
+	color: hsl(var(--clr-accent))
 }
 
 .sr-only {
@@ -159,8 +88,15 @@
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
-	/* added line */
-	border: 0;
+	border: 0
+}
+
+.content,
+.content-1,
+.skip-to-content,
+.wrapper,
+body>* {
+	margin-inline: auto
 }
 
 .skip-to-content {
@@ -169,106 +105,86 @@
 	background: hsl(var(--clr-white));
 	color: hsl(var(--clr-dark));
 	padding: .5em 1em;
-	margin-inline: auto;
 	transform: translateY(-100%);
-	transition: transform 250ms ease-in;
+	transition: transform 250ms ease-in
+}
+
+.container,
+.curve-container {
+	display: flex;
+	color: hsl(var(--clr-white));
+	padding-top: var(--space-3xl-4xl)
+}
+
+.text-with-animation,
+.text-with-animation-4 {
+	font-family: var(--ff-monoton-regular);
+	white-space: nowrap;
+	padding-block: var(--space-3xs-2xs)
 }
 
 .skip-to-content:focus {
-	transform: translateY(0);
+	transform: translateY(0)
 }
 
 html {
 	scroll-behavior: smooth;
 	line-height: 1.2;
-	/* Base line height */
 	color-scheme: dark only;
 	color: hsl(var(--clr-white));
 	font-family: var(--ff-roboto-serif);
 	font-weight: var(--font-weight);
 	font-optical-sizing: var(--font-optical-sizing);
 	font-style: var(--font-style);
-	font-feature-settings: var(--font-variation-settings);
+	font-feature-settings: var(--font-variation-settings)
 }
 
 body>* {
 	container-type: inline-size;
-	max-inline-size: 100%;
-	margin-inline: auto;
+	max-inline-size: 100%
 }
 
 .wrapper {
-	margin-inline: auto;
 	cursor: pointer;
 	overflow: hidden;
-	min-height: 100svh;
+	min-height: 100svh
 }
 
 .quote {
 	text-align: center;
 	color: hsl(var(--clr-white));
-	margin-top: var(--space-xs-s);
+	margin-top: var(--space-xs-s)
 }
 
+.author,
 .title {
-	font-size: var(--step--1);
-}
-
-.author {
-	font-size: var(--step--1);
+	font-size: var(--step--1)
 }
 
 .curve-container {
-	display: flex;
 	flex-direction: column;
 	gap: var(--space-2xl-3xl);
-	padding-top: var(--space-3xl-4xl);
-	color: hsl(var(--clr-white));
-	font-size: var(--step-1);
+	font-size: var(--step-1)
 }
 
-.content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	max-inline-size: 60ch;
-	overflow: hidden;
-	margin-inline: auto;
-}
-
-.content div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
-}
-
-.content div span {
-	margin-inline: auto;
-	animation-duration: var(--sp);
-	padding: var(--space-s-m);
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	text-shadow: 0 0 7px hsl(var(--clr-white));
-}
-
+.content,
 .content-1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	max-inline-size: 60ch;
-	overflow: hidden;
-	margin-inline: auto;
+	overflow: hidden
 }
 
+.content div,
 .content-1 div {
 	position: absolute;
 	display: flex;
 	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
+	mix-blend-mode: plus-lighter
 }
 
+.content div span,
 .content-1 div span {
 	margin-inline: auto;
 	animation-duration: var(--sp);
@@ -276,7 +192,7 @@ body>* {
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	text-shadow: 0 0 7px hsl(var(--clr-white));
+	text-shadow: 0 0 7px hsl(var(--clr-white))
 }
 
 @keyframes show-hide {
@@ -284,20 +200,20 @@ body>* {
 	0%,
 	100% {
 		opacity: 0;
-		transform: scale(0.8);
+		transform: scale(.8)
 	}
 
 	20%,
 	80% {
 		opacity: 1;
-		transform: scale(1);
+		transform: scale(1)
 	}
 }
 
-.up:before,
-.down:before {
+.down:before,
+.up:before {
 	width: 80%;
-	height: 0.1vmin;
+	height: .1vmin;
 	background: radial-gradient(ellipse at 50% 50%, hsl(var(--clr-white)), #ffffff00 70%);
 	content: "";
 	position: absolute;
@@ -306,127 +222,92 @@ body>* {
 	left: 10%;
 	top: 49%;
 	box-shadow: 0 0 100px 0 hsl(var(--clr-white));
-	animation: shadow var(--sp) ease 0s infinite;
+	animation: shadow var(--sp) ease 0s infinite
 }
 
 .down:before {
 	width: 1vmin;
-	height: 0.5vmin;
+	height: .5vmin;
 	filter: blur(3px);
-	left: calc(50% - 0.5vmin);
+	left: calc(50% - .5vmin);
 	top: 45%;
-	box-shadow: 0 0 10px 0 hsl(var(--clr-white));
-}
-
-.up:before,
-.down:before {
-	width: 80%;
-	height: 0.1vmin;
-	background: radial-gradient(ellipse at 50% 50%, hsl(var(--clr-white)), #ffffff00 70%);
-	content: "";
-	position: absolute;
-	border-radius: 100%;
-	filter: blur(2px);
-	left: 10%;
-	top: 49%;
-	box-shadow: 0 0 100px 0 hsl(var(--clr-white));
-	animation: shadow var(--sp) ease 0s infinite;
-}
-
-.down:before {
-	width: 1vmin;
-	height: 0.5vmin;
-	filter: blur(3px);
-	left: calc(50% - 0.5vmin);
-	top: 45%;
-	box-shadow: 0 0 10px 0 hsl(var(--clr-white));
+	box-shadow: 0 0 10px 0 hsl(var(--clr-white))
 }
 
 @keyframes shadow {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		opacity: 0;
+	100%,
+	90% {
+		opacity: 0
 	}
 
 	45%,
 	55% {
-		opacity: 0.25;
-		height: 0.25vmin;
-		opacity: 0.25;
-		height: 0.25vmin;
+		opacity: .25;
+		height: .25vmin
 	}
 }
 
-.up span,
-.down span {
+.down span,
+.up span {
 	animation-duration: var(--sp);
 	animation-timing-function: ease;
 	animation-delay: 0s;
-	animation-iteration-count: infinite;
+	animation-iteration-count: infinite
 }
 
-/*up*/
 .up-2-8 {
-	animation-name: go-up-2-8;
-}
-
-.up span,
-.down span {
-	animation-duration: var(--sp);
-	animation-timing-function: ease;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
-}
-
-/*up*/
-.up-2-8 {
-	animation-name: go-up-2-8;
+	animation-name: go-up-2-8
 }
 
 .up-3-7 {
-	animation-name: go-up-3-7;
+	animation-name: go-up-3-7
 }
 
 .up-4-6 {
-	animation-name: go-up-4-6;
+	animation-name: go-up-4-6
 }
 
 .up-5 {
-	animation-name: go-up-5;
+	animation-name: go-up-5
 }
 
-/*down*/
 .down-2-8 {
-	animation-name: go-down-2-8;
+	animation-name: go-down-2-8
 }
 
 .down-3-7 {
-	animation-name: go-down-3-7;
+	animation-name: go-down-3-7
 }
 
 .down-4-6 {
-	animation-name: go-down-4-6;
+	animation-name: go-down-4-6
 }
 
 .down-5 {
-	animation-name: go-down-5;
+	animation-name: go-down-5
+}
+
+.text-with-animation,
+.text-with-animation-4 {
+	animation: 2s cubic-bezier(.455, .03, .515, .955) forwards test-animation;
+	text-align: center
 }
 
 @keyframes go-up-2-8 {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: -0.6vmin;
+		top: -.6vmin
 	}
 }
 
@@ -434,14 +315,14 @@ body>* {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: -1.2vmin;
+		top: -1.2vmin
 	}
 }
 
@@ -449,14 +330,14 @@ body>* {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: -1.8vmin;
+		top: -1.8vmin
 	}
 }
 
@@ -464,14 +345,14 @@ body>* {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: -2.4vmin;
+		top: -2.4vmin
 	}
 }
 
@@ -479,14 +360,14 @@ body>* {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: 0.6vmin;
+		top: .6vmin
 	}
 }
 
@@ -494,14 +375,14 @@ body>* {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: 1.2vmin;
+		top: 1.2vmin
 	}
 }
 
@@ -509,14 +390,14 @@ body>* {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: 1.8vmin;
+		top: 1.8vmin
 	}
 }
 
@@ -524,89 +405,53 @@ body>* {
 
 	0%,
 	10%,
-	90%,
-	100% {
-		top: 0;
+	100%,
+	90% {
+		top: 0
 	}
 
 	40%,
 	60% {
-		top: 2.4vmin;
+		top: 2.4vmin
 	}
 }
 
 .container {
-	display: flex;
-	flex-direction: column;
-	color: hsl(var(--clr-white));
-	padding-top: var(--space-3xl-4xl);
+	flex-direction: column
 }
 
 .text-with-animation {
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	font-family: var(--ff-monoton-regular);
 	font-size: var(--step-1);
-	text-align: center;
-	white-space: nowrap;
-	letter-spacing: var(--space-xs-s);
-	padding-block: var(--space-3xs-2xs);
+	letter-spacing: var(--space-xs-s)
 }
 
-.text-with-animation-1 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	margin-top: var(--space-xs-s);
-}
-
-.text-with-animation-2 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	margin-top: var(--space-xs-s);
-}
-
-.text-with-animation-3 {
-	position: relative;
-	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	text-align: center;
-	margin-top: var(--space-xs-s);
-}
-
-.text-with-animation-4 {
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-	font-family: var(--ff-monoton-regular);
-	font-size: var(--step-1);
-	text-align: center;
-	white-space: nowrap;
-	letter-spacing: 0.15em;
-	padding-block: var(--space-3xs-2xs);
-}
-
+.text-with-animation-1,
+.text-with-animation-2,
+.text-with-animation-3,
 .text-with-animation-5 {
 	position: relative;
 	font-size: var(--step-0);
-	animation: test-animation 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+	animation: 2s cubic-bezier(.455, .03, .515, .955) forwards test-animation;
 	text-align: center;
-	margin-top: var(--space-xs-s);
+	margin-top: var(--space-xs-s)
 }
 
-
+.text-with-animation-4 {
+	font-size: var(--step-1);
+	letter-spacing: .15em
+}
 
 @keyframes test-animation {
 	0% {
 		background-color: transparent;
 		transform: scale(0);
-		opacity: 0.4;
+		opacity: .4
 	}
 
 	100% {
 		background-color: transparent;
 		transform: scale(1);
-		opacity: 1;
+		opacity: 1
 	}
 }
 
@@ -614,20 +459,20 @@ body>* {
 	0% {
 		letter-spacing: 10vw;
 		word-spacing: 100vw;
-		opacity: 0;
+		opacity: 0
 	}
 
 	100% {
 		letter-spacing: var(--space-m-l);
 		word-spacing: 100vw;
-		opacity: 1;
+		opacity: 1
 	}
 }
 
-@container (max-width: 800px) {
+@container (max-width:800px) {
 
 	.text-with-animation-4,
 	.text-with-animation-5 {
-		letter-spacing: 0.3em;
+		letter-spacing: .3em
 	}
 }
