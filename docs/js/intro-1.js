@@ -1,5 +1,6 @@
 document.querySelectorAll('.dot-indicators button').forEach(btn => {
-  btn.addEventListener('click', 'touch start', function () {
+  // Handler function for both click and touchstart
+  function handleTabEvent() {
     // Hide all tab panels
     document.querySelectorAll('.crew-details').forEach(panel => {
       panel.hidden = true;
@@ -27,14 +28,16 @@ document.querySelectorAll('.dot-indicators button').forEach(btn => {
     this.setAttribute('aria-selected', 'true');
     this.tabIndex = 0;
     this.focus();
-  });
+  }
+
+  btn.addEventListener('click', handleTabEvent);
+  btn.addEventListener('touchstart', handleTabEvent);
 });
 
 // Optionally, hide all but the first panel on page load:
 document.querySelectorAll('.crew-details').forEach((panel, i) => {
   panel.hidden = i !== 0;
 });
-
 
 
 
