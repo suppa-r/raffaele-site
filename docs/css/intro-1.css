@@ -72,11 +72,7 @@
   color: hsl(var(--clr-light))
 }
 
-.crew-details.beginnings .ya,
-.text-span,
-header .logo span {
-  color: hsl(var(--clr-span))
-}
+
 
 .text-white {
   color: hsl(var(--clr-white))
@@ -117,6 +113,10 @@ body:before {
   overflow: hidden
 }
 
+header .logo span {
+  color: hsl(var(--clr-span))
+}
+
 .dot-indicators button,
 .skip-to-content {
   background: hsl(var(--clr-white));
@@ -146,28 +146,7 @@ body:before {
   transform: translateY(0)
 }
 
-.crew-details.beginnings>*,
-.crew-details.genesis>*,
-.crew-details.ryerson>*,
-.crew-details.skills>* {
-  margin-inline: auto;
-  padding-inline: var(--space-2xs-xs);
-  max-width: 100%;
-  overflow: hidden
-}
 
-.sidebar,
-.skip-to-content,
-body,
-main {
-  margin-inline: auto
-}
-
-.section-title,
-.topbar,
-.topbar-1 {
-  padding-block: var(--space-2xs-xs)
-}
 
 header {
   position: sticky;
@@ -203,7 +182,7 @@ header .logo span {
 
 .topbar-1 {
   position: fixed;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
@@ -219,18 +198,28 @@ header .logo span {
   display: none
 }
 
-.crew-details.menu .menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: var(--space-xs-s);
-  list-style-type: none;
-  backdrop-filter: blur(10px);
-  border-radius: var(--space-xs-s);
-  box-shadow: var(--shadow);
+.crew-details.beginnings>*,
+.crew-details.genesis>*,
+.crew-details.ryerson>*,
+.crew-details.skills>* {
   margin-inline: auto;
-  min-height: 100svh
+  padding-inline: var(--space-2xs-xs);
+  max-width: 100%;
+  overflow: hidden
 }
+
+.sidebar,
+.skip-to-content {
+  margin-inline: auto
+}
+
+.section-title,
+.topbar,
+.topbar-1 {
+  padding-block: var(--space-2xs-xs)
+}
+
+
 
 .topbar ul,
 .topbar-1 ul {
@@ -342,6 +331,11 @@ li .menu-button svg {
 
 .dot-indicators {
   position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  max-width: 100%;
+  padding: var(--space-2xs-xs);
   z-index: 99999;
   display: flex;
   justify-content: center;
@@ -464,22 +458,26 @@ h3 {
   max-width: 55ch
 }
 
+
+
 .crew-details.menu {
   margin-inline: auto;
   padding-inline: var(--space-2xs-xs);
   min-height: 100svh
 }
 
-.crew-details.menu.topbar-1 {
+
+
+.topbar-1 {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 9999;
-  width: 100%;
+  width: auto;
+  /* or a specific width */
   display: flex;
   justify-content: center;
-  /* or space-between if you want spacing */
   flex-direction: row;
 }
 
