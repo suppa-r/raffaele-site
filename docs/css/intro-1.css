@@ -374,18 +374,32 @@ li .menu-button svg {
   border-radius: var(--space-s-m)
 }
 
+
+
 .crew-details.beginnings,
-.crew-details.genesis {
+.crew-details.genesis,
+.crew-details.ryerson {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
-  place-items: center;
+  padding-top: var(--space-11xl-12xl);
+  padding-inline: var(--space-9xl-10xl);
   min-height: 100svh
 }
 
-.crew-details.beginnings .row img,
-.crew-details.genesis .row img,
-.crew-details.ryerson .row-1 img {
+.crew-details.beginnings .row-text,
+.crew-details.genesis .row-text,
+.crew-details.ryerson .row-text {
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--space-2xs-xs);
+  text-align: center;
+  margin-bottom: var(--space-2xl-3xl);
+}
+
+.crew-details.beginnings .row-img img,
+.crew-details.genesis .row-img img,
+.crew-details.ryerson .row-img img {
   display: block;
   width: 400px;
   height: auto;
@@ -396,7 +410,8 @@ li .menu-button svg {
 }
 
 .crew-details.beginnings p,
-.crew-details.genesis p {
+.crew-details.genesis p,
+.crew-details.ryerson p {
   margin-block: 0.12em
 }
 
@@ -461,25 +476,44 @@ h3 {
 
 
 .crew-details.menu {
+  display: grid;
+  place-items: center;
   margin-inline: auto;
   padding-inline: var(--space-2xs-xs);
   min-height: 100svh
 }
 
-
-
+/* Hide .topbar-1 by default */
 .topbar-1 {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
+  display: none;
+  opacity: 0;
   z-index: 9999;
-  width: auto;
-  /* or a specific width */
-  display: flex;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--space-2xs-xs);
+  margin-inline: auto;
   justify-content: center;
   flex-direction: row;
+  pointer-events: none;
 }
+
+.crew-details.menu .topbar-1 {
+  display: flex;
+  opacity: 1;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-2xs-xs);
+  margin-inline: auto;
+  justify-content: center;
+  flex-direction: row;
+  pointer-events: all;
+}
+
+
 
 @container(max-width:800px) {
 
