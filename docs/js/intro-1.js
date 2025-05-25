@@ -12,8 +12,19 @@ document.querySelectorAll('.dot-indicators button').forEach(btn => {
       b.tabIndex = -1;
     });
 
-    // Show the topbar (if it was hidden)
-    document.querySelector('.topbar').style.display = 'flex';
+    // Reset focus to the first button
+    document.querySelector('.dot-indicators button').focus();
+    // Reset tabIndex for all buttons
+    document.querySelectorAll('.dot-indicators button').forEach(b => {
+      b.tabIndex = -1;
+    });
+    // Reset focus to the clicked button
+    this.tabIndex = 0;
+    this.focus();
+    // Set aria-selected to true for the clicked button
+    this.setAttribute('aria-selected', 'true');
+    // Reset focus to the clicked button
+   
 
     // Show the selected panel (by class)
     const panelClass = this.getAttribute('aria-controls');
