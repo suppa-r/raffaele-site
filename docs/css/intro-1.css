@@ -599,7 +599,7 @@ h3 {
   .dot-indicators>*:hover,
   .dot-indicators>*:focus {
     background-color: hsl(var(--clr-white) / .4);
-    transform: scale(1.3);
+    transform: scale(1.2);
     transition: all 0.3s ease-in-out;
     /* smooth transition */
     cursor: pointer;
