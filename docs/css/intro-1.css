@@ -326,7 +326,15 @@ li .menu-button svg {
 
 .dot-indicators,
 .dot-indicators button {
-  font-size: var(--step--1)
+  font-size: var(--step--1);
+  -webkit-appearance: button !important;
+  appearance: button;
+  border: hsl(var(--clr-light));
+  padding-inline: var(--space-m-l);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background .1s;
+  pointer-events: all
 }
 
 .dot-indicators {
@@ -352,17 +360,6 @@ li .menu-button svg {
   border: hsl(var(--clr-light));
   padding: var(--space-2xs-xs) var(--space-2xs-xs);
   font-size: var(--step--1)
-}
-
-.dot-indicators button {
-  -webkit-appearance: button !important;
-  appearance: button;
-  border: hsl(var(--clr-light));
-  padding-inline: var(--space-m-l);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background .1s;
-  pointer-events: all
 }
 
 .dot-indicators>:focus,
