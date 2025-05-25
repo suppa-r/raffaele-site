@@ -327,7 +327,7 @@ li .menu-button svg {
 .dot-indicators,
 .dot-indicators button {
   font-size: var(--step--1);
-  -webkit-appearance: button !important;
+  -webkit-appearance: button;
   appearance: button;
   border: hsl(var(--clr-light));
   padding-inline: var(--space-m-l);
