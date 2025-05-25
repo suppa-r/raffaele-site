@@ -192,6 +192,7 @@ html {
 /* --------------------------------------- */
 body {
   margin-inline: auto;
+  padding-inline: var(--space-xs-s);
 }
 
 body>* {
@@ -354,18 +355,16 @@ li .menu-button svg {
 
 main {
   margin-inline: auto;
-  padding-inline: var(--space-8xl-9xl);
+  padding-inline: var(--space-xs-s);
 }
 
 .dot-indicators {
   position: fixed;
-  z-index: 9999;
-  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  flex-direction: row;
   margin-inline: auto;
-  margin: var(--space-l-xl) 0;
+  padding-inline: var(--space-xs-s);
   gap: var(--space-l-xl);
   font-size: var(--step--1);
 }
@@ -407,14 +406,10 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
-  padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-9xl-10xl);
+  place-items: center;
   min-height: 100svh;
 }
 
-.crew-details.genesis>* {
-  margin-inline: auto;
-}
 
 .crew-details.genesis .row img {
   display: block;
@@ -428,7 +423,6 @@ main {
 
 .crew-details.genesis p {
   margin-block: 0.12em;
-  max-width: 55ch;
 }
 
 .crew-details.genesis p span {
@@ -447,6 +441,7 @@ main {
   margin-inline: auto;
   width: 100%;
   text-align: center;
+  margin-top: var(--space-3xl-4xl);
 }
 
 @keyframes gradient {
@@ -467,16 +462,12 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
-  padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-9xl-10xl);
+  place-items: center;
   min-height: 100svh;
 }
 
-.crew-details.beginnings>* {
-  margin-inline: auto;
-}
 
-.crew-details.beginnings .row-1 img {
+.crew-details.beginnings .row img {
   display: block;
   width: 400px;
   height: auto;
@@ -485,6 +476,11 @@ main {
   border-radius: 50%;
   margin-inline: auto;
 }
+
+.crew-details.beginnings p {
+  margin-block: 0.12em;
+}
+
 
 .crew-details.beginnings h1,
 h2,
@@ -502,10 +498,7 @@ h3 {
   color: hsl(var(--clr-span));
 }
 
-.crew-details.beginnings p {
-  margin-block: 0.12em;
-  max-width: 55ch;
-}
+
 
 .crew-details.ryerson {
   display: grid;
@@ -597,16 +590,25 @@ h3 {
     display: none;
   }
 
-  .crew-details.genesis,
-  .crew-details.beginnings {
+  .dot-indicators {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-inline: auto;
+    padding-inline: var(--space-xs-s);
+    gap: var(--space-l-xl);
+    font-size: var(--step--1);
+  }
+
+  .crew-details.genesis {
     grid-template-columns: 1fr;
     margin-inline: auto;
     min-height: 100svh;
     text-align: center;
   }
 
-  .crew-details.genesis .row img,
-  .crew-details.beginnings .row img {
+  .crew-details.genesis .row img {
     display: block;
     width: 180px;
     height: auto;
@@ -615,7 +617,42 @@ h3 {
     border-radius: 50%;
     margin-inline: auto;
   }
+
+  .crew-details.genesis .row-text {
+    padding-inline: var(--space-2xs-xs);
+    margin-inline: auto;
+    margin-bottom: var(--space-9xl);
+  }
+
+  .crew-details.beginnings {
+    grid-template-columns: 1fr;
+    margin-inline: auto;
+    min-height: 100svh;
+    text-align: center;
+  }
+
+  .crew-details.beginnings .section-title {
+    margin-top: var(--space-3xl);
+
+  }
+
+  .crew-details.beginnings .row img {
+    display: block;
+    width: 220px;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-inline: auto;
+  }
+
+  .crew-details.beginnings .row-text {
+    padding-inline: var(--space-2xs-xs);
+    margin-inline: auto;
+    margin-block: var(--space-l);
+  }
 }
+
 
 @container(max-width: 400px) {
   .sidebar {
