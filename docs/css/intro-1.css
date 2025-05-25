@@ -1,18 +1,6 @@
-.topbar ul,
-header .logo p,
-header .logo span {
-  padding-block: var(--space-xs-s)
-}
-
-.sidebar a,
-.topbar a {
-  text-decoration: none
-}
-
-.dot-indicators,
-.dot-indicators button,
-html {
-  font-size: var(--step--1)
+.sr-only,
+.topbar li {
+  padding: 0
 }
 
 :root {
@@ -108,57 +96,12 @@ html {
   font-feature-settings: var(--font-variation-settings)
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0
-}
-
-.crew-details.ryerson>*,
-.crew-details.skills>*,
-.sidebar,
-.skip-to-content,
-body,
-main {
-  margin-inline: auto
-}
-
-.skip-to-content {
-  position: absolute;
-  z-index: 9999;
-  background: hsl(var(--clr-white));
-  color: hsl(var(--clr-dark));
-  padding: .5em 1em;
-  transform: translateY(-100%);
-  transition: transform 250ms ease-in
-}
-
-.sidebar,
-.topbar,
-body:before {
-  position: fixed
-}
-
-.section-title,
-.topbar {
-  padding-block: var(--space-2xs-xs)
-}
-
-.skip-to-content:focus {
-  transform: translateY(0)
-}
-
 body>* {
   container-type: inline-size
 }
 
 body:before {
+  position: fixed;
   opacity: 1;
   pointer-events: all;
   content: "";
@@ -172,6 +115,58 @@ body:before {
   transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
   z-index: -1;
   overflow: hidden
+}
+
+.dot-indicators button,
+.skip-to-content {
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark))
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0
+}
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  padding: .5em 1em;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in
+}
+
+.skip-to-content:focus {
+  transform: translateY(0)
+}
+
+.crew-details.beginnings>*,
+.crew-details.genesis>*,
+.crew-details.ryerson>*,
+.crew-details.skills>* {
+  margin-inline: auto;
+  padding-inline: var(--space-2xs-xs);
+  max-width: 100%;
+  overflow: hidden
+}
+
+.sidebar,
+.skip-to-content,
+body,
+main {
+  margin-inline: auto
+}
+
+.section-title,
+.topbar,
+.topbar-1 {
+  padding-block: var(--space-2xs-xs)
 }
 
 header {
@@ -206,28 +201,53 @@ header .logo span {
   flex-direction: row
 }
 
+.topbar-1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* or space-between if you want spacing */
+  flex-direction: row;
+}
+
 .menu-button,
 .sidebar {
   display: none
 }
 
-.topbar ul {
+.crew-details.menu .menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: var(--space-xs-s);
+  list-style-type: none;
+  backdrop-filter: blur(10px);
+  border-radius: var(--space-xs-s);
+  box-shadow: var(--shadow);
+  margin-inline: auto;
+  min-height: 100svh
+}
+
+.topbar ul,
+.topbar-1 ul {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, .1);
   justify-content: space-between
 }
 
-.topbar li {
-  padding: 0
-}
-
 .sidebar li,
-.topbar a {
+.topbar a,
+.topbar-1 a {
   padding: 0 var(--space-xs-s);
   display: flex
 }
 
 .sidebar li svg,
-.topbar li svg {
+.topbar li svg,
+.topbar-1 li svg {
   display: inline-block;
   width: var(--space-l-xl);
   height: var(--space-l-xl);
@@ -237,7 +257,8 @@ header .logo span {
   background-size: 100% 100%
 }
 
-.topbar a {
+.topbar a,
+.topbar-1 a {
   flex-direction: column;
   align-items: center
 }
@@ -248,18 +269,47 @@ header .logo span {
 }
 
 .topbar a :focus,
-.topbar a:hover {
+.topbar a:hover,
+.topbar-1 a:focus,
+.topbar-1 a:hover {
   background-color: hsl(var(--clr-white) / .1);
   border-radius: var(--space-xs-s);
   color: hsl(var(--clr-dark));
   transition: background-color .2s ease-in-out
 }
 
+.topbar ul,
+.topbar-1 ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: var(--space-xs-s);
+  margin-inline: auto;
+  list-style-type: none;
+  backdrop-filter: blur(10px);
+  border-radius: var(--space-xs-s);
+  box-shadow: var(--shadow)
+}
+
+
 .sidebar {
-  z-index: 9999;
-  top: 10%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 9999
+}
+
+header .logo p,
+header .logo span {
+  padding-block: var(--space-xs-s)
+}
+
+.sidebar a,
+.topbar a .topbar-1 a {
+  text-decoration: none
+}
+
+.sidebar {
+  top: 10%;
   height: 100svh
 }
 
@@ -285,9 +335,14 @@ li .menu-button svg {
   height: 48px
 }
 
+.dot-indicators,
+.dot-indicators button {
+  font-size: var(--step--1)
+}
+
 .dot-indicators {
-  z-index: 99999;
   position: fixed;
+  z-index: 99999;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -306,10 +361,8 @@ li .menu-button svg {
 }
 
 .dot-indicators button {
-  background: hsl(var(--clr-white));
   border: hsl(var(--clr-light));
   padding-inline: var(--space-m-l);
-  color: hsl(var(--clr-dark));
   border-radius: 50%;
   cursor: pointer;
   transition: background .1s;
@@ -338,8 +391,7 @@ li .menu-button svg {
 
 .crew-details.beginnings .row img,
 .crew-details.genesis .row img,
-.crew-details.ryerson .row-1 img,
-.crew-details.skills .row-1 img {
+.crew-details.ryerson .row-1 img {
   display: block;
   width: 400px;
   height: auto;
@@ -355,8 +407,7 @@ li .menu-button svg {
 }
 
 .crew-details.genesis p span,
-.crew-details.ryerson p span,
-.crew-details.skills p span {
+.crew-details.ryerson p span {
   color: hsl(var(--clr-span));
   padding-left: var(--space-xs-s)
 }
@@ -399,8 +450,7 @@ h3 {
   font-size: var(--step-2)
 }
 
-.crew-details.ryerson,
-.crew-details.skills {
+.crew-details.ryerson {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
@@ -409,10 +459,28 @@ h3 {
   min-height: 100svh
 }
 
-.crew-details.ryerson p,
-.crew-details.skills p {
+.crew-details.ryerson p {
   margin-block: 0.12em;
   max-width: 55ch
+}
+
+.crew-details.menu {
+  margin-inline: auto;
+  padding-inline: var(--space-2xs-xs);
+  min-height: 100svh
+}
+
+.crew-details.menu.topbar-1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* or space-between if you want spacing */
+  flex-direction: row;
 }
 
 @container(max-width:800px) {
@@ -440,7 +508,7 @@ h3 {
     flex-direction: row;
     margin-inline: auto;
     gap: var(--space-s-m);
-    pointer-events: all;
+    pointer-events: all
   }
 
   .dot-indicators button[aria-selected=true] {
@@ -474,14 +542,13 @@ h3 {
     border-radius: var(--space-s-m)
   }
 
-
   .crew-details.beginnings,
   .crew-details.genesis {
     grid-template-columns: 1fr;
     margin-inline: auto;
     min-height: 100svh;
     text-align: center;
-    overflow: hidden;
+    overflow: hidden
   }
 
   .crew-details.genesis .row {
