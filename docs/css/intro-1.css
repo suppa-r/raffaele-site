@@ -213,30 +213,25 @@ header .logo span {
   margin-inline: auto
 }
 
-.section-title,
-.topbar,
-.topbar-1 {
+.section-title {
   padding-block: var(--space-2xs-xs)
 }
 
 
 
-.topbar ul,
-.topbar-1 ul {
+.topbar ul {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, .1);
   justify-content: space-between
 }
 
 .sidebar li,
-.topbar a,
-.topbar-1 a {
+.topbar a {
   padding: 0 var(--space-xs-s);
   display: flex
 }
 
 .sidebar li svg,
-.topbar li svg,
-.topbar-1 li svg {
+.topbar li svg {
   display: inline-block;
   width: var(--space-l-xl);
   height: var(--space-l-xl);
@@ -246,8 +241,7 @@ header .logo span {
   background-size: 100% 100%
 }
 
-.topbar a,
-.topbar-1 a {
+.topbar a {
   flex-direction: column;
   align-items: center
 }
@@ -258,17 +252,14 @@ header .logo span {
 }
 
 .topbar a :focus,
-.topbar a:hover,
-.topbar-1 a:focus,
-.topbar-1 a:hover {
+.topbar a:hover {
   background-color: hsl(var(--clr-white) / .1);
   border-radius: var(--space-xs-s);
   color: hsl(var(--clr-dark));
   transition: background-color .2s ease-in-out
 }
 
-.topbar ul,
-.topbar-1 ul {
+.topbar ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -339,9 +330,9 @@ li .menu-button svg {
 
 .dot-indicators {
   position: fixed;
-  top: 5%;
+  top: 7%;
   left: 50%;
-  transform: translate(-50%, -20%);
+  transform: translate(-50%, -7%);
   max-width: 100%;
   padding: var(--space-2xs-xs);
   z-index: 99999;
@@ -373,51 +364,36 @@ li .menu-button svg {
   border-radius: var(--space-s-m)
 }
 
-
-
 .crew-details.beginnings,
 .crew-details.genesis,
 .crew-details.ryerson {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-inline: auto;
-  padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-9xl-10xl);
-  min-height: 100svh
+  min-height: 100svh;
+  overflow: hidden;
 }
 
-.crew-details.beginnings .row-text,
-.crew-details.genesis .row-text,
-.crew-details.ryerson .row-text {
+/* This targets all direct children of those elements */
+.crew-details.beginnings>*,
+.crew-details.genesis>*,
+.crew-details.ryerson>* {
+  margin-inline: auto;
   max-width: 100%;
-  margin-inline: auto;
+  margin-block: var(--space-6xl-7xl);
   padding-inline: var(--space-2xs-xs);
-  text-align: center;
-  margin-bottom: var(--space-2xl-3xl);
+  overflow: hidden;
 }
 
-.crew-details.beginnings .row-img img,
-.crew-details.genesis .row-img img,
-.crew-details.ryerson .row-img img {
+.crew-details.beginnings .row-img>img,
+.crew-details.genesis .row-img>img,
+.crew-details.ryerson .row-img>img {
   display: block;
   width: 400px;
   height: auto;
   max-width: 100%;
   object-fit: cover;
   border-radius: 50%;
-  margin-inline: auto
-}
-
-.crew-details.beginnings p,
-.crew-details.genesis p,
-.crew-details.ryerson p {
-  margin-block: 0.12em
-}
-
-.crew-details.genesis p span,
-.crew-details.ryerson p span {
-  color: hsl(var(--clr-span));
-  padding-left: var(--space-xs-s)
+  margin-inline: auto;
 }
 
 .section-title {
@@ -447,9 +423,7 @@ li .menu-button svg {
 
 .crew-details.beginnings h1,
 h2,
-h3 {
-  margin: 0;
-  padding: 0;
+h4 {
   font-size: var(--step-1);
   margin-block: var(--space-2xs)
 }
@@ -457,62 +431,6 @@ h3 {
 .crew-details.beginnings .ya {
   font-size: var(--step-2)
 }
-
-.crew-details.ryerson {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-inline: auto;
-  padding-top: var(--space-11xl-12xl);
-  padding-inline: var(--space-9xl-10xl);
-  min-height: 100svh
-}
-
-.crew-details.ryerson p {
-  margin-block: 0.12em;
-  max-width: 55ch
-}
-
-
-
-.crew-details.menu {
-  display: grid;
-  place-items: center;
-  margin-inline: auto;
-  padding-inline: var(--space-2xs-xs);
-  min-height: 100svh
-}
-
-/* Hide .topbar-1 by default */
-.topbar-1 {
-  display: none;
-  opacity: 0;
-  z-index: 9999;
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: var(--space-2xs-xs);
-  margin-inline: auto;
-  justify-content: center;
-  flex-direction: row;
-  pointer-events: none;
-}
-
-.crew-details.menu .topbar-1 {
-  display: flex;
-  opacity: 1;
-  position: fixed;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: var(--space-2xs-xs);
-  margin-inline: auto;
-  justify-content: center;
-  flex-direction: row;
-  pointer-events: all;
-}
-
-
 
 @container(max-width:800px) {
 
