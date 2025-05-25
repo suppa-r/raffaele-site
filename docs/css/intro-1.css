@@ -355,6 +355,8 @@ li .menu-button svg {
 }
 
 .dot-indicators button {
+  -webkit-appearance: button !important;
+  appearance: button;
   border: hsl(var(--clr-light));
   padding-inline: var(--space-m-l);
   border-radius: 50%;
