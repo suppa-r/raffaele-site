@@ -292,8 +292,8 @@ li .menu-button svg {
   justify-content: center;
   flex-direction: row;
   margin-inline: auto;
-  gap: var(--space-m-l);
-  pointer-events: all
+  gap: var(--space-s-m);
+  pointer-events: all;
 }
 
 .dot-indicators button[aria-selected=true] {
@@ -301,7 +301,7 @@ li .menu-button svg {
   color: hsl(var(--clr-white));
   border-radius: var(--space-xs-s);
   border: hsl(var(--clr-light));
-  padding: var(--space-xs-s) var(--space-s);
+  padding: var(--space-2xs-xs) var(--space-2xs-xs);
   font-size: var(--step--1)
 }
 
@@ -432,35 +432,14 @@ h3 {
     display: none
   }
 
-  .dot-indicators button {
-    background: hsl(var(--clr-white));
-    border: hsl(var(--clr-light));
-    padding-inline: var(--space-xl);
-    font-size: var(--step--1);
-    color: hsl(var(--clr-dark));
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background .1s;
-    pointer-events: all
-  }
-
-  .dot-indicators>:focus,
-  .dot-indicators>:hover {
-    background-color: hsl(var(--clr-white) / .4);
-    transform: scale(1.2);
-    transition: .3s ease-in-out;
-    cursor: pointer;
-    color: hsl(var(--clr-light));
-    padding: var(--space-xs-s) var(--space-s-m);
-    border-radius: var(--space-s-m)
-  }
 
   .crew-details.beginnings,
   .crew-details.genesis {
     grid-template-columns: 1fr;
     margin-inline: auto;
     min-height: 100svh;
-    text-align: center
+    text-align: center;
+    overflow: hidden;
   }
 
   .crew-details.genesis .row {
