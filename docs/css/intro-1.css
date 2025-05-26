@@ -319,12 +319,14 @@ li .menu-button svg {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: auto;
+  min-height: 100svh;
+  overflow: hidden;
+  padding-top: var(--space-2xl);
 
   >* {
     container-type: inline-size;
-    min-height: 100svh;
     overflow: hidden;
-    padding-top: var(--space-5xl);
+    padding: var(--space-xs) var(--space-xs);
   }
 }
 
@@ -332,7 +334,7 @@ li .menu-button svg {
 .crew-details.beginnings>*,
 .crew-details.genesis>*,
 .crew-details.ryerson>* {
-  padding-inline: var(--space-xs);
+  padding: var(--space-xs) auto;
 }
 
 .crew-details.beginnings .row-img>img,
@@ -409,8 +411,7 @@ h4 {
   .crew-details.ryerson {
     display: grid;
     grid-template-columns: 1fr;
-    padding-top: var(--space-l);
-    min-height: 100svh;
+    text-align: center;
     overflow: hidden;
   }
 
