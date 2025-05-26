@@ -221,9 +221,6 @@ header .logo span {
   transition: background-color .2s ease-in-out
 }
 
-
-
-
 .sidebar {
   left: 50%;
   transform: translateX(-50%);
@@ -273,7 +270,7 @@ li .menu-button svg {
 
 .dot-indicators {
   position: fixed;
-  top: 4%;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
@@ -427,7 +424,7 @@ h4 {
   .crew-details.genesis>*,
   .crew-details.ryerson>* {
     margin-inline: auto;
-    padding-top: 0;
+    padding-top: var(--space-l);
     padding-inline: var(--space-xs);
     max-width: 100%;
     overflow: hidden;
