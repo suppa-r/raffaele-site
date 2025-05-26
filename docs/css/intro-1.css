@@ -160,7 +160,7 @@ header .logo {
 
 header .logo p {
   max-width: 60ch;
-  padding-left: var(--space-2xs-xs);
+  padding-left: var(--space-xs);
   padding-right: 0;
   font-size: var(--step-0)
 }
@@ -175,7 +175,7 @@ header .logo span {
   top: 0;
   right: 2%;
   display: flex;
-  padding-inline: var(--space-xs-s);
+  padding-inline: var(--space-xs);
   z-index: 9999;
   flex-direction: row
 }
@@ -203,7 +203,7 @@ header .logo span {
 .crew-details.ryerson>*,
 .crew-details.skills>* {
   margin-inline: auto;
-  padding-inline: var(--space-2xs-xs);
+  padding-inline: var(--space-xs);
   max-width: 100%;
   overflow: hidden
 }
@@ -214,7 +214,7 @@ header .logo span {
 }
 
 .section-title {
-  padding-block: var(--space-2xs-xs)
+  padding-block: var(--space-xs)
 }
 
 
@@ -226,17 +226,17 @@ header .logo span {
 
 .sidebar li,
 .topbar a {
-  padding: 0 var(--space-xs-s);
+  padding: 0 var(--space-s);
   display: flex
 }
 
 .sidebar li svg,
 .topbar li svg {
   display: inline-block;
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
+  width: var(--space-l);
+  height: var(--space-l);
   margin-inline: auto;
-  margin-bottom: var(--space-2xs-xs);
+  margin-bottom: var(--space-xs);
   background-repeat: no-repeat;
   background-size: 100% 100%
 }
@@ -254,7 +254,7 @@ header .logo span {
 .topbar a :focus,
 .topbar a:hover {
   background-color: hsl(var(--clr-white) / .1);
-  border-radius: var(--space-xs-s);
+  border-radius: var(--space-s);
   color: hsl(var(--clr-dark));
   transition: background-color .2s ease-in-out
 }
@@ -263,11 +263,11 @@ header .logo span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: var(--space-xs-s);
+  padding-inline: var(--space-s);
   margin-inline: auto;
   list-style-type: none;
   backdrop-filter: blur(10px);
-  border-radius: var(--space-xs-s);
+  border-radius: var(--space-s);
   box-shadow: var(--shadow)
 }
 
@@ -280,7 +280,7 @@ header .logo span {
 
 header .logo p,
 header .logo span {
-  padding-block: var(--space-xs-s)
+  padding-block: var(--space-s)
 }
 
 .sidebar a,
@@ -294,19 +294,19 @@ header .logo span {
 }
 
 .sidebar li {
-  margin: 0 var(--space-xs-s)
+  margin: 0 var(--space-s)
 }
 
 .sidebar a {
   display: flex;
   flex-direction: column;
   margin-inline: auto;
-  padding: var(--space-xs-s) var(--space-xs-s)
+  padding: var(--space-s) var(--space-s)
 }
 
 .sidebar li img {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-l);
+  height: var(--space-l);
   margin-inline: auto
 }
 
@@ -316,7 +316,6 @@ li .menu-button svg {
 }
 
 .tab-list {
-
   --gap: var(--space-m);
 }
 
@@ -334,13 +333,12 @@ li .menu-button svg {
 }
 
 .dot-indicators>* {
-  width: var(--space-3xl-4xl);
+  width: var(--space-4xl);
   /* Set a fixed width for the dots */
-  height: var(--space-l-xl);
+  height: var(--space-xl);
   /* Set a fixed height for the dots (make it equal to width for a circle) */
   border-radius: 50%;
-  /* Make the dots circular */
-  aspect-ratio: 1 / 1;
+
 
   /* Add a background color */
   border: none;
@@ -380,8 +378,8 @@ li .menu-button svg {
 .crew-details.ryerson>* {
   margin-inline: auto;
   max-width: 100%;
-  margin-block: var(--space-6xl-7xl);
-  padding-inline: var(--space-2xs-xs);
+  margin-block: var(--space-6xl);
+  padding-inline: var(--space-xs);
   overflow: hidden;
 }
 
@@ -406,7 +404,7 @@ li .menu-button svg {
   animation: 5s linear infinite gradient;
   background-size: 350%;
   margin-inline: auto;
-  padding-inline: var(--space-2xs-xs);
+  padding-inline: var(--space-xs);
   text-align: center
 }
 
@@ -447,7 +445,7 @@ h4 {
   .crew-details.ryerson,
   .crew-details.menu {
     grid-template-columns: 1fr;
-    padding-inline: var(--space-2xs-xs);
+    padding-inline: var(--space-xs);
     margin-inline: auto;
     min-height: 100svh
   }
@@ -470,7 +468,7 @@ h4 {
   .crew-details.beginnings .row-text {
     max-width: 100%;
     margin-inline: auto;
-    padding-inline: var(--space-2xs-xs);
+    padding-inline: var(--space-xs);
     text-align: center;
     margin-bottom: var(--space-3xl);
   }
