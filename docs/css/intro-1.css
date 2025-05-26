@@ -355,7 +355,7 @@ li .menu-button svg {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: 5s linear infinite gradient;
+  animation: 3s linear infinite gradient;
   background-size: 350%;
   margin-inline: auto;
   padding-inline: var(--space-xs);
@@ -406,6 +406,12 @@ h4 {
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
+  .section-title {
+    padding-top: var(--space-2xl);
+    padding-inline: var(--space-2xs);
+    font-size: var(--step--1);
+  }
+
   .crew-details.beginnings,
   .crew-details.genesis,
   .crew-details.ryerson {
@@ -419,7 +425,7 @@ h4 {
   .crew-details.beginnings>.row-img img,
   .crew-details.ryerson>.row-img img {
     display: block;
-    width: 175px;
+    width: 165px;
     height: auto;
     max-width: 100%;
     object-fit: cover;
