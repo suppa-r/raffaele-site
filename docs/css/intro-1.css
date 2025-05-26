@@ -317,7 +317,8 @@ li .menu-button svg {
 .crew-details.genesis,
 .crew-details.ryerson {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
 
   >* {
     container-type: inline-size;
@@ -332,8 +333,6 @@ li .menu-button svg {
 .crew-details.genesis>*,
 .crew-details.ryerson>* {
   padding-inline: var(--space-xs);
-  max-width: 100%;
-  overflow: hidden;
 }
 
 .crew-details.beginnings .row-img>img,
@@ -405,35 +404,19 @@ h4 {
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
-  .crew-details {
-    padding-top: var(--space-xl);
-    font-size: var(--step--1);
-  }
-
   .crew-details.beginnings,
   .crew-details.genesis,
   .crew-details.ryerson {
     display: grid;
     grid-template-columns: 1fr;
+    padding-top: var(--space-l);
     min-height: 100svh;
     overflow: hidden;
   }
 
-  /* This targets all direct children of those elements */
-  .crew-details.beginnings>*,
-  .crew-details.genesis>*,
-  .crew-details.ryerson>* {
-    margin-inline: auto;
-    padding-top: var(--space-l);
-    padding-inline: var(--space-xs);
-    max-width: 100%;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .crew-details.genesis>.row-img,
-  .crew-details.beginnings>.row-img,
-  .crew-details.ryerson>.row-img {
+  .crew-details.genesis>.row-img img,
+  .crew-details.beginnings>.row-img img,
+  .crew-details.ryerson>.row-img img {
     display: block;
     width: 175px;
     height: auto;
