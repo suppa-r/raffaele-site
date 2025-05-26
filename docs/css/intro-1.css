@@ -338,9 +338,6 @@ li .menu-button svg {
   height: var(--space-xl);
   /* Set a fixed height for the dots (make it equal to width for a circle) */
   border-radius: 50%;
-
-
-  /* Add a background color */
   border: none;
   /* Remove default button border */
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -351,15 +348,15 @@ li .menu-button svg {
   background-color: hsl(var(--clr-span));
   color: hsl(var(--clr-white));
   /* Highlight on hover/focus */
-  transform: scale(1.1);
+  transform: scale(1.2);
   /* Slightly enlarge the dot */
 }
 
 .dot-indicators [aria-selected="true"] {
-  background-color: hsla(var(--clr-white)/ 0.8);
+  background-color: hsl(var(--clr-span));
   color: hsl(var(--clr-white));
   /* Highlight on hover/focus */
-  transform: scale(1.1);
+  transform: scale(1.2);
   /* Slightly enlarge the dot */
 }
 
