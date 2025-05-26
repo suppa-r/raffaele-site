@@ -198,16 +198,6 @@ header .logo span {
   display: none
 }
 
-.crew-details.beginnings>*,
-.crew-details.genesis>*,
-.crew-details.ryerson>*,
-.crew-details.skills>* {
-  margin-inline: auto;
-  padding-inline: var(--space-xs);
-  max-width: 100%;
-  overflow: hidden
-}
-
 .sidebar,
 .skip-to-content {
   margin-inline: auto
@@ -316,14 +306,19 @@ li .menu-button svg {
 }
 
 .tab-list {
-  --gap: var(--space-m);
+  --gap: var(--space-s);
 }
 
 .dot-indicators {
   position: fixed;
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: var(--space-2xs) var(--space-xs);
   display: flex;
   justify-content: center;
-  gap: var(--space-2xl);
+  gap: var(--space-s);
   /* Space between dots */
   width: 100%;
   /* Full width of the container */
@@ -374,9 +369,9 @@ li .menu-button svg {
 .crew-details.genesis>*,
 .crew-details.ryerson>* {
   margin-inline: auto;
-  max-width: 100%;
-  margin-block: var(--space-6xl);
+  padding-top: var(--space-5xl);
   padding-inline: var(--space-xs);
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -432,42 +427,57 @@ h4 {
 
   header .logo p,
   header .logo span {
-    font-size: var(--step-0);
+    font-size: var(--step--1);
     width: 100%;
     margin-inline: auto;
   }
 
-  .crew-details.beginnings,
-  .crew-details.genesis,
-  .crew-details.ryerson,
-  .crew-details.menu {
-    grid-template-columns: 1fr;
-    padding-inline: var(--space-xs);
-    margin-inline: auto;
-    min-height: 100svh
+  .dot-indicators>* {
+    width: var(--space-4xl);
+    /* Set a fixed width for the dots */
+    height: var(--space-xl);
+    /* Set a fixed height for the dots (make it equal to width for a circle) */
+    border-radius: 50%;
+    border: none;
+    /* Remove default button border */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
-  .crew-details.beginnings .row img,
-  .crew-details.genesis .row img,
-  .crew-details.ryerson .row img {
-    margin-top: var(--space-2xl);
+  .crew-details {
+    padding-top: var(--space-xl);
+  }
+
+  .crew-details.beginnings,
+  .crew-details.genesis,
+  .crew-details.ryerson {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  /* This targets all direct children of those elements */
+  .crew-details.beginnings>*,
+  .crew-details.genesis>*,
+  .crew-details.ryerson>* {
+    margin-inline: auto;
+    padding-top: 0;
+    padding-inline: var(--space-xs);
+    max-width: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .crew-details.genesis>.row-img,
+  .crew-details.beginnings>.row-img,
+  .crew-details.ryerson>.row-img {
     display: block;
-    width: 200px;
+    width: 175px;
     height: auto;
     max-width: 100%;
     object-fit: cover;
     border-radius: 50%;
-    margin-inline: auto
-  }
-
-  .crew-details.genesis .row-text,
-  .crew-details.ryerson .row-text,
-  .crew-details.beginnings .row-text {
-    max-width: 100%;
     margin-inline: auto;
-    padding-inline: var(--space-xs);
-    text-align: center;
-    margin-bottom: var(--space-3xl);
   }
 }
 
