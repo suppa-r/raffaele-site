@@ -310,7 +310,7 @@ main {
   background-color: hsl(var(--clr-span));
   color: hsl(var(--clr-white));
   /* Highlight on hover/focus */
-  transform: scale(1.2);
+  transform: scale(0.8);
   /* Slightly enlarge the dot */
 }
 
@@ -330,11 +330,12 @@ main {
   overflow: hidden;
   margin-inline: auto;
   padding-inline: var(--space-3xs);
-  padding-block: var(--space-2xl);
+  padding-top: var(--space-2xl);
   min-height: 100dvh;
 
   >* {
     container-type: inline-size;
+    padding-top: var(--space-3xl);
 
   }
 }
