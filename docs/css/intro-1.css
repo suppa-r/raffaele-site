@@ -265,8 +265,12 @@ li .menu-button svg {
 }
 
 main {
-  min-height: 100dvh;
+  padding-block: var(--space-2xl);
+  padding-inline: min(1rem, 5%);
+  max-width: 100%;
+  margin-inline: auto;
   overflow: hidden;
+  position: relative;
 }
 
 .tab-list {
@@ -318,33 +322,22 @@ main {
   /* Slightly enlarge the dot */
 }
 
-.crew-details {
-  padding-top: var(--space-2xl);
-  /* or your preferred value */
-  min-height: 100dvh;
-  /* optional: ensures a minimum height */
-  overflow: hidden;
-}
+
 
 .crew-details.beginnings,
 .crew-details.genesis,
 .crew-details.ryerson {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  overflow: hidden;
+  margin-inline: auto;
+  padding-inline: var(--space-3xs);
+  min-height: 100dvh;
 
   >* {
     container-type: inline-size;
-    overflow: hidden;
-    padding: var(--space-xs) var(--space-xs);
-  }
-}
 
-/* This targets all direct children of those elements */
-.crew-details.beginnings>*,
-.crew-details.genesis>*,
-.crew-details.ryerson>* {
-  padding: 0 var(--space-3xs);
+  }
 }
 
 .crew-details.beginnings .row-img>img,
@@ -396,12 +389,9 @@ h4 {
 }
 
 @container(max-width:768px) {
-
-  header .logo p,
-  header .logo span {
-    font-size: var(--step--1);
-    width: 100%;
-    margin-inline: auto;
+  .crew-details {
+    text-align: center;
+    padding-top: var(--space-3xl);
   }
 
   .dot-indicators {
@@ -421,32 +411,8 @@ h4 {
     /* Remove border from the container */
   }
 
-  .dot-indicators>* {
-    font-size: var(--step--1);
-
-    border-radius: 50%;
-    border: none;
-    /* Remove default button border */
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  }
-
-  .crew-details {
-    padding-top: var(--space-2xl);
-    overflow: hidden;
-  }
-
   .section-title {
-    padding-inline: min(1rem, 5%);
     font-size: var(--step--1);
-  }
-
-  .crew-details.beginnings,
-  .crew-details.genesis,
-  .crew-details.ryerson {
-    display: grid;
-    grid-template-columns: 1fr;
-    text-align: center;
-    overflow: hidden;
   }
 
   .crew-details.genesis>.row-img img,
