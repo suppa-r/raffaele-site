@@ -1,6 +1,6 @@
 :root {
   --sp: 5s;
-  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
+  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
 
   --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
 
@@ -88,7 +88,7 @@ body:before {
   top: 0;
   left: 0;
   background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
-  mask: linear-gradient(-60deg, transparent 50%, white) 60%;
+  mask: linear-gradient(-60deg, transparent 50%, rgba(255, 255, 255, 1)) 60%;
   transform-style: preserve-3d;
   transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
   z-index: -1;
@@ -141,7 +141,6 @@ header .logo {
 header .logo p {
   max-width: 60ch;
   padding-left: var(--space-s);
-  padding-right: 0;
 }
 
 header .logo span {
@@ -215,7 +214,6 @@ header .logo span {
   border-radius: var(--space-s);
   color: hsl(var(--clr-dark));
   transition: background-color .2s ease-in-out;
-  /* Ensure proper syntax with a semicolon */
 }
 
 .sidebar {
@@ -278,12 +276,8 @@ main {
   display: flex;
   justify-content: center;
   gap: var(--space-xs);
-  /* Space between dots */
   width: 100%;
-  /* Full width of the container */
-  cursor: pointer;
   border: 0;
-  /* Remove border from the container */
 }
 
 .dot-indicators>* {
@@ -294,7 +288,8 @@ main {
   border-radius: 50%;
   border: none;
   /* Remove default button border */
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  will-change: transform, background-color;
 }
 
 .dot-indicators button:hover,
@@ -355,6 +350,15 @@ main {
   text-align: center;
 }
 
+/* Fallback for browsers that do not support background-position animations */
+@supports not (animation: gradient) {
+  .section-title {
+    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
+    background-size: 100%;
+  }
+}
+
+
 @keyframes gradient {
 
   0%,
@@ -374,46 +378,8 @@ h4 {
   margin-block: var(--space-2xs);
 }
 
-.crew-details.early .ya {
-  font-size: var(--step-1);
-}
 
 @container(max-width:768px) {
-  .crew-details {
-    text-align: center;
-  }
-
-  .dot-indicators {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    gap: var(--space-xs);
-    /* Space between dots */
-    width: 100%;
-    /* Full width of the container */
-    cursor: pointer;
-    border: 0;
-    /* Remove border from the container */
-  }
-
-  .crew-details.genesis>.row-img img,
-  .crew-details.early>.row-img img,
-  .crew-details.ryerson>.row-img img {
-    display: block;
-    width: 165px;
-    height: auto;
-    max-width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-inline: auto;
-  }
-}
-
-
-@container(max-width:400px) {
   .sidebar {
     width: 100%;
   }
@@ -428,6 +394,7 @@ h4 {
   .crew-details.early .row-img>img,
   .crew-details.genesis .row-img>img,
   .crew-details.ryerson .row-img>img {
+    display: block;
     width: 140px;
     height: auto;
     max-width: 100%;
