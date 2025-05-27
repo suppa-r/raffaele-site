@@ -7,7 +7,7 @@ newNews = function () {
   const panelClass = this.getAttribute('aria-controls');
   const panel = document.querySelector(`.crew-details.${panelClass}`);
   if (panel) {
-    panel.hidden = false;
+    panel.display = true;
     panel.tabIndex = 0;
     panel.focus();
   }
