@@ -322,8 +322,6 @@ main {
   /* Slightly enlarge the dot */
 }
 
-
-
 .crew-details.beginnings,
 .crew-details.genesis,
 .crew-details.ryerson {
@@ -332,6 +330,7 @@ main {
   overflow: hidden;
   margin-inline: auto;
   padding-inline: var(--space-3xs);
+  padding-block: var(--space-2xl);
   min-height: 100dvh;
 
   >* {
