@@ -340,4 +340,9 @@ main {
     opacity: 1;
     transition-delay: calc(.15s * var(--i));
   }
+
+  .intro {
+    padding: var(--space-l) var(--space-xs);
+    text-align: center;
+  }
 }
