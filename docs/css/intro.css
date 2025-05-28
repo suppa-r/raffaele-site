@@ -123,21 +123,6 @@ body:before {
   height: 100%;
 }
 
-.header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
-  transition: .5s;
-}
-
-.header:hover::after {
-  left: 100%;
-}
-
 .logo p {
   font-size: var(--step--1);
   color: #fff;
@@ -150,10 +135,47 @@ body:before {
   padding-right: var(--space-xs);
 }
 
-.navbar a {
-  font-size: var(--step--1);
+.navbar {
+  display: flex;
+  gap: var(--space-m);
+  justify-content: flex-end;
+  transition: height .3s ease-in;
+  padding: var(--space-xs);
+}
+
+.navbar li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: hsl(var(--clr-white));
-  margin-left: 2.5rem;
+  position: relative;
+}
+
+.navbar li a {
+  font-size: var(--step-0);
+  color: hsl(var(--clr-white));
+  text-decoration: none;
+  padding: var(--space-s) var(--space-s);
+  transition: color .3s ease-in-out;
+}
+
+.navbar li a:hover {
+  color: hsl(var(--clr-accent));
+}
+
+.navbarli a span {
+  color: hsl(var(--clr-white));
+  font-size: var(--step-0);
+  padding-top: var(--space-xs);
+  transition: all .3s ease-in-out;
+}
+
+.navbar li a svg {
+  color: hsl(var(--clr-accent));
+  width: var(--space-l);
+  height: var(--space-l);
+  transition: all .3s ease-in-out;
 }
 
 .check {
