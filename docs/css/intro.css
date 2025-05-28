@@ -160,7 +160,7 @@ body:before {
   margin-left: 2.5rem;
 }
 
-#check {
+.check {
   display: none;
 }
 
@@ -277,11 +277,8 @@ main {
   }
 }
 
-@media (max-width: 768px) {
-  .header {
-    padding: 1.3rem 5%;
-  }
 
+@media (max-width: 768px) {
   .icons {
     display: inline-flex;
     align-items: center;
@@ -289,21 +286,23 @@ main {
     color: #fff;
     position: relative;
     z-index: 101;
+    cursor: pointer;
   }
 
-  #menu-icon {
+  .menu-icon {
     display: block;
   }
 
-  #close-icon {
+  .close-icon {
     display: none;
   }
 
-  #check:checked+.icons #menu-icon {
+  /* Show/hide icons based on nav-toggle state */
+  .nav-toggle:checked+.icons .menu-icon {
     display: none;
   }
 
-  #check:checked+.icons #close-icon {
+  .nav-toggle:checked+.icons .close-icon {
     display: block;
   }
 
@@ -313,7 +312,6 @@ main {
     left: 0;
     right: 0;
     width: 100vw;
-    /* Full viewport width */
     height: 0;
     background: rgba(0, 0, 0, .1);
     backdrop-filter: blur(50px);
@@ -322,7 +320,7 @@ main {
     transition: height .3s ease;
   }
 
-  #check:checked~.navbar {
+  .nav-toggle:checked~.navbar {
     height: 100dvh;
   }
 
@@ -336,7 +334,7 @@ main {
     transition: .3s ease;
   }
 
-  #check:checked~.navbar a {
+  .nav-toggle:checked~.navbar a {
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(.15s * var(--i));
