@@ -1,5 +1,6 @@
 :root {
   --sp: 5s;
+
   --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
@@ -317,7 +318,7 @@ main {
     backdrop-filter: blur(50px);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
     overflow: hidden;
-    transition: height .3s ease;
+    transition: height .3s ease-in;
   }
 
   .nav-toggle:checked~.navbar {
@@ -331,7 +332,7 @@ main {
     text-align: center;
     transform: translateY(-50px);
     opacity: 0;
-    transition: .3s ease;
+    transition: .3s ease-in-out;
   }
 
   .nav-toggle:checked~.navbar a {
