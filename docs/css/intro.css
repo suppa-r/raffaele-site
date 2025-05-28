@@ -342,7 +342,7 @@ main {
   }
 
   .intro {
-    padding: var(--space-l) var(--space-xs);
+    margin-top: var(--space-3xl);
     text-align: center;
   }
 }
