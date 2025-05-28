@@ -121,9 +121,6 @@ body:before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .1);
-  backdrop-filter: blur(50px);
-  z-index: -1;
 }
 
 .header::after {
@@ -154,10 +151,8 @@ body:before {
 }
 
 .navbar a {
-  font-size: 1.15rem;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
+  font-size: var(--step--1);
+  color: hsl(var(--clr-white));
   margin-left: 2.5rem;
 }
 
@@ -168,15 +163,15 @@ body:before {
 .icons {
   position: absolute;
   right: 5%;
-  font-size: 2.8rem;
-  color: #fff;
+  /*font-size: 2.8rem;*/
+  color: hsl(var(--clr-white));
   cursor: pointer;
   display: none;
 }
 
 .icons svg {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--space-l);
+  height: var(--space-l);
   cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -284,7 +279,7 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    color: #fff;
+    color: hsl(var(--clr-white));
     position: relative;
     z-index: 101;
     cursor: pointer;
@@ -316,7 +311,7 @@ main {
     height: 0;
     background: rgba(0, 0, 0, .1);
     backdrop-filter: blur(50px);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.688);
     overflow: hidden;
     transition: height .3s ease-in;
   }
@@ -327,7 +322,6 @@ main {
 
   .navbar a {
     display: block;
-    font-size: 1.1rem;
     margin: 1.5rem 0;
     text-align: center;
     transform: translateY(-50px);
@@ -339,10 +333,5 @@ main {
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(.15s * var(--i));
-  }
-
-  .intro {
-    margin-top: var(--space-3xl);
-    text-align: center;
   }
 }
