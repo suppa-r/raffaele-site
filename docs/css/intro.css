@@ -191,11 +191,8 @@ main {
 }
 
 .intro {
-
   display: flex;
   flex-direction: column;
-  padding-bottom: var(--space-8xl-9xl);
-  color: hsl(var(--clr-white));
   text-align: center
 }
 
