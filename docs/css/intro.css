@@ -95,31 +95,44 @@ body:before {
   overflow: hidden
 }
 
-.header {
-  padding: 0 var(--space-m);
+header {
+  position: sticky;
   display: flex;
   justify-content: space-between;
   font-size: var(--step--1);
 }
 
-.logo p {
+.logo {
   font-size: var(--step-0);
+  letter-spacing: 0.05em;
   color: hsl(var(--clr-white));
+  text-align: center;
+  margin-block: var(--space-xs);
+  padding-left: var(--space-s);
 }
 
+
 .logo span {
-  font-size: var(--step-0);
   color: hsl(var(--clr-span));
-  padding-right: var(--space-xs);
+  /* fallback to blue if --clr-span not set */
+  margin: 0 var(--space-2xs) 0 0.1em;
+  letter-spacing: 0.02em;
+  transition: color 0.3s;
 }
 
 .navbar {
   display: flex;
-  gap: var(--space-m);
-  justify-content: flex-end;
-  list-style: none;
+  flex-direction: row;
   transition: height .3s ease-in;
-  padding: 0 var(--space-xs);
+  padding-inline: var(--space-s);
+  margin-block: var(--space-xs);
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin-inline: auto;
 }
 
 .navbar li {
@@ -130,7 +143,7 @@ body:before {
   display: flex;
   flex-direction: column;
   margin-inline: auto;
-  padding: var(--space-2xs) var(--space-s);
+  padding: 0 var(--space-s);
 }
 
 .navbar li a span {
@@ -148,45 +161,13 @@ body:before {
   background-size: 100% 100%;
 }
 
-.navbar li a::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: 0;
-  width: -20px;
-  height: 2px;
-  background-size: 300%;
-  transition: width 0.3s ease;
-}
-
-.navbar li a::after {
-  content: "";
-  position: absolute;
-  bottom: -25px;
-  right: 0;
-  width: -20px;
-  height: 2px;
-  background-size: 300%;
-  transition: width 0.3s ease;
-}
-
-.navbar a :focus,
-.navbar a:hover {
-  background-color: hsl(var(--clr-white) / .1);
-  border-radius: var(--space-s);
-  color: hsl(var(--clr-dark));
-  transition: background-color .2s ease-in-out;
-}
-
+.navbar li a:focus,
 .navbar li a:hover {
-  color: hsl(var(--clr-accent));
-  text-shadow: var(--shadow);
-}
-
-.navbar li a:hover::before,
-.navbar li a:hover::after {
-  width: 100%;
-  animation: gradient 4s linear infinite;
+  background-color: hsl(var(--clr-span));
+  border-radius: var(--space-s);
+  color: hsl(var(--clr-white));
+  transition: background-color .2s ease-in-out;
+  transform: translateY(-2px);
 }
 
 #check {
@@ -312,17 +293,6 @@ main {
   z-index: 100;
 }
 
-.navbar a {
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  padding: 0 var(--space-s);
-  font-size: 1.15rem;
-  color: #fff;
-  text-decoration: none;
-  margin-left: 2.5rem;
-}
-
 
 
 #check {
@@ -391,10 +361,17 @@ main {
     transition: .3s ease;
   }
 
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
   #check:checked~.navbar {
     height: 100dvh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-bottom: var(--space-7xl);
   }
