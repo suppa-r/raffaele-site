@@ -62,28 +62,28 @@
 	--font-variation-settings: "wdth" 100, "GRAD" -50;
 
 	--ff-monoton-regular: "Monoton", sans-serif;
-	--font-weight-regular: 400;
-	--font-style-regular: normal;
+	--font-wight-regular: 400;
+	--font-style-regular: normal
 }
 
 .text-dark {
-	color: hsl(var(--clr-dark));
+	color: hsl(var(--clr-dark))
 }
 
 .text-light {
-	color: hsl(var(--clr-light));
+	color: hsl(var(--clr-light))
 }
 
 .text-span {
-	color: hsl(var(--clr-span));
+	color: hsl(var(--clr-span))
 }
 
 .text-white {
-	color: hsl(var(--clr-white));
+	color: hsl(var(--clr-white))
 }
 
 .text-accent {
-	color: hsl(var(--clr-accent));
+	color: hsl(var(--clr-accent))
 }
 
 .sr-only {
@@ -103,7 +103,7 @@
 .skip-to-content,
 .wrapper,
 body>* {
-	margin-inline: auto;
+	margin-inline: auto
 }
 
 .skip-to-content {
@@ -131,7 +131,7 @@ body>* {
 }
 
 .skip-to-content:focus {
-	transform: translateY(0);
+	transform: translateY(0)
 }
 
 html {
@@ -143,12 +143,12 @@ html {
 	font-weight: var(--font-weight);
 	font-optical-sizing: var(--font-optical-sizing);
 	font-style: var(--font-style);
-	font-feature-settings: var(--font-variation-settings);
+	font-feature-settings: var(--font-variation-settings)
 }
 
 body>* {
 	container-type: inline-size;
-	max-inline-size: 100%;
+	max-inline-size: 100%
 }
 
 .wrapper {
@@ -199,7 +199,7 @@ body>* {
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	text-shadow: 0 0 7px hsl(var(--clr-white));
+	text-shadow: 0 0 7px hsl(var(--clr-white))
 }
 
 @keyframes show-hide {
@@ -480,6 +480,6 @@ body>* {
 
 	.text-with-animation-4,
 	.text-with-animation-5 {
-		letter-spacing: .3em;
+		letter-spacing: .3em
 	}
 }

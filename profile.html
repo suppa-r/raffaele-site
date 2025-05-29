@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <script src="./scripts/scripts.js" defer></script>
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <!-- nav -->
+    <div>
+        <div class="navbar-placeholder"></div>
+        <nav class="navbar flex">
+            <a href="#home"><img src="./assets/logo.png" alt="logo" class="animation"></a>
+            <i class="fa-solid fa-bars animation"></i>
+            <div class="nav-menu flex">
+                <i class="fa-solid fa-x animation"></i>
+                <a href="#home" class="animation">Home</a>
+                <a href="#about" class="animation">About</a>
+                <a href="#services" class="animation">Services</a>
+                <a href="#work" class="animation">Portfolio</a>
+                <a href="#contact" class="animation">Contact</a>
+            </div>
+            <a href="#contact" class="btn nav-btn animation">Contact</a>
+        </nav>
+    </div>
+
+    <!-- hero -->
+    <div class="hero flex" id="home">
+        <img src="./assets/hero-image.png" alt="web dev">
+        <h1><span class="text-effect">I'm Kalman Web Design,</span> a full stack web developer</h1>
+        <a href="./assets/Resume.pdf" class="hero-resume animation" target="_blank" rel="noopener noreferrer">Resume</a>
+    </div>
+
+    <!-- about -->
+    <section class="container flex" id="about">
+        <div class="container-title">
+            <h2>About Me</h2>
+            <img src="./assets/decoration-heading.png" alt="decoration">
+        </div>
+        <div class="about-sections flex">
+            <div class="about-left flex">
+                <img src="./assets/dev-pic.png" alt="web dev">
+            </div>
+            <div class="about-right flex">
+                <p>I am an experienced developer that loves to solve complex problems.</p>
+            </div>
+        </div>
+        <div class="about-skills">
+            <div>
+                <h3>Web Development</h3>
+                <div class="about-skill flex animation">
+                    <p>HTML & CSS</p>
+                    <hr style="width: 100%;">
+                </div>
+                <div class="about-skill flex animation">
+                    <p>PHP</p>
+                    <hr style="width: 90%;">
+                </div>
+                <div class="about-skill flex animation">
+                    <p>JavaScript & Node.js</p>
+                    <hr style="width: 85%;">
+                </div>
+                <div class="about-skill flex animation">
+                    <p>react JS</p>
+                    <hr style="width: 75%;">
+                </div>
+            </div>
+        </div>
+        <div class="about-achievements flex">
+            <div class="about-achievement flex animation">
+                <h2 class="text-effect">4+</h2>
+                <p>Years of Experience</p>
+            </div>
+            <hr>
+            <div class="about-achievement flex animation">
+                <h2 class="text-effect">20+</h2>
+                <p>Completed Projects</p>
+            </div>
+            <hr>
+            <div class="about-achievement flex animation">
+                <h2 class="text-effect">10+</h2>
+                <p>Happy Employers & Clients</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- services -->
+    <section class="container flex" id="services">
+        <div class="container-title">
+            <h2>Services</h2>
+            <img src="./assets/decoration-heading.png" alt="decoration">
+        </div>
+        <div class="grid-container">
+            <div class="services-format flex animation">
+                <h3>01</h3>
+                <h2 class="text-effect">Frontend Dev</h2>
+                <p>Utilizing Html, CSS, JavaScript, React, & more to create incredible interfaces</p>
+            </div>
+            <div class="services-format flex animation">
+                <h3>02</h3>
+                <h2 class="text-effect">Backend Dev</h2>
+                <p>Utilizing PHP & Node.js to create fullstack websites & apps</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- work -->
+    <main class="container flex" id="work">
+        <div class="container-title">
+            <h2>Portfolio</h2>
+            <img src="./assets/decoration-heading.png" alt="decoration">
+        </div>
+        <div class="grid-container">
+            <div>
+                <h4 class="work-name">Full Stack Dev</h4>
+                <a href="https://kalmanwebdesign.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/work-ex1.png" alt="work ex" class="animation">
+                </a>
+            </div>
+            <div>
+                <h4 class="work-name">WordPress</h4>
+                <a href="https://kalmanwebdesign.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/work-ex2.png" alt="work ex 2" class="animation">
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- contact -->
+    <section class="container flex" id="contact">
+        <div class="container-title">
+            <h2>Contact</h2>
+            <img src="./assets/decoration-heading.png" alt="decoration">
+        </div>
+        <div class="contact-section flex">
+            <div class="contact-left flex">
+                <h2 class="text-effect">Let's Talk</h2>
+                <p>Contact me about employment or projects</p>
+                <div class="contact-details flex">
+                    <div class="contact-detail flex">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>kalmanwebdesign@gmail.com</p>
+                    </div>
+                    <div class="contact-detail flex">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>(210) 461-6058</p>
+                    </div>
+                    <div class="contact-detail flex">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>USA</p>
+                    </div>
+                </div>
+            </div>
+            <form action="https://formsubmit.co/kalmanwebdesign@gmail.com" method="POST" class="contact-right flex">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <label for="message">Enter a message</label>
+                <textarea name="message" id="message" placeholder="Leave a message"></textarea>
+            
+                <button type="submit" class="btn animation">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="flex">
+        <div class="footer-top flex">
+            <div class="footer-top-left">
+                <img src="./assets/logo.png" alt="logo">
+            </div>
+            <div class="footer-top-right">
+                <p>I'm a fullstack developer & Instructional Designer with 4+ years of experience.</p>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-bottom">
+            <p>©Kalman Web Design. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
