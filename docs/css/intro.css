@@ -365,6 +365,9 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: var(--space-2xl) 0;
+    margin: 0;
+    gap: var(--space-l);
   }
 
   #check:checked~.navbar {
