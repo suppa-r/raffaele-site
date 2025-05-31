@@ -1,7 +1,8 @@
 :root {
   --sp: 5s;
-  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
 
+  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
+  --glass-bg: rgba(255, 255, 255, 0.05);
   --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
 
   --clr-dark: 0, 0%, 0%;
@@ -43,27 +44,33 @@
   --font-variation-settings: "wdth" 100, "GRAD" -50;
 
   --ff-monoton-regular: "Monoton", sans-serif;
-  --font-weight-regular: 400;
-  --font-style-regular: normal;
+  --font-wight-regular: 400;
+  --font-style-regular: normal
 }
 
 .text-dark {
-  color: hsl(var(--clr-dark));
+  color: hsl(var(--clr-dark))
 }
 
 .text-light {
-  color: hsl(var(--clr-light));
+  color: hsl(var(--clr-light))
+}
+
+.text-span {
+  color: hsl(var(--clr-span))
 }
 
 .text-white {
-  color: hsl(var(--clr-white));
+  color: hsl(var(--clr-white))
 }
 
 .text-accent {
-  color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-accent))
 }
 
 html {
+  scroll-behavior: smooth;
+  line-height: 1.2;
   color-scheme: dark only;
   color: hsl(var(--clr-white));
   font-family: var(--ff-roboto-serif);
@@ -76,6 +83,8 @@ html {
 
 body>* {
   container-type: inline-size;
+  max-inline-size: 100%;
+  margin-inline: auto
 }
 
 body:before {
@@ -93,16 +102,6 @@ body:before {
   transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
   z-index: -1;
   overflow: hidden;
-}
-
-header .logo span {
-  color: hsl(var(--clr-span));
-}
-
-.dot-indicators button,
-.skip-to-content {
-  background: hsl(var(--clr-white));
-  color: hsl(var(--clr-dark));
 }
 
 .sr-only {
@@ -130,21 +129,27 @@ header .logo span {
 
 header {
   position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
 }
 
 header .logo {
-  max-width: 100%;
-}
-
-header .logo p {
-  max-width: 60ch;
+  font-size: var(--step-0);
+  letter-spacing: 0.05em;
+  margin-block: var(--space-3xs);
   padding-left: var(--space-s);
 }
 
-header .logo span {
-  padding-right: var(--space-s);
+header .logo p {
+  color: hsl(var(--clr-white));
+  padding-left: var(--space-s);
+}
+
+header .logo p span {
+  color: hsl(var(--clr-span));
+  padding-left: var(--space-2xs);
 }
 
 .topbar {
@@ -221,11 +226,6 @@ header .logo span {
   z-index: 9999;
 }
 
-header .logo p,
-header .logo span {
-  padding-block: var(--space-s);
-}
-
 .sidebar a,
 .topbar a .topbar-1 a {
   text-decoration: none;
@@ -277,7 +277,6 @@ main {
   justify-content: center;
   gap: var(--space-xs);
   width: 100%;
-  border: 0;
 }
 
 .dot-indicators>* {
