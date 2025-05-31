@@ -152,110 +152,55 @@ header .logo p span {
   padding-left: var(--space-2xs);
 }
 
-.topbar {
-  top: 0;
-  right: 2%;
+.navbar {
   display: flex;
-  padding-inline: var(--space-s);
-  z-index: 9999;
   flex-direction: row;
-}
-
-.topbar ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  transition: height .3s ease-in;
   padding-inline: var(--space-s);
-  margin-inline: auto;
-  list-style-type: none;
-  backdrop-filter: blur(10px);
+  margin-block: var(--space-xs);
+  font-size: var(--step--1);
 }
 
-.menu-button,
-.sidebar {
-  display: none;
-}
-
-.sidebar,
-.skip-to-content {
-  margin-inline: auto;
-}
-
-.topbar ul {
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, .1);
+.navbar ul {
+  display: flex;
   justify-content: space-between;
+  list-style: none;
+  margin-inline: auto;
 }
 
-.sidebar li,
-.topbar a {
-  padding: 0 var(--space-s);
+.navbar li {
   display: flex;
 }
 
-.sidebar li svg,
-.topbar li svg {
+.navbar li a {
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  padding: 0 var(--space-s);
+}
+
+.navbar li a span {
+  color: hsl(var(--clr-white));
+  padding-top: var(--space-2xs);
+  transition: all .3s ease-in-out;
+}
+
+.navbar li a svg {
   display: inline-block;
   width: var(--space-l);
   height: var(--space-l);
   margin-inline: auto;
-  margin-bottom: var(--space-xs);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
-.topbar a {
-  flex-direction: column;
-  align-items: center;
-}
-
-.sidebar,
-.sidebar li {
-  flex-direction: column;
-}
-
-.topbar a :focus,
-.topbar a:hover {
-  background-color: hsl(var(--clr-white) / .1);
+.navbar li a:focus,
+.navbar li a:hover {
+  background-color: hsl(var(--clr-span));
   border-radius: var(--space-s);
-  color: hsl(var(--clr-dark));
+  color: hsl(var(--clr-white));
   transition: background-color .2s ease-in-out;
-}
-
-.sidebar {
-  left: 50%;
-  z-index: 9999;
-}
-
-.sidebar a,
-.topbar a .topbar-1 a {
-  text-decoration: none;
-}
-
-.sidebar {
-  top: 10%;
-  height: 100svh;
-}
-
-.sidebar li {
-  margin: 0 var(--space-s);
-}
-
-.sidebar a {
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  padding: var(--space-s) var(--space-s);
-}
-
-.sidebar li img {
-  width: var(--space-l);
-  height: var(--space-l);
-  margin-inline: auto;
-}
-
-li .menu-button svg {
-  width: 48px;
-  height: 48px;
+  transform: translateY(-2px);
 }
 
 main {
@@ -263,56 +208,115 @@ main {
   overflow: hidden;
 }
 
-.tab-list {
-  gap: var(--space-m);
-}
-
-.dot-indicators {
-  position: fixed;
-  top: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  gap: var(--space-xs);
-  width: 100%;
-}
-
-.dot-indicators>* {
+.profile-button {
   width: var(--space-4xl);
-  /* Set a fixed width for the dots */
-  height: var(--space-xl);
-  /* Set a fixed height for the dots (make it equal to width for a circle) */
+  height: var(--space-2xl);
   border-radius: 50%;
-  border: none;
-  /* Remove default button border */
-  transition: transform 0.3s ease-in-out;
-  will-change: transform, background-color;
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
+  position: fixed;
+  top: 10%;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 1000;
+  display: flex;
+  /* Add this */
+  align-items: center;
+  /* Add this */
+  justify-content: center;
+  /* Add this */
+  text-align: center;
+  /* Optional, for multi-line text */
 }
 
-.dot-indicators button:hover,
-.dot-indicators button:focus {
-  background-color: hsl(var(--clr-span));
+.profile-button:hover,
+.profile-button:focus {
+  background: hsl(var(--clr-span));
+  transition: background-color .3s ease-in-out, transform .3s ease-in-out;
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
+  transform: translateX(50%) scale(1.05);
+}
+
+.profile-navbar {
+  display: none;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  max-width: 900px;
+  transition: all .3s ease-in-out;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  position: fixed;
+  overflow: hidden;
+  margin-inline: auto;
+  padding-inline: var(--space-3xs);
+}
+
+.profile-navbar {
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  height: 100dvh;
+  backdrop-filter: blur(40px);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.profile-navbar ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-inline: auto;
+  gap: var(--space-xs);
+  padding-top: var(--space-5xl);
+}
+
+.profile-navbar li {
+  display: flex;
+}
+
+.profile-navbar li a {
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  padding: 0 var(--space-s);
+}
+
+.profile-navbar li a span {
   color: hsl(var(--clr-white));
-  /* Highlight on hover/focus */
-  transform: scale(0.8);
-  /* Slightly enlarge the dot */
+  padding-top: var(--space-2xs);
+  transition: all .3s ease-in-out;
 }
 
-.dot-indicators [aria-selected="true"] {
+.profile-navbar li a svg {
+  display: inline-block;
+  width: var(--space-l);
+  height: var(--space-l);
+  margin-inline: auto;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.profile-navbar li a:hover {
   background-color: hsl(var(--clr-span));
+  border-radius: var(--space-s);
   color: hsl(var(--clr-white));
-  /* Highlight on hover/focus */
-  transform: scale(1);
-  /* Slightly enlarge the dot */
+  transition: background-color .2s ease-in-out;
+  transform: translateY(-2px);
 }
 
-.crew-details.early,
+
+
 .crew-details.genesis,
+.crew-details.beginnings,
 .crew-details.ryerson {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  display: none;
+  /*display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));*/
   align-content: center;
   overflow: hidden;
   margin-inline: auto;
@@ -327,7 +331,7 @@ main {
 .crew-details.early .row-img>img,
 .crew-details.genesis .row-img>img,
 .crew-details.ryerson .row-img>img {
-  display: block;
+  display: none;
   width: 400px;
   height: auto;
   max-width: 100%;
