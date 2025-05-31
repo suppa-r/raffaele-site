@@ -96,7 +96,7 @@ body>* {
 .quote {
 	text-align: center;
 	color: hsl(var(--clr-white));
-	margin-top: var(--space-s)
+	margin-top: var(--space-m);
 }
 
 .author,
