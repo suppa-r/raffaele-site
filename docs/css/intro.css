@@ -11,14 +11,12 @@
   --clr-white: 0, 0%, 100%;
   --clr-accent: 231, 77%, 90%;
 
-
   --step--1: clamp(0.8333rem, 0.8101rem + 0.1159cqi, 0.9rem);
   --step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
   --step-1: clamp(1.2rem, 1.1283rem + 0.3587cqi, 1.4063rem);
   --step-2: clamp(1.44rem, 1.3295rem + 0.5527cqi, 1.7578rem);
   --step-3: clamp(1.728rem, 1.5648rem + 0.8161cqi, 2.1973rem);
   --step-4: clamp(2.0736rem, 1.8395rem + 1.1704cqi, 2.7466rem);
-
 
   --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087cqi, 0.3125rem);
   --space-2xs: clamp(0.5rem, 0.4783rem + 0.1087cqi, 0.5625rem);
@@ -45,7 +43,6 @@
   --font-style: italic;
   --font-variation-settings: "wdth" 100, "GRAD" -50;
 
-
   --ff-monoton-regular: "Monoton", sans-serif;
   --font-wight-regular: 400;
   --font-style-regular: normal
@@ -59,6 +56,10 @@
   color: hsl(var(--clr-light))
 }
 
+.text-span {
+  color: hsl(var(--clr-span))
+}
+
 .text-white {
   color: hsl(var(--clr-white))
 }
@@ -68,6 +69,8 @@
 }
 
 html {
+  scroll-behavior: smooth;
+  line-height: 1.2;
   color-scheme: dark only;
   color: hsl(var(--clr-white));
   font-family: var(--ff-roboto-serif);
@@ -75,7 +78,13 @@ html {
   font-optical-sizing: var(--font-optical-sizing);
   font-style: var(--font-style);
   font-feature-settings: var(--font-variation-settings);
-  font-size: var(--step--1)
+  font-size: var(--step--1);
+}
+
+body>* {
+  container-type: inline-size;
+  max-inline-size: 100%;
+  margin-inline: auto
 }
 
 body:before {
@@ -99,7 +108,6 @@ header {
   position: sticky;
   display: flex;
   justify-content: space-between;
-  font-size: var(--step--1);
 }
 
 .logo {
@@ -126,6 +134,7 @@ header {
   transition: height .3s ease-in;
   padding-inline: var(--space-s);
   margin-block: var(--space-xs);
+  font-size: var(--step--1);
 }
 
 .navbar ul {
@@ -206,10 +215,13 @@ main {
   display: grid;
   grid-template-rows: 1fr;
   text-align: center;
-  padding-inline: var(--space-xs);
+  margin: var(--space-l) var(--space-2xs) 0 var(--space-2xs);
+  margin-inline: auto;
 }
 
 .intro p {
+  font-size: var(--step--1);
+  color: hsl(var(--clr-white));
   margin-block: 0.12em
 }
 
