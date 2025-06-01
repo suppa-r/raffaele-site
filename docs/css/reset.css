@@ -13,8 +13,8 @@
 /* min body height */
 body {
 	/* Set a minimum height to prevent content from being cut off */
-	min-height: 100svh;
-	min-block-size: 100svh;
+	min-height: 100dvh;
+	min-block-size: 100dvh;
 	/* Set a minimum height to prevent content from being cut off */
 	line-height: 1.25;
 	overflow: hidden;
@@ -92,7 +92,7 @@ p {
 	line-height: 1.3;
 	letter-spacing: 0.04em;
 	text-rendering: optimizeLegibility;
-	text-wrap: pretty;
+	text-wrap: balance;
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	hyphens: auto;
