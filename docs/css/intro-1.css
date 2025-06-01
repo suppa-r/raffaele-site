@@ -391,8 +391,6 @@ main {
   margin-inline: auto;
 }
 
-
-
 @keyframes gradient {
 
   0%,
@@ -432,7 +430,7 @@ main {
   .crew-details.early .show.row-text,
   .crew-details.ryerson .show.row-text {
     margin-inline: auto;
-    padding: var(--space-l);
+    padding: var(--space-s);
   }
 
 
