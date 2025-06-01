@@ -81,12 +81,6 @@ html {
   font-size: var(--step--1);
 }
 
-body>* {
-  container-type: inline-size;
-  max-inline-size: 100%;
-  margin-inline: auto
-}
-
 body:before {
   position: fixed;
   opacity: 1;
@@ -157,8 +151,8 @@ header .logo p span {
   flex-direction: row;
   transition: height .3s ease-in;
   padding-inline: var(--space-s);
-  margin-block: var(--space-xs);
   font-size: var(--step--1);
+  margin-block: var(--space-3xs);
 }
 
 .navbar ul {
@@ -170,6 +164,10 @@ header .logo p span {
 
 .navbar li {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline: auto;
+  padding: var(--space-s) var(--space-m);
 }
 
 .navbar li a {
@@ -206,6 +204,7 @@ header .logo p span {
 main {
   margin-inline: auto;
   overflow: hidden;
+  min-height: 100dvh;
 }
 
 .profile-button {
@@ -240,30 +239,27 @@ main {
 }
 
 .profile-navbar {
-  display: none;
-  flex-direction: column;
-  top: 0;
-  right: 0;
-  max-width: 900px;
-  transition: all .3s ease-in-out;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(40px);
   box-shadow: var(--shadow);
+  border-radius: var(--space-2xl);
+  padding: var(--space-3xs) var(--space-2xs);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  /* Initially hidden */
+}
+
+.profile-navbar.show {
+  display: flex;
+  width: 100%;
+  min-height: 100dvh;
+  transition: all .3s ease-in-out;
   z-index: 1000;
   position: fixed;
   overflow: hidden;
-  margin-inline: auto;
-  padding-inline: var(--space-3xs);
-}
-
-.profile-navbar {
-  display: none;
-  width: 100%;
-  max-width: 100%;
-  height: 100dvh;
-  backdrop-filter: blur(40px);
-  box-shadow: var(--shadow);
-  z-index: 1000;
-  flex-direction: column;
 }
 
 .profile-navbar ul {
@@ -271,19 +267,28 @@ main {
   flex-direction: column;
   list-style: none;
   margin-inline: auto;
-  gap: var(--space-xs);
-  padding-top: var(--space-5xl);
+  margin-block: var(--space-2xl);
 }
 
 .profile-navbar li {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline: auto;
+  padding: var(--space-s) var(--space-m);
+  width: var(--space-5xl);
+  /* Add this line */
+  box-sizing: border-box;
+  /* Ensures padding is included in width */
 }
 
-.profile-navbar li a {
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  padding: 0 var(--space-s);
+.profile-navbar li:hover {
+  border-radius: var(--space-s);
+  background: hsl(var(--clr-span));
+  transition: background-color .3s ease-in, transform .3s ease-in;
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
+  transform: translateX(10%) scale(1.2);
 }
 
 .profile-navbar li a span {
@@ -302,21 +307,20 @@ main {
 }
 
 .profile-navbar li a:hover {
-  background-color: hsl(var(--clr-span));
   border-radius: var(--space-s);
-  color: hsl(var(--clr-white));
-  transition: background-color .2s ease-in-out;
-  transform: translateY(-2px);
+  background: hsl(var(--clr-span));
+  transition: background-color .3s ease-in, transform .3s ease-in;
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
+  transform: translateX(10%) scale(1.2);
 }
-
-
 
 .crew-details.genesis,
 .crew-details.beginnings,
+.crew-details.early,
 .crew-details.ryerson {
-  display: none;
-  /*display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));*/
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   align-content: center;
   overflow: hidden;
   margin-inline: auto;
@@ -328,10 +332,15 @@ main {
   }
 }
 
+.crew-details .row-img {
+  display: flex;
+  flex-direction: column;
+}
+
 .crew-details.early .row-img>img,
 .crew-details.genesis .row-img>img,
 .crew-details.ryerson .row-img>img {
-  display: none;
+  display: block;
   width: 400px;
   height: auto;
   max-width: 100%;
@@ -349,7 +358,7 @@ main {
   animation: 3s linear infinite gradient;
   background-size: 350%;
   margin-inline: auto;
-  padding-inline: min(1rem, 5%);
+  /*padding-inline: min(1rem, 5%);*/
   text-align: center;
 }
 
@@ -374,18 +383,7 @@ main {
   }
 }
 
-.crew-details.early h1,
-h2,
-h4 {
-  font-size: var(--step-0);
-  margin-block: var(--space-2xs);
-}
-
-
 @container(max-width:768px) {
-  .sidebar {
-    width: 100%;
-  }
 
   .crew-details.early,
   .crew-details.genesis,
