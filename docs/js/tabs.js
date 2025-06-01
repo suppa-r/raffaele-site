@@ -53,8 +53,6 @@ function changeTabPanel(e) {
     hideContent(mainContainer, '[role="tabpanel"]');
     showContent(mainContainer, [`#${targetPanel}`]);
     
-    hideContent(mainContainer, 'picture');
-    showContent(mainContainer, [`#${targetImage}`]);
 }
 
 function hideContent(parent, content) {

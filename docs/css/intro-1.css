@@ -146,61 +146,6 @@ header .logo p span {
   padding-left: var(--space-2xs);
 }
 
-.navbar {
-  display: flex;
-  flex-direction: row;
-  transition: height .3s ease-in;
-  padding-inline: var(--space-s);
-  font-size: var(--step--1);
-  margin-block: var(--space-3xs);
-}
-
-.navbar ul {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  margin-inline: auto;
-}
-
-.navbar li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-inline: auto;
-  padding: var(--space-s) var(--space-m);
-}
-
-.navbar li a {
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  padding: 0 var(--space-s);
-}
-
-.navbar li a span {
-  color: hsl(var(--clr-white));
-  padding-top: var(--space-2xs);
-  transition: all .3s ease-in-out;
-}
-
-.navbar li a svg {
-  display: inline-block;
-  width: var(--space-l);
-  height: var(--space-l);
-  margin-inline: auto;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.navbar li a:focus,
-.navbar li a:hover {
-  background-color: hsl(var(--clr-span));
-  border-radius: var(--space-s);
-  color: hsl(var(--clr-white));
-  transition: background-color .2s ease-in-out;
-  transform: translateY(-2px);
-}
-
 main {
   margin-inline: auto;
   overflow: hidden;
@@ -239,7 +184,12 @@ main {
 .profile-button:hover,
 .profile-button:focus {
   background: hsl(var(--clr-span));
-  transition: background-color .3s ease-in-out, transform .3s ease-in-out;
+  transition: background-color .3s ease-in-out, transform .3s ease-in-out, box-shadow .3s ease-in-out;
+  transform: translateX(-50%) translateY(-5px);
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: calc(.15s * var(--i));
+  border-radius: var(--space-s);
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
 }
@@ -253,18 +203,55 @@ main {
   z-index: 1000;
   overflow: hidden;
   backdrop-filter: blur(40px);
+  top: 0;
+  transition: background-color .3s ease-in-out, transform .3s ease-in-out, box-shadow .3s ease-in-out;
+  transform: translateX(50%) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: calc(.15s * var(--i));
+  color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+
+.profile-navbar ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-inline: auto;
+  list-style: none;
+  gap: var(--space-m);
+}
+
+.profile-navbar.show::before {
   position: fixed;
+  opacity: 1;
+  pointer-events: all;
+  content: "";
+  width: 100%;
+  height: 100dvh;
   top: 0;
   left: 0;
-  opacity: 0;
-  transition: opacity .3s ease-out, translate .3s ease-out;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
+  mask: linear-gradient(-60deg, transparent 50%, rgba(255, 255, 255, 1)) 60%;
+  transform-style: preserve-3d;
+  transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .profile-navbar.show {
   display: flex;
   opacity: 1;
-  translate: 0 0;
+  pointer-events: all;
+  margin-inline: auto;
+  transform: translateX(0) translateY(0);
+  transition: background-color .3s ease-in-out, transform .3s ease-in-out, box-shadow .3s ease-in-out;
+  backdrop-filter: blur(40px);
+  box-shadow: var(--shadow);
 }
 
 .profile-tab {
@@ -278,53 +265,28 @@ main {
   max-width: 150px;
   /* Ensures all tabs are exactly the same width */
   border-radius: var(--space-s);
-  background: hsl(var(--clr-white));
-  transition: background-color .3s ease-in, transform .3s ease-in;
+  background: hsl(var(--clr-span));
+  transition: background-color .3s ease-in-out, transform .3s ease-in-out, box-shadow .3s ease-in-out;
+  transform: translateX(-50%) translateY(-5px);
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: calc(.15s * var(--i));
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
   box-sizing: border-box;
-}
-
-.profile-navbar ul {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin-inline: auto;
-  margin-block: var(--space-2xl);
-  gap: var(--space-m);
-}
-
-.profile-navbar li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-inline: auto;
-  padding: var(--space-2xs) var(--space-m);
-  width: 200px;
-  /* Add this line for consistent width */
-  max-width: var(--space-3xl);
-  border-radius: var(--space-s);
-  background: hsl(var(--clr-white));
-  transition: background-color .3s ease-in, transform .3s ease-in;
-  color: hsl(var(--clr-dark));
-  box-shadow: var(--shadow);
-  box-sizing: border-box;
-  /* Ensures padding is included in width */
 }
 
 .profile-navbar li:hover {
   border-radius: var(--space-s);
   background: hsl(var(--clr-span));
-  transition: background-color .3s ease-in, transform .3s ease-in;
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
-  transform: translateX(10%) scale(1.2);
 }
 
 .profile-navbar li a span {
   color: hsl(var(--clr-white));
   padding-top: var(--space-2xs);
-  transition: all .3s ease-in-out;
+  transition: all .3s ease;
 }
 
 .profile-navbar li a svg {
@@ -339,10 +301,14 @@ main {
 .profile-navbar li a:hover {
   border-radius: var(--space-s);
   background: hsl(var(--clr-span));
-  transition: background-color .3s ease-in, transform .3s ease-in;
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
-  transform: translateX(10%) scale(1.2);
+  background: hsl(var(--clr-span));
+  transition: background-color .3s ease-in-out, transform .3s ease-in-out, box-shadow .3s ease-in-out;
+  transform: translateX(-50%);
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: calc(.15s * var(--i));
 }
 
 .crew-details.genesis.show,
@@ -350,7 +316,7 @@ main {
 .crew-details.early.show,
 .crew-details.ryerson.show {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   min-height: 100dvh;
   margin-inline: auto;
   overflow: hidden;
