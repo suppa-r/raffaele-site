@@ -350,28 +350,32 @@ main {
 .crew-details.early.show,
 .crew-details.ryerson.show {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding-inline: var(--space-2xs);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   min-height: 100dvh;
   margin-inline: auto;
   overflow: hidden;
-  margin-block: var(--space-2xl);
   text-align: center;
-  align-items: center;
   justify-content: center;
-
-  >* {
-    container-type: inline-size;
-  }
+  align-items: center;
 }
 
-.crew-details>* .row-img {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: auto;
+.section-title {
+  font-size: var(--step-1);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 3s linear infinite gradient;
+  margin-inline: auto;
+  margin-top: var(--space-2xl);
+}
+
+/* Fallback for browsers that do not support background-position animations */
+@supports not (animation: gradient) {
+  .section-title {
+    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
+    background-size: 100%;
+  }
 }
 
 .crew-details.beginnings .row-img>img,
@@ -387,35 +391,6 @@ main {
   margin-inline: auto;
 }
 
-.crew-details>* .row-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--space-2xs) var(--space-xs);
-}
-
-.section-title {
-  font-size: var(--step-1);
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: 3s linear infinite gradient;
-  background-size: 350%;
-  margin-inline: auto;
-  /*padding-inline: min(1rem, 5%);*/
-  text-align: center;
-}
-
-/* Fallback for browsers that do not support background-position animations */
-@supports not (animation: gradient) {
-  .section-title {
-    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
-    background-size: 100%;
-  }
-}
 
 
 @keyframes gradient {
@@ -430,23 +405,40 @@ main {
   }
 }
 
-@container(max-width:768px) {
+@media(max-width:768px) {
 
-  .crew-details.early,
-  .crew-details.genesis,
-  .drew-details.beginnings,
-  .crew-details.ryerson {
+  .crew-details.genesis.show,
+  .crew-details.beginnings.show,
+  .crew-details.early.show,
+  .crew-details.ryerson.show {
+    display: grid;
     grid-template-columns: 1fr;
-    padding-inline: var(--space-2xs);
     min-height: 100dvh;
     margin-inline: auto;
     overflow: hidden;
     text-align: center;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .crew-details.genesis .show.row-img,
+  .crew-details.beginnings .show.row-img,
+  .crew-details.early .show.row-img,
+  .crew-details.ryerson .show.row-img {
+    margin-inline: auto;
+    padding: var(--space-s);
+  }
+
+  .crew-details.genesis .show.row-text,
+  .crew-details.beginnings .show.row-text,
+  .crew-details.early .show.row-text,
+  .crew-details.ryerson .show.row-text {
+    margin-inline: auto;
+    padding: var(--space-l);
   }
 
 
+
+
+  .crew-details.beginnings.row-img>img,
   .crew-details.early .row-img>img,
   .crew-details.genesis .row-img>img,
   .crew-details.ryerson .row-img>img {
@@ -458,4 +450,5 @@ main {
     border-radius: 50%;
     margin-inline: auto;
   }
+
 }
