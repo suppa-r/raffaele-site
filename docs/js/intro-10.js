@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
       profileNavbar.classList.toggle('show');
       // Hide all crew-details articles
       document.querySelectorAll('.crew-details').forEach(tab => {
-        tab.hidden = true;
+        tab.hidden = false;
       });
     });
   }
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const target = tab.getAttribute('data-target');
       const article = document.querySelector('.crew-details.' + target);
       if (article) {
-        article.hidden = false;
+        article.hidden = true;
       }
 
       // Optionally hide the navbar after selection

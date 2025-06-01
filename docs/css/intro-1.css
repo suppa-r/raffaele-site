@@ -215,7 +215,7 @@ main {
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
   position: fixed;
-  top: 10%;
+  top: 5%;
   right: 50%;
   transform: translateX(50%);
   z-index: 1000;
@@ -237,6 +237,7 @@ main {
   box-shadow: var(--shadow);
   transform: translateX(50%) scale(1.05);
 }
+
 
 .profile-navbar {
   backdrop-filter: blur(40px);
@@ -315,6 +316,7 @@ main {
   transform: translateX(10%) scale(1.2);
 }
 
+
 .crew-details.genesis,
 .crew-details.beginnings,
 .crew-details.early,
@@ -327,14 +329,15 @@ main {
   padding-inline: var(--space-3xs);
   min-height: 100dvh;
 
+
   >* {
     container-type: inline-size;
   }
 }
 
-.crew-details .row-img {
-  display: flex;
-  flex-direction: column;
+.crew-details>* .row-text {
+  text-align: center;
+  padding: var(--space-2xs) var(--space-xs);
 }
 
 .crew-details.early .row-img>img,
@@ -385,11 +388,51 @@ main {
 
 @container(max-width:768px) {
 
+  .profile-button {
+    width: var(--space-2xl);
+    height: var(--space-xl);
+    border-radius: 50%;
+    background: hsl(var(--clr-white));
+    color: hsl(var(--clr-dark));
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 10%;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 1000;
+    display: flex;
+    /* Add this */
+    align-items: center;
+    /* Add this */
+    justify-content: center;
+    /* Add this */
+    text-align: center;
+    /* Optional, for multi-line text */
+  }
+
+  .profile-button:hover,
+  .profile-button:focus {
+    background: hsl(var(--clr-span));
+    transition: background-color .3s ease-in-out, transform .3s ease-in-out;
+    color: hsl(var(--clr-dark));
+    box-shadow: var(--shadow);
+    transform: translateX(50%) scale(1.05);
+  }
+
+
+
   .crew-details.early,
   .crew-details.genesis,
+  .drew-details.beginnings,
   .crew-details.ryerson {
     grid-template-columns: 1fr;
     padding-inline: var(--space-2xs);
+    min-height: 100dvh;
+    margin-inline: auto;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 
   .crew-details.early .row-img>img,
