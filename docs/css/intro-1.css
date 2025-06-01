@@ -242,8 +242,6 @@ main {
 .profile-navbar {
   backdrop-filter: blur(40px);
   box-shadow: var(--shadow);
-  border-radius: var(--space-2xl);
-  padding: var(--space-3xs) var(--space-2xs);
   position: fixed;
   top: 0;
   left: 0;
@@ -263,12 +261,31 @@ main {
   overflow: hidden;
 }
 
+.profile-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline: auto;
+  padding: var(--space-s) var(--space-m);
+  width: 200px;
+  /* Add this line for consistent width */
+  max-width: var(--space-4xl);
+  border-radius: var(--space-s);
+  background: hsl(var(--clr-white));
+  transition: background-color .3s ease-in, transform .3s ease-in;
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  /* Ensures padding is included in width */
+}
+
 .profile-navbar ul {
   display: flex;
   flex-direction: column;
   list-style: none;
   margin-inline: auto;
   margin-block: var(--space-2xl);
+  gap: var(--space-m);
 }
 
 .profile-navbar li {
@@ -276,9 +293,15 @@ main {
   flex-direction: column;
   justify-content: center;
   margin-inline: auto;
-  padding: var(--space-s) var(--space-m);
-  width: var(--space-5xl);
-  /* Add this line */
+  padding: var(--space-xs) var(--space-s);
+  width: 130px;
+  /* Add this line for consistent width */
+  max-width: var(--space-2xl);
+  border-radius: var(--space-s);
+  background: hsl(var(--clr-white));
+  transition: background-color .3s ease-in, transform .3s ease-in;
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
   box-sizing: border-box;
   /* Ensures padding is included in width */
 }
@@ -316,30 +339,47 @@ main {
   transform: translateX(10%) scale(1.2);
 }
 
+.profile-navbar {
+  display: none;
+}
+
+.profile-navbar.show {
+  display: block;
+}
 
 .crew-details.genesis,
 .crew-details.beginnings,
 .crew-details.early,
 .crew-details.ryerson {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  align-content: center;
-  overflow: hidden;
-  margin-inline: auto;
-  padding-inline: var(--space-3xs);
-  min-height: 100dvh;
+  display: none;
+}
 
+.crew-details.genesis.show,
+.crew-details.beginnings.show,
+.crew-details.early.show,
+.crew-details.ryerson.show {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding-inline: var(--space-2xs);
+  min-height: 100dvh;
+  margin-inline: auto;
+  overflow: hidden;
 
   >* {
     container-type: inline-size;
   }
 }
 
-.crew-details>* .row-text {
-  text-align: center;
-  padding: var(--space-2xs) var(--space-xs);
+.crew-details>* .row-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
 }
 
+.crew-details.beginnings .row-img>img,
 .crew-details.early .row-img>img,
 .crew-details.genesis .row-img>img,
 .crew-details.ryerson .row-img>img {
@@ -350,6 +390,15 @@ main {
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
+}
+
+.crew-details>* .row-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2xs) var(--space-xs);
 }
 
 .section-title {
@@ -388,36 +437,6 @@ main {
 
 @container(max-width:768px) {
 
-  .profile-button {
-    width: var(--space-2xl);
-    height: var(--space-xl);
-    border-radius: 50%;
-    background: hsl(var(--clr-white));
-    color: hsl(var(--clr-dark));
-    box-shadow: var(--shadow);
-    position: fixed;
-    top: 10%;
-    right: 50%;
-    transform: translateX(50%);
-    z-index: 1000;
-    display: flex;
-    /* Add this */
-    align-items: center;
-    /* Add this */
-    justify-content: center;
-    /* Add this */
-    text-align: center;
-    /* Optional, for multi-line text */
-  }
-
-  .profile-button:hover,
-  .profile-button:focus {
-    background: hsl(var(--clr-span));
-    transition: background-color .3s ease-in-out, transform .3s ease-in-out;
-    color: hsl(var(--clr-dark));
-    box-shadow: var(--shadow);
-    transform: translateX(50%) scale(1.05);
-  }
 
 
 
