@@ -266,7 +266,7 @@ main {
   flex-direction: column;
   justify-content: center;
   margin-inline: auto;
-  padding: var(--space-s) var(--space-m);
+  padding: var(--space-2xs) var(--space-l);
   width: 200px;
   /* Add this line for consistent width */
   max-width: var(--space-4xl);
@@ -293,10 +293,10 @@ main {
   flex-direction: column;
   justify-content: center;
   margin-inline: auto;
-  padding: var(--space-xs) var(--space-s);
-  width: 130px;
+  padding: var(--space-2xs) var(--space-m);
+  width: 200px;
   /* Add this line for consistent width */
-  max-width: var(--space-2xl);
+  max-width: var(--space-3xl);
   border-radius: var(--space-s);
   background: hsl(var(--clr-white));
   transition: background-color .3s ease-in, transform .3s ease-in;
