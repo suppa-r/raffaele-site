@@ -207,17 +207,24 @@ main {
   min-height: 100dvh;
 }
 
+.crew-details.genesis,
+.crew-details.beginnings,
+.crew-details.early,
+.crew-details.ryerson {
+  display: none;
+}
+
 .profile-button {
-  width: var(--space-4xl);
-  height: var(--space-2xl);
+  width: var(--space-3xl);
+  height: var(--space-xl);
   border-radius: 50%;
   background: hsl(var(--clr-white));
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
   position: fixed;
   top: 5%;
-  right: 50%;
-  transform: translateX(50%);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
   display: flex;
   /* Add this */
@@ -235,30 +242,29 @@ main {
   transition: background-color .3s ease-in-out, transform .3s ease-in-out;
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
-  transform: translateX(50%) scale(1.05);
 }
 
-
 .profile-navbar {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100dvh;
+  z-index: 1000;
+  overflow: hidden;
   backdrop-filter: blur(40px);
   box-shadow: var(--shadow);
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  /* Initially hidden */
+  opacity: 0;
+  transition: opacity .3s ease-out, translate .3s ease-out;
 }
 
 .profile-navbar.show {
   display: flex;
-  width: 100%;
-  min-height: 100dvh;
-  transition: all .3s ease-in-out;
-  z-index: 1000;
-  position: fixed;
-  overflow: hidden;
+  opacity: 1;
+  translate: 0 0;
 }
 
 .profile-tab {
@@ -266,17 +272,17 @@ main {
   flex-direction: column;
   justify-content: center;
   margin-inline: auto;
-  padding: var(--space-2xs) var(--space-l);
-  width: 200px;
-  /* Add this line for consistent width */
-  max-width: var(--space-4xl);
+  padding: var(--space-2xs) var(--space-xs);
+  width: 150px;
+  /* Increased width for all tabs */
+  max-width: 150px;
+  /* Ensures all tabs are exactly the same width */
   border-radius: var(--space-s);
   background: hsl(var(--clr-white));
   transition: background-color .3s ease-in, transform .3s ease-in;
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
   box-sizing: border-box;
-  /* Ensures padding is included in width */
 }
 
 .profile-navbar ul {
@@ -339,20 +345,7 @@ main {
   transform: translateX(10%) scale(1.2);
 }
 
-.profile-navbar {
-  display: none;
-}
 
-.profile-navbar.show {
-  display: block;
-}
-
-.crew-details.genesis,
-.crew-details.beginnings,
-.crew-details.early,
-.crew-details.ryerson {
-  display: none;
-}
 
 .crew-details.genesis.show,
 .crew-details.beginnings.show,
@@ -364,6 +357,10 @@ main {
   min-height: 100dvh;
   margin-inline: auto;
   overflow: hidden;
+  margin-block: var(--space-2xl);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 
   >* {
     container-type: inline-size;
@@ -437,9 +434,6 @@ main {
 
 @container(max-width:768px) {
 
-
-
-
   .crew-details.early,
   .crew-details.genesis,
   .drew-details.beginnings,
@@ -453,6 +447,7 @@ main {
     align-items: center;
     justify-content: center;
   }
+
 
   .crew-details.early .row-img>img,
   .crew-details.genesis .row-img>img,
