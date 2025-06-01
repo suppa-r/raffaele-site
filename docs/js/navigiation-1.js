@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const profileButton = document.querySelector('.profile-button');
-  const profileNavbar = document.querySelector('.profile-navbar');
+  const profileNavbar = document.querySelector('.navbar');
 
   // Hide all panels initially
   document.querySelectorAll('.crew-details').forEach(panel => {
