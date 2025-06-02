@@ -146,19 +146,6 @@ header .logo p span {
   padding-left: var(--space-2xs);
 }
 
-main {
-  margin-inline: auto;
-  overflow: hidden;
-  min-height: 100dvh;
-}
-
-.crew-details.genesis,
-.crew-details.beginnings,
-.crew-details.early,
-.crew-details.ryerson {
-  display: none;
-}
-
 .profile-button {
   width: var(--space-3xl);
   height: var(--space-xl);
@@ -172,19 +159,34 @@ main {
   transform: translateX(-50%);
   z-index: 1000;
   display: flex;
+  /* Add this */
   align-items: center;
+  /* Add this */
   justify-content: center;
+  /* Add this */
   text-align: center;
+  /* Optional, for multi-line text */
 }
 
 .profile-button:hover,
 .profile-button:focus {
   background: hsl(var(--clr-span));
-  transition: background-color .3s ease-in, transform .3s ease-in, box-shadow .3s ease-in;
-  transform: translateX(-50%) translateY(-5px);
-  border-radius: 50%;
+  transition: background-color .3s ease-in-out, transform .3s ease-in-out;
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
+}
+
+main {
+  margin-inline: auto;
+  overflow: hidden;
+  min-height: 100dvh;
+}
+
+.crew-details.genesis,
+.crew-details.beginnings,
+.crew-details.early,
+.crew-details.ryerson {
+  display: none;
 }
 
 .navbar {
@@ -196,106 +198,100 @@ main {
   z-index: 1000;
   overflow: hidden;
   backdrop-filter: blur(40px);
+  box-shadow: var(--shadow);
   position: fixed;
   top: 0;
   left: 0;
   opacity: 0;
-  transition: background-color .3s ease-in, transform .3s ease-in, box-shadow .3s ease-in-out, opacity .3s ease-in;
-  box-shadow: var(--shadow);
-  box-sizing: border-box;
+  transition: opacity .3s ease-out, translate .3s ease-out;
 }
 
 .navbar.show {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  min-height: 100dvh;
-  z-index: 1000;
-  overflow: hidden;
   opacity: 1;
-  pointer-events: all;
-  margin-inline: auto;
-  transform: translateX(0) translateY(0);
-  backdrop-filter: blur(40px);
-  box-shadow: var(--shadow);
+  translate: 0 0;
 }
 
-.navbar.show ul {
+.navbar ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-inline: auto;
+  margin-block: var(--space-2xl);
+  gap: var(--space-m);
+}
+
+.navbar li {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  /* Ensures content is centered inside li */
   margin-inline: auto;
-  list-style: none;
-  gap: var(--space-m);
-}
-
-.navbar.show::before {
-  position: fixed;
-  opacity: 1;
-  pointer-events: all;
-  content: "";
-  width: 100%;
-  height: 100dvh;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
-  mask: linear-gradient(-60deg, transparent 50%, rgba(255, 255, 255, 1)) 60%;
-  transform-style: preserve-3d;
-  transition: transform .3s ease-in-out, opacity .3s ease-in-out, background-position .3s ease-in-out;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.navbar.show li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-inline: auto;
-  padding: var(--space-2xs) var(--space-xs);
-  width: 150px;
-  max-width: 150px;
+  /*padding: var(--space-2xs) var(--space-2xs);*/
+  width: 180px;
+  /* Set your desired fixed width */
+  max-width: 180px;
+  /* Ensures all are exactly the same width */
   border-radius: var(--space-s);
   background: hsl(var(--clr-white));
+  transition: width .3s ease-in, transform .3s ease-in;
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
   box-sizing: border-box;
 }
 
-.navbar.show li:hover {
-  border-radius: var(--space-s);
+.navbar li svg {
+  width: 24px;
+  height: 24px;
+}
+
+.navbar li:hover {
   background: hsl(var(--clr-span));
-  color: hsl(var(--clr-dark));
-  box-shadow: var(--shadow);
-  transition: background-color .3s ease-in, transform .3s ease-in, box-shadow .3s ease-in;
-  transform: translateX(-50%);
-}
-
-.navbar.show li a span {
-  color: hsl(var(--clr-white));
-  padding-top: var(--space-2xs);
-  transition: all .3s ease;
-}
-
-.navbar.show li a svg {
-  display: inline-block;
-  width: var(--space-l);
-  height: var(--space-l);
   margin-inline: auto;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.navbar.show li a:hover {
+  width: 180px;
+  /* Set your desired fixed width */
+  max-width: 180px;
+  /* Ensures all are exactly the same width */
   border-radius: var(--space-s);
-  background: hsl(var(--clr-span));
+  transition: background-color .3s ease-in, transform .3s ease-in;
   color: hsl(var(--clr-dark));
   box-shadow: var(--shadow);
-  transition: background-color .3s ease-in, transform .3s ease-in, box-shadow .3s ease-in-out;
-  transform: translateX(-50%);
+  transform: translateX(10%) scale(1.2);
+}
+
+.navbar li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Ensures content is centered inside li */
+  margin-inline: auto;
+  padding: 0 var(--space-2xs);
+  width: 180px;
+  /* Set your desired fixed width */
+  max-width: 180px;
+  /* Ensures all are exactly the same width */
+  border-radius: var(--space-s);
+  background: hsl(var(--clr-white));
+  transition: width .3s ease-in, transform .3s ease-in;
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+
+.navbar li a:hover {
+  background: hsl(var(--clr-span));
+  margin-inline: auto;
+  width: 180px;
+  /* Set your desired fixed width */
+  max-width: 180px;
+  /* Ensures all are exactly the same width */
+  border-radius: var(--space-s);
+  transition: background-color .3s ease-in, transform .3s ease-in;
+  color: hsl(var(--clr-dark));
+  box-shadow: var(--shadow);
+  transform: translateX(10%) scale(1.2);
 }
 
 .crew-details.genesis.show,
@@ -303,7 +299,7 @@ main {
 .crew-details.early.show,
 .crew-details.ryerson.show {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   min-height: 100dvh;
   margin-inline: auto;
   overflow: hidden;
@@ -356,67 +352,7 @@ main {
   }
 }
 
-@media (max-width: 768px) {
-  .navbar:before {
-    opacity: 1;
-    pointer-events: all;
-    content: "";
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
-    mask: linear-gradient(-60deg, transparent 50%, white) 60%;
-    transform-style: preserve-3d;
-    transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
-    z-index: -1;
-    overflow: hidden
-  }
-
-  .navbar {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: rgba(0, 0, 0, .1);
-    backdrop-filter: blur(50px);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
-    overflow: hidden;
-    transition: .3s ease;
-  }
-
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: var(--space-2xl) 0;
-    margin: 0;
-    gap: var(--space-l);
-  }
-
-  .check:checked~.navbar {
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .navbar a {
-    display: block;
-    font-size: 1.1rem;
-    margin: 0;
-    text-align: center;
-    transform: translateY(-50px);
-    opacity: 0;
-    transition: .3s ease;
-  }
-
-  .check:checked~.navbar a {
-    transform: translateY(0);
-    opacity: 1;
-    transition-delay: calc(.15s * var(--i));
-  }
+@media(max-width:768px) {
 
   .crew-details.genesis.show,
   .crew-details.beginnings.show,
@@ -458,4 +394,5 @@ main {
     border-radius: 50%;
     margin-inline: auto;
   }
+
 }
