@@ -364,6 +364,10 @@ main {
 }
 
 @media (max-width: 768px) {
+  header {
+    display: none;
+  }
+
   .icons {
     position: absolute;
     right: 5%;
