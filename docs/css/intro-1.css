@@ -81,27 +81,21 @@ html {
   font-size: var(--step--1);
 }
 
-body>* {
-  container-type: inline-size;
-  max-inline-size: 100%;
-  margin-inline: auto
-}
-
 body:before {
+  position: fixed;
   opacity: 1;
   pointer-events: all;
   content: "";
   width: 100%;
-  height: 100vh;
-  position: fixed;
+  height: 100dvh;
   top: 0;
   left: 0;
   background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
-  mask: linear-gradient(-60deg, transparent 50%, white) 60%;
+  mask: linear-gradient(-60deg, transparent 50%, rgba(255, 255, 255, 1)) 60%;
   transform-style: preserve-3d;
   transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
   z-index: -1;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .sr-only {
@@ -129,26 +123,46 @@ body:before {
 
 header {
   position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
 }
 
-.logo {
+header .logo {
   font-size: var(--step-0);
   letter-spacing: 0.05em;
-  color: hsl(var(--clr-white));
-  text-align: center;
-  margin-block: var(--space-xs);
+  margin-block: var(--space-3xs);
   padding-left: var(--space-s);
 }
 
+header .logo p {
+  color: hsl(var(--clr-white));
+  padding-left: var(--space-s);
+}
 
-.logo span {
+header .logo p span {
   color: hsl(var(--clr-span));
-  /* fallback to blue if --clr-span not set */
-  margin: 0 var(--space-2xs) 0 0.1em;
-  letter-spacing: 0.02em;
-  transition: color 0.3s;
+  padding-left: var(--space-2xs);
+}
+
+main {
+  margin-inline: auto;
+  overflow: hidden;
+  min-height: 100dvh;
+}
+
+.crew-details.genesis,
+.crew-details.beginnings,
+.crew-details.early,
+.crew-details.ryerson {
+  display: none;
+}
+
+.profile-tab {
+  color: hsl(var(--clr-dark));
+  background-color: transparent;
+  border: none;
 }
 
 .navbar {
@@ -168,6 +182,9 @@ header {
   transition: opacity .3s ease-out, translate .3s ease-out;
 }
 
+
+
+
 .navbar.show {
   display: flex;
   opacity: 1;
@@ -177,6 +194,8 @@ header {
 .navbar ul {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   list-style: none;
   margin-inline: auto;
   margin-block: var(--space-2xl);
@@ -196,17 +215,40 @@ header {
   max-width: 180px;
   /* Ensures all are exactly the same width */
   border-radius: var(--space-s);
-  background: hsl(var(--clr-white));
+  background: hsl(var(--clr-dark));
   transition: width .3s ease-in, transform .3s ease-in;
-  color: hsl(var(--clr-dark));
+  color: hsl(var(--clr-white));
   box-shadow: var(--shadow);
   box-sizing: border-box;
 }
 
-.navbar li svg {
-  width: 24px;
-  height: 24px;
+.navbar li span,
+.navbar li a span {
+  /* Ensures text is centered inside li */
+  text-align: center;
+  display: block;
+  font-size: var(--step-0);
+  color: hsl(var(--clr-white));
+  padding: var(--space-2xs) var(--space-2xs);
 }
+
+.navbar li svg {
+  /* Ensures icon is centered inside li */
+  display: block;
+  width: var(--space-l);
+  height: var(--space-l);
+  margin-inline: auto;
+  /* Ensures icon is centered inside li */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* Ensures icon fills the li */
+  fill: hsl(var(--clr-white));
+  /* Ensures icon color is white */
+  transition: fill .3s ease-in;
+  /* Ensures icon color changes on hover */
+}
+
+
 
 .navbar li:hover {
   background: hsl(var(--clr-span));
@@ -274,6 +316,7 @@ header {
   height: var(--space-l);
   cursor: pointer;
   transition: opacity 0.2s;
+  fill: hsl(var(--clr-dark));
 }
 
 /* Hide icons by default (desktop) */
@@ -286,45 +329,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-main {
-  margin-inline: auto;
-  overflow: hidden;
-  min-height: 100dvh;
-}
-
-.crew-details.genesis,
-.crew-details.beginnings,
-.crew-details.early,
-.crew-details.ryerson {
-  display: none;
-}
-
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-}
-
-
-
-.check {
-  display: none;
-}
-
-.icons {
-  position: absolute;
-  right: 5%;
-  color: #fff;
-  cursor: pointer;
-  display: none;
 }
 
 .crew-details.genesis.show,
@@ -385,7 +389,69 @@ main {
   }
 }
 
-@media(max-width:768px) {
+@media (min-width: 768px) {
+  .icons {
+    display: inline-flex;
+  }
+
+  .check:checked~.icons .menu-icon {
+    display: none;
+  }
+
+  .icons .close-icon {
+    display: none;
+  }
+
+  .check:checked~.icons .close-icon {
+    display: block;
+  }
+
+  .navbar:before {
+    opacity: 1;
+    pointer-events: all;
+    content: "";
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
+    mask: linear-gradient(-60deg, transparent 50%, white) 60%;
+    transform-style: preserve-3d;
+    transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
+    z-index: -1;
+    overflow: hidden
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    overflow: hidden;
+    transition: .3s ease;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: var(--space-2xl) 0;
+    margin: 0;
+    gap: var(--space-l);
+  }
+
+  .check:checked~.navbar {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+
 
   .crew-details.genesis.show,
   .crew-details.beginnings.show,
@@ -428,12 +494,19 @@ main {
     margin-inline: auto;
   }
 
-}
+  .navbar li {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    transition-delay: 0s;
+  }
 
-/* BREAKPOINTS */
-@media (max-width: 992px) {
-  .header {
-    padding: 1.3rem 5%;
+  .check:checked~.navbar li {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(.15s * var(--i));
   }
 }
 
@@ -499,17 +572,58 @@ main {
     flex-direction: column;
   }
 
-  .navbar a {
-    display: block;
-    font-size: 1.1rem;
-    margin: 0;
+
+  .crew-details.genesis.show,
+  .crew-details.beginnings.show,
+  .crew-details.early.show,
+  .crew-details.ryerson.show {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100dvh;
+    margin-inline: auto;
+    overflow: hidden;
     text-align: center;
-    transform: translateY(-50px);
-    opacity: 0;
-    transition: .3s ease;
   }
 
-  .check:checked~.navbar a {
+  .crew-details.genesis .show.row-img,
+  .crew-details.beginnings .show.row-img,
+  .crew-details.early .show.row-img,
+  .crew-details.ryerson .show.row-img {
+    margin-inline: auto;
+    padding: var(--space-s);
+  }
+
+  .crew-details.genesis .show.row-text,
+  .crew-details.beginnings .show.row-text,
+  .crew-details.early .show.row-text,
+  .crew-details.ryerson .show.row-text {
+    margin-inline: auto;
+    padding: var(--space-s);
+  }
+
+  .crew-details.beginnings.row-img>img,
+  .crew-details.early .row-img>img,
+  .crew-details.genesis .row-img>img,
+  .crew-details.ryerson .row-img>img {
+    display: block;
+    width: 140px;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-inline: auto;
+  }
+
+  .navbar li {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    transition-delay: 0s;
+  }
+
+  .check:checked~.navbar li {
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(.15s * var(--i));

@@ -1,26 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const profileButton = document.querySelector('.profile-button');
   const profileNavbar = document.querySelector('.navbar');
+  const menuToggle = document.querySelector('.check'); // your checkbox for menu
 
   // Hide all panels initially
   document.querySelectorAll('.crew-details').forEach(panel => {
     panel.classList.remove('show');
   });
 
-  // Show/hide navbar on button click
-  if (profileButton && profileNavbar) {
-    profileButton.addEventListener('click', function () {
-      profileNavbar.classList.toggle('show');
-      // Hide all panels when menu is opened
-      document.querySelectorAll('.crew-details').forEach(panel => {
-        panel.classList.remove('show');
-      });
+  // Show/hide navbar on checkbox toggle (for hamburger/label menu)
+  if (menuToggle && profileNavbar) {
+    menuToggle.addEventListener('change', function () {
+      if (menuToggle.checked) {
+        profileNavbar.classList.add('show');
+      } else {
+        profileNavbar.classList.remove('show');
+        // Optionally hide all panels when menu closes
+        document.querySelectorAll('.crew-details').forEach(panel => {
+          panel.classList.remove('show');
+        });
+      }
     });
   }
 
   // Tab switching logic
   document.querySelectorAll('.profile-tab').forEach(tab => {
-    // Only add handler if not a link (home)
     if (tab.tagName !== 'A') {
       tab.addEventListener('click', function (e) {
         e.preventDefault();
@@ -38,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         // Hide navbar after selection
         profileNavbar.classList.remove('show');
+        // Uncheck the menu toggle if present
+        if (menuToggle) menuToggle.checked = false;
       });
     }
   });
