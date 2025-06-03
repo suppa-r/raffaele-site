@@ -225,7 +225,6 @@ header {
   display: none;
 }
 
-
 main {
   min-height: 100svh;
   display: flex;
@@ -238,7 +237,6 @@ main {
 .crew-details.early,
 .crew-details.ryerson {
   display: none;
-
 }
 
 @media (min-width: 768px) {

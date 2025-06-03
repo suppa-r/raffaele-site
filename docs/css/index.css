@@ -98,6 +98,25 @@ html {
 	font-weight: var(--font-weight);
 	font-optical-sizing: var(--font-optical-sizing);
 	font-style: var(--font-style);
+	font-feature-settings: var(--font-variation-settings);
+	font-size: var(--step--1);
+}
+
+body>* {
+	container-type: inline-size;
+	max-inline-size: 100%;
+	margin-inline: auto
+}
+
+html {
+	scroll-behavior: smooth;
+	line-height: 1.2;
+	color-scheme: dark only;
+	color: hsl(var(--clr-white));
+	font-family: var(--ff-roboto-serif);
+	font-weight: var(--font-weight);
+	font-optical-sizing: var(--font-optical-sizing);
+	font-style: var(--font-style);
 	font-feature-settings: var(--font-variation-settings)
 }
 
