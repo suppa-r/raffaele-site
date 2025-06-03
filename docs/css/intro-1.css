@@ -239,7 +239,7 @@ main {
   display: none;
 }
 
-@media (min-width: 768px) {
+@container (min-width: 768px) {
   .icons {
     position: absolute;
     right: 5%;
@@ -382,9 +382,7 @@ main {
   }
 }
 
-@media (max-width: 768px) {
-
-
+@container (max-width: 768px) {
   .icons {
     position: absolute;
     right: 5%;
