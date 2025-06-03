@@ -1,16 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
-
 :root {
-  --gradient: linear-gradient(45deg, #33ff99f1, #6bfff3c9, #90a2d3, #68b0e098);
-  --glass-bg: rgba(255, 255, 255, 0.11);
-  --border: 1px solid rgba(255, 255, 255, 0.1);
-  --shadow-1: 30px 30px 30px 0 rgba(99, 103, 161, 0.733),
-    30px 30px 30px 0 rgba(255, 255, 255, 0.507);
-  /* ------------------------------------------------- */
-  /* ------------------ Custom Colors ---------------- */
-  /* ------------------------------------------------- */
+  --sp: 5s;
+
+  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -18,55 +11,37 @@
   --clr-white: 0, 0%, 100%;
   --clr-accent: 231, 77%, 90%;
 
-  /* -------------------------------------------------------- */
-  /* ------------------ Custom Font-Sizes ------------------- */
-  /* -------------------------------------------------------- */
+  /* Step 0: 17px → 20px */
+  --step-0: clamp(1.0625rem, 1.0132rem + 0.2467vw, 1.25rem);
+  /* Step 1: 20.4px → 25px */
+  --step-1: clamp(1.275rem, 1.1993rem + 0.3783vw, 1.5625rem);
+  /* Step 2: 24.48px → 31.25px */
+  --step-2: clamp(1.53rem, 1.4187rem + 0.5567vw, 1.9531rem);
+  /* Step 3: 29.376px → 39.0625px */
+  --step-3: clamp(1.836rem, 1.6767rem + 0.7966vw, 2.4414rem);
+  /* Step 4: 35.2512px → 48.8281px */
+  --step-4: clamp(2.2032rem, 1.9799rem + 1.1165vw, 3.0518rem);
 
-  /* Step -1: 12.8px → 14.4px */
-  --step--1: clamp(0.8rem, 0.7652rem + 0.1739cqi, 0.9rem);
-  /* Step 0: 16px → 18px */
-  --step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-  /* Step 1: 20px → 22.5px */
-  --step-1: clamp(1.25rem, 1.1957rem + 0.2717cqi, 1.4063rem);
-  /* Step 2: 25px → 28.125px */
-  --step-2: clamp(1.5625rem, 1.4946rem + 0.3397cqi, 1.7578rem);
-  /* Step 3: 31.25px → 35.1563px */
-  --step-3: clamp(1.9531rem, 1.8682rem + 0.4246cqi, 2.1973rem);
-  /* Step 4: 39.0625px → 43.9453px */
-  --step-4: clamp(2.4414rem, 2.3353rem + 0.5307cqi, 2.7466rem);
-  /* Step 5: 48.8281px → 54.9316px */
-  --step-5: clamp(3.0518rem, 2.9191rem + 0.6634cqi, 3.4332rem);
-  /* Step 6: 61.0352px → 68.6646px */
-  --step-6: clamp(3.8147rem, 3.6488rem + 0.8293cqi, 4.2915rem);
 
-  /* ------------------------------------------------------- */
-  /* ----------------- Custom Space-Sizes ------------------ */
-  /* ------------------------------------------------------- */
+  --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822vw, 0.3125rem);
+  --space-2xs: clamp(0.5625rem, 0.5461rem + 0.0822vw, 0.625rem);
+  --space-xs: clamp(0.8125rem, 0.7796rem + 0.1645vw, 0.9375rem);
+  --space-s: clamp(1.0625rem, 1.0132rem + 0.2467vw, 1.25rem);
+  --space-m: clamp(1.625rem, 1.5592rem + 0.3289vw, 1.875rem);
+  --space-l: clamp(2.125rem, 2.0263rem + 0.4934vw, 2.5rem);
+  --space-xl: clamp(3.1875rem, 3.0395rem + 0.7401vw, 3.75rem);
+  --space-2xl: clamp(4.25rem, 4.0526rem + 0.9868vw, 5rem);
+  --space-3xl: clamp(6.375rem, 6.0789rem + 1.4803vw, 7.5rem);
 
-  /* Space 2xs: 12px → 14px */
-  --space-2xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
-  /* Space xs: 12px → 14px */
-  --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
-  /* Space s: 16px → 18px */
-  --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
-  /* Space m: 24px → 27px */
-  --space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
-  /* Space l: 32px → 36px */
-  --space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
-  /* Space xl: 48px → 54px */
-  --space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
-  /* Space 2xl: 64px → 72px */
-  --space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
-  /* Space 3xl: 96px → 108px */
-  --space-3xl: clamp(6rem, 5.7391rem + 1.3043cqi, 6.75rem);
-
-  --font-turret-road: "Turret Road", sans-serif;
-  --font-turret-road-light: 100;
-  --font-turret-road-regular: 400;
-  --font-turret-road-bold: 700;
-
-  --font-big-shoulders-inline: "Big Shoulders Inline", sans-serif;
-  --font-big-shoulders-inline-light: 100;
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1513rem + 0.4934vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5625rem, 0.4638rem + 0.4934vw, 0.9375rem);
+  --space-xs-s: clamp(0.8125rem, 0.6974rem + 0.5757vw, 1.25rem);
+  --space-s-m: clamp(1.0625rem, 0.8487rem + 1.0691vw, 1.875rem);
+  --space-m-l: clamp(1.625rem, 1.3947rem + 1.1513vw, 2.5rem);
+  --space-l-xl: clamp(2.125rem, 1.6974rem + 2.1382vw, 3.75rem);
+  --space-xl-2xl: clamp(3.1875rem, 2.7105rem + 2.3849vw, 5rem);
+  --space-2xl-3xl: clamp(4.25rem, 3.3947rem + 4.2763vw, 7.5rem);
 }
 
 /* --------------------------------------- */
@@ -97,6 +72,7 @@
 html {
   color-scheme: dark only;
 }
+
 /* -------------------------------------------------------- */
 
 body {
