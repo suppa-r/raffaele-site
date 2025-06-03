@@ -102,12 +102,6 @@ html {
 	font-size: var(--step--1);
 }
 
-body>* {
-	container-type: inline-size;
-	max-inline-size: 100%;
-	margin-inline: auto
-}
-
 html {
 	scroll-behavior: smooth;
 	line-height: 1.2;
@@ -117,7 +111,8 @@ html {
 	font-weight: var(--font-weight);
 	font-optical-sizing: var(--font-optical-sizing);
 	font-style: var(--font-style);
-	font-feature-settings: var(--font-variation-settings)
+	font-variation-settings: var(--font-variation-settings);
+	font-size: var(--step--1);
 }
 
 body>* {
@@ -130,7 +125,7 @@ body>* {
 	cursor: pointer;
 	overflow: hidden;
 	min-height: 100svh;
-	padding-inline: var(--space-xs-s);
+	padding-inline: var(--space-s-m);
 }
 
 .quote {
@@ -150,10 +145,10 @@ body>* {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	font-size: var(--step-1);
-	color: hsl(var(--clr-white));
+	font-size: var(--step-3);
+	color: hsl(var(--clr-light));
 	gap: var(--space-xl-2xl);
-	padding-top: var(--space-xl-2xl);
+	padding-top: var(--space-2xl-3xl);
 }
 
 .content,
@@ -176,8 +171,15 @@ body>* {
 .content div span,
 .content-1 div span {
 	margin-inline: auto;
-	animation-duration: var(--sp);
-	padding: var(--space-2xs-xs);
+	animation-duration: 3s;
+	padding: var(--space-3xs-2xs) 0;
+	animation-timing-function: ease;
+	animation-delay: .8s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-play-state: running;
+	animation-fill-mode: both;
+	animation-name: main-text-animation;
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
@@ -202,16 +204,32 @@ body>* {
 .down:before,
 .up:before {
 	width: 80%;
-	height: .1vmin;
-	background: radial-gradient(ellipse at 50% 50%, hsl(var(--clr-white)), #ffffff00 70%);
+	height: .4vmin;
+	background: radial-gradient(ellipse at 50% 50%, hsl(var(--clr-white)), #ffffff69 70%);
 	content: "";
 	position: absolute;
 	border-radius: 100%;
-	filter: blur(2px);
+	filter: blur(3px);
 	left: 10%;
 	top: 49%;
-	box-shadow: 0 0 100px 0 hsl(var(--clr-white));
-	animation: shadow var(--sp) ease 0s infinite
+	/* Always-present base shadow: */
+	box-shadow: 0 0 30px 0 hsl(var(--clr-white));
+	/* Animate a second, larger shadow: */
+	animation: shadow-glow var(--sp) ease-in-out 3s infinite;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes shadow-glow {
+
+	0%,
+	100% {
+		box-shadow: 0 0 30px 0 hsl(var(--clr-white)), 0 0 0px 0 hsl(var(--clr-white));
+	}
+
+	45%,
+	55% {
+		box-shadow: 0 0 30px 0 hsl(var(--clr-white)), 0 0 100px 0 hsl(var(--clr-white) / 0.5);
+	}
 }
 
 .down:before {
@@ -401,7 +419,7 @@ body>* {
 
 .container {
 	flex-direction: column;
-	padding-top: var(--space-xl-2xl);
+	padding-top: var(--space-3xl-4xl);
 }
 
 .text-with-animation,
