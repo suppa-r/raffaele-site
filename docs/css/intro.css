@@ -144,7 +144,7 @@ body:before {
   color: hsl(var(--clr-white));
   text-align: center;
   margin-left: var(--space-3xs-2xs);
-  margin-top: var(--space-3xs-2xs);
+  margin-top: var(--space-xs-s);
 }
 
 .logo span {

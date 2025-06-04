@@ -147,7 +147,7 @@ body>* {
 	width: 100%;
 	font-size: var(--step-3);
 	color: hsl(var(--clr-light));
-	gap: var(--space-3xs-2xs);
+	gap: var(--space-xl-2xl);
 	padding-top: var(--space-2xl-3xl);
 }
 
