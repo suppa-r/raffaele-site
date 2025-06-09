@@ -145,6 +145,34 @@ body:before {
   transition: color 0.3s;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark));
+  padding: .5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
 main {
   min-height: 100svh;
   display: flex;
@@ -268,13 +296,36 @@ li {
   }
 }
 
-.menu-icon,
-.close-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  vertical-align: middle;
-  fill: hsl(var(--clr-white));
+.check {
+  display: none;
+}
+
+.icons {
+  position: absolute;
+  right: 5%;
+  /*font-size: 2.8rem;*/
+  color: hsl(var(--clr-white));
+  cursor: pointer;
+  display: none;
+}
+
+.icons svg {
+  width: var(--space-l);
+  height: var(--space-l);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.check:checked~.icons .menu-icon {
+  display: none;
+}
+
+.icons .close-icon {
+  display: none;
+}
+
+.check:checked~.icons .close-icon {
+  display: block;
 }
 
 .crew-details.genesis.show,
