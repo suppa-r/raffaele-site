@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const profileNavbar = document.querySelector('.navbar');
-  const menuToggle = document.querySelector('.check');
+  const profileNavbar = document.querySelector('.navagation');
+  const menuToggle = document.querySelector('.burger-check');
 
   // Hide all panels initially
   document.querySelectorAll('.crew-details').forEach(panel => {
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('change', function () {
       if (menuToggle.checked) {
         profileNavbar.classList.add('show');
-      } else {
-        profileNavbar.classList.remove('show');
+     } else {
+       profileNavbar.classList.remove('show');
       }
     });
   }
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (menuToggle) menuToggle.checked = false;
         if (profileNavbar) profileNavbar.classList.remove('show');
         iconBox.closest('.crew-details').classList.remove('show');
+        profileNavbar.classList.add('show');
       });
     }
   });
