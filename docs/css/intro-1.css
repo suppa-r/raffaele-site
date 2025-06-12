@@ -1,11 +1,7 @@
 :root {
   --sp: 5s;
 
-  --burger-thickness: 4px;
-  --navigation__transition: max-height 0.5s ease-in-out;
-
   --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
-  --glass-bg: rgba(255, 255, 255, 0.05);
   --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
 
   --clr-dark: 0, 0%, 0%;
@@ -103,11 +99,6 @@ html {
   font-size: var(--step--1);
 }
 
-body {
-  font-size: 30px;
-  text-align: centeR;
-}
-
 body:before {
   opacity: 1;
   pointer-events: all;
@@ -145,34 +136,6 @@ body:before {
   transition: color 0.3s;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  /* added line */
-  border: 0;
-}
-
-.skip-to-content {
-  position: absolute;
-  z-index: 9999;
-  background: hsl(var(--clr-white));
-  color: hsl(var(--clr-dark));
-  padding: .5em 1em;
-  margin-inline: auto;
-  transform: translateY(-100%);
-  transition: transform 250ms ease-in;
-}
-
-.skip-to-content:focus {
-  transform: translateY(0);
-}
-
 main {
   min-height: 100svh;
   display: flex;
@@ -187,117 +150,192 @@ main {
   display: none;
 }
 
-.burger-check {
+.user-button {
+  margin-inline: auto;
+  padding: 0;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  anchor-name: --profile-button;
+}
+
+.profile-menu {
   display: none;
-}
-
-.burger {
-  width: 28px;
-  height: 24px;
-  display: inline-block;
-  position: relative;
-  background: none;
-  color: hsl(var(--clr-white));
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-top: 60px;
-  /* Adjust this value to move lower */
-}
-
-.burger::before,
-.burger::after,
-.burger span {
-  content: "";
-  display: block;
   position: absolute;
-  left: 0;
-  width: 100%;
-  height: var(--burger-thickness);
-  background: currentColor;
-  border-radius: 2px;
-  transition: transform 0.5s, top 0.5s, opacity 0.5s;
-}
-
-.burger::before {
-  top: 0;
-}
-
-.burger span {
-  top: 10px;
-}
-
-.burger::after {
-  top: 20px;
-}
-
-.burger-check:checked~.burger::before {
-  transform: rotate(45deg);
-  top: 10px;
-}
-
-.burger-check:checked~.burger span {
+  position-anchor: --profile-button;
+  margin: 0;
+  inset: 0;
+  bottom: anchor(bottom);
+  left: anchor(right);
   opacity: 0;
+  transition: opacity 1s display 1s, overlay 1s;
+  transition-behavior: allow-discrete;
+
+  position-try-fallbacks: --left;
+  margin-left: 2rem;
+
+  &>* {
+    padding: 1.5rem;
+  }
+
+  &:popover-open {
+    display: grid;
+    opacity: 1;
+
+    @starting-style {
+      display: grid;
+      opacity: 0;
+    }
+  }
 }
 
-.burger-check:checked~.burger::after {
-  transform: rotate(-45deg);
-  top: 10px;
+@position-try --left {
+  inset: 0;
+  top: anchor(bottom);
+  right: anchor(right);
+}
+
+@layer general-stlying {
+  :root {
+    --clr-surface-1: hsl(var(--clr-dark));
+    --clr-surface-2: hsl(var(--clr-light));
+    --clr-surface-3: hsl(var(--clr-white));
+
+    --btn-border-radius: 0.25rem;
+
+    --btn-default-surface: var(--clr-surface-2);
+    --btn-default-text: var(--clr-dark);
+    --btn-default-surface-hover: var(--clr-surface-3);
+  }
+}
+
+:is(button, .button) {
+  display: inline-flex;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  background-color: hsl(var(--clr-dark));
+  color: hsl(var(--clr-white));
+  border: 0;
+  border-radius: 1rem;
+  transition: scale 0.1225s;
+}
+
+:is(button, .button):is(:hover, :focus-visible) {
+  background-color: transparent;
+  color: hsl(var(--clr-white));
+}
+
+:is(button, .button):active {
+  scale: 0.95;
+}
+
+nav {
+  max-inline-size: 500px;
+  margin-inline: auto;
+  background-color: transparent;
+  border-radius: var(--space-2xl);
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 10;
+  margin-top: var(--space-l);
+  color: hsl(var(--clr-white));
 }
 
 
-
-
-/* Navigation */
-.navigation {
-  overflow: hidden;
-  max-height: 0;
-}
-
-.burger-check:checked~.navigation {
-  max-height: 100dvh;
-  transition: var(--navigation__transition);
-}
-
-.navigation ul {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
+ul {
   list-style: none;
+  margin: 0;
+  padding-inline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: var(--space-xs) 0;
-  padding: var(--space-xs) var(--space-s);
+  margin: 0 var(--space-xs);
+}
+
+button,
+a {
+  text-decoration: none;
+  color: hsl(var(--clr-white));
   font-size: var(--step-0);
+  padding: var(--space-xs);
+  border-radius: var(--space-s);
+  transition: background-color 0.3s, color 0.3s;
+}
 
+button:hover,
+a:hover,
+button:focus-visible,
+a:focus-visible {
+  background-color: hsl(var(--clr-white), 0.1);
+  color: hsl(var(--clr-dark));
+}
 
-  a {
-    text-decoration: none;
+button:active,
+a:active {
+  background-color: hsl(var(--clr-white), 0.2);
+  color: hsl(var(--clr-dark));
+}
 
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: hsl(var(--clr-span));
-      text-decoration-thickness: 2px;
-      text-underline-offset: 8px;
-      color: hsl(var(--clr-span));
-    }
-  }
+button:focus-visible {
+  outline: 2px solid hsl(var(--clr-white));
+  outline-offset: 2px;
+}
 
-  svg {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    vertical-align: middle;
-    fill: hsl(var(--clr-white));
+button:focus-visible:hover,
+a:focus-visible:hover {
+  background-color: hsl(var(--clr-white), 0.2);
+  color: hsl(var(--clr-white));
+}
+
+.user-button {
+  border: 3px solid hsl(var(--clr-white));
+
+  &:hover,
+  &:focus-visible {
+    outline: 0;
+    border-color: hsl(from white) h s l 45%;
   }
 }
 
-.check {
-  display: none;
+.profile-image {
+  aspect-ratio: 1;
+  border-radius: 100%;
+  width: 75px;
+  object-fit: cover;
+}
+
+.profile {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.profile-menu {
+  border: 0;
+  padding: 0;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: hsl(var(--clr-white));
+  font-size: var(--step-0);
+  overflow: hidden;
+}
+
+.profile-menu button {
+  padding: var(--space-xs);
+  color: hsl(var(--clr-white));
+  border-top: solid solid hsl(var(--clr-white));
+  border-radius: 0;
+  background-color: transparent;
+}
+
+
+svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: hsl(var(--clr-white));
+  transition: fill 0.3s;
 }
 
 .icons {
@@ -316,17 +354,6 @@ li {
   transition: opacity 0.2s;
 }
 
-.check:checked~.icons .menu-icon {
-  display: none;
-}
-
-.icons .close-icon {
-  display: none;
-}
-
-.check:checked~.icons .close-icon {
-  display: block;
-}
 
 .crew-details.genesis.show,
 .crew-details.beginnings.show,
