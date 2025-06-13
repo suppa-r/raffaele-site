@@ -147,7 +147,7 @@ textarea:not([rows]) {
 	z-index: 9999;
 	background: hsl(var(--clr-white));
 	color: hsl(var(--clr-dark));
-	padding: .1em 1em;
+	padding: 0em 1em;
 	margin-inline: auto;
 	transform: translateY(-100%);
 	transition: transform 250ms ease-in;
