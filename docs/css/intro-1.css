@@ -99,6 +99,13 @@ html {
   font-size: var(--step--1);
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 body:before {
   opacity: 1;
   pointer-events: all;
@@ -151,8 +158,8 @@ main {
 }
 
 .user-button {
-  padding: 0;
-  border-radius: 100vw;
+  padding: var(--space-l);
+  border-radius: var(--space-xl);
   aspect-ratio: 1;
   anchor-name: --profile-button;
 }
@@ -169,7 +176,7 @@ main {
   position-try-fallbacks: --left;
 
   &>* {
-    padding: 0.5rem;
+    padding: 1.5rem;
   }
 
   &:popover-open {
@@ -191,15 +198,6 @@ main {
 }
 
 @layer general-styling {
-  :root {
-    --clr-dark: 0, 0%, 0%;
-    --clr-light: 195, 70%, 90%;
-    --clr-span: 195, 36%, 45%;
-    --clr-white: 0, 0%, 100%;
-    --clr-accent: 231, 77%, 90%;
-    --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
-    --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
-  }
 
   :is(button, .button) {
     display: inline-flex;
@@ -223,10 +221,12 @@ main {
 
   nav {
     max-inline-size: 400px;
+    margin: var(--space-2xl-3xl) auto;
     margin-inline: auto;
     background-color: transparent;
     border-radius: 1rem;
     box-shadow: var(--shadow);
+    padding: 1rem 2rem;
   }
 
   ul {
