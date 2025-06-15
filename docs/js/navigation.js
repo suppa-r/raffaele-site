@@ -1,66 +1,53 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const profileNavbar = document.querySelector('.navigation');
-  const menuToggle = document.querySelector('.burger-check');
-
+  const profileNavbar = document.querySelector('.profile-navbar');
+  const profileButton = document.querySelector('.profile-button');
+  const target = tab.getAttribute('data-target');
+const article = document.querySelector('.crew-details.' + target);
 
   // Hide all panels initially
-  document.querySelectorAll('.crew-details').forEach(panel => {
-    panel.classList.remove('show');
-  });
+  //document.querySelectorAll('.crew-details').forEach(panel => {
+   // panel.hidden = true;
+  //});
 
-  // Show/hide navbar on checkbox toggle
-  if (menuToggle && profileNavbar) {
-    menuToggle.addEventListener('change', function () {
-      if (menuToggle.checked) {
-        profileNavbar.classList.add('show');
-      } else {
-        profileNavbar.classList.remove('show');
-      }
+  // Show/hide navbar on button click
+  if (profileButton && profileNavbar) {
+    profileButton.addEventListener('click', function () {
+      profileNavbar.classList.toggle('show');
+      // Hide all panels when menu is opened
+      document.querySelectorAll('.crew-details').forEach(panel => {
+        panel.hidden = true;
+      });
     });
   }
 
-  // Functionality for icons inside panels
-  document.querySelectorAll('.crew-details .icons').forEach(iconBox => {
-    const menuIcon = iconBox.querySelector('.menu-icon');
-    const closeIcon = iconBox.querySelector('.close-icon');
-
-const mainMenuIcon = document.querySelector('.menu-icon');
-if (mainMenuIcon) {
-  mainMenuIcon.addEventListener('click', function () {
-    if (menuToggle) menuToggle.checked = true;
-     profileNavbar.classList.add('show');
-  });
-}
-
-    if (closeIcon) {
-      closeIcon.addEventListener('click', function () {
-        // Hide the current panel
-        iconBox.closest('.crew-details').classList.remove('show');
-        // Show the navigation again
-        if (menuToggle) menuToggle.checked = true;
-        if (profileNavbar) profileNavbar.classList.add('show');
-      });
-    }
-
-    // Attach click event ONCE to each .profile-tab
-    document.querySelectorAll('.profile-tab').forEach(tab => {
+  // Tab switching logic
+  document.querySelectorAll('.profile-tab').forEach(tab => {
+    // Only add handler if not a link (home)
+    if (tab.tagName !== 'A') {
       tab.addEventListener('click', function (e) {
         e.preventDefault();
+
         // Hide all panels
         document.querySelectorAll('.crew-details').forEach(panel => {
-          panel.classList.remove('show');
+          panel.hidden = true;
         });
-        // Show the clicked panel
-        const targetPanel = document.querySelector(`.crew-details.${this.dataset.target}`);
-        if (targetPanel) {
-          targetPanel.classList.add('show');
-          targetPanel.tabIndex = 0;
-          targetPanel.focus();
+
+        // Show the selected panel
+        const target = tab.getAttribute('data-target');
+        const article = document.querySelector('.crew-details.' + target);
+        if (article) {
+          article.hidden = false;
+          article.tabIndex = 0;
+          article.focus();
         }
-        // Optionally close the navbar and uncheck menu
-        if (profileNavbar) profileNavbar.classList.remove('show');
-        if (menuToggle) menuToggle.checked = false;
+
+        // Hide navbar after selection
+        profileNavbar.classList.remove('show');
+
+        // Update aria-selected
+        document.querySelectorAll('.profile-tab').forEach(t => t.setAttribute('aria-selected', 'false'));
+        tab.setAttribute('aria-selected', 'true');
       });
-    });
+    }
   });
 });

@@ -129,32 +129,4 @@ textarea:not([rows]) {
 	scroll-margin-block: 5ex;
 }
 
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: 0px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	/* added line */
-	border: 0;
-}
-
-.skip-to-content {
-	position: absolute;
-	z-index: 9999;
-	background: hsl(var(--clr-white));
-	color: hsl(var(--clr-dark));
-	padding: 0em 1em;
-	margin-inline: auto;
-	transform: translateY(-100%);
-	transition: transform 250ms ease-in;
-}
-
-.skip-to-content:focus {
-	transform: translateY(0);
-}
-
 /* End of CSS Reset */

@@ -164,10 +164,8 @@ main {
   justify-content: center;
 }
 
-.crew-details.genesis,
-.crew-details.beginnings,
-.crew-details.early,
-.crew-details.ryerson {
+
+.crew-details {
   display: none;
 }
 
@@ -248,43 +246,80 @@ main {
   transition: var(--navigation__transition);
 }
 
-
-.navigation {
-  transition: height .3s ease-in;
-  padding-inline: var(--space-xs);
-  margin-block: var(--space-xs);
-  font-size: var(--step--1);
-}
-
-.navigation {
+.navigation ul {
   display: flex;
   flex-direction: column;
   list-style: none;
   margin-inline: auto;
-  gap: var(--space-s);
+  gap: var(--space-m);
   width: var(--space-8xl);
+  transition: height .3s ease-in;
+  font-size: var(--step--1);
+  padding: var(--space-2xl) 0;
+  /* Add padding to the top and bottom */
+  position: relative;
+  z-index: 100;
+  border-radius: var(--space-s);
+  color: hsl(var(--clr-white));
 }
 
 .navigation li {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-inline: auto;
+  max-width: 100%;
   backdrop-filter: blur(10px);
   border-radius: var(--space-s);
   box-shadow: var(--shadow);
   transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out;
   color: hsl(var(--clr-white));
+  margin-inline: auto;
   /* Fallback for browsers that do not support backdrop-filter */
 }
 
-.navigation li a {
+.navigation li {
+  display: flex;
+  flex-direction: row;
+  border-radius: var(--space-s);
+  box-shadow: var(--shadow);
+  color: hsl(var(--clr-white));
+  /* Fallback for browsers that do not support backdrop-filter */
+  font-size: var(--step--1);
   text-decoration: none;
-
-
+  padding: var(--space-2xs) var(--space-m);
   margin-inline: auto;
-  padding: 0 var(--space-xs);
 }
+
+.navigation li a:hover {
+  background-color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.navigation li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: hsl(var(--clr-white));
+  padding: var(--space-2xs) var(--space-m);
+  font-size: var(--step--1);
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.navigation li a:hover,
+.navigation li a:focus {
+  background-color: hsl(var(--clr-span));
+  color: hsl(var(--clr-white));
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.navigation li a:focus {
+  outline: none;
+  box-shadow: var(--shadow);
+  border-radius: var(--space-xs-s);
+}
+
+
 
 .navigation li a span {
   color: hsl(var(--clr-white));
@@ -293,16 +328,16 @@ main {
 }
 
 .navigation li a svg {
-  display: inline-block;
   width: var(--space-m-l);
   height: var(--space-m-l);
-  margin-inline: auto;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   fill: hsl(var(--clr-white));
   transition: fill .3s ease-in-out;
   vertical-align: middle;
-
+  margin-right: var(--space-2xs);
+  display: inline-block;
+  /* Ensure the icon is displayed as an inline block */
 }
 
 .navigation li a:focus {
@@ -321,50 +356,6 @@ main {
   opacity: 0.7;
   color: hsl(var(--clr-span));
 }
-
-/*.navigation ul {
-  top: 0;
-  left: 0;
-  margin-inline: auto;
-  width: var(--space-5xl);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-s);
-  min-height: 100dvh;
-  list-style: none;
-  z-index: 100;
-}
-
-li {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  margin: var(--space-xs) 0;
-  font-size: var(--step-0);
-}
-
-li a {
-  text-decoration: none;
-  width: 100%;
-}
-
-li a:hover {
-  text-decoration: underline;
-  text-decoration-color: hsl(var(--clr-span));
-  text-decoration-thickness: 2px;
-  text-underline-offset: 8px;
-  opacity: 0.7;
-  color: hsl(var(--clr-span));
-}
-
-svg {
-  width: var(--space-l);
-  height: var(--space-l);
-  margin-right: var(--space-2xs);
-  fill: hsl(var(--clr-white));
-  vertical-align: middle;
-}*/
-
 
 .check {
   display: none;
@@ -427,6 +418,16 @@ svg {
     background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
     background-size: 100%;
   }
+}
+
+.crew-details.genesis .show,
+.crew-details.beginnings .show,
+.crew-details.early .show,
+.crew-details.ryerson .show {
+  margin-inline: auto;
+  padding: var(--space-s);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .crew-details.show>.icons {
