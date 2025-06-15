@@ -169,11 +169,14 @@ main {
 
 .crew-details.show {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  padding: 0 var(--space-4xl);
 }
 
 .profile-title {
-  margin-bottom: var(--space-5xl);
+  font-size: var(--step-1);
+  color: hsl(var(--clr-white));
+  margin-inline: auto;
   padding-inline: auto;
 }
 
@@ -183,69 +186,78 @@ main {
 
 .burger {
   width: 28px;
-  height: 24px;
   display: inline-block;
   position: relative;
   background: none;
   color: hsl(var(--clr-white));
-  border: none;
-  outline: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
   cursor: pointer;
+  border-bottom: var(--burger-thickness) solid currentColor;
   margin-top: var(--space-xl);
   /* Adjust this value to move lower */
   z-index: 200;
+  transition: border-bottom 1s ease-in-out;
+  -webkit-transition: border-bottom 1s ease-in-out;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    border-bottom: var(--burger-thickness) solid currentColor;
+    width: 100%;
+    margin-bottom: 5px;
+    transition: transform 0.5s, top 0.5s, opacity 0.5s;
+    -webkit-transition: border-bottom 1s ease-in-out;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    border-bottom: var(--burger-thickness) solid currentColor;
+    width: 100%;
+    margin-bottom: 5px;
+    transition: transform 0.5s, top 0.5s, opacity 0.5s;
+    -webkit-transition: border-bottom 1s ease-in-out;
+  }
 }
 
-.burger::before,
-.burger::after,
-.burger span {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: var(--burger-thickness);
-  background: currentColor;
-  border-radius: 2px;
+.burger-check:checked~.burger {
+  border-bottom: var(--burger-thickness) solid transparent;
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
+  -webkit-transition: border-bottom 1s ease-in-out;
 }
 
-.burger::before {
-  top: 0;
+&:before {
+  border-bottom: var(--burger-thickness) solid currentColor;
+
+  transform: rotate(-405deg) translateY(1px) translateX(-3px);
+  -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
+  transition: transform 0.5s, top 0.5s, opacity 0.5s;
+  -webkit-transition: border-bottom 1s ease-in-out;
 }
 
-.burger span {
-  top: 10px;
-}
-
-.burger::after {
-  top: 20px;
-}
-
-.burger-check:checked~.burger::before {
-  transform: rotate(45deg);
-  top: 10px;
-}
-
-.burger-check:checked~.burger span {
-  opacity: 0;
-}
-
-.burger-check:checked~.burger::after {
-  transform: rotate(-45deg);
-  top: 10px;
+&:after {
+  transform: rotate(405deg) translateY(-4px) translateX(-5px);
+  -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);
+  transition: transform 0.5s, top 0.5s, opacity 0.5s;
+  -webkit-transition: border-bottom 1s ease-in-out;
 }
 
 /* Navigation */
 .navigation {
   overflow: hidden;
   max-height: 0;
+  transition: var(--navigation__transition);
 }
 
 .burger-check:checked~.navigation {
-  display: flex;
-  flex-direction: row;
-  max-height: 100dvh;
+  min-height: 100dvh;
   transition: var(--navigation__transition);
 }
 
@@ -397,8 +409,8 @@ main {
 .crew-details.early .show,
 .crew-details.ryerson .show {
   margin-inline: auto;
-  padding: var(--space-s) var(--space-xl);
 
+  align-items: center;
 }
 
 .crew-details.genesis .show.row-img,
@@ -406,7 +418,7 @@ main {
 .crew-details.early .show.row-img,
 .crew-details.ryerson .show.row-img {
   margin-inline: auto;
-  width: 60ch;
+  padding: var(--space-3xl) var(--space-6xl);
 }
 
 .crew-details.beginnings.row-img>img,
@@ -414,7 +426,7 @@ main {
 .crew-details.genesis .row-img>img,
 .crew-details.ryerson .row-img>img {
   display: block;
-  width: 400px;
+  width: 500px;
   height: auto;
   max-width: 100%;
   object-fit: cover;
@@ -426,7 +438,7 @@ main {
 .crew-details.beginnings.show .row-text,
 .crew-details.early.show .row-text,
 .crew-details.ryerson.show .row-text {
-  width: 50ch;
+  padding: var(--space-3xl) var(--space-3xl);
   margin-inline: auto;
   font-size: var(--step--1);
   text-align: center;
