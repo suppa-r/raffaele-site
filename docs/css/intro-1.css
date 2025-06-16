@@ -6,7 +6,7 @@
 
   --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
   --glass-bg: rgba(255, 255, 255, 0.05);
-  --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
+  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -409,7 +409,6 @@ main {
 .crew-details.early .show,
 .crew-details.ryerson .show {
   margin-inline: auto;
-
   align-items: center;
 }
 
@@ -421,18 +420,32 @@ main {
   padding: var(--space-3xl) var(--space-6xl);
 }
 
-.crew-details.beginnings.row-img>img,
 .crew-details.early .row-img>img,
 .crew-details.genesis .row-img>img,
 .crew-details.ryerson .row-img>img {
   display: block;
-  width: 500px;
+  width: 390px;
   height: auto;
   max-width: 100%;
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
+  box-shadow: var(--shadow);
+  opacity: 1;
 }
+
+.crew-details.beginnings .row-img>img {
+  display: block;
+  width: 590px;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-inline: auto;
+  opacity: 1;
+
+}
+
 
 .crew-details.genesis.show .row-text,
 .crew-details.beginnings.show .row-text,
