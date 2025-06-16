@@ -22,8 +22,6 @@
 	/* Step 3: 22.7813px → 35.1563px */
 	--step-3: clamp(1.4238rem, 1.2203rem + 1.0177cqi, 2.1973rem);
 
-
-
 	--space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
 	--space-2xs: clamp(0.5rem, 0.4836rem + 0.0822cqi, 0.5625rem);
 	--space-xs: clamp(0.75rem, 0.7171rem + 0.1645cqi, 0.875rem);
@@ -96,8 +94,8 @@ body>* {
 	cursor: pointer;
 	overflow: hidden;
 	min-height: 100svh;
-	padding-inline: var(--space-m);
 }
+
 
 .quote {
 	text-align: center;
@@ -119,14 +117,16 @@ body>* {
 	padding-block: var(--space-2xl);
 }
 
+
 .content,
 .content-1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	overflow: hidden
+	overflow: hidden;
 }
+
 
 .content div,
 .content-1 div {
@@ -390,6 +390,7 @@ body>* {
 	padding-top: var(--space-3xl-4xl);
 }
 
+
 .text-with-animation,
 .text-with-animation-6,
 .text-with-animation-7 {
@@ -399,8 +400,8 @@ body>* {
 	font-size: var(--step-0);
 	animation: 2s cubic-bezier(.455, .03, .515, .955) forwards text-animation;
 	text-align: center;
-	margin-block: var(--space-2xs);
-	letter-spacing: var(--space-2xs);
+	margin-top: var(--space-2xs);
+	letter-spacing: 0.2em;
 	text-wrap: balance;
 	overflow: hidden;
 }
@@ -415,8 +416,8 @@ body>* {
 	animation: 2s cubic-bezier(.455, .03, .515, .955) forwards text-animation;
 	text-align: center;
 	margin-block: var(--space-2xs);
-	letter-spacing: var(--space-2xs);
 	text-wrap: balance;
+	letter-spacing: 0.1em;
 }
 
 @keyframes text-animation {
@@ -444,13 +445,5 @@ body>* {
 		letter-spacing: var(--space-2xs);
 		word-spacing: 100vw;
 		opacity: 1
-	}
-}
-
-@container (max-width:800px) {
-
-	.text-with-animation-4,
-	.text-with-animation-5 {
-		letter-spacing: .3em
 	}
 }
