@@ -39,22 +39,6 @@
   --space-7xl: clamp(10rem, 9.6711rem + 1.6447cqi, 11.25rem);
   --space-8xl: clamp(11rem, 10.6382rem + 1.8092cqi, 12.375rem);
 
-  /* One-up pairs */
-  --space-3xs-2xs: clamp(0.25rem, 0.1678rem + 0.4112cqi, 0.5625rem);
-  --space-2xs-xs: clamp(0.5rem, 0.4013rem + 0.4934cqi, 0.875rem);
-  --space-xs-s: clamp(0.75rem, 0.6513rem + 0.4934cqi, 1.125rem);
-  --space-s-m: clamp(1rem, 0.8191rem + 0.9046cqi, 1.6875rem);
-  --space-m-l: clamp(1.5rem, 1.3026rem + 0.9868cqi, 2.25rem);
-  --space-l-xl: clamp(2rem, 1.6382rem + 1.8092cqi, 3.375rem);
-  --space-xl-2xl: clamp(3rem, 2.6053rem + 1.9737cqi, 4.5rem);
-  --space-2xl-3xl: clamp(4rem, 3.2763rem + 3.6184cqi, 6.75rem);
-  --space-3xl-4xl: clamp(6rem, 5.5066rem + 2.4671cqi, 7.875rem);
-  --space-4xl-5xl: clamp(7rem, 6.4737rem + 2.6316cqi, 9rem);
-  --space-5xl-6xl: clamp(8rem, 7.4408rem + 2.7961cqi, 10.125rem);
-  --space-6xl-7xl: clamp(9rem, 8.4079rem + 2.9605cqi, 11.25rem);
-  --space-7xl-8xl: clamp(10rem, 9.375rem + 3.125cqi, 12.375rem);
-
-
   --ff-roboto-serif: "Roboto Serif",
     serif;
   --font-optical-sizing: auto;
@@ -141,14 +125,14 @@ body:before {
   letter-spacing: 0.05em;
   color: hsl(var(--clr-white));
   text-align: center;
-  margin-left: var(--space-3xs-2xs);
-  margin-top: var(--space-xs-s);
+  margin-left: var(--space-2xs);
+  margin-top: var(--space-s);
 }
 
 .logo span {
   color: hsl(var(--clr-span));
   /* fallback to blue if --clr-span not set */
-  margin: 0 var(--space-2xs-xs) 0 0.1em;
+  margin: 0 var(--space-xs) 0 0.1em;
   letter-spacing: 0.02em;
   transition: color 0.3s;
 }
@@ -169,8 +153,8 @@ body:before {
   display: flex;
   flex-direction: row;
   transition: height .3s ease-in;
-  padding-inline: var(--space-xs-s);
-  margin-block: var(--space-2xs-xs);
+  padding-inline: var(--space-s);
+  margin-block: var(--space-xs);
   font-size: var(--step--1);
 }
 
@@ -189,19 +173,19 @@ body:before {
   display: flex;
   flex-direction: column;
   margin-inline: auto;
-  padding: 0 var(--space-2xs-xs);
+  padding: 0 var(--space-xs);
 }
 
 .navbar li a span {
   color: hsl(var(--clr-white));
-  padding-top: var(--space-3xs-2xs);
+  padding-top: var(--space-2xs);
   transition: all .3s ease-in-out;
 }
 
 .navbar li a svg {
   display: inline-block;
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-l);
+  height: var(--space-l);
   margin-inline: auto;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -210,7 +194,7 @@ body:before {
 .navbar li a:focus,
 .navbar li a:hover {
   background-color: hsl(var(--clr-span));
-  border-radius: var(--space-xs-s);
+  border-radius: var(--space-s);
   color: hsl(var(--clr-white));
   transition: background-color .2s ease-in-out;
   box-shadow: var(--shadow);
@@ -220,25 +204,16 @@ body:before {
   display: none;
 }
 
-.icons {
-  position: absolute;
-  right: 5%;
-  /*font-size: 2.8rem;*/
-  color: hsl(var(--clr-white));
-  cursor: pointer;
-  display: none;
-}
-
-.icons svg {
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
 /* Hide icons by default (desktop) */
 .icons {
   display: none;
+}
+
+.icons {
+  color: hsl(var(--clr-white));
+  cursor: pointer;
+  width: var(--space-l);
+  height: var(--space-l);
 }
 
 main {
@@ -251,7 +226,7 @@ main {
   display: grid;
   grid-template-rows: 1fr;
   text-align: center;
-  margin: var(--space-xs-s) var(--space-xs-s) 0 var(--space-xs-s);
+  padding: 0 var(--space-xs) 0 var(--space-xs);
   margin-inline: auto;
 }
 
@@ -261,7 +236,7 @@ main {
 }
 
 .intro p span {
-  padding-left: var(--space-xs-s);
+  padding-left: var(--space-s);
   color: hsl(var(--clr-accent));
 }
 
@@ -336,6 +311,9 @@ main {
 @container (max-width: 768px) {
   .icons {
     display: inline-flex;
+    position: fixed;
+    top: 2%;
+    right: 5%;
   }
 
   .check:checked~.icons .menu-icon {
@@ -408,6 +386,7 @@ main {
   .check:checked~.navbar a {
     transform: translateY(0);
     opacity: 1;
+    transition: transform 0.2s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
     transition-delay: calc(.35s * var(--i));
   }
 }
