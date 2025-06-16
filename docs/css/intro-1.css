@@ -311,12 +311,11 @@ main {
   text-decoration-thickness: 2px;
   text-underline-offset: 8px;
   opacity: 1;
-  transition: text-decoration-color .1s ease-in-out, text-decoration-thickness .1s ease-in-out, text-underline-offset .1s ease-in-out;
   background-color: hsl(var(--clr-span));
   color: hsl(var(--clr-white));
   box-shadow: var(--shadow);
   border-radius: var(--space-s);
-  width: var(--space-8xl);
+  transition: background-color .1s ease-in-out, color .1s ease-in-out, box-shadow .1s ease-in-out;
 }
 
 .section-title {
