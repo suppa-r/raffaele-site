@@ -88,7 +88,7 @@ html {
 }
 
 body {
-  text-align: center;
+  margin-inline: auto;
 }
 
 body:before {
@@ -152,15 +152,15 @@ main {
 
 .crew-details.show {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 0 var(--space-4xl);
 }
 
 .profile-title {
   font-size: var(--step-1);
   color: hsl(var(--clr-white));
-  margin-inline: auto;
-  padding-inline: auto;
+  margin: var(--space-l) auto;
+  text-align: center;
 }
 
 .burger-check {
@@ -168,9 +168,12 @@ main {
 }
 
 .burger {
+  margin-inline: auto;
   width: 28px;
   display: inline-block;
-  position: relative;
+  position: fixed;
+  top: 32px;
+  left: 32px;
   background: none;
   color: hsl(var(--clr-white));
   border: 0;
@@ -178,8 +181,6 @@ main {
   padding: 0;
   cursor: pointer;
   border-bottom: var(--burger-thickness) solid currentColor;
-  margin-top: var(--space-xl);
-  /* Adjust this value to move lower */
   z-index: 200;
   transition: border-bottom 1s ease-in-out;
   -webkit-transition: border-bottom 1s ease-in-out;
@@ -407,7 +408,6 @@ main {
   opacity: 1;
 
 }
-
 
 .crew-details.genesis.show .row-text,
 .crew-details.beginnings.show .row-text,
