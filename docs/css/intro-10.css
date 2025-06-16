@@ -2,7 +2,7 @@
   --sp: 5s;
 
   --burger-thickness: 4px;
-  --navigation__transition: max-height 2s ease-in-out;
+  --navigation__transition: max-height 0.5s ease-in-out;
 
   --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
   --glass-bg: rgba(255, 255, 255, 0.05);
@@ -39,6 +39,22 @@
   --space-6xl: clamp(9rem, 8.7039rem + 1.4803cqi, 10.125rem);
   --space-7xl: clamp(10rem, 9.6711rem + 1.6447cqi, 11.25rem);
   --space-8xl: clamp(11rem, 10.6382rem + 1.8092cqi, 12.375rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1678rem + 0.4112cqi, 0.5625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.4013rem + 0.4934cqi, 0.875rem);
+  --space-xs-s: clamp(0.75rem, 0.6513rem + 0.4934cqi, 1.125rem);
+  --space-s-m: clamp(1rem, 0.8191rem + 0.9046cqi, 1.6875rem);
+  --space-m-l: clamp(1.5rem, 1.3026rem + 0.9868cqi, 2.25rem);
+  --space-l-xl: clamp(2rem, 1.6382rem + 1.8092cqi, 3.375rem);
+  --space-xl-2xl: clamp(3rem, 2.6053rem + 1.9737cqi, 4.5rem);
+  --space-2xl-3xl: clamp(4rem, 3.2763rem + 3.6184cqi, 6.75rem);
+  --space-3xl-4xl: clamp(6rem, 5.5066rem + 2.4671cqi, 7.875rem);
+  --space-4xl-5xl: clamp(7rem, 6.4737rem + 2.6316cqi, 9rem);
+  --space-5xl-6xl: clamp(8rem, 7.4408rem + 2.7961cqi, 10.125rem);
+  --space-6xl-7xl: clamp(9rem, 8.4079rem + 2.9605cqi, 11.25rem);
+  --space-7xl-8xl: clamp(10rem, 9.375rem + 3.125cqi, 12.375rem);
+
 
   --ff-roboto-serif: "Roboto Serif",
     serif;
@@ -88,7 +104,8 @@ html {
 }
 
 body {
-  text-align: center;
+  font-size: 30px;
+  text-align: centeR;
 }
 
 body:before {
@@ -100,42 +117,27 @@ body:before {
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url(/docs/images/header-desktop-min.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
+  mask: linear-gradient(-60deg, transparent 50%, white) 60%;
   transform-style: preserve-3d;
   transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
   z-index: -1;
   overflow: hidden;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--space-l);
-  z-index: 10;
-}
-
 .logo {
   font-size: var(--step--1);
   letter-spacing: 0.05em;
   color: hsl(var(--clr-white));
-  margin-left: var(--space-m);
-  margin-top: var(--space-s);
+  text-align: center;
+  margin-left: var(--space-3xs-2xs);
+  margin-top: var(--space-xs-s);
 }
 
 .logo span {
   color: hsl(var(--clr-span));
   /* fallback to blue if --clr-span not set */
-  margin: 0 var(--space-2xs) 0 0.1em;
+  margin: 0 var(--space-2xs-xs) 0 0.1em;
   letter-spacing: 0.02em;
   transition: color 0.3s;
 }
@@ -144,20 +146,14 @@ main {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.crew-details {
+.crew-details.genesis,
+.crew-details.beginnings,
+.crew-details.early,
+.crew-details.ryerson {
   display: none;
-}
-
-.crew-details.show {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-.profile-title {
-  margin-bottom: var(--space-5xl);
-  padding-inline: auto;
 }
 
 .burger-check {
@@ -174,9 +170,8 @@ main {
   border: none;
   outline: none;
   cursor: pointer;
-  margin-top: var(--space-xl);
+  margin-top: 60px;
   /* Adjust this value to move lower */
-  z-index: 200;
 }
 
 .burger::before,
@@ -219,6 +214,24 @@ main {
   top: 10px;
 }
 
+
+.navigation:before {
+  opacity: 1;
+  pointer-events: all;
+  content: "";
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, 0) 100%), linear-gradient(rgba(0, 0, 0, 0), #fff), linear-gradient(to bottom, rgba(0, 0, 0, 0) 100%, #fff 100%), linear-gradient(90deg, color-mix(in hsl, canvasText, transparent 50%) 1px, transparent 1px 30px) 60% 60%/30px 30px, linear-gradient(color-mix(in hsl, canvasText, transparent 40%) 1px, transparent 1px 30px) 50% 50%/30px 30px;
+  mask: linear-gradient(-60deg, transparent 50%, white) 60%;
+  transform-style: preserve-3d;
+  transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
+  z-index: -1;
+  overflow: hidden
+}
+
 /* Navigation */
 .navigation {
   overflow: hidden;
@@ -226,8 +239,6 @@ main {
 }
 
 .burger-check:checked~.navigation {
-  display: flex;
-  flex-direction: row;
   max-height: 100dvh;
   transition: var(--navigation__transition);
 }
@@ -235,131 +246,74 @@ main {
 .navigation ul {
   display: flex;
   flex-direction: column;
+  min-height: 100dvh;
   list-style: none;
-  margin-inline: auto;
-  gap: var(--space-m);
-  width: 100%;
-  transition: height .3s ease-in;
-  font-size: var(--step--1);
-  padding: var(--space-2xl) 0;
-  /* Add padding to the top and bottom */
-  position: relative;
-  z-index: 100;
-  border-radius: var(--space-s);
-  color: hsl(var(--clr-white));
 }
 
-.navigation li {
+li {
   display: flex;
-  flex-direction: row;
-  border-radius: var(--space-s);
-  box-shadow: var(--shadow);
-  color: hsl(var(--clr-white));
-  /* Fallback for browsers that do not support backdrop-filter */
-  font-size: var(--step--1);
-  text-decoration: none;
-  padding: var(--space-2xs) var(--space-l);
-  margin-inline: auto;
+  flex-direction: column;
+  justify-content: center;
+  margin: var(--space-xs) 0;
+  padding: var(--space-xs) var(--space-s);
+  font-size: var(--step-0);
+
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: hsl(var(--clr-span));
+      text-decoration-thickness: 2px;
+      text-underline-offset: 8px;
+      color: hsl(var(--clr-span));
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+    fill: hsl(var(--clr-white));
+  }
 }
 
-.navigation li a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: hsl(var(--clr-white));
-  padding: var(--space-2xs) var(--space-m);
-  font-size: var(--step--1);
-}
-
-.burger-check:checked~.navigation a {
-  transform: translateY(0);
-  opacity: 1;
-  transition-delay: calc(.45s * var(--i));
-}
-
-.navigation li a:hover,
-.navigation li a:focus {
-  background-color: hsl(var(--clr-span));
-  color: hsl(var(--clr-white));
-  outline: none;
-  box-shadow: var(--shadow);
-  border-radius: var(--space-xs-s);
-  transition: background-color .1s ease-in-out, color .1s ease-in-out;
-}
-
-.navigation li a span {
-  color: hsl(var(--clr-white));
-  padding-top: var(--space-2xs);
-}
-
-.navigation li a svg {
-  width: var(--space-l);
-  height: var(--space-l);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  fill: hsl(var(--clr-white));
-  transition: fill .3s ease-in-out;
+.menu-icon,
+.close-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
   vertical-align: middle;
-  margin-right: var(--space-2xs);
-  display: inline-block;
-  /* Ensure the icon is displayed as an inline block */
+  fill: hsl(var(--clr-white));
 }
 
-.navigation li a:hover {
-  text-decoration: underline;
-  text-decoration-color: hsl(var(--clr-span));
-  text-decoration-thickness: 2px;
-  text-underline-offset: 8px;
-  opacity: 1;
-  transition: text-decoration-color .1s ease-in-out, text-decoration-thickness .1s ease-in-out, text-underline-offset .1s ease-in-out;
-  background-color: hsl(var(--clr-span));
+.crew-details.genesis.show,
+.crew-details.beginnings.show,
+.crew-details.early.show,
+.crew-details.ryerson.show {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding-top: var(--space-3xl);
+  min-height: 100dvh;
+  margin-inline: auto;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+}
+
+.crew-details.show>.icons {
+  position: absolute;
+  left: 10%;
+  /* flush to the right edge */
+  top: 5%;
+  /* or try: right: 2%; or right: 32px; */
+  transform: translate(0%, -30%);
   color: hsl(var(--clr-white));
-  box-shadow: var(--shadow);
-  border-radius: var(--space-s);
-  width: var(--space-8xl);
-}
-
-.section-title {
-  font-size: var(--step-1);
-  background: var(--gradient, linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4));
-  background-size: 200% 200%;
-  /* Make the gradient larger for movement */
-  background-position: 0 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient 2s linear infinite;
-  margin-inline: auto;
-  margin-top: var(--space-2xl);
-}
-
-@keyframes gradient {
-
-  0%,
-  100% {
-    background-position: 0 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Fallback for browsers that do not support background-position animations */
-@supports not (animation: gradient) {
-  .section-title {
-    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
-    background-size: 100%;
-  }
-}
-
-.crew-details.genesis .show,
-.crew-details.beginnings .show,
-.crew-details.early .show,
-.crew-details.ryerson .show {
-  margin-inline: auto;
-  padding: var(--space-s) var(--space-xl);
-
+  cursor: pointer;
+  display: inline-flex;
+  z-index: 10;
 }
 
 .crew-details.genesis .show.row-img,
@@ -367,7 +321,15 @@ main {
 .crew-details.early .show.row-img,
 .crew-details.ryerson .show.row-img {
   margin-inline: auto;
-  width: 60ch;
+  padding: var(--space-s);
+}
+
+.crew-details.genesis .show.row-text,
+.crew-details.beginnings .show.row-text,
+.crew-details.early .show.row-text,
+.crew-details.ryerson .show.row-text {
+  margin-inline: auto;
+  padding: var(--space-s);
 }
 
 .crew-details.beginnings.row-img>img,
@@ -375,20 +337,10 @@ main {
 .crew-details.genesis .row-img>img,
 .crew-details.ryerson .row-img>img {
   display: block;
-  width: 400px;
+  width: 300px;
   height: auto;
   max-width: 100%;
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
-}
-
-.crew-details.genesis.show .row-text,
-.crew-details.beginnings.show .row-text,
-.crew-details.early.show .row-text,
-.crew-details.ryerson.show .row-text {
-  width: 50ch;
-  margin-inline: auto;
-  font-size: var(--step--1);
-  text-align: center;
 }
