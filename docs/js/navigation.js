@@ -1,53 +1,66 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const profileNavbar = document.querySelector('.profile-navbar');
-  const profileButton = document.querySelector('.profile-button');
-  const target = tab.getAttribute('data-target');
-const article = document.querySelector('.crew-details.' + target);
+  const profileNavbar = document.querySelector('.navagation');
+  const menuToggle = document.querySelector('.burger-check');
 
   // Hide all panels initially
-  //document.querySelectorAll('.crew-details').forEach(panel => {
-   // panel.hidden = true;
-  //});
+  document.querySelectorAll('.crew-details').forEach(panel => {
+    panel.classList.remove('show');
+  });
 
-  // Show/hide navbar on button click
-  if (profileButton && profileNavbar) {
-    profileButton.addEventListener('click', function () {
-      profileNavbar.classList.toggle('show');
-      // Hide all panels when menu is opened
-      document.querySelectorAll('.crew-details').forEach(panel => {
-        panel.hidden = true;
-      });
+  // Show/hide navbar on checkbox toggle
+  if (menuToggle && profileNavbar) {
+    menuToggle.addEventListener('change', function () {
+      if (menuToggle.checked) {
+        profileNavbar.classList.add('show');
+     } else {
+       profileNavbar.classList.remove('show');
+      }
     });
   }
 
-  // Tab switching logic
-  document.querySelectorAll('.profile-tab').forEach(tab => {
-    // Only add handler if not a link (home)
-    if (tab.tagName !== 'A') {
-      tab.addEventListener('click', function (e) {
-        e.preventDefault();
+  // Functionality for icons inside panels
+  document.querySelectorAll('.crew-details .icons').forEach(iconBox => {
+    const menuIcon = iconBox.querySelector('.menu-icon');
+    const closeIcon = iconBox.querySelector('.close-icon');
 
-        // Hide all panels
-        document.querySelectorAll('.crew-details').forEach(panel => {
-          panel.hidden = true;
-        });
-
-        // Show the selected panel
-        const target = tab.getAttribute('data-target');
-        const article = document.querySelector('.crew-details.' + target);
-        if (article) {
-          article.hidden = false;
-          article.tabIndex = 0;
-          article.focus();
-        }
-
-        // Hide navbar after selection
-        profileNavbar.classList.remove('show');
-
-        // Update aria-selected
-        document.querySelectorAll('.profile-tab').forEach(t => t.setAttribute('aria-selected', 'false'));
-        tab.setAttribute('aria-selected', 'true');
+    if (menuIcon) {
+      menuIcon.addEventListener('click', function () {
+        // Open the menu and hide the current panel
+        if (menuToggle) menuToggle.checked = true;
+        if (profileNavbar) profileNavbar.classList.add('show');
+        iconBox.closest('.crew-details').classList.remove('show');
       });
     }
+
+    if (closeIcon) {
+      closeIcon.addEventListener('click', function () {
+        // Close the menu and hide the current panel
+        if (menuToggle) menuToggle.checked = false;
+        if (profileNavbar) profileNavbar.classList.remove('show');
+        iconBox.closest('.crew-details').classList.remove('show');
+        profileNavbar.classList.add('show');
+      });
+    }
+  });
+
+  // Attach click event ONCE to each .profile-tab
+  document.querySelectorAll('.profile-tab').forEach(tab => {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+      // Hide all panels
+      document.querySelectorAll('.crew-details').forEach(panel => {
+        panel.classList.remove('show');
+      });
+      // Show the clicked panel
+      const targetPanel = document.querySelector(`.crew-details.${this.dataset.target}`);
+      if (targetPanel) {
+        targetPanel.classList.add('show');
+        targetPanel.tabIndex = 0;
+        targetPanel.focus();
+      }
+      // Optionally close the navbar and uncheck menu
+      if (profileNavbar) profileNavbar.classList.remove('show');
+      if (menuToggle) menuToggle.checked = false;
+    });
   });
 });

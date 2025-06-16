@@ -293,6 +293,7 @@ main {
 .navigation li a:focus {
   background-color: hsl(var(--clr-span));
   color: hsl(var(--clr-white));
+  padding: var(--space-2xs) var(--space-l);
   outline: none;
   box-shadow: var(--shadow);
   border-radius: var(--space-xs-s);
@@ -325,6 +326,7 @@ main {
   opacity: 1;
   background-color: hsl(var(--clr-span));
   color: hsl(var(--clr-white));
+  padding: var(--space-2xs) var(--space-l);
   box-shadow: var(--shadow);
   border-radius: var(--space-s);
   transition: background-color .1s ease-in-out, color .1s ease-in-out, box-shadow .1s ease-in-out;
