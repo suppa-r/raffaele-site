@@ -150,16 +150,12 @@ main {
   display: none;
 }
 
-.crew-details.show {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 0 var(--space-4xl);
-}
+
 
 .profile-title {
   font-size: var(--step-1);
   color: hsl(var(--clr-white));
-  margin: var(--space-l) auto;
+  margin: var(--space-2xl) 0 0 0;
   text-align: center;
 }
 
@@ -168,48 +164,74 @@ main {
 }
 
 .burger {
-  margin-inline: auto;
-  width: 28px;
-  display: inline-block;
   position: fixed;
+  /* Fixed to viewport */
   top: 32px;
-  left: 32px;
+  /* Adjust as needed */
+  left: 50%;
+  /* Center horizontally */
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  display: inline-block;
   background: none;
   color: hsl(var(--clr-white));
   border: 0;
   outline: 0;
   padding: 0;
   cursor: pointer;
-  border-bottom: var(--burger-thickness) solid currentColor;
   z-index: 200;
   transition: border-bottom 1s ease-in-out;
-  -webkit-transition: border-bottom 1s ease-in-out;
-
-  &::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
-
-  &:before {
-    content: "";
-    display: block;
-    border-bottom: var(--burger-thickness) solid currentColor;
-    width: 100%;
-    margin-bottom: 5px;
-    transition: transform 0.5s, top 0.5s, opacity 0.5s;
-    -webkit-transition: border-bottom 1s ease-in-out;
-  }
-
-  &:after {
-    content: "";
-    display: block;
-    border-bottom: var(--burger-thickness) solid currentColor;
-    width: 100%;
-    margin-bottom: 5px;
-    transition: transform 0.5s, top 0.5s, opacity 0.5s;
-    -webkit-transition: border-bottom 1s ease-in-out;
-  }
 }
+
+.burger::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.crew-details {
+  position: relative;
+  /* Needed for absolute positioning of .burger inside */
+}
+
+.crew-details .burger {
+  position: absolute;
+  /* Fixed to viewport */
+  top: 32px;
+  /* Adjust as needed */
+  left: 50%;
+  /* Center horizontally */
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  background: none;
+  color: hsl(var(--clr-white));
+  border: 0;
+  outline: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: 200;
+  transition: border-bottom 1s ease-in-out;
+}
+
+.crew-details .burger::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.burger::before,
+.burger::after,
+.crew-details .burger::before,
+.crew-details .burger::after {
+  content: "";
+  display: block;
+  border-bottom: var(--burger-thickness) solid currentColor;
+  width: 100%;
+  margin-bottom: 5px;
+  transition: transform 0.5s, top 0.5s, opacity 0.5s;
+}
+
 
 .burger-check:checked~.burger {
   border-bottom: var(--burger-thickness) solid transparent;
@@ -231,6 +253,10 @@ main {
   -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
   -webkit-transition: border-bottom 1s ease-in-out;
+}
+
+.crew-details {
+  position: relative;
 }
 
 /* Navigation */
@@ -333,6 +359,12 @@ main {
   transition: background-color .1s ease-in-out, color .1s ease-in-out, box-shadow .1s ease-in-out;
 }
 
+.crew-details.show {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 0 var(--space-4xl);
+}
+
 .section-title {
   font-size: var(--step-1);
   background: var(--gradient, linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4));
@@ -373,6 +405,7 @@ main {
 .crew-details.ryerson .show {
   margin-inline: auto;
   align-items: center;
+  justify-content: center;
 }
 
 .crew-details.genesis .show.row-img,
@@ -383,9 +416,7 @@ main {
   padding: var(--space-3xl) var(--space-6xl);
 }
 
-.crew-details.early .row-img>img,
-.crew-details.genesis .row-img>img,
-.crew-details.ryerson .row-img>img {
+.crew-details.show .row-img>img {
   display: block;
   width: 390px;
   height: auto;
@@ -395,18 +426,6 @@ main {
   margin-inline: auto;
   box-shadow: var(--shadow);
   opacity: 1;
-}
-
-.crew-details.beginnings .row-img>img {
-  display: block;
-  width: 590px;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-inline: auto;
-  opacity: 1;
-
 }
 
 .crew-details.genesis.show .row-text,
