@@ -259,14 +259,13 @@ main {
 
 /* Navigation */
 .navigation {
+  display: flex;
   justify-content: center;
-  align-items: center;
-  gap: var(--space-l);
-  list-style: none;
   max-height: 0;
   transition: var(--navigation__transition);
   overflow: hidden;
-  display: flex;
+  margin-bottom: var(--space-2xl);
+
 }
 
 .burger-check:checked~.navigation {
@@ -274,17 +273,27 @@ main {
   transition: var(--navigation__transition);
 }
 
-.burger-check:checked~.navigation a {
+.burger-check:checked~.navigation li {
   transform: translateY(0);
   opacity: 1;
   transition-delay: calc(.45s * var(--i));
 }
 
+.navigation li:hover::after,
+.navigation li:focus-within::after {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50%) translateX(0);
+}
+
 .navigation ul {
+  margin-top: var(--space-2xl);
+  background-color: transparent;
+  width: var(--space-8xl);
   display: flex;
   flex-direction: column;
-  width: var(--space-8xl);
-  transition: height .3s ease-in;
+  position: relative;
+  border-radius: var(--space-l);
   gap: var(--space-m);
 }
 
@@ -297,28 +306,40 @@ main {
 .navigation li::after {
   position: absolute;
   content: attr(data-tooltip);
-  inset: 0 0 0 100%;
-  z-index: -1;
-  translate: -50%;
-  padding: var(--space-2xs) var(--space-xs);
-  font-size: var(--step--1);
-  color: hsl(var(--clr-white));
-  background: transparent;
-  border-radius: var(--space-l);
-  margin-left: var(--space-l);
-  /* Space between li and tooltip */
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(-20px);
+  /* Start slightly left of li */
   opacity: 0;
   visibility: hidden;
+  padding: var(--space-xs) var(--space-2xl);
+  font-size: var(--step--1);
+  color: hsl(var(--clr-dark));
+  background: hsl(var(--clr-accent));
+  border-radius: var(--space-l);
+  margin-left: var(--space-l);
   pointer-events: none;
-  transition: inset 0.4s cubic-bezier(0.47, 2, 0.41, 1.5), visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition:
+    opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+    visibility 0.3s,
+    transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
 }
+
+.navigation li:hover::after,
+.navigation li:focus-within::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+  /* Slide to the right (100%) */
+}
+
 
 .navigation li:has(a:hover, a:focus-visible)::after {
   opacity: 1;
   visibility: visible;
-  inset-block-start: -100%;
-  /* Adjust this value to control the tooltip position */
+  inset-block-start: 100%;
 }
+
 
 .navigation a {
   position: relative;
@@ -342,18 +363,19 @@ main {
 .navigation a>span {
   display: block;
   text-align: center;
+  color: hsl(var(--clr-white));
 }
 
-.navigation a::after {
+/*.navigation a::after {
   position: absolute;
   content: "";
-  inset: 100% 0 0;
-  background: var(--bg, #070707);
+  inset: 100% 100% 0;
+  /* Start slightly below the link *
+  width: 100%;
   border-radius: var(--space-l);
   pointer-events: none;
   transition: inset 0.3s ease-in-out;
-}
-
+}*/
 
 .navigation a:hover,
 .navigation a:focus-visible {
