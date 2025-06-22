@@ -235,17 +235,16 @@ header .bars::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   position: relative;
-  padding: 0.7vw;
-  margin: 0 0.7vw;
+  padding: 0 var(--space-xs);
+  margin: var(--space-xs);
 }
 
 .nav-links li a {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  color: #888888;
+  justify-content: center;
+  color: hsl(var(--clr-accent));
 }
 
 .nav-links li a span {
@@ -256,10 +255,22 @@ header .bars::before {
 }
 
 .nav-links li svg {
-  height: 1.3rem;
-  width: 1.3rem;
+  height: var(--space-m);
+  width: var(--space-m);
   object-fit: cover;
   border-radius: 50%;
+  margin-inline: auto;
+}
+
+.nav-links li img {
+  height: var(--space-l);
+  width: var(--space-l);
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: hsl(var(--clr-light));
+  box-shadow: var(--shadow);
+
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .intro {
@@ -275,9 +286,9 @@ header .bars::before {
 }
 
 .intro p span {
-  font-size: var(--step-01);
+  font-size: var(--step-0);
   color: hsl(var(--clr-span));
-  padding-left: var(--space-s);
+  padding-left: var(--space-m);
 }
 
 .intro h1,
@@ -294,9 +305,9 @@ header .bars::before {
 }
 
 .intro .ya {
-  font-size: var(--step-2);
+  font-size: var(--step-0);
   color: hsl(var(--clr-span));
-  letter-spacing: var(--space-l);
+  letter-spacing: var(--space-2xs);
 }
 
 p .bottom {
@@ -368,7 +379,6 @@ p .bottom {
     position: fixed;
     top: 4rem;
     left: 0;
-    margin-top: var(--space-m);
     flex-direction: column;
     height: 100vh;
     width: 100%;
@@ -386,14 +396,14 @@ p .bottom {
     pointer-events: all;
   }
 
-  .nav-links a {
+  .nav-links li {
     transform: translateY(40px);
     opacity: 0;
     transition: transform 0.2s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
     transition-delay: calc(.35s * var(--i));
   }
 
-  .nav-links.open a {
+  .nav-links.open li {
     transform: translateY(0);
     opacity: 1;
   }
