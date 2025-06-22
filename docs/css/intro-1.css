@@ -1,12 +1,9 @@
 :root {
   --sp: 5s;
 
-  --burger-thickness: 4px;
-  --navigation__transition: max-height 2s ease-in-out;
-
   --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
   --glass-bg: rgba(255, 255, 255, 0.05);
-  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
+  --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -14,16 +11,21 @@
   --clr-white: 0, 0%, 100%;
   --clr-accent: 231, 77%, 90%;
 
-  /* Step -1: 14.2222px → 14.4px */
-  --step--1: clamp(0.8889rem, 0.886rem + 0.0146cqi, 0.9rem);
+  /* Step -1: 13.3333px → 13.5034px */
+  --step--1: clamp(0.8333rem, 0.8305rem + 0.014cqi, 0.844rem);
   /* Step 0: 16px → 18px */
   --step-0: clamp(1rem, 0.9671rem + 0.1645cqi, 1.125rem);
-  /* Step 1: 18px → 22.5px */
-  --step-1: clamp(1.125rem, 1.051rem + 0.3701cqi, 1.4063rem);
-  /* Step 2: 20.25px → 28.125px */
-  --step-2: clamp(1.2656rem, 1.1361rem + 0.6476cqi, 1.7578rem);
-  /* Step 3: 22.7813px → 35.1563px */
-  --step-3: clamp(1.4238rem, 1.2203rem + 1.0177cqi, 2.1973rem);
+  /* Step 1: 19.2px → 23.994px */
+  --step-1: clamp(1.2rem, 1.1212rem + 0.3942cqi, 1.4996rem);
+  /* Step 2: 23.04px → 31.984px */
+  --step-2: clamp(1.44rem, 1.2929rem + 0.7355cqi, 1.999rem);
+  /* Step 3: 27.648px → 42.6347px */
+  --step-3: clamp(1.728rem, 1.4815rem + 1.2325cqi, 2.6647rem);
+  /* Step 4: 33.1776px → 56.832px */
+  --step-4: clamp(2.0736rem, 1.6845rem + 1.9453cqi, 3.552rem);
+  /* Step 5: 39.8131px → 75.7571px */
+  --step-5: clamp(2.4883rem, 1.8971rem + 2.9559cqi, 4.7348rem);
+
 
   --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
   --space-2xs: clamp(0.5rem, 0.4836rem + 0.0822cqi, 0.5625rem);
@@ -39,6 +41,10 @@
   --space-6xl: clamp(9rem, 8.7039rem + 1.4803cqi, 10.125rem);
   --space-7xl: clamp(10rem, 9.6711rem + 1.6447cqi, 11.25rem);
   --space-8xl: clamp(11rem, 10.6382rem + 1.8092cqi, 12.375rem);
+  --space-9xl: clamp(12rem, 11.6053rem + 1.9737cqi, 13.5rem);
+  --space-10xl: clamp(13rem, 12.5724rem + 2.1382cqi, 14.625rem);
+  --space-11xl: clamp(14rem, 13.5395rem + 2.3026cqi, 15.75rem);
+  --space-12xl: clamp(15rem, 14.5066rem + 2.4671cqi, 16.875rem);
 
   --ff-roboto-serif: "Roboto Serif",
     serif;
@@ -260,15 +266,11 @@ main {
 /* Navigation */
 .navigation {
   display: flex;
-  display: flex;
   justify-content: center;
   max-height: 0;
   transition: var(--navigation__transition);
   overflow: hidden;
   margin-bottom: var(--space-2xl);
-
-  margin-bottom: var(--space-2xl);
-
 }
 
 .burger-check:checked~.navigation {
@@ -301,15 +303,10 @@ main {
     margin-top: var(--space-2xl);
     background-color: transparent;
     width: var(--space-8xl);
-    margin-top: var(--space-2xl);
-    background-color: transparent;
-    width: var(--space-8xl);
     display: flex;
     flex-direction: column;
-    position: relative;
     border-radius: var(--space-l);
     position: relative;
-    border-radius: var(--space-l);
     gap: var(--space-m);
   }
 
@@ -330,8 +327,6 @@ main {
     visibility: hidden;
     padding: var(--space-m) var(--space-3xl);
     font-size: var(--step--1);
-    color: hsl(var(--clr-dark));
-    background: hsl(var(--clr-accent));
     color: hsl(var(--clr-dark));
     background: hsl(var(--clr-accent));
     border-radius: var(--space-l);
@@ -396,10 +391,9 @@ main {
   display: block;
   text-align: center;
   color: hsl(var(--clr-white));
-  color: hsl(var(--clr-white));
 }
 
-/*.navigation a::after {
+.navigation a::after {
   position: absolute;
   content: "";
   inset: 100% 0 0;
@@ -432,13 +426,13 @@ main {
   background: var(--gradient, linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4));
   background-size: 200% 200%;
   /* Make the gradient larger for movement */
-background-position: 0 50%;
--webkit-background-clip: text;
-background-clip: text;
--webkit-text-fill-color: transparent;
-animation: gradient 2s linear infinite;
-margin-inline: auto;
-margin-top: var(--space-2xl);
+  background-position: 0 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 2s linear infinite;
+  margin-inline: auto;
+  margin-top: var(--space-2xl);
 }
 
 @keyframes gradient {
