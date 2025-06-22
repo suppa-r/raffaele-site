@@ -260,10 +260,13 @@ main {
 /* Navigation */
 .navigation {
   display: flex;
+  display: flex;
   justify-content: center;
   max-height: 0;
   transition: var(--navigation__transition);
   overflow: hidden;
+  margin-bottom: var(--space-2xl);
+
   margin-bottom: var(--space-2xl);
 
 }
@@ -274,55 +277,83 @@ main {
 }
 
 .burger-check:checked~.navigation li {
-  transform: translateY(0);
-  opacity: 1;
-  transition-delay: calc(.45s * var(--i));
-}
+  .burger-check:checked~.navigation li {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(.45s * var(--i));
+  }
 
-.navigation li:hover::after,
-.navigation li:focus-within::after {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-50%) translateX(0);
-}
+  .navigation li:hover::after,
+  .navigation li:focus-within::after {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(0);
+  }
 
-.navigation ul {
-  margin-top: var(--space-2xl);
-  background-color: transparent;
-  width: var(--space-8xl);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  border-radius: var(--space-l);
-  gap: var(--space-m);
-}
+  .navigation li:hover::after,
+  .navigation li:focus-within::after {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(0);
+  }
 
-.navigation li {
-  position: relative;
-  box-shadow: var(--shadow);
-  border-radius: var(--space-l);
-}
+  .navigation ul {
+    margin-top: var(--space-2xl);
+    background-color: transparent;
+    width: var(--space-8xl);
+    margin-top: var(--space-2xl);
+    background-color: transparent;
+    width: var(--space-8xl);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: var(--space-l);
+    position: relative;
+    border-radius: var(--space-l);
+    gap: var(--space-m);
+  }
 
-.navigation li::after {
-  position: absolute;
-  content: attr(data-tooltip);
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%) translateX(-20px);
-  /* Start slightly left of li */
-  opacity: 0;
-  visibility: hidden;
-  padding: var(--space-m) var(--space-3xl);
-  font-size: var(--step--1);
-  color: hsl(var(--clr-dark));
-  background: hsl(var(--clr-accent));
-  border-radius: var(--space-l);
-  margin-left: var(--space-l);
-  pointer-events: none;
-  transition:
-    opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
-    visibility 0.3s,
-    transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
+  .navigation li {
+    position: relative;
+    box-shadow: var(--shadow);
+    border-radius: var(--space-l);
+  }
+
+  .navigation li::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%) translateX(-20px);
+    /* Start slightly left of li */
+    opacity: 0;
+    visibility: hidden;
+    padding: var(--space-m) var(--space-3xl);
+    font-size: var(--step--1);
+    color: hsl(var(--clr-dark));
+    background: hsl(var(--clr-accent));
+    color: hsl(var(--clr-dark));
+    background: hsl(var(--clr-accent));
+    border-radius: var(--space-l);
+    margin-left: var(--space-l);
+    pointer-events: none;
+    transition:
+      opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+      visibility 0.3s,
+      transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
+  }
+
+  .navigation li:hover::after,
+  .navigation li:focus-within::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+    /* Slide to the right (100%) */
+  }
+
+  transition: opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+  visibility 0.3s,
+  transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
 }
 
 .navigation li:hover::after,
@@ -340,6 +371,7 @@ main {
   inset-block-start: 100%;
   /* Adjust this value to control the tooltip position */
 }
+
 
 .navigation a {
   position: relative;
@@ -364,9 +396,10 @@ main {
   display: block;
   text-align: center;
   color: hsl(var(--clr-white));
+  color: hsl(var(--clr-white));
 }
 
-.navigation a::after {
+/*.navigation a::after {
   position: absolute;
   content: "";
   inset: 100% 0 0;
@@ -399,13 +432,13 @@ main {
   background: var(--gradient, linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4));
   background-size: 200% 200%;
   /* Make the gradient larger for movement */
-  background-position: 0 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient 2s linear infinite;
-  margin-inline: auto;
-  margin-top: var(--space-2xl);
+background-position: 0 50%;
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: gradient 2s linear infinite;
+margin-inline: auto;
+margin-top: var(--space-2xl);
 }
 
 @keyframes gradient {
