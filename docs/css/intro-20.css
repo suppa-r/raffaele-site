@@ -141,7 +141,7 @@ header {
 }
 
 main {
-  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -162,6 +162,7 @@ main {
 }
 
 .burger {
+  margin-inline: auto;
   position: fixed;
   /* Fixed to viewport */
   top: 32px;
@@ -271,6 +272,7 @@ main {
 .burger-check:checked~.navigation {
   min-height: 100dvh;
   transition: var(--navigation__transition);
+  margin-inline: auto;
 }
 
 .burger-check:checked~.navigation li {
@@ -297,172 +299,91 @@ main {
   gap: var(--space-m);
 }
 
-.navigation li {
-  position: relative;
-  box-shadow: var(--shadow);
-  border-radius: var(--space-l);
-}
-
-.navigation li::after {
-  position: absolute;
-  content: attr(data-tooltip);
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%) translateX(-20px);
-  /* Start slightly left of li */
-  opacity: 0;
-  visibility: hidden;
-  padding: var(--space-m) var(--space-3xl);
-  font-size: var(--step--1);
-  color: hsl(var(--clr-dark));
-  background: hsl(var(--clr-accent));
-  border-radius: var(--space-l);
-  margin-left: var(--space-l);
-  pointer-events: none;
-  transition:
-    opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
-    visibility 0.3s,
-    transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
-}
-
-.navigation li:hover::after,
-.navigation li:focus-within::after {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) translateX(0);
-  /* Slide to the right (100%) */
-}
-
-
-.navigation li:has(a:hover, a:focus-visible)::after {
-  opacity: 1;
-  visibility: visible;
-  inset-block-start: 100%;
-  /* Adjust this value to control the tooltip position */
-}
-
-.navigation a {
-  position: relative;
+.social {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* Stack SVG and text vertically, remove if you want them side by side */
-  font-size: var(--step--1);
-  color: hsl(var(--clr-dark));
-  border-radius: var(--space-l);
+  list-style: none;
+  margin-inline: auto;
 }
 
-.navigation a>svg {
+.social li {
+  position: relative;
+  width: var(--space-5xl);
+  height: var(--space-xl);
+  border-radius: var(--space-2xs);
+}
+
+.social li::after {
+  position: absolute;
+  /* content: "Tooltip"; */
+  content: attr(data-tooltip);
+  /*inset: -45% auto auto 50%;*/
+  inset: 100% 0 0 50%;
+  z-index: -1;
+  transform: translateX(50%) translateY(50%);
+  padding: 0 0.75rem;
+  font-size: var(--step--1);
+  color: #fff;
+  /* background: #070707; */
+  background: --bg hsl(var(--clr-accent));
+  border-radius: var(--space-2xs);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* transition: all 0.3s ease-in-out; */
+  transition: inset 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+    visibility 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.social li:has(a:hover, a:focus-visible)::after {
+  opacity: 1;
+  visibility: visible;
+  inset-block-start: -60%;
+}
+
+.social a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*aspect-ratio: 1;*/
+  width: var(--space-5xl);
+  height: var(--space-xl);
+  border-radius: var(--space-2xs);
+  margin-inline: auto;
+  font-size: 1.75rem;
+  color: #ffffff;
+  text-decoration: none;
+  outline: none;
+  overflow: hidden;
+  transition: color 0.3s ease-in-out;
+}
+
+.social a>svg {
   width: var(--space-l);
   height: var(--space-l);
-  fill: hsl(var(--clr-white));
-  margin-bottom: 0.25em;
-  /* Space between icon and text, adjust as needed */
+  fill: currentColor;
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
 }
 
-.navigation a>span {
-  display: block;
-  text-align: center;
-  color: hsl(var(--clr-white));
-}
-
-.navigation a::after {
+.social a::after {
   position: absolute;
   content: "";
   inset: 100% 0 0;
-  background: hsl(var(--clr-accent));
-  color: hsl(var(--clr-dark));
-  border-radius: var(--space-l);
+  /* background: #070707; */
+  background: hsl(--bg, var(--clr-accent));
   pointer-events: none;
   transition: inset 0.3s ease-in-out;
 }
 
-.navigation a:hover,
-.navigation a:focus-visible {
-  color: hsl(var(--clr-white));
-  border-radius: var(--space-l);
+.social a:hover,
+.social a:focus-visible {
+  color: #fff;
 }
 
-.navigation a:hover::after,
-.navigation a:focus-visible::after {
+.social a:hover::after,
+.social a:focus-visible::after {
   inset-block-start: 0;
-}
-
-.crew-details.show {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 0 var(--space-xl);
-}
-
-.section-title {
-  font-size: var(--step-1);
-  background: var(--gradient, linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4));
-  background-size: 200% 200%;
-  /* Make the gradient larger for movement */
-  background-position: 0 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient 2s linear infinite;
-  margin-inline: auto;
-  margin-top: var(--space-2xl);
-}
-
-@keyframes gradient {
-
-  0%,
-  100% {
-    background-position: 0 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Fallback for browsers that do not support background-position animations */
-@supports not (animation: gradient) {
-  .section-title {
-    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
-    background-size: 100%;
-  }
-}
-
-.crew-details.genesis .show,
-.crew-details.beginnings .show,
-.crew-details.early .show,
-.crew-details.ryerson .show {
-  margin-inline: auto;
-  align-items: center;
-  justify-content: center;
-}
-
-.crew-details.genesis .show.row-img,
-.crew-details.beginnings .show.row-img,
-.crew-details.early .show.row-img,
-.crew-details.ryerson .show.row-img {
-  margin-inline: auto;
-  padding: var(--space-3xl) var(--space-6xl);
-}
-
-.crew-details.show .row-img>img {
-  display: block;
-  width: 390px;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-inline: auto;
-  box-shadow: var(--shadow);
-  opacity: 1;
-}
-
-.crew-details.genesis.show .row-text,
-.crew-details.beginnings.show .row-text,
-.crew-details.early.show .row-text,
-.crew-details.ryerson.show .row-text {
-  padding: var(--space-3xl) var(--space-3xl);
-  margin-inline: auto;
-  font-size: var(--step--1);
-  text-align: center;
 }
