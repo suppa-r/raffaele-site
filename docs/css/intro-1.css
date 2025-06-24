@@ -48,10 +48,8 @@
   --font-weight: 100;
   --font-style: normal;
 
-
   --pt-serif-regular-italic: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
-
   --font-weight-1: 400;
   --font-style-1: italic;
 
@@ -84,7 +82,7 @@
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
-  color-scheme: dark only;
+  color-scheme: dark light;
   color: hsl(var(--clr-white));
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
@@ -182,13 +180,6 @@ main {
   display: none;
 }
 
-/*.profile-title {
-  font-size: var(--step-1);
-  color: hsl(var(--clr-white));
-  margin: var(--space-2xl) 0 0 0;
-  text-align: center;
-}*/
-
 .profile-title {
   position: fixed;
   left: 0;
@@ -201,8 +192,6 @@ main {
   font-size: var(--step-1);
   color: hsl(var(--clr-white));
 }
-
-
 
 .burger-check {
   display: none;
@@ -533,4 +522,58 @@ main {
   margin-inline: auto;
   font-size: var(--step--1);
   text-align: center;
+}
+
+@media(prefers-color-scheme: dark) {
+  body {
+    background-color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-white));
+  }
+
+  .text-dark {
+    color: hsl(var(--clr-white));
+  }
+
+  .text-light {
+    color: hsl(var(--clr-dark));
+  }
+
+  .text-span {
+    color: hsl(var(--clr-accent));
+  }
+
+  .text-white {
+    color: hsl(var(--clr-dark));
+  }
+
+  .text-accent {
+    color: hsl(var(--clr-light));
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: hsl(var(--clr-light));
+    color: hsl(var(--clr-dark));
+  }
+
+  .text-dark {
+    color: hsl(var(--clr-dark));
+  }
+
+  .text-light {
+    color: hsl(var(--clr-white));
+  }
+
+  .text-span {
+    color: hsl(var(--clr-accent));
+  }
+
+  .text-white {
+    color: hsl(var(--clr-dark));
+  }
+
+  .text-accent {
+    color: hsl(var(--clr-light));
+  }
 }
