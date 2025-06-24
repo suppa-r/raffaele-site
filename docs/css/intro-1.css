@@ -11,52 +11,49 @@
   --clr-white: 0, 0%, 100%;
   --clr-accent: 231, 77%, 90%;
 
-  /* Step -1: 13.3333px → 13.5034px */
-  --step--1: clamp(0.8333rem, 0.8305rem + 0.014cqi, 0.844rem);
-  /* Step 0: 16px → 18px */
-  --step-0: clamp(1rem, 0.9671rem + 0.1645cqi, 1.125rem);
-  /* Step 1: 19.2px → 23.994px */
-  --step-1: clamp(1.2rem, 1.1212rem + 0.3942cqi, 1.4996rem);
-  /* Step 2: 23.04px → 31.984px */
-  --step-2: clamp(1.44rem, 1.2929rem + 0.7355cqi, 1.999rem);
-  /* Step 3: 27.648px → 42.6347px */
-  --step-3: clamp(1.728rem, 1.4815rem + 1.2325cqi, 2.6647rem);
-  /* Step 4: 33.1776px → 56.832px */
-  --step-4: clamp(2.0736rem, 1.6845rem + 1.9453cqi, 3.552rem);
-  /* Step 5: 39.8131px → 75.7571px */
-  --step-5: clamp(2.4883rem, 1.8971rem + 2.9559cqi, 4.7348rem);
+
+  /* Step 0: 16px → 16px */
+  --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
+  /* Step 1: 19.2px → 20px */
+  --step-1: clamp(1.2rem, 1.1826rem + 0.087cqi, 1.25rem);
+  /* Step 2: 23.04px → 25px */
+  --step-2: clamp(1.44rem, 1.3974rem + 0.213cqi, 1.5625rem);
+  /* Step 3: 27.648px → 31.25px */
+  --step-3: clamp(1.728rem, 1.6497rem + 0.3915cqi, 1.9531rem);
+  /* Step 4: 33.1776px → 39.0625px */
+  --step-4: clamp(2.0736rem, 1.9457rem + 0.6397cqi, 2.4414rem);
+  /* Step 5: 39.8131px → 48.8281px */
+  --step-5: clamp(2.4883rem, 2.2923rem + 0.9799cqi, 3.0518rem);
+
+  --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
+  --space-2xs: clamp(0.5rem, 0.5rem + 0cqi, 0.5rem);
+  --space-xs: clamp(0.75rem, 0.75rem + 0cqi, 0.75rem);
+  --space-s: clamp(1rem, 1rem + 0cqi, 1rem);
+  --space-m: clamp(1.5rem, 1.5rem + 0cqi, 1.5rem);
+  --space-l: clamp(2rem, 2rem + 0cqi, 2rem);
+  --space-xl: clamp(3rem, 3rem + 0cqi, 3rem);
+  --space-2xl: clamp(4rem, 4rem + 0cqi, 4rem);
+  --space-3xl: clamp(6rem, 6rem + 0cqi, 6rem);
+  --space-4xl: clamp(7rem, 7rem + 0cqi, 7rem);
+  --space-5xl: clamp(8rem, 8rem + 0cqi, 8rem);
+  --space-6xl: clamp(9rem, 9rem + 0cqi, 9rem);
+  --space-7xl: clamp(10rem, 10rem + 0cqi, 10rem);
+  --space-8xl: clamp(11rem, 11rem + 0cqi, 11rem);
+  --space-9xl: clamp(13rem, 13rem + 0cqi, 13rem);
+  --space-10xl: clamp(14rem, 14rem + 0cqi, 14rem);
 
 
-  --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4836rem + 0.0822cqi, 0.5625rem);
-  --space-xs: clamp(0.75rem, 0.7171rem + 0.1645cqi, 0.875rem);
-  --space-s: clamp(1rem, 0.9671rem + 0.1645cqi, 1.125rem);
-  --space-m: clamp(1.5rem, 1.4507rem + 0.2467cqi, 1.6875rem);
-  --space-l: clamp(2rem, 1.9342rem + 0.3289cqi, 2.25rem);
-  --space-xl: clamp(3rem, 2.9013rem + 0.4934cqi, 3.375rem);
-  --space-2xl: clamp(4rem, 3.8684rem + 0.6579cqi, 4.5rem);
-  --space-3xl: clamp(6rem, 5.8026rem + 0.9868cqi, 6.75rem);
-  --space-4xl: clamp(7rem, 6.7697rem + 1.1513cqi, 7.875rem);
-  --space-5xl: clamp(8rem, 7.7368rem + 1.3158cqi, 9rem);
-  --space-6xl: clamp(9rem, 8.7039rem + 1.4803cqi, 10.125rem);
-  --space-7xl: clamp(10rem, 9.6711rem + 1.6447cqi, 11.25rem);
-  --space-8xl: clamp(11rem, 10.6382rem + 1.8092cqi, 12.375rem);
-  --space-9xl: clamp(12rem, 11.6053rem + 1.9737cqi, 13.5rem);
-  --space-10xl: clamp(13rem, 12.5724rem + 2.1382cqi, 14.625rem);
-  --space-11xl: clamp(14rem, 13.5395rem + 2.3026cqi, 15.75rem);
-  --space-12xl: clamp(15rem, 14.5066rem + 2.4671cqi, 16.875rem);
+  --merriweather: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 
-  --ff-roboto-serif: "Roboto Serif",
-    serif;
-  --font-optical-sizing: auto;
-  --font-weight: 100;
-  --font-style: italic;
-  --font-variation-settings: "wdth" 100,
-    "GRAD" -50;
 
   --ff-monoton-regular: "Monoton",
     sans-serif;
-  --font-wight-regular: 400;
+  --font-weight-regular: 400;
   --font-style-regular: normal
 }
 
@@ -85,15 +82,17 @@ html {
   line-height: 1.2;
   color-scheme: dark only;
   color: hsl(var(--clr-white));
-  font-family: var(--ff-roboto-serif);
-  font-weight: var(--font-weight);
-  font-optical-sizing: var(--font-optical-sizing);
-  font-style: var(--font-style);
-  font-feature-settings: var(--font-variation-settings);
+  font-family: var(--merriweather);
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
   font-size: var(--step--1);
 }
 
-body {
+body>* {
+  container-type: inline-size;
+  max-inline-size: 100%;
   margin-inline: auto;
 }
 
