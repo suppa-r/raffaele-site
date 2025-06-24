@@ -529,51 +529,12 @@ main {
     background-color: hsl(var(--clr-dark));
     color: hsl(var(--clr-white));
   }
-
-  .text-dark {
-    color: hsl(var(--clr-white));
-  }
-
-  .text-light {
-    color: hsl(var(--clr-dark));
-  }
-
-  .text-span {
-    color: hsl(var(--clr-accent));
-  }
-
-  .text-white {
-    color: hsl(var(--clr-dark));
-  }
-
-  .text-accent {
-    color: hsl(var(--clr-light));
-  }
 }
+
 
 @media (prefers-color-scheme: light) {
   body {
     background-color: hsl(var(--clr-light));
     color: hsl(var(--clr-dark));
-  }
-
-  .text-dark {
-    color: hsl(var(--clr-dark));
-  }
-
-  .text-light {
-    color: hsl(var(--clr-white));
-  }
-
-  .text-span {
-    color: hsl(var(--clr-accent));
-  }
-
-  .text-white {
-    color: hsl(var(--clr-dark));
-  }
-
-  .text-accent {
-    color: hsl(var(--clr-light));
   }
 }
