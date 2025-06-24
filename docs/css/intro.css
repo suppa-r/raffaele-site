@@ -43,18 +43,22 @@
   --space-10xl: clamp(14rem, 14rem + 0cqi, 14rem);
 
 
-  --merriweather: "Merriweather", serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  --font-family: "Roboto Slab", serif;
+  --font-optical-sizing: auto;
+  --font-weight: 100;
+  --font-style: normal;
 
+
+  --pt-serif-regular-italic: "PT Serif", serif;
+  --pt-serif-italic: "PT Serif Italic", serif;
+
+  --font-weight-1: 400;
+  --font-style-1: italic;
 
   --ff-monoton-regular: "Monoton",
     sans-serif;
   --font-weight-regular: 400;
-  --font-style-regular: normal
+  --font-style-regular: normal;
 }
 
 .text-dark {
@@ -82,11 +86,9 @@ html {
   line-height: 1.2;
   color-scheme: dark only;
   color: hsl(var(--clr-white));
-  font-family: var(--merriweather);
-  font-weight: 100;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
   font-size: var(--step--1);
 }
 
