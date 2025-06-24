@@ -96,6 +96,7 @@ body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
+
 }
 
 body:before {
@@ -103,19 +104,43 @@ body:before {
   pointer-events: all;
   content: "";
   width: 100%;
+  /* Full viewport width */
   height: 100vh;
+  /* Full viewport height */
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url(/docs/images/header-desktop-min.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.664) 100%,
+      /* Transparent at the top */
+      rgba(20, 20, 20, 0.447) 100%
+      /* Darker at the bottom */
+    ),
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px;
+  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
   transform-style: preserve-3d;
-  transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
   z-index: -1;
+  /* Ensure it is behind other content */
   overflow: hidden;
+}
+
+body {
+  background-color: hsl(var(--clr-dark));
+  background-image: url(/docs/images/welcome-early.jpg);
+  background-size: contain;
+  /* Ensures the image covers the whole viewport */
+  background-position: center;
+  /* Centers the image */
+  background-repeat: no-repeat;
+  /* Prevents tiling */
+  background-attachment: fixed;
+  /* Keeps the image fixed during scroll */
 }
 
 header {
@@ -157,12 +182,27 @@ main {
   display: none;
 }
 
-.profile-title {
+/*.profile-title {
   font-size: var(--step-1);
   color: hsl(var(--clr-white));
   margin: var(--space-2xl) 0 0 0;
   text-align: center;
+}*/
+
+.profile-title {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  /* Optional: for contrast */
+  z-index: 100;
+  font-size: var(--step-1);
+  color: hsl(var(--clr-white));
 }
+
+
 
 .burger-check {
   display: none;
