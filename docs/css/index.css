@@ -11,44 +11,54 @@
 	--clr-white: 0, 0%, 100%;
 	--clr-accent: 231, 77%, 90%;
 
-	/* Step -1: 14.2222px → 14.4px */
-	--step--1: clamp(0.8889rem, 0.886rem + 0.0146cqi, 0.9rem);
-	/* Step 0: 16px → 18px */
-	--step-0: clamp(1rem, 0.9671rem + 0.1645cqi, 1.125rem);
-	/* Step 1: 18px → 22.5px */
-	--step-1: clamp(1.125rem, 1.051rem + 0.3701cqi, 1.4063rem);
-	/* Step 2: 20.25px → 28.125px */
-	--step-2: clamp(1.2656rem, 1.1361rem + 0.6476cqi, 1.7578rem);
-	/* Step 3: 22.7813px → 35.1563px */
-	--step-3: clamp(1.4238rem, 1.2203rem + 1.0177cqi, 2.1973rem);
 
-	--space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
-	--space-2xs: clamp(0.5rem, 0.4836rem + 0.0822cqi, 0.5625rem);
-	--space-xs: clamp(0.75rem, 0.7171rem + 0.1645cqi, 0.875rem);
-	--space-s: clamp(1rem, 0.9671rem + 0.1645cqi, 1.125rem);
-	--space-m: clamp(1.5rem, 1.4507rem + 0.2467cqi, 1.6875rem);
-	--space-l: clamp(2rem, 1.9342rem + 0.3289cqi, 2.25rem);
-	--space-xl: clamp(3rem, 2.9013rem + 0.4934cqi, 3.375rem);
-	--space-2xl: clamp(4rem, 3.8684rem + 0.6579cqi, 4.5rem);
-	--space-3xl: clamp(6rem, 5.8026rem + 0.9868cqi, 6.75rem);
-	--space-4xl: clamp(7rem, 6.7697rem + 1.1513cqi, 7.875rem);
-	--space-5xl: clamp(8rem, 7.7368rem + 1.3158cqi, 9rem);
-	--space-6xl: clamp(9rem, 8.7039rem + 1.4803cqi, 10.125rem);
-	--space-7xl: clamp(10rem, 9.6711rem + 1.6447cqi, 11.25rem);
-	--space-8xl: clamp(11rem, 10.6382rem + 1.8092cqi, 12.375rem);
+	/* Step 0: 16px → 16px */
+	--step-0: clamp(1rem, 1rem + 0cqi, 1rem);
+	/* Step 1: 19.2px → 20px */
+	--step-1: clamp(1.2rem, 1.1826rem + 0.087cqi, 1.25rem);
+	/* Step 2: 23.04px → 25px */
+	--step-2: clamp(1.44rem, 1.3974rem + 0.213cqi, 1.5625rem);
+	/* Step 3: 27.648px → 31.25px */
+	--step-3: clamp(1.728rem, 1.6497rem + 0.3915cqi, 1.9531rem);
+	/* Step 4: 33.1776px → 39.0625px */
+	--step-4: clamp(2.0736rem, 1.9457rem + 0.6397cqi, 2.4414rem);
+	/* Step 5: 39.8131px → 48.8281px */
+	--step-5: clamp(2.4883rem, 2.2923rem + 0.9799cqi, 3.0518rem);
 
-	--ff-roboto-serif: "Roboto Serif",
-		serif;
+	--space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
+	--space-2xs: clamp(0.5rem, 0.5rem + 0cqi, 0.5rem);
+	--space-xs: clamp(0.75rem, 0.75rem + 0cqi, 0.75rem);
+	--space-s: clamp(1rem, 1rem + 0cqi, 1rem);
+	--space-m: clamp(1.5rem, 1.5rem + 0cqi, 1.5rem);
+	--space-l: clamp(2rem, 2rem + 0cqi, 2rem);
+	--space-xl: clamp(3rem, 3rem + 0cqi, 3rem);
+	--space-2xl: clamp(4rem, 4rem + 0cqi, 4rem);
+	--space-3xl: clamp(6rem, 6rem + 0cqi, 6rem);
+	--space-4xl: clamp(7rem, 7rem + 0cqi, 7rem);
+	--space-5xl: clamp(8rem, 8rem + 0cqi, 8rem);
+	--space-6xl: clamp(9rem, 9rem + 0cqi, 9rem);
+	--space-7xl: clamp(10rem, 10rem + 0cqi, 10rem);
+	--space-8xl: clamp(11rem, 11rem + 0cqi, 11rem);
+	--space-9xl: clamp(13rem, 13rem + 0cqi, 13rem);
+	--space-10xl: clamp(14rem, 14rem + 0cqi, 14rem);
+
+
+	--font-family: "Roboto Slab", serif;
 	--font-optical-sizing: auto;
 	--font-weight: 100;
-	--font-style: italic;
-	--font-variation-settings: "wdth" 100,
-		"GRAD" -50;
+	--font-style: normal;
+
+
+	--pt-serif-regular-italic: "PT Serif", serif;
+	--pt-serif-italic: "PT Serif Italic", serif;
+
+	--font-weight-1: 400;
+	--font-style-1: italic;
 
 	--ff-monoton-regular: "Monoton",
 		sans-serif;
-	--font-wight-regular: 400;
-	--font-style-regular: normal
+	--font-weight-regular: 400;
+	--font-style-regular: normal;
 }
 
 .text-dark {
@@ -76,36 +86,36 @@ html {
 	line-height: 1.2;
 	color-scheme: dark only;
 	color: hsl(var(--clr-white));
-	font-family: var(--ff-roboto-serif);
-	font-weight: var(--font-weight);
-	font-optical-sizing: var(--font-optical-sizing);
-	font-style: var(--font-style);
-	font-feature-settings: var(--font-variation-settings);
+	font-family: var(--pt-serif-italic);
+	font-weight: var(--font-weight-1);
+	font-style: var(--font-style-1);
 	font-size: var(--step--1);
 }
 
 body>* {
 	container-type: inline-size;
 	max-inline-size: 100%;
-	margin-inline: auto
+	margin-inline: auto;
 }
+
 
 .wrapper {
+	min-height: 100dvh;
 	cursor: pointer;
 	overflow: hidden;
-	min-height: 100svh;
 }
-
 
 .quote {
 	text-align: center;
-	color: hsl(var(--clr-white));
-	margin-top: var(--space-s);
 }
 
-.author,
-.title {
-	font-size: var(--step--1)
+.title-1 {
+	padding-block: var(--space-s);
+	font-size: var(--step--1);
+}
+
+.author {
+	font-size: var(--step--1);
 }
 
 .curve-container {
@@ -117,7 +127,6 @@ body>* {
 	padding-block: var(--space-2xl);
 }
 
-
 .content,
 .content-1 {
 	display: flex;
@@ -126,7 +135,6 @@ body>* {
 	flex-direction: column;
 	overflow: hidden;
 }
-
 
 .content div,
 .content-1 div {
@@ -387,7 +395,7 @@ body>* {
 
 .container {
 	flex-direction: column;
-	padding-top: var(--space-3xl-4xl);
+	padding-top: var(--space-s);
 }
 
 
@@ -400,7 +408,7 @@ body>* {
 	font-size: var(--step-0);
 	animation: 2s cubic-bezier(.455, .03, .515, .955) forwards text-animation;
 	text-align: center;
-	margin-top: var(--space-2xs);
+	margin-top: var(--space-3xs);
 	letter-spacing: 0.2em;
 	text-wrap: balance;
 	overflow: hidden;
@@ -415,7 +423,7 @@ body>* {
 	font-size: var(--step--1);
 	animation: 2s cubic-bezier(.455, .03, .515, .955) forwards text-animation;
 	text-align: center;
-	margin-block: var(--space-2xs);
+	margin-block: var(--space-3xs);
 	text-wrap: balance;
 	letter-spacing: 0.1em;
 }

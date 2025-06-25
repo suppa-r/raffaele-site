@@ -1,12 +1,9 @@
 :root {
   --sp: 5s;
 
-  --burger-thickness: 4px;
-  --navigation__transition: max-height 2s ease-in-out;
-
   --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
   --glass-bg: rgba(255, 255, 255, 0.05);
-  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
+  --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
 
   --clr-dark: 0, 0%, 0%;
   --clr-light: 195, 70%, 90%;
@@ -14,44 +11,52 @@
   --clr-white: 0, 0%, 100%;
   --clr-accent: 231, 77%, 90%;
 
-  /* Step -1: 14.2222px → 14.4px */
-  --step--1: clamp(0.8889rem, 0.886rem + 0.0146cqi, 0.9rem);
-  /* Step 0: 16px → 18px */
-  --step-0: clamp(1rem, 0.9671rem + 0.1645cqi, 1.125rem);
-  /* Step 1: 18px → 22.5px */
-  --step-1: clamp(1.125rem, 1.051rem + 0.3701cqi, 1.4063rem);
-  /* Step 2: 20.25px → 28.125px */
-  --step-2: clamp(1.2656rem, 1.1361rem + 0.6476cqi, 1.7578rem);
-  /* Step 3: 22.7813px → 35.1563px */
-  --step-3: clamp(1.4238rem, 1.2203rem + 1.0177cqi, 2.1973rem);
 
-  --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4836rem + 0.0822cqi, 0.5625rem);
-  --space-xs: clamp(0.75rem, 0.7171rem + 0.1645cqi, 0.875rem);
-  --space-s: clamp(1rem, 0.9671rem + 0.1645cqi, 1.125rem);
-  --space-m: clamp(1.5rem, 1.4507rem + 0.2467cqi, 1.6875rem);
-  --space-l: clamp(2rem, 1.9342rem + 0.3289cqi, 2.25rem);
-  --space-xl: clamp(3rem, 2.9013rem + 0.4934cqi, 3.375rem);
-  --space-2xl: clamp(4rem, 3.8684rem + 0.6579cqi, 4.5rem);
-  --space-3xl: clamp(6rem, 5.8026rem + 0.9868cqi, 6.75rem);
-  --space-4xl: clamp(7rem, 6.7697rem + 1.1513cqi, 7.875rem);
-  --space-5xl: clamp(8rem, 7.7368rem + 1.3158cqi, 9rem);
-  --space-6xl: clamp(9rem, 8.7039rem + 1.4803cqi, 10.125rem);
-  --space-7xl: clamp(10rem, 9.6711rem + 1.6447cqi, 11.25rem);
-  --space-8xl: clamp(11rem, 10.6382rem + 1.8092cqi, 12.375rem);
+  /* Step 0: 16px → 16px */
+  --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
+  /* Step 1: 19.2px → 20px */
+  --step-1: clamp(1.2rem, 1.1826rem + 0.087cqi, 1.25rem);
+  /* Step 2: 23.04px → 25px */
+  --step-2: clamp(1.44rem, 1.3974rem + 0.213cqi, 1.5625rem);
+  /* Step 3: 27.648px → 31.25px */
+  --step-3: clamp(1.728rem, 1.6497rem + 0.3915cqi, 1.9531rem);
+  /* Step 4: 33.1776px → 39.0625px */
+  --step-4: clamp(2.0736rem, 1.9457rem + 0.6397cqi, 2.4414rem);
+  /* Step 5: 39.8131px → 48.8281px */
+  --step-5: clamp(2.4883rem, 2.2923rem + 0.9799cqi, 3.0518rem);
 
-  --ff-roboto-serif: "Roboto Serif",
-    serif;
+  --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
+  --space-2xs: clamp(0.5rem, 0.5rem + 0cqi, 0.5rem);
+  --space-xs: clamp(0.75rem, 0.75rem + 0cqi, 0.75rem);
+  --space-s: clamp(1rem, 1rem + 0cqi, 1rem);
+  --space-m: clamp(1.5rem, 1.5rem + 0cqi, 1.5rem);
+  --space-l: clamp(2rem, 2rem + 0cqi, 2rem);
+  --space-xl: clamp(3rem, 3rem + 0cqi, 3rem);
+  --space-2xl: clamp(4rem, 4rem + 0cqi, 4rem);
+  --space-3xl: clamp(6rem, 6rem + 0cqi, 6rem);
+  --space-4xl: clamp(7rem, 7rem + 0cqi, 7rem);
+  --space-5xl: clamp(8rem, 8rem + 0cqi, 8rem);
+  --space-6xl: clamp(9rem, 9rem + 0cqi, 9rem);
+  --space-7xl: clamp(10rem, 10rem + 0cqi, 10rem);
+  --space-8xl: clamp(11rem, 11rem + 0cqi, 11rem);
+  --space-9xl: clamp(13rem, 13rem + 0cqi, 13rem);
+  --space-10xl: clamp(14rem, 14rem + 0cqi, 14rem);
+
+
+  --font-family: "Roboto Slab", serif;
   --font-optical-sizing: auto;
   --font-weight: 100;
-  --font-style: italic;
-  --font-variation-settings: "wdth" 100,
-    "GRAD" -50;
+  --font-style: normal;
+
+  --pt-serif-regular-italic: "PT Serif", serif;
+  --pt-serif-italic: "PT Serif Italic", serif;
+  --font-weight-1: 400;
+  --font-style-1: italic;
 
   --ff-monoton-regular: "Monoton",
     sans-serif;
-  --font-wight-regular: 400;
-  --font-style-regular: normal
+  --font-weight-regular: 400;
+  --font-style-regular: normal;
 }
 
 .text-dark {
@@ -77,18 +82,19 @@
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
-  color-scheme: dark only;
+  color-scheme: dark light;
   color: hsl(var(--clr-white));
-  font-family: var(--ff-roboto-serif);
-  font-weight: var(--font-weight);
-  font-optical-sizing: var(--font-optical-sizing);
-  font-style: var(--font-style);
-  font-feature-settings: var(--font-variation-settings);
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
   font-size: var(--step--1);
 }
 
-body {
+body>* {
+  container-type: inline-size;
+  max-inline-size: 100%;
   margin-inline: auto;
+
 }
 
 body:before {
@@ -96,19 +102,43 @@ body:before {
   pointer-events: all;
   content: "";
   width: 100%;
+  /* Full viewport width */
   height: 100vh;
+  /* Full viewport height */
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url(/docs/images/header-desktop-min.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.664) 100%,
+      /* Transparent at the top */
+      rgba(20, 20, 20, 0.447) 100%
+      /* Darker at the bottom */
+    ),
+    linear-gradient(90deg,
+      color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px,
+    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
+      transparent 1px 30px) 50% 50% / 30px 30px;
+  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
   transform-style: preserve-3d;
-  transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
   z-index: -1;
+  /* Ensure it is behind other content */
   overflow: hidden;
+}
+
+body {
+  background-color: hsl(var(--clr-dark));
+  background-image: url(/docs/images/welcome-early.jpg);
+  background-size: contain;
+  /* Ensures the image covers the whole viewport */
+  background-position: center;
+  /* Centers the image */
+  background-repeat: no-repeat;
+  /* Prevents tiling */
+  background-attachment: fixed;
+  /* Keeps the image fixed during scroll */
 }
 
 header {
@@ -150,13 +180,17 @@ main {
   display: none;
 }
 
-
-
 .profile-title {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  /* Optional: for contrast */
+  z-index: 100;
   font-size: var(--step-1);
   color: hsl(var(--clr-white));
-  margin: var(--space-2xl) 0 0 0;
-  text-align: center;
 }
 
 .burger-check {
@@ -261,9 +295,12 @@ main {
 
 /* Navigation */
 .navigation {
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
   max-height: 0;
   transition: var(--navigation__transition);
+  overflow: hidden;
+  margin-bottom: var(--space-2xl);
 }
 
 .burger-check:checked~.navigation {
@@ -271,98 +308,147 @@ main {
   transition: var(--navigation__transition);
 }
 
-.navigation ul {
+.burger-check:checked~.navigation li {
+  .burger-check:checked~.navigation li {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(.45s * var(--i));
+  }
+
+  .navigation li:hover::after,
+  .navigation li:focus-within::after {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .navigation li:hover::after,
+  .navigation li:focus-within::after {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .navigation ul {
+    margin-top: var(--space-2xl);
+    background-color: transparent;
+    width: var(--space-8xl);
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--space-l);
+    position: relative;
+    gap: var(--space-m);
+  }
+
+  .navigation li {
+    position: relative;
+    box-shadow: var(--shadow);
+    border-radius: var(--space-l);
+  }
+
+  .navigation li::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%) translateX(-20px);
+    /* Start slightly left of li */
+    opacity: 0;
+    visibility: hidden;
+    padding: var(--space-m) var(--space-3xl);
+    font-size: var(--step--1);
+    color: hsl(var(--clr-dark));
+    background: hsl(var(--clr-accent));
+    border-radius: var(--space-l);
+    margin-left: var(--space-l);
+    pointer-events: none;
+    transition:
+      opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+      visibility 0.3s,
+      transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
+  }
+
+  .navigation li:hover::after,
+  .navigation li:focus-within::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+    /* Slide to the right (100%) */
+  }
+
+  transition: opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+  visibility 0.3s,
+  transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
+}
+
+.navigation li:hover::after,
+.navigation li:focus-within::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+  /* Slide to the right (100%) */
+}
+
+
+.navigation li:has(a:hover, a:focus-visible)::after {
+  opacity: 1;
+  visibility: visible;
+  inset-block-start: 100%;
+  /* Adjust this value to control the tooltip position */
+}
+
+
+.navigation a {
+  position: relative;
   display: flex;
   flex-direction: column;
-  list-style: none;
-  margin-inline: auto;
-  gap: var(--space-m);
-  width: 100%;
-  transition: height .3s ease-in;
-  font-size: var(--step--1);
-  padding: var(--space-2xl) 0;
-  /* Add padding to the top and bottom */
-  position: relative;
-  z-index: 100;
-  border-radius: var(--space-s);
-  color: hsl(var(--clr-white));
-}
-
-.navigation li {
-  display: flex;
-  flex-direction: row;
-  border-radius: var(--space-s);
-  box-shadow: var(--shadow);
-  color: hsl(var(--clr-white));
-  /* Fallback for browsers that do not support backdrop-filter */
-  font-size: var(--step--1);
-  text-decoration: none;
-  padding: var(--space-2xs) var(--space-l);
-  margin-inline: auto;
-}
-
-.navigation li a {
-  display: flex;
   align-items: center;
-  text-decoration: none;
-  color: hsl(var(--clr-white));
-  padding: var(--space-2xs) var(--space-m);
+  /* Stack SVG and text vertically, remove if you want them side by side */
   font-size: var(--step--1);
+  color: hsl(var(--clr-dark));
+  border-radius: var(--space-l);
 }
 
-.burger-check:checked~.navigation a {
-  transform: translateY(0);
-  opacity: 1;
-  transition-delay: calc(.45s * var(--i));
-}
-
-.navigation li a:hover,
-.navigation li a:focus {
-  background-color: hsl(var(--clr-span));
-  color: hsl(var(--clr-white));
-  padding: var(--space-2xs) var(--space-l);
-  outline: none;
-  box-shadow: var(--shadow);
-  border-radius: var(--space-xs-s);
-  transition: background-color .1s ease-in-out, color .1s ease-in-out;
-}
-
-.navigation li a span {
-  color: hsl(var(--clr-white));
-  padding-top: var(--space-2xs);
-}
-
-.navigation li a svg {
+.navigation a>svg {
   width: var(--space-l);
   height: var(--space-l);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   fill: hsl(var(--clr-white));
-  transition: fill .3s ease-in-out;
-  vertical-align: middle;
-  margin-right: var(--space-2xs);
-  display: inline-block;
-  /* Ensure the icon is displayed as an inline block */
+  margin-bottom: 0.25em;
+  /* Space between icon and text, adjust as needed */
 }
 
-.navigation li a:hover {
-  text-decoration: underline;
-  text-decoration-color: hsl(var(--clr-span));
-  text-decoration-thickness: 2px;
-  text-underline-offset: 8px;
-  opacity: 1;
-  background-color: hsl(var(--clr-span));
+.navigation a>span {
+  display: block;
+  text-align: center;
   color: hsl(var(--clr-white));
-  padding: var(--space-2xs) var(--space-l);
-  box-shadow: var(--shadow);
-  border-radius: var(--space-s);
-  transition: background-color .1s ease-in-out, color .1s ease-in-out, box-shadow .1s ease-in-out;
+}
+
+.navigation a::after {
+  position: absolute;
+  content: "";
+  inset: 100% 0 0;
+  background: hsl(var(--clr-accent));
+  color: hsl(var(--clr-dark));
+  border-radius: var(--space-l);
+  pointer-events: none;
+  transition: inset 0.3s ease-in-out;
+}
+
+.navigation a:hover,
+.navigation a:focus-visible {
+  color: hsl(var(--clr-white));
+  border-radius: var(--space-l);
+}
+
+.navigation a:hover::after,
+.navigation a:focus-visible::after {
+  inset-block-start: 0;
 }
 
 .crew-details.show {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 0 var(--space-4xl);
+  padding: 0 var(--space-xl);
 }
 
 .section-title {
@@ -436,4 +522,19 @@ main {
   margin-inline: auto;
   font-size: var(--step--1);
   text-align: center;
+}
+
+@media(prefers-color-scheme: dark) {
+  body {
+    background-color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-white));
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: hsl(var(--clr-light));
+    color: hsl(var(--clr-dark));
+  }
 }

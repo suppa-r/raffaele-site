@@ -33,18 +33,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Make .burger in each .crew-details functional
   document.querySelectorAll('.crew-details .burger').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      // Hide the current panel
-      const currentPanel = this.closest('.crew-details');
-      if (currentPanel) currentPanel.classList.remove('show');
-      // Show the navigation
-      if (menuToggle) menuToggle.checked = true;
-      if (profileNavbar) profileNavbar.classList.add('show');
-    });
-  });
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    // Hide the current panel
+    const currentPanel = this.closest('.crew-details');
+    if (currentPanel) currentPanel.classList.remove('show');
+    // Show the navigation
+    if (menuToggle) menuToggle.checked = true;
+    if (profileNavbar) profileNavbar.classList.add('show');
+   });
+});
 
   // Handle click on .burger-link in the navigation
   document.querySelectorAll('.navigation .burger-link').forEach(link => {
