@@ -364,4 +364,10 @@ p .bottom {
     transform: translateY(0);
     opacity: 1;
   }
+
+  .intro {
+    padding-top: var(--space-xs);
+    text-align: center;
+    margin-inline: auto;
+  }
 }
