@@ -6,6 +6,7 @@
 	<meta name="description"
 		content="Raffaele Suppa's web development portfolio showcasing innovative projects, creative designs, and coding expertise." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
 	<meta name="author" content="Raffaele Suppa" />
 	<title>Raffaele Suppa - Web Page</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +18,7 @@
 	<link rel="stylesheet" href="/docs/css/reset.css" />
 	<link rel="stylesheet" href="/docs/css/index-lines.css" />
 	<link rel="stylesheet" href="/docs/css/index.css" />
+	<script src="/docs/js/toggle.js"></script>
 	<script src="/docs/js/tabs.js" defer></script>
 </head>
 
@@ -48,6 +50,16 @@
 			<p class="title-1">a tribute to a work in progress</p>
 			<p class="title">"there will be an answer --let it be"</p>
 			<p class="author">the beatles!</p>
+		</div>
+		<button id="dark-mode-toggle" class="dark-mode-toggle">
+			<svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+				<path fill="currentColor"
+					d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z"
+					transform="translate(-8 -8)" />
+			</svg>
+		</button>
+		<div class="click-here">
+			<span>select theme</span>
 		</div>
 		<div class="curve-container">
 			<div class="content">
@@ -105,5 +117,6 @@
 	</div>
 	</div>
 </body>
+
 
 </html>
