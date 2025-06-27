@@ -1,7 +1,7 @@
 :root {
-  --base-color: #000;
+  --base-color: #ffffff;
   --base-variant: #e8e9ed;
-  --text-color: #ffff;
+  --text-color: #000000;
   --secondary-text: #232738;
   --primary-color: #3a435d;
   --accent-color: #0071ff;
@@ -60,9 +60,9 @@
 }
 
 .darkmode {
-  --base-color: #ffffff;
+  --base-color: #000000;
   --base-variant: #101425;
-  --text-color: #000;
+  --text-color: #ffffff;
   --secondary-text: #a4a5b8;
   --primary-color: #3a435d;
   --accent-color: #0071ff;
@@ -81,8 +81,8 @@ button {
 }
 
 #theme-switch {
-  height: 50px;
-  width: 50px;
+  height: var(--space-l);
+  width: var(--space-l);
   padding: 0;
   border-radius: 50%;
   background-color: var(--base-color);
@@ -90,8 +90,8 @@ button {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: var(--space-s);
+  right: var(--space-s);
 }
 
 #theme-switch svg {
@@ -114,39 +114,43 @@ button {
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
-  color: var(--text-color);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
 }
 
+body {
+  color: var(--text-color);
+  background-color: var(--base-color);
+}
+
+
 body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
-}
-
-section {
-  display: flex;
-  flex-direction: column;
   background-color: var(--base-color);
-  color: var(--text-color);
-  align-items: center;
 }
 
 .wrapper {
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
   overflow: hidden;
+  background-color: var(--base-color);
+  color: var(--text-color);
 }
+
 
 .quote {
   text-align: center;
 }
 
 .title-1 {
-  padding-block: var(--space-s);
+  padding-top: var(--space-xs);
   font-size: var(--step--1);
 }
 

@@ -117,9 +117,9 @@ body:before {
     linear-gradient(90deg,
       color-mix(in hsl, canvasText, transparent 70%) 1px,
       transparent 1px 30px) 50% 50% / 30px 30px,
-    linear-gradient(color-mix(in hsl, canvasText, transparent 70%) 1px,
+    linear-gradient(color-mix(in, canvasText, transparent 70%) 1px,
       transparent 1px 30px) 50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 25%, white) 100%;
+  mask: linear-gradient(-20deg, transparent 0%, white) 100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-position 0.3s ease-in-out;
