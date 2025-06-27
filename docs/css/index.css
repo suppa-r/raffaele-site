@@ -80,13 +80,6 @@
 	color: hsl(var(--clr-accent))
 }
 
-.darkmode {
-	--clr-dark: 0, 0%, 0%;
-	--clr-light: 195, 70%, 90%;
-	--clr-span: 195, 36%, 45%;
-	--clr-white: 0, 0%, 100%;
-	--clr-accent: 231, 77%, 90%;
-}
 
 html {
 	scroll-behavior: smooth;
@@ -123,29 +116,6 @@ body>* {
 
 .author {
 	font-size: var(--step--1);
-}
-
-
-.dark-mode-toggle {
-	position: absolute;
-	z-index: 100;
-	top: 1em;
-	right: 1em;
-	color: hsl(var(--clr-white));
-	margin: 4px;
-	background: transparent;
-	cursor: pointer;
-	border-radius: 5px;
-	width: 30px;
-	height: 30px;
-}
-
-.click-here span {
-	width: 100px;
-	right: 0em;
-	position: absolute;
-	top: 4em;
-	color: hsl(var(--clr-white));
 }
 
 .curve-container {
