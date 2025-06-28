@@ -80,7 +80,7 @@ button {
   width: var(--space-l);
   padding: 0;
   border: none;
-  margin: var(--space-2xs) var(--space-xs);
+  margin: var(--space-2xs)0;
   border-radius: 50%;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -88,8 +88,8 @@ button {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: var(--space-s);
-  right: var(--space-s);
+  top: 1%;
+  right: 1%;
 }
 
 #theme-switch svg {

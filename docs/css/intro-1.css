@@ -25,6 +25,7 @@
   /* Step 5: 39.8131px → 48.8281px */
   --step-5: clamp(2.4883rem, 2.2923rem + 0.9799cqi, 3.0518rem);
 
+  --space-4xs: clamp(0.125rem, 0.125rem + 0cqi, 0.125rem);
   --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
   --space-2xs: clamp(0.5rem, 0.5rem + 0cqi, 0.5rem);
   --space-xs: clamp(0.75rem, 0.75rem + 0cqi, 0.75rem);
@@ -131,7 +132,7 @@ body:before {
 body {
   background-color: hsl(var(--clr-dark));
   background-image: url(/docs/images/welcome-early.jpg);
-  background-size: contain;
+  background-size: cover;
   /* Ensures the image covers the whole viewport */
   background-position: center;
   /* Centers the image */
@@ -260,7 +261,7 @@ main {
 .crew-details .burger::after {
   content: "";
   display: block;
-  border-bottom: var(--burger-thickness) solid currentColor;
+  border-bottom: var(--burger-thickness) solid hsl(var(--clr-white));
   width: 100%;
   margin-bottom: 5px;
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
@@ -274,8 +275,7 @@ main {
 }
 
 &:before {
-  border-bottom: var(--burger-thickness) solid currentColor;
-
+  border-bottom: var(--burger-thickness) solid hsl(var(--clr-white));
   transform: rotate(-405deg) translateY(1px) translateX(-3px);
   -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
   transition: transform 0.5s, top 0.5s, opacity 0.5s;

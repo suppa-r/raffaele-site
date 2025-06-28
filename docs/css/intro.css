@@ -63,10 +63,11 @@
   --base-color: #070b1d;
   --base-variant: #101425;
   --text-color: #ffffff;
-  --secondary-text: #598586;
+  --secondary-text: #a4a5b8;
   --primary-color: #3a435d;
   --accent-color: #0071ff;
 }
+
 
 button {
   padding: var(--space-xs) var(--space-s) 0 0;
@@ -79,7 +80,7 @@ button {
   width: var(--space-l);
   padding: 0;
   border: none;
-  margin: var(--space-2xs) var(--space-xs);
+  margin: var(--space-2xs)0;
   border-radius: 50%;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -87,8 +88,8 @@ button {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: var(--space-s);
-  right: var(--space-s);
+  top: 1%;
+  right: 1%;
 }
 
 #theme-switch svg {
@@ -112,30 +113,35 @@ html {
   scroll-behavior: smooth;
   line-height: 1.2;
   font-family: var(--pt-serif-italic);
-  font-optical-sizing: var(--font-optical-sizing);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+  color: var(--text-color);
+  background-color: var(--base-color);
 }
+
+body {
+  color: var(--text-color);
+  background-color: var(--base-color);
+}
+
 
 body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
-  background-color: var(--base-color);
-  color: var(--text-color);
 }
 
 /* --------------------------------------- */
 
 header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
 header .logo {
-  padding: var(--space-s) var(--space-l) 0 0;
-  display: flex;
+  min-width: fit-content;
 }
 
 header .logo p {
@@ -156,7 +162,7 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin: var(--space-xs) 0 0 var(--space-xs);
+  margin: 0 0 0 var(--space-m);
   display: none;
   cursor: pointer;
 }
@@ -188,23 +194,28 @@ header .bars::before {
   top: 7px;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: var(--space-s) var(--space-4xl)0 0;
+  background-color: var(--base-color);
+  z-index: 2;
+}
+
 .nav-links {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  position: fixed;
-  z-index: 2;
-  top: 6%;
+  gap: 1.5rem;
+  /* space between links */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
-  list-style: none;
   display: flex;
-  justify-content: center;
-  position: relative;
-  padding: 0 var(--space-xs);
-  margin: var(--space-xs);
+  align-items: center;
 }
 
 .nav-links li a {
@@ -216,7 +227,7 @@ header .bars::before {
 
 .nav-links li a span {
   font-size: var(--step--1);
-  letter-spacing: 1px;
+  letter-spacing: var(--space-3xs);
   margin-top: var(--space-3xs);
 }
 
@@ -226,15 +237,6 @@ header .bars::before {
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;
-}
-
-.nav-links li img {
-  height: var(--space-l);
-  width: var(--space-l);
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .intro {
@@ -254,7 +256,7 @@ header .bars::before {
 .intro .ya {
   font-size: var(--step-0);
   color: var(--text-color);
-  letter-spacing: var(--space-3xs);
+  letter-spacing: var(--space-4xs);
 }
 
 .wrapper-gradient-text {
@@ -304,8 +306,7 @@ header .bars::before {
   }
 
   header .logo {
-    padding: var(--space-s) var(--space-xs) 0 0;
-    display: flex;
+    padding: var(--space-s) 0 0 var(--space-m);
   }
 
   header .bars {
@@ -314,8 +315,12 @@ header .bars::before {
   }
 
   nav {
-    position: fixed;
-    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--base-color);
+    z-index: 2;
+    padding: var(--space-s) var(--space-s) 0 var(--space-s);
   }
 
   .nav-links {
