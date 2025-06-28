@@ -240,8 +240,9 @@ header .bars::before {
 .intro {
   display: flex;
   flex-direction: column;
+  justify-content: start;
   text-align: center;
-  padding-top: var(--space-s);
+  padding-top: var(--space-l);
   min-height: 100dvh;
   color: var(--text-color);
 }
@@ -253,7 +254,7 @@ header .bars::before {
 .intro .ya {
   font-size: var(--step-0);
   color: var(--text-color);
-  letter-spacing: var(--space-2xs);
+  letter-spacing: var(--space-3xs);
 }
 
 .wrapper-gradient-text {
@@ -355,6 +356,6 @@ header .bars::before {
 
   .intro {
     min-height: 100dvh;
-    padding-inline: auto;
+    padding-bottom: var(--space-6xl);
   }
 }
