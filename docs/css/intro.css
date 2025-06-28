@@ -69,12 +69,9 @@
 }
 
 button {
-  border: none;
   padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
   color: var(--text-color);
-  border-radius: var(--space-3xs);
-  font: inherit;
   cursor: pointer;
 }
 
@@ -84,6 +81,7 @@ button {
   padding: 0;
   border-radius: 50%;
   background-color: var(--base-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -306,15 +304,6 @@ header .bars::before {
   header .logo {
     padding: var(--space-s) var(--space-xs) 0 0;
     display: flex;
-  }
-
-  button {
-    border: none;
-    padding: var(--space-xs) var(--space-s) 0 0;
-    background-color: var(--base-color);
-    color: var(--text-color);
-    border-radius: 4px;
-    cursor: pointer;
   }
 
   header .bars {
