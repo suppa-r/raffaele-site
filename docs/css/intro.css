@@ -76,9 +76,10 @@ button {
 }
 
 #theme-switch {
-  height: var(--space-l);
   width: var(--space-l);
   padding: 0;
+  border: none;
+  margin: var(--space-2xs) var(--space-xs);
   border-radius: 50%;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -87,7 +88,7 @@ button {
   align-items: center;
   position: fixed;
   top: var(--space-s);
-  right: var(--space-2xs);
+  right: var(--space-s);
 }
 
 #theme-switch svg {
@@ -354,6 +355,6 @@ header .bars::before {
 
   .intro {
     min-height: 100dvh;
-    padding: var(--space-m) 0;
+    padding-inline: auto;
   }
 }
