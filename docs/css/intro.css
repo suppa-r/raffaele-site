@@ -2,7 +2,7 @@
   --base-color: #ffffff;
   --base-variant: #d1ebe900;
   --text-color: #000000;
-  --secondary-text: #5665a054;
+  --secondary-text: #6ea4a896;
   --primary-color: #5464a546;
   --accent-color: #41508a00;
 
@@ -63,20 +63,18 @@
   --base-color: #000000;
   --base-variant: #7581b6c5;
   --text-color: #ffffff;
-  --secondary-text: #5665a054;
+  --secondary-text: #5697a0ef;
   --primary-color: #5464a546;
   --accent-color: #41508a00;
 }
 
 button {
   border: none;
-  padding: .8em 2em;
+  padding: var(--space-2xs) var(--space-s);
   background-color: var(--base-color);
-  color: white;
-  border-radius: 4px;
+  color: var(--text-color);
+  border-radius: var(--space-2xs);
   font: inherit;
-  text-transform: uppercase;
-  font-weight: 500;
   cursor: pointer;
 }
 
@@ -90,7 +88,7 @@ button {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: var(--space-s);
+  top: var(--space-xs);
   right: var(--space-s);
 }
 
@@ -115,12 +113,11 @@ html {
   scroll-behavior: smooth;
   line-height: 1.2;
   font-family: var(--pt-serif-italic);
+  font-optical-sizing: var(--font-optical-sizing);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
 }
-
-
 
 body>* {
   container-type: inline-size;
@@ -149,7 +146,7 @@ header .logo p {
 }
 
 header .logo p span {
-  color: var(--primary-color);
+  color: var(--secondary-text);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
 }
@@ -160,7 +157,7 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin: var(--space-s) 0 0 var(--space-m);
+  margin: var(--space-2xs) 0 0 var(--space-s);
   display: none;
 }
 
@@ -194,6 +191,10 @@ header .bars::before {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  top: 6%;
 }
 
 .nav-links li {
@@ -238,8 +239,8 @@ header .bars::before {
 .intro {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
+  padding-top: var(--space-s);
   min-height: 100dvh;
   color: var(--text-color);
 }
@@ -311,7 +312,9 @@ header .bars::before {
   }
 
   .nav-links {
-    background: #111111;
+    background: var(--base-color);
+    display: flex;
+    justify-content: center;
     position: fixed;
     top: 6%;
     left: 0;
