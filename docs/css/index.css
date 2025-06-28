@@ -1,7 +1,7 @@
 :root {
-  --base-color: #ffffff;
+  --base-color: white;
   --base-variant: #e8e9ed;
-  --text-color: #000000;
+  --text-color: #111528;
   --secondary-text: #232738;
   --primary-color: #3a435d;
   --accent-color: #0071ff;
@@ -60,7 +60,7 @@
 }
 
 .darkmode {
-  --base-color: #000000;
+  --base-color: #070b1d;
   --base-variant: #101425;
   --text-color: #ffffff;
   --secondary-text: #a4a5b8;
@@ -68,9 +68,10 @@
   --accent-color: #0071ff;
 }
 
+
 button {
   border: none;
-  padding: .8em 2em;
+  padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
   color: white;
   border-radius: 4px;
@@ -437,7 +438,7 @@ body>* {
 
 .container {
   flex-direction: column;
-  padding-top: var(--space-s);
+  padding-top: var(--space-xs);
   color: var(--text-color);
 }
 

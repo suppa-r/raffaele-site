@@ -1,10 +1,10 @@
 :root {
-  --base-color: #ffffff;
-  --base-variant: #d1ebe900;
-  --text-color: #000000;
-  --secondary-text: #6ea4a896;
-  --primary-color: #5464a546;
-  --accent-color: #41508a00;
+  --base-color: white;
+  --base-variant: #e8e9ed;
+  --text-color: #111528;
+  --secondary-text: #232738;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
 
 
   /* Step 0: 16px → 16px */
@@ -60,20 +60,20 @@
 }
 
 .darkmode {
-  --base-color: #000000;
-  --base-variant: #7581b6c5;
+  --base-color: #070b1d;
+  --base-variant: #101425;
   --text-color: #ffffff;
-  --secondary-text: #5697a0ef;
-  --primary-color: #5464a546;
-  --accent-color: #41508a00;
+  --secondary-text: #598586;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
 }
 
 button {
   border: none;
-  padding: var(--space-2xs) var(--space-s);
+  padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
   color: var(--text-color);
-  border-radius: var(--space-2xs);
+  border-radius: var(--space-3xs);
   font: inherit;
   cursor: pointer;
 }
@@ -88,8 +88,8 @@ button {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: var(--space-xs);
-  right: var(--space-s);
+  top: var(--space-s);
+  right: var(--space-2xs);
 }
 
 #theme-switch svg {
@@ -135,7 +135,7 @@ header {
 }
 
 header .logo {
-  padding-top: var(--space-s);
+  padding: var(--space-s) var(--space-l) 0 0;
   display: flex;
 }
 
@@ -157,14 +157,16 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin: var(--space-2xs) 0 0 var(--space-s);
+  margin: var(--space-xs) 0 0 var(--space-xs);
   display: none;
+  cursor: pointer;
 }
 
 header .bars.is-active {
   width: 35px;
   transform-origin: right;
   transform: translateY(15px) rotate(45deg);
+  cursor: pointer;
 }
 
 header .bars::after,
@@ -299,6 +301,22 @@ header .bars::before {
     justify-content: space-between;
     background-color: var(--base-color);
     color: var(--text-color);
+  }
+
+  header .logo {
+    padding: var(--space-s) var(--space-xs) 0 0;
+    display: flex;
+  }
+
+  button {
+    border: none;
+    padding: 1.5em 2em;
+    background-color: var(--base-color);
+    color: white;
+    border-radius: 4px;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
   }
 
   header .bars {
