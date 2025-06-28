@@ -1,10 +1,10 @@
 :root {
   --base-color: #ffffff;
-  --base-variant: #e8e9ed;
+  --base-variant: #d1ebe900;
   --text-color: #000000;
-  --secondary-text: #232738;
-  --primary-color: #3a435d;
-  --accent-color: #0071ff;
+  --secondary-text: #5665a054;
+  --primary-color: #5464a546;
+  --accent-color: #41508a00;
 
 
   /* Step 0: 16px → 16px */
@@ -61,11 +61,11 @@
 
 .darkmode {
   --base-color: #000000;
-  --base-variant: #101425;
+  --base-variant: #7581b6c5;
   --text-color: #ffffff;
-  --secondary-text: #a4a5b8;
-  --primary-color: #3a435d;
-  --accent-color: #0071ff;
+  --secondary-text: #5665a054;
+  --primary-color: #5464a546;
+  --accent-color: #41508a00;
 }
 
 button {
@@ -120,48 +120,17 @@ html {
   font-size: var(--step--1);
 }
 
-body {
-  color: var(--text-color);
-  background-color: var(--base-color);
-}
 
 
 body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
+  background-color: var(--base-color);
+  color: var(--text-color);
 }
 
 /* --------------------------------------- */
-
-body:before {
-  opacity: 1;
-  pointer-events: all;
-  content: "";
-  width: 100%;
-  /* Full viewport width */
-  height: 100vh;
-  /* Full viewport height */
-  position: fixed;
-  top: 0;
-  left: 0;
-  background:
-    linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(20, 20, 20, 0.5) 100%),
-    linear-gradient(90deg,
-      rgb(255, 255, 255) 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px,
-    linear-gradient(rgba(255, 255, 255, 0.719) 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 0%, white) 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
-    background-position 0.3s ease-in-out;
-  z-index: -1;
-  /* Ensure it is behind other content */
-  overflow: hidden;
-}
 
 header {
   display: flex;
@@ -169,18 +138,18 @@ header {
 }
 
 header .logo {
-  padding: var(--space-xs) var(--space-xs) 0 0;
+  padding-top: var(--space-s);
   display: flex;
 }
 
 header .logo p {
   color: var(--text-color);
   font-size: var(--step--1);
-  padding: 0 0 0 var(--space-xs);
+  padding: 0 0 0 var(--space-s);
 }
 
 header .logo p span {
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
 }
@@ -191,7 +160,7 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin: var(--space-xs) 0 0 var(--space-m);
+  margin: var(--space-s) 0 0 var(--space-m);
   display: none;
 }
 
@@ -225,7 +194,6 @@ header .bars::before {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-right: var(--space-6xl);
 }
 
 .nav-links li {
@@ -270,43 +238,20 @@ header .bars::before {
 .intro {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
-  height: 100%;
+  min-height: 100dvh;
+  color: var(--text-color);
 }
 
 .intro p {
-  color: var(--text-color);
   font-size: var(--step--1);
-}
-
-.intro p span {
-  font-size: var(--step-0);
-  color: var(--secondary-text);
-  padding-left: var(--space-m);
-}
-
-.intro h1,
-.intro h2,
-.intro h3 {
-  margin: 0;
-  /* Remove default margins */
-  padding: 0;
-  /* Remove default padding */
-  font-size: var(--step-1);
-  /* Match font size with <p> if needed */
-  margin-block: 0.5em;
-  /* Add margin for spacing */
 }
 
 .intro .ya {
   font-size: var(--step-0);
-  color: var(--secondary-text);
+  color: var(--text-color);
   letter-spacing: var(--space-2xs);
-}
-
-p .bottom {
-  margin-block: var(--space-xs);
-  letter-spacing: 3.5px;
 }
 
 .wrapper-gradient-text {
@@ -351,7 +296,8 @@ p .bottom {
 @media only screen and (max-width: 768px) {
   header {
     justify-content: space-between;
-    background-color: transparent;
+    background-color: var(--base-color);
+    color: var(--text-color);
   }
 
   header .bars {
@@ -367,7 +313,7 @@ p .bottom {
   .nav-links {
     background: #111111;
     position: fixed;
-    top: 10%;
+    top: 6%;
     left: 0;
     flex-direction: column;
     height: 100dvh;
@@ -396,5 +342,10 @@ p .bottom {
   .nav-links.open li {
     transform: translateY(0);
     opacity: 1;
+  }
+
+  .intro {
+    min-height: 100dvh;
+    padding: var(--space-m) 0;
   }
 }
