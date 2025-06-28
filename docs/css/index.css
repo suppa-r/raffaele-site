@@ -73,11 +73,8 @@ button {
   border: none;
   padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
-  color: white;
+  color: var(--text-color);
   border-radius: 4px;
-  font: inherit;
-  text-transform: uppercase;
-  font-weight: 500;
   cursor: pointer;
 }
 
