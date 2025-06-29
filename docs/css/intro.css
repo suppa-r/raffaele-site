@@ -164,7 +164,7 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin: var(--space-xs);
+  margin: var(--space-s);
   display: none;
   cursor: pointer;
 }
@@ -325,7 +325,7 @@ nav {
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 6%;
+    top: 7%;
     left: 0;
     flex-direction: column;
     height: 100dvh;
