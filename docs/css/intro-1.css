@@ -1,15 +1,10 @@
 :root {
-  --sp: 5s;
-
-  --gradient: linear-gradient(45deg, #33ffc9a4, #6bdfff, #453d78, #646593);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --shadow: 0 30px 100px rgba(85, 89, 134, 0.5);
-
-  --clr-dark: 0, 0%, 0%;
-  --clr-light: 195, 70%, 90%;
-  --clr-span: 195, 36%, 45%;
-  --clr-white: 0, 0%, 100%;
-  --clr-accent: 231, 77%, 90%;
+  --base-color: white;
+  --base-variant: #e8e9ed;
+  --text-color: #000;
+  --secondary-text: #232738;
+  --primary-color: #3a435d;
+  --accent-color: #5ac9b1;
 
 
   /* Step 0: 16px → 16px */
@@ -25,7 +20,6 @@
   /* Step 5: 39.8131px → 48.8281px */
   --step-5: clamp(2.4883rem, 2.2923rem + 0.9799cqi, 3.0518rem);
 
-  --space-4xs: clamp(0.125rem, 0.125rem + 0cqi, 0.125rem);
   --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
   --space-2xs: clamp(0.5rem, 0.5rem + 0cqi, 0.5rem);
   --space-xs: clamp(0.75rem, 0.75rem + 0cqi, 0.75rem);
@@ -44,13 +38,18 @@
   --space-10xl: clamp(14rem, 14rem + 0cqi, 14rem);
 
 
-  --font-family: "Roboto Slab", serif;
+  --font-family: "Roboto Slab",
+    serif;
   --font-optical-sizing: auto;
   --font-weight: 100;
   --font-style: normal;
 
-  --pt-serif-regular-italic: "PT Serif", serif;
-  --pt-serif-italic: "PT Serif Italic", serif;
+
+  --pt-serif-regular-italic: "PT Serif",
+    serif;
+  --pt-serif-italic: "PT Serif Italic",
+    serif;
+
   --font-weight-1: 400;
   --font-style-1: italic;
 
@@ -60,78 +59,73 @@
   --font-style-regular: normal;
 }
 
-.text-dark {
-  color: hsl(var(--clr-dark))
+.darkmode {
+  --base-color: #070b1d;
+  --base-variant: #101425;
+  --text-color: #ffffff;
+  --secondary-text: #232738;
+  --primary-color: #3a435d;
+  --accent-color: #5ac9b1;
 }
 
-.text-light {
-  color: hsl(var(--clr-light))
+button {
+  padding: var(--space-xs) var(--space-s) 0 0;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  cursor: pointer;
 }
 
-.text-span {
-  color: hsl(var(--clr-span))
+.theme-switch {
+  width: var(--space-l);
+  padding: 0;
+  border: none;
+  margin: var(--space-2xs)0;
+  border-radius: 50%;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 1%;
+  right: 1%;
 }
 
-.text-white {
-  color: hsl(var(--clr-white))
+.theme-switch svg {
+  fill: var(--text-color);
 }
 
-.text-accent {
-  color: hsl(var(--clr-accent))
+.theme-switch svg:last-child {
+  display: none;
+}
+
+.darkmode .theme-switch svg:first-child {
+  display: none;
+}
+
+.darkmode .theme-switch svg:last-child {
+  display: block;
 }
 
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
-  color-scheme: dark light;
-  color: hsl(var(--clr-white));
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+  color: var(--text-color);
 }
 
 body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
-
-}
-
-body:before {
-  opacity: 1;
-  pointer-events: all;
-  content: "";
-  width: 100%;
-  /* Full viewport width */
-  height: 100vh;
-  /* Full viewport height */
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.664) 100%,
-      /* Transparent at the top */
-      rgba(20, 20, 20, 0.447) 100%
-      /* Darker at the bottom */
-    ),
-    linear-gradient(90deg,
-      color-mix(in hsl, canvasText, transparent 70%) 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px,
-    linear-gradient(color-mix(in, canvasText, transparent 70%) 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 0%, white) 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
-    background-position 0.3s ease-in-out;
-  z-index: -1;
-  /* Ensure it is behind other content */
-  overflow: hidden;
 }
 
 body {
   background-color: hsl(var(--clr-dark));
-  background-image: url(/docs/images/welcome-early.jpg);
+  background-image: url(/docs/images/mobile-light\ -\ Copy.jpg);
   background-size: cover;
   /* Ensures the image covers the whole viewport */
   background-position: center;
@@ -144,31 +138,37 @@ body {
 
 header {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--space-l);
-  z-index: 10;
+  padding-block: var(--space-s);
 }
 
-.logo {
+header .logo {
+  min-width: fit-content;
+  padding: var(--space-s) 0 0 var(--space-m);
+}
+
+.h {
+  padding: 0 var(--space-xs) var(--space-xs) var(--space-m);
+  min-width: fit-content;
+  color: var(--text-color);
   font-size: var(--step--1);
-  letter-spacing: 0.05em;
-  color: hsl(var(--clr-white));
-  margin-left: var(--space-m);
-  margin-top: var(--space-s);
 }
 
-.logo span {
-  color: hsl(var(--clr-span));
-  /* fallback to blue if --clr-span not set */
-  margin: 0 var(--space-2xs) 0 0.1em;
-  letter-spacing: 0.02em;
-  transition: color 0.3s;
+.h span {
+  color: var(--primary-color);
+  font-size: var(--step--1);
+  padding: var(--space-s) var(--space-xs) 0 0;
+}
+
+.profile-title {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 10%;
+  text-align: center;
+  z-index: 100;
+  font-size: var(--step-1);
+  color: var(--text-color);
 }
 
 main {
@@ -181,43 +181,71 @@ main {
   display: none;
 }
 
-.profile-title {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 5%;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  /* Optional: for contrast */
-  z-index: 100;
-  font-size: var(--step-1);
-  color: hsl(var(--clr-white));
-}
-
 .burger-check {
   display: none;
 }
 
 .burger {
-  position: fixed;
-  /* Fixed to viewport */
-  top: 32px;
-  /* Adjust as needed */
+  display: inline-block;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 15%;
   left: 50%;
-  /* Center horizontally */
+  transform: translateX(-50%);
+  background: none;
+  z-index: 1001;
+}
+
+.burger span,
+.burger span::before,
+.burger span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: var(--text-color, #333);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.burger span {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.burger span::before {
+  content: "";
+  top: -10px;
+}
+
+.burger span::after {
+  content: "";
+  top: 10px;
+}
+
+/*.burger {
+  position: fixed;
+  /* Fixed to viewport *
+  top: var(--space-6xl);
+  /* Adjust as needed *
+  left: 50%;
+  /* Center horizontally *
   transform: translateX(-50%);
   width: 28px;
   height: 28px;
   display: inline-block;
   background: none;
-  color: hsl(var(--clr-white));
+  color: var(--base-color);
   border: 0;
   outline: 0;
   padding: 0;
   cursor: pointer;
   z-index: 200;
   transition: border-bottom 1s ease-in-out;
-}
+}*/
 
 .burger::-moz-focus-inner {
   border: 0;
@@ -241,7 +269,7 @@ main {
   height: 28px;
   display: inline-block;
   background: none;
-  color: hsl(var(--clr-white));
+  color: var(--text-color);
   border: 0;
   outline: 0;
   padding: 0;
@@ -261,7 +289,7 @@ main {
 .crew-details .burger::after {
   content: "";
   display: block;
-  border-bottom: var(--burger-thickness) solid hsl(var(--clr-white));
+  border-bottom: var(--burger-thickness) solid var(--text-color);
   width: 100%;
   margin-bottom: 5px;
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
@@ -275,7 +303,7 @@ main {
 }
 
 &:before {
-  border-bottom: var(--burger-thickness) solid hsl(var(--clr-white));
+  border-bottom: var(--burger-thickness) solid var(--text-color);
   transform: rotate(-405deg) translateY(1px) translateX(-3px);
   -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
@@ -296,89 +324,83 @@ main {
 /* Navigation */
 .navigation {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  /* was center */
   max-height: 0;
   transition: var(--navigation__transition);
   overflow: hidden;
-  margin-bottom: var(--space-2xl);
+  margin-block: var(--space-2xl);
+  padding-right: 35%;
 }
 
 .burger-check:checked~.navigation {
   min-height: 100dvh;
+  max-height: 100dvh;
+  /* Full height when open */
   transition: var(--navigation__transition);
 }
 
 .burger-check:checked~.navigation li {
-  .burger-check:checked~.navigation li {
-    transform: translateY(0);
-    opacity: 1;
-    transition-delay: calc(.45s * var(--i));
-  }
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: calc(.45s * var(--i));
+}
 
-  .navigation li:hover::after,
-  .navigation li:focus-within::after {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-50%) translateX(0);
-  }
+.navigation li:hover::after,
+.navigation li:focus-within::after {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50%) translateX(0);
+}
 
-  .navigation li:hover::after,
-  .navigation li:focus-within::after {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-50%) translateX(0);
-  }
+.navigation ul {
+  margin-block: var(--space-2xl);
+  background-color: transparent;
+  padding: var(--space-2xl) var(--space-xl);
+  /* Padding around the list */
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--space-l);
+  gap: var(--space-m);
+}
 
-  .navigation ul {
-    margin-top: var(--space-2xl);
-    background-color: transparent;
-    width: var(--space-8xl);
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--space-l);
-    position: relative;
-    gap: var(--space-m);
-  }
+.navigation li {
+  position: relative;
+  box-shadow: var(--shadow);
+  border-radius: var(--space-l);
+}
 
-  .navigation li {
-    position: relative;
-    box-shadow: var(--shadow);
-    border-radius: var(--space-l);
-  }
+.navigation li::after {
+  position: absolute;
+  content: attr(data-tooltip);
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(-20px);
+  /* Start slightly left of li */
+  opacity: 0;
+  visibility: hidden;
+  padding: var(--space-m) var(--space-3xl);
+  font-size: var(--step--1);
+  color: var(--base-color);
+  background: var(--accent-color);
+  border-radius: var(--space-l);
+  margin-left: var(--space-l);
+  pointer-events: none;
+  transition:
+    opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+    visibility 0.3s,
+    transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
+}
 
-  .navigation li::after {
-    position: absolute;
-    content: attr(data-tooltip);
-    top: 50%;
-    left: 100%;
-    transform: translateY(-50%) translateX(-20px);
-    /* Start slightly left of li */
-    opacity: 0;
-    visibility: hidden;
-    padding: var(--space-m) var(--space-3xl);
-    font-size: var(--step--1);
-    color: hsl(var(--clr-dark));
-    background: hsl(var(--clr-accent));
-    border-radius: var(--space-l);
-    margin-left: var(--space-l);
-    pointer-events: none;
-    transition:
-      opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
-      visibility 0.3s,
-      transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
-  }
-
-  .navigation li:hover::after,
-  .navigation li:focus-within::after {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(-50%) translateX(0);
-    /* Slide to the right (100%) */
-  }
-
+.navigation li:hover::after,
+.navigation li:focus-within::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+  /* Slide to the right (100%) */
   transition: opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
-  visibility 0.3s,
-  transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
+    visibility 0.3s,
+    transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
 }
 
 .navigation li:hover::after,
@@ -389,14 +411,12 @@ main {
   /* Slide to the right (100%) */
 }
 
-
 .navigation li:has(a:hover, a:focus-visible)::after {
   opacity: 1;
   visibility: visible;
   inset-block-start: 100%;
   /* Adjust this value to control the tooltip position */
 }
-
 
 .navigation a {
   position: relative;
@@ -405,14 +425,14 @@ main {
   align-items: center;
   /* Stack SVG and text vertically, remove if you want them side by side */
   font-size: var(--step--1);
-  color: hsl(var(--clr-dark));
+  color: var(--base-color);
   border-radius: var(--space-l);
 }
 
 .navigation a>svg {
   width: var(--space-l);
   height: var(--space-l);
-  fill: hsl(var(--clr-white));
+  fill: var(--text-color);
   margin-bottom: 0.25em;
   /* Space between icon and text, adjust as needed */
 }
@@ -420,15 +440,15 @@ main {
 .navigation a>span {
   display: block;
   text-align: center;
-  color: hsl(var(--clr-white));
+  color: var(--text-color);
 }
 
 .navigation a::after {
   position: absolute;
   content: "";
   inset: 100% 0 0;
-  background: hsl(var(--clr-accent));
-  color: hsl(var(--clr-dark));
+  background: var(--accent-color);
+  color: var(--base-accent);
   border-radius: var(--space-l);
   pointer-events: none;
   transition: inset 0.3s ease-in-out;
@@ -436,13 +456,25 @@ main {
 
 .navigation a:hover,
 .navigation a:focus-visible {
-  color: hsl(var(--clr-white));
+  color: var(--text-color);
   border-radius: var(--space-l);
 }
 
 .navigation a:hover::after,
 .navigation a:focus-visible::after {
   inset-block-start: 0;
+}
+
+.navigation.open li {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
+  transition-delay: calc(.45s * var(--i));
+}
+
+.navigation.open li {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .crew-details.show {
@@ -524,17 +556,31 @@ main {
   text-align: center;
 }
 
-@media(prefers-color-scheme: dark) {
-  body {
-    background-color: hsl(var(--clr-dark));
-    color: hsl(var(--clr-white));
+/* Show burger only on small screens */
+@container (max-width: 768px) {
+  .burger {
+    display: block;
   }
-}
 
+  /* Navigation */
+  .navigation {
+    display: flex;
+    justify-content: flex-start;
+    /* was center */
+    max-height: 0;
+    transition: var(--navigation__transition);
+    overflow: hidden;
+    margin-block: var(--space-2xl);
+    padding-left: var(--space-xl);
+  }
 
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: hsl(var(--clr-light));
-    color: hsl(var(--clr-dark));
+  .burger-check:checked~.navigation {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    background: var(--base-color, #fff);
+    z-index: 1000;
   }
 }
