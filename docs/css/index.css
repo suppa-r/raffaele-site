@@ -1,10 +1,10 @@
 :root {
   --base-color: white;
   --base-variant: #e8e9ed;
-  --text-color: #111528;
+  --text-color: #000;
   --secondary-text: #232738;
   --primary-color: #3a435d;
-  --accent-color: #0071ff;
+  --accent-color: #5ac9b1;
 
 
   /* Step 0: 16px → 16px */
@@ -63,9 +63,9 @@
   --base-color: #070b1d;
   --base-variant: #101425;
   --text-color: #ffffff;
-  --secondary-text: #a4a5b8;
+  --secondary-text: #232738;
   --primary-color: #3a435d;
-  --accent-color: #0071ff;
+  --accent-color: #5ac9b1;
 }
 
 
@@ -76,7 +76,7 @@ button {
   cursor: pointer;
 }
 
-#theme-switch {
+.theme-switch {
   width: var(--space-l);
   padding: 0;
   border: none;
@@ -92,19 +92,19 @@ button {
   right: 1%;
 }
 
-#theme-switch svg {
+.theme-switch svg {
   fill: var(--text-color);
 }
 
-#theme-switch svg:last-child {
+.theme-switch svg:last-child {
   display: none;
 }
 
-.darkmode #theme-switch svg:first-child {
+.darkmode .theme-switch svg:first-child {
   display: none;
 }
 
-.darkmode #theme-switch svg:last-child {
+.darkmode .theme-switch svg:last-child {
   display: block;
 }
 
