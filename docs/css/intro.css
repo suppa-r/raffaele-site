@@ -358,6 +358,6 @@ nav {
 
   .intro {
     min-height: 100dvh;
-    padding-bottom: var(--space-6xl);
+    padding-bottom: var(--space-5xl);
   }
 }
