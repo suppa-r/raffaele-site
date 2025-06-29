@@ -3,7 +3,7 @@
   --base-variant: #e8e9ed;
   --text-color: #111528;
   --secondary-text: #232738;
-  --primary-color: #3a435d;
+  --primary-color: #7aa9b1;
   --accent-color: #0071ff;
 
 
@@ -64,7 +64,7 @@
   --base-variant: #101425;
   --text-color: #ffffff;
   --secondary-text: #a4a5b8;
-  --primary-color: #3a435d;
+  --primary-color: #7aa9b1;
   --accent-color: #0071ff;
 }
 
@@ -136,22 +136,23 @@ body>* {
 
 header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  padding-block: var(--space-s);
 }
 
 header .logo {
   min-width: fit-content;
+  padding: var(--space-s) 0 0 var(--space-m);
 }
 
-header .logo p {
+header p {
   color: var(--text-color);
   font-size: var(--step--1);
   padding: 0 0 0 var(--space-s);
 }
 
-header .logo p span {
-  color: var(--secondary-text);
+header p span {
+  color: var(--primary-color);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
 }
@@ -162,7 +163,7 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin: 0 0 0 var(--space-m);
+  margin: var(--space-xs);
   display: none;
   cursor: pointer;
 }
@@ -198,7 +199,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: var(--space-s) var(--space-4xl)0 0;
+  padding-right: var(--space-4xl);
   background-color: var(--base-color);
   z-index: 2;
 }
@@ -244,7 +245,6 @@ nav {
   flex-direction: column;
   justify-content: start;
   text-align: center;
-  padding-top: var(--space-l);
   min-height: 100dvh;
   color: var(--text-color);
 }
@@ -306,7 +306,8 @@ nav {
   }
 
   header .logo {
-    padding: var(--space-s) 0 0 var(--space-m);
+    min-width: fit-content;
+    padding: var(--space-s) 0 0 var(--space-xl);
   }
 
   header .bars {
