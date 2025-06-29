@@ -76,7 +76,7 @@ button {
   cursor: pointer;
 }
 
-#theme-switch {
+.theme-switch {
   width: var(--space-l);
   padding: 0;
   border: none;
@@ -92,19 +92,19 @@ button {
   right: 1%;
 }
 
-#theme-switch svg {
+.theme-switch svg {
   fill: var(--text-color);
 }
 
-#theme-switch svg:last-child {
+.theme-switch svg:last-child {
   display: none;
 }
 
-.darkmode #theme-switch svg:first-child {
+.darkmode .theme-switch svg:first-child {
   display: none;
 }
 
-.darkmode #theme-switch svg:last-child {
+.darkmode .theme-switch svg:last-child {
   display: block;
 }
 
