@@ -145,13 +145,14 @@ header .logo {
   padding: var(--space-s) 0 0 var(--space-m);
 }
 
-header p {
+.h {
+  padding: 0 var(--space-xs) var(--space-xs) var(--space-m);
+  min-width: fit-content;
   color: var(--text-color);
   font-size: var(--step--1);
-  padding: 0 0 0 var(--space-s);
 }
 
-header p span {
+.h span {
   color: var(--primary-color);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
@@ -298,16 +299,11 @@ nav {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@container (max-width: 768px) {
   header {
     justify-content: space-between;
     background-color: var(--base-color);
     color: var(--text-color);
-  }
-
-  header .logo {
-    min-width: fit-content;
-    padding: var(--space-s) 0 0 var(--space-xl);
   }
 
   header .bars {
