@@ -257,7 +257,7 @@ nav {
 .intro p span {
   color: var(--primary-color);
   font-size: var(--step-1);
-  padding: var(--space-s) var(--space-xs) 0 0;
+  padding-left: var(--space-xs);
 }
 
 .intro .ya {
