@@ -2,9 +2,9 @@
   --base-color: white;
   --base-variant: #e8e9ed;
   --text-color: #111528;
-  --secondary-text: #232738;
+  --secondary-text: #a4a5b8;
   --primary-color: #7aa9b1;
-  --accent-color: #0071ff;
+  --accent-color: #62b4a0b2;
 
 
   /* Step 0: 16px → 16px */
@@ -65,7 +65,7 @@
   --text-color: #ffffff;
   --secondary-text: #a4a5b8;
   --primary-color: #7aa9b1;
-  --accent-color: #0071ff;
+  --accent-color: #62b4a0b2;
 }
 
 
