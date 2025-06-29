@@ -1,10 +1,10 @@
 :root {
   --base-color: white;
   --base-variant: #e8e9ed;
-  --text-color: #000;
+  --text-color: #111528;
   --secondary-text: #232738;
-  --primary-color: #3a435d;
-  --accent-color: #5ac9b1;
+  --primary-color: #7aa9b1;
+  --accent-color: #0071ff;
 
 
   /* Step 0: 16px → 16px */
@@ -63,10 +63,11 @@
   --base-color: #070b1d;
   --base-variant: #101425;
   --text-color: #ffffff;
-  --secondary-text: #232738;
-  --primary-color: #3a435d;
-  --accent-color: #5ac9b1;
+  --secondary-text: #a4a5b8;
+  --primary-color: #7aa9b1;
+  --accent-color: #0071ff;
 }
+
 
 button {
   padding: var(--space-xs) var(--space-s) 0 0;
@@ -107,6 +108,7 @@ button {
   display: block;
 }
 
+
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
@@ -115,7 +117,14 @@ html {
   font-style: var(--font-style-1);
   font-size: var(--step--1);
   color: var(--text-color);
+  background-color: var(--base-color);
 }
+
+body {
+  color: var(--text-color);
+  background-color: var(--base-color);
+}
+
 
 body>* {
   container-type: inline-size;
@@ -123,18 +132,7 @@ body>* {
   margin-inline: auto;
 }
 
-body {
-  background-color: hsl(var(--clr-dark));
-  background-image: url(/docs/images/mobile-light\ -\ Copy.jpg);
-  background-size: cover;
-  /* Ensures the image covers the whole viewport */
-  background-position: center;
-  /* Centers the image */
-  background-repeat: no-repeat;
-  /* Prevents tiling */
-  background-attachment: fixed;
-  /* Keeps the image fixed during scroll */
-}
+/* --------------------------------------- */
 
 header {
   display: flex;

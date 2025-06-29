@@ -331,7 +331,7 @@ nav {
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 7%;
+    top: 5%;
     left: 0;
     flex-direction: column;
     height: 100dvh;
@@ -364,6 +364,6 @@ nav {
 
   .intro {
     min-height: 100dvh;
-    padding-bottom: var(--space-6xl);
+    padding: var(--space-xl) var(--space-xs) 0 var(--space-xs);
   }
 }
