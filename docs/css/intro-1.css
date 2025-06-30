@@ -278,7 +278,7 @@ main {
   backdrop-filter: blur(40px);
   z-index: 200;
   opacity: 1;
-  width: 10%;
+  width: var(--space-8xl);
   /* Add this line for a fixed width */
   /* or width: 80%;  for a responsive width */
   /* or max-width: 400px; min-width: 220px; */
@@ -448,6 +448,27 @@ main {
 }
 
 @container (max-width: 550px) {
+  .profile-title {
+    font-size: var(--step-1);
+    margin-top: var(--space-l);
+  }
+
+
+  .burger {
+    display: inline-block;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    background: none;
+    color: hsl(var(--clr-white));
+    padding: 0;
+    cursor: pointer;
+    z-index: 300;
+  }
+
   .crew-details.show .row-img>img {
     width: 230px;
     height: auto;
