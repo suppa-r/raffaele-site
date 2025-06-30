@@ -118,28 +118,28 @@ body:before {
 
 header {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--space-l);
-  z-index: 10;
+  padding-block: var(--space-s);
 }
 
+
 .h {
-  padding: var(--space-s) var(--space-m) 0 0;
+  padding: 0 0 0 var(--space-m);
   min-width: fit-content;
   font-size: var(--step--1);
+  font-weight: bold;
+  /* Makes the heading stand out */
+  letter-spacing: 0.05em;
+  /* Adds a bit of spacing between letters */
   color: hsl(var(--clr-white));
 }
 
 .h span {
-  color: var(--text-span);
-  font-size: var(--step--1);
-  padding: var(--space-s) 0 0 var(--space-xs);
+  color: hsl(var(--clr-span));
+  /* Uses your accent color variable */
+  font-size: var(--step-1);
+  /* Slightly larger for emphasis */
+  padding: 0 var(--space-xs) 0 var(--space-3xs);
 }
 
 main {
@@ -149,10 +149,14 @@ main {
 }
 
 .profile-title {
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: var(--step-2);
   color: hsl(var(--clr-white));
-  margin-block: var(--space-xl);
   text-align: center;
+  margin-inline: auto;
 }
 
 .burger-check {
@@ -162,7 +166,7 @@ main {
 .burger {
   display: inline-block;
   position: fixed;
-  top: 10%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 32px;
@@ -271,11 +275,10 @@ main {
   list-style: none;
   box-shadow: var(--shadow);
   border-radius: var(--space-l);
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(40px);
   z-index: 200;
   opacity: 1;
-  width: 40%;
+  width: 10%;
   /* Add this line for a fixed width */
   /* or width: 80%;  for a responsive width */
   /* or max-width: 400px; min-width: 220px; */
@@ -298,7 +301,6 @@ main {
   visibility: hidden;
   padding: var(--space-m) var(--space-3xl);
   font-size: var(--step--1);
-
   background: hsl(var(--clr-accent));
   color: hsl(var(--clr-dark));
   background: hsl(var(--clr-accent));
@@ -317,8 +319,6 @@ main {
   visibility: visible;
   transform: translateY(-50%) translateX(0);
   /* Slide to the right (100%) */
-
-
   transition: opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
     visibility 0.3s,
     transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
@@ -385,14 +385,14 @@ main {
   font-size: var(--step-1);
   text-align: center;
   color: hsl(var(--clr-white));
-  padding: var(--space-s) var(--space-m);
-  margin-block: var(--space-m);
+  padding: var(--space-xs) var(--space-s);
+  margin-block: var(--space-xs);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradient var(--sp) linear infinite;
   border-radius: var(--space-l);
   box-shadow: var(--shadow);
-  max-width: 30ch;
+  max-width: 20ch;
   /* limits width to about 16 characters */
   margin-inline: auto;
   /* centers the title */
@@ -448,10 +448,6 @@ main {
 }
 
 @container (max-width: 550px) {
-  .burger {
-    margin: var(--space-2xs) 0 0 0;
-  }
-
   .crew-details.show .row-img>img {
     width: 230px;
     height: auto;
