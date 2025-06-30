@@ -1,7 +1,7 @@
 :root {
   --base-color: white;
   --text-color: #000;
-
+  --text-span: #7bc5b9;
 
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
@@ -108,6 +108,10 @@ html {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+}
+
+body,
+html {
   color: var(--text-color);
   background-color: var(--base-color);
 }
@@ -134,12 +138,11 @@ header .logo {
 .h {
   padding: 0 var(--space-xs) var(--space-xs) var(--space-m);
   min-width: fit-content;
-  color: var(--text-color);
   font-size: var(--step--1);
 }
 
 .h span {
-  color: var(--primary-color);
+  color: var(--text-span);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
 }
@@ -185,9 +188,9 @@ header .bars::before {
 nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1.5rem;
   padding-right: var(--space-4xl);
-  background-color: var(--base-color);
   z-index: 2;
 }
 
@@ -233,7 +236,6 @@ nav {
   justify-content: start;
   text-align: center;
   min-height: 100dvh;
-  color: var(--text-color);
 }
 
 .intro p {
@@ -241,14 +243,13 @@ nav {
 }
 
 .intro p span {
-  color: var(--primary-color);
+  color: var(--text-span);
   font-size: var(--step-1);
   padding-left: var(--space-xs);
 }
 
 .intro .ya {
   font-size: var(--step-0);
-  color: var(--text-color);
   letter-spacing: var(--space-4xs);
 }
 
@@ -294,8 +295,6 @@ nav {
 @container (max-width: 768px) {
   header {
     justify-content: space-between;
-    background-color: var(--base-color);
-    color: var(--text-color);
   }
 
   header .bars {
@@ -317,7 +316,7 @@ nav {
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 5%;
+    top: 7%;
     left: 0;
     flex-direction: column;
     height: 100dvh;
@@ -325,10 +324,6 @@ nav {
     pointer-events: none;
     transition: 0.5s;
     opacity: 0;
-  }
-
-  .nav-links li {
-    margin: var(--space-2xs) 0;
   }
 
   .nav-links.open {
@@ -340,16 +335,18 @@ nav {
     transform: translateY(40px);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
-    transition-delay: calc(.45s * var(--i));
+    /* Remove transition-delay here */
   }
 
   .nav-links.open li {
     transform: translateY(0);
     opacity: 1;
+    transition-delay: calc(.3s * var(--i));
+    /* Apply delay only when open */
   }
 
   .intro {
     min-height: 100dvh;
-    padding: var(--space-xl) var(--space-xs) 0 var(--space-xs);
+    padding: var(--space-xl) var(--space-s) 0 var(--space-s);
   }
 }

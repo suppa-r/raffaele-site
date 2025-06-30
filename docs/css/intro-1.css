@@ -1,6 +1,7 @@
 :root {
   --base-color: white;
   --text-color: #000;
+  --text-span: #7bc5b9;
 
 
   /* Step 0: 16px → 16px */
@@ -108,6 +109,10 @@ html {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+}
+
+body,
+html {
   color: var(--text-color);
   background-color: var(--base-color);
 }
@@ -165,7 +170,7 @@ header .logo {
 }
 
 .h span {
-  color: var(--primary-color);
+  color: var(--text-span);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
 }
@@ -312,14 +317,20 @@ main {
 
 /* Navigation */
 .navigation {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Center horizontally */
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   /* was center */
   max-height: 0;
   transition: var(--navigation__transition);
   overflow: hidden;
-  margin-block: var(--space-2xl);
-  padding-right: 45%;
+  margin-block: var(--space-xl);
+
 }
 
 .burger-check:checked~.navigation {
