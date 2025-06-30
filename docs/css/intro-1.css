@@ -279,9 +279,6 @@ main {
   z-index: 200;
   opacity: 1;
   width: var(--space-8xl);
-  /* Add this line for a fixed width */
-  /* or width: 80%;  for a responsive width */
-  /* or max-width: 400px; min-width: 220px; */
 }
 
 .navigation li {
