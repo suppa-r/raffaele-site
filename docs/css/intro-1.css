@@ -1,10 +1,6 @@
 :root {
   --base-color: white;
-  --base-variant: #e8e9ed;
-  --text-color: #111528;
-  --secondary-text: #a4a5b8;
-  --primary-color: #7aa9b1;
-  --accent-color: #62b4a0b2;
+  --text-color: #000;
 
 
   /* Step 0: 16px → 16px */
@@ -59,16 +55,6 @@
   --font-style-regular: normal;
 }
 
-.darkmode {
-  --base-color: #070b1d;
-  --base-variant: #101425;
-  --text-color: #ffffff;
-  --secondary-text: #a4a5b8;
-  --primary-color: #7aa9b1;
-  --accent-color: #62b4a0b2;
-}
-
-
 button {
   padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
@@ -108,6 +94,12 @@ button {
   display: block;
 }
 
+.darkmode {
+  --base-color: #000;
+  --text-color: #fff;
+  --text-span: #7bc5b9;
+}
+
 
 html {
   scroll-behavior: smooth;
@@ -120,16 +112,36 @@ html {
   background-color: var(--base-color);
 }
 
-body {
-  color: var(--text-color);
-  background-color: var(--base-color);
-}
-
-
 body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
+}
+
+/* --------------------------------------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-block: var(--space-s);
+}
+
+header .logo {
+  min-width: fit-content;
+  padding: var(--space-s) 0 0 var(--space-m);
+}
+
+.h {
+  padding: 0 var(--space-xs) var(--space-xs) var(--space-m);
+  min-width: fit-content;
+  color: var(--text-color);
+  font-size: var(--step--1);
+}
+
+.h span {
+  color: var(--primary-color);
+  font-size: var(--step--1);
+  padding: var(--space-s) var(--space-xs) 0 0;
 }
 
 /* --------------------------------------- */
@@ -224,27 +236,6 @@ main {
   top: 10px;
 }
 
-/*.burger {
-  position: fixed;
-  /* Fixed to viewport *
-  top: var(--space-6xl);
-  /* Adjust as needed *
-  left: 50%;
-  /* Center horizontally *
-  transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
-  display: inline-block;
-  background: none;
-  color: var(--base-color);
-  border: 0;
-  outline: 0;
-  padding: 0;
-  cursor: pointer;
-  z-index: 200;
-  transition: border-bottom 1s ease-in-out;
-}*/
-
 .burger::-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -328,7 +319,7 @@ main {
   transition: var(--navigation__transition);
   overflow: hidden;
   margin-block: var(--space-2xl);
-  padding-right: 35%;
+  padding-right: 45%;
 }
 
 .burger-check:checked~.navigation {
@@ -384,8 +375,7 @@ main {
   border-radius: var(--space-l);
   margin-left: var(--space-l);
   pointer-events: none;
-  transition:
-    opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+  transition: opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
     visibility 0.3s,
     transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
 }
