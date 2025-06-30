@@ -336,7 +336,6 @@ main {
   /* Slide to the right (100%) */
 }
 
-
 .navigation li:has(a:hover, a:focus-visible)::after {
   opacity: 1;
   visibility: visible;
