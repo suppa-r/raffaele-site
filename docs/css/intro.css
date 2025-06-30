@@ -1,11 +1,7 @@
 :root {
   --base-color: white;
-  --base-variant: #e8e9ed;
-  --text-color: #111528;
-  --secondary-text: #232738;
-  --primary-color: #7aa9b1;
-  --accent-color: #0071ff;
-
+  --text-color: #000;
+  --text-span: #7bc5b9;
 
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
@@ -59,16 +55,6 @@
   --font-style-regular: normal;
 }
 
-.darkmode {
-  --base-color: #070b1d;
-  --base-variant: #101425;
-  --text-color: #ffffff;
-  --secondary-text: #a4a5b8;
-  --primary-color: #7aa9b1;
-  --accent-color: #0071ff;
-}
-
-
 button {
   padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
@@ -108,6 +94,12 @@ button {
   display: block;
 }
 
+.darkmode {
+  --base-color: #000;
+  --text-color: #fff;
+  --text-span: #7bc5b9;
+}
+
 
 html {
   scroll-behavior: smooth;
@@ -116,15 +108,13 @@ html {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+}
+
+body,
+html {
   color: var(--text-color);
   background-color: var(--base-color);
 }
-
-body {
-  color: var(--text-color);
-  background-color: var(--base-color);
-}
-
 
 body>* {
   container-type: inline-size;
@@ -148,12 +138,11 @@ header .logo {
 .h {
   padding: 0 var(--space-xs) var(--space-xs) var(--space-m);
   min-width: fit-content;
-  color: var(--text-color);
   font-size: var(--step--1);
 }
 
 .h span {
-  color: var(--primary-color);
+  color: var(--text-span);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
 }
@@ -199,9 +188,9 @@ header .bars::before {
 nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1.5rem;
   padding-right: var(--space-4xl);
-  background-color: var(--base-color);
   z-index: 2;
 }
 
@@ -247,7 +236,6 @@ nav {
   justify-content: start;
   text-align: center;
   min-height: 100dvh;
-  color: var(--text-color);
 }
 
 .intro p {
@@ -255,14 +243,13 @@ nav {
 }
 
 .intro p span {
-  color: var(--primary-color);
+  color: var(--text-span);
   font-size: var(--step-1);
-  padding: var(--space-s) var(--space-xs) 0 0;
+  padding-left: var(--space-xs);
 }
 
 .intro .ya {
   font-size: var(--step-0);
-  color: var(--text-color);
   letter-spacing: var(--space-4xs);
 }
 
@@ -308,8 +295,6 @@ nav {
 @container (max-width: 768px) {
   header {
     justify-content: space-between;
-    background-color: var(--base-color);
-    color: var(--text-color);
   }
 
   header .bars {
@@ -341,10 +326,6 @@ nav {
     opacity: 0;
   }
 
-  .nav-links li {
-    margin: var(--space-2xs) 0;
-  }
-
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
@@ -354,16 +335,18 @@ nav {
     transform: translateY(40px);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
-    transition-delay: calc(.45s * var(--i));
+    /* Remove transition-delay here */
   }
 
   .nav-links.open li {
     transform: translateY(0);
     opacity: 1;
+    transition-delay: calc(.3s * var(--i));
+    /* Apply delay only when open */
   }
 
   .intro {
     min-height: 100dvh;
-    padding-bottom: var(--space-6xl);
+    padding: var(--space-xl) var(--space-s) 0 var(--space-s);
   }
 }
