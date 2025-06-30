@@ -2,7 +2,7 @@
   --sp: 5s;
 
   --burger-thickness: 4px;
-  --navigation__transition: max-height 2s ease-in-out;
+  --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
   --glass-bg: rgba(255, 255, 255, 0.05);
@@ -129,20 +129,17 @@ header {
   z-index: 10;
 }
 
-.logo {
+.h {
+  padding: var(--space-s) var(--space-xs) var(--space-xs) var(--space-m);
+  min-width: fit-content;
   font-size: var(--step--1);
-  letter-spacing: 0.05em;
   color: hsl(var(--clr-white));
-  margin-left: var(--space-m);
-  margin-top: var(--space-s);
 }
 
-.logo span {
-  color: hsl(var(--clr-span));
-  /* fallback to blue if --clr-span not set */
-  margin: 0 var(--space-2xs) 0 0.1em;
-  letter-spacing: 0.02em;
-  transition: color 0.3s;
+.h span {
+  color: var(--text-span);
+  font-size: var(--step--1);
+  padding: var(--space-s) var(--space-xs) 0 0;
 }
 
 main {
@@ -167,24 +164,29 @@ main {
 }
 
 .burger {
-  position: fixed;
-  /* Fixed to viewport */
-  top: 3%;
-  /* Adjust as needed */
-  left: 50%;
-  /* Center horizontally */
-  transform: translate(-50%, -50%);
-  width: 28px;
-  height: 28px;
   display: inline-block;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
   background: none;
   color: hsl(var(--clr-white));
-  border: 0;
-  outline: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 200;
-  transition: border-bottom 1s ease-in-out;
+  z-index: 300;
+  border: none;
+}
+
+.burger span {
+  display: block;
+  width: 100%;
+  height: var(--burger-thickness, 4px);
+  background: currentColor;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
 .burger::-moz-focus-inner {
@@ -192,25 +194,30 @@ main {
   padding: 0;
 }
 
-.crew-details .burger {
-  position: absolute;
-  /* Fixed to viewport */
-  top: 3%;
-  /* Adjust as needed */
-  left: 50%;
-  /* Center horizontally */
-  transform: translate(-50%, -50%);
-  width: 28px;
-  height: 28px;
+.crew-details.burger {
   display: inline-block;
+  position: fixed;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
   background: none;
   color: hsl(var(--clr-white));
-  border: 0;
-  outline: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 200;
-  transition: border-bottom 1s ease-in-out;
+  z-index: 300;
+  border: none;
+}
+
+.crew-details.burger span {
+  display: block;
+  width: 100%;
+  height: var(--burger-thickness, 4px);
+  background: currentColor;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
 .crew-details .burger::-moz-focus-inner {
@@ -218,54 +225,22 @@ main {
   padding: 0;
 }
 
-.burger::before,
-.burger::after,
-.crew-details .burger::before,
-.crew-details .burger::after {
-  content: "";
-  display: block;
-  border-bottom: var(--burger-thickness) solid currentColor;
-  width: 100%;
-  margin-bottom: 5px;
-  transition: transform 0.5s, top 0.5s, opacity 0.5s;
-}
-
-
 .burger-check:checked~.burger {
   border-bottom: var(--burger-thickness) solid transparent;
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
   -webkit-transition: border-bottom 1s ease-in-out;
 }
 
-&:before {
-  border-bottom: var(--burger-thickness) solid currentColor;
-
-  transform: rotate(-405deg) translateY(1px) translateX(-3px);
-  -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
-  transition: transform 0.5s, top 0.5s, opacity 0.5s;
-  -webkit-transition: border-bottom 1s ease-in-out;
-}
-
-&:after {
-  transform: rotate(405deg) translateY(-4px) translateX(-5px);
-  -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);
-  transition: transform 0.5s, top 0.5s, opacity 0.5s;
-  -webkit-transition: border-bottom 1s ease-in-out;
-}
-
 /* Navigation */
 .navigation {
-  display: flex;
-  justify-content: center;
-  max-height: 0;
-  transition: var(--navigation__transition);
-  overflow: hidden;
-  margin-bottom: var(--space-2xl);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
 }
 
 .burger-check:checked~.navigation {
-  min-height: 100dvh;
-  transition: var(--navigation__transition);
+  opacity: 1;
+  pointer-events: all;
 }
 
 .burger-check:checked~.navigation li {
@@ -289,14 +264,25 @@ main {
 }
 
 .navigation ul {
-  margin-top: var(--space-7xl);
-  background-color: transparent;
-  width: var(--space-8xl);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 100dvh;
   display: flex;
   flex-direction: column;
-  position: relative;
-  border-radius: var(--space-l);
   gap: var(--space-m);
+  list-style: none;
+  box-shadow: var(--shadow);
+  border-radius: var(--space-l);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  opacity: 1;
+  width: 40%;
+  /* Add this line for a fixed width */
+  /* or width: 80%;  for a responsive width */
+  /* or max-width: 400px; min-width: 220px; */
 }
 
 .navigation li {
@@ -364,7 +350,7 @@ main {
   flex-direction: column;
   align-items: center;
   /* Stack SVG and text vertically, remove if you want them side by side */
-  font-size: var(--step--1);
+  font-size: var(--step-1);
   color: hsl(var(--clr-dark));
   border-radius: var(--space-l);
 }
@@ -438,15 +424,13 @@ main {
 }
 
 .crew-details.show .row-text p {
-  margin: var(--space-2xs) 0;
   color: hsl(var(--clr-white));
-  font-size: var(--step-1);
+  font-size: var(--step--1);
 }
 
 .crew-details.show .row-text h1 {
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   color: hsl(var(--clr-white));
-  margin: var(--space-2xs) 0;
 }
 
 .crew-details .row-img>img {
@@ -467,24 +451,18 @@ main {
 
 @container (max-width: 550px) {
   .burger {
-    margin: 0;
+    margin: var(--space-2xs) 0 0 0;
   }
 
   .crew-details.show {
-    padding: 0 var(--space-2xs);
+    padding: 0 var(--space-xs);
   }
 
   .crew-details.show .row-img>img {
-    width: 320px;
+    width: 270px;
     height: auto;
     border-radius: 50%;
     /* if you want them round */
     box-shadow: var(--shadow);
-  }
-
-  .crew-details.show .row-text {
-    padding: 0 var(--space-xs);
-    font-size: var(--step-1);
-    text-align: center;
   }
 }
