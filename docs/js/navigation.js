@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   const profileNavbar = document.querySelector('.navigation');
   const menuToggle = document.querySelector('.burger-check');
+  const crewDetails = document.querySelectorAll('.crew-details');
+
+  
 
   // Hide all panels initially
   document.querySelectorAll('.crew-details').forEach(panel => {
@@ -19,23 +22,23 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Attach click event to each .profile-tab
-  document.querySelectorAll('.profile-tab').forEach(tab => {
-    tab.addEventListener('click', function (e) {
-      e.preventDefault();
-      // Hide all panels
-      document.querySelectorAll('.crew-details').forEach(panel => panel.classList.remove('show'));
-      // Show the clicked panel
-      const targetPanel = document.querySelector(`.crew-details.${this.dataset.target}`);
-      if (targetPanel) targetPanel.classList.add('show');
-      // Close the navbar and uncheck menu
-      if (profileNavbar) profileNavbar.classList.remove('show');
-      if (menuToggle) menuToggle.checked = false;
-    });
-  });
-
-  document.querySelectorAll('.crew-details .burger').forEach(link => {
-  link.addEventListener('click', function (e) {
+ document.querySelectorAll('.profile-tab').forEach(tab => {
+  tab.addEventListener('click', function (e) {
     e.preventDefault();
+   // Hide all panels
+    document.querySelectorAll('.crew-details').forEach(panel => panel.classList.remove('show'));
+  //  // Show the clicked panel
+    const targetPanel = document.querySelector(`.crew-details.${this.dataset.target}`);
+    if (targetPanel) targetPanel.classList.add('show');
+    // Close the navbar and uncheck menu
+    if (profileNavbar) profileNavbar.classList.remove('show');
+    if (menuToggle) menuToggle.checked = false;
+  });
+});
+
+  document.querySelectorAll('.crew-details .profile-tab').forEach(link => {
+  //link.addEventListener('click', function (e) {
+   // e.preventDefault();
     // Hide the current panel
     const currentPanel = this.closest('.crew-details');
     if (currentPanel) currentPanel.classList.remove('show');
@@ -53,12 +56,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (profileNavbar) profileNavbar.classList.remove('show');
       if (menuToggle) menuToggle.checked = false;
       // Show the corresponding panel
-      const targetPanel = document.querySelector(`.crew-details.${this.dataset.target}`);
+      const profileTabs = document.querySelector(`.crew-details.${this.dataset.target}`);
       if (targetPanel) {
-        targetPanel.classList.add('show');
-        targetPanel.tabIndex = 0;
-        targetPanel.focus();
+        profileTabs.classList.add('show');
+        profileTabs.tabIndex = 0;
+        profileTabs.focus();
       }
     });
   });
-});
