@@ -1,10 +1,7 @@
 :root {
   --base-color: white;
-  --base-variant: #e8e9ed;
   --text-color: #000;
-  --secondary-text: #232738;
-  --primary-color: #3a435d;
-  --accent-color: #5ac9b1;
+  --text-span: #7bc5b9;
 
 
   /* Step 0: 16px → 16px */
@@ -59,15 +56,6 @@
   --font-style-regular: normal;
 }
 
-.darkmode {
-  --base-color: #070b1d;
-  --base-variant: #101425;
-  --text-color: #ffffff;
-  --secondary-text: #232738;
-  --primary-color: #3a435d;
-  --accent-color: #5ac9b1;
-}
-
 button {
   padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
@@ -107,6 +95,13 @@ button {
   display: block;
 }
 
+.darkmode {
+  --base-color: #000;
+  --text-color: #fff;
+  --text-span: #7bc5b9;
+}
+
+
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
@@ -114,7 +109,12 @@ html {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+}
+
+body,
+html {
   color: var(--text-color);
+  background-color: var(--base-color);
 }
 
 body>* {
@@ -123,18 +123,7 @@ body>* {
   margin-inline: auto;
 }
 
-body {
-  background-color: hsl(var(--clr-dark));
-  background-image: url(/docs/images/mobile-light\ -\ Copy.jpg);
-  background-size: cover;
-  /* Ensures the image covers the whole viewport */
-  background-position: center;
-  /* Centers the image */
-  background-repeat: no-repeat;
-  /* Prevents tiling */
-  background-attachment: fixed;
-  /* Keeps the image fixed during scroll */
-}
+/* --------------------------------------- */
 
 header {
   display: flex;
@@ -156,6 +145,32 @@ header .logo {
 
 .h span {
   color: var(--primary-color);
+  font-size: var(--step--1);
+  padding: var(--space-s) var(--space-xs) 0 0;
+}
+
+/* --------------------------------------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-block: var(--space-s);
+}
+
+header .logo {
+  min-width: fit-content;
+  padding: var(--space-s) 0 0 var(--space-m);
+}
+
+.h {
+  padding: 0 var(--space-xs) var(--space-xs) var(--space-m);
+  min-width: fit-content;
+  color: var(--text-color);
+  font-size: var(--step--1);
+}
+
+.h span {
+  color: var(--text-span);
   font-size: var(--step--1);
   padding: var(--space-s) var(--space-xs) 0 0;
 }
@@ -225,27 +240,6 @@ main {
   content: "";
   top: 10px;
 }
-
-/*.burger {
-  position: fixed;
-  /* Fixed to viewport *
-  top: var(--space-6xl);
-  /* Adjust as needed *
-  left: 50%;
-  /* Center horizontally *
-  transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
-  display: inline-block;
-  background: none;
-  color: var(--base-color);
-  border: 0;
-  outline: 0;
-  padding: 0;
-  cursor: pointer;
-  z-index: 200;
-  transition: border-bottom 1s ease-in-out;
-}*/
 
 .burger::-moz-focus-inner {
   border: 0;
@@ -323,14 +317,20 @@ main {
 
 /* Navigation */
 .navigation {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Center horizontally */
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   /* was center */
   max-height: 0;
   transition: var(--navigation__transition);
   overflow: hidden;
-  margin-block: var(--space-2xl);
-  padding-right: 35%;
+  margin-block: var(--space-xl);
+
 }
 
 .burger-check:checked~.navigation {
@@ -386,8 +386,7 @@ main {
   border-radius: var(--space-l);
   margin-left: var(--space-l);
   pointer-events: none;
-  transition:
-    opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
+  transition: opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
     visibility 0.3s,
     transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
 }
