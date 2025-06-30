@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
   document.querySelectorAll('.crew-details .profile-tab').forEach(link => {
-  //link.addEventListener('click', function (e) {
-   // e.preventDefault();
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
     // Hide the current panel
     const currentPanel = this.closest('.crew-details');
     if (currentPanel) currentPanel.classList.remove('show');
@@ -64,3 +64,4 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+});

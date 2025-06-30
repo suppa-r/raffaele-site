@@ -130,7 +130,7 @@ header {
 }
 
 .h {
-  padding: var(--space-s) var(--space-xs) var(--space-xs) var(--space-m);
+  padding: var(--space-s) var(--space-m) 0 0;
   min-width: fit-content;
   font-size: var(--step--1);
   color: hsl(var(--clr-white));
@@ -139,7 +139,7 @@ header {
 .h span {
   color: var(--text-span);
   font-size: var(--step--1);
-  padding: var(--space-s) var(--space-xs) 0 0;
+  padding: var(--space-s) 0 0 var(--space-xs);
 }
 
 main {
@@ -148,14 +148,10 @@ main {
   flex-direction: column;
 }
 
-.crew-details {
-  display: none;
-}
-
 .profile-title {
   font-size: var(--step-2);
   color: hsl(var(--clr-white));
-  margin: 0;
+  margin-block: var(--space-xl);
   text-align: center;
 }
 
@@ -381,11 +377,16 @@ main {
   }
 }
 
+.crew-details {
+  display: none;
+}
+
 .section-title {
   font-size: var(--step-1);
   text-align: center;
   color: hsl(var(--clr-white));
-  padding: var(--space-2xs) var(--space-s);
+  padding: var(--space-s) var(--space-m);
+  margin-block: var(--space-m);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradient var(--sp) linear infinite;
@@ -407,28 +408,26 @@ main {
   }
 }
 
-.crew-details.show {
+.crew-details.genesis.show,
+.crew-details.early.show,
+.crew-details.beginnings.show,
+.crew-details.ryerson.show {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
   gap: var(--space-l);
   padding: var(--space-2xl) var(--space-xs);
   margin: 0 auto;
-}
-
-.crew-details.show .row-text {
-  padding: 0 var(--space-xs);
-  font-size: var(--step--1);
   text-align: center;
 }
 
-.crew-details.show .row-text p {
+.crew-details>* .row-text.text {
   color: hsl(var(--clr-white));
-  font-size: var(--step--1);
+  font-size: var(--step-1);
 }
 
-.crew-details.show .row-text h1 {
-  font-size: var(--step-1);
+.crew-details>* .row-text .ya {
+  font-size: var(--step-2);
   color: hsl(var(--clr-white));
 }
 
@@ -453,12 +452,8 @@ main {
     margin: var(--space-2xs) 0 0 0;
   }
 
-  .crew-details.show {
-    padding: 0 var(--space-xs);
-  }
-
   .crew-details.show .row-img>img {
-    width: 270px;
+    width: 230px;
     height: auto;
     border-radius: 50%;
     /* if you want them round */
