@@ -128,16 +128,13 @@ body>* {
 header {
   display: flex;
   justify-content: space-between;
-  padding-block: var(--space-s);
+  padding: var(--space-2xs) 0 0 0;
+  align-items: center;
 }
 
-
 .h {
-  padding: 0 0 0 var(--space-m);
-  min-width: fit-content;
+  padding: 0 0 0 var(--space-3xs);
   font-size: var(--step--1);
-  font-weight: bold;
-  /* Makes the heading stand out */
   letter-spacing: 0.05em;
   /* Adds a bit of spacing between letters */
   color: var(--text-color);
@@ -157,15 +154,16 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin: var(--space-s);
+  margin-left: var(--space-m);
   display: none;
   cursor: pointer;
 }
 
 header .bars.is-active {
-  width: 35px;
+  width: 2px;
   transform-origin: right;
-  transform: translateY(15px) rotate(45deg);
+  /*transform: translateY(15px) rotate(45deg);*/
+  transform: translateY(5px) rotate(45deg);
   cursor: pointer;
 }
 
@@ -238,6 +236,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  margin-top: var(--space-m);
   text-align: center;
   min-height: 100dvh;
 }
@@ -297,10 +296,6 @@ nav {
 }
 
 @container (max-width: 768px) {
-  header {
-    justify-content: space-between;
-  }
-
   header .bars {
     display: block;
     transition: 0.5s;
