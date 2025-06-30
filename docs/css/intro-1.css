@@ -450,15 +450,14 @@ main {
     margin-top: var(--space-l);
   }
 
-
   .burger {
     display: inline-block;
     position: fixed;
-    top: 10%;
+    top: 8%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     background: none;
     color: hsl(var(--clr-white));
     padding: 0;
@@ -467,7 +466,7 @@ main {
   }
 
   .crew-details.show .row-img>img {
-    width: 230px;
+    width: 1900px;
     height: auto;
     border-radius: 50%;
     /* if you want them round */
