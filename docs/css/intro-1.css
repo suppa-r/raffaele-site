@@ -275,7 +275,7 @@ main {
   list-style: none;
   box-shadow: var(--shadow);
   border-radius: var(--space-l);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(100px);
   z-index: 200;
   opacity: 1;
   width: var(--space-8xl);
