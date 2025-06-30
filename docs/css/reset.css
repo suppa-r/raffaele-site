@@ -103,13 +103,11 @@ p {
 img,
 picture,
 canvas {
-	width: 100%;
+	font-style: italic;
 	max-width: 100%;
-	display: block;
 	height: auto;
-	object-fit: cover;
-	/* cover, contain, fill, none, scale-down */
-	background-position: center;
+	vertical-align: middle;
+	background-repeat: no-repeat;
 	background-size: cover;
 }
 
