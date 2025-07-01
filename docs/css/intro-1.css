@@ -7,10 +7,12 @@
   --text-color: #000;
   --text-span: #49879c;
 
-  --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
+  --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #88bb9b, #e3e4fa);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
+
+  --step--1: clamp(0.875rem, 0.875rem + 0cqi, 0.875rem);
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
   /* Step 1: 19.2px → 20px */
@@ -130,46 +132,31 @@ body>* {
 }
 
 body {
-  opacity: 1;
-  pointer-events: all;
-  content: "";
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
   background-image: url(/docs/images/header-desktop-min.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  transform-style: preserve-3d;
-  transition: transform .3s ease-in-out, opacity 3s ease-in-out, background-position .3s ease-in-out;
-  z-index: -1;
-  overflow: hidden;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  padding-block: var(--space-s);
+  padding-block: var(--space-xs);
 }
 
-.h {
-  padding: 0 0 0 var(--space-m);
-  min-width: fit-content;
+header p {
+  padding: 0 0 0 var(--space-s);
   font-size: var(--step--1);
-  font-weight: bold;
-  /* Makes the heading stand out */
   letter-spacing: 0.05em;
   /* Adds a bit of spacing between letters */
   color: var(--text-color);
 }
 
-.h span {
+header p span {
   color: var(--text-span);
   /* Uses your accent color variable */
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   /* Slightly larger for emphasis */
   padding: 0 var(--space-xs) 0 var(--space-3xs);
 }
@@ -182,10 +169,10 @@ main {
 
 .profile-title {
   position: fixed;
-  top: var(--space-2xl);
+  top: var(--space-l);
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   color: var(--text-color);
   text-align: center;
   margin-inline: auto;
@@ -196,13 +183,13 @@ main {
 }
 
 .burger {
-  display: inline-block;
+  display: block;
   position: fixed;
-  top: var(--space-3xl);
+  top: var(--space-2xl);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
+  width: var(--space-l);
+  height: var(--space-m);
   background: none;
   color: var(--text-color);
   padding: 0;
@@ -216,9 +203,10 @@ main {
   width: 100%;
   height: var(--burger-thickness, 4px);
   background: currentColor;
-  margin: 5px 0;
+  margin: 3px 0;
   border-radius: 2px;
   transition: 0.3s;
+  color: var(--text-color);
 }
 
 .burger::-moz-focus-inner {
@@ -227,13 +215,13 @@ main {
 }
 
 .crew-details.burger {
-  display: inline-block;
+  display: block;
   position: fixed;
   top: 3%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
+  width: var(--space-l);
+  height: var(--space-m);
   background: none;
   color: var(--text-color);
   padding: 0;
@@ -273,7 +261,7 @@ main {
 .burger-check:checked~.navigation {
   opacity: 1;
   pointer-events: all;
-  transition: opacity 0.4s, max-height 0.5s ease-in-out;
+  transition: opacity 0.4s, max-height 0.5s ease-in;
   max-height: 100dvh;
 }
 
@@ -298,7 +286,7 @@ main {
   z-index: 200;
   opacity: 1;
   width: var(--space-8xl);
-  margin-block: var(--space-l);
+  margin-block: var(--space-xl);
 }
 
 .navigation li {
@@ -314,7 +302,7 @@ main {
   justify-content: center;
   align-items: center;
   /* Stack SVG and text vertically, remove if you want them side by side */
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   color: var(--base-color);
   border-radius: var(--space-l);
 }
@@ -330,7 +318,6 @@ main {
 .navigation a>span {
   display: block;
   text-align: center;
-
   color: var(--text-color);
 }
 
@@ -351,7 +338,7 @@ main {
 }
 
 .section-title {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   text-align: center;
   color: var(--text-color);
   padding: var(--space-3xs) var(--space-s);
@@ -386,13 +373,13 @@ main {
   align-items: center;
   gap: var(--space-l);
   padding: var(--space-2xl) var(--space-2xs);
-  margin: 0 auto;
+  margin-inline: auto;
   text-align: center;
 }
 
 .crew-details>* .row-text.text {
   color: var(--text-color);
-  font-size: var(--step-1);
+  font-size: var(--step-0);
 }
 
 .crew-details>* .row-text .ya {
@@ -401,7 +388,7 @@ main {
 }
 
 .crew-details .row-img>img {
-  width: 320px;
+  width: 350px;
   /* or your preferred size */
   height: auto;
   /* makes all images square and equal */
@@ -423,7 +410,7 @@ main {
   }
 
   .crew-details.show .row-img>img {
-    width: 190px;
+    width: 150px;
     height: auto;
     border-radius: 50%;
     /* if you want them round */
