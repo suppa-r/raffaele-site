@@ -1,7 +1,15 @@
 :root {
+  --sp: 5s;
+
+  --burger-thickness: 4px;
+  --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --base-color: white;
   --text-color: #000;
   --text-span: #49879c;
+
+  --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
@@ -109,7 +117,6 @@ button {
   --text-span: #49879c;
 }
 
-
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
@@ -119,14 +126,10 @@ html {
   font-size: var(--step--1);
 }
 
-
-html {
+html,
+body {
   color: var(--text-color);
   background-color: var(--base-color);
-}
-
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body>* {
