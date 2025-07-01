@@ -3,6 +3,9 @@
   --text-color: #000;
   --text-span: #7bc5b9;
 
+  * {
+    transition: background-color 1s ease-in, color 1s ease-in, fill 1s ease-in;
+  }
 
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
@@ -36,22 +39,22 @@
 
 
   --font-family: "Roboto Slab",
-    serif;
+  serif;
   --font-optical-sizing: auto;
   --font-weight: 100;
   --font-style: normal;
 
 
   --pt-serif-regular-italic: "PT Serif",
-    serif;
+  serif;
   --pt-serif-italic: "PT Serif Italic",
-    serif;
+  serif;
 
   --font-weight-1: 400;
   --font-style-1: italic;
 
   --ff-monoton-regular: "Monoton",
-    sans-serif;
+  sans-serif;
   --font-weight-regular: 400;
   --font-style-regular: normal;
 }
@@ -65,9 +68,12 @@ button {
 
 .theme-switch {
   width: var(--space-l);
+  height: var(--space-l);
+  /* Add height to match width */
   padding: 0;
   border: none;
-  margin: var(--space-2xs)0;
+  margin: var(--space-2xs) 0;
+  /* Fix margin syntax */
   border-radius: 50%;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -77,10 +83,16 @@ button {
   position: fixed;
   top: 1%;
   right: 1%;
+  z-index: 1001;
+  /* Ensure it's clickable */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Add transition */
 }
 
 .theme-switch svg {
   fill: var(--text-color);
+  transition: fill 0.3s ease;
+  /* Transition SVG fill color */
 }
 
 .theme-switch svg:last-child {
@@ -111,16 +123,22 @@ html {
   font-size: var(--step--1);
 }
 
-body,
+
 html {
   color: var(--text-color);
   background-color: var(--base-color);
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
+  transition: background-color 0.3s ease, color 0.3s ease, fill 0.3s ease;
+
 }
 
 .wrapper {

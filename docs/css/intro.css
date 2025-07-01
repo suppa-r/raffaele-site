@@ -3,6 +3,9 @@
   --text-color: #000;
   --text-span: #49879c;
 
+  * {
+    transition: background-color 1s ease-in, color 1s ease-in, fill 1s ease-in;
+  }
 
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
@@ -36,22 +39,22 @@
 
 
   --font-family: "Roboto Slab",
-    serif;
+  serif;
   --font-optical-sizing: auto;
   --font-weight: 100;
   --font-style: normal;
 
 
   --pt-serif-regular-italic: "PT Serif",
-    serif;
+  serif;
   --pt-serif-italic: "PT Serif Italic",
-    serif;
+  serif;
 
   --font-weight-1: 400;
   --font-style-1: italic;
 
   --ff-monoton-regular: "Monoton",
-    sans-serif;
+  sans-serif;
   --font-weight-regular: 400;
   --font-style-regular: normal;
 }
