@@ -232,8 +232,8 @@ nav {
 }
 
 .nav-links li svg {
-  height: var(--space-m);
-  width: var(--space-m);
+  height: var(--space-l);
+  width: var(--space-l);
   object-fit: cover;
   border-radius: 50%;
   margin-inline: auto;

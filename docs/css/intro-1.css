@@ -307,11 +307,12 @@ main {
   border-radius: var(--space-l);
 }
 
-.navigation a>svg {
+.navigation svg {
   width: var(--space-l);
   height: var(--space-l);
   fill: var(--text-color);
   margin-bottom: 0.25em;
+  color: white;
   /* Space between icon and text, adjust as needed */
 }
 
