@@ -1,7 +1,7 @@
 :root {
   --base-color: white;
   --text-color: #000;
-  --text-span: #7bc5b9;
+  --text-span: #49879c;
 
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
@@ -106,7 +106,7 @@ button {
 .darkmode {
   --base-color: #000;
   --text-color: #fff;
-  --text-span: #7bc5b9;
+  --text-span: #49879c;
 }
 
 
