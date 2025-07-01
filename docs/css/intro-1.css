@@ -169,7 +169,7 @@ main {
 
 .profile-title {
   position: fixed;
-  top: var(--space-l);
+  top: var(--space-xl);
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--step-1);
@@ -411,7 +411,7 @@ main {
   }
 
   .crew-details.show .row-img>img {
-    width: 150px;
+    width: 180px;
     height: auto;
     border-radius: 50%;
     /* if you want them round */
