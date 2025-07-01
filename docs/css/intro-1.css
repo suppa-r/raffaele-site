@@ -150,7 +150,7 @@ main {
 
 .profile-title {
   position: fixed;
-  top: 2%;
+  top: var(--space-xl);
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--step-2);
@@ -166,7 +166,7 @@ main {
 .burger {
   display: inline-block;
   position: fixed;
-  top: 5%;
+  top: var(--space-3xl);
   left: 50%;
   transform: translate(-50%, -50%);
   width: 32px;
@@ -241,6 +241,8 @@ main {
 .burger-check:checked~.navigation {
   opacity: 1;
   pointer-events: all;
+  transition: opacity 0.4s, max-height 0.5s ease-in-out;
+  max-height: 100dvh;
 }
 
 .burger-check:checked~.navigation li {
@@ -275,10 +277,10 @@ main {
   list-style: none;
   box-shadow: var(--shadow);
   border-radius: var(--space-l);
-  backdrop-filter: blur(100px);
   z-index: 200;
   opacity: 1;
   width: var(--space-8xl);
+  margin-block: var(--space-l);
 }
 
 .navigation li {
@@ -340,6 +342,7 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   /* Stack SVG and text vertically, remove if you want them side by side */
   font-size: var(--step-1);
@@ -382,8 +385,8 @@ main {
   font-size: var(--step-1);
   text-align: center;
   color: hsl(var(--clr-white));
-  padding: var(--space-xs) var(--space-s);
-  margin-block: var(--space-xs);
+  padding: 0 var(--space-s);
+  margin-block: var(--space-3xs);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradient var(--sp) linear infinite;
@@ -445,28 +448,8 @@ main {
 }
 
 @container (max-width: 550px) {
-  .profile-title {
-    font-size: var(--step-1);
-    margin-top: var(--space-l);
-  }
-
-  .burger {
-    display: inline-block;
-    position: fixed;
-    top: 8%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    background: none;
-    color: hsl(var(--clr-white));
-    padding: 0;
-    cursor: pointer;
-    z-index: 300;
-  }
-
   .crew-details.show .row-img>img {
-    width: 1900px;
+    width: 190px;
     height: auto;
     border-radius: 50%;
     /* if you want them round */

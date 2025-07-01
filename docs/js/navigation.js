@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const profileNavbar = document.querySelector('.navigation');
   const menuToggle = document.querySelector('.burger-check');
   const crewDetails = document.querySelectorAll('.crew-details');
+  const intro = document.querySelector('.intro');
 
   
 
@@ -15,8 +16,14 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('change', function () {
       if (menuToggle.checked) {
         profileNavbar.classList.add('show');
-      } else {
+    } else {
         profileNavbar.classList.remove('show');
+        // Remove focus from the navbar when hidden
+        if (profileNavbar) {
+          profileNavbar.querySelectorAll('.profile-tab').forEach(tab => {
+            tab.tabIndex = -1; // Remove focusability
+          });
+        }
       }
     });
   }
@@ -33,8 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close the navbar and uncheck menu
     if (profileNavbar) profileNavbar.classList.remove('show');
     if (menuToggle) menuToggle.checked = false;
+    // Set focus on the target panel
+    targetPanel.tabIndex = 0;
+    targetPanel.focus();
+    targetPanel.onblur = function () {
+      // Hide the panel when it loses focus
+      this.classList.remove('show');
+      // Show the navigation again
+      if (profileNavbar) profileNavbar.classList.add('show');
+      if (menuToggle) menuToggle.checked = false;
+    };
   });
 });
+
+   
+
 
   document.querySelectorAll('.crew-details .profile-tab').forEach(link => {
   link.addEventListener('click', function (e) {
