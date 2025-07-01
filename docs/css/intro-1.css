@@ -150,7 +150,7 @@ main {
 
 .profile-title {
   position: fixed;
-  top: var(--space-xl);
+  top: var(--space-2xl);
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--step-2);
@@ -251,20 +251,6 @@ main {
   transition-delay: calc(.45s * var(--i));
 }
 
-.navigation li:hover::after,
-.navigation li:focus-within::after {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-50%) translateX(0);
-}
-
-.navigation li:hover::after,
-.navigation li:focus-within::after {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-50%) translateX(0);
-}
-
 .navigation ul {
   position: fixed;
   top: 50%;
@@ -287,55 +273,6 @@ main {
   position: relative;
   box-shadow: var(--shadow);
   border-radius: var(--space-l);
-}
-
-.navigation li::after {
-  position: absolute;
-  content: attr(data-tooltip);
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%) translateX(-20px);
-  /* Start slightly left of li */
-  opacity: 0;
-  visibility: hidden;
-  padding: var(--space-m) var(--space-3xl);
-  font-size: var(--step--1);
-  background: hsl(var(--clr-accent));
-  color: hsl(var(--clr-dark));
-  background: hsl(var(--clr-accent));
-  border-radius: var(--space-l);
-  margin-left: var(--space-l);
-  pointer-events: none;
-  transition:
-    opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
-    visibility 0.3s,
-    transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
-}
-
-.navigation li:hover::after,
-.navigation li:focus-within::after {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) translateX(0);
-  /* Slide to the right (100%) */
-  transition: opacity 0.4s cubic-bezier(0.47, 2, 0.41, 1.5),
-    visibility 0.3s,
-    transform 0.4s cubic-bezier(0.47, 2, 0.41, 1.5);
-}
-
-.navigation li:hover::after,
-.navigation li:focus-within::after {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) translateX(0);
-  /* Slide to the right (100%) */
-}
-
-.navigation li:has(a:hover, a:focus-visible)::after {
-  opacity: 1;
-  visibility: visible;
-  inset-block-start: 100%;
-  /* Adjust this value to control the tooltip position */
 }
 
 .navigation a {
@@ -385,14 +322,14 @@ main {
   font-size: var(--step-1);
   text-align: center;
   color: hsl(var(--clr-white));
-  padding: 0 var(--space-s);
-  margin-block: var(--space-3xs);
+  padding: var(--space-s) var(--space-s);
+  margin-block: var(--space-s) var(--space-s);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradient var(--sp) linear infinite;
   border-radius: var(--space-l);
   box-shadow: var(--shadow);
-  max-width: 20ch;
+  max-width: 25ch;
   /* limits width to about 16 characters */
   margin-inline: auto;
   /* centers the title */
@@ -413,10 +350,10 @@ main {
 .crew-details.beginnings.show,
 .crew-details.ryerson.show {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   align-items: center;
   gap: var(--space-l);
-  padding: var(--space-2xl) var(--space-xs);
+  padding: var(--space-2xl) var(--space-2xs);
   margin: 0 auto;
   text-align: center;
 }
@@ -447,7 +384,11 @@ main {
   box-shadow: var(--shadow);
 }
 
-@container (max-width: 550px) {
+@container (max-width: 768px) {
+  .crew-details>* {
+    grid-template-rows: auto;
+  }
+
   .crew-details.show .row-img>img {
     width: 190px;
     height: auto;
