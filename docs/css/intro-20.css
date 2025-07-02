@@ -206,11 +206,11 @@ body:before {
       var(--body-gradient-top) 100%),
     linear-gradient(90deg,
       var(--body-grid-line)0 1px,
-      transparent 1px 30px) 20% 20% / 30px 30px,
+      transparent 1px 30px) 100% 100% / 30px 30px,
     linear-gradient(180deg,
       var(--body-grid-line)0 1px,
-      transparent 1px 30px) 20% 20% / 30px 30px;
-  mask: linear-gradient(-60deg, transparent 5%, var(--body-grid-line))100%;
+      transparent 1px 30px) 100% 100% / 30px 30px;
+  mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))100%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-position 0.3s ease-in-out;
