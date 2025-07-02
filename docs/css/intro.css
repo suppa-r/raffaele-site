@@ -4,29 +4,23 @@
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
-  /* Light mode base colors */
   --base-color: #fff;
   --text-color: #111;
   --text-span: #49879c;
-  --gradient-black-1: rgba(255, 255, 255, 0.945) 100%;
-  --gradient-black-2: rgba(255, 255, 255, 0.733) 100%;
-  --gradient-white: #000;
 
-  /* HSL color variables for easy use with hsl() */
-  --clr-dark: 210, 20%, 10%;
-  /* deep blue-black */
-  --clr-light: 195, 70%, 90%;
-  /* light blue */
-  --clr-span: 195, 36%, 45%;
-  /* accent blue */
-  --clr-white: 0, 0%, 100%;
-  /* pure white */
-  --clr-accent: 231, 77%, 90%;
-  /* accent light blue */
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 100%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(207, 22%, 90%, 0.815);
+  /* light blue/gray */
+
+  /* Light mode grid line color */
+  --body-grid-line: rgba(0, 0, 0, 1);
+  /* subtle dark lines */
 
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
   --glass-bg: rgba(255, 255, 255, 0.05);
-  --shadow: 0 30px 100px rgba(148, 151, 189, 0.15);
+  --shadow: 0 30px 100px rgba(148, 151, 189, 0.39);
 
   /* Font and spacing variables... */
   /* ...existing font and spacing variables... */
@@ -92,14 +86,15 @@
   --gradient-black-2: rgba(0, 0, 0, 0.347);
   --gradient-white: #ffffff;
 
-  --clr-dark: 210, 20%, 8%;
-  --clr-light: 195, 70%, 20%;
-  --clr-span: 174, 36%, 55%;
-  --clr-white: 0, 0%, 98%;
-  --clr-accent: 195, 77%, 60%;
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 3%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(0, 0%, 3%, 0.35);
+  /* light blue/gray */
 
-  --glass-bg: rgba(30, 32, 34, 0.25);
-  --shadow: 0 30px 100px rgba(20, 20, 30, 0.5);
+  /* Light mode grid line color */
+  --body-grid-line: rgba(255, 255, 255, 0.733);
+  /* subtle dark lines */
 }
 
 button {
@@ -191,8 +186,9 @@ body>* {
 }
 
 body {
-  background-color: #000;
-  color: var(--text-color);
+  background-color: var(--base-color);
+  /* This is the base color for the body */
+  color: var(--body-grid-line);
 }
 
 body:before {
@@ -206,15 +202,15 @@ body:before {
   left: 0;
   background:
     linear-gradient(to bottom,
-      var(--gradient-black-1) 100%,
-      var(--gradient-black-2) 100%),
-    repeating-linear-gradient(90deg,
-      var(--gradient-white) 0 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px,
-    repeating-linear-gradient(180deg,
-      var(--gradient-white) 0 1px,
-      transparent 1px 30px) 50% 50% / 30px 30px;
-  mask: linear-gradient(-20deg, transparent 00%, var(--gradient-white)) 100%;
+      var(--body-gradient-bottom) 0%,
+      var(--body-gradient-top) 100%),
+    linear-gradient(90deg,
+      var(--body-grid-line)0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px,
+    linear-gradient(180deg,
+      var(--body-grid-line)0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px;
+  mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))10%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-position 0.3s ease-in-out;
@@ -347,11 +343,12 @@ nav {
 .intro p span {
   color: var(--text-span);
   font-size: var(--step-1);
-  padding-left: var(--space-xs);
+  padding-left: var(--space-2xs);
 }
 
 .intro .ya {
-  font-size: var(--step-0);
+  color: var(--text-span);
+  font-size: var(--step-1);
   letter-spacing: var(--space-4xs);
 }
 
@@ -426,7 +423,29 @@ nav {
 
   .nav-links.open {
     opacity: 1;
-    pointer-events: all;
+    pointer-events: auto;
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background:
+      linear-gradient(to bottom,
+        var(--body-gradient-bottom) 0%,
+        var(--body-gradient-top) 100%),
+      linear-gradient(90deg,
+        var(--body-grid-line)0 1px,
+        transparent 1px 30px) 100% 100% / 30px 30px,
+      linear-gradient(180deg,
+        var(--body-grid-line)0 1px,
+        transparent 1px 30px) 100% 100% / 30px 30px;
+    mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))10%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+      background-position 0.3s ease-in-out;
+    z-index: -1;
+    overflow: hidden;
     --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   }
 
