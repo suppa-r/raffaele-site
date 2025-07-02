@@ -3,13 +3,30 @@
 
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  --base-color: white;
-  --text-color: #000;
+
+  /* Light mode base colors */
+  --base-color: #fff;
+  --text-color: #111;
   --text-span: #49879c;
+
+  /* Light mode background gradient and grid lines */
+  --body-gradient-top: hsla(0, 0%, 100%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(210, 20%, 90%, 0.35);
+  /* light blue/gray */
+  --body-grid-line: rgba(0, 0, 0, 1);
+  /* subtle dark lines */
+
+  /* HSL color variables for easy use with hsl() */
+  --clr-dark: 210, 20%, 10%;
+  --clr-light: 195, 70%, 90%;
+  --clr-span: 195, 36%, 45%;
+  --clr-white: 0, 0%, 100%;
+  --clr-accent: 231, 77%, 90%;
 
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
   --glass-bg: rgba(255, 255, 255, 0.05);
-  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
+  --shadow: 0 30px 100px rgba(148, 151, 189, 0.15);
 
   /* Step 0: 16px → 16px */
   --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
@@ -63,6 +80,53 @@
   --font-style-regular: normal;
 }
 
+/* Dark mode overrides */
+.darkmode {
+  --base-color: #000;
+  --text-color: #fff;
+  --text-span: #7bc5b9;
+
+  /* Dark mode background gradient and grid lines */
+  --body-gradient-top: hsla(0, 0%, 0%, 0.9);
+  /* almost black */
+  --body-gradient-bottom: hsla(210, 20%, 10%, 0.5);
+  /* dark blue/gray */
+  --body-grid-line: rgb(255, 255, 255);
+  /* subtle light lines */
+}
+
+/* ...rest of your CSS... */
+
+body {
+  background-color: var(--base-color);
+  color: var(--text-color);
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+  background:
+    linear-gradient(to bottom,
+      var(--body-gradient-top) 100%,
+      var(--body-gradient-bottom) 100%),
+    repeating-linear-gradient(90deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 50%,
+    repeating-linear-gradient(180deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 50% / 30px 30px;
+  z-index: -1;
+  overflow: hidden;
+}
+
+
 button {
   padding: var(--space-xs) var(--space-s) 0 0;
   background-color: var(--base-color);
@@ -102,12 +166,20 @@ button {
   display: block;
 }
 
+/* Dark mode overrides */
 .darkmode {
   --base-color: #000;
   --text-color: #fff;
-  --text-span: #49879c;
-}
+  --text-span: #7bc5b9;
 
+  /* Dark mode background gradient and grid lines */
+  --body-gradient-top: hsla(0, 0%, 0%, 0.9);
+  /* almost black */
+  --body-gradient-bottom: hsla(210, 20%, 10%, 0.5);
+  /* dark blue/gray */
+  --body-grid-line: rgba(255, 255, 255, 1);
+  /* subtle light lines */
+}
 
 html {
   scroll-behavior: smooth;
@@ -128,6 +200,40 @@ body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
+}
+
+body {
+  background-color: var(--base-color);
+  color: var(--text-color);
+}
+
+body:before {
+  opacity: 1;
+  pointer-events: all;
+  content: "";
+  width: 100%;
+  /* Full viewport width */
+  height: 100vh;
+  /* Full viewport height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom,
+      var(--body-gradient-top) 100%,
+      /* Transparent at the top */
+      var(--body-gradient-bottom) 100%
+      /* Darker at the bottom */
+    ),
+    linear-gradient(90deg,
+      var(--body-grid-line), transparent 70%) 1px,
+    transparent 1px 30px 50% 50% / 30px 30px,
+    linear-gradient(180deg,
+      var(--body-grid-line), transparent 25%) 1px,
+    transparent 1px 30px 50% 50% / 30px 30px;
+
+  z-index: -1;
+  /* Ensure it is behind other content */
+  overflow: hidden;
 }
 
 /* --------------------------------------- */

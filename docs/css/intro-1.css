@@ -11,6 +11,13 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
+  --body-gradient-top: hsla(0, 0%, 100%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(210, 20%, 90%, 0.85);
+  /* light blue/gray */
+  --body-grid-line: rgba(0, 0, 0, 0.07);
+  /* subtle dark lines */
+
 
   --step--1: clamp(0.875rem, 0.875rem + 0cqi, 0.875rem);
   /* Step 0: 16px → 16px */
@@ -102,12 +109,6 @@ button {
 
 .darkmode .theme-switch svg:last-child {
   display: block;
-}
-
-.darkmode {
-  --base-color: #000;
-  --text-color: #fff;
-  --text-span: #49879c;
 }
 
 html {
