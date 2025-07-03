@@ -20,6 +20,16 @@ body {
 	overflow: hidden;
 }
 
+header,
+footer,
+main,
+section,
+article,
+aside {
+	container-type: inline-size;
+	margin-inline: auto;
+}
+
 /* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: no-preference) {
 	html {
@@ -87,6 +97,7 @@ select {
 }
 
 p {
+	max-width: 65ch;
 	margin-block: 0.1em;
 	margin-inline: 0;
 	line-height: 1.3;
