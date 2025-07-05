@@ -132,12 +132,15 @@ body {
   background-color: var(--base-color);
 }
 
+body {
+  margin-inline: auto;
+}
+
 body>* {
   container-type: inline-size;
   max-inline-size: 100%;
   margin-inline: auto;
-  transition: background-color 0.3s ease, color 0.3s ease, fill 0.3s ease;
-
+  padding-inline: var(--space-xs);
 }
 
 .wrapper {
@@ -150,7 +153,6 @@ body>* {
   color: var(--text-color);
   background-color: var(--base-color);
 }
-
 
 .quote {
   text-align: center;
@@ -444,7 +446,6 @@ body>* {
 }
 
 .container {
-  flex-direction: column;
   padding-top: var(--space-l);
   color: var(--text-color);
 }
@@ -463,23 +464,53 @@ body>* {
   font-style: var(--font-style-regular);
   color: var(--text-color);
   letter-spacing: 0.1em;
-  margin-block: var(--space-3xs);
-  text-wrap: balance;
   animation: 2s cubic-bezier(.455, .03, .515, .955) forwards main-text-animation;
 }
 
 /* Responsive adjustment for small screens */
-@container (max-width: 550px) {
+@container(max-width: 600px) {
   .text-with-animation {
-    top: 30dvh;
+    top: 27%;
+    line-height: 0%;
+    /* a bit higher for small screens */
     font-size: var(--step-0);
     padding-inline: var(--space-s);
-    line-height: 100%;
+  }
+
+  .text-with-animation span {
+    position: absolute;
+    top: 60%;
+
+    font-size: var(--step-0);
+    text-align: center;
+
+    font-family: var(--ff-monoton-regular);
+    font-weight: var(--font-weight-regular);
+    font-style: var(--font-style-regular);
+    color: var(--text-color);
+    letter-spacing: 0.1em;
+    margin-top: var(--space-3xs);
+    text-wrap: balance;
+    opacity: 1;
   }
 }
 
 .text-with-animation span {
-  position: relative;
+  position: absolute;
+  top: 40%;
+  /* Use viewport width for horizontal spacing */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--step--1);
+  text-align: center;
+  line-height: 100%;
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
+  color: var(--text-color);
+  letter-spacing: 0.1em;
+  margin-top: var(--space-3xs);
+  text-wrap: balance;
   opacity: 0;
   animation: word-animation 2s cubic-bezier(.455, .03, .515, .955) forwards;
 }
@@ -517,9 +548,9 @@ body>* {
 }
 
 /* Responsive adjustment for small screens */
-@container (max-width: 550px) {
+@container(max-width: 600px) {
   .text-with-animation-5 {
-    top: 43dvh;
+    top: 43%;
     font-size: var(--step-0);
     padding-inline: var(--space-s);
   }
