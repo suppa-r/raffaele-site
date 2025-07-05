@@ -451,38 +451,34 @@ body>* {
 
 .text-with-animation {
   position: absolute;
+  top: 15dvh;
+  /* Use viewport height for vertical spacing */
+  left: 50%;
+  transform: translateX(-50%);
   font-size: var(--step--1);
   text-align: center;
-  line-height: 100dvh;
-  top: -22%;
-  /* <-- Move up from the top */
-  left: 0;
-  width: 100%;
+  line-height: 100%;
   font-family: var(--ff-monoton-regular);
   color: var(--text-color);
   letter-spacing: 0.1em;
-  display: block;
-  overflow: hidden;
+  margin-block: var(--space-3xs);
+  text-wrap: balance;
+}
+
+/* Responsive adjustment for small screens */
+@container (max-width: 600px) {
+  .text-with-animation {
+    top: 30dvh;
+    font-size: var(--step-0);
+    padding-inline: var(--space-s);
+    line-height: 100%;
+  }
 }
 
 .text-with-animation span {
   position: relative;
   opacity: 0;
   animation: word-animation 2s cubic-bezier(.455, .03, .515, .955) forwards;
-}
-
-.text-with-animation-6,
-.text-with-animation-7 {
-  font-family: var(--ff-monoton-regular);
-  font-weight: var(--font-wight-regular);
-  font-style: var(--font-style-regular);
-  font-size: var(--step-0);
-  animation: 2s cubic-bezier(.455, .03, .515, .955) forwards text-animation;
-  text-align: center;
-  margin-top: var(--space-3xs);
-  letter-spacing: 0.2em;
-  text-wrap: balance;
-  overflow: hidden;
 }
 
 .text-with-animation-1,
@@ -500,24 +496,47 @@ body>* {
 
 .text-with-animation-5 {
   position: absolute;
+  top: 30dvh;
+  /* Use viewport height for vertical spacing */
+  left: 50%;
+  transform: translateX(-50%);
   font-size: var(--step--1);
-  /* <-- fixed comma */
   text-align: center;
-  line-height: 100dvh;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  line-height: 100%;
   font-family: var(--ff-monoton-regular);
   color: var(--text-color);
   letter-spacing: 0.1em;
-  display: block;
-  overflow: hidden;
+  margin-top: var(--space-s);
+  text-wrap: balance;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 600px) {
+  .text-with-animation-5 {
+    top: 43dvh;
+    font-size: var(--step-0);
+    padding-inline: var(--space-s);
+  }
 }
 
 .text-with-animation-5 span {
   position: relative;
   opacity: 0;
   animation: word-animation 2s cubic-bezier(.455, .03, .515, .955) forwards;
+}
+
+.text-with-animation-6,
+.text-with-animation-7 {
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-wight-regular);
+  font-style: var(--font-style-regular);
+  font-size: var(--step-0);
+  animation: 2s cubic-bezier(.455, .03, .515, .955) forwards text-animation;
+  text-align: center;
+  margin-top: var(--space-3xs);
+  letter-spacing: 0.2em;
+  text-wrap: balance;
+  overflow: hidden;
 }
 
 @keyframes text-animation {
@@ -550,12 +569,12 @@ body>* {
 
 @keyframes word-animation {
   0% {
-    top: 10vw;
+    top: 0dvw;
     opacity: 0;
   }
 
   100% {
-    top: 3.5vw;
+    top: 8dvw;
     opacity: 1;
   }
 }
