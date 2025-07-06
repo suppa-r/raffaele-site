@@ -449,80 +449,152 @@ button {
   }
 }
 
-.text-with-animation {
-  font-size: 6vw;
-  font-family: 'Gochi Hand', sans-serif;
-  text-align: center;
-  line-height: 100vh;
+.container {
+  height: 100dvh;
+  line-height: 100dvh;
+  /*vertical-align: middle;*/
+}
 
-  animation: main-text-animation 1.7s ease-in-out forwards;
-  font-weight: 700;
+.text-with-animation {
+  position: absolute;
+  top: -22%;
+  font-size: var(--step-2);
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
+  text-align: center;
+  line-height: 100dvh;
+  animation: main-text-animation 0.1ms ease-in-out forwards;
   color: var(--text-color);
   overflow: hidden;
-
   width: 500vw;
   margin-left: -200vw;
-  opacity: .01;
+  opacity: 1;
 }
 
-.container {
-  height: 100vh;
-  line-height: 100vh;
-  vertical-align: middle;
+.text-with-animation span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 0.5s forwards;
 }
 
-.subtext-with-animation {
+.text-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 0.7s forwards;
+}
+
+.text-with-animation-1 {
   position: absolute;
-  font-size: 3vw;
+  top: 16%;
+  font-size: var(--step-0);
   text-align: center;
-  /*line-height: 100vh;*/
-  bottom: 0;
+  /*bottom: 0;*/
   width: 100%;
   font-family: 'Gochi Hand', cursive;
   color: var(--text-color);
   letter-spacing: 4px;
   user-select: none;
   overflow: hidden;
-
 }
 
-.subtext-with-animation-1 {
-  position: absolute;
-  font-size: 3vw;
-  text-align: center;
-  /*line-height: 100vh;*/
-  bottom: 0;
-  width: 100%;
-  font-family: 'Gochi Hand', cursive;
-  color: var(--text-color);
-  letter-spacing: 4px;
-  user-select: none;
-  overflow: hidden;
-
-}
-
-.subtext-with-animation span:first-of-type {
+.text-with-animation-1 span:first-of-type {
   position: relative;
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.5s forwards;
 }
 
-.subtext-with-animation span:nth-of-type(2) {
+.text-with-animation-1 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.7s forwards;
 }
 
+.text-with-animation-2 {
+  position: absolute;
+  /*top: -22%;*/
+  font-size: var(--step-0);
+  text-align: center;
+  /*line-height: 100vh;*/
+  bottom: 0;
+  width: 100%;
+  font-family: 'Gochi Hand', cursive;
+  color: var(--text-color);
+  letter-spacing: 4px;
+  user-select: none;
+  overflow: hidden;
+}
+
+.text-with-animation-2 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
+.text-with-animation-2 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.7s forwards;
+}
+
+.text-with-animation-3 {
+  position: absolute;
+  /*top: -22%;*/
+  font-size: var(--step-0);
+  text-align: center;
+  /*line-height: 100vh;*/
+  bottom: 0;
+  width: 100%;
+  font-family: 'Gochi Hand', cursive;
+  color: var(--text-color);
+  letter-spacing: 4px;
+  user-select: none;
+  overflow: hidden;
+}
+
+.text-with-animation-3 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
+.text-with-animation-3 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.7s forwards;
+}
+
+.text-with-animation-5 {
+  position: absolute;
+  top: 0%;
+  font-size: var(--step-2);
+  text-align: center;
+  /*line-height: 100vh;*/
+  bottom: 0;
+  width: 100%;
+  font-family: 'Gochi Hand', cursive;
+  color: var(--text-color);
+  letter-spacing: 4px;
+  user-select: none;
+  overflow: hidden;
+}
+
+.text-with-animation-5 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
 @keyframes main-text-animation {
   0% {
     letter-spacing: 10vw;
-    word-spacing: 100vw;
+    word-spacing: var(--space-3xl);
     opacity: 0;
   }
 
   100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
+    letter-spacing: var(--space-2xs);
+    word-spacing: var(--space-s);
     opacity: 1;
   }
 }
