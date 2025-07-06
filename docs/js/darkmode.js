@@ -1,3 +1,8 @@
+document.querySelector('.theme-switch').addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+
+
 let darkmode = localStorage.getItem('darkmode');
 const themeSwitch = document.querySelector('.theme-switch');
 
