@@ -14,11 +14,552 @@
     href="https://fonts.googleapis.com/css2?family=Monoton&family=PT+Serif:ital@1&family=Roboto+Slab:wght@100&display=swap"
     rel="stylesheet">
   <link rel="icon" href="/docs/images/favicon-32x32-min.png" />
-  <link rel="stylesheet" href="/docs/css/reset.css">
-  <link rel="stylesheet" href="/docs/css/index.css">
+
   <link rel="stylesheet" href="/docs/css/index-lines.css">
   <script type="text/javascript" src="/docs/js/" defer></script>
   <script type="text/javascript" src="/docs/js/darkmode.js " defer></script>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto:700');
+
+  :root {
+    --sp: 5s;
+
+    --burger-thickness: 4px;
+    --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    --base-color: white;
+    --text-color: #000;
+    --text-span: #49879c;
+
+    --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
+
+    /* Step 0: 16px → 16px */
+    --step-0: clamp(1rem, 1rem + 0cqi, 1rem);
+    /* Step 1: 19.2px → 20px */
+    --step-1: clamp(1.2rem, 1.1826rem + 0.087cqi, 1.25rem);
+    /* Step 2: 23.04px → 25px */
+    --step-2: clamp(1.44rem, 1.3974rem + 0.213cqi, 1.5625rem);
+    /* Step 3: 27.648px → 31.25px */
+    --step-3: clamp(1.728rem, 1.6497rem + 0.3915cqi, 1.9531rem);
+    /* Step 4: 33.1776px → 39.0625px */
+    --step-4: clamp(2.0736rem, 1.9457rem + 0.6397cqi, 2.4414rem);
+    /* Step 5: 39.8131px → 48.8281px */
+    --step-5: clamp(2.4883rem, 2.2923rem + 0.9799cqi, 3.0518rem);
+
+    --space-3xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
+    --space-2xs: clamp(0.5rem, 0.5rem + 0cqi, 0.5rem);
+    --space-xs: clamp(0.75rem, 0.75rem + 0cqi, 0.75rem);
+    --space-s: clamp(1rem, 1rem + 0cqi, 1rem);
+    --space-m: clamp(1.5rem, 1.5rem + 0cqi, 1.5rem);
+    --space-l: clamp(2rem, 2rem + 0cqi, 2rem);
+    --space-xl: clamp(3rem, 3rem + 0cqi, 3rem);
+    --space-2xl: clamp(4rem, 4rem + 0cqi, 4rem);
+    --space-3xl: clamp(6rem, 6rem + 0cqi, 6rem);
+    --space-4xl: clamp(7rem, 7rem + 0cqi, 7rem);
+    --space-5xl: clamp(8rem, 8rem + 0cqi, 8rem);
+    --space-6xl: clamp(9rem, 9rem + 0cqi, 9rem);
+    --space-7xl: clamp(10rem, 10rem + 0cqi, 10rem);
+    --space-8xl: clamp(11rem, 11rem + 0cqi, 11rem);
+    --space-9xl: clamp(13rem, 13rem + 0cqi, 13rem);
+    --space-10xl: clamp(14rem, 14rem + 0cqi, 14rem);
+
+
+    --font-family: "Roboto Slab",
+      serif;
+    --font-optical-sizing: auto;
+    --font-weight: 100;
+    --font-style: normal;
+
+    --pt-serif-regular-italic: "PT Serif",
+      serif;
+    --pt-serif-italic: "PT Serif Italic",
+      serif;
+
+    --font-weight-1: 400;
+    --font-style-1: italic;
+
+    --ff-monoton-regular: "Monoton",
+      sans-serif;
+    --font-weight-regular: 400;
+    --font-style-regular: normal;
+  }
+
+  button {
+    padding: var(--space-xs) var(--space-s) 0 0;
+    background-color: var(--base-color);
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  .theme-switch {
+    width: var(--space-l);
+    height: var(--space-l);
+    /* Add height to match width */
+    padding: 0;
+    border: none;
+    margin: var(--space-2xs) 0;
+    /* Fix margin syntax */
+    border-radius: 50%;
+    background-color: var(--base-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 1%;
+    right: 1%;
+    z-index: 1001;
+    /* Ensure it's clickable */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Add transition */
+  }
+
+  .theme-switch svg {
+    fill: var(--text-color);
+    transition: fill 0.3s ease;
+    /* Transition SVG fill color */
+  }
+
+  .theme-switch svg:last-child {
+    display: none;
+  }
+
+  .darkmode .theme-switch svg:first-child {
+    display: none;
+  }
+
+  .darkmode .theme-switch svg:last-child {
+    display: block;
+  }
+
+  .darkmode {
+    --base-color: #000;
+    --text-color: #fff;
+    --text-span: #49879c;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    line-height: 1.2;
+    font-family: var(--pt-serif-italic);
+    font-weight: var(--font-weight-1);
+    font-style: var(--font-style-1);
+    font-size: var(--step--1);
+  }
+
+  html,
+  body {
+    color: var(--text-color);
+    background-color: var(--base-color);
+  }
+
+  body {
+    margin-inline: auto;
+  }
+
+  body>* {
+    container-type: inline-size;
+    max-inline-size: 100%;
+    margin-inline: auto;
+    padding-inline: var(--space-xs);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote {
+    text-align: center;
+  }
+
+  .title-1 {
+    padding-top: var(--space-xs);
+    font-size: var(--step--1);
+  }
+
+  .author {
+    font-size: var(--step--1);
+  }
+
+  .curve-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+    padding-block: var(--space-2xl);
+    font-size: var(--step-2);
+    color: var(--text-color);
+  }
+
+  .content,
+  .content-1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .content div,
+  .content-1 div {
+    position: absolute;
+    display: flex;
+    animation: show-hide var(--sp) ease 0s infinite;
+    mix-blend-mode: plus-darken;
+  }
+
+  .content div span,
+  .content-1 div span {
+    margin-inline: auto;
+    animation-duration: 3s;
+    padding: 0;
+    animation-timing-function: ease;
+    animation-delay: .8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+    animation-fill-mode: both;
+    animation-name: main-text-animation;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    text-shadow: 0 0 7px var(--text-color),
+      0 0 10px var(--text-color),
+      0 0 21px var(--text-color);
+  }
+
+  @keyframes show-hide {
+
+    0%,
+    100% {
+      opacity: 0;
+      transform: scale(.8)
+    }
+
+    20%,
+    80% {
+      opacity: 1;
+      transform: scale(1)
+    }
+  }
+
+  .down:before,
+  .up:before {
+    width: 100%;
+    height: var(--space-3xs);
+    background: radial-gradient(ellipse at 100% 100%, var(--text-color), var(--text-color) 70%);
+    content: "";
+    position: absolute;
+    border-radius: 100%;
+    filter: blur(3px);
+    left: 10%;
+    top: 49%;
+    /* Always-present base shadow: */
+    box-shadow: 0 0 30px 0 var(--text-color), 0 0 0px 0 var(--text-color);
+    /* Animate a second, larger shadow: */
+    animation: shadow-glow var(--sp) ease-in-out 3s infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes shadow-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 30px 0 var(--text-color), 0 0 0px 0 var(--text-color);
+    }
+
+    45%,
+    55% {
+      box-shadow: 0 0 30px 0 var(--text-color), 0 0 100px 0 var(--text-color) / 0.5;
+    }
+  }
+
+  .down:before {
+    width: .3vmin;
+    height: .5vmin;
+    filter: blur(3px);
+    left: calc(50% - .5vmin);
+    top: 45%;
+    box-shadow: 0 0 10px 0 var(--text-color), 0 0 0px 0 var(--text-color);
+    animation: shadow var(--sp) ease-in-out 3s infinite;
+  }
+
+  @keyframes shadow {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      opacity: 0
+    }
+
+    45%,
+    55% {
+      opacity: .25;
+      height: .25vmin
+    }
+  }
+
+  .down span,
+  .up span {
+    animation-duration: var(--sp);
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: infinite
+  }
+
+  .up-2-8 {
+    animation-name: go-up-2-8
+  }
+
+  .up-3-7 {
+    animation-name: go-up-3-7
+  }
+
+  .up-4-6 {
+    animation-name: go-up-4-6
+  }
+
+  .up-5 {
+    animation-name: go-up-5
+  }
+
+  .down-2-8 {
+    animation-name: go-down-2-8
+  }
+
+  .down-3-7 {
+    animation-name: go-down-3-7
+  }
+
+  .down-4-6 {
+    animation-name: go-down-4-6
+  }
+
+  .down-5 {
+    animation-name: go-down-5
+  }
+
+  @keyframes go-up-2-8 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: -.6vmin
+    }
+  }
+
+  @keyframes go-up-3-7 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: -1.2vmin
+    }
+  }
+
+  @keyframes go-up-4-6 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: -1.8vmin
+    }
+  }
+
+  @keyframes go-up-5 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: -2.4vmin
+    }
+  }
+
+  @keyframes go-down-2-8 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: .6vmin
+    }
+  }
+
+  @keyframes go-down-3-7 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: 1.2vmin
+    }
+  }
+
+  @keyframes go-down-4-6 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: 1.8vmin
+    }
+  }
+
+  @keyframes go-down-5 {
+
+    0%,
+    10%,
+    100%,
+    90% {
+      top: 0
+    }
+
+    40%,
+    60% {
+      top: 2.4vmin
+    }
+  }
+
+  .text-with-animation {
+    font-size: 6vw;
+    font-family: 'Gochi Hand', sans-serif;
+    text-align: center;
+    line-height: 100vh;
+
+    animation: main-text-animation 1.7s ease-in-out forwards;
+    font-weight: 700;
+    color: var(--text-color);
+    overflow: hidden;
+    width: 500vw;
+    margin-left: -200vw;
+    opacity: .01;
+  }
+
+  .container {
+    height: 100vh;
+    line-height: 100vh;
+    vertical-align: middle;
+  }
+
+  .subtext-with-animation {
+    position: absolute;
+    font-size: 3vw;
+    text-align: center;
+    /*line-height: 100vh;*/
+    bottom: 0;
+    width: 100%;
+    font-family: 'Gochi Hand', cursive;
+    color: var(--text-color);
+    letter-spacing: 4px;
+    user-select: none;
+    overflow: hidden;
+
+  }
+
+  .subtext-with-animation-1 {
+    position: absolute;
+    font-size: 3vw;
+    text-align: center;
+    /*line-height: 100vh;*/
+    bottom: 0;
+    width: 100%;
+    font-family: 'Gochi Hand', cursive;
+    color: var(--text-color);
+    letter-spacing: 4px;
+    user-select: none;
+    overflow: hidden;
+
+  }
+
+  .subtext-with-animation span:first-of-type {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-out 1.5s forwards;
+  }
+
+  .subtext-with-animation span:nth-of-type(2) {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-out 1.7s forwards;
+  }
+
+  body {
+    overflow: hidden;
+    margin: 0;
+  }
+
+  body,
+  html {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  @keyframes main-text-animation {
+    0% {
+      letter-spacing: 10vw;
+      word-spacing: 100vw;
+      opacity: 0;
+    }
+
+    100% {
+      letter-spacing: 4px;
+      word-spacing: 1vw;
+      opacity: .2;
+    }
+  }
+
+  @keyframes word-animation {
+    0% {
+      top: 10vw;
+      opacity: 0;
+    }
+
+    100% {
+      top: 3.5vw;
+      opacity: .2;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -54,6 +595,7 @@
     </svg>
   </button>
   <div class="wrapper" role="button" tabindex="0" onclick="location.href='intro.html';">
+
     <div class="quote">
       <p class="title-1">a tribute to a work in progress</p>
       <p class="title-1">"there will be an answer --let it be"</p>
@@ -102,17 +644,14 @@
     </div>
 
     <div class="container">
-      <div class="text-with-animation"><span>you're in</span></div>
-      <div class="text-with-animation-1">one by one the Dances all end</div>
-      <div class="text-with-animation-2">but the Song continues</div>
-      <div class="text-with-animation-3">St Peter said, sing a Song,</div>
-      <div class="text-with-animation-4">and I'll let You in these Gates!</div><br>
-      <div class="text-with-animation-5"><span>Sure!</span></div>
-      <div class="text-with-animation-6">walk across the</div>
-      <div class="text-with-animation-7">moments with me</div>
+      <div class="text-with-animation">raffaele SUPPA</div>
+      <div class="subtext-with-animation">
+        <span>you're</span> <span>in!</spanspan>
+      </div>
+      <div class="subtext-with-animation-1">
+        <span>aweSOME</span> <span>DESIGN</span>
+      </div>
     </div>
   </div>
-  </div>
-</body>
 
-</html>
+</body>
