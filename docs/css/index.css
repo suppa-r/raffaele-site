@@ -614,7 +614,7 @@ button {
 @container (max-width: 600px) {
   .text-with-animation {
     position: absolute;
-    top: -12%;
+    top: -16%;
     text-align: center;
     line-height: 100dvh;
     animation: main-text-animation 0.1ms ease-in-out forwards;
