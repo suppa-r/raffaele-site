@@ -638,17 +638,16 @@ button {
 
   .text-with-animation-1 {
     position: absolute;
-    top: -22%;
-    font-size: var(--step-0);
+    top: -24%;
     text-align: center;
-    /*bottom: 0;*/
-    width: 100%;
-    font-family: 'Gochi Hand', cursive;
-    color: var(--text-color);
-    letter-spacing: 4px;
-    user-select: none;
+    line-height: 100dvh;
+    animation: main-text-animation 0.1ms ease-in-out forwards;
     overflow: hidden;
+    width: 500vw;
+    margin-left: -200vw;
+    opacity: 1;
   }
+
 
   .text-with-animation-1 span:first-of-type {
     position: relative;
@@ -665,17 +664,15 @@ button {
   .text-with-animation-2 {
     position: absolute;
     top: -28%;
-    font-size: var(--step-0);
     text-align: center;
-    /*line-height: 100vh;*/
-    bottom: 0;
-    width: 100%;
-    font-family: 'Gochi Hand', cursive;
-    color: var(--text-color);
-    letter-spacing: 4px;
-    user-select: none;
+    line-height: 100dvh;
+    animation: main-text-animation 0.1ms ease-in-out forwards;
     overflow: hidden;
+    width: 500vw;
+    margin-left: -200vw;
+    opacity: 1;
   }
+
 
   .text-with-animation-2 span:first-of-type {
     position: relative;
@@ -692,16 +689,13 @@ button {
   .text-with-animation-3 {
     position: absolute;
     top: -32%;
-    font-size: var(--step-0);
     text-align: center;
-    /*line-height: 100vh;*/
-    bottom: 0;
-    width: 100%;
-    font-family: 'Gochi Hand', cursive;
-    color: var(--text-color);
-    letter-spacing: 4px;
-    user-select: none;
+    line-height: 100dvh;
+    animation: main-text-animation 0.1ms ease-in-out forwards;
     overflow: hidden;
+    width: 500vw;
+    margin-left: -200vw;
+    opacity: 1;
   }
 
   .text-with-animation-3 span:first-of-type {
@@ -719,17 +713,15 @@ button {
   .text-with-animation-5 {
     position: absolute;
     top: -38%;
-    font-size: var(--step-2);
     text-align: center;
-    /*line-height: 100vh;*/
-    bottom: 0;
-    width: 100%;
-    font-family: 'Gochi Hand', cursive;
-    color: var(--text-color);
-    letter-spacing: 4px;
-    user-select: none;
+    line-height: 100dvh;
+    animation: main-text-animation 0.1ms ease-in-out forwards;
     overflow: hidden;
+    width: 500vw;
+    margin-left: -200vw;
+    opacity: 1;
   }
+
 
   .text-with-animation-5 span:first-of-type {
     position: relative;
