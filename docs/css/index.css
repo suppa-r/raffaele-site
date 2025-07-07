@@ -616,7 +616,7 @@ button {
   .container {
     height: 100vh;
     line-height: 100vh;
-    /*vertical-align: middle;*/
+    padding-inline: 0 var(--space-2xs);
   }
 
   .text-with-animation,
@@ -629,13 +629,13 @@ button {
     top: unset;
     width: 100%;
     margin-left: 0;
-    letter-spacing: var(--space-xs);
+    letter-spacing: var(--space-3xs);
     text-align: center;
-    line-height: 1.75;
+    line-height: 1.5;
     animation: main-text-animation 0.1ms ease-in-out forwards;
     overflow: hidden;
     opacity: 1;
-    margin-block: var(--space-m);
+    margin-block: var(--space-s);
     /* vertical gap between blocks */
   }
 
