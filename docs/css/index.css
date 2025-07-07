@@ -614,7 +614,7 @@ button {
 @container (max-width: 600px) {
   .text-with-animation {
     position: absolute;
-    top: -16%;
+    top: -18%;
     text-align: center;
     line-height: 100dvh;
     animation: main-text-animation 0.1ms ease-in-out forwards;
@@ -638,7 +638,7 @@ button {
 
   .text-with-animation-1 {
     position: absolute;
-    top: 16%;
+    top: -22%;
     font-size: var(--step-0);
     text-align: center;
     /*bottom: 0;*/
@@ -664,7 +664,7 @@ button {
 
   .text-with-animation-2 {
     position: absolute;
-    /*top: -22%;*/
+    top: -28%;
     font-size: var(--step-0);
     text-align: center;
     /*line-height: 100vh;*/
@@ -691,7 +691,7 @@ button {
 
   .text-with-animation-3 {
     position: absolute;
-    /*top: -22%;*/
+    top: -32%;
     font-size: var(--step-0);
     text-align: center;
     /*line-height: 100vh;*/
@@ -718,7 +718,7 @@ button {
 
   .text-with-animation-5 {
     position: absolute;
-    top: 0%;
+    top: -38%;
     font-size: var(--step-2);
     text-align: center;
     /*line-height: 100vh;*/
