@@ -613,6 +613,12 @@ button {
 
 @container (max-width: 600px) {
 
+  .container {
+    height: 100vh;
+    line-height: 100vh;
+    /*vertical-align: middle;*/
+  }
+
   .text-with-animation,
   .text-with-animation-1,
   .text-with-animation-2,
