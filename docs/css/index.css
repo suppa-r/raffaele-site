@@ -612,117 +612,50 @@ button {
 }
 
 @container (max-width: 600px) {
-  .text-with-animation {
-    position: absolute;
-    top: -18%;
-    text-align: center;
-    line-height: 100dvh;
-    animation: main-text-animation 0.1ms ease-in-out forwards;
-    overflow: hidden;
-    width: 500vw;
-    margin-left: -200vw;
-    opacity: 1;
-  }
 
-  .text-with-animation span:first-of-type {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 0.5s forwards;
-  }
-
-  .text-with-animation span:nth-of-type(2) {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 0.7s forwards;
-  }
-
-  .text-with-animation-1 {
-    position: absolute;
-    top: -24%;
-    text-align: center;
-    line-height: 100dvh;
-    animation: main-text-animation 0.1ms ease-in-out forwards;
-    overflow: hidden;
-    width: 500vw;
-    margin-left: -200vw;
-    opacity: 1;
-  }
-
-  .text-with-animation-1 span:first-of-type {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 1.5s forwards;
-  }
-
-  .text-with-animation-1 span:nth-of-type(2) {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 1.7s forwards;
-  }
-
-  .text-with-animation-2 {
-    position: absolute;
-    top: -28%;
-    text-align: center;
-    line-height: 100dvh;
-    animation: main-text-animation 0.1ms ease-in-out forwards;
-    overflow: hidden;
-    width: 500vw;
-    margin-left: -200vw;
-    opacity: 1;
-  }
-
-  .text-with-animation-2 span:first-of-type {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 1.5s forwards;
-  }
-
-  .text-with-animation-2 span:nth-of-type(2) {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 1.7s forwards;
-  }
-
-  .text-with-animation-3 {
-    position: absolute;
-    top: -32%;
-    text-align: center;
-    line-height: 100dvh;
-    animation: main-text-animation 0.1ms ease-in-out forwards;
-    overflow: hidden;
-    width: 500vw;
-    margin-left: -200vw;
-    opacity: 1;
-  }
-
-  .text-with-animation-3 span:first-of-type {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 1.5s forwards;
-  }
-
-  .text-with-animation-3 span:nth-of-type(2) {
-    position: relative;
-    opacity: 0;
-    animation: word-animation 0.5s ease-out 1.7s forwards;
-  }
-
+  .text-with-animation,
+  .text-with-animation-1,
+  .text-with-animation-2,
+  .text-with-animation-3,
+  .text-with-animation-4,
   .text-with-animation-5 {
-    position: absolute;
-    top: -38%;
+    position: relative;
+    top: unset;
+    width: 100%;
+    margin-left: 0;
+    letter-spacing: var(--space-xs);
     text-align: center;
-    line-height: 100dvh;
+    line-height: 1.75;
     animation: main-text-animation 0.1ms ease-in-out forwards;
     overflow: hidden;
-    width: 500vw;
-    margin-left: -200vw;
     opacity: 1;
+    margin-block: var(--space-m);
+    /* vertical gap between blocks */
   }
 
+  .text-with-animation span:first-of-type,
+  .text-with-animation-1 span:first-of-type,
+  .text-with-animation-2 span:first-of-type,
+  .text-with-animation-3 span:first-of-type,
+  .text-with-animation-4 span:first-of-type,
   .text-with-animation-5 span:first-of-type {
     position: relative;
     opacity: 0;
-    animation: word-animation 0.5s ease-out 1.5s forwards;
+    animation: word-animation 0.5s ease-out 0.5s forwards;
+    margin-top: var(--space-m);
+    /* smaller gap above first span */
+  }
+
+  .text-with-animation span:nth-of-type(2),
+  .text-with-animation-1 span:nth-of-type(2),
+  .text-with-animation-2 span:nth-of-type(2),
+  .text-with-animation-3 span:nth-of-type(2),
+  .text-with-animation-4 span:nth-of-type(2),
+  .text-with-animation-5 span:nth-of-type(2) {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.5s ease-out 0.7s forwards;
+    margin-top: var(--space-m);
+    /* smaller gap above second span */
   }
 }
