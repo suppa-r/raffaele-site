@@ -44,12 +44,6 @@
   --space-10xl: clamp(14rem, 14rem + 0cqi, 14rem);
 
 
-  --font-family: "Roboto Slab",
-    serif;
-  --font-optical-sizing: auto;
-  --font-weight: 100;
-  --font-style: normal;
-
   --pt-serif-regular-italic: "PT Serif",
     serif;
   --pt-serif-italic: "PT Serif Italic",
@@ -68,44 +62,29 @@
 html,
 body,
 .wrapper {
-  scroll-behavior: smooth;
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   color: var(--text-color);
   background-color: var(--base-color);
+  min-height: 100dvh;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-family);
-  font-weight: var(--font-weight);
-  font-style: var(--font-style);
-  font-optical-sizing: var(--font-optical-sizing);
-  overflow-x: hidden;
+  margin-inline: auto;
 }
 
 body>* {
   container-type: inline-size;
-  max-inline-size: 100%;
   margin-inline: auto;
-  padding-inline: var(--space-2xs);
-}
-
-.wrapper {
-
-  min-height: 100dvh;
+  padding-inline: var(--space-3xs);
 }
 
 header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 0;
 }
 
 button {
@@ -448,80 +427,55 @@ button {
   }
 }
 
-.container {
-  height: 100dvh;
-  line-height: 100dvh;
-  vertical-align: middle;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .text-with-animation,
+.text-with-animation-4,
 .text-with-animation-5 {
-  position: relative;
-  font-size: var(--step-1);
+  animation: main-text-animation 0.1ms ease-in-out forwards;
+  opacity: 1;
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  text-align: center;
-  line-height: 1.3;
-  animation: main-text-animation 0.1ms ease-in-out forwards;
-  color: var(--text-color);
-  width: 100%;
-  opacity: 1;
-  margin-block: var(--space-s);
 }
 
-/* If you want different font for some blocks, override as needed: */
 .text-with-animation-1,
 .text-with-animation-2,
-.text-with-animation-3,
-.text-with-animation-4 {
-  position: relative;
-  font-size: var(--step-0);
-  text-align: center;
-  line-height: 1.3;
-  animation: main-text-animation 0.1ms ease-in-out forwards;
-  color: var(--text-color);
-  width: 100%;
+.text-with-animation-3 {
+  /*animation: main-text-animation 0.1ms ease-in-out forwards;*/
   opacity: 1;
-  margin-block: var(--space-s);
 }
 
-/* Animate spans */
 .text-with-animation span:first-of-type,
 .text-with-animation-1 span:first-of-type,
 .text-with-animation-2 span:first-of-type,
 .text-with-animation-3 span:first-of-type,
 .text-with-animation-4 span:first-of-type,
 .text-with-animation-5 span:first-of-type {
-  position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 0.5s forwards;
+  animation: word-animation 0.5s ease-out 0.9s forwards;
 }
+
 
 .text-with-animation span:nth-of-type(2),
 .text-with-animation-1 span:nth-of-type(2),
 .text-with-animation-2 span:nth-of-type(2),
 .text-with-animation-3 span:nth-of-type(2),
+
 .text-with-animation-5 span:nth-of-type(2) {
-  position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 0.7s forwards;
+  animation: word-animation 0.5s ease-out 1.3s forwards;
 }
 
 /* Keyframes remain the same */
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 10vw;
-    word-spacing: var(--space-3xl);
+    letter-spacing: 20vw;
+    word-spacing: 100vw;
     opacity: 0;
   }
 
   100% {
-    letter-spacing: var(--space-2xs);
-    word-spacing: var(--space-s);
+    letter-spacing: 2px;
+    word-spacing: 1vw;
     opacity: 1;
   }
 }
@@ -538,31 +492,32 @@ button {
   }
 }
 
-@container (max-width: 600px) {
+/*@container (max-width: 600px) {
   .container {
-    height: 100vh;
-    line-height: 100vh;
-    padding-inline: 0 var(--space-2xs);
+    display: flex;
+    flex-direction: column;
+    padding-inline: var(--space-2xs);
+    line-height: 100dvh;
+    text-align: center;
   }
 
   .text-with-animation,
-  .text-with-animation-1,
-  .text-with-animation-2,
-  .text-with-animation-3,
   .text-with-animation-4,
   .text-with-animation-5 {
-    position: relative;
-    top: unset;
-    width: 100%;
-    margin-left: 0;
-    letter-spacing: var(--space-3xs);
-    text-align: center;
-    line-height: 1.5;
     animation: main-text-animation 0.1ms ease-in-out forwards;
-    overflow: hidden;
     opacity: 1;
-    margin-block: var(--space-s);
-    /* vertical gap between blocks */
+    font-family: var(--ff-monoton-regular);
+    font-weight: var(--font-weight-regular);
+    font-style: var(--font-style-regular);
+    padding-top: var(--space-2xs);
+  }
+
+  .text-with-animation-1,
+  .text-with-animation-2,
+  .text-with-animation-3 {
+    animation: main-text-animation 0.1ms ease-in-out forwards;
+    opacity: 1;
+    padding-top: var(--space-2xs);
   }
 
   .text-with-animation span:first-of-type,
@@ -571,23 +526,47 @@ button {
   .text-with-animation-3 span:first-of-type,
   .text-with-animation-4 span:first-of-type,
   .text-with-animation-5 span:first-of-type {
-    position: relative;
     opacity: 0;
-    animation: word-animation 0.5s ease-out 0.5s forwards;
-    margin-top: var(--space-m);
-    /* smaller gap above first span */
+    animation: word-animation 0.5s ease-out 0.9s forwards;
+    padding-top: var(--space-2xs);
   }
+
 
   .text-with-animation span:nth-of-type(2),
   .text-with-animation-1 span:nth-of-type(2),
   .text-with-animation-2 span:nth-of-type(2),
   .text-with-animation-3 span:nth-of-type(2),
-  .text-with-animation-4 span:nth-of-type(2),
+
   .text-with-animation-5 span:nth-of-type(2) {
-    position: relative;
     opacity: 0;
-    animation: word-animation 0.5s ease-out 0.7s forwards;
-    margin-top: var(--space-m);
-    /* smaller gap above second span */
+    animation: word-animation 0.5s ease-out 1.3s forwards;
+    padding-top: var(--space-2xs);
+  }
+
+  /* Keyframes remain the same *
+  @keyframes main-text-animation {
+    0% {
+      letter-spacing: 1vw;
+      word-spacing: 100vw;
+      opacity: 0;
+    }
+
+    100% {
+      letter-spacing: var(--space-2xs);
+      word-spacing: 1vw;
+      opacity: 1;
+    }
+  }
+
+  @keyframes word-animation {
+    0% {
+      top: 1vw;
+      opacity: 0;
+    }
+
+    100% {
+      top: 3.5vw;
+      opacity: 1;
+    }
   }
 }
