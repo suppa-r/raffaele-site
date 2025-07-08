@@ -463,7 +463,7 @@ button {
   font-size: var(--step-0);
   text-align: center;
   line-height: 1.4;
-  animation: main-text-animation 1s ease-in-out forwards;
+  animation: main-text-animation 1.2s ease-in-out forwards;
   color: var(--text-color);
   width: 100%;
   opacity: 1;
@@ -479,7 +479,7 @@ button {
 .text-with-animation-5 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 0.8s forwards;
+  animation: word-animation 0.5s ease-out 1.0s forwards;
 }
 
 .text-with-animation span:nth-of-type(2),
@@ -489,7 +489,8 @@ button {
 .text-with-animation-5 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.1s forwards;
+  animation: word-animation 0.5s ease-out 1.6s forwards;
+
 }
 
 /* Keyframes remain the same */
@@ -519,10 +520,15 @@ button {
   }
 }
 
-/*@container (max-width: 600px) {
+@container (max-width: 600px) {
   .text-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin-inline: auto;
+    padding: var(--space-3xs) var(--space-s);
   }
 
   .text-with-animation,
@@ -533,15 +539,18 @@ button {
     font-weight: var(--font-weight-regular);
     font-style: var(--font-style-regular);
     text-align: center;
-    line-height: 1.3;
-    animation: main-text-animation 0.9ms ease-in-out forwards;
+    line-height: 1.4;
+    animation: main-text-animation .8s ease-in-out forwards;
     color: var(--text-color);
     width: 100%;
     opacity: 1;
-    margin-block: var(--space-s);
+    margin-block: var(--space-2xs);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
-  /* If you want different font for some blocks, override as needed: *
+  /* If you want different font for some blocks, override as needed: */
   .text-with-animation-1,
   .text-with-animation-2,
   .text-with-animation-3,
@@ -549,15 +558,18 @@ button {
     position: relative;
     font-size: var(--step-0);
     text-align: center;
-    line-height: 1.3;
-    animation: main-text-animation 1.2ms ease-in-out forwards;
+    line-height: 1.4;
+    animation: main-text-animation 1.2s ease-in-out forwards;
     color: var(--text-color);
     width: 100%;
     opacity: 1;
-    margin-block: var(--space-s);
+    margin-block: var(--space-2xs);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
-  /* Animate spans *
+  /* Animate spans */
   .text-with-animation span:first-of-type,
   .text-with-animation-1 span:first-of-type,
   .text-with-animation-2 span:first-of-type,
@@ -566,7 +578,11 @@ button {
   .text-with-animation-5 span:first-of-type {
     position: relative;
     opacity: 0;
-    animation: word-animation 0.5s ease-out 0.5s forwards;
+    animation: word-animation 0.5s ease-out 1.0s forwards;
+    margin-block: var(--space-2xs);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
   .text-with-animation span:nth-of-type(2),
@@ -576,7 +592,10 @@ button {
   .text-with-animation-5 span:nth-of-type(2) {
     position: relative;
     opacity: 0;
-    animation: word-animation 0.5s ease-out 0.9s forwards;
+    animation: word-animation 0.5s ease-out 1.6s forwards;
+    margin-block: var(--space-2xs);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
-
 }
