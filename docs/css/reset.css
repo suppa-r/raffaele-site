@@ -20,6 +20,7 @@ body {
 	overflow: hidden;
 }
 
+
 header,
 footer,
 main,
@@ -28,6 +29,15 @@ article,
 aside {
 	container-type: inline-size;
 	margin-inline: auto;
+}
+
+body>* {
+	/* Ensure all direct children of body are treated as containers */
+	container-type: inline-size;
+	/* Allow them to be sized based on their content */
+	/* Center content within the body */
+	margin-inline: auto;
+	padding-inline: var(--space-3xs);
 }
 
 /* remove animations for people who've turned them off */
