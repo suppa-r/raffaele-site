@@ -528,7 +528,7 @@ button {
     justify-content: center;
     max-width: 100%;
     margin-inline: auto;
-    padding: var(--space-3xs) var(--space-s);
+    padding: var(--space-3xs) var(--space-3xs);
   }
 
   .text-with-animation,
@@ -539,7 +539,7 @@ button {
     font-weight: var(--font-weight-regular);
     font-style: var(--font-style-regular);
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.1;
     animation: main-text-animation .8s ease-in-out forwards;
     color: var(--text-color);
     width: 100%;
@@ -558,7 +558,7 @@ button {
     position: relative;
     font-size: var(--step-0);
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.1;
     animation: main-text-animation 1.2s ease-in-out forwards;
     color: var(--text-color);
     width: 100%;
