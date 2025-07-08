@@ -74,9 +74,8 @@ body {
 }
 
 .wrapper {
-  padding-inline: var(--space-3xs);
-  min-height: 100dvh;
-  /* Add horizontal padding */
+  cursor: pointer;
+  margin-block: 0;
 }
 
 header {
@@ -432,6 +431,11 @@ button {
 .text-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: var(--space-3xs) var(--space-s);
 }
 
 .text-with-animation,
@@ -459,7 +463,7 @@ button {
   font-size: var(--step-0);
   text-align: center;
   line-height: 1.4;
-  animation: main-text-animation 0.4s ease-in-out forwards;
+  animation: main-text-animation 1s ease-in-out forwards;
   color: var(--text-color);
   width: 100%;
   opacity: 1;
@@ -492,13 +496,13 @@ button {
 @keyframes main-text-animation {
   0% {
     letter-spacing: 10vw;
-    word-spacing: var(--space-2xs);
+    word-spacing: 100vw;
     opacity: 0;
   }
 
   100% {
-    letter-spacing: var(--space-3xs);
-    word-spacing: var(--space-2xs);
+    letter-spacing: 4px;
+    word-spacing: 1vw;
     opacity: 1;
   }
 }

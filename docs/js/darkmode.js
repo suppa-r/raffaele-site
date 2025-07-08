@@ -1,4 +1,13 @@
-document.querySelector('.theme-switch').addEventListener('click', function(event) {
+document.querySelector('.wrapper').addEventListener('click', function() {
+  window.location.href = 'intro.html'; // or your target URL
+});
+
+// Prevent inner buttons/links from triggering the parent click
+document.querySelectorAll('.wrapper button, .wrapper a').forEach(el => {
+  el.addEventListener('click', e => e.stopPropagation());
+});
+
+document.querySelector('.theme-switch').addEventListener('click', function (event) {
   event.stopPropagation();
 });
 
