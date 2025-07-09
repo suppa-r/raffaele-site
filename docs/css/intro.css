@@ -232,10 +232,10 @@ header {
 }
 
 header .h {
-  margin-left: var(--space-xl);
+  margin-left: var(--space-2xs);
   padding: 0 var(--space-3xs) 0 0;
   font-size: var(--step--1);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   /* Adds a bit of spacing between letters */
   color: var(--text-color);
 }
@@ -254,7 +254,7 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin-left: var(--space-m);
+  margin-left: var(--space-s);
   display: none;
   cursor: pointer;
 
@@ -357,7 +357,7 @@ nav {
   text-align: center;
   margin-inline: auto;
   /* Center the intro section */
-  padding: var(--space-xs);
+  padding: var(--space-xs) var(--space-3xs);
   /* Add padding to the intro section */
   min-height: 100dvh;
   /* Ensure it takes full viewport height */

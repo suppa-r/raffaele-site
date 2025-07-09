@@ -1,19 +1,19 @@
-document.querySelector('.wrapper').addEventListener('click', function() {
-  window.location.href = 'intro.html'; // or your target URL
-});
+const wrapper = document.querySelector('.wrapper');
+const themeSwitch = document.querySelector('.theme-switch');
 
-// Prevent inner buttons/links from triggering the parent click
-document.querySelectorAll('.wrapper button, .wrapper a').forEach(el => {
-  el.addEventListener('click', e => e.stopPropagation());
-});
+// Make wrapper clickable (except for inner buttons/links)
+if (wrapper) {
+  wrapper.addEventListener('click', function () {
+    window.location.href = 'intro.html';
+  });
 
-document.querySelector('.theme-switch').addEventListener('click', function (event) {
-  event.stopPropagation();
-});
-
+  // Prevent inner buttons/links from triggering the wrapper click
+  wrapper.querySelectorAll('button, a').forEach(el => {
+    el.addEventListener('click', e => e.stopPropagation());
+  });
+}
 
 let darkmode = localStorage.getItem('darkmode');
-const themeSwitch = document.querySelector('.theme-switch');
 
 const enableDarkmode = () => {
   document.body.classList.add('darkmode');
@@ -25,10 +25,13 @@ const disableDarkmode = () => {
   localStorage.setItem('darkmode', null);
 };
 
+// Set initial mode on load
 if (darkmode === "active") enableDarkmode();
 
+// Handle theme switch click (toggle and prevent bubbling)
 if (themeSwitch) {
-  themeSwitch.addEventListener("click", () => {
+  themeSwitch.addEventListener('click', function (e) {
+    e.stopPropagation();
     darkmode = localStorage.getItem('darkmode');
     darkmode !== "active" ? enableDarkmode() : disableDarkmode();
   });
