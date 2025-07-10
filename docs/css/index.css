@@ -442,7 +442,7 @@ button {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 2s cubic-bezier(.455, .03, .515, .955) forwards;
   color: var(--text-color);
   width: 500vw;
   margin-left: -200vw;
@@ -467,7 +467,9 @@ button {
 .sub-text-with-animation-2 span:first-of-type,
 .sub-text-with-animation-3 span:first-of-type {
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 1s cubic-bezier(.455, .03, .515, .955) forwards;
+  animation-delay: calc(var(--sp) * .09);
+  /* Adjust delay for staggered effect */
   margin-block: var(--space-2xs);
 }
 
@@ -476,7 +478,9 @@ button {
 .sub-text-with-animation-2 span:nth-of-type(2),
 .sub-text-with-animation-3 span:nth-of-type(2) {
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 1s cubic-bezier(.455, .03, .515, .955) forwards;
+  animation-delay: calc(var(--sp) * .09);
+  /* Adjust delay for staggered effect */
   margin-block: var(--space-2xs);
 }
 
@@ -497,7 +501,7 @@ button {
 
 @keyframes word-animation {
   0% {
-    top: 10vw;
+    top: 0vw;
     opacity: 0;
   }
 
