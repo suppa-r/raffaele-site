@@ -349,15 +349,17 @@ nav {
 }
 
 .intro {
-  display: grid;
-  place-content: start center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  /* vertical centering */
+  align-items: center;
+  /* horizontal centering *
+  margin: 0;
+  padding: 0;*/
+  padding-top: var(--space-xl);
   text-align: center;
-  margin-inline: auto;
-  /* Center the intro section */
-  padding: var(--space-xs) var(--space-3xs);
-  /* Add padding to the intro section */
   min-height: 100dvh;
-  /* Ensure it takes full viewport height */
 }
 
 .intro p {
