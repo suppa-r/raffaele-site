@@ -354,9 +354,7 @@ nav {
   justify-content: start;
   /* vertical centering */
   align-items: center;
-  /* horizontal centering *
-  margin: 0;
-  padding: 0;*/
+  /* horizontal centering */
   padding-top: var(--space-xl);
   text-align: center;
   min-height: 100dvh;
