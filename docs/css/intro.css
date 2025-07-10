@@ -1,11 +1,11 @@
 :root {
-  --sp: 5s;
+  --sp: 4s;
 
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --base-color: white;
   --text-color: #000;
-  --text-span: #49879c;
+  --text-span: #83bbad;
 
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
   --glass-bg: rgba(255, 255, 255, 0.05);
@@ -22,7 +22,6 @@
   --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
   /* Step 3: 29.376px → 39.0625px */
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
-
 
 
   /* Space 3xs: 4px → 5px */
@@ -59,12 +58,10 @@
   --font-weight: 100;
   --font-style: normal;
 
-
   --pt-serif-regular-italic: "PT Serif",
     serif;
   --pt-serif-italic: "PT Serif Italic",
     serif;
-
   --font-weight-1: 400;
   --font-style-1: italic;
 
@@ -83,12 +80,12 @@
 
 /*Dark mode overrides */
 .darkmode {
-  --base-color: #181a1b;
-  --text-color: #f3f3f3;
-  --text-span: #c7e2a385;
-  --gradient-black-1: rgba(0, 0, 0, 0.664);
+  --base-color: #000;
+  --text-color: #fff;
+  --text-span: #83bbad;
+  --gradient-black-1: rgba(0, 0, 0, 0.764);
   --gradient-black-2: rgba(0, 0, 0, 0.347);
-  --gradient-white: #ffffff;
+  --gradient-white: #fff;
 
   /* Light mode background gradient */
   --body-gradient-top: hsla(0, 0%, 3%, 0.95);
@@ -97,7 +94,7 @@
   /* light blue/gray */
 
   /* Light mode grid line color */
-  --body-grid-line: rgba(255, 255, 255, 0.733);
+  --body-grid-line: rgba(255, 255, 255, 0.8);
   /* subtle dark lines */
 }
 
@@ -173,21 +170,14 @@ button {
   color: hsl(var(--clr-accent));
 }
 
-html {
-  scroll-behavior: smooth;
-  line-height: 1.2;
-  font-family: var(--pt-serif-italic);
-  font-weight: var(--font-weight-1);
-  font-style: var(--font-style-1);
-  font-size: var(--step--1);
-}
-
-
-
 body {
   background-color: var(--base-color);
   /* This is the base color for the body */
   color: var(--body-grid-line);
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
+  font-size: var(--step--1);
 }
 
 body:before {
@@ -222,7 +212,7 @@ body:before {
 header {
   display: flex;
   justify-content: space-between;
-  padding: var(--space-2xs) 0 0 0;
+  padding: var(--space-xs) 0 0 0;
   align-items: center;
 }
 
@@ -296,6 +286,11 @@ nav {
   z-index: 2;
 }
 
+nav>*+* {
+  margin-top: var(--space-s);
+  /* Adds space between nav items */
+}
+
 .nav-links {
   @media (hover) and (prefers-reduced-motion: no-preference) {
     &>li {
@@ -324,13 +319,15 @@ nav {
 
 .nav-links li {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 .nav-links li a {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;*/
   color: var(--text-color);
 }
 
