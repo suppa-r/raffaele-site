@@ -468,7 +468,7 @@ button {
 .sub-text-with-animation-3 span:first-of-type {
   opacity: 0;
   animation: word-animation 1s cubic-bezier(.455, .03, .515, .955) forwards;
-  animation-delay: calc(var(--sp) * .09);
+  animation-delay: 1s;
   /* Adjust delay for staggered effect */
   margin-block: var(--space-2xs);
 }
@@ -479,7 +479,7 @@ button {
 .sub-text-with-animation-3 span:nth-of-type(2) {
   opacity: 0;
   animation: word-animation 1s cubic-bezier(.455, .03, .515, .955) forwards;
-  animation-delay: calc(var(--sp) * .09);
+  animation-delay: 1s;
   /* Adjust delay for staggered effect */
   margin-block: var(--space-2xs);
 }

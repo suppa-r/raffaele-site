@@ -232,8 +232,7 @@ header {
 }
 
 header .h {
-  margin-left: var(--space-2xs);
-  padding: 0 var(--space-3xs) 0 0;
+  padding: 0 var(--space-3xs) 0 var(--space-2xs);
   font-size: var(--step--1);
   letter-spacing: 0.03em;
   /* Adds a bit of spacing between letters */
@@ -257,15 +256,20 @@ header .bars {
   margin-left: var(--space-s);
   display: none;
   cursor: pointer;
-
+  z-index: 2000;
+  /* Ensure it's above the nav links */
 }
 
 header .bars.is-active {
-  width: 2px;
+  margin-top: var(--space-xs);
   transform-origin: right;
+  padding: 0 var(--space-xs) 0 var(--space-2xs);
   transition: transform 0.5s ease-in-out;
-  transform: translateY(15px) rotate(45deg);
+  /*transform: translateY(15px) rotate(45deg);*/
+  transform: translate(0) rotate(45deg);
   cursor: pointer;
+  z-index: 2000;
+  /* Ensure it's above the nav links */
 }
 
 header .bars::after,
@@ -287,8 +291,6 @@ header .bars::after {
 header .bars::before {
   top: 7px;
 }
-
-
 
 nav {
   display: flex;
