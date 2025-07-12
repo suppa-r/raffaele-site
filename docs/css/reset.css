@@ -22,14 +22,6 @@ body {
 	overflow: hidden;
 }
 
-body>* {
-	/* Ensure all direct children of body are treated as containers */
-	container-type: inline-size;
-	/* Allow them to be sized based on their content */
-	/* Center content within the body */
-
-}
-
 /* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: no-preference) {
 	html {

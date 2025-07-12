@@ -24,7 +24,6 @@
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
 
 
-
   /* Space 3xs: 4px → 5px */
   --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
   /* Space 2xs: 9px → 10px */
@@ -53,13 +52,13 @@
   --space-7xl: clamp(10.625rem, 10.1316rem + 2.4671cqi, 12.5rem);
 
 
-  --pt-serif-regular-italic: "PT Serif",
+  --pt-serif-regular: "PT Serif",
     serif;
   --pt-serif-italic: "PT Serif Italic",
     serif;
-
   --font-weight-1: 400;
   --font-style-1: italic;
+
 
   --ff-monoton-regular: "Monoton",
     sans-serif;
@@ -73,16 +72,16 @@ body {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
-  font-size: var(--step-0);
   color: var(--text-color);
   background-color: var(--base-color);
 }
 
-body {
-  font-family: var(--font-family);
-  font-weight: var(--font-weight);
-  font-style: var(--font-style);
-  font-optical-sizing: var(--font-optical-sizing);
+body>* {
+  /* Ensure all direct children of body are treated as containers */
+  container-type: inline-size;
+  /* Allow them to be sized based on their content */
+  /* Center content within the body */
+
 }
 
 .wrapper {
@@ -154,21 +153,21 @@ button {
 }
 
 .quote {
-  padding-block: var(--space-2xs);
+  padding-top: var(--space-2xs);
   font-size: var(--step--1);
   text-align: center;
 }
 
 .title-1,
 .author {
-  padding-block: 0;
+  padding: 0;
 }
 
 .curve-container {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
-  padding-block: var(--space-2xl);
+  padding-block: var(--space-xl);
   font-size: var(--step-2);
   color: var(--text-color);
 }
@@ -449,7 +448,7 @@ button {
 .text-with-animation,
 .text-with-animation-1,
 .text-with-animation-3 {
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
