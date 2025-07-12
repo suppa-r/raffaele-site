@@ -98,53 +98,6 @@
   /* subtle dark lines */
 }
 
-button {
-  padding: var(--space-xs) var(--space-s) 0 0;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-.theme-switch {
-  width: var(--space-l);
-  height: var(--space-l);
-  /* Add height to match width */
-  padding: 0;
-  border: none;
-  margin: var(--space-2xs) 0;
-  /* Fix margin syntax */
-  border-radius: 50%;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 1%;
-  right: 1%;
-  z-index: 1001;
-  /* Ensure it's clickable */
-  transition: background-color 0.3s ease, color 0.3s ease;
-  /* Add transition */
-}
-
-.theme-switch svg {
-  fill: var(--text-color);
-  transition: fill 0.3s ease;
-  /* Transition SVG fill color */
-}
-
-.theme-switch svg:last-child {
-  display: none;
-}
-
-.darkmode .theme-switch svg:first-child {
-  display: none;
-}
-
-.darkmode .theme-switch svg:last-child {
-  display: block;
-}
 
 body {
   background-color: var(--base-color);
@@ -175,7 +128,7 @@ body:before {
     linear-gradient(180deg,
       var(--body-grid-line)0 1px,
       transparent 1px 30px) 100% 100% / 30px 30px;
-  mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))10%;
+  mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))0%;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-position 0.3s ease-in-out;
@@ -253,12 +206,61 @@ header .bars::before {
   top: 7px;
 }
 
+button {
+  padding: var(--space-xs) var(--space-s) 0 0;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.theme-switch {
+  width: var(--space-l);
+  height: var(--space-l);
+  /* Add height to match width */
+  padding: 0;
+  border: none;
+  margin: var(--space-2xs) 0;
+  /* Fix margin syntax */
+  border-radius: 50%;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 1%;
+  right: 1%;
+  z-index: 1001;
+  /* Ensure it's clickable */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Add transition */
+}
+
+.theme-switch svg {
+  fill: var(--text-color);
+  transition: fill 0.3s ease;
+  /* Transition SVG fill color */
+}
+
+.theme-switch svg:last-child {
+  display: none;
+}
+
+.darkmode .theme-switch svg:first-child {
+  display: none;
+}
+
+.darkmode .theme-switch svg:last-child {
+  display: block;
+}
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-m);
   padding-right: var(--space-4xl);
+  color: var(--text-color);
   z-index: 2;
 }
 
@@ -304,7 +306,6 @@ nav>*+* {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: var(--text-color);
 }
 
 .nav-links li a span {
@@ -335,6 +336,9 @@ nav>*+* {
 
 .intro p {
   font-size: var(--step--1);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .intro p span {
@@ -437,7 +441,6 @@ nav>*+* {
       linear-gradient(180deg,
         var(--body-grid-line)0 1px,
         transparent 1px 30px) 100% 100% / 30px 30px;
-    mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))10%;
     transform-style: preserve-3d;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
       background-position 0.3s ease-in-out;
@@ -447,12 +450,14 @@ nav>*+* {
   }
 
   .nav-links li {
+    color: var(--text-color);
     transform: translateY(40px);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
   }
 
   .nav-links.open li {
+    color: var(--text-color);
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(.3s * var(--i));

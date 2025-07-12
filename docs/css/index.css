@@ -439,15 +439,9 @@ button {
   }
 }
 
-.text-container {
-  margin-inline: auto;
-  vertical-align: middle;
-  padding: var(--space-3xs) var(--space-3xs);
-}
-
 .text-with-animation,
 .text-with-animation-1,
-.text-with-animation-3 {
+.text-with-animation-2 {
   font-size: var(--step-1);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
@@ -470,6 +464,10 @@ button {
   width: 100%;
   color: var(--text-color);
   margin-block: var(--space-s);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
 }
 
 /* Animate spans */
