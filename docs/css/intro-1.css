@@ -101,12 +101,26 @@
 
 body {
   background-color: var(--base-color);
-  /* This is the base color for the body */
-  color: var(--body-grid-line);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+}
+
+.bg-image {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20vw;
+  /* Decreased from 40vw */
+  height: auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  z-index: 1000;
+  opacity: 1;
+  pointer-events: none;
 }
 
 body:before {
@@ -141,11 +155,10 @@ body:before {
 header {
   display: flex;
   justify-content: space-between;
-
 }
 
 header .h {
-  padding: var(--space-xs) 0 0 0;
+  padding: var(--space-xs) 0 0 var(--space-xs);
   font-size: var(--step--1);
   letter-spacing: 0.03em;
   /* Adds a bit of spacing between letters */
@@ -260,14 +273,22 @@ main {
 }
 
 .profile-title {
-  position: fixed;
-  top: var(--space-l);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: var(--step-1);
-  color: var(--text-color);
+  font-size: var(--step-0);
   text-align: center;
+  color: var(--text-color);
+  padding: var(--space-3xs) var(--space-s);
+  margin-block: var(--space-3xs) var(--space-s);
+  background: var(--gradient);
+  background-size: 400% 400%;
+  animation: gradient var(--sp) linear infinite;
+  border-radius: var(--space-l);
+  box-shadow: var(--shadow);
+  max-width: 25ch;
+  /* limits width to about 16 characters */
   margin-inline: auto;
+  /* centers the title */
+  display: block;
+  /* ensures margin works */
 }
 
 .burger-check {
@@ -277,7 +298,7 @@ main {
 .burger {
   display: block;
   position: fixed;
-  top: var(--space-2xl);
+  top: var(--space-3xl);
   left: 50%;
   transform: translate(-50%, -50%);
   width: var(--space-l);
@@ -377,14 +398,15 @@ main {
   border-radius: var(--space-l);
   z-index: 200;
   opacity: 1;
-  width: var(--space-8xl);
-  margin-block: var(--space-xl);
+  pointer-events: all;
+  padding-inline: var(--space-l);
 }
 
 .navigation li {
   position: relative;
   box-shadow: var(--shadow);
   border-radius: var(--space-l);
+  padding-inline: var(--space-2xl);
 }
 
 .navigation a {

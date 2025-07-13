@@ -3,85 +3,89 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuToggle = document.querySelector('.burger-check');
   const crewDetails = document.querySelectorAll('.crew-details');
   const intro = document.querySelector('.intro');
+  const bgImage = document.querySelector('.bg-image');
+  const navLinks = document.querySelector('.nav-links');
 
-  
-
-  // Hide all panels initially
-  document.querySelectorAll('.crew-details').forEach(panel => {
+  // Hide all panels initially, show image
+  crewDetails.forEach(panel => {
     panel.classList.remove('show');
   });
+  if (bgImage) bgImage.style.display = 'block';
 
   // Show/hide navbar on checkbox toggle
   if (menuToggle && profileNavbar) {
     menuToggle.addEventListener('change', function () {
       if (menuToggle.checked) {
         profileNavbar.classList.add('show');
-    } else {
+        if (bgImage) bgImage.style.display = 'none'; // Hide image when nav is open
+      } else {
         profileNavbar.classList.remove('show');
-        // Remove focus from the navbar when hidden
-        if (profileNavbar) {
-          profileNavbar.querySelectorAll('.profile-tab').forEach(tab => {
-            tab.tabIndex = -1; // Remove focusability
-          });
-        }
+        // Only show image if no panel is open
+        const anyPanelOpen = Array.from(crewDetails).some(panel => panel.classList.contains('show'));
+        if (bgImage) bgImage.style.display = anyPanelOpen ? 'none' : 'block';
+        profileNavbar.querySelectorAll('.profile-tab').forEach(tab => {
+          tab.tabIndex = -1;
+        });
       }
     });
   }
 
   // Attach click event to each .profile-tab
- document.querySelectorAll('.profile-tab').forEach(tab => {
-  tab.addEventListener('click', function (e) {
-    e.preventDefault();
-   // Hide all panels
-    document.querySelectorAll('.crew-details').forEach(panel => panel.classList.remove('show'));
-  //  // Show the clicked panel
-    const targetPanel = document.querySelector(`.crew-details.${this.dataset.target}`);
-    if (targetPanel) targetPanel.classList.add('show');
-    // Close the navbar and uncheck menu
-    if (profileNavbar) profileNavbar.classList.remove('show');
-    if (menuToggle) menuToggle.checked = false;
-    // Set focus on the target panel
-    targetPanel.tabIndex = 0;
-    targetPanel.focus();
-    targetPanel.onblur = function () {
-      // Hide the panel when it loses focus
-      this.classList.remove('show');
-      // Show the navigation again
-      if (profileNavbar) profileNavbar.classList.add('show');
+  document.querySelectorAll('.profile-tab').forEach(tab => {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+      crewDetails.forEach(panel => panel.classList.remove('show'));
+      const targetPanel = document.querySelector(`.crew-details.${this.dataset.target}`);
+      if (targetPanel) targetPanel.classList.add('show');
+      if (profileNavbar) profileNavbar.classList.remove('show');
       if (menuToggle) menuToggle.checked = false;
-    };
+      if (bgImage) bgImage.style.display = 'none'; // Hide image when any panel is open
+      targetPanel.tabIndex = 0;
+      targetPanel.focus();
+      targetPanel.onblur = function () {
+        this.classList.remove('show');
+        if (profileNavbar) profileNavbar.classList.add('show');
+        if (menuToggle) menuToggle.checked = false;
+        // Only show image if nav is closed and no panel is open
+        const anyPanelOpen = Array.from(crewDetails).some(panel => panel.classList.contains('show'));
+        if (bgImage) bgImage.style.display = anyPanelOpen ? 'none' : 'block';
+      };
+    });
   });
-});
-
-   
-
 
   document.querySelectorAll('.crew-details .profile-tab').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    // Hide the current panel
-    const currentPanel = this.closest('.crew-details');
-    if (currentPanel) currentPanel.classList.remove('show');
-    // Show the navigation
-    if (menuToggle) menuToggle.checked = true;
-    if (profileNavbar) profileNavbar.classList.add('show');
-   });
-});
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const currentPanel = this.closest('.crew-details');
+      if (currentPanel) currentPanel.classList.remove('show');
+      if (menuToggle) menuToggle.checked = true;
+      if (profileNavbar) profileNavbar.classList.add('show');
+      if (bgImage) bgImage.style.display = 'none'; // Hide image when any panel is open
+    });
+  });
 
-  // Handle click on .burger-link in the navigation
   document.querySelectorAll('.navigation .burger-link').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-      // Hide the navigation
       if (profileNavbar) profileNavbar.classList.remove('show');
       if (menuToggle) menuToggle.checked = false;
-      // Show the corresponding panel
       const profileTabs = document.querySelector(`.crew-details.${this.dataset.target}`);
-      if (targetPanel) {
+      if (profileTabs) {
         profileTabs.classList.add('show');
         profileTabs.tabIndex = 0;
         profileTabs.focus();
       }
+      if (bgImage) bgImage.style.display = 'none'; // Hide image when any panel is open
     });
   });
+
+  if (bgImage) {
+    bgImage.addEventListener('load', function () {
+      bgImage.style.display = 'block';
+    });
+    bgImage.addEventListener('error', function () {
+      console.error('Background image failed to load.');
+      bgImage.style.display = 'none';
+    });
+  }
 });
