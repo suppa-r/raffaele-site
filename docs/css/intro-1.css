@@ -1,12 +1,20 @@
 :root {
-  --sp: 5s;
+  --sp: 4s;
 
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --base-color: white;
   --text-color: #000;
-  --text-span: #49879c;
+  --text-span: #83bbad;
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 100%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0.35);
+  /* light blue/gray */
 
+  /* Light mode grid line color */
+  --body-grid-line: rgba(0, 0, 0, 1);
+  /* subtle dark lines */
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
@@ -22,7 +30,6 @@
   --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
   /* Step 3: 29.376px → 39.0625px */
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
-
 
 
   /* Space 3xs: 4px → 5px */
@@ -53,25 +60,149 @@
   --space-7xl: clamp(10.625rem, 10.1316rem + 2.4671cqi, 12.5rem);
 
 
-  --font-family: "Roboto Slab",
-    serif;
-  --font-optical-sizing: auto;
-  --font-weight: 100;
-  --font-style: normal;
-
-
-  --pt-serif-regular-italic: "PT Serif",
+  --pt-serif-regular: "PT Serif",
     serif;
   --pt-serif-italic: "PT Serif Italic",
     serif;
-
   --font-weight-1: 400;
   --font-style-1: italic;
+
 
   --ff-monoton-regular: "Monoton",
     sans-serif;
   --font-weight-regular: 400;
   --font-style-regular: normal;
+}
+
+@layer support.demo {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+}
+
+/*Dark mode overrides */
+.darkmode {
+  --base-color: #000;
+  --text-color: #fff;
+  --text-span: #83bbad;
+
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 3%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(0, 0%, 3%, 0.35);
+  /* light blue/gray */
+
+  /* Light mode grid line color */
+  --body-grid-line: rgba(255, 255, 255, 0.8);
+  /* subtle dark lines */
+}
+
+
+body {
+  background-color: var(--base-color);
+  /* This is the base color for the body */
+  color: var(--body-grid-line);
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
+  font-size: var(--step--1);
+}
+
+body:before {
+  opacity: 1;
+  pointer-events: none;
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:
+    linear-gradient(to bottom,
+      var(--body-gradient-bottom) 0%,
+      var(--body-gradient-top) 100%),
+    linear-gradient(90deg,
+      var(--body-grid-line)0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px,
+    linear-gradient(180deg,
+      var(--body-grid-line)0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px;
+  mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))0%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* --------------------------------------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+header .h {
+  padding: var(--space-xs) 0 0 0;
+  font-size: var(--step--1);
+  letter-spacing: 0.03em;
+  /* Adds a bit of spacing between letters */
+  color: var(--text-color);
+}
+
+header .h span {
+  color: var(--text-span);
+  /* Uses your accent color variable */
+  font-size: var(--step-0);
+  /* Slightly larger for emphasis */
+  padding: var(--space-xs) 0 0 var(--space-3xs);
+}
+
+header .bars {
+  position: relative;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background-color: #888888;
+  margin-left: var(--space-s);
+  display: none;
+  cursor: pointer;
+  z-index: 2000;
+  /* Ensure it's above the nav links */
+}
+
+header .bars.is-active {
+  margin-top: var(--space-xs);
+  transform-origin: right;
+  padding: 0 var(--space-xs) 0 var(--space-2xs);
+  transition: transform 0.5s ease-in-out;
+  /*transform: translateY(15px) rotate(45deg);*/
+  transform: translate(0) rotate(45deg);
+  cursor: pointer;
+  z-index: 2000;
+  /* Ensure it's above the nav links */
+}
+
+header .bars::after,
+header .bars::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  left: 0;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+  cursor: pointer;
+}
+
+header .bars::after {
+  bottom: 7px;
+}
+
+header .bars::before {
+  top: 7px;
 }
 
 button {
@@ -83,9 +214,12 @@ button {
 
 .theme-switch {
   width: var(--space-l);
+  height: var(--space-l);
+  /* Add height to match width */
   padding: 0;
   border: none;
-  margin: var(--space-2xs)0;
+  margin: var(--space-2xs) 0;
+  /* Fix margin syntax */
   border-radius: 50%;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -95,10 +229,16 @@ button {
   position: fixed;
   top: 1%;
   right: 1%;
+  z-index: 1001;
+  /* Ensure it's clickable */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Add transition */
 }
 
 .theme-switch svg {
   fill: var(--text-color);
+  transition: fill 0.3s ease;
+  /* Transition SVG fill color */
 }
 
 .theme-switch svg:last-child {
@@ -113,57 +253,6 @@ button {
   display: block;
 }
 
-html {
-  scroll-behavior: smooth;
-  line-height: 1.2;
-  font-family: var(--pt-serif-italic);
-  font-weight: var(--font-weight-1);
-  font-style: var(--font-style-1);
-  font-size: var(--step--1);
-}
-
-body,
-html {
-  color: var(--text-color);
-  background-color: var(--base-color);
-}
-
-body>* {
-  container-type: inline-size;
-  max-inline-size: 100%;
-  margin-inline: auto;
-}
-
-body {
-  background-image: url(/docs/images/header-desktop-min.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding-block: var(--space-xs);
-}
-
-header p {
-  padding: 0 0 0 var(--space-s);
-  font-size: var(--step--1);
-  letter-spacing: 0.05em;
-  /* Adds a bit of spacing between letters */
-  color: var(--text-color);
-}
-
-header p span {
-  color: var(--text-span);
-  /* Uses your accent color variable */
-  font-size: var(--step-0);
-  /* Slightly larger for emphasis */
-  padding: 0 var(--space-xs) 0 var(--space-3xs);
-}
-
 main {
   min-height: 100svh;
   display: flex;
@@ -172,7 +261,7 @@ main {
 
 .profile-title {
   position: fixed;
-  top: var(--space-xl);
+  top: var(--space-l);
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--step-1);
