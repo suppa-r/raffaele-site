@@ -86,7 +86,9 @@ body>* {
 
 .wrapper {
   cursor: pointer;
+  margin-inline: auto;
   margin-block: 0;
+  padding-inline: var(--space-xs);
 }
 
 header {
@@ -439,18 +441,26 @@ button {
   }
 }
 
+.text-container {
+  text-align: center;
+  vertical-align: middle;
+  padding-block: var(--space-xl);
+}
+
 .text-with-animation,
 .text-with-animation-1,
-.text-with-animation-2 {
-  font-size: var(--step-1);
+.text-with-animation-2,
+.text-with-animation-3 {
+  font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  animation: main-text-animation 2s cubic-bezier(.455, .03, .515, .955) forwards;
+  animation: main-text-animation 1s ease-out forwards;
   color: var(--text-color);
-  width: 500vw;
-  margin-left: -200vw;
+  width: auto;
+  /*margin-left: -200vw;*/
+
   opacity: 1;
   margin-block: var(--space-s);
 }
@@ -467,7 +477,6 @@ button {
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
 }
 
 /* Animate spans */
@@ -475,10 +484,8 @@ button {
 .sub-text-with-animation-1 span:first-of-type,
 .sub-text-with-animation-2 span:first-of-type,
 .sub-text-with-animation-3 span:first-of-type {
-  opacity: 0;
-  animation: word-animation 1s cubic-bezier(.455, .03, .515, .955) forwards;
-  animation-delay: 1s;
-  /* Adjust delay for staggered effect */
+  opacity: 1;
+  /*animation: word-animation 0.5s ease-in-out 1.5s forwards;*/
   margin-block: var(--space-2xs);
 }
 
@@ -486,15 +493,30 @@ button {
 .sub-text-with-animation-1 span:nth-of-type(2),
 .sub-text-with-animation-2 span:nth-of-type(2),
 .sub-text-with-animation-3 span:nth-of-type(2) {
-  opacity: 0;
-  animation: word-animation 1s cubic-bezier(.455, .03, .515, .955) forwards;
-  animation-delay: 1s;
-  /* Adjust delay for staggered effect */
+  opacity: 1;
+  /*animation: word-animation 0.5s ease-in-out 1.9s forwards;*/
   margin-block: var(--space-2xs);
 }
 
-/* Keyframes remain the same */
 @keyframes main-text-animation {
+  0% {
+    letter-spacing: 2em;
+    word-spacing: 4em;
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    letter-spacing: 4px;
+    word-spacing: 1vw;
+    opacity: 1;
+  }
+}
+
+/*@keyframes main-text-animation {
   0% {
     letter-spacing: 10vw;
     word-spacing: 100vw;
@@ -508,9 +530,26 @@ button {
   }
 }
 
+
+
+ /*Keyframes remain the same *
+@keyframes main-text-animation {
+  0% {
+    letter-spacing: 10vw;
+    word-spacing: 100vw;
+    opacity: 0;
+  }
+
+  100% {
+    letter-spacing: 4px;
+    word-spacing: 1vw;
+    opacity: 1;
+  }
+}*/
+
 @keyframes word-animation {
   0% {
-    top: 0vw;
+    top: 10vw;
     opacity: 0;
   }
 
