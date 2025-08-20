@@ -160,12 +160,9 @@ button {
   text-align: center;
 }
 
-.title-1,.title-2,.author {
+.title-1,
+.author {
   padding: 0;
-}
-
-.title-1 {
-margin-block: var(--space-s);
 }
 
 .curve-container {
@@ -519,36 +516,40 @@ margin-block: var(--space-s);
   }
 }
 
-/*@keyframes main-text-animation {
-  0% {
-    letter-spacing: 10vw;
-    word-spacing: 100vw;
-    opacity: 0;
+@container (max-width: 600px) {
+  .text-with-animation,
+  .text-with-animation-1,
+  .text-with-animation-2,
+  .text-with-animation-3 {
+    font-size: var(--step--1);
+    animation: main-text-animation-mobile 0.5s ease-out forwards;
   }
 
-  100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
-    opacity: 1;
+  .sub-text-with-animation,
+  .sub-text-with-animation-1,
+  .sub-text-with-animation-2 {
+    font-size: var(--step--1);
+    margin-block: var(--space-xs);
   }
 }
 
-
-
- /*Keyframes remain the same *
-@keyframes main-text-animation {
+@keyframes main-text-animation-mobile {
   0% {
-    letter-spacing: 10vw;
-    word-spacing: 100vw;
+    letter-spacing: 1em;
+    word-spacing: 2em;
     opacity: 0;
   }
 
-  100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
+  60% {
     opacity: 1;
   }
-}*/
+
+  100% {
+    letter-spacing: 2px;
+    word-spacing: 0.5vw;
+    opacity: 1;
+  }
+}
 
 @keyframes word-animation {
   0% {
