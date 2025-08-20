@@ -461,7 +461,7 @@ button {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  animation: main-text-animation 1s ease-out forwards;
+  animation: main-text-animation 5s ease infinite;
   color: var(--text-color);
   width: auto;
   /*margin-left: -200vw;*/
@@ -525,20 +525,19 @@ button {
   .text-with-animation-1,
   .text-with-animation-2,
   .text-with-animation-3 {
-    font-size: var(--step--1);
-    animation: main-text-animation-mobile 0.5s ease-out forwards;
+    animation: main-text-animation-mobile 4s ease infinite;
   }
 
   .sub-text-with-animation,
   .sub-text-with-animation-1,
-  .sub-text-with-animation-2 {
-    font-size: var(--step--1);
-    margin-block: var(--space-xs);
+  .sub-text-with-animation-2,
+  .sub-text-with-animation-3 {
+   margin-block: var(--space-xs);
   }
 }
 
 @keyframes main-text-animation-mobile {
-  0% {
+0% {
     letter-spacing: 1em;
     word-spacing: 2em;
     opacity: 0;
@@ -550,7 +549,7 @@ button {
 
   100% {
     letter-spacing: 2px;
-    word-spacing: 0.5vw;
+    word-spacing: .5vw;
     opacity: 1;
   }
 }
