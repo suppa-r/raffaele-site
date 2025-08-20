@@ -160,9 +160,12 @@ button {
   text-align: center;
 }
 
-.title-1,
-.author {
+.title-1,.title-2,.author {
   padding: 0;
+}
+
+.title-1 {
+margin-block: var(--space-s);
 }
 
 .curve-container {
