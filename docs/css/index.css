@@ -2,6 +2,7 @@
   --sp: 5s;
 
   --burger-thickness: 4px;
+
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --base-color: white;
   --text-color: #000;
@@ -11,8 +12,7 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
-
-  /* Step -1: 14.1667px → 16px */
+/* Step -1: 14.1667px → 16px */
   --step--1: clamp(0.8854rem, 0.8553rem + 0.1508cqi, 1rem);
   /* Step 0: 17px → 20px */
   --step-0: clamp(1.0625rem, 1.0132rem + 0.2467cqi, 1.25rem);
@@ -64,8 +64,139 @@
     sans-serif;
   --font-weight-regular: 400;
   --font-style-regular: normal;
+
+  @media (prefers-color-scheme: light) {
+    --theme: ☀️;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --theme: 🌑;
+    color-scheme: dark;
+  }
 }
 
+@supports (selector(::view-transition)) {
+  .support.view-transition {
+    display: none;
+  }
+}
+@container not style(--theme: 🥔) {
+  .support.style-query {
+    display: none;
+  }
+}
+
+.support {
+  background-color: var(--clr-warn-1);
+  border-inline-start: 0.5rem solid var(--clr-warn-2);
+  color: var(--clr-warn-text);
+  border-radius: 0.5rem;
+  padding: 1em 2em;
+}
+
+::view-transition {
+  background: #555;
+}
+::view-transition-image-pair(root) {
+  perspective: 2500px;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 100vw;
+  filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%))
+    drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: 1.5s
+    linear(
+      0,
+      0.324 9.1%,
+      0.584 18.6%,
+      0.782 28.6%,
+      0.858 33.8%,
+      0.92 39.2%,
+      0.997 49.5%,
+      1.021 55.1%,
+      1.033 61%,
+      1.035 71.7%,
+      1
+    );
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 0;
+  /*   perspective: 800px; */
+  transform: translateZ(-50vw) scale(var(--scale)) rotatey(var(--rotation))
+    translatez(50vw);
+  backface-visibility: hidden;
+}
+::view-transition-old(root) {
+  animation-name: reveal-out;
+}
+::view-transition-new(root) {
+  animation-name: reveal-in;
+}
+
+@property --rotation {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes reveal-in {
+  from {
+    --rotation: -90deg;
+    animation-timing-function: ease-in-out;
+  }
+  15% {
+    --scale: 0.8;
+    --rotation: -90deg;
+  }
+  85% {
+    --scale: 0.8;
+    --rotation: 0deg;
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    --rotation: 0deg;
+  }
+}
+@keyframes reveal-out {
+  from {
+    --rotation: 0deg;
+    animation-timing-function: ease-in-out;
+  }
+  15% {
+    --scale: 0.8;
+    --rotation: 0deg;
+  }
+  85% {
+    --scale: 0.8;
+    --rotation: 90deg;
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    --rotation: 90deg;
+  }
+}
+
+body {
+  color-scheme: light;
+  --base-color: #ffffff;
+  --text-color: #000000;
+  --text-span: #49879c;
+
+  @container style(--theme: 🌑) {
+    color-scheme: dark;
+   --base-color: #000000;
+  --text-color: #ffffff;
+  --text-span: #49879c;
+  }
+}
 
 html,
 body {
@@ -100,60 +231,6 @@ header {
   margin-inline: auto;
 }
 
-button {
-  padding: var(--space-xs) var(--space-s) 0 0;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-.theme-switch {
-  width: var(--space-l);
-  height: var(--space-l);
-  /* Add height to match width */
-  padding: 0;
-  border: none;
-  margin: var(--space-2xs) 0;
-  /* Fix margin syntax */
-  border-radius: 50%;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 1%;
-  right: 1%;
-  z-index: 1001;
-  /* Ensure it's clickable */
-  transition: background-color 0.3s ease, color 0.3s ease;
-  /* Add transition */
-}
-
-.theme-switch svg {
-  fill: var(--text-color);
-  transition: fill 0.3s ease;
-  /* Transition SVG fill color */
-}
-
-.theme-switch svg:last-child {
-  display: none;
-}
-
-.darkmode .theme-switch svg:first-child {
-  display: none;
-}
-
-.darkmode .theme-switch svg:last-child {
-  display: block;
-}
-
-.darkmode {
-  --base-color: #000;
-  --text-color: #fff;
-  --text-span: #49879c;
-}
-
 .quote {
   padding-top: var(--space-2xs);
   font-size: var(--step--1);
@@ -169,6 +246,50 @@ button {
 .title-1 {
   margin-block: var(--space-s);
 }
+
+
+.color-picker {
+  view-transition-name: match-element;
+}
+.color-picker > fieldset {
+  display: grid;
+  gap: 1.5rem;
+  grid: 1.5em / 1.5em 1.5em 1.5em;
+  padding: 1.5rem 1rem;
+  margin-inline: auto;
+  width: min-content;
+  border: 0;
+  background:transparent;
+  border-radius: 100vmax;
+}
+
+input[type="radio"] {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+}
+label {
+  position: relative;
+  padding: 6px;
+  isolation: isolate;
+  display: content;
+  display: grid;
+  place-items: center;
+  &::before {
+    position: absolute;
+    background-color: var(--clr-text);
+    border-radius: 100%;
+    z-index: -1;
+    inset: 0px;
+  }
+}
+label:has(+ input:checked) {
+  color: var(--clr-card-bg);
+  &::before {
+    content: "";
+  }
+}
+
 
 .curve-container {
   display: flex;
@@ -553,4 +674,12 @@ button {
     opacity: 1;
   }
 }
+
+
+
+
+
+
+
+
 
