@@ -256,19 +256,16 @@ header {
   top: var(--space-2xs);
   right: var(--space-2xs);
   view-transition-name: match-element;
-  height: 100%;
 }
 
 .color-picker>fieldset {
   display: flex;
   flex-direction: row;
-  gap: var(--space-2xs);
   padding: var(--space-2xs) var(--space-2xs);
   margin-inline: auto;
   width: min-content;
   border: 0;
   background: transparent;
-  /*border-radius: 100vmax;*/
 }
 
 input[type="radio"] {
@@ -279,7 +276,7 @@ input[type="radio"] {
 
 label {
   position: relative;
-  padding: var(--space-2xs);
+  padding: var(--space-3xs);
   isolation: isolate;
   display: content;
   display: grid;
