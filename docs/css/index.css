@@ -88,9 +88,9 @@
 }
 
 .support {
-  background-color: var(--clr-warn-1);
-  border-inline-start: 0.5rem solid var(--clr-warn-2);
-  color: var(--clr-warn-text);
+  background-color: var(--base-color);
+  border-inline-start: 0.5rem solid var(--text-color);
+  color: var(--text-color);
   border-radius: 0.5rem;
   padding: 1em 2em;
 }
@@ -103,8 +103,8 @@
   perspective-origin: center;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 100vw;
-  filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%))
-    drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+  filter: drop-shadow(0px 0px 6px hsl(180, 7%, 22%))
+    drop-shadow(0px 0px 25px hsla(180, 6%, 33%, 0.5));
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -248,13 +248,13 @@ header {
   top: var(--space-2xs);
   right: var(--space-2xs);
   view-transition-name: match-element;
+  height: 100%;
 }
 
 .color-picker > fieldset {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display:flex;
+  flex-direction: row;
   gap:var(--space-2xs);
-/*grid: 1.5em / 1.5em 1.5em 1.5em;*/
   padding:var(--space-2xs) var(--space-2xs);
   margin-inline: auto;
   width: min-content;
@@ -271,7 +271,7 @@ input[type="radio"] {
 
 label {
   position: relative;
-  padding: var(--space-xs);
+  padding: var(--space-2xs);
   isolation: isolate;
   display: content;
   display: grid;
@@ -641,7 +641,53 @@ label:has(+ input:checked) {
 }
 
 @container (max-width: 600px) {
-  .text-with-animation,
+.color-picker {
+  position: absolute;
+  top: var(--space-2xs);
+  right: var(--space-2xs);
+  view-transition-name: match-element;
+  height: 100%;
+}
+
+.color-picker > fieldset {
+  display:flex;
+  flex-direction: column;
+  margin-inline: auto;
+  width: min-content;
+  border: 0;
+  background:transparent;
+  /*border-radius: 100vmax;*/
+}
+
+input[type="radio"] {
+  opacity: 0;
+  /*pointer-events: all;*/
+  position: fixed;
+}
+
+label {
+  position: relative;
+  padding: var(--space-2xs);
+  isolation: isolate;
+  display: content;
+  display: grid;
+  place-items: center;
+  &::before {
+    position: absolute;
+    background-color:transparent;
+    border-radius: 100%;
+    z-index: 1000;
+    inset: 0px;
+  }
+}
+label:has(+ input:checked) {
+  color: var(--text-span);
+  &::before {
+    content: "";
+  }
+}
+
+.text-with-animation,
   .text-with-animation-1,
   .text-with-animation-2,
   .text-with-animation-3 {
