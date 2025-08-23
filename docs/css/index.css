@@ -654,11 +654,13 @@ label:has(+ input:checked) {
 @container (max-width: 600px) {
   .color-picker {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
     top: var(--space-2xs);
     right: var(--space-2xs);
-    view-transition-name: match-element;
-    height: 100%;
   }
+
 
   .color-picker>fieldset {
     display: flex;
