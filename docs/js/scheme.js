@@ -1,6 +1,15 @@
 // You should also save the preference
 // so when a user comes back, they don't have
 // to set it again.
+// Restore theme preference on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme-preference");
+  if (savedTheme) {
+    updateTheme(savedTheme);
+    const radio = document.querySelector(`[name=theme][value="${savedTheme}"]`);
+    if (radio) radio.checked = true;
+  }
+});
 
 function updateTheme(selectedTheme) {
   if (selectedTheme === "💻") {
@@ -8,6 +17,8 @@ function updateTheme(selectedTheme) {
   } else {
     document.documentElement.style.setProperty("--theme", selectedTheme);
   }
+  // Save preference
+  localStorage.setItem("theme-preference", selectedTheme);
 }
 
 Array.from(document.querySelectorAll("[name=theme]")).forEach((radio) => {
