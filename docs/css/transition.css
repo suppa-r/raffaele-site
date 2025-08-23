@@ -1,0 +1,262 @@
+:root{
+  --theme: ☀️;
+  color-scheme: light;
+  --base-color: white;
+  --text-color: #000;
+  --text-span: #49879c;
+
+
+@media (prefers-color-scheme: light) {
+    --theme: ☀️;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --theme: 🌑;
+    color-scheme: dark;
+  }
+
+
+@supports (selector(::view-transition)) {
+  .support.view-transition {
+    display: none;
+  }
+}
+
+@container not style(--theme: 🥔) {
+  .support.style-query {
+    display: none;
+  }
+}
+
+.support {
+  background-color: var(--base-color);
+  border-inline-start: 0.5rem solid var(--text-color);
+  color: var(--text-color);
+  border-radius: 0.5rem;
+  padding: 1em 2em;
+}
+
+.color-picker {
+  position: absolute;
+  top: var(--space-2xs);
+  right: var(--space-2xs);
+  view-transition-name: match-element;
+  height: 100%;
+}
+
+.color-picker>fieldset {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-2xs);
+  margin-inline: auto;
+  width: min-content;
+  border: 0;
+  background: transparent;
+  /*border-radius: 100vmax;*/
+}
+
+input[type="radio"] {
+  opacity: 0;
+  /*pointer-events: all;*/
+  position: fixed;
+}
+
+label {
+  position: relative;
+  padding: var(--space-2xs);
+  isolation: isolate;
+  display: content;
+  display: grid;
+  place-items: center;
+
+  &::before {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 100%;
+    z-index: 1000;
+    inset: 0px;
+  }
+}
+
+label:has(+ input:checked) {
+  color: var(--text-span);
+
+  &::before {
+    content: "";
+  }
+}
+
+.curve-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  padding-block: var(--space-xl);
+  font-size: var(--step-2);
+  color: var(--text-color);
+}
+
+
+::view-transition {
+  background: #555;
+}
+
+::view-transition-image-pair(root) {
+  perspective: 2500px;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 100vw;
+  filter: drop-shadow(0px 0px 6px hsl(180, 7%, 22%)) drop-shadow(0px 0px 25px hsla(180, 6%, 33%, 0.5));
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: 1.5s linear(0,
+      0.324 9.1%,
+      0.584 18.6%,
+      0.782 28.6%,
+      0.858 33.8%,
+      0.92 39.2%,
+      0.997 49.5%,
+      1.021 55.1%,
+      1.033 61%,
+      1.035 71.7%,
+      1);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 0;
+  /*   perspective: 800px; */
+  transform: translateZ(-50vw) scale(var(--scale)) rotatey(var(--rotation)) translatez(50vw);
+  backface-visibility: hidden;
+}
+
+::view-transition-old(root) {
+  animation-name: reveal-out;
+}
+
+::view-transition-new(root) {
+  animation-name: reveal-in;
+}
+
+@property --rotation {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes reveal-in {
+  from {
+    --rotation: -90deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  15% {
+    --scale: 0.8;
+    --rotation: -90deg;
+  }
+
+  85% {
+    --scale: 0.8;
+    --rotation: 0deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  to {
+    --rotation: 0deg;
+  }
+}
+
+@keyframes reveal-out {
+  from {
+    --rotation: 0deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  15% {
+    --scale: 0.8;
+    --rotation: 0deg;
+  }
+
+  85% {
+    --scale: 0.8;
+    --rotation: 90deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  to {
+    --rotation: 90deg;
+  }
+}
+
+body {
+  color-scheme: light;
+  --base-color: #ffffff;
+  --text-color: #000000;
+  --text-span: #49879c;
+
+  @container style(--theme: 🌑) {
+    color-scheme: dark;
+    --base-color: #000000;
+    --text-color: #ffffff;
+    --text-span: #49879c;
+  }
+}
+}
+
+@container (max-width: 600px) {
+  .color-picker {
+    position: absolute;
+    top: var(--space-2xs);
+    right: var(--space-2xs);
+    view-transition-name: match-element;
+    height: 100%;
+  }
+
+  .color-picker>fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    width: min-content;
+    border: 0;
+    background: transparent;
+    /*border-radius: 100vmax;*/
+  }
+
+  input[type="radio"] {
+    opacity: 0;
+    /*pointer-events: all;*/
+    position: fixed;
+  }
+
+  label {
+    position: relative;
+    padding: var(--space-2xs);
+    isolation: isolate;
+    display: content;
+    display: grid;
+    place-items: center;
+
+    &::before {
+      position: absolute;
+      background-color: transparent;
+      border-radius: 100%;
+      z-index: 1000;
+      inset: 0px;
+    }
+  }
+
+  label:has(+ input:checked) {
+    color: var(--text-span);
+
+    &::before {
+      content: "";
+    }
+  }
+}
+
