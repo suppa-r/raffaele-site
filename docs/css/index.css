@@ -253,7 +253,7 @@ header {
 
 .color-picker {
   position: absolute;
-  top: var(--space-2xs);
+  top: var(--space-3xs);
   right: var(--space-2xs);
   view-transition-name: match-element;
 }
@@ -261,9 +261,9 @@ header {
 .color-picker>fieldset {
   display: flex;
   flex-direction: row;
-  padding: var(--space-2xs) var(--space-2xs);
+  padding: 0 var(--space-3xs);
+  gap: var(--space-3xs);
   margin-inline: auto;
-  width: min-content;
   border: 0;
   background: transparent;
 }
