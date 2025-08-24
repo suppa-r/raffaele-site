@@ -66,12 +66,12 @@
   --font-style-regular: normal;
 
   @media (prefers-color-scheme: light) {
-    --theme: ☀️;
+    --theme: light;
     color-scheme: light;
   }
 
   @media (prefers-color-scheme: dark) {
-    --theme: 🌑;
+    --theme: dark;
     color-scheme: dark;
   }
 }
@@ -82,7 +82,7 @@
   }
 }
 
-@container not style(--theme: 🥔) {
+@container not style(--theme: dark) {
   .support.style-query {
     display: none;
   }
@@ -198,7 +198,7 @@ body {
   --text-color: #000000;
   --text-span: #49879c;
 
-  @container style(--theme: 🌑) {
+  @container style(--theme: dark) {
     color-scheme: dark;
     --base-color: #000000;
     --text-color: #ffffff;
@@ -241,20 +241,22 @@ header {
   text-align: center;
 }
 
+.quote-1 {
+  margin-inline: auto;
+  font-size: var(--step--1);
+  text-align: center;
+}
+
 .title-1,
 .title-2,
 .author {
   padding: 0;
 }
 
-.title-1 {
-  margin-block: var(--space-xs);
-}
-
 .color-picker {
   position: absolute;
-  top: var(--space-3xs);
-  right: var(--space-2xs);
+  top: var(--space-2xs);
+  right: var(--space-2xl);
   view-transition-name: match-element;
 }
 
@@ -266,12 +268,15 @@ header {
   margin-inline: auto;
   border: 0;
   background: transparent;
+  gap: var(--space-xs);
 }
 
 input[type="radio"] {
   opacity: 0;
-  /*pointer-events: all;*/
-  position: fixed;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
 }
 
 label {
@@ -736,11 +741,9 @@ label:has(+ input:checked) {
 .button {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
   text-align: center;
   margin-inline: auto;
   position: absolute;
-  bottom: 16%;
   left: 50%;
   transform: translateX(-50%);
 

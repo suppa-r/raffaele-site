@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme-preference");
   if (savedTheme) {
     updateTheme(savedTheme);
-    const radio = document.querySelector(`[name=theme][value="${savedTheme}"]`);
-    if (radio) radio.checked = true;
+    const button = document.querySelector(`[name=theme][value="${savedTheme}"]`);
+    if (button) button.checked = true;
   }
 });
 
 function updateTheme(selectedTheme) {
-  if (selectedTheme === "💻") {
+  if (selectedTheme === "system") {
     document.documentElement.style.removeProperty("--theme");
   } else {
     document.documentElement.style.setProperty("--theme", selectedTheme);
