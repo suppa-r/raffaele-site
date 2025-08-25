@@ -653,20 +653,44 @@ label:has(+ input:checked) {
   }
 }
 
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  /* Optional: add padding, background, border-radius, etc. */
+}
+
+.button > svg {
+  width: var(--space-l);
+  height: var(--space-l);
+  fill: currentColor;
+  transition: transform 0.3s;
+}
+
+.title-2{
+  margin-inline: auto;
+  font-size: var(--step-0);
+}
+
 @container (max-width: 600px) {
-  .color-picker {
+.color-picker {
     position: absolute;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     z-index: 1000;
-    top: var(--space-2xs);
-    right: var(--space-2xs);
+    top: var(--space-3xs);
+    right: 50%;
+    transform: translateX(50%);
   }
-
 
   .color-picker>fieldset {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-inline: auto;
     width: min-content;
     border: 0;
@@ -705,6 +729,10 @@ label:has(+ input:checked) {
     }
   }
 
+  .quote {
+    padding-top: var(--space-xl);
+}
+
   .text-with-animation,
   .text-with-animation-1,
   .text-with-animation-2,
@@ -738,23 +766,7 @@ label:has(+ input:checked) {
   }
 }
 
-.button {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-inline: auto;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 
-}
-
-.button svg {
-  width: var(--space-xl);
-  height: var(--space-xl);
-  color: var(--text-span);
-  margin-inline: auto;
-}
 
 
 
