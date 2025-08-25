@@ -593,7 +593,7 @@ label:has(+ input:checked) {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  animation: main-text-animation 5s ease infinite;
+  animation: main-text-animation 5s ease-in infinite;
   color: var(--text-color);
   width: auto;
   /*margin-left: -200vw;*/
