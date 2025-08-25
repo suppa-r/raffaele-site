@@ -730,7 +730,7 @@ label:has(+ input:checked) {
   }
 
   .quote {
-    padding-top: var(--space-xl);
+    padding-top: var(--space-m);
 }
 
   .text-with-animation,
