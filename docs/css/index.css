@@ -235,13 +235,13 @@ header {
   align-items: center;
 }
 
-.title-1, .title-2 {
-  text-align: center;
+.title{
+  word-spacing: var(--space-s);
+  font-style: italic;
+  padding-top: var(--space-m);
   font-size: var(--step-0);
-}
-
-.title-1 {
-  margin-block: var(--space-s);
+  text-align: center;
+  margin-inline: auto;
 }
 
 .color-picker {
@@ -638,25 +638,33 @@ label:has(+ input:checked) {
 }
 
 .button > svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-xl);
+  height: var(--space-xl);
   fill: currentColor;
   transition: transform 0.3s;
 }
 
-.title-2 {
-  padding-top: var(--space-3xl);
+.title-1{
+  font-style: italic;
+  padding-top: var(--space-l);
+  font-size: var(--step-0);
+  text-align: center;
   margin-inline: auto;
 }
-
 .author {
   font-size: var(--step--1);
   margin-inline: auto;
-  margin-bottom: var(--space-s);
 }
 
-@container (max-width: 600px) {
-.color-picker {
+
+@container (max-width: 500px) {
+
+.title{
+    padding-top: var(--space-2xl);
+    word-spacing: var(--space-2xs);
+  }
+
+.color-picker{
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -707,9 +715,7 @@ label:has(+ input:checked) {
     }
   }
 
-  .quote-1 {
-    padding-bottom: var(--space-m);
-}
+
 
   .text-with-animation,
   .text-with-animation-1,
@@ -744,10 +750,17 @@ label:has(+ input:checked) {
   }
 }
 
+  .title-1{
+  font-style: italic;
 
-
-
-
+  font-size: var(--step-0);
+  text-align: center;
+  margin-inline: auto;
+}
+.author {
+  font-size: var(--step--1);
+  margin-inline: auto;
+}
 
 
 
