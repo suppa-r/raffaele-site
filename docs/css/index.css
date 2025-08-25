@@ -739,8 +739,7 @@ label:has(+ input:checked) {
 }
 
 .title-1 {
-  padding-top: var(--space-s);
-  word-spacing: var(--space-2xs);
+word-spacing: var(--space-2xs);
 }
 
 .author {
