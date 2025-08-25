@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme-preference");
   if (savedTheme) {
     updateTheme(savedTheme);
-    const button = document.querySelector(`[name=theme][value="${savedTheme}"]`);
-    if (button) button.checked = true;
+    const radio = document.querySelector(`[name=theme][value="${savedTheme}"]`);
+    if (radio) radio.checked = true;
   }
 });
 
