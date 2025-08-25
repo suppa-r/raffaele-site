@@ -576,21 +576,6 @@ label:has(+ input:checked) {
   padding-block: var(--space-xl);
 }
 
-.text-with-animation,
-.text-with-animation-1 {
-  font-size: var(--step-1);
-  font-family: var(--ff-monoton-regular);
-  font-weight: var(--font-weight-regular);
-  font-style: var(--font-style-regular);
-  text-align: center;
-  animation: main-text-animation 4s ease forwards infinite;
-  color: var(--text-color);
-  width: auto;
-  /*margin-left: -200vw;*/
-  opacity: 1;
-  margin-block: var(--space-s);
-}
-
 /* If you want different font for some blocks, override as needed: */
 .sub-text-with-animation,
 .sub-text-with-animation-1,
@@ -717,7 +702,12 @@ label:has(+ input:checked) {
   }
 
   .text-container {
-    padding-bottom: var(--space-2xl);
+    padding-bottom: var(--space-5xl);
+  }
+
+  .text-with-animation,
+  .text-with-animation-1 {
+    animation: main-text-animation-mobile 4s ease forwards infinite;
   }
 }
 
@@ -740,7 +730,7 @@ label:has(+ input:checked) {
 }
 
 .title-1 {
-  padding-top: var(--space-s);
+  padding-bottom: var(--space-s);
   word-spacing: var(--space-3xs);
 }
 
