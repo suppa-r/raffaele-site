@@ -235,7 +235,7 @@ header {
   align-items: center;
 }
 
-.title{
+.title {
   word-spacing: var(--space-s);
   font-style: italic;
   padding-top: var(--space-m);
@@ -637,34 +637,34 @@ label:has(+ input:checked) {
   /* Optional: add padding, background, border-radius, etc. */
 }
 
-.button > svg {
+.button>svg {
   width: var(--space-xl);
   height: var(--space-xl);
   fill: currentColor;
   transition: transform 0.3s;
 }
 
-.title-1{
+.title-1 {
   font-style: italic;
   padding-top: var(--space-l);
   font-size: var(--step-0);
   text-align: center;
   margin-inline: auto;
 }
+
 .author {
   font-size: var(--step--1);
   margin-inline: auto;
 }
 
-
 @container (max-width: 500px) {
 
-.title{
+  .title {
     padding-top: var(--space-2xl);
     word-spacing: var(--space-2xs);
   }
 
-.color-picker{
+  .color-picker {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -715,8 +715,6 @@ label:has(+ input:checked) {
     }
   }
 
-
-
   .text-with-animation,
   .text-with-animation-1,
   .text-with-animation-2,
@@ -750,19 +748,17 @@ label:has(+ input:checked) {
   }
 }
 
-  .title-1{
+.title-1 {
   font-style: italic;
-
   font-size: var(--step-0);
   text-align: center;
   margin-inline: auto;
 }
+
 .author {
   font-size: var(--step--1);
   margin-inline: auto;
 }
-
-
 
 
 
