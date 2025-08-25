@@ -593,7 +593,7 @@ label:has(+ input:checked) {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  animation: main-text-animation 5s ease-in infinite;
+  animation: main-text-animation 4s ease forwards infinite;
   color: var(--text-color);
   width: auto;
   /*margin-left: -200vw;*/
@@ -647,7 +647,7 @@ label:has(+ input:checked) {
   }
 
   100% {
-    letter-spacing: 12px;
+    letter-spacing: 10px;
     word-spacing: 1vw;
     opacity: 1;
   }
