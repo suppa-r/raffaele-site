@@ -607,25 +607,6 @@ label:has(+ input:checked) {
   word-wrap: break-word;
 }
 
-/* Animate spans */
-.sub-text-with-animation span:first-of-type,
-.sub-text-with-animation-1 span:first-of-type,
-.sub-text-with-animation-2 span:first-of-type,
-.sub-text-with-animation-3 span:first-of-type {
-  opacity: 1;
-  /*animation: word-animation 0.5s ease-in-out 1.5s forwards;*/
-  margin-block: var(--space-2xs);
-}
-
-.sub-text-with-animation span:nth-of-type(2),
-.sub-text-with-animation-1 span:nth-of-type(2),
-.sub-text-with-animation-2 span:nth-of-type(2),
-.sub-text-with-animation-3 span:nth-of-type(2) {
-  opacity: 1;
-  /*animation: word-animation 0.5s ease-in-out 1.9s forwards;*/
-  margin-block: var(--space-2xs);
-}
-
 @keyframes main-text-animation {
   0% {
     letter-spacing: 2em;
