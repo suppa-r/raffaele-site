@@ -655,10 +655,10 @@ label:has(+ input:checked) {
 }
 
 @container (max-width: 500px) {
-.title {
-  word-spacing: var(--space-3xs);
-  padding-top: var(--space-xl);
-}
+  .title {
+    word-spacing: var(--space-3xs);
+    padding-top: var(--space-xl);
+  }
 
   .color-picker {
     position: absolute;
@@ -711,27 +711,13 @@ label:has(+ input:checked) {
     }
   }
 
-  .curve-container{
+  .curve-container {
     gap: var(--space-l);
     padding-block: var(--space-s);
   }
 
   .text-container {
-    padding-bottom: var(--space-l);
-  }
-
-.text-with-animation,
-  .text-with-animation-1,
-  .text-with-animation-2,
-  .text-with-animation-3 {
-    animation: main-text-animation-mobile 4s ease infinite;
-  }
-
-  .sub-text-with-animation,
-  .sub-text-with-animation-1,
-  .sub-text-with-animation-2,
-  .sub-text-with-animation-3 {
-    margin-block: var(--space-xs);
+    padding-bottom: var(--space-2xl);
   }
 }
 
@@ -754,11 +740,11 @@ label:has(+ input:checked) {
 }
 
 .title-1 {
-  padding-top: var(--space-m);
-word-spacing: var(--space-3xs);
+  padding-top: var(--space-s);
+  word-spacing: var(--space-3xs);
 }
 
 .author {
   font-size: var(--step--1);
   margin-inline: auto;
-} 
+}
