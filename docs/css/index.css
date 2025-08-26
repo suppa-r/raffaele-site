@@ -650,8 +650,8 @@ label:has(+ input:checked) {
 }
 
 .title-1 {
-word-spacing: var(--space-2xs);
-margin-inline: auto;
+  word-spacing: var(--space-2xs);
+  margin-inline: auto;
 }
 
 .author {
@@ -661,22 +661,22 @@ margin-inline: auto;
 }
 
 @container (max-width: 500px) {
-.title {
-  word-spacing: var(--space-3xs);
-  font-size: var(--step--1);
-  text-align: center;
-  margin-inline: auto;
-}
+  .title {
+    word-spacing: var(--space-3xs);
+    font-size: var(--step--1);
+    text-align: center;
+    margin-inline: auto;
+  }
 
-.color-picker {
-  position: absolute;
-  top: var(--space-2xs);
-  right: 50%;
-  transform: translateX(50%);
-  view-transition-name: match-element;
-}
+  .color-picker {
+    position: absolute;
+    top: var(--space-2xs);
+    right: 50%;
+    transform: translateX(50%);
+    view-transition-name: match-element;
+  }
 
-.color-picker>fieldset {
+  .color-picker>fieldset {
     display: flex;
     flex-direction: row;
     margin-inline: auto;
@@ -715,11 +715,16 @@ margin-inline: auto;
     &::before {
       content: "";
     }
-  }
+  }*/
 
   .curve-container {
     gap: var(--space-l);
-  }*/
+    padding-top: var(--space-m);
+  }
+
+  .text-container {
+    padding-top: var(--space-m);
+  }
 
   .text-with-animation,
   .text-with-animation-1 {
@@ -729,7 +734,7 @@ margin-inline: auto;
 }
 
 .button {
-z-index: 10;
+  z-index: 10;
   pointer-events: auto;
   padding-top: var(--space-xs);
   /* Optional: add padding, background, border-radius, etc. */
@@ -765,6 +770,7 @@ z-index: 10;
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .content div,
   .content-1 div,
   .text-with-animation,
