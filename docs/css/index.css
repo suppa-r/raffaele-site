@@ -663,7 +663,8 @@ label:has(+ input:checked) {
 .color-picker {
   position: absolute;
   top: var(--space-2xs);
-  right: var(--space-2xl);
+  right: 50%;
+  transform: translateX(50%);
   view-transition-name: match-element;
 }
 
