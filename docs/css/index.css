@@ -641,6 +641,12 @@ label:has(+ input:checked) {
   transition: transform 0.3s;
 }
 
+.click-prompt {
+  margin-block: var(--space-3xs);
+  text-align: center;
+  margin-inline: auto;
+}
+
 .title-1 {
 word-spacing: var(--space-2xs);
 margin-inline: auto;
