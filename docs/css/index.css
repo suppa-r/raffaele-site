@@ -236,7 +236,7 @@ header {
 }
 
 .title {
-  word-spacing: var(--space-s);
+  word-spacing: var(--space-xs);
   padding-top: var(--space-m);
   font-size: var(--step-0);
   text-align: center;
@@ -298,7 +298,7 @@ label:has(+ input:checked) {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
-  padding-block: var(--space-xl);
+  padding-top: var(--space-xl);
   font-size: var(--step-2);
   color: var(--text-color);
 }
@@ -573,11 +573,13 @@ label:has(+ input:checked) {
 .text-container {
   text-align: center;
   vertical-align: middle;
-  padding-block: var(--space-xl);
+  padding-top: var(--space-2xl);
 }
 
 .text-with-animation,
 .text-with-animation-1 {
+  width: max-content;
+  margin-inline: auto;
   font-size: var(--step-1);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
@@ -650,7 +652,7 @@ label:has(+ input:checked) {
 }
 
 @container (max-width: 500px) {
-  .title {
+  /*.title {
     word-spacing: var(--space-3xs);
     padding-top: var(--space-xl);
   }
@@ -660,7 +662,7 @@ label:has(+ input:checked) {
     display: flex;
     flex-direction: row;
     z-index: 1000;
-    top: var(--space-2xs);
+    top: var(--space-xs);
     right: 50%;
     transform: translateX(50%);
   }
@@ -672,12 +674,12 @@ label:has(+ input:checked) {
     width: min-content;
     border: 0;
     background: transparent;
-    /*border-radius: 100vmax;*/
+    /*border-radius: 100vmax;*
   }
 
   input[type="radio"] {
     opacity: 0;
-    /*pointer-events: all;*/
+    /*pointer-events: all;*
     position: fixed;
   }
 
@@ -708,18 +710,27 @@ label:has(+ input:checked) {
 
   .curve-container {
     gap: var(--space-l);
-    padding-bottom: var(--space-s);
-  }
-
-  .text-container {
-    padding-bottom: var(--space-6xl);
-  }
+  }*/
 
   .text-with-animation,
   .text-with-animation-1 {
-
+    width: max-content;
     animation: main-text-animation-mobile 4s ease forwards infinite;
   }
+}
+
+.button {
+z-index: 10;
+  pointer-events: auto;
+  padding-top: var(--space-s);
+  /* Optional: add padding, background, border-radius, etc. */
+}
+
+.button>svg {
+  width: var(--space-l);
+  height: var(--space-l);
+  fill: currentColor;
+  transition: transform 0.3s;
 }
 
 @keyframes main-text-animation-mobile {
@@ -741,8 +752,10 @@ label:has(+ input:checked) {
 }
 
 .title-1 {
-  padding-bottom: var(--space-s);
+  padding-bottom: var(--space-l);
   word-spacing: var(--space-3xs);
+  margin-inline: auto;
+  width: max-content;
 }
 
 .author {
