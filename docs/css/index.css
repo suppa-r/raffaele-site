@@ -655,7 +655,7 @@ margin-inline: auto;
 @container (max-width: 500px) {
 .title {
   word-spacing: var(--space-3xs);
-  padding-top: var(--space-xl);
+  padding-top: var(--space-4xl);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
@@ -733,6 +733,10 @@ z-index: 10;
   height: var(--space-l);
   fill: currentColor;
   transition: transform 0.3s;
+}
+
+.title-1 {
+  padding-top: var(--space-3xl);
 }
 
 @keyframes main-text-animation-mobile {
