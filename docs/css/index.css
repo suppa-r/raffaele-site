@@ -236,7 +236,7 @@ header {
 }
 
 .title {
-  word-spacing: var(--space-xs);
+  word-spacing: var(--space-2xs);
   padding-top: var(--space-xl);
   font-size: var(--step--1);
   text-align: center;
@@ -630,7 +630,7 @@ label:has(+ input:checked) {
   position: relative;
   z-index: 10;
   pointer-events: auto;
-  padding-top: var(--space-s);
+  padding-block: var(--space-m);
   /* Optional: add padding, background, border-radius, etc. */
 }
 
@@ -642,12 +642,13 @@ label:has(+ input:checked) {
 }
 
 .title-1 {
-  word-spacing: var(--space-2xs);
-  padding-top: var(--space-s);
+word-spacing: var(--space-2xs);
+margin-inline: auto;
 }
 
 .author {
   font-size: var(--step--1);
+  padding-bottom: var(--space-s);
   margin-inline: auto;
 }
 
@@ -655,7 +656,7 @@ label:has(+ input:checked) {
 .title {
   word-spacing: var(--space-3xs);
   padding-top: var(--space-xl);
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
 }
@@ -752,14 +753,16 @@ z-index: 10;
   }
 }
 
-.title-1 {
-  padding-bottom: var(--space-l);
-  word-spacing: var(--space-3xs);
-  margin-inline: auto;
-  width: max-content;
-}
+@media (prefers-reduced-motion: reduce) {
+  .content div,
+  .content-1 div,
+  .text-with-animation,
+  .text-with-animation-1 {
+    animation: none;
+  }
 
-.author {
-  font-size: var(--step--1);
-  margin-inline: auto;
+  .down:before,
+  .up:before {
+    animation: none;
+  }
 }
