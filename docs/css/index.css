@@ -237,7 +237,7 @@ header {
 
 .title {
   word-spacing: var(--space-xs);
-  padding-top: var(--space-m);
+  padding-top: var(--space-xl);
   font-size: var(--step-0);
   text-align: center;
   margin-inline: auto;
@@ -652,32 +652,32 @@ label:has(+ input:checked) {
 }
 
 @container (max-width: 500px) {
-  /*.title {
-    word-spacing: var(--space-3xs);
-    padding-top: var(--space-xl);
-  }
+.title {
+  word-spacing: var(--space-3xs);
+  padding-top: var(--space-xl);
+  font-size: var(--step-0);
+  text-align: center;
+  margin-inline: auto;
+}
 
-  .color-picker {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    z-index: 1000;
-    top: var(--space-xs);
-    right: 50%;
-    transform: translateX(50%);
-  }
+.color-picker {
+  position: absolute;
+  top: var(--space-2xs);
+  right: var(--space-2xl);
+  view-transition-name: match-element;
+}
 
-  .color-picker>fieldset {
+.color-picker>fieldset {
     display: flex;
     flex-direction: row;
     margin-inline: auto;
     width: min-content;
     border: 0;
     background: transparent;
-    /*border-radius: 100vmax;*
+    /*border-radius: 100vmax;*/
   }
 
-  input[type="radio"] {
+  /*input[type="radio"] {
     opacity: 0;
     /*pointer-events: all;*
     position: fixed;
