@@ -731,7 +731,7 @@ margin-inline: auto;
 .button {
 z-index: 10;
   pointer-events: auto;
-  padding-top: var(--space-s);
+  padding-top: var(--space-xs);
   /* Optional: add padding, background, border-radius, etc. */
 }
 
@@ -743,7 +743,7 @@ z-index: 10;
 }
 
 .title-1 {
-  padding-top: var(--space-xl);
+  padding-top: var(--space-xs);
 }
 
 @keyframes main-text-animation-mobile {
