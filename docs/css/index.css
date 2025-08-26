@@ -693,27 +693,12 @@ footer {
     /*border-radius: 100vmax;*/
   }
 
-  /*.curve-container {
-    gap: var(--space-l);
-    padding-top: var(--space-m);
-  }
-
-  .text-container {
-    padding-top: var(--space-m);
-  }*/
-
   .text-with-animation,
   .text-with-animation-1 {
     width: max-content;
     animation: main-text-animation-mobile 4s ease forwards infinite;
   }
 }
-
-/*.button {
-  z-index: 10;
-  pointer-events: auto;
-/* Optional: add padding, background, border-radius, etc. */
-
 
 @keyframes main-text-animation-mobile {
   0% {
