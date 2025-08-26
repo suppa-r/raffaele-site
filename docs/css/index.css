@@ -377,12 +377,12 @@ label:has(+ input:checked) {
 
   0%,
   100% {
-    box-shadow: 0 0 60px 0 var(--text-color), 0 0 0px 0 var(--text-color) / 0.5;
+    box-shadow: 0 0 60px 0 var(--text-color), 0 0 0px 0 var(--text-color) / 0.1;
   }
 
   45%,
   55% {
-    box-shadow: 0 0 60px 0 var(--text-color), 0 0 100px 0 var(--text-color) / 0.7;
+    box-shadow: 0 0 60px 0 var(--text-color), 0 0 100px 0 var(--text-color) / 0.9;
   }
 }
 
