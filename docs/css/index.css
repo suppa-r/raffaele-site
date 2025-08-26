@@ -213,6 +213,7 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
+  overflow: hidden;
 }
 
 body>* {
