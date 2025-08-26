@@ -299,8 +299,8 @@ label:has(+ input:checked) {
 .curve-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
-  padding-top: var(--space-xl);
+  gap: var(--space-xl);
+  padding-top: var(--space-l);
   font-size: var(--step-2);
   color: var(--text-color);
 }
@@ -575,7 +575,7 @@ label:has(+ input:checked) {
 .text-container {
   text-align: center;
   vertical-align: middle;
-  padding-top: var(--space-2xl);
+  padding-top: var(--space-xl);
 }
 
 .text-with-animation,
@@ -583,10 +583,10 @@ label:has(+ input:checked) {
   width: max-content;
   margin-inline: auto;
   font-size: var(--step-1);
+  padding-block: var(--space-s);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  margin-block: var(--space-xs);
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -599,7 +599,6 @@ label:has(+ input:checked) {
 .sub-text-with-animation-3 {
   font-size: var(--step-0);
   text-align: center;
-  margin-block: var(--space-xs);
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -632,7 +631,7 @@ label:has(+ input:checked) {
   position: relative;
   z-index: 10;
   pointer-events: auto;
-  padding-block: var(--space-m);
+  padding-top: var(--space-m);
   /* Optional: add padding, background, border-radius, etc. */
 }
 
@@ -649,6 +648,15 @@ label:has(+ input:checked) {
   margin-inline: auto;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-xs) 0;
+  text-align: center;
+}
+
 .title-1 {
   word-spacing: var(--space-2xs);
   margin-inline: auto;
@@ -656,7 +664,6 @@ label:has(+ input:checked) {
 
 .author {
   font-size: var(--step--1);
-  padding-bottom: var(--space-s);
   margin-inline: auto;
 }
 
@@ -686,45 +693,14 @@ label:has(+ input:checked) {
     /*border-radius: 100vmax;*/
   }
 
-  /*input[type="radio"] {
-    opacity: 0;
-    /*pointer-events: all;*
-    position: fixed;
-  }
-
-  label {
-    position: relative;
-    padding: var(--space-2xs);
-    isolation: isolate;
-    display: content;
-    display: grid;
-    place-items: center;
-
-    &::before {
-      position: absolute;
-      background-color: transparent;
-      border-radius: 100%;
-      z-index: 1000;
-      inset: 0px;
-    }
-  }
-
-  label:has(+ input:checked) {
-    color: var(--text-span);
-
-    &::before {
-      content: "";
-    }
-  }*/
-
-  .curve-container {
+  /*.curve-container {
     gap: var(--space-l);
     padding-top: var(--space-m);
   }
 
   .text-container {
     padding-top: var(--space-m);
-  }
+  }*/
 
   .text-with-animation,
   .text-with-animation-1 {
@@ -733,23 +709,11 @@ label:has(+ input:checked) {
   }
 }
 
-.button {
+/*.button {
   z-index: 10;
   pointer-events: auto;
-  padding-top: var(--space-xs);
-  /* Optional: add padding, background, border-radius, etc. */
-}
+/* Optional: add padding, background, border-radius, etc. */
 
-.button>svg {
-  width: var(--space-l);
-  height: var(--space-l);
-  fill: currentColor;
-  transition: transform 0.3s;
-}
-
-.title-1 {
-  padding-top: var(--space-xs);
-}
 
 @keyframes main-text-animation-mobile {
   0% {
