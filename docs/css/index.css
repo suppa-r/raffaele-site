@@ -715,8 +715,8 @@ footer {
   }
 
   .large-button {
-    width: clamp(10rem, 80vw, 18rem);
-    height: clamp(7rem, 50%, 12rem);
+    width: var(--space-9xl);
+    height: var(--space-5xl);
     margin-bottom: var(--space-4xl);
   }
 
