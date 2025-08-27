@@ -1,86 +1,63 @@
+  [data-theme="light"] {
+    --base-color: #ffffff;
+    --text-color: #000000;
+    --text-span: #49879c;
+    color-scheme: light;
+  }
+  
+  [data-theme="dark"] {
+    --base-color: #000000;
+    --text-color: #ffffff;
+    --text-span: #49879c;
+    color-scheme: dark;
+  }
+
+
 :root {
   --sp: 5s;
-
   --burger-thickness: 4px;
-
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  --base-color: white;
-  --text-color: #000;
-  --text-span: #49879c;
-
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
-  --glass-bg: rgba(255, 255, 255, 0.05);
+
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
-  /* Step -1: 14.1667px → 16px */
+
   --step--1: clamp(0.8854rem, 0.8553rem + 0.1508cqi, 1rem);
-  /* Step 0: 17px → 20px */
   --step-0: clamp(1.0625rem, 1.0132rem + 0.2467cqi, 1.25rem);
-  /* Step 1: 20.4px → 25px */
   --step-1: clamp(1.275rem, 1.1993rem + 0.3783cqi, 1.5625rem);
-  /* Step 2: 24.48px → 31.25px */
   --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
-  /* Step 3: 29.376px → 39.0625px */
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
 
 
-  /* Space 3xs: 4px → 5px */
   --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
-  /* Space 2xs: 9px → 10px */
   --space-2xs: clamp(0.5625rem, 0.5461rem + 0.0822cqi, 0.625rem);
-  /* Space xs: 13px → 15px */
   --space-xs: clamp(0.8125rem, 0.7796rem + 0.1645cqi, 0.9375rem);
-  /* Space s: 17px → 20px */
   --space-s: clamp(1.0625rem, 1.0132rem + 0.2467cqi, 1.25rem);
-  /* Space m: 26px → 30px */
   --space-m: clamp(1.625rem, 1.5592rem + 0.3289cqi, 1.875rem);
-  /* Space l: 34px → 40px */
   --space-l: clamp(2.125rem, 2.0263rem + 0.4934cqi, 2.5rem);
-  /* Space xl: 51px → 60px */
   --space-xl: clamp(3.1875rem, 3.0395rem + 0.7401cqi, 3.75rem);
-  /* Space 2xl: 68px → 80px */
   --space-2xl: clamp(4.25rem, 4.0526rem + 0.9868cqi, 5rem);
-  /* Space 3xl: 102px → 120px */
   --space-3xl: clamp(6.375rem, 6.0789rem + 1.4803cqi, 7.5rem);
-  /* Space 4xl: 119px → 140px */
   --space-4xl: clamp(7.4375rem, 7.0921rem + 1.727cqi, 8.75rem);
-  /* Space 5xl: 136px → 160px */
   --space-5xl: clamp(8.5rem, 8.1053rem + 1.9737cqi, 10rem);
-  /* Space 6xl: 153px → 180px */
   --space-6xl: clamp(9.5625rem, 9.1184rem + 2.2204cqi, 11.25rem);
-  /* Space 7xl: 170px → 200px */
   --space-7xl: clamp(10.625rem, 10.1316rem + 2.4671cqi, 12.5rem);
-  /* Space 8xl: 200px → 240px */
   --space-8xl: clamp(12.5rem, 12.5rem + 2.5cqi, 15rem);
-  /* Space 9xl: 240px → 280px */
   --space-9xl: clamp(15rem, 15rem + 2.5cqi, 18rem);
 
-  --pt-serif-regular: "PT Serif",
-    serif;
-  --pt-serif-italic: "PT Serif Italic",
-    serif;
+
+  --pt-serif-regular: "PT Serif", serif;
+  --pt-serif-italic: "PT Serif Italic", serif;
   --font-weight-1: 400;
   --font-style-1: italic;
 
-
-  --ff-monoton-regular: "Monoton",
-    sans-serif;
+  --ff-monoton-regular: "Monoton", sans-serif;
   --font-weight-regular: 400;
   --font-style-regular: normal;
-
+  
   --text-h: 0;
   --text-s: 0%;
   --text-l: 100%;
-
-  @media (prefers-color-scheme: light) {
-    --theme: light;
-    color-scheme: light;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    --theme: dark;
-    color-scheme: dark;
-  }
 }
 
 @supports (selector(::view-transition)) {
@@ -632,8 +609,8 @@ label:has(+ input:checked) {
 .large-button {
   position: relative;
   background-color: hsla(var(--text-h), var(--text-s), var(--text-l), 0.7);
-  width: clamp(4rem, 40vw, 18rem);
-  height: clamp(2rem, 20vw, 9rem);
+  width: clamp(9rem, 60vw, 20rem);
+  height: clamp(5rem, 35vw, 10rem);
   z-index: 1000;
   display: flex;
   align-items: center;

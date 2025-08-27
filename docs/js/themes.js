@@ -1,6 +1,7 @@
+// Theme switching logic for system, light, and dark modes
+
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
-const isPortrait = window.matchMedia('(orientation: portrait)');
 
 function getSystemTheme() {
   if (prefersDark.matches) return 'dark';
@@ -16,37 +17,34 @@ function applyTheme(theme) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme-preference");
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme-preference');
   if (savedTheme) {
     applyTheme(savedTheme);
     const radio = document.querySelector(`[name=theme][value="${savedTheme}"]`);
     if (radio) radio.checked = true;
   } else {
     applyTheme('system');
-    const radio = document.querySelector(`[name=theme][value="system"]`);
+    const radio = document.querySelector('[name=theme][value="system"]');
     if (radio) radio.checked = true;
   }
 
   prefersDark.addEventListener('change', () => {
-    if (localStorage.getItem("theme-preference") === 'system') {
+    if (localStorage.getItem('theme-preference') === 'system') {
       applyTheme('system');
     }
   });
   prefersLight.addEventListener('change', () => {
-    if (localStorage.getItem("theme-preference") === 'system') {
+    if (localStorage.getItem('theme-preference') === 'system') {
       applyTheme('system');
     }
   });
-  isPortrait.addEventListener('change', () => {
-    // Optionally handle orientation changes here
-  });
 });
 
-Array.from(document.querySelectorAll("[name=theme]")).forEach((radio) => {
-  radio.addEventListener("change", (event) => {
+Array.from(document.querySelectorAll('[name=theme]')).forEach((radio) => {
+  radio.addEventListener('change', (event) => {
     const selectedTheme = event.target.value;
-    localStorage.setItem("theme-preference", selectedTheme);
+    localStorage.setItem('theme-preference', selectedTheme);
 
     if (!document.startViewTransition) {
       applyTheme(selectedTheme);
@@ -55,6 +53,30 @@ Array.from(document.querySelectorAll("[name=theme]")).forEach((radio) => {
 
     document.startViewTransition(() => {
       applyTheme(selectedTheme);
+    });
+  });
+});
+
+function updateTheme(selectedTheme) {
+  if (selectedTheme === "system") {
+    document.documentElement.style.removeProperty("--theme");
+  } else {
+    document.documentElement.style.setProperty("--theme", selectedTheme);
+  }
+}
+
+
+Array.from(document.querySelectorAll("[name=theme]")).forEach((radio) => {
+  radio.addEventListener("change", (event) => {
+    const selectedTheme = event.target.value;
+
+    if (!document.startViewTransition) {
+      updateTheme(selectedTheme);
+      return;
+    }
+
+    document.startViewTransition(() => {
+      updateTheme(selectedTheme);
     });
   });
 });
