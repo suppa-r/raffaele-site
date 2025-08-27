@@ -668,8 +668,8 @@ label:has(+ input:checked) {
     justify-content: center;
     gap: var(--space-3xs);
     /*width: var(--space-9xl);
-    height: var(--space-7xl);*/
-    box-shadow: 24px 4px 50px rgba(233, 231, 231, 0.486);
+    height: var(--space-7xl);
+    box-shadow: 24px 4px 50px rgba(233, 231, 231, 0.486);*/
 }
 
 .large-button span {
