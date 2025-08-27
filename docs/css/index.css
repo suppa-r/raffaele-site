@@ -601,10 +601,10 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  position: relative;
-  background-color: color-mix(in srgb, var(--text-color) 70%, rgb(119, 112, 112));
-  width: clamp(9rem, 60vw, 20rem);
-  height: clamp(6rem, 40vw, 15rem);
+  margin-block: var(--space-3xl);
+  background-color: color-mix(in srgb, var(--text-color) 30%, rgb(153, 144, 144));
+  width: clamp(8rem, 50vw, 16rem);
+  height: clamp(5rem, 30vw, 10rem);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -613,7 +613,6 @@ label:has(+ input:checked) {
   text-decoration: none;
   flex-direction: column;
   justify-content: center;
-  margin-top: var(--space-2xl);
 }
 
 .large-button svg {
@@ -716,10 +715,10 @@ footer {
   }
 
   .large-button {
-    margin-bottom: var(--space-9xl);
-    /*box-shadow: 30px 40px 10px rgba(233, 231, 231, 0.644);*/
+    width: clamp(8rem, 90vw, 16rem);
+    height: clamp(5rem, 50vw, 10rem);
   }
-}
+
 
 @keyframes main-text-animation-mobile {
   0% {
@@ -757,4 +756,5 @@ footer {
   .large-button:focus>svg {
     transform: scale(1.2);
   }
+}
 }
