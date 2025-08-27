@@ -631,8 +631,8 @@ label:has(+ input:checked) {
   color: var(--text-color);
   position: relative;
   background-color: var(--base-color);
-  width: clamp(8em, 40vw, var(--space-9xl));
-  height: clamp(8em, 40vw, var(--space-7xl));
+  width: clamp(8rem, 40vw, var(--space-9xl));
+  height: clamp(6rem, 30vw, var(--space-7xl));
   z-index: 1000;
   display: flex;
   align-items: center;
