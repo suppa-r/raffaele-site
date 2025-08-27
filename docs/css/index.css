@@ -653,7 +653,7 @@ label:has(+ input:checked) {
     font-size: var(--step-0);
     color: var(--text-color);
     position: relative;
-    background-color: hsl(0, 4%, 53%);
+    background-color: var(--base-color);
     width: clamp(8em, 40vw, var(--space-9xl));
     height: clamp(8em, 40vw, var(--space-7xl));
     z-index: 1000;
@@ -682,7 +682,7 @@ label:has(+ input:checked) {
 .large-button:hover,
 .large-button:focus {
   outline: #44777a solid 4px;
-  box-shadow: 30px 40px 150px rgba(233, 231, 231, 0.486);
+  box-shadow: 30px 40px 150px rgba(233, 231, 231, 0.644);
 }
 
 .large-button::after {
