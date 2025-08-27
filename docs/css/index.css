@@ -628,8 +628,8 @@ label:has(+ input:checked) {
 .large-button {
   position: relative;
   background-color: var(--base-color);
-  width: clamp(8rem, 40vw, var(--space-9xl));
-  height: clamp(4rem, 20vw, var(--space-5xl));
+  width: clamp(4rem, 40vw, 18rem);
+  height: clamp(2rem, 20vw, 9rem);
   z-index: 1000;
   display: flex;
   align-items: center;
