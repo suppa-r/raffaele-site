@@ -679,7 +679,7 @@ label:has(+ input:checked) {
 
 .large-button:hover,
 .large-button:focus {
-  outline: #ffffff solid 4px;
+  outline: #44777a solid 4px;
   box-shadow: 30px 40px 150px rgba(233, 231, 231, 0.486);
 }
 
