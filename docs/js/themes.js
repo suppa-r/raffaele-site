@@ -10,11 +10,14 @@ function getSystemTheme() {
 }
 
 function applyTheme(theme) {
+  let appliedTheme = theme;
   if (theme === 'system') {
-    document.documentElement.setAttribute('data-theme', getSystemTheme());
+    appliedTheme = getSystemTheme();
+    document.documentElement.setAttribute('data-theme', appliedTheme);
   } else {
     document.documentElement.setAttribute('data-theme', theme);
   }
+  console.log('Theme applied:', appliedTheme);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -57,27 +60,5 @@ Array.from(document.querySelectorAll('[name=theme]')).forEach((radio) => {
   });
 });
 
-function updateTheme(selectedTheme) {
-  if (selectedTheme === "system") {
-    document.documentElement.style.removeProperty("--theme");
-  } else {
-    document.documentElement.style.setProperty("--theme", selectedTheme);
-  }
-}
 
-
-Array.from(document.querySelectorAll("[name=theme]")).forEach((radio) => {
-  radio.addEventListener("change", (event) => {
-    const selectedTheme = event.target.value;
-
-    if (!document.startViewTransition) {
-      updateTheme(selectedTheme);
-      return;
-    }
-
-    document.startViewTransition(() => {
-      updateTheme(selectedTheme);
-    });
-  });
-});
 

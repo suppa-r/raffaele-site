@@ -37,18 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("theme-preference") === 'system') {
       applyTheme('system');
     }
-  });
-  isPortrait.addEventListener('change', () => {
-    // Optionally handle orientation changes here
+  // Orientation change event listener is currently not used. Add logic here if needed in the future.
+  // isPortrait.addEventListener('change', () => {
+  //   // Handle orientation changes if required
+  // });
   });
 });
+const supportsViewTransition = !!document.startViewTransition;
 
 Array.from(document.querySelectorAll("[name=theme]")).forEach((radio) => {
   radio.addEventListener("change", (event) => {
     const selectedTheme = event.target.value;
     localStorage.setItem("theme-preference", selectedTheme);
 
-    if (!document.startViewTransition) {
+    if (!supportsViewTransition) {
       applyTheme(selectedTheme);
       return;
     }
@@ -58,4 +60,5 @@ Array.from(document.querySelectorAll("[name=theme]")).forEach((radio) => {
     });
   });
 });
+
 

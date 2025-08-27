@@ -1,33 +1,32 @@
-  [data-theme="light"] {
-    --base-color: #ffffff;
-    --text-color: #000000;
-    --text-span: #49879c;
-    color-scheme: light;
-  }
-  
-  [data-theme="dark"] {
-    --base-color: #000000;
-    --text-color: #ffffff;
-    --text-span: #49879c;
-    color-scheme: dark;
-  }
 
+[data-theme="dark"] html,
+[data-theme="dark"] body {
+  color-scheme: dark;
+  --base-color: #000000;
+  --text-color: #ffffff;
+  --text-span: #49879c;
+}
+
+[data-theme="light"] html,
+[data-theme="light"] body {
+  color-scheme: light;
+  --base-color: #ffffff;
+  --text-color: #000000;
+  --text-span: #49879c;
+}
 
 :root {
   --sp: 5s;
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
-
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
-
 
   --step--1: clamp(0.8854rem, 0.8553rem + 0.1508cqi, 1rem);
   --step-0: clamp(1.0625rem, 1.0132rem + 0.2467cqi, 1.25rem);
   --step-1: clamp(1.275rem, 1.1993rem + 0.3783cqi, 1.5625rem);
   --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
-
 
   --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
   --space-2xs: clamp(0.5625rem, 0.5461rem + 0.0822cqi, 0.625rem);
@@ -45,7 +44,6 @@
   --space-8xl: clamp(12.5rem, 12.5rem + 2.5cqi, 15rem);
   --space-9xl: clamp(15rem, 15rem + 2.5cqi, 18rem);
 
-
   --pt-serif-regular: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
   --font-weight-1: 400;
@@ -54,11 +52,8 @@
   --ff-monoton-regular: "Monoton", sans-serif;
   --font-weight-regular: 400;
   --font-style-regular: normal;
-  
-  --text-h: 0;
-  --text-s: 0%;
-  --text-l: 100%;
 }
+
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -259,7 +254,6 @@ label {
   position: relative;
   padding: var(--space-3xs);
   isolation: isolate;
-  display: content;
   display: grid;
   place-items: center;
 
@@ -608,9 +602,9 @@ label:has(+ input:checked) {
 
 .large-button {
   position: relative;
-  background-color: hsla(var(--text-h), var(--text-s), var(--text-l), 0.7);
+  background-color: color-mix(in srgb, var(--text-color) 70%, rgb(119, 112, 112));
   width: clamp(9rem, 60vw, 20rem);
-  height: clamp(5rem, 35vw, 10rem);
+  height: clamp(6rem, 40vw, 15rem);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -622,6 +616,12 @@ label:has(+ input:checked) {
   margin-top: var(--space-2xl);
 }
 
+.large-button svg {
+  width: var(--space-xl);
+  height: var(--space-xl);
+  transition: transform 0.3s;
+}
+
 .large-button span {
   text-align: center;
   font-size: var(--step-0);
@@ -630,7 +630,7 @@ label:has(+ input:checked) {
 
 .large-button:hover {
   outline: #44777a solid 4px;
-  box-shadow: 4px 10px 30px rgba(233, 231, 231, 0.944);
+  box-shadow: 40px 10px 30px color-mix(in srgb, var(--text-color) 70%, rgb(119, 112, 112));
 }
 
 .large-button::after {
@@ -640,7 +640,7 @@ label:has(+ input:checked) {
   width: 100%;
   height: 100%;
   background: hsl(var(--text-color) / 0.8);
-  border-radius: 50%;
+  background: rgba(var(--text-color-rgb), 0.8);
   opacity: .7;
   transition: opacity 500ms linear, transform 750ms ease-in-out;
   /*box-shadow: 20px 30px 40px 50px rgba(233, 231, 231, 0.644);*/
@@ -650,11 +650,11 @@ label:has(+ input:checked) {
 .large-button:focus::after {
   opacity: 1;
   transform: scale(1.4);
-  box-shadow: 20px 30px 40px 50px rgba(233, 231, 231, 0.644);
-}
-
 .large-button>svg {
   width: var(--space-xl);
+  height: var(--space-xl);
+  transition: transform 0.3s;
+}
   height: var(--space-xl);
 transition: transform 0.3s;
 }
