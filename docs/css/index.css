@@ -744,7 +744,7 @@ text-align: center;
   }
 
   .large-button {
-    padding-bottom: var(--space-3xl);
+    padding-bottom: var(--space-5xl);
     box-shadow: 30px 40px 150px rgba(233, 231, 231, 0.644);
   }
 }
