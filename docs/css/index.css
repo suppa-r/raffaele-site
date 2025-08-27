@@ -703,13 +703,12 @@ text-align: center;
 .title-1 {
   word-spacing: var(--space-2xs);
   margin-inline: auto;
-  padding-bottom: var(--space-m);
 }
 
 .author {
   font-size: var(--step--1);
   margin-inline: auto;
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-s);
 }
 
 @container (max-width: 500px) {
