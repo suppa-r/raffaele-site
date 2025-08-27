@@ -1,133 +1,75 @@
-{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
-{\*\generator Riched20 10.0.26100}\viewkind4\uc1 
-\pard\sa200\sl276\slmult1\f0\fs22\lang9 .sr-only \{\par
-  position: absolute;\par
-  width: 1px;\par
-  height: 1px;\par
-  padding: 0;\par
-  margin: -1px;\par
-  overflow: hidden;\par
-  clip: rect(0, 0, 0, 0);\par
-  white-space: nowrap;\par
-  /* added line */\par
-  border: 0;\par
-\}\par
-\par
-.skip-to-content \{\par
-  position: absolute;\par
-  z-index: 9999;\par
-  background: hsl(var(--clr-white));\par
-  color: hsl(var(--clr-dark));\par
-  padding: .5em 1em;\par
-  margin-inline: auto;\par
-  transform: translateY(-100%);\par
-  transition: transform 250ms ease-in;\par
-\}\par
-\par
-.skip-to-content:focus \{\par
-  transform: translateY(0);\par
-\}\par
-\par
-/* colors */\par
-\par
-.text-dark \{\par
-  color: hsl(var(--clr-dark));\par
-\}\par
-\par
-.text-accent \{\par
-  color: hsl(var(--clr-light));\par
-\}\par
-\par
-.text-white \{\par
-  color: hsl(var(--clr-white));\par
-\}\par
-\par
-/* typography */\par
-\par
-.font-light \{\par
-  font-family: var(--ff-light);\par
-  font-weight: 300;\par
-  font-style: italic;\par
-\}\par
-\par
-.font-bold \{\par
-  font-family: var(--ff-bold);\par
-  font-weight: 700;\par
-  font-style: normal;\par
-\}\par
-\par
-.font-light-italic \{\par
-  font-family: var(--ff-light-italic);\par
-  font-weight: 300;\par
-  font-style: italic;\par
-\}\par
-\par
-.font-italic-bold \{\par
-  font-family: var(--ff-italic-bold);\par
-  font-weight: 600;\par
-  font-style: italic;\par
-\}\par
-\par
-.letter-spacing-1 \{\par
-  letter-spacing: 4.75px;\par
-\}\par
-\par
-.letter-spacing-2 \{\par
-  letter-spacing: 2.7px;\par
-\}\par
-\par
-.letter-spacing-3 \{\par
-  letter-spacing: 2px;\par
-\}\par
-\par
-.numbered-title \{\par
-  font-family: var(--ff-sans-cond);\par
-  font-size: var(--fs-500);\par
-  text-transform: uppercase;\par
-  letter-spacing: 4.72px;\par
-\}\par
-\par
-.numbered-title span \{\par
-  margin-right: .5em;\par
-  font-weight: 700;\par
-  color: hsl(var(--clr-white) / .25);\par
-\}\par
-\par
-/* ------------------- */\par
-/* Compontents         */\par
-/* ------------------- */\par
-\par
-.large-button \{\par
-  grid-column: 3;\par
-  font-size: var(--fs-400);\par
-  color: hsl(var(--clr-light));\par
-  background: hsl(var(--clr-white));\par
-  position: relative;\par
-  z-index: 1;\par
-  display: inline-grid;\par
-  place-items: center;\par
-  margin: 0em;\par
-  padding: 0em;\par
-  border-radius: 50%;\par
-  aspect-ratio: 1;\par
-  text-decoration: none;\par
-\}\par
-\par
-.large-button::after \{\par
-  content: '';\par
-  position: absolute;\par
-  z-index: -1;\par
-  width: 80%;\par
-  height: 80%;\par
-  background: hsl(var(--clr-white) / .5);\par
-  border-radius: 50%;\par
-  opacity: 0;\par
-  transition: opacity 500ms linear, transform 750ms ease-in-out;\par
-\}\par
-\par
-.large-button:hover::after,\par
-.large-button:focus::after \{\par
-  opacity: 1;\par
-  transform: scale(1.5);\par
-\}\par
+ .sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
 }
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark));
+  padding: .5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+
+.letter-spacing-3 {
+  letter-spacing: 2px;
+}
+
+
+.large-button {
+
+  font-size: var(--font-size);
+  color: hsl(var(--clr-light));
+  background: hsl(var(--clr-white));
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  margin: 0em;
+  padding: 0em;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  text-decoration: none;
+}
+
+.large-button::after {
+  content: '';
+  position: absolute;
+  z-index: -1;      
+  width: 80%;
+  height: 80%;
+  background: hsl(var(--clr-white) / .5);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+  opacity: 1;
+  transform: scale(1.5);
+}
+

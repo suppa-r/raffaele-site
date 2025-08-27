@@ -2,6 +2,11 @@
 // so when a user comes back, they don't have
 // to set it again.
 // Restore theme preference on page load
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme-preference");
   if (savedTheme) {
