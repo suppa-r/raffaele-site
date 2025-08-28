@@ -268,7 +268,7 @@ label {
 }
 
 label:has(+ input:checked) {
-  color: var(--text-span);
+  color: var(--text-color);
 
   &::before {
     content: "";
