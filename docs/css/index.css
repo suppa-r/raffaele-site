@@ -218,8 +218,8 @@ header {
 }
 
 .title {
+  padding-top: var(--space-2xs);
   word-spacing: var(--space-2xs);
-  padding-top: var(--space-xl);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
@@ -227,7 +227,7 @@ header {
 
 .color-picker {
   position: absolute;
-  top: var(--space-2xs);
+
   right: var(--space-2xl);
   view-transition-name: match-element;
 }
@@ -278,8 +278,7 @@ label:has(+ input:checked) {
 .curve-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
-  padding-top: var(--space-l);
+  gap: var(--space-l);
   font-size: var(--step-2);
   color: var(--text-color);
 }
@@ -559,37 +558,31 @@ label:has(+ input:checked) {
   padding-inline: var(--space-2xs);
 }
 
-.text-with-animation,
-.text-with-animation-1 {
+.text-with-animation {
   margin-inline: auto;
   font-size: var(--step-0);
-  padding-block: var(--space-s);
+  padding-block: var(--space-xs);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-wrap: balance;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  overflow-wrap:normal;
+  word-wrap:break-word;
   animation: main-text-animation 4s ease forwards infinite;
 }
 
-.sub-text-with-animation,
-.sub-text-with-animation-1,
-.sub-text-with-animation-2 {
+.text-with-animation-1,
+.text-with-animation-2,
+.text-with-animation-3,
+.text-with-animation-4,
+.text-with-animation-5,
+.text-with-animation-6 {
   font-size: var(--step-0);
   text-align: center;
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
-}
-
-.sub-text-with-animation-3 {
-  font-size: var(--step-0);
-  text-align: center;
-  text-wrap: balance;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  padding-bottom: var(--space-s);
+  margin-block: var(--space-xs);
 }
 
 @keyframes main-text-animation {
@@ -688,7 +681,8 @@ footer {
 
 @container (max-width: 500px) {
   .title {
-    word-spacing: var(--space-3xs);
+    margin-top: var(--space-s);
+    word-spacing: var(--space-2xs);
     font-size: var(--step--1);
     text-align: center;
     margin-inline: auto;
@@ -696,7 +690,7 @@ footer {
 
   .color-picker {
     position: absolute;
-    top: var(--space-2xs);
+    top: var(--space-3xs);
     right: 50%;
     transform: translateX(50%);
     view-transition-name: match-element;
@@ -709,12 +703,17 @@ footer {
     width: min-content;
     border: 0;
     background: transparent;
-    /*border-radius: 100vmax;*/
+}
+
+  .curve-container {
+    width: 100%;
+    padding-inline: var(--space-2xs);
+    gap: var(--space-m);
+    margin-top: 0;
   }
 
-  .text-with-animation,
-  .text-with-animation-1 {
-   animation: main-text-animation-mobile 4s ease forwards infinite;
+  .text-with-animation {
+    animation: main-text-animation-mobile 4s ease forwards infinite;
   }
 
 @keyframes main-text-animation-mobile {
