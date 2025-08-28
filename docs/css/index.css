@@ -43,6 +43,7 @@
   --space-7xl: clamp(10.625rem, 10.1316rem + 2.4671cqi, 12.5rem);
   --space-8xl: clamp(12.5rem, 12.5rem + 2.5cqi, 15rem);
   --space-9xl: clamp(15rem, 15rem + 2.5cqi, 18rem);
+  --space-10xl: clamp(18rem, 18rem + 2.5cqi, 21.5rem);
 
   --pt-serif-regular: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
@@ -610,10 +611,10 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  padding: var(--space-xl);
-  background-color: color-mix(in srgb, var(--text-color) 30%, rgb(44, 42, 42));
-  width: var(--space-9xl);
-  height: var(--space-5xl);
+  padding: var(--space-2xl);
+  background-color: color-mix(in srgb, var(--text-color) 30%, rgb(31, 29, 29));
+  width: var(--space-10xl);
+  height: var(--space-6xl);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -625,6 +626,7 @@ label:has(+ input:checked) {
 }
 
 .large-button svg {
+  fill: var(--text-color);
   width: var(--space-xl);
   height: var(--space-xl);
   transition: transform 0.3s;
@@ -638,7 +640,7 @@ label:has(+ input:checked) {
 .large-button span {
   text-align: center;
   font-size: var(--step-0);
-  color: var(--base-color);
+  color: var(--text-color);
   width: fit-content;
 }
 
