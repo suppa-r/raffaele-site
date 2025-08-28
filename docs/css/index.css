@@ -227,20 +227,17 @@ header {
 
 .color-picker {
   position: absolute;
-
-  right: var(--space-2xl);
+  right: var(--space-2xs);
+  top: var(--space-3xs);
+  gap: var(--space-s);
   view-transition-name: match-element;
 }
 
 .color-picker>fieldset {
   display: flex;
   flex-direction: row;
-  padding: 0 var(--space-3xs);
-  gap: var(--space-3xs);
-  margin-inline: auto;
   border: 0;
   background: transparent;
-  gap: var(--space-xs);
 }
 
 input[type="radio"] {
@@ -252,11 +249,11 @@ input[type="radio"] {
 }
 
 label {
-  position: relative;
-  padding: var(--space-3xs);
-  isolation: isolate;
-  display: grid;
-  place-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--space-xs);
 
   &::before {
     position: absolute;
@@ -264,6 +261,7 @@ label {
     border-radius: 100%;
     z-index: 1000;
     inset: 0px;
+    margin-inline: auto;
   }
 }
 
@@ -606,6 +604,7 @@ label:has(+ input:checked) {
 .large-button {
   padding: var(--space-2xl);
   background-color: color-mix(in srgb, var(--text-color) 30%, rgb(31, 29, 29));
+  color: var(--text-color);
   width: var(--space-10xl);
   height: var(--space-6xl);
   z-index: 1000;
@@ -681,8 +680,8 @@ footer {
 
 @container (max-width: 500px) {
   .title {
-    margin-top: var(--space-s);
-    word-spacing: var(--space-2xs);
+    margin-top: var(--space-xl);
+    word-spacing: var(--space-3xs);
     font-size: var(--step--1);
     text-align: center;
     margin-inline: auto;
@@ -696,15 +695,45 @@ footer {
     view-transition-name: match-element;
   }
 
-  .color-picker>fieldset {
-    display: flex;
-    flex-direction: row;
-    margin-inline: auto;
-    width: min-content;
-    border: 0;
-    background: transparent;
+.color-picker>fieldset {
+  display: flex;
+  flex-direction: row;
+  border: 0;
+  background: transparent;
+  gap: var(--space-s);
 }
 
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &::before {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 100%;
+    z-index: 1000;
+    inset: 0px;
+    margin-inline: auto;
+  }
+}
+
+label:has(+ input:checked) {
+  color: var(--text-color);
+
+  &::before {
+    content: "";
+  }
+}
   .curve-container {
     width: 100%;
     padding-inline: var(--space-2xs);
