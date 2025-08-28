@@ -254,9 +254,10 @@ body:before {
 
 header {
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
 }
 
+header .h span,
 header .h {
   padding: var(--space-xs) 0 0 var(--space-2xs);
   font-size: var(--step--1);
@@ -368,7 +369,8 @@ header .bars::before {
 .color-picker {
   position: absolute;
   top: var(--space-2xs);
-  right: var(--space-2xs);
+  right: var(--space-xl);
+  transform: translate(0%, -5%);
   view-transition-name: match-element;
 }
 
@@ -419,7 +421,7 @@ nav {
   display: flex;
   justify-content: space-between;
   gap: var(--space-m);
-  padding: var(--space-2xs) 0;
+  padding:var(--space-2xs) 0 0 var(--space-5xl);
   color: var(--text-color);
   z-index: 1000;
 }
