@@ -612,7 +612,7 @@ label:has(+ input:checked) {
 .large-button {
   padding: var(--space-xl);
   background-color: color-mix(in srgb, var(--text-color) 30%, rgb(44, 42, 42));
-  width: var(--space-8xl);
+  width: var(--space-9xl);
   height: var(--space-5xl);
   z-index: 1000;
   display: flex;
@@ -639,6 +639,7 @@ label:has(+ input:checked) {
   text-align: center;
   font-size: var(--step-0);
   color: var(--base-color);
+  width: fit-content;
 }
 
 .large-button:hover {
@@ -711,7 +712,7 @@ footer {
 
   .text-with-animation,
   .text-with-animation-1 {
-animation: main-text-animation-mobile 4s ease forwards infinite;
+   animation: main-text-animation-mobile 4s ease forwards infinite;
   }
 
 @keyframes main-text-animation-mobile {
