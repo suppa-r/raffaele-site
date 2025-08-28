@@ -553,14 +553,14 @@ label:has(+ input:checked) {
 .text-container {
   text-align: center;
   vertical-align: middle;
-  padding-top: var(--space-xl);
+  padding-top: var(--space-l);
 }
 
 .text-with-animation,
 .text-with-animation-1 {
   width: max-content;
   margin-inline: auto;
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   padding-block: var(--space-s);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
@@ -573,13 +573,22 @@ label:has(+ input:checked) {
 
 .sub-text-with-animation,
 .sub-text-with-animation-1,
-.sub-text-with-animation-2,
+.sub-text-with-animation-2
+ {
+  font-size: var(--step-0);
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 .sub-text-with-animation-3 {
   font-size: var(--step-0);
   text-align: center;
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  padding-bottom: var(--space-s);
 }
 
 @keyframes main-text-animation {
@@ -601,18 +610,18 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  margin-top: var(--space-3xl);
+padding: var(--space-2xl);
   background-color: color-mix(in srgb, var(--text-color) 30%, rgb(153, 144, 144));
   width: var(--space-9xl);
   height: var(--space-5xl);
   z-index: 1000;
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 0;
   border-radius: 50%;
   text-decoration: none;
   flex-direction: column;
-  justify-content: center;
 }
 
 .large-button svg {
@@ -638,7 +647,7 @@ label:has(+ input:checked) {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background: color-mix(in srgb, var(--text-color) 80%, transparent);
+  background: color-mix(in srgb, var(--text-color) 0%, transparent);
   opacity: .7;
   transition: opacity 500ms linear, transform 750ms ease-in-out;
   /*box-shadow: 20px 30px 40px 50px rgba(233, 231, 231, 0.644);*/
@@ -711,10 +720,6 @@ footer {
     animation: main-text-animation-mobile 4s ease forwards infinite;
   }
 
-  .large-button{
-    margin-bottom: var(--space-5xl);
-  }
-
 @keyframes main-text-animation-mobile {
   0% {
     letter-spacing: 1em;
@@ -731,6 +736,7 @@ footer {
     word-spacing: .5vw;
     opacity: 1;
   }
+}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -752,4 +758,4 @@ footer {
     transform: scale(1.2);
   }
 }
-}
+
