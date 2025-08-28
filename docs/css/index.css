@@ -601,10 +601,10 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  margin-block: var(--space-3xl);
+  margin-top: var(--space-3xl);
   background-color: color-mix(in srgb, var(--text-color) 30%, rgb(153, 144, 144));
-  width: clamp(8rem, 50vw, 16rem);
-  height: clamp(5rem, 30vw, 10rem);
+  width: var(--space-9xl);
+  height: var(--space-5xl);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -649,13 +649,11 @@ label:has(+ input:checked) {
 .large-button:focus::after {
   opacity: 1;
   transform: scale(1.4);
+}
 .large-button>svg {
   width: var(--space-xl);
   height: var(--space-xl);
   transition: transform 0.3s;
-}
-  height: var(--space-xl);
-transition: transform 0.3s;
 }
 
 .large-button:hover>svg,
@@ -714,12 +712,9 @@ footer {
     animation: main-text-animation-mobile 4s ease forwards infinite;
   }
 
-  .large-button {
-    width: var(--space-9xl);
-    height: var(--space-5xl);
-    margin-bottom: var(--space-4xl);
+  .large-button{
+    margin-bottom: var(--space-5xl);
   }
-
 
 @keyframes main-text-animation-mobile {
   0% {
