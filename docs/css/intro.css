@@ -1,24 +1,24 @@
 
 [data-theme="dark"] html,
 [data-theme="dark"] body {
-   color-scheme: dark;
-  /*--base-color: #000000;*/
+  color-scheme: dark;
+  --base-color: #000000;
   --text-color: #ffffff;
   --text-span: #49879c;
-  --body-gradient-top: linear-gradient(180deg, #000000 0%, #1a1a1a 0%);
-  --body-gradient-bottom: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
-  --body-grid-line: linear-gradient(90deg, #d8cdcd 0%, #000000 100%);
+  --shadow-color: rgba(255,255,255,0.853);
+  --shadow-color2: rgb(255,255,255);
+  --shadow-color3: rgb(232,235,238);
 }
 
 [data-theme="light"] html,
 [data-theme="light"] body {
   color-scheme: light;
-  /*--base-color: #ffffff;*/
+  --base-color: #ffffff;
   --text-color: #000000;
   --text-span: #49879c;
-  --body-gradient-top: linear-gradient(180deg, #ffffff 0%, #f0f0f0 0%);
-  --body-gradient-bottom: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
-  --body-grid-line: linear-gradient(90deg, #131212 0%, #000000 100%);
+  --shadow-color: rgba(0,0,0,0.3);
+  --shadow-color2: rgba(26, 27, 27, 0.923);
+  --shadow-color3: rgba(24, 25, 26, 0.916);
 }
 
 :root {
@@ -55,6 +55,10 @@
   --pt-serif-italic: "PT Serif Italic", serif;
   --font-weight-1: 400;
   --font-style-1: italic;
+
+  --ff-monoton-regular: "Monoton", sans-serif;
+  --font-weight-regular: 400;
+  --font-style-regular: normal;
 }
 
 
@@ -176,21 +180,15 @@
 
 body {
   color-scheme: light;
-  --base-color: transparent;
+  --base-color: #ffffff;
   --text-color: #000000;
   --text-span: #49879c;
-  --body-gradient-top: linear-gradient(180deg, #ffffff 0%, #f0f0f0 0%);
-  --body-gradient-bottom: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
-  --body-grid-line: linear-gradient(90deg, #131212 0%, #000000 100%);
 
   @container style(--theme: dark) {
     color-scheme: dark;
-    --base-color: transparent;
+    --base-color: #000000;
     --text-color: #ffffff;
     --text-span: #49879c;
-    --body-gradient-top: linear-gradient(180deg, #000000 0%, #000000 0%);
-    --body-gradient-bottom: linear-gradient(180deg, #000000 0%, #000000 100%);
-    --body-grid-line: linear-gradient(90deg, #ffffff 0%, #000000 100%);
   }
 }
 
@@ -200,8 +198,35 @@ body {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   color: var(--text-color);
+  background-color: var(--base-color);
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+body>* {
+  /* Ensure all direct children of body are treated as containers */
+  container-type: inline-size;
+  margin-inline: auto;
+  /* Allow them to be sized based on their content */
+  /* Center content within the body */
+
+}
+
+@layer support.demo {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+}
+
+body {
+  background-color: var(--base-color);
+  /* This is the base color for the body */
+  color: var(--body-grid-line);
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
+  font-size: var(--step--1);
 }
 
 body:before {
@@ -231,34 +256,6 @@ body:before {
   overflow: hidden;
 }
 
-ul {
-  @media (hover) and (prefers-reduced-motion: no-preference) {
-    &>li {
-      transform-origin: left center;
-      transition:
-        transform 1s var(--ease-spring-3),
-        opacity .3s var(--ease-3);
-    }
-
-    &:hover>li:not(:hover) {
-      opacity: .25;
-      transform: scale(0.8);
-    }
-  }
-}
-
-@layer support.demo {
-  * {
-    box-sizing: border-box;
-    margin: 0;
-  }
-
-  html {
-    block-size: 100%;
-  }
-}
-
-
 /* --------------------------------------- */
 
 header {
@@ -266,6 +263,7 @@ header {
   justify-content: flex-start;
 }
 
+header .h span,
 header .h {
   padding: var(--space-xs) 0 0 var(--space-2xs);
   font-size: var(--step--1);
@@ -296,11 +294,10 @@ header .bars {
 }
 
 header .bars.is-active {
-  transform-origin: right;
+  transform-origin: center;
   padding: 0 var(--space-xs) 0 var(--space-2xs);
   transition: transform 0.5s ease-in-out;
-  transform: translateY(15px) rotate(45deg);
-  /*transform: translate(0) rotate(45deg);*/
+  transform: rotate(45deg);
   cursor: pointer;
   z-index: 2000;
   /* Ensure it's above the nav links */
@@ -328,9 +325,8 @@ header .bars::before {
 
 .color-picker {
   position: absolute;
-  top: var(--space-2xs);
-  right: var(--space-xl);
-  transform: translate(0%, -5%);
+  top: var(--space-3xs);
+  right: var(--space-3xs);
   view-transition-name: match-element;
 }
 
@@ -387,7 +383,7 @@ nav {
 }
 
 nav>*+* {
-  margin-top: var(--space-s);
+  margin-top: var(--space-3xs);
   /* Adds space between nav items */
 }
 
@@ -460,7 +456,6 @@ nav>*+* {
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  color: var(--text-color);
 }
 
 .intro p span {
@@ -501,20 +496,25 @@ nav>*+* {
 
 @keyframes shadowDrip {
   0% {
-    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.853);
+    text-shadow: 0px 0px 0px var(--shadow-color, rgba(255,255,255,0.853));
   }
 
   100% {
-    text-shadow: 0px 5px 10px rgb(255, 255, 255),
-      /* Reduced vertical offset */
-      0px 15px 20px rgb(255, 255, 255),
-      /* Reduced vertical offset */
-      0px 25px 5px rgb(232, 235, 238);
-    /* Reduced vertical offset */
+    text-shadow:
+      0px 5px 10px var(--shadow-color, rgba(255,255,255,0.853)),
+      0px 15px 20px var(--shadow-color2, rgb(255,255,255)),
+      0px 25px 5px var(--shadow-color3, rgb(232,235,238));
   }
 }
 
 @container (max-width: 768px) {
+ .color-picker {
+  position: absolute;
+  top: 3.5%;
+  right: 50%;
+  transform: translateX(50%);
+  view-transition-name: match-element;
+}
   header .bars {
     display: block;
     transition: 0.5s;
