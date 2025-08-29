@@ -218,11 +218,13 @@ header {
 }
 
 .title {
-  padding-top: var(--space-2xs);
-  word-spacing: var(--space-2xs);
+  padding-block: var(--space-2xs);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
+  /*text-wrap: balance;
+	overflow-wrap: break-word;
+	word-wrap: break-word;*/
 }
 
 .color-picker {
@@ -603,7 +605,7 @@ label:has(+ input:checked) {
 
 .large-button {
   padding: var(--space-2xl);
-  background-color: color-mix(in srgb, var(--text-color) 30%, rgb(31, 29, 29));
+  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
   width: var(--space-10xl);
   height: var(--space-6xl);
@@ -680,57 +682,31 @@ footer {
 
 @container (max-width: 500px) {
   .title {
-    margin-top: var(--space-xl);
-    word-spacing: var(--space-3xs);
-    font-size: var(--step--1);
-    text-align: center;
-    margin-inline: auto;
+    padding-top: var(--space-xl);
   }
 
   .color-picker {
-    position: absolute;
-    top: var(--space-3xs);
     right: 50%;
     transform: translateX(50%);
     view-transition-name: match-element;
-  }
-
-.color-picker>fieldset {
-  display: flex;
-  flex-direction: row;
-  border: 0;
-  background: transparent;
-  gap: var(--space-s);
+    padding: 0 var(--space-3xs);
 }
 
-input[type="radio"] {
-  opacity: 0;
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
+  .color-picker>fieldset {
+   gap: var(--space-2xs);
 }
 
-label {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &::before {
-    position: absolute;
-    background-color: transparent;
-    border-radius: 100%;
-    z-index: 1000;
-    inset: 0px;
-    margin-inline: auto;
-  }
+label > span {
+  width: auto;
+  text-align: center;
+  font-size: var(--step--1);
+  padding: 0 var(--space-2xs);
+  white-space: nowrap;
 }
 
 label:has(+ input:checked) {
   color: var(--text-color);
-
-  &::before {
+&::before {
     content: "";
   }
 }

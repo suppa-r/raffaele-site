@@ -62,7 +62,7 @@
 }
 
 .line:nth-child(4) {
-  margin-left: 20%;
+  margin-left: 85%;
 }
 
 .line:nth-child(4)::after {
@@ -70,7 +70,7 @@
 }
 
 .line:nth-child(5) {
-  margin-left: 80%;
+  margin-left: 90%;
 }
 
 .line:nth-child(5)::after {
@@ -78,27 +78,11 @@
 }
 
 .line:nth-child(6) {
-  margin-left: 85%;
+  margin-left: 95%;
 }
 
 .line:nth-child(6)::after {
   animation-delay: 2s;
-}
-
-.line:nth-child(7) {
-  margin-left: 90%;
-}
-
-.line:nth-child(7)::after {
-  animation-delay: 1.8s;
-}
-
-.line:nth-child(8) {
-  margin-left: 95%;
-}
-
-.line:nth-child(8)::after {
-  animation-delay: 1.6s;
 }
 
 @keyframes drop {
