@@ -213,12 +213,15 @@ body>* {
 
 header {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0 var(--space-3xs);
 }
 
 .title {
-  padding-block: var(--space-3xs);
+  padding-top: var(--space-3xs);
+  padding: 0 var(--space-3xs);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
@@ -712,9 +715,40 @@ label:has(+ input:checked) {
   }
 }
 
-.large-button {
-  padding: 0;
-}
+  .curve-container {
+    padding: var(--space-m);
+  }
+
+  .text-container {
+    font-size: var(--step--1);
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-m);
+  } 
+
+  .text-with-animation {
+    font-size: var(--step--1);
+    padding: 0 var(--space-3xs);
+  }
+
+  .text-with-animation-1,
+  .text-with-animation-2,
+  .text-with-animation-3,
+  .text-with-animation-4,
+  .text-with-animation-5 {
+    font-size: var(--step--1);
+    padding: 0 var(--space-3xs);
+  }
+
+  .large-button {
+    width: var(--space-8xl);
+    height: var(--space-5xl);
+    padding: var(--space-3xs);
+  }
+
+  .text-with-animation-6 {
+    font-size: var(--step--1);
+    padding: 0 var(--space-3xs);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
