@@ -275,281 +275,280 @@ label:has(+ input:checked) {
   }
 }
 
-/*-------------curvature-----------------*/
-
 .curve-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
-  font-size: var(--step-1);
+  gap: var(--space-l);
+  font-size: var(--step-2);
   color: var(--text-color);
-  padding-block: var(--space-xl);
 }
 
-.content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	width:100%;
-}
-
-.content div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
-}
-
-@keyframes show-hide {
-	0%,
-	100% {
-		opacity: 0;
-		transform: scale(0.8);
-	}
-	20%,
-	80% {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-.content div span {
-	width: 10vmin;
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	color: #ffffff90;
-	  box-sizing: border-box;
-  text-shadow: 0 0 7px var(--text-color),
-    0 0 10px var(--text-color),
-    0 0 21px var(--text-color);
-}
-
+.content,
 .content-1 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	width:100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
+.content div,
 .content-1 div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
+  position: absolute;
+  display: flex;
+  animation: show-hide var(--sp) ease 0s infinite;
+  mix-blend-mode: plus-darken;
 }
 
-@keyframes show-hide {
-	0%,
-	100% {
-		opacity: 0;
-		transform: scale(0.8);
-	}
-	20%,
-	80% {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
+.content div span,
 .content-1 div span {
-	width: 10vmin;
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	color: #ffffff90;
+  margin-inline: auto;
+  animation-duration: 3s;
+  padding: 0;
+  animation-timing-function: ease;
+  animation-delay: .8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+  animation-fill-mode: both;
+  animation-name: main-text-animation;
+  position: relative;
+  text-align: center;
   box-sizing: border-box;
   text-shadow: 0 0 7px var(--text-color),
     0 0 10px var(--text-color),
     0 0 21px var(--text-color);
 }
 
-.up:before,
-.down:before {
-	width: 80%;
-	height: 0.1vmin;
-	background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
-	content: "";
-	position: absolute;
-	border-radius: 100%;
-	filter: blur(2px);
-	left: 10%;
-	top: 49%;
-	box-shadow: 0 0 100px 0 var(--text-color);
-	animation: shadow var(--sp) ease 0s infinite;
+@keyframes show-hide {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(.3)
+  }
+
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(.6)
+  }
+}
+
+.down:before,
+.up:before {
+  width: 100%;
+  height: var(--space-3xs);
+  background: radial-gradient(ellipse at 100% 100%, var(--text-color), var(--text-color) 70%);
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  filter: blur(3px);
+  left: 10%;
+  top: 49%;
+  /* Always-present base shadow: */
+  box-shadow: 0 0 30px 0 var(--text-color), 0 0 0px 0 var(--text-color);
+  /* Animate a second, larger shadow: */
+  animation: shadow-glow var(--sp) ease-in-out 3s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes shadow-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 60px 0 var(--text-color), 0 0 0px 0 var(--text-color) / 0.1;
+  }
+
+  45%,
+  55% {
+    box-shadow: 0 0 60px 0 var(--text-color), 0 0 100px 0 var(--text-color) / 0.9;
+  }
 }
 
 .down:before {
-	width: 1vmin;
-	height: 0.5vmin;
-	filter: blur(3px);
-	left: calc(50% - 0.5vmin);
-	top: 45%;
-	box-shadow: 0 0 10px 0 var(--text-color);
+  width: .3vmin;
+  height: .5vmin;
+  filter: blur(3px);
+  left: calc(50% - .5vmin);
+  top: 45%;
+  box-shadow: 0 0 10px 0 var(--text-color), 0 0 0px 0 var(--text-color);
+  animation: shadow var(--sp) ease-in-out 3s infinite;
 }
 
 @keyframes shadow {
-	0%,
-	10%,
-	90%,
-	100% {
-		opacity: 0;
-	}
-	45%,
-	55% {
-		opacity: 0.25;
-		height: 0.25vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    opacity: 0
+  }
+
+  45%,
+  55% {
+    opacity: .25;
+    height: .25vmin
+  }
 }
 
-.up span,
-.down span {
-	animation-duration: var(--sp);
-	animation-timing-function: ease;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
+.down span,
+.up span {
+  animation-duration: var(--sp);
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite
 }
 
-/*up*/
 .up-2-8 {
-	animation-name: go-up-2-8;
+  animation-name: go-up-2-8
 }
 
 .up-3-7 {
-	animation-name: go-up-3-7;
+  animation-name: go-up-3-7
 }
 
 .up-4-6 {
-	animation-name: go-up-4-6;
+  animation-name: go-up-4-6
 }
 
 .up-5 {
-	animation-name: go-up-5;
+  animation-name: go-up-5
 }
 
-/*down*/
 .down-2-8 {
-	animation-name: go-down-2-8;
+  animation-name: go-down-2-8
 }
 
 .down-3-7 {
-	animation-name: go-down-3-7;
+  animation-name: go-down-3-7
 }
 
 .down-4-6 {
-	animation-name: go-down-4-6;
+  animation-name: go-down-4-6
 }
 
 .down-5 {
-	animation-name: go-down-5;
+  animation-name: go-down-5
 }
 
 @keyframes go-up-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -0.6vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
 }
 
 @keyframes go-up-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.2vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
 }
 
 @keyframes go-up-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.8vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
 }
 
 @keyframes go-up-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -2.4vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
 }
 
 @keyframes go-down-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 0.6vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
 }
 
 @keyframes go-down-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.2vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
 }
 
 @keyframes go-down-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.8vmin;
-	}
+
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
 }
 
 @keyframes go-down-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 2.4vmin;
-	}
-}
 
+  0%,
+  10%,
+  100%,
+  90% {
+    top: 0
+  }
+
+  40%,
+  60% {
+    top: clamp(-0.5vmin, -1vw, -1.2vmin);
+  }
+}
 
 .text-container {
   text-align: center;
@@ -567,8 +566,7 @@ label:has(+ input:checked) {
   text-wrap: balance;
   overflow-wrap:normal;
   word-wrap:break-word;
-  letter-spacing: var(--space-xs);
-  /*animation: main-text-animation 4s ease forwards infinite;*/
+  animation: main-text-animation 4s ease forwards infinite;
 }
 
 .text-with-animation-1,
@@ -582,7 +580,6 @@ label:has(+ input:checked) {
   overflow-wrap: break-word;
   word-wrap: break-word;
   margin-block: var(--space-xs);
-  letter-spacing: var(--space-3xs);
 }
 
 .text-with-animation-6{
@@ -596,8 +593,7 @@ label:has(+ input:checked) {
   overflow-wrap: break-word;
   word-wrap: break-word;
   margin-block: var(--space-xs);
-  letter-spacing: var(--space-3xs);
-  word-spacing: var(--space-2xs);
+  letter-spacing: var(--space-xs);
 }
 
 @keyframes main-text-animation {
@@ -726,11 +722,16 @@ footer {
   }
 }
   .curve-container {
-   padding-block: var(--space-xs);
+    width: 100%;
+    padding-inline: var(--space-2xs);
+    gap: var(--space-m);
+    margin-top: 0;
   }
 
-  .text-container {
+  .text-container{
     padding-top: var(--space-xs);
+    width: 90%;
+   margin-inline: auto;
   }
 
   .text-with-animation {
