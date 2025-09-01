@@ -625,7 +625,7 @@ text-shadow: 0 -7px 7px var(--text-color),
 }
 
 .large-button {
-  padding: var(--space-2xl);
+  padding: var(--space-xl);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
   width: var(--space-10xl);
@@ -688,6 +688,13 @@ text-shadow: 0 -7px 7px var(--text-color),
 }
 
 @container (max-width: 500px) {
+  body {
+    width: 95%;
+    max-width: 100%;
+    word-spacing: var(--space-3xs);
+  }
+}
+
   .title {
     padding-top: var(--space-m);
   }
@@ -718,15 +725,8 @@ text-shadow: 0 -7px 7px var(--text-color),
   }
 }
 
-  .text-container {
-    width: 95%;
-    max-width: 100%;
-    word-spacing: var(--space-3xs);
-  }
-
-  .large-button{
-    padding: 0;
-  }
+.large-button {
+  padding: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
