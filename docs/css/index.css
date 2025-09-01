@@ -720,8 +720,8 @@ text-shadow: 0 -7px 7px var(--text-color),
 
   .text-container {
     padding-top: var(--space-3xs);
-    width: 100%;
-    max-width: 95%;
+    width:30ch;
+    max-width: 100%;
   }
 }
 
