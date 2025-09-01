@@ -719,9 +719,9 @@ text-shadow: 0 -7px 7px var(--text-color),
 }
 
   .text-container {
-    width: 70ch;
+    width: 90ch;
     max-width: 100%;
-    word-spacing: var(--space-2xs);
+    word-spacing: var(--space-3xs);
   }
 
   .large-button{
