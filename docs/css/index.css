@@ -723,6 +723,10 @@ text-shadow: 0 -7px 7px var(--text-color),
     max-width: 100%;
     word-spacing: var(--space-2xs);
   }
+
+  .large-button{
+    padding: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
