@@ -719,7 +719,7 @@ text-shadow: 0 -7px 7px var(--text-color),
 }
 
   .text-container {
-    width: 90ch;
+    width: 95%;
     max-width: 100%;
     word-spacing: var(--space-3xs);
   }
