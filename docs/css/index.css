@@ -719,9 +719,9 @@ text-shadow: 0 -7px 7px var(--text-color),
 }
 
   .text-container {
-    padding-top: var(--space-3xs);
-    width:55ch;
+    width: 70ch;
     max-width: 100%;
+    word-spacing: var(--space-2xs);
   }
 }
 
