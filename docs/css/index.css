@@ -560,19 +560,21 @@ text-shadow: 0 -7px 7px var(--text-color),
   margin-inline: auto;
   width: auto;
   margin-inline: auto;
+  text-wrap: balance;
+  overflow-wrap:normal;
+  word-wrap:break-word;
 }
 
 .text-with-animation{
   margin-inline: auto;
   font-size: var(--step-0);
-  padding-block: var(--space-xs);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-wrap: balance;
   overflow-wrap:normal;
   word-wrap:break-word;
-  letter-spacing: var(--space-xs);
+  letter-spacing: var(--space-3xs);
   /*animation: main-text-animation 4s ease forwards infinite;*/
 }
 
@@ -584,9 +586,8 @@ text-shadow: 0 -7px 7px var(--text-color),
   font-size: var(--step-0);
   text-align: center;
   text-wrap: balance;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  margin-block: var(--space-xs);
+  overflow-wrap:normal;
+  word-wrap:break-word;
   letter-spacing: var(--space-3xs);
 }
 
