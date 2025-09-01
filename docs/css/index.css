@@ -559,6 +559,8 @@ text-shadow: 0 -7px 7px var(--text-color),
   text-align: center;
   padding-top: var(--space-l);
   margin-inline: auto;
+  width: auto;
+  margin-inline: auto;
 }
 
 .text-with-animation{
@@ -716,7 +718,16 @@ text-shadow: 0 -7px 7px var(--text-color),
   }
 }
   .curve-container {
-   padding-block: var(--space-2xs);
+   padding-top: var(--space-3xs);
+  }
+
+  .text-container {
+    padding-top: var(--space-3xs);
+    width: fit-content;
+  }
+
+  .large-button {
+    padding-top: var(--space-3xs);
   }
 }
 
