@@ -583,7 +583,7 @@ text-shadow: 0 -7px 7px var(--text-color),
 .text-with-animation-3,
 .text-with-animation-4,
 .text-with-animation-5 {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   text-align: center;
   text-wrap: balance;
   overflow-wrap:normal;
@@ -717,17 +717,11 @@ text-shadow: 0 -7px 7px var(--text-color),
     content: "";
   }
 }
-  .curve-container {
-   padding-top: var(--space-3xs);
-  }
 
   .text-container {
     padding-top: var(--space-3xs);
-    width: fit-content;
-  }
-
-  .large-button {
-    padding-top: var(--space-3xs);
+    width: 100%;
+    max-width: 95%;
   }
 }
 
