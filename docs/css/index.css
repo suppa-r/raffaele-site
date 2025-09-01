@@ -222,9 +222,6 @@ header {
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
-  /*text-wrap: balance;
-	overflow-wrap: break-word;
-	word-wrap: break-word;*/
 }
 
 .color-picker {
@@ -283,7 +280,7 @@ label:has(+ input:checked) {
   gap: var(--space-2xl);
   font-size: var(--step-1);
   color: var(--text-color);
-  padding-block: var(--space-xl);
+  padding-block: var(--space-l);
 }
 
 .content {
@@ -321,9 +318,12 @@ label:has(+ input:checked) {
 	box-sizing: border-box;
 	color: #ffffff90;
 	  box-sizing: border-box;
-  text-shadow: 0 0 7px var(--text-color),
-    0 0 10px var(--text-color),
-    0 0 21px var(--text-color);
+text-shadow: 0 -7px 7px var(--text-color),
+             0 -10px 10px var(--text-color),
+             0 -21px 21px var(--text-color),
+             0 7px 7px var(--text-color),
+             0 10px 10px var(--text-color),
+             0 21px 21px var(--text-color);
 }
 
 .content-1 {
@@ -361,9 +361,13 @@ label:has(+ input:checked) {
 	box-sizing: border-box;
 	color: #ffffff90;
   box-sizing: border-box;
-  text-shadow: 0 0 7px var(--text-color),
-    0 0 10px var(--text-color),
-    0 0 21px var(--text-color);
+    text-shadow: 0 -7px 7px var(--text-color),
+               0 -10px 10px var(--text-color),
+               0 -21px 21px var(--text-color),
+               0 7px 7px var(--text-color),
+               0 10px 10px var(--text-color),
+               0 21px 21px var(--text-color);
+
 }
 
 .up:before,
@@ -676,28 +680,14 @@ label:has(+ input:checked) {
   transform: scale(1.4);
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-}
-
 .title-1 {
   word-spacing: var(--space-2xs);
   margin-inline: auto;
 }
 
-.author {
-  font-size: var(--step--1);
-  margin-inline: auto;
-  padding-bottom: var(--space-xs);
-}
-
 @container (max-width: 500px) {
   .title {
-    padding-top: var(--space-xl);
+    padding-top: var(--space-m);
   }
 
   .color-picker {
@@ -729,29 +719,6 @@ footer {
    padding-block: var(--space-2xs);
   }
 }
-
-/* @keyframes main-text-animation-mobile {
-  0% {
-    letter-spacing: 1em;
-    word-spacing: 2em;
-    opacity: 0;
-  }
-
-  60% {
-    opacity: 1;
-  }
-
-  100% {
-    letter-spacing: 2px;
-    word-spacing: .5vw;
-    opacity: 1;
-  }
-}
-
-.large-button {
-  padding-bottom: var(--space-2xl);
-}
-}*/
 
 @media (prefers-reduced-motion: reduce) {
   .content div,
