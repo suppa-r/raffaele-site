@@ -733,11 +733,13 @@ footer {
     padding-top: var(--space-xs);
   }
 
-  .text-with-animation {
-    animation: main-text-animation-mobile 4s ease forwards infinite;
+  .text-with-animation{
+    font-size: var(--step--1);
+    padding-block: var(--space-2xs);
+    /*animation: main-text-animation-mobile 4s ease forwards infinite;*/
   }
 
-@keyframes main-text-animation-mobile {
+  @keyframes main-text-animation-mobile {
   0% {
     letter-spacing: 1em;
     word-spacing: 2em;
