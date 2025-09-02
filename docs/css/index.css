@@ -273,6 +273,23 @@ label:has(+ input:checked) {
 
 /*-------------curvature-----------------*/
 
+
+.curve-container,
+.text-container,
+.text-with-animation,
+.text-with-animation-1,
+.text-with-animation-2,
+.text-with-animation-3,
+.text-with-animation-4,
+.text-with-animation-5,
+.text-with-animation-6,
+.large-button {
+  width: 100dvw;
+  max-width: 100dvw;
+  box-sizing: border-box;
+}
+
+
 .curve-container {
   display: flex;
   flex-direction: column;
@@ -659,21 +676,7 @@ label:has(+ input:checked) {
 
 @container (max-width: 500px) {
 
-.title,
-.curve-container,
-.text-container,
-.text-with-animation,
-.text-with-animation-1,
-.text-with-animation-2,
-.text-with-animation-3,
-.text-with-animation-4,
-.text-with-animation-5,
-.text-with-animation-6,
-.large-button {
-  width: 100vw;
-  max-width: 100vw;
-  box-sizing: border-box;
-}
+
 
 .title {
     padding-top: var(--space-xl);
