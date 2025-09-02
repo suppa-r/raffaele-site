@@ -286,6 +286,7 @@ label:has(+ input:checked) {
 .large-button {
   width: 100dvw;
   max-width: 100dvw;
+  padding: 0 var(--space-3xs);
   box-sizing: border-box;
 }
 
