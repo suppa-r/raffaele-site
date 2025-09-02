@@ -202,8 +202,7 @@ body>* {
   margin-inline: auto;
   /* Allow them to be sized based on their content */
   /* Center content within the body */
-  padding-inline: var(--space-3xs);
-  letter-spacing: var(--space-3xs);
+  padding: 0 var(--space-3xs);
   word-spacing: var(--space-3xs);
   /*text-wrap: balance;
   overflow-wrap:normal;
@@ -211,7 +210,8 @@ body>* {
 }
 
 .title {
-  padding: var(--space-3xs);
+  padding: 0 var(--space-3xs);
+  margin-bottom: var(--space-xs);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
@@ -223,7 +223,7 @@ body>* {
   top: var(--space-xs);
   gap: var(--space-3xs);
   view-transition-name: match-element;
-  padding: var(--space-3xs);
+  padding: 0 var(--space-3xs);
 }
 
 .color-picker>fieldset {
@@ -658,22 +658,17 @@ label:has(+ input:checked) {
 */
 
 .title {
-  padding: 0 var(--space-3xs);
+  padding: var(--space-7xl) var(--space-3xs);
   font-size: var(--step--1);
   text-align: center;
   margin-bottom: var(--space-xs);
   margin-inline: auto;
 }
-
 .color-picker {
-  position: static;
-  left: auto;
-  top: auto;
-  transform: none;
+  position: absolute;
   gap: var(--space-3xs);
   view-transition-name: match-element;
   padding: 0 var(--space-3xs);
-  margin-inline: auto;
 }
 
 .text-with-animation,
