@@ -647,23 +647,33 @@ label:has(+ input:checked) {
 }
 
 @container (max-width: 500px) {
- .title {
-  margin-top: var(--space-4xl);
+/*.mobile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100vw;
+  margin: 0 auto;
+  padding-top: var(--space-4xl);
+*/
+
+.title {
   padding: 0 var(--space-3xs);
   font-size: var(--step--1);
   text-align: center;
+  margin-bottom: var(--space-xs);
   margin-inline: auto;
 }
 
-
 .color-picker {
-  position: absolute;
-  left: 50%;
-  top: var(--space-2xs);
-  transform: translateX(-50%);
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
   gap: var(--space-3xs);
   view-transition-name: match-element;
   padding: 0 var(--space-3xs);
+  margin-inline: auto;
 }
 
 .text-with-animation,
