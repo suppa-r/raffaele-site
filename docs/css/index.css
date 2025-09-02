@@ -648,31 +648,42 @@ label:has(+ input:checked) {
 
 @container (max-width: 500px) {
  .title {
-  padding-top: var(--space-2xl);
+  margin-top: var(--space-2xl);
   padding: 0 var(--space-3xs);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
 }
 
+
 .color-picker {
   position: absolute;
-  right: var(--space-8xl);
+  left: 50%;
   top: var(--space-2xs);
+  transform: translateX(-50%);
   gap: var(--space-3xs);
   view-transition-name: match-element;
   padding: var(--space-3xs);
 }
+
+.text-with-animation,
+.text-with-animation-1,
+.text-with-animation-2,
+.text-with-animation-3,
+.text-with-animation-4,
+.text-with-animation-5,
+.text-with-animation-6 {
+  display: inline-block;
+  margin-inline: 0;
+  letter-spacing: var(--space-3xs);
+  word-spacing: var(--space-3xs);
+  white-space: nowrap;
+}
 }
 
-/*@container (max-width: 500px) {
 
-.title {
-    padding-top: var(--space-2xl);
-    padding: 0 var(--space-3xs);
-  }
 
-  .color-picker {
+/*  .color-picker {
     right: 50%;
     transform: translateX(50%);
     view-transition-name: match-element;
