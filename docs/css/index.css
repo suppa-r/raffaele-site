@@ -193,9 +193,6 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
-  margin-inline: auto;
-  padding-inline: var(--space-2xs);
-  letter-spacing: var(--space-3xs);
   overflow: hidden;
 }
 
@@ -205,17 +202,16 @@ body>* {
   margin-inline: auto;
   /* Allow them to be sized based on their content */
   /* Center content within the body */
-
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
+  padding-inline: var(--space-3xs);
+  letter-spacing: var(--space-3xs);
+  word-spacing: var(--space-3xs);
+  text-wrap: balance;
+  overflow-wrap:normal;
+  word-wrap:break-word;
 }
 
 .title {
-  padding: 0 var(--space-3xs);
+  padding: var(--space-s);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
@@ -223,10 +219,11 @@ header {
 
 .color-picker {
   position: absolute;
-  right: var(--space-2xs);
-  top: var(--space-3xs);
-  gap: var(--space-s);
+  right: var(--space-8xl);
+  top: var(--space-xs);
+  gap: var(--space-3xs);
   view-transition-name: match-element;
+  padding: var(--space-3xs);
 }
 
 .color-picker>fieldset {
@@ -249,7 +246,7 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 var(--space-xs);
+  padding: 0 var(--space-2xs);
 
   &::before {
     position: absolute;
@@ -271,7 +268,6 @@ label:has(+ input:checked) {
 
 /*-------------curvature-----------------*/
 
-
 .curve-container,
 .text-container,
 .text-with-animation,
@@ -285,10 +281,7 @@ label:has(+ input:checked) {
   width: 100dvw;
   max-width: 100dvw;
   margin-inline: auto;
-  padding: 0 var(--space-3xs);
-  box-sizing: border-box;
 }
-
 
 .curve-container {
   display: flex;
@@ -619,16 +612,15 @@ label:has(+ input:checked) {
 
 .large-button {
   padding: 0 var(--space-xs);
-  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(29, 28, 28));
+  background-color: color-mix(in srgb, var(--base-color) 80%, #fff 8%);
   color: var(--text-color);
   width: var(--space-10xl);
-  height: var(--space-5xl);
+  height: var(--space-6xl);
+  padding: var(--space-l);
   margin-inline: auto;
-  z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   border-radius: 50%;
   text-decoration: none;
 }
@@ -648,7 +640,6 @@ label:has(+ input:checked) {
 .large-button span {
   text-align: center;
   font-size: var(--step-0);
-  color: var(--text-color);
 }
 
 .large-button:hover {
@@ -675,6 +666,15 @@ label:has(+ input:checked) {
 }
 
 @container (max-width: 500px) {
+  .color-picker {
+    right: 0;
+    top: 0;
+    padding: var(--space-3xs);
+    gap: var(--space-2xs);
+  }
+}
+
+/*@container (max-width: 500px) {
 
 .title {
     padding-top: var(--space-2xl);
@@ -723,13 +723,11 @@ label:has(+ input:checked) {
   .text-with-animation-4,
   .text-with-animation-5,
   .text-with-animation-6 {
-    font-size: var(--step--1);
-    padding: 0 var(--space-3xs);
     margin-inline: auto;
     letter-spacing: var(--space-3xs);
     word-spacing: var(--space-3xs);
 }
-}
+}*/
 
 @media (prefers-reduced-motion: reduce) {
   .content div,
