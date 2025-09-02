@@ -648,7 +648,7 @@ label:has(+ input:checked) {
 
 @container (max-width: 500px) {
  .title {
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-4xl);
   padding: 0 var(--space-3xs);
   font-size: var(--step--1);
   text-align: center;
@@ -663,7 +663,7 @@ label:has(+ input:checked) {
   transform: translateX(-50%);
   gap: var(--space-3xs);
   view-transition-name: match-element;
-  padding: var(--space-3xs);
+  padding: 0 var(--space-3xs);
 }
 
 .text-with-animation,
@@ -673,10 +673,8 @@ label:has(+ input:checked) {
 .text-with-animation-4,
 .text-with-animation-5,
 .text-with-animation-6 {
-  display: inline-block;
-  margin-inline: 0;
-  letter-spacing: var(--space-3xs);
-  word-spacing: var(--space-2xs);
+  margin-inline: auto;
+  word-spacing: var(--space-3xs);
   white-space: nowrap;
 }
 }
