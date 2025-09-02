@@ -193,7 +193,6 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
-  max-width: 100%;
   margin-inline: auto;
   padding-inline: var(--space-2xs);
   word-spacing: var(--space-3xs);
@@ -213,10 +212,8 @@ body>* {
 
 header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   text-align: center;
-  padding: 0 var(--space-3xs);
 }
 
 .title {
@@ -282,15 +279,13 @@ label:has(+ input:checked) {
   gap: var(--space-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  padding-block: var(--space-l);
+  padding-block: var(--space-m);
+  margin-inline: auto;
 }
 
 .content {
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	position: relative;
-	width:100%;
 }
 
 .content div {
@@ -304,10 +299,11 @@ label:has(+ input:checked) {
 	0%,
 	100% {
 		opacity: 0;
-		transform: scale(0.8);
+		transform: scale(0.6);
 	}
 	20%,
-	80% {
+	80%,
+	100% {
 		opacity: 1;
 		transform: scale(1);
 	}
@@ -318,7 +314,7 @@ label:has(+ input:checked) {
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	color: #ffffff90;
+	color: var(--text-color);
 	box-sizing: border-box;
   text-shadow: 0 -7px 7px var(--text-color),
              0 -10px 10px var(--text-color),
@@ -330,10 +326,7 @@ label:has(+ input:checked) {
 
 .content-1 {
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	position: relative;
-	width:100%;
 }
 
 .content-1 div {
@@ -347,10 +340,11 @@ label:has(+ input:checked) {
 	0%,
 	100% {
 		opacity: 0;
-		transform: scale(0.8);
+		transform: scale(0.6);
 	}
 	20%,
-	80% {
+	80%,
+	100% {
 		opacity: 1;
 		transform: scale(1);
 	}
@@ -361,15 +355,14 @@ label:has(+ input:checked) {
 	position: relative;
 	text-align: center;
 	box-sizing: border-box;
-	color: #ffffff90;
-  box-sizing: border-box;
+	color: var(--text-color);
+	box-sizing: border-box;
   text-shadow: 0 -7px 7px var(--text-color),
-               0 -10px 10px var(--text-color),
-               0 -21px 21px var(--text-color),
-               0 7px 7px var(--text-color),
-               0 10px 10px var(--text-color),
-               0 21px 21px var(--text-color);
-
+             0 -10px 10px var(--text-color),
+             0 -21px 21px var(--text-color),
+             0 7px 7px var(--text-color),
+             0 10px 10px var(--text-color),
+             0 21px 21px var(--text-color);
 }
 
 .up:before,
@@ -558,13 +551,13 @@ label:has(+ input:checked) {
 
 .text-container {
   text-align: center;
-  padding-top: var(--space-xs);
   margin-inline: auto;
-  width: auto;
-  margin-inline: auto;
+  margin-top: var(--space-l);
+  padding: 0 var(--space-3xs);
   text-wrap: balance;
-  overflow-wrap:normal;
-  word-wrap:break-word;
+  overflow-wrap: normal;
+  word-wrap: break-word;
+  letter-spacing: var(--space-3xs);
 }
 
 .text-with-animation{
@@ -587,6 +580,7 @@ label:has(+ input:checked) {
 .text-with-animation-5 {
   font-size: var(--step--1);
   text-align: center;
+  margin-inline: auto;
   text-wrap: balance;
   overflow-wrap:normal;
   word-wrap:break-word;
@@ -606,40 +600,22 @@ label:has(+ input:checked) {
   word-spacing: var(--space-3xs);
 }
 
-@keyframes main-text-animation {
-  0% {
-    letter-spacing: 2em;
-    word-spacing: 4em;
-    opacity: 0;
-  }
-
-  60% {
-    opacity: 1;
-  }
-
-  100% {
-    letter-spacing: 10px;
-    word-spacing: 1vw;
-    opacity: 1;
-  }
-}
-
 .large-button {
-  padding: var(--space-xl);
-  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
+  padding: 0 var(--space-xs);
+  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(29, 28, 28));
   color: var(--text-color);
   width: var(--space-10xl);
-  height: var(--space-6xl);
+  height: var(--space-5xl);
+  margin-inline: auto;
   z-index: 1000;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0;
   border-radius: 50%;
   text-decoration: none;
-  flex-direction: column;
 }
-
+ 
 .large-button svg {
   fill: var(--text-color);
   width: var(--space-xl);
@@ -656,7 +632,6 @@ label:has(+ input:checked) {
   text-align: center;
   font-size: var(--step-0);
   color: var(--text-color);
-  width: fit-content;
 }
 
 .large-button:hover {
@@ -685,7 +660,8 @@ label:has(+ input:checked) {
 @container (max-width: 500px) {
 
   .title {
-    padding-top: var(--space-m);
+    padding-top: var(--space-xl);
+    padding: 0 var(--space-3xs);
   }
 
   .color-picker {
@@ -715,14 +691,13 @@ label:has(+ input:checked) {
 }
 
   .curve-container {
-    padding: var(--space-m);
+    padding: 0 var(--space-3xs);
   }
 
   .text-container {
+    padding: 0 var(--space-3xs);
     font-size: var(--step--1);
-    padding-top: var(--space-xs);
-    padding-bottom: var(--space-m);
-  } 
+  }
 
   .text-with-animation {
     font-size: var(--step--1);
@@ -739,9 +714,7 @@ label:has(+ input:checked) {
   }
 
   .large-button {
-    width: var(--space-8xl);
-    height: var(--space-5xl);
-    padding: var(--space-3xs);
+    padding: 0 var(--space-3xs);
   }
 
   .text-with-animation-6 {
