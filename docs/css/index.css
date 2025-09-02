@@ -44,6 +44,8 @@
   --space-8xl: clamp(12.5rem, 12.5rem + 2.5cqi, 15rem);
   --space-9xl: clamp(15rem, 15rem + 2.5cqi, 18rem);
   --space-10xl: clamp(18rem, 18rem + 2.5cqi, 21.5rem);
+  --space-11xl: clamp(21.5rem, 21.5rem + 2.5cqi, 25rem);
+  --space-12xl: clamp(25rem, 25rem + 2.5cqi, 30rem);
 
   --pt-serif-regular: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
@@ -193,6 +195,7 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
+  letter-spacing: var(--space-3xs);
   overflow: hidden;
 }
 
@@ -593,17 +596,19 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  padding: 0 var(--space-xs);
   background-color: color-mix(in srgb, var(--base-color) 80%, #fff 8%);
   color: var(--text-color);
-  width: var(--space-10xl);
-  height: var(--space-6xl);
-  padding: var(--space-l);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 50%;
   text-decoration: none;
+  position: relative;
+  letter-spacing: var(--space-3xs);
+  width: var(--space-12xl);
+  height: var(--space-8xl);
+  margin-inline: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
  
 .large-button svg {
@@ -611,6 +616,10 @@ label:has(+ input:checked) {
   width: var(--space-xl);
   height: var(--space-xl);
   transition: transform 0.3s;
+  margin-inline: auto;
+  margin-top: 0;
+  /* Remove or reduce padding if SVG is not visible */
+  padding: 0;
 }
 
 .large-button:hover>svg,
@@ -621,6 +630,7 @@ label:has(+ input:checked) {
 .large-button span {
   text-align: center;
   font-size: var(--step-0);
+  margin-bottom: var(--space-xs);
 }
 
 .large-button:hover {
@@ -647,25 +657,18 @@ label:has(+ input:checked) {
 }
 
 @container (max-width: 500px) {
-/*.mobile-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100vw;
-  margin: 0 auto;
-  padding-top: var(--space-4xl);
-*/
 
-.title {
-  padding: var(--space-7xl) var(--space-3xs);
+  .title {
+  padding: 0 var(--space-3xs);
   font-size: var(--step--1);
   text-align: center;
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-xl);
   margin-inline: auto;
 }
 .color-picker {
   position: absolute;
+  right: 50%;
+  transform: translateX(50%);
   gap: var(--space-3xs);
   view-transition-name: match-element;
   padding: 0 var(--space-3xs);
