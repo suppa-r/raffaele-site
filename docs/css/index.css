@@ -28,6 +28,9 @@
   --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
 
+
+  --space-5xs: clamp(0rem, 0rem + 0cqi, 0.078125rem);
+  --space-4xs: clamp(0.125rem, 0.1168rem + 0.0411cqi, 0.15625rem);
   --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
   --space-2xs: clamp(0.5625rem, 0.5461rem + 0.0822cqi, 0.625rem);
   --space-xs: clamp(0.8125rem, 0.7796rem + 0.1645cqi, 0.9375rem);
@@ -196,6 +199,8 @@ body {
   color: var(--text-color);
   background-color: var(--base-color);
   letter-spacing: var(--space-3xs);
+  margin-inline: auto;
+  padding-inline: 0 var(--space-5xs);
   overflow: hidden;
 }
 
@@ -205,28 +210,26 @@ body>* {
   margin-inline: auto;
   /* Allow them to be sized based on their content */
   /* Center content within the body */
-  padding: 0 var(--space-3xs);
+  padding: 0 var(--space-5xs);
   word-spacing: var(--space-3xs);
-  /*text-wrap: balance;
-  overflow-wrap:normal;
-  word-wrap:break-word;*/
 }
 
 .title {
-  padding: 0 var(--space-3xs);
-  margin-block: var(--space-xs);
+  padding: 0 var(--space-5xs);
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
+  letter-spacing: var(--space-5xs);
 }
 
 .color-picker {
-  position: absolute;
-  right: var(--space-8xl);
-  top: var(--space-xs);
-  gap: var(--space-3xs);
+  position:absolute;
+  left: auto;
+  right:15%;
+  top: var(--space-2xs);
+  gap: var(--space-5xs);
   view-transition-name: match-element;
-  padding: 0 var(--space-3xs);
+  padding: 0 var(--space-5xs);
 }
 
 .color-picker>fieldset {
@@ -281,18 +284,20 @@ label:has(+ input:checked) {
 .text-with-animation-5,
 .text-with-animation-6,
 .large-button {
-  /*width: 100dvw;
-  max-width: 100dvw;*/
-  margin-inline: auto;
+  width: 100dvw;
+  max-width: 100dvw;
 }
 
 .curve-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
   padding-block: var(--space-m);
+  padding-inline: var(--space-5xs);
+  margin-inline: auto;
 }
 
 .content {
@@ -562,9 +567,13 @@ label:has(+ input:checked) {
 }
 
 .text-container {
-  text-align: center;
-  margin-top: var(--space-l);
-  padding: 0 var(--space-3xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+  padding-block: var(--space-m);
+  padding-inline: var(--space-5xs);
+  margin-inline: auto;
   }
 
 .text-with-animation{
@@ -658,18 +667,14 @@ label:has(+ input:checked) {
 
 @container (max-width: 500px) {
 
-  .title {
-  padding: 0 var(--space-3xs);
-  font-size: var(--step--1);
-  text-align: center;
-  margin-top: var(--space-xl);
-  margin-inline: auto;
+.title {
+margin-top: var(--space-5xl);
 }
 
+
 .color-picker {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position:relative;
+  right: var(--space-4xl);
   gap: var(--space-3xs);
   view-transition-name: match-element;
   padding: 0 var(--space-3xs);
