@@ -4,7 +4,7 @@ const themeRadios = document.querySelectorAll('[name="theme"]');
 function getSystemTheme() {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
   if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
-  return 'light'; // fallback
+  return 'dark'; // fallback
 }
 
 function applyTheme(theme) {

@@ -15,8 +15,8 @@
     rel="stylesheet">
   <link rel="icon" href="/docs/images/favicon-32x32.png" />
   <link rel="stylesheet" href="/docs/css/reset.css" />
-  <link rel="stylesheet" href="/docs/css/index-lines.css" />
   <link rel="stylesheet" href="/docs/css/index.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script type="text/javascript" src="/docs/js/schemes.js" defer></script>
   <script type="text/javascript" src="/docs/js/tabs.js" defer></script>
 </head>
@@ -28,44 +28,54 @@
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
-     <div class="line"></div>
-    </div>
-  <!-- <header> -->
+    <div class="line"></div>
+  </div>
+  <header>
     <p class="title">a Coal did emerge the other side a Diamond<br>and my 15 minutes ain't over yet</p>
-    <form class="color-picker">
-      <fieldset>
-        <label>
-          <input type="radio" name="theme" value="system" id="system" checked>
-          <svg alt="system settings" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            viewBox="0 0 16 16">
-            <path
-              d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25" />
-          </svg>
-         <span>system</span>
-        </label>
-        <label>
-          <input type="radio" name="theme" value="light" id="light">
-          <svg alt="light mode" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            viewBox="0 0 16 16">
-            <path
-              d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-          </svg>
-          <span>light</span>
-        </label>
-        <label>
-          <input type="radio" name="theme" value="dark" id="dark">
-          <svg alt="dark mode" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            viewBox="0 0 16 16">
-            <path
-              d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
-          </svg>
-          <span>dark</span>
-        </label>
-      </fieldset>
-    </form>
-  <!-- </header>-->
-
-<div class="curve-container">
+    <div class="container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li class="nav-link services">
+            <a href="#">Color Scheme
+              <span class="material-icons dropdown-icon">
+                arrow_drop_down
+              </span>
+            </a>
+            <ul class="drop-down">
+              <label>
+                <input type="radio" name="theme" value="system" id="system" checked>
+                <svg alt="system settings" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25" />
+                </svg>
+                <span>system</span>
+              </label>
+              <label>
+                <input type="radio" name="theme" value="light" id="light">
+                <svg alt="light mode" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                </svg>
+                <span>light</span>
+              </label>
+              <label>
+                <input type="radio" name="theme" value="dark" id="dark">
+                <svg alt="dark mode" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
+                </svg>
+                <span>dark</span>
+              </label>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="curve-container">
     <div class="content">
       <div class="up">
         <span class="up-0">r</span>
@@ -105,9 +115,9 @@
         <span class="down-3-7">a</span>
       </div>
     </div>
-    </div>
-    
-<div class="text-container">
+  </div>
+
+  <div class="text-container">
     <div class="text-with-animation">
       you're in!
     </div>
@@ -121,20 +131,21 @@
     <div class="text-with-animation-3">
       St Pete said:&nbsp;&nbsp;sing a song and I'll let you through these Gates!
     </div>
-   <div class="text-with-animation-4">
-    I said:&nbsp;&nbsp;AMEN!
+    <div class="text-with-animation-4">
+      I said:&nbsp;&nbsp;AMEN!
     </div>
-     <div class="text-with-animation-5">
-    and asked&nbsp;Sir, Can you play it again?
+    <div class="text-with-animation-5">
+      and asked&nbsp;Sir, Can you play it again?
     </div>
     <div class="text-with-animation-6">
-      enjoy my 15 minutes<br> walk through the moments with me
-    </div>
+      enjoy my 15 minutes<br> walk through the moments</div>
   </div>
-  <a href="intro.html" class="large-button"><span>go on, click the sneaker<br>You can get off anywhere<br>let the driver know</span>
-     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-	<path fill="currentColor" d="M17.1 14.275L21.575 9.8l.725.725q.3.3.3.7t-.3.7L19.225 15q-.3.3-.712.288t-.713-.313zM1 17.35q0-.6.338-1.1t.912-.725q.525-.2 1-.475t.95-.625l1.45 1.45q.125.175.338.163t.362-.163q.125-.125.125-.337t-.125-.388l-1.375-1.375l.388-.387q.187-.188.387-.413L7.1 14.35q.125.175.338.175t.387-.175q.125-.125.125-.337t-.125-.388l-1.375-1.35q.125-.25.263-.512t.237-.563l1.625 1.625Q8.7 13 8.913 13t.387-.175q.125-.125.125-.325t-.125-.375L7.375 10.2l.875-2.425q.075-.2.2-.4t.275-.35l3.65-3.625q.575-.575 1.413-.562t1.412.587l5.65 5.65l-9.75 10.3q-.275.3-.65.463t-.8.162H3q-.825 0-1.412-.587T1 18zm8.625.65l8.425-8.875zM3 18h6.625l8.425-8.875l-4.275-4.275l-3.65 3.625L9.4 10.5l.75.75q.575.6.575 1.438T10.15 14.1l-2.825 2.825q-.6.6-1.425.6t-1.4-.6l-.2-.2q-.325.2-.65.35T3 17.35z" />
-</svg>
+  <a href="intro.html" class="large-button"><span>go on, click the sneaker<br>You can get off anywhere<br>let the driver
+      know</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M17.1 14.275L21.575 9.8l.725.725q.3.3.3.7t-.3.7L19.225 15q-.3.3-.712.288t-.713-.313zM1 17.35q0-.6.338-1.1t.912-.725q.525-.2 1-.475t.95-.625l1.45 1.45q.125.175.338.163t.362-.163q.125-.125.125-.337t-.125-.388l-1.375-1.375l.388-.387q.187-.188.387-.413L7.1 14.35q.125.175.338.175t.387-.175q.125-.125.125-.337t-.125-.388l-1.375-1.35q.125-.25.263-.512t.237-.563l1.625 1.625Q8.7 13 8.913 13t.387-.175q.125-.125.125-.325t-.125-.375L7.375 10.2l.875-2.425q.075-.2.2-.4t.275-.35l3.65-3.625q.575-.575 1.413-.562t1.412.587l5.65 5.65l-9.75 10.3q-.275.3-.65.463t-.8.162H3q-.825 0-1.412-.587T1 18zm8.625.65l8.425-8.875zM3 18h6.625l8.425-8.875l-4.275-4.275l-3.65 3.625L9.4 10.5l.75.75q.575.6.575 1.438T10.15 14.1l-2.825 2.825q-.6.6-1.425.6t-1.4-.6l-.2-.2q-.325.2-.65.35T3 17.35z" />
+    </svg>
   </a>
 </body>
 

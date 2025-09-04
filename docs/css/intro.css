@@ -34,6 +34,8 @@
   --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
 
+  --space-5xs: clamp(0.125rem, 0.116rem + 0.0205cqi, 0.1875rem);
+  --space-4xs: clamp(0.1875rem, 0.175rem + 0.0411cqi, 0.25rem);
   --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
   --space-2xs: clamp(0.5625rem, 0.5461rem + 0.0822cqi, 0.625rem);
   --space-xs: clamp(0.8125rem, 0.7796rem + 0.1645cqi, 0.9375rem);
