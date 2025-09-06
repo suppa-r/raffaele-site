@@ -231,26 +231,29 @@ header {
   }
 
   .container {
-     display: flex;
+    display: flex;
     position: fixed;
     top: 0;
-  right: 0;
-    font-size: var(--step-0);
-    background: #d8d8d8;
+    right: 0;
+    font-size: var(--step--1);
+    align-items: center;
+    background-color:var(--base-color);
+    color: var(--text-color);
     /* Remove height: 100vh if you only want it at the top */
   }
 
 .navbar {
     margin: auto;
-    padding: 0.5rem 1.5rem;
-    background: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: var(--space-2xs);
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: var(--space-m);
+    /* box-shadow: 0 4px 12px rgba(180, 177, 177, 0.1); */
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: var(--space-s);
 }
 
 .nav-link, .drop-down li {
@@ -263,15 +266,15 @@ header {
 
 a {
     text-decoration: none;
-    color: currentColor;
+    color: var(--text-color);
 }
 
 .drop-down {
     position: absolute;
     padding: 0.5rem 0;
     margin: 0.5rem -0.5rem;
-    background: antiquewhite;
-    color: black;
+    background-color: transparent;
+    color: var(--base-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
     font-size: 12px;
@@ -279,8 +282,8 @@ a {
 }
 
 .nav-link:hover {
-    background-color: black;
-    color: #fff;
+    background-color:var(--base-color);
+    color: var(--text-color);
     border-radius: 0.5rem;
 }
 
@@ -294,9 +297,9 @@ a {
 }
 
 .services .dropdown-icon {
-    font-size: 18px;
+    font-size: var(--step-3);
     position: relative;
-    right: -5px;
+    right: var(--space-3xs);
     transform: rotate(0deg);
     transition: 0.3s ease-in-out all;
 }
@@ -306,33 +309,9 @@ a {
 }
 
 .drop-down li:hover {
-    background: black;
-    color: #fff;
+    background: var(--base-color);
+    color: var(--text-color);
     border-radius: 0.5rem;
-}
-
-.color-picker {
-  position: absolute;
-  right: var(--space-s);
-  gap: var(--space-s);
-  background-color: var(--base-color);
-  color: var(--text-color);
-  border-radius: var(--space-xs);
-  box-shadow: 0 20px 50px 0 rgba(0, 0, 0, .1);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-5px);
-  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-  view-transition-name: match-element;
-}
-
-.color-picker>fieldset {
-  display: flex;
-  flex-direction: column;
-  border: 0;
-  background: transparent;
-  row-gap: var(--space-s);
-  margin-right: var(--space-s);
 }
 
 input[type="radio"] {
@@ -350,8 +329,7 @@ label {
   align-items: center;
   padding: var(--space-xs);
   font-size: var(--step--1);
-  position: relative;
-  gap: var(--space-m);
+  gap: var(--space-2xs);
 
   &::before {
     position: absolute;
@@ -369,6 +347,23 @@ label:has(+ input:checked) {
   &::before {
     content: "";
   }
+}
+
+label > span {
+  width: auto;
+  text-align: center;
+  font-size: var(--step--1);
+  padding: 0 var(--space-2xs);
+  white-space: nowrap;
+  color: var(--text-color);
+}
+
+label > svg {
+  width: var(--space-m);
+  height: var(--space-m);
+  padding: 0 var(--space-3xs);
+  background-color: var(--base-color);
+  fill: var(--text-color);
 }
 
 /*-------------curvature-----------------*/
@@ -394,7 +389,7 @@ label:has(+ input:checked) {
   gap: var(--space-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  padding-block: var(--space-m);
+  margin-block: var(--space-3xl);
   padding-inline: var(--space-5xs);
   margin-inline: auto;
 }
@@ -704,7 +699,8 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  background-color: color-mix(in srgb, var(--base-color) 80%, #fff 8%);
+  /* background-color: color-mix(in srgb, var(--base-color) 80%, #fff 8%);*/
+  background-color: var(--base-color);
   color: var(--text-color);
   display: flex;
   flex-direction: column;
