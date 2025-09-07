@@ -198,11 +198,7 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
-  color: var(--text-color);
-  letter-spacing: var(--space-3xs);
-  margin-inline: auto;
-  padding-inline: 0 var(--space-5xs);
-  overflow: hidden;
+  letter-spacing: var(--space-5xs);
 }
 
 body>* {
@@ -215,74 +211,78 @@ body>* {
   word-spacing: var(--space-3xs);
 }
 
-header {
+.wrapper {
   margin-inline: auto;
-  width: 100dvw;
-  max-width: 100dvw;
+  padding-inline: 0 var(--space-4xs);
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-inline: auto;
 }
 
 .title {
   font-size: var(--step--1);
   color: var(--text-color);
-  padding-top: var(--space-2xs);
+  padding-top: var(--space-3xs);
   text-align: center;
   margin-inline: auto;
   }
 
-  .container {
-    display: flex;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: var(--step--1);
-    align-items: center;
-    background-color:var(--base-color);
-    color: var(--text-color);
-    /* Remove height: 100vh if you only want it at the top */
-  }
-
+.container {
+  position: fixed;
+  top: -3%; 
+  right: 0;
+  margin-inline: auto;
+  font-size: var(--step--1);
+  background: var(--base-color);
+  color: var(--text-color);
+  z-index: 1000;
+}
 .navbar {
-    padding:0 var(--space-2xs);
-    background-color: transparent;
+    margin: auto;
+    padding: 0.5rem 1.5rem;
+    background: var(--base-color);
     color: var(--text-color);
-    border-radius: var(--space-m);
-    /* box-shadow: 0 4px 12px rgba(180, 177, 177, 0.1); */
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
     display: flex;
-    gap: var(--space-s);
+    gap: var(--space-xs);
 }
 
 .nav-link, .drop-down li {
     list-style: none;
-    height: 100%;
-    padding: 0.5rem 1rem;
-    font-weight: 600;
-    cursor: pointer;
+   padding: var(--space-xs) var(--space-s);
+   cursor: pointer;
 }
 
-a {
+nav a {
     text-decoration: none;
-    color: var(--text-color);
+    color:var(--text-color);
 }
 
 .drop-down {
     position: absolute;
     padding: 0.5rem 0;
     margin: 0.5rem -0.5rem;
-    background-color: transparent;
-    color: var(--base-color);
+    background: var(--base-color);
+    color: var(--text-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
-    font-size: 12px;
+    border-radius:var(--space-s);
+    font-size:var(--step-0);
     display: none;
 }
 
 .nav-link:hover {
     background-color:var(--base-color);
-    color: var(--text-color);
-    border-radius: 0.5rem;
+    color:var(--text-color);
+    border-radius: var(--space-s);
 }
 
 .services:hover .drop-down {
@@ -297,7 +297,7 @@ a {
 .services .dropdown-icon {
     font-size: var(--step-3);
     position: relative;
-    right: var(--space-3xs);
+    right: -5px;
     transform: rotate(0deg);
     transition: 0.3s ease-in-out all;
 }
@@ -309,7 +309,7 @@ a {
 .drop-down li:hover {
     background: var(--base-color);
     color: var(--text-color);
-    border-radius: 0.5rem;
+    border-radius: var(--space-s);
 }
 
 input[type="radio"] {
@@ -327,7 +327,8 @@ label {
   align-items: center;
   padding: var(--space-xs);
   font-size: var(--step--1);
-  gap: var(--space-2xs);
+  position: relative;
+  gap: var(--space-m);
 
   &::before {
     position: absolute;
@@ -347,36 +348,7 @@ label:has(+ input:checked) {
   }
 }
 
-label > span {
-  width: auto;
-  text-align: center;
-  font-size: var(--step--1);
-  padding: 0 var(--space-2xs);
-  white-space: nowrap;
-  color: var(--text-color);
-}
-
-label > svg {
-  width: var(--space-m);
-  height: var(--space-m);
-  padding: 0 var(--space-3xs);
-  background-color: var(--base-color);
-  fill: var(--text-color);
-}
-
 /*-------------curvature-----------------*/
-.text-container,
-.text-with-animation,
-.text-with-animation-1,
-.text-with-animation-2,
-.text-with-animation-3,
-.text-with-animation-4,
-.text-with-animation-5,
-.text-with-animation-6,
-.large-button {
-  width: 100dvw;
-  max-width: 100dvw;
-}
 
 .curve-container {
   display: flex;
@@ -385,16 +357,13 @@ label > svg {
   gap: var(--space-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  padding-block: var(--space-2xl);
-  padding-inline: var(--space-5xs);
+  margin-block: var(--space-3xl);
   margin-inline: auto;
-  z-index: 1000;
 }
 
 .content {
 	display: flex;
 	justify-content: center;
-    color: var(--text-color);
 }
 
 .content div {
@@ -436,7 +405,6 @@ label > svg {
 .content-1 {
 	display: flex;
 	justify-content: center;
-    color: var(--text-color);
 }
 
 .content-1 div {
@@ -659,14 +627,9 @@ label > svg {
 	}
 }
 
-
 .text-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: var(--text-color);
-  padding-block: var(--space-m);
-  padding-inline: var(--space-5xs);
+  margin-top: var(--space-l);
   margin-inline: auto;
   }
 
@@ -676,19 +639,25 @@ label > svg {
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-/*animation: main-text-animation 4s ease forwards infinite;*/
+  margin-inline: auto;
+  white-space: nowrap;
+  word-spacing: var(--space-3xs);
+  letter-spacing: var(--space-3xs);
 }
 
 .text-with-animation-1,
 .text-with-animation-2,
 .text-with-animation-3,
-.text-with-animation-4,
-.text-with-animation-5 {
+.text-with-animation-4 {
   font-size: var(--step--1);
   text-align: center;
+  margin-inline: auto;
+  white-space: nowrap;
+  word-spacing: var(--space-4xs);
+  letter-spacing: var(--space-4xs);
 }
 
-.text-with-animation-6{
+.text-with-animation-5 {
   margin-inline: auto;
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
@@ -696,20 +665,25 @@ label > svg {
   font-style: var(--font-style-regular);
   text-align: center;
   margin-block: var(--space-xs);
+  white-space: nowrap;
+  word-spacing: var(--space-3xs);
+  letter-spacing: var(--space-3xs);
 }
 
 .large-button {
-  /* background-color: color-mix(in srgb, var(--base-color) 80%, #fff 8%);*/
   background-color: var(--base-color);
   color: var(--text-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-decoration: none;
   position: relative;
-  letter-spacing: var(--space-3xs);
+  letter-spacing: var(--space-4xs);
   width: var(--space-12xl);
   height: var(--space-8xl);
+  margin-block: var(--space-xl);
+  font-size: var(--step-0);
   margin-inline: auto;
   border-radius: 50%;
   box-sizing: border-box;
@@ -760,47 +734,78 @@ label > svg {
   transform: scale(1.4);
 }
 
-@container (max-width: 500px) {
-  .container {
-    width: 100vw;
-    left: 0;
-    right: 0;
-    top: 0;
-    position: fixed; /* or absolute if you prefer */
-    font-size: var(--step--2);
-    padding: var(--space-5xs);
-    box-sizing: border-box;
-    z-index: 10;
+@container (max-width: 600px) {
+
+  .wrapper {
+    padding-inline: 0 var(--space-4xs);
+    margin-inline: auto;
   }
 
-  .navbar {
-    padding: var(--space-2xs);
-    background-color: transparent;
-    color: var(--text-color);
-    border-radius: var(--space-m);
-    /* box-shadow: 0 4px 12px rgba(180, 177, 177, 0.1); */
+.container {
+  position: fixed;
+  top: 3%; 
+  right: 0;
+  margin-inline: auto;
+  font-size: var(--step--1);
+  background: var(--base-color);
+  color: var(--text-color);
+  z-index: 1000;
 }
 
-   .nav-links {
+.nav-links {
     display: flex;
     flex-direction: row;
-    gap: var(--space-3xs);
-    background-color: var(--base-color);
+    gap: var(--space-xs);
 }
 
-  .curve-container,
-.text-container,
+.drop-down {
+  display: flex;
+  font-size: var(--step--1);
+  margin: 0 0 -0.5rem -0.5rem;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--space-s);
+}
+
+.curve-container {
+  gap: var(--space-xl);
+  margin-top: var(--space-4xl);
+  margin-inline: auto;
+  padding-inline: var(--space-4xs);
+  }
+
 .text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2,
 .text-with-animation-3,
-.text-with-animation-4,
-.text-with-animation-5,
-.text-with-animation-6 {
+.text-with-animation-4 {
   margin-inline: auto;
   word-spacing: var(--space-4xs);
   white-space: nowrap;
+  padding-inline: var(--space-4xs);
+  letter-spacing: var(--space-4xs);
 }
+
+.text-with-animation-5 {
+  margin-inline: auto;
+  letter-spacing: var(--space-4xs);
+  word-spacing: var(--space-4xs);
+  padding-inline: var(--space-4xs);
+}
+
+.label > span {
+  width: auto;
+  text-align: center;
+  font-size: var(--step--1);
+  padding: 0 var(--space-2xs);
+  white-space: nowrap;
+}
+
+ label:has(+ input:checked) {
+  color: var(--text-color);
+&::before {
+    content: "";
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -818,5 +823,5 @@ label > svg {
   .large-button:focus>svg {
     transform: none;
   }
-}
+}}
 
