@@ -741,30 +741,131 @@ label:has(+ input:checked) {
     margin-inline: auto;
   }
 
+.title {
+  font-size: var(--step--1);
+  padding-top: var(--space-3xl);
+  text-align: center;
+  margin-inline: auto;
+  } 
+
 .container {
   position: fixed;
-  top: 3%; 
-  right: 0;
-  margin-inline: auto;
+  left: 50%;
+  top: -3%;
+  transform: translateX(-50%);
   font-size: var(--step--1);
   background: var(--base-color);
   color: var(--text-color);
   z-index: 1000;
+  margin-inline: auto; /* optional, can be removed */
 }
+.navbar {
+    margin: auto;
+    background: var(--base-color);
+    color: var(--text-color);
+    border-radius: 1rem;
+   }
+
 
 .nav-links {
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-xs);
+   display: flex;
+   gap: var(--space-xs);
+   justify-content: center;
+}
+
+.nav-link, .drop-down li {
+    list-style: none;
+   padding: var(--space-xs) var(--space-s);
+   cursor: pointer;
+}
+
+nav a {
+    text-decoration: none;
+    color:var(--text-color);
 }
 
 .drop-down {
+    position: absolute;
+    padding: 0.5rem 0;
+    margin: 0.5rem -0.5rem;
+    background: var(--base-color);
+    color: var(--text-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius:var(--space-s);
+    font-size:var(--step-0);
+    display: none;
+}
+
+.nav-link:hover {
+    background-color:var(--base-color);
+    color:var(--text-color);
+    border-radius: var(--space-s);
+}
+
+.services:hover .drop-down {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2xs);
+    padding: 0 var(--space-s) 0 0;
+}
+
+.services a {
+    display: flex;
+    align-items: center;
+}
+
+.services .dropdown-icon {
+    font-size: var(--step-3);
+    position: relative;
+    right: -5px;
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out all;
+}
+
+.services:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.drop-down li:hover {
+    background: var(--base-color);
+    color: var(--text-color);
+    border-radius: var(--space-s);
+}
+
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+label {
+  cursor: pointer;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--space-xs);
   font-size: var(--step--1);
-  margin: 0 0 -0.5rem -0.5rem;
-  padding: 0.5rem 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: var(--space-s);
+  position: relative;
+  gap: var(--space-m);
+
+  &::before {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 100%;
+    z-index: 1000;
+    inset: 0px;
+    margin-inline: auto;
+  }
+}
+
+label:has(+ input:checked) {
+  color: var(--text-color);
+
+  &::before {
+    content: "";
+  }
 }
 
 .curve-container {
@@ -824,4 +925,3 @@ label:has(+ input:checked) {
     transform: none;
   }
 }}
-
