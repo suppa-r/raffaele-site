@@ -776,70 +776,74 @@ label:has(+ input:checked) {
   color: var(--text-color);
   z-index: 1000;
   margin-inline: auto; /* optional, can be removed */
-  padding: var(--space-2xs) var(--space-s);
+  padding:0 var(--space-3xs);
 }
 .navbar {
-    margin: auto;
     background: var(--base-color);
     color: var(--text-color);
-    border-radius: 1rem;
-   }
-
-   .nav-links {
-   display: flex;
-   flex-direction: row;
-   gap: var(--space-xs);
-   justify-content: center;
-}
-
-.nav-link, .drop-down li {
-   list-style: none;
-   padding: var(--space-xs) var(--space-s);
-   cursor: pointer;
-}
-
-nav a {
-    text-decoration: none;
-    color:var(--text-color);
-}
-
-.drop-down {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    background: var(--base-color);
-    color: var(--text-color);
-    box-shadow: var(--navbar-shadow);
     border-radius: var(--space-s);
-    font-size: var(--step--1);
-    display: none;
+    padding-inline:0 var(--space-3xs);
+    list-style: none;
 }
+  
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    }
 
-.nav-link:hover {
+    .nav-link:hover {
     background-color:var(--base-color);
     color:var(--text-color);
     border-radius: var(--space-s);
 }
 
+.dropdown-icon {
+    font-size: var(--step-3);
+    position: relative;
+    right: -5px;
+    top: 0.2px;
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out all;
+  }
+
+  nav a {
+    text-decoration: none;
+    color:var(--text-color);
+}
+nav a:hover {
+    color:var(--text-span);
+}
+
+.drop-down {
+    padding: var(--space-2xs) 0;
+    background: var(--base-color);
+    color: var(--text-color);
+    box-shadow: var(--navbar-shadow);
+    border-radius: var(--space-s);
+    font-size: var(--step--1);
+    gap: var(--space-s);
+    display: none;
+}
+
+ .drop-down li {
+   list-style: none;
+   padding: var(--space-2xs) var(--space-3xs);
+   cursor: pointer;
+}
+
 .services:hover .drop-down {
     display: flex;
     flex-direction: row;
-    gap: var(--space-4xs);
-    padding: 0 0 0 0;
 }
 
 .services a {
     display: flex;
-    align-items: center;
-}
-
-.services .dropdown-icon {
-    font-size: var(--step-3);
-    position: relative;
-    right: -5px;
-    transform: rotate(0deg);
-    transition: 0.3s ease-in-out all;
-}
+    margin-top: var(--space-2xs); 
+  }
 
 .services:hover .dropdown-icon {
     transform: rotate(180deg);
