@@ -813,9 +813,10 @@ label:has(+ input:checked) {
   nav a {
     text-decoration: none;
     color:var(--text-color);
+    width: fit-content;
 }
 nav a:hover {
-    color:var(--text-span);
+    color:var(--text-color);
 }
 
 .drop-down {
