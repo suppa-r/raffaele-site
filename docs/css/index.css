@@ -258,7 +258,6 @@ header {
     background: var(--base-color);
     color: var(--text-color);
     border-radius: var(--space-s);
-
     padding-block: var(--space-5xs);
     padding-inline: var(--space-xs);
     list-style: none;
@@ -267,7 +266,6 @@ header {
 .nav-links {
     display: flex;
     gap: var(--space-m);
-
     padding: 0;
     list-style: none;
     align-items: center;
@@ -297,13 +295,13 @@ nav a:hover {
 }
 
 .drop-down {
-    position: absolute;
+    padding: var(--space-2xs) 0;
     background: var(--base-color);
     color: var(--text-color);
     box-shadow: var(--navbar-shadow);
     border-radius: var(--space-s);
     font-size: var(--step--1);
-    padding:var(--space-2xs) var(--space-xs);
+    gap: var(--space-s);
     display: none;
 }
 
@@ -312,7 +310,6 @@ nav a:hover {
    padding: var(--space-2xs) var(--space-3xs);
    cursor: pointer;
 }
-
 
 .services:hover .drop-down {
     display: flex;
@@ -324,8 +321,6 @@ nav a:hover {
     margin-top: var(--space-2xs);
   }
 
-
-
 .services:hover .dropdown-icon {
     transform: rotate(180deg);
 }
@@ -335,10 +330,6 @@ nav a:hover {
     color: var(--text-color);
     border-radius: var(--space-s);
 }
-
-
-
-
 
 input[type="radio"] {
   opacity: 0;
@@ -763,7 +754,7 @@ label:has(+ input:checked) {
 
 @container (max-width: 600px) {
 
-  .wrapper {
+.wrapper {
     padding-inline: 0 var(--space-4xs);
     margin-inline: auto;
   }
@@ -778,7 +769,7 @@ label:has(+ input:checked) {
 .container {
   position: fixed;
   left: 50%;
-  top: -3%;
+  top: 1.5%;
   transform: translateX(-50%);
   font-size: var(--step--1);
   background: var(--base-color);
@@ -793,9 +784,9 @@ label:has(+ input:checked) {
     border-radius: 1rem;
    }
 
-
-.nav-links {
+   .nav-links {
    display: flex;
+   flex-direction: row;
    gap: var(--space-xs);
    justify-content: center;
 }
