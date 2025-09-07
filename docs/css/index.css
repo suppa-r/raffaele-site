@@ -776,24 +776,25 @@ label:has(+ input:checked) {
   color: var(--text-color);
   z-index: 1000;
   margin-inline: auto; /* optional, can be removed */
-  padding:0 var(--space-3xs);
+  padding:0;
+  box-shadow: var(--navbar-shadow);
+  border-radius: var(--space-s);
+
 }
 .navbar {
     background: var(--base-color);
     color: var(--text-color);
     border-radius: var(--space-s);
-    padding-inline:0 var(--space-3xs);
+    padding-inline:auto;
     list-style: none;
 }
   
 .nav-links {
     display: flex;
     flex-direction: row;
-    gap: var(--space-xs);
-    padding: 0;
     list-style: none;
-    align-items: center;
-    }
+    justify-content: center;
+ }
 
     .nav-link:hover {
     background-color:var(--base-color);
@@ -820,19 +821,18 @@ nav a:hover {
 }
 
 .drop-down {
-    padding: var(--space-2xs) 0;
     background: var(--base-color);
     color: var(--text-color);
     box-shadow: var(--navbar-shadow);
     border-radius: var(--space-s);
     font-size: var(--step--1);
-    gap: var(--space-s);
+    gap: var(--space-3xs);
     display: none;
 }
 
  .drop-down li {
    list-style: none;
-   padding: var(--space-2xs) var(--space-3xs);
+   padding-inline: var(--space-5xs);
    cursor: pointer;
 }
 
@@ -843,7 +843,7 @@ nav a:hover {
 
 .services a {
     display: flex;
-    margin-top: var(--space-2xs); 
+  align-items: center;
   }
 
 .services:hover .dropdown-icon {
@@ -894,10 +894,9 @@ label:has(+ input:checked) {
 
 .curve-container {
   gap: var(--space-xl);
-  margin-top: var(--space-4xl);
+  margin-top: var(--space-2xl);
   margin-inline: auto;
-  padding-inline: var(--space-4xs);
-  }
+}
 
 .text-with-animation,
 .text-with-animation-1,
@@ -907,7 +906,6 @@ label:has(+ input:checked) {
   margin-inline: auto;
   word-spacing: var(--space-4xs);
   white-space: nowrap;
-  padding-inline: var(--space-4xs);
   letter-spacing: var(--space-4xs);
 }
 
@@ -915,22 +913,8 @@ label:has(+ input:checked) {
   margin-inline: auto;
   letter-spacing: var(--space-4xs);
   word-spacing: var(--space-4xs);
-  padding-inline: var(--space-4xs);
-}
-
-.label > span {
-  width: auto;
-  text-align: center;
-  font-size: var(--step--1);
-  padding: 0 var(--space-2xs);
   white-space: nowrap;
 }
-
- label:has(+ input:checked) {
-  color: var(--text-color);
-&::before {
-    content: "";
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -948,4 +932,4 @@ label:has(+ input:checked) {
   .large-button:focus>svg {
     transform: none;
   }
-}}
+}
