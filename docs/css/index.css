@@ -15,6 +15,15 @@
   --text-span: #49879c;
 }
 
+/* Theme variables */
+[data-theme="dark"] {
+  --navbar-shadow: 0 4px 12px rgba(201, 192, 192, 0.7);
+}
+
+[data-theme="light"] {
+  --navbar-shadow: 0 4px 12px rgba(10, 10, 10, 0.3);
+}
+
 :root {
   --sp: 5s;
   --burger-thickness: 4px;
@@ -198,7 +207,6 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
-  letter-spacing: var(--space-5xs);
 }
 
 body>* {
@@ -209,19 +217,18 @@ body>* {
   /* Center content within the body */
   padding: 0 var(--space-5xs);
   word-spacing: var(--space-3xs);
+  letter-spacing: var(--space-4xs);
 }
 
 .wrapper {
   margin-inline: auto;
-  padding-inline: 0 var(--space-4xs);
   min-height: 100dvh;
   overflow: hidden;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
   margin-inline: auto;
+  padding-top: var(--space-3xs);
 }
 
 .title {
@@ -233,74 +240,91 @@ header {
   }
 
 .container {
-  position: fixed;
-  top: -3%; 
-  right: 0;
-  margin-inline: auto;
-  font-size: var(--step--1);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 1%;
+  right: 2%;
   background: var(--base-color);
   color: var(--text-color);
+  box-shadow: var(--navbar-shadow);
   z-index: 1000;
-}
-.navbar {
-    margin: auto;
-    padding: 0.5rem 1.5rem;
-    background: var(--base-color);
-    color: var(--text-color);
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--space-s);
+  padding-block: var(--space-5xs);
 }
 
+.navbar {
+    background: var(--base-color);
+    color: var(--text-color);
+    border-radius: var(--space-s);
+
+    padding-block: var(--space-5xs);
+    padding-inline: var(--space-xs);
+    list-style: none;
+}
+  
 .nav-links {
     display: flex;
-    gap: var(--space-xs);
-}
+    gap: var(--space-m);
 
-.nav-link, .drop-down li {
+    padding: 0;
     list-style: none;
-   padding: var(--space-xs) var(--space-s);
-   cursor: pointer;
-}
+    align-items: center;
+    }
 
-nav a {
-    text-decoration: none;
-    color:var(--text-color);
-}
-
-.drop-down {
-    position: absolute;
-    padding: 0.5rem 0;
-    margin: 0.5rem -0.5rem;
-    background: var(--base-color);
-    color: var(--text-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius:var(--space-s);
-    font-size:var(--step-0);
-    display: none;
-}
-
-.nav-link:hover {
+    .nav-link:hover {
     background-color:var(--base-color);
     color:var(--text-color);
     border-radius: var(--space-s);
 }
 
+.dropdown-icon {
+    font-size: var(--step-3);
+    position: relative;
+    right: -5px;
+    top: 0.2px;
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out all;
+  }
+
+  nav a {
+    text-decoration: none;
+    color:var(--text-color);
+}
+nav a:hover {
+    color:var(--text-span);
+}
+
+.drop-down {
+    position: absolute;
+    background: var(--base-color);
+    color: var(--text-color);
+    box-shadow: var(--navbar-shadow);
+    border-radius: var(--space-s);
+    font-size: var(--step--1);
+    padding:var(--space-2xs) var(--space-xs);
+    display: none;
+}
+
+ .drop-down li {
+   list-style: none;
+   padding: var(--space-2xs) var(--space-3xs);
+   cursor: pointer;
+}
+
+
 .services:hover .drop-down {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .services a {
     display: flex;
-    align-items: center;
-}
+    margin-top: var(--space-2xs);
+  }
 
-.services .dropdown-icon {
-    font-size: var(--step-3);
-    position: relative;
-    right: -5px;
-    transform: rotate(0deg);
-    transition: 0.3s ease-in-out all;
-}
+
 
 .services:hover .dropdown-icon {
     transform: rotate(180deg);
@@ -311,6 +335,10 @@ nav a {
     color: var(--text-color);
     border-radius: var(--space-s);
 }
+
+
+
+
 
 input[type="radio"] {
   opacity: 0;
@@ -325,10 +353,9 @@ label {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: var(--space-xs);
+  padding: 0 var(--space-4xs);
   font-size: var(--step--1);
   position: relative;
-  gap: var(--space-m);
 
   &::before {
     position: absolute;
