@@ -776,6 +776,7 @@ label:has(+ input:checked) {
   color: var(--text-color);
   z-index: 1000;
   margin-inline: auto; /* optional, can be removed */
+  padding: var(--space-2xs) var(--space-s);
 }
 .navbar {
     margin: auto;
@@ -792,7 +793,7 @@ label:has(+ input:checked) {
 }
 
 .nav-link, .drop-down li {
-    list-style: none;
+   list-style: none;
    padding: var(--space-xs) var(--space-s);
    cursor: pointer;
 }
@@ -804,13 +805,13 @@ nav a {
 
 .drop-down {
     position: absolute;
-    padding: 0.5rem 0;
-    margin: 0.5rem -0.5rem;
+    padding: 0;
+    margin: 0;
     background: var(--base-color);
     color: var(--text-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius:var(--space-s);
-    font-size:var(--step-0);
+    box-shadow: var(--navbar-shadow);
+    border-radius: var(--space-s);
+    font-size: var(--step--1);
     display: none;
 }
 
@@ -823,8 +824,8 @@ nav a {
 .services:hover .drop-down {
     display: flex;
     flex-direction: row;
-    gap: var(--space-2xs);
-    padding: 0 var(--space-s) 0 0;
+    gap: var(--space-4xs);
+    padding: 0 0 0 0;
 }
 
 .services a {
