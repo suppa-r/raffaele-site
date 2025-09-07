@@ -48,6 +48,15 @@ themeRadios.forEach((radio) => {
   });
 });
 
+document.querySelectorAll('.drop-down li').forEach(item => {
+  item.addEventListener('click', () => {
+    const dropdown = item.closest('.dropdown');
+    if (dropdown) {
+      dropdown.classList.remove('active');
+    }
+  });
+});
+
 // Optional: Smooth transition using View Transitions API if supported
 if (document.startViewTransition) {
   themeRadios.forEach((radio) => {

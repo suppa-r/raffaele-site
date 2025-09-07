@@ -344,7 +344,7 @@ label {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 var(--space-4xs);
+  padding: 0 var(--space-xl);
   font-size: var(--step--1);
   position: relative;
 
@@ -356,6 +356,11 @@ label {
     inset: 0px;
     margin-inline: auto;
   }
+}
+
+label svg {
+  margin-right: var(--space-xs);
+  fill: var(--text-color);
 }
 
 label:has(+ input:checked) {
@@ -761,23 +766,14 @@ label:has(+ input:checked) {
 
 .title {
   font-size: var(--step--1);
-  padding-top: var(--space-4xl);
+  padding-top: var(--space-3xl);
   text-align: center;
   margin-inline: auto;
   } 
 
 .container {
-  position: fixed;
-  left: 50%;
-  top: 1%;
-  transform: translateX(-50%);
-  font-size: var(--step--1);
-  background: var(--base-color);
-  color: var(--text-color);
-  z-index: 1000;
-  margin-inline: auto; /* optional, can be removed */
-  box-shadow: var(--navbar-shadow);
-  border-radius: var(--space-s);
+  left: 5%;
+  transform: translateX(0);
 }
 .navbar {
     background: var(--base-color);
@@ -796,20 +792,13 @@ label:has(+ input:checked) {
 .dropdown-icon {
     font-size: var(--step-3);
     position: relative;
-    right: -5px;
-    top: 0.2px;
+    right: var(--space-4xs);
+    top: var(--space-5xs);
     transform: rotate(0deg);
     transition: 0.3s ease-in-out all;
   }
 
-  nav a {
-    text-decoration: none;
-    color:var(--text-color);
-    margin-inline: auto;
-
-  }
-
-  .drop-down {
+   .drop-down {
     background: var(--base-color);
     color: var(--text-color);
     box-shadow: var(--navbar-shadow);
@@ -851,10 +840,10 @@ label {
   display: flex;
   flex-direction: row;
   font-size: var(--step--1);
+  padding: 0 var(--space-4xs);
   position: relative;
-  gap: var(--space-4xs);
 
-  &::before {
+&::before {
     position: absolute;
     background-color: transparent;
     border-radius: 100%;
@@ -878,6 +867,12 @@ label:has(+ input:checked) {
   margin-inline: auto;
 }
 
+.text-container {
+  color: var(--text-color);
+  margin-bottom: var(--space-xl);
+  margin-inline: auto;
+  }
+
 .text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2,
@@ -894,6 +889,10 @@ label:has(+ input:checked) {
   letter-spacing: var(--space-4xs);
   word-spacing: var(--space-4xs);
   white-space: wrap;
+}
+.large-button {
+  font-size: var(--step--1);
+  margin-bottom: var(--space-l);
 }
 }
 
