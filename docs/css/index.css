@@ -249,11 +249,13 @@ header {
   font-size: inherit;
   cursor: pointer;
   padding: 0;
+  transition: color 0.3s;
+  pointer-events: all;
 }
 
 .dropdown.active > .link,
 .link:hover {
-  color: var(--text-span);
+  color: var(--text-color);
 }
 
 .dropdown {
@@ -269,12 +271,12 @@ header {
   position: absolute;
   left: 0;
   top: calc(100% + .25rem);
-  background-color: white;
+  background-color: var(--base-color);
   padding: .75rem;
   border-radius: .25rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
   opacity: 0;
-  pointer-events:all;
+  pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
