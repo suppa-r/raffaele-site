@@ -241,6 +241,7 @@ header {
   gap: var(--space-2xs);
   cursor: pointer;
   pointer-events: all;
+  box-shadow: var(--navbar-shadow);
 }
 
 .dropdown-icon {
@@ -264,6 +265,11 @@ header {
   pointer-events: all;
 }
 
+.link .dropdown-icon {
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(180deg);
+}
+
 
 .dropdown.active > .link,
 .link:hover {
@@ -281,10 +287,33 @@ header {
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
+.dropdown-menu li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.dropdown-menu li:hover {
+  background-color: var(--base-color);
+  color: var(--text-color);
+  border-radius: .25rem;
+  cursor: pointer;
+  padding: .25rem;
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+}
+
 .dropdown.active > .link + .dropdown-menu {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  view-transition-name: match-element;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+  background-color: var(--base-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--space-2xs);
 }
 
 .information-grid {
