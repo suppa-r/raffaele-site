@@ -808,11 +808,14 @@ label:has(+ input:checked) {
     border-radius: var(--space-s);
     font-size: var(--step--1);
     display: none;
+    padding: var(--space-2xs) 0;
+    gap: var(--space-3xs);
 }
 
  .drop-down li {
    list-style: none;
    cursor: pointer;
+   pointer-events: all;
 }
 
 .services:hover .drop-down {
