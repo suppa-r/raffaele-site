@@ -790,6 +790,9 @@ label:has(+ input:checked) {
     display: flex;
     flex-direction: row;
     list-style: none;
+    align-items: center;
+    padding: 0 var(--space-2xs);
+    gap: var(--space-m);
  }
 
 .dropdown-icon {
@@ -807,9 +810,13 @@ label:has(+ input:checked) {
     box-shadow: var(--navbar-shadow);
     border-radius: var(--space-s);
     font-size: var(--step--1);
-    display: none;
     padding: var(--space-2xs) 0;
     gap: var(--space-3xs);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
 }
 
  .drop-down li {

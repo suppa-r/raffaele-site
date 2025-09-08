@@ -46,14 +46,12 @@ const themeChangeHandler = (event) => {
 };
 themeRadios.forEach(radio => radio.addEventListener('change', themeChangeHandler));
 
-// Close dropdowns on item click (for both mouse and touch)
-document.querySelectorAll('ul.dropdown li').forEach(item => {
-  function closeDropdown() {
-    const dropdown = item.closest('.dropdown');
-    if (dropdown) {
-      dropdown.classList.remove('active');
-    }
+// Close nav-links on item click or touch
+document.querySelectorAll('.container .navbar.nav-link').forEach(item => {
+  function closeNavLinks() {
+    document.querySelector('.dropdown').classList.remove('active');
+    document.querySelector('.drop-down').style.display = 'none';
   }
-  item.addEventListener('click', closeDropdown);
-  item.addEventListener('touchend', closeDropdown);
+  item.addEventListener('click', closeNavLinks);
+  item.addEventListener('touchend', closeNavLinks);
 });
