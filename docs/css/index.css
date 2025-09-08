@@ -210,6 +210,10 @@ body, html {
   min-height: 100dvh;
   overflow: hidden;
 }
+body>*{
+  container-type: inline-size;
+  padding-inline: 0 var(--space-2xs);
+}
 
 .wrapper {
   padding-inline: 0 var(--space-2xs);
@@ -747,27 +751,15 @@ label:has(+ input:checked) {
 }
 
 .large-button svg {
+  margin-inline: auto;
   width: var(--space-2xl);
   height: var(--space-2xl);
-  transition: 0.3s ease-in-out all;
 }
 
 .large-button:hover>svg,
 .large-button:focus>svg {
   transform: scale(1.1) rotate(20deg);
-  transition: 0.3s ease-in-out all;
-}
-
-.large-button:hover>svg,
-.large-button:focus>svg {
-  transform: scale(1.1) rotate(20deg);
-  transition: 0.3s ease-in-out all;
-}
-
-.large-button:hover>svg,
-.large-button:focus>svg {
-  transform: scale(1.1) rotate(20deg);
-  transition: 0.3s ease-in-out all;
+  transition: transform 0.3s ease-in-out;
 }
 
 @container (max-width: 600px) {
