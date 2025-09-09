@@ -1,3 +1,9 @@
+@property --gradient-button-fill {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #fff;
+
+}
 
 [data-theme="dark"] html,
 [data-theme="dark"] body {
@@ -256,13 +262,13 @@ header {
    with anchor positioning */
 .primary-nav {
   position: absolute;
-  top: var(--space-l);
-  right: var(--space-l);
+  top: var(--space-s);
+  right: var(--space-m);
   padding: 0;
-    max-inline-size:var(--space-6xl);
-    color: var(--base-color);
-    border-radius: var(--btn-border-radius);
-    margin: var(--space-4xs);
+  max-inline-size: var(--space-6xl);
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--navbar-shadow);
+  z-index: 1000;
   }
    
   ul {
@@ -275,53 +281,66 @@ header {
   }
 
   .user-button {
-    all:revert;
+    anchor-name: --user-button;
+    padding: 0;
     display:inline-flex;
     border: 6px solid var(--text-color);
     border-radius: var(--space-s);
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--base-color);
+    cursor: pointer;
     width: var(--space-4xl);
     min-height: auto;
-    padding: 0;
-
+    padding: var(--space-4xs) var(--space-xl);
+    box-shadow: var(--navbar-shadow);
+    z-index: 1000;
+    transition: background-color 0.8s var(--text-color), border-color 0.3s var(--text-color);
 
     &:hover,
     &:focus-visible {
       outline: 0;
-     background-color: var(--text-span);
-     transition: background-color 0.3s ease;
-    border-color: var(--text-span);
-    }
+      background-color: linear-gradient(var(--base-color) 0 0) padding-box;
+  }
   }
 
 .profile-menu {
-  position: absolute;
-  inset: auto;
-  top: anchor(top);
-  left: anchor(left);
   display: none;
+  position: absolute;
+  position-anchor: --user-button;
+  inset: auto;
+  bottom: anchor(bottom);
+  left: anchor(right);
   /* anchoring to the button */
-  position-anchor: --profile-button;
+
   margin: 0;
-
-
+  padding: var(--space-4xs) var(--space-l);
+  border-radius: var(--btn-border-radius);
+  background: var(--text-color);
+  color: var(--base-color);
+  font-size: var(--step--1);
+  overflow: hidden;
   opacity: 0;
   transition: opacity 1s, display 1s, overlay 1s;
   transition-behavior: allow-discrete;
 
+
   position-try-fallbacks: --left;
 
-  margin-left: 0.25rem;
+  margin-left: var(--space-l);
 
   & > * {
-    padding: 0.5rem;
+    padding: var(--space-s);
   }
 
   &:popover-open {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10vmin, 1fr));
     opacity: 1;
 
     @starting-style {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10vmin, 1fr));
       opacity: 0;
     }
   }
@@ -330,8 +349,8 @@ header {
 @position-try --left {
   inset: auto;
   position: absolute;
-  top: anchor(top);
-  left: anchor(left);
+  top: anchor(bottom);
+  left: anchor(right);
 }
 
 :is(button, .button) {
@@ -339,9 +358,8 @@ header {
     cursor: pointer;
     text-decoration: none;
     padding: var(--space-xs) var(--space-s);
-    background-color: var(--text-color);
-    color: var(--base-color);
-    border: 0;
+    background-color: var(--base-color);
+    color: var(--text-color);
     border-radius: var(--btn-border-radius);
     transition: scale 0.125s;
   }
@@ -359,19 +377,24 @@ header {
 
   
 
-  /*#profile {
+  #profile {
     display: grid;
     gap: var(--space-2xs);
-  }*/
+  }
 
   .profile-menu {
     padding: 0 var(--space-s);
     border-radius: var(--btn-border-radius);
-    background: var(--text-color);
-    color: var(--base-color);
+    background: var(--base-color);
+    color: var(--text-color);
     font-size: var(--step--1);
     overflow: hidden;
   }
+
+input[type="radio"] {
+  display: none;
+}
+
 
 label {
   cursor: pointer;
@@ -398,11 +421,11 @@ label {
 }
 
 label svg {
-  margin-right: var(--space-s);
+  margin-right: var(--space-m);
   fill: var(--base-color);
 }
 
-label:has(+ input:checked) {
+/*label:has(+ input:checked) {
   color: var(--text-color);
 
   &::before {
