@@ -742,7 +742,7 @@ label:has(+ input:checked) {
 @container (max-width: 600px) {
 
 .wrapper {
-    padding-inline: 0 var(--space-3xs);
+    padding-inline: 0 var(--space-4xs);
     margin-inline: auto;
   }
 
@@ -767,9 +767,14 @@ label:has(+ input:checked) {
   
 .nav-links {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     list-style: none;
- }
+    align-items: center;
+    padding: 0 var(--space-3xs);
+    gap: var(--space-xs);
+    pointer-events: all;
+    }
+
 
 .dropdown-icon {
     font-size: var(--step-3);
@@ -792,11 +797,15 @@ label:has(+ input:checked) {
  .drop-down li {
    list-style: none;
    cursor: pointer;
+    padding: var(--space-2xs) var(--space-3xs);
+    pointer-events: all;
 }
 
 .services:hover .drop-down {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: var(--space-xs);
+    pointer-events: all;
 }
 
 .services:hover .dropdown-icon {
@@ -820,7 +829,7 @@ input[type="radio"] {
 label {
   cursor: pointer;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   font-size: var(--step--1);
   padding: 0 var(--space-4xs);
   position: relative;
@@ -848,7 +857,7 @@ label:has(+ input:checked) {
   flex-direction: column;
   align-items: center; /* centers children horizontally */
   gap: var(--space-xl);
-  margin-top: var(--space-xl);
+  margin-top: var(--space-m);
   margin-inline: auto;
 }
 
@@ -862,36 +871,18 @@ label:has(+ input:checked) {
   text-align: center; /* centers text horizontally */
   word-spacing: var(--space-4xs);
   letter-spacing: var(--space-4xs);
-  white-space: wrap;
+  white-space: nowrap;
   display: block;
 }
 
 .large-button {
-  padding: var(--space-2xl);
-  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
-  color: var(--text-color);
-  width: var(--space-10xl);
-  height: var(--space-6xl);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;      /* centers children vertically */
-  align-items: center;          /* centers children horizontally */
-  text-decoration: none;
-  font-size: var(--step--1);
-  margin-block: var(--space-l);
-  margin-inline: auto;          /* centers the button itself */
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--shadow);
+  padding: 0 var(--space-l);
 }
 
 .large-button svg {
   fill: var(--text-color);
-  width: var(--space-xl);
-  height: var(--space-xl);
+  width: var(--space-l);
+  height: var(--space-l);
   transition: transform 0.3s;
   display: block;
   margin-inline: auto;          /* centers SVG horizontally */
@@ -901,10 +892,12 @@ label:has(+ input:checked) {
   text-align: center;
   font-size: var(--step--1);
   color: var(--text-color);
-  width: fit-content;
+  padding: 0 var(--space-4xs);
+  white-space: nowrap;
   margin-inline: auto;          /* centers text horizontally */
   display: block;
 }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
