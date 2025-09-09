@@ -219,15 +219,22 @@ body>*{
 }
 
 .wrapper {
-  padding-inline: 0 var(--space-2xs);
+  padding: 0 var(--space-xs);
   margin-inline: auto;
   min-height: 100dvh;
   overflow: hidden;
 }
 
 header {
-  padding: var(--space-4xs) var(--space-2xs) 0 var(--space-2xs);
-  margin-inline: auto;
+  padding:0;
+  margin:0;
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -755,9 +762,10 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   margin-inline: auto;
 }
 
-.text-with-animation {
+.text-with-animation,
+.text-with-animation-4 {
   text-align: center;
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
@@ -769,9 +777,8 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 
 .text-with-animation-1,
 .text-with-animation-2,
-.text-with-animation-3,
-.text-with-animation-4 {
-  font-size: var(--step--1);
+.text-with-animation-3 {
+  font-size: var(--step-0);
   text-align: center;
   margin-inline: auto;
   white-space: nowrap;
@@ -779,17 +786,8 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   letter-spacing: var(--space-4xs);
 }
 
-.text-with-animation-5 {
-  margin-inline: auto;
-  font-size: var(--step-0);
-  font-family: var(--ff-monoton-regular);
-  font-weight: var(--font-weight-regular);
-  font-style: var(--font-style-regular);
-  text-align: center;
-  margin-block: var(--space-xs);
-  white-space: nowrap;
-  word-spacing: var(--space-3xs);
-  letter-spacing: var(--space-3xs);
+.text-with-animation-4 {
+  margin-top: var(--space-m);
 }
 
 .large-button {
@@ -839,18 +837,44 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
     margin-inline: auto;
   }
 
-  .color-picker {
-    background-color: var(--base-color);
-    border: 1px solid var(--border-color);
+ .color-picker {
+    position: fixed;
+    left: 50%;
+    top: 70px; /* adjust as needed */
+    transform: translateX(-50%);
+    width: 90vw;
+    min-width: 0;
+    max-width: 100vw;
+    margin-top: 0;
+    z-index: 2000;
+    padding: var(--space-2xs) var(--space-m);
     border-radius: var(--border-radius);
-    padding: var(--space-2xs);
-    position: absolute;
-    top: 3.5%;
-    right: 50%;
-    transform: translateX(50%);
+    box-shadow: var(--navbar-shadow);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; 
+    pointer-events: all;
+    background-color: var(--base-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-5px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out, box-shadow 0.3s;
     view-transition-name: match-element;
   }
 
+  .color-picker.active {
+    border-radius: var(--border-radius);
+    margin-top: 0;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+    box-shadow: var(--navbar-shadow);
+    view-transition-name: match-element;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers children horizontally */
+    justify-content: center;
+  }
 
   .dropdown-icon {
     font-size: var(--step-3);
@@ -861,54 +885,42 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
     transition: 0.3s ease-in-out all;
   }
 
-  .curve-container,
-  .text-container,
-  .text-with-animation,
-  .text-with-animation-1,
-  .text-with-animation-2,
-  .text-with-animation-3,
-  .text-with-animation-4,
-  .text-with-animation-5,
-  .large-button {
-    display: block;
-    width: 100vw;
-    max-width: 100vw;
-    margin-inline: auto;
-    box-sizing: border-box;
-    text-align: center;
-  }
-
   .curve-container {
     gap: var(--space-xl);
     margin-top: var(--space-xl);
+    margin-inline: auto;
   }
 
   .text-container {
     color: var(--text-color);
     margin-top: var(--space-m);
+    margin-inline: auto;
   }
 
   .text-with-animation,
   .text-with-animation-1,
   .text-with-animation-2,
-  .text-with-animation-3,
+  .text-with-animation-3 {
+    word-spacing: var(--space-4xs);
+    white-space: wrap;
+    letter-spacing: var(--space-4xs);
+    margin-inline: auto;
+  }
+
   .text-with-animation-4 {
     word-spacing: var(--space-4xs);
     white-space: wrap;
     letter-spacing: var(--space-4xs);
-  }
-
-  .text-with-animation-5 {
-    letter-spacing: var(--space-4xs);
-    word-spacing: var(--space-4xs);
-    white-space: wrap;
+    margin-inline: auto;
+    margin-top: var(--space-m);
   }
 
   .large-button {
     font-size: var(--step--1);
     margin-bottom: var(--space-l);
-    padding-inline: var(--space-4xs);
-
+    margin-inline: auto;
+    width: var(--space-9xl);
+    height: var(--space-7xl);
   }
 }
 

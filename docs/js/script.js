@@ -9,24 +9,32 @@ function handleDropdownEvent(e) {
     const colorPicker = dropdown.querySelector('.color-picker');
     if (colorPicker) {
       colorPicker.classList.toggle('active');
-      // Match the width of .color-picker to the .link button
       const link = dropdown.querySelector('.link');
-      if (link) {
+      // Responsive width/position logic
+      if (window.innerWidth > 600 && link) {
         const computedWidth = window.getComputedStyle(link).width;
         colorPicker.style.width = computedWidth;
         colorPicker.style.minWidth = computedWidth;
         colorPicker.style.maxWidth = computedWidth;
+        // Position the color-picker below the .link
+        const linkRect = link.getBoundingClientRect();
+        const dropdownRect = dropdown.getBoundingClientRect();
+        colorPicker.style.top = `${linkRect.bottom - dropdownRect.top + 0}px`; // 0px gap
+        colorPicker.style.left = `${linkRect.left - dropdownRect.left}px`;
+        colorPicker.style.transform = "";
+        colorPicker.style.position = "absolute";
+      } else {
+        // On mobile, let CSS handle width/position
+        colorPicker.style.width = "";
+        colorPicker.style.minWidth = "";
+        colorPicker.style.maxWidth = "";
+        colorPicker.style.top = "";
+        colorPicker.style.left = "";
+        colorPicker.style.position = "";
+        colorPicker.style.transform = "";
       }
     }
-    if (dropdown.classList.contains("active")) {
-      // Position the color-picker below the .link
-      const linkRect = e.target.getBoundingClientRect();
-      const dropdownRect = dropdown.getBoundingClientRect();
-      if (colorPicker) {
-        colorPicker.style.top = `${linkRect.bottom - dropdownRect.top + 10}px`; // 10px gap
-        colorPicker.style.left = `${linkRect.left - dropdownRect.left}px`;
-      }
-    } else {
+    if (!dropdown.classList.contains("active")) {
       // Close all other dropdowns if any
       document.querySelectorAll("[data-dropdown].active").forEach(activeDropdown => {
         if (activeDropdown !== dropdown) {
