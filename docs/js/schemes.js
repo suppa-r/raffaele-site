@@ -1,30 +1,11 @@
+// Theme switching using radio buttons
 const themeRadios = document.querySelectorAll('[name="theme"]');
-
-// Set initial theme on load
-document.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme-preference');
-  const theme = savedTheme || 'system';
-  applyTheme(theme);
-  const radio = document.querySelector(`[name=theme][value="${theme}"]`);
-  if (radio) radio.checked = true;
-});
 
 function getSystemTheme() {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
   if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
   return 'dark'; // fallback
 }
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-  if (localStorage.getItem('theme-preference') === 'system') {
-    applyTheme('system');
-  }
-});
-window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-  if (localStorage.getItem('theme-preference') === 'system') {
-    applyTheme('system');
-  }
-});
 
 function applyTheme(theme) {
   let appliedTheme = theme;
@@ -35,23 +16,54 @@ function applyTheme(theme) {
   localStorage.setItem('theme-preference', theme);
 }
 
-// Use View Transitions API if available, else fallback
-const themeChangeHandler = (event) => {
-  const selectedTheme = event.target.value;
-  if (document.startViewTransition) {
-    document.startViewTransition(() => applyTheme(selectedTheme));
+// Set initial theme on load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme-preference');
+  if (savedTheme) {
+    applyTheme(savedTheme);
+    const radio = document.querySelector(`[name=theme][value="${savedTheme}"]`);
+    if (radio) radio.checked = true;
   } else {
-    applyTheme(selectedTheme);
+    applyTheme('system');
+    const radio = document.querySelector('[name=theme][value="system"]');
+    if (radio) radio.checked = true;
   }
-};
-themeRadios.forEach(radio => radio.addEventListener('change', themeChangeHandler));
 
-// Close nav-links on item click or touch
-document.querySelectorAll('.container .navbar.nav-link').forEach(item => {
-  function closeNavLinks() {
-    document.querySelector('.dropdown').classList.remove('active');
-    document.querySelector('.drop-down').style.display = 'none';
-  }
-  item.addEventListener('click', closeNavLinks);
-  item.addEventListener('touchend', closeNavLinks);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (localStorage.getItem('theme-preference') === 'system') {
+      applyTheme('system');
+    }
+  });
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+    if (localStorage.getItem('theme-preference') === 'system') {
+      applyTheme('system');
+    }
+  });
 });
+
+themeRadios.forEach((radio) => {
+  radio.addEventListener('change', (event) => {
+    const selectedTheme = event.target.value;
+    applyTheme(selectedTheme);
+  });
+});
+
+document.querySelectorAll('.drop-down li').forEach(item => {
+  item.addEventListener('click', () => {
+    const dropdown = item.closest('.dropdown');
+    if (dropdown) {
+      dropdown.classList.remove('active');
+    }
+  });
+});
+
+// Optional: Smooth transition using View Transitions API if supported
+if (document.startViewTransition) {
+  themeRadios.forEach((radio) => {
+    radio.addEventListener('change', (event) => {
+      const selectedTheme = event.target.value;
+      document.startViewTransition(() => applyTheme(selectedTheme));
+    });
+  });
+}
+
