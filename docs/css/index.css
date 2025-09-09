@@ -254,47 +254,61 @@ header {
 
 /* Getting the menu in the right spot
    with anchor positioning */
-
-.user-button {
-  all: revert;
-  display:inline-flex;
-  border: 6px solid var(--text-color);
-  border-radius: var(--space-s);
-  width: var(--space-6xl);
-  min-height: auto;
+.primary-nav {
+  position: absolute;
+  top: var(--space-l);
+  right: var(--space-l);
   padding: 0;
-
-  &:hover,
-  &:focus-visible {
-    outline: 0;
-   background-color: var(--text-span);
-   transition: background-color 0.3s ease;
-    border-color: var(--text-span);
+    max-inline-size:var(--space-6xl);
+    color: var(--base-color);
+    border-radius: var(--btn-border-radius);
+    margin: var(--space-4xs);
+  }
+   
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-inline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-}
+  .user-button {
+    all:revert;
+    display:inline-flex;
+    border: 6px solid var(--text-color);
+    border-radius: var(--space-s);
+    width: var(--space-4xl);
+    min-height: auto;
+    padding: 0;
 
-.user-button {
-  padding: 0;
-  border-radius: var(--space-s);
-  aspect-ratio: 1;
-  anchor-name: --profile-button;
-}
+
+    &:hover,
+    &:focus-visible {
+      outline: 0;
+     background-color: var(--text-span);
+     transition: background-color 0.3s ease;
+    border-color: var(--text-span);
+    }
+  }
 
 .profile-menu {
+  position: absolute;
+  inset: auto;
+  top: anchor(top);
+  left: anchor(left);
   display: none;
   /* anchoring to the button */
-  position: absolute;
   position-anchor: --profile-button;
   margin: 0;
-  inset: auto;
-  bottom: anchor(top);
-  left: anchor(center);
+
+
   opacity: 0;
   transition: opacity 1s, display 1s, overlay 1s;
   transition-behavior: allow-discrete;
 
-  position-try-fallbacks: --right;
+  position-try-fallbacks: --left;
 
   margin-left: 0.25rem;
 
@@ -313,11 +327,11 @@ header {
   }
 }
 
-@position-try --right {
+@position-try --left {
   inset: auto;
   position: absolute;
   top: anchor(top);
-  right: anchor(center);
+  left: anchor(left);
 }
 
 :is(button, .button) {
@@ -343,40 +357,7 @@ header {
     scale: 0.95;
   }
 
-  .primary-nav {
-    max-inline-size:var(--space-6xl);
-    color: var(--base-color);
-    border-radius: var(--btn-border-radius);
-    margin: var(--space-4xs);
-  }
-   
-  ul {
-    list-style: none;
-    margin: 0;
-    padding-inline: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .user-button {
-    all:revert;
-    display:inline-flex;
-    border: 6px solid var(--text-color);
-    border-radius: var(--space-s);
-    width: var(--space-2xl);
-    min-height: auto;
-    padding: 0;
-
-
-    &:hover,
-    &:focus-visible {
-      outline: 0;
-     background-color: var(--text-span);
-     transition: background-color 0.3s ease;
-      border-color: var(--text-span);
-    }
-  }
+  
 
   /*#profile {
     display: grid;
