@@ -1,4 +1,3 @@
-// --- DROPDOWN & COLOR-PICKER LOGIC ---
 function handleDropdownEvent(e) {
   const isDropdownButton = e.target.matches(".link");
   const dropdown = e.target.closest("[data-dropdown]");
@@ -9,7 +8,7 @@ function handleDropdownEvent(e) {
     const colorPicker = dropdown.querySelector('.color-picker');
     if (colorPicker) {
       colorPicker.classList.toggle('active');
-      // Match the width of .color-picker to the .link button
+      // Match the width of .color-picker to the dropdown or .link button
       const link = dropdown.querySelector('.link');
       if (link) {
         const computedWidth = window.getComputedStyle(link).width;
@@ -57,27 +56,13 @@ document.querySelectorAll('.color-picker input[type="radio"]').forEach(radio => 
     const colorPicker = dropdown.querySelector('.color-picker');
     if (dropdown) dropdown.classList.remove('active');
     if (colorPicker) colorPicker.classList.remove('active');
-    applyTheme(radio.value); // Apply theme on selection
   }
   radio.addEventListener('change', closeDropdowns);
   radio.addEventListener('touchend', closeDropdowns);
 });
 
-// --- THEME LOGIC ---
-function getSystemTheme() {
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
-  return 'dark'; // fallback
-}
-
-function applyTheme(theme) {
-  let appliedTheme = theme;
-  if (theme === 'system') {
-    appliedTheme = getSystemTheme();
-  }
-  document.documentElement.setAttribute('data-theme', appliedTheme);
-  localStorage.setItem('theme-preference', theme);
-}
+// Theme handling code (moved from schemes.js for better cohesion)
+const themeRadios = document.querySelectorAll('[name="theme"]');
 
 // Set initial theme on load
 document.addEventListener('DOMContentLoaded', () => {
@@ -88,16 +73,59 @@ document.addEventListener('DOMContentLoaded', () => {
   if (radio) radio.checked = true;
 });
 
-// Listen for system theme changes
+function getSystemTheme() {
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+  return 'dark'; // fallback
+}
+
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
   if (localStorage.getItem('theme-preference') === 'system') {
-    applyTheme('system');
-    const radio = document.querySelector(`[name=theme][value="system"]`);
+    const newTheme = getSystemTheme();
+    applyTheme(newTheme);
+    const radio = document.querySelector(`[name=theme][value="${newTheme}"]`);
     if (radio) radio.checked = true;
   }
 });
-window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+
+function applyTheme(theme) {
+  let appliedTheme = theme;
+  if (theme === 'system') {
+    appliedTheme = getSystemTheme();
+  }
+  document.documentElement.setAttribute('data-theme', appliedTheme);
+  localStorage.setItem('theme-preference', theme);
+}
+
+// Listen for theme radio changes (click/touch)
+document.querySelectorAll('[name="theme"]').forEach(radio => {
+  function handleThemeChange() {
+    applyTheme(radio.value);
+  }
+  radio.addEventListener('change', handleThemeChange);
+  radio.addEventListener('touchend', handleThemeChange);
+});
+
+// ...existing code for dropdowns...
+
+// Set initial theme on load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme-preference');
+  const theme = savedTheme || 'system';
+  applyTheme(theme);
+  const radio = document.querySelector(`[name=theme][value="${theme}"]`);
+  if (radio) radio.checked = true;
+});
+
+function getSystemTheme() {
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+  return 'dark'; // fallback
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
   if (localStorage.getItem('theme-preference') === 'system') {
+    const newTheme = getSystemTheme();
     applyTheme('system');
     const radio = document.querySelector(`[name=theme][value="system"]`);
     if (radio) radio.checked = true;
