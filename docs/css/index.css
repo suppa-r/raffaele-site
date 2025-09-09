@@ -68,7 +68,7 @@
   --font-weight-regular: 400;
   --font-style-regular: normal;
 
-    --border-radius:var(--space-xs);
+  --border-radius: var(--space-xs);
 }
 
 
@@ -202,7 +202,8 @@ body {
   }
 }
 
-body, html {
+body,
+html {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
@@ -213,7 +214,8 @@ body, html {
   min-height: 100dvh;
   overflow: hidden;
 }
-body>*{
+
+body>* {
   container-type: inline-size;
   padding-inline: 0 var(--space-2xs);
 }
@@ -226,8 +228,8 @@ body>*{
 }
 
 header {
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
   position: relative;
   width: 100%;
   height: auto;
@@ -254,23 +256,25 @@ header {
   right: 0;
   border-radius: var(--border-radius);
   box-shadow: var(--navbar-shadow);
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; 
-  z-index: 2000; /* ensure it's above other elements */
-  transform: translateY(-var(--space-l));
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  z-index: 2000;
+  /* ensure it's above other elements */
+  pointer-events: all;
   view-transition-name: match-element;
 }
 
 .color-picker {
   position: absolute;
   right: 0;
-  top: calc(100% + var(--space-m)); /* places it below dropdown with space */
+  top: calc(100% + var(--space-m));
+  /* places it below dropdown with space */
   display: flex;
   align-items: center;
   gap: var(--space-xl);
   padding: var(--space-2xs) var(--space-xl);
   border-radius: var(--border-radius);
   box-shadow: var(--navbar-shadow);
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; 
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   pointer-events: all;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -282,6 +286,7 @@ header {
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out, box-shadow 0.3s;
   view-transition-name: match-element;
 }
+
 /* Show when active */
 .color-picker.active {
   border-radius: var(--border-radius);
@@ -293,14 +298,16 @@ header {
   view-transition-name: match-element;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers children horizontally */
+  align-items: center;
+  /* centers children horizontally */
   justify-content: center;
 }
 
-.color-picker > fieldset {
+.color-picker>fieldset {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers labels horizontally */
+  align-items: center;
+  /* centers labels horizontally */
   border: 0;
   margin: 0;
   padding: 0;
@@ -310,7 +317,8 @@ label {
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center; /* centers text and svg horizontally */
+  align-items: center;
+  /* centers text and svg horizontally */
   flex-direction: row;
   gap: var(--space-s);
   color: var(--text-color);
@@ -346,13 +354,15 @@ label:has(+ input:checked) {
 }
 
 .link {
-  background:transparent;
+  background: transparent;
   color: var(--text-color);
-  position: fixed; /* changed from absolute */
+  position: fixed;
+  /* changed from absolute */
   top: var(--space-2xs);
   right: var(--space-l);
   padding: var(--space-2xs) var(--space-l);
-  z-index: 2000; /* ensure it's above other elements */
+  z-index: 2000;
+  /* ensure it's above other elements */
   border: none;
   font-family: inherit;
   font-size: inherit;
@@ -362,8 +372,9 @@ label:has(+ input:checked) {
   gap: var(--space-xl);
   border-radius: var(--border-radius);
   box-shadow: var(--navbar-shadow);
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; 
-  z-index: 2000; /* ensure it's above other elements */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  z-index: 2000;
+  /* ensure it's above other elements */
   pointer-events: all;
 }
 
@@ -378,7 +389,7 @@ label:has(+ input:checked) {
   transform: rotate(180deg);
 }
 
-.dropdown.active > .link,
+.dropdown.active>.link,
 .link:hover {
   opacity: 1;
   background: var(--base-color);
@@ -386,7 +397,7 @@ label:has(+ input:checked) {
   border-radius: var(--border-radius);
   box-shadow: var(--navbar-shadow);
   pointer-events: all;
-transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   padding: var(--space-2xs) var(--space-l);
 }
 
@@ -400,12 +411,12 @@ transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
-  padding: var(--space-2xs)  var(--space-xl);
+  padding: var(--space-2xs) var(--space-xl);
   border-radius: var(--border-radius);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0);
   opacity: 0;
   pointer-events: all;
-transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 .dropdown-menu li {
@@ -424,7 +435,7 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
 }
 
-.dropdown.active > .link + .dropdown-menu {
+.dropdown.active>.link+.dropdown-menu {
   opacity: 1;
   pointer-events: all;
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
@@ -433,7 +444,7 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--border-radius);
-  padding: var(--space-l)  var(--space-l);
+  padding: var(--space-l) var(--space-l);
   transform: translateY(-var(--space-l));
   z-index: 1000;
   box-shadow: var(--navbar-shadow);
@@ -843,16 +854,32 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
     right: var(--space-m);
     padding: var(--space-2xs) var(--space-m);
     pointer-events: all;
+  }
 }
 
-    @media (max-width: 600px) {
-    .color-picker,
-    .color-picker.active {
-      position: fixed;
-      left: 50%;
-      top: var(--space-xl); /* or adjust as needed */
-      transform: translateX(-50%);
-      width: 90vw;
+@media (max-width: 600px) {
+  .link {
+    top: var(--space-2xs);
+    right: var(--space-m);
+    padding: var(--space-2xs) var(--space-m);
+    pointer-events: all;
+  }
+
+  .dropdown {
+    top: var(--space-2xs);
+    right: var(--space-m);
+  }
+
+  .color-picker,
+  .color-picker.active {
+    position: fixed;
+    left: 50%;
+    top: var(--space-xl);
+    /* or adjust as needed */
+    transform: translateX(-50%) translateY(0);
+    opacity: 0;
+    pointer-events: none;
+    /* width: 90vw; 
       min-width: 0;
       max-width: 100vw;
       margin-top: 0;
@@ -865,16 +892,42 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
       box-shadow: var(--navbar-shadow);
       background-color: var(--base-color);
       color: var(--text-color);
-      opacity: 0;
-      pointer-events: none;
+   
       transition: opacity 150ms ease-in-out, box-shadow 0.3s;
-    }
-    .color-picker.active {
-      opacity: 1;
-      pointer-events: all;
-    }
+      view-transition-name: match-element;*/
   }
-  
+
+  .color-picker.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%) translateY(0);
+    box-shadow: var(--navbar-shadow);
+    transition: opacity 150ms ease-in-out, box-shadow 0.3s;
+    view-transition-name: match-element;
+  }
+
+  .color-picker>fieldset {
+    flex-direction: row;
+    gap: var(--space-m);
+  }
+
+  label {
+    padding: var(--space-2xs) var(--space-m);
+    font-size: var(--step--1);
+  }
+
+  .dropdown-menu {
+    right: var(--space-m);
+    padding: var(--space-2xs) var(--space-m);
+  }
+
+
+  .information-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-l);
+    margin-inline: auto;
+  }
+
   .curve-container {
     gap: var(--space-xl);
     margin-top: var(--space-xl);
@@ -915,6 +968,7 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .content div,
   .content-1 div {
     animation: none;
@@ -930,3 +984,6 @@ transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
     transform: none;
   }
 }
+
+/*-------------curvature end-----------------*/
+
