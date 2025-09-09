@@ -67,17 +67,3 @@ if (document.startViewTransition) {
   });
 }
 
-document.querySelectorAll('.drop-down li').forEach(item => {
-  item.addEventListener('click', () => {
-    const dropdown = item.closest('.dropdown');
-    if (dropdown) {
-      dropdown.classList.remove('active');
-    }
-    // Close .theme-preference if present
-    const themePreference = document.querySelector('.theme-preference');
-    if (themePreference) {
-      themePreference.classList.remove('active');
-    }
-  });
-});
-

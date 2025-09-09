@@ -767,11 +767,11 @@ label:has(+ input:checked) {
   
 .nav-links {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     list-style: none;
  }
 
-/*.dropdown-icon {
+.dropdown-icon {
     font-size: var(--step-3);
     position: relative;
     right: var(--space-4xs);
@@ -796,7 +796,7 @@ label:has(+ input:checked) {
 
 .services:hover .drop-down {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .services:hover .dropdown-icon {
@@ -820,7 +820,7 @@ input[type="radio"] {
 label {
   cursor: pointer;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: var(--step--1);
   padding: 0 var(--space-4xs);
   position: relative;
@@ -870,8 +870,8 @@ label:has(+ input:checked) {
   padding: var(--space-2xl);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
-  width: var(--space-12xl);
-  height: var(--space-7xl);
+  width: var(--space-10xl);
+  height: var(--space-6xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -879,7 +879,7 @@ label:has(+ input:checked) {
   align-items: center;          /* centers children horizontally */
   text-decoration: none;
   font-size: var(--step--1);
-  margin-block: var(--space-xl);
+  margin-block: var(--space-l);
   margin-inline: auto;          /* centers the button itself */
   position: relative;
   overflow: hidden;
@@ -906,10 +906,6 @@ label:has(+ input:checked) {
   display: block;
 }
 }
-
-
-
-
 
 @media (prefers-reduced-motion: reduce) {
   .content div,
