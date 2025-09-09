@@ -58,6 +58,8 @@
   --space-10xl: clamp(18rem, 18rem + 2.5cqi, 21.5rem);
   --space-11xl: clamp(21.5rem, 21.5rem + 2.5cqi, 25rem);
   --space-12xl: clamp(25rem, 25rem + 2.5cqi, 30rem);
+  --space-13xl: clamp(30rem, 30rem + 2.5cqi, 35rem);
+  --space-14xl: clamp(35rem, 35rem + 2.5cqi, 40rem);
 
   --pt-serif-regular: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
@@ -692,79 +694,61 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  background-color: var(--base-color);
+  padding: var(--space-2xl);
+  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
+  width: var(--space-12xl);
+  height: var(--space-7xl);
+  z-index: 1000;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;      /* centers children vertically */
+  align-items: center;          /* centers children horizontally */
   text-decoration: none;
-  position: relative;
-  letter-spacing: var(--space-4xs);
-  width: var(--space-12xl);
-  height: var(--space-8xl);
+  font-size: var(--step--1);
   margin-block: var(--space-xl);
-  font-size: var(--step-0);
-  margin-inline: auto;
+  margin-inline: auto;          /* centers the button itself */
+  position: relative;
+  overflow: hidden;
   border-radius: 50%;
-  box-sizing: border-box;
-}
- 
-.large-button svg {
-  fill: var(--text-color);
-  width: var(--space-2xl);
-  height: var(--space-2xl);
-  transition: transform 0.3s;
-  margin-inline: auto;
-  margin-top: 0;
-  /* Remove or reduce padding if SVG is not visible */
-  padding: 0;
+  transition: box-shadow 0.3s, outline 0.3s;
+  box-shadow: var(--shadow);
 }
 
-.large-button:hover>svg,
-.large-button:focus>svg {
-  transform: scale(1.3);
+.large-button svg {
+  fill: var(--text-color);
+  width: var(--space-xl);
+  height: var(--space-xl);
+  transition: transform 0.3s;
+  display: block;
+  margin-inline: auto;          /* centers SVG horizontally */
 }
 
 .large-button span {
   text-align: center;
-  font-size: var(--step-0);
-  margin-bottom: var(--space-xs);
+  font-size: var(--step--1);
+  color: var(--text-color);
+  width: fit-content;
+  margin-inline: auto;          /* centers text horizontally */
+  display: block;
 }
 
-.large-button:hover {
-  outline: #44777a solid 4px;
-  box-shadow: 40px 20px 30px color-mix(in srgb, var(--text-color) 70%, rgb(119, 112, 112));
-}
 
-.large-button::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  background: color-mix(in srgb, var(--text-color) 0%, transparent);
-  opacity: .7;
-  transition: opacity 500ms linear, transform 750ms ease-in-out;
-  /*box-shadow: 20px 30px 40px 50px rgba(233, 231, 231, 0.644);*/
-}
 
-.large-button:hover::after,
-.large-button:focus::after {
-  opacity: 1;
-  transform: scale(1.4);
-}
+
+
+
 
 @container (max-width: 600px) {
 
 .wrapper {
-    padding-inline: 0 var(--space-4xs);
+    padding-inline: 0 var(--space-3xs);
     margin-inline: auto;
   }
 
 .title {
   font-size: var(--step--1);
-  padding-top: var(--space-3xl);
+  padding-top: var(--space-2xl);
   text-align: center;
   margin-inline: auto;
   } 
@@ -787,7 +771,7 @@ label:has(+ input:checked) {
     list-style: none;
  }
 
-.dropdown-icon {
+/*.dropdown-icon {
     font-size: var(--step-3);
     position: relative;
     right: var(--space-4xs);
@@ -857,42 +841,75 @@ label:has(+ input:checked) {
   &::before {
     content: "";
   }
-}
+}*/
 
 .curve-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers children horizontally */
   gap: var(--space-xl);
   margin-top: var(--space-xl);
   margin-inline: auto;
 }
 
-.text-container {
-  color: var(--text-color);
-  margin-bottom: var(--space-xl);
-  margin-inline: auto;
-  }
-
 .text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2,
 .text-with-animation-3,
-.text-with-animation-4 {
-  margin-inline: auto;
-  word-spacing: var(--space-4xs);
-  white-space: wrap;
-  letter-spacing: var(--space-4xs);
-}
-
+.text-with-animation-4,
 .text-with-animation-5 {
   margin-inline: auto;
-  letter-spacing: var(--space-4xs);
+  text-align: center; /* centers text horizontally */
   word-spacing: var(--space-4xs);
+  letter-spacing: var(--space-4xs);
   white-space: wrap;
+  display: block;
 }
+
 .large-button {
+  padding: var(--space-2xl);
+  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
+  color: var(--text-color);
+  width: var(--space-12xl);
+  height: var(--space-7xl);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;      /* centers children vertically */
+  align-items: center;          /* centers children horizontally */
+  text-decoration: none;
   font-size: var(--step--1);
-  margin-bottom: var(--space-l);
+  margin-block: var(--space-xl);
+  margin-inline: auto;          /* centers the button itself */
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: box-shadow 0.3s, outline 0.3s;
+  box-shadow: var(--shadow);
+}
+
+.large-button svg {
+  fill: var(--text-color);
+  width: var(--space-xl);
+  height: var(--space-xl);
+  transition: transform 0.3s;
+  display: block;
+  margin-inline: auto;          /* centers SVG horizontally */
+}
+
+.large-button span {
+  text-align: center;
+  font-size: var(--step--1);
+  color: var(--text-color);
+  width: fit-content;
+  margin-inline: auto;          /* centers text horizontally */
+  display: block;
 }
 }
+
+
+
+
 
 @media (prefers-reduced-motion: reduce) {
   .content div,
