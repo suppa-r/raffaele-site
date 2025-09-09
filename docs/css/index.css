@@ -212,15 +212,12 @@ body {
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
-  margin-inline: auto;
-  /* Allow them to be sized based on their content */
-  /* Center content within the body */
-  padding: 0 var(--space-5xs);
-  word-spacing: var(--space-3xs);
-  letter-spacing: var(--space-4xs);
 }
 
 .wrapper {
+  padding: 0 var(--space-3xs);
+  word-spacing: var(--space-3xs);
+  letter-spacing: var(--space-4xs);
   margin-inline: auto;
   min-height: 100dvh;
   overflow: hidden;
@@ -248,7 +245,7 @@ header {
   right: 2%;
   background: var(--base-color);
   color: var(--text-color);
-  box-shadow: var(--navbar-shadow);
+
   z-index: 1000;
   border-radius: var(--space-s);
   padding-block: var(--space-5xs);
@@ -260,6 +257,7 @@ header {
     border-radius: var(--space-s);
     padding-block: var(--space-5xs);
     padding-inline: var(--space-xs);
+    box-shadow: var(--navbar-shadow);
     list-style: none;
 }
   
