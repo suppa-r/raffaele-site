@@ -929,16 +929,20 @@ label:has(+ input:checked) {
     grid-template-rows: 1fr;
     font-size: var(--step--1);
     margin-top: var(--space-xl);
-    padding: var(--space-s) var(--space-2xl);
+    padding: var(--space-s) var(--space-xl);
     margin-inline: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: var(--space-s);
+    position-try-fallbacks: --top;
   }
-
-  label {
+  
+  @position-try --top {
+    inset: auto;
+    bottom: anchor(top);
+    left: anchor(center);
+  }
+  
+ label {
     flex-direction: row;
-    padding: var(--space-s) var(--space-2xl);
+    padding: var(--space-s) var(--space-xl);
     gap: var(--space-xs);
     font-size: var(--step--1);
   }
