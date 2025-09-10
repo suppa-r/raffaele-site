@@ -1,35 +1,74 @@
-// --- Hide main-content when .user-button is clicked (mobile only) ---
 const userButton = document.querySelector('.user-button');
 const maincontent = document.querySelector('.main-content');
 
 if (userButton) {
   userButton.addEventListener('click', () => {
+    const profileMenu = document.querySelector('.profile-menu');
+    const title = document.querySelector('.title');
+    const headermobile = document.querySelector('.headermobile');
+
+    // Always show menu on click
+    if (profileMenu) {
+      profileMenu.classList.add('active');
+      profileMenu.style.display = 'block';
+      profileMenu.style.marginTop = '';
+    }
+
+    // Mobile-specific layout changes
     if (window.innerWidth <= 600 && maincontent) {
       maincontent.style.display = 'none';
       userButton.classList.add('active');
+      if (title) {
+        title.style.display = 'block';
+        title.style.marginTop = 'var(--space-xl)';
+        if (profileMenu && title.parentNode) {
+          title.parentNode.insertBefore(profileMenu, title.nextSibling);
+          profileMenu.style.marginTop = 'var(--space-7xl)';
+        }
+      }
+      if (headermobile) {
+        headermobile.style.display = 'block';
+        headermobile.style.marginTop = 'var(--space-2xl)';
+      }
     }
   });
 }
 
-// --- Show main-content when menus are closed or .user-button is inactive ---
+// --- Utility functions ---
 function showMainContent() {
   if (maincontent) maincontent.style.display = 'block';
   if (userButton) userButton.classList.remove('active');
+  const title = document.querySelector('.title');
+  if (title) {
+    title.style.display = '';
+    title.style.marginTop = '';
+  }
+  const headermobile = document.querySelector('.headermobile');
+  if (headermobile) {
+    headermobile.style.display = '';
+    headermobile.style.marginTop = '';
+  }
+  const profileMenu = document.querySelector('.profile-menu');
+  if (profileMenu) {
+    profileMenu.classList.remove('active');
+    profileMenu.style.marginTop = '';
+    profileMenu.style.display = 'none';
+  }
 }
 
-// --- Utility functions ---
+// ...rest of your code remains unchanged...
+
 function closeThemePreference() {
   const themePreference = document.querySelector('.theme-preference');
   if (themePreference) themePreference.classList.remove('active');
 }
 
 function closeProfileMenu() {
-  const profileMenu = document.getElementById('profile') || document.querySelector('.profile-menu');
-  if (!profileMenu) return;
-  if (typeof profileMenu.hidePopover === 'function') {
-    profileMenu.hidePopover();
-  } else {
+  const profileMenu = document.querySelector('.profile-menu');
+  if (profileMenu) {
     profileMenu.classList.remove('active');
+    profileMenu.style.marginTop = '0';
+    profileMenu.style.display = 'none'; // <-- Hide menu after selection
   }
 }
 
@@ -38,14 +77,15 @@ function isMenuItem(el) {
 }
 
 // --- Close menus and show main-content when a menu item is selected ---
+function closeMenusAndShow() {
+  const dropdown = document.querySelector('.dropdown.active');
+  if (dropdown) dropdown.classList.remove('active');
+  closeThemePreference();
+  closeProfileMenu();
+  showMainContent();
+}
+
 document.querySelectorAll('.drop-down li').forEach(item => {
-  function closeMenusAndShow() {
-    const dropdown = item.closest('.dropdown');
-    if (dropdown) dropdown.classList.remove('active');
-    closeThemePreference();
-    closeProfileMenu();
-    showMainContent();
-  }
   item.addEventListener('click', closeMenusAndShow);
   item.addEventListener('touchend', closeMenusAndShow);
 });
@@ -128,10 +168,6 @@ function handleThemeChange(event) {
 
 themeRadios.forEach((radio) => {
   radio.addEventListener('change', handleThemeChange);
-  radio.addEventListener('touchend', (e) => {
-    if (e.cancelable) e.preventDefault();
-    handleThemeChange({ target: radio });
-  }, { passive: false });
 });
 
 // --- View Transitions API for smooth theme switch (if supported) ---
@@ -141,11 +177,5 @@ if ('startViewTransition' in document) {
       const selectedTheme = event.target.value;
       document.startViewTransition(() => applyTheme(selectedTheme));
     });
-    radio.addEventListener('touchend', (e) => {
-      if (e.cancelable) e.preventDefault();
-      const selectedTheme = radio.value;
-      document.startViewTransition(() => applyTheme(selectedTheme));
-    }, { passive: false });
   });
 }
-

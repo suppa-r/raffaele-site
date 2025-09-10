@@ -243,7 +243,7 @@ body>* {
 
 header {
   margin-inline: auto;
-  padding-top: var(--space-3xs);
+  padding-top: var(--space-2xl);
 }
 
 .title {
@@ -252,6 +252,10 @@ header {
   padding-top: var(--space-3xs);
   text-align: center;
   margin-inline: auto;
+}
+
+.headermobile {
+  display: none;
 }
 
 .user-button {
@@ -263,7 +267,7 @@ header {
   color: var(--text-color);
   background-color: var(--base-color);
   cursor: pointer;
-  width: auto;
+  padding: 0 var(--space-s);
   box-shadow: var(--navbar-shadow);
   z-index: 1000;
   transition: background-color 0.8s;
@@ -868,23 +872,15 @@ label:has(+ input:checked) {
     margin-inline: auto;
   }
 
-  .title {
-    font-size: var(--step--1);
-    padding-top: var(--space-2xl);
-    text-align: center;
-    margin-inline: auto;
-  }
-
-  .user-button {
+ .user-button {
   display: inline-flex;
-  align-items: center;
   justify-content: center;
   border-radius: var(--space-s);
   text-decoration: none;
   color: var(--text-color);
   background-color: var(--base-color);
   cursor: pointer;
-  width: auto;
+  padding: 0 var(--space-s);
   box-shadow: var(--navbar-shadow);
   z-index: 1000;
   transition: background-color 0.8s;
@@ -895,6 +891,15 @@ label:has(+ input:checked) {
     outline: 0;
     background-color: linear-gradient(var(--navbar-shadow) 0 0) padding-box;
   }
+}
+
+.headermobile {
+  display: block;
+  font-size: var(--step--1);
+  color: var(--text-color);
+  padding-top: var(--space-7xl);
+  text-align: center;
+  margin-inline: auto;
 }
 
 .primary-nav {
@@ -910,37 +915,15 @@ label:has(+ input:checked) {
   z-index: 1000;
 }
 
-/*ul {
-  /* centers list items horizontally 
-  display: flex;
-  list-style: none;
-  flex-direction: row;
-  padding: var(--space-s) var(--space-2xl);
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  background-color: var(--base-color);
-  color: var(--text-color);
-  border-radius: var(--btn-border-radius);
-  box-shadow: var(--navbar-shadow);
-}*/
-
-  .profile-menu {
+.profile-menu {
     grid-template-rows: 1fr;
     font-size: var(--step--1);
     margin-top: var(--space-xl);
     padding: var(--space-s) var(--space-xl);
     margin-inline: auto;
-    position-try-fallbacks: --top;
-  }
-  
-  @position-try --top {
-    inset: auto;
-    bottom: anchor(top);
-    left: anchor(center);
-  }
-  
- label {
+   }
+
+  label {
     flex-direction: row;
     padding: var(--space-s) var(--space-xl);
     gap: var(--space-xs);
@@ -962,7 +945,7 @@ label:has(+ input:checked) {
   padding: var(--space-l);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
-  width: var(--space-12xl);
+  width: var(--space-10xl);
   height: var(--space-7xl);
   z-index: 1000;
   display: flex;
@@ -991,8 +974,8 @@ label:has(+ input:checked) {
 
 .large-button svg {
   fill: var(--text-color);
-  width: var(--space-m);
-  height: var(--space-m);
+  width: var(--space-l);
+  height: var(--space-l);
   transition: transform 0.3s;
   display: block;
   margin-inline: auto;
@@ -1010,7 +993,7 @@ label:has(+ input:checked) {
   font-size: var(--step--1);
   color: var(--text-color);
   margin-inline: auto;
-  padding: 0 var(--space-xs);
+  padding: var(--space-s);
   /* centers text horizontally */
   display: block;
 }
