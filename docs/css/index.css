@@ -943,7 +943,7 @@ label:has(+ input:checked) {
 
 .large-button {
   padding: var(--space-l);
-  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
+  background-color: var(--base-color);
   color: var(--text-color);
   width: var(--space-13xl);
   height: var(--space-10xl);
