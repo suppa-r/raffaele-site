@@ -871,7 +871,7 @@ label:has(+ input:checked) {
 
   .primary-nav {
   position: absolute;
-  top: 2%;
+  top: 4%;
   right: 3%;
   display: flex;
   flex-direction: row;
@@ -886,7 +886,7 @@ label:has(+ input:checked) {
 ul {
   list-style: none;
   margin: 0;
-  padding-inline: 0 var(--space-l);
+  padding-inline: 0 var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -920,8 +920,8 @@ ul {
 
   label {
     flex-direction: column;
-    padding: var(--space-s) var(--space-l);
-    gap: var(--space-s);
+    padding: var(--space-s) var(--space-2xl);
+    gap: var(--space-xs);
     font-size: var(--step--1);
   }
 
@@ -955,8 +955,8 @@ ul {
   padding: var(--space-2xl);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
-  width: var(--space-12xl);
-  height: var(--space-7xl);
+  width: var(--space-10xl);
+  height: var(--space-5xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -966,7 +966,7 @@ ul {
   /* centers children horizontally */
   text-decoration: none;
   font-size: var(--step--1);
-  margin-block: var(--space-xl);
+  margin-block: var(--space-l);
   margin-inline: auto;
   /* centers the button itself */
   position: relative;
@@ -976,25 +976,38 @@ ul {
   box-shadow: var(--shadow);
 }
 
-.large-button span{
+.large-button:focus,
+.large-button:hover {
+  box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
+  outline: 2px solid var(--text-span);
+}
+
+.large-button svg {
+  fill: var(--text-color);
+  width: var(--space-l);
+  height: var(--space-l);
+  transition: transform 0.3s;
+  display: block;
+  margin-inline: auto;
+  /* centers SVG horizontally */
+}
+
+.large-button:hover>svg,
+.large-button:focus>svg {
+  transform: rotate(45deg);
+  fill: var(--text-span);
+}
+
+.large-button span {
+  text-align: center;
   font-size: var(--step--1);
   color: var(--text-color);
-  width: max-content;
+  width: fit-content;
   margin-inline: auto;
   /* centers text horizontally */
   display: block;
 }
-  .large-button svg {
-    width: var(--space-m);
-    height: var(--space-m);
-    fill: var(--text-color);
-    transition: transform 0.3s;
-    display: block;
-    margin-inline: auto;
-    /* centers SVG horizontally */
-  }
 }
-
 @media (prefers-reduced-motion: reduce) {
 
   .content div,
