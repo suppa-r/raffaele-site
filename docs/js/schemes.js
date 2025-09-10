@@ -1,34 +1,33 @@
 const userButton = document.querySelector('.user-button');
 const maincontent = document.querySelector('.main-content');
 
+// --- Show menu on click, handle mobile layout ---
 if (userButton) {
   userButton.addEventListener('click', () => {
     const profileMenu = document.querySelector('.profile-menu');
     const title = document.querySelector('.title');
     const headermobile = document.querySelector('.headermobile');
 
-    // Always show menu on click
     if (profileMenu) {
       profileMenu.classList.add('active');
       profileMenu.style.display = 'block';
       profileMenu.style.marginTop = '';
     }
 
-    // Mobile-specific layout changes
     if (window.innerWidth <= 600 && maincontent) {
       maincontent.style.display = 'none';
       userButton.classList.add('active');
       if (title) {
         title.style.display = 'block';
-        title.style.marginTop = 'var(--space-xl)';
+        title.style.marginTop = 'var(--space-l)';
         if (profileMenu && title.parentNode) {
           title.parentNode.insertBefore(profileMenu, title.nextSibling);
-          profileMenu.style.marginTop = 'var(--space-7xl)';
+          profileMenu.style.marginTop = 'var(--space-4xl)';
         }
       }
       if (headermobile) {
         headermobile.style.display = 'block';
-        headermobile.style.marginTop = 'var(--space-2xl)';
+        headermobile.style.marginTop = '0px';
       }
     }
   });
@@ -56,8 +55,6 @@ function showMainContent() {
   }
 }
 
-// ...rest of your code remains unchanged...
-
 function closeThemePreference() {
   const themePreference = document.querySelector('.theme-preference');
   if (themePreference) themePreference.classList.remove('active');
@@ -67,8 +64,8 @@ function closeProfileMenu() {
   const profileMenu = document.querySelector('.profile-menu');
   if (profileMenu) {
     profileMenu.classList.remove('active');
-    profileMenu.style.marginTop = '0';
-    profileMenu.style.display = 'none'; // <-- Hide menu after selection
+    profileMenu.style.marginTop = '';
+    profileMenu.style.display = 'none';
   }
 }
 
@@ -85,12 +82,12 @@ function closeMenusAndShow() {
   showMainContent();
 }
 
+// --- Event listeners for menu item selection ---
 document.querySelectorAll('.drop-down li').forEach(item => {
   item.addEventListener('click', closeMenusAndShow);
   item.addEventListener('touchend', closeMenusAndShow);
 });
 
-// --- Close .profile-menu and show main-content when an item inside it is selected ---
 document.addEventListener('click', (e) => {
   const inProfileMenu = e.target.closest('.profile-menu');
   if (inProfileMenu && isMenuItem(e.target)) {
