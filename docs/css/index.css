@@ -945,8 +945,8 @@ label:has(+ input:checked) {
   padding: var(--space-l);
   background-color: var(--base-color);
   color: var(--text-color);
-  width: var(--space-13xl);
-  height: var(--space-10xl);
+  width: var(--space-10xl);
+  height: var(--space-8xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -956,7 +956,7 @@ label:has(+ input:checked) {
   /* centers children horizontally */
   text-decoration: none;
   font-size: var(--step--1);
-  margin-block: var(--space-m);
+  margin-block: var(--space-s);
   margin-inline: auto;
   /* centers the button itself */
   position: relative;
