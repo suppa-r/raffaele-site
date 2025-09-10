@@ -86,3 +86,68 @@ document.querySelectorAll('.drop-down li').forEach(item => {
   item.addEventListener('touchend', closeMenus);
 });
 
+
+
+// Utility: close the profile menu (dialog popover or plain element)
+function closeProfileMenu() {
+  const profileMenu = document.getElementById('profile') || document.querySelector('.profile-menu');
+  if (!profileMenu) return;
+
+  // If it's a <dialog popover>, use the API; otherwise fall back to class removal
+  if (typeof profileMenu.hidePopover === 'function') {
+    profileMenu.hidePopover();
+  }
+  profileMenu.classList.remove('active');
+}
+
+// Theme radio change handler
+function handleThemeChange(event) {
+  const selectedTheme = event.target.value;
+  applyTheme(selectedTheme);
+  // Close theme preference UI (if any)
+  const themePreference = document.querySelector('.theme-preference');
+  if (themePreference) themePreference.classList.remove('active');
+  // Also close the profile menu after selection
+  closeProfileMenu();
+}
+
+// Re-bind listeners for theme radios
+themeRadios.forEach((radio) => {
+  radio.addEventListener('change', handleThemeChange);
+  radio.addEventListener('touchend', (e) => {
+    // Prevent duplicate firing on some devices
+    if (e.cancelable) e.preventDefault();
+    handleThemeChange({ target: radio });
+  }, { passive: false });
+});
+
+// Delegate: close .profile-menu when an item inside it is clicked/tapped
+// Matches common interactive items inside your menu (labels, radios, links, buttons, list items)
+function isMenuItem(el) {
+  return el.matches('label, input[type="radio"], a, button, li, [role="menuitem"]');
+}
+
+document.addEventListener('click', (e) => {
+  const inProfileMenu = e.target.closest('.profile-menu');
+  if (inProfileMenu && isMenuItem(e.target)) {
+    closeProfileMenu();
+  }
+});
+
+document.addEventListener('touchend', (e) => {
+  const inProfileMenu = e.target.closest('.profile-menu');
+  if (inProfileMenu && isMenuItem(e.target)) {
+    if (e.cancelable) e.preventDefault();
+    closeProfileMenu();
+  }
+}, { passive: false });
+
+// Optional: also close when pressing Enter/Space on focused item
+document.addEventListener('keydown', (e) => {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.profile-menu') && isMenuItem(e.target)) {
+    closeProfileMenu();
+  }
+});
+
+// ...existing code...
+
