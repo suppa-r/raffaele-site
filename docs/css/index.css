@@ -882,7 +882,7 @@ label:has(+ input:checked) {
   z-index: 1000;
 }
 
-/*ul {
+ul {
   list-style: none;
   margin: 0;
   padding-inline: 0;
@@ -895,7 +895,7 @@ label:has(+ input:checked) {
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
-}*/
+}
 
 .profile {
     grid-template-columns: repeat(auto-fit, minmax(30vmin, 1fr));
@@ -966,7 +966,26 @@ label:has(+ input:checked) {
   border-radius: 50%;
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
-}}
+}
+
+.large-button span{
+  font-size: var(--step--1);
+  color: var(--text-color);
+  width: fit-content;
+  margin-inline: auto;
+  /* centers text horizontally */
+  display: block;
+}
+  .large-button svg {
+    width: var(--space-l);
+    height: var(--space-l);
+    fill: var(--text-color);
+    transition: transform 0.3s;
+    display: block;
+    margin-inline: auto;
+    /* centers SVG horizontally */
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
 
