@@ -305,7 +305,7 @@ ul {
 }
 
 
-.profile {
+/*.profile {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15vmin, 1fr));
   font-size: var(--step--1);
@@ -314,7 +314,7 @@ ul {
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
-}
+}*/
 
 .profile-menu {
   display: none;
