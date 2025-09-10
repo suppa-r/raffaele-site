@@ -276,10 +276,9 @@ header {
   }
 }
 
-
 .primary-nav {
   position: absolute;
-  top: 3%;
+  top: 4%;
   right: 3%;
   display: flex;
   justify-content: center;
@@ -291,13 +290,15 @@ header {
 }
 
 ul {
+  /* centers list items horizontally */
+  display: flex;
   list-style: none;
+  flex-direction: column;
   margin: 0;
   padding-inline: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-l);
+  gap: var(--space-m);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
@@ -323,7 +324,7 @@ ul {
   inset: auto;
   bottom: anchor(top);
   left: anchor(center);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-l);
   margin: 0;
   border-radius: var(--btn-border-radius);
   background-color: var(--base-color);
@@ -412,8 +413,8 @@ label {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: var(--space-s) var(--space-l);
-  gap: var(--space-l);
+  padding: var(--space-s) var(--space-xl);
+  gap: var(--space-m);
   border-radius: var(--btn-border-radius);
   text-decoration: none;
   background-color: var(--base-color);
@@ -870,7 +871,7 @@ label:has(+ input:checked) {
 
   .primary-nav {
   position: absolute;
-  top: 1%;
+  top: 2%;
   right: 3%;
   display: flex;
   flex-direction: row;
@@ -885,7 +886,7 @@ label:has(+ input:checked) {
 ul {
   list-style: none;
   margin: 0;
-  padding-inline: 0;
+  padding-inline: 0 var(--space-l);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -915,6 +916,13 @@ ul {
     left: 50%;
     transform: translateX(-50%);
     padding: var(--space-s);
+  }
+
+  label {
+    flex-direction: column;
+    padding: var(--space-s) var(--space-l);
+    gap: var(--space-s);
+    font-size: var(--step--1);
   }
 
 .curve-container {
@@ -947,7 +955,7 @@ ul {
   padding: var(--space-2xl);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
-  width: var(--space-10xl);
+  width: var(--space-12xl);
   height: var(--space-7xl);
   z-index: 1000;
   display: flex;
@@ -971,14 +979,14 @@ ul {
 .large-button span{
   font-size: var(--step--1);
   color: var(--text-color);
-  width: fit-content;
+  width: max-content;
   margin-inline: auto;
   /* centers text horizontally */
   display: block;
 }
   .large-button svg {
-    width: var(--space-l);
-    height: var(--space-l);
+    width: var(--space-m);
+    height: var(--space-m);
     fill: var(--text-color);
     transition: transform 0.3s;
     display: block;
