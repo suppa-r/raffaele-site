@@ -873,7 +873,7 @@ label:has(+ input:checked) {
   top: 1%;
   right: 3%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -881,6 +881,21 @@ label:has(+ input:checked) {
   box-shadow: var(--navbar-shadow);
   z-index: 1000;
 }
+
+/*ul {
+  list-style: none;
+  margin: 0;
+  padding-inline: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-l);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--navbar-shadow);
+}*/
 
 .profile {
     grid-template-columns: repeat(auto-fit, minmax(30vmin, 1fr));
@@ -929,11 +944,11 @@ label:has(+ input:checked) {
   }
 
 .large-button {
-  padding: var(--space-xl);
+  padding: var(--space-2xl);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
-  width: var(--space-8xl);
-  height: var(--space-5xl);
+  width: var(--space-10xl);
+  height: var(--space-7xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
