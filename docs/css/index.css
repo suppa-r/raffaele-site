@@ -450,6 +450,11 @@ label:has(+ input:checked) {
 
 /*-------------curvature-----------------*/
 
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
 .curve-container {
   display: flex;
   flex-direction: column;
@@ -820,7 +825,7 @@ label:has(+ input:checked) {
 .large-button:focus,
 .large-button:hover {
   box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
-  outline: 1px solid var(--text-span);
+  outline: 2px solid var(--text-span);
 }
 
 .large-button svg {
@@ -897,14 +902,6 @@ label:has(+ input:checked) {
   }
 
 
-  .curve-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* centers children horizontally */
-    gap: var(--space-l);
-  }
-
   .text-with-animation,
   .text-with-animation-1,
   .text-with-animation-2,
@@ -921,18 +918,21 @@ label:has(+ input:checked) {
   }
 
   .large-button {
-    padding: var(--space-l);
+    padding: var(--space-m);
     background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
     color: var(--text-color);
     margin-block: var(--space-s);
-    padding: 0 var(--space-l);
+    margin-inline: auto;
+    /* centers the button itself */
+    position: relative;
+    overflow: hidden;
   }
 
   .large-button:focus,
   .large-button:hover {
     box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
-    outline: 1px solid var(--text-span);
-    outline-offset: var(--space-2xs);
+    outline: 2px solid var(--text-span);
+    outline-offset: var(--space-xs);
   }
 
   .large-button svg {
