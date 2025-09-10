@@ -873,6 +873,7 @@ label:has(+ input:checked) {
   top: 1%;
   right: 3%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -901,8 +902,18 @@ label:has(+ input:checked) {
     padding: var(--space-s);
   }
 
+.curve-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xl);
+  font-size: var(--step-0);
+  color: var(--text-color);
+  margin-block: var(--space-xl);
+  margin-inline: auto;
+}
 
-  .text-with-animation,
+.text-with-animation,
   .text-with-animation-1,
   .text-with-animation-2,
   .text-with-animation-3,
@@ -917,46 +928,30 @@ label:has(+ input:checked) {
     display: block;
   }
 
-  .large-button {
-    padding: var(--space-m);
-    background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
-    color: var(--text-color);
-    margin-block: var(--space-s);
-    margin-inline: auto;
-    /* centers the button itself */
-    position: relative;
-    overflow: hidden;
-  }
-
-  .large-button:focus,
-  .large-button:hover {
-    box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
-    outline: 2px solid var(--text-span);
-    outline-offset: var(--space-xs);
-  }
-
-  .large-button svg {
-    fill: var(--text-color);
-    width: var(--space-l);
-    height: var(--space-l);
-    transition: transform 0.3s;
-    display: block;
-    margin-inline: auto;
-    /* centers SVG horizontally */
-  }
-
-  .large-button span {
-    text-align: center;
-    font-size: var(--step--1);
-    color: var(--text-color);
-    padding: 0 var(--space-4xs);
-    white-space: nowrap;
-    margin-inline: auto;
-    /* centers text horizontally */
-    display: block;
-  }
-
-}
+.large-button {
+  padding: var(--space-xl);
+  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
+  color: var(--text-color);
+  width: var(--space-8xl);
+  height: var(--space-5xl);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* centers children vertically */
+  align-items: center;
+  /* centers children horizontally */
+  text-decoration: none;
+  font-size: var(--step--1);
+  margin-block: var(--space-xl);
+  margin-inline: auto;
+  /* centers the button itself */
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: box-shadow 0.3s, outline 0.3s;
+  box-shadow: var(--shadow);
+}}
 
 @media (prefers-reduced-motion: reduce) {
 
