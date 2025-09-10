@@ -874,6 +874,8 @@ label:has(+ input:checked) {
   .wrapper {
     padding-inline: 0 var(--space-4xs);
     margin-inline: auto;
+    letter-spacing: var(--space-5xs);
+    word-spacing: var(--space-4xs);
   }
 
  .user-button {
@@ -956,8 +958,8 @@ label:has(+ input:checked) {
   padding: var(--space-m);
   background-color: var(--base-color);
   color: var(--text-color);
-  width: var(--space-12xl);
-  height: var(--space-8xl);
+  width: var(--space-11xl);
+  height: var(--space-7xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
