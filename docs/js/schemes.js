@@ -1,37 +1,39 @@
 const userButton = document.querySelector('.user-button');
 const maincontent = document.querySelector('.main-content');
-
-// --- Show menu on click, handle mobile layout ---
-if (userButton) {
-  userButton.addEventListener('click', () => {
-    const profileMenu = document.querySelector('.profile-menu');
-    const title = document.querySelector('.title');
-    const headermobile = document.querySelector('.headermobile');
-
-    if (profileMenu) {
-      profileMenu.classList.add('active');
-      profileMenu.style.display = 'block';
-      profileMenu.style.marginTop = '';
-    }
-
-    if (window.innerWidth <= 600 && maincontent) {
-      maincontent.style.display = 'none';
-      userButton.classList.add('active');
-      if (title) {
-        title.style.display = 'block';
-        title.style.marginTop = 'var(--space-l)';
-        if (profileMenu && title.parentNode) {
-          title.parentNode.insertBefore(profileMenu, title.nextSibling);
-          profileMenu.style.marginTop = 'var(--space-4xl)';
+document.addEventListener('DOMContentLoaded', () => {
+  const userButton = document.querySelector('.user-button');
+  if (userButton) {
+    userButton.addEventListener('click', () => {
+      const profileMenu = document.querySelector('.profile-menu');
+      if (profileMenu) {
+        profileMenu.classList.add('active');
+        profileMenu.style.display = 'block';
+        profileMenu.style.marginTop = '';
+      }
+      if (window.innerWidth <= 600 && maincontent) {
+        maincontent.style.display = 'none';
+        userButton.classList.add('active');
+        const title = document.querySelector('.title');
+        if (title) {
+          title.style.display = 'block';
+          title.style.marginTop = 'var(--space-l)';
+          if (profileMenu && title.parentNode) {
+            title.parentNode.insertBefore(profileMenu, title.nextSibling);
+            profileMenu.style.marginTop = 'var(--space-4xl)';
+          }
+        }
+        const headermobile = document.querySelector('.headermobile');
+        if (headermobile) {
+          headermobile.style.display = 'block';
+          headermobile.style.marginTop = '0px';
         }
       }
-      if (headermobile) {
-        headermobile.style.display = 'block';
-        headermobile.style.marginTop = '0px';
-      }
-    }
-  });
-}
+    });
+  }
+});
+
+// --- Show menu on click, handle mobile layout ---
+// (Logic now handled inside DOMContentLoaded above)
 
 // --- Utility functions ---
 function showMainContent() {
@@ -137,6 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
   applyTheme(theme);
   const radio = document.querySelector(`[name=theme][value="${theme}"]`);
   if (radio) radio.checked = true;
+window.matchMedia('(prefers-color-scheme: system)').addEventListener('change', () => {
+    if (localStorage.getItem('theme-preference') === 'system') {
+      applyTheme('system');
+      const radio = document.querySelector('[name=theme][value="system"]');
+      if (radio) radio.checked = true;
+    }
+  });
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     if (localStorage.getItem('theme-preference') === 'system') {
