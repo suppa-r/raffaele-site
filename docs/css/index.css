@@ -964,7 +964,7 @@ ul {
   }
 
 .large-button {
-  padding: var(--space-2xl);
+  padding: var(--space-l);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
   width: var(--space-10xl);
