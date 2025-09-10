@@ -919,7 +919,7 @@ ul {
   }
 
   label {
-    flex-direction: column;
+    flex-direction: row;
     padding: var(--space-s) var(--space-2xl);
     gap: var(--space-xs);
     font-size: var(--step--1);
