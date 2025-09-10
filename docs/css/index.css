@@ -768,9 +768,6 @@ label:has(+ input:checked) {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   margin-inline: auto;
-  white-space: nowrap;
-  word-spacing: var(--space-3xs);
-  letter-spacing: var(--space-3xs);
 }
 
 .text-with-animation-1,
@@ -780,9 +777,6 @@ label:has(+ input:checked) {
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
-  white-space: nowrap;
-  word-spacing: var(--space-4xs);
-  letter-spacing: var(--space-4xs);
 }
 
 .text-with-animation-5 {
@@ -793,9 +787,21 @@ label:has(+ input:checked) {
   font-style: var(--font-style-regular);
   text-align: center;
   margin-block: var(--space-xs);
-  white-space: nowrap;
-  word-spacing: var(--space-3xs);
-  letter-spacing: var(--space-3xs);
+}
+
+.text-with-animation,
+.text-with-animation-1,
+.text-with-animation-2,
+.text-with-animation-3,
+.text-with-animation-4,
+.text-with-animation-5 {
+  margin-inline: auto;
+  text-align: center;
+  word-spacing: var(--space-4xs);
+  letter-spacing: var(--space-4xs);
+  white-space: normal;      /* allow wrapping */
+  word-break: break-word;   /* break long words if needed */
+  display: block;
 }
 
 .large-button {
@@ -904,8 +910,8 @@ label:has(+ input:checked) {
   z-index: 1000;
 }
 
-ul {
-  /* centers list items horizontally */
+/*ul {
+  /* centers list items horizontally 
   display: flex;
   list-style: none;
   flex-direction: row;
@@ -917,7 +923,7 @@ ul {
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
-}
+}*/
 
   .profile-menu {
     grid-template-rows: 1fr;
@@ -948,27 +954,12 @@ ul {
   margin-inline: auto;
 }
 
-.text-with-animation,
-  .text-with-animation-1,
-  .text-with-animation-2,
-  .text-with-animation-3,
-  .text-with-animation-4,
-  .text-with-animation-5 {
-    margin-inline: auto;
-    text-align: center;
-    /* centers text horizontally */
-    word-spacing: var(--space-4xs);
-    letter-spacing: var(--space-4xs);
-    white-space: nowrap;
-    display: block;
-  }
-
 .large-button {
   padding: var(--space-l);
   background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
   color: var(--text-color);
-  width: var(--space-10xl);
-  height: var(--space-5xl);
+  width: var(--space-12xl);
+  height: var(--space-7xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -978,7 +969,7 @@ ul {
   /* centers children horizontally */
   text-decoration: none;
   font-size: var(--step--1);
-  margin-block: var(--space-l);
+  margin-block: var(--space-m);
   margin-inline: auto;
   /* centers the button itself */
   position: relative;
@@ -996,8 +987,8 @@ ul {
 
 .large-button svg {
   fill: var(--text-color);
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-m);
+  height: var(--space-m);
   transition: transform 0.3s;
   display: block;
   margin-inline: auto;
@@ -1014,8 +1005,8 @@ ul {
   text-align: center;
   font-size: var(--step--1);
   color: var(--text-color);
-  width: fit-content;
   margin-inline: auto;
+  padding: 0 var(--space-xs);
   /* centers text horizontally */
   display: block;
 }
