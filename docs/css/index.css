@@ -76,15 +76,15 @@
   --font-weight-regular: 400;
   --font-style-regular: normal;
 
-    --clr-surface-1: hsl(240, 29%, 8%);
-    --clr-surface-2: hsl(240, 29%, 12%);
-    --clr-surface-3: hsl(240, 29%, 16%);
-    /* BUTTONS */
-    --btn-border-radius: 0.25rem;
+  --clr-surface-1: hsl(240, 29%, 8%);
+  --clr-surface-2: hsl(240, 29%, 12%);
+  --clr-surface-3: hsl(240, 29%, 16%);
+  /* BUTTONS */
+  --btn-border-radius: 0.25rem;
 
-    --btn-default-surface: var(--clr-surface-2);
-    --btn-default-text: var(--clr-text-2);
-    --btn-default-surface-hover: var(--clr-surface-3);
+  --btn-default-surface: var(--clr-surface-2);
+  --btn-default-text: var(--clr-text-2);
+  --btn-default-surface-hover: var(--clr-surface-3);
 }
 
 
@@ -207,24 +207,30 @@
 body {
   color-scheme: light;
   --base-color: #ffffff;
+  --base-100-color: #c2b1b1dc;
   --text-color: #000000;
   --text-span: #49879c;
 
   @container style(--theme: dark) {
     color-scheme: dark;
     --base-color: #000000;
+    --base-100-color: #c2b1b1dc;
     --text-color: #ffffff;
     --text-span: #49879c;
   }
 }
 
-html,
+
 body {
+  background: var(--base-100-color);
+  color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
-  color: var(--text-color);
-  background-color: var(--base-color);
 }
 
 body>* {
@@ -252,69 +258,75 @@ header {
   padding-top: var(--space-3xs);
   text-align: center;
   margin-inline: auto;
+}
+
+.user-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--space-s);
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  cursor: pointer;
+  width: auto;
+  margin: var(--space-xl) 0 0 var(--space-l);
+  padding: 0 var(--space-4xs);
+  box-shadow: 0 5px 15px 0 rgb(from 0#fff rgb /.3);
+  z-index: 1000;
+  transition: background-color 0.8s;
+  anchor-name: --profile-button;
+
+  &:hover,
+  &:focus-visible {
+    outline: 0;
+    background-color: linear-gradient(var(--base-color) 0 0) padding-box;
   }
+}
 
-/* top code here more related to the animation
-   a bit lower down is the anchor positioning
-   and then general styling */
 
-/* Getting the menu in the right spot
-   with anchor positioning */
 .primary-nav {
   position: absolute;
-  top: var(--space-s);
-  right: var(--space-m);
-  padding: 0;
-  max-inline-size: var(--space-6xl);
+  top: -5%;
+  right: 0;
+  width: fit-content;
+  background-color: var(--base-color);
+  color: var(--text-color);
   border-radius: var(--btn-border-radius);
-  box-shadow: var(--navbar-shadow);
+  box-shadow: 0 5px 15px 0 rgb(from 0#fff rgb /.3);
   z-index: 1000;
-  }
-   
-  ul {
-    list-style: none;
-    margin: 0;
-    padding-inline: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+}
 
-  .user-button {
-    anchor-name: --user-button;
-    padding: 0;
-    display:inline-flex;
-    border: 6px solid var(--text-color);
-    border-radius: var(--space-s);
-    text-decoration: none;
-    color: var(--text-color);
-    background-color: var(--base-color);
-    cursor: pointer;
-    width: var(--space-4xl);
-    min-height: auto;
-    padding: var(--space-4xs) var(--space-xl);
-    box-shadow: var(--navbar-shadow);
-    z-index: 1000;
-    transition: background-color 0.8s var(--text-color), border-color 0.3s var(--text-color);
+ul {
+  list-style: none;
+  margin: 0;
+  padding-inline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    &:hover,
-    &:focus-visible {
-      outline: 0;
-      background-color: linear-gradient(var(--base-color) 0 0) padding-box;
-  }
-  }
+
+.profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20vmin, 1fr));
+  font-size: var(--step--1);
+  padding: var(--space-s) var(--space-m);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  gap: var(--space-xs);
+  box-shadow: var(--box-shadow);
+}
 
 .profile-menu {
   display: none;
   position: absolute;
-  position-anchor: --user-button;
-  inset: auto;
-  bottom: anchor(bottom);
-  left: anchor(right);
-  /* anchoring to the button */
 
+  position-anchor: --profile-button;
+  inset: auto;
+  bottom: anchor(top);
+  left: anchor(center);
   margin: 0;
-  padding: var(--space-4xs) var(--space-l);
   border-radius: var(--btn-border-radius);
   background: var(--text-color);
   color: var(--base-color);
@@ -327,69 +339,64 @@ header {
 
   position-try-fallbacks: --left;
 
-  margin-left: var(--space-l);
+  margin-left: var(--space-2xs);
 
-  & > * {
-    padding: var(--space-s);
+  &>* {
+    padding: 0 var(--space-2xs);
   }
 
   &:popover-open {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10vmin, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(5vmin, 1fr));
     opacity: 1;
 
     @starting-style {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(10vmin, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(5vmin, 1fr));
       opacity: 0;
     }
   }
 }
 
+
+
 @position-try --left {
   inset: auto;
-  position: absolute;
   top: anchor(bottom);
-  left: anchor(right);
+  right: anchor(right);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 :is(button, .button) {
-    display:block;
-    cursor: pointer;
-    text-decoration: none;
-    padding: var(--space-xs) var(--space-s);
-    background-color: var(--base-color);
-    color: var(--text-color);
-    border-radius: var(--btn-border-radius);
-    transition: scale 0.125s;
-  }
+  display: inline-flex;
+  cursor: pointer;
+  text-decoration: none;
+  padding: var(--space-2xs) var(--space-s);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  border-radius: var(--btn-border-radius);
+  transition: scale 0.125s;
+}
 
-  :is(button, .button):is(:hover, :focus-visible) {
-    background-color: var(
-     var(--text-span),
-      var(--text-color)
-    );
-  }
+:is(button, .button):is(:hover, :focus-visible) {
+  background-color: var(var(--gradient-button-fill, transparent),
+      var(--text-color));
+}
 
-  :is(button, .button):active {
-    scale: 0.95;
-  }
+:is(button, .button):active {
+  scale: 0.95;
+}
 
-  
 
-  #profile {
-    display: grid;
-    gap: var(--space-2xs);
-  }
-
-  .profile-menu {
-    padding: 0 var(--space-s);
-    border-radius: var(--btn-border-radius);
-    background: var(--base-color);
-    color: var(--text-color);
-    font-size: var(--step--1);
-    overflow: hidden;
-  }
 
 input[type="radio"] {
   display: none;
@@ -401,12 +408,15 @@ label {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: var(--space-l);
+  border-radius: var(--btn-border-radius);
+  padding: var(--space-xs) 0;
   padding: 0 var(--space-xs);
   font-size: var(--step--1);
   position: relative;
-  color: var(--base-color);
-  background-color: var(--text-color);
-  margin-bottom: var(--space-xs);
+  color: var(--text-color);
+  background-color: var(--base-color);
+  box-shadow: 0 5px 15px 0 rgb(from 0#fff rgb /.6);
   user-select: none;
 
 
@@ -447,278 +457,300 @@ label svg {
 }
 
 .content {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .content div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
+  position: absolute;
+  display: flex;
+  animation: show-hide var(--sp) ease 0s infinite;
+  mix-blend-mode: plus-lighter;
 }
 
 @keyframes show-hide {
-	0%,
-	100% {
-		opacity: 0;
-		transform: scale(0.6);
-	}
-	20%,
-	80%,
-	100% {
-		opacity: 1;
-		transform: scale(1);
-	}
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  20%,
+  80%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .content div span {
-	width: 10vmin;
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	color: var(--text-color);
-	box-sizing: border-box;
+  width: 10vmin;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  color: var(--text-color);
+  box-sizing: border-box;
   text-shadow: 0 -7px 7px var(--text-color),
-             0 -10px 10px var(--text-color),
-             0 -21px 21px var(--text-color),
-             0 7px 7px var(--text-color),
-             0 10px 10px var(--text-color),
-             0 21px 21px var(--text-color);
+    0 -10px 10px var(--text-color),
+    0 -21px 21px var(--text-color),
+    0 7px 7px var(--text-color),
+    0 10px 10px var(--text-color),
+    0 21px 21px var(--text-color);
 }
 
 .content-1 {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .content-1 div {
-	position: absolute;
-	display: flex;
-	animation: show-hide var(--sp) ease 0s infinite;
-	mix-blend-mode: plus-lighter;
+  position: absolute;
+  display: flex;
+  animation: show-hide var(--sp) ease 0s infinite;
+  mix-blend-mode: plus-lighter;
 }
 
 @keyframes show-hide {
-	0%,
-	100% {
-		opacity: 0;
-		transform: scale(0.6);
-	}
-	20%,
-	80%,
-	100% {
-		opacity: 1;
-		transform: scale(1);
-	}
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  20%,
+  80%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .content-1 div span {
-	width: 10vmin;
-	position: relative;
-	text-align: center;
-	box-sizing: border-box;
-	color: var(--text-color);
-	box-sizing: border-box;
+  width: 10vmin;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  color: var(--text-color);
+  box-sizing: border-box;
   text-shadow: 0 -7px 7px var(--text-color),
-             0 -10px 10px var(--text-color),
-             0 -21px 21px var(--text-color),
-             0 7px 7px var(--text-color),
-             0 10px 10px var(--text-color),
-             0 21px 21px var(--text-color);
+    0 -10px 10px var(--text-color),
+    0 -21px 21px var(--text-color),
+    0 7px 7px var(--text-color),
+    0 10px 10px var(--text-color),
+    0 21px 21px var(--text-color);
 }
 
 .up:before,
 .down:before {
-	width: 80%;
-	height: 0.1vmin;
-	background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
-	content: "";
-	position: absolute;
-	border-radius: 100%;
-	filter: blur(2px);
-	left: 10%;
-	top: 49%;
-	box-shadow: 0 0 100px 0 var(--text-color);
-	animation: shadow var(--sp) ease 0s infinite;
+  width: 80%;
+  height: 0.1vmin;
+  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  filter: blur(2px);
+  left: 10%;
+  top: 49%;
+  box-shadow: 0 0 100px 0 var(--text-color);
+  animation: shadow var(--sp) ease 0s infinite;
 }
 
 .down:before {
-	width: 1vmin;
-	height: 0.5vmin;
-	filter: blur(3px);
-	left: calc(50% - 0.5vmin);
-	top: 45%;
-	box-shadow: 0 0 10px 0 var(--text-color);
+  width: 1vmin;
+  height: 0.5vmin;
+  filter: blur(3px);
+  left: calc(50% - 0.5vmin);
+  top: 45%;
+  box-shadow: 0 0 10px 0 var(--text-color);
 }
 
 @keyframes shadow {
-	0%,
-	10%,
-	90%,
-	100% {
-		opacity: 0;
-	}
-	45%,
-	55% {
-		opacity: 0.25;
-		height: 0.25vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+
+  45%,
+  55% {
+    opacity: 0.25;
+    height: 0.25vmin;
+  }
 }
 
 .up span,
 .down span {
-	animation-duration: var(--sp);
-	animation-timing-function: ease;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
+  animation-duration: var(--sp);
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
 }
 
 /*up*/
 .up-2-8 {
-	animation-name: go-up-2-8;
+  animation-name: go-up-2-8;
 }
 
 .up-3-7 {
-	animation-name: go-up-3-7;
+  animation-name: go-up-3-7;
 }
 
 .up-4-6 {
-	animation-name: go-up-4-6;
+  animation-name: go-up-4-6;
 }
 
 .up-5 {
-	animation-name: go-up-5;
+  animation-name: go-up-5;
 }
 
 /*down*/
 .down-2-8 {
-	animation-name: go-down-2-8;
+  animation-name: go-down-2-8;
 }
 
 .down-3-7 {
-	animation-name: go-down-3-7;
+  animation-name: go-down-3-7;
 }
 
 .down-4-6 {
-	animation-name: go-down-4-6;
+  animation-name: go-down-4-6;
 }
 
 .down-5 {
-	animation-name: go-down-5;
+  animation-name: go-down-5;
 }
 
 @keyframes go-up-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -0.6vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: -0.6vmin;
+  }
 }
 
 @keyframes go-up-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.2vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: -1.2vmin;
+  }
 }
 
 @keyframes go-up-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -1.8vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: -1.8vmin;
+  }
 }
 
 @keyframes go-up-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: -2.4vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: -2.4vmin;
+  }
 }
 
 @keyframes go-down-2-8 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 0.6vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: 0.6vmin;
+  }
 }
 
 @keyframes go-down-3-7 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.2vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: 1.2vmin;
+  }
 }
 
 @keyframes go-down-4-6 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 1.8vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: 1.8vmin;
+  }
 }
 
 @keyframes go-down-5 {
-	0%,
-	10%,
-	90%,
-	100% {
-		top: 0;
-	}
-	40%,
-	60% {
-		top: 2.4vmin;
-	}
+
+  0%,
+  10%,
+  90%,
+  100% {
+    top: 0;
+  }
+
+  40%,
+  60% {
+    top: 2.4vmin;
+  }
 }
 
 .text-container {
   color: var(--text-color);
   margin-top: var(--space-l);
   margin-inline: auto;
-  }
+}
 
-.text-with-animation{
+.text-with-animation {
   text-align: center;
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
@@ -764,12 +796,15 @@ label svg {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  justify-content: center;      /* centers children vertically */
-  align-items: center;          /* centers children horizontally */
+  justify-content: center;
+  /* centers children vertically */
+  align-items: center;
+  /* centers children horizontally */
   text-decoration: none;
   font-size: var(--step--1);
   margin-block: var(--space-xl);
-  margin-inline: auto;          /* centers the button itself */
+  margin-inline: auto;
+  /* centers the button itself */
   position: relative;
   overflow: hidden;
   border-radius: 50%;
@@ -789,305 +824,311 @@ label svg {
   height: var(--space-xl);
   transition: transform 0.3s;
   display: block;
-  margin-inline: auto;          /* centers SVG horizontally */
+  margin-inline: auto;
+  /* centers SVG horizontally */
 }
 
 .large-button:hover>svg,
 .large-button:focus>svg {
   transform: rotate(45deg);
   fill: var(--text-span);
-  }
+}
 
 .large-button span {
   text-align: center;
   font-size: var(--step--1);
   color: var(--text-color);
   width: fit-content;
-  margin-inline: auto;          /* centers text horizontally */
+  margin-inline: auto;
+  /* centers text horizontally */
   display: block;
 }
 
 @container (max-width: 600px) {
 
-.wrapper {
+  .wrapper {
     padding-inline: 0 var(--space-4xs);
     margin-inline: auto;
   }
 
-.title {
-  font-size: var(--step--1);
-  padding-top: var(--space-2xl);
-  text-align: center;
-  margin-inline: auto;
-  } 
+  .title {
+    font-size: var(--step--1);
+    padding-top: var(--space-2xl);
+    text-align: center;
+    margin-inline: auto;
+  }
 
-/* top code here more related to the animation
+  /* top code here more related to the animation
    a bit lower down is the anchor positioning
    and then general styling */
 
-/* Getting the menu in the right spot
+  /* Getting the menu in the right spot
    with anchor positioning */
-.user-button {
-  padding: 0;
-  border-radius: 100vw;
-  aspect-ratio: 1;
-
-  anchor-name: --profile-button;
-}
-
-.profile-menu {
-  display: none;
-  /* anchoring to the button */
-  position: absolute;
-  position-anchor: --profile-button;
-  margin: 0;
-  inset: auto;
-  bottom: anchor(bottom);
-  left: anchor(right);
-  opacity: 0;
-  transition: opacity 1s, display 1s, overlay 1s;
-  transition-behavior: allow-discrete;
-
-  position-try-fallbacks: --left;
-
-  margin-left: 0.25rem;
-
-  & > * {
-    padding: 0.5rem;
-  }
-
-  &:popover-open {
-    display: grid;
-    opacity: 1;
-
-    @starting-style {
-      display: grid;
-      opacity: 0;
-    }
-  }
-}
-
-@position-try --left {
-  inset: auto;
-  top: anchor(bottom);
-  right: anchor(right);
-}
-
-@layer general-styling {
-  :root {
-    --clr-surface-1: hsl(240, 29%, 8%);
-    --clr-surface-2: hsl(240, 29%, 12%);
-    --clr-surface-3: hsl(240, 29%, 16%);
-    /* BUTTONS */
-    --btn-border-radius: 0.25rem;
-
-    --btn-default-surface: var(--clr-surface-2);
-    --btn-default-text: var(--clr-text-2);
-    --btn-default-surface-hover: var(--clr-surface-3);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  figure,
-  blockquote,
-  dl,
-  dd {
-    margin-block-end: 0;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    text-wrap: balance;
-  }
-
-
-  button,
-  label {
-    line-height: 1.1;
-  }
-
-  h1 {
-    font-size: 1rem;
-    text-align: center;
-    margin-block-start: 2rem;
-  }
-
-  img,
-  picture {
-    max-width: 100%;
-    display: block;
-  }
-
-  input,
-  button,
-  textarea,
-  select {
-    font-family: inherit;
-    font-size: inherit;
-  }
-
-  .visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-
-  :is(button, .button) {
-    display: inline-flex;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    font-weight: 500;
-    background-color: var(--btn-surface, var(--btn-default-surface));
-    color: white;
-    border: 0;
-    border-radius: 1rem;
-    transition: scale 0.125s;
-  }
-
-  :is(button, .button):is(:hover, :focus-visible) {
-    background-color: var(
-      --btn-surface-hover,
-      var(--btn-default-surface-hover)
-    );
-  }
-
-  :is(button, .button):active {
-    scale: 0.95;
-  }
-
-  html {
-    font-size: 2rem;
-  }
-
-  nav {
-    max-inline-size: 900px;
-    margin: var(--size-900) auto;
-    background-color: var(--clr-surface-3);
-    border-radius: 1rem;
-    margin: 3rem;
-    padding: 1rem 2rem;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-
-    padding-inline: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .user-button {
-    border: 6px solid var(--clr-surface-3);
-    &:hover,
-    &:focus-visible {
-      outline: 0;
-      border-color: hsl(from var(--clr-surface-2) h s 45%);
-    }
-  }
-
-  .profile-image {
+    padding: 0;
+    border-radius: 100vw;
     aspect-ratio: 1;
-    border-radius: 100%;
-    width: 75px;
-    aspect-ratio: 1;
-    object-fit: cover;
-  }
 
-  .profile {
-    display: grid;
-    gap: 0.25rem;
+    anchor-name: --profile-button;
   }
 
   .profile-menu {
-    /* general styling for the dialog */
-    border: 0;
-    padding: 0;
-    border-radius: 0.25rem;
-    background: hsl(197, 87%, 39%);
-    color: white;
-    font-size: 0.5rem;
-    overflow: hidden;
+    display: none;
+    /* anchoring to the button */
+    position: absolute;
+    position-anchor: --profile-button;
+    margin: 0;
+    inset: auto;
+    bottom: anchor(bottom);
+    left: anchor(right);
+    opacity: 0;
+    transition: opacity 1s, display 1s, overlay 1s;
+    transition-behavior: allow-discrete;
+
+    position-try-fallbacks: --left;
+
+    margin-left: 0.25rem;
+
+    &>* {
+      padding: 0.5rem;
+    }
+
+    &:popover-open {
+      display: grid;
+      opacity: 1;
+
+      @starting-style {
+        display: grid;
+        opacity: 0;
+      }
+    }
   }
 
-  .profile-menu button {
-    padding: var(--size-300);
-    border-top: 1px solid var(--clr-surface--1);
-    border-radius: 0;
-    background-color: hsl(197, 87%, 39%);
-  }
-}
-
-.curve-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centers children horizontally */
-  gap: var(--space-l);
+  @position-try --left {
+    inset: auto;
+    top: anchor(bottom);
+    right: anchor(right);
   }
 
-.text-with-animation,
-.text-with-animation-1,
-.text-with-animation-2,
-.text-with-animation-3,
-.text-with-animation-4,
-.text-with-animation-5 {
-  margin-inline: auto;
-  text-align: center; /* centers text horizontally */
-  word-spacing: var(--space-4xs);
-  letter-spacing: var(--space-4xs);
-  white-space: nowrap;
-  display: block;
-}
+  @layer general-styling {
+    :root {
+      --clr-surface-1: hsl(240, 29%, 8%);
+      --clr-surface-2: hsl(240, 29%, 12%);
+      --clr-surface-3: hsl(240, 29%, 16%);
+      /* BUTTONS */
+      --btn-border-radius: 0.25rem;
 
-.large-button {
-  padding: var(--space-l);
-  background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
-  color: var(--text-color);
-  margin-block: var(--space-s);
-  padding: 0 var(--space-l);
+      --btn-default-surface: var(--clr-surface-2);
+      --btn-default-text: var(--clr-text-2);
+      --btn-default-surface-hover: var(--clr-surface-3);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    figure,
+    blockquote,
+    dl,
+    dd {
+      margin-block-end: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      text-wrap: balance;
+    }
+
+
+    button,
+    label {
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: 1rem;
+      text-align: center;
+      margin-block-start: 2rem;
+    }
+
+    img,
+    picture {
+      max-width: 100%;
+      display: block;
+    }
+
+    input,
+    button,
+    textarea,
+    select {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .visually-hidden {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+
+    :is(button, .button) {
+      display: inline-flex;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      font-weight: 500;
+      background-color: var(--btn-surface, var(--btn-default-surface));
+      color: white;
+      border: 0;
+      border-radius: 1rem;
+      transition: scale 0.125s;
+    }
+
+    :is(button, .button):is(:hover, :focus-visible) {
+      background-color: var(--btn-surface-hover,
+          var(--btn-default-surface-hover));
+    }
+
+    :is(button, .button):active {
+      scale: 0.95;
+    }
+
+    html {
+      font-size: 2rem;
+    }
+
+    nav {
+      max-inline-size: 900px;
+      margin: var(--size-900) auto;
+      background-color: var(--clr-surface-3);
+      border-radius: 1rem;
+      margin: 3rem;
+      padding: 1rem 2rem;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+
+      padding-inline: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .user-button {
+      border: 6px solid var(--clr-surface-3);
+
+      &:hover,
+      &:focus-visible {
+        outline: 0;
+        border-color: hsl(from var(--clr-surface-2) h s 45%);
+      }
+    }
+
+    .profile-image {
+      aspect-ratio: 1;
+      border-radius: 100%;
+      width: 75px;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .profile {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .profile-menu {
+      /* general styling for the dialog */
+      border: 0;
+      padding: 0;
+      border-radius: 0.25rem;
+      background: hsl(197, 87%, 39%);
+      color: white;
+      font-size: 0.5rem;
+      overflow: hidden;
+    }
+
+    .profile-menu button {
+      padding: var(--size-300);
+      border-top: 1px solid var(--clr-surface--1);
+      border-radius: 0;
+      background-color: hsl(197, 87%, 39%);
+    }
   }
 
-.large-button:focus,
-.large-button:hover {
-  box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
-  outline: 1px solid var(--text-span);
-  outline-offset: var(--space-2xs);
-}
+  .curve-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* centers children horizontally */
+    gap: var(--space-l);
+  }
 
-.large-button svg {
-  fill: var(--text-color);
-  width: var(--space-l);
-  height: var(--space-l);
-  transition: transform 0.3s;
-  display: block;
-  margin-inline: auto;          /* centers SVG horizontally */
-}
+  .text-with-animation,
+  .text-with-animation-1,
+  .text-with-animation-2,
+  .text-with-animation-3,
+  .text-with-animation-4,
+  .text-with-animation-5 {
+    margin-inline: auto;
+    text-align: center;
+    /* centers text horizontally */
+    word-spacing: var(--space-4xs);
+    letter-spacing: var(--space-4xs);
+    white-space: nowrap;
+    display: block;
+  }
 
-.large-button span {
-  text-align: center;
-  font-size: var(--step--1);
-  color: var(--text-color);
-  padding: 0 var(--space-4xs);
-  white-space: nowrap;
-  margin-inline: auto;          /* centers text horizontally */
-  display: block;
-}
+  .large-button {
+    padding: var(--space-l);
+    background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
+    color: var(--text-color);
+    margin-block: var(--space-s);
+    padding: 0 var(--space-l);
+  }
+
+  .large-button:focus,
+  .large-button:hover {
+    box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
+    outline: 1px solid var(--text-span);
+    outline-offset: var(--space-2xs);
+  }
+
+  .large-button svg {
+    fill: var(--text-color);
+    width: var(--space-l);
+    height: var(--space-l);
+    transition: transform 0.3s;
+    display: block;
+    margin-inline: auto;
+    /* centers SVG horizontally */
+  }
+
+  .large-button span {
+    text-align: center;
+    font-size: var(--step--1);
+    color: var(--text-color);
+    padding: 0 var(--space-4xs);
+    white-space: nowrap;
+    margin-inline: auto;
+    /* centers text horizontally */
+    display: block;
+  }
 
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .content div,
   .content-1 div {
     animation: none;
