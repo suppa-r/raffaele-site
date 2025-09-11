@@ -247,28 +247,17 @@ header {
 
 .primary-nav {
   position: absolute;
-  top: 2%;
-  right: 3%;
-  display: flex;
+  top: 0%;
+  right: 2%;
+  display: inline-flex;
   justify-content: center;
-  padding: var(--space-2xs) var(--space-s);
+  padding: 0 var(--space-s);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
+  cursor: pointer;
+  pointer-events: all;
   z-index: 1000;
-}
-
-.primary-nav ul {
-  /* centers list items horizontally */
-  display: flex;
-  list-style: none;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--btn-border-radius);
-  box-shadow: var(--navbar-shadow);
 }
 
 .link {
@@ -280,10 +269,8 @@ header {
   padding: var(--space-xs) var(--space-l);
   color: var(--text-color);
   transition: --gradient-button-fill 0.8s;
-  background-color: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
-  box-shadow: var(--navbar-shadow);
+  background-color: linear-gradient(var(--gradient) 0 0) padding-box;
   z-index: 1000;
-
   border: 4px solid transparent;
 
   &:hover,
@@ -297,18 +284,18 @@ header {
 .link:focus-visible {
   color: var(--text-color);
   outline: 0;
-  background: linear-gradient(var(--gradient) 0 0) padding-box;
+  background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
 }
 
 .dropdown {
   position: relative;
-  width: auto;
-  margin: var(--space-3xs);
-  right: 2.5%;
+  margin: 0 var(--space-3xs);
+  display: inline-block;
+  text-align: center;
   z-index: 100;
   font-size: var(--step--1);
   user-select: none;
-  transition: color 0.3s, box-shadow 0.3s;
+  /*transition: color 0.3s, box-shadow 0.3s;*/
 }
 
 .dropdown-menu {
@@ -319,14 +306,13 @@ header {
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 0;
   pointer-events: all;
-  transform: translateY(-var(--space-2xs));
-  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  /*transform: translateY(-var(--space-2xs));
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;*/
 }
 
 
 .dropdown.active > .color-picker.dropdown-menu {
   opacity: 1;
-  transform: translateY(0);
   pointer-events:all;
 }
 
@@ -349,7 +335,6 @@ header {
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--space-m);
-  box-shadow: 0 20px 50px 20px rgba(0, 0, 0, .1);
   opacity: 1;
   pointer-events: all;
   /* Animate transform and opacity for movement */
@@ -359,20 +344,19 @@ header {
 
 @keyframes colorPickerSlide {
   0% {
-    transform: translateX(var(--space-2xs));
+    transform: translateX(-var(--space-l));
     opacity: 0;
   }
-  60% {
-    transform: translateX(var(--space-xs));
-    opacity: 1;
-  }
-  80% {
+  40% {
     transform: translateX(var(--space-s));
     opacity: 1;
   }
-
+  80% {
+    transform: translateX(var(--space-2xs));
+    opacity: 1;
+  }
   100% {
-    transform: translateX(var(--space-m));
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -893,26 +877,10 @@ label:has(+ input:checked) {
     word-spacing: var(--space-4xs);
   }
 
- .user-button {
-  display: inline-flex;
-  justify-content: center;
-  padding-top: var(--space-xs);
-  border-radius: var(--space-s);
-  text-decoration: none;
-  color: var(--text-color);
-  background-color: var(--base-color);
-  cursor: pointer;
-  padding: 0 var(--space-s);
-  box-shadow: var(--navbar-shadow);
-  z-index: 1000;
-  transition: background-color 0.8s;
-  anchor-name: --profile-button;
-
-  &:hover,
-  &:focus-visible {
-    outline: 0;
-    background-color: linear-gradient(var(--navbar-shadow) 0 0) padding-box;
-  }
+.primary-nav {
+  top: 0;
+  right: 2%;
+  padding:0 var(--space-xs);
 }
 
 .title {
@@ -924,40 +892,6 @@ label:has(+ input:checked) {
   margin-inline: auto;
   transition: var(--background-transition);
 }
-
-.primary-nav {
-  position: absolute;
-  top: 1%;
-  right: 3%;
-  cursor: pointer;
-  pointer-events: all;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  border-radius: var(--btn-border-radius);
-  box-shadow: var(--navbar-shadow);
-  z-index: 1000;
-}
-
-.profile-menu {
-    grid-template-rows: 1fr;
-    font-size: var(--step--1);
-    margin-top: var(--space-xl);
-    padding: var(--space-2xs) var(--space-s);
-    margin-inline: auto;
-   }
-
-  label {
-    flex-direction: row;
-    padding: var(--space-s) var(--space-l);
-    gap: var(--space-s);
-    font-size: var(--step--1);
-  }
-
-  label svg {
-    width: var(--space-m);
-    height: var(--space-m);
-    margin-right: var(--space-xs);
-  }
 
 .curve-container {
   display: flex;
@@ -971,34 +905,30 @@ label:has(+ input:checked) {
 }
 
 .large-button {
+  position: relative;
   padding: var(--space-m);
   background-color: var(--base-color);
   color: var(--text-color);
-  width: var(--space-11xl);
-  height: var(--space-7xl);
+  width: var(--space-10xl);
+  height: var(--space-8xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* centers children vertically */
-  align-items: center;
-  /* centers children horizontally */
   text-decoration: none;
   font-size: var(--step--1);
-  margin-block: var(--space-s);
   margin-inline: auto;
   /* centers the button itself */
-  position: relative;
-  overflow: hidden;
   border-radius: 50%;
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .large-button:focus,
 .large-button:hover {
   box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
-  outline: 2px solid var(--text-span);
+  outline: 4px solid var(--text-span);
 }
 
 .large-button svg {
@@ -1011,8 +941,8 @@ label:has(+ input:checked) {
   /* centers SVG horizontally */
 }
 
-    .large-button:hover>svg,
-    .large-button:focus>svg {
+  .large-button:hover>svg,
+  .large-button:focus>svg {
   transform: rotate(45deg);
 }
 
@@ -1022,10 +952,12 @@ label:has(+ input:checked) {
   color: var(--text-color);
   margin-inline: auto;
   padding: 0 var(--space-s);
-  /* centers text horizontally */
+ /* centers text horizontally */
   display: block;
+  width: fit-content;
 }
 }
+
 @media (prefers-reduced-motion: reduce) {
 
   .content div,
