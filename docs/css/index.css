@@ -247,7 +247,7 @@ header {
 
 .primary-nav {
   position: absolute;
-  top: 0%;
+  top: 1%;
   right: 2%;
   display: inline-flex;
   justify-content: center;
@@ -261,18 +261,21 @@ header {
 }
 
 .link {
-  cursor: pointer;
-  pointer-events: all;
+  all: revert;
   display: inline-flex;
   border-radius: var(--btn-border-radius);
   text-decoration: none;
-  padding: var(--space-xs) var(--space-l);
+  cursor: pointer;
+  padding: var(--space-s) var(--space-l);
   color: var(--text-color);
-  transition: --gradient-button-fill 0.8s;
-  background-color: linear-gradient(var(--gradient) 0 0) padding-box;
+  transition: --gradient-button-fill 0.9s;
+  border: 4px solid var(--text-color);
+  background-color: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
   z-index: 1000;
-  border: 4px solid transparent;
-
+  box-shadow: var(--navbar-shadow);
+  user-select: none;
+  position: relative;
+ 
   &:hover,
   &:focus-visible {
     --gradient-button-fill:transparent;
