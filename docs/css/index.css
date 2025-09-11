@@ -73,6 +73,7 @@
 
   --btn-border-radius: var(--space-s);
   --x: var(--space-2xl);
+  --background-transition: background-color 1s ease, color 1s ease;
 }
 
 
@@ -271,6 +272,7 @@ header {
   text-align: center;
   margin-inline: auto;
   margin-block: var(--space-xs);
+  transition: var(--background-transition);
 }
 
 .primary-nav {
@@ -768,6 +770,8 @@ label:has(+ input:checked) {
 .main-content {
   position: relative;
   z-index: 1;
+  transition: var(--background-transition);
+  display: block;
 }
 
 .curve-container {
@@ -1213,6 +1217,7 @@ label:has(+ input:checked) {
   padding-top: var(--space-xl);
   text-align: center;
   margin-inline: auto;
+  transition: var(--background-transition);
 }
 
 .primary-nav {

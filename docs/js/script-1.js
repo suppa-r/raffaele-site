@@ -26,6 +26,17 @@ document.addEventListener("click", e => {
     if (isLink && e.target.tagName === "BUTTON") {
       e.preventDefault();
     }
+    // On mobile, hide .main-content and .title when menu is first opened
+    if (window.innerWidth <= 600 && currentDropdown.classList.contains("active")) {
+      const mainContent = document.querySelector('.main-content');
+      if (mainContent) {
+        mainContent.style.display = 'none';
+      }
+      const title = document.querySelector('.title');
+      if (title) {
+        title.style.display = 'none';
+      }
+    }
   }
 
   document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
@@ -75,15 +86,16 @@ themeRadios.forEach(radio => {
       const button = dropdown.querySelector('[data-dropdown-button]');
       if (button) button.setAttribute('aria-expanded', 'false');
     }
-    // Hide main-content only on mobile (width <= 600px)
+    // On mobile, show .main-content and .title again when a theme is selected
     if (window.innerWidth <= 600) {
       const mainContent = document.querySelector('.main-content');
       if (mainContent) {
-        mainContent.classList.add('hidden');
-        // Show main-content again after theme switch animation (e.g. 1s)
-        setTimeout(() => {
-          mainContent.classList.remove('hidden');
-        }, 100);
+        mainContent.classList.add('background-transition');
+        mainContent.style.display = 'block';
+      }
+      const title = document.querySelector('.title');
+      if (title) {
+        title.style.display = 'block';
       }
     }
   });
