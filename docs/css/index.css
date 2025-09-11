@@ -1,9 +1,12 @@
+.hidden {
+  display: none !important;
+}
 @property --gradient-button-fill {
   syntax: "<color>";
   inherits: true;
   initial-value: #8eaab8;
-
 }
+
 
 [data-theme="dark"] html,
 [data-theme="dark"] body {
@@ -11,7 +14,9 @@
   --base-color: #000000;
   --text-color: #ffffff;
   --text-span: #49879c;
-  transition: background 0.3s, color 0.3s;
+  --shadow-color: rgba(255,255,255,0.853);
+  --shadow-color2: rgb(255,255,255);
+  --shadow-color3: rgb(232,235,238);
 }
 
 [data-theme="light"] html,
@@ -20,20 +25,9 @@
   --base-color: #ffffff;
   --text-color: #000000;
   --text-span: #49879c;
-  transition: background 0.3s, color 0.3s;
-}
-
-/* Theme variables */
-[data-theme="dark"] {
-  --navbar-shadow: 0 30px 100px rgba(201, 192, 192, 0.7);
-  --box-shadow: 0 30px 100px rgba(204, 189, 189, 0.166);
-  --shadow: 0 30px 100px rgba(148, 151, 189, 0.116);
-}
-
-[data-theme="light"] {
-  --navbar-shadow: 0 30px 100px rgba(10, 10, 10, 0.3);
-  --box-shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
-  --shadow: 0 30px 100px rgba(201, 202, 218, 0.171);
+  --shadow-color: rgba(0,0,0,0.3);
+  --shadow-color2: rgba(26, 27, 27, 0.923);
+  --shadow-color3: rgba(24, 25, 26, 0.916);
 }
 
 :root {
@@ -41,17 +35,16 @@
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
+  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
-
-  --step--2: clamp(0.7422rem, 0.7134rem + 0.1126cqi, 0.875rem);
   --step--1: clamp(0.8854rem, 0.8553rem + 0.1508cqi, 1rem);
   --step-0: clamp(1.0625rem, 1.0132rem + 0.2467cqi, 1.25rem);
   --step-1: clamp(1.275rem, 1.1993rem + 0.3783cqi, 1.5625rem);
   --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
   --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
 
-  --space-5xs: clamp(0rem, 0rem + 0cqi, 0.078125rem);
-  --space-4xs: clamp(0.125rem, 0.1168rem + 0.0411cqi, 0.15625rem);
+  --space-5xs: clamp(0.125rem, 0.116rem + 0.0205cqi, 0.1875rem);
+  --space-4xs: clamp(0.1875rem, 0.175rem + 0.0411cqi, 0.25rem);
   --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
   --space-2xs: clamp(0.5625rem, 0.5461rem + 0.0822cqi, 0.625rem);
   --space-xs: clamp(0.8125rem, 0.7796rem + 0.1645cqi, 0.9375rem);
@@ -68,10 +61,6 @@
   --space-8xl: clamp(12.5rem, 12.5rem + 2.5cqi, 15rem);
   --space-9xl: clamp(15rem, 15rem + 2.5cqi, 18rem);
   --space-10xl: clamp(18rem, 18rem + 2.5cqi, 21.5rem);
-  --space-11xl: clamp(21.5rem, 21.5rem + 2.5cqi, 25rem);
-  --space-12xl: clamp(25rem, 25rem + 2.5cqi, 30rem);
-  --space-13xl: clamp(30rem, 30rem + 2.5cqi, 35rem);
-  --space-14xl: clamp(35rem, 35rem + 2.5cqi, 40rem);
 
   --pt-serif-regular: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
@@ -82,8 +71,8 @@
   --font-weight-regular: 400;
   --font-style-regular: normal;
 
-  /* BUTTONS */
   --btn-border-radius: var(--space-s);
+  --x: var(--space-2xl);
 }
 
 
@@ -217,6 +206,35 @@ body {
   }
 }
 
+html,
+body {
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
+  font-size: var(--step--1);
+  color: var(--text-color);
+  background-color: var(--base-color);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body>* {
+  /* Ensure all direct children of body are treated as containers */
+  container-type: inline-size;
+  margin-inline: auto;
+  /* Allow them to be sized based on their content */
+  /* Center content within the body */
+
+}
+
+@layer support.demo {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+}
+
+
 body {
   background: var(--base-color);
   color: var(--text-color);
@@ -255,7 +273,292 @@ header {
   margin-block: var(--space-xs);
 }
 
-.user-button {
+.primary-nav {
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--navbar-shadow);
+  z-index: 1000;
+}
+
+.primary-nav ul {
+  /* centers list items horizontally */
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--navbar-shadow);
+}
+
+.link {
+  cursor: pointer;
+  pointer-events: all;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--space-s);
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  box-shadow: var(--navbar-shadow);
+  z-index: 1000;
+  transition: --gradient-button-fill 0.8s;
+  border: 4px solid transparent;
+  background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
+  padding: 0 var(--space-s);
+  anchor-name: --profile-button;
+
+  &:hover,
+  &:focus-visible {
+   --gradient-button-fill: #3392ffa4;
+    outline: 0;
+    background: linear-gradient(var(--gradient) 0 0) padding-box;
+  }
+}
+
+/*.link {
+  background: none;
+  border: none;
+  text-decoration: none;
+  color: #777;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+*/
+
+.dropdown.active > .link,
+.link:hover,
+.link:focus-visible {
+  color: black;
+}
+
+.dropdown {
+  position: relative;
+  width: auto;
+  margin: var(--space-3xs);
+  right: 2.5%;
+  z-index: 100;
+  font-size: var(--step--1);
+  user-select: none;
+  /*transition: color 0.3s, box-shadow 0.3s;*/
+  /*anchor-name: --dropdown;*/
+
+}
+
+
+.dropdown-menu {
+  background-color: transparent;
+  padding: .75rem;
+  border-radius: .25rem;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0);
+  opacity: 0;
+  pointer-events: all;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+
+.dropdown.active > .color-picker.dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events:all;
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 2rem;
+}
+
+.dropdown-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+
+.color-picker {
+  position: absolute;
+  right: var(--space-xs);
+  gap: var(--space-s);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  border-radius: var(--space-m);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+  opacity: 1;
+  pointer-events: all;
+  /* Animate transform and opacity for movement */
+  transition: transform 2s cubic-bezier(.4,0,.2,1), opacity 150ms ease;
+  view-transition-name: match-element;
+}
+
+@keyframes colorPickerSlide {
+  0% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-5px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(2px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+.color-picker.dropdown-menu {
+  transform: translateX(40px);
+  opacity: 0;
+  transition: transform 2s cubic-bezier(.4,0,.2,1), opacity 150ms ease;
+}
+
+.dropdown.active > .color-picker.dropdown-menu {
+  transform: translateX(0);
+  opacity: 1;
+  animation: colorPickerSlide 2s cubic-bezier(.4,0,.2,1);
+}
+
+.color-picker>fieldset {
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  background: transparent;
+}
+
+
+input[type="radio"] {
+  cursor: pointer;
+  pointer-events: all;
+  position: absolute;
+  z-index: -1;
+
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+label {
+  cursor: pointer;
+  position: relative;
+  z-index: 1000;
+  pointer-events: all;
+  display: flex;
+  flex-direction: row;
+  /*justify-content: center;*/
+  /* centers children horizontally */
+  padding: var(--space-2xs) var(--space-s);
+  gap: var(--space-2xs);
+  align-items: center;
+  border-radius: var(--btn-border-radius);
+  text-decoration: none;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  box-shadow: var(--navbar-shadow);
+  font-size: var(--step--1);
+  z-index: 1000;
+  user-select: none;
+  position: relative;
+  transition: color 0.3s, box-shadow 0.3s;
+
+
+  &::before {
+    position: absolute;
+    background-color: transparent;
+    border-radius: var(--btn-border-radius);
+    z-index: 1000;
+    inset: 0px;
+    margin-inline: auto;
+  }
+}
+
+label:hover,  
+label:focus {
+  color: var(--text-color);
+  box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
+
+}
+
+label svg {
+  width: var(--space-m);
+  height: var(--space-m);
+  margin-right: var(--space-xs);
+}
+
+label:has(+ input:checked) {
+  color: var(--text-color);
+
+  &::before {
+    content: "";
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--space-xs);
+
+  &::before {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 100%;
+    z-index: 1000;
+    inset: 0px;
+    margin-inline: auto;
+  }
+}
+
+label:has(+ input:checked) {
+  color: var(--text-color);
+
+  &::before {
+    content: "";
+  }
+}
+label:hover,
+label:has(+ input:checked) {
+  color: var(--text-color);
+  box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
+  transform: translateY(-2px);
+}
+
+/*.user-button {
   cursor: pointer;
   pointer-events: all;
   display: inline-flex;
@@ -295,7 +598,7 @@ header {
 }
 
 ul {
-  /* centers list items horizontally */
+  /* centers list items horizontally *
   display: flex;
   list-style: none;
   flex-direction: column;
@@ -389,17 +692,16 @@ ul {
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
-  /* Use transform for scale, for wider browser support */
+  /* Use transform for scale, for wider browser support *
   transition: transform 0.125s;
 }
 
 :is(button, .button):is(:hover, :focus-visible) {
-  /* Aqua background for hover/focus */
+  /* Aqua background for hover/focus *
   background-color: #367e86ee;
 }
 
 :is(button, .button):active {
-  /* Use transform for scale effect */
   transform: scale(0.95);
 }
 
@@ -414,7 +716,7 @@ label {
   display: flex;
   flex-direction: row;
   /*justify-content: center;*/
-  /* centers children horizontally */
+  /* centers children horizontally *
   padding: var(--space-2xs) var(--space-s);
   gap: var(--space-2xs);
   align-items: center;
