@@ -217,6 +217,7 @@ body {
   }
 }
 
+
 body {
   background: var(--base-color);
   color: var(--text-color);
@@ -277,7 +278,7 @@ header {
   &:focus-visible {
    --gradient-button-fill: #3392ffa4;
     outline: 0;
-    background: linear-gradient(var(--gradient) 0 0) padding-box;
+    background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
   }
 }
 
@@ -370,16 +371,6 @@ ul {
   pointer-events: all;
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
 :is(button, .button) {
   display: inline-flex;
   cursor: pointer;
@@ -389,18 +380,19 @@ ul {
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
-  /* Use transform for scale, for wider browser support */
-  transition: transform 0.125s;
+  /* Support both modern scale and transform for wider mobile compatibility */
+  transition: transform 0.125s, scale 0.125s;
 }
 
 :is(button, .button):is(:hover, :focus-visible) {
-  /* Aqua background for hover/focus */
-  background-color: #367e86ee;
+  /* Use gradient if provided, otherwise fallback to text color */
+  background-color: var(--gradient-button-fill, var(--text-color));
 }
 
+/* Active press feedback scoped to button elements */
 :is(button, .button):active {
-  /* Use transform for scale effect */
   transform: scale(0.95);
+  scale: 0.95;
 }
 
 input[type="radio"] {
@@ -432,12 +424,12 @@ label {
 
   &::before {
     position: absolute;
-    background-color: transparent;
+  box-shadow: 0 4px 24px 0 rgba(100, 150, 255, 0.15), 0 1.5px 6px 0 rgba(0,0,0,0.08);
     border-radius: var(--btn-border-radius);
     z-index: 1000;
     inset: 0px;
     margin-inline: auto;
-  }
+  box-shadow: 0 8px 32px 0 rgba(100, 150, 255, 0.22), 0 2px 8px 0 rgba(0,0,0,0.12);
 }
 
 label:hover,  
@@ -818,7 +810,7 @@ label:has(+ input:checked) {
 
 .large-button {
   padding: var(--space-2xl);
-  background-color: var(--base-color);
+  background-color: rgba(12, 12, 12, 0.993);
   color: var(--text-color);
   width: var(--space-12xl);
   height: var(--space-7xl);
@@ -837,14 +829,15 @@ label:has(+ input:checked) {
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-  transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--shadow);
+  /* include transform for smooth tap feedback */
+  transition: box-shadow 0.3s, outline 0.3s, transform 0.125s;
+  box-shadow: 0 4px 24px 0 rgba(100, 150, 255, 0.15), 0 1.5px 6px 0 rgba(0,0,0,0.08);
 }
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
-  outline: 2px solid var(--text-span);
+  box-shadow: 0 8px 32px 0 rgba(100, 150, 255, 0.22), 0 2px 8px 0 rgba(0,0,0,0.12);
+  outline: 2p  solid var(--text-span);
 }
 
 .large-button svg {
@@ -871,6 +864,11 @@ label:has(+ input:checked) {
   margin-inline: auto;
   /* centers text horizontally */
   display: block;
+}
+
+/* Active state press feedback */
+.large-button:active {
+  transform: scale(0.98);
 }
 
 @container (max-width: 600px) {
@@ -979,7 +977,7 @@ label:has(+ input:checked) {
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-  transition: box-shadow 0.3s, outline 0.3s;
+  transition: box-shadow 0.3s, outline 0.3s, transform 0.125s;
   box-shadow: var(--shadow);
 }
 
@@ -1030,4 +1028,4 @@ label:has(+ input:checked) {
   .large-button:focus>svg {
     transform: none;
   }
-}
+}}
