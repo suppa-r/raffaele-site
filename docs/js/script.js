@@ -2,6 +2,8 @@
 // so when a user comes back, they don't have
 // to set it again.
 
+
+
 function updateTheme(selectedTheme) {
   if (selectedTheme === "💻") {
     document.documentElement.style.removeProperty("--theme");

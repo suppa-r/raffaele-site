@@ -172,28 +172,6 @@
 
 body {
   color-scheme: light;
-  --clr-body-bg: hsl(10, 25%, 95%);
-  --clr-card-bg: hsl(10, 25%, 98%);
-  --clr-text: #232323;
-  --clr-heading: hsl(18, 65%, 48%);
-  --clr-warn-2: hsl(34.2, 65.2%, 74.1%);
-  --clr-warn-1: hsl(34.2, 45.2%, 84.1%);
-  --clr-warn-text: #232323;
-
-  @container style(--theme: 🌑) {
-    color-scheme: dark;
-    --clr-body-bg: hsl(173, 10%, 7%);
-    --clr-card-bg: hsl(173, 30%, 10%);
-    --clr-text: #cbd5e1;
-    --clr-heading: hsl(173, 50%, 70%);
-    --clr-warn-2: hsl(34.2, 65.2%, 74.1%);
-    --clr-warn-1: hsl(34.2, 45.2%, 84.1%);
-    --clr-warn-text: #232323;
-  }
-}
-
-body {
-  color-scheme: light;
   --base-color: #ffffff;
   --text-color: #000000;
   --text-span: #49879c;
@@ -243,46 +221,21 @@ header {
 }
 
 .dropdown {
-  position: absolute;
-  top: var(--space-xs);
-  right: var(--space-xs);
-  margin: 0 var(--space-3xs);
-  display: inline-block;
-  text-align: center;
-  z-index: 100;
-  font-size: var(--step--1);
-  user-select: none;
-  transition: color 0.3s, box-shadow 0.3s;
-}
-
-.dropdown-menu {
-  background-color: var(--base-color);
-  padding: .75rem;
+  display: grid;
+  gap: var(--space-s);
   border-radius: var(--btn-border-radius);
+  text-align: center;
+  z-index: 1000;
+  position: absolute;
+  right: var(--space-m);
+  top: var(--space-3xs);
+  background-color: var(--base-color);
+  padding: var(--space-xs) var(--space-s);
   color: var(--text-color);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
-  opacity: 0;
+  opacity: 1;
   pointer-events: all;
   transform: translateY(0);
-  /*transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;*/
-}
-
-
-.dropdown.active > .color-picker.dropdown-menu {
-  opacity: 1;
-  pointer-events:all;
-}
-
-.information-grid {
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: var(--space-m);
-}
-
-.dropdown-links {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-m);
 }
 
 .link {
@@ -290,7 +243,7 @@ header {
   pointer-events: all;
   display: flex;
   flex-direction: row;
-  padding:0 var(--space-2xs);
+  padding: 0 var(--space-xl);
   gap: var(--space-3xs);
   align-items: center;
   border-radius: var(--btn-border-radius);
@@ -303,7 +256,7 @@ header {
   user-select: none;
   position: relative;
   transition: color 0.3s, box-shadow 0.3s;
-  transform: none !important;
+  transform: none;
 }
 
 .link svg {
@@ -312,50 +265,37 @@ header {
   margin-right: var(--space-2xs);
 }
 
-.dropdown-menu > .link,
-.link:hover,
-.link:focus-visible {
-  color: var(--text-color);
-  outline: 0;
-  background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
-}
-
 .color-picker {
-  position:relative;
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-l);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--space-m);
   opacity: 1;
   pointer-events: all;
-  padding: var(--space-xs) var(--space-l);
-  /* Animate transform and opacity for movement 
-  transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;*/
+  /* Animate transform and opacity for movement */
+  transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;
   view-transition-name: match-element;
 }
 
-.color-picker > fieldset {
-  display: grid;
-  gap: var(--space-m);
-  grid: grid-auto / auto auto auto;
+
+.color-picker>fieldset {
   padding: var(--space-s) var(--space-m);
   margin-inline: auto;
-  width: min-content;
-  border: 0;
   background: transparent;
   border-radius: var(--btn-border-radius);
 }
 
-
 @keyframes colorPickerSlide {
   0% {
-    transform: translateX(24px);
+    transform: translateX(200px);
     opacity: 0;
   }
 
   20% {
+    opacity: 1;
+  }
+
+  -50% {
+    transform: translateX(24px);
     opacity: 1;
   }
 
@@ -367,30 +307,28 @@ header {
 
 
 .color-picker.dropdown-menu {
-  transform: translateX(var(--space-4xl));
   opacity: 0;
-  /*transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;*/
 }
 
 .dropdown.active>.color-picker.dropdown-menu {
-  gap: var(--space-xs);
+
+  z-index: 2000;
   color: var(--text-color);
   pointer-events: all;
   background-color: var(--base-color);
-
   transform: translateX(0);
   opacity: 1;
-  animation: colorPickerSlide 2s cubic-bezier(.4, 0, .2, 1);
+  animation: colorPickerSlide 1s cubic-bezier(.4, 0, .2, 1);
 }
-
 
 .color-picker>fieldset {
   display: flex;
   flex-direction: column;
+  gap: var(--space-m);
+  /* or any value you prefer */
   border: 0;
   background: transparent;
 }
-
 
 input[type="radio"] {
   cursor: pointer;
@@ -414,32 +352,37 @@ label {
   pointer-events: all;
   display: flex;
   flex-direction: row;
-  padding: var(--space-s) var(--space-s);
+  padding: var(--space-2xs) var(--space-l);
   gap: var(--space-xs);
   align-items: center;
   border-radius: var(--btn-border-radius);
   text-decoration: none;
-  background-color: var(--base-color);
+  background-color: transparent;
   color: var(--text-color);
   box-shadow: var(--navbar-shadow);
   font-size: var(--step--1);
-  z-index: 1000;
+  border: 2px solid var(--text-color);
   user-select: none;
-  position: relative;
   transition: color 0.3s, box-shadow 0.3s;
 }
 
-label:hover,  
-label:focus {
+.link span {
+  padding: var(--space-2xs) var(--space-s);
   color: var(--text-color);
+}
+
+label:hover,
+label:focus {
+  color: var(--text-span);
   box-shadow: 0 10px 10px var(--space-s) var(--navbar-shadow);
 
 }
 
 label svg {
-  width: var(--space-m);
-  height: var(--space-m);
-  margin-right: var(--space-xs);
+  fill: var(--text-color);
+  width: var(--space-s);
+  height: var(--space-s);
+  margin-right: var(--space-2xs);
 }
 
 label:has(+ input:checked) {
@@ -773,9 +716,7 @@ label:has(+ input:checked) {
   width: 10vmin;
   position: relative;
   text-align: center;
-  box-sizing: border-box;
   color: var(--text-color);
-  box-sizing: border-box;
   text-shadow: 0 -7px 7px var(--text-color),
     0 -10px 10px var(--text-color),
     0 -21px 21px var(--text-color),
@@ -816,9 +757,7 @@ label:has(+ input:checked) {
   width: 10vmin;
   position: relative;
   text-align: center;
-  box-sizing: border-box;
   color: var(--text-color);
-  box-sizing: border-box;
   text-shadow: 0 -7px 7px var(--text-color),
     0 -10px 10px var(--text-color),
     0 -21px 21px var(--text-color),
@@ -1034,7 +973,6 @@ label:has(+ input:checked) {
   color: var(--text-color);
   margin-top: var(--space-l);
   margin-inline: auto;
-  margin-top: var(--space-m);
 }
 
 .text-with-animation {
@@ -1085,26 +1023,21 @@ label:has(+ input:checked) {
 }
 
 .large-button {
-  padding: var(--space-2xl);
+  position: relative;
+  width: var(--space-9xl);
   background-color: var(--base-color);
   color: var(--text-color);
-  width: var(--space-12xl);
-  height: var(--space-7xl);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* centers children vertically */
-  align-items: center;
-  /* centers children horizontally */
   text-decoration: none;
   font-size: var(--step--1);
   margin-block: var(--space-xl);
   margin-inline: auto;
   /* centers the button itself */
-  position: relative;
-  overflow: hidden;
   border-radius: 50%;
+  aspect-ratio: 1 / 1;
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
 }
@@ -1135,10 +1068,8 @@ label:has(+ input:checked) {
   text-align: center;
   font-size: var(--step--1);
   color: var(--text-color);
-  width: fit-content;
   margin-inline: auto;
-  /* centers text horizontally */
-  display: block;
+  padding: 0 var(--space-l);
 }
 
 
@@ -1180,7 +1111,6 @@ label:has(+ input:checked) {
 
   .large-button {
     position: relative;
-    padding: var(--space-m);
     background-color: var(--base-color);
     color: var(--text-color);
     width: var(--space-10xl);
@@ -1228,7 +1158,6 @@ label:has(+ input:checked) {
     padding: 0 var(--space-s);
     /* centers text horizontally */
     display: block;
-    width: fit-content;
   }
 }
 
