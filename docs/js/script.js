@@ -54,8 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (linkButton) {
     linkButton.addEventListener('click', (e) => {
       e.preventDefault();
-      setMenuOpen(true);
-      hideContent();
+      const isOpen = dropdown.classList.contains('active');
+      setMenuOpen(!isOpen); // toggle menu
+      if (!isOpen) {
+        hideContent();
+      } else {
+        showContent();
+      }
     });
   }
 
