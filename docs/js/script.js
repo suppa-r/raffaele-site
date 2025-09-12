@@ -1,109 +1,80 @@
-// ...existing code...
-const linkButton = document.querySelector('.link');
-const dropdown = document.querySelector('.dropdown');
-const dropdownMenu = document.querySelector('.color-picker.dropdown-menu');
-
-const curve = document.querySelector('.curve-container');
-const text = document.querySelector('.text-container');
-const largebutton = document.querySelector('.large-button');
-
-const themeRadios = document.querySelectorAll('.theme-list-item input[type="radio"]');
-
-const isMobile = () => window.matchMedia('(max-width: 600px)').matches;
-
-// --- Theme logic ---
-let systemMql = window.matchMedia('(prefers-color-scheme: dark)');
-let systemListener = null;
-
-function bindSystemListener() {
-  if (systemListener) return;
-  systemListener = (e) => {
-    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-  };
-  systemMql.addEventListener('change', systemListener);
-}
-function unbindSystemListener() {
-  if (!systemListener) return;
-  systemMql.removeEventListener('change', systemListener);
-  systemListener = null;
-}
-function applyTheme(theme) {
-  if (theme === '💻') {
-    document.documentElement.setAttribute('data-theme', systemMql.matches ? 'dark' : 'light');
-    bindSystemListener();
-  } else {
-    unbindSystemListener();
-    document.documentElement.setAttribute('data-theme', theme === '🌑' ? 'dark' : 'light');
-  }
-  localStorage.setItem('theme-preference', theme);
-}
-
-// --- UI refresh ---
-function setContainersVisible(visible) {
-  const displayVal = visible ? '' : 'none';
-  if (curve) curve.style.display = displayVal;
-  if (text) text.style.display = displayVal;
-  if (largebutton) largebutton.style.display = displayVal;
-}
-
-function syncMenuVisibility() {
-  if (!dropdown || !dropdownMenu) return;
-  const isActive = dropdown.classList.contains('active');
-  dropdownMenu.style.display = isActive ? 'grid' : 'none';
-}
-
-function refreshUI() {
-  // Ensure dropdown menu element visibility matches active state
-  syncMenuVisibility();
-  // Hide content while the menu is open, show otherwise
-  const menuOpen = dropdown?.classList.contains('active');
-  setContainersVisible(!menuOpen);
-}
-
-// --- Init: hide dropdown by default, apply saved theme, initial refresh ---
 document.addEventListener('DOMContentLoaded', () => {
-  if (dropdown) dropdown.classList.remove('active');
-  if (dropdownMenu) dropdownMenu.style.display = 'none';
+  // DOM elements
+  const linkButton = document.querySelector('.link');
+  const dropdown = document.querySelector('.dropdown');
+  const dropdownMenu = document.querySelector('.dropdown-menu.color-picker');
+  const curve = document.querySelector('.curve-container');
+  const text = document.querySelector('.text-container');
+  const largebutton = document.querySelector('.large-button');
+  const themeRadios = document.querySelectorAll('.theme-list-item input[type="radio"]');
 
-  const savedTheme = localStorage.getItem('theme-preference') || '💻';
-  applyTheme(savedTheme);
-  const checked = document.querySelector(`[name="theme"][value="${savedTheme}"]`);
-  if (checked) checked.checked = true;
+  // Helpers
+  function hideContent() {
+    if (curve) curve.style.display = 'none';
+    if (text) text.style.display = 'none';
+    if (largebutton) largebutton.style.display = 'none';
+  }
+  function showContent() {
+    if (curve) curve.style.display = '';
+    if (text) text.style.display = '';
+    if (largebutton) largebutton.style.display = '';
+  }
+  function setMenuOpen(open) {
+    if (!dropdown || !dropdownMenu) return;
+    dropdown.classList.toggle('active', open);
+    dropdownMenu.style.display = open ? 'grid' : 'none';
+  }
 
-  refreshUI();
-});
-
-// --- Toggle menu on .link click ---
-if (linkButton) {
-  linkButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (!dropdown) return;
-    dropdown.classList.toggle('active');
-    refreshUI();
-  });
-}
-
-// --- When a theme is picked: apply theme, close menu, refresh ---
-themeRadios.forEach((input) => {
-  input.addEventListener('change', () => {
-    const val = input.value;
-    if ('startViewTransition' in document) {
-      document.startViewTransition(() => applyTheme(val));
+  // Theme logic
+  const mql = window.matchMedia('(prefers-color-scheme: dark)');
+  let sysListener = null;
+  function applyTheme(theme) {
+    if (theme === 'system') {
+      document.documentElement.setAttribute('data-theme', mql.matches ? 'dark' : 'light');
+      if (!sysListener) {
+        sysListener = e => document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        mql.addEventListener('change', sysListener);
+      }
     } else {
-      applyTheme(val);
+      if (sysListener) { mql.removeEventListener('change', sysListener); sysListener = null; }
+      document.documentElement.setAttribute('data-theme', theme); // 'light' | 'dark'
     }
-    if (dropdown) dropdown.classList.remove('active');
-    refreshUI();
+    localStorage.setItem('theme-preference', theme);
+  }
+
+  // Initial state: hide dropdown, apply saved theme, show content
+  setMenuOpen(false);
+  showContent();
+  const savedTheme = localStorage.getItem('theme-preference') || 'system';
+  applyTheme(savedTheme);
+  const checkedRadio = document.querySelector(`[name="theme"][value="${savedTheme}"]`);
+  if (checkedRadio) checkedRadio.checked = true;
+
+  // .link toggles the dropdown and hides content
+  if (linkButton) {
+    linkButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      setMenuOpen(true);
+      hideContent();
+    });
+  }
+
+  // When a theme is picked: transition, apply theme, close menu, re-show content
+  themeRadios.forEach((input) => {
+    input.addEventListener('change', () => {
+      const val = input.value;
+      if ('startViewTransition' in document) {
+        document.startViewTransition(() => applyTheme(val));
+      } else {
+        applyTheme(val);
+      }
+      setMenuOpen(false);
+      showContent();
+    });
   });
-});
 
-// --- Global click: re-sync UI after any interaction ---
-document.addEventListener('click', () => {
-  // Defer to run after default handlers
-  setTimeout(refreshUI, 0);
-}, true);
-
-// --- Resize: keep UI consistent across breakpoints ---
-window.addEventListener('resize', () => {
-  refreshUI();
+  // Keep dropdown visibility consistent on resize
+  window.addEventListener('resize', () => {
+    setMenuOpen(dropdown?.classList.contains('active'));
+  });
 });
