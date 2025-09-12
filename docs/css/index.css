@@ -1146,7 +1146,7 @@ input[type="radio"] {
     justify-content: center;
     text-decoration: none;
     font-size: var(--step--1);
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-2xl);
     margin-inline: auto;
     /* centers the button itself */
     border-radius: 50%;
