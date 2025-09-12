@@ -818,6 +818,8 @@ input[type="radio"] {
 .large-button {
   position: relative;
   width: var(--space-10xl);
+  height: var(--space-10xl);
+  aspect-ratio: 1 / 2;
   background-color: var(--base-color);
   color: var(--text-color);
   z-index: 1000;
@@ -830,7 +832,6 @@ input[type="radio"] {
   margin-inline: auto;
   /* centers the button itself */
   border-radius: 50%;
-  aspect-ratio: 1 / 1;
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
 }
@@ -867,6 +868,10 @@ input[type="radio"] {
 
 
 @container (max-width: 600px) {
+
+  .link {
+    padding: var(--space-2xs);
+  }
 
   .wrapper {
     padding-inline: 0 var(--space-4xs);
@@ -915,7 +920,7 @@ input[type="radio"] {
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    padding: 0 var(--space-m);
+    padding: 0 var(--space-2xs);
     border-radius: var(--btn-border-radius);
     text-decoration: none;
     background-color: var(--base-color);
@@ -939,40 +944,33 @@ input[type="radio"] {
     box-shadow: 0 30px 100px var(--shadow);
   }
 
-  .color-picker.dropdown-menu {
+  .color-picker.dropdown-menu,
+  .color-picker {
+    padding: var(--space-3xs);
     cursor: pointer;
     pointer-events: all;
     list-style: none;
     position: absolute;
-    right: var(--space-xs);
+    right: var(--space-2xs);
     top: var(--space-2xl);
     display: flex;
     flex-direction: column;
-    gap: var(--space-s);
+    gap: var(--space-xs);
     background-color: var(--base-color);
     color: var(--text-color);
-    border-radius: var(--btn-border-radius);
     opacity: 0;
     transform: translateX(0)
   }
 
   .dropdown.active>.color-picker .dropdown-menu {
-    padding: var(--space-s) var(--space-s);
+    padding: var(--space-3xs);
     color: var(--text-color);
     background-color: var(--base-color);
-    transform: translateX(0);
     opacity: 1;
   }
 
   .color-picker {
     opacity: 1;
-    transform: translateX(var(--space-l));
-    gap: var(--space-xs);
-    background-color: var(--base-color);
-    color: var(--text-color);
-    border-radius: var(--btn-border-radius);
-    box-shadow: var(--shadow);
-    pointer-events: none;
     /* Animate transform and opacity for movement */
     transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;
     view-transition-name: match-element;
@@ -1008,7 +1006,7 @@ input[type="radio"] {
     position: relative;
     z-index: 1000;
     pointer-events: all;
-    padding: var(--space-xs) var(--space-l);
+    padding: var(--space-3xs) var(--space-m);
     gap: var(--space-2xs);
     align-items: center;
     text-decoration: none;
@@ -1026,8 +1024,8 @@ input[type="radio"] {
     flex-direction: row;
     position: relative;
     z-index: 1000;
-    padding: var(--space-2xs) var(--space-l);
-    gap: var(--space-xs);
+    padding: var(--space-3xs) var(--space-m);
+    gap: var(--space-2xs);
     align-items: center;
     text-decoration: none;
     background-color: transparent;
@@ -1045,7 +1043,7 @@ input[type="radio"] {
     pointer-events: all;
     position: relative;
     z-index: 1000;
-    padding: var(--space-2xs) var(--space-l);
+    padding: var(--space-3xs) var(--space-m);
     gap: var(--space-s);
     align-items: center;
     border-radius: var(--btn-border-radius);
@@ -1061,14 +1059,14 @@ input[type="radio"] {
 
   link span {
     margin-left: var(--space-3xs);
-    padding: var(--space-3xs) var(--space-s);
+    padding: var(--space-3xs) var(--space-m);
   }
 
 
   label:hover,
   label:focus {
     color: var(--text-span);
-    box-shadow: 0 10px 10px var(--space-s) var(--navbar-shadow);
+    box-shadow: 0 10px 10px var(--space-s) var(--shadow);
 
   }
 
@@ -1080,6 +1078,7 @@ input[type="radio"] {
 
   .dropdown.active>.dropdown-menu {
     opacity: 1;
+    padding: var(--space-3xs) var(--space-m);
     margin-top: var(--space-xl);
   }
 
@@ -1098,9 +1097,13 @@ input[type="radio"] {
   label:has(+ input:checked) {
     color: var(--text-color);
 
-    &::before {
-      content: "";
+    &svg {
+      color: var(--text-span);
     }
+
+    /*   &::before {
+      content: "";
+    } */
   }
 
   input[type="radio"] {
@@ -1125,6 +1128,8 @@ input[type="radio"] {
   .large-button {
     position: relative;
     width: var(--space-8xl);
+    height: var(--space-8xl);
+    aspect-ratio: 1 / 2;
     background-color: var(--base-color);
     color: var(--text-color);
     z-index: 1000;
@@ -1133,11 +1138,10 @@ input[type="radio"] {
     justify-content: center;
     text-decoration: none;
     font-size: var(--step--1);
-    margin-block: var(--space-xl);
+    margin-bottom: var(--space-xl);
     margin-inline: auto;
     /* centers the button itself */
     border-radius: 50%;
-    aspect-ratio: 1 / 1;
     transition: box-shadow 0.3s, outline 0.3s;
     box-shadow: var(--shadow);
   }
