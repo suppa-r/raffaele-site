@@ -885,7 +885,6 @@ input[type="radio"] {
   .link {
     top: var(--space-3xs);
     font-size: var(--step--1);
-    margin-block: var(--space-3xs);
     padding: 0 var(--space-2xs);
   }
 
@@ -896,23 +895,19 @@ input[type="radio"] {
     word-spacing: var(--space-4xs);
   }
 
-  header {
-    margin-inline: auto;
-  }
-
   .title {
-    margin-top: var(--space-3xl);
+    margin-top: var(--space-2xl);
     font-size: var(--step--1);
     color: var(--text-color);
     text-align: center;
     margin-inline: auto;
     transition: var(--background-transition);
-    padding: 0 var(--space-3xs);
-    word-spacing: var(--space-4xs);
-    letter-spacing: var(--space-4xs);
-    white-space: normal;
+    padding: 0 var(--space-4xs);
+    word-spacing: var(--space-5xs);
+    letter-spacing: var(--space-5xs);
+    word-wrap: normal;
     /* allow wrapping */
-    word-break: break-word;
+    word-break: keep-all;
     /* break long words if needed */
     z-index: 1000;
   }
@@ -927,7 +922,7 @@ input[type="radio"] {
     right: var(--space-xs);
     top: var(--space-xs);
     background-color: var(--base-color);
-    padding: 0 var(--space-xs);
+    padding: 0 var(--space-4xs);
     color: var(--text-color);
     box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
     opacity: 1;
@@ -942,7 +937,7 @@ input[type="radio"] {
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    padding: var(--space-xs) var(--space-2xs);
+    padding: var(--space-4xs) var(--space-4xs);
     border-radius: var(--btn-border-radius);
     text-decoration: none;
     background-color: transparent;
@@ -953,23 +948,27 @@ input[type="radio"] {
     position: relative;
     transition: color 0.3s, box-shadow 0.3s;
     transform: none;
-    z-index: -1000;
+    z-index: 1000;
+
   }
 
   .link span {
-    width: fit-content;
-    margin-left: var(--space-3xs);
+    padding: var(--space-4xs) var(--space-4xs);
+    background-color: var(--base-color);
+    white-space: nowrap;
+    text-overflow: unset;
+    margin-block: var(--space-5xs);
   }
 
   .link:hover,
   .link:focus {
     color: var(--text-span);
-    box-shadow: 0 30px 100px var(--shadow);
+    box-shadow: 0 30px 100px var(--navbar-shadow);
   }
 
   .color-picker.dropdown-menu,
   .color-picker {
-    padding: var(--space-3xs);
+    padding: 0 var(--space-3xs);
     cursor: pointer;
     pointer-events: all;
     list-style: none;
@@ -978,18 +977,21 @@ input[type="radio"] {
     top: var(--space-2xl);
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
+    gap: var(--space-3xs);
     background-color: var(--base-color);
     color: var(--text-color);
     opacity: 0;
-    transform: translateX(0)
+    transform: translateX(0);
+    box-shadow: var(--navbar-shadow);
   }
 
   .dropdown.active>.color-picker .dropdown-menu {
-    padding: var(--space-3xs);
+    padding: 0 var(--space-3xs);
     color: var(--text-color);
     background-color: var(--base-color);
     opacity: 1;
+    transform: translateX(0);
+    box-shadow: var(--navbar-shadow);
   }
 
   .color-picker {
@@ -1021,7 +1023,6 @@ input[type="radio"] {
     }
   }
 
-
   .theme-list {
     list-style: none;
     display: flex;
@@ -1029,8 +1030,8 @@ input[type="radio"] {
     position: relative;
     z-index: 1000;
     pointer-events: all;
-    padding: var(--space-3xs) var(--space-m);
-    gap: var(--space-2xs);
+    padding: 0 var(--space-3xs);
+    gap: var(--space-3xs);
     align-items: center;
     text-decoration: none;
     background-color: transparent;
@@ -1047,8 +1048,8 @@ input[type="radio"] {
     flex-direction: row;
     position: relative;
     z-index: 1000;
-    padding: var(--space-3xs) var(--space-m);
-    gap: var(--space-2xs);
+    padding: 0 var(--space-3xs);
+    gap: var(--space-3xs);
     align-items: center;
     text-decoration: none;
     background-color: transparent;
@@ -1141,7 +1142,6 @@ input[type="radio"] {
     position: relative;
     width: var(--space-10xl);
     height: var(--space-7xl);
-    aspect-ratio: 1 / 2;
     background-color: var(--base-color);
     color: var(--text-color);
     z-index: 1000;
@@ -1150,7 +1150,7 @@ input[type="radio"] {
     justify-content: center;
     text-decoration: none;
     font-size: var(--step--1);
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
     margin-inline: auto;
     /* centers the button itself */
     border-radius: 50%;
