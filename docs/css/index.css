@@ -883,6 +883,8 @@ input[type="radio"] {
 @container (max-width: 600px) {
 
   .link {
+    top: var(--space-3xs);
+    font-size: var(--step--1);
     margin-block: var(--space-3xs);
     padding: 0 var(--space-2xs);
   }
@@ -899,7 +901,7 @@ input[type="radio"] {
   }
 
   .title {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-3xl);
     font-size: var(--step--1);
     color: var(--text-color);
     text-align: center;
@@ -912,6 +914,7 @@ input[type="radio"] {
     /* allow wrapping */
     word-break: break-word;
     /* break long words if needed */
+    z-index: 1000;
   }
 
 
@@ -939,10 +942,10 @@ input[type="radio"] {
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    padding: 0 var(--space-2xs);
+    padding: var(--space-xs) var(--space-2xs);
     border-radius: var(--btn-border-radius);
     text-decoration: none;
-    background-color: var(--base-color);
+    background-color: transparent;
     color: var(--text-color);
     box-shadow: var(--navbar-shadow);
     font-size: var(--step--1);
@@ -950,6 +953,7 @@ input[type="radio"] {
     position: relative;
     transition: color 0.3s, box-shadow 0.3s;
     transform: none;
+    z-index: -1000;
   }
 
   .link span {
@@ -1135,8 +1139,8 @@ input[type="radio"] {
 
   .large-button {
     position: relative;
-    width: var(--space-8xl);
-    height: var(--space-5xl);
+    width: var(--space-10xl);
+    height: var(--space-7xl);
     aspect-ratio: 1 / 2;
     background-color: var(--base-color);
     color: var(--text-color);
