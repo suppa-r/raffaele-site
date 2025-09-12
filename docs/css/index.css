@@ -869,20 +869,240 @@ input[type="radio"] {
     word-spacing: var(--space-4xs);
   }
 
-  .primary-nav {
-    top: 0;
-    right: 2%;
-    padding: 0 var(--space-xs);
+  header {
+    margin-inline: auto;
   }
 
   .title {
-    display: block;
+    margin-top: var(--space-2xl);
     font-size: var(--step--1);
     color: var(--text-color);
-    padding-top: var(--space-xl);
     text-align: center;
     margin-inline: auto;
     transition: var(--background-transition);
+    padding: 0 var(--space-3xs);
+    letter-spacing: var(--space-5xs);
+  }
+
+
+  .dropdown {
+    cursor: pointer;
+    pointer-events: all;
+    border-radius: var(--btn-border-radius);
+    z-index: 1000;
+    position: absolute;
+    right: var(--space-xs);
+    top: var(--space-xs);
+    background-color: var(--base-color);
+    padding: 0 var(--space-xs);
+    color: var(--text-color);
+    box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
+    opacity: 1;
+    transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
+    transform: none;
+  }
+
+  .link {
+    cursor: pointer;
+    pointer-events: all;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 var(--space-m);
+    border-radius: var(--btn-border-radius);
+    text-decoration: none;
+    background-color: var(--base-color);
+    color: var(--text-color);
+    box-shadow: var(--navbar-shadow);
+    font-size: var(--step--1);
+    user-select: none;
+    position: relative;
+    transition: color 0.3s, box-shadow 0.3s;
+    transform: none;
+  }
+
+  /*.link span {
+   width: fit-content;
+   margin-left: var(--space-3xs);
+ }*/
+
+  .link:hover,
+  .link:focus {
+    color: var(--text-span);
+    box-shadow: 0 30px 100px var(--shadow);
+  }
+
+  .color-picker.dropdown-menu {
+    cursor: pointer;
+    pointer-events: all;
+    list-style: none;
+    position: absolute;
+    right: var(--space-xs);
+    top: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    background-color: var(--base-color);
+    color: var(--text-color);
+    border-radius: var(--btn-border-radius);
+    opacity: 0;
+    transform: translateX(0)
+  }
+
+  .dropdown.active>.color-picker .dropdown-menu {
+    padding: var(--space-s) var(--space-s);
+    color: var(--text-color);
+    background-color: var(--base-color);
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .color-picker {
+    opacity: 1;
+    transform: translateX(var(--space-l));
+    gap: var(--space-xs);
+    background-color: var(--base-color);
+    color: var(--text-color);
+    border-radius: var(--btn-border-radius);
+    box-shadow: var(--shadow);
+    pointer-events: none;
+    /* Animate transform and opacity for movement */
+    transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;
+    view-transition-name: match-element;
+    animation: colorPickerSlide 2s cubic-bezier(.4, 0, .2, 1);
+  }
+
+  @keyframes colorPickerSlide {
+    0% {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 1;
+    }
+
+    -50% {
+      transform: translateX(24px);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+
+  .theme-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1000;
+    pointer-events: all;
+    padding: var(--space-xs) var(--space-l);
+    gap: var(--space-2xs);
+    align-items: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--text-color);
+    box-shadow: var(--navbar-shadow);
+    font-size: var(--step--1);
+    user-select: none;
+  }
+
+  .theme-list-item {
+    cursor: pointer;
+    pointer-events: all;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 1000;
+    padding: var(--space-2xs) var(--space-l);
+    gap: var(--space-xs);
+    align-items: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--text-color);
+    box-shadow: var(--navbar-shadow);
+    font-size: var(--step--1);
+    border: 2px solid var(--text-color);
+    user-select: none;
+  }
+
+  label {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    pointer-events: all;
+    position: relative;
+    z-index: 1000;
+    padding: var(--space-2xs) var(--space-l);
+    gap: var(--space-s);
+    align-items: center;
+    border-radius: var(--btn-border-radius);
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--text-color);
+    box-shadow: var(--navbar-shadow);
+    font-size: var(--step--1);
+    border: 2px solid var(--text-color);
+    user-select: none;
+    transition: color 0.3s, box-shadow 0.3s;
+  }
+
+  link span {
+    margin-left: var(--space-3xs);
+    padding: var(--space-3xs) var(--space-s);
+  }
+
+
+  label:hover,
+  label:focus {
+    color: var(--text-span);
+    box-shadow: 0 10px 10px var(--space-s) var(--navbar-shadow);
+
+  }
+
+  /* Ensure the dropdown menu is visible when active */
+  .dropdown-menu {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .dropdown.active>.dropdown-menu {
+    opacity: 1;
+    margin-top: var(--space-xl);
+  }
+
+  /* Style SVGs inside theme-list items */
+  .theme-list-item label svg {
+    width: var(--space-l);
+    height: var(--space-l);
+    margin-right: var(--space-m);
+    vertical-align: middle;
+    color: var(--text-color);
+    background-color: var(--base-color);
+    opacity: 1;
+    display: inline-block;
+  }
+
+  label:has(+ input:checked) {
+    color: var(--text-color);
+
+    &::before {
+      content: "";
+    }
+  }
+
+  input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    width: var(--space-s);
+    height: var(--space-s);
+    pointer-events: none;
   }
 
   .curve-container {
@@ -892,7 +1112,7 @@ input[type="radio"] {
     gap: var(--space-2xl);
     font-size: var(--step-0);
     color: var(--text-color);
-    margin-block: var(--space-xl);
+    margin-block: var(--space-l);
     margin-inline: auto;
   }
 
@@ -900,8 +1120,8 @@ input[type="radio"] {
     position: relative;
     background-color: var(--base-color);
     color: var(--text-color);
-    width: var(--space-10xl);
-    height: var(--space-8xl);
+    width: var(--space-7xl);
+    height: var(--space-5xl);
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -924,8 +1144,8 @@ input[type="radio"] {
 
   .large-button svg {
     fill: var(--text-color);
-    width: var(--space-xl);
-    height: var(--space-xl);
+    width: var(--space-l);
+    height: var(--space-l);
     transition: transform 0.3s;
     display: block;
     margin-inline: auto;
