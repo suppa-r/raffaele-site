@@ -275,21 +275,6 @@ body {
   padding-inline: var(--page-pad-inline);
   padding-block: var(--page-pad-block);
   text-align: center;
-  /* Prefer natural word breaks */
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: break-word;
-  /* only break long words if needed */
-  hyphens: auto;
-  /* auto hyphenation when a word must break */
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  /* Improve readability */
-  letter-spacing: var(--space-5xs);
-  /* reset if globally increased */
-  word-spacing: var(--space-4xs);
-  /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
-  text-wrap: balance;
 }
 
 body>* {
@@ -301,7 +286,8 @@ body>* {
   margin-inline: auto;
   min-height: 100dvh;
   overflow: hidden;
-  padding: var(--page-pad-inline);
+  padding: 0;
+  margin: 0;
 }
 
 header {
@@ -316,13 +302,36 @@ header {
   transition: var(--background-transition);
 }
 
+/* Keep global defaults on body */
+
+/* Resets for UI bits that shouldn't inherit wide spacing *
+.link,
+.link span,
+.theme-list,
+.theme-list-item,
+label,
+.large-button span,
+.dropdown,
+button,
+input,
+select,
+textarea {
+  letter-spacing: normal;
+  word-spacing: normal;
+  white-space: normal;
+  /* or nowrap where needed *
+  word-break: normal;
+  hyphens: auto;
+}*/
+
+/* Keep .link label on one line */
 .dropdown {
   cursor: pointer;
   pointer-events: all;
   z-index: 1000;
   position: absolute;
-  right: var(--space-m);
-  top: var(--space-xs);
+  right: var(--space-s-m);
+  top: var(--space-2xs-xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -330,6 +339,7 @@ header {
 }
 
 .link {
+  flex-shrink: 0;
   border: none;
   cursor: pointer;
   pointer-events: all;
@@ -381,24 +391,24 @@ header {
   list-style: none;
   position: absolute;
   z-index: 1000;
-  top: var(--space-xl);
+  top: var(--space-m-l);
   display: flex;
   flex-direction: row;
-  gap: var(--space-m);
+  gap: var(--space-s-m);
   box-shadow: var(--navbar-shadow);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
   opacity: 0;
   transform: translateX(0);
-  padding: 0 var(--space-s);
+  padding: 0 var(--space-s-m);
 }
 
 .color-picker {
   opacity: 1;
-  padding: 0 var(--space-s);
+  padding: 0 var(--space-s-m);
   transform: translateX(200px);
-  gap: var(--space-s);
+  gap: var(--space-s-m);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
@@ -551,11 +561,12 @@ input[type="radio"] {
 /*-------------curvature-----------------*/
 
 .main-content {
-  position: relative;
-  z-index: 1;
-  transition: var(--background-transition);
-  display: block;
-  padding: 0 var(--space-3xs);
+  letter-spacing: var(--space-5xs-4xs);
+  word-spacing: var(--space-4xs-3xs);
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .curve-container {
@@ -997,8 +1008,9 @@ input[type="radio"] {
     transition: var(--background-transition);
     padding: 0 var(--space-5xs);
   }
+}
 
-  /*.dropdown {
+/*.dropdown {
     cursor: pointer;
     pointer-events: all;
     border-radius: var(--btn-border-radius);
@@ -1675,20 +1687,20 @@ input[type="radio"] {
   }
 }*/
 
-  @media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
 
-    .content div,
-    .content-1 div {
-      animation: none;
-    }
-
-    .down:before,
-    .up:before {
-      animation: none;
-    }
-
-    .large-button:hover>svg,
-    .large-button:focus>svg {
-      transform: none;
-    }
+  .content div,
+  .content-1 div {
+    animation: none;
   }
+
+  .down:before,
+  .up:before {
+    animation: none;
+  }
+
+  .large-button:hover>svg,
+  .large-button:focus>svg {
+    transform: none;
+  }
+}
