@@ -17,30 +17,121 @@
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
-  --step--1: clamp(0.8854rem, 0.8553rem + 0.1508cqi, 1rem);
-  --step-0: clamp(1.0625rem, 1.0132rem + 0.2467cqi, 1.25rem);
-  --step-1: clamp(1.275rem, 1.1993rem + 0.3783cqi, 1.5625rem);
-  --step-2: clamp(1.53rem, 1.4187rem + 0.5567cqi, 1.9531rem);
-  --step-3: clamp(1.836rem, 1.6767rem + 0.7966cqi, 2.4414rem);
 
-  --space-5xs: clamp(0.125rem, 0.116rem + 0.0205cqi, 0.1875rem);
-  --space-4xs: clamp(0.1875rem, 0.175rem + 0.0411cqi, 0.25rem);
-  --space-3xs: clamp(0.25rem, 0.2336rem + 0.0822cqi, 0.3125rem);
-  --space-2xs: clamp(0.5625rem, 0.5461rem + 0.0822cqi, 0.625rem);
-  --space-xs: clamp(0.8125rem, 0.7796rem + 0.1645cqi, 0.9375rem);
-  --space-s: clamp(1.0625rem, 1.0132rem + 0.2467cqi, 1.25rem);
-  --space-m: clamp(1.625rem, 1.5592rem + 0.3289cqi, 1.875rem);
-  --space-l: clamp(2.125rem, 2.0263rem + 0.4934cqi, 2.5rem);
-  --space-xl: clamp(3.1875rem, 3.0395rem + 0.7401cqi, 3.75rem);
-  --space-2xl: clamp(4.25rem, 4.0526rem + 0.9868cqi, 5rem);
-  --space-3xl: clamp(6.375rem, 6.0789rem + 1.4803cqi, 7.5rem);
-  --space-4xl: clamp(7.4375rem, 7.0921rem + 1.727cqi, 8.75rem);
-  --space-5xl: clamp(8.5rem, 8.1053rem + 1.9737cqi, 10rem);
-  --space-6xl: clamp(9.5625rem, 9.1184rem + 2.2204cqi, 11.25rem);
-  --space-7xl: clamp(10.625rem, 10.1316rem + 2.4671cqi, 12.5rem);
-  --space-8xl: clamp(12.5rem, 12.5rem + 2.5cqi, 15rem);
-  --space-9xl: clamp(15rem, 15rem + 2.5cqi, 18rem);
-  --space-10xl: clamp(18rem, 18rem + 2.5cqi, 21.5rem);
+  /* Step -3: 9.838px → 9.216px */
+  --step--3: clamp(0.576rem, 0.6308rem + -0.0707cqi, 0.6149rem);
+  /* Step -2: 11.8056px → 11.52px */
+  --step--2: clamp(0.72rem, 0.7451rem + -0.0324cqi, 0.7378rem);
+  /* Step -1: 14.1667px → 14.4px */
+  --step--1: clamp(0.8854rem, 0.8795rem + 0.0265cqi, 0.9rem);
+  /* Step 0: 17px → 18px */
+  --step-0: clamp(1.0625rem, 1.0369rem + 0.1136cqi, 1.125rem);
+  /* Step 1: 20.4px → 22.5px */
+  --step-1: clamp(1.275rem, 1.2213rem + 0.2386cqi, 1.4063rem);
+  /* Step 2: 24.48px → 28.125px */
+  --step-2: clamp(1.53rem, 1.4368rem + 0.4142cqi, 1.7578rem);
+  /* Step 3: 29.376px → 35.1563px */
+  --step-3: clamp(1.836rem, 1.6882rem + 0.6568cqi, 2.1973rem);
+  /* Step 4: 35.2512px → 43.9453px */
+  --step-4: clamp(2.2032rem, 1.9809rem + 0.988cqi, 2.7466rem);
+
+  /* Space 6xs: 4px → 5px */
+  --space-6xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 5xs: 4px → 5px */
+  --space-5xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 4xs: 4px → 5px */
+  --space-4xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 3xs: 4px → 5px */
+  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 2xs: 9px → 9px */
+  --space-2xs: clamp(0.5625rem, 0.5625rem + 0cqi, 0.5625rem);
+  /* Space xs: 13px → 14px */
+  --space-xs: clamp(0.8125rem, 0.7869rem + 0.1136cqi, 0.875rem);
+  /* Space s: 17px → 18px */
+  --space-s: clamp(1.0625rem, 1.0369rem + 0.1136cqi, 1.125rem);
+  /* Space m: 26px → 27px */
+  --space-m: clamp(1.625rem, 1.5994rem + 0.1136cqi, 1.6875rem);
+  /* Space l: 34px → 36px */
+  --space-l: clamp(2.125rem, 2.0739rem + 0.2273cqi, 2.25rem);
+  /* Space xl: 51px → 54px */
+  --space-xl: clamp(3.1875rem, 3.1108rem + 0.3409cqi, 3.375rem);
+  /* Space 2xl: 68px → 72px */
+  --space-2xl: clamp(4.25rem, 4.1477rem + 0.4545cqi, 4.5rem);
+  /* Space 3xl: 102px → 108px */
+  --space-3xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 4xl: 102px → 108px */
+  --space-4xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 5xl: 102px → 108px */
+  --space-5xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 6xl: 102px → 108px */
+  --space-6xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 7xl: 102px → 108px */
+  --space-7xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 8xl: 102px → 108px */
+  --space-8xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 9xl: 102px → 108px */
+  --space-9xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 10xl: 102px → 108px */
+  --space-10xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 11xl: 102px → 108px */
+  --space-11xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 12xl: 102px → 108px */
+  --space-12xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 13xl: 102px → 108px */
+  --space-13xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 14xl: 102px → 108px */
+  --space-14xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 15xl: 102px → 108px */
+  --space-15xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+
+  /* One-up pairs */
+  /* Space 6xs-5xs: 4px → 5px */
+  --space-6xs-5xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 5xs-4xs: 4px → 5px */
+  --space-5xs-4xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 4xs-3xs: 4px → 5px */
+  --space-4xs-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 3xs-2xs: 4px → 9px */
+  --space-3xs-2xs: clamp(0.25rem, 0.1222rem + 0.5682cqi, 0.5625rem);
+  /* Space 2xs-xs: 9px → 14px */
+  --space-2xs-xs: clamp(0.5625rem, 0.4347rem + 0.5682cqi, 0.875rem);
+  /* Space xs-s: 13px → 18px */
+  --space-xs-s: clamp(0.8125rem, 0.6847rem + 0.5682cqi, 1.125rem);
+  /* Space s-m: 17px → 27px */
+  --space-s-m: clamp(1.0625rem, 0.8068rem + 1.1364cqi, 1.6875rem);
+  /* Space m-l: 26px → 36px */
+  --space-m-l: clamp(1.625rem, 1.3693rem + 1.1364cqi, 2.25rem);
+  /* Space l-xl: 34px → 54px */
+  --space-l-xl: clamp(2.125rem, 1.6136rem + 2.2727cqi, 3.375rem);
+  /* Space xl-2xl: 51px → 72px */
+  --space-xl-2xl: clamp(3.1875rem, 2.6506rem + 2.3864cqi, 4.5rem);
+  /* Space 2xl-3xl: 68px → 108px */
+  --space-2xl-3xl: clamp(4.25rem, 3.2273rem + 4.5455cqi, 6.75rem);
+  /* Space 3xl-4xl: 102px → 108px */
+  --space-3xl-4xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 4xl-5xl: 102px → 108px */
+  --space-4xl-5xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 5xl-6xl: 102px → 108px */
+  --space-5xl-6xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 6xl-7xl: 102px → 108px */
+  --space-6xl-7xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 7xl-8xl: 102px → 108px */
+  --space-7xl-8xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 8xl-9xl: 102px → 108px */
+  --space-8xl-9xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 9xl-10xl: 102px → 108px */
+  --space-9xl-10xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 10xl-11xl: 102px → 108px */
+  --space-10xl-11xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 11xl-12xl: 102px → 108px */
+  --space-11xl-12xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 12xl-13xl: 102px → 108px */
+  --space-12xl-13xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 13xl-14xl: 102px → 108px */
+  --space-13xl-14xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 14xl-15xl: 102px → 108px */
+  --space-14xl-15xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+
 
   --pt-serif-regular: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
@@ -54,29 +145,7 @@
   --navbar-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/*@media (prefers-color-scheme: light) {
-    --theme: ☀️;
-    color-scheme: light;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    --theme: 🌑;
-    color-scheme: dark;
-  }
-}
-
-
-@supports (selector(::view-transition)) {
-  .support.view-transition {
-    display: none;
-  }
-}
-
-@container not style(--theme: 🥔) {
-  .support.style-query {
-    display: none;
-  }
-}*/
+/* Hide the support message if view transitions are supported */
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -203,9 +272,9 @@ body>* {
 }
 
 .wrapper {
-  padding: 0 var(--space-3xs);
-  word-spacing: var(--space-3xs);
-  letter-spacing: var(--space-4xs);
+  padding: 0 var(--space-4xs);
+  word-spacing: var(--space-5xs);
+  letter-spacing: var(--space-6xs);
   margin-inline: auto;
   min-height: 100dvh;
   overflow: hidden;
@@ -830,28 +899,31 @@ input[type="radio"] {
 
 .large-button {
   position: relative;
-  width: var(--space-10xl);
-  height: var(--space-7xl);
-  aspect-ratio: 1 / 2;
+  /* Remove aspect-ratio: 1 / 1; */
+  height: auto;
+  /* keep your desired height */
+  width: min(30rem, 80dvw);
+  /* set a max width, adjust as needed */
   background-color: var(--base-color);
   color: var(--text-color);
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-decoration: none;
   font-size: var(--step--1);
-  margin-block: var(--space-xl);
-  margin-inline: auto;
-  /* centers the button itself */
+  margin-bottom: var(--space-3xl);
+  gap: var(--space-s);
   border-radius: 50%;
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
+  margin-inline: auto;
+  overflow: hidden;
+  /* keep content inside the circle */
 }
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 10px 10px var(--space-2xs) var(--navbar-shadow);
+  box-shadow: 0 10px 10px var(--space-2xs) var(--shadow);
   outline: 2px solid var(--text-span);
 }
 
@@ -872,15 +944,32 @@ input[type="radio"] {
 }
 
 .large-button span {
+  display: block;
+  inline-size: 100%;
+  box-sizing: border-box;
+  padding: var(--space-m);
+  /* keep text off the circular edges */
   text-align: center;
-  font-size: var(--step--1);
-  color: var(--text-color);
-  margin-inline: auto;
-  padding: 0 var(--space-l);
+  /* Prefer natural word breaks */
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  /* only break long words if needed */
+  hyphens: auto;
+  /* auto hyphenation when a word must break */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  /* Improve readability */
+  line-height: 1.4;
+  letter-spacing: normal;
+  /* reset if globally increased */
+  word-spacing: normal;
+  /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
+  text-wrap: balance;
 }
 
 
-@container (max-width: 600px) {
+/*@container (max-width: 600px) {
 
   .link {
     top: var(--space-3xs);
@@ -906,12 +995,11 @@ input[type="radio"] {
     word-spacing: var(--space-5xs);
     letter-spacing: var(--space-5xs);
     word-wrap: normal;
-    /* allow wrapping */
+    /* allow wrapping *
     word-break: keep-all;
-    /* break long words if needed */
+    /* break long words if needed *
     z-index: 1000;
   }
-
 
   .dropdown {
     cursor: pointer;
@@ -996,7 +1084,7 @@ input[type="radio"] {
 
   .color-picker {
     opacity: 1;
-    /* Animate transform and opacity for movement */
+    /* Animate transform and opacity for movement *
     transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;
     view-transition-name: match-element;
     animation: colorPickerSlide 2s cubic-bezier(.4, 0, .2, 1);
@@ -1094,7 +1182,7 @@ input[type="radio"] {
 
   }
 
-  /* Ensure the dropdown menu is visible when active */
+  /* Ensure the dropdown menu is visible when active *
   .dropdown-menu {
     opacity: 0;
     transition: opacity 0.3s;
@@ -1106,7 +1194,7 @@ input[type="radio"] {
     margin-top: var(--space-xl);
   }
 
-  /* Style SVGs inside theme-list items */
+  /* Style SVGs inside theme-list items *
   .theme-list-item label svg {
     width: var(--space-l);
     height: var(--space-l);
@@ -1170,7 +1258,7 @@ input[type="radio"] {
     transition: transform 0.3s;
     display: block;
     margin-inline: auto;
-    /* centers SVG horizontally */
+    /* centers SVG horizontally *
   }
 
   .large-button:hover>svg,
@@ -1184,26 +1272,26 @@ input[type="radio"] {
     inline-size: 100%;
     box-sizing: border-box;
     padding: 0 var(--space-m);
-    /* keep text off the circular edges */
+    /* keep text off the circular edges *
     text-align: center;
-    /* Prefer natural word breaks */
+    /* Prefer natural word breaks *
     white-space: normal;
     word-break: normal;
     overflow-wrap: break-word;
-    /* only break long words if needed */
+    /* only break long words if needed *
     hyphens: auto;
-    /* auto hyphenation when a word must break */
+    /* auto hyphenation when a word must break *
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
-    /* Improve readability */
+    /* Improve readability *
     line-height: 1.4;
     letter-spacing: normal;
-    /* reset if globally increased */
+    /* reset if globally increased *
     word-spacing: normal;
-    /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
+    /* Modern nicer wrapping (safe to keep; ignored if unsupported) *
     text-wrap: balance;
   }
-}
+}*/
 
 @media (prefers-reduced-motion: reduce) {
 
