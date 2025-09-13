@@ -1185,13 +1185,10 @@ input[type="radio"] {
     font-size: var(--step--1);
     color: var(--text-color);
     margin-inline: auto;
-    padding: var(--space-s) var(--space-l);
-    word-spacing: var(--space-5xs);
+    padding: var(--space-xs);
     letter-spacing: var(--space-5xs);
-    white-space: normal;
-    /* allow wrapping */
-    word-break: break-word;
-    /* break long words if needed */
+    word-spacing: var(--space-5xs);
+    word-break: normal;
   }
 }
 
