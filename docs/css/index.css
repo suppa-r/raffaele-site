@@ -969,9 +969,9 @@ input[type="radio"] {
 }
 
 
-/*@container (max-width: 600px) {
+@container (max-width: 600px) {
 
-  .link {
+  /*.link {
     top: var(--space-3xs);
     font-size: var(--step--1);
     padding: 0 var(--space-2xs);
@@ -982,7 +982,7 @@ input[type="radio"] {
     margin-inline: auto;
     letter-spacing: var(--space-5xs);
     word-spacing: var(--space-4xs);
-  }
+  }*/
 
   .title {
     margin-top: var(--space-2xl);
@@ -995,13 +995,14 @@ input[type="radio"] {
     word-spacing: var(--space-5xs);
     letter-spacing: var(--space-5xs);
     word-wrap: normal;
-    /* allow wrapping *
+    /* allow wrapping */
     word-break: keep-all;
-    /* break long words if needed *
+    /* break long words if needed */
     z-index: 1000;
   }
+}
 
-  .dropdown {
+/*.dropdown {
     cursor: pointer;
     pointer-events: all;
     border-radius: var(--btn-border-radius);
