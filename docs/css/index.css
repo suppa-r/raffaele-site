@@ -319,13 +319,10 @@ header {
 .dropdown {
   cursor: pointer;
   pointer-events: all;
-  border-radius: var(--btn-border-radius);
   z-index: 1000;
   position: absolute;
   right: var(--space-m);
   top: var(--space-xs);
-  background-color: var(--base-color);
-  color: var(--text-color);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -333,19 +330,19 @@ header {
 }
 
 .link {
-  border: 0;
+  border: none;
   cursor: pointer;
   pointer-events: all;
   display: flex;
-  padding: 0 var(--space-xs);
+  flex-direction: row;
+  justify-content: center;
   text-decoration: none;
-  background-color: transparent;
+  background-color: var(--base-color);
   color: var(--text-color);
   box-shadow: var(--navbar-shadow);
-  font-size: var(--step--1);
   user-select: none;
   position: relative;
-  transition: color 0.3s, box-shadow 0.3s;
+  transition: color 0.8s, box-shadow 0.9s;
   transform: none;
   z-index: 1000;
 }
@@ -357,22 +354,22 @@ header {
   color: var(--text-color);
   background-color: var(--base-color);
   opacity: 1;
-  margin-bottom: var(--space-xs);
+  margin: 0 var(--space-4xs-3xs) 0 0;
+  display: inline-block;
 }
 
 .link span {
-  margin-block: var(--space-4xs);
   white-space: nowrap;
   text-overflow: unset;
-  padding: 0 var(--space-s);
+  padding: 0 var(--space-l);
   background-color: var(--base-color);
   /* optional: adds ... if text is too long */
 }
 
 .dropdown:hover {
-  border: 2px solid var(--text-span);
+  border: 2px solid var(--text-color);
   border-radius: var(--btn-border-radius);
-  color: var(--text-span);
+  color: var(--text-color);
   box-shadow: var(--shadow);
   background-color: var(--base-color);
   transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
@@ -383,37 +380,30 @@ header {
   pointer-events: all;
   list-style: none;
   position: absolute;
-  right: var(--space-xs);
-  padding: var(--space-xs) var(--space-m);
+  z-index: 1000;
   top: var(--space-xl);
   display: flex;
   flex-direction: row;
-  gap: var(--space-l);
+  gap: var(--space-m);
+  box-shadow: var(--navbar-shadow);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
   opacity: 0;
-  transform: translateX(0)
-}
-
-.dropdown.active>.color-picker .dropdown-menu {
-  padding: var(--space-xs) var(--space-m);
-  color: var(--text-color);
-  background-color: var(--base-color);
   transform: translateX(0);
-  opacity: 1;
+  padding: 0 var(--space-s);
 }
 
 .color-picker {
   opacity: 1;
-  padding: var(--space-xs) var(--space-m);
+  padding: 0 var(--space-s);
   transform: translateX(200px);
   gap: var(--space-s);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
-  pointer-events: none;
+  pointer-events: all;
   /* Animate transform and opacity for movement */
   transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;
   view-transition-name: match-element;
@@ -441,6 +431,14 @@ header {
   }
 }
 
+.dropdown.active>.color-picker>:active .dropdown-menu>.dropdown.active {
+  padding: 0 var(--space-s);
+  color: var(--text-color);
+  background-color: var(--base-color);
+  transform: translateX(0);
+  opacity: 1;
+}
+
 .theme-list {
   list-style: none;
   display: flex;
@@ -448,7 +446,7 @@ header {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  padding: var(--space-xs) var(--space-m);
+  padding: 0 var(--space-s);
   gap: var(--space-2xs);
   align-items: center;
   text-decoration: none;
@@ -466,7 +464,7 @@ header {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: var(--space-xs) var(--space-m);
+  padding: 0 var(--space-s);
   gap: var(--space-s);
   align-items: center;
   text-decoration: none;
@@ -485,7 +483,7 @@ label {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: var(--space-xs) var(--space-m);
+  padding: 0 var(--space-2xl);
   gap: var(--space-s);
   align-items: center;
   border-radius: var(--btn-border-radius);
@@ -501,7 +499,7 @@ label {
 
 link span {
   margin-left: var(--space-3xs);
-  padding: var(--space-2xs) 0;
+  padding: 0 var(--space-s);
 }
 
 label:hover,
@@ -514,12 +512,12 @@ label:focus {
 .dropdown-menu {
   opacity: 0;
   transition: opacity 0.3s;
-  padding: var(--space-xs) var(--space-m);
+  padding: 0 var(--space-s);
 }
 
 .dropdown.active>.dropdown-menu {
   opacity: 1;
-  padding: var(--space-xs) var(--space-m);
+  padding: 0 var(--space-s);
 }
 
 /* Style SVGs inside theme-list items */
@@ -534,13 +532,13 @@ label:focus {
   display: inline-block;
 }
 
-input:checked {
+/*input:checked {
   color: var(--text-color);
 
   &svg {
     color: var(--text-color);
   }
-}
+}*/
 
 input[type="radio"] {
   opacity: 0;
@@ -861,9 +859,9 @@ input[type="radio"] {
 .text-container {
   text-align: center;
   color: var(--text-color);
-  margin-top: var(--space-l);
+  margin-top: var(--space-m-l);
   margin-inline: auto;
-  padding: 0 var(--space-3xs);
+  padding: 0 var(--space-6xs-5xs);
 }
 
 .text-with-animation {
@@ -882,18 +880,18 @@ input[type="radio"] {
   margin-inline: auto;
   text-align: center;
   display: block;
-  padding: 0 var(--space-3xs);
+
 }
 
 .text-with-animation-1,
 .text-with-animation-2,
-.text-with-animation-3,
-.text-with-animation-4 {
+.text-with-animation-3 {
   font-size: var(--step--1);
   text-align: center;
   margin-inline: auto;
 }
 
+.text-with-animation,
 .text-with-animation-4,
 .text-with-animation-5 {
   margin-inline: auto;
@@ -902,7 +900,7 @@ input[type="radio"] {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  margin-block: 0 var(--space-xs);
+  margin-block: 0 var(--space-2xs-xs);
 }
 
 .large-button {
@@ -919,7 +917,7 @@ input[type="radio"] {
   flex-direction: column;
   text-decoration: none;
   font-size: var(--step--1);
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-4xl-5xl);
   gap: var(--space-s);
   border-radius: 50%;
   transition: box-shadow 0.3s, outline 0.3s;
@@ -931,14 +929,14 @@ input[type="radio"] {
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 10px 10px var(--space-2xs) var(--shadow);
+  box-shadow: 0 10px 10px var(--space-3xs-2xs) var(--shadow);
   outline: 2px solid var(--text-span);
 }
 
 .large-button svg {
   fill: var(--text-color);
-  width: var(--space-xl);
-  height: var(--space-xl);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
   transition: transform 0.3s;
   display: block;
   margin-inline: auto;
@@ -955,7 +953,7 @@ input[type="radio"] {
   display: block;
   inline-size: 100%;
   box-sizing: border-box;
-  padding: var(--space-m);
+  padding: var(--space-m-l);
   /* keep text off the circular edges */
   text-align: center;
   /* Prefer natural word breaks */
@@ -997,7 +995,6 @@ input[type="radio"] {
     text-align: center;
     margin-inline: auto;
     transition: var(--background-transition);
-    margin-top: var(--space-xl);
     padding: 0 var(--space-5xs);
   }
 
@@ -1051,7 +1048,7 @@ input[type="radio"] {
     text-overflow: unset;
     padding: 0 var(--space-s);
     background-color: var(--base-color);
-    /* optional: adds ... if text is too long */
+    /* optional: adds ... if text is too long *
 }
 
 .dropdown:hover {
@@ -1100,7 +1097,7 @@ input[type="radio"] {
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
   pointer-events: none;
-  /* Animate transform and opacity for movement */
+  /* Animate transform and opacity for movement *
   transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;
   view-transition-name: match-element;
   animation: colorPickerSlide 2s cubic-bezier(.4, 0, .2, 1);
@@ -1199,7 +1196,7 @@ label:focus {
 
 }
 
-/* Ensure the dropdown menu is visible when active */
+/* Ensure the dropdown menu is visible when active *
 .dropdown-menu {
   opacity: 0;
   transition: opacity 0.3s;
@@ -1211,7 +1208,7 @@ label:focus {
   padding: var(--space-xs) var(--space-m);
 }
 
-/* Style SVGs inside theme-list items */
+/* Style SVGs inside theme-list items *
 .theme-list-item label svg {
   width: var(--space-l);
   height: var(--space-l);
@@ -1239,7 +1236,7 @@ input[type="radio"] {
   pointer-events: none;
 }
 
-/*-------------curvature-----------------*/
+/*-------------curvature-----------------*
 
 .main-content {
   position: relative;
@@ -1393,7 +1390,7 @@ input[type="radio"] {
   animation-iteration-count: infinite;
 }
 
-/*up*/
+/*up*
 .up-2-8 {
   animation-name: go-up-2-8;
 }
@@ -1410,7 +1407,7 @@ input[type="radio"] {
   animation-name: go-up-5;
 }
 
-/*down*/
+/*down*
 .down-2-8 {
   animation-name: go-down-2-8;
 }
@@ -1599,20 +1596,20 @@ input[type="radio"] {
   word-spacing: var(--space-4xs);
   letter-spacing: var(--space-4xs);
   white-space: normal;
-  /* allow wrapping */
+  /* allow wrapping *
   word-break: break-word;
   /* break long words if needed *
     display: block;
     padding: 0 var(--space-3xs);
-  }*/
+  }*
 
   .large-button {
     position: relative;
-    /* Remove aspect-ratio: 1 / 1; */
+    /* Remove aspect-ratio: 1 / 1; *
     height: auto;
-    /* keep your desired height */
+    /* keep your desired height *
     width: min(30rem, 80dvw);
-    /* set a max width, adjust as needed */
+    /* set a max width, adjust as needed *
     background-color: var(--base-color);
     color: var(--text-color);
     z-index: 1000;
@@ -1627,7 +1624,7 @@ input[type="radio"] {
     box-shadow: var(--shadow);
     margin-inline: auto;
     overflow: hidden;
-    /* keep content inside the circle */
+    /* keep content inside the circle *
   }
 
   .large-button:focus,
@@ -1643,7 +1640,7 @@ input[type="radio"] {
     transition: transform 0.3s;
     display: block;
     margin-inline: auto;
-    /* centers SVG horizontally */
+    /* centers SVG horizontally *
   }
 
   .large-button:hover>svg,
@@ -1657,41 +1654,41 @@ input[type="radio"] {
     inline-size: 100%;
     box-sizing: border-box;
     padding: var(--space-m);
-    /* keep text off the circular edges */
+    /* keep text off the circular edges *
     text-align: center;
-    /* Prefer natural word breaks */
+    /* Prefer natural word breaks *
     white-space: normal;
     word-break: normal;
     overflow-wrap: break-word;
-    /* only break long words if needed */
+    /* only break long words if needed *
     hyphens: auto;
-    /* auto hyphenation when a word must break */
+    /* auto hyphenation when a word must break *
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
-    /* Improve readability */
+    /* Improve readability *
     line-height: 1.4;
     letter-spacing: normal;
-    /* reset if globally increased */
+    /* reset if globally increased *
     word-spacing: normal;
-    /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
+    /* Modern nicer wrapping (safe to keep; ignored if unsupported) *
     text-wrap: balance;
   }
-}
+}*/
 
-@media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
 
-  .content div,
-  .content-1 div {
-    animation: none;
+    .content div,
+    .content-1 div {
+      animation: none;
+    }
+
+    .down:before,
+    .up:before {
+      animation: none;
+    }
+
+    .large-button:hover>svg,
+    .large-button:focus>svg {
+      transform: none;
+    }
   }
-
-  .down:before,
-  .up:before {
-    animation: none;
-  }
-
-  .large-button:hover>svg,
-  .large-button:focus>svg {
-    transform: none;
-  }
-}
