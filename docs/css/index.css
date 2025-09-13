@@ -1185,7 +1185,7 @@ input[type="radio"] {
     font-size: var(--step--1);
     color: var(--text-color);
     margin-inline: auto;
-    padding: 0 var(--space-l);
+    padding: var(--space-xs) var(--space-l);
     word-spacing: var(--space-5xs);
     letter-spacing: var(--space-5xs);
     white-space: normal;
