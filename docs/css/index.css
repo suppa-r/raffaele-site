@@ -1182,21 +1182,27 @@ input[type="radio"] {
   .large-button span {
     display: block;
     inline-size: 100%;
-    /* fill available width */
-    max-width: 100%;
     box-sizing: border-box;
     padding: 0 var(--space-m);
-    /* keep text off the edges */
+    /* keep text off the circular edges */
     text-align: center;
+    /* Prefer natural word breaks */
     white-space: normal;
-    /* allow wrapping */
-    overflow-wrap: anywhere;
-    /* wrap long words if needed */
+    word-break: normal;
+    overflow-wrap: break-word;
+    /* only break long words if needed */
     hyphens: auto;
-    line-height: 1.2;
-    /* improve readability */
+    /* auto hyphenation when a word must break */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    /* Improve readability */
+    line-height: 1.25;
+    letter-spacing: normal;
+    /* reset if globally increased */
+    word-spacing: normal;
+    /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
+    text-wrap: balance;
   }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
