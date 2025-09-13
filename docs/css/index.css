@@ -143,6 +143,10 @@
   --font-style-regular: normal;
   --btn-border-radius: 0.5rem;
   --navbar-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  /* global page padding variables */
+  --page-pad-inline: var(--space-5xs);
+  --page-pad-block: 0;
 }
 
 /* Hide the support message if view transitions are supported */
@@ -257,14 +261,19 @@
   }
 }
 
-html,
+html {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
-  padding: 0 var(--space-5xs);
+  padding-inline: var(--page-pad-inline);
+  padding-block: var(--page-pad-block);
   text-align: center;
   /* Prefer natural word breaks */
   white-space: normal;
@@ -292,6 +301,7 @@ body>* {
   margin-inline: auto;
   min-height: 100dvh;
   overflow: hidden;
+  padding: var(--page-pad-inline);
 }
 
 header {
@@ -988,6 +998,7 @@ input[type="radio"] {
     margin-inline: auto;
     transition: var(--background-transition);
     margin-top: var(--space-xl);
+    padding: 0 var(--space-5xs);
   }
 
   /*.dropdown {

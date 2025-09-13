@@ -143,6 +143,169 @@
   --font-style-regular: normal;
   --btn-border-radius: 0.5rem;
   --navbar-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  /* global page padding variables */
+  --page-pad-inline: var(--space-5xs);
+  --page-pad-block: 0;
+}
+
+/* Hide the support message if view transitions are supported */
+
+@supports (selector(::view-transition)) {
+  .support.view-transition {
+    display: none;
+  }
+}
+
+.support {
+  background-color: var(--clr-warn-1);
+  border-inline-start: 0.5rem solid var(--clr-warn-2);
+  color: var(--clr-warn-text);
+  border-radius: 0.5rem;
+  padding: 1em 2em;
+}
+
+::view-transition {
+  background: #555;
+}
+
+::view-transition-image-pair(root) {
+  perspective: 2500px;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 100vw;
+  filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: 1.5s linear(0,
+      0.324 9.1%,
+      0.584 18.6%,
+      0.782 28.6%,
+      0.858 33.8%,
+      0.92 39.2%,
+      0.997 49.5%,
+      1.021 55.1%,
+      1.033 61%,
+      1.035 71.7%,
+      1);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 0;
+  /*   perspective: 800px; */
+  transform: translateZ(-50vw) scale(var(--scale)) rotatey(var(--rotation)) translatez(50vw);
+  backface-visibility: hidden;
+}
+
+::view-transition-old(root) {
+  animation-name: reveal-out;
+}
+
+::view-transition-new(root) {
+  animation-name: reveal-in;
+}
+
+@property --rotation {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes reveal-in {
+  from {
+    --rotation: -90deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  15% {
+    --scale: 0.8;
+    --rotation: -90deg;
+  }
+
+  85% {
+    --scale: 0.8;
+    --rotation: 0deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  to {
+    --rotation: 0deg;
+  }
+}
+
+@keyframes reveal-out {
+  from {
+    --rotation: 0deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  15% {
+    --scale: 0.8;
+    --rotation: 0deg;
+  }
+
+  85% {
+    --scale: 0.8;
+    --rotation: 90deg;
+    animation-timing-function: ease-in-out;
+  }
+
+  to {
+    --rotation: 90deg;
+  }
+}
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
+  color: var(--text-color);
+  background-color: var(--base-color);
+  padding-inline: var(--page-pad-inline);
+  padding-block: var(--page-pad-block);
+  text-align: center;
+  /* Prefer natural word breaks */
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  /* only break long words if needed */
+  hyphens: auto;
+  /* auto hyphenation when a word must break */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  /* Improve readability */
+  letter-spacing: var(--space-5xs);
+  /* reset if globally increased */
+  word-spacing: var(--space-4xs);
+  /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
+  text-wrap: balance;
+}
+
+body>* {
+  /* Ensure all direct children of body are treated as containers */
+  container-type: inline-size;
+}
+
+.wrapper {
+  margin-inline: auto;
+  min-height: 100dvh;
+  overflow: hidden;
+  padding: var(--page-pad-inline);
+}
+
+header {
+  margin-inline: auto;
 }
 
 /* Hide the support message if view transitions are supported */
