@@ -1176,7 +1176,7 @@ input[type="radio"] {
   .large-button span {
     display: flex;
     justify-content: center;
-    padding: var(--space-2xl) var(--space-xl);
+    padding: var(--space-xl);
     /* slightly smaller text */
     line-height: 1.25;
     text-align: center;
@@ -1197,13 +1197,6 @@ input[type="radio"] {
     text-wrap: balance;
   }
 }
-
-
-
-
-
-
-
 
 @media (prefers-reduced-motion: reduce) {
 
