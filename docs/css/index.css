@@ -278,9 +278,8 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
-  padding-inline: var(--page-pad-inline);
-  padding-block: var(--page-pad-block);
   text-align: center;
+  margin-inline: auto;
   overflow: auto;
 }
 
@@ -293,8 +292,6 @@ body>* {
   margin-inline: auto;
   min-height: 100dvh;
   overflow: hidden;
-  padding: 0 var(--space-6xs-5xs);
-  margin: 0 auto;
 }
 
 header {
@@ -306,7 +303,7 @@ header {
   color: var(--text-color);
   text-align: center;
   margin-inline: auto;
-  transition: var(--background-transition);
+  padding: var(--space-2xs) 0 var(--space-5xs);
 }
 
 /* Keep .link label on one line */
@@ -1093,6 +1090,16 @@ input[type="radio"] {
 }
 
 @container (max-width: 600px) {
+
+  body,
+  html {
+    margin-inline: auto;
+  }
+
+  .wrapper,
+  .main-content {
+    padding: 0 var(--space-6xs-5xs);
+  }
 
   .title {
     padding-top: var(--space-2xl);
