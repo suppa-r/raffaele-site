@@ -1135,9 +1135,9 @@ input[type="radio"] {
   }
 
   .large-button {
-    height: min(12rem, 30dvh);
+    height: min(9rem, 30dvh);
     /* slightly smaller height */
-    width: min(24rem, 60dvw);
+    width: min(18rem, 60dvw);
     /* slightly smaller width */
     font-size: var(--step--1);
     /* slightly smaller text */
