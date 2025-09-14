@@ -1089,6 +1089,7 @@ input[type="radio"] {
   body,
   html {
     margin-inline: auto;
+    padding: 0 var(--space-6xs);
   }
 
   .wrapper {
@@ -1125,10 +1126,17 @@ input[type="radio"] {
   .curve-container {
     margin-block: var(--space-l);
     margin-inline: auto;
+    padding: 0 var(--space-6xs);
   }
 
   .main-content {
     margin-block: var(--space-l);
+    margin-inline: auto;
+    padding: 0 var(--space-6xs);
+  }
+
+  .text-container {
+    margin-top: var(--space-l);
     margin-inline: auto;
     padding: 0 var(--space-6xs);
   }
