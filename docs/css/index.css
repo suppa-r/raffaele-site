@@ -303,7 +303,7 @@ header {
   color: var(--text-color);
   text-align: center;
   margin-inline: auto;
-  padding: var(--space-2xs) 0 var(--space-5xs);
+  padding: var(--space-2xs);
 }
 
 /* Keep .link label on one line */
@@ -312,8 +312,8 @@ header {
   pointer-events: all;
   z-index: 1000;
   position: absolute;
-  right: var(--space-s-m);
-  top: var(--space-2xs-xs);
+  right: var(--space-s);
+  top: var(--space-xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -328,7 +328,6 @@ header {
   cursor: pointer;
   pointer-events: all;
   display: flex;
-  flex-shrink: 0;
   flex-direction: row;
   justify-content: center;
   text-decoration: none;
@@ -349,8 +348,8 @@ header {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: var(--space-3xs-2xs) var(--space-xs-s);
-  gap: var(--space-s);
+  padding: var(--space-5xs) var(--space-xs);
+  gap: var(--space-xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -372,14 +371,13 @@ header {
   color: var(--text-color);
   background-color: var(--base-color);
   opacity: 1;
-  margin: 0;
   display: inline-block;
 }
 
 .link span {
   white-space: nowrap;
   text-overflow: unset;
-  padding: 0 var(--space-l);
+  padding: var(--space-5xs) var(--space-xs);
   background-color: var(--base-color);
   /* optional: adds ... if text is too long */
 }
@@ -1138,58 +1136,62 @@ input[type="radio"] {
     padding: 0 var(--space-6xs);
   }
 
-  .main-content {
-    margin-block: var(--space-l);
-    margin-inline: auto;
-    padding: 0 var(--space-6xs);
-  }
-
-  .text-container {
-    margin-top: var(--space-2xl);
-    margin-inline: auto;
-    padding: 0 var(--space-6xs);
-  }
-
   .text-with-animation,
   .text-with-animation-4,
   .text-with-animation-5 {
-    margin-block: var(--space-s);
+    margin-block: var(--space-xs);
+  }
+
+  .text-with-animation,
+  .text-with-animation-1,
+  .text-with-animation-2,
+  .text-with-animation-3,
+  .text-with-animation-4,
+  .text-with-animation-5 {
+    font-size: var(--step--2);
+    margin-inline: auto;
+    text-align: center;
+    display: block;
   }
 
   .large-button {
-    height: min(12rem, 30dvh);
-    /* slightly smaller height */
-    width: min(24rem, 60dvw);
-    /* slightly smaller width */
-    font-size: var(--step--2);
-    /* slightly smaller text */
-    margin-bottom: var(--space-xl);
-    /* less bottom margin */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    gap: var(--space-s);
+    height: clamp(8rem, 36svh, 11rem);
+    /* taller for more vertical padding */
+    width: clamp(16rem, 70svw, 24rem);
+    /* wider for more horizontal padding */
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    background-color: var(--base-color);
+    color: var(--text-color);
+    overflow: hidden;
+    /* keep content inside the circle */
   }
 
   .large-button span {
-    /* tighter padding */
-    font-size: var(--step--2);
-    /* slightly smaller text */
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding: var(--space-m) var(--space-s);
+    width: 100%;
+    /* fill available width */
+    padding: var(--space-s);
+    /* padding inside span */
+    font-size: var(--step--2);
     text-align: center;
-    /* Prefer natural word breaks */
     white-space: normal;
-    word-break: normal;
-    overflow-wrap: break-word;
-    /* only break long words if needed */
-    hyphens: auto;
-    /* auto hyphenation when a word must break */
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    /* Improve readability */
+    word-break: keep-all;
+    /* don't break words */
+    overflow-wrap: normal;
+    hyphens: none;
     letter-spacing: normal;
-    /* reset if globally increased */
     word-spacing: normal;
-    /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
     text-wrap: balance;
+    box-sizing: border-box;
   }
 
   .large-button:focus,
@@ -1199,11 +1201,15 @@ input[type="radio"] {
   }
 
   .large-button svg {
-    width: var(--space-l);
-    /* smaller icon */
-    height: var(--space-l);
-    margin-bottom: var(--space-m);
-    /* tighter spacing below icon */
+    width: var(--space-2xl);
+    height: var(--space-2xl);
+
+    transition: transform 0.3s;
+    display: block;
+    margin-inline: auto;
+    /* centers SVG horizontally */
+    fill: var(--text-color);
+
   }
 
   .large-button:hover>svg,
@@ -1211,7 +1217,6 @@ input[type="radio"] {
     transform: rotate(45deg);
     fill: var(--text-span);
   }
-
 
 
 
