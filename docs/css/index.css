@@ -995,13 +995,11 @@ input[type="radio"] {
 .text-with-animation,
 .text-with-animation-4,
 .text-with-animation-5 {
-  margin-inline: auto;
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  text-align: center;
-  margin-block: 0 var(--space-2xs-xs);
+  margin-block: 0 var(--space-m-l);
 }
 
 .text-with-animation-1,
@@ -1009,7 +1007,10 @@ input[type="radio"] {
 .text-with-animation-3 {
   font-size: var(--step--1);
   text-align: center;
-  margin-inline: auto;
+}
+
+.text-with-animation-4 {
+  margin-top: var(--space-s-m);
 }
 
 .large-button {
@@ -1063,7 +1064,7 @@ input[type="radio"] {
 .large-button span {
   display: flex;
   justify-content: center;
-  padding: var(--space-s-m);
+  padding: var(--space-m-l) var(--space-s-m);
   /* keep text off the circular edges */
   text-align: center;
   /* Prefer natural word breaks */
@@ -1126,11 +1127,18 @@ input[type="radio"] {
     margin-inline: auto;
   }
 
-  .large-button {
-    width: min(20rem, 80dvw);
-    margin-bottom: var(--space-2xl);
+  .main-content {
+    margin-block: var(--space-l-xl);
+    margin-inline: auto;
+    padding: 0 var(--space-6xs-5xs);
+    font-size: var(--step--1);
   }
 }
+
+
+
+
+
 
 
 
