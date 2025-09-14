@@ -147,6 +147,7 @@
   /* global page padding variables */
   --page-pad-inline: var(--space-5xs);
   --page-pad-block: 0;
+  --backround-transition: background-color 0.8s, color 0.8s;
 }
 
 /* Hide the support message if view transitions are supported */
@@ -527,7 +528,7 @@ label:focus {
 
 .dropdown.active>.dropdown-menu {
   opacity: 1;
-  padding: 0 var(--space-s);
+  padding: var(--space-l) var(--space-s);
 }
 
 /* Style SVGs inside theme-list items */
@@ -1007,7 +1008,6 @@ input[type="radio"] {
     text-align: center;
     margin-inline: auto;
     transition: var(--background-transition);
-    padding: 0 var(--space-5xs);
   }
 }
 
