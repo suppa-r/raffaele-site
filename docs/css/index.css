@@ -339,11 +339,11 @@ textarea {
 }
 
 .link {
-  flex-shrink: 0;
   border: none;
   cursor: pointer;
   pointer-events: all;
   display: flex;
+  flex-shrink: 0;
   flex-direction: row;
   justify-content: center;
   text-decoration: none;
@@ -1001,6 +1001,7 @@ input[type="radio"] {
   }*/
 
   .title {
+    margin-top: var(--space-xl);
     font-size: var(--step--1);
     color: var(--text-color);
     text-align: center;
