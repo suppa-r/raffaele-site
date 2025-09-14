@@ -1084,8 +1084,26 @@ input[type="radio"] {
 
 @container (max-width: 600px) {
 
+  html,
+  body {
+    /* optional small gutters; set to 0 for true edge-to-edge */
+    padding-inline: var(--space-6xs);
+    margin: 0;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   .wrapper {
-    padding: 0 var(--space-6xs);
+    container-type: inline-size;
+  }
+
+  .wrapper,
+  .main-content,
+  .text-container,
+  .curve-container {
+    margin-block: var(--space-m);
+    margin-inline: 0;
+    padding-inline: var(--space-6xs);
   }
 
   .title {
@@ -1150,7 +1168,6 @@ input[type="radio"] {
   }
 
   .large-button span {
-
     /* tighter padding */
     font-size: var(--step--2);
     /* slightly smaller text */
