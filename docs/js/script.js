@@ -7,26 +7,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const text = document.querySelector('.text-container');
   const largebutton = document.querySelector('.large-button');
   const themeRadios = document.querySelectorAll('.theme-list-item input[type="radio"]');
-  const title = document.querySelector('.title');
 
   // Helpers
   function hideContent() {
     if (curve) curve.style.display = 'none';
     if (text) text.style.display = 'none';
     if (largebutton) largebutton.style.display = 'none';
-    if (title) title.style.display = 'none';
   }
 
   function showContent() {
     if (curve) curve.style.display = '';
     if (text) text.style.display = '';
     if (largebutton) largebutton.style.display = '';
-    if (title) title.style.display = '';
   }
+
+  function animateDropdownMenu(open) {
+    if (!dropdownMenu) return;
+    dropdownMenu.classList.remove('animate-in');
+    if (open) {
+      // Force reflow to restart animation
+      void dropdownMenu.offsetWidth;
+      dropdownMenu.classList.add('animate-in');
+    }
+  }
+
   function setMenuOpen(open) {
     if (!dropdown || !dropdownMenu) return;
     dropdown.classList.toggle('active', open);
-    dropdownMenu.style.display = open ? 'grid' : 'none';
+    animateDropdownMenu(open);
+    dropdownMenu.style.pointerEvents = open ? 'all' : 'none';
+    dropdownMenu.style.opacity = open ? '1' : '0';
+    dropdownMenu.style.transform = open ? 'translateX(0)' : 'translateX(150px)';
   }
 
   // Theme logic
@@ -54,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const checkedRadio = document.querySelector(`[name="theme"][value="${savedTheme}"]`);
   if (checkedRadio) checkedRadio.checked = true;
 
-  // .link toggles the dropdown and hides content
+  // .link toggles the dropdown and hides/shows content, triggers animation
   if (linkButton) {
     linkButton.addEventListener('click', (e) => {
       e.preventDefault();

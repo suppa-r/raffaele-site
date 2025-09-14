@@ -303,28 +303,6 @@ header {
   transition: var(--background-transition);
 }
 
-/* Keep global defaults on body */
-
-/* Resets for UI bits that shouldn't inherit wide spacing *
-.link,
-.link span,
-.theme-list,
-.theme-list-item,
-label,
-.large-button span,
-.dropdown,
-button,
-input,
-select,
-textarea {
-  letter-spacing: normal;
-  word-spacing: normal;
-  white-space: normal;
-  /* or nowrap where needed *
-  word-break: normal;
-  hyphens: auto;
-}*/
-
 /* Keep .link label on one line */
 .dropdown {
   cursor: pointer;
@@ -378,78 +356,65 @@ textarea {
 }
 
 .dropdown:hover {
-  border: 2px solid var(--text-color);
-  border-radius: var(--btn-border-radius);
   color: var(--text-color);
   box-shadow: var(--shadow);
   background-color: var(--base-color);
   transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
 }
 
+/* Initial hidden state */
 .color-picker.dropdown-menu {
-  cursor: pointer;
-  pointer-events: all;
-  list-style: none;
-  position: absolute;
-  z-index: 1000;
-  top: var(--space-m-l);
-  display: flex;
-  flex-direction: row;
+  opacity: 0;
+  transform: translateX(150px);
+  pointer-events: none;
+  padding: 0 var(--space-s-m);
   gap: var(--space-s-m);
-  box-shadow: var(--navbar-shadow);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
-  opacity: 0;
-  transform: translateX(0);
-  padding: 0 var(--space-s-m);
+  box-shadow: var(--navbar-shadow);
+  position: absolute;
+  top: var(--space-l-xl);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  user-select: none;
+  transition:
+    opacity 0.7s cubic-bezier(.22, .61, .36, 1),
+    transform 0.7s cubic-bezier(.22, .61, .36, 1);
+  /* Remove keyframes from transition */
 }
 
-.color-picker {
+/* When menu is open, show it */
+.dropdown.active>.color-picker.dropdown-menu {
   opacity: 1;
-  padding: 0 var(--space-s-m);
-  transform: translateX(200px);
-  gap: var(--space-s-m);
-  background-color: var(--base-color);
-  color: var(--text-color);
-  border-radius: var(--btn-border-radius);
-  box-shadow: var(--navbar-shadow);
   pointer-events: all;
-  /* Animate transform and opacity for movement */
-  transition: transform 2s cubic-bezier(.4, 0, .2, 1), opacity 150ms ease;
-  view-transition-name: match-element;
-  animation: colorPickerSlide 2s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Animation class for sliding in */
+.color-picker.dropdown-menu.animate-in {
+  animation: colorPickerSlide 0.7s cubic-bezier(.22, .61, .36, .1) ease-in forwards;
 }
 
 @keyframes colorPickerSlide {
   0% {
-    transform: translateX(200px);
+    transform: translateX(0px);
     opacity: 0;
   }
 
-  20% {
+  30% {
     opacity: 1;
-  }
-
-  -50% {
-    transform: translateX(24px);
-    opacity: 1;
+    transform: translateX(0px);
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateX(0px);
     opacity: 1;
   }
 }
 
-.dropdown.active>.color-picker>:active .dropdown-menu>.dropdown.active {
-  padding: 0 var(--space-s);
-  color: var(--text-color);
-  background-color: var(--base-color);
-  transform: translateX(0);
-  opacity: 1;
-}
-
+/* Theme list styles remain unchanged */
 .theme-list {
   list-style: none;
   display: flex;
@@ -457,7 +422,6 @@ textarea {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  padding: 0 var(--space-s);
   gap: var(--space-2xs);
   align-items: center;
   text-decoration: none;
@@ -487,6 +451,61 @@ textarea {
   user-select: none;
 }
 
+/* Default SVG style for all theme items */
+.theme-list-item label svg {
+  width: var(--space-l);
+  height: var(--space-l);
+  vertical-align: middle;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  opacity: 1;
+  margin: 0 var(--space-4xs-3xs) 0 0;
+  display: inline-block;
+}
+
+/* Highlight SVG for the active (checked) theme item */
+.theme-list-item input[type="radio"]:checked+label svg {
+  color: var(--text-span);
+  /* You can add more styles for active state if needed */
+}
+
+.theme-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1000;
+  pointer-events: all;
+  padding: var(--space-xs) var(--space-m);
+  gap: var(--space-2xs);
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow);
+  font-size: var(--step--1);
+  user-select: none;
+}
+
+.theme-list-item {
+  cursor: pointer;
+  pointer-events: all;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  z-index: 1000;
+  padding: var(--space-xs) var(--space-m);
+  gap: var(--space-s);
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow);
+  font-size: var(--step--1);
+  border: 2px solid var(--text-color);
+  user-select: none;
+}
+
 label {
   display: flex;
   flex-direction: row;
@@ -494,7 +513,7 @@ label {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-2xl);
+  padding: var(--space-xs) var(--space-m);
   gap: var(--space-s);
   align-items: center;
   border-radius: var(--btn-border-radius);
@@ -510,25 +529,27 @@ label {
 
 link span {
   margin-left: var(--space-3xs);
-  padding: 0 var(--space-s);
+  padding: var(--space-2xs) 0;
 }
+
 
 label:hover,
 label:focus {
   color: var(--text-span);
   box-shadow: 0 10px 10px var(--space-s) var(--shadow);
+
 }
 
 /* Ensure the dropdown menu is visible when active */
 .dropdown-menu {
   opacity: 0;
   transition: opacity 0.3s;
-  padding: 0 var(--space-s);
+  padding: var(--space-xs) var(--space-m);
 }
 
 .dropdown.active>.dropdown-menu {
   opacity: 1;
-  padding: var(--space-l) var(--space-s);
+  padding: var(--space-xs) var(--space-m);
 }
 
 /* Style SVGs inside theme-list items */
@@ -543,13 +564,13 @@ label:focus {
   display: inline-block;
 }
 
-/*input:checked {
+input:checked {
   color: var(--text-color);
 
   &svg {
-    color: var(--text-color);
+    color: var(--text-span);
   }
-}*/
+}
 
 input[type="radio"] {
   opacity: 0;
@@ -595,7 +616,7 @@ input[type="radio"] {
   mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide {
+/*@keyframes show-hide {
 
   0%,
   100% {
@@ -609,6 +630,44 @@ input[type="radio"] {
     opacity: 1;
     transform: scale(1);
   }
+}*/
+
+@keyframes show-hide {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  15% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  85% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Optional: apply a soft easing to the animation */
+.content div,
+.content-1 div {
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
 }
 
 .content div span {
@@ -637,7 +696,7 @@ input[type="radio"] {
   mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide {
+/*@keyframes show-hide {
 
   0%,
   100% {
@@ -651,6 +710,44 @@ input[type="radio"] {
     opacity: 1;
     transform: scale(1);
   }
+}*/
+
+@keyframes show-hide {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  15% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  85% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Optional: apply a soft easing to the animation */
+.content div,
+.content-1 div {
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
 }
 
 .content-1 div span {
