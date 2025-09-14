@@ -593,9 +593,8 @@ input[type="radio"] {
 }
 
 .main-content {
+  margin-block: var(--space-m-l);
   margin-inline: auto;
-  padding: 0 var(--space-6xs-5xs);
-  margin: 0 auto;
   letter-spacing: var(--space-5xs-4xs);
   word-spacing: var(--space-4xs-3xs);
   white-space: normal;
@@ -1051,6 +1050,8 @@ input[type="radio"] {
   display: block;
   margin-inline: auto;
   /* centers SVG horizontally */
+  margin-bottom: var(--space-xl-2xl);
+  /* space below SVG */
 }
 
 .large-button:hover>svg,
@@ -1060,10 +1061,9 @@ input[type="radio"] {
 }
 
 .large-button span {
-  display: block;
-  inline-size: 100%;
-  box-sizing: border-box;
-  padding: var(--space-m-l);
+  display: flex;
+  justify-content: center;
+  padding: var(--space-s-m);
   /* keep text off the circular edges */
   text-align: center;
   /* Prefer natural word breaks */
@@ -1076,7 +1076,6 @@ input[type="radio"] {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   /* Improve readability */
-  line-height: 1.4;
   letter-spacing: normal;
   /* reset if globally increased */
   word-spacing: normal;
@@ -1122,6 +1121,15 @@ input[type="radio"] {
     border-radius: var(--btn-border-radius);
   }
 
+  .curve-container {
+    margin-block: var(--space-xl);
+    margin-inline: auto;
+  }
+
+  .large-button {
+    width: min(20rem, 80dvw);
+    margin-bottom: var(--space-2xl);
+  }
 }
 
 
