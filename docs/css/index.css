@@ -1150,11 +1150,6 @@ input[type="radio"] {
   .large-button {
     width: min(18rem, 88dvw);
     /* narrower on small screens */
-    height: auto;
-    /* auto height */
-    /* tighter padding */
-    gap: var(--space-2xs);
-    /* smaller gap */
     margin-bottom: var(--space-2xl);
     /* less bottom space */
     border-radius: 50%;
@@ -1163,8 +1158,8 @@ input[type="radio"] {
     z-index: 1000;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-decoration: none;
-    font-size: var(--step--1);
     transition: box-shadow 0.3s, outline 0.3s;
     box-shadow: var(--shadow);
     margin-inline: auto;
@@ -1186,8 +1181,6 @@ input[type="radio"] {
     /* tighter spacing below icon */
   }
 
-
-
   .large-button:hover>svg,
   .large-button:focus>svg {
     transform: rotate(45deg);
@@ -1197,8 +1190,7 @@ input[type="radio"] {
   .large-button span {
     display: flex;
     justify-content: center;
-    padding: var(--space-s) var(--space-xs);
-    font-size: var(--step--2);
+    padding: var(--space-l) var(--space-2xl);
     /* slightly smaller text */
     line-height: 1.25;
     text-align: center;
