@@ -1016,7 +1016,7 @@ input[type="radio"] {
 .large-button {
   position: relative;
   /* Remove aspect-ratio: 1 / 1; */
-  height: auto;
+  height: min(15rem, 40dvh);
   /* keep your desired height */
   width: min(30rem, 80dvw);
   /* set a max width, adjust as needed */
@@ -1051,8 +1051,6 @@ input[type="radio"] {
   display: block;
   margin-inline: auto;
   /* centers SVG horizontally */
-  margin-bottom: var(--space-xl-2xl);
-  /* space below SVG */
 }
 
 .large-button:hover>svg,
@@ -1085,18 +1083,6 @@ input[type="radio"] {
 }
 
 @container (max-width: 600px) {
-
-  body,
-  html {
-    margin-inline: auto;
-    padding: 0 var(--space-6xs);
-  }
-
-  .wrapper {
-    min-height: 100dvh;
-    overflow: hidden;
-    margin-inline: auto;
-  }
 
   .title {
     padding-top: var(--space-2xl);
@@ -1148,11 +1134,10 @@ input[type="radio"] {
     margin-block: var(--space-s);
   }
 
-  .large-button {
-    width: min(16rem, 80dvw);
-    /* narrower on small screens */
+  /*.large-button {
+    height: auto;
     margin-bottom: var(--space-2xl);
-    /* less bottom space */
+    /* less bottom space *
     border-radius: 50%;
     background-color: var(--base-color);
     color: var(--text-color);
@@ -1165,8 +1150,8 @@ input[type="radio"] {
     box-shadow: var(--shadow);
     margin-inline: auto;
     overflow: hidden;
-    /* keep content inside the circle */
-  }
+    /* keep content inside the circle *
+  }*/
 
   .large-button:focus,
   .large-button:hover {
