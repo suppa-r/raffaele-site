@@ -1084,6 +1084,10 @@ input[type="radio"] {
 
 @container (max-width: 600px) {
 
+  .wrapper {
+    padding: 0 var(--space-6xs);
+  }
+
   .title {
     padding-top: var(--space-2xl);
     font-size: var(--step--1);
@@ -1135,15 +1139,33 @@ input[type="radio"] {
   }
 
   .large-button {
-    height: min(9rem, 30dvh);
+    height: min(12rem, 30dvh);
     /* slightly smaller height */
-    width: min(18rem, 60dvw);
+    width: min(24rem, 60dvw);
     /* slightly smaller width */
-    font-size: var(--step--1);
+    font-size: var(--step--2);
     /* slightly smaller text */
-    margin-bottom: var(--space-3xl);
-    gap: var(--space-xs);
-    /* slightly tighter gap */
+    margin-bottom: var(--space-xl);
+    /* less bottom margin */
+  }
+
+  .large-button span {
+    text-align: center;
+    /* Prefer natural word breaks */
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    /* only break long words if needed */
+    hyphens: auto;
+    /* auto hyphenation when a word must break */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    /* Improve readability */
+    letter-spacing: normal;
+    /* reset if globally increased */
+    word-spacing: normal;
+    /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
+    text-wrap: balance;
   }
 
   .large-button:focus,
@@ -1166,29 +1188,13 @@ input[type="radio"] {
     fill: var(--text-span);
   }
 
-  .large-button span {
-    display: flex;
-    justify-content: center;
-    padding: var(--space-xl);
-    /* slightly smaller text */
-    line-height: 1.25;
-    text-align: center;
-    /* Prefer natural word breaks */
-    white-space: normal;
-    word-break: normal;
-    overflow-wrap: break-word;
-    /* only break long words if needed */
-    hyphens: auto;
-    /* auto hyphenation when a word must break */
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    /* Improve readability */
-    letter-spacing: normal;
-    /* reset if globally increased */
-    word-spacing: normal;
-    /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
-    text-wrap: balance;
-  }
+
+
+
+
+
+
+
 }
 
 @media (prefers-reduced-motion: reduce) {
