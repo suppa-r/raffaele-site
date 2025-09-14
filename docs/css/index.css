@@ -1113,8 +1113,9 @@ input[type="radio"] {
     pointer-events: all;
     z-index: 1000;
     position: absolute;
-    right: var(--space-s-m);
-    top: var(--space-2xs-xs);
+    right: var(--space-s);
+    top: var(--space-xs);
+    padding: var(--space-3xs) var(--space-xs);
     box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
     opacity: 1;
     transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -1124,7 +1125,7 @@ input[type="radio"] {
   }
 
   .curve-container {
-    margin-block: var(--space-l);
+    margin-block: var(--space-xl);
     margin-inline: auto;
     padding: 0 var(--space-6xs);
   }
@@ -1136,7 +1137,7 @@ input[type="radio"] {
   }
 
   .text-container {
-    margin-top: var(--space-l);
+    margin-top: var(--space-2xl);
     margin-inline: auto;
     padding: 0 var(--space-6xs);
   }
@@ -1148,7 +1149,7 @@ input[type="radio"] {
   }
 
   .large-button {
-    width: min(18rem, 88dvw);
+    width: min(16rem, 80dvw);
     /* narrower on small screens */
     margin-bottom: var(--space-2xl);
     /* less bottom space */
@@ -1190,7 +1191,7 @@ input[type="radio"] {
   .large-button span {
     display: flex;
     justify-content: center;
-    padding: var(--space-l) var(--space-2xl);
+    padding: var(--space-2xl) var(--space-xl);
     /* slightly smaller text */
     line-height: 1.25;
     text-align: center;
