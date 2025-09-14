@@ -7,18 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const text = document.querySelector('.text-container');
   const largebutton = document.querySelector('.large-button');
   const themeRadios = document.querySelectorAll('.theme-list-item input[type="radio"]');
+  const title = document.querySelector('.title'); // Add title element
 
   // Helpers
   function hideContent() {
     if (curve) curve.style.display = 'none';
     if (text) text.style.display = 'none';
     if (largebutton) largebutton.style.display = 'none';
+    if (title) title.style.display = 'none'; // Hide title too
   }
 
   function showContent() {
     if (curve) curve.style.display = '';
     if (text) text.style.display = '';
     if (largebutton) largebutton.style.display = '';
+    if (title) title.style.display = ''; // Show title too
   }
 
   function animateDropdownMenu(open) {
