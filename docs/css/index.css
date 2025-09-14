@@ -1126,6 +1126,35 @@ input[type="radio"] {
     border: 2px solid transparent;
     border-radius: var(--btn-border-radius);
   }
+
+  /* ...existing code... */
+
+  /* Prevent mid-word breaks in content */
+  .main-content,
+  .text-container,
+  .text-with-animation,
+  .text-with-animation-1,
+  .text-with-animation-2,
+  .text-with-animation-3,
+  .text-with-animation-4,
+  .text-with-animation-5,
+  .large-button span {
+    white-space: normal;
+    /* allow line breaks */
+    word-break: keep-all;
+    /* don't break words */
+    overflow-wrap: normal;
+    /* don't force breaks inside long words */
+    hyphens: none;
+    /* disable auto-hyphenation */
+  }
+
+  /* Optional utility for any element you want to never break words */
+  .no-word-break {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
 }
 
 
