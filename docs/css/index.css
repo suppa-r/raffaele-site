@@ -316,8 +316,9 @@ header {
   top: var(--space-xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
-
-  transform: none;
+  transition: box-shadow 0.3s;
+  user-select: none;
+  /*transition: color 0.8s, box-shadow 0.9s;*/
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
 }
@@ -350,7 +351,8 @@ header {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: var(--space-5xs) var(--space-s);
+  padding: var(--space-5xs);
+  opacity: 1;
   gap: var(--space-xs);
   align-items: center;
   text-decoration: none;
@@ -377,7 +379,10 @@ header {
 
 .link span {
   white-space: nowrap;
-  text-overflow: unset;
+  overflow: hidden;
+  user-select: none;
+  display: inline-block;
+  vertical-align: middle;
   padding: var(--space-5xs) var(--space-s);
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
@@ -385,13 +390,9 @@ header {
   /* optional: adds ... if text is too long */
 }
 
-
-.dropdown:hover,
-.dropdown:focus-within,
 link:hover,
 link:focus {
   color: var(--text-color);
-
   padding: var(--space-5xs);
   background-color: var(--base-color);
   transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
@@ -414,7 +415,7 @@ link:focus {
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
   position: absolute;
-  top: var(--space-l-xl);
+  top: var(--space-xl);
   right: 0;
   display: flex;
   flex-direction: column;
@@ -1104,7 +1105,6 @@ input[type="radio"] {
     padding-inline: var(--space-6xs);
     margin: 0;
     overflow-x: hidden;
-    max-width: 100vw;
   }
 
   .wrapper {
@@ -1133,14 +1133,28 @@ input[type="radio"] {
   .dropdown {
     cursor: pointer;
     pointer-events: all;
-    z-index: 1000;
+    z-index: -1000;
     position: absolute;
     right: var(--space-s);
     top: var(--space-xs);
-
     transform: none;
     border: 2px solid transparent;
     border-radius: var(--btn-border-radius);
+  }
+
+  .dropdown:hover,
+  .dropdown:focus-within,
+  link:hover,
+  link:focus {
+    color: var(--text-color);
+    padding: var(--space-5xs);
+    background-color: var(--base-color);
+    transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
+    border: 2px solid transparent;
+    border-radius: var(--btn-border-radius);
+    outline: none;
+    /* Optional: adds a subtle outline on hover/focus */
+    box-shadow: 0 10px 10px var(--space-s) var(--shadow);
   }
 
   .curve-container {
