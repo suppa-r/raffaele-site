@@ -1115,7 +1115,7 @@ input[type="radio"] {
   .main-content,
   .text-container,
   .curve-container {
-    margin-block: var(--space-m);
+    margin-block: var(--space-3xs);
     margin-inline: 0;
     padding-inline: var(--space-6xs);
   }
@@ -1143,47 +1143,16 @@ input[type="radio"] {
   }
 
   .link label {
-    padding: var(--space-5xs);
-    gap: var(--space-xs);
+    padding: 0 var(--space-5xs);
+    gap: var(--space-2xs);
   }
 
   .theme-list {
-    padding: var(--space-3xs) var(--space-m);
+    padding: 0 var(--space-5xs);
   }
 
   .theme-list-item label {
-    padding: 0 var(--space-s);
-  }
-
-  .main-content {
-    margin-inline: auto;
-    letter-spacing: var(--space-6xs);
-    word-spacing: var(--space-5xs);
-    padding: 0 var(--space-6xs);
-  }
-
-  .curve-container {
-    margin-block: var(--space-xl);
-    margin-inline: auto;
-    padding: 0 var(--space-6xs);
-  }
-
-  .text-with-animation,
-  .text-with-animation-4,
-  .text-with-animation-5 {
-    margin-block: var(--space-xs);
-  }
-
-  .text-with-animation,
-  .text-with-animation-1,
-  .text-with-animation-2,
-  .text-with-animation-3,
-  .text-with-animation-4,
-  .text-with-animation-5 {
-    font-size: var(--step--2);
-    margin-inline: auto;
-    text-align: center;
-    display: block;
+    padding: 0 var(--space-5xs);
   }
 
   .large-button {
@@ -1192,7 +1161,7 @@ input[type="radio"] {
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
-    gap: var(--space-2xs);
+    gap: var(--space-4xs);
     height: clamp(8rem, 36svh, 11rem);
     /* taller for more vertical padding */
     width: clamp(16rem, 70svw, 24rem);
@@ -1209,7 +1178,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-m);
+    padding: var(--space-l);
     /* padding inside span */
     text-align: center;
     white-space: normal;
@@ -1237,7 +1206,6 @@ input[type="radio"] {
     margin-inline: auto;
     /* centers SVG horizontally */
     fill: var(--text-color);
-    margin-bottom: var(--space-3xs);
   }
 
   .large-button:hover>svg,
