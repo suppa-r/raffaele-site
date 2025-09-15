@@ -1113,11 +1113,16 @@ input[type="radio"] {
 
   .wrapper,
   .main-content,
-  .text-container,
-  .curve-container {
+  .text-container {
     margin-block: var(--space-3xs);
     margin-inline: 0;
     padding-inline: var(--space-6xs);
+  }
+
+  .curve-container {
+    gap: var(--space-xl);
+    padding-inline: 0 var(--space-6xs);
+    margin-block: var(--space-m);
   }
 
   .title {
@@ -1178,7 +1183,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-l);
+    padding: var(--space-m);
     /* padding inside span */
     text-align: center;
     white-space: normal;
