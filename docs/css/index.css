@@ -1114,23 +1114,6 @@ input[type="radio"] {
     padding-inline: var(--space-4xs);
   }
 
-  .main-content {
-    margin-block: var(--space-m);
-    margin-inline: auto;
-    letter-spacing: var(--space-6xs);
-    word-spacing: var(--space-5xs);
-    white-space: normal;
-    word-break: normal;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
-
-  .curve-container {
-    gap: var(--space-l);
-    padding-inline: 0 var(--space-6xs);
-    margin-block: var(--space-l);
-  }
-
   .title {
     padding-top: var(--space-2xl);
     font-size: var(--step--1);
@@ -1166,6 +1149,28 @@ input[type="radio"] {
     padding: 0 var(--space-5xs);
   }
 
+  .main-content {
+    margin-block: var(--space-m);
+    margin-inline: auto;
+    letter-spacing: var(--space-6xs);
+    word-spacing: var(--space-5xs);
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .curve-container {
+    gap: var(--space-l);
+    padding-inline: 0 var(--space-6xs);
+    margin-block: var(--space-l);
+  }
+
+  .text-container {
+    margin-top: var(--space-m);
+  }
+
+
   .large-button {
     position: relative;
     display: flex;
@@ -1189,7 +1194,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-s);
+    padding: var(--space-m) var(--space-s);
     /* padding inside span */
     text-align: center;
     white-space: normal;
