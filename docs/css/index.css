@@ -1109,20 +1109,26 @@ input[type="radio"] {
 
   .wrapper {
     container-type: inline-size;
-  }
-
-  .wrapper,
-  .main-content,
-  .text-container {
     margin-block: var(--space-3xs);
     margin-inline: 0;
-    padding-inline: var(--space-6xs);
+    padding-inline: var(--space-4xs);
+  }
+
+  .main-content {
+    margin-block: var(--space-m);
+    margin-inline: auto;
+    letter-spacing: var(--space-6xs);
+    word-spacing: var(--space-5xs);
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .curve-container {
-    gap: var(--space-xl);
+    gap: var(--space-l);
     padding-inline: 0 var(--space-6xs);
-    margin-block: var(--space-m);
+    margin-block: var(--space-l);
   }
 
   .title {
@@ -1183,7 +1189,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-m);
+    padding: var(--space-s);
     /* padding inside span */
     text-align: center;
     white-space: normal;
