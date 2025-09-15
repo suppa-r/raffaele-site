@@ -1190,11 +1190,8 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    /* fill available width */
-    padding: var(--space-s);
+    padding: var(--space-s) var(--space-m);
     /* padding inside span */
-    font-size: var(--step--2);
     text-align: center;
     white-space: normal;
     word-break: keep-all;
@@ -1216,13 +1213,12 @@ input[type="radio"] {
   .large-button svg {
     width: var(--space-2xl);
     height: var(--space-2xl);
-
     transition: transform 0.3s;
     display: block;
     margin-inline: auto;
     /* centers SVG horizontally */
     fill: var(--text-color);
-
+    margin-bottom: var(--space-3xs);
   }
 
   .large-button:hover>svg,
@@ -1230,12 +1226,6 @@ input[type="radio"] {
     transform: rotate(45deg);
     fill: var(--text-span);
   }
-
-
-
-
-
-
 
 }
 
