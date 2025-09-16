@@ -153,6 +153,7 @@
   --backround-transition: background-color 0.8s, color 0.8s;
   --letter-space-content: var(--space-6xs);
   --word-space-content: var(--space-5xs);
+  --gradient-btn-fill: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
 }
 
 /* Hide the support message if view transitions are supported */
@@ -326,24 +327,28 @@ header {
 }
 
 .link {
+  all: revert;
+  display: inline-flex;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
   cursor: pointer;
   pointer-events: all;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   text-decoration: none;
-  background-color: var(--base-color);
   color: var(--text-color);
   user-select: none;
   position: relative;
-  /*transition: color 0.8s, box-shadow 0.9s;*/
   transform: none;
   z-index: 1000;
   opacity: 1;
-  transition: box-shadow 0.3s;
-  box-shadow: var(--shadow);
+  transition: --gradient-btn-fill 0.3s;
+  background: linear-gradient(var(--gradient-btn-fill)0 0) padding-box;
+
+
+  &:hover,
+  &:focus-invisable {
+    --gradient-btn-fill: transparent;
+
+  }
 }
 
 .link label {
@@ -1138,6 +1143,35 @@ input[type="radio"] {
     transform: none;
     border: 2px solid transparent;
     border-radius: var(--btn-border-radius);
+  }
+
+  .link {
+    all: revert;
+    display: inline-flex;
+    border: 2px solid transparent;
+    border-radius: var(--btn-border-radius);
+    cursor: pointer;
+    pointer-events: all;
+
+
+    text-decoration: none;
+    background-color: var(--base-color);
+    color: var(--text-color);
+    user-select: none;
+    position: relative;
+    transform: none;
+    z-index: 1000;
+    opacity: 1;
+    transition: --gradient-btn-fill 0.3s, box-shadow 0.3s;
+    background: linear-gradient(var(--gradient-btn-fill)0 0) padding-box,
+      var(--gradient-btn-border) border-box;
+
+    &:hover,
+    &:focus-invisable {
+      --gradient-btn-fill: var(--clr-accent-2);
+      color: var(--text-color);
+      box-shadow: 0 10px 10px var(--space-s) var(--shadow);
+    }
   }
 
   .link label {
