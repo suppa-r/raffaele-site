@@ -1167,7 +1167,7 @@ input[type="radio"] {
   }
 
   .text-container {
-    margin-top: var(--space-l);
+    margin-top: var(--space-xl);
   }
 
 
@@ -1194,7 +1194,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-m);
+    padding: var(--space-m) var(--space-s);
     /* padding inside span */
     text-align: center;
     white-space: normal;
