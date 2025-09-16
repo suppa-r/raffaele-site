@@ -1149,25 +1149,16 @@ input[type="radio"] {
     padding: 0 var(--space-5xs);
   }
 
-  .main-content {
-    margin-block: var(--space-m);
-    margin-inline: auto;
-    letter-spacing: var(--space-6xs);
-    word-spacing: var(--space-5xs);
-    white-space: normal;
-    word-break: normal;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
 
   .curve-container {
     gap: var(--space-l);
     padding-inline: 0 var(--space-6xs);
-    margin-block: var(--space-l);
+    margin-block: var(--space-m);
+
   }
 
   .text-container {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-2xl);
   }
 
 
@@ -1194,7 +1185,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-m) var(--space-s);
+    padding: var(--space-m) var(--space-l);
     /* padding inside span */
     text-align: center;
     white-space: normal;
