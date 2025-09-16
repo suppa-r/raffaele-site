@@ -315,8 +315,8 @@ header {
   pointer-events: all;
   z-index: 1000;
   position: absolute;
-  right: var(--space-s);
-  top: var(--space-xs);
+  right: var(--space-l);
+  top: var(--space-2xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s;
@@ -327,28 +327,24 @@ header {
 }
 
 .link {
-  all: revert;
-  display: inline-flex;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
   cursor: pointer;
   pointer-events: all;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   text-decoration: none;
+  background-color: var(--base-color);
   color: var(--text-color);
   user-select: none;
   position: relative;
+  /*transition: color 0.8s, box-shadow 0.9s;*/
   transform: none;
   z-index: 1000;
   opacity: 1;
-  transition: --gradient-btn-fill 0.3s;
-  background: linear-gradient(var(--gradient-btn-fill)0 0) padding-box;
-
-
-  &:hover,
-  &:focus-invisable {
-    --gradient-btn-fill: transparent;
-
-  }
+  transition: box-shadow 0.3s;
+  box-shadow: var(--shadow);
 }
 
 .link label {
@@ -1145,15 +1141,13 @@ input[type="radio"] {
     border-radius: var(--btn-border-radius);
   }
 
-  .link {
+  /*.link {
     all: revert;
     display: inline-flex;
     border: 2px solid transparent;
     border-radius: var(--btn-border-radius);
     cursor: pointer;
     pointer-events: all;
-
-
     text-decoration: none;
     background-color: var(--base-color);
     color: var(--text-color);
@@ -1185,7 +1179,7 @@ input[type="radio"] {
 
   .theme-list-item label {
     padding: 0 var(--space-5xs);
-  }
+  }*/
 
 
   .curve-container {
@@ -1199,46 +1193,28 @@ input[type="radio"] {
     margin-top: var(--space-2xl);
   }
 
-
+  /* ...existing code... */
   .large-button {
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    /* center children horizontally */
     justify-content: center;
-    text-decoration: none;
+    /* center children vertically */
     height: clamp(8rem, 36svh, 11rem);
-    /* taller for more vertical padding */
     width: clamp(16rem, 70svw, 24rem);
-    /* wider for more horizontal padding */
     border-radius: 50%;
     box-shadow: var(--shadow);
     background-color: var(--base-color);
     color: var(--text-color);
     overflow: hidden;
-    /* keep content inside the circle */
-  }
-
-  .large-button span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-m) var(--space-s);
-    /* padding inside span */
-    text-align: center;
-    white-space: normal;
-    word-break: keep-all;
-    /* don't break words */
-    overflow-wrap: normal;
-    hyphens: none;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-wrap: balance;
-  }
-
-  .large-button:focus,
-  .large-button:hover {
-    box-shadow: 0 10px 10px var(--space-3xs-2xs) var(--shadow);
-    outline: 2px solid var(--text-span);
+    padding: var(--space-m);
+    /* ensure inner padding */
+    box-sizing: border-box;
+    /* include padding in width/height */
+    gap: var(--space-s);
+    /* space between svg and span */
   }
 
   .large-button svg {
@@ -1246,9 +1222,48 @@ input[type="radio"] {
     height: var(--space-2xl);
     transition: transform 0.3s;
     display: block;
-    margin-inline: auto;
-    /* centers SVG horizontally */
+    align-self: center;
     fill: var(--text-color);
+    margin-bottom: var(--space-s);
+    /* smaller gap below icon */
+    max-width: 100%;
+    max-height: 40%;
+    box-sizing: border-box;
+  }
+
+  .large-button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* fill available width */
+    padding: var(--space-s);
+    /* padding inside span */
+    margin: 0;
+    /* remove extra margin */
+    text-align: center;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-wrap: balance;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    /* allow span to shrink/grow as needed */
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* ...existing code... */
+
+
+
+  .large-button:focus,
+  .large-button:hover {
+    box-shadow: 0 10px 10px var(--space-3xs-2xs) var(--shadow);
+    outline: 2px solid var(--text-span);
   }
 
   .large-button:hover>svg,
