@@ -299,8 +299,8 @@ header {
   pointer-events: all;
   z-index: 1000;
   position: absolute;
-  right: var(--space-m-l);
-  top: var(--space-2xs-xs);
+  right: var(--space-2xs-xs);
+  top: var(--space-3xs-2xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s;
