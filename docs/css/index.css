@@ -1010,6 +1010,7 @@ input[type="radio"] {
 }
 
 .text-with-animation,
+.text-with-animation-4,
 .text-with-animation-5 {
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
@@ -1020,8 +1021,7 @@ input[type="radio"] {
 
 .text-with-animation-1,
 .text-with-animation-2,
-.text-with-animation-3,
-.text-with-animation-4 {
+.text-with-animation-3 {
   font-size: var(--step--1);
   text-align: center;
   margin-block: var(--space-2xs);
