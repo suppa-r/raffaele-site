@@ -290,7 +290,7 @@ header {
   color: var(--text-color);
   text-align: center;
   margin-inline: auto;
-  padding: var(--space-xl-2xl)0 0 0;
+  padding-top: var(--space-l-xl);
 }
 
 /* Keep .link label on one line */
@@ -318,6 +318,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding: 0 var(--space-4xs-3xs);
   text-decoration: none;
   background-color: var(--base-color);
   color: var(--text-color);
@@ -338,7 +339,7 @@ header {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: var(--space-5xs-4xs);
+  padding: 0 var(--space-5xs-4xs);
   opacity: 1;
   gap: var(--space-xs-s);
   align-items: center;
@@ -355,8 +356,8 @@ header {
 }
 
 .link svg {
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   vertical-align: middle;
   color: var(--text-color);
   background-color: var(--base-color);
@@ -370,7 +371,7 @@ header {
   user-select: none;
   display: inline-block;
   vertical-align: middle;
-  padding: var(--space-5xs-4xs) var(--space-xs-s);
+  padding: 0;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
@@ -380,7 +381,7 @@ header {
 link:hover,
 link:focus {
   color: var(--text-color);
-  padding: var(--space-5xs-4xs);
+  padding: 0 var(--space-4xs-3xs);
   background-color: var(--base-color);
   transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
   border: 2px solid transparent;
@@ -402,7 +403,7 @@ link:focus {
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
   position: absolute;
-  top: var(--space-xl-2xl);
+  top: var(--space-m-l);
   right: 0;
   display: flex;
   flex-direction: column;
@@ -416,7 +417,8 @@ link:focus {
 
 /* When menu is open, show it */
 .dropdown.active>.color-picker.dropdown-menu {
-  margin-top: var(--space-l-xl);
+  margin-top: var(--space-m-l);
+  padding: 0 var(--space-l-xl);
   opacity: 1;
   pointer-events: all;
   border: 2px solid transparent;
@@ -454,6 +456,7 @@ link:focus {
   z-index: 1000;
   pointer-events: all;
   gap: var(--space-2xs-xs);
+  padding: 0 var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -462,7 +465,6 @@ link:focus {
   user-select: none;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
-  padding: var(--space-3xs-2xs) var(--space-m-l);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -475,47 +477,38 @@ link:focus {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: var(--space-4xs-3xs) var(--space-m-l);
+  padding: 0 var(--space-4xs-3xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
-  gap: var(--space-s);
+  gap: var(--space-2xs-xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
   color: var(--text-color);
-
   font-size: var(--step--1);
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
   user-select: none;
 }
 
-/* Highlight SVG for the active (checked) theme item */
+.theme-list-item input[type="radio"] {
+  display: none;
+}
+
+/* Highlight SVG for the active (checked) theme item *
 .theme-list-item input[type="radio"]:checked+label svg {
   margin-right: var(--space-m-l);
   padding: var(--space-2xs-xs3xs) var(--space-m-l);
   color: var(--text-span);
-  /* Example: change color to indicate active state */
+  /* Example: change color to indicate active state *
   background-color: var(--base-color);
   border-radius: 50%;
   box-shadow: 0 0 10px var(--text-span);
   opacity: 1;
   transition: color 0.3s, box-shadow 0.3s, border 0.3s;
-  /* You can add more styles for active state if needed */
-}
-
-/* Style SVGs inside theme-list items */
-.theme-list-item label svg {
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
-  margin-right: var(--space-m-l);
-  vertical-align: middle;
-  color: var(--text-color);
-  background-color: var(--base-color);
-  opacity: 1;
-  display: inline-block;
-}
+  /* You can add more styles for active state if needed *
+}*/
 
 .theme-list-item label {
   display: flex;
@@ -538,9 +531,29 @@ link:focus {
   transition: color 0.3s, box-shadow 0.3s;
 }
 
+/* Style SVGs inside theme-list items */
+.theme-list-item label svg {
+  width: var(--space-xl-2xl);
+  height: var(--space-xl-2xl);
+  margin-right: var(--space-xs-s);
+  vertical-align: middle;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  opacity: 1;
+  display: inline-block;
+}
+
 .theme-list-item span {
-  margin-left: var(--space-xs-s);
-  padding: var(--space-xs-s) 0;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: var(--base-color);
+  transition: box-shadow 0.3s, outline 0.3s;
+  box-shadow: var(--shadow);
+  /* optional: adds ... if text is too long */
+  padding: 0 var(--space-xs-s);
 }
 
 
