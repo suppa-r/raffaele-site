@@ -1189,7 +1189,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-m) var(--space-l);
+    padding: var(--space-l);
     /* padding inside span */
     text-align: center;
     white-space: normal;
