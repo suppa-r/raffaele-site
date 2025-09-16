@@ -17,143 +17,126 @@
   --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
 
+  /* Step 0: 18px → 20px */
+  --step-0: clamp(1.125rem, 1.0855rem + 0.1754cqi, 1.25rem);
+  /* Step 1: 21.6px → 26.66px */
+  --step-1: clamp(1.35rem, 1.2501rem + 0.4439cqi, 1.6663rem);
+  /* Step 2: 25.92px → 35.5378px */
+  --step-2: clamp(1.62rem, 1.4302rem + 0.8437cqi, 2.2211rem);
+  /* Step 3: 31.104px → 47.3719px */
+  --step-3: clamp(1.944rem, 1.6229rem + 1.427cqi, 2.9607rem);
+  /* Step 4: 37.3248px → 63.1467px */
+  --step-4: clamp(2.3328rem, 1.8232rem + 2.2651cqi, 3.9467rem);
 
-  /* Step -3: 9.838px → 9.216px */
-  --step--3: clamp(0.576rem, 0.6308rem + -0.0707cqi, 0.6149rem);
-  /* Step -2: 11.8056px → 11.52px */
-  --step--2: clamp(0.72rem, 0.7451rem + -0.0324cqi, 0.7378rem);
-  /* Step -1: 14.1667px → 14.4px */
-  --step--1: clamp(0.8854rem, 0.8795rem + 0.0265cqi, 0.9rem);
-  /* Step 0: 17px → 18px */
-  --step-0: clamp(1.0625rem, 1.0369rem + 0.1136cqi, 1.125rem);
-  /* Step 1: 20.4px → 22.5px */
-  --step-1: clamp(1.275rem, 1.2213rem + 0.2386cqi, 1.4063rem);
-  /* Step 2: 24.48px → 28.125px */
-  --step-2: clamp(1.53rem, 1.4368rem + 0.4142cqi, 1.7578rem);
-  /* Step 3: 29.376px → 35.1563px */
-  --step-3: clamp(1.836rem, 1.6882rem + 0.6568cqi, 2.1973rem);
-  /* Step 4: 35.2512px → 43.9453px */
-  --step-4: clamp(2.2032rem, 1.9809rem + 0.988cqi, 2.7466rem);
-
-
-  /* Space 6xs: 4px → 5px */
-  --space-6xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  /* Space 5xs: 4px → 5px */
-  --space-5xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  /* Space 4xs: 4px → 5px */
-  --space-4xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  /* Space 3xs: 4px → 5px */
-  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  /* Space 2xs: 9px → 9px */
-  --space-2xs: clamp(0.5625rem, 0.5625rem + 0cqi, 0.5625rem);
-  /* Space xs: 13px → 14px */
-  --space-xs: clamp(0.8125rem, 0.7869rem + 0.1136cqi, 0.875rem);
-  /* Space s: 17px → 18px */
-  --space-s: clamp(1.0625rem, 1.0369rem + 0.1136cqi, 1.125rem);
-  /* Space m: 26px → 27px */
-  --space-m: clamp(1.625rem, 1.5994rem + 0.1136cqi, 1.6875rem);
-  /* Space l: 34px → 36px */
-  --space-l: clamp(2.125rem, 2.0739rem + 0.2273cqi, 2.25rem);
-  /* Space xl: 51px → 54px */
-  --space-xl: clamp(3.1875rem, 3.1108rem + 0.3409cqi, 3.375rem);
-  /* Space 2xl: 68px → 72px */
-  --space-2xl: clamp(4.25rem, 4.1477rem + 0.4545cqi, 4.5rem);
-  /* Space 3xl: 102px → 108px */
-  --space-3xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 4xl: 102px → 108px */
-  --space-4xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 5xl: 102px → 108px */
-  --space-5xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 6xl: 102px → 108px */
-  --space-6xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 7xl: 102px → 108px */
-  --space-7xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 8xl: 102px → 108px */
-  --space-8xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 9xl: 102px → 108px */
-  --space-9xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 10xl: 102px → 108px */
-  --space-10xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 11xl: 102px → 108px */
-  --space-11xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 12xl: 102px → 108px */
-  --space-12xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 13xl: 102px → 108px */
-  --space-13xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 14xl: 102px → 108px */
-  --space-14xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 15xl: 102px → 108px */
-  --space-15xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  /* Space 6xs: 2px → 2px */
+  --space-6xs: clamp(0.125rem, 0.125rem + 0cqi, 0.125rem);
+  /* Space 5xs: 3px → 3px */
+  --space-5xs: clamp(0.1875rem, 0.1875rem + 0cqi, 0.1875rem);
+  /* Space 4xs: 4px → 4px */
+  --space-4xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
+  /* Space 3xs: 5px → 5px */
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0cqi, 0.3125rem);
+  /* Space 2xs: 9px → 10px */
+  --space-2xs: clamp(0.5625rem, 0.5428rem + 0.0877cqi, 0.625rem);
+  /* Space xs: 14px → 15px */
+  --space-xs: clamp(0.875rem, 0.8553rem + 0.0877cqi, 0.9375rem);
+  /* Space s: 18px → 20px */
+  --space-s: clamp(1.125rem, 1.0855rem + 0.1754cqi, 1.25rem);
+  /* Space m: 27px → 30px */
+  --space-m: clamp(1.6875rem, 1.6283rem + 0.2632cqi, 1.875rem);
+  /* Space l: 36px → 40px */
+  --space-l: clamp(2.25rem, 2.1711rem + 0.3509cqi, 2.5rem);
+  /* Space xl: 54px → 60px */
+  --space-xl: clamp(3.375rem, 3.2566rem + 0.5263cqi, 3.75rem);
+  /* Space 2xl: 72px → 80px */
+  --space-2xl: clamp(4.5rem, 4.3421rem + 0.7018cqi, 5rem);
+  /* Space 3xl: 108px → 120px */
+  --space-3xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 4xl: 108px → 120px */
+  --space-4xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 5xl: 108px → 120px */
+  --space-5xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 6xl: 108px → 120px */
+  --space-6xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 7xl: 108px → 120px */
+  --space-7xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 8xl: 108px → 120px */
+  --space-8xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 9xl: 108px → 120px */
+  --space-9xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 10xl: 108px → 120px */
+  --space-10xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 11xl: 108px → 120px */
+  --space-11xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 12xl: 108px → 120px */
+  --space-12xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
 
   /* One-up pairs */
-
-  --space-7xs-6xs: clamp(0.18rem, 0.18rem + 0.106cqi, 0.188rem);
-  /* Space 6xs-5xs: 4px → 5px */
-  --space-6xs-5xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  /* Space 5xs-4xs: 4px → 5px */
-  --space-5xs-4xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  /* Space 6xs-5xs: 2px → 3px */
+  --space-6xs-5xs: clamp(0.125rem, 0.1053rem + 0.0877cqi, 0.1875rem);
+  /* Space 5xs-4xs: 3px → 4px */
+  --space-5xs-4xs: clamp(0.1875rem, 0.1678rem + 0.0877cqi, 0.25rem);
   /* Space 4xs-3xs: 4px → 5px */
-  --space-4xs-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  /* Space 3xs-2xs: 4px → 9px */
-  --space-3xs-2xs: clamp(0.25rem, 0.1222rem + 0.5682cqi, 0.5625rem);
-  /* Space 2xs-xs: 9px → 14px */
-  --space-2xs-xs: clamp(0.5625rem, 0.4347rem + 0.5682cqi, 0.875rem);
-  /* Space xs-s: 13px → 18px */
-  --space-xs-s: clamp(0.8125rem, 0.6847rem + 0.5682cqi, 1.125rem);
-  /* Space s-m: 17px → 27px */
-  --space-s-m: clamp(1.0625rem, 0.8068rem + 1.1364cqi, 1.6875rem);
-  /* Space m-l: 26px → 36px */
-  --space-m-l: clamp(1.625rem, 1.3693rem + 1.1364cqi, 2.25rem);
-  /* Space l-xl: 34px → 54px */
-  --space-l-xl: clamp(2.125rem, 1.6136rem + 2.2727cqi, 3.375rem);
-  /* Space xl-2xl: 51px → 72px */
-  --space-xl-2xl: clamp(3.1875rem, 2.6506rem + 2.3864cqi, 4.5rem);
-  /* Space 2xl-3xl: 68px → 108px */
-  --space-2xl-3xl: clamp(4.25rem, 3.2273rem + 4.5455cqi, 6.75rem);
-  /* Space 3xl-4xl: 102px → 108px */
-  --space-3xl-4xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 4xl-5xl: 102px → 108px */
-  --space-4xl-5xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 5xl-6xl: 102px → 108px */
-  --space-5xl-6xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 6xl-7xl: 102px → 108px */
-  --space-6xl-7xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 7xl-8xl: 102px → 108px */
-  --space-7xl-8xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 8xl-9xl: 102px → 108px */
-  --space-8xl-9xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 9xl-10xl: 102px → 108px */
-  --space-9xl-10xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 10xl-11xl: 102px → 108px */
-  --space-10xl-11xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 11xl-12xl: 102px → 108px */
-  --space-11xl-12xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 12xl-13xl: 102px → 108px */
-  --space-12xl-13xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 13xl-14xl: 102px → 108px */
-  --space-13xl-14xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
-  /* Space 14xl-15xl: 102px → 108px */
-  --space-14xl-15xl: clamp(6.375rem, 6.2216rem + 0.6818cqi, 6.75rem);
+  --space-4xs-3xs: clamp(0.25rem, 0.2303rem + 0.0877cqi, 0.3125rem);
+  /* Space 3xs-2xs: 5px → 10px */
+  --space-3xs-2xs: clamp(0.3125rem, 0.2138rem + 0.4386cqi, 0.625rem);
+  /* Space 2xs-xs: 9px → 15px */
+  --space-2xs-xs: clamp(0.5625rem, 0.4441rem + 0.5263cqi, 0.9375rem);
+  /* Space xs-s: 14px → 20px */
+  --space-xs-s: clamp(0.875rem, 0.7566rem + 0.5263cqi, 1.25rem);
+  /* Space s-m: 18px → 30px */
+  --space-s-m: clamp(1.125rem, 0.8882rem + 1.0526cqi, 1.875rem);
+  /* Space m-l: 27px → 40px */
+  --space-m-l: clamp(1.6875rem, 1.4309rem + 1.1404cqi, 2.5rem);
+  /* Space l-xl: 36px → 60px */
+  --space-l-xl: clamp(2.25rem, 1.7763rem + 2.1053cqi, 3.75rem);
+  /* Space xl-2xl: 54px → 80px */
+  --space-xl-2xl: clamp(3.375rem, 2.8618rem + 2.2807cqi, 5rem);
+  /* Space 2xl-3xl: 72px → 120px */
+  --space-2xl-3xl: clamp(4.5rem, 3.5526rem + 4.2105cqi, 7.5rem);
+  /* Space 3xl-4xl: 108px → 120px */
+  --space-3xl-4xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 4xl-5xl: 108px → 120px */
+  --space-4xl-5xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 5xl-6xl: 108px → 120px */
+  --space-5xl-6xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 6xl-7xl: 108px → 120px */
+  --space-6xl-7xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 7xl-8xl: 108px → 120px */
+  --space-7xl-8xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 8xl-9xl: 108px → 120px */
+  --space-8xl-9xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 9xl-10xl: 108px → 120px */
+  --space-9xl-10xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 10xl-11xl: 108px → 120px */
+  --space-10xl-11xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
+  /* Space 11xl-12xl: 108px → 120px */
+  --space-11xl-12xl: clamp(6.75rem, 6.5132rem + 1.0526cqi, 7.5rem);
 
 
-  --pt-serif-regular: "PT Serif", serif;
-  --pt-serif-italic: "PT Serif Italic", serif;
+  --pt-serif-regular: "PT Serif",
+    serif;
+  --pt-serif-italic: "PT Serif Italic",
+    serif;
   --font-weight-1: 400;
   --font-style-1: italic;
 
-  --ff-monoton-regular: "Monoton", sans-serif;
+  --ff-monoton-regular: "Monoton",
+    sans-serif;
   --font-weight-regular: 400;
   --font-style-regular: normal;
   --btn-border-radius: 0.5rem;
-  --navbar-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --navbar-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.1);
 
   /* global page padding variables */
-  --page-pad-inline: var(--space-6xs);
+  --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
-  --backround-transition: background-color 0.8s, color 0.8s;
-  --letter-space-content: var(--space-6xs);
-  --word-space-content: var(--space-5xs);
-  --gradient-btn-fill: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
+  --backround-transition: background-color 0.8s,
+    color 0.8s;
+  --letter-space-content: var(--space-6xs-5xs);
+  --word-space-content: var(--space-5xs-4xs);
+  --gradient-btn-fill: linear-gradient(45deg, #3392ffa4, #9abfc9ab, #8f88bb, #e3e4fa);
 }
 
 /* Hide the support message if view transitions are supported */
@@ -165,9 +148,9 @@
 }
 
 .support {
-  background-color: var(--clr-warn-1);
-  border-inline-start: 0.5rem solid var(--clr-warn-2);
-  color: var(--clr-warn-text);
+  background-color: var(--text-span);
+  border-inline-start: 0.5rem solid var(--text-span);
+  color: var(--text-span);
   border-radius: 0.5rem;
   padding: 1em 2em;
 }
@@ -277,6 +260,7 @@ body {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
+  font-size: var(--step--1);
   color: var(--text-color);
   background-color: var(--base-color);
   text-align: center;
@@ -306,7 +290,7 @@ header {
   color: var(--text-color);
   text-align: center;
   margin-inline: auto;
-  padding: var(--space-2xs);
+  padding: var(--space-xl-2xl)0 0 0;
 }
 
 /* Keep .link label on one line */
@@ -315,8 +299,8 @@ header {
   pointer-events: all;
   z-index: 1000;
   position: absolute;
-  right: var(--space-l);
-  top: var(--space-2xs);
+  right: var(--space-m-l);
+  top: var(--space-2xs-xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s;
@@ -354,9 +338,9 @@ header {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: var(--space-5xs);
+  padding: var(--space-5xs-4xs);
   opacity: 1;
-  gap: var(--space-xs);
+  gap: var(--space-xs-s);
   align-items: center;
   text-decoration: none;
   background-color: transparent;
@@ -371,8 +355,8 @@ header {
 }
 
 .link svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
   vertical-align: middle;
   color: var(--text-color);
   background-color: var(--base-color);
@@ -386,7 +370,7 @@ header {
   user-select: none;
   display: inline-block;
   vertical-align: middle;
-  padding: var(--space-5xs) var(--space-s);
+  padding: var(--space-5xs-4xs) var(--space-xs-s);
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
@@ -396,14 +380,14 @@ header {
 link:hover,
 link:focus {
   color: var(--text-color);
-  padding: var(--space-5xs);
+  padding: var(--space-5xs-4xs);
   background-color: var(--base-color);
   transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
   outline: none;
   /* Optional: adds a subtle outline on hover/focus */
-  box-shadow: 0 10px 10px var(--space-s) var(--shadow);
+  box-shadow: 0 10px 10px var(--space-s-m) var(--shadow);
 }
 
 /* Initial hidden state */
@@ -411,14 +395,14 @@ link:focus {
   opacity: 0;
   transform: translateX(150px);
   pointer-events: none;
-  padding: 0 var(--space-m);
+  padding: 0 var(--space-m-l);
   gap: var(--space-s);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
   position: absolute;
-  top: var(--space-xl);
+  top: var(--space-xl-2xl);
   right: 0;
   display: flex;
   flex-direction: column;
@@ -432,7 +416,7 @@ link:focus {
 
 /* When menu is open, show it */
 .dropdown.active>.color-picker.dropdown-menu {
-  margin-top: var(--space-l);
+  margin-top: var(--space-l-xl);
   opacity: 1;
   pointer-events: all;
   border: 2px solid transparent;
@@ -469,7 +453,7 @@ link:focus {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  gap: var(--space-2xs);
+  gap: var(--space-2xs-xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -478,7 +462,7 @@ link:focus {
   user-select: none;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
-  padding: var(--space-3xs) var(--space-m);
+  padding: var(--space-3xs-2xs) var(--space-m-l);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -491,7 +475,7 @@ link:focus {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: var(--space-3xs) var(--space-m);
+  padding: var(--space-4xs-3xs) var(--space-m-l);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -509,8 +493,8 @@ link:focus {
 
 /* Highlight SVG for the active (checked) theme item */
 .theme-list-item input[type="radio"]:checked+label svg {
-  margin-right: var(--space-m);
-  padding: var(--space-3xs) var(--space-m);
+  margin-right: var(--space-m-l);
+  padding: var(--space-2xs-xs3xs) var(--space-m-l);
   color: var(--text-span);
   /* Example: change color to indicate active state */
   background-color: var(--base-color);
@@ -523,9 +507,9 @@ link:focus {
 
 /* Style SVGs inside theme-list items */
 .theme-list-item label svg {
-  width: var(--space-xl);
-  height: var(--space-xl);
-  margin-right: var(--space-m);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
+  margin-right: var(--space-m-l);
   vertical-align: middle;
   color: var(--text-color);
   background-color: var(--base-color);
@@ -540,8 +524,8 @@ link:focus {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-s);
-  gap: var(--space-s);
+  padding: 0 var(--space-xs-s);
+  gap: var(--space-xs-s);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -555,15 +539,15 @@ link:focus {
 }
 
 .theme-list-item span {
-  margin-left: var(--space-3xs);
-  padding: var(--space-2xs) 0;
+  margin-left: var(--space-xs-s);
+  padding: var(--space-xs-s) 0;
 }
 
 
 label:hover,
 label:focus {
   color: var(--text-span);
-  box-shadow: 0 10px 10px var(--space-s) var(--shadow);
+  box-shadow: 0 10px 10px var(--space-xs-s) var(--shadow);
 
 }
 
@@ -580,36 +564,16 @@ label:focus {
   pointer-events: all;
 }
 
-input:checked {
-  padding: var(--space-3xs) var(--space-xs);
-  box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
-  opacity: 1;
-  transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
-  color: var(--text-color);
-
-  &svg {
-    color: var(--text-span);
-  }
-}
-
-input[type="radio"] {
-  opacity: 0;
-  position: absolute;
-  width: var(--space-s);
-  height: var(--space-s);
-  pointer-events: none;
-}
 
 /*-------------curvature-----------------*/
 
-/* Optional: responsive tweak */
+/* Optional: responsive tweak 
 @container (min-width: 768px) {
   :root {
     --letter-space-content: var(--space-6xs);
     --word-space-content: var(--space-5xs);
   }
-}
-
+}*/
 .main-content {
   margin-block: var(--space-m-l);
   margin-inline: auto;
@@ -625,18 +589,18 @@ input[type="radio"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2xl);
+  gap: var(--space-xl-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  margin-block: var(--space-2xl);
-  padding: 0 var(--space-3xs);
+  margin-block: var(--space-xl-2xl);
+  padding: 0 var(--space-4xs-3xs);
   margin-inline: auto;
 }
 
 .content {
   display: flex;
   justify-content: center;
-  padding: 0 var(--space-3xs);
+  padding: 0 var(--space-4xs-3xs);
 }
 
 .content div {
@@ -1017,7 +981,7 @@ input[type="radio"] {
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  margin-block: var(--space-2xs);
+  margin-block: var(--space-3xs-2xs);
 }
 
 .text-with-animation-1,
@@ -1025,12 +989,12 @@ input[type="radio"] {
 .text-with-animation-3 {
   font-size: var(--step--1);
   text-align: center;
-  margin-block: var(--space-2xs);
+  margin-block: var(--space-3xs-2xs);
 }
 
 .text-with-animation-4 {
-  margin-top: var(--space-s);
-  margin-block: var(--space-xs);
+  margin-top: var(--space-xs-s);
+  margin-block: var(--space-2xs-xs);
 }
 
 .large-button {
@@ -1082,7 +1046,7 @@ input[type="radio"] {
 .large-button span {
   display: flex;
   justify-content: center;
-  padding: var(--space-m) var(--space-s);
+  padding: var(--space-s-m) var(--space-xs-s);
   /* keep text off the circular edges */
   text-align: center;
   /* Prefer natural word breaks */
@@ -1102,11 +1066,11 @@ input[type="radio"] {
   text-wrap: balance;
 }
 
-@container (max-width: 600px) {
+/*@container (max-width: 600px) {
 
   html,
   body {
-    /* optional small gutters; set to 0 for true edge-to-edge */
+    /* optional small gutters; set to 0 for true edge-to-edge *
     padding-inline: var(--space-6xs);
     margin: 0;
     overflow-x: hidden;
@@ -1128,7 +1092,7 @@ input[type="radio"] {
     transition: var(--background-transition);
   }
 
-  /* Keep .link label on one line */
+  /* Keep .link label on one line *
   .dropdown {
     cursor: pointer;
     pointer-events: all;
@@ -1179,7 +1143,7 @@ input[type="radio"] {
 
   .theme-list-item label {
     padding: 0 var(--space-5xs);
-  }*/
+  }*
 
 
   .curve-container {
@@ -1193,15 +1157,15 @@ input[type="radio"] {
     margin-top: var(--space-2xl);
   }
 
-  /* ...existing code... */
+  /* ...existing code... *
   .large-button {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* center children horizontally */
+    /* center children horizontally *
     justify-content: center;
-    /* center children vertically */
+    /* center children vertically *
     height: clamp(8rem, 36svh, 11rem);
     width: clamp(16rem, 70svw, 24rem);
     border-radius: 50%;
@@ -1210,11 +1174,11 @@ input[type="radio"] {
     color: var(--text-color);
     overflow: hidden;
     padding: var(--space-m);
-    /* ensure inner padding */
+    /* ensure inner padding *
     box-sizing: border-box;
-    /* include padding in width/height */
+    /* include padding in width/height *
     gap: var(--space-s);
-    /* space between svg and span */
+    /* space between svg and span *
   }
 
   .large-button svg {
@@ -1225,7 +1189,7 @@ input[type="radio"] {
     align-self: center;
     fill: var(--text-color);
     margin-bottom: var(--space-s);
-    /* smaller gap below icon */
+    /* smaller gap below icon *
     max-width: 100%;
     max-height: 40%;
     box-sizing: border-box;
@@ -1236,11 +1200,11 @@ input[type="radio"] {
     align-items: center;
     justify-content: center;
     width: 100%;
-    /* fill available width */
+    /* fill available width *
     padding: var(--space-s);
-    /* padding inside span */
-    margin: 0;
-    /* remove extra margin */
+    /* padding inside span *
+margin: 0;
+/* remove extra margin *
     text-align: center;
     white-space: normal;
     word-break: keep-all;
@@ -1251,12 +1215,12 @@ input[type="radio"] {
     text-wrap: balance;
     box-sizing: border-box;
     flex: 1 1 auto;
-    /* allow span to shrink/grow as needed */
+    /* allow span to shrink/grow as needed *
     min-height: 0;
     min-width: 0;
   }
 
-  /* ...existing code... */
+  /* ...existing code... *
 
 
 
@@ -1272,7 +1236,7 @@ input[type="radio"] {
     fill: var(--text-span);
   }
 
-}
+}*/
 
 @media (prefers-reduced-motion: reduce) {
 
