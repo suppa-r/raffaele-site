@@ -296,13 +296,6 @@ body>* {
 header {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: var(--space-s);
-}
-
-header>* {
-  margin-block: 0;
 }
 
 .h {
@@ -396,8 +389,11 @@ header .bars::before {
 }
 
 .nav {
-  width: auto;
-  margin: var(--space-l) auto 0 auto;
+  margin: auto;
+  /* Push nav to the right */
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .nav-links {
@@ -809,21 +805,21 @@ input[type="radio"] {
 @container (max-width: 600px) {
   .dropdown-menu {
     position: absolute;
-    top: var(--space-s);
-    right: var(--space-s);
+    top: var(--space-xs);
+    right: var(--space-xs);
     z-index: 2000;
   }
 
   header .bars {
     display: block;
     transition: 0.5s;
-    margin: var(--space-xs) 0 0 0;
+    margin: var(--space-2xs) 0 0 0;
   }
 
   header .bars.is-active {
     transform: rotate(45deg);
     transition: 0.5s;
-    margin: var(--space-xs) 0 0 0;
+    margin: var(--space-2xs) 0 0 0;
   }
 
   nav {
@@ -886,6 +882,10 @@ input[type="radio"] {
     opacity: 1;
     transition-delay: calc(.3s * var(--i));
     /* Apply delay only when open */
+  }
+
+  .header {
+    padding: var(--space-2xs) var(--space-s) 0 var(--space-s);
   }
 
   .intro {
