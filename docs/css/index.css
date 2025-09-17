@@ -923,7 +923,7 @@ label:focus {
 .text-container {
   text-align: center;
   color: var(--text-color);
-  margin-top: var(--space-m-l);
+  margin-block: var(--space-m-l);
   margin-inline: auto;
   padding: 0 var(--space-6xs-5xs);
 }
