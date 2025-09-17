@@ -992,28 +992,25 @@ label:focus {
 
 .large-button {
   position: relative;
-  /* Remove aspect-ratio: 1 / 1; */
-  height: min(15rem, 40dvh);
-  /* keep your desired height */
-  width: min(30rem, 80dvw);
-  /* set a max width, adjust as needed */
+  height: min(11rem, 32dvh);
+  /* slightly smaller height */
+  width: min(22rem, 65dvw);
+  /* slightly smaller width */
   background-color: var(--base-color);
   color: var(--text-color);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* center children horizontally */
   justify-content: center;
-  /* center children vertically */
   text-decoration: none;
-  font-size: var(--step--1);
+  font-size: var(--step--2);
+  /* slightly smaller text */
   border-radius: 50%;
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
   margin-inline: auto;
   overflow: hidden;
-  /* keep content inside the circle */
 }
 
 .large-button:focus,
@@ -1024,17 +1021,16 @@ label:focus {
 
 .large-button svg {
   fill: var(--text-color);
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
+  width: var(--space-l);
+  height: var(--space-l);
   transition: transform 0.3s;
   display: block;
   max-width: 100%;
   max-height: 40%;
   box-sizing: border-box;
-  margin-bottom: var(--space-s);
+  margin-bottom: var(--space-2xs);
   /* smaller gap below icon */
   margin-inline: auto;
-  /* centers SVG horizontally */
 }
 
 .large-button:hover>svg,
@@ -1046,23 +1042,17 @@ label:focus {
 .large-button span {
   display: flex;
   justify-content: center;
-  padding: var(--space-l-xl);
-  /* keep text off the circular edges */
+  padding: var(--space-m);
+  /* slightly less padding */
   text-align: center;
-  /* Prefer natural word breaks */
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
-  /* only break long words if needed */
   hyphens: auto;
-  /* auto hyphenation when a word must break */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
-  /* Improve readability */
   letter-spacing: normal;
-  /* reset if globally increased */
   word-spacing: normal;
-  /* Modern nicer wrapping (safe to keep; ignored if unsupported) */
   text-wrap: balance;
 }
 
