@@ -266,7 +266,7 @@ body {
   text-align: center;
   margin-inline: auto;
   overflow: auto;
-  padding: var(--page-pad-inline);
+  transition: var(--backround-transition);
 }
 
 body>* {
@@ -283,6 +283,7 @@ body>* {
 
 header {
   margin-inline: auto;
+  padding: var(--page-pad-inline);
 }
 
 .title {
@@ -496,20 +497,6 @@ link:focus {
   display: none;
 }
 
-/* Highlight SVG for the active (checked) theme item *
-.theme-list-item input[type="radio"]:checked+label svg {
-  margin-right: var(--space-m-l);
-  padding: var(--space-2xs-xs3xs) var(--space-m-l);
-  color: var(--text-span);
-  /* Example: change color to indicate active state *
-  background-color: var(--base-color);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--text-span);
-  opacity: 1;
-  transition: color 0.3s, box-shadow 0.3s, border 0.3s;
-  /* You can add more styles for active state if needed *
-}*/
-
 .theme-list-item label {
   display: flex;
   flex-direction: row;
@@ -580,17 +567,10 @@ label:focus {
 
 /*-------------curvature-----------------*/
 
-/* Optional: responsive tweak 
-@container (min-width: 768px) {
-  :root {
-    --letter-space-content: var(--space-6xs);
-    --word-space-content: var(--space-5xs);
-  }
-}*/
 .main-content {
-  margin-block: var(--space-m-l);
+  margin-block: var(--space-s-m);
   margin-inline: auto;
-  letter-spacing: var(--space-5xs-4xs);
+  letter-spacing: var(--space-6xs-5xs);
   word-spacing: var(--space-4xs-3xs);
   white-space: normal;
   word-break: normal;
@@ -605,15 +585,15 @@ label:focus {
   gap: var(--space-xl-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  margin-block: var(--space-xl-2xl);
-  padding: 0 var(--space-4xs-3xs);
+  margin-block: var(--space-l-xl);
+  padding: 0 var(--space-6xs-5xs);
   margin-inline: auto;
 }
 
 .content {
   display: flex;
   justify-content: center;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-6xs-5xs);
 }
 
 .content div {
@@ -677,7 +657,7 @@ label:focus {
 .content-1 {
   display: flex;
   justify-content: center;
-  padding: 0 var(--space-3xs);
+  padding: 0 var(--space-6xs-5xs);
 }
 
 .content-1 div {
@@ -994,7 +974,7 @@ label:focus {
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  margin-block: var(--space-3xs-2xs);
+  margin-block: var(--space-4xs-3xs);
 }
 
 .text-with-animation-1,
@@ -1002,12 +982,12 @@ label:focus {
 .text-with-animation-3 {
   font-size: var(--step--1);
   text-align: center;
-  margin-block: var(--space-3xs-2xs);
+  margin-block: var(--space-4xs-3xs);
 }
 
 .text-with-animation-4 {
   margin-top: var(--space-xs-s);
-  margin-block: var(--space-2xs-xs);
+  margin-block: var(--space-4xs-3xs);
 }
 
 .large-button {
@@ -1022,10 +1002,12 @@ label:focus {
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  /* center children horizontally */
+  justify-content: center;
+  /* center children vertically */
   text-decoration: none;
   font-size: var(--step--1);
-  margin-bottom: var(--space-4xl-5xl);
-  gap: var(--space-s);
   border-radius: 50%;
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
@@ -1046,6 +1028,11 @@ label:focus {
   height: var(--space-l-xl);
   transition: transform 0.3s;
   display: block;
+  max-width: 100%;
+  max-height: 40%;
+  box-sizing: border-box;
+  margin-bottom: var(--space-s);
+  /* smaller gap below icon */
   margin-inline: auto;
   /* centers SVG horizontally */
 }
@@ -1059,7 +1046,7 @@ label:focus {
 .large-button span {
   display: flex;
   justify-content: center;
-  padding: var(--space-s-m) var(--space-xs-s);
+  padding: var(--space-l-xl);
   /* keep text off the circular edges */
   text-align: center;
   /* Prefer natural word breaks */
