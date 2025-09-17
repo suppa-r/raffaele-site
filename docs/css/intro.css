@@ -245,18 +245,22 @@
   }
 }
 
+html {
+  padding: 0;
+  margin: 0;
+}
 
-html,
 body {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
+  font-size: var(--step--1);
   color: var(--text-color);
   background-color: var(--base-color);
   text-align: center;
   margin-inline: auto;
   overflow: auto;
-  padding: var(--page-pad-inline);
+  transition: var(--backround-transition);
 }
 
 body>* {
