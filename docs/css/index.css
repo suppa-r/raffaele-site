@@ -187,21 +187,7 @@
   }
 }
 
-body {
-  color-scheme: light;
-  --base-color: #ffffff;
-  --text-color: #000000;
-  --text-span: #49879c;
 
-  @container style(--theme: dark) {
-    color-scheme: dark;
-    --base-color: #000000;
-    --text-color: #ffffff;
-    --text-span: #49879c;
-  }
-}
-
-html,
 body {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
