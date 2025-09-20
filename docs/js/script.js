@@ -2,28 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // DOM elements
   const linkButton = document.querySelector('.link');
   const dropdown = document.querySelector('.dropdown');
-  const dropdownMenu = document.querySelector('.dropdown-menu.color-picker');
+  const dropdownMenu = document.querySelector('.color-picker.dropdown-menu');
   const curve = document.querySelector('.curve-container');
   const text = document.querySelector('.text-container');
   const largebutton = document.querySelector('.large-button');
   const themeRadios = document.querySelectorAll('.theme-list-item input[type="radio"]');
-  const title = document.querySelector('.title'); // Add title element
+  const title = document.querySelector('.title');
 
   // Helpers
-  function hideContent() {
-    if (curve) curve.style.display = 'none';
-    if (text) text.style.display = 'none';
-    if (largebutton) largebutton.style.display = 'none';
-    if (title) title.style.display = 'none'; // Hide title too
-  }
-
-  function showContent() {
-    if (curve) curve.style.display = '';
-    if (text) text.style.display = '';
-    if (largebutton) largebutton.style.display = '';
-    if (title) title.style.display = ''; // Show title too
-  }
-
   function animateDropdownMenu(open) {
     if (!dropdownMenu) return;
     dropdownMenu.classList.remove('animate-in');
@@ -55,30 +41,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } else {
       if (sysListener) { mql.removeEventListener('change', sysListener); sysListener = null; }
-      document.documentElement.setAttribute('data-theme', theme); // 'light' | 'dark'
+      document.documentElement.setAttribute('data-theme', theme);
     }
     localStorage.setItem('theme-preference', theme);
   }
 
   // Initial state: hide dropdown, apply saved theme, show content
   setMenuOpen(false);
-  showContent();
+  if (curve) curve.style.display = '';
+  if (text) text.style.display = '';
+  if (largebutton) largebutton.style.display = '';
+  if (title) title.style.display = '';
   const savedTheme = localStorage.getItem('theme-preference') || 'system';
   applyTheme(savedTheme);
   const checkedRadio = document.querySelector(`[name="theme"][value="${savedTheme}"]`);
   if (checkedRadio) checkedRadio.checked = true;
 
-  // .link toggles the dropdown and hides/shows content, triggers animation
-  if (linkButton) {
+  // .link toggles the dropdown and triggers animation, but does NOT hide/show content
+  if (linkButton && dropdown && dropdownMenu) {
     linkButton.addEventListener('click', (e) => {
       e.preventDefault();
       const isOpen = dropdown.classList.contains('active');
-      setMenuOpen(!isOpen); // toggle menu
-      if (!isOpen) {
-        hideContent();
-      } else {
-        showContent();
-      }
+      setMenuOpen(!isOpen);
     });
   }
 
@@ -92,7 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(val);
       }
       setMenuOpen(false);
-      showContent();
+      if (curve) curve.style.display = '';
+      if (text) text.style.display = '';
+      if (largebutton) largebutton.style.display = '';
+      if (title) title.style.display = '';
     });
   });
 
