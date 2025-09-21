@@ -275,7 +275,7 @@ header {
 .title {
   font-size: var(--step--1);
   color: var(--text-color);
-  padding-top: var(--space-m-l);
+  padding-top: var(--space-l-xl);
   text-align: center;
   margin-inline: auto;
 }
@@ -885,9 +885,19 @@ label:focus {
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
   width: min(24rem, 90vw);
-  /* larger width */
   height: min(14rem, 50vw);
-  /* larger height */
+  font-size: var(--step--1);
+  /* larger font size */
+  margin-block: var(--space-2xs-xs);
+  /* more vertical margin */
+  /* centers the button itself */
+  justify-content: center;
+  /* centers children vertically */
+  align-items: center;
+  /* centers children horizontally */
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
   z-index: 1000;
 }
 
@@ -918,8 +928,8 @@ label:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  margin: var(--space-xs-s);
-  padding: var(--space-xs);
+  margin: var(--space-2xs-xs);
+  padding: var(--space-2xs-xs);
   /* more padding for larger button */
   text-align: center;
   font-size: var(--step--1);
