@@ -58,13 +58,34 @@ document.addEventListener('DOMContentLoaded', () => {
   if (checkedRadio) checkedRadio.checked = true;
 
   // .link toggles the dropdown and triggers animation, but does NOT hide/show content
+  // ...existing code...
+
   if (linkButton && dropdown && dropdownMenu) {
     linkButton.addEventListener('click', (e) => {
       e.preventDefault();
       const isOpen = dropdown.classList.contains('active');
       setMenuOpen(!isOpen);
+      if (!isOpen) {
+        // Dropdown is opening: hide main components
+        if (text) text.style.display = 'none';
+        if (largebutton) largebutton.style.display = 'none';
+        if (curve) curve.style.display = 'none';
+        // Alternative: only show title when menu is open
+        //if (curve) curve.style.display = 'none';
+        //if (text) text.style.display = 'none';
+        //if (largebutton) largebutton.style.display = 'none';
+        if (title) title.style.display = 'block';
+      } else {
+        // Dropdown is closing: show main components
+        if (curve) curve.style.display = '';
+        if (text) text.style.display = '';
+        if (largebutton) largebutton.style.display = '';
+        if (title) title.style.display = '';
+      }
     });
   }
+
+  // ...existing code...
 
   // When a theme is picked: transition, apply theme, close menu, re-show content
   themeRadios.forEach((input) => {
