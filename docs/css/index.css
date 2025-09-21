@@ -67,6 +67,8 @@
   --space-9xl: clamp(12rem, 9.5455rem + 10.9091cqi, 18rem);
 
   /* One-up pairs */
+  /* Space 6xs-5xs: 1px → 2px */
+  --space-6xs-5xs: clamp(0.0625rem, 0.0241rem + 0.2273cqi, 0.125rem);
   /* Space 5xs-4xs: 2px → 5px */
   --space-5xs-4xs: clamp(0.125rem, 0.0483rem + 0.3409cqi, 0.3125rem);
   /* Space 4xs-3xs: 3px → 6px */
@@ -118,11 +120,10 @@
   --page-pad-block: 0;
   --backround-transition: background-color 1s, color 1s;
   --letter-space-content: var(--space-6xs-5xs);
-  --word-space-content: var(--space-5xs-4xs);
+  --word-space-content: var(--space-4xs-3xs);
 
   --gradient-button-fill: #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa;
 }
-
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -249,7 +250,7 @@ html {
   color: var(--text-color);
   background-color: var(--base-color);
   transition: var(--backround-transition);
-  padding: var(--page-pad-block) var(--page-pad-inline);
+  padding-inline: var(--page-pad-inline);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   margin-inline: auto;
@@ -274,7 +275,7 @@ header {
 .title {
   font-size: var(--step--1);
   color: var(--text-color);
-  padding: var(--space-2xs-xs) var(--space-l-xl);
+  padding: var(--space-2xs-xs)0;
   padding-top: var(--space-3xs-2xs);
   text-align: center;
   margin-inline: auto;
@@ -301,8 +302,8 @@ header {
   flex-direction: column;
   position: relative;
   top: var(--space-6xs-5xs);
-  padding: 0 var(--space-m-l);
-  gap: var(--space-3xs-2xs);
+  padding: 0 var(--space-s-m);
+  gap: var(--space-4xs-3xs);
   border: 3px solid var(--text-color);
   border-radius: var(--btn-border-radius);
   text-decoration: none;
@@ -325,7 +326,7 @@ header {
   z-index: 1000;
   padding: 0 var(--space-5xs-4xs);
   opacity: 1;
-  gap: var(--space-xs-s);
+  gap: var(--space-2xs-xs);
   align-items: center;
   text-decoration: none;
   background-color: transparent;
@@ -353,8 +354,9 @@ header {
   vertical-align: middle;
   padding: 0;
   background-color: var(--base-color);
+  color: var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--shadow);
+  box-shadow: var(--navbar-shadow);
   /* optional: adds ... if text is too long */
 }
 
@@ -842,8 +844,8 @@ label:focus {
   font-style: var(--font-style-regular);
   margin-inline: auto;
   white-space: nowrap;
-  word-spacing: var(--space-3xs-2xs);
-  letter-spacing: var(--space-3xs-2xs);
+  word-spacing: var(--space-4xs-3xs);
+  letter-spacing: var(--letter-space-content);
 }
 
 .text-with-animation-1,
@@ -855,7 +857,7 @@ label:focus {
   margin-inline: auto;
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
-  letter-spacing: var(--space-4xs-3xs);
+  letter-spacing: var(--letter-space-content);
 }
 
 .text-with-animation-5 {
@@ -868,7 +870,7 @@ label:focus {
   margin-block: var(--space-2xs-xs);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
-  letter-spacing: var(--space-4sx-3xs);
+  letter-spacing: var(--letter-space-content);
 }
 
 .large-button {
@@ -876,23 +878,18 @@ label:focus {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-decoration: none;
-  font-size: var(--step--1);
   background-color: var(--base-color);
   color: var(--text-color);
   border-radius: 50%;
   box-shadow: var(--shadow);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(18rem, 80vw);
-  /* Responsive width */
-  height: min(8rem, 30vw);
-  /* Responsive height */
+  width: min(24rem, 90vw);
+  /* larger width */
+  height: min(14rem, 50vw);
+  /* larger height */
   z-index: 1000;
-  padding: var(--space-l-xl) 0;
-  box-sizing: border-box;
 }
 
 .large-button:focus,
@@ -904,10 +901,10 @@ label:focus {
 .large-button svg {
   fill: var(--text-color);
   width: var(--space-l-xl);
+  /* larger icon */
   height: var(--space-l-xl);
   transition: transform 0.3s;
   display: block;
-  margin-bottom: var(--space-xs-s);
   margin-inline: auto;
 }
 
@@ -918,14 +915,15 @@ label:focus {
 }
 
 .large-button span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  padding: var(--space-xs-s);
+  margin: var(--space-s-m) var(--space-m-l) 0 var(--space-m-l);
+  /* more padding for larger button */
   text-align: center;
   font-size: var(--step--1);
+  /* match button font size */
   color: var(--text-color);
   white-space: normal;
   word-break: keep-all;
@@ -935,6 +933,7 @@ label:focus {
   word-spacing: normal;
   text-wrap: balance;
   box-sizing: border-box;
+  box-shadow: var(--navbar-shadow);
 }
 
 /* Mobile: make .large-button smaller and full width *
