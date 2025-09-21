@@ -275,8 +275,7 @@ header {
 .title {
   font-size: var(--step--1);
   color: var(--text-color);
-  padding: var(--space-2xs-xs)0;
-  padding-top: var(--space-3xs-2xs);
+  padding-top: var(--space-m-l);
   text-align: center;
   margin-inline: auto;
 }
@@ -919,7 +918,8 @@ label:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  margin: var(--space-s-m) var(--space-m-l) 0 var(--space-m-l);
+  margin: var(--space-xs-s);
+  padding: var(--space-xs);
   /* more padding for larger button */
   text-align: center;
   font-size: var(--step--1);
