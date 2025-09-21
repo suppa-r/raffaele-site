@@ -70,11 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (text) text.style.display = 'none';
         if (largebutton) largebutton.style.display = 'none';
         if (curve) curve.style.display = 'none';
+        if (title) title.style.display = 'none';
         // Alternative: only show title when menu is open
-        //if (curve) curve.style.display = 'none';
-        //if (text) text.style.display = 'none';
-        //if (largebutton) largebutton.style.display = 'none';
-        if (title) title.style.display = 'block';
       } else {
         // Dropdown is closing: show main components
         if (curve) curve.style.display = '';
@@ -84,8 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ...existing code...
 
   // When a theme is picked: transition, apply theme, close menu, re-show content
   themeRadios.forEach((input) => {
