@@ -284,9 +284,10 @@ header {
   position: absolute;
   display: inline-block;
   pointer-events: none;
-  top: var(--space-4xs-3xs);
-  right: var(--space-2xs-xs);
-  padding: var(--space-6xs-5xs) var(--space-s-m);
+  top: var(--space-6xs-5xs);
+  right: var(--space-4xs-3xs);
+  padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   background-color: var(--base-color);
   z-index: 1000;
   font-size: var(--step--1);
@@ -300,8 +301,7 @@ header {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: var(--space-6xs-5xs);
-  padding: 0 var(--space-s-m);
+  padding: 0 var(--space-4xs-3xs);
   gap: var(--space-4xs-3xs);
   border: 3px solid var(--text-color);
   border-radius: var(--btn-border-radius);
@@ -323,9 +323,9 @@ header {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-5xs-4xs);
+  padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   opacity: 1;
-  gap: var(--space-2xs-xs);
   align-items: center;
   text-decoration: none;
   background-color: transparent;
@@ -340,8 +340,8 @@ header {
 }
 
 .link label svg {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-s-m);
+  height: var(--space-s-m);
   margin-right: var(--space-3xs-2xs);
 }
 
@@ -356,7 +356,6 @@ header {
   color: var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--navbar-shadow);
-  /* optional: adds ... if text is too long */
 }
 
 /* Ensure the dropdown menu is visible when active */
@@ -382,7 +381,8 @@ header {
   display: flex;
   flex-direction: column;
   /* Optional: space between .link and menu */
-  padding: var(--space-4xs-3xs);
+  padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   background-color: var(--base-color);
   border: 2px solid var(--text-color);
   pointer-events: none;
@@ -429,8 +429,8 @@ header {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  gap: var(--space-2xs-xs);
   padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -452,10 +452,10 @@ header {
   position: relative;
   z-index: 1000;
   padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
-  gap: var(--space-2xs-xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -478,7 +478,7 @@ header {
   position: relative;
   z-index: 1000;
   padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-xs-s);
+  gap: var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -493,8 +493,8 @@ header {
 
 /* Style SVGs inside theme-list items */
 .theme-list-item label svg {
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
+  width: var(--space-s-m);
+  height: var(--space-s-m);
   margin-right: var(--space-xs-s);
   vertical-align: middle;
   color: var(--text-color);
@@ -833,6 +833,7 @@ label:focus {
   color: var(--text-color);
   margin-top: var(--space-m-l);
   margin-inline: auto;
+  padding-inline: var(--page-pad-inline);
 }
 
 .text-with-animation {
@@ -845,6 +846,7 @@ label:focus {
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
+  padding-inline: var(--page-pad-inline);
 }
 
 .text-with-animation-1,
@@ -857,6 +859,7 @@ label:focus {
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
+  padding-inline: var(--page-pad-inline);
 }
 
 .text-with-animation-5 {
@@ -870,6 +873,7 @@ label:focus {
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
+  padding-inline: var(--page-pad-inline);
 }
 
 .large-button {
@@ -884,17 +888,16 @@ label:focus {
   box-shadow: var(--shadow);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(24rem, 90vw);
-  height: min(14rem, 50vw);
-  font-size: var(--step--1);
-  /* larger font size */
-  margin-block: var(--space-2xs-xs);
-  /* more vertical margin */
-  /* centers the button itself */
+  width: min(18rem, 65vw);
+  /* smaller width */
+  height: min(10rem, 35vw);
+  /* smaller height */
+  font-size: var(--step--2);
+  /* smaller font size */
+  margin-block: var(--space-3xs-2xs);
+  /* less vertical margin */
   justify-content: center;
-  /* centers children vertically */
   align-items: center;
-  /* centers children horizontally */
   text-align: center;
   user-select: none;
   cursor: pointer;
@@ -903,14 +906,14 @@ label:focus {
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 10px 10px var(--space-3xs-2xs) var(--shadow);
+  box-shadow: 0 6px 6px var(--space-4xs-3xs) var(--shadow);
   outline: 2px solid var(--text-span);
 }
 
 .large-button svg {
   fill: var(--text-color);
   width: var(--space-l-xl);
-  /* larger icon */
+  /* smaller icon */
   height: var(--space-l-xl);
   transition: transform 0.3s;
   display: block;
@@ -928,9 +931,9 @@ label:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  margin: var(--space-2xs-xs);
-  padding: var(--space-2xs-xs);
-  /* more padding for larger button */
+  margin: var(--space-6xs-5xs);
+  padding: 0 var(--space-6xs-5xs);
+  /* less padding */
   text-align: center;
   font-size: var(--step--1);
   /* match button font size */
