@@ -354,7 +354,7 @@ header {
   background-color: transparent;
   color: var(--text-color);
   transition: box-shadow 0.3s;
-  box-shadow: var(--shadow);
+  /*box-shadow: var(--shadow);*/
   font-size: var(--step--1);
   user-select: none;
   white-space: nowrap;
@@ -382,7 +382,7 @@ header {
   background-color: var(--base-color);
   color: var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--navbar-shadow);
+  /*box-shadow: var(--navbar-shadow);*/
 }
 
 link:hover,
@@ -543,8 +543,8 @@ link:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--shadow);
-  /* optional: adds ... if text is too long */
+  /*box-shadow: var(--shadow);
+   optional: adds ... if text is too long */
   padding: 0 var(--space-xs-s);
 }
 
@@ -863,7 +863,7 @@ label:focus {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-2xl-3xl);
+  margin-top: var(--space-xl-2xl);
   margin-inline: auto;
   padding-inline: var(--page-pad-inline);
 }
@@ -924,7 +924,6 @@ label:focus {
 
 .large-button {
   margin-inline: auto;
-  position: relative;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -934,20 +933,13 @@ label:focus {
   box-shadow: var(--shadow);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(18rem, 65vw);
+  width: min(20rem, 65vw);
   /* smaller width */
-  height: min(10rem, 35vw);
+  height: min(12rem, 35vw);
   /* smaller height */
-  font-size: var(--step--2);
-  /* smaller font size */
-  margin-block: var(--space-3xs-2xs);
-  /* less vertical margin */
   justify-content: center;
-  align-items: center;
-  text-align: center;
   user-select: none;
   cursor: pointer;
-  z-index: 1000;
 }
 
 .large-button:focus,
@@ -977,8 +969,8 @@ label:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  margin: var(--space-6xs-5xs);
-  padding: 0 var(--space-6xs-5xs);
+  margin: var(--space-4xs-3xs) auto 0 auto;
+  padding-inline: var(--space-6xs-5xs);
   /* less padding */
   text-align: center;
   font-size: var(--step--1);
@@ -992,90 +984,11 @@ label:focus {
   word-spacing: normal;
   text-wrap: balance;
   box-sizing: border-box;
-  box-shadow: var(--navbar-shadow);
+  /*box-shadow: var(--navbar-shadow);*/
+  user-select: none;
 }
 
-/* Mobile: make .large-button smaller and full width *
-@container (max-width: 600px) {
-  .large-button {
-    width: 95vw;
-    height: min(7rem, 28vw);
-    font-size: var(--step--2);
-  }
 
-  .large-button svg {
-    width: var(--space-l);
-    height: var(--space-l);
-    margin-bottom: var(--space-xs);
-  }
-
-  .large-button span {
-    padding: var(--space-xs);
-    font-size: var(--step--2);
-  }
-
-  .wrapper {
-    padding-inline: 0 var(--space-3xs);
-    margin-inline: auto;
-  }
-
-  .title {
-    font-size: var(--step--1);
-    padding-top: var(--space-2xl);
-    text-align: center;
-    margin-inline: auto;
-  }
-
-  .curve-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* centers children horizontally *
-    gap: var(--space-xl);
-    margin-top: var(--space-xl);
-    margin-inline: auto;
-  }
-
-  .text-with-animation,
-  .text-with-animation-1,
-  .text-with-animation-2,
-  .text-with-animation-3,
-  .text-with-animation-4,
-  .text-with-animation-5 {
-    margin-inline: auto;
-    text-align: center;
-    /* centers text horizontally *
-    word-spacing: var(--space-4xs);
-    letter-spacing: var(--space-4xs);
-    white-space: wrap;
-    display: block;
-  }
-
-  .large-button {
-    margin: var(--space-2xl);
-    background-color: color-mix(in srgb, var(--base-color) 0%, rgb(0, 0, 0));
-    color: var(--text-color);
-    width: var(--space-12xl);
-    height: var(--space-7xl);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* centers children vertically *
-align-items: center;
-/* centers children horizontally *
-    text-decoration: none;
-    font-size: var(--step--1);
-    margin-block: var(--space-xl);
-    margin-inline: auto;
-    /* centers the button itself *
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    transition: box-shadow 0.3s, outline 0.3s;
-    box-shadow: var(--shadow);
-  }
-}*/
 
 @media (prefers-reduced-motion: reduce) {
 
