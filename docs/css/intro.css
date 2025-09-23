@@ -267,7 +267,6 @@ body>* {
   margin-inline: auto;
 }
 
-/* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
   margin-inline: auto;
   min-height: 100dvh;
