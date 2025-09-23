@@ -264,6 +264,8 @@ body>* {
 
 /* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
+  margin-inline: auto;
+  padding-inline: var(--page-pad-inline);
   overflow: hidden;
 }
 
@@ -608,13 +610,6 @@ label:focus {
 
 /*-------------curvature-----------------*/
 
-.main-content {
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-  min-height: 100dvh;
-}
-
 .curve-container {
   display: flex;
   flex-direction: column;
@@ -912,10 +907,10 @@ label:focus {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-m-l);
+  margin-top: var(--space-s-m);
   user-select: none;
   overflow: hidden;
-  padding-block: var(--space-s-m);
+  padding-block: var(--space-xs-s);
 }
 
 .text-with-animation {
@@ -988,6 +983,7 @@ label:focus {
   justify-content: center;
   user-select: none;
   cursor: pointer;
+  margin-bottom: var(--space-m-l);
 }
 
 .large-button:focus,
@@ -1004,12 +1000,14 @@ label:focus {
   transition: transform 0.3s;
   display: block;
   margin-inline: auto;
+  margin-bottom: var(--space-2xs-xs);
 }
 
 .large-button:hover>svg,
 .large-button:focus>svg {
-  transform: rotate(45deg);
   fill: var(--text-span);
+  transition: transform 0.3s, fill 0.3s;
+  transform: scale(0.5)rotate(45deg);
 }
 
 .large-button span {
