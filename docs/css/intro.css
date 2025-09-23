@@ -638,6 +638,40 @@ header .bars::before {
   transition: color 0.3s, box-shadow 0.3s;
 }
 
+.theme-list-item svg {
+  width: var(--space-m-l);
+  height: var(--space-m-l);
+  vertical-align: middle;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  opacity: 1;
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  /* Add this line */
+}
+
+.theme-list-item svg path {
+  fill: var(--text-color);
+  transition: fill 0.3s, stroke 0.3s;
+  stroke: var(--space-xs);
+  /* Add stroke if you want to animate it too */
+}
+
+.theme-list-item:hover svg {
+  transform: scale(0.5);
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  color: var(--text-span);
+  background-color: var(--base-color);
+  /* Or another color if you want */
+}
+
+.theme-list-item:hover svg path {
+  fill: var(--text-span);
+  transition: fill 0.3s, stroke 0.3s;
+}
+
 /* Style SVGs inside theme-list items */
 .theme-list-item label svg {
   width: var(--space-s-m);
