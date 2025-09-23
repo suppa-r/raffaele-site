@@ -13,7 +13,7 @@
 @property --gradient-button-fill {
   syntax: "<color>";
   inherits: true;
-  initial-value: rgb(105, 131, 131);
+  initial-value: var(--text-color);
 }
 
 :root {
@@ -126,8 +126,6 @@
   --backround-transition: background-color 1s, color 1s;
   --letter-space-content: var(--space-6xs-5xs);
   --word-space-content: var(--space-5xs-4xs);
-
-  --gradient-button-fill: #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa;
 }
 
 @supports (selector(::view-transition)) {
@@ -256,6 +254,8 @@ body {
   transition: var(--backround-transition);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
+  min-height: 100dvh;
+  height: 100%;
 }
 
 body>* {
@@ -268,7 +268,8 @@ body>* {
 /* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
   margin-inline: auto;
-  padding-inline: var(--page-pad-inline);
+  min-height: 100dvh;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -330,7 +331,7 @@ header {
   &:hover,
   &:focus-invisible {
     --gradient-button-fill: var(--gradient-button-fill);
-    border: 2px solid transparent;
+    border: 2px solid var(--text-color);
   }
 }
 
@@ -987,31 +988,31 @@ label:focus {
   justify-content: center;
   user-select: none;
   cursor: pointer;
-  margin-bottom: var(--space-m-l);
 }
 
 .large-button:focus,
 .large-button:hover {
   box-shadow: 0 6px 6px var(--space-4xs-3xs) var(--shadow);
-  outline: 2px solid var(--text-span);
+  outline: 4px solid var(--text-span);
 }
 
 .large-button svg {
   fill: var(--text-color);
   width: var(--space-l-xl);
-  /* smaller icon */
   height: var(--space-l-xl);
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   display: block;
   margin-inline: auto;
   margin-bottom: var(--space-2xs-xs);
+  user-select: none;
+  pointer-events: none;
 }
 
 .large-button:hover>svg,
 .large-button:focus>svg {
   fill: var(--text-span);
-  transition: transform 0.3s, fill 0.3s;
-  transform: scale(0.5)rotate(45deg);
+  transform: scale(0.5) rotate(45deg);
+  transition: transform 0.1s, box-shadow 0.3s;
 }
 
 .large-button span {
@@ -1019,12 +1020,9 @@ label:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  margin-bottom: var(--space-m-l);
   padding-inline: var(--space-6xs-5xs);
-  /* less padding */
   text-align: center;
   font-size: var(--step--1);
-  /* match button font size */
   color: var(--text-color);
   white-space: normal;
   word-break: keep-all;
@@ -1034,8 +1032,8 @@ label:focus {
   word-spacing: normal;
   text-wrap: balance;
   box-sizing: border-box;
-  /*box-shadow: var(--navbar-shadow);*/
   user-select: none;
+  margin: var(--space-xs-s);
 }
 
 @media (prefers-reduced-motion: reduce) {
