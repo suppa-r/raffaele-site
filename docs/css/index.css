@@ -30,7 +30,7 @@
   /* Step 4: 33.1776px → 75.776px */
   --step-4: clamp(2.0736rem, 0.9844rem + 4.8407cqi, 4.736rem);
 
-
+  --space-6sxs: clamp(0.0625rem, 0.0116rem + 0.2273cqi, 0.125rem);
   /* Space 5xs: 2px → 4px */
   --space-5xs: clamp(0.125rem, 0.0739rem + 0.2273cqi, 0.25rem);
   /* Space 4xs: 3px → 5px */
@@ -101,7 +101,6 @@
   --space-7xl-8xl: clamp(10rem, 7.3409rem + 11.8182cqi, 16.5rem);
   /* Space 8xl-9xl: 176px → 288px */
   --space-8xl-9xl: clamp(11rem, 8.1364rem + 12.7273cqi, 18rem);
-
 
 
   --pt-serif-regular: "PT Serif", serif;
@@ -251,9 +250,7 @@ body {
   transition: var(--backround-transition);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  padding-inline: var(--page-pad-inline);
-  padding-block: var(--page-pad-block);
-  margin: 0;
+
   /* Use default browser margin reset */
 }
 
@@ -268,12 +265,10 @@ body>* {
 /* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
   overflow: hidden;
-  margin-inline: auto;
-  padding-inline: var(--page-pad-inline);
+
 }
 
 header {
-  margin-inline: auto;
   position: relative;
 }
 
@@ -282,7 +277,8 @@ header {
   color: var(--text-color);
   padding-top: var(--space-xl-2xl);
   text-align: center;
-  margin-inline: auto;
+  user-select: none;
+  margin: 0;
 }
 
 /* Ensure the dropdown menu is visible when active */
@@ -558,8 +554,6 @@ label:focus {
 /*-------------curvature-----------------*/
 
 .main-content {
-  margin-inline: auto;
-  padding-inline: var(--page-pad-inline);
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -574,7 +568,7 @@ label:focus {
   font-size: var(--step-0);
   color: var(--text-color);
   margin-block: var(--space-m-l);
-  margin-inline: auto;
+  user-select: none;
 }
 
 .content {
@@ -863,9 +857,10 @@ label:focus {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-xl-2xl);
-  margin-inline: auto;
-  padding-inline: var(--page-pad-inline);
+  margin-top: var(--space-m-l);
+  user-select: none;
+  overflow: hidden;
+  padding-block: var(--space-s-m);
 }
 
 .text-with-animation {
@@ -874,7 +869,6 @@ label:focus {
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  margin-inline: auto;
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
@@ -886,7 +880,6 @@ label:focus {
 .text-with-animation-3 {
   font-size: var(--step--1);
   text-align: center;
-  margin-inline: auto;
   white-space: nowrap;
   word-spacing: var(--space-6xs-5xs);
   letter-spacing: var(--letter-space-content);
@@ -894,7 +887,6 @@ label:focus {
 }
 
 .text-with-animation-4 {
-  margin-inline: auto;
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
@@ -909,7 +901,6 @@ label:focus {
 }
 
 .text-with-animation-5 {
-  margin-inline: auto;
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
@@ -924,6 +915,8 @@ label:focus {
 
 .large-button {
   margin-inline: auto;
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -969,7 +962,7 @@ label:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  margin: var(--space-4xs-3xs) auto 0 auto;
+  margin-bottom: var(--space-m-l);
   padding-inline: var(--space-6xs-5xs);
   /* less padding */
   text-align: center;
@@ -987,8 +980,6 @@ label:focus {
   /*box-shadow: var(--navbar-shadow);*/
   user-select: none;
 }
-
-
 
 @media (prefers-reduced-motion: reduce) {
 

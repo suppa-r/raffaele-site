@@ -103,7 +103,6 @@
   --space-8xl-9xl: clamp(11rem, 8.1364rem + 12.7273cqi, 18rem);
 
 
-
   --pt-serif-regular: "PT Serif", serif;
   --pt-serif-italic: "PT Serif Italic", serif;
   --font-weight-1: 400;
@@ -252,17 +251,11 @@ body {
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   padding-inline: var(--page-pad-inline);
-  padding-block: var(--page-pad-block);
-  margin: 0;
-  /* Use default browser margin reset */
 }
 
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
-  padding-inline: var(--page-pad-inline);
-  padding-block: var(--page-pad-block);
-  margin-inline: auto;
 }
 
 /* Remove redundant spacing from body > * if .wrapper handles layout */
