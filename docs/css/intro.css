@@ -67,6 +67,8 @@
   --space-9xl: clamp(12rem, 9.5455rem + 10.9091cqi, 18rem);
 
   /* One-up pairs */
+  /* Space 6xs-5xs: 1px → 2px */
+  --space-6xs-5xs: clamp(0.0625rem, 0.0241rem + 0.2273cqi, 0.125rem);
   /* Space 5xs-4xs: 2px → 5px */
   --space-5xs-4xs: clamp(0.125rem, 0.0483rem + 0.3409cqi, 0.3125rem);
   /* Space 4xs-3xs: 3px → 6px */
@@ -123,18 +125,22 @@
   --gradient-button-fill: #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa;
 }
 
-/* Hide the support message if view transitions are supported */
-
 @supports (selector(::view-transition)) {
   .support.view-transition {
     display: none;
   }
 }
 
+@container not style(--theme: dark) {
+  .support.style-query {
+    display: none;
+  }
+}
+
 .support {
-  background-color: var(--clr-warn-1);
-  border-inline-start: 0.5rem solid var(--clr-warn-2);
-  color: var(--clr-warn-text);
+  background-color: var(--base-color);
+  border-inline-start: 0.5rem solid var(--text-color);
+  color: var(--text-color);
   border-radius: 0.5rem;
   padding: 1em 2em;
 }
@@ -148,7 +154,7 @@
   perspective-origin: center;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 100vw;
-  filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+  filter: drop-shadow(0px 0px 6px hsl(180, 7%, 22%)) drop-shadow(0px 0px 25px hsla(180, 6%, 33%, 0.5));
 }
 
 ::view-transition-old(root),
@@ -235,39 +241,45 @@
   }
 }
 
-html {
-  padding: 0;
-  margin: 0;
-}
-
+html,
 body {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
-  font-size: var(--step--1);
   color: var(--text-color);
   background-color: var(--base-color);
-  text-align: center;
-  margin-inline: auto;
-  overflow: auto;
   transition: var(--backround-transition);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  padding-inline: var(--page-pad-inline);
+  padding-block: var(--page-pad-block);
+  margin: 0;
+  /* Use default browser margin reset */
 }
 
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
+  padding-inline: var(--page-pad-inline);
+  padding-block: var(--page-pad-block);
+  margin-inline: auto;
 }
 
+/* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
-  margin-inline: auto;
-  min-height: 100dvh;
   overflow: hidden;
-  padding: var(--page-pad-inline);
+  margin-inline: auto;
+  padding-inline: var(--page-pad-inline);
 }
 
 header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-m-l) 0;
+  margin-inline: auto;
+  position: relative;
 }
 
 .h {
@@ -361,11 +373,11 @@ header .bars::before {
 }
 
 .nav {
-  margin: auto;
-  /* Push nav to the right */
-  display: flex;
-  align-items: center;
-  position: relative;
+  position: absolute;
+  top: var(--space-3xs);
+  right: var(--space-7xl-8xl);
+  z-index: 1000;
+  /* Ensure it's above other content */
 }
 
 .nav-links {
@@ -502,6 +514,7 @@ link:focus {
 }
 
 /* Initial hidden state */
+.dropdown-menu,
 .color-picker.dropdown-menu {
   opacity: 0;
   transform: translateX(150px);
@@ -513,7 +526,7 @@ link:focus {
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
   position: absolute;
-  top: var(--space-m-l);
+  top: var(--space-l-xl);
   right: 0;
   display: flex;
   flex-direction: column;
@@ -522,33 +535,41 @@ link:focus {
   transition:
     opacity 0.7s cubic-bezier(.22, .61, .36, 1),
     transform 0.7s cubic-bezier(.22, .61, .36, 1);
-  /* Remove keyframes from transition */
 }
 
 /* When menu is open, show it */
 .dropdown.active>.color-picker.dropdown-menu {
-  margin-top: var(--space-m-l);
+  top: var(--space-l-xl);
+  right: 0;
+  transform: translateX(0);
+  box-shadow: var(--shadow);
+  gap: var(--space-s);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  user-select: none;
   padding: 0 var(--space-l-xl);
   opacity: 1;
   pointer-events: all;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
+  z-index: 1000;
 }
 
 /* Animation class for sliding in */
 .color-picker.dropdown-menu.animate-in {
-  animation: colorPickerSlide 0.7s cubic-bezier(.22, .61, .36, .1) ease-in forwards;
+  animation: colorPickerSlide 0.7s cubic-bezier(.22, .61, .36, .1) forwards;
 }
 
+/* Keyframes: animate from 150px to 0px */
 @keyframes colorPickerSlide {
   0% {
-    transform: translateX(0px);
+    transform: translateX(150px);
     opacity: 0;
   }
 
   30% {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(50px);
   }
 
   100% {
@@ -556,6 +577,8 @@ link:focus {
     opacity: 1;
   }
 }
+
+
 
 /* Theme list styles remain unchanged */
 .theme-list {
@@ -587,7 +610,7 @@ link:focus {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-2xs-xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
@@ -629,8 +652,8 @@ link:focus {
 
 /* Style SVGs inside theme-list items */
 .theme-list-item label svg {
-  width: var(--space-xl-2xl);
-  height: var(--space-xl-2xl);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   margin-right: var(--space-xs-s);
   vertical-align: middle;
   color: var(--text-color);
@@ -661,23 +684,28 @@ label:focus {
 }
 
 /* Ensure the dropdown menu is visible when active */
-.dropdown-menu {
+.dropdown-menu,
+.color-picker.dropdown-menu {
+  margin-top: var(--space-m-l);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
   z-index: 1000;
 }
 
-.dropdown.active>.dropdown-menu {
+.dropdown.active>.color-picker.dropdown-menu {
+  margin-top: var(--space-m-l);
   opacity: 1;
   pointer-events: all;
+  z-index: 1000;
 }
 
-
 .intro {
-  padding-top: var(--space-xl);
+  margin-inline: auto;
   text-align: center;
-  margin-bottom: var(--space-2xl);
+  padding-inline: var(--page-pad-inline);
+  padding-top: var(--space-s-m);
+  z-index: 1;
 }
 
 .intro p {
@@ -741,14 +769,6 @@ label:focus {
       0px 5px 10px var(--shadow-color, rgba(255, 255, 255, 0.853)),
       0px 15px 20px var(--shadow-color2, rgb(255, 255, 255)),
       0px 25px 5px var(--shadow-color3, rgb(232, 235, 238));
-  }
-}
-
-/* Optional: responsive tweak */
-@container (min-width: 600px) {
-  :root {
-    --letter-space-content: var(--space-6xs);
-    --word-space-content: var(--space-5xs);
   }
 }
 
@@ -833,70 +853,15 @@ label:focus {
     transition-delay: calc(.3s * var(--i));
     /* Apply delay only when open */
   }
-
-  .header {
-    padding: var(--space-2xs) var(--space-s) 0 var(--space-s);
-  }
-
-  .intro {
-    min-height: 100dvh;
-    margin-top: var(--space-4xl);
-  }
 }
 
 
 
-
-/* -----------code for   fancy li's---------------------------- */
-/* -----------code for   fancy li's---------------------------- */
-/* -----------code for   fancy li's---------------------------- */
-/* -----------code for   fancy li's---------------------------- *
-@import "https://unpkg.com/open-props/easings.min.css" layer(support.demo);
-
-/* 
-  creates focus not by highlighting or promoting 
-  but by demoting what isn't being shown interest
-*
-ul {
-  @media (hover) and (prefers-reduced-motion: no-preference) {
-    &>li {
-      transform-origin: left center;
-      transition:
-        transform 1s var(--ease-spring-3),
-        opacity .3s var(--ease-3);
-    }
-
-    &:hover>li:not(:hover) {
-      opacity: .25;
-      transform: scale(0.8);
-    }
-  }
-}
-
-
-
-
-@layer support.demo {
+@media (prefers-reduced-motion: reduce) {
   * {
-    box-sizing: border-box;
-    margin: 0;
-  }
-
-  html {
-    block-size: 100%;
-    color-scheme: dark light;
-  }
-
-  body {
-    min-block-size: 100%;
-    font-family: system-ui, sans-serif;
-
-    display: grid;
-    place-content: center;
-  }
-
-  ul {
-    font-size: 2rem;
-    font-weight: 200;
+    animation-duration: 0.001s;
+    animation-iteration-count: 1;
+    transition-duration: 0.001s;
+    scroll-behavior: auto;
   }
 }
