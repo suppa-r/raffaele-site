@@ -2,18 +2,20 @@
   --base-color: #000;
   --text-color: #fff;
   --text-span: #2c8686;
+  --gradient-button-fill: #292626;
 }
 
 [data-theme="light"] {
   --base-color: #fff;
   --text-color: #222;
   --text-span: #2c8686;
+  --gradient-button-fill: #a78e8e;
 }
 
 @property --gradient-button-fill {
   syntax: "<color>";
   inherits: true;
-  initial-value: var(--text-color);
+  initial-value: #292626;
 }
 
 :root {
@@ -303,7 +305,7 @@ header {
   pointer-events: all;
   top: var(--space-5xs-4xs);
   right: var(--space-4xs-3xs);
-  padding: var(--space-4xs-3xs) 0;
+  padding: var(--space-6xs-5xs) 0;
   gap: var(--space-4xs-3xs);
   background-color: var(--base-color);
   z-index: 1000;
@@ -326,7 +328,7 @@ header {
   color: var(--text-color);
   transition: --gradient-button-fill 250ms ease-in-out, border 0.3s, box-shadow 0.3s;
   border: 2px solid var(--text-color);
-  background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
+  background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box 0 0;
 
   &:hover,
   &:focus-invisible {
