@@ -29,6 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdownMenu.style.transform = open ? 'translateX(0)' : 'translateX(150px)';
   }
 
+  // Close menu and show content when clicking outside
+  document.addEventListener('mousedown', (e) => {
+    if (
+      dropdown &&
+      dropdown.classList.contains('active') &&
+      !dropdown.contains(e.target)
+    ) {
+      setMenuOpen(false);
+      if (curve) curve.style.display = '';
+      if (text) text.style.display = '';
+      if (largebutton) largebutton.style.display = '';
+      if (title) title.style.display = '';
+    }
+  });
+
+  // ...existing code...
+
   // Theme logic
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   let sysListener = null;

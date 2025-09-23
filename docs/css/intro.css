@@ -30,7 +30,7 @@
   /* Step 4: 33.1776px → 75.776px */
   --step-4: clamp(2.0736rem, 0.9844rem + 4.8407cqi, 4.736rem);
 
-
+  --space-6sxs: clamp(0.0625rem, 0.0116rem + 0.2273cqi, 0.125rem);
   /* Space 5xs: 2px → 4px */
   --space-5xs: clamp(0.125rem, 0.0739rem + 0.2273cqi, 0.25rem);
   /* Space 4xs: 3px → 5px */
@@ -250,7 +250,7 @@ body {
   transition: var(--backround-transition);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  padding-inline: var(--page-pad-inline);
+  /* Use default browser margin reset */
 }
 
 body>* {
@@ -261,17 +261,11 @@ body>* {
 /* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
   overflow: hidden;
-  margin-inline: auto;
-  padding-inline: var(--page-pad-inline);
 }
 
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-m-l) 0;
-  margin-inline: auto;
+  padding: var(--space-2xs-xs) 0;
+  transition: var(--backround-transition);
   position: relative;
 }
 
@@ -408,42 +402,54 @@ header .bars::before {
   margin-inline: auto;
 }
 
-/* Keep .link label on one line */
-.dropdown {
-  cursor: pointer;
-  pointer-events: all;
+/* Ensure the dropdown menu is visible when active */
+.dropdown-menu {
+  opacity: 0;
+  transition: opacity 0.3s;
   z-index: 1000;
+}
+
+.dropdown.active>.dropdown-menu {
+  opacity: 1;
+}
+
+.dropdown {
   position: absolute;
-  right: var(--space-2xs-xs);
-  top: var(--space-3xs-2xs);
+  display: inline-block;
+  pointer-events: all;
+  top: var(--space-5xs-4xs);
+  right: var(--space-4xs-3xs);
+  padding: var(--space-4xs-3xs) 0;
+  gap: var(--space-4xs-3xs);
+  background-color: var(--base-color);
+  z-index: 1000;
+  font-size: var(--step--1);
+  transition: color 0.3s, box-shadow 0.3s;
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
-  transition: box-shadow 0.3s;
   user-select: none;
-  /*transition: color 0.8s, box-shadow 0.9s;*/
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   border-radius: var(--btn-border-radius);
 }
 
 .link {
-  border: 2px solid transparent;
-  border-radius: var(--btn-border-radius);
   cursor: pointer;
   pointer-events: all;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  position: relative;
   padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
+  border: 3px solid var(--text-color);
+  border-radius: var(--btn-border-radius);
   text-decoration: none;
   background-color: var(--base-color);
   color: var(--text-color);
-  user-select: none;
-  position: relative;
-  /*transition: color 0.8s, box-shadow 0.9s;*/
-  transform: none;
+  font-size: var(--step--1);
   z-index: 1000;
+  user-select: none;
   opacity: 1;
-  transition: box-shadow 0.3s;
+  transition: color 0.3s, box-shadow 0.3s;
   box-shadow: var(--shadow);
 }
 
@@ -454,15 +460,15 @@ header .bars::before {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-5xs-4xs);
+  padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   opacity: 1;
-  gap: var(--space-xs-s);
   align-items: center;
   text-decoration: none;
   background-color: transparent;
   color: var(--text-color);
   transition: box-shadow 0.3s;
-  box-shadow: var(--shadow);
+  /*box-shadow: var(--shadow);*/
   font-size: var(--step--1);
   user-select: none;
   white-space: nowrap;
@@ -480,7 +486,7 @@ header .bars::before {
   display: inline-block;
 }
 
-.link span {
+.link label span {
   white-space: nowrap;
   overflow: hidden;
   user-select: none;
@@ -488,13 +494,13 @@ header .bars::before {
   vertical-align: middle;
   padding: 0;
   background-color: var(--base-color);
+  color: var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--shadow);
-  /* optional: adds ... if text is too long */
+  /*box-shadow: var(--navbar-shadow);*/
 }
 
-link:hover,
-link:focus {
+.link:hover,
+.link:focus {
   color: var(--text-color);
   padding: 0 var(--space-4xs-3xs);
   background-color: var(--base-color);
@@ -507,7 +513,6 @@ link:focus {
 }
 
 /* Initial hidden state */
-.dropdown-menu,
 .color-picker.dropdown-menu {
   opacity: 0;
   transform: translateX(150px);
@@ -519,7 +524,7 @@ link:focus {
   border-radius: var(--btn-border-radius);
   box-shadow: var(--navbar-shadow);
   position: absolute;
-  top: var(--space-l-xl);
+  top: var(--space-xl-2xl);
   right: 0;
   display: flex;
   flex-direction: column;
@@ -528,41 +533,34 @@ link:focus {
   transition:
     opacity 0.7s cubic-bezier(.22, .61, .36, 1),
     transform 0.7s cubic-bezier(.22, .61, .36, 1);
+  /* Remove keyframes from transition */
 }
 
 /* When menu is open, show it */
 .dropdown.active>.color-picker.dropdown-menu {
-  top: var(--space-l-xl);
-  right: 0;
-  transform: translateX(0);
-  box-shadow: var(--shadow);
-  gap: var(--space-s);
-  background-color: var(--base-color);
-  color: var(--text-color);
-  user-select: none;
+  margin-top: var(--space-m-l);
   padding: 0 var(--space-l-xl);
   opacity: 1;
+  transform: translateX(0);
   pointer-events: all;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
-  z-index: 1000;
 }
 
 /* Animation class for sliding in */
 .color-picker.dropdown-menu.animate-in {
-  animation: colorPickerSlide 0.7s cubic-bezier(.22, .61, .36, .1) forwards;
+  animation: colorPickerSlide 0.7s cubic-bezier(.22, .61, .36, .1) ease-in forwards;
 }
 
-/* Keyframes: animate from 150px to 0px */
 @keyframes colorPickerSlide {
   0% {
-    transform: translateX(150px);
+    transform: translateX(0px);
     opacity: 0;
   }
 
   30% {
     opacity: 1;
-    transform: translateX(50px);
+    transform: translateX(0px);
   }
 
   100% {
@@ -570,8 +568,6 @@ link:focus {
     opacity: 1;
   }
 }
-
-
 
 /* Theme list styles remain unchanged */
 .theme-list {
@@ -581,15 +577,14 @@ link:focus {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  gap: var(--space-2xs-xs);
   padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
   color: var(--text-color);
   font-size: var(--step--1);
   user-select: none;
-  border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
@@ -603,11 +598,11 @@ link:focus {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-2xs-xs);
+  padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
-  gap: var(--space-2xs-xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -629,8 +624,8 @@ link:focus {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-xs-s);
-  gap: var(--space-xs-s);
+  padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -645,8 +640,8 @@ link:focus {
 
 /* Style SVGs inside theme-list items */
 .theme-list-item label svg {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-s-m);
+  height: var(--space-s-m);
   margin-right: var(--space-xs-s);
   vertical-align: middle;
   color: var(--text-color);
@@ -663,11 +658,10 @@ link:focus {
   vertical-align: middle;
   background-color: var(--base-color);
   transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--shadow);
-  /* optional: adds ... if text is too long */
+  /*box-shadow: var(--shadow);
+   optional: adds ... if text is too long */
   padding: 0 var(--space-xs-s);
 }
-
 
 label:hover,
 label:focus {
@@ -676,28 +670,10 @@ label:focus {
 
 }
 
-/* Ensure the dropdown menu is visible when active */
-.dropdown-menu,
-.color-picker.dropdown-menu {
-  margin-top: var(--space-m-l);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  z-index: 1000;
-}
-
-.dropdown.active>.color-picker.dropdown-menu {
-  margin-top: var(--space-m-l);
-  opacity: 1;
-  pointer-events: all;
-  z-index: 1000;
-}
-
 .intro {
-  margin-inline: auto;
   text-align: center;
   padding-inline: var(--page-pad-inline);
-  padding-top: var(--space-s-m);
+  padding-top: var(--space-2xl-3xl);
   z-index: 1;
 }
 

@@ -23,7 +23,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!dropdown || !dropdownMenu) return;
     dropdown.classList.toggle('active', open);
     animateDropdownMenu(open);
+    // Only hide .h and nav, not .intro, if menu is open
+    if (open) {
+      if (h) h.style.display = 'none';
+      if (nav) nav.style.display = 'none';
+      // Do NOT hide intro if dropdown is inside intro!
+    } else {
+      if (h) h.style.display = '';
+      if (nav) nav.style.display = '';
+      if (intro) intro.style.display = '';
+    }
   }
+
+  // Close menu and show content when clicking outside
+  document.addEventListener('mousedown', (e) => {
+    if (
+      dropdown &&
+      dropdown.classList.contains('active') &&
+      !dropdown.contains(e.target)
+    ) {
+      setMenuOpen(false);
+    }
+  });
 
   // Theme logic
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
@@ -44,9 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial state: hide dropdown, apply saved theme, show content
   setMenuOpen(false);
-  if (intro) intro.style.display = '';
-  if (h) h.style.display = '';
-  if (nav) nav.style.display = '';
 
   const savedTheme = localStorage.getItem('theme-preference') || 'system';
   applyTheme(savedTheme);
@@ -59,17 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const isOpen = dropdown.classList.contains('active');
       setMenuOpen(!isOpen);
-      if (!isOpen) {
-        // Dropdown is opening: hide main components
-        if (intro) intro.style.display = '';
-        if (h) h.style.display = '';
-        if (nav) nav.style.display = '';
-      } else {
-        // Dropdown is closing: show main components
-        if (intro) intro.style.display = '';
-        if (h) h.style.display = '';
-        if (nav) nav.style.display = '';
-      }
     });
   }
 
@@ -83,9 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(val);
       }
       setMenuOpen(false);
-      if (intro) intro.style.display = '';
-      if (h) h.style.display = '';
-      if (nav) nav.style.display = '';
     });
   });
 

@@ -265,7 +265,6 @@ body>* {
 /* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
   overflow: hidden;
-
 }
 
 header {
@@ -285,19 +284,17 @@ header {
 .dropdown-menu {
   opacity: 0;
   transition: opacity 0.3s;
-  pointer-events: none;
   z-index: 1000;
 }
 
 .dropdown.active>.dropdown-menu {
   opacity: 1;
-  pointer-events: all;
 }
 
 .dropdown {
   position: absolute;
   display: inline-block;
-  pointer-events: none;
+  pointer-events: all;
   top: var(--space-5xs-4xs);
   right: var(--space-4xs-3xs);
   padding: var(--space-4xs-3xs) 0;
@@ -309,7 +306,6 @@ header {
   box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
   opacity: 1;
   user-select: none;
-  /*transition: color 0.8s, box-shadow 0.9s;*/
   border: 3px solid transparent;
   border-radius: var(--btn-border-radius);
 }
@@ -381,8 +377,8 @@ header {
   /*box-shadow: var(--navbar-shadow);*/
 }
 
-link:hover,
-link:focus {
+.link:hover,
+.link:focus {
   color: var(--text-color);
   padding: 0 var(--space-4xs-3xs);
   background-color: var(--base-color);
@@ -423,6 +419,7 @@ link:focus {
   margin-top: var(--space-m-l);
   padding: 0 var(--space-l-xl);
   opacity: 1;
+  transform: translateX(0);
   pointer-events: all;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
