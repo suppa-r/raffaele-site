@@ -433,24 +433,22 @@ header .bars::before {
 }
 
 .link {
-  cursor: pointer;
-  pointer-events: all;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-4xs-3xs);
-  border: 3px solid var(--text-color);
+  all: revert;
+  display: inline-block;
   border-radius: var(--btn-border-radius);
   text-decoration: none;
-  background-color: var(--base-color);
+  cursor: pointer;
+  padding: 0 var(--space-4xs-3xs);
   color: var(--text-color);
-  font-size: var(--step--1);
-  z-index: 1000;
-  user-select: none;
-  opacity: 1;
-  transition: color 0.3s, box-shadow 0.3s;
-  box-shadow: var(--shadow);
+  transition: --gradient-button-fill 250ms ease-in-out, border 0.3s, box-shadow 0.3s;
+  border: 2px solid var(--text-color);
+  background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
+
+  &:hover,
+  &:focus-invisible {
+    --gradient-button-fill: var(--gradient-button-fill);
+    border: 2px solid transparent;
+  }
 }
 
 .link label {
@@ -480,10 +478,38 @@ header .bars::before {
   width: var(--space-m-l);
   height: var(--space-m-l);
   vertical-align: middle;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
   color: var(--text-color);
-  background-color: var(--base-color);
+  background-color: transparent;
   opacity: 1;
   display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  /* Add this line */
+}
+
+.link svg path {
+  fill: var(--text-color);
+  transition: fill 0.3s, stroke 0.3s;
+  stroke: var(--space-xs);
+  background-color: transparent;
+  /* Add stroke if you want to animate it too */
+}
+
+.link:hover svg {
+  transform: scale(0.5);
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  color: var(--text-color);
+  background-color: transparent;
+  /* Or another color if you want */
+}
+
+.link:hover svg path {
+  fill: var(--text-span);
+  transition: fill 0.3s, stroke 0.3s;
+  stroke: var(--text-color);
+  /* Or another color if you want */
+  background-color: transparent;
 }
 
 .link label span {
@@ -493,7 +519,7 @@ header .bars::before {
   display: inline-block;
   vertical-align: middle;
   padding: 0;
-  background-color: var(--base-color);
+  background-color: transparent;
   color: var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   /*box-shadow: var(--navbar-shadow);*/
@@ -503,7 +529,6 @@ header .bars::before {
 .link:focus {
   color: var(--text-color);
   padding: 0 var(--space-4xs-3xs);
-  background-color: var(--base-color);
   transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
