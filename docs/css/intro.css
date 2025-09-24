@@ -416,12 +416,13 @@ header .bars::before {
 /* Ensure the dropdown menu is visible when active */
 .dropdown-menu {
   opacity: 0;
-  transition: opacity 0.3s;
   z-index: 1000;
 }
 
 .dropdown.active>.dropdown-menu {
   opacity: 1;
+  pointer-events: all;
+  z-index: 1000;
 }
 
 .dropdown {
@@ -430,13 +431,12 @@ header .bars::before {
   pointer-events: all;
   top: var(--space-5xs-4xs);
   right: var(--space-4xs-3xs);
-  padding: var(--space-4xs-3xs) 0;
+  padding: var(--space-6xs-5xs) 0;
   gap: var(--space-4xs-3xs);
   background-color: var(--base-color);
   z-index: 1000;
   font-size: var(--step--1);
-  transition: color 0.3s, box-shadow 0.3s;
-  box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
+  color: var(--text-color);
   opacity: 1;
   user-select: none;
   border: 3px solid transparent;
@@ -451,14 +451,27 @@ header .bars::before {
   cursor: pointer;
   padding: 0 var(--space-4xs-3xs);
   color: var(--text-color);
-  transition: --gradient-button-fill 250ms ease-in-out, border 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+  box-shadow: var(--navbar-shadow);
+  user-select: none;
   border: 2px solid var(--text-color);
-  background: linear-gradient(var(--gradient-button-fill) 0 0) padding-box;
+  background: var(--gradient);
+  background-size: 200% 200%;
+  background-position: right center;
+  animation: gradientShift 3s ease infinite;
+}
 
-  &:hover,
-  &:focus-invisible {
-    --gradient-button-fill: var(--gradient-button-fill);
-    border: 2px solid transparent;
+@keyframes gradientShift {
+  0% {
+    background-position: right center;
+  }
+
+  50% {
+    background-position: left center;
+  }
+
+  100% {
+    background-position: right center;
   }
 }
 
@@ -477,7 +490,6 @@ header .bars::before {
   background-color: transparent;
   color: var(--text-color);
   transition: box-shadow 0.3s;
-  /*box-shadow: var(--shadow);*/
   font-size: var(--step--1);
   user-select: none;
   white-space: nowrap;
@@ -496,7 +508,6 @@ header .bars::before {
   opacity: 1;
   display: inline-block;
   transition: color 0.3s, background-color 0.3s;
-  /* Add this line */
 }
 
 .link svg path {
@@ -504,7 +515,6 @@ header .bars::before {
   transition: fill 0.3s, stroke 0.3s;
   stroke: var(--space-xs);
   background-color: transparent;
-  /* Add stroke if you want to animate it too */
 }
 
 .link:hover svg {
@@ -512,7 +522,6 @@ header .bars::before {
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-color);
   background-color: transparent;
-  /* Or another color if you want */
 }
 
 .link:hover svg path {
@@ -532,8 +541,6 @@ header .bars::before {
   padding: 0;
   background-color: transparent;
   color: var(--text-color);
-  transition: box-shadow 0.3s, outline 0.3s;
-  /*box-shadow: var(--navbar-shadow);*/
 }
 
 .link:hover,
