@@ -2,28 +2,30 @@
   --base-color: #000;
   --text-color: #fff;
   --text-span: #2c8686;
-  --gradient-button-fill: #292626;
+
+  --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
+  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
+  --navbar-shadow: 0 30px 100px rgba(223, 211, 211, 0.658), 0 30px 100px rgba(0, 0, 0, 0.1);
+
 }
 
 [data-theme="light"] {
   --base-color: #fff;
   --text-color: #222;
   --text-span: #2c8686;
-  --gradient-button-fill: #a78e8e;
-}
 
-@property --gradient-button-fill {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #292626;
+  --gradient: linear-gradient(45deg, #18191aa4, #566366d3, #5a636b, #e3e4fa);
+  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
+  --navbar-shadow: 0 30px 100px rgba(22, 21, 21, 0.658), 0 30px 100px rgba(70, 63, 63, 0.1);
 }
 
 :root {
   --sp: 5s;
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  --gradient: linear-gradient(45deg, #3392ffa4, #6bdfff00, #8f88bb, #e3e4fa);
+  --gradient: linear-gradient(45deg, #18191aa4, #566366d3, #5a636b, #e3e4fa);
   --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
+  --navbar-shadow: 0 30px 100px rgba(223, 211, 211, 0.658), 0 30px 100px rgba(0, 0, 0, 0.1);
 
   /* Step -1: 13.3333px → 18.0045px */
   --step--1: clamp(0.8333rem, 0.7139rem + 0.5308cqi, 1.1253rem);
@@ -120,12 +122,9 @@
   --font-weight-regular: 400;
   --font-style-regular: normal;
   --btn-border-radius: var(--space-s);
-  --navbar-shadow: 0 4px 6px rgba(223, 211, 211, 0.658), 0 1px 3px rgba(0, 0, 0, 0.1);
-
   /* global page padding variables */
   --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
-  --backround-transition: background-color 1s, color 1s;
   --letter-space-content: var(--space-6xs-5xs);
   --word-space-content: var(--space-5xs-4xs);
 }
@@ -253,7 +252,6 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background: var(--base-color);
-  transition: var(--backround-transition);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   min-height: 100dvh;
@@ -504,7 +502,7 @@ header {
   font-size: var(--step--1);
   user-select: none;
   border-radius: var(--btn-border-radius);
-  box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
+  box-shadow: var(--shadow);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
 }
@@ -518,7 +516,7 @@ header {
   z-index: 1000;
   padding: 0 var(--space-4xs-3xs);
   gap: var(--space-4xs-3xs);
-  box-shadow: 0 20px 5px 20px rgba(0, 0, 0, 0);
+  box-shadow: var(--shadow);
   opacity: 1;
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
   align-items: center;
@@ -609,8 +607,8 @@ header {
   display: inline-block;
   vertical-align: middle;
   background-color: var(--base-color);
-  transition: box-shadow 0.3s, outline 0.3s;
-  /*box-shadow: var(--shadow);
+  /*transition: box-shadow 0.3s, outline 0.3s;
+  box-shadow: var(--shadow);
    optional: adds ... if text is too long */
   padding: 0 var(--space-xs-s);
 }
@@ -618,8 +616,7 @@ header {
 label:hover,
 label:focus {
   color: var(--text-span);
-  box-shadow: 0 10px 10px var(--space-xs-s) var(--shadow);
-
+  box-shadow: var(--shadow) var(--space-xs-s) var(--shadow);
 }
 
 /*-------------curvature-----------------*/
