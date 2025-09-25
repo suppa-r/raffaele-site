@@ -305,7 +305,6 @@ header {
   opacity: 1;
   pointer-events: all;
   z-index: 1000;
-  background-color: var(--clr-bg);
 }
 
 .dropdown {
@@ -314,43 +313,48 @@ header {
   pointer-events: all;
   top: var(--space-5xs-4xs);
   right: var(--space-4xs-3xs);
+  padding: 0 var(--space-m-l);
+  gap: var(--space-4xs-3xs);
+  background-color: var(--base-color);
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
+  font-size: var(--step--1);
+  color: var(--text-color);
+  opacity: 1;
+  user-select: none;
+  border: 3px solid transparent;
+  border-radius: var(--btn-border-radius);
 }
 
 .link {
   position: absolute;
-  display: inline-block;
-  pointer-events: all;
   top: var(--space-5xs-4xs);
   right: var(--space-4xs-3xs);
-  z-index: 1000;
-
+  display: inline-block;
   cursor: pointer;
   text-decoration: none;
-  color: var(--clr-neon);
-  border: var(--clr-neon) 0.125em solid;
-  padding: 0 var(--space-4xs-3xs);
+  color: var(--text-color);
+  border: var(--text-color) 0.125em solid;
+  padding: 0 var(--space-m-l);
   border-radius: var(--btn-border-radius);
 
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.1), 0 0 0.45em currentColor;
+  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
 
-  box-shadow: inset 0 0 2em 0 var(--clr-neon), 0 0 2em 0 var(--clr-neon);
-
+  box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
 }
 
 .link::before {
   pointer-events: none;
   content: "";
   position: absolute;
+  color: var(--text-color);
   background: var(--clr-neon);
-  top: 120%;
-  left: 0;
+  top: var(--space-m-l);
+  right: var(--space-4xs-3xs);
   width: 100%;
   height: 100%;
   transform: perspective(5em) rotateX(40deg) scale(1, 0.35);
   filter: blur(1em);
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .link::after {
@@ -371,20 +375,18 @@ header {
 .link:focus {
   background-color: var(--clr-bg);
   text-shadow: none;
-  border-radius: var(--btn-border-radius);
 }
 
 .link:hover::before,
 .link:focus::before {
   opacity: 1;
-  border-radius: var(--btn-border-radius);
 }
 
 .link:hover::after,
 .link:focus::after {
   opacity: 1;
-  border-radius: var(--btn-border-radius);
 }
+
 
 @keyframes gradientShift {
   0% {
@@ -407,18 +409,17 @@ header {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-m-l);
   gap: var(--space-4xs-3xs);
   opacity: 1;
   align-items: center;
   text-decoration: none;
-  background-color: transparent;
+  background-color: var(--clr-neon);
   color: var(--text-color);
-  transition: box-shadow 0.3s;
   font-size: var(--step--1);
   user-select: none;
   white-space: nowrap;
-  border: 2px solid transparent;
+  border: 2px solid var(--text-color);
   border-radius: var(--btn-border-radius);
 }
 
@@ -463,8 +464,8 @@ header {
   user-select: none;
   display: inline-block;
   vertical-align: middle;
-  padding: 0;
-  background-color: transparent;
+  padding: 0 var(--space-s-m);
+  background-color: var(--clr-bg);
   color: var(--text-color);
 }
 
@@ -475,9 +476,10 @@ header {
   transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
   border: 2px solid transparent;
   border-radius: var(--btn-border-radius);
-  outline: none;
+  outline: var(--clr-neon) 0.125em solid;
+  box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  background-color: var(--clr-bg);
   /* Optional: adds a subtle outline on hover/focus */
-  box-shadow: 0 10px 10px var(--space-s-m) var(--shadow);
 }
 
 /* Initial hidden state */
