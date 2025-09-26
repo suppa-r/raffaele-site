@@ -24,6 +24,7 @@
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
+
 }
 
 :root {
@@ -31,6 +32,8 @@
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
+  --bg-image: url('../images/I\ love\ you.jpg');
+  --bg-opacity: 0.4;
 
   /* Step -1: 13.3333px → 18.0045px */
   --step--1: clamp(0.8333rem, 0.7139rem + 0.5308cqi, 1.1253rem);
@@ -261,6 +264,19 @@ body {
   word-spacing: var(--word-space-content);
   min-height: 100dvh;
   height: 100%;
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-image);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: var(--bg-opacity);
+  }
 }
 
 body>* {
