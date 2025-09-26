@@ -272,10 +272,15 @@ body {
     position: absolute;
     inset: 0;
     background-image: var(--bg-image);
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     opacity: var(--bg-opacity);
+    z-index: 1;
+    filter: blur(1px);
+    pointer-events: none;
+    transition: opacity 0.3s, filter 0.3s;
+    /* Optional: adds a slight blur to the background image */
+    mix-blend-mode: lighten;
   }
 }
 
