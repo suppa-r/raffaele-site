@@ -1,13 +1,12 @@
 [data-theme="dark"] {
   --base-color: #000;
   --text-color: #fff;
-  --text-span: #2c8686;
-  --neon-text: #171816;
-  --clr-neon: hsla(173, 33%, 37%, 0.438);
-  --clr-bg: hsla(0, 0%, 0%, 0);
+  --text-span: hsla(187, 45%, 67%, 0.74);
+  --clr-neon: hsla(187, 45%, 67%, 0.74);
 
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
-  --shadow: 0 30px 100px rgba(223, 223, 233, 0.192);
+
+  --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
@@ -16,13 +15,12 @@
 [data-theme="light"] {
   --base-color: #fff;
   --text-color: #222;
-  --text-span: #2c8686;
-  --neon-text: #ffffff;
-  --clr-neon: hsla(173, 33%, 37%, 0.438);
-  --clr-bg: hsl(0, 0%, 100%);
+  --text-span: hsla(187, 45%, 67%, 0.74);
+  --clr-neon: hsla(187, 45%, 67%, 0.74);
 
   --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
-  --shadow: 0 30px 100px rgba(223, 223, 233, 0.192);
+
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
@@ -32,9 +30,7 @@
   --sp: 5s;
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  --gradient: linear-gradient(45deg, #18191aa4, #566366d3, #5a636b, #e3e4fa);
-  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
-  --navbar-shadow: 0 30px 100px rgba(223, 211, 211, 0.658), 0 30px 100px rgba(0, 0, 0, 0.1);
+
 
   /* Step -1: 13.3333px → 18.0045px */
   --step--1: clamp(0.8333rem, 0.7139rem + 0.5308cqi, 1.1253rem);
@@ -664,20 +660,30 @@ label:focus {
   gap: var(--space-xl-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  margin-block: var(--space-m-l);
+  background: var(--base-color);
+  /* Ensures background matches theme */
+  margin-block: var(--space-l-xl);
   user-select: none;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .content {
   display: flex;
   justify-content: center;
+  background: transparent;
+  /* No background, so blend modes work */
 }
 
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
-  mix-blend-mode: plus-lighter;
+  animation: show-hide var(--sp) ease 0s infinite alternate;
+  /*mix-blend-mode: plus-lighter;
+  color: var(--text-span);
+  /* Use accent color for neon effect */
+  text-shadow: 0 0 1em var(--clr-neon), 0 0 2em var(--clr-neon);
+  /* Optional: add a subtle glow */
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 @keyframes show-hide {
@@ -712,13 +718,20 @@ label:focus {
 .content-1 {
   display: flex;
   justify-content: center;
+  background: transparent;
+  /* No background, so blend modes work */
 }
 
 .content-1 div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
-  mix-blend-mode: plus-lighter;
+  animation: show-hide var(--sp) ease 0s infinite alternate;
+  /*mix-blend-mode: plus-lighter;
+  color: var(--text-span);
+  /* Use accent color for neon effect */
+  text-shadow: 0 0 1em var(--clr-neon), 0 0 2em var(--clr-neon);
+  /* Optional: add a subtle glow */
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 @keyframes show-hide {
@@ -989,7 +1002,7 @@ label:focus {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  margin-block: var(--space-2xs-xs);
+  margin-block: var(--space-3xs-2xs);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
@@ -1003,7 +1016,7 @@ label:focus {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  margin-block: var(--space-2xs-xs);
+  margin-block: var(--space-3xs-2xs);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
