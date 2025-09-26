@@ -1,37 +1,39 @@
 [data-theme="dark"] {
   --base-color: #000;
   --text-color: #fff;
-  --text-span: #2c8686;
-  --neon-text: #171816;
-  --clr-neon: hsla(276, 25%, 34%, 0.685);
-  --cl-bg: hsla(0, 0%, 0%, 0);
+  --text-span: hsla(187, 45%, 67%, 0.74);
+  --clr-neon: hsla(187, 45%, 67%, 0.74);
 
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
-  --shadow: 0 30px 100px rgba(223, 223, 233, 0.192);
+
+  --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
+  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
 }
 
 [data-theme="light"] {
   --base-color: #fff;
   --text-color: #222;
-  --text-span: #2c8686;
-  --clr-neon: hsla(276, 25%, 34%, 0.685);
-  --cl-bg: hsl(323, 23%, 89%);
-  --neon-text: #634b83;
+  --text-span: hsla(187, 45%, 67%, 0.74);
+  --clr-neon: hsla(187, 45%, 67%, 0.74);
 
   --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
-  --shadow: 0 30px 100px rgba(223, 223, 233, 0.192);
+
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
+
+  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
+
 }
 
 :root {
   --sp: 5s;
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  --gradient: linear-gradient(45deg, #18191aa4, #566366d3, #5a636b, #e3e4fa);
-  --shadow: 0 30px 100px rgba(148, 151, 189, 0.966);
-  --navbar-shadow: 0 30px 100px rgba(223, 211, 211, 0.658), 0 30px 100px rgba(0, 0, 0, 0.1);
+
+  --bg-image: url('../images/I\ love\ you.jpg');
+  --bg-opacity: 0.4;
 
   /* Step -1: 13.3333px → 18.0045px */
   --step--1: clamp(0.8333rem, 0.7139rem + 0.5308cqi, 1.1253rem);
@@ -262,6 +264,24 @@ body {
   word-spacing: var(--word-space-content);
   min-height: 100dvh;
   height: 100%;
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    opacity: var(--bg-opacity);
+    z-index: 1;
+    filter: blur(1px);
+    pointer-events: none;
+    transition: opacity 0.3s, filter 0.3s;
+    /* Optional: adds a slight blur to the background image */
+    mix-blend-mode: lighten;
+  }
 }
 
 body>* {
@@ -310,119 +330,118 @@ header {
   pointer-events: all;
   top: var(--space-5xs-4xs);
   right: var(--space-4xs-3xs);
+  padding: var(--space-6xs-5xs) 0;
+  gap: var(--space-4xs-3xs);
+  background-color: var(--base-color);
   z-index: 1000;
+  font-size: var(--step--1);
+  color: var(--text-color);
+  opacity: 1;
+  user-select: none;
+  border: 3px solid transparent;
+  border-radius: var(--btn-border-radius);
 }
 
 .link {
-  all: revert;
+  position: absolute;
+  top: var(--space-4xs-3xs);
+  right: var(--space-4xs-3xs);
   display: inline-block;
-  border-radius: var(--btn-border-radius);
-  text-decoration: none;
+  padding: 0 var(--space-2xs-xs);
   cursor: pointer;
-  padding: 0 var(--space-4xs-3xs);
-  color: var(--neon-text);
-  user-select: none;
-  border: var(--neon-text) 2px solid;
-  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.212),
-    0 0 0.45em var(--clr-neon);
-  box-shadow: inset 0 0 2em 0 var(--clr-neon), 0 0 2em 0 var(--clr-neon);
-  position: relative;
-  transition: box-shadow 0.3s;
+  text-decoration: none;
+  color: var(--text-color);
+  border: var(--text-color) 0.125em solid;
+  border-radius: var(--btn-border-radius);
+  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
+  box-shadow: inset 0 0 5em 0 var(--clr-neon), 0 0 5em 0 var(--clr-neon);
+  background: var(--clr-neon);
 }
 
 .link::before {
   pointer-events: none;
   content: "";
   position: absolute;
-  background-color: var(--cl-bg);
-  top: 0;
-  left: 0;
+  color: var(--text-color);
+  background: var(--clr-bg);
+  transition: all 100ms linear alternate;
+  top: var(--space-m-l);
+  right: var(--space-4xs-3xs);
   width: 100%;
   height: 100%;
-  border-radius: var(--btn-border-radius);
-  transform: perspective(5em) rotateX(45deg) scale(1, 0.35);
-  filter: blur(2em);
-  opacity: 0.7;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.1);
+  filter: blur(.5em);
+  opacity: .7;
 }
 
 .link::after {
-  pointer-events: none;
   content: "";
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 0 5em 2em var(--clr-neon);
+  box-shadow: 0 0 5em 0 var(--clr-neon);
   opacity: 0;
+  background-color: var(--clr-bg);
   z-index: -1;
   transition: opacity 100ms linear;
+  border-radius: var(--btn-border-radius);
 }
 
 .link:hover,
 .link:focus {
-  color: var(--neon-text);
-  text-shadow: none;
+  color: var(--text-color);
+  padding: 0 var(--space-4xs-3xs);
+  transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
+  border: 2px solid transparent;
+  border-radius: var(--btn-border-radius);
+  outline: var(--clr-neon) 0.125em solid;
+  box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  background-color: var(--clr-bg);
+  /* Optional: adds a subtle outline on hover/focus */
 }
 
 .link:hover::before,
 .link:focus::before {
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 1),
-    0 0 0.45em var(--neon-text);
-  box-shadow: inset 0 0 0.5em 0 var(--neon-text), 0 0 0.5em 0 var(--neon-text);
   opacity: 1;
 }
 
 .link:hover::after,
 .link:focus::after {
   opacity: 1;
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 1),
-    0 0 0.45em var(--neon-text);
-  box-shadow: inset 0 0 0.5em 0 var(--neon-text), 0 0 0.5em 0 var(--neon-text);
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: right center;
-  }
-
-  50% {
-    background-position: left center;
-  }
-
-  100% {
-    background-position: right center;
-  }
+  background-color: var(--clr-bg);
+  transition: opacity 100ms linear;
 }
 
 .link label {
   display: flex;
   flex-direction: row;
-  cursor: pointer;
+  justify-content: center;
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-4xs-3xs);
+  padding: 0 var(--space-2xs-xs);
   opacity: 1;
   align-items: center;
   text-decoration: none;
-  background-color: transparent;
-  color: var(--neon-text);
-  transition: box-shadow 0.3s;
+  background-color: var(--clr-bg);
+  color: var(--text-color);
   font-size: var(--step--1);
   user-select: none;
   white-space: nowrap;
-  border: 2px solid transparent;
+  border: 2px solid var(--clr-bg);
   border-radius: var(--btn-border-radius);
 }
 
 .link svg {
   width: var(--space-m-l);
   height: var(--space-m-l);
+  margin-right: var(--space-5xs-4xs);
   vertical-align: middle;
   stroke-linecap: round;
   stroke-linejoin: miter;
-  color: var(--neon-text);
+  color: var(--text-color);
   background-color: transparent;
   opacity: 1;
   display: inline-block;
@@ -430,7 +449,7 @@ header {
 }
 
 .link svg path {
-  fill: var(--neon-text);
+  fill: var(--text-color);
   transition: fill 0.3s, stroke 0.3s;
   stroke: var(--space-xs);
   background-color: transparent;
@@ -439,14 +458,14 @@ header {
 .link:hover svg {
   transform: scale(0.5);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
-  color: var(--neon-text);
+  color: var(--text-span);
   background-color: transparent;
 }
 
 .link:hover svg path {
-  fill: var(--neon-text);
+  fill: var(--text-span);
   transition: fill 0.3s, stroke 0.3s;
-  stroke: var(--neon-text);
+  stroke: var(--text-color);
   /* Or another color if you want */
   background-color: transparent;
 }
@@ -457,21 +476,9 @@ header {
   user-select: none;
   display: inline-block;
   vertical-align: middle;
-  padding: 0;
+  padding: 0 var(--space-s-m);
   background-color: transparent;
-  color: var(--neon-text);
-}
-
-.link:hover,
-.link:focus {
-  color: var(--neon-text);
-  padding: 0 var(--space-4xs-3xs);
-  transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
-  border: 2px solid transparent;
-  border-radius: var(--btn-border-radius);
-  outline: none;
-  /* Optional: adds a subtle outline on hover/focus */
-  box-shadow: 0 10px 10px var(--space-s-m) var(--shadow);
+  color: var(--text-color);
 }
 
 /* Initial hidden state */
@@ -479,7 +486,7 @@ header {
   opacity: 0;
   transform: translateX(150px);
   pointer-events: none;
-  padding: 0 var(--space-m-l);
+  padding: 0 var(--space-s-m);
   gap: var(--space-s);
   background-color: var(--base-color);
   color: var(--text-color);
@@ -501,7 +508,7 @@ header {
 /* When menu is open, show it */
 .dropdown.active>.color-picker.dropdown-menu {
   margin-top: var(--space-m-l);
-  padding: 0 var(--space-l-xl);
+  padding: 0 var(--space-s-m);
   opacity: 1;
   transform: translateX(0);
   pointer-events: all;
@@ -539,7 +546,7 @@ header {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-3xs-2xs);
   gap: var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
@@ -560,7 +567,7 @@ header {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-3xs-2xs);
   gap: var(--space-4xs-3xs);
   box-shadow: var(--shadow);
   opacity: 1;
@@ -587,7 +594,7 @@ header {
   position: relative;
   z-index: 1000;
   padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-4xs-3xs);
+  gap: var(--space-6xs-5xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -656,7 +663,7 @@ header {
   /*transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
    optional: adds ... if text is too long */
-  padding: 0 var(--space-xs-s);
+  padding: 0 var(--space-2xs-xs);
 }
 
 label:hover,
@@ -674,20 +681,30 @@ label:focus {
   gap: var(--space-xl-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  margin-block: var(--space-m-l);
+  background: var(--base-color);
+  /* Ensures background matches theme */
+  margin-block: var(--space-l-xl);
   user-select: none;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .content {
   display: flex;
   justify-content: center;
+  background: transparent;
+  /* No background, so blend modes work */
 }
 
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
-  mix-blend-mode: plus-lighter;
+  animation: show-hide var(--sp) ease 0s infinite alternate;
+  /*mix-blend-mode: plus-lighter;
+  color: var(--text-span);
+  /* Use accent color for neon effect */
+  text-shadow: 0 0 1em var(--clr-neon), 0 0 2em var(--clr-neon);
+  /* Optional: add a subtle glow */
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 @keyframes show-hide {
@@ -722,13 +739,20 @@ label:focus {
 .content-1 {
   display: flex;
   justify-content: center;
+  background: transparent;
+  /* No background, so blend modes work */
 }
 
 .content-1 div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
-  mix-blend-mode: plus-lighter;
+  animation: show-hide var(--sp) ease 0s infinite alternate;
+  /*mix-blend-mode: plus-lighter;
+  color: var(--text-span);
+  /* Use accent color for neon effect */
+  text-shadow: 0 0 1em var(--clr-neon), 0 0 2em var(--clr-neon);
+  /* Optional: add a subtle glow */
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 @keyframes show-hide {
@@ -999,7 +1023,7 @@ label:focus {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  margin-block: var(--space-2xs-xs);
+  margin-block: var(--space-3xs-2xs);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
@@ -1013,7 +1037,7 @@ label:focus {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  margin-block: var(--space-2xs-xs);
+  margin-block: var(--space-3xs-2xs);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
