@@ -313,7 +313,7 @@ header {
   pointer-events: all;
   top: var(--space-5xs-4xs);
   right: var(--space-4xs-3xs);
-  padding: 0 var(--space-4xs-3xs);
+  padding: var(--space-6xs-5xs) 0;
   gap: var(--space-4xs-3xs);
   background-color: var(--base-color);
   z-index: 1000;
@@ -327,9 +327,10 @@ header {
 
 .link {
   position: absolute;
-  top: var(--space-5xs-4xs);
+  top: var(--space-4xs-3xs);
   right: var(--space-4xs-3xs);
   display: inline-block;
+  padding: 0 var(--space-2xs-xs);
   cursor: pointer;
   text-decoration: none;
   color: var(--text-color);
@@ -399,12 +400,11 @@ header {
 .link label {
   display: flex;
   flex-direction: row;
-  cursor: pointer;
+  justify-content: center;
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-m-l);
-  gap: var(--space-4xs-3xs);
+  padding: 0 var(--space-2xs-xs);
   opacity: 1;
   align-items: center;
   text-decoration: none;
@@ -420,6 +420,7 @@ header {
 .link svg {
   width: var(--space-m-l);
   height: var(--space-m-l);
+  margin-right: var(--space-5xs-4xs);
   vertical-align: middle;
   stroke-linecap: round;
   stroke-linejoin: miter;
@@ -468,7 +469,7 @@ header {
   opacity: 0;
   transform: translateX(150px);
   pointer-events: none;
-  padding: 0 var(--space-m-l);
+  padding: 0 var(--space-s-m);
   gap: var(--space-s);
   background-color: var(--base-color);
   color: var(--text-color);
@@ -490,7 +491,7 @@ header {
 /* When menu is open, show it */
 .dropdown.active>.color-picker.dropdown-menu {
   margin-top: var(--space-m-l);
-  padding: 0 var(--space-l-xl);
+  padding: 0 var(--space-s-m);
   opacity: 1;
   transform: translateX(0);
   pointer-events: all;
@@ -528,7 +529,7 @@ header {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-3xs-2xs);
   gap: var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
@@ -549,7 +550,7 @@ header {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-3xs-2xs);
   gap: var(--space-4xs-3xs);
   box-shadow: var(--shadow);
   opacity: 1;
@@ -576,7 +577,7 @@ header {
   position: relative;
   z-index: 1000;
   padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-4xs-3xs);
+  gap: var(--space-6xs-5xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -645,7 +646,7 @@ header {
   /*transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
    optional: adds ... if text is too long */
-  padding: 0 var(--space-xs-s);
+  padding: 0 var(--space-2xs-xs);
 }
 
 label:hover,
