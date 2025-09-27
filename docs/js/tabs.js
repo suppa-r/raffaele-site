@@ -1,66 +1,59 @@
-const tabList = document.querySelector('[role="tablist"]');
-const tabs = tabList.querySelectorAll('[role="tab"]');
+// Improved tab logic and structure
 
-tabList.addEventListener('keydown', changeTabFocus);
+document.addEventListener("DOMContentLoaded", () => {
+    const tabList = document.querySelector('[role="tablist"]');
+    if (!tabList) return;
 
-tabs.forEach((tab) => {
-    tab.addEventListener('click', changeTabPanel);
-});
+    const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+    let tabFocus = tabs.findIndex(tab => tab.getAttribute("tabindex") === "0") || 0;
 
+    // Keyboard navigation
+    tabList.addEventListener('keydown', (e) => {
+        const LEFT = 37, RIGHT = 39;
+        if (![LEFT, RIGHT].includes(e.keyCode)) return;
 
-let tabFocus = 0;
-function changeTabFocus(e) {
-    const keydownLeft = 37;
-    const keydownRight = 39;
-    
-    if (e.keyCode === keydownLeft || e.keyCode === keydownRight) {
         tabs[tabFocus].setAttribute("tabindex", -1);
-    }
-    
-    if (e.keyCode === keydownRight) {
-        tabFocus++;
-        if (tabFocus >= tabs.length) {
-            tabFocus = 0;
+
+        if (e.keyCode === RIGHT) {
+            tabFocus = (tabFocus + 1) % tabs.length;
+        } else if (e.keyCode === LEFT) {
+            tabFocus = (tabFocus - 1 + tabs.length) % tabs.length;
         }
+
+        tabs[tabFocus].setAttribute("tabindex", 0);
+        tabs[tabFocus].focus();
+    });
+
+    // Click navigation
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            activateTab(e.currentTarget, tabs);
+        });
+    });
+
+    function activateTab(selectedTab, allTabs) {
+        // Deselect all tabs
+        allTabs.forEach(tab => {
+            tab.setAttribute("aria-selected", "false");
+            tab.setAttribute("tabindex", -1);
+        });
+
+        // Select clicked tab
+        selectedTab.setAttribute("aria-selected", "true");
+        selectedTab.setAttribute("tabindex", 0);
+        selectedTab.focus();
+
+        // Show/hide panels
+        const mainContainer = tabList.closest('[data-tabs-container]') || tabList.parentNode;
+        const targetPanelId = selectedTab.getAttribute("aria-controls");
+        if (!targetPanelId) return;
+
+        mainContainer.querySelectorAll('[role="tabpanel"]').forEach(panel => {
+            panel.setAttribute("hidden", true);
+        });
+
+        const targetPanel = mainContainer.querySelector(`#${targetPanelId}`);
+        if (targetPanel) targetPanel.removeAttribute("hidden");
     }
-    
-    if (e.keyCode === keydownLeft) {
-        tabFocus--;
-        if (tabFocus < 0) {
-            tabFocus = tabs.length - 1;
-        }
-    }
-    
-    tabs[tabFocus].setAttribute("tabindex", 0);
-    tabs[tabFocus].focus();
 }
-
-
-function changeTabPanel(e) {
-    const targetTab = e.target;
-    const targetPanel = targetTab.getAttribute("aria-controls");
-    const targetImage = targetTab.getAttribute("data-image");
-    
-    const tabContainer = targetTab.parentNode;
-    const mainContainer = tabContainer.parentNode;
-    
-    tabContainer
-        .querySelector('[aria-selected="true"]')
-        .setAttribute("aria-selected", false);
-        
-    targetTab.setAttribute("aria-selected", true);
-    
-    hideContent(mainContainer, '[role="tabpanel"]');
-    showContent(mainContainer, [`#${targetPanel}`]);
-    
-}
-
-function hideContent(parent, content) {
-    parent
-        .querySelectorAll(content)
-        .forEach((item) => item.setAttribute("hidden", true));
-}
-
-function showContent(parent, content) {
-     parent.querySelector(content).removeAttribute('hidden');
-}
+);
