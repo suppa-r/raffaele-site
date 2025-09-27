@@ -10,6 +10,10 @@
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
+  --bg-image:
+    url('../images/compressed/bg-dark-5.jpg');
+
+  --bg-opacity: 0.1;
 }
 
 [data-theme="light"] {
@@ -24,7 +28,10 @@
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
-
+  --bg-image:
+    url('../images/compressed/bg-light-2.jpg');
+  /* bottom image */
+  --bg-opacity: 1;
 }
 
 :root {
@@ -32,8 +39,6 @@
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
-  --bg-image: url('../images/I\ love\ you.jpg');
-  --bg-opacity: 0.4;
 
   /* Step -1: 13.3333px → 18.0045px */
   --step--1: clamp(0.8333rem, 0.7139rem + 0.5308cqi, 1.1253rem);
@@ -253,6 +258,7 @@
   }
 }
 
+
 html,
 body {
   font-family: var(--pt-serif-italic);
@@ -274,13 +280,11 @@ body {
     background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
-    opacity: var(--bg-opacity);
-    z-index: 1;
-    filter: blur(1px);
+    opacity: var(--bg-opacity, 1);
+    z-index: 0;
+    /*filter: blur(1px);*/
     pointer-events: none;
     transition: opacity 0.3s, filter 0.3s;
-    /* Optional: adds a slight blur to the background image */
-    mix-blend-mode: lighten;
   }
 }
 
@@ -289,6 +293,16 @@ body>* {
   container-type: inline-size;
   padding-inline: var(--page-pad-inline);
   margin-inline: auto;
+}
+
+/* Make sure your main content is above the background */
+body,
+html,
+.wrapper,
+header,
+main {
+  position: relative;
+  z-index: 1000;
 }
 
 /* Remove redundant spacing from body > * if .wrapper handles layout */
@@ -681,8 +695,6 @@ label:focus {
   gap: var(--space-xl-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  background: var(--base-color);
-  /* Ensures background matches theme */
   margin-block: var(--space-l-xl);
   user-select: none;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
@@ -992,6 +1004,7 @@ label:focus {
   user-select: none;
   overflow: hidden;
   padding-block: var(--space-xs-s);
+  z-index: 1000;
 }
 
 .text-with-animation {
