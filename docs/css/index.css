@@ -11,9 +11,13 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/compressed/bg-dark-5.jpg');
+    url('../images/compressed/background-destination-mobile.jpg');
 
-  --bg-opacity: 0.1;
+  /* bottom image */
+  --overlay {
+    border-image:
+      fill 1 linear-gradient(hsl(0, 0%, 97%), hsl(0, 0%, 8%));
+  }
 }
 
 [data-theme="light"] {
@@ -30,8 +34,12 @@
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
   --bg-image:
     url('../images/compressed/bg-light-2.jpg');
+
   /* bottom image */
-  --bg-opacity: 1;
+  --overlay {
+    border-image:
+      fill 1 linear-gradient(hsl(0, 0%, 100%), hsla(210, 5%, 77%, 0.6));
+  }
 }
 
 :root {
@@ -270,22 +278,18 @@ body {
   word-spacing: var(--word-space-content);
   min-height: 100dvh;
   height: 100%;
-  position: relative;
-  isolation: isolate;
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: var(--bg-image);
-    background-size: cover;
-    background-position: center;
-    opacity: var(--bg-opacity, 1);
-    z-index: 0;
-    /*filter: blur(1px);*/
-    pointer-events: none;
-    transition: opacity 0.3s, filter 0.3s;
-  }
+body {
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Overlay gradient using border-image */
+  border-image: var(--overlay);
+  -webkit-border-image: var(--overlay);
 }
 
 body>* {
@@ -296,8 +300,7 @@ body>* {
 }
 
 /* Make sure your main content is above the background */
-body,
-html,
+
 .wrapper,
 header,
 main {
