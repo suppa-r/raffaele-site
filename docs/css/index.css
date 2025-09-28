@@ -2,7 +2,7 @@
   --base-color: #000;
   --text-color: #fff;
   --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsla(187, 45%, 67%, 0.74);
+  --clr-neon: hsl(191, 9%, 35%);
 
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
@@ -11,12 +11,12 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/compressed/background-destination-mobile.jpg');
+    url('../images/compressed/header-desktop.jpg');
 
   /* bottom image */
   --overlay {
     border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 97%, 0), hsla(0, 0%, 97%, 0));
+      fill 1 linear-gradient(hsla(0, 0%, 97%, .7), hsla(0, 0%, 97%, .7));
   }
 }
 
@@ -24,8 +24,7 @@
   --base-color: #fff;
   --text-color: #222;
   --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsla(187, 45%, 67%, 0.74);
-
+  --clr-neon: hsla(189, 4%, 63%, 0.733);
   --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
@@ -698,7 +697,7 @@ label:focus {
   gap: var(--space-xl-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  margin-block: var(--space-l-xl);
+  margin-block: var(--space-m-l);
   user-select: none;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
@@ -1003,7 +1002,7 @@ label:focus {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-s-m);
+  margin-top: var(--space-xs-s);
   user-select: none;
   overflow: hidden;
   padding-block: var(--space-xs-s);
@@ -1033,13 +1032,14 @@ label:focus {
   padding-inline: var(--page-pad-inline);
 }
 
-.text-with-animation-4 {
+.text-with-animation-4,
+.text-with-animation-5 {
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  margin-block: var(--space-3xs-2xs);
+  margin-block: var(--space-6xs-5xs);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
@@ -1047,13 +1047,13 @@ label:focus {
 
 }
 
-.text-with-animation-5 {
+.text-with-animation-6 {
   font-size: var(--step-0);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   text-align: center;
-  margin-block: var(--space-3xs-2xs);
+  margin-top: var(--space-xs-s);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
