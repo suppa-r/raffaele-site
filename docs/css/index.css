@@ -16,7 +16,7 @@
   /* bottom image */
   --overlay {
     border-image:
-      fill 1 linear-gradient(hsl(0, 0%, 97%), hsl(0, 0%, 8%));
+      fill 1 linear-gradient(hsla(0, 0%, 97%, 0), hsla(0, 0%, 97%, 0));
   }
 }
 
