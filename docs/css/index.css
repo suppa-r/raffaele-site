@@ -3,7 +3,7 @@
   --text-color: #fff;
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
-
+  --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
   --shadow: 0 30px 100px rgb(223, 223, 233);
@@ -25,6 +25,7 @@
   --text-color: #222;
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsla(189, 4%, 63%, 0.733);
+  --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
@@ -1067,7 +1068,7 @@ label:focus {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  background-color: var(--base-color);
+  background-color: var(--clr-button);
   color: var(--text-color);
   border-radius: 50%;
   box-shadow: var(--shadow);
