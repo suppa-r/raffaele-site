@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdownMenu = document.querySelector('.color-picker.dropdown-menu');
   const intro = document.querySelector('.intro');
   const h = document.querySelector('.h');
-  const nav = document.querySelector('nav');
+  const nav = document.querySelector('.nav-links');
   const themeRadios = document.querySelectorAll('.theme-list-item input[type="radio"]');
 
   // Helpers
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (open) {
       if (h) h.style.display = 'none';
       if (nav) nav.style.display = 'none';
+      if (intro) intro.style.display = 'none';
       // Do NOT hide intro if dropdown is inside intro!
     } else {
       if (h) h.style.display = '';

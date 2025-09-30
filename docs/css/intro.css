@@ -2,28 +2,44 @@
   --base-color: #000;
   --text-color: #fff;
   --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsla(187, 45%, 67%, 0.74);
-
+  --clr-neon: hsl(191, 9%, 35%);
+  --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
   --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
+  --bg-image:
+    url('../images/compressed/header-desktop.jpg');
+
+  /* bottom image */
+  --overlay {
+    border-image:
+      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 97%, 0.5));
+  }
 }
 
 [data-theme="light"] {
   --base-color: #fff;
-  --text-color: #222;
+  --text-color: #000;
   --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsla(187, 45%, 67%, 0.74);
-
+  --clr-neon: hsla(189, 4%, 63%, 0.733);
+  --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
+  --bg-image:
+    url('../images/compressed/bg-light-2.jpg');
+
+  /* bottom image */
+  --overlay {
+    border-image:
+      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(210, 5%, 77%, 0.5));
+  }
 }
 
 :root {
@@ -250,6 +266,7 @@
   }
 }
 
+
 html,
 body {
   font-family: var(--pt-serif-italic);
@@ -263,11 +280,33 @@ body {
   height: 100%;
 }
 
+body {
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Overlay gradient using border-image */
+  border-image: var(--overlay);
+  -webkit-border-image: var(--overlay);
+}
+
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
   padding-inline: var(--page-pad-inline);
   margin-inline: auto;
+}
+
+/* Make sure your main content is above the background */
+
+.wrapper,
+header,
+main {
+  position: relative;
+  padding-inline: var(--page-pad-inline);
+  z-index: 1000;
 }
 
 /* Remove redundant spacing from body > * if .wrapper handles layout */
@@ -280,21 +319,15 @@ body>* {
 
 header {
   display: flex;
-  flex-direction: row;
-  /* default, but explicit */
-  align-items: center;
-  /* vertically center items */
-  justify-content: space-between;
+  justify-content: flex-start;
   /* or 'flex-start' if you want them packed left */
-  gap: var(--space-m, 1.5rem);
-  /* optional: space between items */
-  padding-inline: var(--page-pad-inline);
 }
 
 header .h {
   padding: var(--space-xs) 0 0 var(--space-l);
   font-size: var(--step--1);
-  letter-spacing: 0.03em;
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
   /* Adds a bit of spacing between letters */
   color: var(--text-color);
 }
@@ -302,7 +335,7 @@ header .h {
 header .h span {
   color: var(--text-span);
   /* Uses your accent color variable */
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   /* Slightly larger for emphasis */
   padding: var(--space-xs) 0 0 var(--space-3xs);
 }
@@ -313,7 +346,7 @@ header .bars {
   width: 20px;
   border-radius: 2px;
   background-color: #888888;
-  margin-left: var(--space-s);
+  margin-left: var(--space-xs-s);
   display: none;
   cursor: pointer;
   z-index: 2000;
@@ -322,7 +355,7 @@ header .bars {
 
 header .bars.is-active {
   transform-origin: center;
-  padding: 0 var(--space-xs) 0 var(--space-2xs);
+  padding: 0 var(--space-xs-s) 0 var(--space-3xs-2xs);
   transition: transform 0.5s ease-in-out;
   transform: rotate(45deg);
   cursor: pointer;
@@ -350,55 +383,76 @@ header .bars::before {
   top: 7px;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  gap: var(--space-s);
-  background-color: var(--base-color);
-  z-index: 1000;
-  padding: var(--space-2xs) var(--space-9xl) 0 0;
-  margin-left: auto;
-}
-
 .nav-links {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: var(--space-m);
+  gap: var(--space-s-m);
   list-style: none;
-  margin: 0;
-  /*padding: var(--space-2xs) 0 0 var(--space-3xl);*/
+  padding: 0 0 0 var(--space-3xl);
 }
 
 .nav-links li {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  transition: transform 0.3s, opacity 0.3s;
+  cursor: pointer;
 }
 
 .nav-links li a {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  align-items: center;
   justify-content: center;
+  gap: var(--space-6xs-5xs);
+  color: var(--text-color);
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  font-size: var(--step--1);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  text-align: center;
 }
 
 .nav-links li a span {
   font-size: var(--step--1);
-  letter-spacing: var(--space-3xs);
-  margin-top: var(--space-3xs);
+  letter-spacing: var(--letter-space-content);
+
 }
 
 .nav-links li svg {
-  height: var(--space-l);
-  width: var(--space-l);
+  height: var(--space-m-l);
+  width: var(--space-m-l);
   object-fit: cover;
-  border-radius: 50%;
-  margin-inline: auto;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
+  color: var(--text-color);
+  background-color: transparent;
+  opacity: 1;
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  /* Add this line */
+  user-select: none;
+  pointer-events: none;
+  /* Prevents SVG from capturing pointer events */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  stroke-width: var(--space-xs-s);
 }
-
-/* creates focus not by highlighting or promoting
-  but by demoting what isn't being shown interest*/
 
 ul {
   @media (hover) {
@@ -455,16 +509,12 @@ ul {
   padding: 0 var(--space-4xs-3xs);
   color: var(--clr-neon);
   transition: box-shadow 0.3s;
-
   user-select: none;
   border: var(--clr-neon) 2px solid;
-
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
     0 0 0.45em var(--clr-neon);
   box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
-
   position: relative;
-
 }
 
 @keyframes gradientShift {
@@ -755,8 +805,8 @@ label:focus {
 .intro {
   text-align: center;
   padding-inline: var(--page-pad-inline);
-  padding-top: var(--space-2xl-3xl);
-  z-index: 1;
+  padding-top: var(--space-l-xl);
+  z-index: 1000;
 }
 
 .intro p {
@@ -775,23 +825,24 @@ label:focus {
 .intro .ya {
   color: var(--text-span);
   font-size: var(--step-0);
-  letter-spacing: var(--space-6xs);
-  margin-block: var(--space-4xs);
+  letter-spacing: var(--letter-space-content);
+  margin-block: var(--space-4xs-3xs);
 }
 
 .intro .ya-1 {
   color: var(--text-color);
   font-size: var(--step-1);
-  letter-spacing: var(--space-6xs);
-  margin-block: var(--space-s);
+  letter-spacing: var(--letter-space-content);
+  margin-block: var(--space-4xs-3xs);
 }
 
 .wrapper-gradient-text {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   margin: 0;
   /* Remove default margins */
   padding: 0;
   /* Remove default padding */
+  padding-top: var(--space-2xs-xs);
   text-align: center;
   /* Align text to the left */
   text-shadow: 0px 0px 0px rgb(255, 255, 255);
@@ -823,7 +874,8 @@ label:focus {
   }
 }
 
-@container (max-width: 600px) {
+
+/*@container (max-width: 600px) {
   .dropdown-menu {
     position: absolute;
     top: var(--space-xs);
@@ -902,9 +954,9 @@ label:focus {
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(.3s * var(--i));
-    /* Apply delay only when open */
+    /* Apply delay only when open *
   }
-}
+}*/
 
 
 
