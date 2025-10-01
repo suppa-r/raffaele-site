@@ -19,33 +19,35 @@
   /* or any color you want for the bottom */
   --body-gradient-top: #d4c8c88e;
   /* or any color you want for the top */
-  --body-grid-line: rgba(255, 255, 255, 0.418);
+  --body-grid-line: rgba(255, 255, 255, 0.623);
   /* subtle grid lines */
 }
 
 [data-theme="light"] {
-  --base-color: #000;
-  --text-color: #fff;
+  --base-color: #f1eaea;
+  --text-color: #000000;
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
-  --clr-button: hsla(0, 0%, 100%, 0);
+  --clr-button: hsla(0, 0%, 100%, 0.719);
 
-  --shadow: 0 30px 100px rgb(223, 223, 233);
+  --shadow: 0 30px 100px rgb(0, 0, 0);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
-  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
+  --text-shadow: 0 0 0.125em hsla(0, 0%, 0%, 0.89), 0 0 0.45em currentColor;
 
-  --shadow-color: rgba(255, 255, 255, 0.884);
+  --shadow-color: rgba(255, 255, 255, 0);
   --shadow-color2: #567075d3;
   --shadow-color3: #53647088;
 
-  /* dark mode background gradient */
-  --body-gradient-bottom: #eee8e828;
-  /* or any color you want for the bottom */
-  --body-gradient-top: #d4c8c88e;
-  /* or any color you want for the top */
-  --body-grid-line: rgba(255, 255, 255, 0.418);
-  /* subtle grid lines */
+  /* Light mode background gradient */
+  --body-gradient-top: hsl(0, 0%, 100%);
+  /* almost white */
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0.637);
+  /* light blue/gray */
+
+  /* Light mode grid line color */
+  --body-grid-line: rgb(0, 0, 0);
+  /* subtle dark lines */
 }
 
 :root {
@@ -104,6 +106,9 @@
   --space-9xl: clamp(12rem, 9.5455rem + 10.9091cqi, 18rem);
 
   /* One-up pairs */
+
+  /* Space 7xs-6xs */
+  --space-7xs-6xs: clamp(0.025rem, 0.0021rem + 0.033cqi, 0.045rem);
   /* Space 6xs-5xs: 1px → 2px */
   --space-6xs-5xs: clamp(0.0625rem, 0.0241rem + 0.2273cqi, 0.125rem);
   /* Space 5xs-4xs: 2px → 5px */
@@ -154,6 +159,7 @@
   --page-pad-block: 0;
   --letter-space-content: var(--space-6xs-5xs);
   --word-space-content: var(--space-5xs-4xs);
+  --padding-block: var(--space-7xs-6xs);
 }
 
 @supports (selector(::view-transition)) {
@@ -278,6 +284,7 @@ body {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   color: var(--text-color);
+  background-color: var(--base-color);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   min-height: 100dvh;
@@ -285,18 +292,10 @@ body {
 }
 
 body {
-  background: var(--base-color);
-  overflow-x: hidden;
+  overflow: hidden;
   scroll-behavior: smooth;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   background-repeat: repeat;
-}
-
-body>* {
-  /* Ensure all direct children of body are treated as containers */
-  container-type: inline-size;
-  padding-inline: var(--page-pad-inline);
-  margin-inline: auto;
 }
 
 body::before {
@@ -314,16 +313,26 @@ body::before {
       var(--body-gradient-top) 100%),
     linear-gradient(90deg,
       var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 100% 100% / 30px 30px repeat,
+      transparent 1px 30px) 0 0 / 30px 30px repeat,
     linear-gradient(180deg,
       var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 100% 100% / 30px 30px repeat;
+      transparent 1px 30px) 0 0 / 30px 30px repeat;
+  /* Use mask-image for better browser support and correct direction */
   mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
   transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
     background-position 0.3s ease-in-out;
-  z-index: -1000;
+  z-index: -100;
   overflow: hidden;
+}
+
+body>* {
+  /* Ensure all direct children of body are treated as containers */
+  container-type: inline-size;
+  padding-inline: var(--page-pad-inline);
+  margin-inline: auto;
 }
 
 /* Make sure your main content is above the background */
@@ -351,7 +360,7 @@ header {
 }
 
 header .h {
-  padding: var(--space-xs) 0 0 var(--space-l);
+  padding: var(--space-5xs-4xs) 0 0 var(--space-3xs-2xs);
   font-size: var(--step--1);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
@@ -364,7 +373,7 @@ header .h span {
   /* Uses your accent color variable */
   font-size: var(--step--1);
   /* Slightly larger for emphasis */
-  padding: var(--space-xs) 0 0 var(--space-3xs);
+  padding: var(--space-5xs-4xs) 0 0 0;
 }
 
 header .bars {
@@ -416,7 +425,7 @@ header .bars::before {
   justify-content: center;
   gap: var(--space-s-m);
   list-style: none;
-  padding: 0 0 0 var(--space-3xl);
+  padding: var(--space-4xs-3xs) 0 0 var(--space-3xl);
 }
 
 .nav-links li {
@@ -869,6 +878,7 @@ label:focus {
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  padding-block: var(--padding-block);
 }
 
 .intro p span {
@@ -886,9 +896,16 @@ label:focus {
 
 .intro .ya-1 {
   color: var(--text-color);
+  font-size: var(--step-0);
+  letter-spacing: var(--letter-space-content);
+  margin-block: var(--space-6xs-5xs);
+}
+
+.intro .ya-2 {
+  color: var(--text-color);
   font-size: var(--step-1);
   letter-spacing: var(--letter-space-content);
-  margin-block: var(--space-4xs-3xs);
+  margin-block: var(--space-2xs-xs);
 }
 
 .wrapper-gradient-text {
@@ -910,7 +927,7 @@ label:focus {
   color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
   /* Use theme shadow for fallback */
-  text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.853));
+  text-shadow: var(--text-shadow, 0px 0px 0px rgba(255, 255, 255, 0.853));
 }
 
 @keyframes shadowDrip {
