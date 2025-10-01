@@ -305,6 +305,7 @@ body>* {
 header,
 main {
   position: relative;
+  padding-inline: var(--page-pad-inline);
   z-index: 1000;
 }
 

@@ -4,42 +4,48 @@
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
-  --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
   --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
-  --bg-image:
-    url('../images/compressed/header-desktop.jpg');
 
-  /* bottom image */
-  --overlay {
-    border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 97%, 0.5));
-  }
+  --shadow-color: rgba(255, 255, 255, 0.884);
+  --shadow-color2: #567075d3;
+  --shadow-color3: #53647088;
+
+  /* dark mode background gradient */
+  --body-gradient-bottom: #eee8e828;
+  /* or any color you want for the bottom */
+  --body-gradient-top: #d4c8c88e;
+  /* or any color you want for the top */
+  --body-grid-line: rgba(255, 255, 255, 0.418);
+  /* subtle grid lines */
 }
 
 [data-theme="light"] {
-  --base-color: #fff;
-  --text-color: #000;
+  --base-color: #000;
+  --text-color: #fff;
   --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsla(189, 4%, 63%, 0.733);
-  --clr-button: hsla(0, 0%, 100%, 0.671);
-  --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
+  --clr-neon: hsl(191, 9%, 35%);
+  --clr-button: hsla(0, 0%, 100%, 0);
 
-  --shadow: 0 30px 100px rgba(223, 223, 233, 0);
+  --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
-  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
-  --bg-image:
-    url('../images/compressed/bg-light-2.jpg');
+  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
 
-  /* bottom image */
-  --overlay {
-    border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(210, 5%, 77%, 0.5));
-  }
+  --shadow-color: rgba(255, 255, 255, 0.884);
+  --shadow-color2: #567075d3;
+  --shadow-color3: #53647088;
+
+  /* dark mode background gradient */
+  --body-gradient-bottom: #eee8e828;
+  /* or any color you want for the bottom */
+  --body-gradient-top: #d4c8c88e;
+  /* or any color you want for the top */
+  --body-grid-line: rgba(255, 255, 255, 0.418);
+  /* subtle grid lines */
 }
 
 :root {
@@ -266,14 +272,12 @@
   }
 }
 
-
 html,
 body {
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   color: var(--text-color);
-  background: var(--base-color);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   min-height: 100dvh;
@@ -281,15 +285,11 @@ body {
 }
 
 body {
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* Overlay gradient using border-image */
-  border-image: var(--overlay);
-  -webkit-border-image: var(--overlay);
+  background: var(--base-color);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  background-repeat: repeat;
 }
 
 body>* {
@@ -299,8 +299,35 @@ body>* {
   margin-inline: auto;
 }
 
-/* Make sure your main content is above the background */
+body::before {
+  opacity: 1;
+  pointer-events: none;
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:
+    linear-gradient(to bottom,
+      var(--body-gradient-bottom) 0%,
+      var(--body-gradient-top) 100%),
+    linear-gradient(90deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px repeat,
+    linear-gradient(180deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px repeat;
+  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: -1000;
+  overflow: hidden;
+}
 
+/* Make sure your main content is above the background */
+body,
 .wrapper,
 header,
 main {
@@ -501,61 +528,101 @@ ul {
 }
 
 .link {
-  all: revert;
+  position: absolute;
+  top: var(--space-4xs-3xs);
+  right: var(--space-4xs-3xs);
   display: inline-block;
-  border-radius: var(--btn-border-radius);
-  text-decoration: none;
+  padding: 0 var(--space-2xs-xs);
   cursor: pointer;
-  padding: 0 var(--space-4xs-3xs);
-  color: var(--clr-neon);
-  transition: box-shadow 0.3s;
-  user-select: none;
-  border: var(--clr-neon) 2px solid;
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
-    0 0 0.45em var(--clr-neon);
-  box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
-  position: relative;
+  text-decoration: none;
+  color: var(--text-color);
+  border: var(--text-color) 0.125em solid;
+  border-radius: var(--btn-border-radius);
+  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
+  box-shadow: inset 0 0 5em 0 var(--clr-neon), 0 0 5em 0 var(--clr-neon);
+  background: var(--clr-neon);
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: right center;
-  }
+.link::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  color: var(--text-color);
+  background: var(--clr-bg);
+  transition: all 100ms linear alternate;
+  top: var(--space-m-l);
+  right: var(--space-4xs-3xs);
+  width: 100%;
+  height: 100%;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.1);
+  filter: blur(.5em);
+  opacity: .7;
+}
 
-  50% {
-    background-position: left center;
-  }
+.link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 5em 0 var(--clr-neon);
+  opacity: 0;
+  background-color: var(--clr-bg);
+  z-index: -1;
+  transition: opacity 100ms linear;
+  border-radius: var(--btn-border-radius);
+}
 
-  100% {
-    background-position: right center;
-  }
+.link:hover,
+.link:focus {
+  color: var(--text-color);
+  padding: 0 var(--space-4xs-3xs);
+  transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
+  border: 2px solid transparent;
+  border-radius: var(--btn-border-radius);
+  outline: var(--clr-neon) 0.125em solid;
+  box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  background-color: var(--clr-bg);
+  /* Optional: adds a subtle outline on hover/focus */
+}
+
+.link:hover::before,
+.link:focus::before {
+  opacity: 1;
+}
+
+.link:hover::after,
+.link:focus::after {
+  opacity: 1;
+  background-color: var(--clr-bg);
+  transition: opacity 100ms linear;
 }
 
 .link label {
   display: flex;
   flex-direction: row;
-  cursor: pointer;
+  justify-content: center;
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-4xs-3xs);
+  padding: 0 var(--space-2xs-xs);
   opacity: 1;
   align-items: center;
   text-decoration: none;
-  background-color: transparent;
+  background-color: var(--clr-bg);
   color: var(--text-color);
-  transition: box-shadow 0.3s;
   font-size: var(--step--1);
   user-select: none;
   white-space: nowrap;
-  border: 2px solid transparent;
+  border: 2px solid var(--clr-bg);
   border-radius: var(--btn-border-radius);
 }
 
 .link svg {
   width: var(--space-m-l);
   height: var(--space-m-l);
+  margin-right: var(--space-5xs-4xs);
   vertical-align: middle;
   stroke-linecap: round;
   stroke-linejoin: miter;
@@ -576,7 +643,7 @@ ul {
 .link:hover svg {
   transform: scale(0.5);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
-  color: var(--text-color);
+  color: var(--text-span);
   background-color: transparent;
 }
 
@@ -594,21 +661,9 @@ ul {
   user-select: none;
   display: inline-block;
   vertical-align: middle;
-  padding: 0;
+  padding: 0 var(--space-s-m);
   background-color: transparent;
   color: var(--text-color);
-}
-
-.link:hover,
-.link:focus {
-  color: var(--text-color);
-  padding: 0 var(--space-4xs-3xs);
-  transition: color 0.3s, box-shadow 0.1s, background-color 0.3s;
-  border: 2px solid transparent;
-  border-radius: var(--btn-border-radius);
-  outline: none;
-  /* Optional: adds a subtle outline on hover/focus */
-  box-shadow: 0 10px 10px var(--space-s-m) var(--shadow);
 }
 
 /* Initial hidden state */
@@ -616,7 +671,7 @@ ul {
   opacity: 0;
   transform: translateX(150px);
   pointer-events: none;
-  padding: 0 var(--space-m-l);
+  padding: 0 var(--space-s-m);
   gap: var(--space-s);
   background-color: var(--base-color);
   color: var(--text-color);
@@ -638,7 +693,7 @@ ul {
 /* When menu is open, show it */
 .dropdown.active>.color-picker.dropdown-menu {
   margin-top: var(--space-m-l);
-  padding: 0 var(--space-l-xl);
+  padding: 0 var(--space-s-m);
   opacity: 1;
   transform: translateX(0);
   pointer-events: all;
@@ -676,7 +731,7 @@ ul {
   position: relative;
   z-index: 1000;
   pointer-events: all;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-3xs-2xs);
   gap: var(--space-4xs-3xs);
   align-items: center;
   text-decoration: none;
@@ -697,7 +752,7 @@ ul {
   flex-direction: row;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
+  padding: 0 var(--space-3xs-2xs);
   gap: var(--space-4xs-3xs);
   box-shadow: var(--shadow);
   opacity: 1;
@@ -724,7 +779,7 @@ ul {
   position: relative;
   z-index: 1000;
   padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-4xs-3xs);
+  gap: var(--space-6xs-5xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -793,7 +848,7 @@ ul {
   /*transition: box-shadow 0.3s, outline 0.3s;
   box-shadow: var(--shadow);
    optional: adds ... if text is too long */
-  padding: 0 var(--space-xs-s);
+  padding: 0 var(--space-2xs-xs);
 }
 
 label:hover,
@@ -845,32 +900,30 @@ label:focus {
   padding-top: var(--space-2xs-xs);
   text-align: center;
   /* Align text to the left */
-  text-shadow: 0px 0px 0px rgb(255, 255, 255);
+  text-shadow: 100px 100px 100px rgb(255, 255, 255);
 }
 
 .text-layer {
-  background: linear-gradient(0deg,
-      rgb(213, 223, 230),
-      rgb(78, 115, 136),
-      rgba(65, 90, 105, 0.6),
-      rgba(159, 189, 206, 0.534));
+  background: var(--gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
-  text-shadow: 0px 15px 0px rgba(255, 255, 255, 0.853);
+  /* Use theme shadow for fallback */
+  text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.853));
 }
 
 @keyframes shadowDrip {
   0% {
-    text-shadow: 0px 0px 0px var(--shadow-color, rgba(255, 255, 255, 0.853));
+    text-shadow: 0px 0px 0px var(--shadow-color),
+      0px 0px 0px var(--shadow-color2),
+      0px 0px 0px var(--shadow-color3);
   }
 
   100% {
-    text-shadow:
-      0px 5px 10px var(--shadow-color, rgba(255, 255, 255, 0.853)),
-      0px 15px 20px var(--shadow-color2, rgb(255, 255, 255)),
-      0px 25px 5px var(--shadow-color3, rgb(232, 235, 238));
+    text-shadow: 0px 50px 100px var(--shadow-color),
+      0px 15px 20px var(--shadow-color2),
+      0px 25px 5px var(--shadow-color3);
   }
 }
 
