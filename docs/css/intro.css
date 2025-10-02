@@ -5,6 +5,9 @@
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
 
+
+  --bars: #888888;
+
   --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
@@ -29,6 +32,8 @@
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0.719);
+
+  --bars: #181616;
 
   --shadow: 0 30px 100px rgb(0, 0, 0);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
@@ -337,6 +342,7 @@ body>* {
 /* Make sure your main content is above the background */
 body,
 .wrapper,
+.intro,
 header,
 main {
   position: relative;
@@ -355,67 +361,99 @@ main {
 header {
   display: flex;
   justify-content: flex-start;
-  /* or 'flex-start' if you want them packed left */
+  /* Align items to the left */
+  font-size: var(--step--1);
 }
 
-header .h {
-  padding: var(--space-5xs-4xs) 0 0 var(--space-3xs-2xs);
-  font-size: var(--step--1);
+.title .h {
+  padding: var(--space-xs-s) 0 0 var(--space-xl-2xl);
+
   letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
   /* Adds a bit of spacing between letters */
   color: var(--text-color);
 }
 
-header .h span {
+.title .h span {
   color: var(--text-span);
   /* Uses your accent color variable */
-  font-size: var(--step--1);
   /* Slightly larger for emphasis */
-  padding: var(--space-5xs-4xs) 0 0 0;
+  padding: var(--space-2xs-xs) 0 0 0;
 }
 
-header .bars {
-  position: relative;
-  height: 3px;
-  width: 20px;
-  border-radius: 2px;
-  background-color: #888888;
-  margin-left: var(--space-xs-s);
+.burger-check {
   display: none;
-  cursor: pointer;
-  z-index: 2000;
-  /* Ensure it's above the nav links */
 }
 
-header .bars.is-active {
-  transform-origin: center;
-  padding: 0 var(--space-xs-s) 0 var(--space-3xs-2xs);
-  transition: transform 0.5s ease-in-out;
-  transform: rotate(45deg);
+.burger {
+  display: none;
+  position: fixed;
+  top: 1.5%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  width: var(--space-l-xl);
+  height: var(--space-s-m);
+  background: none;
+  color: var(--text-color);
+  padding: 0;
   cursor: pointer;
-  z-index: 2000;
-  /* Ensure it's above the nav links */
+  z-index: 300;
+  border: none;
 }
 
-header .bars::after,
-header .bars::before {
-  position: absolute;
-  content: "";
-  height: 3px;
-  left: 0;
-  width: 20px;
+.burger span {
+  display: block;
+  width: 100%;
+  height: var(--burger-thickness, 4px);
+  background: currentColor;
+  margin: 3px 0;
   border-radius: 2px;
-  background: #888888;
-  cursor: pointer;
+  transition: 0.3s;
+  color: var(--text-color);
 }
 
-header .bars::after {
-  bottom: 7px;
+.burger::-moz-focus-inner {
+  border: 0;
+  padding: 0;
 }
 
-header .bars::before {
-  top: 7px;
+.burger span {
+  display: block;
+  width: 100%;
+  height: var(--burger-thickness, 4px);
+  background: currentColor;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.burger::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.burger-check:checked~.burger {
+  border-bottom: var(--burger-thickness) solid transparent;
+  transition: transform 0.5s, top 0.5s, opacity 0.5s;
+  -webkit-transition: border-bottom 1s ease-in-out;
+}
+
+/* Navigation */
+.nav-links {
+  margin-left: var(--space-xl-2xl);
+  /* Adjust this value as needed */
+  margin-right: 0;
+  /* Remove or reduce margin-right */
+  padding-block: var(--space-2xs-xs);
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.burger-check:checked~.nav-links {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.4s, max-height 0.5s ease-in;
+  max-height: 100dvh;
 }
 
 .nav-links {
@@ -424,7 +462,7 @@ header .bars::before {
   justify-content: center;
   gap: var(--space-s-m);
   list-style: none;
-  padding: var(--space-4xs-3xs) 0 0 var(--space-3xl);
+  padding: var(--space-4xs-3xs) 0 0 var(--space-3xl-4xl);
 }
 
 .nav-links li {
@@ -505,6 +543,23 @@ ul {
   }
 }
 
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  pointer-events: all;
+  top: var(--space-l-xl);
+  right: var(--space-4xs-3xs);
+  gap: var(--space-4xs-3xs);
+  background-color: var(--base-color);
+  z-index: 1000;
+  font-size: var(--step--1);
+  color: var(--text-color);
+  opacity: 1;
+  user-select: none;
+  border: 3px solid transparent;
+  border-radius: var(--btn-border-radius);
+}
+
 /* Ensure the dropdown menu is visible when active */
 .dropdown-menu {
   opacity: 0;
@@ -517,23 +572,7 @@ ul {
   z-index: 1000;
 }
 
-.dropdown {
-  position: absolute;
-  display: inline-block;
-  pointer-events: all;
-  top: var(--space-5xs-4xs);
-  right: var(--space-4xs-3xs);
-  padding: var(--space-6xs-5xs) 0;
-  gap: var(--space-4xs-3xs);
-  background-color: var(--base-color);
-  z-index: 1000;
-  font-size: var(--step--1);
-  color: var(--text-color);
-  opacity: 1;
-  user-select: none;
-  border: 3px solid transparent;
-  border-radius: var(--btn-border-radius);
-}
+
 
 .link {
   position: absolute;
@@ -868,7 +907,7 @@ label:focus {
 .intro {
   text-align: center;
   padding-inline: var(--page-pad-inline);
-  padding-top: var(--space-l-xl);
+  padding-top: var(--space-xl-2xl);
   z-index: 1000;
 }
 
@@ -944,28 +983,9 @@ label:focus {
 }
 
 @container (max-width: 600px) {
-  .dropdown-menu {
-    position: absolute;
-    top: var(--space-xs);
-    right: var(--space-xs);
-    z-index: 2000;
-  }
 
-  header .bars {
+  .burger {
     display: block;
-    transition: 0.5s;
-    margin: var(--space-2xs) 0 0 0;
-  }
-
-  header .bars.is-active {
-    transform: rotate(45deg);
-    transition: 0.5s;
-    margin: var(--space-2xs) 0 0 0;
-  }
-
-  nav {
-    justify-content: flex-end;
-    padding: var(--space-3xs) var(--space-s) 0 0;
   }
 
   .nav-links {
