@@ -6,7 +6,7 @@
   --clr-button: hsla(0, 0%, 100%, 0);
 
 
-  --bars: #888888;
+  --bars: rgba(255, 255, 255, 0.733);
 
   --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
@@ -27,9 +27,9 @@
 }
 
 [data-theme="light"] {
-  --base-color: #f1eaea;
-  --text-color: #000000;
-  --text-span: hsla(187, 45%, 67%, 0.74);
+  --base-color: rgb(233, 225, 225);
+  --text-color: rgb(0, 0, 0);
+  --text-span: rgb(0, 0, 0);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0.719);
 
@@ -58,7 +58,6 @@
   --sp: 5s;
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-
 
   /* Step -1: 13.3333px → 18.0045px */
   --step--1: clamp(0.8333rem, 0.7139rem + 0.5308cqi, 1.1253rem);
@@ -162,7 +161,7 @@
   --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
   --letter-space-content: var(--space-6xs-5xs);
-  --word-space-content: var(--space-5xs-4xs);
+  --word-space-content: var(--space-7xs-6xs);
   --padding-block: var(--space-7xs-6xs);
 }
 
@@ -291,8 +290,11 @@ body {
   background-color: var(--base-color);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  /* or word-break: break-word; for older browsers */
+  padding-block: var(--padding-block);
   min-height: 100dvh;
-  height: 100%;
 }
 
 body {
@@ -313,48 +315,34 @@ body::before {
   left: 0;
   background:
     linear-gradient(to bottom,
-      var(--body-gradient-bottom) 0%,
-      var(--body-gradient-top) 100%),
+      var(--body-gradient-top) 0%,
+      var(--body-gradient-bottom) 100%),
     linear-gradient(90deg,
       var(--body-grid-line) 0 1px,
       transparent 1px 30px) 0 0 / 30px 30px repeat,
     linear-gradient(180deg,
       var(--body-grid-line) 0 1px,
       transparent 1px 30px) 0 0 / 30px 30px repeat;
-  /* Use mask-image for better browser support and correct direction */
   mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
     background-position 0.3s ease-in-out;
-  z-index: -100;
+  z-index: 0;
   overflow: hidden;
 }
 
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
-  padding-inline: var(--page-pad-inline);
   margin-inline: auto;
-}
-
-/* Make sure your main content is above the background */
-body,
-.wrapper,
-.intro,
-header,
-main {
-  position: relative;
-  padding-inline: var(--page-pad-inline);
-  z-index: 1000;
 }
 
 /* Remove redundant spacing from body > * if .wrapper handles layout */
 .wrapper {
   margin-inline: auto;
   min-height: 100dvh;
-  height: 100%;
   overflow: hidden;
 }
 
@@ -365,11 +353,21 @@ header {
   font-size: var(--step--1);
 }
 
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  letter-spacing: var(--space-5xs-4xs);
+  user-select: none;
+  transition: transform 0.3s, opacity 0.3s;
+  color: var(--text-color);
+}
+
 .title .h {
   padding: var(--space-xs-s) 0 0 var(--space-xl-2xl);
-
-  letter-spacing: var(--letter-space-content);
-  /* Adds a bit of spacing between letters */
   color: var(--text-color);
 }
 
@@ -906,23 +904,26 @@ label:focus {
 
 .intro {
   text-align: center;
-  padding-inline: var(--page-pad-inline);
+  margin-inline: 0 auto;
   padding-top: var(--space-xl-2xl);
   z-index: 1000;
 }
 
 .intro p {
   font-size: var(--step--1);
-  text-wrap: balance;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  padding-block: var(--padding-block);
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
+
 }
 
 .intro p span {
   color: var(--text-span);
   font-size: var(--step-0);
   padding: 0 var(--space-3xs);
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
 }
 
 .intro .ya {
@@ -930,6 +931,9 @@ label:focus {
   font-size: var(--step-0);
   letter-spacing: var(--letter-space-content);
   margin-block: var(--space-4xs-3xs);
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
 }
 
 .intro .ya-1 {
@@ -937,6 +941,9 @@ label:focus {
   font-size: var(--step-0);
   letter-spacing: var(--letter-space-content);
   margin-block: var(--space-4xs-3xs);
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
 }
 
 .intro .ya-2 {
@@ -944,6 +951,9 @@ label:focus {
   font-size: var(--step-1);
   letter-spacing: var(--letter-space-content);
   margin-block: var(--space-4xs-3xs);
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
 }
 
 .wrapper-gradient-text {
@@ -956,6 +966,9 @@ label:focus {
   text-align: center;
   /* Align text to the left */
   text-shadow: 100px 100px 100px rgb(255, 255, 255);
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
 }
 
 .text-layer {
