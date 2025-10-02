@@ -56,7 +56,7 @@
 
 :root {
   --sp: 5s;
-  --burger-thickness: 4px;
+  --burger-thickness: .3rem;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
   /* Step -1: 13.3333px → 18.0045px */
@@ -158,7 +158,7 @@
   --font-style-regular: normal;
   --btn-border-radius: var(--space-s);
   /* global page padding variables */
-  --page-pad-inline: var(--space-6xs-5xs);
+  --page-pad-inline: 0 var(--space-6xs-5xs);
   --page-pad-block: 0;
   --letter-space-content: var(--space-6xs-5xs);
   --word-space-content: var(--space-7xs-6xs);
@@ -288,12 +288,10 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
+  padding: var(--page-pad-inline);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   text-wrap: balance;
-  overflow-wrap: break-word;
-  /* or word-break: break-word; for older browsers */
-  padding-block: var(--padding-block);
   min-height: 100dvh;
 }
 
@@ -302,6 +300,17 @@ body {
   scroll-behavior: smooth;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  perspective: 1000px;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 100vw;
+  backface-visibility: hidden;
 }
 
 body::before {
@@ -389,7 +398,7 @@ header {
   left: 5%;
   transform: translate(-50%, -50%);
   width: var(--space-l-xl);
-  height: var(--space-s-m);
+  height: var(--space-2xs-xs);
   background: none;
   color: var(--text-color);
   padding: 0;
@@ -906,24 +915,23 @@ label:focus {
   text-align: center;
   margin-inline: 0 auto;
   padding-top: var(--space-xl-2xl);
-  z-index: 1000;
 }
 
 .intro p {
   font-size: var(--step--1);
   isolation: isolate;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 
 }
 
 .intro p span {
   color: var(--text-span);
   font-size: var(--step-0);
-  padding: 0 var(--space-3xs);
+  padding: var(--space-2xs-xs) 0 0 0;
   isolation: isolate;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .intro .ya {
@@ -933,7 +941,7 @@ label:focus {
   margin-block: var(--space-4xs-3xs);
   isolation: isolate;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .intro .ya-1 {
@@ -943,7 +951,7 @@ label:focus {
   margin-block: var(--space-4xs-3xs);
   isolation: isolate;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .intro .ya-2 {
@@ -953,7 +961,7 @@ label:focus {
   margin-block: var(--space-4xs-3xs);
   isolation: isolate;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .wrapper-gradient-text {
@@ -968,7 +976,7 @@ label:focus {
   text-shadow: 100px 100px 100px rgb(255, 255, 255);
   isolation: isolate;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .text-layer {
