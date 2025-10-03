@@ -1019,18 +1019,7 @@ label:focus {
   }
 
   .nav-links {
-    background: var(--base-color);
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 7%;
-    left: 0;
-    flex-direction: column;
-    height: 100dvh;
-    width: 100%;
-    pointer-events: all;
-    transition: 0.5s;
-    opacity: 0;
+    display: none;
   }
 
   .nav-links.open {
@@ -1052,6 +1041,10 @@ label:focus {
     max-height: 100dvh;
     overflow: hidden;
     --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    color: var(--text-color);
+    transform: translateY(0);
+    transition-delay: calc(.3s * var(--i));
+    /* Apply delay only when open */
   }
 
   .nav-links li {
@@ -1059,14 +1052,6 @@ label:focus {
     transform: translateY(40px);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
-  }
-
-  .nav-links.open li {
-    color: var(--text-color);
-    transform: translateY(0);
-    opacity: 1;
-    transition-delay: calc(.3s * var(--i));
-    /* Apply delay only when open */
   }
 }
 
