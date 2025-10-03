@@ -919,6 +919,7 @@ label:focus {
 
 .intro p {
   font-size: var(--step--1);
+  white-space: nowrap;
   isolation: isolate;
   position: relative;
   z-index: 1000;
