@@ -468,6 +468,7 @@ header {
 }
 
 .nav-links.open {
+  display: block;
   opacity: 1;
   pointer-events: all;
   transition: opacity 0.4s, max-height 0.5s ease-in;
