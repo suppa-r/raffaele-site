@@ -371,7 +371,7 @@ main {
   transition: opacity 0.4s;
 }
 
-.burger-check:checked~.navigation {
+.bars:checked~.navigation {
   opacity: 1;
   pointer-events: all;
   transition: opacity 0.4s, max-height 0.5s ease-in;
@@ -381,7 +381,7 @@ main {
 .burger-check:checked~.navigation li {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: calc(.45s * var(--i));
+
 }
 
 .navigation ul {

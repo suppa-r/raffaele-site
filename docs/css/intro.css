@@ -6,7 +6,7 @@
   --clr-button: hsla(0, 0%, 100%, 0);
 
 
-  --bars: rgba(255, 255, 255, 0.733);
+  --bars: rgba(255, 255, 255, 0.911);
 
   --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
@@ -163,6 +163,13 @@
   --letter-space-content: var(--space-6xs-5xs);
   --word-space-content: var(--space-7xs-6xs);
   --padding-block: var(--space-7xs-6xs);
+}
+
+@layer support.demo {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
 }
 
 @supports (selector(::view-transition)) {
@@ -358,6 +365,9 @@ body>* {
 
 header {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: var(--space-s-m);
   font-size: var(--step--1);
 }
 
@@ -368,7 +378,7 @@ header .bars {
   height: 3px;
   width: 20px;
   border-radius: 2px;
-  background-color: #888888;
+  background-color: var(--bars);
   margin-left: var(--space-s);
   display: none;
   cursor: pointer;
@@ -377,10 +387,11 @@ header .bars {
 }
 
 header .bars.is-active {
-  transform-origin: center;
+  margin-top: var(--space-xs-s);
+  transform-origin: right;
   padding: 0 var(--space-xs) 0 var(--space-2xs);
   transition: transform 0.5s ease-in-out;
-  transform: rotate(45deg);
+  transform: translate(0) rotate(45deg);
   cursor: pointer;
   z-index: 2000;
   /* Ensure it's above the nav links */
@@ -394,7 +405,7 @@ header .bars::before {
   left: 0;
   width: 20px;
   border-radius: 2px;
-  background: #888888;
+  background: var(--bars);
   cursor: pointer;
 }
 
@@ -406,13 +417,27 @@ header .bars::before {
   top: 7px;
 }
 
+header .bars.is-active::after {
+  transform-origin: left;
+  transform: translate(0) rotate(-90deg);
+  bottom: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+header .bars.is-active::before {
+  transform: translate(0) rotate(90deg);
+  top: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+/*------title-------*/
 .title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+  margin-left: 0;
+  /* Add or increase this value as needed */
+  padding: 0 var(--space-3xl-4xl) 0 0;
+  /* Reduce right padding */
+  /* ...existing code... */
+  display: block;
   letter-spacing: var(--space-5xs-4xs);
   user-select: none;
   transition: transform 0.3s, opacity 0.3s;
@@ -431,29 +456,48 @@ header .bars::before {
   padding: var(--space-2xs-xs) 0 0 0;
 }
 
+/*------navigation-------*/
+.nav {
+  padding-top: var(--space-2xs-xs);
+  background-color: transparent;
+  opacity: 1;
+  z-index: 1000;
+}
+
 .nav-links {
+  position: relative;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   gap: var(--space-s-m);
   list-style: none;
-  padding: var(--space-4xs-3xs) 0 0 0;
   opacity: 1;
   pointer-events: all;
-  transition: opacity 0.4s;
+  transition: opacity 0.4s ease-in;
   z-index: 1000;
 }
 
 .nav-links.open {
-  display: block;
+  position: absolute;
+  top: 10%;
+  right: 0;
+  transform: translate(0, -10%);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m-l);
+  list-style: none;
+  box-shadow: var(--shadow);
+  border-radius: var(--btn-border-radius);
+  z-index: 2000;
   opacity: 1;
   pointer-events: all;
-  transition: opacity 0.4s, max-height 0.5s ease-in;
+  background-color: transparent;
   max-height: 100dvh;
-  z-index: 1000;
 }
 
 .nav-links li {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -461,8 +505,14 @@ header .bars::before {
   margin: 0;
   padding: 0;
   user-select: none;
-  transition: transform 0.3s, opacity 0.3s;
+  list-style: none;
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--btn-border-radius);
+  z-index: 1000;
   cursor: pointer;
+  gap: var(--space-6xs-5xs);
+  transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
 }
 
 .nav-links li a {
@@ -535,7 +585,7 @@ ul {
   position: absolute;
   display: inline-block;
   pointer-events: all;
-  top: var(--space-l-xl);
+  top: var(--space-4xs-3xs);
   right: var(--space-4xs-3xs);
   gap: var(--space-4xs-3xs);
   background-color: var(--base-color);
@@ -983,33 +1033,25 @@ label:focus {
     /* Ensure it's above the nav links */
   }
 
-
-
-
-  .nav-links {
-    display: none;
-    /* Hide menu by default on mobile */
+  .nav-links.open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: var(--space-l-xl);
-    width: 100dvw;
-    height: 100dvh;
-    position: fixed;
-    top: 0;
-    left: 0;
+    list-style: none;
+    box-shadow: var(--shadow);
+    border-radius: var(--btn-border-radius);
     z-index: 1000;
     background: transparent;
     max-height: 100dvh;
     overflow: hidden;
     color: var(--text-color);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s, display 0s linear 0.3s;
-  }
-
-  .nav-links.open {
-    display: flex;
     opacity: 1;
     pointer-events: all;
     transition: opacity 0.3s;
@@ -1017,20 +1059,36 @@ label:focus {
 
   .nav-links li {
     color: var(--text-color);
-    transform: translateY(40px);
+    transform: translateY(60px);
     opacity: 0;
-    transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
+    transition:
+      transform 0.6s cubic-bezier(.22, .61, .36, 1),
+      opacity 0.6s cubic-bezier(.22, .61, .36, 1);
   }
 
   .nav-links.open li {
     transform: translateY(0);
     opacity: 1;
-    transition-delay: 0.2s;
+    transition-delay: calc(0.15s * var(--i));
+  }
+
+  .dropdown {
+    position: absolute;
+    display: inline-block;
+    pointer-events: all;
+    top: var(--space-l);
+    right: var(--space-4xs-3xs);
+    gap: var(--space-4xs-3xs);
+    background-color: var(--base-color);
+    z-index: 1000;
+    font-size: var(--step--1);
+    color: var(--text-color);
+    opacity: 1;
+    user-select: none;
+    border: 3px solid transparent;
+    border-radius: var(--btn-border-radius);
   }
 }
-
-
-
 
 @media (prefers-reduced-motion: reduce) {
   * {

@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const bars = document.querySelector('.bars'); // burger button
   const navLinks = document.querySelector('.nav-links');
   const intro = document.querySelector('.intro');
+  const dropdown = document.querySelectorAll('.dropdown');
+  const themesBtn = document.querySelector('.link'); // <-- Add this line
 
   // Toggle menu on burger click
   if (bars && navLinks) {
@@ -9,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
       e.stopPropagation();
       navLinks.classList.toggle('open');
       if (intro) intro.style.display = navLinks.classList.contains('open') ? 'none' : '';
+      if (themesBtn) themesBtn.style.display = navLinks.classList.contains('open') ? 'none' : ''; // <-- Hide/show themes button
+      if (dropdown) dropdown.style.display = 'none'; // Hide dropdowns when menu is toggled
     });
   }
 
@@ -22,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ) {
       navLinks.classList.remove('open');
       if (intro) intro.style.display = '';
+      if (themesBtn) themesBtn.style.display = ''; // <-- Show themes button again
     }
   });
 
@@ -30,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     link.addEventListener('click', function () {
       navLinks.classList.remove('open');
       if (intro) intro.style.display = '';
+      if (themesBtn) themesBtn.style.display = ''; // <-- Show themes button again
     });
   });
 });
