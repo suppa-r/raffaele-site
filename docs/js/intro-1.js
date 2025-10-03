@@ -1,54 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const menuToggle = document.querySelector('.burger-check');
-  const burger = document.querySelector('.burger');
-  const intro = document.querySelector('.intro');
+  const bars = document.querySelector('.bars'); // burger button
   const navLinks = document.querySelector('.nav-links');
+  const intro = document.querySelector('.intro');
 
-  // Show/hide navbar on burger click
-  if (burger && navLinks && menuToggle) {
-    burger.addEventListener('click', function (e) {
+  // Toggle menu on burger click
+  if (bars && navLinks) {
+    bars.addEventListener('click', function (e) {
       e.stopPropagation();
-      if (navLinks.classList.contains('open')) {
-        navLinks.style.display = 'block';
-        if (intro) intro.style.display = 'none';
-      } else {
-        navLinks.style.display = '';
-        if (intro) intro.style.display = 'block';
-      }
+      navLinks.classList.toggle('open');
+      if (intro) intro.style.display = navLinks.classList.contains('open') ? 'none' : '';
     });
   }
 
-  // Close menu when clicking outside
+  // Close menu on any click outside the menu or burger
   document.addEventListener('click', function (e) {
-    if (navLinks && !navLinks.contains(e.target) && menuToggle && menuToggle.checked) {
+    if (
+      navLinks &&
+      navLinks.classList.contains('open') &&
+      !navLinks.contains(e.target) &&
+      !bars.contains(e.target)
+    ) {
       navLinks.classList.remove('open');
-      menuToggle.checked = false;
-      if (intro) intro.style.display = "";
+      if (intro) intro.style.display = '';
     }
   });
 
-
-
-  // Make nav links functional (close menu and scroll if anchor)
+  // Also close menu when a nav link is clicked
   navLinks?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const targetId = href.substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+    link.addEventListener('click', function () {
       navLinks.classList.remove('open');
-      if (menuToggle) menuToggle.checked = false;
-      if (intro) intro.style.display = "";
+      if (intro) intro.style.display = '';
     });
   });
-
-  // Fade in intro section
-  if (intro) {
-    intro.style.opacity = 1;
-  }
 });
