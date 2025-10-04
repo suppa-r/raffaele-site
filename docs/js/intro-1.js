@@ -2,31 +2,26 @@ document.addEventListener('DOMContentLoaded', function () {
   const bars = document.querySelector('.bars'); // burger button
   const navLinks = document.querySelector('.nav-links');
   const intro = document.querySelector('.intro');
-  const dropdown = document.querySelectorAll('.dropdown');
-  const themesBtn = document.querySelector('.link'); // <-- Add this line
+  const themeList = document.querySelector('.theme-list');
+  const themesBtn = document.querySelector('.link');
 
-  // Toggle menu on burger click
+  // Toggle menu on burger click (show/hide nav-links)
   if (bars && navLinks) {
     bars.addEventListener('click', function (e) {
       e.stopPropagation();
-      navLinks.classList.toggle('open');
-      if (intro) intro.style.display = navLinks.classList.contains('open') ? 'none' : '';
-      if (themesBtn) themesBtn.style.display = navLinks.classList.contains('open') ? 'none' : ''; // <-- Hide/show themes button
-      if (dropdown) dropdown.style.display = 'none'; // Hide dropdowns when menu is toggled
+      const isOpen = navLinks.classList.toggle('open');
+      // Hide intro and themesBtn when menu is open, show when closed
+      if (intro) intro.style.display = isOpen ? 'none' : '';
+      if (themesBtn) themesBtn.style.display = isOpen ? 'none' : '';
+      if (themeList) themeList.style.display = isOpen ? 'none' : 'flex';
     });
   }
-
-  // Close menu on any click outside the menu or burger
-  document.addEventListener('click', function (e) {
-    if (
-      navLinks &&
-      navLinks.classList.contains('open') &&
-      !navLinks.contains(e.target) &&
-      !bars.contains(e.target)
-    ) {
+  document.addEventListener('click', function () {
+    if (navLinks && navLinks.classList.contains('open')) {
       navLinks.classList.remove('open');
       if (intro) intro.style.display = '';
-      if (themesBtn) themesBtn.style.display = ''; // <-- Show themes button again
+      if (themesBtn) themesBtn.style.display = '';
+      if (themeList) themeList.style.display = 'flex';
     }
   });
 
@@ -35,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
     link.addEventListener('click', function () {
       navLinks.classList.remove('open');
       if (intro) intro.style.display = '';
-      if (themesBtn) themesBtn.style.display = ''; // <-- Show themes button again
+      if (themesBtn) themesBtn.style.display = '';
+      if (themeList) themeList.style.display = 'flex';
     });
   });
 });
