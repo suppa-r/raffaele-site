@@ -4,7 +4,7 @@
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
-  --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
+  --gradient: linear-gradient(45deg, #ced7e0f6, #c6d5d8d3, #bec9d3, #cfcfe0);
 
   --shadow: 0 30px 100px rgb(223, 223, 233);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
@@ -35,10 +35,10 @@
   --text-span: #000000;
   --clr-neon: hsla(189, 4%, 63%, 0.733);
   --clr-button: hsla(0, 0%, 100%, 0.671);
-  --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
+  --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
-  --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.603);
+  --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
 
   /*--text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em var(--text-color);*/
 
@@ -121,7 +121,7 @@
 
   /* One-up pairs */
   /* Space 7xs-6xs: 1px → 2px */
-  --space-7xs-6xs: clamp(0.0625rem, 0.0369rem + 0.1136cqi, 0.125rem);
+  --space-7xs-6xs: clamp(0.0625rem, 0.0369rem + 0.0900cqi, 0.125rem);
   /* Space 6xs-5xs: 2px → 3px */
   --space-6xs-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
   /* Space 5xs-4xs: 3px → 4px */
@@ -176,7 +176,7 @@
   --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
   --letter-space-content: var(--space-6xs-5xs);
-  --word-space-content: var(--space-5xs-4xs);
+  --word-space-content: var(--space-7xs-6xs);
 }
 
 @layer support.demo {
@@ -309,22 +309,13 @@ body {
   font-style: var(--font-style-1);
   color: var(--text-color);
   background-color: var(--base-color);
-  padding: var(--page-pad-inline);
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
   text-wrap: balance;
   white-space: nowrap;
   min-height: 100dvh;
 }
 
 body {
-  overflow: hidden;
-  scroll-behavior: smooth;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
   position: relative;
   z-index: 1000;
   isolation: isolate;
@@ -334,8 +325,8 @@ body::before {
   opacity: 1;
   pointer-events: none;
   content: "";
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   position: fixed;
   top: 0;
   left: 0;
@@ -376,8 +367,8 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: var(--space-s-m);
-  font-size: var(--step-0);
+  /*gap: var(--space-s-m);*/
+  font-size: var(--step--1);
 }
 
 header .bars {
@@ -398,7 +389,7 @@ header .bars {
 header .bars.is-active {
   margin-top: var(--space-xs-s);
   transform-origin: right;
-  padding: 0 var(--space-xs) 0 var(--space-2xs);
+  padding: 0 var(--space-3xs-2xs) 0 var(--space-2xs-xs);
   transition: transform 0.5s ease-in-out;
   transform: translate(0) rotate(45deg);
   cursor: pointer;
@@ -448,14 +439,9 @@ header p {
   letter-spacing: var(--letter-space-content);
   /* Use a fixed value for better control */
   word-spacing: var(--word-space-content);
-  font-size: var(--step-0);
-  line-height: 1.2;
+  font-size: var(--step--1);
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-6xs-5xs);
-  cursor: default;
+  display: inline-block;
   user-select: none;
   opacity: 1;
 }
@@ -463,11 +449,11 @@ header p {
 header p span {
   background-color: transparent;
   color: var(--text-span);
-  font-size: var(--step--0);
+  font-size: var(--step--1);
   padding-left: 0;
   /* Only left padding for spacing */
-  display: inline-block;
-  vertical-align: middle;
+  margin: 0;
+  user-select: none;
   opacity: 1;
 }
 
@@ -482,7 +468,6 @@ header p span {
 
 .nav-links {
   position: relative;
-
   padding: 0;
   display: flex;
   gap: var(--space-s-m);
@@ -509,7 +494,7 @@ header p span {
   opacity: 1;
   pointer-events: all;
   background-color: transparent;
-  max-height: 100dvh;
+  padding: var(--space-s-m) var(--space-xs-s);
 }
 
 .nav-links li {
@@ -591,7 +576,7 @@ ul {
     }
 
     &:hover>li:not(:hover) {
-      opacity: .25;
+      opacity: .5;
       transform: scale(0.8);
     }
   }
@@ -619,6 +604,8 @@ ul {
   background-color: transparent;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+  box-shadow: var(--shadow);
+  border-radius: var(--btn-border-radius);
 }
 
 .theme-button {
@@ -643,6 +630,7 @@ ul {
   pointer-events: all;
   border: none;
   border-radius: var(--btn-border-radius);
+  box-shadow: var(--shadow);
 }
 
 .theme-button.active {
@@ -741,6 +729,14 @@ ul {
   text-align: center;
   margin-inline: 0 auto;
   padding-top: var(--space-xl-2xl);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  color: var(--text-color);
+  background-color: transparent;
+  opacity: 1;
+  z-index: 1000;
+  user-select: none;
+  pointer-events: none;
 }
 
 .intro p {
@@ -750,8 +746,8 @@ ul {
 
 .intro p span {
   color: var(--text-span);
-  font-size: var(--step-0);
-  padding: var(--space-2xs-xs) 0 0 0;
+  font-size: var(--step--1);
+  padding: 0;
 }
 
 .intro .ya {
@@ -759,6 +755,7 @@ ul {
   font-size: var(--step-0);
   white-space: nowrap;
   letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
   margin-block: var(--space-4xs-3xs);
 }
 
@@ -767,6 +764,7 @@ ul {
   font-size: var(--step-0);
   white-space: nowrap;
   letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
   margin-block: var(--space-4xs-3xs);
 }
 
@@ -775,6 +773,7 @@ ul {
   font-size: var(--step-1);
   white-space: nowrap;
   letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
   margin-block: var(--space-4xs-3xs);
 }
 

@@ -2,7 +2,7 @@
   --base-color: #000;
   --text-color: #fff;
   --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsl(191, 9%, 35%);
+  --clr-neon: hsla(180, 25%, 57%, 0.685);
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
@@ -16,7 +16,7 @@
   /* bottom image */
   --overlay {
     border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 97%, 0.5));
+      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.788), hsla(0, 0%, 97%, 0.397));
   }
 }
 
@@ -24,7 +24,7 @@
   --base-color: #fff;
   --text-color: #000;
   --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsla(189, 4%, 63%, 0.733);
+  --clr-neon: hsl(189, 4%, 63%);
   --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
 
@@ -38,7 +38,7 @@
   /* bottom image */
   --overlay {
     border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(210, 5%, 77%, 0.5));
+      fill 1 linear-gradient(hsl(0, 2%, 48%), hsla(210, 5%, 77%, 0.911));
   }
 }
 
@@ -159,8 +159,8 @@
   /* global page padding variables */
   --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
-  --letter-space-content: var(--space-6xs-5xs);
-  --word-space-content: var(--space-5xs-4xs);
+  --letter-space-content: var(--space-7xs-6xs);
+  --word-space-content: var(--space-6xs-5xs);
 }
 
 @supports (selector(::view-transition)) {
@@ -294,12 +294,12 @@ body {
 }
 
 body {
+  margin-inline: auto;
   background-image: var(--bg-image);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-
   /* Overlay gradient using border-image */
   border-image: var(--overlay);
   -webkit-border-image: var(--overlay);
@@ -308,7 +308,6 @@ body {
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
-  padding-inline: var(--page-pad-inline);
   margin-inline: auto;
 }
 
@@ -318,7 +317,6 @@ body>* {
 header,
 main {
   position: relative;
-  padding-inline: var(--page-pad-inline);
   z-index: 1000;
 }
 
@@ -341,9 +339,153 @@ header {
   text-align: center;
   user-select: none;
   margin: 0;
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  opacity: 1;
+  word-wrap: balance;
 }
 
-/* Ensure the dropdown menu is visible when active */
+/* Theme list styles remain unchanged */
+.theme-list {
+  position: absolute;
+  right: var(--space-xs-s);
+  top: var(--space-2xs-xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  z-index: 1000;
+  pointer-events: none;
+  user-select: none;
+  gap: var(--space-3xs-2xs);
+  font-size: var(--step--1);
+  color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  text-align: center;
+  background-color: transparent;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: var(--shadow);
+  border-radius: var(--btn-border-radius);
+}
+
+.theme-button {
+  right: var(--space-xs-s);
+  top: var(--space-2xs-xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  z-index: 1000;
+  user-select: none;
+  gap: var(--space-3xs-2xs);
+  font-size: var(--step--1);
+  color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  text-align: center;
+  background-color: transparent;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: all;
+  border: none;
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--shadow);
+}
+
+.theme-button.active {
+  display: none;
+}
+
+.theme-button:not(.active) {
+  display: block;
+}
+
+.theme-button input[type="radio"] {
+  display: none;
+}
+
+.theme-button label {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  z-index: 1000;
+  padding: 0 var(--space-4xs-3xs);
+  gap: var(--space-6xs-5xs);
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow);
+  font-size: var(--step--1);
+  border: 0;
+  border-radius: var(--btn-border-radius);
+  user-select: none;
+  transition: color 0.3s, box-shadow 0.3s;
+}
+
+.theme-button svg {
+  width: var(--space-m-l);
+  height: var(--space-m-l);
+  vertical-align: middle;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  opacity: 1;
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  /* Add this line */
+}
+
+.theme-button svg path {
+  fill: var(--text-color);
+  transition: fill 0.3s, stroke 0.3s;
+  stroke: var(--space-xs);
+  /* Add stroke if you want to animate it too */
+}
+
+.theme-button:hover svg {
+  transform: scale(0.5);
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  color: var(--text-span);
+  background-color: var(--base-color);
+  /* Or another color if you want */
+}
+
+.theme-button:hover svg path {
+  fill: var(--text-span);
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+/* Style SVGs inside theme-list items */
+.theme-button label svg {
+  width: var(--space-s-m);
+  height: var(--space-s-m);
+  margin-right: var(--space-xs-s);
+  vertical-align: middle;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  opacity: 1;
+  display: inline-block;
+}
+
+.theme-button span {
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: var(--base-color);
+  padding: 0 var(--space-2xs-xs);
+}
+
+/* Ensure the dropdown menu is visible when active *
 .dropdown-menu {
   opacity: 0;
   z-index: 1000;
@@ -363,7 +505,7 @@ header {
   right: var(--space-4xs-3xs);
   padding: var(--space-6xs-5xs) 0;
   gap: var(--space-4xs-3xs);
-  background-color: var(--base-color);
+  background-color: var(--clr-neon);
   z-index: 1000;
   font-size: var(--step--1);
   color: var(--text-color);
@@ -382,7 +524,7 @@ header {
   cursor: pointer;
   text-decoration: none;
   color: var(--text-color);
-  border: var(--text-color) 0.125em solid;
+  border: transparent 0.125em solid;
   border-radius: var(--btn-border-radius);
   text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
   box-shadow: inset 0 0 5em 0 var(--clr-neon), 0 0 5em 0 var(--clr-neon);
@@ -394,7 +536,7 @@ header {
   content: "";
   position: absolute;
   color: var(--text-color);
-  background: var(--clr-bg);
+  background: var(--clr-neon);
   transition: all 100ms linear alternate;
   top: var(--space-m-l);
   right: var(--space-4xs-3xs);
@@ -430,7 +572,7 @@ header {
   outline: var(--clr-neon) 0.125em solid;
   box-shadow: 0 0 2em 0.5em var(--clr-neon);
   background-color: var(--clr-bg);
-  /* Optional: adds a subtle outline on hover/focus */
+  /* Optional: adds a subtle outline on hover/focus *
 }
 
 .link:hover::before,
@@ -497,7 +639,7 @@ header {
   fill: var(--text-span);
   transition: fill 0.3s, stroke 0.3s;
   stroke: var(--text-color);
-  /* Or another color if you want */
+  /* Or another color if you want *
   background-color: transparent;
 }
 
@@ -512,7 +654,7 @@ header {
   color: var(--text-color);
 }
 
-/* Initial hidden state */
+/* Initial hidden state *
 .color-picker.dropdown-menu {
   opacity: 0;
   transform: translateX(150px);
@@ -533,10 +675,10 @@ header {
   transition:
     opacity 0.7s cubic-bezier(.22, .61, .36, 1),
     transform 0.7s cubic-bezier(.22, .61, .36, 1);
-  /* Remove keyframes from transition */
+  /* Remove keyframes from transition *
 }
 
-/* When menu is open, show it */
+/* When menu is open, show it *
 .dropdown.active>.color-picker.dropdown-menu {
   margin-top: var(--space-m-l);
   padding: 0 var(--space-s-m);
@@ -547,7 +689,7 @@ header {
   border-radius: var(--btn-border-radius);
 }
 
-/* Animation class for sliding in */
+/* Animation class for sliding in *
 .color-picker.dropdown-menu.animate-in {
   animation: colorPickerSlide 0.7s cubic-bezier(.22, .61, .36, .1) ease-in forwards;
 }
@@ -567,140 +709,6 @@ header {
     transform: translateX(0px);
     opacity: 1;
   }
-}
-
-/* Theme list styles remain unchanged */
-.theme-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 1000;
-  pointer-events: all;
-  padding: 0 var(--space-3xs-2xs);
-  gap: var(--space-4xs-3xs);
-  align-items: center;
-  text-decoration: none;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  font-size: var(--step--1);
-  user-select: none;
-  border-radius: var(--btn-border-radius);
-  box-shadow: var(--shadow);
-  opacity: 1;
-  transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
-}
-
-.theme-list-item {
-  cursor: pointer;
-  pointer-events: all;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  z-index: 1000;
-  padding: 0 var(--space-3xs-2xs);
-  gap: var(--space-4xs-3xs);
-  box-shadow: var(--shadow);
-  opacity: 1;
-  transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
-  align-items: center;
-  text-decoration: none;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  font-size: var(--step--1);
-  border: 2px solid transparent;
-  border-radius: var(--btn-border-radius);
-  user-select: none;
-}
-
-.theme-list-item input[type="radio"] {
-  display: none;
-}
-
-.theme-list-item label {
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-  pointer-events: all;
-  position: relative;
-  z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
-  gap: var(--space-6xs-5xs);
-  align-items: center;
-  text-decoration: none;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  box-shadow: var(--shadow);
-  font-size: var(--step--1);
-  border: 2px solid transparent;
-  border-radius: var(--btn-border-radius);
-  user-select: none;
-  transition: color 0.3s, box-shadow 0.3s;
-}
-
-.theme-list-item svg {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
-  vertical-align: middle;
-  stroke-linecap: round;
-  stroke-linejoin: miter;
-  color: var(--text-color);
-  background-color: var(--base-color);
-  opacity: 1;
-  display: inline-block;
-  transition: color 0.3s, background-color 0.3s;
-  /* Add this line */
-}
-
-.theme-list-item svg path {
-  fill: var(--text-color);
-  transition: fill 0.3s, stroke 0.3s;
-  stroke: var(--space-xs);
-  /* Add stroke if you want to animate it too */
-}
-
-.theme-list-item:hover svg {
-  transform: scale(0.5);
-  transition: transform 0.1s, color 0.3s, background-color 0.3s;
-  color: var(--text-span);
-  background-color: var(--base-color);
-  /* Or another color if you want */
-}
-
-.theme-list-item:hover svg path {
-  fill: var(--text-span);
-  transition: fill 0.3s, stroke 0.3s;
-}
-
-/* Style SVGs inside theme-list items */
-.theme-list-item label svg {
-  width: var(--space-s-m);
-  height: var(--space-s-m);
-  margin-right: var(--space-xs-s);
-  vertical-align: middle;
-  color: var(--text-color);
-  background-color: var(--base-color);
-  opacity: 1;
-  display: inline-block;
-}
-
-.theme-list-item span {
-  white-space: nowrap;
-  overflow: hidden;
-  user-select: none;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: var(--base-color);
-  /*transition: box-shadow 0.3s, outline 0.3s;
-  box-shadow: var(--shadow);
-   optional: adds ... if text is too long */
-  padding: 0 var(--space-2xs-xs);
-}
-
-label:hover,
-label:focus {
-  color: var(--text-span);
-  box-shadow: var(--shadow) var(--space-xs-s) var(--shadow);
 }
 
 /*-------------curvature-----------------*/
