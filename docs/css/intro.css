@@ -10,36 +10,53 @@
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
-  --bg-image:
-    url('../images/compressed/header-desktop.jpg');
 
-  /* bottom image */
-  --overlay {
-    border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 97%, 0.5));
-  }
+  --bars: #c7aeae;
+
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 0%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(0, 0%, 0%, 0.35);
+  /* light blue/gray */
+
+  /* Light mode grid line color */
+  --body-grid-line: rgba(255, 255, 255, 0.788);
+  /* subtle dark lines */
+
+  --shadow-color: #fff;
+  --shadow-color2: #77d6e0;
+  --shadow-color3: #7abec7fd;
 }
+
 
 [data-theme="light"] {
   --base-color: #fff;
-  --text-color: #000;
-  --text-span: hsla(187, 45%, 67%, 0.74);
+  --text-color: #000000;
+  --text-span: #000000;
   --clr-neon: hsla(189, 4%, 63%, 0.733);
   --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(45deg, #b8c1c9a4, #6c888fd3, #cfd6db, #e3e4fa);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
-  --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
+  --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.603);
 
-  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
-  --bg-image:
-    url('../images/compressed/bg-light-2.jpg');
+  /*--text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em var(--text-color);*/
 
-  /* bottom image */
-  --overlay {
-    border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 0%, 0.5), hsla(210, 5%, 77%, 0.5));
-  }
+  --text-shadow: 0 0 0.25em rgba(0, 0, 0, 0.7), 0 0 1em #000;
+  /* Stronger, darker shadow */
+
+  --bars: #000000;
+
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 100%, 0.692);
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0.212);
+
+  /* Light mode grid line color */
+  --body-grid-line: rgba(0, 0, 0, 1);
+  /* Darker shadow colors for animation */
+  --shadow-color: rgba(0, 0, 0, 0.85);
+  --shadow-color2: rgba(0, 0, 0, 0.5);
+  --shadow-color3: rgba(0, 0, 0, 0.3);
 }
 
 :root {
@@ -310,13 +327,8 @@ body {
   background-size: cover;
   background-position: center;
   position: relative;
-  z-index: 0;
+  z-index: 1000;
   isolation: isolate;
-  perspective: 1000px;
-  perspective-origin: center;
-  transform-style: preserve-3d;
-  transform-origin: 50% 50% 100vw;
-  backface-visibility: hidden;
 }
 
 body::before {
@@ -366,7 +378,7 @@ header {
   flex-direction: row;
   justify-content: flex-start;
   gap: var(--space-s-m);
-  font-size: var(--step--1);
+  font-size: var(--step-0);
 }
 
 header .bars {
@@ -429,34 +441,41 @@ header .bars.is-active::before {
 }
 
 /*------title-------*/
-.title {
-  margin-left: 0;
-  /* Add or increase this value as needed */
-  padding: 0 var(--space-3xl-4xl) 0 0;
-  /* Reduce right padding */
-  /* ...existing code... */
-  display: block;
-  letter-spacing: var(--space-5xs-4xs);
+header p {
+  background-color: transparent;
+  padding: 0 0 0 var(--space-xl-2xl);
+  /* Add left padding for alignment */
+  color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  /* Use a fixed value for better control */
+  word-spacing: var(--word-space-content);
+  font-size: var(--step-0);
+  line-height: 1.2;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6xs-5xs);
+  cursor: default;
   user-select: none;
-  transition: transform 0.3s, opacity 0.3s;
-  color: var(--text-color);
+  opacity: 1;
 }
 
-.title .h {
-  padding: var(--space-xs-s) 0 0 var(--space-xl-2xl);
-  color: var(--text-color);
-}
-
-.title .h span {
+header p span {
+  background-color: transparent;
   color: var(--text-span);
-  /* Uses your accent color variable */
-  /* Slightly larger for emphasis */
-  padding: var(--space-2xs-xs) 0 0 0;
+  font-size: var(--step--0);
+  padding-left: 0;
+  /* Only left padding for spacing */
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 1;
 }
 
 /*------navigation-------*/
+
 .nav {
-  padding-top: var(--space-2xs-xs);
+  margin-left: var(--space-2xl);
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
@@ -464,7 +483,7 @@ header .bars.is-active::before {
 
 .nav-links {
   position: relative;
-  margin: 0;
+
   padding: 0;
   display: flex;
   gap: var(--space-s-m);
