@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const bars = document.querySelector('.bars'); // burger button
   const navLinks = document.querySelector('.nav-links');
-  const intro = document.querySelector('.intro');
+  const wrapper = document.querySelector('.wrapper');
   const themeList = document.querySelector('.theme-list');
   const themesBtn = document.querySelector('.link');
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
       e.stopPropagation();
       const isOpen = navLinks.classList.toggle('open');
       // Hide intro and themesBtn when menu is open, show when closed
-      if (intro) intro.style.display = isOpen ? 'none' : '';
+      if (wrapper) style.display = isOpen ? 'none' : '';
       if (themesBtn) themesBtn.style.display = isOpen ? 'none' : '';
       if (themeList) themeList.style.display = isOpen ? 'none' : 'flex';
     });
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('click', function () {
     if (navLinks && navLinks.classList.contains('open')) {
       navLinks.classList.remove('open');
-      if (intro) intro.style.display = '';
+      if (wrapper) intro.style.display = '';
       if (themesBtn) themesBtn.style.display = '';
       if (themeList) themeList.style.display = 'flex';
     }
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
   navLinks?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', function () {
       navLinks.classList.remove('open');
-      if (intro) intro.style.display = '';
+      if (wrapper) intro.style.display = '';
       if (themesBtn) themesBtn.style.display = '';
       if (themeList) themeList.style.display = 'flex';
     });
