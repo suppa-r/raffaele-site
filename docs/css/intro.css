@@ -11,6 +11,9 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
 
+
+  --background: linear-gradient(270deg, #ce85a9b9, #c4bbce, #c97ba2bd);
+
   --bars: #c7aeae;
 
   /* Light mode background gradient */
@@ -43,6 +46,8 @@
   /*--text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em var(--text-color);*/
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
+
+  --background: linear-gradient(270deg, #ce85aa36, #c4bbce00, #6820449d);
 
   --bars: #000000;
 
@@ -754,47 +759,44 @@ ul {
 }
 
 .intro .ya {
-  color: var(--text-span);
   font-size: var(--step-0);
   white-space: nowrap;
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  margin-block: var(--space-4xs-3xs);
+  margin-block: var(--space-3xs-2xs);
 }
 
 .intro .ya-1 {
-  color: var(--text-color);
   font-size: var(--step-0);
   white-space: nowrap;
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  margin-block: var(--space-4xs-3xs);
+  margin-block: var(--space-3xs-2xs);
 }
 
 .intro .ya-2 {
-  color: var(--text-color);
   font-size: var(--step-1);
   white-space: nowrap;
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  margin-block: var(--space-4xs-3xs);
+  margin-block: var(--space-3xs-2xs);
 }
 
 .wrapper-gradient-text {
-  font-size: var(--step-0);
+  font-size: var(--step-2);
   margin: 0;
   /* Remove default margins */
   padding: 0;
   /* Remove default padding */
-  padding-top: var(--space-2xs-xs);
+  padding-top: var(--space-xs-s);
   text-align: center;
   /* Align text to the left */
   text-shadow: 100px 100px 100px rgb(255, 255, 255);
 }
 
 .text-layer {
-  background: var(--gradient);
-  -webkit-background-clip: text;
+  /*background: var(--gradient);*/
+  background: var(--background);
   background-clip: text;
   color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
