@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileTabs = document.querySelectorAll('.profile-tab');
   const themeList = document.querySelector('.theme-list');
   const themesBtn = document.querySelector('.link');
-  const bgImage = document.querySelector('.bg-image');
+  const bgImage = document.querySelector('.image-container');
   const profileTitle = document.querySelector('.profile-title');
 
   // Burger toggles nav menu ONLY and hides all tabs when opened

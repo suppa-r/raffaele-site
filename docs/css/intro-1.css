@@ -178,7 +178,7 @@
   /* global page padding variables */
   --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
-  --letter-space-content: var(--space-6xs-5xs);
+  --letter-space-content: var(--space-7xs-6xs);
   --word-space-content: var(--space-7xs-6xs);
 }
 
@@ -305,6 +305,12 @@
   }
 }
 
+body,
+html {
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+}
+
 body {
   background-color: var(--base-color);
   font-family: var(--pt-serif-italic);
@@ -314,20 +320,15 @@ body {
   color: var(--text-color);
 }
 
-.bg-image {
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20vw;
-  /* Decreased from 40vw */
-  height: auto;
-  background-position: center center;
-  background-repeat: no-repeat;
-  object-fit: cover;
+body {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
   z-index: 1000;
-  opacity: 1;
-  pointer-events: none;
+  isolation: isolate;
+}
+
+body>* {
+  container-type: inline-size;
 }
 
 body:before {
@@ -534,6 +535,43 @@ header p span {
   vertical-align: middle;
   background-color: var(--base-color);
   padding: 0 var(--space-2xs-xs);
+}
+
+.image-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 250px;
+  /* or your preferred size */
+  height: auto;
+  /* makes all images square and equal */
+  max-width: 100%;
+  /* responsive on small screens */
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  z-index: 1000;
+  opacity: 1;
+  display: block;
+  margin-inline: auto;
+  box-shadow: var(--shadow);
+  animation: fadeIn .8s ease-in-out forwards;
+  border-radius: 50%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: .5;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 
@@ -758,37 +796,6 @@ header p span {
   }
 }
 
-.bg-image {
-  width: 350px;
-  /* or your preferred size */
-  height: auto;
-  /* makes all images square and equal */
-  max-width: 100%;
-  /* responsive on small screens */
-  object-fit: cover;
-  /* crop
-    /* if you want them round */
-  display: block;
-  margin-inline: auto;
-  box-shadow: var(--shadow);
-  animation: fadeIn .8s ease-in-out forwards;
-  border-radius: 50%;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: .5;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 /* Fallback for browsers that do not support background-position animations */
 @supports not (animation: gradient) {
   .section-title {
@@ -797,18 +804,31 @@ header p span {
   }
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  /* <-- side by side */
+  justify-content: center;
+  /* center horizontally */
+  align-items: center;
+  /* center vertically */
+  padding: var(--page-pad-block) var(--page-pad-inline);
+  gap: var(--space-l);
+  text-align: center;
+  color: var(--text-color);
+  user-select: none;
+  opacity: 1;
+}
+
 .profile-tab {
-  position: relative;
   display: flex;
   text-align: center;
   color: var(--text-color);
   user-select: none;
   opacity: 1;
-  flex-direction: row;
+  flex-direction: column;
   gap: var(--space-2xs-xs);
   background-color: transparent;
-  padding: var(--space-2xl-3xl);
-  margin-block: var(--space-2xl);
   margin-inline: auto;
   z-index: 200;
 }
@@ -840,10 +860,10 @@ header p span {
 }
 
 .profile-tab>* {
-  flex: 1 1 0;
-  /* equal width columns */
   margin-inline: auto;
   background-color: transparent;
+  padding: var(--page-pad-inline);
+
 }
 
 .profile-tab .row-text.text {
@@ -875,7 +895,7 @@ header p span {
   margin-inline: auto;
 }
 
-@container(max-width: 600px) {
+@container (max-width: 600px) {
   .profile-tab {
     flex-direction: column;
     gap: var(--space-s);

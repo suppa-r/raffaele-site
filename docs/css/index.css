@@ -280,21 +280,13 @@
 }
 
 
-html,
-body {
-  font-family: var(--pt-serif-italic);
-  font-weight: var(--font-weight-1);
-  font-style: var(--font-style-1);
-  color: var(--text-color);
-  background: var(--base-color);
+body,
+html {
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  min-height: 100dvh;
-  height: 100%;
 }
 
 body {
-  margin-inline: auto;
   background-image: var(--bg-image);
   background-size: cover;
   background-attachment: fixed;
@@ -303,6 +295,18 @@ body {
   /* Overlay gradient using border-image */
   border-image: var(--overlay);
   -webkit-border-image: var(--overlay);
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
+  font-size: var(--step--1);
+  color: var(--text-color);
+}
+
+body {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
+  z-index: 1000;
+  isolation: isolate;
 }
 
 body>* {

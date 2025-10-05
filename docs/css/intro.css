@@ -302,16 +302,19 @@
   }
 }
 
-html,
+body,
+html {
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+}
+
 body {
+  background-color: var(--base-color);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
+  font-size: var(--step--1);
   color: var(--text-color);
-  background-color: var(--base-color);
-  text-wrap: balance;
-  white-space: nowrap;
-  min-height: 100dvh;
 }
 
 body {
