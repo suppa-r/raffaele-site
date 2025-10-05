@@ -649,7 +649,6 @@ header p span {
 
 /* Navigation */
 
-
 .burger-check:checked~.navigation {
   opacity: 1;
   pointer-events: all;
@@ -691,7 +690,6 @@ header p span {
 .nav-links {
   position: absolute;
   top: 50%;
-
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 120ch;
@@ -707,7 +705,6 @@ header p span {
   flex-direction: column;
   gap: var(--space-m);
   list-style: none;
-
   border-radius: var(--space-l);
   z-index: 200;
   opacity: 1;
@@ -876,4 +873,17 @@ header p span {
   /* if you want them round */
   display: block;
   margin-inline: auto;
+}
+
+@container(max-width: 600px) {
+  .profile-tab {
+    flex-direction: column;
+    gap: var(--space-s);
+    padding: var(--space-m);
+  }
+
+  .profile-tab .row-img>img {
+    width: 100%;
+    max-width: 2000px;
+  }
 }
