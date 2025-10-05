@@ -6,7 +6,7 @@
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(45deg, #ced7e0f6, #5a787e, #acc8e2be, #59598b);
 
-  --shadow: 0 30px 100px rgb(223, 223, 233);
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0.493);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
@@ -158,6 +158,9 @@
   --space-8xl-9xl: clamp(11.25rem, 10.2273rem + 4.5455cqi, 13.75rem);
   /* Space 9xl-10xl: 198px → 240px */
   --space-9xl-10xl: clamp(12.375rem, 11.3011rem + 4.7727cqi, 15rem);
+  /* Space 10xl-11xl: 216px → 260px */
+  --space-10xl-11xl: clamp(13.5rem, 12.375rem + 5cqi, 16.25rem);
+
 
 
   --pt-serif-regular: "PT Serif",
@@ -308,6 +311,7 @@ body {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
+  color: var(--text-color);
 }
 
 .bg-image {
@@ -355,15 +359,6 @@ body:before {
 
 /* --------------------------------------- */
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-m-l);
-  min-height: 100dvh;
-  position: relative;
-  z-index: 1000;
-}
-
 header {
   display: flex;
   flex-direction: row;
@@ -376,7 +371,7 @@ header {
 
 header p {
   background-color: transparent;
-  padding: 0 0 0 var(--space-xl-2xl);
+  padding: var(--space-2xs-xs) 0 0 var(--space-xl-2xl);
   /* Add left padding for alignment */
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -541,7 +536,19 @@ header p span {
   padding: 0 var(--space-2xs-xs);
 }
 
+
+.profile-tab {
+  display: none;
+}
+
 .profile-title {
+  position: absolute;
+  top: var(--space-l-xl);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
   font-size: var(--step-0);
   text-align: center;
   color: var(--text-color);
@@ -564,10 +571,14 @@ header p span {
   display: none;
 }
 
+.burger-check.active {
+  display: block;
+}
+
 .burger {
   display: block;
-  position: fixed;
-  top: var(--space-5xl-6xl);
+  position: absolute;
+  top: var(--space-s-m);
   left: 50%;
   transform: translate(-50%, -50%);
   width: var(--space-l);
@@ -576,7 +587,8 @@ header p span {
   color: var(--text-color);
   padding: 0;
   cursor: pointer;
-  z-index: 300;
+  pointer-events: all;
+  z-index: 1000;
   border: none;
 }
 
@@ -596,10 +608,10 @@ header p span {
   padding: 0;
 }
 
-.profile.burger {
+.profile-tab.burger {
   display: block;
-  position: fixed;
-  top: 3%;
+  position: absolute;
+  top: var(--space-s-m);
   left: 50%;
   transform: translate(-50%, -50%);
   width: var(--space-l);
@@ -608,62 +620,94 @@ header p span {
   color: var(--text-color);
   padding: 0;
   cursor: pointer;
-  z-index: 300;
+  pointer-events: all;
+  z-index: 1000;
   border: none;
 }
 
-.profile.burger span {
+.profile-tab.burger span {
   display: block;
   width: 100%;
   height: var(--burger-thickness, 4px);
   background: currentColor;
-  margin: 5px 0;
+  margin: 3px 0;
   border-radius: 2px;
   transition: 0.3s;
+  color: var(--text-color);
 }
 
-.profile .burger::-moz-focus-inner {
+.profile-tab .burger::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-.burger-check:checked~.burger {
+.profile-tab.burger-check:checked~.burger {
   border-bottom: var(--burger-thickness) solid transparent;
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
   -webkit-transition: border-bottom 1s ease-in-out;
 }
 
 /* Navigation */
+
+
+.burger-check:checked~.navigation {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.4s, max-height0.5s ease-in;
+  max-height: 100dvh;
+  animation: transtion 0.5s ease-in;
+}
+
+.burger-check:checked~.navigation li {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.nav {
+  display: none;
+}
+
+/*------navigation-------*/
+
 .navigation {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s;
 }
 
-.burger-check:checked~.navigation {
+.bars:checked~.navigation {
   opacity: 1;
   pointer-events: all;
   transition: opacity 0.4s, max-height 0.5s ease-in;
   max-height: 100dvh;
 }
 
-.burger-check:checked~.navigation li {
+.burger-check:checked~.nav-links li {
   transform: translateY(0);
   opacity: 1;
-
 }
 
-.navigation ul {
-  position: fixed;
+.nav-links {
+  position: absolute;
   top: 50%;
+
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 100dvh;
+  max-width: 120ch;
+  /* limits width to about 60 characters */
+  padding: var(--space-l);
+  margin-inline: auto;
+  text-align: center;
+  color: var(--text-color);
+  user-select: none;
+  box-shadow: var(--shadow);
+  background-color: var(--base-color);
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
   list-style: none;
-  box-shadow: var(--shadow);
+
   border-radius: var(--space-l);
   z-index: 200;
   opacity: 1;
@@ -671,14 +715,14 @@ header p span {
   padding-inline: var(--space-l);
 }
 
-.navigation li {
+.nav-links li {
   position: relative;
   box-shadow: var(--shadow);
   border-radius: var(--space-l);
   padding-inline: var(--space-2xl);
 }
 
-.navigation a {
+.nav-links a {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -690,7 +734,7 @@ header p span {
   border-radius: var(--space-l);
 }
 
-.navigation svg {
+.nav-links svg {
   width: var(--space-l);
   height: var(--space-l);
   fill: var(--text-color);
@@ -699,7 +743,7 @@ header p span {
   /* Space between icon and text, adjust as needed */
 }
 
-.navigation a>span {
+.nav-links a>span {
   display: block;
   text-align: center;
   color: var(--text-color);
@@ -717,12 +761,35 @@ header p span {
   }
 }
 
-.profile {
-  display: none;
+.bg-image {
+  width: 350px;
+  /* or your preferred size */
+  height: auto;
+  /* makes all images square and equal */
+  max-width: 100%;
+  /* responsive on small screens */
+  object-fit: cover;
+  /* crop
+    /* if you want them round */
+  display: block;
+  margin-inline: auto;
+  box-shadow: var(--shadow);
+  animation: fadeIn .8s ease-in-out forwards;
+  border-radius: 50%;
 }
 
-.bg-image {
-  display: block;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: .5;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Fallback for browsers that do not support background-position animations */
@@ -733,27 +800,70 @@ header p span {
   }
 }
 
-.profile .show {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  align-items: center;
-  gap: var(--space-l);
-  padding: var(--space-2xl) var(--space-2xs);
+.profile-tab {
+  position: relative;
+  display: flex;
+  text-align: center;
+  color: var(--text-color);
+  user-select: none;
+  opacity: 1;
+  flex-direction: row;
+  gap: var(--space-2xs-xs);
+  background-color: transparent;
+  padding: var(--space-2xl-3xl);
+  margin-block: var(--space-2xl);
   margin-inline: auto;
+  z-index: 200;
+}
+
+.section-title {
+  position: absolute;
+  top: var(--space-xs-s);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
+  font-size: var(--step-0);
+  text-align: center;
+  color: var(--text-color);
+  padding: var(--space-3xs) var(--space-s);
+  margin-block: var(--space-3xs) var(--space-s);
+  background: var(--gradient);
+  background-size: 400% 400%;
+  animation: gradient var(--sp) linear infinite;
+  border-radius: var(--space-l);
+  box-shadow: var(--shadow);
+  max-width: 25ch;
+  /* limits width to about 16 characters */
+  margin-inline: auto;
+  /* centers the title */
+  display: block;
+  /* ensures margin works */
+}
+
+.profile-tab>* {
+  flex: 1 1 0;
+  /* equal width columns */
+  margin-inline: auto;
+  background-color: transparent;
+}
+
+.profile-tab .row-text.text {
+  color: var(--text-color);
+  font-size: var(--step-0);
   text-align: center;
 }
 
-.profile>* .row-text.text {
-  color: var(--text-color);
-  font-size: var(--step-0);
-}
-
-.profile>* .row-text .ya {
+.profile-tab .row-text .ya {
   font-size: var(--step-2);
   color: var(--text-color);
+  text-align: center;
+  /* limits width to about 16 characters */
+  margin-inline: auto;
 }
 
-.profile .row-img>img {
+.profile-tab .row-img>img {
   width: 350px;
   /* or your preferred size */
   height: auto;
@@ -766,20 +876,4 @@ header p span {
   /* if you want them round */
   display: block;
   margin-inline: auto;
-  box-shadow: var(--shadow);
-}
-
-@container (max-width: 768px) {
-  .crew-details>* {
-    grid-template-rows: auto;
-    margin-inline: auto;
-  }
-
-  .crew-details.show .row-img>img {
-    width: 180px;
-    height: auto;
-    border-radius: 50%;
-    /* if you want them round */
-    box-shadow: var(--shadow);
-  }
 }

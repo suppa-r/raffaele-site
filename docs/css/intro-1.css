@@ -6,7 +6,7 @@
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(45deg, #ced7e0f6, #5a787e, #acc8e2be, #59598b);
 
-  --shadow: 0 30px 100px rgb(223, 223, 233);
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0.493);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
@@ -158,6 +158,9 @@
   --space-8xl-9xl: clamp(11.25rem, 10.2273rem + 4.5455cqi, 13.75rem);
   /* Space 9xl-10xl: 198px → 240px */
   --space-9xl-10xl: clamp(12.375rem, 11.3011rem + 4.7727cqi, 15rem);
+  /* Space 10xl-11xl: 216px → 260px */
+  --space-10xl-11xl: clamp(13.5rem, 12.375rem + 5cqi, 16.25rem);
+
 
 
   --pt-serif-regular: "PT Serif",
@@ -302,73 +305,59 @@
   }
 }
 
-html,
 body {
+  background-color: var(--base-color);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
+  font-size: var(--step--1);
   color: var(--text-color);
-  background-color: var(--base-color);
-  text-wrap: balance;
-  white-space: nowrap;
-  min-height: 100dvh;
 }
 
-body {
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  position: relative;
+.bg-image {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20vw;
+  /* Decreased from 40vw */
+  height: auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
   z-index: 1000;
-  isolation: isolate;
+  opacity: 1;
+  pointer-events: none;
 }
 
-body::before {
+body:before {
   opacity: 1;
   pointer-events: none;
   content: "";
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   background:
     linear-gradient(to bottom,
-      var(--body-gradient-top) 0%,
-      var(--body-gradient-bottom) 100%),
+      var(--body-gradient-bottom) 0%,
+      var(--body-gradient-top) 100%),
     linear-gradient(90deg,
-      var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat,
+      var(--body-grid-line)0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px,
     linear-gradient(180deg,
-      var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat;
-  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
+      var(--body-grid-line)0 1px,
+      transparent 1px 30px) 100% 100% / 30px 30px;
+  mask: linear-gradient(-100deg, transparent 0%, var(--body-grid-line))0%;
   transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-position 0.3s ease-in-out;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
 }
 
-body>* {
-  /* Ensure all direct children of body are treated as containers */
-  container-type: inline-size;
-  margin-inline: auto;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 0 auto;
-  padding: var(--page-pad-block) var(--page-pad-inline);
-
-  min-height: 100dvh;
-  position: relative;
-  z-index: 1000;
-}
-
+/* --------------------------------------- */
 
 header {
   display: flex;
@@ -382,7 +371,7 @@ header {
 
 header p {
   background-color: transparent;
-  padding: 0 0 0 var(--space-xl-2xl);
+  padding: var(--space-2xs-xs) 0 0 var(--space-xl-2xl);
   /* Add left padding for alignment */
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -548,172 +537,18 @@ header p span {
 }
 
 
-/*------navigation-------*/
-
-.navigation {
-  margin-left: var(--space-2xl);
-  background-color: transparent;
-  opacity: 1;
-  z-index: 1000;
-}
-
-.nav-links {
-  position: relative;
-  padding: 0;
-  display: flex;
-  gap: var(--space-s-m);
-  list-style: none;
-  opacity: 1;
-  pointer-events: all;
-  transition: opacity 0.4s ease-in;
-  z-index: 1000;
-}
-
-.nav-links.open {
-  position: absolute;
-  top: 10%;
-  right: 0;
-  transform: translate(0, -10%);
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-m-l);
-  list-style: none;
-  box-shadow: var(--shadow);
-  border-radius: var(--btn-border-radius);
-  z-index: 2000;
-  opacity: 1;
-  pointer-events: all;
-  background-color: transparent;
-  padding: var(--space-s-m) var(--space-xs-s);
-}
-
-.nav-links li {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  user-select: none;
-  list-style: none;
-  background-color: transparent;
-  border: 0;
-  border-radius: var(--btn-border-radius);
-  z-index: 1000;
-  cursor: pointer;
-  gap: var(--space-6xs-5xs);
-  transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
-}
-
-.nav-links li a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-6xs-5xs);
-  color: var(--text-color);
-  padding: 0;
-  margin: 0;
-  user-select: none;
-  transition: color 0.3s, background-color 0.3s;
-  cursor: pointer;
-  border: 0;
-  background-color: transparent;
-  font-size: var(--step--1);
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  text-align: center;
-}
-
-.nav-links li a span {
-  font-size: var(--step--1);
-  letter-spacing: var(--letter-space-content);
-  margin-inline: auto;
-}
-
-.nav-links li svg {
-  height: var(--space-m-l);
-  width: var(--space-m-l);
-  object-fit: cover;
-  stroke-linecap: round;
-  stroke-linejoin: miter;
-  color: var(--text-color);
-  background-color: transparent;
-  opacity: 1;
-  display: inline-block;
-  transition: color 0.3s, background-color 0.3s;
-  /* Add this line */
-  user-select: none;
-  pointer-events: none;
-  /* Prevents SVG from capturing pointer events */
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: middle;
-  box-sizing: border-box;
-  stroke-width: var(--space-xs-s);
-}
-
-ul {
-  @media (hover) {
-    &>li {
-      transform-origin: left center;
-      transition:
-        transform 1s var(--ease-spring-3),
-        opacity .3s var(--ease-3);
-    }
-
-    &:hover>li:not(:hover) {
-      opacity: .5;
-      transform: scale(0.8);
-    }
-  }
-}
-
-.bg-image {
-  position: absolute;
-  width: var(--space-9xl);
-  height: auto;
-  top: -50%;
-  /* Lower it from the top */
-  left: 50%;
-  transform: translate(-50%, 50%);
-  /* Center horizontally, move down 30% of its height */
-  background: var(--gradient);
-  background-size: 400% 400%;
-  animation: gradient var(--sp) linear infinite;
-  border-radius: 50%;
-  pointer-events: none;
-  user-select: none;
-  object-fit: cover;
-  z-index: -1;
-  opacity: 1;
-}
-
-.profile-section {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  /* fit content from the top */
-  margin: var(--space-m-l) auto;
-  padding: var(--space-m-l) var(--space-s-m);
-  background: var(--base-color, transparent);
-  box-shadow: var(--shadow);
-  border-radius: var(--btn-border-radius);
-  overflow: visible;
-  /* allow content to expand */
-  z-index: 1000;
-  user-select: text;
-  pointer-events: auto;
+.profile-tab {
+  display: none;
 }
 
 .profile-title {
-  position: inherit;
+  position: absolute;
+  top: var(--space-l-xl);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
   font-size: var(--step-0);
   text-align: center;
   color: var(--text-color);
@@ -732,64 +567,18 @@ ul {
   /* ensures margin works */
 }
 
-.profile>* {
-  display: none;
-}
-
-/* Fallback for browsers that do not support background-position animations */
-@supports not (animation: gradient) {
-  .section-title {
-    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
-    background-size: 100%;
-  }
-}
-
-.profile.show {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  align-items: center;
-  gap: var(--space-l);
-  padding: var(--space-2xl) var(--space-2xs);
-  margin-inline: auto;
-  text-align: center;
-}
-
-.profile>* .row-text.text {
-  color: var(--text-color);
-  font-size: var(--step-0);
-}
-
-.profile>* .row-text .ya {
-  font-size: var(--step-2);
-  color: var(--text-color);
-}
-
-.profile .row-img>img {
-  width: 350px;
-  /* or your preferred size */
-  height: auto;
-  /* makes all images square and equal */
-  max-width: 100%;
-  /* responsive on small screens */
-  object-fit: cover;
-  /* crop to fit the box */
-  border-radius: 50%;
-  /* if you want them round */
-  display: block;
-  margin-inline: auto;
-  box-shadow: var(--shadow);
-}
-
-/* Burger Menu */
-
 .burger-check {
   display: none;
 }
 
+.burger-check.active {
+  display: block;
+}
+
 .burger {
   display: block;
-  position: fixed;
-  top: var(--space-3xl-4xl);
+  position: absolute;
+  top: var(--space-s-m);
   left: 50%;
   transform: translate(-50%, -50%);
   width: var(--space-l);
@@ -798,7 +587,8 @@ ul {
   color: var(--text-color);
   padding: 0;
   cursor: pointer;
-  z-index: 300;
+  pointer-events: all;
+  z-index: 1000;
   border: none;
 }
 
@@ -818,10 +608,10 @@ ul {
   padding: 0;
 }
 
-.profile.burger {
+.profile-tab.burger {
   display: block;
-  position: fixed;
-  top: 3%;
+  position: absolute;
+  top: var(--space-s-m);
   left: 50%;
   transform: translate(-50%, -50%);
   width: var(--space-l);
@@ -830,32 +620,56 @@ ul {
   color: var(--text-color);
   padding: 0;
   cursor: pointer;
-  z-index: 300;
+  pointer-events: all;
+  z-index: 1000;
   border: none;
 }
 
-.profile.burger span {
+.profile-tab.burger span {
   display: block;
   width: 100%;
   height: var(--burger-thickness, 4px);
   background: currentColor;
-  margin: 5px 0;
+  margin: 3px 0;
   border-radius: 2px;
   transition: 0.3s;
+  color: var(--text-color);
 }
 
-.profile .burger::-moz-focus-inner {
+.profile-tab .burger::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-.burger-check:checked~.burger {
+.profile-tab.burger-check:checked~.burger {
   border-bottom: var(--burger-thickness) solid transparent;
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
   -webkit-transition: border-bottom 1s ease-in-out;
 }
 
 /* Navigation */
+
+
+.burger-check:checked~.navigation {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.4s, max-height0.5s ease-in;
+  max-height: 100dvh;
+  animation: transtion 0.5s ease-in;
+}
+
+.burger-check:checked~.navigation li {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.nav {
+  display: none;
+}
+
+/*------navigation-------*/
+
 .navigation {
   opacity: 0;
   pointer-events: none;
@@ -872,20 +686,28 @@ ul {
 .burger-check:checked~.nav-links li {
   transform: translateY(0);
   opacity: 1;
-
 }
 
-.nav-links .open {
-  position: fixed;
+.nav-links {
+  position: absolute;
   top: 50%;
+
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 100dvh;
+  max-width: 120ch;
+  /* limits width to about 60 characters */
+  padding: var(--space-l);
+  margin-inline: auto;
+  text-align: center;
+  color: var(--text-color);
+  user-select: none;
+  box-shadow: var(--shadow);
+  background-color: var(--base-color);
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
   list-style: none;
-  box-shadow: var(--shadow);
+
   border-radius: var(--space-l);
   z-index: 200;
   opacity: 1;
@@ -939,18 +761,119 @@ ul {
   }
 }
 
-
-@container (max-width: 768px) {
-  .profile>* {
-    grid-template-rows: auto;
-    margin-inline: auto;
-  }
-
-  .profile.show .row-img>img {
-    width: 180px;
-    height: auto;
-    border-radius: 50%;
+.bg-image {
+  width: 350px;
+  /* or your preferred size */
+  height: auto;
+  /* makes all images square and equal */
+  max-width: 100%;
+  /* responsive on small screens */
+  object-fit: cover;
+  /* crop
     /* if you want them round */
-    box-shadow: var(--shadow);
+  display: block;
+  margin-inline: auto;
+  box-shadow: var(--shadow);
+  animation: fadeIn .8s ease-in-out forwards;
+  border-radius: 50%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+
+  to {
+    opacity: .5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fallback for browsers that do not support background-position animations */
+@supports not (animation: gradient) {
+  .section-title {
+    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
+    background-size: 100%;
+  }
+}
+
+.profile-tab {
+  position: relative;
+  display: flex;
+  text-align: center;
+  color: var(--text-color);
+  user-select: none;
+  opacity: 1;
+  flex-direction: row;
+  gap: var(--space-2xs-xs);
+  background-color: transparent;
+  padding: var(--space-2xl-3xl);
+  margin-block: var(--space-2xl);
+  margin-inline: auto;
+  z-index: 200;
+}
+
+.section-title {
+  position: absolute;
+  top: var(--space-xs-s);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
+  font-size: var(--step-0);
+  text-align: center;
+  color: var(--text-color);
+  padding: var(--space-3xs) var(--space-s);
+  margin-block: var(--space-3xs) var(--space-s);
+  background: var(--gradient);
+  background-size: 400% 400%;
+  animation: gradient var(--sp) linear infinite;
+  border-radius: var(--space-l);
+  box-shadow: var(--shadow);
+  max-width: 25ch;
+  /* limits width to about 16 characters */
+  margin-inline: auto;
+  /* centers the title */
+  display: block;
+  /* ensures margin works */
+}
+
+.profile-tab>* {
+  flex: 1 1 0;
+  /* equal width columns */
+  margin-inline: auto;
+  background-color: transparent;
+}
+
+.profile-tab .row-text.text {
+  color: var(--text-color);
+  font-size: var(--step-0);
+  text-align: center;
+}
+
+.profile-tab .row-text .ya {
+  font-size: var(--step-2);
+  color: var(--text-color);
+  text-align: center;
+  /* limits width to about 16 characters */
+  margin-inline: auto;
+}
+
+.profile-tab .row-img>img {
+  width: 350px;
+  /* or your preferred size */
+  height: auto;
+  /* makes all images square and equal */
+  max-width: 100%;
+  /* responsive on small screens */
+  object-fit: cover;
+  /* crop to fit the box */
+  border-radius: 50%;
+  /* if you want them round */
+  display: block;
+  margin-inline: auto;
 }
