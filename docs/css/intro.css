@@ -380,7 +380,7 @@ header {
 header .bars {
   position: absolute;
   top: var(--space-s-m);
-  left: var(--space-xs-s);
+  left: var(--space-4xs-3xs);
   height: 3px;
   width: 20px;
   border-radius: 2px;
@@ -389,7 +389,7 @@ header .bars {
   display: none;
   cursor: pointer;
   z-index: 2000;
-  transition: transform 0.5s ease-in-out;
+  /* Ensure it's above the nav links */
 }
 
 header .bars.is-active {
@@ -400,6 +400,7 @@ header .bars.is-active {
   transform: translate(0) rotate(45deg);
   cursor: pointer;
   z-index: 2000;
+  /* Ensure it's above the nav links */
 }
 
 header .bars::after,
@@ -438,35 +439,18 @@ header .bars.is-active::before {
 /*------title-------*/
 
 header p {
-  background-color: transparent;
-  padding: var(--space-xs-s) 0 var(--space-2xl-3xl);
-  /* Add left padding for alignment */
-  color: var(--text-color);
-  letter-spacing: var(--letter-space-content);
-  /* Use a fixed value for better control */
-  word-spacing: var(--word-space-content);
-  font-size: var(--step--1);
-  margin: 0;
-  display: inline-block;
-  user-select: none;
-  opacity: 1;
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
 }
 
 header p span {
-  background-color: transparent;
   color: var(--text-span);
   font-size: var(--step--1);
-  padding-left: 0;
-  /* Only left padding for spacing */
-  margin: 0;
-  user-select: none;
-  opacity: 1;
 }
 
 /*------navigation-------*/
 
 .nav {
-  margin-left: var(--space-2xl);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
@@ -485,17 +469,12 @@ header p span {
 }
 
 .nav-links.open {
-  position: absolute;
-  top: 10%;
-  right: 0;
-  transform: translate(0, -10%);
-  min-height: 100dvh;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: var(--space-m-l);
   list-style: none;
   box-shadow: var(--shadow);
-  border-radius: var(--btn-border-radius);
   z-index: 2000;
   opacity: 1;
   pointer-events: all;
@@ -592,23 +571,7 @@ ul {
 .theme-list {
   position: absolute;
   right: var(--space-xs-s);
-  top: var(--space-s-m);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
-  z-index: 1000;
-  pointer-events: none;
-  user-select: none;
-  gap: var(--space-3xs-2xs);
-  font-size: var(--step--1);
-  color: var(--text-color);
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  text-align: center;
-  background-color: transparent;
-  opacity: 1;
+  top: var(--space-6xs-5xs);
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
   border-radius: var(--btn-border-radius);
@@ -616,22 +579,11 @@ ul {
 
 .theme-button {
   right: var(--space-xs-s);
-  top: var(--space-2xs-xs);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
-  z-index: 1000;
-  user-select: none;
-  gap: var(--space-3xs-2xs);
-  font-size: var(--step--1);
-  color: var(--text-color);
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  text-align: center;
-  background-color: transparent;
-  opacity: 1;
+  top: var(--space-6xs-5xs);
+  position: absolute;
+  background-color: var(--clr-button);
+  padding: var(--space-6xs-5xs) var(--space-s-m);
+  margin: var(--space-6xs-5xs) 0 0 var(--space-2xl-3xl);
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
   border: none;
@@ -658,11 +610,11 @@ ul {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-4xs-3xs);
+  padding: var(--space-6xs-5xs) var(--space-s-m);
   gap: var(--space-6xs-5xs);
   align-items: center;
   text-decoration: none;
-  background-color: var(--base-color);
+  background-color: var(--clr-button);
   color: var(--text-color);
   box-shadow: var(--shadow);
   font-size: var(--step--1);
@@ -746,9 +698,6 @@ ul {
 .intro p {
   font-size: var(--step--1);
   white-space: nowrap;
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  color: var(--text-color);
 }
 
 .fancy span {
@@ -843,6 +792,14 @@ ul {
 
 @container (max-width: 600px) {
 
+  .theme-button {
+    top: var(--space-m);
+    right: var(--space-s);
+  }
+
+  header .bars {
+    display: block;
+  }
 
   .nav-links.open {
     position: fixed;

@@ -4,6 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const intro = document.querySelector('.intro');
   const h = document.querySelector('header p');
   const nav = document.querySelector('.nav-links');
+  const bars = document.querySelector('.bars');
+
+  bars.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (nav) {
+      const isOpen = nav.classList.toggle('open');
+      nav.style.display = isOpen ? 'flex' : '';
+      // Toggle intro/header/themeList based on menu state
+      if (isOpen) {
+        intro && (intro.style.display = 'none');
+        h && (h.style.display = 'none');
+        themeList && themeList.classList.remove('active');
+      } else {
+        intro && (intro.style.display = 'block');
+        h && (h.style.display = 'block');
+        themeList && themeList.classList.remove('active');
+      }
+    }
+  });
 
   // Function to update active class on theme buttons
   function setActiveThemeButton() {
