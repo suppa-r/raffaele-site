@@ -5,28 +5,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeList = document.querySelector('.theme-list');
   const themesBtn = document.querySelector('.link');
   const bgImage = document.querySelector('.image-container');
-  const profileTitle = document.querySelector('.profile-title');
+  const profileTitles = document.querySelectorAll('.profile-title');
+
+  // Utility: Hide all profile tabs and remove 'open'
+  function hideAllTabs() {
+    profileTabs.forEach(tab => {
+      tab.style.display = 'none';
+      tab.classList.remove('open');
+    });
+  }
+
+  // Utility: Reset UI to default state
+  function resetUI() {
+    hideAllTabs();
+    if (bgImage) bgImage.style.display = 'block';
+    if (themesBtn) themesBtn.style.display = '';
+    if (themeList) themeList.style.display = 'flex';
+    if (navLinks) navLinks.style.display = '';
+    if (burgerCheck) burgerCheck.checked = false;
+    profileTitles.forEach(title => title.style.display = 'block');
+  }
 
   // Burger toggles nav menu ONLY and hides all tabs when opened
   if (burgerCheck && navLinks) {
     burgerCheck.addEventListener('change', () => {
-      navLinks.style.display = burgerCheck.checked ? 'block' : '';
       if (burgerCheck.checked) {
-        profileTabs.forEach(tab => {
-          tab.style.display = 'none';
-          tab.classList.remove('open');
-          bgImage && (bgImage.style.display = 'none');
-        });
+        navLinks.style.display = 'block';
+        if (bgImage) bgImage.style.display = 'none';
+        if (themesBtn) themesBtn.style.display = 'none';
+        if (themeList) themeList.style.display = 'none';
+        profileTitles.forEach(title => title.style.display = 'none');
+        hideAllTabs();
+      } else {
+        resetUI();
       }
     });
   }
-
-  // Hide all profile tabs by default
-  profileTabs.forEach(tab => {
-    tab.style.display = 'none';
-    tab.classList.remove('open');
-    bgImage && (bgImage.style.display = 'block');
-  });
 
   // Nav-links click: show corresponding profile tab
   navLinks?.querySelectorAll('a[data-tab]').forEach(link => {
@@ -37,18 +51,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tab.classList.contains(tabName)) {
           tab.style.display = 'flex';
           tab.classList.add('open');
-          bgImage && (bgImage.style.display = 'none');
-          profileTitle.style.display = 'none';
         } else {
           tab.style.display = 'none';
           tab.classList.remove('open');
         }
       });
-      if (themesBtn) themesBtn.style.display = '';
-      if (themeList) themeList.style.display = 'flex';
+      profileTitles.forEach(title => title.style.display = 'none');
       if (bgImage) bgImage.style.display = 'none';
+      if (themesBtn) themesBtn.style.display = '';
+      if (themeList) themeList.style.display = 'none';
       if (burgerCheck) burgerCheck.checked = false;
-      if (navLinks) navLinks.style.display = '';
+      if (navLinks) navLinks.style.display = 'none';
     });
+  });
+
+  // Initial state based on burgerCheck
+  if (burgerCheck && burgerCheck.checked) {
+    navLinks.style.display = 'block';
+    if (bgImage) bgImage.style.display = 'none';
+    if (themesBtn) themesBtn.style.display = 'none';
+    if (themeList) themeList.style.display = 'none';
+    profileTitles.forEach(title => title.style.display = 'none');
+    hideAllTabs();
+  } else {
+    resetUI();
+  }
+
+  // Theme button toggles theme list visibility
+  themesBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (themeList) {
+      themeList.style.display = themeList.style.display === 'flex' ? 'none' : 'flex';
+    }
+    hideAllTabs();
+    if (bgImage) bgImage.style.display = 'none';
+    if (burgerCheck) burgerCheck.checked = false;
+    if (navLinks) navLinks.style.display = '';
+    if (themesBtn) themesBtn.style.display = '';
+    profileTitles.forEach(title => title.style.display = 'none');
+  });
+
+  // Close theme list when clicking outside
+  document.addEventListener('click', (e) => {
+    if (themeList && themesBtn && !themeList.contains(e.target) && !themesBtn.contains(e.target)) {
+      themeList.style.display = 'none';
+    }
   });
 });

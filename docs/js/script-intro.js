@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         themeList.classList.remove('active');
         intro && (intro.style.display = 'block');
         h && (h.style.display = 'block');
-        nav && (nav.style.display = 'flex');
+        nav && (nav.style.display = ''); // <-- Hide nav-links
+        nav && nav.classList.remove('open'); // <-- Remove open class if used
       }
     });
   });
