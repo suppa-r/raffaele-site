@@ -4,9 +4,9 @@
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
-  --gradient: linear-gradient(45deg, #ced7e0f6, #c6d5d8d3, #bec9d3, #cfcfe0);
+  --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
 
-  --shadow: 0 30px 100px rgb(223, 223, 233);
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0.671);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
@@ -180,7 +180,7 @@
   /* global page padding variables */
   --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
-  --letter-space-content: var(--space-6xs-5xs);
+  --letter-space-content: var(--space-7xs-6xs);
   --word-space-content: var(--space-7xs-6xs);
 }
 
@@ -311,6 +311,7 @@ body,
 html {
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
+  padding: 0 var(--page-pad-inline);
 }
 
 body {
@@ -374,7 +375,6 @@ h2 {
 
 header {
   display: flex;
-  justify-content: flex-start;
 }
 
 header .bars {
@@ -437,9 +437,8 @@ header .bars.is-active::before {
 }
 
 /*------title-------*/
-
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
+  padding: var(--space-3xs-2xs) 0 0 var(--space-2xl-3xl);
 }
 
 header p span {
@@ -450,7 +449,7 @@ header p span {
 /*------navigation-------*/
 
 .nav {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
+  padding: 0 0 var(--space-3xl-4xl) var(--space-2xl-3xl);
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
@@ -508,18 +507,29 @@ header p span {
   align-items: center;
   justify-content: center;
   gap: var(--space-6xs-5xs);
-  color: var(--text-color);
-  padding: 0;
-  margin: 0;
-  user-select: none;
-  transition: color 0.3s, background-color 0.3s;
-  cursor: pointer;
   border: 0;
+  border-radius: var(--btn-border-radius);
   background-color: transparent;
+  color: var(--text-color);
   font-size: var(--step--1);
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  text-align: center;
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
+  background-image: linear-gradient(to right, aqua, violet);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.3s, color 0.3s;
+  user-select: none;
+  z-index: 1000;
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus-visible {
+  background-size: 100% 2px;
+  outline: none;
+  color: var(--gradient);
+  transition: background-size 0.3s, --gradient 0.3s;
 }
 
 .nav-links li a span {
@@ -570,20 +580,20 @@ ul {
 /* Theme list styles remain unchanged */
 .theme-list {
   position: absolute;
-  right: var(--space-xs-s);
-  top: var(--space-6xs-5xs);
+  right: var(--space-6xs-5xs);
+  top: var(--space-7xs-6xs);
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
   border-radius: var(--btn-border-radius);
 }
 
 .theme-button {
-  right: var(--space-xs-s);
-  top: var(--space-6xs-5xs);
+  right: var(--space-6xs-5xs);
+  top: var(--space-7xs-6xs);
   position: absolute;
   background-color: var(--clr-button);
-  padding: var(--space-6xs-5xs) var(--space-s-m);
-  margin: var(--space-6xs-5xs) 0 0 var(--space-2xl-3xl);
+  padding: 0 var(--space-s-m);
+  margin: 0 var(--space-s-m);
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
   border: none;
@@ -611,6 +621,7 @@ ul {
   position: relative;
   z-index: 1000;
   padding: var(--space-6xs-5xs) var(--space-s-m);
+  margin: var(--space-6xs-5xs) var(--space-s-m);
   gap: var(--space-6xs-5xs);
   align-items: center;
   text-decoration: none;
@@ -684,16 +695,15 @@ ul {
 /*------intro-------*/
 
 .intro {
+  display: block;
   text-align: center;
   margin-inline: 0 auto;
-  padding-inline: var(--page-pad-inline);
-  padding-top: var(--space-s-m);
+  padding: var(--space-3xs-2xs) 0 var(--space-9xl-10xl) 0;
+  margin-bottom: var(--space-9xl-10xl);
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
 }
-
-
 
 .intro p {
   font-size: var(--step--1);
@@ -793,8 +803,8 @@ ul {
 @container (max-width: 600px) {
 
   .theme-button {
+    right: var(--space-7xs);
     top: var(--space-m);
-    right: var(--space-s);
   }
 
   header .bars {
