@@ -375,12 +375,18 @@ h2 {
 
 header {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  z-index: 1500;
+  user-select: none;
 }
 
 header .bars {
-  position: absolute;
+  /*position: absolute;
   top: var(--space-s-m);
-  left: var(--space-4xs-3xs);
+  left: var(--space-4xs-3xs);*/
   height: 3px;
   width: 20px;
   border-radius: 2px;
@@ -393,7 +399,9 @@ header .bars {
 }
 
 header .bars.is-active {
-  margin-top: var(--space-xs-s);
+  position: absolute;
+  top: var(--space-s-m);
+  left: var(--space-4xs-3xs);
   transform-origin: right;
   padding: 0 var(--space-3xs-2xs) 0 var(--space-2xs-xs);
   transition: transform 0.5s ease-in-out;
@@ -410,7 +418,7 @@ header .bars::before {
   height: 3px;
   left: 0;
   width: 20px;
-  border-radius: 2px;
+  border-radius: var(--space-7xs-6xs);
   background: var(--bars);
   cursor: pointer;
 }
@@ -425,13 +433,13 @@ header .bars::before {
 
 header .bars.is-active::after {
   transform-origin: left;
-  transform: translate(0) rotate(-90deg);
+  transform: translate(0) rotate(90deg);
   bottom: 0;
   transition: transform 0.5s ease-in-out;
 }
 
 header .bars.is-active::before {
-  transform: translate(0) rotate(90deg);
+  transform: translate(0) rotate(-90deg);
   top: 0;
   transition: transform 0.5s ease-in-out;
 }
@@ -449,7 +457,7 @@ header p span {
 /*------navigation-------*/
 
 .nav {
-  padding: 0 0 var(--space-3xl-4xl) var(--space-2xl-3xl);
+  padding: 0 0 0 var(--space-4xl-5xl);
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
@@ -579,21 +587,27 @@ ul {
 
 /* Theme list styles remain unchanged */
 .theme-list {
-  position: absolute;
-  right: var(--space-6xs-5xs);
-  top: var(--space-7xs-6xs);
+  background-color: var(--clr-button);
+  padding: var(--space-5xs-4xs) var(--space-s-m);
+  margin: 0;
   transition: opacity 0.3s ease-in-out;
-  box-shadow: var(--shadow);
+  pointer-events: all;
+  border: none;
   border-radius: var(--btn-border-radius);
+  box-shadow: var(--shadow);
 }
 
 .theme-button {
-  right: var(--space-6xs-5xs);
+  /*right: var(--space-6xs-5xs);
   top: var(--space-7xs-6xs);
-  position: absolute;
+  position: absolute;*/
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
   background-color: var(--clr-button);
-  padding: 0 var(--space-s-m);
-  margin: 0 var(--space-s-m);
+  padding: var(--space-4xs-3xs) var(--space-s-m);
+  margin: 0;
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
   border: none;
@@ -622,7 +636,7 @@ ul {
   z-index: 1000;
   padding: var(--space-6xs-5xs) var(--space-s-m);
   margin: var(--space-6xs-5xs) var(--space-s-m);
-  gap: var(--space-6xs-5xs);
+  gap: var(--space-5xs-4xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--clr-button);
@@ -642,7 +656,7 @@ ul {
   stroke-linecap: round;
   stroke-linejoin: miter;
   color: var(--text-color);
-  background-color: var(--base-color);
+  background-color: transparent;
   opacity: 1;
   display: inline-block;
   transition: color 0.3s, background-color 0.3s;
@@ -657,10 +671,10 @@ ul {
 }
 
 .theme-button:hover svg {
-  transform: scale(0.5);
+  transform: scale(0.6);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
-  background-color: var(--base-color);
+  background-color: transparent;
   /* Or another color if you want */
 }
 
@@ -669,19 +683,8 @@ ul {
   transition: fill 0.3s, stroke 0.3s;
 }
 
-/* Style SVGs inside theme-list items */
-.theme-button label svg {
-  width: var(--space-s-m);
-  height: var(--space-s-m);
-  margin-right: var(--space-xs-s);
-  vertical-align: middle;
-  color: var(--text-color);
-  background-color: var(--base-color);
-  opacity: 1;
-  display: inline-block;
-}
-
 .theme-button span {
+  font-size: var(--step-0);
   white-space: nowrap;
   overflow: hidden;
   user-select: none;
@@ -691,15 +694,13 @@ ul {
   padding: 0 var(--space-2xs-xs);
 }
 
-
 /*------intro-------*/
 
 .intro {
   display: block;
   text-align: center;
   margin-inline: 0 auto;
-  padding: var(--space-3xs-2xs) 0 var(--space-9xl-10xl) 0;
-  margin-bottom: var(--space-9xl-10xl);
+  margin: var(--space-m-l) 0 0 0;
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
@@ -712,13 +713,14 @@ ul {
 
 .fancy span {
   display: inline-block;
-  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80, #22d3ee, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+  background: linear-gradient(270deg, #bb7ba1, #8482ac, #61a178, #70b4be, #6b85af, #8a5cf68f, #ec4899, #85b153);
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 5s ease-in-out infinite;
+  animation: gradientAnimation 3s ease-in-out infinite alternate;
+  animation-direction: alternate reverse;
   font-size: var(--step-0);
   letter-spacing: var(--letter-space-content);
   padding-left: var(--space-3xs-2xs);
@@ -739,30 +741,13 @@ ul {
   }
 }
 
-
 .intro .ya {
   font-size: var(--step-0);
   white-space: nowrap;
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  margin-block: var(--space-3xs-2xs);
+  margin-block: var(--space-4xs-3xs);
 }
 
-.intro .ya-1 {
-  font-size: var(--step-0);
-  white-space: nowrap;
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  margin-block: var(--space-3xs-2xs);
-}
-
-.intro .ya-2 {
-  font-size: var(--step-1);
-  white-space: nowrap;
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  margin-block: var(--space-3xs-2xs);
-}
+/*------gradient text-------*/
 
 .wrapper-gradient-text {
   font-size: var(--step-2);
@@ -770,15 +755,15 @@ ul {
   /* Remove default margins */
   padding: 0;
   /* Remove default padding */
-  padding-top: var(--space-xs-s);
+  padding-top: var(--space-2xs-xs);
   text-align: center;
   /* Align text to the left */
   text-shadow: 100px 100px 100px rgb(255, 255, 255);
 }
 
 .text-layer {
-  /*background: var(--gradient);*/
-  background: var(--background);
+  background: var(--gradient);
+  background-size: 200% 200%;
   background-clip: text;
   color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
@@ -796,18 +781,90 @@ ul {
   100% {
     text-shadow: 0px 50px 100px var(--shadow-color),
       0px 15px 20px var(--shadow-color2),
-      0px 20px 5px var(--shadow-color3);
+      0px 30px 5px var(--shadow-color3);
   }
 }
 
 @container (max-width: 600px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-xs-s) var(--space-s-m);
+    position: relative;
+    z-index: 2001;
+    background: var(--base-color);
+  }
 
-  .theme-button {
-    right: var(--space-7xs);
-    top: var(--space-m);
+  header p {
+    font-size: var(--step--1);
+    padding: var(--space-3xs-2xs) 0 0 var(--space-s-m);
+    margin: 0;
+    flex: 1;
+    text-align: left;
   }
 
   header .bars {
+    display: block;
+    position: relative;
+    width: 32px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 2002;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  header .bars,
+  header .bars::before,
+  header .bars::after,
+  header .bars span {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 3%;
+    width: 20px;
+    height: 4px;
+    background: var(--bars, #222);
+    border-radius: 2px;
+    transition: transform 0.4s, opacity 0.4s;
+  }
+
+  header .bars span {
+    top: 10px;
+    /* middle line */
+  }
+
+  header .bars::before {
+    top: 2px;
+    /* top line */
+  }
+
+  header .bars::after {
+    bottom: 2px;
+    /* bottom line */
+  }
+
+  /* Animate to X when active */
+  header .bars.is-active span {
+    opacity: 1;
+  }
+
+  header .bars.is-active::before {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  header .bars.is-active::after {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .theme-button {
+    padding: var(--space-5xs-4xs) 0 0 var(--space-l);
+  }
+
+  .theme-button:not(.active) {
     display: block;
   }
 
@@ -825,8 +882,8 @@ ul {
     list-style: none;
     box-shadow: var(--shadow);
     border-radius: var(--btn-border-radius);
-    z-index: 1000;
-    background: transparent;
+    z-index: 2000;
+    background: var(--base-color, #fff);
     max-height: 100dvh;
     overflow: hidden;
     color: var(--text-color);
