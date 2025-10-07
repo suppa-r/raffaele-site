@@ -6,6 +6,8 @@
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
 
+  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
+
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.671);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
@@ -39,6 +41,8 @@
   --clr-neon: hsla(189, 4%, 63%, 0.733);
   --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
+
+  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
@@ -370,23 +374,19 @@ body>* {
 /*------header-------*/
 header {
   position: relative;
-  width: 100%;
-  max-width: 1200px;
-  padding: var(--space-7xs-6xs) 0;
-  border-radius: var(--space-l);
-  background-color: transparent;
-  box-shadow: var(--navbar-shadow);
-  z-index: 1500;
-}
-header {
   display: flex;
   justify-content: flex-start;
+  padding:var(--space-7xs-6xs) var(--space-2xl-3xl);
+  background:var(--gradient-header);
+  border-radius: var(--space-l);
+  background-color: transparent;
+  z-index: 1500;
 }
 
 header .bars {
   position: absolute;
   top: var(--space-s-m);
-  left: var(--space-7xs-6xs);
+  left: var(--space-l-xl);
   margin-right: var(--space-xs-s);
   height: 2.5px;
   width: 16px;
@@ -444,7 +444,7 @@ header .bars.is-active::before {
 /*------title-------*/
 
 .h {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl-3xl);
+  padding: var(--space-7xs-6xs) var(--space-2xl-3xl);
 }
 
 .h span {
@@ -455,7 +455,7 @@ header .bars.is-active::before {
 /*------navigation-------*/
 
 .nav {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
+  padding: var(--space-7xs-6xs) var(--space-2xl-3xl);
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
@@ -463,7 +463,7 @@ header .bars.is-active::before {
 
 .nav-links {
   position: relative;
-  padding: 0;
+  padding: var(--space-7xs-6xs) var(--space-2xl-3xl);
   display: flex;
   gap: var(--space-s-m);
   list-style: none;
@@ -575,8 +575,9 @@ ul {
 /* Theme list styles remain unchanged */
 .theme-list {
   position: absolute;
-  right: var(--space-7xs-6xs);
-  top: var(--space-7xs-6xs);
+    padding: var(--space-7xs) var(--space-s);
+    right: var(--space-s);
+    top: var(--space-7xs);
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
   border-radius: var(--btn-border-radius);
@@ -584,11 +585,11 @@ ul {
 
 .theme-button {
   position: absolute;
-  right: var(--space-7xs-6xs);
-  top: var(--space-7xs-6xs);
+    padding: var(--space-7xs) var(--space-s);
+  right: var(--space-s);
+  top: var(--space-7xs);
   background-color: var(--clr-button);
-  padding: var(--space-6xs-5xs) var(--space-s-m);
-  margin: var(--space-6xs-5xs) 0 0 var(--space-2xl-3xl);
+opacity: 1;
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
   border: none;
@@ -779,9 +780,27 @@ ul {
 
 @container (max-width: 600px) {
 
+.h{
+  padding: var(--space-m) var(--space-s);
+}
+
   header .bars {
     display: block;
+    top: var(--space-l);
+    left: var(--space-s);
+    height: 3px;
+    width: 20px;
   }
+
+.theme-list, .theme-button {
+     position: absolute;
+     padding:0 var(--space-s);
+     right: var(--space-s);
+     top: var(--space-xs);
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: var(--shadow);
+    border-radius: var(--btn-border-radius);
+}
 
   .nav-links.open {
     position: absolute;

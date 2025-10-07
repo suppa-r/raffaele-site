@@ -11,7 +11,7 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/compressed/header-desktop.jpg');
+    url('../images/header-desktop-min.jpg');
 
   /* bottom image */
   --overlay {
@@ -33,7 +33,7 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/compressed/bg-light-2.jpg');
+    url('../images/IMG_1194.JPG');
 
   /* bottom image */
   --overlay {
