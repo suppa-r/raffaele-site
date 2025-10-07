@@ -376,6 +376,7 @@ header {
   position: relative;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
   padding:0 var(--space-2xl-3xl);
   background:var(--gradient-header);
   border-radius: var(--space-l);
