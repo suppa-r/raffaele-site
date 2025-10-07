@@ -439,7 +439,7 @@ header .bars.is-active::before {
 /*------title-------*/
 
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-7xs-6xs);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xs-xs);
 }
 
 header p span {
