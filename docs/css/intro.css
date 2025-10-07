@@ -365,13 +365,19 @@ body>* {
   margin-inline: auto;
 }
 
-h2 {
-  font-size: var(--step-0);
-  color: var(--text-color);
-  margin-block: var(--space-4xs-3xs);
-}
+
 
 /*------header-------*/
+header {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--space-7xs-6xs) 0;
+  border-radius: var(--space-l);
+  background-color: transparent;
+  box-shadow: var(--navbar-shadow);
+  z-index: 1500;
+}
 header {
   display: flex;
   justify-content: flex-start;

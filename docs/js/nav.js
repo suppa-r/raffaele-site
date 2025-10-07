@@ -22,14 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themesBtn) themesBtn.style.display = '';
     if (themeList) themeList.style.display = 'flex';
     if (navLinks) navLinks.style.display = '';
-    if (burgerCheck) burgerCheck.checked = false;
     profileTitles.forEach(title => title.style.display = 'block');
   }
 
-  // Burger toggles nav menu ONLY and hides all tabs when opened
+  // Burger toggles nav menu open/close
   if (burgerCheck && navLinks) {
-    burgerCheck.addEventListener('change', () => {
-      if (burgerCheck.checked) {
+    burgerCheck.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      if (isOpen) {
         navLinks.style.display = 'block';
         if (bgImage) bgImage.style.display = 'none';
         if (themesBtn) themesBtn.style.display = 'none';
@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         profileTitles.forEach(title => title.style.display = 'none');
         hideAllTabs();
       } else {
+        navLinks.style.display = '';
         resetUI();
       }
     });
@@ -60,22 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (bgImage) bgImage.style.display = 'none';
       if (themesBtn) themesBtn.style.display = '';
       if (themeList) themeList.style.display = 'none';
+      navLinks.classList.remove('open');
+      navLinks.style.display = '';
       if (burgerCheck) burgerCheck.checked = false;
-      if (navLinks) navLinks.style.display = 'none';
     });
   });
-
-  // Initial state based on burgerCheck
-  if (burgerCheck && burgerCheck.checked) {
-    navLinks.style.display = 'block';
-    if (bgImage) bgImage.style.display = 'none';
-    if (themesBtn) themesBtn.style.display = 'none';
-    if (themeList) themeList.style.display = 'none';
-    profileTitles.forEach(title => title.style.display = 'none');
-    hideAllTabs();
-  } else {
-    resetUI();
-  }
 
   // Theme button toggles theme list visibility
   themesBtn?.addEventListener('click', (e) => {

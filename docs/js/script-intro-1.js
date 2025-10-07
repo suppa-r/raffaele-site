@@ -12,7 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (bgImage) {
         bgImage.style.display = (bgImage.style.display === 'none' ? 'block' : 'none');
       }
-      // ...your existing burger logic (if any)...
+      if (burger) (burger).classList.toggle('active'); ``
+      if (burger.classList.contains('active')) {  
+        
+        burger.classList.remove('active');
+      } else {
+        burger.classList.add('active');
+      }
     });
   }
 

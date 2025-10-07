@@ -365,19 +365,12 @@ body>* {
   margin-inline: auto;
 }
 
-h2 {
-  font-size: var(--step-0);
-  color: var(--text-color);
-  margin-block: var(--space-4xs-3xs);
-}
-
+/*------header-------*/
 
 header {
   display: flex;
   justify-content: flex-start;
 }
-
-/*------title-------*/
 
 header .h {
   margin: var(--space-3xs-2xs) 0 0 var(--space-s-m);
@@ -390,27 +383,21 @@ header .h span {
 
 /*------navigation-------*/
 
-.nav {
+.navigation {
   margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
   background-color: transparent;
-  opacity: 1;
-  z-index: 1000;
-}
-
-.nav-links {
-  position: relative;
-  padding: 0;
-  display: flex;
-  gap: var(--space-s-m);
-  list-style: none;
-  opacity: 1;
-  pointer-events: all;
-  transition: opacity 0.4s ease-in;
+  opacity: 0;
   z-index: 1000;
 }
 
 .nav-links.open {
+  position: absolute;
+  top: var(--space-7xl-8xl);
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin-inline: auto;
+  margin-block: var(--space-xl-2xl);
+  padding: var(--space-6xs-5xs) var(--space-2xl-3xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-m-l);
@@ -420,17 +407,26 @@ header .h span {
   opacity: 1;
   pointer-events: all;
   background-color: transparent;
-  padding: var(--space-s-m) var(--space-xs-s);
+  transition: opacity 0.4s ease-in;
+ 
 }
 
-.nav-links li {
-  position: relative;
+.nav-links.open li {
+flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  /* Each li fills the available width */
+  max-width: 350px;
+  /* Optional: set a max width for each li */
+  box-sizing: border-box;
+position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: 0;
+  padding: var(--space-6xs-5xs) var(--space-xl-2xl);
+  margin-inline:auto;
+  pointer-events: all;
   user-select: none;
   list-style: none;
   background-color: transparent;
@@ -438,38 +434,42 @@ header .h span {
   border-radius: var(--btn-border-radius);
   z-index: 1000;
   cursor: pointer;
-  gap: var(--space-6xs-5xs);
-  transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
+  gap: var(--space-l-xl);
+ transform: translateY(60px);
+ opacity: 0;
+ transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 }
 
-.nav-links li a {
+.nav-links.open li a {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-decoration: none;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+   /*margin: var(--space-6xs-5xs) var(--space-l-xl);*/
+  margin-inline: auto;
+padding: var(--space-6xs-5xs) var(--space-l-xl);
   gap: var(--space-6xs-5xs);
   color: var(--text-color);
-  padding: 0;
-  margin: 0;
+  background-color: transparent;
   user-select: none;
   transition: color 0.3s, background-color 0.3s;
   cursor: pointer;
+  pointer-events: all;
   border: 0;
-  background-color: transparent;
   font-size: var(--step--1);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  text-align: center;
+  box-shadow: var(--shadow);
+  border-radius: var(--btn-border-radius);
 }
-
-.nav-links li a span {
+.nav-links.open li a span {
   font-size: var(--step--1);
   letter-spacing: var(--letter-space-content);
   margin-inline: auto;
 }
 
-.nav-links li svg {
+.nav-links.open li svg {
   height: var(--space-m-l);
   width: var(--space-m-l);
   object-fit: cover;
@@ -490,22 +490,6 @@ header .h span {
   vertical-align: middle;
   box-sizing: border-box;
   stroke-width: var(--space-xs-s);
-}
-
-ul {
-  @media (hover) {
-    &>li {
-      transform-origin: left center;
-      transition:
-        transform 1s var(--ease-spring-3),
-        opacity .3s var(--ease-3);
-    }
-
-    &:hover>li:not(:hover) {
-      opacity: .5;
-      transform: scale(0.8);
-    }
-  }
 }
 
 /* Theme list styles remain unchanged */
@@ -634,22 +618,23 @@ ul {
   transform: translate(-50%, -50%);
   inline-size: 200px;
   /* or your preferred size */
-  aspect-ratio: 1 / 2;
-  /* makes all images square and equal */
-  max-width: 100%;
-  /* responsive on small screens */
-  background-position: center center;
-  background-repeat: no-repeat;
-  object-fit: cover;
+  block-size: 300px;
+  /* or your preferred size */
+  background-color: var(--clr-button);
+  border: var(--space-7xs-6xs) solid var(--clr-button);
+  /* border around the image */
+  overflow: hidden;
+  /* ensures the image doesn't overflow the container */
+  box-sizing: border-box;
   z-index: 1000;
-  opacity: 1;
-  display: block;
-  margin-inline: auto;
-  box-shadow: var(--shadow);
-  animation: fadeIn .8s ease-in forwards;
+  isolation: isolate;
+  user-select: none;
+  pointer-events: none;
   border-radius: 50%;
+  box-shadow: var(--shadow);
+  animation: fadeIn 2s ease-in-out;
 }
-
+ 
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -673,22 +658,20 @@ ul {
   isolation: isolate;
   user-select: none;
   pointer-events: none;
-  font-family: var(--ff-monoton-regular);
-  font-weight: var(--font-weight-regular);
-  font-style: var(--font-style-regular);
-  font-size: var(--step--1);
+  font-size: var(--step-2);
+  white-space: nowrap;
   text-align: center;
   color: var(--text-color);
-  padding: var(--space-2xs-xs) var(--space-xl-2xl);
-  margin-block: var(--space-3xs-2xs) var(--space-3xs-2xs);
+  padding: var(--space-2xs-xs) var(--space-s-m);
+  margin-block: var(--space-3xs-2xs);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradient 3s ease-in-out infinite alternate;
   animation-timing-function: 1s ease-in-out infinite alternate;
   border-radius: var(--space-s-m);
   box-shadow: var(--shadow);
-  max-width: 100ch;
-  /* limits width to about 16 characters */
+  /*max-width: 100ch;
+   limits width to about 16 characters */
   margin-inline: auto;
   /* centers the title */
   display:inline-block;
@@ -791,122 +774,8 @@ ul {
   transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 }
 
-.nav {
-  display: none;
-}
 
-/*------navigation-------*/
 
-.navigation {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s;
-}
-
-.nav-links {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100ch;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-l-xl);
-  /* space between each link */
-  /* limits width to about 60 characters */
-  padding: var(--space-5xs-4xs) var(--space-l);
-  margin-inline: auto;
-  text-align: center;
-  color: var(--text-color);
-  user-select: none;
-  box-shadow: var(--shadow);
-  list-style: none;
-  border-radius: var(--space-s-m);
-  z-index: 2000;
-  opacity: 1;
-  pointer-events: all;
-  transition: opacity 0.4s ease-in;
-}
-
-.nav-links li {
-  position: relative;
-  box-shadow: var(--shadow);
-  border-radius: var(--space-l);
-  padding-inline: var(--space-2xl-3xl);
-  color: var(--text-color);
-  transform: translateY(60px);
-  opacity: 0;
-  transition:
-    transform 0.6s cubic-bezier(.22, .61, .36, 1),
-    opacity 0.6s cubic-bezier(.22, .61, .36, 1);
-}
-
-.nav-links.open li {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--space-xs-s);
-  margin: 0;
-  user-select: none;
-  list-style: none;
-  background-color: transparent;
-  border: 0;
-  border-radius: var(--btn-border-radius);
-  z-index: 1000;
-  cursor: pointer;
-  padding: var(--space-3xs-2xs) var(--space-2xl-3xl);
-  transform: translateY(0);
-  opacity: 1;
-  transition-delay: calc(0.15s * var(--i));
-}
-
-.nav-links a {
-  display: flex;
-  /* <-- side by side */
-  flex-direction: row;
-  /* <-- side by side */
-  align-items: center;
-  gap: var(--space-xs-s);
-  /* space between SVG and span */
-  padding: var(--space-4xs-3xs) var(--space-2xl-3xl);
-  text-decoration: none;
-  background-color: var(--clr-neon);
-  transition: background-color 0.3s, color 0.3s;
-  cursor: pointer;
-  user-select: none;
-  pointer-events: all;
-  box-shadow: var(--shadow);
-  font-size: var(--step--1);
-  color: var(--base-color);
-  border-radius: var(--btn-border-radius);
-}
-
-.nav-links a>span {
-  font-size: var(--step--1);
-  letter-spacing: var(--letter-space-content);
-  margin-inline: auto;
-}
-
-@keyframes gradient {
-
-  0%,
-  100% {
-    background-position: 0 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Fallback for browsers that do not support background-position animations */
-@supports not (animation: gradient) {
-  .section-title {
-    background: linear-gradient(45deg, #33ffc9a4, #6bdfffa4, #453d78a4, #646593a4);
-    background-size: 100%;
-  }
-}
 
 .profile-tab {
   display: none;
@@ -916,7 +785,10 @@ ul {
 .profile-tab.open {
   display: flex;
   flex-direction: row;
-  padding: var(--space-4xl-5xl);
+  gap: var(--space-l-xl);
+  /* space between each profile */
+box-shadow: var(--shadow);
+ padding: var(--space-m);
   margin-inline: auto;
   text-align: center;
   color: var(--text-color);
@@ -925,14 +797,11 @@ ul {
   z-index: 2000;
   opacity: 1;
   pointer-events: all;
-
+  min-width:100dvh;
+  overflow: auto; 
 }
 
 .profile-tab.open>* {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Center content vertically */
   flex: 1 1 0;
   /* Each child takes equal space */
   min-width: 0;
@@ -1019,18 +888,21 @@ ul {
 
 @container (max-width: 600px) {
   .profile-tab {
-    flex-direction: row;
-    gap: var(--space-s);
-    padding: var(--space-m);
-  }
+    flex-direction: column;
+}
 
-  .profile-tab .row-img>img {
-    inline-size: 150px;
-    aspect-ratio: 1 / 1;
-    max-width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    margin-inline: auto;
-  }
+ .profile-tab .row-img>img {
+   inline-size: 175px;
+   /* or your preferred size */
+   aspect-ratio: 1 / 1;
+   /* makes all images square and equal */
+   max-width: 100%;
+   /* responsive on small screens */
+   object-fit: cover;
+   /* crop to fit the box */
+   border-radius: 50%;
+   /* if you want them round */
+   display: block;
+   margin-inline: auto;
+ }
 }
