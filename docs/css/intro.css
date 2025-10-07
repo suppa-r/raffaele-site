@@ -380,7 +380,7 @@ header {
 header .bars {
   position: absolute;
   top: var(--space-s-m);
-  left: var(--space-4xs-3xs);
+  left: var(--space-5xs-4xs);
   height: 3px;
   width: 20px;
   border-radius: 2px;
@@ -570,17 +570,17 @@ ul {
 /* Theme list styles remain unchanged */
 .theme-list {
   position: absolute;
-  right: var(--space-xs-s);
-  top: var(--space-6xs-5xs);
+  right: var(--space-3xs-2xs);
+  top: var(--space-7xs-6xs);
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
   border-radius: var(--btn-border-radius);
 }
 
 .theme-button {
-  right: var(--space-xs-s);
-  top: var(--space-6xs-5xs);
   position: absolute;
+  right: var(--space-3xs-2xs);
+  top: var(--space-7xs-6xs);
   background-color: var(--clr-button);
   padding: var(--space-6xs-5xs) var(--space-s-m);
   margin: var(--space-6xs-5xs) 0 0 var(--space-2xl-3xl);
