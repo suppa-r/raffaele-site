@@ -439,7 +439,7 @@ header .bars.is-active::before {
 /*------title-------*/
 
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-3xl-4xl);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-xl-2xl);
 }
 
 header p span {
@@ -780,7 +780,7 @@ ul {
   }
 
   /* Theme list styles remain unchanged */
-  /* Theme list styles remain unchanged */
+  /* Theme list styles remain unchanged *
   .theme-list {
     position: absolute;
     right: var(--space-3sx);
@@ -875,14 +875,14 @@ ul {
     opacity: 1;
     display: inline-block;
     transition: color 0.3s, background-color 0.3s;
-    /* Add this line */
+    /* Add this line *
   }
 
   .theme-button svg path {
     fill: var(--text-color);
     transition: fill 0.3s, stroke 0.3s;
     stroke: var(--space-xs);
-    /* Add stroke if you want to animate it too */
+    /* Add stroke if you want to animate it too *
   }
 
   .theme-button:hover svg {
@@ -890,7 +890,7 @@ ul {
     transition: transform 0.1s, color 0.3s, background-color 0.3s;
     color: var(--text-span);
     background-color: var(--base-color);
-    /* Or another color if you want */
+    /* Or another color if you want *
   }
 
   .theme-button:hover svg path {
@@ -898,7 +898,7 @@ ul {
     transition: fill 0.3s, stroke 0.3s;
   }
 
-  /* Style SVGs inside theme-list items */
+  /* Style SVGs inside theme-list items *
   .theme-button label svg {
     width: var(--space-s-m);
     height: var(--space-s-m);
@@ -918,7 +918,7 @@ ul {
     vertical-align: middle;
     background-color: var(--base-color);
     padding: 0 var(--space-2xs-xs);
-  }
+  }*/
 
   .nav-links.open {
     position: absolute;

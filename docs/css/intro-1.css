@@ -519,9 +519,9 @@ ul {
 }
 
 .theme-button {
-  right: var(--space-2sx);
-  top: var(--space-6xs-5xs);
   position: absolute;
+  right: var(--space-2xs-xs);
+  top: var(--space-6xs-5xs);
   background-color: var(--clr-button);
   padding: var(--space-6xs-5xs) var(--space-s-m);
   margin: var(--space-6xs-5xs) 0 0 var(--space-2xl-3xl);
