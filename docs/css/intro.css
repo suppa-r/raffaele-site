@@ -380,12 +380,12 @@ header {
 header .bars {
   position: absolute;
   top: var(--space-s-m);
-  left: var(--space-5xs-4xs);
+  left: var(--space-7xs-6xs);
   height: 3px;
   width: 20px;
   border-radius: 2px;
   background-color: var(--bars);
-  margin-left: var(--space-s);
+  margin-left: var(--space-7xs-6xs);
   display: none;
   cursor: pointer;
   z-index: 2000;
@@ -439,7 +439,7 @@ header .bars.is-active::before {
 /*------title-------*/
 
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-xl-2xl);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl-3xl);
 }
 
 header p span {

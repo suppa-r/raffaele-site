@@ -371,7 +371,7 @@ h2 {
   margin-block: var(--space-4xs-3xs);
 }
 
-/*------header-------*/
+
 header {
   display: flex;
   justify-content: flex-start;
@@ -380,7 +380,7 @@ header {
 /*------title-------*/
 
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-m-l);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl-3xl);
 }
 
 header p span {
@@ -511,8 +511,8 @@ ul {
 /* Theme list styles remain unchanged */
 .theme-list {
   position: absolute;
-  right: var(--space-2xs-xs);
-  top: var(--space-6xs-5xs);
+  right: var(--space-7xs-6xs);
+  top: var(--space-7xs-6xs);
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
   border-radius: var(--btn-border-radius);
@@ -520,8 +520,8 @@ ul {
 
 .theme-button {
   position: absolute;
-  right: var(--space-2xs-xs);
-  top: var(--space-6xs-5xs);
+  right: var(--space-7xs-6xs);
+  top: var(--space-7xs-6xs);
   background-color: var(--clr-button);
   padding: var(--space-6xs-5xs) var(--space-s-m);
   margin: var(--space-6xs-5xs) 0 0 var(--space-2xl-3xl);
@@ -621,16 +621,18 @@ ul {
   padding: 0 var(--space-2xs-xs);
 }
 
+/*------profile-------*/
+
 .profile-tab>* {
   display: none;
 }
 
 .image-container {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -40%);
-  width: 175px;
+  transform: translate(-50%, -50%);
+  width: 200px;
   /* or your preferred size */
   height: auto;
   /* makes all images square and equal */
