@@ -381,11 +381,11 @@ header .bars {
   position: absolute;
   top: var(--space-s-m);
   left: var(--space-7xs-6xs);
+  margin-right: var(--space-7xs-6xs);
   height: 3px;
   width: 20px;
   border-radius: 2px;
   background-color: var(--bars);
-  margin-left: var(--space-7xs-6xs);
   display: none;
   cursor: pointer;
   z-index: 2000;
@@ -393,11 +393,11 @@ header .bars {
 }
 
 header .bars.is-active {
-  margin-top: var(--space-xs-s);
-  transform-origin: right;
-  padding: 0 var(--space-3xs-2xs) 0 var(--space-2xs-xs);
+  margin-top: var(--space-3xs-2xs);
+  transform-origin: left;
+  padding: 0 0 0 var(--space-7xs-6xs);
   transition: transform 0.5s ease-in-out;
-  transform: translate(0) rotate(45deg);
+  transform: translate(0) rotate(0deg);
   cursor: pointer;
   z-index: 2000;
   /* Ensure it's above the nav links */
@@ -425,13 +425,13 @@ header .bars::before {
 
 header .bars.is-active::after {
   transform-origin: left;
-  transform: translate(0) rotate(-90deg);
+  transform: translate(0) rotate(-45deg);
   bottom: 0;
   transition: transform 0.5s ease-in-out;
 }
 
 header .bars.is-active::before {
-  transform: translate(0) rotate(90deg);
+  transform: translate(0) rotate(45deg);
   top: 0;
   transition: transform 0.5s ease-in-out;
 }
@@ -439,7 +439,7 @@ header .bars.is-active::before {
 /*------title-------*/
 
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-s-m);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-7xs-6xs);
 }
 
 header p span {
@@ -776,149 +776,7 @@ ul {
 
   header .bars {
     display: block;
-    margin-right: var(--space-xs)
   }
-
-  /* Theme list styles remain unchanged */
-  /* Theme list styles remain unchanged *
-  .theme-list {
-    position: absolute;
-    right: var(--space-3sx);
-    top: var(--space-xs);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-6xs-5xs) var(--space-xs-s);
-    z-index: 1000;
-    pointer-events: none;
-    user-select: none;
-    gap: var(--space-3xs-2xs);
-    font-size: var(--step--1);
-    color: var(--text-color);
-    letter-spacing: var(--letter-space-content);
-    word-spacing: var(--word-space-content);
-    text-align: center;
-    background-color: transparent;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: var(--shadow);
-    border-radius: var(--btn-border-radius);
-  }
-
-  .theme-button {
-    right: var(--space-3sx);
-    top: var(--space-xs);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-6xs-5xs) var(--space-xs-s);
-    z-index: 1000;
-    user-select: none;
-    gap: var(--space-3xs-2xs);
-    font-size: var(--step--1);
-    color: var(--text-color);
-    letter-spacing: var(--letter-space-content);
-    word-spacing: var(--word-space-content);
-    text-align: center;
-    background-color: transparent;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: all;
-    border: none;
-    border-radius: var(--btn-border-radius);
-    box-shadow: var(--shadow);
-  }
-
-  .theme-button.active {
-    display: none;
-  }
-
-  .theme-button:not(.active) {
-    display: block;
-  }
-
-  .theme-button input[type="radio"] {
-    display: none;
-  }
-
-  .theme-button label {
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-    pointer-events: all;
-    position: relative;
-    z-index: 1000;
-    padding: 0 var(--space-4xs-3xs);
-    gap: var(--space-6xs-5xs);
-    align-items: center;
-    text-decoration: none;
-    background-color: var(--base-color);
-    color: var(--text-color);
-    box-shadow: var(--shadow);
-    font-size: var(--step--1);
-    border: 0;
-    border-radius: var(--btn-border-radius);
-    user-select: none;
-    transition: color 0.3s, box-shadow 0.3s;
-  }
-
-  .theme-button svg {
-    width: var(--space-m-l);
-    height: var(--space-m-l);
-    vertical-align: middle;
-    stroke-linecap: round;
-    stroke-linejoin: miter;
-    color: var(--text-color);
-    background-color: var(--base-color);
-    opacity: 1;
-    display: inline-block;
-    transition: color 0.3s, background-color 0.3s;
-    /* Add this line *
-  }
-
-  .theme-button svg path {
-    fill: var(--text-color);
-    transition: fill 0.3s, stroke 0.3s;
-    stroke: var(--space-xs);
-    /* Add stroke if you want to animate it too *
-  }
-
-  .theme-button:hover svg {
-    transform: scale(0.5);
-    transition: transform 0.1s, color 0.3s, background-color 0.3s;
-    color: var(--text-span);
-    background-color: var(--base-color);
-    /* Or another color if you want *
-  }
-
-  .theme-button:hover svg path {
-    fill: var(--text-span);
-    transition: fill 0.3s, stroke 0.3s;
-  }
-
-  /* Style SVGs inside theme-list items *
-  .theme-button label svg {
-    width: var(--space-s-m);
-    height: var(--space-s-m);
-    margin-right: var(--space-xs-s);
-    vertical-align: middle;
-    color: var(--text-color);
-    background-color: var(--base-color);
-    opacity: 1;
-    display: inline-block;
-  }
-
-  .theme-button span {
-    white-space: nowrap;
-    overflow: hidden;
-    user-select: none;
-    display: inline-block;
-    vertical-align: middle;
-    background-color: var(--base-color);
-    padding: 0 var(--space-2xs-xs);
-  }*/
 
   .nav-links.open {
     position: absolute;
