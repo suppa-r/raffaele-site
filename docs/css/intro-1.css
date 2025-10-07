@@ -679,7 +679,7 @@ ul {
   font-size: var(--step--1);
   text-align: center;
   color: var(--text-color);
-  padding: var(--space-2xs-xs) var(--space-l-xl);
+  padding: var(--space-2xs-xs) var(--space-xl-2xl);
   margin-block: var(--space-3xs-2xs) var(--space-3xs-2xs);
   background: var(--gradient);
   background-size: 400% 400%;
@@ -691,7 +691,7 @@ ul {
   /* limits width to about 16 characters */
   margin-inline: auto;
   /* centers the title */
-  display: block;
+  display:inline-block;
   /* ensures margin works */
 }
 

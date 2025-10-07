@@ -381,7 +381,7 @@ header .bars {
   position: absolute;
   top: var(--space-s-m);
   left: var(--space-7xs-6xs);
-  margin-right: var(--space-2xs-xs);
+  margin-right: var(--space-xs-s);
   height: 2.5px;
   width: 16px;
   border-radius: 2px;
@@ -393,12 +393,11 @@ header .bars {
 }
 
 header .bars.is-active {
-  margin-top: var(--space-3xs-2xs);
-  transform-origin: left;
+  display: block;
+  transform-origin: center;
   padding: 0 0 0 var(--space-7xs-6xs);
-  transition: transform 0.5s ease-in-out;
-  transform: translate(0) rotate(0deg);
-  cursor: pointer;
+  /*transition: transform 0.5s ease-in-out;
+  transform: rotate(45deg);*/
   z-index: 2000;
   /* Ensure it's above the nav links */
 }
@@ -424,7 +423,7 @@ header .bars::before {
 }
 
 header .bars.is-active::after {
-  transform-origin: left;
+  transform-origin:center;
   transform: translate(0) rotate(-45deg);
   bottom: 0;
   transition: transform 0.5s ease-in-out;
