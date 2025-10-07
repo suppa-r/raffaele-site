@@ -570,7 +570,7 @@ ul {
 /* Theme list styles remain unchanged */
 .theme-list {
   position: absolute;
-  right: var(--space-3xs-2xs);
+  right: var(--space-7xs-6xs);
   top: var(--space-7xs-6xs);
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
@@ -579,7 +579,7 @@ ul {
 
 .theme-button {
   position: absolute;
-  right: var(--space-3xs-2xs);
+  right: var(--space-7xs-6xs);
   top: var(--space-7xs-6xs);
   background-color: var(--clr-button);
   padding: var(--space-6xs-5xs) var(--space-s-m);
