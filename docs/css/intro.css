@@ -439,7 +439,7 @@ header .bars.is-active::before {
 /*------title-------*/
 
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-3xl-4xl);
 }
 
 header p span {
@@ -776,14 +776,15 @@ ul {
 
   header .bars {
     display: block;
+    margin-right: var(--space-xs)
   }
 
   /* Theme list styles remain unchanged */
   /* Theme list styles remain unchanged */
   .theme-list {
     position: absolute;
-    right: var(--space-xs-s);
-    top: var(--space-2xs-xs);
+    right: var(--space-3sx);
+    top: var(--space-xs);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -806,8 +807,8 @@ ul {
   }
 
   .theme-button {
-    right: var(--space-xs-s);
-    top: var(--space-2xs-xs);
+    right: var(--space-3sx);
+    top: var(--space-xs);
     display: flex;
     flex-direction: row;
     align-items: center;
