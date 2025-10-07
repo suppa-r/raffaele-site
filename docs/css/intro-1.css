@@ -380,7 +380,7 @@ header {
 /*------title-------*/
 
 header p {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl-3xl);
+  margin: var(--space-3xs-2xs) 0 0 var(--space-s-m);
 }
 
 header p span {
@@ -676,18 +676,18 @@ ul {
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   text-align: center;
   color: var(--text-color);
-  padding: var(--space-3xs) var(--space-s);
-  margin-block: var(--space-3xs) var(--space-s);
+  padding: var(--space-2xs-xs) var(--space-s-m);
+  margin-block: var(--space-3xs-2xs) var(--space-s-m);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradient 3s ease-in-out infinite alternate;
   animation-timing-function: 1s ease-in-out infinite alternate;
-  border-radius: var(--space-l);
+  border-radius: var(--space-s-m);
   box-shadow: var(--shadow);
-  max-width: 25ch;
+  max-width: 30ch;
   /* limits width to about 16 characters */
   margin-inline: auto;
   /* centers the title */
@@ -706,11 +706,11 @@ ul {
 .burger {
   display: block;
   position: absolute;
-  top: var(--space-l-xl);
+  top: var(--space-xl-2xl);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: var(--space-l);
-  height: var(--space-m);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   background: none;
   color: var(--text-color);
   padding: 0;
@@ -739,11 +739,11 @@ ul {
 .profile-tab.burger {
   display: block;
   position: absolute;
-  top: var(--space-m-l);
+  top: var(--space-xl-2xl);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: var(--space-l);
-  height: var(--space-m);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   background: none;
   color: var(--text-color);
   padding: 0;
@@ -756,7 +756,7 @@ ul {
 .profile-tab.burger span {
   display: block;
   width: 100%;
-  height: var(--burger-thickness, 4px);
+  height: var(--burger-thickness, 2.5px);
   background: currentColor;
   margin: 3px 0;
   border-radius: 2px;
