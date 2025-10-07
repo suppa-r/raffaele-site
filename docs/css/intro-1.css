@@ -4,9 +4,9 @@
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
-  --gradient: linear-gradient(270deg, #ffffffb9, #ffffff4d, #ffffff00);
+  --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
 
-  --shadow: 0 30px 100px rgb(223, 223, 233);
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0.671);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
@@ -180,7 +180,7 @@
   /* global page padding variables */
   --page-pad-inline: var(--space-6xs-5xs);
   --page-pad-block: 0;
-  --letter-space-content: var(--space-6xs-5xs);
+  --letter-space-content: var(--space-7xs-6xs);
   --word-space-content: var(--space-7xs-6xs);
 }
 
@@ -311,6 +311,7 @@ body,
 html {
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
+  padding: 0 var(--page-pad-inline);
 }
 
 body {
@@ -320,7 +321,6 @@ body {
   font-style: var(--font-style-1);
   font-size: var(--step--1);
   color: var(--text-color);
-  margin-inline: auto;
 }
 
 body {
@@ -367,14 +367,11 @@ body>* {
 
 h2 {
   font-size: var(--step-0);
-  color: var(--gradient);
+  color: var(--text-color);
   margin-block: var(--space-4xs-3xs);
-  margin-inline: auto;
 }
 
-
 /*------header-------*/
-
 header {
   display: flex;
   justify-content: flex-start;
@@ -383,29 +380,132 @@ header {
 /*------title-------*/
 
 header p {
-  background-color: transparent;
-  padding: var(--space-2xs-xs) 0 0 var(--space-xl-2xl);
-  /* Add left padding for alignment */
-  color: var(--text-color);
-  letter-spacing: var(--letter-space-content);
-  /* Use a fixed value for better control */
-  word-spacing: var(--word-space-content);
-  font-size: var(--step--1);
-  margin: 0;
-  display: inline-block;
-  user-select: none;
-  opacity: 1;
+  margin: var(--space-3xs-2xs) 0 0 var(--space-m-l);
 }
 
 header p span {
-  background-color: transparent;
   color: var(--text-span);
   font-size: var(--step--1);
-  padding-left: 0;
-  /* Only left padding for spacing */
+}
+
+/*------navigation-------*/
+
+.nav {
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
+  background-color: transparent;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.nav-links {
+  position: relative;
+  padding: 0;
+  display: flex;
+  gap: var(--space-s-m);
+  list-style: none;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.4s ease-in;
+  z-index: 1000;
+}
+
+.nav-links.open {
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m-l);
+  list-style: none;
+  box-shadow: var(--shadow);
+  z-index: 2000;
+  opacity: 1;
+  pointer-events: all;
+  background-color: transparent;
+  padding: var(--space-s-m) var(--space-xs-s);
+}
+
+.nav-links li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  list-style: none;
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--btn-border-radius);
+  z-index: 1000;
+  cursor: pointer;
+  gap: var(--space-6xs-5xs);
+  transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.nav-links li a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6xs-5xs);
+  color: var(--text-color);
+  padding: 0;
   margin: 0;
   user-select: none;
+  transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  font-size: var(--step--1);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  text-align: center;
+}
+
+.nav-links li a span {
+  font-size: var(--step--1);
+  letter-spacing: var(--letter-space-content);
+  margin-inline: auto;
+}
+
+.nav-links li svg {
+  height: var(--space-m-l);
+  width: var(--space-m-l);
+  object-fit: cover;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
+  color: var(--text-color);
+  background-color: transparent;
   opacity: 1;
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  /* Add this line */
+  user-select: none;
+  pointer-events: none;
+  /* Prevents SVG from capturing pointer events */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  stroke-width: var(--space-xs-s);
+}
+
+ul {
+  @media (hover) {
+    &>li {
+      transform-origin: left center;
+      transition:
+        transform 1s var(--ease-spring-3),
+        opacity .3s var(--ease-3);
+    }
+
+    &:hover>li:not(:hover) {
+      opacity: .5;
+      transform: scale(0.8);
+    }
+  }
 }
 
 /* Theme list styles remain unchanged */
@@ -564,7 +664,7 @@ header p span {
 
 .profile-title {
   position: absolute;
-  top: var(--space-xl-2xl);
+  top: var(--space-2xl-3xl);
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
