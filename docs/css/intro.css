@@ -396,8 +396,8 @@ header .bars.is-active {
   display: block;
   transform-origin: center;
   padding: 0 0 0 var(--space-7xs-6xs);
-  /*transition: transform 0.5s ease-in-out;
-  transform: rotate(45deg);*/
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(45deg);
   z-index: 2000;
   /* Ensure it's above the nav links */
 }
@@ -437,11 +437,11 @@ header .bars.is-active::before {
 
 /*------title-------*/
 
-header .h {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-2xs-xs);
+.h {
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl-3xl);
 }
 
-header .h span {
+.h span {
   color: var(--text-span);
   font-size: var(--step--1);
 }
