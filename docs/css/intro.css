@@ -773,15 +773,6 @@ ul {
 }
 
 @container (max-width: 600px) {
-  /*header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-xs-s) var(--space-s-m);
-    position: relative;
-    z-index: 2001;
-    background: var(--base-color);
-  }*/
 
   header .bars {
     display: block;
