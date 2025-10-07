@@ -704,7 +704,7 @@ ul {
 .burger {
   display: block;
   position: absolute;
-  top: var(--space-s-m);
+  top: var(--space-l-xl);
   left: 50%;
   transform: translate(-50%, -50%);
   width: var(--space-l);
