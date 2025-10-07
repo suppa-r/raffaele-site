@@ -379,11 +379,11 @@ header {
 
 /*------title-------*/
 
-header p {
+header .h {
   margin: var(--space-3xs-2xs) 0 0 var(--space-s-m);
 }
 
-header p span {
+header .h span {
   color: var(--text-span);
   font-size: var(--step--1);
 }
@@ -634,7 +634,7 @@ ul {
   transform: translate(-50%, -50%);
   inline-size: 200px;
   /* or your preferred size */
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 2;
   /* makes all images square and equal */
   max-width: 100%;
   /* responsive on small screens */
@@ -666,7 +666,7 @@ ul {
 
 .profile-title {
   position: absolute;
-  top: var(--space-3xl-4xl);
+  top: var(--space-4xl-5xl);
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
@@ -687,7 +687,7 @@ ul {
   animation-timing-function: 1s ease-in-out infinite alternate;
   border-radius: var(--space-s-m);
   box-shadow: var(--shadow);
-  max-width: 50ch;
+  max-width: 100ch;
   /* limits width to about 16 characters */
   margin-inline: auto;
   /* centers the title */

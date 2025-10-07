@@ -438,11 +438,11 @@ header .bars.is-active::before {
 
 /*------title-------*/
 
-header p {
+header .h {
   margin: var(--space-3xs-2xs) 0 0 var(--space-2xs-xs);
 }
 
-header p span {
+header .h span {
   color: var(--text-span);
   font-size: var(--step--1);
 }
