@@ -2,25 +2,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeList = document.querySelector('.theme-list');
   const themeButtons = document.querySelectorAll('.theme-button');
   const intro = document.querySelector('.intro');
-  //const h = document.querySelector('header p');
+  const h = document.querySelector('header p');
   const nav = document.querySelector('.nav-links');
   const bars = document.querySelector('.bars');
 
-  // Burger menu toggle
   bars.addEventListener('click', (e) => {
     e.stopPropagation();
     if (nav) {
       const isOpen = nav.classList.toggle('open');
       nav.style.display = isOpen ? 'flex' : '';
-      intro && (intro.style.display = isOpen ? 'none' : 'block');
-      h && (h.style.display = isOpen ? 'none' : 'block');
-      if (!isOpen) {
-        nav.classList.remove('open');
+      // Toggle intro/header/themeList based on menu state
+      if (isOpen) {
+        intro && (intro.style.display = 'none');
+        h && (h.style.display = 'block');
+        themeList && themeList.classList.remove('active');
+      } else {
+        intro && (intro.style.display = 'block');
+        h && (h.style.display = 'block');
+        themeList && themeList.classList.remove('active');
       }
-      // Always show header p
-      themeList && themeList.classList.add('active');
-      themeButtons.forEach(btn => btn.classList.remove('active'));
-
     }
   });
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Theme button click logic
+  // Open dropdown when clicking the active theme button
   themeButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       const input = btn.querySelector('input[type="radio"]');
@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         themeList.classList.remove('active');
         intro && (intro.style.display = 'block');
         h && (h.style.display = 'block');
-        nav && (nav.style.display = '');
-        nav && nav.classList.remove('open');
+        nav && (nav.style.display = ''); // <-- Hide nav-links
+        nav && nav.classList.remove('open'); // <-- Remove open class if used
       }
     });
   });
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ) {
       themeList.classList.remove('active');
       intro && (intro.style.display = 'block');
-      //h && (h.style.display = 'block');
+      h && (h.style.display = 'block');
       nav && (nav.style.display = 'flex');
     }
   });
