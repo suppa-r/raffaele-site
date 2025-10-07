@@ -381,7 +381,7 @@ header .bars {
   position: absolute;
   top: var(--space-s-m);
   left: var(--space-7xs-6xs);
-  margin-right: var(--space-4xs-3xs);
+  margin-right: var(--space-2xs-xs);
   height: 2.5px;
   width: 16px;
   border-radius: 2px;
