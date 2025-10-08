@@ -1,0 +1,9 @@
+{
+    "github.copilot.advanced": {
+        "autoImport": true,
+        "codeSuggestions": {
+            "enabled": true,
+            "inline": true
+        }
+    }
+}
