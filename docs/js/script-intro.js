@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const intro = document.querySelector('.intro');
   const h = document.querySelector('header p');
   const nav = document.querySelector('.nav-links');
-  const bars = document.querySelector('.bars');
+  const bars = document.querySelector('.menu-btn');
 
   bars.addEventListener('click', (e) => {
     e.stopPropagation();
