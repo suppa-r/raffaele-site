@@ -72,7 +72,7 @@
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
- /* Step -2: 10.1301px → 11.2556px */
+  /* Step -2: 10.1301px → 11.2556px */
   --step--2: clamp(0.6331rem, 0.6044rem + 0.1279cqi, 0.7035rem);
   /* Step -1: 13.5034px → 15.0038px */
   --step--1: clamp(0.844rem, 0.8056rem + 0.1705cqi, 0.9377rem);
@@ -321,7 +321,8 @@ html {
   padding: 0 var(--page-pad-inline);
 }
 
-body, html {
+body,
+html {
   background-color: var(--base-color);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
@@ -432,7 +433,7 @@ header .bars::before {
 }
 
 header .bars.is-active::after {
-  transform-origin:center;
+  transform-origin: center;
   transform: translate(0) rotate(-45deg);
   bottom: 0;
   transition: transform 0.5s ease-in-out;
@@ -579,11 +580,11 @@ ul {
 
 .theme-button {
   position: absolute;
-    padding: var(--space-7xs) var(--space-xs);
-    right: var(--space-s);
-    top: var(--space-l);
+  padding: var(--space-7xs) var(--space-xs);
+  right: var(--space-s);
+  top: var(--space-l);
   background-color: var(--clr-button);
-opacity: 1;
+  opacity: 1;
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
   border: none;
@@ -704,6 +705,7 @@ opacity: 1;
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
   animation: gradientAnimation 3s ease-in-out infinite alternate;
@@ -774,27 +776,9 @@ opacity: 1;
 
 @container (max-width: 600px) {
 
-/*header .h{
-  padding: var(--space-m) var(--space-s);
-}*/
-
   header .bars {
     display: block;
-    top: var(--space-l);
-    left: var(--space-s);
-    height: 3px;
-    width: 20px;
   }
-
-/*.theme-list, .theme-button {
-     position: absolute;
-     padding:0 var(--space-s);
-     right: var(--space-s);
-     top: var(--space-xs);
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: var(--shadow);
-    border-radius: var(--btn-border-radius);
-}*/
 
   .nav-links.open {
     position: absolute;
