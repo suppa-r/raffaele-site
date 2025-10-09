@@ -365,6 +365,13 @@ body>* {
   margin-inline: auto;
 }
 
+.wrapper {
+  display: flex;
+  margin-inline: auto;
+  position: relative;
+  z-index: 1000;
+}
+
 /*------header-------*/
 
 header {
@@ -372,11 +379,11 @@ header {
   justify-content: flex-start;
 }
 
-header .h {
-  margin: var(--space-3xs-2xs) 0 0 var(--space-s-m);
+header p {
+  margin: var(--space-4xs) 0 0 var(--space-m);
 }
 
-header .h span {
+header p span {
   color: var(--text-span);
   font-size: var(--step--1);
 }
@@ -605,78 +612,141 @@ header .h span {
   padding: 0 var(--space-2xs-xs);
 }
 
+.profile {
+  margin: var(--space-3xs-2xs) 0 0 var(--space-2xl);
+  background-color: transparent;
+  opacity: 1;
+  display: block;
+  position: relative;
+  z-index: 1000;
+  isolation: isolate;
+  pointer-events: none;
+  user-select: none;
+}
+
+.profile-header {
+  display: block;
+  position: relative;
+  /* Removed position: absolute, top, left, transform */
+  z-index: 1000;
+  isolation: isolate;
+  user-select: none;
+  pointer-events: none;
+  margin: 0 auto;
+}
+
+.profile-title {
+  /* Removed transform and margin-inline */
+  z-index: 1000;
+  isolation: isolate;
+  user-select: none;
+  pointer-events: none;
+}
+
+.profile-title span {
+  position: relative;
+
+  z-index: 1000;
+  isolation: isolate;
+  user-select: none;
+  pointer-events: none;
+  margin-inline: auto;
+  font-size: var(--step-2);
+  white-space: nowrap;
+  text-align: center;
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
+  padding: var(--space-3xs-2xs) var(--space-xs-s);
+  margin-block: var(--space-3xs-2xs);
+  background: var(--gradient);
+  background-size: 400% 400%;
+  animation: gradientAnimation 3s ease-in-out infinite alternate;
+  border-radius: var(--space-s-m);
+  box-shadow: var(--shadow);
+  display: inline-block;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.profile-header:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-header img {
+  position: relative;
+  inline-size: 400px;
+  height: auto;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+  user-select: none;
+  pointer-events: none;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  animation: fadeIn 0.9s ease-in-out;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.profile-header:hover img {
+  transform: scale(1.05);
+  /* zoom effect on hover */
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-header img {
+  position: relative;
+  inline-size: 400px;
+  height: auto;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+  user-select: none;
+  pointer-events: none;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  /* smooth zoom effect */
+  animation: fadeIn 0.9s ease-in-out;
+}
+
 /*------profile-------*/
 
 .profile-tab>* {
   display: none;
 }
 
-.image-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  inline-size: 200px;
-  /* or your preferred size */
-  block-size: 300px;
-  /* or your preferred size */
-  background-color: var(--clr-button);
-  border: var(--space-7xs-6xs) solid var(--clr-button);
-  /* border around the image */
-  overflow: hidden;
-  /* ensures the image doesn't overflow the container */
-  box-sizing: border-box;
-  z-index: 1000;
-  isolation: isolate;
-  user-select: none;
-  pointer-events: none;
-  border-radius: 50%;
-  box-shadow: var(--shadow);
-  animation: fadeIn 2s ease-in-out;
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: .5;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.profile-title {
-  position: absolute;
-  top: var(--space-4xl-5xl);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  isolation: isolate;
-  user-select: none;
-  pointer-events: none;
-  font-size: var(--step-2);
-  white-space: nowrap;
-  text-align: center;
-  color: var(--text-color);
-  padding: var(--space-2xs-xs) var(--space-s-m);
-  margin-block: var(--space-3xs-2xs);
-  background: var(--gradient);
-  background-size: 400% 400%;
-  animation: gradient 3s ease-in-out infinite alternate;
-  animation-timing-function: 1s ease-in-out infinite alternate;
-  border-radius: var(--space-s-m);
-  box-shadow: var(--shadow);
-  /*max-width: 100ch;
-   limits width to about 16 characters */
-  margin-inline: auto;
-  /* centers the title */
-  display: inline-block;
-  /* ensures margin works */
-}
 
 .burger-check {
   display: none;
