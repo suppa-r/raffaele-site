@@ -6,6 +6,8 @@
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
 
+  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
+
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.671);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
@@ -40,6 +42,8 @@
   --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
 
+  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
+
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
 
@@ -67,7 +71,6 @@
   --sp: 5s;
   --burger-thickness: 4px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-
 
   /* Step -2: 10.1301px → 11.2556px */
   --step--2: clamp(0.6331rem, 0.6044rem + 0.1279cqi, 0.7035rem);
@@ -164,6 +167,10 @@
   /* Space 9xl-10xl: 198px → 240px */
   --space-9xl-10xl: clamp(12.375rem, 11.3011rem + 4.7727cqi, 15rem);
 
+  /* Easing functions */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
   --pt-serif-regular: "PT Serif",
     serif;
@@ -178,10 +185,10 @@
   --font-style-regular: normal;
   --btn-border-radius: var(--space-s);
   /* global page padding variables */
-  --page-pad-inline: var(--space-6xs-5xs);
+  --page-pad-inline: var(--space-7xs);
   --page-pad-block: 0;
-  --letter-space-content: var(--space-7xs-6xs);
-  --word-space-content: var(--space-7xs-6xs);
+  --letter-space-content: var(--space-7xs);
+  --word-space-content: var(--space-7xs);
 }
 
 @layer support.demo {
@@ -314,7 +321,8 @@ html {
   padding: 0 var(--page-pad-inline);
 }
 
-body {
+body,
+html {
   background-color: var(--base-color);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
@@ -324,7 +332,7 @@ body {
 }
 
 body {
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   position: relative;
   z-index: 1000;
   isolation: isolate;
@@ -365,27 +373,27 @@ body>* {
   margin-inline: auto;
 }
 
-.wrapper {
-  display: flex;
-  margin-inline: auto;
-  position: relative;
-  z-index: 1000;
-}
-
 /*------header-------*/
 
 header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-7xs) var(--space-2xl);
+  background: var(--gradient-header);
+  border-radius: var(--space-l);
+  background-color: transparent;
+  z-index: 1500;
 }
 
+/*------title-------*/
+
 header p {
-  margin: var(--space-4xs) 0 0 var(--space-m);
+  padding: var(--space-7xs) var(--space-2xl);
 }
 
 header p span {
   color: var(--text-span);
-  font-size: var(--step--1);
 }
 
 /*------navigation-------*/
@@ -395,6 +403,7 @@ header p span {
   background-color: transparent;
   opacity: 0;
   z-index: 1000;
+  position: relative;
 }
 
 .nav-links.open {
@@ -404,7 +413,7 @@ header p span {
   transform: translate(-50%, -50%);
   margin-inline: auto;
   margin-block: var(--space-xl-2xl);
-  padding: var(--space-6xs-5xs) var(--space-2xl-3xl);
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-m-l);
@@ -499,23 +508,45 @@ header p span {
   stroke-width: var(--space-xs-s);
 }
 
-/* Theme list styles remain unchanged */
-.theme-list {
-  position: absolute;
-  right: var(--space-7xs-6xs);
-  top: var(--space-7xs-6xs);
+/* Theme switcher styles */
+.theme-switcher {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  z-index: 1000;
+  pointer-events: none;
+  user-select: none;
+  gap: var(--space-3xs-2xs);
+  font-size: var(--step--1);
+  color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  text-align: center;
+  background-color: transparent;
+  opacity: 1;
   transition: opacity 0.3s ease-in-out;
-  box-shadow: var(--shadow);
   border-radius: var(--btn-border-radius);
 }
 
 .theme-button {
-  position: absolute;
-  right: var(--space-7xs-6xs);
-  top: var(--space-7xs-6xs);
-  background-color: var(--clr-button);
-  padding: var(--space-6xs-5xs) var(--space-s-m);
-  margin: var(--space-6xs-5xs) 0 0 var(--space-2xl-3xl);
+  right: var(--space-xs-s);
+  top: var(--space-2xs-xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  z-index: 1000;
+  user-select: none;
+  gap: var(--space-3xs-2xs);
+  font-size: var(--step--1);
+  color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  text-align: center;
+  opacity: 1;
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
   border: none;
@@ -542,11 +573,11 @@ header p span {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: var(--space-6xs-5xs) var(--space-s-m);
+  padding: 0 var(--space-xs);
   gap: var(--space-6xs-5xs);
   align-items: center;
   text-decoration: none;
-  background-color: var(--clr-button);
+  background-color: var(--base-color);
   color: var(--text-color);
   box-shadow: var(--shadow);
   font-size: var(--step--1);
@@ -554,6 +585,12 @@ header p span {
   border-radius: var(--btn-border-radius);
   user-select: none;
   transition: color 0.3s, box-shadow 0.3s;
+}
+
+.theme-button label:focus,
+.theme-button label:hover {
+  outline: 4px solid var(--text-span);
+  box-shadow: 60px 60px 60px var(--space-4xs-3xs) var(--shadow);
 }
 
 .theme-button svg {
@@ -570,36 +607,12 @@ header p span {
   /* Add this line */
 }
 
-.theme-button svg path {
-  fill: var(--text-color);
-  transition: fill 0.3s, stroke 0.3s;
-  stroke: var(--space-xs);
-  /* Add stroke if you want to animate it too */
-}
-
 .theme-button:hover svg {
   transform: scale(0.5);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
   background-color: var(--base-color);
   /* Or another color if you want */
-}
-
-.theme-button:hover svg path {
-  fill: var(--text-span);
-  transition: fill 0.3s, stroke 0.3s;
-}
-
-/* Style SVGs inside theme-list items */
-.theme-button label svg {
-  width: var(--space-s-m);
-  height: var(--space-s-m);
-  margin-right: var(--space-xs-s);
-  vertical-align: middle;
-  color: var(--text-color);
-  background-color: var(--base-color);
-  opacity: 1;
-  display: inline-block;
 }
 
 .theme-button span {
@@ -609,7 +622,7 @@ header p span {
   display: inline-block;
   vertical-align: middle;
   background-color: var(--base-color);
-  padding: 0 var(--space-2xs-xs);
+  padding: 0 var(--space-s);
 }
 
 .profile {

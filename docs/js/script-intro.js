@@ -6,23 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav-links');
   const bars = document.querySelector('.menu-btn');
 
-  bars.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (nav) {
-      const isOpen = nav.classList.toggle('open');
-      nav.style.display = isOpen ? 'flex' : '';
-      // Toggle intro/header/themeList based on menu state
-      if (isOpen) {
-        intro && (intro.style.display = 'none');
-        h && (h.style.display = 'block');
-        themeList && themeList.classList.remove('active');
-      } else {
-        intro && (intro.style.display = 'block');
-        h && (h.style.display = 'block');
-        themeList && themeList.classList.remove('active');
-      }
+ bars.addEventListener('click', (e) => {
+  e.stopPropagation();
+  h && (h.style.display = 'block'); // Always show header p
+  if (nav) {
+    const isOpen = nav.classList.toggle('open');
+    nav.style.display = isOpen ? 'flex' : '';
+    themeList && (themeList.classList.remove('active'));
+    intro && (intro.style.display = 'none');
+
+    // Toggle intro/header/themeList based on menu state
+    if (isOpen) {
+      intro && (intro.style.display = 'none');
+      themeList && themeList.classList.remove('active');
+    } else {
+      intro && (intro.style.display = 'block');
+      themeList && themeList.classList.remove('active');
     }
-  });
+  }
+});
 
   // Function to update active class on theme buttons
   function setActiveThemeButton() {

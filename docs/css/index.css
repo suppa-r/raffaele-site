@@ -812,7 +812,7 @@ header {
 
 .large-button {
   margin-inline: auto;
-  z-index: 1000;
+  z-index: 2000;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -829,6 +829,7 @@ header {
   justify-content: center;
   user-select: none;
   cursor: pointer;
+  pointer-events: all;
 }
 
 .large-button:focus,
