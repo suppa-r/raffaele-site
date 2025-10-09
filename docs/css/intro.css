@@ -740,6 +740,12 @@ ul {
   margin-block: var(--space-3xs);
 }
 
+.intro .ya-1 {
+  font-size: var(--step-2);
+  white-space: nowrap;
+  margin-block: var(--space-3xs);
+}
+
 /*------gradient text-------*/
 
 .wrapper-gradient-text {
