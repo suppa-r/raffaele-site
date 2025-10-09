@@ -5,5 +5,6 @@
             "enabled": true,
             "inline": true
         }
-    }
+    },
+    "github.copilot.nextEditSuggestions.enabled": true
 }
