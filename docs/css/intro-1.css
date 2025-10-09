@@ -408,24 +408,24 @@ header .h span {
   pointer-events: all;
   background-color: transparent;
   transition: opacity 0.4s ease-in;
- 
+
 }
 
 .nav-links.open li {
-flex: 1 1 0;
+  flex: 1 1 0;
   min-width: 0;
   width: 100%;
   /* Each li fills the available width */
   max-width: 350px;
   /* Optional: set a max width for each li */
   box-sizing: border-box;
-position: relative;
+  position: relative;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: var(--space-6xs-5xs) var(--space-xl-2xl);
-  margin-inline:auto;
+  margin-inline: auto;
   pointer-events: all;
   user-select: none;
   list-style: none;
@@ -435,9 +435,9 @@ position: relative;
   z-index: 1000;
   cursor: pointer;
   gap: var(--space-l-xl);
- transform: translateY(60px);
- opacity: 0;
- transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 }
 
 .nav-links.open li a {
@@ -446,9 +446,9 @@ position: relative;
   text-decoration: none;
   justify-content: center;
   align-items: center;
-   /*margin: var(--space-6xs-5xs) var(--space-l-xl);*/
+  /*margin: var(--space-6xs-5xs) var(--space-l-xl);*/
   margin-inline: auto;
-padding: var(--space-6xs-5xs) var(--space-l-xl);
+  padding: var(--space-6xs-5xs) var(--space-l-xl);
   gap: var(--space-6xs-5xs);
   color: var(--text-color);
   background-color: transparent;
@@ -634,7 +634,7 @@ padding: var(--space-6xs-5xs) var(--space-l-xl);
   box-shadow: var(--shadow);
   animation: fadeIn 2s ease-in-out;
 }
- 
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -674,7 +674,7 @@ padding: var(--space-6xs-5xs) var(--space-l-xl);
    limits width to about 16 characters */
   margin-inline: auto;
   /* centers the title */
-  display:inline-block;
+  display: inline-block;
   /* ensures margin works */
 }
 
@@ -756,6 +756,9 @@ padding: var(--space-6xs-5xs) var(--space-l-xl);
   border-bottom: var(--burger-thickness) solid transparent;
   transition: transform 0.5s, top 0.5s, opacity 0.5s;
   -webkit-transition: border-bottom 1s ease-in-out;
+  -moz-transition: border-bottom 1s ease-in-out;
+  -o-transition: border-bottom 1s ease-in-out;
+  -ms-transition: border-bottom 1s ease-in-out;
 }
 
 /* Navigation */
@@ -774,9 +777,6 @@ padding: var(--space-6xs-5xs) var(--space-l-xl);
   transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 }
 
-
-
-
 .profile-tab {
   display: none;
   margin-inline: auto;
@@ -787,8 +787,8 @@ padding: var(--space-6xs-5xs) var(--space-l-xl);
   flex-direction: row;
   gap: var(--space-l-xl);
   /* space between each profile */
-box-shadow: var(--shadow);
- padding: var(--space-m);
+  box-shadow: var(--shadow);
+  padding: var(--space-m);
   margin-inline: auto;
   text-align: center;
   color: var(--text-color);
@@ -797,8 +797,8 @@ box-shadow: var(--shadow);
   z-index: 2000;
   opacity: 1;
   pointer-events: all;
-  min-width:100dvh;
-  overflow: auto; 
+  min-width: 100dvh;
+  overflow: auto;
 }
 
 .profile-tab.open>* {
@@ -889,20 +889,20 @@ box-shadow: var(--shadow);
 @container (max-width: 600px) {
   .profile-tab {
     flex-direction: column;
-}
+  }
 
- .profile-tab .row-img>img {
-   inline-size: 175px;
-   /* or your preferred size */
-   aspect-ratio: 1 / 1;
-   /* makes all images square and equal */
-   max-width: 100%;
-   /* responsive on small screens */
-   object-fit: cover;
-   /* crop to fit the box */
-   border-radius: 50%;
-   /* if you want them round */
-   display: block;
-   margin-inline: auto;
- }
+  .profile-tab .row-img>img {
+    inline-size: 175px;
+    /* or your preferred size */
+    aspect-ratio: 1 / 1;
+    /* makes all images square and equal */
+    max-width: 100%;
+    /* responsive on small screens */
+    object-fit: cover;
+    /* crop to fit the box */
+    border-radius: 50%;
+    /* if you want them round */
+    display: block;
+    margin-inline: auto;
+  }
 }
