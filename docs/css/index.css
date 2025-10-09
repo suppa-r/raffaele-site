@@ -33,12 +33,12 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/IMG_1194.JPG');
+    url('../images/white-3.jpg');
 
   /* bottom image */
   --overlay {
     border-image:
-      fill 1 linear-gradient(hsl(0, 2%, 48%), hsla(210, 5%, 77%, 0.911));
+      fill 1 linear-gradient(hsl(0, 4%, 73%), hsla(210, 5%, 77%, 0.911));
   }
 }
 
@@ -48,18 +48,13 @@
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
 
-  /* Step -2: 10.1301px → 11.2556px */
-  --step--2: clamp(0.6331rem, 0.6044rem + 0.1279cqi, 0.7035rem);
+
   /* Step -1: 13.5034px → 15.0038px */
   --step--1: clamp(0.844rem, 0.8056rem + 0.1705cqi, 0.9377rem);
   /* Step 0: 18px → 20px */
   --step-0: clamp(1.125rem, 1.0739rem + 0.2273cqi, 1.25rem);
-  /* Step 1: 23.994px → 26.66px */
-  --step-1: clamp(1.4996rem, 1.4315rem + 0.303cqi, 1.6663rem);
-  /* Step 2: 31.984px → 35.5378px */
-  --step-2: clamp(1.999rem, 1.9081rem + 0.4038cqi, 2.2211rem);
-  /* Step 3: 42.6347px → 47.3719px */
-  --step-3: clamp(2.6647rem, 2.5435rem + 0.5383cqi, 2.9607rem);
+  /* Step 5: 75.7895px → 84.3097px */
+  --step-5: clamp(4.7368rem, 4.4993rem + 0.9091cqi, 5.2681rem);
 
 
   /* Space 7xs: 1px → 1px */
@@ -295,6 +290,8 @@ body {
   /* Overlay gradient using border-image */
   border-image: var(--overlay);
   -webkit-border-image: var(--overlay);
+  -o-border-image: var(--overlay);
+  -moz-border-image: var(--overlay);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
@@ -336,10 +333,14 @@ header {
   position: relative;
 }
 
+.title-container {
+  margin-inline: auto;
+}
+
 .title {
   font-size: var(--step--1);
   color: var(--text-color);
-  padding-top: var(--space-xl-2xl);
+  padding-top: var(--space-2xs-xs);
   text-align: center;
   user-select: none;
   margin: 0;
@@ -349,11 +350,11 @@ header {
   word-wrap: balance;
 }
 
-/* Theme list styles remain unchanged */
-.theme-list {
+/* Theme switcher styles */
+.theme-switcher {
   position: absolute;
   right: var(--space-xs-s);
-  top: var(--space-2xs-xs);
+  top: var(--space-3xl);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -498,7 +499,7 @@ header {
   gap: var(--space-xl-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  margin-block: var(--space-m-l);
+  margin-top: var(--space-3xl);
   user-select: none;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
@@ -803,7 +804,7 @@ header {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-xs-s);
+  margin-block: var(--space-3xl);
   user-select: none;
   overflow: hidden;
   padding-block: var(--space-xs-s);
@@ -812,23 +813,23 @@ header {
 
 .text-with-animation {
   text-align: center;
-  font-size: var(--step-0);
-  font-family: var(--ff-monoton-regular);
-  font-weight: var(--font-weight-regular);
-  font-style: var(--font-style-regular);
+  font-size: var(--step-5);
+  font-family: var(--font-style-1);
+  font-weight: var(--font-weight-1);
   white-space: nowrap;
   word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
   padding-inline: var(--page-pad-inline);
 }
 
-.text-with-animation-1,
-.text-with-animation-2,
-.text-with-animation-3 {
-  font-size: var(--step--1);
+.text-with-animation-1 {
   text-align: center;
+  font-size: var(--step-0);
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
   white-space: nowrap;
-  word-spacing: var(--space-6xs-5xs);
+  word-spacing: var(--space-4xs-3xs);
   letter-spacing: var(--letter-space-content);
   padding-inline: var(--page-pad-inline);
 }
@@ -848,23 +849,11 @@ header {
 
 }
 
-.text-with-animation-6 {
-  font-size: var(--step-0);
-  font-family: var(--ff-monoton-regular);
-  font-weight: var(--font-weight-regular);
-  font-style: var(--font-style-regular);
-  text-align: center;
-  margin-top: var(--space-xs-s);
-  white-space: nowrap;
-  word-spacing: var(--space-4xs-3xs);
-  letter-spacing: var(--letter-space-content);
-  padding-inline: var(--page-pad-inline);
-}
+
 
 .large-button {
   margin-inline: auto;
-  position: relative;
-  z-index: 1;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -911,7 +900,7 @@ header {
 .large-button span {
   display: inline-block;
   vertical-align: middle;
-  background-color: var(--base-color);
+  background-color: transparent;
   transition: box-shadow 0.3s, outline 0.3s;
   padding-inline: var(--space-6xs-5xs);
   text-align: center;
