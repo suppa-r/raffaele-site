@@ -379,7 +379,7 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: var(--space-7xs) 0;
+  padding: var(--space-xs) var(--space-2xl);
   background: var(--gradient-header);
   border-radius: var(--space-l);
   background-color: transparent;
@@ -391,7 +391,7 @@ header {
 header p {
   display: block;
   visibility: visible;
-  padding: var(--space-7xs) var(--space-2xl);
+  padding: var(--space-7xs)0;
 }
 
 header p span {
@@ -512,15 +512,18 @@ ul {
 
 /*------menu button-------*/
 .menu-btn {
+  position: absolute;
+  top: var(--space-xs);
+  right: var(--space-s);
   width: 20px;
   height: 20px;
-  position: relative;
+  z-index: 1000;
   display: none;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: all .2s ease-in-out;
-  margin-right: var(--space-s);
+  margin-right: var(--space-m);
 }
 
 
@@ -572,11 +575,11 @@ ul {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  padding: var(--space-5xs) var(--space-s);
   z-index: 1000;
   pointer-events: none;
   user-select: none;
-  gap: var(--space-3xs-2xs);
+  gap: var(--space-2xs);
   font-size: var(--step--1);
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -589,16 +592,16 @@ ul {
 }
 
 .theme-button {
-  right: var(--space-xs-s);
-  top: var(--space-2xs-xs);
+  right: var(--space-s);
+  top: var(--space-s);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  padding: var(--space-5xs) var(--space-s);
   z-index: 1000;
   user-select: none;
-  gap: var(--space-3xs-2xs);
+  gap: var(--space-2xs);
   font-size: var(--step--1);
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -825,27 +828,12 @@ ul {
 
 
   .nav-links.open {
-    position: absolute;
-    top: 0;
-    left: 10%;
-    margin-inline: auto;
-    margin-block: var(--space-4xl);
-    min-height: 100dvh;
-    width: 80%;
-    height: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-l-xl);
-    list-style: none;
-    border-radius: var(--btn-border-radius);
-    z-index: 2000;
-    overflow: hidden;
-    color: var(--text-color);
+    margin-top: var(--space-4xl);
+    margin-inline: 0 var(--space-4xl);
     opacity: 1;
     pointer-events: all;
     transition: opacity 0.3s;
+    box-shadow: var(--navbar-shadow);
   }
 
   .nav-links li {

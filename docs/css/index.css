@@ -12,11 +12,14 @@
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
   --bg-image:
     url('../images/header-desktop-min.jpg');
+  z-index: -1;
 
   /* bottom image */
   --overlay {
     border-image:
       fill 1 linear-gradient(hsla(0, 0%, 0%, 0.788), hsla(0, 0%, 97%, 0.397));
+    z-index: -1;
+
   }
 }
 
@@ -34,11 +37,13 @@
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
   --bg-image:
     url('../images/white-3.jpg');
+  z-index: -1;
 
   /* bottom image */
   --overlay {
     border-image:
       fill 1 linear-gradient(hsl(0, 4%, 73%), hsla(210, 5%, 77%, 0.911));
+
   }
 }
 
@@ -48,95 +53,33 @@
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
 
+  /* Fluid type scale from 13.5px to 100px between 320px and 1280px */
+  --step--1: clamp(0.8rem, 0.7437rem + 0.2504cqi, 0.9377rem);
+  --step-0: clamp(1rem, 0.8977rem + 0.4545cqi, 1.25rem);
+  --step-1: clamp(1.25rem, 1.0797rem + 0.7568cqi, 1.6663rem);
+  --step-2: clamp(1.5625rem, 1.2931rem + 1.1975cqi, 2.2211rem);
+  --step-3: clamp(1.9531rem, 1.5409rem + 1.832cqi, 2.9607rem);
+  --step-4: clamp(2.4414rem, 1.8256rem + 2.7368cqi, 3.9467rem);
+  --step-5: clamp(3.0518rem, 2.148rem + 4.0166cqi, 5.2609rem);
+  --step-6: clamp(3.8147rem, 2.5064rem + 5.8147cqi, 7.0128rem);
 
-  /* Step -1: 13.5034px → 15.0038px */
-  --step--1: clamp(0.844rem, 0.8056rem + 0.1705cqi, 0.9377rem);
-  /* Step 0: 18px → 20px */
-  --step-0: clamp(1.125rem, 1.0739rem + 0.2273cqi, 1.25rem);
-  /* Step 5: 75.7895px → 84.3097px */
-  --step-5: clamp(4.7368rem, 4.4993rem + 0.9091cqi, 5.2681rem);
-
-
-  /* Space 7xs: 1px → 1px */
-  --space-7xs: clamp(0.0625rem, 0.0625rem + 0cqi, 0.0625rem);
-  /* Space 6xs: 2px → 2px */
-  --space-6xs: clamp(0.125rem, 0.125rem + 0cqi, 0.125rem);
-  /* Space 5xs: 3px → 3px */
-  --space-5xs: clamp(0.1875rem, 0.1875rem + 0cqi, 0.1875rem);
-  /* Space 4xs: 4px → 4px */
-  --space-4xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
-  /* Space 3xs: 5px → 5px */
-  --space-3xs: clamp(0.3125rem, 0.3125rem + 0cqi, 0.3125rem);
-  /* Space 2xs: 9px → 10px */
-  --space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136cqi, 0.625rem);
-  /* Space xs: 14px → 15px */
-  --space-xs: clamp(0.875rem, 0.8494rem + 0.1136cqi, 0.9375rem);
-  /* Space s: 18px → 20px */
-  --space-s: clamp(1.125rem, 1.0739rem + 0.2273cqi, 1.25rem);
-  /* Space m: 27px → 30px */
-  --space-m: clamp(1.6875rem, 1.6108rem + 0.3409cqi, 1.875rem);
-  /* Space l: 36px → 40px */
-  --space-l: clamp(2.25rem, 2.1477rem + 0.4545cqi, 2.5rem);
-  /* Space xl: 54px → 60px */
-  --space-xl: clamp(3.375rem, 3.2216rem + 0.6818cqi, 3.75rem);
-  /* Space 2xl: 72px → 80px */
-  --space-2xl: clamp(4.5rem, 4.2955rem + 0.9091cqi, 5rem);
-  /* Space 3xl: 90px → 100px */
-  --space-3xl: clamp(5.625rem, 5.3693rem + 1.1364cqi, 6.25rem);
-  /* Space 4xl: 108px → 120px */
-  --space-4xl: clamp(6.75rem, 6.4432rem + 1.3636cqi, 7.5rem);
-  /* Space 5xl: 126px → 140px */
-  --space-5xl: clamp(7.875rem, 7.517rem + 1.5909cqi, 8.75rem);
-  /* Space 6xl: 144px → 160px */
-  --space-6xl: clamp(9rem, 8.5909rem + 1.8182cqi, 10rem);
-  /* Space 7xl: 162px → 180px */
-  --space-7xl: clamp(10.125rem, 9.6648rem + 2.0455cqi, 11.25rem);
-  /* Space 8xl: 180px → 200px */
-  --space-8xl: clamp(11.25rem, 10.7386rem + 2.2727cqi, 12.5rem);
-  /* Space 9xl: 198px → 220px */
-  --space-9xl: clamp(12.375rem, 11.8125rem + 2.5cqi, 13.75rem);
-  /* Space 10xl: 216px → 240px */
-  --space-10xl: clamp(13.5rem, 12.8864rem + 2.7273cqi, 15rem);
-
-  /* One-up pairs */
-  /* Space 7xs-6xs: 1px → 2px */
-  --space-7xs-6xs: clamp(0.0625rem, 0.0369rem + 0.1136cqi, 0.125rem);
-  /* Space 6xs-5xs: 2px → 3px */
-  --space-6xs-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
-  /* Space 5xs-4xs: 3px → 4px */
-  --space-5xs-4xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
-  /* Space 4xs-3xs: 4px → 5px */
-  --space-4xs-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  /* Space 3xs-2xs: 5px → 10px */
-  --space-3xs-2xs: clamp(0.3125rem, 0.1847rem + 0.5682cqi, 0.625rem);
-  /* Space 2xs-xs: 9px → 15px */
-  --space-2xs-xs: clamp(0.5625rem, 0.4091rem + 0.6818cqi, 0.9375rem);
-  /* Space xs-s: 14px → 20px */
-  --space-xs-s: clamp(0.875rem, 0.7216rem + 0.6818cqi, 1.25rem);
-  /* Space s-m: 18px → 30px */
-  --space-s-m: clamp(1.125rem, 0.8182rem + 1.3636cqi, 1.875rem);
-  /* Space m-l: 27px → 40px */
-  --space-m-l: clamp(1.6875rem, 1.3551rem + 1.4773cqi, 2.5rem);
-  /* Space l-xl: 36px → 60px */
-  --space-l-xl: clamp(2.25rem, 1.6364rem + 2.7273cqi, 3.75rem);
-  /* Space xl-2xl: 54px → 80px */
-  --space-xl-2xl: clamp(3.375rem, 2.7102rem + 2.9545cqi, 5rem);
-  /* Space 2xl-3xl: 72px → 100px */
-  --space-2xl-3xl: clamp(4.5rem, 3.7841rem + 3.1818cqi, 6.25rem);
-  /* Space 3xl-4xl: 90px → 120px */
-  --space-3xl-4xl: clamp(5.625rem, 4.858rem + 3.4091cqi, 7.5rem);
-  /* Space 4xl-5xl: 108px → 140px */
-  --space-4xl-5xl: clamp(6.75rem, 5.9318rem + 3.6364cqi, 8.75rem);
-  /* Space 5xl-6xl: 126px → 160px */
-  --space-5xl-6xl: clamp(7.875rem, 7.0057rem + 3.8636cqi, 10rem);
-  /* Space 6xl-7xl: 144px → 180px */
-  --space-6xl-7xl: clamp(9rem, 8.0795rem + 4.0909cqi, 11.25rem);
-  /* Space 7xl-8xl: 162px → 200px */
-  --space-7xl-8xl: clamp(10.125rem, 9.1534rem + 4.3182cqi, 12.5rem);
-  /* Space 8xl-9xl: 180px → 220px */
-  --space-8xl-9xl: clamp(11.25rem, 10.2273rem + 4.5455cqi, 13.75rem);
-  /* Space 9xl-10xl: 198px → 240px */
-  --space-9xl-10xl: clamp(12.375rem, 11.3011rem + 4.7727cqi, 15rem);
+  --space-4xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
+  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4489rem + 0.2273cqi, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.6733rem + 0.3409cqi, 0.9375rem);
+  --space-s: clamp(1rem, 0.8977rem + 0.4545cqi, 1.25rem);
+  --space-m: clamp(1.5rem, 1.3466rem + 0.6818cqi, 1.875rem);
+  --space-l: clamp(2rem, 1.7955rem + 0.9091cqi, 2.5rem);
+  --space-xl: clamp(3rem, 2.6932rem + 1.3636cqi, 3.75rem);
+  --space-2xl: clamp(4rem, 3.5909rem + 1.8182cqi, 5rem);
+  --space-3xl: clamp(6rem, 5.3864rem + 2.7273cqi, 7.5rem);
+  --space-4xl: clamp(7rem, 6.2841rem + 3.1818cqi, 8.75rem);
+  --space-5xl: clamp(8rem, 7.1818rem + 3.6364cqi, 10rem);
+  --space-6xl: clamp(9rem, 8.0795rem + 4.0909cqi, 11.25rem);
+  --space-7xl: clamp(10rem, 8.9773rem + 4.5455cqi, 12.5rem);
+  --space-8xl: clamp(11rem, 9.875rem + 5cqi, 13.75rem);
+  --space-9xl: clamp(12rem, 10.7727rem + 5.4545cqi, 15rem);
+  --space-10xl: clamp(13rem, 11.6705rem + 5.9091cqi, 16.25rem);
 
 
   --pt-serif-regular: "PT Serif",
@@ -152,10 +95,10 @@
   --font-style-regular: normal;
   --btn-border-radius: var(--space-s);
   /* global page padding variables */
-  --page-pad-inline: var(--space-6xs-5xs);
+  --page-pad-inline: var(--space-6xs);
   --page-pad-block: 0;
-  --letter-space-content: var(--space-7xs-6xs);
-  --word-space-content: var(--space-6xs-5xs);
+  --letter-space-content: var(--space-4xs);
+  --word-space-content: var(--space-2xs);
 }
 
 @supports (selector(::view-transition)) {
@@ -350,15 +293,18 @@ header {
 
 /* Theme switcher styles */
 .theme-switcher {
+  position: absolute;
+  right: var(--space-xl);
+  top: var(--space-2xl);
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  justify-content: center;
+  padding: var(--space-5xs) var(--space-s);
   z-index: 1000;
   pointer-events: none;
   user-select: none;
-  gap: var(--space-3xs-2xs);
+  gap: var(--space-2xs);
   font-size: var(--step--1);
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -371,16 +317,18 @@ header {
 }
 
 .theme-button {
-  right: var(--space-xs-s);
-  top: var(--space-2xs-xs);
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  padding: var(--space-5xs) var(--space-s);
+  background-color: var(--clr-button);
   z-index: 1000;
+  cursor: pointer;
+  pointer-events: none;
   user-select: none;
-  gap: var(--space-3xs-2xs);
+  gap: var(--space-2xs);
   font-size: var(--step--1);
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -388,7 +336,6 @@ header {
   text-align: center;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
-  pointer-events: all;
   border: none;
   border-radius: var(--btn-border-radius);
   box-shadow: var(--shadow);
@@ -414,7 +361,7 @@ header {
   position: relative;
   z-index: 1000;
   padding: 0 var(--space-xs);
-  gap: var(--space-6xs-5xs);
+  gap: var(--space-5xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -430,12 +377,12 @@ header {
 .theme-button label:focus,
 .theme-button label:hover {
   outline: 4px solid var(--text-span);
-  box-shadow: 60px 60px 60px var(--space-4xs-3xs) var(--shadow);
+  box-shadow: 60px 60px 60px var(--space-3xs) var(--shadow);
 }
 
 .theme-button svg {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-l);
+  height: var(--space-l);
   vertical-align: middle;
   stroke-linecap: round;
   stroke-linejoin: miter;
@@ -471,7 +418,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xl-2xl);
+  gap: var(--space-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
   margin-top: var(--space-3xl);
@@ -782,7 +729,7 @@ header {
   margin-top: var(--space-3xl);
   user-select: none;
   overflow: hidden;
-  padding-block: var(--space-xs-s);
+  padding-block: var(--space-s);
   z-index: 1000;
 }
 
@@ -792,7 +739,7 @@ header {
   font-family: var(--font-style-1);
   font-weight: var(--font-weight-1);
   white-space: nowrap;
-  word-spacing: var(--space-4xs-3xs);
+  word-spacing: var(--word-space-content);
   letter-spacing: var(--letter-space-content);
   padding-inline: var(--page-pad-inline);
 }
@@ -805,7 +752,7 @@ header {
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
   white-space: nowrap;
-  word-spacing: var(--space-4xs-3xs);
+  word-spacing: var(--word-space-content);
   letter-spacing: var(--letter-space-content);
   padding-inline: var(--page-pad-inline);
 }
@@ -834,18 +781,18 @@ header {
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 6px 6px var(--space-4xs-3xs) var(--shadow);
+  box-shadow: 0 6px 6px var(--space-3xs) var(--shadow);
   outline: 4px solid var(--text-span);
 }
 
 .large-button svg {
   fill: var(--text-color);
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
+  width: var(--space-xl);
+  height: var(--space-xl);
   transition: transform 0.3s, box-shadow 0.3s;
   display: block;
   margin-inline: auto;
-  margin-bottom: var(--space-2xs-xs);
+  margin-bottom: var(--space-xs);
   user-select: none;
   pointer-events: none;
 }
@@ -862,7 +809,7 @@ header {
   vertical-align: middle;
   background-color: transparent;
   transition: box-shadow 0.3s, outline 0.3s;
-  padding-inline: var(--space-6xs-5xs);
+  padding-inline: var(--space-5xs);
   text-align: center;
   font-size: var(--step--1);
   color: var(--text-color);
@@ -876,6 +823,10 @@ header {
   box-sizing: border-box;
   user-select: none;
   margin: var(--space-xs-s);
+  pointer-events: none;
+  font-family: var(--pt-serif-italic);
+  font-weight: var(--font-weight-1);
+  font-style: var(--font-style-1);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,36 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
   const themeList = document.querySelector('.theme-list');
   const themeButtons = document.querySelectorAll('.theme-button');
-  const intro = document.querySelector('.intro');
+  const wrapper = document.querySelector('.wrapper');
   const h = document.querySelector('header p');
   const nav = document.querySelector('.nav-links');
   const bars = document.querySelector('.menu-btn');
+  const intro = document.querySelector('.intro');
+ const navLinksTabs = document.querySelectorAll('.nav-links a');
 
- bars.addEventListener('click', (e) => {
+intro && (intro.style.display = 'block');
+// Close nav menu when a nav link is clicked (for better mobile UX)
+navLinksTabs.forEach(link => {
+  link.addEventListener('click', () => {
+    if (nav && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      nav.style.display = ''; // Hide nav links when a link is clicked
+    }
+  });
+});
+
+  // Toggle nav menu on menu button click (for mobile)
+bars.addEventListener('click', (e) => {
   e.stopPropagation();
   h && (h.style.display = 'block'); // Always show header p
   if (nav) {
     const isOpen = nav.classList.toggle('open');
-    nav.style.display = isOpen ? 'flex' : '';
-    themeList && (themeList.classList.remove('active'));
-    intro && (intro.style.display = 'none');
-
-    // Toggle intro/header/themeList based on menu state
+    nav.style.display = isOpen ? 'block' : '';
+    themeList && themeList.classList.remove('active');
+    intro && (intro.style.display = isOpen ? 'none' : 'block'); // <-- Show intro when menu closes
+    // Hide theme list when menu is toggled
     if (isOpen) {
-      intro && (intro.style.display = 'none');
       themeList && themeList.classList.remove('active');
     } else {
-      intro && (intro.style.display = 'block');
-      themeList && themeList.classList.remove('active');
+      themeList && (themeList.style.display = 'none');
     }
   }
 });
 
-  // Function to update active class on theme buttons
-  function setActiveThemeButton() {
-    themeButtons.forEach(btn => {
-      const input = btn.querySelector('input[type="radio"]');
-      btn.classList.toggle('active', input && input.checked);
+// Function to update active class on theme buttons
+function setActiveThemeButton() {
+  themeButtons.forEach(btn => {
+    const input = btn.querySelector('input[type="radio"]');
+    btn.classList.toggle('active', input && input.checked);
     });
   }
 

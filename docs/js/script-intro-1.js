@@ -4,24 +4,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('.wrapper');
   const h = document.querySelector('header p');
   const nav = document.querySelector('.nav-links');
-  const bgImage = document.querySelector('.bg-image');
-  const burger = document.querySelector('.burger');
+  const bars = document.querySelector('.menu-btn');
+  const profile = document.querySelector('.profile');
+  const profileTabs = document.querySelectorAll('.profile-tab');
+  const navLinksTabs = document.querySelectorAll('.nav-links a');
 
-  if (burger) {
-    burger.addEventListener('click', () => {
-      if (bgImage) {
-        bgImage.style.display = (bgImage.style.display === 'none' ? 'block' : 'none');
-      }
-      if (burger) (burger).classList.toggle('active'); ``
-      if (burger.classList.contains('active')) {  
-        
-        burger.classList.remove('active');
-      } else {
-        burger.classList.add('active');
-      }
+
+  // Initially hide profile tabs container
+  profile && (profile.style.display = 'block');
+
+bars.addEventListener('click', (e) => {
+  e.stopPropagation();
+  h && (h.style.display = 'block'); // Always show header p
+  if (nav) {
+    const isOpen = nav.classList.toggle('open');
+    nav.style.display = isOpen ? 'block' : '';
+    themeList && themeList.classList.remove('active');
+    profile && (profile.style.display = 'none');
+    // Hide all profile tabs when menu is open
+    profileTabs.forEach(tab => {
+      tab.style.display = isOpen ? 'none' : '';
     });
-  }
 
+    if (isOpen) {
+      themeList && themeList.classList.remove('active');
+    } else {
+      themeList && (themeList.style.display = 'none');
+    }
+  }
+});
   // Function to update active class on theme buttons
   function setActiveThemeButton() {
     themeButtons.forEach(btn => {
@@ -30,22 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Open dropdown when clicking the active theme button  
-
-
-  // Theme button click: toggle bgImage and handle theme logic
+  // Open dropdown when clicking the active theme button
   themeButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       const input = btn.querySelector('input[type="radio"]');
-      if (bgImage) {
-        // Toggle bg-image on every theme button click
-        bgImage.style.display = (bgImage.style.display === 'none' ? 'block' : 'none');
-      }
       if (btn.classList.contains('active')) {
         // Open dropdown (show non-active options)
         e.stopPropagation();
         themeList.classList.add('active');
-        wrapper && (wrapper.style.display = 'block');
+        intro && (intro.style.display = 'block');
         h && (h.style.display = 'block');
         nav && (nav.style.display = 'flex');
       } else if (input) {
@@ -56,9 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', selectedTheme);
         setActiveThemeButton();
         themeList.classList.remove('active');
-        wrapper && (wrapper.style.display = 'block');
+        intro && (intro.style.display = 'block');
         h && (h.style.display = 'block');
-        nav && (nav.style.display = 'flex');
+        nav && (nav.style.display = ''); // <-- Hide nav-links
+        nav && nav.classList.remove('open'); // <-- Remove open class if used
       }
     });
   });
@@ -96,11 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
       !themeList.contains(event.target)
     ) {
       themeList.classList.remove('active');
-      wrapper && (wrapper.style.display = 'block');
+      intro && (intro.style.display = 'block');
       h && (h.style.display = 'block');
       nav && (nav.style.display = 'flex');
     }
   });
 });
-
-
