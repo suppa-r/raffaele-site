@@ -836,15 +836,6 @@ header {
   .theme-button {
     top: var(--space-2xl);
   }
-
-  .large-button svg {
-    width: var(--space-2xl);
-    height: var(--space-2xl);
-  }
-
-  .large-button span {
-    font-size: var(--step-0);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
