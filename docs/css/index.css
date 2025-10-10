@@ -6,7 +6,16 @@
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
-  --shadow: 0 30px 100px rgb(223, 223, 233);
+  --shadow:
+    0 30px 100px rgba(223, 223, 233, 0.849),
+    /* original */
+    0 60px 120px rgba(120, 181, 255, 0.767),
+    /* blue glow lower */
+    0 90px 140px rgba(228, 120, 255, 0.829),
+    /* orange glow even lower */
+    0 120px 160px rgba(153, 167, 142, 0.925);
+  /* green glow at bottom */
+
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
@@ -218,10 +227,7 @@
 
 body,
 html {
-
-
   font-size: var(--step--1);
-  line-height: 1.3;
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
@@ -234,13 +240,15 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+
   /* Overlay gradient using border-image*/
 
   border-image: var(--overlay);
   -webkit-border-image: var(--overlay);
   -o-border-image: var(--overlay);
   -moz-border-image: var(--overlay);
-  transition: border-image 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: border-image 0.3s ease-in, background-color 0.3s ease-in, color 0.3s ease-in;
+
 }
 
 body>* {
@@ -256,56 +264,55 @@ body>* {
 
 .wrapper,
 header,
-main {
+main,
+section {
   position: relative;
   z-index: 1000;
   background-color: transparent;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .wrapper {
-  margin-inline: auto;
+  padding-block: var(--padding-block);
   min-height: 100dvh;
 }
 
+/*------header-------*/
+
 header {
-  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  user-select: none;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  background: transparent;
+  border-radius: var(--space-l);
+  background-color: transparent;
+  z-index: 1500;
+  position: relative;
 }
 
 .title-container {
-  margin-top: var(--space-xs);
   margin-inline: auto;
+  margin-top: var(--space-xs);
 }
 
 .title {
-  font-size: var(--step--1);
   color: var(--text-color);
   text-align: center;
   user-select: none;
-  margin: 0;
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  opacity: 1;
-  word-wrap: balance;
 }
 
 /* Theme switcher styles */
 .theme-switcher {
   position: absolute;
-  right: var(--space-s);
-  top: var(--space-s);
+  right: var(--space-xs);
+  /* Use a larger space for better alignment */
+  top: var(--space-xs);
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding: var(--space-5xs) var(--space-s);
+  justify-content: flex-end;
+  padding: var(--space-5xs) var(--space-l) 0 var(--space-5xs);
   z-index: 1000;
-  pointer-events: none;
+  pointer-events: auto;
+  /* Allow interaction */
   user-select: none;
   gap: var(--space-2xs);
   font-size: var(--step--1);
@@ -320,16 +327,15 @@ header {
 }
 
 .theme-button {
-  position: relative;
+  right: var(--space-xs);
+  /* Use a larger space for better alignment */
+  top: var(--space-xs);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: var(--space-5xs) var(--space-s);
-  background-color: var(--clr-button);
+  padding: var(--space-5xs) 0 var(--space-l) 0 var(--space-5xs);
   z-index: 1000;
-  cursor: pointer;
-  pointer-events: none;
   user-select: none;
   gap: var(--space-2xs);
   font-size: var(--step--1);
@@ -339,6 +345,7 @@ header {
   text-align: center;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+  pointer-events: all;
   border: none;
   border-radius: var(--btn-border-radius);
   box-shadow: var(--shadow);
@@ -364,7 +371,7 @@ header {
   position: relative;
   z-index: 1000;
   padding: 0 var(--space-xs);
-  gap: var(--space-5xs);
+  gap: var(--space-6xs-5xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -380,12 +387,12 @@ header {
 .theme-button label:focus,
 .theme-button label:hover {
   outline: 4px solid var(--text-span);
-  box-shadow: 60px 60px 60px var(--space-3xs) var(--shadow);
+  box-shadow: 60px 60px 60px var(--space-4xs-3xs) var(--shadow);
 }
 
 .theme-button svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   vertical-align: middle;
   stroke-linecap: round;
   stroke-linejoin: miter;
@@ -433,17 +440,16 @@ header {
   display: flex;
   justify-content: center;
   background: transparent;
-  /* No background, so blend modes work */
 }
 
 .content div {
   position: absolute;
   display: flex;
   animation: show-hide var(--sp) ease 0s infinite alternate;
-  /*mix-blend-mode: plus-lighter;
+  mix-blend-mode: plus-lighter;
   color: var(--text-span);
   /* Use accent color for neon effect */
-  text-shadow: 0 0 1em var(--clr-neon), 0 0 2em var(--clr-neon);
+  text-shadow: 0 0 1em var(--clr-neon), 0 0 4em var(--clr-neon);
   /* Optional: add a subtle glow */
   transition: color 0.3s, text-shadow 0.3s;
 }
@@ -488,10 +494,10 @@ header {
   position: absolute;
   display: flex;
   animation: show-hide var(--sp) ease 0s infinite alternate;
-  /*mix-blend-mode: plus-lighter;
+  mix-blend-mode: plus-lighter;
   color: var(--text-span);
   /* Use accent color for neon effect */
-  text-shadow: 0 0 1em var(--clr-neon), 0 0 2em var(--clr-neon);
+  text-shadow: 0 0 1em var(--clr-neon), 0 0 4em var(--clr-neon);
   /* Optional: add a subtle glow */
   transition: color 0.3s, text-shadow 0.3s;
 }
@@ -529,7 +535,7 @@ header {
 .down:before {
   width: 80%;
   height: 0.1vmin;
-  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
+  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff81 70%);
   content: "";
   position: absolute;
   border-radius: 100%;
@@ -729,7 +735,7 @@ header {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-l);
   user-select: none;
   overflow: hidden;
   padding-block: var(--space-s);
@@ -741,32 +747,27 @@ header {
   font-size: var(--step-5);
   font-family: var(--font-style-1);
   font-weight: var(--font-weight-1);
-  white-space: nowrap;
-  word-spacing: var(--word-space-content);
-  letter-spacing: var(--letter-space-content);
-  padding-inline: var(--page-pad-inline);
 }
 
 .text-with-animation-1,
 .text-with-animation-2 {
   text-align: center;
-  font-size: var(--step-1);
+  font-size: var(--step-2);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
-  white-space: nowrap;
-  word-spacing: var(--word-space-content);
-  letter-spacing: var(--letter-space-content);
-  padding-inline: var(--page-pad-inline);
 }
 
 .large-button {
   margin-inline: auto;
-  z-index: 2000;
+  z-index: 3000;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  background-color: var(--clr-button);
+  background-color: transparent;
   color: var(--text-color);
   border-radius: 50%;
   box-shadow: var(--shadow);
@@ -776,7 +777,7 @@ header {
   /* smaller width */
   height: min(12rem, 35vw);
   /* smaller height */
-  justify-content: center;
+
   user-select: none;
   cursor: pointer;
   pointer-events: all;
@@ -785,7 +786,7 @@ header {
 .large-button:focus,
 .large-button:hover {
   box-shadow: 0 6px 6px var(--space-3xs) var(--shadow);
-  outline: 4px solid var(--text-span);
+  outline: 6px solid var(--text-span);
 }
 
 .large-button svg {
@@ -803,38 +804,28 @@ header {
 .large-button:hover>svg,
 .large-button:focus>svg {
   fill: var(--text-span);
-  transform: scale(0.5) rotate(45deg);
-  transition: transform 0.1s, box-shadow 0.3s;
+  transform: scale(0.6) rotate(45deg);
+  transition: transform 0.1s, box-shadow 0.3s color 0.3s;
 }
 
 .large-button span {
   display: inline-block;
+  align-self: center;
+  justify-self: center;
   vertical-align: middle;
   background-color: transparent;
   transition: box-shadow 0.3s, outline 0.3s;
-  padding-inline: var(--space-5xs);
   text-align: center;
-  font-size: var(--step--1);
   color: var(--text-color);
-  white-space: normal;
-  word-break: keep-all;
-  overflow-wrap: normal;
-  hyphens: none;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-wrap: balance;
-  box-sizing: border-box;
   user-select: none;
-  margin: var(--space-xs-s);
-  pointer-events: none;
-  font-family: var(--pt-serif-italic);
-  font-weight: var(--font-weight-1);
-  font-style: var(--font-style-1);
+  margin-block: var(--space-m);
 }
 
+
 @container (max-width: 600px) {
-  .theme-button {
-    top: var(--space-2xl);
+  .theme-button,
+  .theme-switcher {
+    top: var(--space-3xl);
   }
 }
 
