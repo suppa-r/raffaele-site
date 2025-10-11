@@ -335,7 +335,6 @@ header p span {
 
 .navigation {
   margin-inline: auto;
-
   display: block;
   /* or flex if you want its children in a row */
   padding: var(--space-7xs) var(--space-2xl);
