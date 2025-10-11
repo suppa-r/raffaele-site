@@ -55,7 +55,7 @@ function setActiveThemeButton() {
         themeList.classList.add('active');
         intro && (intro.style.display = 'block');
         h && (h.style.display = 'block');
-        nav && (nav.style.display = 'flex');
+        nav && (nav.style.display = 'block'); // <-- Show nav-links
       } else if (input) {
         // Switch theme if non-active button is clicked
         input.checked = true;
@@ -107,7 +107,7 @@ function setActiveThemeButton() {
       themeList.classList.remove('active');
       intro && (intro.style.display = 'block');
       h && (h.style.display = 'block');
-      nav && (nav.style.display = 'flex');
+      nav && (nav.style.display = 'block');
     }
   });
 });

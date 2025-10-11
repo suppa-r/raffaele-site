@@ -299,8 +299,8 @@ header {
 
 .title-container {
   margin-inline: auto;
-  margin-top: var(--space-xs);
 }
+
 
 .title {
   color: var(--text-color);
@@ -310,14 +310,11 @@ header {
 
 /* Theme switcher styles */
 .theme-switcher {
-  position: absolute;
-  top: var(--space-s);
-  right: var(--space-s);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  padding: var(--space-5xs) var(--space-s);
+  margin: var(--space-xs) var(--space-xs) var(--space-2xs) 0;
   z-index: 1000;
   pointer-events: none;
   user-select: none;
@@ -334,8 +331,6 @@ header {
 }
 
 .theme-button {
-  right: var(--space-s);
-  top: var(--space-s);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -436,7 +431,7 @@ header {
   gap: var(--space-2xl);
   font-size: var(--step-0);
   color: var(--text-color);
-  margin-top: var(--space-l);
+  margin-top: var(--space-m);
   user-select: none;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
@@ -827,12 +822,20 @@ header {
 }
 
 
-@container (max-width: 600px) {
+/*@container (max-width: 600px) {
+
+  .title-container {
+    margin-bottom: var(--space-s);
+  }
   .theme-button,
   .theme-switcher {
-    top: var(--space-3xl);
+    top: var(--space-4xl);
   }
 }
+
+.curve-container {
+  margin-top: var(--space-2xl);
+}*/
 
 @media (prefers-reduced-motion: reduce) {
 

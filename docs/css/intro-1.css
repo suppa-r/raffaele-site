@@ -346,6 +346,7 @@ header p span {
   pointer-events: all;
   transition: opacity 0.4s ease-in;
 }
+
 .nav-links {
   position: absolute;
   top: 50%;
