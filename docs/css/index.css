@@ -314,9 +314,8 @@ header {
 .theme-switcher {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-end;
-  margin-top: var(--space-3xs);
+  margin-top: var(--space-s);
   z-index: 1000;
   pointer-events: none;
   user-select: none;
@@ -337,7 +336,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--space-xs);
+  padding: 0 var(--space-s);
   z-index: 1000;
   user-select: none;
   gap: var(--space-2xs);

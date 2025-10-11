@@ -18,20 +18,35 @@
 
   --bars: #eee6e6;
 
-  /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 0%, 0.95);
-  /* almost white */
-  --body-gradient-bottom: hsla(0, 0%, 0%, 0.35);
-  /* light blue/gray */
+  --body-gradient-top: hsla(0, 0%, 0%, 0);
+  /* was 0.95 */
+  --body-gradient-bottom: hsla(0, 0%, 0%, 0.911);
+  /* was 0.35 */
 
-  /* Light mode grid line color */
-  --body-grid-line: rgba(255, 255, 255, 0.788);
-  /* subtle dark lines */
+  --body-grid-line-top: rgba(255, 255, 255, 0.808);
+  /* lighter at top */
+  --body-grid-line: rgba(255, 255, 255, 0.24);
+  /* normal grid line */
+
 
   --shadow-color: #fff;
   --shadow-color2: #77d6e0;
   --shadow-color3: #7abec7fd;
+
 }
+
+/* Light mode background gradient *
+  --body-gradient-top: hsla(0, 0%, 0%, 0.95);
+  /* almost white *
+  --body-gradient-bottom: hsla(0, 0%, 0%, 0.35);
+  /* light blue/gray */
+
+/* Light mode grid line color *
+  --body-grid-line: rgba(255, 255, 255, 0.788);
+  /* subtle dark lines *
+
+
+}*/
 
 
 [data-theme="light"] {
@@ -253,18 +268,11 @@
 
 body,
 html {
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  padding: 0 var(--page-pad-inline);
-}
-
-body,
-html {
   background-color: var(--base-color);
+  font-size: var(--step--1);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
-  font-size: var(--step--1);
   color: var(--text-color);
 }
 
@@ -293,15 +301,12 @@ body::before {
       transparent 1px 30px) 0 0 / 30px 30px repeat,
     linear-gradient(180deg,
       var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat;
-  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
-    background-position 0.3s ease-in-out;
-  z-index: 0;
-  overflow: hidden;
+      transparent 1px 30px) 0 0 / 30px 30px repeat,
+    linear-gradient(to bottom, rgba(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: -1000;
+  transition: background 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 body>* {
@@ -319,8 +324,8 @@ header {
   padding: var(--space-xs) 0;
   background: var(--gradient-header);
   border-radius: var(--space-l);
-  background-color: transparent;
-  z-index: 1500;
+  z-index: 0;
+  isolation: isolate;
 }
 
 /*------title-------*/
@@ -513,16 +518,16 @@ ul {
   background: var(--bars);
 }
 /* Theme switcher styles */
+/* Theme switcher styles */
 .theme-switcher {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-end;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  margin-top: var(--space-s);
   z-index: 1000;
   pointer-events: none;
   user-select: none;
-  gap: var(--space-3xs-2xs);
+  gap: var(--space-2xs);
   font-size: var(--step--1);
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -535,16 +540,14 @@ ul {
 }
 
 .theme-button {
-  right: var(--space-xs-s);
-  top: var(--space-2xs-xs);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6xs-5xs) var(--space-xs-s);
+  padding: 0 var(--space-s);
   z-index: 1000;
   user-select: none;
-  gap: var(--space-3xs-2xs);
+  gap: var(--space-2xs);
   font-size: var(--step--1);
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
@@ -577,8 +580,8 @@ ul {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-xs);
-  gap: var(--space-6xs-5xs);
+  padding: var(--space-2xs);
+  gap: var(--space-6xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -598,8 +601,8 @@ ul {
 }
 
 .theme-button svg {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-s);
+  height: var(--space-s);
   vertical-align: middle;
   stroke-linecap: round;
   stroke-linejoin: miter;
@@ -628,7 +631,6 @@ ul {
   background-color: var(--base-color);
   padding: 0 var(--space-s);
 }
-
 
 /*------intro-------*/
 

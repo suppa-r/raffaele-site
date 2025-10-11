@@ -18,21 +18,22 @@
 
   --bars: #eee6e6;
 
-  /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 0%, 0.95);
-  /* almost white */
-  --body-gradient-bottom: hsla(0, 0%, 0%, 0.35);
-  /* light blue/gray */
+  --body-gradient-top: hsla(0, 0%, 0%, 0);
+  /* was 0.95 */
+  --body-gradient-bottom: hsla(0, 0%, 0%, 0.911);
+  /* was 0.35 */
 
-  /* Light mode grid line color */
-  --body-grid-line: rgba(255, 255, 255, 0.788);
-  /* subtle dark lines */
+  --body-grid-line-top: rgba(255, 255, 255, 0.808);
+  /* lighter at top */
+  --body-grid-line: rgba(255, 255, 255, 0.24);
+  /* normal grid line */
+
 
   --shadow-color: #fff;
   --shadow-color2: #77d6e0;
   --shadow-color3: #7abec7fd;
-}
 
+}
 
 [data-theme="light"] {
   --base-color: #fff;
@@ -292,17 +293,13 @@ body::before {
       transparent 1px 30px) 0 0 / 30px 30px repeat,
     linear-gradient(180deg,
       var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat;
-  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
-    background-position 0.3s ease-in-out;
-  z-index: 0;
-  overflow: hidden;
+      transparent 1px 30px) 0 0 / 30px 30px repeat,
+    linear-gradient(to bottom, rgba(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: -1000;
+  transition: background 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
