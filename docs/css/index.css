@@ -70,18 +70,20 @@
 
   /* Fluid typography and spacing using cqi unit */
   /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
-  --step--1: clamp(0.8rem, 0.7437rem + 0.2504cqi, 0.9377rem);
-  --step-0: clamp(1rem, 0.8977rem + 0.4545cqi, 1.25rem);
-  --step-1: clamp(1.25rem, 1.0797rem + 0.7568cqi, 1.6663rem);
-  --step-2: clamp(1.5625rem, 1.2931rem + 1.1975cqi, 2.2211rem);
-  --step-3: clamp(1.9531rem, 1.5409rem + 1.832cqi, 2.9607rem);
-  --step-4: clamp(2.4414rem, 1.8256rem + 2.7368cqi, 3.9467rem);
-  --step-5: clamp(3.0518rem, 2.148rem + 4.0166cqi, 5.2609rem);
 
-  --space-6xs: clamp(0.125rem, 0.125rem + 0cqi, 0.125rem);
-  --space-5xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
-  --space-4xs: clamp(0.3125rem, 0.2869rem + 0.1136cqi, 0.375rem);
-  --space-3xs: clamp(0.375rem, 0.3239rem + 0.2273cqi, 0.5rem);
+  --step-0: clamp(1rem, 0.8977rem + 0.4545cqi, 1.25rem);
+  --step-1: clamp(1.125rem, 0.946rem + 0.7955cqi, 1.5625rem);
+  --step-2: clamp(1.2656rem, 0.9844rem + 1.25cqi, 1.9531rem);
+  --step-3: clamp(1.4238rem, 1.0075rem + 1.8501cqi, 2.4414rem);
+  --step-4: clamp(1.6018rem, 1.0086rem + 2.6363cqi, 3.0518rem);
+  --step-5: clamp(1.802rem, 0.9787rem + 3.6594cqi, 3.8147rem);
+  --step-6: clamp(2.0273rem, 0.9059rem + 4.9838cqi, 4.7684rem);
+
+  /*---------------------- Fluid spacing ---------------------- */
+
+  --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
+  --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
+  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
   --space-2xs: clamp(0.5rem, 0.4489rem + 0.2273cqi, 0.625rem);
   --space-xs: clamp(0.75rem, 0.6733rem + 0.3409cqi, 0.9375rem);
   --space-s: clamp(1rem, 0.8977rem + 0.4545cqi, 1.25rem);
@@ -94,8 +96,8 @@
   --space-5xl: clamp(8rem, 7.1818rem + 3.6364cqi, 10rem);
   --space-6xl: clamp(9rem, 8.0795rem + 4.0909cqi, 11.25rem);
   --space-7xl: clamp(10rem, 8.9773rem + 4.5455cqi, 12.5rem);
-  --space-8xl: clamp(11rem, 9.875rem + 5cqi, 13.75rem);
-  --space-9xl: clamp(12rem, 10.7727rem + 5.4545cqi, 15rem);
+  --space-8xl: clamp(12rem, 10.7727rem + 5.4545cqi, 15rem);
+  --space-9xl: clamp(14rem, 12.5682rem + 6.8182cqi, 18.75rem);
 
 
   --pt-serif-regular: "PT Serif",
@@ -236,7 +238,7 @@
 
 body,
 html {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
