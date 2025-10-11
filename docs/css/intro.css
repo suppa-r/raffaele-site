@@ -319,7 +319,8 @@ body>* {
 header {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--space-xl);
+  margin: 0 var(--space-xl);
+
   background: var(--gradient-header);
   border-radius: var(--space-l);
   z-index: 0;
@@ -330,7 +331,7 @@ header {
 header p {
   display: block;
   visibility: visible;
-  padding: 0;
+  margin: var(--space-2xs) 0 0 var(--space-s);
 }
 
 header p span {
@@ -469,31 +470,27 @@ ul {
 .menu-btn {
   display: none;
   position: absolute;
-  top: var(--space-2xs);
-  /* vertical position */
-  right: var(--space-xs);
-
-  /* center horizontally */
-  transform: translateX(50%);
-
+  top: var(--space-xs);
+  right: 0;
   background: transparent;
   border: none;
   width: 20px;
   height: 20px;
-
   justify-content: center;
-  align-items: center;
+
+  flex-direction: column;
+  gap: var(--space-3xs);
+  z-index: 20000;
+  isolation: isolate;
   cursor: pointer;
   pointer-events: all;
   user-select: none;
   padding: 0;
   /* padding removed */
-  margin-right: var(--space-l);
+  margin-right: var(--space-xs);
   /* margin removed */
   opacity: 1;
   transition: all .2s ease-in-out;
-  /* margin-right removed */
-  z-index: 20000;
 }
 
 
@@ -549,9 +546,9 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-top: var(--space-s);
+  margin-top: var(--space-4xs);
   z-index: 1000;
-  pointer-events: none;
+  pointer-events: all;
   user-select: none;
   gap: var(--space-2xs);
   font-size: var(--step--1);
@@ -664,14 +661,14 @@ ul {
   display: block;
   text-align: center;
   margin-inline: 0 auto;
-  margin: var(--space-l) 0 0 0;
+  margin: var(--space-xs) 0 0 0;
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
 }
 
 .intro p {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   white-space: nowrap;
 }
 
@@ -686,7 +683,7 @@ ul {
   -webkit-text-fill-color: transparent;
   animation: gradientAnimation 3s ease-in-out infinite alternate;
   animation-direction: alternate reverse;
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   letter-spacing: var(--letter-space-content);
   padding-left: var(--space-2xs);
   padding-right: var(--space-2xs);
@@ -707,15 +704,15 @@ ul {
 }
 
 .intro .ya {
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   white-space: nowrap;
-  margin-block: var(--space-3xs);
+  margin-block: var(--space-4xs);
 }
 
 .intro .ya-1 {
   font-size: var(--step-2);
   white-space: nowrap;
-  margin-block: var(--space-3xs);
+  margin-block: var(--space-4xs);
 }
 
 /*------gradient text-------*/
@@ -726,7 +723,7 @@ ul {
   /* Remove default margins */
   padding: 0;
   /* Remove default padding */
-  padding-top: var(--space-xs);
+  padding-top: var(--space-4xs);
   text-align: center;
   /* Align text to the left */
   text-shadow: 100px 100px 100px rgb(255, 255, 255);
