@@ -314,7 +314,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  margin: var(--space-xs) var(--space-xs) var(--space-2xs) 0;
+  margin-top: var(--space-3xs);
   z-index: 1000;
   pointer-events: none;
   user-select: none;
@@ -335,7 +335,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: var(--space-5xs) var(--space-s);
+  padding: 0 var(--space-xs);
   z-index: 1000;
   user-select: none;
   gap: var(--space-2xs);
@@ -371,8 +371,8 @@ header {
   pointer-events: all;
   position: relative;
   z-index: 1000;
-  padding: 0 var(--space-xs);
-  gap: var(--space-6xs-5xs);
+  padding: var(--space-2xs);
+  gap: var(--space-6xs);
   align-items: center;
   text-decoration: none;
   background-color: var(--base-color);
@@ -392,8 +392,8 @@ header {
 }
 
 .theme-button svg {
-  width: var(--space-m-l);
-  height: var(--space-m-l);
+  width: var(--space-s);
+  height: var(--space-s);
   vertical-align: middle;
   stroke-linecap: round;
   stroke-linejoin: miter;
@@ -738,7 +738,7 @@ header {
   margin-top: var(--space-l);
   user-select: none;
   overflow: hidden;
-  padding-block: var(--space-s);
+  padding-block: var(--space-m);
   z-index: 1000;
 }
 
@@ -752,7 +752,7 @@ header {
 .text-with-animation-1,
 .text-with-animation-2 {
   text-align: center;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
@@ -773,11 +773,9 @@ header {
   box-shadow: var(--shadow);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(22rem, 70vw);
-  /* smaller width */
-  height: min(12rem, 35vw);
-  /* smaller height */
-
+  width: min(21rem, 90vw);
+  height: min(12rem, 55vw);
+  text-align: center;
   user-select: none;
   cursor: pointer;
   pointer-events: all;
