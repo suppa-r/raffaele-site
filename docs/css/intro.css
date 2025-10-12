@@ -6,8 +6,6 @@
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
 
-  --gradient-drip: linear-gradient(90deg, #fffffff6, #ececf0, #e6d9e6b2, #c2aac2);
-
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.671);
@@ -15,68 +13,58 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
 
-  /* Main gradient: black, darker at top */
-  --body-gradient-top: rgba(0, 0, 0, 0.8);
-  --body-gradient-bottom: rgba(34, 34, 34, 0.2);
-  /* dark gray at bottom */
-  --body-gradient-main: linear-gradient(to bottom, var(--body-gradient-top) 0%, var(--body-gradient-bottom) 100%);
 
-  --mask-gradient: linear-gradient(to bottom, rgba(255, 255, 255, 0.815) 0%, rgba(255, 255, 255, 0) 100%);
+  --background: linear-gradient(270deg, #ce85a9b9, #c4bbce, #c97ba2bd);
 
-  /* White grid lines */
-  --body-grid-line: #fff;
-  --body-gradient-grid-x: linear-gradient(90deg, var(--body-grid-line) 0 1px, transparent 1px 30px) 0 0 / 30px 30px repeat;
-  --body-gradient-grid-y: linear-gradient(180deg, var(--body-grid-line) 0 1px, transparent 1px 30px) 0 0 / 30px 30px repeat;
+  --bars: #eee6e6;
 
-  /* Optional: Overlay for extra depth (add to body::before background if needed) */
-  --body-gradient-overlay: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 0%, 0.95);
+  /* almost white */
+  --body-gradient-bottom: hsla(0, 0%, 0%, 0.35);
+  /* light blue/gray */
 
-  --bars: #000000;
+  /* Light mode grid line color */
+  --body-grid-line: rgba(255, 255, 255, 0.788);
+  /* subtle dark lines */
 
-  --shadow-color-drip: #000000;
-
-  --background: linear-gradient(270deg, #fff, #000 40%, #b8c1c9 60%, #000 80%, #fff);
-  --background-drip: linear-gradient(90deg, #020202f6, #0d0d0f, #161416b2, #131113);
+  --shadow-color: #fff;
+  --shadow-color2: #77d6e0;
+  --shadow-color3: #7abec7fd;
 }
+
 
 [data-theme="light"] {
   --base-color: #fff;
-  --text-color: #222;
-  --text-span: hsla(210, 60%, 60%, 0.74);
-  --clr-neon: hsl(210, 40%, 85%);
-  --clr-button: hsla(0, 0%, 0%, 0);
-  --gradient: linear-gradient(90deg, #e0e7ef, #b9d6e3, #e4d4ee, #e0ccec);
+  --text-color: #000000;
+  --text-span: #000000;
+  --clr-neon: hsla(189, 4%, 63%, 0.733);
+  --clr-button: hsla(0, 0%, 100%, 0.671);
+  --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
 
-  --gradient-drip: linear-gradient(90deg, #f6f6fff6, #f0f0f0, #e6e6e6b2, #d2d2d2);
+  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
 
-  --gradient-header: linear-gradient(90deg, #e0e7ef, #b9d6e356, #e4d4ee2d, #e0ccec);
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0);
+  --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
 
-  --shadow: 0 30px 100px rgba(180, 180, 200, 0.15);
-  --navbar-shadow: 0 30px 100px rgba(200, 200, 200, 0.25), 0 30px 100px rgba(220, 220, 220, 0.15);
+  /*--text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em var(--text-color);*/
 
-  --text-shadow: 0 0 0.125em hsla(0, 0%, 0%, 0.09), 0 0 0.45em currentColor;
+  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
 
-  /* Main gradient: white, slightly darker at bottom */
-  --body-gradient-top: rgba(255, 255, 255, 0.98);
-  --body-gradient-bottom: rgba(230, 230, 240, 0.1);
-  --body-gradient-main: linear-gradient(to bottom, var(--body-gradient-top) 0%, var(--body-gradient-bottom) 100%);
+  --background: linear-gradient(270deg, #ce85aa36, #c4bbce00, #6820449d);
 
-  /* Light gray grid lines, fade out towards bottom */
-  --body-grid-line: #131212;
-  --body-gradient-grid-x: linear-gradient(90deg, var(--body-grid-line) 0 1px, transparent 1px 30px) 0 0 / 30px 30px repeat;
-  --body-gradient-grid-y: linear-gradient(180deg, var(--body-grid-line) 0 1px, transparent 1px 30px) 0 0 / 30px 30px repeat;
+  --bars: #000000;
 
-  /* Optional: Overlay for extra depth */
-  --body-gradient-overlay: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+  /* Light mode background gradient */
+  --body-gradient-top: hsla(0, 0%, 100%, 0.692);
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0.212);
 
-  --mask-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 1) 100%);
-
-  --bars: #222;
-
-  --shadow-color-drip: #222;
-
-  --background: linear-gradient(270deg, #fff, #000 40%, #b8c1c9 60%, #000 80%, #fff);
-  --background-drip: linear-gradient(90deg, #f6f6fff6, #f0f0f0, #e6e6e6b2, #d2d2d2);
+  /* Light mode grid line color */
+  --body-grid-line: rgba(0, 0, 0, 1);
+  /* Darker shadow colors for animation */
+  --shadow-color: rgba(0, 0, 0, 0.85);
+  --shadow-color2: rgba(0, 0, 0, 0.5);
+  --shadow-color3: rgba(0, 0, 0, 0.3);
 }
 
 :root {
@@ -265,16 +253,23 @@
 
 body,
 html {
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  padding: 0 var(--page-pad-inline);
+}
+
+body,
+html {
   background-color: var(--base-color);
-  font-size: var(--step--1);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
+  font-size: var(--step--1);
   color: var(--text-color);
 }
 
 body {
-  transition: background-color 0.3s ease-in, color 0.3s ease-in;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   position: relative;
   z-index: 1000;
   isolation: isolate;
@@ -290,24 +285,24 @@ body::before {
   top: 0;
   left: 0;
   background:
-    var(--body-gradient-main),
-    var(--body-gradient-grid-x),
-    var(--body-gradient-grid-y);
-  background-repeat: no-repeat, repeat, repeat;
-  background-attachment: fixed;
-  background-size: cover, 30px 30px, 30px 30px;
-  background-position: center, 0 0, 0 0;
-  background-blend-mode: normal, screen, screen;
-  z-index: -1000;
-  transition: background-color 0.3s ease-in-out;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  mask-image: var(--mask-gradient);
+    linear-gradient(to bottom,
+      var(--body-gradient-top) 0%,
+      var(--body-gradient-bottom) 100%),
+    linear-gradient(90deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 0 0 / 30px 30px repeat,
+    linear-gradient(180deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 0 0 / 30px 30px repeat;
+  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: 0;
+  overflow: hidden;
 }
-
 
 body>* {
   /* Ensure all direct children of body are treated as containers */
@@ -316,6 +311,7 @@ body>* {
 }
 
 /*------header-------*/
+
 header {
   display: flex;
   justify-content: space-between;
@@ -654,36 +650,37 @@ ul {
 }
 
 /*------intro-------*/
+
 .intro {
   display: block;
   text-align: center;
   margin-inline: 0 auto;
-  margin-top: var(--space-4xs);
+  margin: var(--space-l) 0 0 0;
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
 }
 
 .intro p {
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   white-space: nowrap;
 }
 
 .fancy span {
   display: inline-block;
-  background: linear-gradient(270deg, #000, #fff 40%, #233f6d 60%, #fff 80%, #000);
+  background: linear-gradient(270deg, #bb7ba1, #8482ac, #61a178, #70b4be, #6b85af, #8a5cf68f, #ec4899, #85b153);
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 3s ease-in infinite alternate;
+  animation: gradientAnimation 3s ease-in-out infinite alternate;
   animation-direction: alternate reverse;
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   letter-spacing: var(--letter-space-content);
-  padding-left: var(--space-xs);
-  padding-right: var(--space-xs);
+  padding-left: var(--space-2xs);
+  padding-right: var(--space-2xs);
 }
 
 @keyframes gradientAnimation {
@@ -701,56 +698,42 @@ ul {
 }
 
 .intro .ya {
-  font-size: var(--step-2);
+  font-size: var(--step-0);
   white-space: nowrap;
-  margin-top: var(--space-4xs);
+  margin-block: var(--space-3xs);
 }
 
 .intro .ya-1 {
   font-size: var(--step-2);
   white-space: nowrap;
-  margin-top: var(--space-4xs);
+  margin-block: var(--space-3xs);
 }
 
 /*------gradient text-------*/
 
 .wrapper-gradient-text {
-  font-size: var(--step-1);
+  font-size: var(--step-2);
   margin: 0;
   /* Remove default margins */
   padding: 0;
   /* Remove default padding */
-  padding-top: var(--space-5xs);
+  padding-top: var(--space-xs);
   text-align: center;
   /* Align text to the left */
   text-shadow: 100px 100px 100px rgb(255, 255, 255);
 }
 
 .text-layer {
-  background: var(--background-drip);
+  background: var(--gradient);
   background-size: 200% 200%;
   background-clip: text;
   color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
   /* Use theme shadow for fallback */
-  text-shadow: var(--text-shadow-drip, 100px 150px 100px rgba(255, 255, 255, 0.853));
+  text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.853));
 }
 
 @keyframes shadowDrip {
-  0% {
-    text-shadow: 0px 0px 0px var(--shadow-color-drip),
-      0px 0px 0px var(--shadow-color-drip),
-      0px 0px 0px var(--shadow-color-drip);
-  }
-
-  100% {
-    text-shadow: 0px 50px 100px var(--shadow-color-drip),
-      0px 15px 20px var(--shadow-color-drip),
-      0px 30px 5px var(--shadow-color-drip);
-  }
-}
-
-/*@keyframes shadowDrip {
   0% {
     text-shadow: 0px 0px 0px var(--shadow-color),
       0px 0px 0px var(--shadow-color2),
@@ -762,17 +745,53 @@ ul {
       0px 15px 20px var(--shadow-color2),
       0px 30px 5px var(--shadow-color3);
   }
-}*/
+}
 
 @container (max-width: 600px) {
+
+
+  header p {
+    padding-right: var(--space-2xl);
+
+  }
+
+  .nav {
+    padding: var(--space-7xs) var(--space-s);
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+
+    min-height: 100dvh;
+    width: 100dvw;
+    height: 100dvh;
+    background: var(--gradient-header);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-l-xl);
+    list-style: none;
+    border-radius: var(--btn-border-radius);
+    z-index: 2000;
+    overflow: hidden;
+    color: var(--text-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
 
   .menu-btn {
     display: flex;
   }
 
+
   .nav-links.open {
     position: absolute;
-    top: 10%;
+    top: 0;
     left: 10%;
     margin-inline: auto;
     margin-block: var(--space-4xl);
