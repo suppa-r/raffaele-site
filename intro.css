@@ -314,33 +314,19 @@ body>* {
 
 header {
   display: flex;
-  justify-content: space-between;
-  margin: 0 var(--space-l);
+  justify-content: flex-start;
+  margin: 0 var(--space-xl);
   background: var(--gradient-header);
-  border-radius: var(--space-m);
+  border-radius: var(--space-l);
   z-index: 0;
   isolation: isolate;
-  overflow: hidden;
-}
-
-header .logo {
-  display: block;
-  width: var(--space-l);
-  height: auto;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: var(--space-4xs);
-  margin-left: var(--space-s);
-  user-select: none;
-  padding: 0;
-  border: 0;
 }
 
 /*------title-------*/
 header p {
   display: block;
   visibility: visible;
-  margin: 0;
+  margin: var(--space-3xs) 0 0 var(--space-s);
 }
 
 header p span {
@@ -373,26 +359,23 @@ header p span {
 }
 
 .nav-links {
-  position: relative;
-  background: var(--gradient-header);
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   gap: var(--space-l);
+  margin: 0;
+  padding: 0 var(--space-l);
   list-style: none;
+  background-color: transparent;
+  border: 0;
   border-radius: var(--btn-border-radius);
-  z-index: 2000;
-  overflow: hidden;
-  color: var(--text-color);
-  pointer-events: all;
-  transition: opacity 0.3s;
+  z-index: 1000;
 }
 
 .nav-links li {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -477,35 +460,12 @@ ul {
   }
 }
 
-.theme-button {
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-  pointer-events: all;
-  position: relative;
-  z-index: 1000;
-  padding: 0 var(--space-l);
-  gap: var(--space-6xs);
-  align-items: center;
-  text-decoration: none;
-  background-color: transparent;
-  color: var(--text-color);
-  /*box-shadow: var(--shadow);
-  font-size: var(--step--1);*/
-  border: 0;
-  border-radius: var(--btn-border-radius);
-  user-select: none;
-  transition: color 0.3s, box-shadow 0.3s;
-}
-
 /*------menu button-------*/
 .menu-btn {
   display: none;
   position: absolute;
   top: var(--space-xs);
   right: 0;
-  transform: translateX(0%);
-  align-items: center;
   background: transparent;
   border: none;
   width: 20px;
@@ -520,11 +480,12 @@ ul {
   user-select: none;
   padding: 0;
   /* padding removed */
-  margin-right: var(--space-l);
+  margin-right: var(--space-xs);
   /* margin removed */
   opacity: 1;
   transition: all .2s ease-in-out;
 }
+
 
 .menu-btn__burger {
   width: 20px;
@@ -573,19 +534,39 @@ ul {
   background: var(--bars);
 }
 
-.material-symbols--moon-stars-outline-rounded {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12.075 22q-2.1 0-3.937-.8t-3.2-2.162t-2.163-3.2t-.8-3.938q0-3.1 1.713-5.625t4.587-3.7q.35-.125.725-.088t.625.238q.2.175.313.488t.112.812q.05 1.975.8 3.763T13 10.975t3.2 2.15t3.775.8q.525 0 .8.088t.45.287q.2.25.263.65t-.063.725q-1.15 2.875-3.7 4.6T12.075 22m0-2q2.2 0 4.075-1.1t2.95-3.025q-2.15-.2-4.075-1.087t-3.45-2.413t-2.425-3.45T8.075 4.85Q6.15 5.925 5.063 7.813T3.975 11.9q0 3.375 2.363 5.738T12.075 20M14.3 7.3l-1.6-1.6q-.3-.3-.3-.7t.3-.7l1.6-1.6q.3-.3.7-.3t.7.3l1.6 1.6q.3.3.3.7t-.3.7l-1.6 1.6q-.3.3-.7.3t-.7-.3m5 3l-.6-.6q-.3-.3-.3-.7t.3-.7l.6-.6q.3-.3.7-.3t.7.3l.6.6q.3.3.3.7t-.3.7l-.6.6q-.3.3-.7.3t-.7-.3'/%3E%3C/svg%3E");
-  background-color: var(--text-color);
-  -webkit-mask-image: var(--svg);
-  mask-image: var(--svg);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+/* Theme switcher styles */
+.theme-switcher {
+  display: flex;
+  flex-direction: row;
+  z-index: 2000;
+  pointer-events: all;
+  user-select: none;
+  gap: var(--space-2xs);
+  background-color: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: var(--btn-border-radius);
+  margin-right: var(--space-m);
 }
+
+/*.theme-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: var(--space-s);
+  z-index: 1000;
+  user-select: none;
+  background: none;
+  color: var(--text-color);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: all;
+  border: none;
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--shadow);
+}*/
 
 .theme-button.active {
   display: none;
@@ -593,64 +574,52 @@ ul {
 
 .theme-button:not(.active) {
   display: block;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.3s ease-in-out;
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  user-select: none;
+  cursor: pointer;
 }
 
 .theme-button input[type="radio"] {
   display: none;
 }
 
-/*.theme-button label {
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-  pointer-events: all;
-  position: relative;
-  z-index: 1000;
-  padding: 0 var(--space-2xs);
-  gap: var(--space-6xs);
-  align-items: center;
-  text-decoration: none;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  box-shadow: var(--shadow);
-  font-size: var(--step--1);
-  border: 0;
-  border-radius: var(--btn-border-radius);
-  user-select: none;
-  transition: color 0.3s, box-shadow 0.3s;
-}
-
-.theme-button label:focus,
-.theme-button label:hover {
-  outline: 4px solid var(--text-span);
-  box-shadow: 60px 60px 60px var(--space-3xs) var(--shadow);
-}*
-
 .theme-button svg {
 
-  vertical-align: middle;
-
+  width: var(--space-m);
+  height: var(--space-m);
+  object-fit: cover;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
   color: var(--text-color);
-
+  background-color: transparent;
   opacity: 1;
+  display: inline-block;
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  /* Add this line */
+  user-select: none;
+  pointer-events: none;
+  /* Prevents SVG from capturing pointer events */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  stroke-width: var(--space-s);
 }
 
 .theme-button:hover svg {
   transform: scale(0.5);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
-
+  background-color: none;
+  /* Or another color if you want */
 }
-
-/*theme-button span {
-  white-space: nowrap;
-  overflow: hidden;
-  user-select: none;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: var(--base-color);
-  padding: 0 var(--space-s);
-}*/
 
 /*------intro-------*/
 
@@ -752,13 +721,45 @@ ul {
 
 @container (max-width: 600px) {
 
-  .navigation {
+
+  header p {
+    padding-right: var(--space-2xl);
+
+  }
+
+  .nav {
+    padding: var(--space-7xs) var(--space-s);
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+
+    min-height: 100dvh;
+    width: 100dvw;
+    height: 100dvh;
+    background: var(--gradient-header);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-l-xl);
+    list-style: none;
+    border-radius: var(--btn-border-radius);
+    z-index: 2000;
+    overflow: hidden;
+    color: var(--text-color);
     opacity: 0;
     pointer-events: none;
+    transition: opacity 0.3s;
   }
+
   .menu-btn {
-    display: block;
+    display: flex;
   }
+
 
   .nav-links.open {
     position: absolute;
