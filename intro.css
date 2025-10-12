@@ -311,17 +311,13 @@ body>* {
 }
 
 /*------header-------*/
-
 header {
-  position: relative;
-  margin: 0 var(--space-xl);
+  margin: 0 var(--space-l);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--space-s);
   background: var(--gradient-header);
-  background-color: transparent;
+  background-color: none;
   border-radius: var(--space-xl);
   z-index: 0;
   isolation: isolate;
@@ -329,14 +325,26 @@ header {
 
 .header-img {
   display: block;
-  margin: var(--space-3xs);
-  border-radius: var(--space-xl);
+  border-radius: var(--space-l);
+  margin: var(--space-4xs);
   overflow: hidden;
-  width: var(--space-6xl);
-  height: var(--space-3xl);
+  width: var(--space-2xl);              /* Responsive width, adjust as needed */
+  max-width: 100%;         /* Maximum size on large screens */
+  height: auto;
+  aspect-ratio: 2/1; /* Maintain aspect ratio */
+user-select: none;
+  pointer-events: none;
+  border: 0;
+  background-color: transparent;
   box-shadow: var(--shadow);
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
-  aspect-ratio: 16/5;
+}
+
+.header-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 /*------title-------*/
@@ -480,24 +488,23 @@ ul {
 /*------menu button-------*/
 .menu-btn {
   display: none;
-  position: absolute;
+  /*position: absolute;
   top: var(--space-xs);
-  right: 0;
+  right: 0;*/
+  align-items: center;
+  justify-self: start;
   background: transparent;
   border: none;
   width: 20px;
   height: 20px;
-  justify-content: center;
-  flex-direction: column;
-  gap: var(--space-3xs);
-  z-index: 20000;
+ z-index: 20000;
   isolation: isolate;
   cursor: pointer;
   pointer-events: all;
   user-select: none;
   padding: 0;
   /* padding removed */
-  margin-right: var(--space-xs);
+  margin:var(--space-xs) var(--space-s) 0 0;
   /* margin removed */
   opacity: 1;
   transition: all .2s ease-in-out;
@@ -532,12 +539,12 @@ ul {
 }
 
 .menu-btn__burger.open {
-  transform: rotate(90deg);
+  transform: rotate(0deg);
   /* Example: rotate when open */
 }
 
 .menu-btn.open .menu-btn__burger {
-  transform: translateX(0px);
+  transform: translateX(0px) rotate(90deg);
   background: transparent;
 }
 
@@ -608,11 +615,9 @@ ul {
 
 .theme-button svg {
 
-  width: var(--space-m);
-  height: var(--space-m);
-  object-fit: cover;
-  stroke-linecap: round;
-  stroke-linejoin: miter;
+  width: var(--space-l);
+  height: var(--space-l);
+ 
   color: var(--text-color);
   background-color: transparent;
   opacity: 1;
@@ -622,13 +627,7 @@ ul {
   user-select: none;
   pointer-events: none;
   /* Prevents SVG from capturing pointer events */
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: middle;
-  box-sizing: border-box;
-  stroke-width: var(--space-s);
-}
+ }
 
 .theme-button:hover svg {
   transform: scale(0.5);
@@ -644,7 +643,7 @@ ul {
   display: block;
   text-align: center;
   margin-inline: 0 auto;
-  margin: var(--space-3xl) 0 0 0;
+  margin: var(--space-l) 0 0 0;
   background-color: transparent;
   opacity: 1;
   z-index: 1000;
@@ -737,13 +736,13 @@ ul {
 }
 
 @container (max-width: 600px) {
-  header {
+  /* header {
     flex-direction: row;
     align-items: stretch;
     padding: var(--space-xs);
     margin: 0;
   }
-  /*.header-content {
+ .header-content {
     flex-direction: row;
     gap: var(--space-s);
     align-items: center;
