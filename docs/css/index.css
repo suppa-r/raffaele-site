@@ -116,7 +116,7 @@
   --padding-inline: var(--space-2xs);
   --padding-block: 0;
   --letter-space-content: 4px;
-  --word-space-content: 7px;
+  --word-space-content: 5px;
 }
 
 @supports (selector(::view-transition)) {
@@ -714,9 +714,7 @@ header {
 
 .text-with-animation {
   text-align: center;
-  font-size: var(--step-4);
-  font-family: var(--font-style-1);
-  font-weight: var(--font-weight-1);
+  font-size: var(--step-6);
 }
 
 .text-with-animation-1,
