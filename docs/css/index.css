@@ -115,8 +115,8 @@
   /* global page padding variables */
   --padding-inline: var(--space-2xs);
   --padding-block: 0;
-  --letter-space-content: 4px;
-  --word-space-content: 5px;
+  --letter-space-content: 3px;
+  --word-space-content: 3px;
 }
 
 @supports (selector(::view-transition)) {
@@ -243,6 +243,8 @@ html {
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
 }
 
 body {
@@ -266,8 +268,6 @@ body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
   margin-inline: auto;
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
   position: relative;
 }
 
@@ -290,24 +290,22 @@ section {
 /*------header-------*/
 
 header {
-  display: flex;
-  justify-content: center;
   background: transparent;
-  border-radius: var(--space-l);
   background-color: transparent;
   z-index: 1500;
-  margin-top: var(--space-m);
-  padding: var(--space-xs) var(--space-s);
+  margin-top: var(--space-2xl);
   user-select: none;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .title-container {
   margin-inline: auto;
+
 }
 
 
 .title {
+  padding: 0 var(--space-5xs);
   color: var(--text-color);
   text-align: center;
   user-select: none;
@@ -787,21 +785,6 @@ header {
   margin-block: var(--space-m);
 }
 
-
-/*@container (max-width: 600px) {
-
-  .title-container {
-    margin-bottom: var(--space-s);
-  }
-  .theme-button,
-  .theme-switcher {
-    top: var(--space-4xl);
-  }
-}
-
-.curve-container {
-  margin-top: var(--space-2xl);
-}*/
 
 @media (prefers-reduced-motion: reduce) {
 
