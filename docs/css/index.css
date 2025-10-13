@@ -268,7 +268,7 @@ body>* {
   margin-inline: auto;
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
-  padding-inline: var(--padding-inline);
+  position: relative;
 }
 
 /* Make sure your main content is above the background */
@@ -312,23 +312,20 @@ header {
 
 /* Theme switcher styles */
 .theme-switcher {
+  position: absolute;
+  top: var(--space-3xs);
+  right: 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  margin-top: var(--space-s);
-  z-index: 1000;
-  pointer-events: none;
+  z-index: 2000;
+  pointer-events: all;
   user-select: none;
   gap: var(--space-2xs);
-  font-size: var(--step--1);
-  color: var(--text-color);
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  text-align: center;
-  background-color: transparent;
+  background-color: none;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   border-radius: var(--btn-border-radius);
+  box-shadow: var(--shadow);
 }
 
 .theme-button {
@@ -336,15 +333,12 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--space-s);
+  cursor: pointer;
+  margin-right: var(--space-s);
   z-index: 1000;
   user-select: none;
-  gap: var(--space-2xs);
-  font-size: var(--step--1);
+  background: none;
   color: var(--text-color);
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  text-align: center;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
@@ -359,72 +353,44 @@ header {
 
 .theme-button:not(.active) {
   display: block;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.3s ease-in-out;
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  user-select: none;
+  cursor: pointer;
 }
 
 .theme-button input[type="radio"] {
   display: none;
 }
 
-.theme-button label {
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-  pointer-events: all;
-  position: relative;
-  z-index: 1000;
-  padding: var(--space-2xs);
-  gap: var(--space-6xs);
-  align-items: center;
-  text-decoration: none;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  box-shadow: var(--shadow);
-  font-size: var(--step--1);
-  border: 0;
-  border-radius: var(--btn-border-radius);
-  user-select: none;
-  transition: color 0.3s, box-shadow 0.3s;
-}
-
-.theme-button label:focus,
-.theme-button label:hover {
-  outline: 4px solid var(--text-span);
-  box-shadow: 60px 60px 60px var(--space-4xs-3xs) var(--shadow);
-}
-
 .theme-button svg {
-  width: var(--space-s);
-  height: var(--space-s);
-  vertical-align: middle;
-  stroke-linecap: round;
-  stroke-linejoin: miter;
+  width: var(--space-m);
+  height: var(--space-m);
   color: var(--text-color);
-  background-color: var(--base-color);
+  background-color: transparent;
   opacity: 1;
   display: inline-block;
-  transition: color 0.3s, background-color 0.3s;
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
   /* Add this line */
+  user-select: none;
+  pointer-events: none;
+  /* Prevents SVG from capturing pointer events */
 }
 
 .theme-button:hover svg {
   transform: scale(0.5);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
-  background-color: var(--base-color);
+  background-color: none;
   /* Or another color if you want */
 }
 
-.theme-button span {
-  white-space: nowrap;
-  overflow: hidden;
-  user-select: none;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: var(--base-color);
-  padding: 0 var(--space-s);
-}
 /*-------------curvature-----------------*/
-
 .curve-container {
   display: flex;
   flex-direction: column;
