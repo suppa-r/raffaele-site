@@ -565,12 +565,11 @@ ul {
   z-index: 2000;
   pointer-events: all;
   user-select: none;
-  gap: var(--space-2xs);
+  gap: var(--space-5xs);
   background-color: none;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   border-radius: var(--btn-border-radius);
-  margin-right: var(--space-m);
 }
 
 .theme-button {
@@ -579,8 +578,7 @@ ul {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-right: var(--space-s);
-  z-index: 1000;
+   z-index: 1000;
   user-select: none;
   background: none;
   color: var(--text-color);
@@ -614,10 +612,8 @@ ul {
 }
 
 .theme-button svg {
-
-  width: var(--space-l);
-  height: var(--space-l);
- 
+  width: var(--space-m);
+  height: var(--space-m);
   color: var(--text-color);
   background-color: transparent;
   opacity: 1;
@@ -630,7 +626,7 @@ ul {
  }
 
 .theme-button:hover svg {
-  transform: scale(0.5);
+  transform: scale(0.7);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
   background-color: none;
