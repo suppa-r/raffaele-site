@@ -7,13 +7,13 @@
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
   --shadow:
-    0 30px 100px rgba(223, 223, 233, 0.849),
+    0 30px 100px rgba(223, 223, 233, 0.249),
     /* original */
-    0 60px 120px rgba(120, 181, 255, 0.767),
+    0 60px 120px rgba(120, 181, 255, 0.367),
     /* blue glow lower */
-    0 90px 140px rgba(228, 120, 255, 0.829),
+    0 90px 140px rgba(228, 120, 255, 0.229),
     /* orange glow even lower */
-    0 120px 160px rgba(153, 167, 142, 0.925);
+    0 120px 160px rgba(153, 167, 142, 0.625);
   /* green glow at bottom */
 
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
