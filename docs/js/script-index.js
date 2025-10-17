@@ -8,17 +8,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to update favicon based on theme
   function updateFavicon(theme) {
-    const favicon = document.querySelector("link[rel='icon']");
     console.log('Updating favicon for theme:', theme); // Debug
+
+    // Try multiple selectors to find favicon
+    let favicon = document.getElementById("favicon");
+
+    if (!favicon) {
+      favicon = document.querySelector("link[rel='icon']");
+    }
+
+    if (!favicon) {
+      favicon = document.querySelector("link[rel='shortcut icon']");
+    }
+
+    console.log('Favicon element:', favicon); // Debug
 
     if (favicon) {
       const faviconPath = theme === "dark"
         ? "/favicons/dark-1.png"
         : "/favicons/light-1.png";
+
       console.log('Setting favicon path to:', faviconPath); // Debug
+
+      // Force browser to reload favicon
+      favicon.type = 'image/x-icon';
+      favicon.rel = 'shortcut icon';
       favicon.href = faviconPath + "?v=" + Date.now();
+
+      console.log('Favicon href after update:', favicon.href); // Debug
+
+      // Alternative method: Create new favicon element
+      const newFavicon = favicon.cloneNode();
+      newFavicon.href = faviconPath + "?v=" + Date.now();
+      favicon.parentNode.removeChild(favicon);
+      document.head.appendChild(newFavicon);
+
     } else {
-      console.error('Favicon element not found!');
+      console.error('Favicon element not found! Creating new one...');
+
+      // Create favicon if it doesn't exist
+      const newFavicon = document.createElement('link');
+      newFavicon.id = 'favicon';
+      newFavicon.rel = 'icon';
+      newFavicon.type = 'image/png';
+      newFavicon.href = (theme === "dark" ? "/favicons/dark-1.png" : "/favicons/light-1.png") + "?v=" + Date.now();
+      document.head.appendChild(newFavicon);
     }
   }
 
