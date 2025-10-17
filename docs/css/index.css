@@ -80,6 +80,8 @@
   --step-2: clamp(1.6602rem, 1.4307rem + 1.0199cqi, 2.2211rem);
   --step-3: clamp(2.0752rem, 1.7129rem + 1.6101cqi, 2.9607rem);
   --step-4: clamp(2.594rem, 2.0406rem + 2.4594cqi, 3.9467rem);
+  --step-5: clamp(3.2425rem, 2.4219rem + 3.6789cqi, 5.2621rem);
+  --step-6: clamp(4.0529rem, 2.8662rem + 5.4219cqi, 7.0036rem);
 
   /*---------------------- Fluid spacing ---------------------- */
 
@@ -116,8 +118,9 @@
   --padding-inline: var(--space-2xs);
   --padding-block: 0;
   --letter-space-content: 3px;
-  --word-space-content: 3px;
 }
+
+
 
 
 @supports (selector(::view-transition)) {
@@ -232,7 +235,6 @@ html {
   font-style: var(--font-style-1);
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
   background: var(--base-color);
 }
 
@@ -290,6 +292,7 @@ header {
 }
 
 .header-text {
+  margin-top: var(--space-m);
   text-align: center;
   margin-inline: auto;
 }
@@ -695,8 +698,9 @@ header {
 }
 
 .text-with-animation {
+  margin-block: var(--space-xs);
   text-align: center;
-  font-size: var(--step-4);
+  font-size: var(--step-6);
 }
 
 .text-with-animation-1,

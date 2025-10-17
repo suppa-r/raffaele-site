@@ -24,9 +24,10 @@ html {
   min-height: 100dvh;
   scroll-behavior: smooth;
   margin-inline: auto;
+  word-spacing: normal;
   white-space: nowrap;
-  word-wrap: break-word;
-  word-break: keep-all;
+  word-wrap: normal;
+  word-break: normal;
   overflow-wrap: normal;
   hyphens: none;
   overflow: hidden;
