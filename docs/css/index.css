@@ -6,6 +6,7 @@
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(45deg, #ced7e0f6, #566366d3, #5a636b, #1d1d1f);
 
+
   --shadow:
     0 30px 100px rgba(223, 223, 233, 0.249),
     /* original */
@@ -63,6 +64,8 @@
   }
 }
 
+
+
 :root {
   --sp: 5s;
   --burger-thickness: 4px;
@@ -116,13 +119,14 @@
   --word-space-content: 3px;
 }
 
+
 @supports (selector(::view-transition)) {
   .support.view-transition {
     display: none;
   }
 }
 
-@container not style(--theme: dark) {
+@container not style(--theme: light) {
   .support.style-query {
     display: none;
   }
@@ -130,24 +134,22 @@
 
 .support {
   background-color: var(--base-color);
-  border-inline-start: 0.5rem solid var(--text-color);
-  color: var(--text-color);
+  border-inline-start: 0.5rem solid var(--shadow);
+  color: var(--base-color);
   border-radius: 0.5rem;
   padding: 1em 2em;
 }
 
 ::view-transition {
-  background: #555;
+  background: var(--base-color);
 }
-
 ::view-transition-image-pair(root) {
   perspective: 2500px;
   perspective-origin: center;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 100vw;
-  filter: drop-shadow(0px 0px 6px hsl(180, 7%, 22%)) drop-shadow(0px 0px 25px hsla(180, 6%, 33%, 0.5));
+  filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 }
-
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: 1.5s linear(0,
@@ -167,11 +169,9 @@
   transform: translateZ(-50vw) scale(var(--scale)) rotatey(var(--rotation)) translatez(50vw);
   backface-visibility: hidden;
 }
-
 ::view-transition-old(root) {
   animation-name: reveal-out;
 }
-
 ::view-transition-new(root) {
   animation-name: reveal-in;
 }
@@ -181,7 +181,6 @@
   inherits: false;
   initial-value: 0deg;
 }
-
 @property --scale {
   syntax: "<number>";
   inherits: false;
@@ -193,45 +192,37 @@
     --rotation: -90deg;
     animation-timing-function: ease-in-out;
   }
-
   15% {
     --scale: 0.8;
     --rotation: -90deg;
   }
-
   85% {
     --scale: 0.8;
     --rotation: 0deg;
     animation-timing-function: ease-in-out;
   }
-
   to {
     --rotation: 0deg;
   }
 }
-
 @keyframes reveal-out {
   from {
     --rotation: 0deg;
     animation-timing-function: ease-in-out;
   }
-
   15% {
     --scale: 0.8;
     --rotation: 0deg;
   }
-
   85% {
     --scale: 0.8;
     --rotation: 90deg;
     animation-timing-function: ease-in-out;
   }
-
   to {
     --rotation: 90deg;
   }
 }
-
 
 body,
 html {
@@ -242,6 +233,7 @@ html {
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
+  background: var(--base-color);
 }
 
 body {
