@@ -235,7 +235,7 @@
 
 body,
 html {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
@@ -275,13 +275,14 @@ header,
 main,
 section {
   position: relative;
-  z-index: 1000;
+  z-index: 2000;
   background-color: transparent;
 }
 
 .wrapper {
-  padding-block: var(--padding-block);
+  /*padding-block: var(--padding-block);*/
   min-height: 100dvh;
+  padding-inline: var(--padding-inline);
 }
 
 /*------header-------*/
@@ -289,7 +290,7 @@ section {
 header {
   background: transparent;
   background-color: transparent;
-  z-index: 1500;
+  z-index: 2000;
   text-align: center;
   user-select: none;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3 s;
@@ -302,14 +303,14 @@ header {
 }
 
 .header-text .title {
-  font-size: var(--step--1);
+  display: inline-block;
   user-select: none;
 }
 
 /* Theme switcher styles */
 .theme-switcher {
   position: absolute;
-  top: var(--space-s);
+  top: var(--space-m);
   right: var(--space-2xs);
   display: flex;
   flex-direction: row;
@@ -330,8 +331,7 @@ header {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
-  z-index: 1000;
+  z-index: 2000;
   user-select: none;
   background: none;
   color: var(--text-color);
@@ -362,11 +362,6 @@ header {
   display: none;
 }
 
-
-
-
-
-
 .theme-button svg {
   width: var(--space-m);
   height: var(--space-m);
@@ -382,11 +377,10 @@ header {
 }
 
 .theme-button:hover svg {
-  transform: scale(0.5);
+  transform: scale(0.6) rotate(90deg);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
   background-color: none;
-  /* Or another color if you want */
 }
 
 /*-------------curvature-----------------*/
@@ -704,13 +698,13 @@ header {
   margin-top: var(--space-l);
   user-select: none;
   overflow: hidden;
-  padding-block: var(--space-m);
+  padding-block: var(--space-s);
   z-index: 1000;
 }
 
 .text-with-animation {
   text-align: center;
-  font-size: var(--step-6);
+  font-size: var(--step-4);
 }
 
 .text-with-animation-1,
@@ -720,6 +714,7 @@ header {
   font-family: var(--ff-monoton-regular);
   font-weight: var(--font-weight-regular);
   font-style: var(--font-style-regular);
+  margin-block: var(--space-4xs);
 }
 
 .large-button {
