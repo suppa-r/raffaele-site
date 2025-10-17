@@ -71,8 +71,6 @@
   /* Fluid typography and spacing using cqi unit */
   /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
 
-  /* @link https://utopia.fyi/type/calculator?c=360,17,1.25,1240,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-
   --step--1: clamp(0.85rem, 0.8141rem + 0.1595cqi, 0.9377rem);
   --step-0: clamp(1.0625rem, 0.9858rem + 0.3409cqi, 1.25rem);
   --step-1: clamp(1.3281rem, 1.1898rem + 0.6148cqi, 1.6663rem);
@@ -292,21 +290,19 @@ header {
   background: transparent;
   background-color: transparent;
   z-index: 1500;
-  margin-top: var(--space-2xl);
-  user-select: none;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-}
-
-.title-container {
-  margin-inline: auto;
-
-}
-
-
-.title {
-  padding: 0 var(--space-5xs);
-  color: var(--text-color);
   text-align: center;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3 s;
+  margin-inline: auto;
+}
+
+.header-text {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.header-text .title {
+  font-size: var(--step--1);
   user-select: none;
 }
 
@@ -314,7 +310,7 @@ header {
 .theme-switcher {
   position: absolute;
   top: var(--space-s);
-  right: 0;
+  right: var(--space-2xs);
   display: flex;
   flex-direction: row;
   z-index: 2000;
@@ -324,8 +320,8 @@ header {
   background-color: none;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
-  border-radius: var(--btn-border-radius);
   box-shadow: var(--shadow);
+  border-radius: var(--btn-border-radius);
 }
 
 .theme-button {
@@ -334,7 +330,7 @@ header {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-right: var(--space-s);
+
   z-index: 1000;
   user-select: none;
   background: none;
@@ -342,8 +338,6 @@ header {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
-  border: none;
-  border-radius: var(--btn-border-radius);
   box-shadow: var(--shadow);
 }
 

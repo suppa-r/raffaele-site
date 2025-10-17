@@ -75,8 +75,6 @@
   /* Fluid typography and spacing using cqi unit */
   /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
 
-  /* @link https://utopia.fyi/type/calculator?c=360,17,1.25,1240,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-
   --step--1: clamp(0.85rem, 0.8141rem + 0.1595cqi, 0.9377rem);
   --step-0: clamp(1.0625rem, 0.9858rem + 0.3409cqi, 1.25rem);
   --step-1: clamp(1.3281rem, 1.1898rem + 0.6148cqi, 1.6663rem);
@@ -101,7 +99,6 @@
   --space-7xl: clamp(10.625rem, 9.858rem + 3.4091cqi, 12.5rem);
   --space-8xl: clamp(11.6875rem, 10.8438rem + 3.75cqi, 13.75rem);
   --space-9xl: clamp(12.75rem, 11.8295rem + 4.0909cqi, 15rem);
-
 
   --pt-serif-regular: "PT Serif",
     serif;
