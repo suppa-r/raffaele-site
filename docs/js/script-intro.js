@@ -6,42 +6,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav-links');
   const bars = document.querySelector('.menu-btn');
   const intro = document.querySelector('.intro');
- const navLinksTabs = document.querySelectorAll('.nav-links a');
+  const navLinksTabs = document.querySelectorAll('.nav-links a');
 
-intro && (intro.style.display = 'block');
-// Close nav menu when a nav link is clicked (for better mobile UX)
-navLinksTabs.forEach(link => {
-  link.addEventListener('click', () => {
-    if (nav && nav.classList.contains('open')) {
-      nav.classList.remove('open');
-      nav.style.display = ''; // Hide nav links when a link is clicked
-    }
+  intro && (intro.style.display = 'block');
+  // Close nav menu when a nav link is clicked (for better mobile UX)
+  navLinksTabs.forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        nav.style.display = ''; // Hide nav links when a link is clicked
+      }
+    });
   });
-});
 
   // Toggle nav menu on menu button click (for mobile)
-bars.addEventListener('click', (e) => {
-  e.stopPropagation();
-  h && (h.style.display = 'block'); // Always show header p
-  if (nav) {
-    const isOpen = nav.classList.toggle('open');
-    nav.style.display = isOpen ? 'block' : '';
-    themeList && themeList.classList.remove('active');
-    intro && (intro.style.display = isOpen ? 'none' : 'block'); // <-- Show intro when menu closes
-    // Hide theme list when menu is toggled
-    if (isOpen) {
+  bars.addEventListener('click', (e) => {
+    e.stopPropagation();
+    h && (h.style.display = 'block'); // Always show header p
+    if (nav) {
+      const isOpen = nav.classList.toggle('open');
+      nav.style.display = isOpen ? 'block' : '';
       themeList && themeList.classList.remove('active');
-    } else {
-      themeList && (themeList.style.display = 'none');
+      intro && (intro.style.display = isOpen ? 'none' : 'block'); // <-- Show intro when menu closes
+      // Hide theme list when menu is toggled
+      if (isOpen) {
+        themeList && themeList.classList.remove('active');
+      } else {
+        themeList && (themeList.style.display = 'none');
+      }
     }
-  }
-});
+  });
 
-// Function to update active class on theme buttons
-function setActiveThemeButton() {
-  themeButtons.forEach(btn => {
-    const input = btn.querySelector('input[type="radio"]');
-    btn.classList.toggle('active', input && input.checked);
+  // Function to update active class on theme buttons
+  function setActiveThemeButton() {
+    themeButtons.forEach(btn => {
+      const input = btn.querySelector('input[type="radio"]');
+      btn.classList.toggle('active', input && input.checked);
     });
   }
 
@@ -56,18 +56,33 @@ function setActiveThemeButton() {
         intro && (intro.style.display = 'block');
         h && (h.style.display = 'block');
         nav && (nav.style.display = 'block'); // <-- Show nav-links
+        // Replace this section in your script-intro.js:
       } else if (input) {
         // Switch theme if non-active button is clicked
         input.checked = true;
         const selectedTheme = input.value;
-        document.documentElement.setAttribute('data-theme', selectedTheme);
-        localStorage.setItem('theme', selectedTheme);
+
+        // Add view transitions here
+        if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.startViewTransition(() => {
+            document.documentElement.setAttribute('data-theme', selectedTheme);
+            localStorage.setItem('theme', selectedTheme);
+            updateFavicon(selectedTheme); // Add this function too
+          });
+        } else {
+          document.documentElement.setAttribute('data-theme', selectedTheme);
+          localStorage.setItem('theme', selectedTheme);
+          updateFavicon(selectedTheme); // Add this function too
+        }
+
+
+
         setActiveThemeButton();
         themeList.classList.remove('active');
         intro && (intro.style.display = 'block');
         h && (h.style.display = 'block');
-        nav && (nav.style.display = ''); // <-- Hide nav-links
-        nav && nav.classList.remove('open'); // <-- Remove open class if used
+        nav && (nav.style.display = '');
+        nav && nav.classList.remove('open');
       }
     });
   });
@@ -111,3 +126,14 @@ function setActiveThemeButton() {
     }
   });
 });
+
+// Add this function to your script-intro.js
+function updateFavicon(theme) {
+  const favicon = document.getElementById("favicon") || document.querySelector("link[rel='icon']");
+  if (favicon) {
+    const faviconPath = theme === "dark"
+      ? "/favicons/dark-1.png"
+      : "/favicons/light-1.png";
+    favicon.href = faviconPath + "?v=" + Date.now();
+  }
+}
