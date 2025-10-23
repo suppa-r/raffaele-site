@@ -121,8 +121,6 @@
 }
 
 
-
-
 @supports (selector(::view-transition)) {
   .support.view-transition {
     display: none;
@@ -380,119 +378,92 @@ header {
 }
 
 /*-------------curvature-----------------*/
+
 .curve-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--space-4xl);
-  font-size: var(--step-0);
-  color: var(--text-color);
-  margin-top: var(--space-xl);
-  user-select: none;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  margin-block: var(--space-2xl);
 }
 
 .content {
   display: flex;
+  align-items: center;
   justify-content: center;
-  background: transparent;
 }
 
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease-in-out 0s infinite alternate;
-  text-shadow: 0 0 2em var(--text-color), 0 0 2em var(--text-color);
-  transition: color 0.3s, text-shadow 0.3s;
+  animation: show-hide var(--sp) ease 1s infinite;
+  mix-blend-mode: plus-lighter;
 }
 
 @keyframes show-hide {
-  0% {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-
-  25% {
-    opacity: 0.8;
-    transform: scale(0.9);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  75% {
-    opacity: 0.8;
-    transform: scale(0.9);
-  }
-
+  0%,
   100% {
     opacity: 0;
-    transform: scale(0.7);
+    transform: scale(0.8);
+  }
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
 .content div span {
-  width: 8vmin;
+  width: 7vmin;
   position: relative;
   text-align: center;
-  color: var(--text-color);
+  box-sizing: border-box;
+  color: #ffffff90;
+  text-shadow: 0 0 1px var(--text-color);
 }
 
 .content-1 {
   display: flex;
+  align-items: center;
   justify-content: center;
-  background: transparent;
 }
 
 .content-1 div {
   position: absolute;
   display: flex;
-  animation: show-hide-1 var(--sp) ease-in-out 0s infinite alternate;
-  text-shadow: 0 0 2em var(--text-color), 0 0 2em var(--text-color);
-  transition: color 0.3s, text-shadow 0.3s;
+  animation: show-hide var(--sp) ease 1s infinite;
+  mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide-1 {
-  0% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-
-  25% {
-    opacity: 0.7;
-    transform: scale(0.8);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  75% {
-    opacity: 0.7;
-    transform: scale(0.8);
-  }
-
+@keyframes show-hide {
+  0%,
   100% {
     opacity: 0;
-    transform: scale(0.6);
+    transform: scale(0.8);
+  }
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
 .content-1 div span {
-  width: 8vmin;
+  width: 7vmin;
   position: relative;
   text-align: center;
+  box-sizing: border-box;
   color: var(--text-color);
+  text-shadow: 0 0 1px var(--text-color);
 }
 
 .up:before,
 .down:before {
   width: 80%;
   height: 0.1vmin;
-  background: radial-gradient(ellipse at 50% 50%, var(--text-color), var(--text-color)70%);
+  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
   content: "";
   position: absolute;
   border-radius: 100%;
@@ -500,7 +471,7 @@ header {
   left: 10%;
   top: 49%;
   box-shadow: 0 0 100px 0 var(--text-color);
-  animation: shadow var(--sp) ease-in-out 0s infinite;
+  animation: shadow var(--sp) ease 1s infinite;
 }
 
 .down:before {
@@ -513,41 +484,28 @@ header {
 }
 
 @keyframes shadow {
-  0% {
-    opacity: 0;
-    height: 0.1vmin;
-  }
-
-  25% {
-    opacity: 0.15;
-    height: 0.2vmin;
-  }
-
-  50% {
-    opacity: 0.25;
-    height: 0.25vmin;
-  }
-
-  75% {
-    opacity: 0.15;
-    height: 0.2vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     opacity: 0;
-    height: 0.1vmin;
+  }
+  45%,
+  55% {
+    opacity: 0.25;
+    height: 0.25vmin;
   }
 }
 
 .up span,
 .down span {
   animation-duration: var(--sp);
-  animation-timing-function: ease-in-out;
-  animation-delay: 0s;
+  animation-timing-function: ease;
+  animation-delay: 1s;
   animation-iteration-count: infinite;
 }
 
-/*up animations - smooth continuous motion*/
+/*up*/
 .up-2-8 {
   animation-name: go-up-2-8;
 }
@@ -564,7 +522,7 @@ header {
   animation-name: go-up-5;
 }
 
-/*down animations - smooth continuous motion*/
+/*down*/
 .down-2-8 {
   animation-name: go-down-2-8;
 }
@@ -582,186 +540,108 @@ header {
 }
 
 @keyframes go-up-2-8 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: -0.3vmin;
-  }
-
-  50% {
-    top: -0.6vmin;
-  }
-
-  75% {
-    top: -0.3vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
+  }
+  40%,
+  60% {
+    top: -0.6vmin;
   }
 }
 
 @keyframes go-up-3-7 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: -0.6vmin;
-  }
-
-  50% {
-    top: -1.2vmin;
-  }
-
-  75% {
-    top: -0.6vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
+  }
+  40%,
+  60% {
+    top: -1.2vmin;
   }
 }
 
 @keyframes go-up-4-6 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: -0.9vmin;
-  }
-
-  50% {
-    top: -1.8vmin;
-  }
-
-  75% {
-    top: -0.9vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
+  }
+  40%,
+  60% {
+    top: -1.8vmin;
   }
 }
 
 @keyframes go-up-5 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: -1.2vmin;
-  }
-
-  50% {
-    top: -2.4vmin;
-  }
-
-  75% {
-    top: -1.2vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
+  }
+  40%,
+  60% {
+    top: -2.4vmin;
   }
 }
 
 @keyframes go-down-2-8 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: 0.3vmin;
-  }
-
-  50% {
-    top: 0.6vmin;
-  }
-
-  75% {
-    top: 0.3vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
+  }
+  40%,
+  60% {
+    top: 0.6vmin;
   }
 }
 
 @keyframes go-down-3-7 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: 0.6vmin;
-  }
-
-  50% {
-    top: 1.2vmin;
-  }
-
-  75% {
-    top: 0.6vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
+  }
+  40%,
+  60% {
+    top: 1.2vmin;
   }
 }
 
 @keyframes go-down-4-6 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: 0.9vmin;
-  }
-
-  50% {
-    top: 1.8vmin;
-  }
-
-  75% {
-    top: 0.9vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
+  }
+  40%,
+  60% {
+    top: 1.8vmin;
   }
 }
 
 @keyframes go-down-5 {
-  0% {
-    top: 0;
-  }
-
-  25% {
-    top: 1.2vmin;
-  }
-
-  50% {
-    top: 2.4vmin;
-  }
-
-  75% {
-    top: 1.2vmin;
-  }
-
+  0%,
+  10%,
+  90%,
   100% {
     top: 0;
   }
+  40%,
+  60% {
+    top: 2.4vmin;
+  }
 }
-
-
-
-
-
-
 
 
 
