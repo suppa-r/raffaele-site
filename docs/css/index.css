@@ -364,7 +364,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4xl);
+  gap: var(--space-3xl);
   margin-top: var(--space-2xl);
 }
 
@@ -635,10 +635,10 @@ header {
   font-style: normal;
   font-weight: normal;
   color: var(--text-color);
-  margin-top: var(--space-l);
+  margin-top: var(--space-m);
   user-select: none;
   overflow: hidden;
-  padding-block: var(--space-s);
+  padding-block: var(--space-xs);
   z-index: 1000;
 }
 
@@ -647,7 +647,7 @@ header {
   font-style: normal;
   font-weight: normal;
   color: var(--text-color);
-  margin-block: var(--space-xs);
+  margin-block: var(--space-4xs);
   text-align: center;
   font-size: var(--step-6);
 }
@@ -660,6 +660,8 @@ header {
 }
 
 .large-button {
+  position: relative;
+  margin-top: var(--space-m);
   margin-inline: auto;
   z-index: 3000;
   isolation: isolate;
@@ -674,8 +676,8 @@ header {
   box-shadow: 0 10px 10px 0 var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(21rem, 90vw);
-  height: min(12rem, 55vw);
+  width: min(20rem, 85vw);
+  height: min(10rem, 50vw);
   text-align: center;
   user-select: none;
   cursor: pointer;
@@ -717,7 +719,7 @@ header {
   text-align: center;
   color: var(--text-color);
   user-select: none;
-  margin-block: var(--space-m);
+  margin-block: var(--space-4xs);
 }
 
 
