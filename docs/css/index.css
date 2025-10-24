@@ -99,24 +99,17 @@
   --space-9xl: clamp(12.75rem, 11.8295rem + 4.0909cqi, 15rem);
 
 
-  --pt-serif-regular: "PT Serif",
-    serif;
-  --pt-serif-italic: "PT Serif Italic",
-    serif;
-  --font-weight-1: 400;
-  --font-style-1: italic;
 
-  --ff-monoton-regular: "Monoton",
-    sans-serif;
-  --font-weight-regular: 400;
-  --font-style-regular: normal;
   --btn-border-radius: var(--space-s);
   /* global page padding variables */
   --padding-inline: var(--space-3xs);
   --padding-block: 0;
   --letter-space-content: 3px;
-}
 
+  /* Font families */
+  --font-primary: 'caveatregular', sans-serif;
+  --font-secondary: 'open_sansitalic', sans-serif;
+}
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -224,10 +217,7 @@
 
 body,
 html {
-  font-size: var(--step--1);
-  font-family: var(--pt-serif-italic);
-  font-weight: var(--font-weight-1);
-  font-style: var(--font-style-1);
+
   color: var(--text-color);
   letter-spacing: var(--letter-space-content);
   background: var(--base-color);
@@ -235,6 +225,11 @@ html {
 }
 
 body {
+  font-size: var(--step--1);
+  font-family: var(--font-primary), sans-serif;
+  /* Default font */
+  font-weight: normal;
+  font-style: normal;
   background-image: var(--bg-image);
   background-size: cover;
   background-attachment: fixed;
@@ -636,9 +631,11 @@ header {
   }
 }
 
-
-
 .text-container {
+  font-family: var(--font-secondary), sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: var(--step-4);
   color: var(--text-color);
   margin-top: var(--space-l);
   user-select: none;
@@ -657,9 +654,6 @@ header {
 .text-with-animation-2 {
   text-align: center;
   font-size: var(--step-1);
-  font-family: var(--ff-monoton-regular);
-  font-weight: var(--font-weight-regular);
-  font-style: var(--font-style-regular);
   margin-block: var(--space-4xs);
 }
 
