@@ -227,7 +227,7 @@ body {
   font-size: var(--step--1);
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 100;
 
   background-image: var(--bg-image);
   background-size: cover;
@@ -635,20 +635,15 @@ header {
   font-style: normal;
   font-weight: normal;
   color: var(--text-color);
-  margin-top: var(--space-m);
+  margin-top: var(--space-2xl);
   user-select: none;
   overflow: hidden;
-  padding-block: var(--space-xs);
+  text-align: center;
   z-index: 1000;
 }
 
 .text-with-animation {
-  font-family: var(--font-primary), sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  color: var(--text-color);
-  margin-block: var(--space-4xs);
-  text-align: center;
+  padding-block: var(--space-4xs);
   font-size: var(--step-6);
 }
 
@@ -656,7 +651,7 @@ header {
 .text-with-animation-2 {
   text-align: center;
   font-size: var(--step-2);
-  margin-block: var(--space-4xs);
+  padding-block: var(--space-4xs);
 }
 
 .large-button {
@@ -745,7 +740,7 @@ header {
   /* Theme switcher styles */
   .theme-switcher {
     position: absolute;
-    top: var(--space-xs);
+    top: 0;
     right: var(--space-2xs);
     display: flex;
     flex-direction: row;
