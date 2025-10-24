@@ -21,7 +21,7 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.1), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/header-desktop-min.jpg');
+    url('../images/header-desktop.jpg');
   z-index: -1;
 }
 
@@ -47,7 +47,7 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/white-4.jpg');
+    url('../images/white-background.jpg');
   z-index: -1000;
 }
 
