@@ -20,12 +20,12 @@
 
   --body-gradient-top: hsla(0, 0%, 0%, 0);
   /* was 0.95 */
-  --body-gradient-bottom: hsla(0, 0%, 0%, 0.911);
+  --body-gradient-bottom: hsla(0, 0%, 0%, 0.511);
   /* was 0.35 */
 
-  --body-grid-line-top: rgba(255, 255, 255, 0.808);
+  --body-grid-line-top: rgba(255, 255, 255, 0.508);
   /* lighter at top */
-  --body-grid-line: rgba(255, 255, 255, 0.24);
+  --body-grid-line: rgba(255, 255, 255, 0.14);
   /* normal grid line */
 
 
@@ -57,8 +57,8 @@
   --bars: #000000;
 
   /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 100%, 0.692);
-  --body-gradient-bottom: hsla(0, 0%, 100%, 0.212);
+  --body-gradient-top: hsla(0, 0%, 100%, 0.492);
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0.112);
 
   /* Light mode grid line color */
   --body-grid-line: rgba(0, 0, 0, 1);
@@ -67,7 +67,6 @@
   --shadow-color2: rgba(0, 0, 0, 0.5);
   --shadow-color3: rgba(0, 0, 0, 0.3);
 }
-
 
 :root {
   --sp: 4s;
@@ -105,24 +104,17 @@
   --space-9xl: clamp(12.75rem, 11.8295rem + 4.0909cqi, 15rem);
 
 
-  --pt-serif-regular: "PT Serif",
-    serif;
-  --pt-serif-italic: "PT Serif Italic",
-    serif;
-  --font-weight-1: 400;
-  --font-style-1: italic;
 
-  --ff-monoton-regular: "Monoton",
-    sans-serif;
-  --font-weight-regular: 400;
-  --font-style-regular: normal;
   --btn-border-radius: var(--space-s);
   /* global page padding variables */
-  --padding-inline: var(--space-4xs);
+  --padding-inline: var(--space-3xs);
   --padding-block: 0;
   --letter-space-content: 3px;
-}
 
+  /* Font families */
+  --font-primary: 'alumni_sans_pinstriperegular', sans-serif;
+  --font-secondary: 'monotonregular', sans-serif;
+}
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -151,7 +143,7 @@
   perspective: 2500px;
   perspective-origin: center;
   transform-style: preserve-3d;
-  transform-origin: 50% 50% 100vw;
+  transform-origin: 50% 50% 100dvw;
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 }
 ::view-transition-old(root),
@@ -230,26 +222,27 @@
 
 body,
 html {
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  padding: 0 var(--page-pad-inline);
-}
-
-body,
-html {
-  background-color: var(--base-color);
-  font-family: var(--pt-serif-italic);
-  font-weight: var(--font-weight-1);
-  font-style: var(--font-style-1);
-  font-size: var(--step--1);
   color: var(--text-color);
-}
-
-body {
+  letter-spacing: var(--letter-space-content);
+  background: var(--base-color);
+  scroll-behavior: smooth;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   position: relative;
   z-index: 1000;
   isolation: isolate;
+}
+
+body {
+  font-size: var(--step--1);
+  font-family: var(--font-primary), sans-serif;
+  font-style: normal;
+  font-weight: normal;
+
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 body::before {
@@ -282,6 +275,24 @@ body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
   margin-inline: auto;
+  position: relative;
+}
+
+/* Make sure your main content is above the background */
+
+.wrapper,
+header,
+main,
+section {
+  position: relative;
+  z-index: 2000;
+  background-color: transparent;
+}
+
+.wrapper {
+  /*padding-block: var(--padding-block);*/
+  min-height: 100dvh;
+  padding-inline: var(--padding-inline);
 }
 
 /*------header-------*/
@@ -290,8 +301,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: var(--space-xs);
+  padding: var(--space-4xs) 0 0 0;
   user-select: none;
   list-style: none;
   border: 0;
@@ -463,10 +473,88 @@ ul {
   }
 }
 
+
+/* Theme switcher styles */
+.theme-switcher {
+  position: absolute;
+  top: 0;
+  right: var(--space-2xs);
+  display: flex;
+  flex-direction: row;
+  z-index: 2000;
+  pointer-events: all;
+  user-select: none;
+  gap: var(--space-2xs);
+  background-color: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: var(--shadow);
+  border-radius: var(--btn-border-radius);
+}
+
+.theme-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2500;
+  user-select: none;
+  background: none;
+  opacity: 1;
+  color: var(--text-color);
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: all;
+  box-shadow: var(--shadow);
+}
+
+.theme-button.active {
+  display: none;
+}
+
+.theme-button:not(.active) {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.3s ease-in-out;
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  user-select: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.theme-button input[type="radio"] {
+  display: none;
+}
+
+.theme-button svg {
+  width: var(--space-m);
+  height: var(--space-m);
+  color: var(--text-color);
+  opacity: 1;
+  display: inline-block;
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  /* Add this line */
+  user-select: none;
+  pointer-events: none;
+  /* Prevents SVG from capturing pointer events */
+  box-shadow: var(--shadow);
+}
+
+.theme-button:hover svg {
+  transform: scale(0.6) rotate(90deg);
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  color: var(--text-span);
+  background-color: none;
+}
+
 /*------menu button-------*/
+
 .menu-btn {
   display: none;
-
   align-items: center;
   justify-self: start;
   background: transparent;
@@ -534,80 +622,6 @@ ul {
   background: var(--bars);
 }
 
-/* Theme switcher styles */
-.theme-switcher {
-  display: flex;
-  flex-direction: row;
-  z-index: 2000;
-  pointer-events: all;
-  user-select: none;
-  gap: var(--space-5xs);
-  background-color: none;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: var(--btn-border-radius);
-}
-
-.theme-button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-  user-select: none;
-  background: none;
-  color: var(--text-color);
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  pointer-events: all;
-  border: none;
-  border-radius: var(--btn-border-radius);
-  box-shadow: var(--shadow);
-}
-
-.theme-button.active {
-  display: none;
-}
-
-.theme-button:not(.active) {
-  display: block;
-  opacity: 1;
-  pointer-events: all;
-  transition: opacity 0.3s ease-in-out;
-  background-color: transparent;
-  color: var(--text-color);
-  border: none;
-  border-radius: var(--btn-border-radius);
-  user-select: none;
-  cursor: pointer;
-}
-
-.theme-button input[type="radio"] {
-  display: none;
-}
-
-.theme-button svg {
-  width: var(--space-m);
-  height: var(--space-m);
-  color: var(--text-color);
-  background-color: transparent;
-  opacity: 1;
-  display: inline-block;
-  transition: transform 0.1s, color 0.3s, background-color 0.3s;
-  /* Add this line */
-  user-select: none;
-  pointer-events: none;
-  /* Prevents SVG from capturing pointer events */
-}
-
-.theme-button:hover svg {
-  transform: scale(0.7);
-  transition: transform 0.1s, color 0.3s, background-color 0.3s;
-  color: var(--text-span);
-  background-color: none;
-  /* Or another color if you want */
-}
 
 /*------intro-------*/
 
