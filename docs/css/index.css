@@ -47,7 +47,7 @@
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
   --bg-image:
-    url('../images/white-2.jpg');
+    url('../images/white-4.jpg');
   z-index: -1000;
 }
 
