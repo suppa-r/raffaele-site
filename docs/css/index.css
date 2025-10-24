@@ -23,12 +23,6 @@
   --bg-image:
     url('../images/header-desktop-min.jpg');
   z-index: -1;
-
-  /* bottom image *
-  --overlay {
-    border-image:
-      fill 1 linear-gradient(hsla(0, 0%, 100%, 0.788), hsl(0, 0%, 100%));
-  } */
 }
 
 [data-theme="light"] {
@@ -55,12 +49,6 @@
   --bg-image:
     url('../images/white-2.jpg');
   z-index: -1000;
-
-  /* Reduce the overlay opacity from 0.911 to a lower value *
-  --overlay {
-    border-image:
-      fill 1 linear-gradient(hsla(0, 4%, 73%, 0), hsla(210, 5%, 77%, 0.3));
-    /* Changed from 0.911 to 0.3 for much lighter overlay */
 }
 
 :root {
@@ -107,7 +95,7 @@
   --letter-space-content: 3px;
 
   /* Font families */
-  --font-primary: 'alumni_sans_pinstriperegular', sans-serif;
+  --font-primary: 'pompiere_regular', sans-serif;
   --font-secondary: 'monotonregular', sans-serif;
 }
 
@@ -227,7 +215,7 @@ body {
   font-size: var(--step--1);
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
-  font-weight: 100;
+  font-weight: normal;
 
   background-image: var(--bg-image);
   background-size: cover;
