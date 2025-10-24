@@ -364,20 +364,22 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-3xl);
-  margin-top: var(--space-xl);
+  gap: var(--space-4xl);
+  margin-top: var(--space-2xl);
 }
 
 .content {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  width: 90vmin;
 }
 
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 1s infinite;
+  animation: show-hide var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -390,7 +392,7 @@ header {
   20%,
   80% {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.4);
   }
 }
 
@@ -400,19 +402,21 @@ header {
   text-align: center;
   box-sizing: border-box;
   color: var(--text-color);
-  text-shadow: 0 0 20px var(--text-color);
+  font-size: var(--step-2);
 }
 
 .content-1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  width: 90vmin;
 }
 
 .content-1 div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 1s infinite;
+  animation: show-hide var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -425,7 +429,7 @@ header {
   20%,
   80% {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.4);
   }
 }
 
@@ -435,31 +439,35 @@ header {
   text-align: center;
   box-sizing: border-box;
   color: var(--text-color);
-  text-shadow: 0 0 20px var(--text-color);
+  font-size: var(--step-2);
 }
 
-.up:before,
 .down:before {
+  /* Wide shadow */
   width: 80%;
-  height: 0.1vmin;
-  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 20%);
+  height: 0.5vmin;
+  background: radial-gradient(ellipse at 50% 50%, var(--base-color), #ffffff 80%);
   content: "";
   position: absolute;
   border-radius: 100%;
   filter: blur(2px);
   left: 10%;
   top: 49%;
-  box-shadow: 0 0 100px 0 var(--text-color);
-  animation: shadow var(--sp) ease 1s infinite;
+  box-shadow: 0 0 100px 0 var(--base-color);
+  animation: shadow var(--sp) ease 0s infinite;
 }
 
-.down:before {
+.down:after {
+  /* Small focused shadow */
   width: 1vmin;
   height: 0.5vmin;
-  filter: blur(3px);
+  content: "";
+  position: absolute;
+  filter: blur(2px);
   left: calc(50% - 0.5vmin);
   top: 45%;
-  box-shadow: 0 0 40px 0 var(--text-color);
+  box-shadow: 0 0 100px 0 var(--base-color);
+  animation: shadow var(--sp) ease 0s infinite;
 }
 
 @keyframes shadow {
@@ -480,7 +488,7 @@ header {
 .down span {
   animation-duration: var(--sp);
   animation-timing-function: ease;
-  animation-delay: 1s;
+  animation-delay: 0s;
   animation-iteration-count: infinite;
 }
 
@@ -627,7 +635,7 @@ header {
   font-style: normal;
   font-weight: normal;
   color: var(--text-color);
-  margin-top: var(--space-m);
+  margin-top: var(--space-l);
   user-select: none;
   overflow: hidden;
   padding-block: var(--space-s);
@@ -663,7 +671,7 @@ header {
   background-color: transparent;
   color: var(--text-color);
   border-radius: 50%;
-  box-shadow: 0 30px 40px 0 var(--text-color);
+  box-shadow: 0 10px 10px 0 var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
   width: min(21rem, 90vw);
@@ -676,7 +684,7 @@ header {
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 1px 1px 1px var(--text-span), 0 2px 2px 2px var(--text-span), 0 4px 4px 4px var(--text-span), 0 8px 8px 8px var(--text-span);
+  box-shadow: 0 0 30px 10px var(--text-span);
   outline: 6px solid var(--text-span);
 }
 
