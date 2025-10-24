@@ -675,7 +675,7 @@ header {
   background-color: transparent;
   color: var(--text-color);
   border-radius: 50%;
-  box-shadow: var(--shadow);
+  box-shadow: 0 30px 40px 0 var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
   width: min(21rem, 90vw);
@@ -688,7 +688,7 @@ header {
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 1px 1px 1px var(--shadow);
+  box-shadow: 0 1px 1px 1px var(--text-span), 0 2px 2px 2px var(--text-span), 0 4px 4px 4px var(--text-span), 0 8px 8px 8px var(--text-span);
   outline: 6px solid var(--text-span);
 }
 
