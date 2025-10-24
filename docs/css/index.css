@@ -212,7 +212,7 @@ html {
 }
 
 body {
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -229,6 +229,8 @@ body>* {
   container-type: inline-size;
   margin-inline: auto;
   position: relative;
+  padding-inline: var(--padding-inline);
+  padding-block: var(--padding-block);
 }
 
 /* Make sure your main content is above the background */
@@ -245,7 +247,6 @@ section {
 .wrapper {
   /*padding-block: var(--padding-block);*/
   min-height: 100dvh;
-  padding-inline: var(--padding-inline);
 }
 
 /*------header-------*/
@@ -256,15 +257,9 @@ header {
   margin-inline: auto;
 }
 
-.header-text {
+.header-text .title {
   margin-top: var(--space-2xs);
   text-align: center;
-  margin-inline: auto;
-}
-
-.header-text .title {
-  display: inline-block;
-  user-select: none;
 }
 
 /* Theme switcher styles */
@@ -278,8 +273,6 @@ header {
   pointer-events: all;
   user-select: none;
   gap: var(--space-2xs);
-  background-color: none;
-  opacity: 1;
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
   border-radius: var(--btn-border-radius);
@@ -293,8 +286,8 @@ header {
   cursor: pointer;
   z-index: 2500;
   user-select: none;
-  background: none;
   opacity: 1;
+  background: transparent;
   color: var(--text-color);
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
@@ -310,7 +303,7 @@ header {
   opacity: 1;
   pointer-events: all;
   transition: opacity 0.3s ease-in-out;
-  background-color: transparent;
+  background: transparent;
   color: var(--text-color);
   border: none;
   border-radius: var(--btn-border-radius);
@@ -341,7 +334,7 @@ header {
   transform: scale(0.6) rotate(90deg);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
-  background-color: none;
+  background: none;
 }
 
 /*-------------curvature-----------------*/
@@ -353,7 +346,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: var(--space-5xl);
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-2xl);
 }
 
 .content {
@@ -362,7 +355,6 @@ header {
   justify-content: center;
   position: relative;
   margin-inline: auto;
-  /*width: 90vmin;*/
 }
 
 .content div {
@@ -639,8 +631,11 @@ header {
 }
 
 .text-with-animation {
-  padding-block: var(--space-4xs);
+  font-family: var(--font-primary), sans-serif;
+  margin-block: var(--space-2xs);
   font-size: var(--step-6);
+  font-style: italic;
+  /* Makes text slanted */
 }
 
 .text-with-animation-1,
@@ -681,7 +676,7 @@ header {
 }
 
 .large-button span {
-  margin-top: var(--space-m);
+  margin-top: var(--space-2xs);
   background-color: transparent;
   transition: box-shadow 0.3s, outline 0.3s;
   text-align: center;
@@ -727,8 +722,8 @@ header {
   }
 }
 
-@container(max-width: 600px) {
-  /* Theme switcher styles */
+/*@container(max-width: 600px) {
+  /* Theme switcher styles *
   .theme-switcher {
     position: absolute;
     top: 0;
@@ -745,4 +740,3 @@ header {
     box-shadow: var(--shadow);
     border-radius: var(--btn-border-radius);
   }
-}
