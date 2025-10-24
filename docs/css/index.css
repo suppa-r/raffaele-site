@@ -373,8 +373,8 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4xl);
-  margin-block: var(--space-2xl);
+  gap: var(--space-3xl);
+  margin-top: var(--space-xl);
 }
 
 .content {
@@ -394,12 +394,12 @@ header {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.7);
   }
   20%,
   80% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.1);
   }
 }
 
@@ -409,7 +409,7 @@ header {
   text-align: center;
   box-sizing: border-box;
   color: var(--text-color);
-  text-shadow: 0 0 1px var(--text-color);
+  text-shadow: 0 0 20px var(--text-color);
 }
 
 .content-1 {
@@ -429,12 +429,12 @@ header {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.7);
   }
   20%,
   80% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.1);
   }
 }
 
@@ -444,14 +444,14 @@ header {
   text-align: center;
   box-sizing: border-box;
   color: var(--text-color);
-  text-shadow: 0 0 1px var(--text-color);
+  text-shadow: 0 0 20px var(--text-color);
 }
 
 .up:before,
 .down:before {
   width: 80%;
   height: 0.1vmin;
-  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
+  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 20%);
   content: "";
   position: absolute;
   border-radius: 100%;
@@ -468,7 +468,7 @@ header {
   filter: blur(3px);
   left: calc(50% - 0.5vmin);
   top: 45%;
-  box-shadow: 0 0 10px 0 var(--text-color);
+  box-shadow: 0 0 40px 0 var(--text-color);
 }
 
 @keyframes shadow {
@@ -635,9 +635,8 @@ header {
   font-family: var(--font-secondary), sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: var(--step-4);
   color: var(--text-color);
-  margin-top: var(--space-l);
+  margin-top: var(--space-m);
   user-select: none;
   overflow: hidden;
   padding-block: var(--space-s);
@@ -653,7 +652,7 @@ header {
 .text-with-animation-1,
 .text-with-animation-2 {
   text-align: center;
-  font-size: var(--step-1);
+  font-size: var(--step-2);
   margin-block: var(--space-4xs);
 }
 
