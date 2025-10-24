@@ -30,8 +30,8 @@
 
 
   --shadow-color: #fff;
-  --shadow-color2: #77d6e0;
-  --shadow-color3: #7abec7fd;
+  --shadow-color2: #ffffff;
+  --shadow-color3: #e8eff0fd;
 
 }
 
@@ -63,9 +63,9 @@
   /* Light mode grid line color */
   --body-grid-line: rgba(0, 0, 0, 1);
   /* Darker shadow colors for animation */
-  --shadow-color: rgba(0, 0, 0, 0.85);
-  --shadow-color2: rgba(0, 0, 0, 0.5);
-  --shadow-color3: rgba(0, 0, 0, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0);
+  --shadow-color2: rgba(0, 0, 0, 0);
+  --shadow-color3: rgba(0, 0, 0, 0);
 }
 
 :root {
@@ -233,16 +233,10 @@ html {
 }
 
 body {
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
   font-weight: normal;
-
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 body::before {
@@ -276,6 +270,8 @@ body>* {
   container-type: inline-size;
   margin-inline: auto;
   position: relative;
+  padding-inline: var(--padding-inline);
+  padding-block: var(--padding-block);
 }
 
 /* Make sure your main content is above the background */
@@ -292,7 +288,6 @@ section {
 .wrapper {
   /*padding-block: var(--padding-block);*/
   min-height: 100dvh;
-  padding-inline: var(--padding-inline);
 }
 
 /*------header-------*/
@@ -300,8 +295,7 @@ header {
   margin: 0 var(--space-l);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: var(--space-4xs) 0 0 0;
+  padding: var(--space-3xs) 0 0 0;
   user-select: none;
   list-style: none;
   border: 0;
@@ -311,15 +305,8 @@ header {
 }
 
 .header-img {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-block: var(--space-xs);
   user-select: none;
-  list-style: none;
   background-color: transparent;
-  border: 0;
   border-radius: var(--btn-border-radius);
   z-index: 1000;
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
@@ -327,17 +314,13 @@ header {
 
 .header-img img {
   display: block;
-  border-radius: var(--space-l);
-  margin: var(--space-4xs);
-  overflow: hidden;
-  width: var(--space-4xl);
+  object-fit: cover;
+  border-radius: var(--btn-border-radius);
+  width: 100%;
   /* Responsive width, adjust as needed */
   max-width: 100%;
   /* Maximum size on large screens */
   height: auto;
-  aspect-ratio: 16 / 9;
-  /* Maintain aspect ratio */
-  user-select: none;
   pointer-events: none;
   border: 0;
   box-shadow: var(--shadow);
@@ -348,7 +331,7 @@ header {
 header p {
   display: block;
   visibility: visible;
-  margin: var(--space-3xs) 0 0 var(--space-2xs);
+  margin: var(--space-3xs) 0 0 var(--space-2xl);
 }
 
 header p span {
@@ -376,9 +359,9 @@ header p span {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: var(--space-l);
+  gap: var(--space-xs);
   margin: 0;
-  padding: 0 var(--space-xl);
+  padding: 0 0 0 var(--space-2xl);
   list-style: none;
   background-color: transparent;
   border: 0;
@@ -393,7 +376,7 @@ header p span {
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0;
+  padding: 0 var(--space-xs);
   user-select: none;
   list-style: none;
   background-color: transparent;
@@ -477,7 +460,7 @@ ul {
 /* Theme switcher styles */
 .theme-switcher {
   position: absolute;
-  top: 0;
+  top: var(--space-xs);
   right: var(--space-2xs);
   display: flex;
   flex-direction: row;
@@ -685,7 +668,7 @@ h2 {
 }
 
 .intro .ya-1 {
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   white-space: nowrap;
   margin-block: var(--space-3xs);
 }
@@ -693,7 +676,7 @@ h2 {
 /*------gradient text-------*/
 
 .wrapper-gradient-text {
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   margin: 0;
   /* Remove default margins */
   padding: 0;
