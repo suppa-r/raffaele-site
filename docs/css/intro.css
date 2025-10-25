@@ -4,9 +4,9 @@
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
-  --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
+  --gradient: linear-gradient(to bottom, #b8c1c910, #323738a8, #495157c4, #edeef1dc);
 
-  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
+  --gradient-header: linear-gradient(to bottom, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.671);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
@@ -20,15 +20,13 @@
 
   --body-gradient-top: hsla(0, 0%, 0%, 0);
   /* was 0.95 */
-  --body-gradient-bottom: hsla(0, 0%, 0%, 0.511);
+  --body-gradient-bottom: hsla(0, 0%, 0%, 0.911);
   /* was 0.35 */
 
-  --body-grid-line-top: rgba(255, 255, 255, 0.508);
+  --body-grid-line-top: rgba(255, 255, 255, 0.808);
   /* lighter at top */
-  --body-grid-line: rgba(255, 255, 255, 0.14);
+  --body-grid-line: rgba(255, 255, 255, 0.24);
   /* normal grid line */
-
-
   --shadow-color: #fff;
   --shadow-color2: #ffffff;
   --shadow-color3: #e8eff0fd;
@@ -41,7 +39,7 @@
   --text-span: #000000;
   --clr-neon: hsla(189, 4%, 63%, 0.733);
   --clr-button: hsla(0, 0%, 100%, 0.671);
-  --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
+  --gradient: linear-gradient(to bottom, #b8c1c910, #323738a8, #2a2e31c4, #edeef1dc);
 
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
 
@@ -56,13 +54,14 @@
 
   --bars: #000000;
 
+
   /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 100%, 0.492);
-  --body-gradient-bottom: hsla(0, 0%, 100%, 0.112);
+  --body-gradient-top: hsla(0, 0%, 100%, 0.692);
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0.212);
 
   /* Light mode grid line color */
   --body-grid-line: rgba(0, 0, 0, 1);
-  /* Darker shadow colors for animation */
+
   --shadow-color: rgba(0, 0, 0, 0);
   --shadow-color2: rgba(0, 0, 0, 0);
   --shadow-color3: rgba(0, 0, 0, 0);
@@ -76,33 +75,33 @@
   /* Fluid typography and spacing using cqi unit */
   /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
 
-  --step--1: clamp(0.85rem, 0.8141rem + 0.1595cqi, 0.9377rem);
-  --step-0: clamp(1.0625rem, 0.9858rem + 0.3409cqi, 1.25rem);
-  --step-1: clamp(1.3281rem, 1.1898rem + 0.6148cqi, 1.6663rem);
-  --step-2: clamp(1.6602rem, 1.4307rem + 1.0199cqi, 2.2211rem);
-  --step-3: clamp(2.0752rem, 1.7129rem + 1.6101cqi, 2.9607rem);
-  --step-4: clamp(2.594rem, 2.0406rem + 2.4594cqi, 3.9467rem);
-  --step-5: clamp(3.2425rem, 2.4219rem + 3.6789cqi, 5.2621rem);
-  --step-6: clamp(4.0529rem, 2.8662rem + 5.4219cqi, 7.0036rem);
+  --step--1: clamp(0.844rem, 0.9073rem + -0.0817cqi, 0.8889rem);
+  --step-0: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
+  --step-1: clamp(1.125rem, 0.9717rem + 0.6811cqi, 1.4996rem);
+  --step-2: clamp(1.2656rem, 0.9656rem + 1.3334cqi, 1.999rem);
+  --step-3: clamp(1.4238rem, 0.9162rem + 2.2561cqi, 2.6647rem);
+  --step-4: clamp(1.6018rem, 0.804rem + 3.5458cqi, 3.552rem);
+
 
   /*---------------------- Fluid spacing ---------------------- */
 
+  --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
+  --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
   --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  --space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136cqi, 0.625rem);
-  --space-xs: clamp(0.8125rem, 0.7614rem + 0.2273cqi, 0.9375rem);
-  --space-s: clamp(1.0625rem, 0.9858rem + 0.3409cqi, 1.25rem);
-  --space-m: clamp(1.625rem, 1.5227rem + 0.4545cqi, 1.875rem);
-  --space-l: clamp(2.125rem, 1.9716rem + 0.6818cqi, 2.5rem);
-  --space-xl: clamp(3.1875rem, 2.9574rem + 1.0227cqi, 3.75rem);
-  --space-2xl: clamp(4.25rem, 3.9432rem + 1.3636cqi, 5rem);
-  --space-3xl: clamp(6.375rem, 5.9148rem + 2.0455cqi, 7.5rem);
-  --space-4xl: clamp(7.4375rem, 6.9006rem + 2.3864cqi, 8.75rem);
-  --space-5xl: clamp(8.5rem, 7.8864rem + 2.7273cqi, 10rem);
-  --space-6xl: clamp(9.5625rem, 8.8722rem + 3.0682cqi, 11.25rem);
-  --space-7xl: clamp(10.625rem, 9.858rem + 3.4091cqi, 12.5rem);
-  --space-8xl: clamp(11.6875rem, 10.8438rem + 3.75cqi, 13.75rem);
-  --space-9xl: clamp(12.75rem, 11.8295rem + 4.0909cqi, 15rem);
-
+  --space-2xs: clamp(0.5rem, 0.4744rem + 0.1136cqi, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.6989rem + 0.2273cqi, 0.875rem);
+  --space-s: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4233rem + 0.3409cqi, 1.6875rem);
+  --space-l: clamp(2rem, 1.8977rem + 0.4545cqi, 2.25rem);
+  --space-xl: clamp(3rem, 2.8466rem + 0.6818cqi, 3.375rem);
+  --space-2xl: clamp(4rem, 3.7955rem + 0.9091cqi, 4.5rem);
+  --space-3xl: clamp(6rem, 5.6932rem + 1.3636cqi, 6.75rem);
+  --space-4xl: clamp(7rem, 6.642rem + 1.5909cqi, 7.875rem);
+  --space-5xl: clamp(8rem, 7.5909rem + 1.8182cqi, 9rem);
+  --space-6xl: clamp(9rem, 8.5398rem + 2.0455cqi, 10.125rem);
+  --space-7xl: clamp(10rem, 9.4886rem + 2.2727cqi, 11.25rem);
+  --space-8xl: clamp(11rem, 10.4375rem + 2.5cqi, 12.375rem);
+  --space-9xl: clamp(12rem, 11.3864rem + 2.7273cqi, 13.5rem);
 
 
   --btn-border-radius: var(--space-s);
@@ -112,7 +111,7 @@
   --letter-space-content: 3px;
 
   /* Font families */
-  --font-primary: 'wire_oneregular', sans-serif;
+  --font-primary: 'pompiere_regular', sans-serif;
   --font-secondary: 'monotonregular', sans-serif;
 }
 
@@ -222,21 +221,27 @@
 
 body,
 html {
-  color: var(--text-color);
   letter-spacing: var(--letter-space-content);
-  background: var(--base-color);
-  scroll-behavior: smooth;
+  word-spacing: var(--word-space-content);
+  padding: 0 var(--page-pad-inline);
+  line-height: 1.25;
+}
+
+body,
+html {
+  background-color: var(--base-color);
+  font-family: var(--font-primary);
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--step-0);
+  color: var(--text-color);
+}
+
+body {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   position: relative;
   z-index: 1000;
   isolation: isolate;
-}
-
-body {
-  font-size: var(--step-0);
-  font-family: var(--font-primary), sans-serif;
-  font-style: normal;
-  font-weight: normal;
 }
 
 body::before {
@@ -264,17 +269,11 @@ body::before {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
   margin-inline: auto;
-  position: relative;
-  padding-inline: var(--padding-inline);
-  padding-block: var(--padding-block);
 }
-
-/* Make sure your main content is above the background */
 
 .wrapper,
 header,
@@ -623,7 +622,7 @@ ul {
 }
 
 h2 {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   text-align: center;
@@ -662,13 +661,13 @@ h2 {
 }
 
 .intro .ya {
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   white-space: nowrap;
   margin-block: var(--space-3xs);
 }
 
 .intro .ya-1 {
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   white-space: nowrap;
   margin-block: var(--space-3xs);
 }
@@ -676,7 +675,7 @@ h2 {
 /*------gradient text-------*/
 
 .wrapper-gradient-text {
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   margin: 0;
   /* Remove default margins */
   padding: 0;
