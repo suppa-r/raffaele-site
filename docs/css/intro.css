@@ -114,7 +114,7 @@
 
   --btn-border-radius: var(--space-s);
   /* global page padding variables */
-  --padding-inline: var(--space-3xs);
+  --padding-inline: var(--space-4xs);
   --padding-block: 0;
   --letter-space-content: 3px;
 
@@ -238,8 +238,6 @@
 body,
 html {
   color: var(--text-color);
-  letter-spacing: var(--letter-space-content);
-  background: var(--base-color);
   scroll-behavior: smooth;
 }
 
@@ -248,15 +246,8 @@ body {
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
   font-weight: normal;
-}
 
-
-:root {
-  /* Base grid and background settings */
-  --grid-size: 30px;
-  --backdrop-blur: blur(1px);
-  --background-transition: background 0.3s ease-in-out;
-  --directional-angle: 135deg;
+  background: var(--base-color);
 }
 
 body::before {
@@ -302,14 +293,15 @@ body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
   margin-inline: auto;
-  padding-inline: var(--padding-inline);
-  padding-block: var(--padding-block);
 }
 
 .wrapper {
   min-height: 100dvh;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
+  letter-spacing: var(--letter-space-content);
+  padding-block: var(--padding-block);
+  padding-inline: var(--padding-inline);
 }
 
 .wrapper>* {
@@ -636,13 +628,9 @@ ul {
 /*------intro-------*/
 
 .intro {
-  display: block;
   text-align: center;
   margin-inline: 0 auto;
-  margin: var(--space-l) 0 0 0;
-  background-color: transparent;
-  opacity: 1;
-  z-index: 1000;
+  padding-inline: var(--padding-inline);
 }
 
 .intro p {
