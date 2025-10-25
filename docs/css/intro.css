@@ -312,7 +312,6 @@ body>* {
 
 /*------header-------*/
 header {
-  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -337,7 +336,7 @@ header {
   display: block;
   object-fit: cover;
   border-radius: var(--btn-border-radius);
-  width: clamp(65px, 12vw, 140px);
+  width: clamp(60px, 12vw, 135px);
   /* Responsive width using clamp */
   max-width: 100%;
   height: auto;
@@ -350,7 +349,7 @@ header {
 header p {
   display: block;
   visibility: visible;
-  margin: var(--space-3xs) 0 0 var(--space-m);
+  margin: var(--space-3xs) 0 0 var(--space-xs);
 }
 
 header p span {
@@ -477,9 +476,6 @@ ul {
 
 /* Theme switcher styles */
 .theme-switcher {
-  position: absolute;
-  top: var(--space-xs);
-  right: var(--space-2xs);
   display: flex;
   flex-direction: row;
   z-index: 2000;
@@ -562,14 +558,14 @@ ul {
   border: none;
   width: 20px;
   height: 20px;
-  z-index: 20000;
+  z-index: 2000;
   isolation: isolate;
   cursor: pointer;
   pointer-events: all;
   user-select: none;
   padding: 0;
   /* padding removed */
-  margin: var(--space-xs) var(--space-s) 0 0;
+  margin: var(--space-2xs) var(--space-xs) 0 0;
   /* margin removed */
   opacity: 1;
   transition: all .2s ease-in-out;
@@ -728,20 +724,6 @@ h2 {
 
 @container (max-width: 600px) {
 
-  header {
-    margin: 0 var(--space-l);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: var(--space-3xs) 0 0 0;
-    user-select: none;
-    list-style: none;
-    border: 0;
-    border-radius: var(--space-xl);
-    z-index: 1000;
-    isolation: isolate;
-  }
-
   /*------navigation-------*/
 
   .navigation {
@@ -781,44 +763,11 @@ h2 {
     background-color: var(--clr-button);
   }
 
-  /* Theme switcher styles */
-  .theme-switcher {
-    position: absolute;
-    top: var(--space-xs);
-    right: var(--space-2xs);
-    display: flex;
-    flex-direction: row;
-    z-index: 2000;
-    pointer-events: all;
-    user-select: none;
-    gap: var(--space-2xs);
-    background-color: none;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: var(--shadow);
-    border-radius: var(--btn-border-radius);
-  }
-
-  .theme-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2500;
-    user-select: none;
-    background: none;
-    opacity: 1;
-    color: var(--text-color);
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: all;
-    box-shadow: var(--shadow);
-  }
 
   /*------menu button-------*/
 
   .menu-btn {
-    display: none;
+    display: flex;
     align-items: center;
     justify-self: start;
     background: transparent;
