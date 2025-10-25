@@ -57,9 +57,9 @@
 
   --bars: #000000;
 
-  --shadow-color: rgba(0, 0, 0, 0);
+  --shadow-color: rgb(0, 0, 0);
   --shadow-color2: rgba(0, 0, 0, 0);
-  --shadow-color3: rgba(0, 0, 0, 0);
+  --shadow-color3: rgb(0, 0, 0);
 
   --body-gradient-top: hsla(0, 0%, 100%, 0.151);
   --body-gradient-bottom: hsl(0, 0%, 100%);
@@ -739,18 +739,7 @@ h2 {
 }
 
 @container (max-width: 600px) {
-  /* header {
-    flex-direction: row;
-    align-items: stretch;
-    padding: var(--space-xs);
-    margin: 0;
-  }
- .header-content {
-    flex-direction: row;
-    gap: var(--space-s);
-    align-items: center;
-    justify-content: center;
-  }*/
+
   .navigation,
   .nav-links {
     flex-direction: column;
@@ -762,44 +751,13 @@ h2 {
   }
 
   .theme-switcher {
-    margin-right: 0;
-    margin-top: var(--space-xs);
-    justify-content: center;
-  }
-
-
-  header p {
-    padding-right: var(--space-xl);
-
+    margin-top: var(--space-s);
   }
 
   .nav {
-    padding: var(--space-7xs) var(--space-s);
+    padding: var(--space-5xl) var(--space-s);
   }
 
-  .nav-links {
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0;
-    min-height: 100dvh;
-    width: 100dvw;
-    height: 100dvh;
-    background: var(--gradient-header);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-l-xl);
-    list-style: none;
-    border-radius: var(--btn-border-radius);
-    z-index: 2000;
-    overflow: hidden;
-    color: var(--text-color);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
 
   .menu-btn {
     display: flex;
@@ -808,7 +766,7 @@ h2 {
   .nav-links.open {
     position: absolute;
     top: 0;
-    left: 10%;
+
     margin-inline: auto;
     margin-block: var(--space-4xl);
     min-height: 100dvh;
@@ -818,7 +776,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--space-l-xl);
+    gap: var(--space-xl);
     list-style: none;
     border-radius: var(--btn-border-radius);
     z-index: 2000;
