@@ -22,7 +22,7 @@
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.1), 0 0 0.45em currentColor;
   --bg-image:
     url('../images/header-desktop.jpg');
-  z-index: -1;
+
 }
 
 [data-theme="light"] {
@@ -46,9 +46,8 @@
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em currentColor;
-  --bg-image:
-    url('../images/white-background.jpg');
-  z-index: -1000;
+
+  --bg-image: radial-gradient(#ffffff, #f0f0f0e5, #4d4343a8, #463a3ab0);
 }
 
 :root {
@@ -228,7 +227,6 @@ body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
   margin-inline: auto;
-  position: relative;
   padding-inline: var(--padding-inline);
   padding-block: var(--padding-block);
 }
@@ -245,8 +243,12 @@ section {
 }
 
 .wrapper {
-  /*padding-block: var(--padding-block);*/
   min-height: 100dvh;
+}
+
+.wrapper>* {
+  container-type: inline-size;
+  margin-inline: auto;
 }
 
 /*------header-------*/
@@ -346,7 +348,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: var(--space-5xl);
-  margin-top: var(--space-2xl);
+  margin-block: var(--space-4xl);
 }
 
 .content {
@@ -392,7 +394,6 @@ header {
   justify-content: center;
   position: relative;
   margin-inline: auto;
-  /*width: 90vmin;*/
 }
 
 .content-1 div {
@@ -570,7 +571,6 @@ header {
   40%,
   60% {
     top: 1vmin;
-    /* Correct: positive value for down movement */
   }
 }
 
@@ -584,7 +584,6 @@ header {
   40%,
   60% {
     top: 2vmin;
-    /* Correct: positive value for down movement */
   }
 }
 
@@ -598,7 +597,6 @@ header {
   40%,
   60% {
     top: 2.5vmin;
-    /* FIXED: was -2.5vmin, now positive for down movement */
   }
 }
 
@@ -612,18 +610,13 @@ header {
   40%,
   60% {
     top: 3.5vmin;
-    /* FIXED: was -2.5vmin, now positive for down movement */
   }
 }
 
-/* REMOVED: Duplicate go-down-5 animation */
-
 .text-container {
-  font-family: var(--font-secondary), sans-serif;
-  font-style: normal;
-  font-weight: normal;
   color: var(--text-color);
   margin-top: var(--space-2xl);
+  word-spacing: var(--space-xs);
   user-select: none;
   overflow: hidden;
   text-align: center;
@@ -633,13 +626,16 @@ header {
 .text-with-animation {
   font-family: var(--font-primary), sans-serif;
   margin-block: var(--space-2xs);
-  font-size: var(--step-6);
+  font-size: var(--step-4);
   font-style: italic;
   /* Makes text slanted */
 }
 
 .text-with-animation-1,
 .text-with-animation-2 {
+  font-family: var(--font-secondary), sans-serif;
+  font-style: normal;
+  font-weight: normal;
   text-align: center;
   font-size: var(--step-2);
   padding-block: var(--space-4xs);

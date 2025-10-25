@@ -18,19 +18,24 @@
 
   --bars: #eee6e6;
 
-  --body-gradient-top: hsla(0, 0%, 0%, 0);
-  /* was 0.95 */
-  --body-gradient-bottom: hsla(0, 0%, 0%, 0.911);
-  /* was 0.35 */
-
-  --body-grid-line-top: rgba(255, 255, 255, 0.808);
-  /* lighter at top */
-  --body-grid-line: rgba(255, 255, 255, 0.24);
-  /* normal grid line */
   --shadow-color: #fff;
   --shadow-color2: #ffffff;
   --shadow-color3: #e8eff0fd;
 
+
+  --body-gradient-top: hsla(0, 0%, 0%, 0.151);
+  --body-gradient-bottom: hsl(0, 0%, 0%);
+  --body-grid-line: hsla(0, 0%, 100%, 0.966);
+
+  /* New generic background variables */
+  --directional-gradient: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(255, 255, 255, 0.2) 100%);
+  --grid-size: 30px;
+  --base-gradient: linear-gradient(to bottom, rgb(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
 }
 
 [data-theme="light"] {
@@ -46,27 +51,30 @@
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
 
-  /*--text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em var(--text-color);*/
-
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
 
   --background: linear-gradient(270deg, #ce85aa36, #c4bbce00, #6820449d);
 
   --bars: #000000;
 
-
-  /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 100%, 0.692);
-  --body-gradient-bottom: hsla(0, 0%, 100%, 0.212);
-
-  /* Light mode grid line color */
-  --body-grid-line: rgba(0, 0, 0, 1);
-
   --shadow-color: rgba(0, 0, 0, 0);
   --shadow-color2: rgba(0, 0, 0, 0);
   --shadow-color3: rgba(0, 0, 0, 0);
-}
 
+  --body-gradient-top: hsla(0, 0%, 100%, 0.151);
+  --body-gradient-bottom: hsl(0, 0%, 100%);
+  --body-grid-line: hsl(0, 0%, 0%);
+
+  /* New generic background variables */
+  --directional-gradient: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.589) 100%);
+  --grid-size: 30px;
+  --base-gradient: linear-gradient(to bottom, rgb(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
+}
 :root {
   --sp: 4s;
   --burger-thickness: 4px;
@@ -113,6 +121,14 @@
   /* Font families */
   --font-primary: 'pompiere_regular', sans-serif;
   --font-secondary: 'monotonregular', sans-serif;
+
+
+
+  /* Base grid and background settings */
+  --grid-size: 30px;
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
+  --directional-angle: 90deg;
 }
 
 @supports (selector(::view-transition)) {
@@ -221,27 +237,26 @@
 
 body,
 html {
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  padding: 0 var(--page-pad-inline);
-  line-height: 1.25;
-}
-
-body,
-html {
-  background-color: var(--base-color);
-  font-family: var(--font-primary);
-  font-weight: normal;
-  font-style: normal;
-  font-size: var(--step-0);
   color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  background: var(--base-color);
+  scroll-behavior: smooth;
 }
 
 body {
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  position: relative;
-  z-index: 1000;
-  isolation: isolate;
+  font-size: var(--step-0);
+  font-family: var(--font-primary), sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+:root {
+  /* Base grid and background settings */
+  --grid-size: 30px;
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
+  --directional-angle: 135deg;
 }
 
 body::before {
@@ -254,39 +269,52 @@ body::before {
   top: 0;
   left: 0;
   background:
+    /* Directional lightening gradient */
+    var(--directional-gradient),
+    /* Main gradient overlay */
     linear-gradient(to bottom,
       var(--body-gradient-top) 0%,
       var(--body-gradient-bottom) 100%),
-    linear-gradient(90deg,
-      var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat,
-    linear-gradient(180deg,
-      var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat,
-    linear-gradient(to bottom, rgba(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
-  z-index: -1000;
-  transition: background 0.3s ease-in-out;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+    /* Vertical grid lines */
+    repeating-linear-gradient(90deg,
+      var(--body-grid-line) 0px,
+      var(--body-grid-line) 1px,
+      transparent 1px,
+      transparent var(--grid-size)),
+    /* Horizontal grid lines */
+    repeating-linear-gradient(0deg,
+      var(--body-grid-line) 0px,
+      var(--body-grid-line) 1px,
+      transparent 1px,
+      transparent var(--grid-size)),
+    /* Base gradient */
+    var(--base-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  transition: var(--background-transition);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+
 }
 body>* {
   /* Ensure all direct children of body are treated as containers */
   container-type: inline-size;
   margin-inline: auto;
-}
-
-.wrapper,
-header,
-main,
-section {
-  position: relative;
-  z-index: 2000;
-  background-color: transparent;
+  padding-inline: var(--padding-inline);
+  padding-block: var(--padding-block);
 }
 
 .wrapper {
-  /*padding-block: var(--padding-block);*/
   min-height: 100dvh;
+  position: relative;
+  z-index: 1;
+}
+
+.wrapper>* {
+  container-type: inline-size;
+  margin-inline: auto;
 }
 
 /*------header-------*/
@@ -299,7 +327,7 @@ header {
   list-style: none;
   border: 0;
   border-radius: var(--space-xl);
-  z-index: 0;
+  z-index: 1000;
   isolation: isolate;
 }
 
