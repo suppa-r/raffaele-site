@@ -656,7 +656,7 @@ ul {
   font-style: italic;
   font-size: var(--step-2);
   white-space: nowrap;
-  margin-block: var(--space-3xs);
+  margin-block: var(--space-4xs);
   padding-inline: var(--padding-inline);
 }
 
@@ -670,9 +670,17 @@ ul {
 
 .intro .ya-2 {
   font-style: italic;
+  font-size: var(--step-2);
+  white-space: nowrap;
+  margin-block: var(--space-4xs);
+  padding-inline: var(--padding-inline);
+}
+
+.intro .ya-3 {
+  font-style: italic;
   font-size: var(--step-4);
   white-space: nowrap;
-  margin-block: var(--space-5xs);
+  margin-block: var(--space-3xs);
   padding-inline: var(--padding-inline);
 }
 
