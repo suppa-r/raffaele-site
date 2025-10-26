@@ -311,8 +311,6 @@ body>* {
   container-type: inline-size;
 }
 
-
-
 /*------header-------*/
 header {
   display: flex;
@@ -323,20 +321,26 @@ header {
   user-select: none;
 }
 .header-image {
+  position: relative;
   display: block;
   object-fit: contain;
-  border-radius: 50%;
-  width: clamp(150px, 45dvw, 200px);
-  /* width: clamp(125px, 50dvw, 200px);
-   Moderate increase */
-  height: auto;
+  background-position: center;
+  background-size: contain;
+  background-attachment: fixed;
+  border-radius: 100%;
+  width: clamp(200px, 45dvw, 200px);
+
+
+  height: clamp(100px, 30dvh, 150px);
   aspect-ratio: 3/1;
   pointer-events: none;
   border: 0;
-
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out;
   margin-inline: auto;
   margin-block: var(--space-xs);
+  z-index: 1;
+  isolation: isolate;
+
 }
 header p {
   margin: 0 var(--space-4xs) 0 0;

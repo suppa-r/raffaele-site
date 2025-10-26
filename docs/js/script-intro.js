@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.classList.remove('open');
 
         // ✅ FIXED: Proper nav hiding with animations
-        setTimeout(() => {
-          nav.style.display = 'none';
-          nav.style.opacity = '0';
-          nav.style.pointerEvents = 'none';
-        }, 600); // Wait for animations to finish
+        //setTimeout(() => {
+        //  nav.style.display = 'none';
+        //  nav.style.opacity = '0';
+        // nav.style.pointerEvents = 'none';
+        //}, 600); // Wait for animations to finish
 
         burgerMenu && burgerMenu.classList.remove('active');
         if (intro) intro.style.display = 'block';
@@ -141,14 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
           // Debug li elements
           const currentNavItems = document.querySelectorAll('.nav-links li');
           currentNavItems.forEach((item, index) => {
-            setTimeout(() => {
-              console.log(`Li ${index} styles:`, {
-                transform: getComputedStyle(item).transform,
-                opacity: getComputedStyle(item).opacity,
-                transitionDelay: getComputedStyle(item).transitionDelay,
-                iValue: item.style.getPropertyValue('--i')
-              });
-            }, 100);
+            //setTimeout(() => {
+            /// console.log(`Li ${index} styles:`, {
+            //  transform: getComputedStyle(item).transform,
+            //  opacity: getComputedStyle(item).opacity,
+            // transitionDelay: getComputedStyle(item).transitionDelay,
+            // iValue: item.style.getPropertyValue('--i')
+            // });
+            //}, 100);
           });
         });
 
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
           nav.style.display = 'none';
           nav.style.opacity = '0';
           nav.style.pointerEvents = 'none';
-        }, 600); // Wait for longest animation delay
+        }, 0); // Wait for longest animation delay
 
         // Show other elements when nav is closed
         if (intro) intro.style.display = 'block';
