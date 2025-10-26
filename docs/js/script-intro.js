@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
           nav.style.display = 'none';
           nav.style.opacity = '0';
           nav.style.pointerEvents = 'none';
-        }, 800);
+        }, 1000);
 
         // Show other elements when nav is closed
         if (intro) intro.style.display = 'block';
