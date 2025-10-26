@@ -322,22 +322,22 @@ header {
   margin: var(--space-3xs) 0 0 0;
   user-select: none;
 }
-
 .header-image {
   display: block;
-  object-fit: cover;
-  border-radius: var(--btn-border-radius);
-  width: 140px;
-  max-width: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  width: clamp(150px, 45dvw, 200px);
+  /* width: clamp(125px, 50dvw, 200px);
+   Moderate increase */
   height: auto;
+  aspect-ratio: 3/1;
   pointer-events: none;
   border: 0;
-  box-shadow: var(--shadow);
+
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out;
   margin-inline: auto;
-  margin-top: var(--space-xs);
+  margin-block: var(--space-xs);
 }
-
 header p {
   margin: 0 var(--space-4xs) 0 0;
 
@@ -705,14 +705,23 @@ h2 {
       0px 30px 5px var(--shadow-color3);
   }
 }
+
 @container (max-width: 600px) {
   .header-image {
-    width: clamp(60px, 40dvw, 100px);
-    /* Scales between 60px-100px */
+    display: block;
+    object-fit: contain;
+    border-radius: 50%;
+    width: clamp(100px, 25dvw, 150px);
+    /* width: clamp(125px, 50dvw, 200px);
+       Moderate increase */
     height: auto;
-    aspect-ratio: 16/9;
+    aspect-ratio: 3/1;
+    pointer-events: none;
+    border: 0;
+
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out;
     margin-inline: auto;
-    margin-block: var(--space-4xs);
+    margin-block: var(--space-s);
   }
 
   header {
@@ -726,7 +735,7 @@ h2 {
 
   .nav-links {
     position: absolute;
-    top: var(--space-3xl);
+    top: var(--space-5xl);
     left: 0;
     right: 0;
     background: var(--gradient-header);
@@ -791,7 +800,7 @@ h2 {
   }
 
   .intro {
-    margin-top: 0;
+    margin-top: var(--space-m);
   }
 
   .intro .ya {
