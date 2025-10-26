@@ -316,7 +316,6 @@ body>* {
 header {
   display: flex;
   flex-direction: row;
-
   align-items: center;
   margin: var(--space-3xs) 0 0 0;
   user-select: none;
@@ -372,6 +371,7 @@ header p span {
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  /* ✅ Remove default underline */
   align-items: center;
   justify-content: center;
   gap: var(--space-6xs);
@@ -386,6 +386,30 @@ header p span {
   letter-spacing: var(--letter-space-content);
   word-spacing: var(--word-space-content);
   text-align: center;
+  position: relative;
+  /* ✅ For pseudo-element positioning */
+}
+
+/* ✅ Animated underline */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: calc(-2 * var(--space-3xs));
+  /* Match your text-underline-offset */
+  left: 50%;
+  width: 0;
+  /* Start with no width */
+  height: 0.2rem;
+  /* Match your underline thickness */
+  background-color: var(--text-span);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a:focus::after {
+  width: 100%;
+  /* Expand to full width on hover */
 }
 
 .nav-links li a span {
@@ -599,14 +623,14 @@ ul {
 
 .fancy span {
   display: inline-block;
-  background: linear-gradient(270deg, #645960, #3f3e44, #61a178, #70b4be, #6b85af, #dfdce78f, #bdb5b9, #272926);
+  background: linear-gradient(270deg, #645960, #3f3e44, #262726, #dde1e2, #e8ebee, #8180868f, #bdb5b9, #272926);
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 3s ease-in-out infinite alternate;
+  animation: gradientAnimation 3s ease-in infinite alternate;
   animation-direction: alternate reverse;
   font-size: var(--step-0);
   letter-spacing: var(--letter-space-content);
@@ -630,29 +654,27 @@ ul {
 
 .intro .ya {
   font-style: italic;
-  font-size: var(--step-1);
-  white-space: nowrap;
-  margin-block: var(--space-xs);
-  padding-inline: var(--padding-inline);
-}
-
-.intro .ya-1 {
-  font-style: italic;
-  font-size: var(--step-4);
-  white-space: nowrap;
-  margin-top: var(--space-s);
-  padding-inline: var(--padding-inline);
-}
-
-.intro .ya-2 {
-  font-style: italic;
-  font-size: var(--step-1);
+  font-size: var(--step-2);
   white-space: nowrap;
   margin-block: var(--space-3xs);
   padding-inline: var(--padding-inline);
 }
 
-/*------gradient text-------*/
+.intro .ya-1 {
+  font-style: italic;
+  font-size: var(--step-1);
+  white-space: nowrap;
+  margin-block: var(--space-5xs);
+  padding-inline: var(--padding-inline);
+}
+
+.intro .ya-2 {
+  font-style: italic;
+  font-size: var(--step-4);
+  white-space: nowrap;
+  margin-block: var(--space-5xs);
+  padding-inline: var(--padding-inline);
+}
 
 .wrapper-gradient-text {
   font-style: italic;
