@@ -23,7 +23,6 @@
   --shadow-color2: #ffffff;
   --shadow-color3: #e8eff0fd;
 
-
   --body-gradient-top: hsla(0, 0%, 0%, 0.151);
   --body-gradient-bottom: hsl(0, 0%, 0%);
   --body-grid-line: hsla(0, 0%, 100%, 0.966);
@@ -62,19 +61,20 @@
   --shadow-color2: rgba(0, 0, 0, 0);
   --shadow-color3: rgb(0, 0, 0);
 
-  --body-gradient-top: hsla(0, 0%, 100%, 0.151);
-  --body-gradient-bottom: hsl(0, 0%, 100%);
+  --body-gradient-top: hsl(0, 9%, 98%);
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0);
   --body-grid-line: hsl(0, 0%, 0%);
 
   /* New generic background variables */
   --directional-gradient: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.4) 50%,
-      rgba(255, 255, 255, 0.589) 100%);
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0.322) 50%,
+      rgba(255, 255, 255, 0.699) 100%);
   --grid-size: 30px;
   --base-gradient: linear-gradient(to bottom, rgb(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
   --backdrop-blur: blur(1px);
   --background-transition: background 0.3s ease-in-out;
+  z-index: -1000;
 }
 :root {
   --sp: 4s;

@@ -16,13 +16,11 @@
 
   --background: linear-gradient(270deg, #ce85a9b9, #c4bbce, #c97ba2bd);
 
-  --bars: #eee6e6;
-
+  --bg-image: url('/docs/images/header-desktop.jpg');
 
   --shadow-color: #fff;
   --shadow-color2: #ffffff;
   --shadow-color3: #e8eff0fd;
-
 
   --body-gradient-top: hsla(0, 0%, 0%, 0.151);
   --body-gradient-bottom: hsl(0, 0%, 0%);
@@ -56,26 +54,21 @@
 
   --background: linear-gradient(270deg, #ce85aa36, #c4bbce00, #6820449d);
 
-  --bars: #000000;
+  --bg-image: radial-gradient(circle,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0.9) 25%,
+      rgba(200, 200, 200, 0.8) 50%,
+      rgba(150, 150, 150, 0.151) 75%,
+      rgba(100, 100, 100, 0.089) 100%);
 
   --shadow-color: rgb(0, 0, 0);
   --shadow-color2: rgba(0, 0, 0, 0);
   --shadow-color3: rgb(0, 0, 0);
 
-  --body-gradient-top: hsla(0, 0%, 100%, 0.151);
-  --body-gradient-bottom: hsl(0, 0%, 100%);
-  --body-grid-line: hsl(0, 0%, 0%);
-
-  /* New generic background variables */
-  --directional-gradient: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.4) 50%,
-      rgba(255, 255, 255, 0.589) 100%);
-  --grid-size: 30px;
-  --base-gradient: linear-gradient(to bottom, rgb(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
   --backdrop-blur: blur(1px);
   --background-transition: background 0.3s ease-in-out;
 }
+
 :root {
   --sp: 4s;
   --burger-thickness: 2.5px;
@@ -131,62 +124,6 @@
   --background-transition: background 0.3s ease-in-out;
   --directional-angle: 90deg;
 }
-:root {
-  --sp: 4s;
-  --burger-thickness: 2.5px;
-  --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-
-  /* Fluid typography and spacing using cqi unit */
-  /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
-
-  --step--1: clamp(0.844rem, 0.9073rem + -0.0817cqi, 0.8889rem);
-  --step-0: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
-  --step-1: clamp(1.125rem, 0.9717rem + 0.6811cqi, 1.4996rem);
-  --step-2: clamp(1.2656rem, 0.9656rem + 1.3334cqi, 1.999rem);
-  --step-3: clamp(1.4238rem, 0.9162rem + 2.2561cqi, 2.6647rem);
-  --step-4: clamp(1.6018rem, 0.804rem + 3.5458cqi, 3.552rem);
-
-
-  /*---------------------- Fluid spacing ---------------------- */
-
-  --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
-  --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
-  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4744rem + 0.1136cqi, 0.5625rem);
-  --space-xs: clamp(0.75rem, 0.6989rem + 0.2273cqi, 0.875rem);
-  --space-s: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
-  --space-m: clamp(1.5rem, 1.4233rem + 0.3409cqi, 1.6875rem);
-  --space-l: clamp(2rem, 1.8977rem + 0.4545cqi, 2.25rem);
-  --space-xl: clamp(3rem, 2.8466rem + 0.6818cqi, 3.375rem);
-  --space-2xl: clamp(4rem, 3.7955rem + 0.9091cqi, 4.5rem);
-  --space-3xl: clamp(6rem, 5.6932rem + 1.3636cqi, 6.75rem);
-  --space-4xl: clamp(7rem, 6.642rem + 1.5909cqi, 7.875rem);
-  --space-5xl: clamp(8rem, 7.5909rem + 1.8182cqi, 9rem);
-  --space-6xl: clamp(9rem, 8.5398rem + 2.0455cqi, 10.125rem);
-  --space-7xl: clamp(10rem, 9.4886rem + 2.2727cqi, 11.25rem);
-  --space-8xl: clamp(11rem, 10.4375rem + 2.5cqi, 12.375rem);
-  --space-9xl: clamp(12rem, 11.3864rem + 2.7273cqi, 13.5rem);
-
-
-  --btn-border-radius: var(--space-s);
-  /* global page padding variables */
-  --padding-inline: var(--space-3xs);
-  --padding-block: 0;
-  --letter-space-content: 0.14rem;
-
-  /* Font families */
-  --font-primary: 'pompiere_regular', sans-serif;
-  --font-secondary: 'monotonregular', sans-serif;
-
-
-
-  /* Base grid and background settings */
-  --grid-size: 30px;
-  --backdrop-blur: blur(1px);
-  --background-transition: background 0.3s ease-in-out;
-  --directional-angle: 90deg;
-}
-
 @supports (selector(::view-transition)) {
   .support.view-transition {
     display: none;
@@ -304,13 +241,14 @@ body {
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
   font-weight: normal;
-
   background-image: var(--bg-image);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+
 
 body>* {
   /* Ensure all direct children of body are treated as containers */
