@@ -30,19 +30,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
   intro && (intro.style.display = 'block');
 
+  // ✅ FIXED: Helper functions (moved to top)
+  function getDefaultTheme() {
+    return 'dark';
+  }
+
+  function isValidTheme(theme) {
+    return ['dark', 'light', 'system'].includes(theme);
+  }
+
+  function setActiveThemeButton() {
+    themeButtons.forEach(btn => {
+      const input = btn.querySelector('input[type="radio"]');
+      btn.classList.toggle('active', input && input.checked);
+    });
+  }
+
+  // ✅ FIXED: Theme initialization (moved before using variables)
+  const mql = window.matchMedia('(prefers-color-scheme: dark)');
+  let sysListener;
+
+  let savedTheme = localStorage.getItem('theme');
+
+  // Validate and set default theme
+  if (!savedTheme || !isValidTheme(savedTheme)) {
+    savedTheme = getDefaultTheme();
+    localStorage.setItem('theme', savedTheme);
+    console.log('No valid saved theme, defaulting to:', savedTheme);
+  } else {
+    console.log('Using saved theme:', savedTheme);
+  }
+
+  // Apply theme immediately
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  // Update radio buttons
+  themeButtons.forEach(btn => {
+    const radio = btn.querySelector('input[type="radio"]');
+    if (radio) {
+      radio.checked = (radio.value === savedTheme);
+    }
+  });
+
+  setActiveThemeButton();
+
+  // Handle system theme if selected
+  if (savedTheme === 'system') {
+    const systemTheme = mql.matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', systemTheme);
+    console.log('System theme applied:', systemTheme);
+
+    sysListener = e => {
+      const newSystemTheme = e.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newSystemTheme);
+      console.log('System theme changed to:', newSystemTheme);
+    };
+    mql.addEventListener('change', sysListener);
+  } else if (sysListener) {
+    mql.removeEventListener('change', sysListener);
+  }
+
+  // Update favicon to match default theme
+  updateFavicon(savedTheme === 'system' ? (mql.matches ? 'dark' : 'light') : savedTheme);
+
   // Close nav menu when a nav link is clicked
   navLinksTabs.forEach(link => {
     link.addEventListener('click', () => {
       console.log('Nav link clicked, closing menu');
       if (nav && nav.classList.contains('open')) {
         nav.classList.remove('open');
-        nav.style.display = 'none'; // ✅ FIXED: Properly hide nav
+
+        // ✅ FIXED: Proper nav hiding with animations
+        setTimeout(() => {
+          nav.style.display = 'none';
+          nav.style.opacity = '0';
+          nav.style.pointerEvents = 'none';
+        }, 600); // Wait for animations to finish
+
         burgerMenu && burgerMenu.classList.remove('active');
+        if (intro) intro.style.display = 'block';
       }
     });
   });
 
-  // ✅ FIXED: Burger menu click handler with proper logic
+  // ✅ FIXED: Burger menu click handler
   if (burgerMenu && nav) {
     burgerMenu.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -83,18 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Hide other elements when nav is open
         if (intro) intro.style.display = 'none';
-        if (themeSwitcher) themeSwitcher.classList.remove('active');
 
       } else {
         // Closing nav
         nav.classList.remove('open');
 
-        // Wait for animations to finish before hiding
+        // ✅ FIXED: Wait for animations before hiding
         setTimeout(() => {
           nav.style.display = 'none';
           nav.style.opacity = '0';
           nav.style.pointerEvents = 'none';
-        }, 1000);
+        }, 600); // Wait for longest animation delay
 
         // Show other elements when nav is closed
         if (intro) intro.style.display = 'block';
@@ -105,14 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   } else {
     console.error('Burger menu or nav not found!');
-  }
-
-  // ✅ FIXED: Function to update active class on theme buttons
-  function setActiveThemeButton() {
-    themeButtons.forEach(btn => {
-      const input = btn.querySelector('input[type="radio"]');
-      btn.classList.toggle('active', input && input.checked);
-    });
   }
 
   // ✅ FIXED: Theme button handlers
@@ -191,39 +253,12 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.style.display = 'none';
         nav.style.opacity = '0';
         nav.style.pointerEvents = 'none';
-      }, 800);
+      }, 600);
 
       if (burgerMenu) burgerMenu.classList.remove('active');
       if (intro) intro.style.display = 'block';
     }
   });
-
-  // ✅ FIXED: Theme initialization
-  const mql = window.matchMedia('(prefers-color-scheme: dark)');
-  let sysListener;
-
-  let savedTheme = localStorage.getItem('theme');
-  if (!savedTheme) {
-    savedTheme = 'dark';
-    localStorage.setItem('theme', 'dark');
-  }
-
-  document.documentElement.setAttribute('data-theme', savedTheme);
-
-  themeButtons.forEach(btn => {
-    const radio = btn.querySelector('input[type="radio"]');
-    if (radio) radio.checked = (radio.value === savedTheme);
-  });
-
-  setActiveThemeButton();
-
-  if (savedTheme === 'system') {
-    document.documentElement.setAttribute('data-theme', mql.matches ? 'dark' : 'light');
-    sysListener = e => document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-    mql.addEventListener('change', sysListener);
-  } else if (sysListener) {
-    mql.removeEventListener('change', sysListener);
-  }
 });
 
 // ✅ FIXED: Favicon function outside DOMContentLoaded
