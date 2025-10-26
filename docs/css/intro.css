@@ -638,7 +638,7 @@ ul {
 
 .intro .ya-1 {
   font-style: italic;
-  font-size: var(--step-2);
+  font-size: var(--step-4);
   white-space: nowrap;
   margin-top: var(--space-s);
   padding-inline: var(--padding-inline);
@@ -675,6 +675,17 @@ ul {
   animation: shadowDrip 3s infinite alternate ease-in-out;
   /* Use theme shadow for fallback */
   text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.853));
+}
+
+.text-layer-1 {
+  background: var(--gradient);
+  background-size: 200% 200%;
+  background-clip: text;
+  color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.853));
+  display: inline-block;
+  padding-inline: var(--space-2xs);
 }
 
 @keyframes shadowDrip {
@@ -736,7 +747,6 @@ ul {
     transition: opacity 0.3s ease;
     margin-inline: auto;
     width: var(--space-9xl);
-    min-height: 100px;
   }
 
   .nav-links.open {
@@ -760,7 +770,7 @@ ul {
       transform 0.4s cubic-bezier(.4, 0, .2, 1),
       opacity 0.4s cubic-bezier(.4, 0, .2, 1);
     margin: 0;
-    padding: var(--space-s) 0;
+    padding: var(--space-xs) 0;
     display: flex;
     flex-direction: column;
     align-items: center;
