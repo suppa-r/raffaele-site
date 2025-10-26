@@ -18,6 +18,7 @@
 
   --bars: #eee6e6;
 
+
   --shadow-color: #fff;
   --shadow-color2: #ffffff;
   --shadow-color3: #e8eff0fd;
@@ -77,7 +78,7 @@
 }
 :root {
   --sp: 4s;
-  --burger-thickness: 4px;
+  --burger-thickness: 2.5px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
   /* Fluid typography and spacing using cqi unit */
@@ -315,13 +316,9 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: var(--space-3xs) 0 0 0;
+  align-items: center;
+  margin: var(--space-3xs) 0 0 0;
   user-select: none;
-  list-style: none;
-  border: 0;
-  border-radius: var(--space-xl);
-  z-index: 1000;
-  isolation: isolate;
 }
 
 .header-img {
@@ -349,7 +346,7 @@ header {
 header p {
   display: block;
   visibility: visible;
-  margin: var(--space-3xs) 0 0 var(--space-xs);
+  margin: 0 var(--space-4xs) 0 0;
 }
 
 header p span {
@@ -359,17 +356,8 @@ header p span {
 /*------navigation-------*/
 
 .navigation {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  margin: 0 0 0 var(--space-xs);
   user-select: none;
-  list-style: none;
-  border: 0;
-  border-radius: var(--btn-border-radius);
-  color: var(--text-color);
-  z-index: 1000;
-  pointer-events: all;
   transition: opacity 0.4s ease-in;
 }
 
@@ -378,12 +366,9 @@ header p span {
   flex-direction: row;
   justify-content: center;
   gap: var(--space-xs);
-  margin: 0;
-  padding: 0 0 0 var(--space-2xl);
+  margin: 0 0 0 var(--space-3xl);
   list-style: none;
   background-color: transparent;
-  border: 0;
-  border-radius: var(--btn-border-radius);
   z-index: 1000;
 }
 
@@ -476,13 +461,17 @@ ul {
 
 /* Theme switcher styles */
 .theme-switcher {
+  position: absolute;
+  top: var(--space-3xs);
+  right: var(--space-xl);
   display: flex;
   flex-direction: row;
+  margin: 0 0 0 var(--space-xs);
   z-index: 2000;
   pointer-events: all;
   user-select: none;
   gap: var(--space-2xs);
-  background-color: none;
+  background-color: transparent;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   box-shadow: var(--shadow);
@@ -492,8 +481,6 @@ ul {
 .theme-button {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   z-index: 2500;
   user-select: none;
@@ -502,7 +489,7 @@ ul {
   color: var(--text-color);
   transition: opacity 0.3s ease-in-out;
   pointer-events: all;
-  box-shadow: var(--shadow);
+  margin: 0 0 0 var(--space-xs);
 }
 
 .theme-button.active {
@@ -551,6 +538,10 @@ ul {
 /*------menu button-------*/
 
 .menu-btn {
+  position: absolute;
+  top: var(--space-3xs);
+  right: var(--space-4xs);
+  margin: 0 0 0 var(--space-xs);
   display: none;
   align-items: center;
   justify-self: start;
@@ -558,21 +549,18 @@ ul {
   border: none;
   width: 20px;
   height: 20px;
-  z-index: 2000;
+  z-index: 20000;
   isolation: isolate;
   cursor: pointer;
   pointer-events: all;
   user-select: none;
   padding: 0;
-  /* padding removed */
-  margin: var(--space-2xs) var(--space-xs) 0 0;
-  /* margin removed */
   opacity: 1;
   transition: all .2s ease-in-out;
 }
 
 
-.menu-btn__burger {
+.menu-burger {
   width: 20px;
   height: var(--burger-thickness);
   background: var(--bars);
@@ -580,8 +568,8 @@ ul {
   transition: transform 0.2s;
 }
 
-.menu-btn__burger::before,
-.menu-btn__burger::after {
+.menu-burger::before,
+.menu-burger::after {
   content: '';
   position: absolute;
   width: 20px;
@@ -591,30 +579,31 @@ ul {
   transition: all .2s ease-in-out;
 }
 
-.menu-btn__burger::before {
+
+.menu-burger::before {
   transform: translateY(-8px);
 }
 
-.menu-btn__burger::after {
+.menu-burger::after {
   transform: translateY(8px);
 }
 
-.menu-btn__burger.open {
+.menu-burger.open {
   transform: rotate(0deg);
   /* Example: rotate when open */
 }
 
-.menu-btn.open .menu-btn__burger {
+.menu-btn.open .menu-burger {
   transform: translateX(0px) rotate(90deg);
   background: transparent;
 }
 
-.menu-btn.open .menu-btn__burger::before {
+.menu-btn.open .menu-burger::before {
   transform: rotate(45deg) translate(0px, 0px);
   background: var(--bars);
 }
 
-.menu-btn.open .menu-btn__burger::after {
+.menu-btn.open .menu-burger::after {
   transform: rotate(-45deg) translate(0px, 0px);
   background: var(--bars);
 }
@@ -724,67 +713,51 @@ h2 {
 
 @container (max-width: 600px) {
 
-  /*------navigation-------*/
-
-  .navigation {
+  .nav-links {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--gradient-header);
     display: none;
-  }
-
-  .nav-links .open {
-    background: var(--base-color);
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-l);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    pointer-events: none;
-    transition: opacity 0.4s ease-in;
-    z-index: 1000;
-    isolation: isolate;
-    animation: fadeIn 0.9s ease-in-out;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-
-    max-width: 90vw;
-
-    box-sizing: border-box;
-    text-align: center;
-    border-radius: var(--btn-border-radius);
-    box-shadow: var(--shadow);
-
-
-    border: 1px solid hsla(0, 0%, 100%, 0.18);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background-clip: border-box;
-    background-color: var(--clr-button);
+    justify-content: center;
+    gap: var(--space-l);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    margin-inline: auto;
   }
 
+  .nav-links.open {
+    display: flex;
+    opacity: 1;
+    pointer-events: all;
+  }
 
-  /*------menu button-------*/
+  /* ✅ FIXED: More specific mobile li styles */
+  .nav-links li {
+    position: relative;
+    /* Force positioning */
+    color: var(--text-color);
+    transform: translateY(60px);
+    /* Larger movement */
+    opacity: 0;
+    transition:
+      transform 0.4s cubic-bezier(.4, 0, .2, 1),
+      opacity 0.4s cubic-bezier(.4, 0, .2, 1);
+  }
+
+  .nav-links.open li {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(0.15s * var(--i));
+  }
 
   .menu-btn {
     display: flex;
-    align-items: center;
-    justify-self: start;
-    background: transparent;
-    border: none;
-    width: 20px;
-    height: 20px;
-    z-index: 20000;
-    isolation: isolate;
-    cursor: pointer;
-    pointer-events: all;
-    user-select: none;
-    padding: 0;
-    /* padding removed */
-    margin: var(--space-xs) var(--space-s) 0 0;
-    /* margin removed */
-    opacity: 1;
-    transition: all .2s ease-in-out;
   }
 }
 
