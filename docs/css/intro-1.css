@@ -4,9 +4,9 @@
   --text-span: hsla(187, 45%, 67%, 0.74);
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
-  --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
+  --gradient: linear-gradient(to bottom, #b8c1c910, #323738a8, #495157c4, #edeef1dc);
 
-  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
+  --gradient-header: linear-gradient(to bottom, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.671);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
@@ -18,21 +18,25 @@
 
   --bars: #eee6e6;
 
-  --body-gradient-top: hsla(0, 0%, 0%, 0);
-  /* was 0.95 */
-  --body-gradient-bottom: hsla(0, 0%, 0%, 0.911);
-  /* was 0.35 */
-
-  --body-grid-line-top: rgba(255, 255, 255, 0.808);
-  /* lighter at top */
-  --body-grid-line: rgba(255, 255, 255, 0.24);
-  /* normal grid line */
-
 
   --shadow-color: #fff;
-  --shadow-color2: #77d6e0;
-  --shadow-color3: #7abec7fd;
+  --shadow-color2: #ffffff;
+  --shadow-color3: #e8eff0fd;
 
+
+  --body-gradient-top: hsla(0, 0%, 0%, 0.151);
+  --body-gradient-bottom: hsl(0, 0%, 0%);
+  --body-grid-line: hsla(0, 0%, 100%, 0.966);
+
+  /* New generic background variables */
+  --directional-gradient: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(255, 255, 255, 0.2) 100%);
+  --grid-size: 30px;
+  --base-gradient: linear-gradient(to bottom, rgb(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
 }
 
 [data-theme="light"] {
@@ -41,14 +45,12 @@
   --text-span: #000000;
   --clr-neon: hsla(189, 4%, 63%, 0.733);
   --clr-button: hsla(0, 0%, 100%, 0.671);
-  --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
+  --gradient: linear-gradient(to bottom, #b8c1c910, #323738a8, #2a2e31c4, #edeef1dc);
 
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
 
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
-
-  /*--text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em var(--text-color);*/
 
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
 
@@ -56,21 +58,27 @@
 
   --bars: #000000;
 
-  /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 100%, 0.692);
-  --body-gradient-bottom: hsla(0, 0%, 100%, 0.212);
+  --shadow-color: rgb(0, 0, 0);
+  --shadow-color2: rgba(0, 0, 0, 0);
+  --shadow-color3: rgb(0, 0, 0);
 
-  /* Light mode grid line color */
-  --body-grid-line: rgba(0, 0, 0, 1);
-  /* Darker shadow colors for animation */
-  --shadow-color: rgba(0, 0, 0, 0.85);
-  --shadow-color2: rgba(0, 0, 0, 0.5);
-  --shadow-color3: rgba(0, 0, 0, 0.3);
+  --body-gradient-top: hsla(0, 0%, 100%, 0.151);
+  --body-gradient-bottom: hsl(0, 0%, 100%);
+  --body-grid-line: hsl(0, 0%, 0%);
+
+  /* New generic background variables */
+  --directional-gradient: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.589) 100%);
+  --grid-size: 30px;
+  --base-gradient: linear-gradient(to bottom, rgb(60, 60, 60, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
 }
-
 :root {
   --sp: 4s;
-  --burger-thickness: 4px;
+  --burger-thickness: 2.5px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
   /* Fluid typography and spacing using cqi unit */
@@ -109,11 +117,19 @@
   /* global page padding variables */
   --padding-inline: var(--space-3xs);
   --padding-block: 0;
-  --letter-space-content: 3px;
+  --letter-space-content: 0.14rem;
 
   /* Font families */
   --font-primary: 'pompiere_regular', sans-serif;
   --font-secondary: 'monotonregular', sans-serif;
+
+
+
+  /* Base grid and background settings */
+  --grid-size: 30px;
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
+  --directional-angle: 90deg;
 }
 
 @layer support.demo {
