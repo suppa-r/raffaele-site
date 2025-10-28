@@ -3,12 +3,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeSwitcher = document.querySelector('.theme-switcher');
   const themeButtons = document.querySelectorAll('.theme-button');
   const wrapper = document.querySelector('.wrapper');
-  const h = document.querySelector('header');
+  const h = document.querySelector('.header');
   const nav = document.querySelector('.nav-links');
-  const menuBtn = document.querySelector('.menu-btn');
-  const burgerMenu = document.querySelector('.menu-burger');
+  const menuHam = document.querySelector('.header__main-ham-menu');
+  const closeMenu = document.querySelector('.header__main-ham-menu-close');
   const intro = document.querySelector('.intro');
   const navLinksTabs = document.querySelectorAll('.nav-links a');
+
+  const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont')
+  const navLinks = document.querySelector('.nav-links');
+  const navLinksOpen = document.querySelector('.nav-links.open');
+  const headerHamMenuBtn = document.querySelector('.header__main-ham-menu')
+  const headerHamMenuCloseBtn = document.querySelector('.header__main-ham-menu-close')
+  const headerSmallMenuLinks = document.querySelectorAll('.header__sm-menu-link')
+
+  hamMenuBtn.addEventListener('click', () => {
+    if (hamMenuBtn.classList.contains('header__sm-menu--active')) {
+      navLinks.classList.remove('header__sm-menu--active')
+    } else {
+      navLinks.classList.add('header__sm-menu--active')
+    }
+    if (hamMenuBtn.classList.contains('d-none')) {
+      headerHamMenuBtn.classList.remove('d-none')
+      headerHamMenuCloseBtn.classList.add('d-none')
+    } else {
+      headerHamMenuBtn.classList.add('d-none')
+      headerHamMenuCloseBtn.classList.remove('d-none')
+    }
+  })
+
+  for (let i = 0; i < headerSmallMenuLinks.length; i++) {
+    headerSmallMenuLinks[i].addEventListener('click', () => {
+      navLinks.classList.remove('header__sm-menu--active')
+      headerHamMenuBtn.classList.remove('d-none')
+      headerHamMenuCloseBtn.classList.add('d-none')
+    })
+  }
+
+  const menuBtn = document.querySelector('.header__main-ham-menu-cont');
+  const burgerMenu = document.querySelector('.header__sm-menu');
+
+  menuBtn.addEventListener('click', () => {
+    burgerMenu.classList.toggle('header__sm-menu--active');
+  });
+
+
+
 
   // ✅ FIXED: Ensure all nav items have --i variables
   const navItems = document.querySelectorAll('.nav-links li');
@@ -114,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ✅ FIXED: Burger menu click handler
-  if (burgerMenu && nav) {
-    burgerMenu.addEventListener('click', (e) => {
+  if (menuHam && nav) {
+    menuHam.addEventListener('click', (e) => {
       e.stopPropagation();
       e.preventDefault();
 
@@ -170,11 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (intro) intro.style.display = 'block';
       }
 
-      // Toggle burger active state
-      burgerMenu.classList.toggle('active', isOpen);
+      // Toggle menuHam active state
+      menuHam.classList.toggle('active', isOpen);
     });
   } else {
-    console.error('Burger menu or nav not found!');
+    console.error('Menu ham or nav not found!');
   }
 
   // ✅ FIXED: Theme button handlers
@@ -221,8 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
           nav.classList.remove('open');
         }
 
-        // Reset burger menu state
-        if (burgerMenu) burgerMenu.classList.remove('active');
+        // Reset menuHam state
+        if (menuHam) menuHam.classList.remove('active');
       }
     });
   });
@@ -244,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nav &&
       nav.classList.contains('open') &&
       !nav.contains(event.target) &&
-      burgerMenu && !burgerMenu.contains(event.target)) {
+      menuHam && !menuHam.contains(event.target)) {
 
       console.log('Clicked outside, closing nav');
       nav.classList.remove('open');
@@ -255,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.style.pointerEvents = 'none';
       }, 600);
 
-      if (burgerMenu) burgerMenu.classList.remove('active');
+      if (menuHam) menuHam.classList.remove('active');
       if (intro) intro.style.display = 'block';
     }
   });

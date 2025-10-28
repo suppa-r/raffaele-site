@@ -1,38 +1,43 @@
-// ---
-const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont')
-const smallMenu = document.querySelector('.header__sm-menu')
-const headerHamMenuBtn = document.querySelector('.header__main-ham-menu')
-const headerHamMenuCloseBtn = document.querySelector(
-  '.header__main-ham-menu-close'
-)
-const headerSmallMenuLinks = document.querySelectorAll('.header__sm-menu-link')
+document.addEventListener('DOMContentLoaded', () => {
+  // Using js- prefixed classes for cleaner separation
+  const hamburgerTrigger = document.querySelector('.js-hamburger-trigger');
+  const hamburgerOpen = document.querySelector('.js-hamburger-open');
+  const hamburgerClose = document.querySelector('.js-hamburger-close');
+  const navLinks = document.querySelector('.nav-links');
 
-hamMenuBtn.addEventListener('click', () => {
-  if (smallMenu.classList.contains('header__sm-menu--active')) {
-    smallMenu.classList.remove('header__sm-menu--active')
-  } else {
-    smallMenu.classList.add('header__sm-menu--active')
+  // State tracking
+  let isMenuOpen = false;
+
+  function toggleHamburgerMenu() {
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+      // Show close icon, hide open icon
+      hamburgerOpen.classList.add('d-none');
+      hamburgerClose.classList.remove('d-none');
+      navLinks.classList.add('open');
+    } else {
+      // Show open icon, hide close icon
+      hamburgerOpen.classList.remove('d-none');
+      hamburgerClose.classList.add('d-none');
+      navLinks.classList.remove('open');
+    }
+
+    console.log('Menu is now:', isMenuOpen ? 'open' : 'closed');
   }
-  if (headerHamMenuBtn.classList.contains('d-none')) {
-    headerHamMenuBtn.classList.remove('d-none')
-    headerHamMenuCloseBtn.classList.add('d-none')
-  } else {
-    headerHamMenuBtn.classList.add('d-none')
-    headerHamMenuCloseBtn.classList.remove('d-none')
+
+  // Event listener
+  if (hamburgerTrigger) {
+    hamburgerTrigger.addEventListener('click', toggleHamburgerMenu);
   }
-})
 
-for (let i = 0; i < headerSmallMenuLinks.length; i++) {
-  headerSmallMenuLinks[i].addEventListener('click', () => {
-    smallMenu.classList.remove('header__sm-menu--active')
-    headerHamMenuBtn.classList.remove('d-none')
-    headerHamMenuCloseBtn.classList.add('d-none')
-  })
-}
-
-// ---
-const headerLogoConatiner = document.querySelector('.header__logo-container')
-
-headerLogoConatiner.addEventListener('click', () => {
-  location.href = 'index.html'
-})
+  // Close menu when clicking nav links
+  const navLinkItems = document.querySelectorAll('.nav-links a');
+  navLinkItems.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isMenuOpen) {
+        toggleHamburgerMenu();
+      }
+    });
+  });
+});
