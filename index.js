@@ -1,43 +1,88 @@
+// ✅ FIXED: Corrected active state logic
 document.addEventListener('DOMContentLoaded', () => {
-  // Using js- prefixed classes for cleaner separation
-  const hamburgerTrigger = document.querySelector('.js-hamburger-trigger');
-  const hamburgerOpen = document.querySelector('.js-hamburger-open');
-  const hamburgerClose = document.querySelector('.js-hamburger-close');
-  const navLinks = document.querySelector('.nav-links');
+  const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont')
+  const smallMenu = document.querySelector('.header__sm-menu')
+  const headerHamMenuBtn = document.querySelector('.header__main-ham-menu')
+  const headerHamMenuCloseBtn = document.querySelector('.header__main-ham-menu-close')
+  const headerSmallMenuLinks = document.querySelectorAll('.header__sm-menu-link a')
+  const headerLogoContainer = document.querySelector('.header__logo-container')
 
-  // State tracking
-  let isMenuOpen = false;
+  // Debug: Check if elements exist
+  console.log('Elements found:', {
+    hamMenuBtn: !!hamMenuBtn,
+    smallMenu: !!smallMenu,
+    headerHamMenuBtn: !!headerHamMenuBtn,
+    headerHamMenuCloseBtn: !!headerHamMenuCloseBtn,
+    headerSmallMenuLinks: headerSmallMenuLinks.length
+  })
 
-  function toggleHamburgerMenu() {
-    isMenuOpen = !isMenuOpen;
-
-    if (isMenuOpen) {
-      // Show close icon, hide open icon
-      hamburgerOpen.classList.add('d-none');
-      hamburgerClose.classList.remove('d-none');
-      navLinks.classList.add('open');
-    } else {
-      // Show open icon, hide close icon
-      hamburgerOpen.classList.remove('d-none');
-      hamburgerClose.classList.add('d-none');
-      navLinks.classList.remove('open');
+  // Function to toggle menu
+  function toggleMenu() {
+    if (!smallMenu) {
+      console.log('Small menu not found')
+      return
     }
 
-    console.log('Menu is now:', isMenuOpen ? 'open' : 'closed');
+    const isActive = smallMenu.classList.contains('header__sm-menu--active')
+    console.log('Menu is currently:', isActive ? 'active' : 'inactive')
+
+    if (isActive) {
+      // ✅ CLOSING MENU: Show hamburger, hide close button
+      smallMenu.classList.remove('header__sm-menu--active')
+      headerHamMenuBtn?.classList.remove('d-none')  // Show hamburger icon
+      headerHamMenuCloseBtn?.classList.add('d-none') // Hide close icon
+      console.log('Menu closed')
+    } else {
+      // ✅ OPENING MENU: Hide hamburger, show close button
+      smallMenu.classList.add('header__sm-menu--active')
+      headerHamMenuBtn?.classList.add('d-none')      // Hide hamburger icon
+      headerHamMenuCloseBtn?.classList.remove('d-none') // Show close icon
+      console.log('Menu opened')
+    }
   }
 
-  // Event listener
-  if (hamburgerTrigger) {
-    hamburgerTrigger.addEventListener('click', toggleHamburgerMenu);
+  // Function to close menu (used by nav links)
+  function closeMenu() {
+    if (!smallMenu) return
+
+    // ✅ ALWAYS CLOSE: Show hamburger, hide close button
+    smallMenu.classList.remove('header__sm-menu--active')
+    headerHamMenuBtn?.classList.remove('d-none')  // Show hamburger icon
+    headerHamMenuCloseBtn?.classList.add('d-none') // Hide close icon
+    console.log('Menu closed via nav link')
   }
 
-  // Close menu when clicking nav links
-  const navLinkItems = document.querySelectorAll('.nav-links a');
-  navLinkItems.forEach(link => {
+  // Hamburger menu click
+  if (hamMenuBtn) {
+    hamMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      console.log('Hamburger clicked')
+      toggleMenu()
+    })
+  }
+
+  // Close menu when nav links are clicked
+  headerSmallMenuLinks.forEach((link, index) => {
     link.addEventListener('click', () => {
-      if (isMenuOpen) {
-        toggleHamburgerMenu();
-      }
-    });
-  });
-});
+      console.log('Nav link', index, 'clicked')
+      closeMenu()
+    })
+  })
+
+  // Logo click
+  if (headerLogoContainer) {
+    headerLogoContainer.addEventListener('click', () => {
+      location.href = 'index.html'
+    })
+  }
+
+  // ✅ ADDED: Close menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (smallMenu?.classList.contains('header__sm-menu--active') &&
+      !smallMenu.contains(event.target) &&
+      !hamMenuBtn?.contains(event.target)) {
+      closeMenu()
+    }
+  })
+})
