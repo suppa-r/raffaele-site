@@ -296,42 +296,25 @@ body>* {
 .header {
   position: relative;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
-
-  margin: 0;
+  margin: var(--space-2xs) var(--space-l);
   border-radius: var(--space-l);
   padding: 0;
   box-shadow: var(--navbar-shadow);
   background: var(--gradient-header);
   z-index: 1500;
 }
-/* Desktop navigation */
-.navigation {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-2xs) 0;
-  z-index: 1000;
-  margin: 0 var(--space-l);
-  background: var(--gradient-header);
-  box-shadow: var(--navbar-shadow);
-  border-radius: var(--space-l);
-}
-
 
 .header__logo-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
-  gap: var(--space-7xs);
+  gap: var(--space-xl);
   padding: 0;
   color: var(--text-color);
-  text-decoration: none;
-  list-style: none;
+  margin: 0 var(--space-xs);
 }
 
 .header__logo-container:hover {
@@ -339,8 +322,8 @@ body>* {
 }
 
 .header__logo-img {
-  width: 30px;
-  height: 30px;
+  width: 55px;
+  height: auto;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
@@ -350,6 +333,21 @@ body>* {
 .header__logo-sub {
   letter-spacing: 1px;
 }
+/* Desktop navigation */
+.navigation {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xs) var(--space-l);
+  z-index: 1000;
+  margin: 0;
+  background: var(--gradient-header);
+  box-shadow: var(--navbar-shadow);
+  border-radius: var(--space-l);
+}
+
 .d-none {
   display: none;
 }
@@ -358,47 +356,142 @@ body>* {
   display: none;
 }
 
-.header__links {
+/*------navigation-------*/
+
+.navigation {
+  margin: 0;
+  user-select: none;
+  transition: opacity 0.4s ease-in;
+}
+
+.nav-links {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin: 0 var(--space-xl);
+  list-style: none;
+  background-color: transparent;
+  z-index: 1000;
+}
+
+.nav-links li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-m);
+  margin: 0;
+  padding: 0 var(--space-s);
+  user-select: none;
+  list-style: none;
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--btn-border-radius);
+  z-index: 1000;
+  cursor: pointer;
+  gap: var(--space-6xs);
+  transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.nav-links li a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  /* ✅ Remove default underline */
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6xs);
+  color: var(--text-color);
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  text-align: center;
+  position: relative;
+  /* ✅ For pseudo-element positioning */
+}
+
+/* ✅ Animated underline */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: calc(-2 * var(--space-3xs));
+  /* Match your text-underline-offset */
+  left: 50%;
+  width: 0;
+  /* Start with no width */
+  height: 0.2rem;
+  /* Match your underline thickness */
+  background-color: var(--text-span);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a:focus::after {
+  width: 100%;
+  /* Expand to full width on hover */
+}
+
+.nav-links li a span {
+  display: inline-block;
+  background-color: transparent;
+  padding: 0 var(--space-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  margin-inline: auto;
+}
+
+.nav-links li svg {
+  height: var(--space-m);
+  width: var(--space-m);
+  object-fit: cover;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
+  color: var(--text-color);
+  background-color: transparent;
+  opacity: 1;
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  /* Add this line */
+  user-select: none;
+  pointer-events: none;
+  /* Prevents SVG from capturing pointer events */
   margin: 0;
   padding: 0;
-  list-style: none;
+  border: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  stroke-width: var(--space-s);
 }
 
-.header__link {
-  display: block;
-  padding: var(--space-xs) var(--space-s);
-  color: var(--text-color);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
+ul {
+  @media (hover) {
+    &>li {
+      transform-origin: left center;
+      transition:
+        transform 1s var(--ease-spring-3),
+        opacity .3s var(--ease-3);
+    }
 
-.header__link:hover {
-  color: var(--text-span);
-}
-
-/* Hover effects for desktop */
-@media (hover: hover) {
-  .header__links li {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .header__links:hover li:not(:hover) {
-    opacity: 0.6;
-    transform: scale(0.95);
+    &:hover>li:not(:hover) {
+      opacity: .5;
+      transform: scale(0.8);
+    }
   }
 }
 
 /* Theme switcher styles */
 .theme-switcher {
   position: absolute;
-  top: var(--space-3xs);
-  right: var(--space-xl);
+  top: var(--space-xs);
+  right: var(--space-l);
   display: flex;
   flex-direction: row;
   margin: 0 0 0 var(--space-xs);
@@ -474,12 +567,12 @@ body>* {
   display: block;
   position: relative;
   z-index: 1600;
-  margin-left: var(--space-3xl);
+  margin-left: 0;
 }
 
 .header__main-ham-menu {
   width: 100%;
-  margin-right: 3rem;
+  margin-right: 0;
 
 }
 .header__main-ham-menu-close {
@@ -489,8 +582,6 @@ body>* {
 .header-sm-menu {
   display: none;
 }
-
-
 
 
 /* Mobile - hide navigation, show hamburger */
