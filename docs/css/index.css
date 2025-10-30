@@ -39,8 +39,8 @@
 
 [data-theme="light"] {
   --base-color: #fff;
-  --text-color: #000000;
-  --text-span: #000000;
+  --text-color: #000;
+  --text-span: #000;
   --clr-neon: hsla(189, 4%, 63%, 0.733);
   --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(to bottom, #b8c1c910, #323738a8, #2a2e31c4, #edeef1dc);

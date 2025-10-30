@@ -1,76 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Element declarations
+  // ✅ FIXED: Element declarations to match your HTML structure
   const themeSwitcher = document.querySelector('.theme-switcher');
   const themeButtons = document.querySelectorAll('.theme-button');
   const wrapper = document.querySelector('.wrapper');
-  const h = document.querySelector('.header');
-  const nav = document.querySelector('.nav-links');
-  const menuHam = document.querySelector('.header__main-ham-menu');
-  const closeMenu = document.querySelector('.header__main-ham-menu-close');
-  const intro = document.querySelector('.intro');
-  const navLinksTabs = document.querySelectorAll('.nav-links a');
+  const main = document.querySelector('main');
 
-  const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont')
+  // ✅ FIXED: Updated selectors for your navigation structure
+  const navigation = document.querySelector('.navigation');
   const navLinks = document.querySelector('.nav-links');
-  const navLinksOpen = document.querySelector('.nav-links.open');
-  const headerHamMenuBtn = document.querySelector('.header__main-ham-menu')
-  const headerHamMenuCloseBtn = document.querySelector('.header__main-ham-menu-close')
-  const headerSmallMenuLinks = document.querySelectorAll('.header__sm-menu-link')
+  const headerSmMenu = document.querySelector('.header__sm-menu');
 
-  hamMenuBtn.addEventListener('click', () => {
-    if (hamMenuBtn.classList.contains('header__sm-menu--active')) {
-      navLinks.classList.remove('header__sm-menu--active')
-    } else {
-      navLinks.classList.add('header__sm-menu--active')
-    }
-    if (hamMenuBtn.classList.contains('d-none')) {
-      headerHamMenuBtn.classList.remove('d-none')
-      headerHamMenuCloseBtn.classList.add('d-none')
-    } else {
-      headerHamMenuBtn.classList.add('d-none')
-      headerHamMenuCloseBtn.classList.remove('d-none')
-    }
-  })
+  // ✅ FIXED: Hamburger menu elements
+  const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont');
+  const headerHamMenuBtn = document.querySelector('.header__main-ham-menu');
+  const headerHamMenuCloseBtn = document.querySelector('.header__main-ham-menu-close');
+  const headerSmallMenuLinks = document.querySelectorAll('.header__sm-menu-link a');
+  const headerLogoContainer = document.querySelector('.header__logo-container');
 
-  for (let i = 0; i < headerSmallMenuLinks.length; i++) {
-    headerSmallMenuLinks[i].addEventListener('click', () => {
-      navLinks.classList.remove('header__sm-menu--active')
-      headerHamMenuBtn.classList.remove('d-none')
-      headerHamMenuCloseBtn.classList.add('d-none')
-    })
+  // ✅ FIXED: Show main content
+  if (main) {
+    main.style.display = 'block';
   }
 
-  const menuBtn = document.querySelector('.header__main-ham-menu-cont');
-  const burgerMenu = document.querySelector('.header__sm-menu');
-
-  menuBtn.addEventListener('click', () => {
-    burgerMenu.classList.toggle('header__sm-menu--active');
-  });
-
-
-
-
-  // ✅ FIXED: Ensure all nav items have --i variables
-  const navItems = document.querySelectorAll('.nav-links li');
-  if (navItems.length > 0) {
-    navItems.forEach((item, index) => {
-      if (!item.style.getPropertyValue('--i')) {
-        item.style.setProperty('--i', index + 1);
-      }
-      console.log(`Nav item ${index + 1}: --i = ${item.style.getPropertyValue('--i')}`);
-    });
-  } else {
-    console.warn('No nav items found for animation setup');
-  }
-
-  // Debug: Check if elements exist
-  console.log('Menu button found:', menuBtn);
-  console.log('Burger menu found:', burgerMenu);
-  console.log('Nav links found:', nav);
-
-  intro && (intro.style.display = 'block');
-
-  // ✅ FIXED: Helper functions (moved to top)
+  // ✅ FIXED: Helper functions
   function getDefaultTheme() {
     return 'dark';
   }
@@ -86,7 +38,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ✅ FIXED: Theme initialization (moved before using variables)
+  function updateFavicon(theme) {
+    const favicon = document.getElementById("favicon") || document.querySelector("link[rel='icon']");
+    if (favicon) {
+      const faviconPath = theme === "dark"
+        ? "/favicons/dark-1.png"
+        : "/favicons/light-1.png";
+      favicon.href = faviconPath + "?v=" + Date.now();
+    }
+  }
+
+  // ✅ FIXED: Mobile menu functions
+  function toggleMobileMenu() {
+    if (!headerSmMenu) return;
+
+    const isActive = headerSmMenu.classList.contains('header__sm-menu--active');
+
+    if (isActive) {
+      headerSmMenu.classList.remove('header__sm-menu--active');
+      headerHamMenuBtn?.classList.remove('d-none');
+      headerHamMenuCloseBtn?.classList.add('d-none');
+    } else {
+      headerSmMenu.classList.add('header__sm-menu--active');
+      headerHamMenuBtn?.classList.add('d-none');
+      headerHamMenuCloseBtn?.classList.remove('d-none');
+    }
+  }
+
+  function closeMobileMenu() {
+    if (headerSmMenu) {
+      headerSmMenu.classList.remove('header__sm-menu--active');
+      headerHamMenuBtn?.classList.remove('d-none');
+      headerHamMenuCloseBtn?.classList.add('d-none');
+    }
+  }
+
+  // ✅ FIXED: Theme initialization
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   let sysListener;
 
@@ -133,90 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Update favicon to match default theme
   updateFavicon(savedTheme === 'system' ? (mql.matches ? 'dark' : 'light') : savedTheme);
 
-  // Close nav menu when a nav link is clicked
-  navLinksTabs.forEach(link => {
-    link.addEventListener('click', () => {
-      console.log('Nav link clicked, closing menu');
-      if (nav && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-
-        // ✅ FIXED: Proper nav hiding with animations
-        //setTimeout(() => {
-        //  nav.style.display = 'none';
-        //  nav.style.opacity = '0';
-        // nav.style.pointerEvents = 'none';
-        //}, 600); // Wait for animations to finish
-
-        burgerMenu && burgerMenu.classList.remove('active');
-        if (intro) intro.style.display = 'block';
-      }
-    });
-  });
-
-  // ✅ FIXED: Burger menu click handler
-  if (menuHam && nav) {
-    menuHam.addEventListener('click', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-
-      console.log('Burger clicked!');
-
-      const isOpen = !nav.classList.contains('open');
-      console.log('Nav will be:', isOpen ? 'open' : 'closed');
-
-      if (isOpen) {
-        // Opening nav
-        nav.style.display = 'flex';
-        nav.style.opacity = '1';
-        nav.style.pointerEvents = 'all';
-
-        // Force reflow
-        nav.offsetHeight;
-
-        // Add open class for animations
-        requestAnimationFrame(() => {
-          nav.classList.add('open');
-          console.log('Nav opened with animations');
-
-          // Debug li elements
-          const currentNavItems = document.querySelectorAll('.nav-links li');
-          currentNavItems.forEach((item, index) => {
-            //setTimeout(() => {
-            /// console.log(`Li ${index} styles:`, {
-            //  transform: getComputedStyle(item).transform,
-            //  opacity: getComputedStyle(item).opacity,
-            // transitionDelay: getComputedStyle(item).transitionDelay,
-            // iValue: item.style.getPropertyValue('--i')
-            // });
-            //}, 100);
-          });
-        });
-
-        // Hide other elements when nav is open
-        if (intro) intro.style.display = 'none';
-
-      } else {
-        // Closing nav
-        nav.classList.remove('open');
-
-        // ✅ FIXED: Wait for animations before hiding
-        setTimeout(() => {
-          nav.style.display = 'none';
-          nav.style.opacity = '0';
-          nav.style.pointerEvents = 'none';
-        }, 0); // Wait for longest animation delay
-
-        // Show other elements when nav is closed
-        if (intro) intro.style.display = 'block';
-      }
-
-      // Toggle menuHam active state
-      menuHam.classList.toggle('active', isOpen);
-    });
-  } else {
-    console.error('Menu ham or nav not found!');
-  }
-
   // ✅ FIXED: Theme button handlers
   themeButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -228,9 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (themeSwitcher) {
           themeSwitcher.classList.add('active');
         }
-        if (intro) intro.style.display = 'block';
-        if (h) h.style.display = 'block';
-        if (nav) nav.style.display = 'block';
+        if (main) main.style.display = 'block';
+        if (navigation) navigation.style.display = 'block';
 
       } else if (input) {
         // Change theme
@@ -252,20 +154,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setActiveThemeButton();
 
-        // Close theme switcher and nav
+        // Close theme switcher
         if (themeSwitcher) themeSwitcher.classList.remove('active');
-        if (intro) intro.style.display = 'block';
-        if (h) h.style.display = 'block';
-        if (nav) {
-          nav.style.display = '';
-          nav.classList.remove('open');
-        }
-
-        // Reset menuHam state
-        if (menuHam) menuHam.classList.remove('active');
+        if (wrapper) wrapper.style.display = 'block';
+        if (main) main.style.display = 'block';
+        if (navigation) navigation.style.display = 'block';
       }
     });
   });
+
+  // ✅ FIXED: Hamburger menu event listeners
+  if (hamMenuBtn) {
+    hamMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+  }
+
+  // ✅ FIXED: Close mobile menu when nav links are clicked
+  headerSmallMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+
+  // ✅ FIXED: Logo click handler
+  if (headerLogoContainer) {
+    headerLogoContainer.addEventListener('click', () => {
+      location.href = 'index.html';
+    });
+  }
 
   // ✅ FIXED: Click outside handlers
   document.addEventListener('click', (event) => {
@@ -275,39 +194,31 @@ document.addEventListener('DOMContentLoaded', () => {
       !themeSwitcher.contains(event.target)) {
 
       themeSwitcher.classList.remove('active');
-      if (intro) intro.style.display = 'block';
-      if (h) h.style.display = 'block';
-      if (nav) nav.style.display = 'block';
+      if (main) main.style.display = 'block';
+      if (navigation) navigation.style.display = 'block';
     }
 
-    // Close mobile nav when clicking outside
-    if (nav &&
-      nav.classList.contains('open') &&
-      !nav.contains(event.target) &&
-      menuHam && !menuHam.contains(event.target)) {
-
-      console.log('Clicked outside, closing nav');
-      nav.classList.remove('open');
-
-      setTimeout(() => {
-        nav.style.display = 'none';
-        nav.style.opacity = '0';
-        nav.style.pointerEvents = 'none';
-      }, 600);
-
-      if (menuHam) menuHam.classList.remove('active');
-      if (intro) intro.style.display = 'block';
+    // Close mobile menu when clicking outside
+    if (headerSmMenu?.classList.contains('header__sm-menu--active') &&
+      !headerSmMenu.contains(event.target) &&
+      !hamMenuBtn?.contains(event.target)) {
+      closeMobileMenu();
     }
   });
-});
 
-// ✅ FIXED: Favicon function outside DOMContentLoaded
-function updateFavicon(theme) {
-  const favicon = document.getElementById("favicon") || document.querySelector("link[rel='icon']");
-  if (favicon) {
-    const faviconPath = theme === "dark"
-      ? "/favicons/dark-1.png"
-      : "/favicons/light-1.png";
-    favicon.href = faviconPath + "?v=" + Date.now();
-  }
-}
+  // ✅ ADDED: Debug information
+  console.log('Script loaded. Elements found:', {
+    themeSwitcher: !!themeSwitcher,
+    themeButtons: themeButtons.length,
+    wrapper: !!wrapper,
+    main: !!main,
+    navigation: !!navigation,
+    navLinks: !!navLinks,
+    headerSmMenu: !!headerSmMenu,
+    hamMenuBtn: !!hamMenuBtn,
+    headerHamMenuBtn: !!headerHamMenuBtn,
+    headerHamMenuCloseBtn: !!headerHamMenuCloseBtn,
+    headerSmallMenuLinks: headerSmallMenuLinks.length,
+    headerLogoContainer: !!headerLogoContainer
+  });
+});
