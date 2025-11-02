@@ -376,7 +376,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: var(--space-5xl);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-4xl);
 }
 
 .content {
