@@ -376,7 +376,9 @@ header {
   align-items: center;
   justify-content: center;
   gap: var(--space-5xl);
-  margin-top: var(--space-4xl);
+  margin-block: var(--space-3xl);
+  padding-inline: var(--padding-inline);
+  margin-inline: auto;
 }
 
 .content {
@@ -385,6 +387,7 @@ header {
   justify-content: center;
   position: relative;
   margin-inline: auto;
+  padding: 0 var(--space-m);
 }
 
 .content div {
@@ -398,22 +401,23 @@ header {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.0);
+    transform: scale(0.8);
   }
   20%,
   100% {
     opacity: 1;
-    transform: scale(2.5);
+    transform: scale(1);
   }
 }
 
 .content div span {
-  width: 7vmin;
+  width: 8.5vmin;
   position: relative;
   text-align: center;
   box-sizing: border-box;
   color: var(--text-color);
   font-size: var(--step-0);
+  text-shadow: 0 0 5px var(--text-color);
 }
 
 .content-1 {
@@ -445,40 +449,39 @@ header {
 }
 
 .content-1 div span {
-  width: 7vmin;
+  width: 10vmin;
   position: relative;
   text-align: center;
   box-sizing: border-box;
   color: var(--text-color);
   font-size: var(--step-0);
+  text-shadow: 0 0 5px var(--text-color);
 }
 
+
+.up:before,
 .down:before {
-  /* Wide shadow */
   width: 80%;
-  height: 0.5vmin;
-  background: radial-gradient(ellipse at 50% 50%, var(--base-color), #ffffff 80%);
+  height: 0.1vmin;
+  background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
   content: "";
   position: absolute;
   border-radius: 100%;
   filter: blur(2px);
   left: 10%;
   top: 49%;
-  box-shadow: 0 0 100px 0 var(--base-color);
+  box-shadow: 0 0 100px 0 var(--text-color);
   animation: shadow var(--sp) ease 0s infinite;
 }
 
-.down:after {
+.down:before {
   /* Small focused shadow */
   width: 1vmin;
   height: 0.5vmin;
-  content: "";
-  position: absolute;
-  filter: blur(2px);
+  filter: blur(3px);
   left: calc(50% - 0.5vmin);
   top: 45%;
-  box-shadow: 0 0 100px 0 var(--base-color);
-  animation: shadow var(--sp) ease 0s infinite;
+  box-shadow: 0 0 100px 0 var(--text-color);
 }
 
 @keyframes shadow {
@@ -546,7 +549,7 @@ header {
   }
   40%,
   60% {
-    top: -0.5vmin;
+    top: -0.6vmin;
   }
 }
 
@@ -559,7 +562,7 @@ header {
   }
   40%,
   60% {
-    top: -1vmin;
+    top: -1.2vmin;
   }
 }
 
@@ -572,7 +575,7 @@ header {
   }
   40%,
   60% {
-    top: -1.5vmin;
+    top: -1.8vmin;
   }
 }
 
@@ -585,7 +588,7 @@ header {
   }
   40%,
   60% {
-    top: -2vmin;
+    top: -2.4vmin;
   }
 }
 
@@ -598,7 +601,7 @@ header {
   }
   40%,
   60% {
-    top: 0.5vmin;
+    top: 0.6vmin;
   }
 }
 
@@ -611,7 +614,7 @@ header {
   }
   40%,
   60% {
-    top: 1vmin;
+    top: 1.2vmin;
   }
 }
 
@@ -624,7 +627,7 @@ header {
   }
   40%,
   60% {
-    top: 1.5vmin;
+    top: 1.8vmin;
   }
 }
 
@@ -637,7 +640,7 @@ header {
   }
   40%,
   60% {
-    top: 2vmin;
+    top: 2.4vmin;
   }
 }
 
