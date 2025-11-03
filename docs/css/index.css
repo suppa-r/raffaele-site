@@ -375,8 +375,8 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-5xl);
-  margin-block: var(--space-3xl);
+  gap: var(--space-3xl);
+  margin-block: var(--space-2xl);
   padding-inline: var(--padding-inline);
   margin-inline: auto;
 }
@@ -646,7 +646,7 @@ header {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-3xl);
   word-spacing: var(--space-xs);
   user-select: none;
   overflow: hidden;
