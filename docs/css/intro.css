@@ -289,11 +289,8 @@ body>* {
   margin-inline: auto;
 }
 
-.wrapper>* {
-  container-type: inline-size;
-}
-
 /*------header-------*/
+
 header {
   display: flex;
   justify-content: center;

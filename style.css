@@ -33,7 +33,6 @@
   --shadow-color3: #e8eff0fd;
 }
 
-
 [data-theme="light"] {
   --base-color: #fff;
   --text-color: #000000;
@@ -246,8 +245,8 @@ body {
 }
 
 body::before {
-  --size: 45px;
-  --line: color-mix(in hsl, canvasText, transparent 70%);
+  --size: 30px;
+  --line: color-mix(in hsl, var(--text-color), transparent 65%);
   content: '';
   height: 100vh;
   width: 100vw;
@@ -256,7 +255,7 @@ body::before {
       var(--line) 1px,
       transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
     linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
-  mask: linear-gradient(-20deg, transparent 50%, var(--text-color));
+  mask: linear-gradient(-10deg, transparent 20%, var(--text-color));
   top: 0;
   transform-style: flat;
   pointer-events: none;
@@ -279,19 +278,37 @@ body>* {
   margin-inline: auto;
 }
 
-.wrapper>* {
-  container-type: inline-size;
+/*------header-------*/
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: var(--space-s) 0 0 var(--space-4xl);
+  padding: var(--space-xs) var(--space-4xl);
+  background: var(--gradient-header);
+  border-radius: var(--space-l);
+  background-color: transparent;
+  z-index: 1500;
+}
+
+header p {
+  margin: 0 0 0 var(--space-s);
+}
+
+header p span {
+  color: var(--text-span);
 }
 
 main {
   margin-left: 5rem;
-  padding: var(--space-s);
+  padding-inline: var(--padding-inline);
   transition: margin-left 600ms ease;
 }
 
 .navbar {
   position: fixed;
-  background-color: var(--base-color);
+  background-color: transparent;
   color: var(--text-color);
   transition: width 600ms ease;
   overflow: hidden;
@@ -308,7 +325,7 @@ main {
 }
 
 .nav-item {
-  width: 100%;
+  padding: 0 var(--space-2xl);
 }
 
 .nav-item:last-child {
@@ -333,7 +350,7 @@ main {
 
 .link-text {
   display: none;
-  margin-left: 1rem;
+  margin-left: 4rem;
 }
 
 .nav-link svg {
@@ -343,11 +360,11 @@ main {
 }
 
 .fa-primary {
-  color: #ff7eee;
+  color: var(--text-color);
 }
 
 .fa-secondary {
-  color: #df49a6;
+  color: var(--text-span);
 }
 
 .fa-primary,
@@ -357,14 +374,15 @@ main {
 
 .logo {
   font-weight: bold;
-  text-transform: uppercase;
   margin-bottom: 1rem;
   text-align: center;
   color: var(--text-color);
   background: var(--base-color);
   font-size: 1.5rem;
-  letter-spacing: 0.3ch;
-  width: 100%;
+  letter-spacing: var(--letter-space-content);
+  padding: 0 var(--space-s);
+  box-shadow: var(--shadow);
+  /*width: 100%;*/
 }
 
 .logo svg {
@@ -383,10 +401,219 @@ main {
   transform: rotate(-180deg);
 }
 
+/* Theme switcher styles */
+.theme-switcher {
+  position: absolute;
+  bottom: var(--space-l);
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 0 var(--space-xs);
+  z-index: 2000;
+  pointer-events: all;
+  user-select: none;
+  gap: var(--space-2xs);
+  background-color: transparent;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: var(--shadow);
+  border-radius: var(--btn-border-radius);
+}
+
+.theme-button {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  z-index: 2500;
+  user-select: none;
+  background: none;
+  opacity: 1;
+  color: var(--text-color);
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: all;
+  margin: 0 0 0 var(--space-xs);
+}
+
+.theme-button.active {
+  display: none;
+}
+
+.theme-button:not(.active) {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.3s ease-in-out;
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  user-select: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.theme-button input[type="radio"] {
+  display: none;
+}
+
+.theme-button svg {
+  width: var(--space-m);
+  height: var(--space-m);
+  color: var(--text-color);
+  opacity: 1;
+  display: inline-block;
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  /* Add this line */
+  user-select: none;
+  pointer-events: none;
+  /* Prevents SVG from capturing pointer events */
+  box-shadow: var(--shadow);
+}
+
+.theme-button:hover svg {
+  transform: scale(0.6) rotate(90deg);
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  color: var(--text-span);
+  background-color: none;
+}
 
 
-/* Small screens */
-@media only screen and (max-width: 600px) {
+/*------intro-------*/
+
+.intro {
+  margin-top: var(--space-xs);
+  text-align: center;
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  margin-inline: 0 auto;
+  padding-inline: var(--padding-inline);
+}
+
+.fancy span {
+  display: inline-block;
+  background: linear-gradient(270deg, #645960, #3f3e44, #262726, #dde1e2, #e8ebee, #8180868f, #bdb5b9, #272926);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 3s ease-in infinite alternate;
+  animation-direction: alternate reverse;
+  font-size: var(--step-0);
+  letter-spacing: var(--letter-space-content);
+  padding-left: var(--space-2xs);
+  padding-right: var(--space-2xs);
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.intro .ya {
+  font-style: italic;
+  font-size: var(--step-2);
+  white-space: nowrap;
+  margin-block: var(--space-4xs);
+  padding-inline: var(--padding-inline);
+}
+
+.intro .ya-1 {
+  font-style: italic;
+  font-size: var(--step-1);
+  white-space: nowrap;
+  margin-block: var(--space-5xs);
+  padding-inline: var(--padding-inline);
+}
+
+.intro .ya-2 {
+  font-style: italic;
+  font-size: var(--step-2);
+  margin-block: var(--space-4xs);
+  padding-inline: var(--padding-inline);
+}
+
+.intro .ya-3 {
+  font-style: italic;
+  font-size: var(--step-4);
+  white-space: nowrap;
+  margin-block: var(--space-3xs);
+  padding-inline: var(--padding-inline);
+}
+
+.wrapper-gradient-text {
+  font-style: italic;
+  font-size: var(--step-3);
+  margin: 0;
+  /* Remove default margins */
+  padding: 0;
+  /* Remove default padding */
+  text-align: center;
+  /* Align text to the left */
+  text-shadow: 100px 100px 100px rgb(255, 255, 255);
+  padding-inline: var(--padding-inline);
+}
+
+.text-layer {
+  background: var(--gradient);
+  background-size: 200% 200%;
+  background-clip: text;
+  color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  /* Use theme shadow for fallback */
+  text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.853));
+}
+
+.text-layer-1 {
+  background: var(--gradient);
+  background-size: 200% 200%;
+  background-clip: text;
+  color: transparent;
+  animation: shadowDrip 3s infinite alternate ease-in-out;
+  text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.853));
+  display: inline-block;
+  padding-inline: var(--space-2xs);
+}
+
+@keyframes shadowDrip {
+  0% {
+    text-shadow: 0px 0px 0px var(--shadow-color),
+      0px 0px 0px var(--shadow-color2),
+      0px 0px 0px var(--shadow-color3);
+  }
+
+  100% {
+    text-shadow: 0px 50px 100px var(--shadow-color),
+      0px 15px 20px var(--shadow-color2),
+      0px 30px 5px var(--shadow-color3);
+  }
+}
+
+
+@container (max-width: 600px) {
+
+  header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: var(--space-3xs) 0 0 var(--space-l);
+    padding: var(--space-3xs) var(--space-l);
+    background: var(--gradient-header);
+    border-radius: var(--space-l);
+    background-color: transparent;
+    z-index: 1500;
+  }
+
   .navbar {
     bottom: 0;
     width: 100vw;
@@ -411,15 +638,15 @@ main {
 }
 
 /* Large screens */
-@media only screen and (min-width: 600px) {
+@container (min-width: 600px) {
   .navbar {
     top: 0;
-    width: 5rem;
+    width: 3rem;
     height: 100vh;
   }
 
   .navbar:hover {
-    width: 16rem;
+    width: 12rem;
   }
 
   .navbar:hover .link-text {
@@ -433,83 +660,9 @@ main {
   .navbar:hover .logo-text {
     left: 0px;
   }
-
-  /* Theme switcher styles */
-  .theme-switcher {
-    position: absolute;
-    bottom: var(--space-xs);
-    left: var(--space-xs);
-    display: flex;
-    flex-direction: row;
-    margin: 0 0 0 var(--space-xs);
-    z-index: 2000;
-    pointer-events: all;
-    user-select: none;
-    gap: var(--space-2xs);
-    background-color: transparent;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: var(--shadow);
-    border-radius: var(--btn-border-radius);
-  }
-
-  .theme-button {
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-    z-index: 2500;
-    user-select: none;
-    background: none;
-    opacity: 1;
-    color: var(--text-color);
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: all;
-    margin: 0 0 0 var(--space-xs);
-  }
-
-  .theme-button.active {
-    display: none;
-  }
-
-  .theme-button:not(.active) {
-    display: block;
-    opacity: 1;
-    pointer-events: all;
-    transition: opacity 0.3s ease-in-out;
-    background-color: transparent;
-    color: var(--text-color);
-    border: none;
-    border-radius: var(--btn-border-radius);
-    user-select: none;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-  }
-
-  .theme-button input[type="radio"] {
-    display: none;
-  }
-
-  .theme-button svg {
-    width: var(--space-m);
-    height: var(--space-m);
-    color: var(--text-color);
-    opacity: 1;
-    display: inline-block;
-    transition: transform 0.1s, color 0.3s, background-color 0.3s;
-    /* Add this line */
-    user-select: none;
-    pointer-events: none;
-    /* Prevents SVG from capturing pointer events */
-    box-shadow: var(--shadow);
-  }
-
-  .theme-button:hover svg {
-    transform: scale(0.6) rotate(90deg);
-    transition: transform 0.1s, color 0.3s, background-color 0.3s;
-    color: var(--text-span);
-    background-color: none;
-  }
 }
+
+
 
 /*.dark {
   --text-primary: #b6b6b6;
