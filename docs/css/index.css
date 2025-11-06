@@ -9,6 +9,11 @@
   --bg-repeat: no-repeat;
   /* ✅ Single image */
 }
+/* ✅ Only add glow effect in dark theme where it makes sense */
+[data-theme="dark"] .content div span,
+[data-theme="dark"] .content-1 div span {
+  text-shadow: 0 0 3px var(--text-color);
+}
 
 [data-theme="light"] {
   --base-color: #fff;
