@@ -1,8 +1,8 @@
 [data-theme="dark"] {
   --base-color: #000;
   --text-color: #fff;
-  --text-span: hsl(187, 39%, 39%);
-  --text-shadow: 0 20px 20px hsla(0, 0%, 100%, 0.89), 0 0 20px var(--text-color);
+  --text-span: hsla(187, 63%, 57%, 0.644);
+
   --bg-image: url('/docs/images/header-desktop.jpg');
   --bg-size: cover;
   /* ✅ Single image */
@@ -20,25 +20,39 @@
   --text-color: #000;
   --text-span: #2c4444a4;
   --bg-image:
-    linear-gradient(rgba(0, 0, 0, 0.35) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.60) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.60) 1px, transparent 1px),
     radial-gradient(circle at center,
-      rgb(230, 223, 216) 0%,
-      rgba(206, 195, 184, 0.9) 25%,
-      rgba(196, 187, 179, 0.8) 50%,
-      rgba(185, 177, 169, 0.7) 75%,
+      rgb(255, 255, 255) 0%,
+      rgb(255, 255, 255) 25%,
+      rgb(255, 255, 255) 50%,
+      rgb(255, 255, 255) 75%,
       rgba(25, 20, 15, 0.6) 100%);
   --bg-size: 30px 30px, 30px 30px, cover;
   --bg-repeat: repeat, repeat, no-repeat;
 }
 
-
-
 :root {
   --sp: 4s;
-  --burger-thickness: 2.5px;
-  --navigation__transition: max-height 0.5s ease-in-out,
-    opacity 0.3s ease-in-out;
+  --btn-border-radius: var(--space-s);
+  /* global page padding variables */
+  --padding-inline: var(--space-3xs);
+  --padding-block: 0;
+  --letter-space-content: 0.14rem;
+
+  /* Font families */
+  --font-primary: 'pompiere_regular',
+    sans-serif;
+  --font-secondary: 'monotonregular',
+    sans-serif;
+
+  /* Base grid and background settings */
+  --grid-size: 30px;
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
+  --directional-angle: 90deg;
+
+
 
   /* Fluid typography and spacing using cqi unit */
   /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
@@ -73,26 +87,9 @@
   --space-9xl: clamp(12rem, 11.3864rem + 2.7273cqi, 13.5rem);
 
 
-  --btn-border-radius: var(--space-s);
-  /* global page padding variables */
-  --padding-inline: var(--space-3xs);
-  --padding-block: 0;
-  --letter-space-content: 0.14rem;
 
-  /* Font families */
-  --font-primary: 'pompiere_regular',
-    sans-serif;
-  --font-secondary: 'monotonregular',
-    sans-serif;
-
-
-
-  /* Base grid and background settings */
-  --grid-size: 30px;
-  --backdrop-blur: blur(1px);
-  --background-transition: background 0.3s ease-in-out;
-  --directional-angle: 90deg;
 }
+
 @supports (selector(::view-transition)) {
   .support.view-transition {
     display: none;
@@ -197,16 +194,10 @@
   }
 }
 
-/* Reset and base styles */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  color: var(--text-color);
-}
+/*------global styles-------*/
 
 body {
+  color: var(--text-color);
   font-size: var(--step-0);
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
@@ -236,6 +227,10 @@ body>* {
   box-sizing: border-box;
   position: relative;
   /* ✅ For any absolutely positioned children */
+  z-index: 2000;
+  /* ✅ Above background */
+  background-color: transparent;
+  /* ✅ Ensure transparency */
 }
 
 /*------header-------*/
@@ -334,7 +329,7 @@ header {
   margin-block: var(--space-2xl);
   padding-inline: var(--padding-inline);
   margin-inline: auto;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .content {
@@ -373,7 +368,6 @@ header {
   box-sizing: border-box;
   color: var(--text-color);
   font-size: var(--step-0);
-  /* ✅ REMOVE: text-shadow: 0 0 5px var(--text-color); */
 }
 
 .content-1 {
@@ -664,7 +658,7 @@ header {
   text-align: center;
   color: var(--text-color);
   user-select: none;
-
+  pointer-events: none;
 }
 
 .large-button svg {
