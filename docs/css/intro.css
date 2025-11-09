@@ -5,17 +5,11 @@
   --clr-neon: hsl(191, 9%, 35%);
   --clr-button: hsla(0, 0%, 100%, 0);
   --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
-
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
-
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.271);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
-
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
-
-
   --background: linear-gradient(270deg, #ce85a9b9, #c4bbce, #c97ba2bd);
-
   --bars: #eee6e6;
 
   /* Light mode background gradient */
@@ -33,7 +27,6 @@
   --shadow-color3: #e8eff0fd;
 }
 
-
 [data-theme="light"] {
   --base-color: #fff;
   --text-color: #000000;
@@ -41,18 +34,11 @@
   --clr-neon: hsla(189, 4%, 63%, 0.733);
   --clr-button: hsla(0, 0%, 100%, 0.671);
   --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
-
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
-
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
-
-  /*--text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0), 0 0 0.45em var(--text-color);*/
-
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
-
   --background: linear-gradient(270deg, #ce85aa36, #c4bbce00, #6820449d);
-
   --bars: #000000;
 
   /* Light mode background gradient */
@@ -72,6 +58,24 @@
   --burger-thickness: 2.5px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 
+  /* Button border radius */
+  --btn-border-radius: var(--space-s);
+  /* global page padding variables */
+  --padding-inline: var(--space-3xs);
+  --padding-block: 0;
+  --letter-space-content: 0.14rem;
+  --word-space-content: 0.2rem;
+
+  /* Font families */
+  --font-primary: 'pompiere_regular', sans-serif;
+  --font-secondary: 'monotonregular', sans-serif;
+
+  /* Base grid and background settings */
+  --grid-size: 30px;
+  --backdrop-blur: blur(1px);
+  --background-transition: background 0.3s ease-in-out;
+  --directional-angle: 90deg;
+
   /* Fluid typography and spacing using cqi unit */
   /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
 
@@ -81,6 +85,7 @@
   --step-2: clamp(1.2656rem, 0.9656rem + 1.3334cqi, 1.999rem);
   --step-3: clamp(1.4238rem, 0.9162rem + 2.2561cqi, 2.6647rem);
   --step-4: clamp(1.6018rem, 0.804rem + 3.5458cqi, 3.552rem);
+  --step-5: clamp(1.8022rem, 0.6121rem + 5.3331cqi, 4.736rem);
 
 
   /*---------------------- Fluid spacing ---------------------- */
@@ -102,25 +107,6 @@
   --space-7xl: clamp(10rem, 9.4886rem + 2.2727cqi, 11.25rem);
   --space-8xl: clamp(11rem, 10.4375rem + 2.5cqi, 12.375rem);
   --space-9xl: clamp(12rem, 11.3864rem + 2.7273cqi, 13.5rem);
-
-
-  --btn-border-radius: var(--space-s);
-  /* global page padding variables */
-  --padding-inline: var(--space-3xs);
-  --padding-block: 0;
-  --letter-space-content: 0.14rem;
-
-  /* Font families */
-  --font-primary: 'pompiere_regular', sans-serif;
-  --font-secondary: 'monotonregular', sans-serif;
-
-
-
-  /* Base grid and background settings */
-  --grid-size: 30px;
-  --backdrop-blur: blur(1px);
-  --background-transition: background 0.3s ease-in-out;
-  --directional-angle: 90deg;
 }
 
 @supports (selector(::view-transition)) {
@@ -230,18 +216,23 @@
 
 body,
 html {
-  color: var(--text-color);
-  scroll-behavior: smooth;
-}
-
-body {
+  background-color: var(--base-color);
   font-size: var(--step-0);
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
   font-weight: normal;
-  background: var(--base-color);
-  padding-inline: var(--padding-inline);
-  letter-spacing: var(--letter-space-content);
+  font-variant: normal;
+  color: var(--text-color);
+  letter-spacing: var(--letter-spacing);
+  word-spacing: var(--word-spacing);
+  padding: 0 var(--page-padding-inline);
+}
+
+body {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
+  z-index: 1000;
+  isolation: isolate;
 }
 
 body::before {
@@ -512,10 +503,10 @@ ul {
 
 .theme-button:hover svg {
   transform: scale(0.6) rotate(90deg);
-  transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
-  background-color: none;
+  background-color: transparent;
 }
+
 
 /*------menu button-------*/
 
@@ -710,6 +701,7 @@ ul {
       0px 30px 5px var(--shadow-color3);
   }
 }
+
 @container (max-width: 600px) {
   .header-image {
     display: block;
@@ -785,7 +777,7 @@ ul {
     justify-content: center;
     user-select: none;
     list-style: none;
-    background-color: var(--navbar-shadow);
+    background-color: var(--base-color);
     border: 0;
     border-radius: var(--btn-border-radius);
     z-index: 1000;
@@ -795,8 +787,32 @@ ul {
   .nav-links.open li {
     transform: translateY(0);
     opacity: 1;
+    /* --i will be set below for each child */
     transition-delay: calc(0.15s * var(--i));
   }
+
+  .nav-links.open li:nth-child(1) {
+    --i: 1;
+  }
+  .nav-links.open li:nth-child(2) {
+    --i: 2;
+  }
+  .nav-links.open li:nth-child(3) {
+    --i: 3;
+  }
+  .nav-links.open li:nth-child(4) {
+    --i: 4;
+  }
+  .nav-links.open li:nth-child(5) {
+    --i: 5;
+  }
+  .nav-links.open li:nth-child(6) {
+    --i: 6;
+  }
+  .nav-links.open li:nth-child(7) {
+    --i: 7;
+  }
+  /* Add more if you have more nav items */
 
   .menu-btn {
     display: flex;
