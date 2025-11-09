@@ -105,7 +105,7 @@
 .support {
   background-color: var(--base-color);
   border-inline-start: 0.5rem solid var(--shadow);
-  color: var(--base-color);
+  color: var(--text-color);
   border-radius: 0.5rem;
   padding: 1em 2em;
 }
@@ -344,11 +344,11 @@ header {
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
+  animation: show-hide-content var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide {
+@keyframes show-hide-content {
   0%,
   100% {
     opacity: 0;
@@ -381,11 +381,11 @@ header {
 .content-1 div {
   position: absolute;
   display: flex;
-  animation: show-hide var(--sp) ease 0s infinite;
+  animation: show-hide-content var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide {
+@keyframes show-hide-content {
   0%,
   100% {
     opacity: 0;
@@ -633,7 +633,7 @@ header {
   text-decoration: none;
   background-color: transparent;
   color: var(--text-color);
-  border-radius: 50%;
+  border-radius: 50% / 50%;
   box-shadow: 0 10px 10px 0 var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
@@ -676,10 +676,11 @@ header {
 .large-button:focus>svg {
   fill: var(--text-span);
   transform: scale(0.6) rotate(45deg);
-  transition: transform 0.1s, box-shadow 0.3s color 0.3s;
+  transition: transform 0.1s, box-shadow 0.3s, fill 0.3s;
 }
 
 
+/* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
   .content div,
