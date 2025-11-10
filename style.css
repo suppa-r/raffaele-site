@@ -552,14 +552,14 @@ main {
   display: none;
 }
 
-.darkIcon {
+.dark #darkIcon {
   display: block;
 }
 
-.lightIcon {
+.light #lightIcon {
   display: block;
 }
 
-.solar .solarIcon {
+.solar #solarIcon {
   display: block;
 }
