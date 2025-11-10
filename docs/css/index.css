@@ -30,7 +30,9 @@
   --shadow-color: rgb(0, 0, 0);
   --shadow-color2: rgba(0, 0, 0, 0);
   --shadow-color3: rgb(0, 0, 0);
+}
 
+[data-theme="light"] body::before {
   opacity: 1;
   pointer-events: none;
   content: "";
@@ -55,7 +57,7 @@
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
     background-position 0.3s ease-in-out;
-  z-index: -100;
+  z-index: -10;
   overflow: hidden;
 }
 
@@ -76,6 +78,7 @@
   --step-2: clamp(1.2656rem, 0.9656rem + 1.3334cqi, 1.999rem);
   --step-3: clamp(1.4238rem, 0.9162rem + 2.2561cqi, 2.6647rem);
   --step-4: clamp(1.6018rem, 0.804rem + 3.5458cqi, 3.552rem);
+  --step-5: clamp(1.8022rem, 0.6161rem + 5.3066cqi, 4.736rem);
 
 
   /*---------------------- Fluid spacing ---------------------- */
@@ -252,8 +255,9 @@ body>* {
   box-sizing: border-box;
   position: relative;
   /* ✅ For any absolutely positioned children */
-  z-index: 1000;
+  isolation: isolate;
   /* ✅ Above background */
+  z-index: 1000;
   background-color: transparent;
   /* ✅ Ensure transparency */
 }
@@ -261,7 +265,6 @@ body>* {
 /*------header-------*/
 
 header {
-  z-index: 2000;
   user-select: none;
   margin-inline: auto;
 }
@@ -279,7 +282,6 @@ header {
   right: var(--space-2xs);
   display: flex;
   flex-direction: row;
-  z-index: 2000;
   pointer-events: all;
   user-select: none;
   gap: var(--space-2xs);
@@ -293,7 +295,6 @@ header {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 2500;
   user-select: none;
   opacity: 1;
   background-color: transparent;
@@ -354,7 +355,6 @@ header {
   margin-block: var(--space-2xl);
   padding-inline: var(--padding-inline);
   margin-inline: auto;
-  z-index: 2000;
 }
 
 .content {
@@ -625,7 +625,6 @@ header {
   user-select: none;
   overflow: hidden;
   text-align: center;
-  z-index: 2000;
 }
 
 .text-with-animation {
@@ -650,8 +649,6 @@ header {
   position: relative;
   margin-top: var(--space-l);
   margin-inline: auto;
-  z-index: 3000;
-  isolation: isolate;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
