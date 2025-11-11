@@ -21,170 +21,133 @@
 
   <body>
     <div class="wrapper">
+      <header>
+        <p>sometimes<span>DESIGNER</span>sometimes<span>NOT</span></p>
+      </header>
+      <div class="theme-switcher">
+        <button class="theme-button active"><input type="radio" name="theme" value="light" id="light">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" alt="light-theme">
+            <path fill="currentColor"
+                  d="M12 15q1.25 0 2.125-.875T15 12t-.875-2.125T12 9t-2.125.875T9 12t.875 2.125T12 15m0 1q-1.671 0-2.835-1.164Q8 13.67 8 12t1.165-2.835T12 8t2.836 1.165T16 12t-1.164 2.836T12 16M2 12.5q-.213 0-.356-.144t-.144-.357t.144-.356T2 11.5h2.5q.213 0 .356.144t.144.357t-.144.356t-.356.143zm17.5 0q-.213 0-.356-.144T19 11.999t.144-.356t.356-.143H22q.213 0 .356.144t.144.357t-.144.356T22 12.5zM12 5q-.213 0-.357-.144T11.5 4.5V2q0-.213.144-.356t.357-.144t.356.144T12.5 2v2.5q0 .213-.144.356T11.999 5m0 17.5q-.212 0-.356-.144T11.5 22v-2.5q0-.213.144-.356t.357-.144t.356.144t.143.356V22q0 .213-.144.356t-.357.144M6.362 7.03l-1.44-1.395q-.147-.14-.144-.344t.149-.37q.16-.165.354-.165t.354.165L7.05 6.342q.16.166.16.354q0 .189-.15.354t-.342.153t-.356-.172m12.004 12.048l-1.416-1.421q-.16-.166-.16-.357t.16-.351q.13-.165.327-.153q.196.013.362.172l1.44 1.397q.146.14.143.344t-.149.369q-.16.165-.354.165t-.354-.165M16.95 7.059q-.165-.15-.153-.34t.172-.358l1.397-1.44q.14-.146.344-.143t.369.149q.165.16.165.354t-.165.353L17.658 7.05q-.166.16-.354.16t-.354-.15M4.921 19.083q-.165-.17-.165-.364t.165-.353l1.421-1.416q.166-.16.357-.16q.192 0 .351.16q.146.13.134.327q-.013.196-.153.362l-1.397 1.44q-.159.165-.353.162q-.195-.002-.36-.158M12 12" />
+          </svg> </button>
+        <button class="theme-button"><input type="radio" name="theme" value="dark" id="dark"><svg
+               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                  d="M12.058 20q-3.333 0-5.667-2.334T4.058 12q0-2.47 1.413-4.535q1.414-2.067 4.01-2.973q.306-.107.536-.056t.381.199t.192.38q.04.233-.063.489q-.194.477-.282.966t-.087 1.03q0 2.667 1.866 4.533t4.534 1.867q.698 0 1.277-.148q.58-.148.988-.24q.218-.04.399.01t.289.176q.118.125.16.308q.04.183-.048.417q-.715 2.45-2.803 4.013T12.058 20m0-1q2.2 0 3.95-1.213t2.55-3.162q-.5.125-1 .2t-1 .075q-3.075 0-5.238-2.162T9.158 7.5q0-.5.075-1t.2-1q-1.95.8-3.163 2.55T5.058 12q0 2.9 2.05 4.95t4.95 2.05m-.25-6.75" />
+          </svg>
+        </button>
+      </div>
       <nav class="navbar">
         <ul class="navbar-nav">
           <li class="logo">
             <a href="#" class="nav-link">
-              <span class="link-text logo-text">aweSOME</span>
-              <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="angle-double-right" role="img"
+              <span class="link-text logo-text">aweSOME</span><svg aria-hidden="true" focusable="false"
                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6.41 6L5 7.41L9.58 12L5 16.59L6.41 18l6-6z" />
+                <path fill="currentColor" d="m13 6l-1.41 1.41L16.17 12l-4.58 4.59L13 18l6-6z" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="intro-1.html" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="currentColor"
-                      d="m7.089 18.5l4.653-6.5L7.09 5.5h1.219l4.654 6.5l-4.654 6.5zm5.796 0l4.654-6.5l-4.655-6.5h1.22l4.654 6.5l-4.654 6.5z" />
+                      d="M3 23q-.425 0-.712-.288T2 22t.288-.712T3 21h18q.425 0 .713.288T22 22t-.288.713T21 23zm2-3q-.425 0-.712-.288T4 19v-5q-.825-1.35-1.275-2.863t-.45-3.087q0-1.525.388-3t.912-2.9q.2-.525.65-.837t1-.313Q6 1 6.55 1.525T7 2.775L6.725 5.05q-.15 1.2.213 2.275t1.087 1.887t1.75 1.3T12 11q1.5 0 3.013.313t2.637.887t1.738 1.463T20 15.85V19q0 .425-.288.713T19 20zm1-2h12v-2.15q0-.6-.3-1.062t-.85-.738q-1.025-.5-2.375-.775T12 13q-1.65 0-3.062-.675t-2.4-1.812T5.05 7.887T4.75 4.8q-.25.75-.363 1.6t-.112 1.65q0 1.45.513 2.788T6 13.45zm6-8q-1.65 0-2.825-1.175T8 6t1.175-2.825T12 2t2.825 1.175T16 6t-1.175 2.825T12 10m0-2q.825 0 1.413-.587T14 6t-.587-1.412T12 4t-1.412.588T10 6t.588 1.413T12 8M8 20v-.925Q8 17.4 9.163 16.2T12 15h3q.425 0 .713.288T16 16t-.288.713T15 17h-3q-.85 0-1.425.613T10 19.075V20zm4-14" />
               </svg>
+              <span class="link-text">about me</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="cat" role="img"
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-cat fa-w-16 fa-9x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M448 96h-64l-64-64v134.4a96 96 0 0 0 192 0V32zm-72 80a16 16 0 1 1 16-16 16 16 0 0 1-16 16zm80 0a16 16 0 1 1 16-16 16 16 0 0 1-16 16zm-165.41 16a204.07 204.07 0 0 0-34.59 2.89V272l-43.15-64.73a183.93 183.93 0 0 0-44.37 26.17L192 304l-60.94-30.47L128 272v-80a96.1 96.1 0 0 0-96-96 32 32 0 0 0 0 64 32 32 0 0 1 32 32v256a64.06 64.06 0 0 0 64 64h176a16 16 0 0 0 16-16v-16a32 32 0 0 0-32-32h-32l128-96v144a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V289.86a126.78 126.78 0 0 1-32 4.54c-61.81 0-113.52-44.05-125.41-102.4z"
-                        class="fa-secondary"></path>
-                  <path fill="currentColor"
-                        d="M376 144a16 16 0 1 0 16 16 16 16 0 0 0-16-16zm80 0a16 16 0 1 0 16 16 16 16 0 0 0-16-16zM131.06 273.53L192 304l-23.52-70.56a192.06 192.06 0 0 0-37.42 40.09zM256 272v-77.11a198.62 198.62 0 0 0-43.15 12.38z"
-                        class="fa-primary"></path>
-                </g>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                      d="M15.95 12.3L11.7 8.05q-.15-.15-.212-.325t-.063-.375t.063-.375t.212-.325l4.25-4.25q.15-.15.325-.212t.375-.063t.375.063t.325.212l4.25 4.25q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.25 4.25q-.15.15-.325.213t-.375.062t-.375-.062t-.325-.213M3 10V4q0-.425.288-.712T4 3h6q.425 0 .713.288T11 4v6q0 .425-.288.713T10 11H4q-.425 0-.712-.288T3 10m10 10v-6q0-.425.288-.712T14 13h6q.425 0 .713.288T21 14v6q0 .425-.288.713T20 21h-6q-.425 0-.712-.288T13 20M3 20v-6q0-.425.288-.712T4 13h6q.425 0 .713.288T11 14v6q0 .425-.288.713T10 21H4q-.425 0-.712-.288T3 20M5 9h4V5H5zm11.675 1.2L19.5 7.375L16.675 4.55L13.85 7.375zM15 19h4v-4h-4zM5 19h4v-4H5zm10-4" />
               </svg>
-              <span class="link-text">Cats</span>
+              <span class="link-text">stuff</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                      d="M3 19V9.375q0-.625.35-1.137t.925-.738L14.65 3.525q.5-.2.925.1T16 4.45V12h1q0-.825.588-1.412T19 10t1.413.588T21 12v7q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19m2 0h4v-5q0-.825.588-1.412T11 12h3V5.9L5 9.375zm6 0h3v-2q0-.425.288-.712T15 16t.713.288T16 17v2h3v-5h-8zm4-2.5" />
+              </svg>
+              <span class="link-text">revit</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="alien-monster" role="img"
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-                   class="svg-inline--fa fa-alien-monster fa-w-18 fa-9x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M560,128H528a15.99954,15.99954,0,0,0-16,16v80H480V176a15.99954,15.99954,0,0,0-16-16H416V96h48a16.00079,16.00079,0,0,0,16-16V48a15.99954,15.99954,0,0,0-16-16H432a15.99954,15.99954,0,0,0-16,16V64H368a15.99954,15.99954,0,0,0-16,16v48H224V80a15.99954,15.99954,0,0,0-16-16H160V48a15.99954,15.99954,0,0,0-16-16H112A15.99954,15.99954,0,0,0,96,48V80a16.00079,16.00079,0,0,0,16,16h48v64H112a15.99954,15.99954,0,0,0-16,16v48H64V144a15.99954,15.99954,0,0,0-16-16H16A15.99954,15.99954,0,0,0,0,144V272a16.00079,16.00079,0,0,0,16,16H64v80a16.00079,16.00079,0,0,0,16,16h48v80a16.00079,16.00079,0,0,0,16,16h96a16.00079,16.00079,0,0,0,16-16V432a15.99954,15.99954,0,0,0-16-16H192V384H384v32H336a15.99954,15.99954,0,0,0-16,16v32a16.00079,16.00079,0,0,0,16,16h96a16.00079,16.00079,0,0,0,16-16V384h48a16.00079,16.00079,0,0,0,16-16V288h48a16.00079,16.00079,0,0,0,16-16V144A15.99954,15.99954,0,0,0,560,128ZM224,320H160V224h64Zm192,0H352V224h64Z"
-                        class="fa-secondary"></path>
-                  <path fill="currentColor" d="M160,320h64V224H160Zm192-96v96h64V224Z" class="fa-primary"></path>
-                </g>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                      d="M4 21q-.825 0-1.412-.587T2 19V7q0-.825.588-1.412T4 5h3.15L8.4 3.65q.275-.3.663-.475T9.875 3h4.25q.425 0 .813.175t.662.475L16.85 5H20q.825 0 1.413.588T22 7v12q0 .825-.587 1.413T20 21zm0-2h16V7h-4.05l-1.825-2h-4.25L8.05 7H4zm3-2h10q.3 0 .45-.275t-.05-.525l-2.75-3.675q-.15-.2-.4-.2t-.4.2L11.25 16L9.4 13.525q-.15-.2-.4-.2t-.4.2l-2 2.675q-.2.25-.05.525T7 17" />
               </svg>
-              <span class="link-text">Aliens</span>
+              <span class="link-text">photos</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="space-station-moon-alt" role="img"
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                   class="svg-inline--fa fa-space-station-moon-alt fa-w-16 fa-5x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M501.70312,224H448V160H368V96h48V66.67383A246.86934,246.86934,0,0,0,256,8C119.03125,8,8,119.0332,8,256a250.017,250.017,0,0,0,1.72656,28.26562C81.19531,306.76953,165.47656,320,256,320s174.80469-13.23047,246.27344-35.73438A250.017,250.017,0,0,0,504,256,248.44936,248.44936,0,0,0,501.70312,224ZM192,240a80,80,0,1,1,80-80A80.00021,80.00021,0,0,1,192,240ZM384,343.13867A940.33806,940.33806,0,0,1,256,352c-87.34375,0-168.71094-11.46094-239.28906-31.73633C45.05859,426.01953,141.29688,504,256,504a247.45808,247.45808,0,0,0,192-91.0918V384H384Z"
-                        class="fa-secondary"></path>
-                  <path fill="currentColor"
-                        d="M256,320c-90.52344,0-174.80469-13.23047-246.27344-35.73438a246.11376,246.11376,0,0,0,6.98438,35.998C87.28906,340.53906,168.65625,352,256,352s168.71094-11.46094,239.28906-31.73633a246.11376,246.11376,0,0,0,6.98438-35.998C430.80469,306.76953,346.52344,320,256,320Zm-64-80a80,80,0,1,0-80-80A80.00021,80.00021,0,0,0,192,240Zm0-104a24,24,0,1,1-24,24A23.99993,23.99993,0,0,1,192,136Z"
-                        class="fa-primary"></path>
-                </g>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                      d="M12.475 16.825L20.85 8.45l-1.3-1.3l-8.375 8.375zM3 15.275Q3 16 3.5 16.4t1.65.525q.4.05.638.362T6 18q-.025.425-.3.7t-.675.225Q3 18.675 2 17.763t-1-2.488q0-1.625 1.338-2.637t3.712-1.213q.975-.075 1.463-.312T8 10.45q0-.55-.525-.862T5.75 9.1q-.4-.05-.638-.375T4.926 8q.05-.425.35-.687t.7-.213q2.075.3 3.05 1.113T10 10.45q0 1.325-.962 2.075t-2.838.9q-1.6.125-2.4.588T3 15.275m9.95 3.9L8.825 15.05l9.55-9.55q.5-.5 1.188-.5t1.187.5l1.75 1.75q.5.5.5 1.188t-.5 1.187zM8.975 20q-.425.1-.75-.225T8 19.025l.825-3.975l4.125 4.125z" />
               </svg>
-              <span class="link-text">Space</span>
+
+              <span class="link-text">get in touch</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="space-shuttle" role="img"
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
-                   class="svg-inline--fa fa-space-shuttle fa-w-20 fa-5x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M32 416c0 35.35 21.49 64 48 64h16V352H32zm154.54-232h280.13L376 168C243 140.59 222.45 51.22 128 34.65V160h18.34a45.62 45.62 0 0 1 40.2 24zM32 96v64h64V32H80c-26.51 0-48 28.65-48 64zm114.34 256H128v125.35C222.45 460.78 243 371.41 376 344l90.67-16H186.54a45.62 45.62 0 0 1-40.2 24z"
-                        class="fa-secondary"></path>
-                  <path fill="currentColor"
-                        d="M592.6 208.24C559.73 192.84 515.78 184 472 184H186.54a45.62 45.62 0 0 0-40.2-24H32c-23.2 0-32 10-32 24v144c0 14 8.82 24 32 24h114.34a45.62 45.62 0 0 0 40.2-24H472c43.78 0 87.73-8.84 120.6-24.24C622.28 289.84 640 272 640 256s-17.72-33.84-47.4-47.76zM488 296a8 8 0 0 1-8-8v-64a8 8 0 0 1 8-8c31.91 0 31.94 80 0 80z"
-                        class="fa-primary"></path>
-                </g>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                      d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75" />
               </svg>
-              <span class="link-text">Shuttle</span>
+              <span class="link-text">home</span>
             </a>
           </li>
-
-          <!--<li class="nav-item" id="themeButton">
-            <a href="#" class="nav-link">
-              <svg class="theme-icon" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="moon-stars"
-                   role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                   class="svg-inline--fa fa-moon-stars fa-w-16 fa-7x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M320 32L304 0l-16 32-32 16 32 16 16 32 16-32 32-16zm138.7 149.3L432 128l-26.7 53.3L352 208l53.3 26.7L432 288l26.7-53.3L512 208z"
-                        class="fa-secondary"></path>
-                  <path fill="currentColor"
-                        d="M332.2 426.4c8.1-1.6 13.9 8 8.6 14.5a191.18 191.18 0 0 1-149 71.1C85.8 512 0 426 0 320c0-120 108.7-210.6 227-188.8 8.2 1.6 10.1 12.6 2.8 16.7a150.3 150.3 0 0 0-76.1 130.8c0 94 85.4 165.4 178.5 147.7z"
-                        class="fa-primary"></path>
-                </g>
-              </svg>
-              <svg class="theme-icon" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="sun" role="img"
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-sun fa-w-16 fa-7x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M502.42 240.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.41-94.8a17.31 17.31 0 0 0-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4a17.31 17.31 0 0 0 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.41-33.5 47.3 94.7a17.31 17.31 0 0 0 31 0l47.31-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3a17.33 17.33 0 0 0 .2-31.1zm-155.9 106c-49.91 49.9-131.11 49.9-181 0a128.13 128.13 0 0 1 0-181c49.9-49.9 131.1-49.9 181 0a128.13 128.13 0 0 1 0 181z"
-                        class="fa-secondary"></path>
-                  <path fill="currentColor" d="M352 256a96 96 0 1 1-96-96 96.15 96.15 0 0 1 96 96z" class="fa-primary">
-                  </path>
-                </g>
-              </svg>
-              <svg class="theme-icon" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="sunglasses"
-                   role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-                   class="svg-inline--fa fa-sunglasses fa-w-18 fa-7x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M574.09 280.38L528.75 98.66a87.94 87.94 0 0 0-113.19-62.14l-15.25 5.08a16 16 0 0 0-10.12 20.25L395.25 77a16 16 0 0 0 20.22 10.13l13.19-4.39c10.87-3.63 23-3.57 33.15 1.73a39.59 39.59 0 0 1 20.38 25.81l38.47 153.83a276.7 276.7 0 0 0-81.22-12.47c-34.75 0-74 7-114.85 26.75h-73.18c-40.85-19.75-80.07-26.75-114.85-26.75a276.75 276.75 0 0 0-81.22 12.45l38.47-153.8a39.61 39.61 0 0 1 20.38-25.82c10.15-5.29 22.28-5.34 33.15-1.73l13.16 4.39A16 16 0 0 0 180.75 77l5.06-15.19a16 16 0 0 0-10.12-20.21l-15.25-5.08A87.95 87.95 0 0 0 47.25 98.65L1.91 280.38A75.35 75.35 0 0 0 0 295.86v70.25C0 429 51.59 480 115.19 480h37.12c60.28 0 110.38-45.94 114.88-105.37l2.93-38.63h35.76l2.93 38.63c4.5 59.43 54.6 105.37 114.88 105.37h37.12C524.41 480 576 429 576 366.13v-70.25a62.67 62.67 0 0 0-1.91-15.5zM203.38 369.8c-2 25.9-24.41 46.2-51.07 46.2h-37.12C87 416 64 393.63 64 366.11v-37.55a217.35 217.35 0 0 1 72.59-12.9 196.51 196.51 0 0 1 69.91 12.9zM512 366.13c0 27.5-23 49.87-51.19 49.87h-37.12c-26.69 0-49.1-20.3-51.07-46.2l-3.12-41.24a196.55 196.55 0 0 1 69.94-12.9A217.41 217.41 0 0 1 512 328.58z"
-                        class="fa-secondary"></path>
-                  <path fill="currentColor"
-                        d="M64.19 367.9c0-.61-.19-1.18-.19-1.8 0 27.53 23 49.9 51.19 49.9h37.12c26.66 0 49.1-20.3 51.07-46.2l3.12-41.24c-14-5.29-28.31-8.38-42.78-10.42zm404-50l-95.83 47.91.3 4c2 25.9 24.38 46.2 51.07 46.2h37.12C489 416 512 393.63 512 366.13v-37.55a227.76 227.76 0 0 0-43.85-10.66z"
-                        class="fa-primary"></path>
-                </g>
-              </svg>
-              <span class="link-text">Themify</span>
-            </a>
-          </li>-->
         </ul>
       </nav>
-
       <main>
-        <section class="intro">
-          <p>The way it began ... the way it is.</p>
-          <p>If I had a secret .. I'm telling it now!</p>
-          <p>You could think it would be with a rabbit and a Hat</p>
-          <p>Or that I did it Myself</p>
-          <p>(which is insane, because how did I power this far?)</p>
-          <p class="ya">NO!</p>
-          <p class="fancy">with<span>Jesus</span>still loving His sinner</p>
-          <p class="fancy">and with a whole lotta Grace from<span>3:16</span></p>
-          <p>I walked the streets paved with gold</p>
-          <p>touched all the bases, and walked out of</p>
-          <p>The Louvre with a Masterpiece.</p>
-          <p>-- dodging bullets!</p>
-          <p class="ya-1">it's the easiest promotion I ever got!</p>
-          <p>everything I needed to know, found me.</p>
-          <p>it's one prayer, one Blessing, one Miracle at a time.</p>
-          <p>-- you couldn't microwave it then, or now --</p>
-          <p>and the price became high when not giving a Damn.</p>
 
-          <p class="ya-1">The Path becomes smooth (yes!) and it's always free to walk.</p>
-          <p class="ya-1">St. Peter open The Gates.</p>
-          <p class="ya-2">--Ya--</p>
-          <div class="wrapper-gradient-text">
-            <span class="text-layer">m</span>
-            <span class="text-layer">e</span>
-            <span class="text-layer">r</span>
-            <span class="text-layer">c</span>
-            <span class="text-layer">i</span>
-            <span class="text-layer-1"></span>
-            <span class="text-layer">b</span>
-            <span class="text-layer">e</span>
-            <span class="text-layer">a</span>
-            <span class="text-layer">u</span>
-            <span class="text-layer">c</span>
-            <span class="text-layer">o</span>
-            <span class="text-layer">u</span>
-            <span class="text-layer">p</span>
-          </div>
-        </section>
+        <p>The way it began ... the way it is.</p>
+        <p>If I had a secret .. I'm telling it now!</p>
+        <p>You could think it would be with a rabbit and a Hat</p>
+        <p>Or that I did it Myself</p>
+        <p>(which is insane, because how did I power this far?)</p>
+        <p class="ya">NO!</p>
+        <p class="fancy">with<span>Jesus</span>still loving His sinner</p>
+        <p class="fancy">and with a whole lotta Grace from<span>3:16</span></p>
+        <p>I walked the streets paved with gold</p>
+        <p>touched all the bases, and walked out of</p>
+        <p>The Louvre with a Masterpiece.</p>
+        <p>-- dodging bullets!</p>
+        <p class="ya-1">it's the easiest promotion I ever got!</p>
+        <p>everything I needed to know, found me.</p>
+        <p>it's one prayer, one Blessing, one Miracle at a time.</p>
+        <p>-- you couldn't microwave it then, or now --</p>
+        <p>and the price became high when not giving a Damn.</p>
+
+        <p class="ya-1">The Path becomes smooth (yes!) and it's always free to walk.</p>
+        <p class="ya-1">St. Peter open The Gates.</p>
+        <p class="ya-2">--Ya--</p>
+        <div class="wrapper-gradient-text">
+          <span class="text-layer">m</span>
+          <span class="text-layer">e</span>
+          <span class="text-layer">r</span>
+          <span class="text-layer">c</span>
+          <span class="text-layer">i</span>
+          <span class="text-layer-1"></span>
+          <span class="text-layer">b</span>
+          <span class="text-layer">e</span>
+          <span class="text-layer">a</span>
+          <span class="text-layer">u</span>
+          <span class="text-layer">c</span>
+          <span class="text-layer">o</span>
+          <span class="text-layer">u</span>
+          <span class="text-layer">p</span>
+        </div>
       </main>
     </div>
   </body>
