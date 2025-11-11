@@ -282,6 +282,7 @@ header {
 header p {
   display: block;
   padding: 0 0 0 var(--space-m);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
 }
 
 header p span {
@@ -357,6 +358,7 @@ header p span {
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
   background-color: transparent;
+  filter: drop-shadow(0 0px 8px currentColor);
 }
 
 /*------main content-------*/
@@ -473,16 +475,18 @@ main .ya-2 {
 
 
 /*------navbar-------*/
+
+
 /* ✅ Desktop navbar (sidebar) */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 5rem;
-  height: 100vh;
+  height: 100dvh;
   z-index: 2000;
   background: transparent;
-  transition: all 600ms ease;
+  transition: width 600ms ease;
   overflow: hidden;
 }
 
@@ -497,38 +501,132 @@ main .ya-2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .nav-item {
   width: 100%;
 }
 
+.logo {
+  position: relative;
+  border-bottom: 2px solid var(--text-color, #599eaff5);
+  margin-bottom: var(--space-s);
+  overflow: hidden;
+}
+
+.logo .nav-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-xs);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* ✅ Rotating background gradient */
+.logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg,
+      transparent,
+      var(--text-color, #4c7883f5),
+      transparent);
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.logo:hover::after {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+/* ✅ SVG rotation */
+.logo svg {
+  width: 32px;
+  height: 32px;
+  color: var(--text-color, #4c7883f5);
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1;
+  position: relative;
+}
+
+.logo:hover svg {
+  transform: rotate(360deg) scale(1.1);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* ✅ Text styling */
+.logo .link-text {
+  font-size: var(--step-0);
+  margin-top: var(--space-xs);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.logo:hover .link-text {
+  color: var(--text-color, #4c7883f5);
+  letter-spacing: 0.3em;
+  text-shadow: 0 0 15px currentColor;
+}
+
+/* ✅ Mobile adjustments */
+@media (max-width: 768px) {
+  .logo svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo .link-text {
+    font-size: var(--text-xs);
+  }
+}
 .nav-link {
   display: flex;
   align-items: center;
-  height: 5rem;
   color: var(--text-color);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: var(--transition-speed);
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
   justify-content: flex-start;
-  padding: 0 1rem;
+  padding: var(--space-2xs) var(--space-s);
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.705);
+  color: var(--text-color);
+  border-radius: var(--space-l);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 .nav-link svg {
   width: 2rem;
   min-width: 2rem;
   margin: 0 1.5rem;
+  pointer-events: none;
 }
 
 .link-text {
   display: none;
   margin-left: 1rem;
+  pointer-events: none;
 }
 
 .navbar:hover .link-text {
   display: inline;
 }
+
 
 /* ✅ Mobile navbar (bottom bar) */
 @media (max-width: 768px) {
