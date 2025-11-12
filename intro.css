@@ -707,4 +707,7 @@ main .ya-2 {
   .logo {
     display: none;
   }
+  main {
+    margin-top: 0;
+  }
 }
