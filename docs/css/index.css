@@ -75,6 +75,8 @@
 
   /* Fluid typography and spacing using cqi unit */
 
+  /* Fluid typography and spacing using cqi unit */
+
   /* Step 0: 18px → 20px */
   --step-0: clamp(1.125rem, 1.0739rem + 0.2273cqi, 1.25rem);
   /* Step 1: 20.25px → 26.66px */
@@ -378,9 +380,11 @@ header {
 }
 
 .curve-container {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  margin-top: var(--space-l);
-  margin-block-end: auto;
+  margin-top: var(--space-2xl);
+  gap: var(--space-4xl);
 }
 
 
@@ -390,13 +394,12 @@ header {
   justify-content: center;
   position: relative;
   margin-inline: auto;
-  padding: 0 var(--space-m);
 }
 
 .content div {
   position: absolute;
   display: flex;
-  animation: show-hide-content var(--sp) ease 0s infinite;
+  animation: show-hide-content-1 var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -404,17 +407,17 @@ header {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.4);
   }
   20%,
-  100% {
+  80% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.4);
   }
 }
 
 .content div span {
-  width: 8.5vmin;
+  width: 10vmin;
   position: relative;
   text-align: center;
   box-sizing: border-box;
@@ -646,18 +649,34 @@ header {
 }
 
 .text-container {
+  padding-inline: 0 var(--padding-inline);
   color: var(--text-color);
-  margin-top: var(--space-s);
-  word-spacing: var(--space-xs);
   user-select: none;
   overflow: hidden;
-  text-align: center;
+  /* ✅ Optional: Center the content area */
+  display: flex;
+  justify-content: center;
+}
+
+/* ✅ Ensure all absolutely positioned children are relative to this container */
+.text-with-animation,
+.text-with-animation-1,
+.text-with-animation-2,
+.large-button {
+  position: absolute;
+  /* All percentage-based top/left values will be relative to .text-container */
 }
 
 .text-with-animation {
+  top: 45%;
+  /* ✅ Adjusted for better vertical centering */
+  left: 50%;
+  /* ✅ Center horizontally */
+  transform: translate(-50%, -50%);
+  /* ✅ Perfect centering */
   font-family: var(--font-primary), sans-serif;
-  margin-bottom: var(--space-4xl);
-  font-size: var(--step-5);
+
+  font-size: var(--step-4);
   font-style: italic;
   /* Makes text slanted */
 }
@@ -674,11 +693,10 @@ header {
   font-style: normal;
   font-weight: normal;
   text-align: center;
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   letter-spacing: var(--space-xs);
   width: 100%;
-  line-height: normal;
-  margin-bottom: var(--space-xl);
+  animation: main-text-animation 1s ease-in-out forwards;
 }
 
 .text-with-animation-1 span:first-of-type {
@@ -708,85 +726,170 @@ header {
 
 .text-with-animation-2 {
   position: absolute;
-  top: 65%;
+  top: 60%;
+  /* ✅ Move to vertical center */
   left: 50%;
-  transform: translate(-50%, -100%);
+  /* ✅ Move to horizontal center */
+  transform: translate(-50%, -50%);
+  /* ✅ Perfect center */
   font-family: var(--font-secondary), sans-serif;
   font-style: normal;
   font-weight: normal;
   text-align: center;
-  line-height: normal;
-  animation: main-text-animation-desktop 1s ease-in-out forwards;
   font-size: var(--step-2);
-  overflow: visible;
-  width: 100%;
-  max-width: 90vw;
-  margin-left: 0;
-  letter-spacing: var(--space-3xs);
-  word-spacing: var(--space-4xs);
-  white-space: nowrap;
+  margin-top: var(--space-l);
+  animation: main-text-animation 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
 }
 
-/* ✅ Desktop animation */
-@keyframes main-text-animation-desktop {
+
+@keyframes main-text-animation {
   0% {
-    letter-spacing: 4rem;
-    word-spacing: 2rem;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.7rem;
     opacity: 0;
-    transform: translate(-50%, -100%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.3);
+    /* ✅ Maintain centering */
   }
   100% {
-    letter-spacing: var(--space-xs);
-    word-spacing: var(--space-5xs);
+    letter-spacing: 0.6rem;
+    word-spacing: 0.1rem;
     opacity: 1;
-    transform: translate(-50%, -100%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    /* ✅ Maintain centering */
   }
 }
+/*@keyframes main-text-animation {
+  0% {
+    letter-spacing: var(--space-2xs);
+    word-spacing: var(--space-2xs);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    /* ✅ Center properly *
+  }
+  100% {
+    letter-spacing: var(--space-2xs);
+    word-spacing: var(--space-xs);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    /* ✅ Center properly *
+  }
+}*/
 
-/* ✅ Tablet screens */
-@media (max-width: 768px) {
+/*@keyframes main-text-animation {
+  0% {
+    letter-spacing: var(--space-xl);
+    word-spacing: var(--space-s);
+    opacity: 0;
+    /*transform: translate(-50%, -70%) scale(0.3) rotate(-5deg);*
+    transform: translate(-50%, -70%) scale(0.3) rotate(0deg);
+    filter: blur(8px);
+  }
+  40% {
+    letter-spacing: var(--space-l);
+    word-spacing: var(--space-s);
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+    filter: blur(4px);
+  }
+  80% {
+    letter-spacing: var(--space-m);
+    word-spacing: var(--space-s);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+    filter: blur(0px);
+  }
+  100% {
+    letter-spacing: var(--space-s);
+    word-spacing: var(--space-s);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}*/
 
+.large-button {
+  position: absolute;
+  top: 70%;
+  /* ✅ Move to vertical center */
+  left: 50%;
+  /* ✅ Move to horizontal center */
+  transform: translate(-50%, -50%);
+  /* ✅ Perfect center */
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--text-color);
+  border-radius: 50% / 50%;
+  box-shadow: 0 10px 10px 0 var(--text-color);
+  transition: box-shadow 0.3s, outline 0.3s;
+  overflow: hidden;
+  width: min(20rem, 85vw);
+  height: min(11rem, 55vw);
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+@container (max-width: 768px) {
   .text-with-animation-2 {
-    animation: main-text-animation-mobile 1s ease-in-out forwards;
+    animation: main-text-animation-small 0.1s ease-in-out 0.5s forwards;
     font-size: var(--step-1);
     top: 60%;
     /* ✅ Adjust position */
     transform: translate(-60%, -50%);
     /* ✅ Center properly */
-    max-width: 80dvw;
-    /* ✅ Adjust width for tablets */
   }
 }
 
-@keyframes main-text-animation-mobile {
+@keyframes main-text-animation {
   0% {
-    letter-spacing: 1rem;
-    word-spacing: .7rem;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.7rem;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+    /* ✅ Maintain centering */
+  }
+  100% {
+    letter-spacing: 0.6rem;
+    word-spacing: 0.1rem;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    /* ✅ Maintain centering */
+  }
+}
+
+/*@keyframes main-text-animation-mobile {
+  0% {
+    letter-spacing: var(--space-2xs);
+    word-spacing: var(--space-2xs);
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.6);
-    /* ✅ Center properly */
+    /* ✅ Center properly *
   }
   100% {
     letter-spacing: var(--space-2xs);
     word-spacing: var(--space-5xs);
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-    /* ✅ Center properly */
+    /* ✅ Center properly *
   }
-}
+}*/
 
 /* ✅ Very small screens */
-@media (max-width: 480px) {
+@container (max-width: 480px) {
+
   .text-with-animation-2 {
     margin-top: auto;
-    animation: main-text-animation-small 1s ease-in-out forwards;
+    animation: main-text-animation-small 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
     font-size: var(--step-0);
     top: 60%;
     /* ✅ Move to true center */
     transform: translate(-50%, -50%);
     /* ✅ Perfect centering */
-    max-width: 80dvw;
-    /* ✅ More space on tiny screens */
   }
 }
 
@@ -808,11 +911,19 @@ header {
 }
 
 .large-button {
-  position: relative;
-  margin-top: var(--space-4xl);
+  top: 80%;
+  /* ✅ Move to vertical center */
+  left: 50%;
+  /* ✅ Move to horizontal center */
+  transform: translate(-50%, -50%);
+  /* ✅ Perfect center */
+
   margin-inline: auto;
+
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   background-color: transparent;
   color: var(--text-color);

@@ -364,7 +364,7 @@ header p span {
 /*------main content-------*/
 
 main {
-  margin-top: var(--space-m);
+
   text-align: center;
   margin-inline: 0 auto;
   isolation: isolate;
