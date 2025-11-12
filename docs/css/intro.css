@@ -53,50 +53,104 @@
   --shadow-color3: rgb(0, 0, 0);
 }
 
+[data-theme="light"] body::before {
+  opacity: 1;
+  pointer-events: none;
+  content: "";
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:
+    linear-gradient(to bottom,
+      var(--body-gradient-top) 0%,
+      var(--body-gradient-bottom) 100%),
+    linear-gradient(90deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 0 0 / 30px 30px repeat,
+    linear-gradient(180deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 0 0 / 30px 30px repeat;
+  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: -10;
+  overflow: hidden;
+}
+
 :root {
   --sp: 4s;
   --burger-thickness: 2.5px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --word-space-content: 0.2rem;
   --transition-speed: 0.3s ease-in-out;
-  --padding-inline: var(--space-m);
 
-  /* Fluid typography and spacing using cqi unit */
-  /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
 
-  --step--1: clamp(0.844rem, 0.9073rem + -0.0817cqi, 0.8889rem);
-  --step-0: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
-  --step-1: clamp(1.125rem, 0.9717rem + 0.6811cqi, 1.4996rem);
-  --step-2: clamp(1.2656rem, 0.9656rem + 1.3334cqi, 1.999rem);
-  --step-3: clamp(1.4238rem, 0.9162rem + 2.2561cqi, 2.6647rem);
-  --step-4: clamp(1.6018rem, 0.804rem + 3.5458cqi, 3.552rem);
-  --step-5: clamp(1.8022rem, 0.6161rem + 5.3066cqi, 4.736rem);
+  /* Step -1: 16px → 15.0038px */
+  --step--1: clamp(0.9377rem, 1.0255rem + -0.1132cqi, 1rem);
+  /* Step 0: 18px → 20px */
+  --step-0: clamp(1.125rem, 1.0739rem + 0.2273cqi, 1.25rem);
+  /* Step 1: 20.25px → 26.66px */
+  --step-1: clamp(1.2656rem, 1.1017rem + 0.7284cqi, 1.6663rem);
+  /* Step 2: 22.7813px → 35.5378px */
+  --step-2: clamp(1.4238rem, 1.0977rem + 1.4496cqi, 2.2211rem);
+  /* Step 3: 25.6289px → 47.3719px */
+  --step-3: clamp(1.6018rem, 1.0459rem + 2.4708cqi, 2.9607rem);
+  /* Step 4: 28.8325px → 63.1467px */
+  --step-4: clamp(1.802rem, 0.9247rem + 3.8993cqi, 3.9467rem);
 
 
   /*---------------------- Fluid spacing ---------------------- */
 
-  --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
-  --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
-  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4744rem + 0.1136cqi, 0.5625rem);
-  --space-xs: clamp(0.75rem, 0.6989rem + 0.2273cqi, 0.875rem);
-  --space-s: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
-  --space-m: clamp(1.5rem, 1.4233rem + 0.3409cqi, 1.6875rem);
-  --space-l: clamp(2rem, 1.8977rem + 0.4545cqi, 2.25rem);
-  --space-xl: clamp(3rem, 2.8466rem + 0.6818cqi, 3.375rem);
-  --space-2xl: clamp(4rem, 3.7955rem + 0.9091cqi, 4.5rem);
-  --space-3xl: clamp(6rem, 5.6932rem + 1.3636cqi, 6.75rem);
-  --space-4xl: clamp(7rem, 6.642rem + 1.5909cqi, 7.875rem);
-  --space-5xl: clamp(8rem, 7.5909rem + 1.8182cqi, 9rem);
-  --space-6xl: clamp(9rem, 8.5398rem + 2.0455cqi, 10.125rem);
-  --space-7xl: clamp(10rem, 9.4886rem + 2.2727cqi, 11.25rem);
-  --space-8xl: clamp(11rem, 10.4375rem + 2.5cqi, 12.375rem);
-  --space-9xl: clamp(12rem, 11.3864rem + 2.7273cqi, 13.5rem);
-  --space-10xl: clamp(14rem, 13.2841rem + 3.1818cqi, 15.75rem);
+  /* Space 5xs: 2px → 2px */
+  --space-5xs: clamp(0.125rem, 0.125rem + 0cqi, 0.125rem);
+  /* Space 4xs: 4px → 4px */
+  --space-4xs: clamp(0.25rem, 0.25rem + 0cqi, 0.25rem);
+  /* Space 3xs: 5px → 5px */
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0cqi, 0.3125rem);
+  /* Space 2xs: 9px → 10px */
+  --space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136cqi, 0.625rem);
+  /* Space xs: 14px → 15px */
+  --space-xs: clamp(0.875rem, 0.8494rem + 0.1136cqi, 0.9375rem);
+  /* Space s: 18px → 20px */
+  --space-s: clamp(1.125rem, 1.0739rem + 0.2273cqi, 1.25rem);
+  /* Space m: 27px → 30px */
+  --space-m: clamp(1.6875rem, 1.6108rem + 0.3409cqi, 1.875rem);
+  /* Space l: 36px → 40px */
+  --space-l: clamp(2.25rem, 2.1477rem + 0.4545cqi, 2.5rem);
+  /* Space xl: 54px → 60px */
+  --space-xl: clamp(3.375rem, 3.2216rem + 0.6818cqi, 3.75rem);
+  /* Space 2xl: 72px → 80px */
+  --space-2xl: clamp(4.5rem, 4.2955rem + 0.9091cqi, 5rem);
+  /* Space 3xl: 108px → 120px */
+  --space-3xl: clamp(6.75rem, 6.4432rem + 1.3636cqi, 7.5rem);
+  /* Space 4xl: 126px → 140px */
+  --space-4xl: clamp(7.875rem, 7.517rem + 1.5909cqi, 8.75rem);
+  /* Space 5xl: 144px → 160px */
+  --space-5xl: clamp(9rem, 8.5909rem + 1.8182cqi, 10rem);
+  /* Space 6xl: 162px → 180px */
+  --space-6xl: clamp(10.125rem, 9.6648rem + 2.0455cqi, 11.25rem);
+  /* Space 7xl: 180px → 200px */
+  --space-7xl: clamp(11.25rem, 10.7386rem + 2.2727cqi, 12.5rem);
+  /* Space 8xl: 198px → 220px */
+  --space-8xl: clamp(12.375rem, 11.8125rem + 2.5cqi, 13.75rem);
+  /* Space 9xl: 216px → 240px */
+  --space-9xl: clamp(13.5rem, 12.8864rem + 2.7273cqi, 15rem);
+  /* Space 10xl: 234px → 260px */
+  --space-10xl: clamp(14.625rem, 13.9602rem + 2.9545cqi, 16.25rem);
+  /* Space 11xl: 252px → 280px */
+  --space-11xl: clamp(15.75rem, 15.0341rem + 3.1818cqi, 17.5rem);
+  /* Space 12xl: 270px → 300px */
+  --space-12xl: clamp(16.875rem, 16.108rem + 3.4091cqi, 18.75rem);
 
 
   --btn-border-radius: var(--space-s);
-
+  --padding-block: 0;
+  --page-padding-inline: var(--space-5xs);
   --letter-spacing: var(--space-4xs);
   --word-spacing: var(--space-3xs);
 
@@ -391,7 +445,6 @@ main .ya {
   -webkit-text-fill-color: transparent;
   animation: gradientAnimation 3s ease-in infinite alternate;
   animation-direction: alternate reverse;
-  font-size: var(--step-0);
   padding-left: var(--space-2xs);
   padding-right: var(--space-2xs);
 }
@@ -413,7 +466,7 @@ main .ya {
 
 main .ya-1 {
   font-style: italic;
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   white-space: nowrap;
   margin-block: var(--space-5xs);
   text-align: center;
@@ -421,7 +474,7 @@ main .ya-1 {
 
 main .ya-2 {
   font-style: italic;
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   white-space: nowrap;
   margin-block: var(--space-4xs);
   padding-inline: var(--padding-inline);
@@ -483,16 +536,17 @@ main .ya-2 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 5rem;
+  width: var(--space-3xl);
   height: 100dvh;
   z-index: 2000;
   background: transparent;
   transition: width 600ms ease;
   overflow: hidden;
+
 }
 
 .navbar:hover {
-  width: 12rem;
+  width: var(--space-3xl);
 }
 
 .navbar-nav {
@@ -501,8 +555,7 @@ main .ya-2 {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 .nav-item {
@@ -512,7 +565,7 @@ main .ya-2 {
 .logo {
   position: relative;
   border-bottom: 2px solid var(--text-color, #599eaff5);
-  margin-bottom: var(--space-s);
+  margin-bottom: var(--space-xs);
   overflow: hidden;
 }
 
@@ -551,8 +604,8 @@ main .ya-2 {
 
 /* ✅ SVG rotation */
 .logo svg {
-  width: 32px;
-  height: 32px;
+  width: var(--space-xs);
+  height: var(--space-xs);
   color: var(--text-color, #4c7883f5);
   transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 1;
@@ -576,114 +629,70 @@ main .ya-2 {
 
 .logo:hover .link-text {
   color: var(--text-color, #4c7883f5);
-  letter-spacing: 0.3em;
+  letter-spacing: var(--space-4xs);
   text-shadow: 0 0 15px currentColor;
 }
 
-/* ✅ Mobile adjustments */
-@media (max-width: 768px) {
-  .logo svg {
-    width: 24px;
-    height: 24px;
-  }
+.nav-item {
+  flex: 1;
 
-  .logo .link-text {
-    font-size: var(--text-xs);
-  }
 }
+
 .nav-link {
-  display: flex;
-  align-items: center;
-  color: var(--text-color);
-  text-decoration: none;
-  transition: var(--transition-speed);
-  pointer-events: auto;
-  cursor: pointer;
-  position: relative;
-  justify-content: flex-start;
-  padding: var(--space-2xs) var(--space-s);
-}
-
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.705);
-  color: var(--text-color);
-  border-radius: var(--space-l);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-}
-
-.nav-link svg {
-  width: 2rem;
-  min-width: 2rem;
-  margin: 0 1.5rem;
-  pointer-events: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-3xs);
+  gap: var(--space-2xs);
 }
 
 .link-text {
-  display: none;
-  margin-left: 1rem;
-  pointer-events: none;
+  display: block;
+  text-align: center;
+  margin: 0;
 }
-
-.navbar:hover .link-text {
-  display: inline;
-}
-
 
 /* ✅ Mobile navbar (bottom bar) */
-@media (max-width: 768px) {
+@container (max-width: 768px) {
   header {
-    margin: var(--space-2xs) var(--space-m);
+    margin: var(--space-2xs) var(--space-s);
     padding: var(--space-2xs) var(--space-xs);
   }
   .navbar {
-    top: auto;
-    bottom: 0;
+    position: absolute;
+
+    bottom: 5px;
     left: 0;
     right: 0;
     width: 100%;
-    height: 60px;
+    height: var(--space-6xl);
     border-radius: 0;
     margin-inline: auto;
-  }
-
-  .navbar:hover {
-    width: 100%;
-    /* ✅ Don't expand on mobile */
   }
 
   .navbar-nav {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    height: 60px;
+    height: var(--space-6xl);
     padding: 0;
   }
 
   .nav-item {
     flex: 1;
-    max-width: none;
+
   }
 
   .nav-link {
     flex-direction: column;
     justify-content: center;
-    height: 100%;
 
-    gap: 0.25rem;
-  }
-
-  .nav-link svg {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    min-width: 20px;
+    gap: var(--space-2xs);
+    padding-bottom: var(--space-s);
   }
 
   .link-text {
     display: block;
-
     text-align: center;
-
     margin: 0;
   }
 
@@ -692,40 +701,14 @@ main .ya-2 {
     display: none;
   }
 
-
-
   /* ✅ Adjust wrapper */
   .wrapper {
-    padding: 0 1rem;
-    padding-bottom: 60px;
+    padding-bottom: var(--space-3xs);
   }
 
   /* ✅ Adjust header */
   header {
-    padding: 1rem;
+    padding: var(--space-4xs) var(--space-xs);
   }
 }
-
-/* ✅ Very small screens */
-@media (max-width: 480px) {
-  .navbar {
-    height: 50px;
-  }
-
-  .navbar-nav {
-    height: 50px;
-  }
-
-  .nav-link svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .link-text {
-    font-size: 0.6rem;
-  }
-
-  .wrapper {
-    padding-bottom: 50px;
-  }
-}
+/*------end navbar-------*/
