@@ -65,12 +65,9 @@
   --sp: 4s;
   --burger-thickness: 2.5px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  --word-space-content: 0.2rem;
   --transition-speed: 0.3s ease-in-out;
 
-
-  /* @link https://utopia.fyi/type/calculator?c=360,18,1.125,1240,20,1.333,4,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-
+  /*---------------------- Fluid typography ---------------------- */
 
   /* Step -1: 16px → 15.0038px */
   --step--1: clamp(0.9377rem, 1.0255rem + -0.1132cqi, 1rem);
@@ -129,12 +126,11 @@
   /* Space 12xl: 270px → 300px */
   --space-12xl: clamp(16.875rem, 16.108rem + 3.4091cqi, 18.75rem);
 
-
   --btn-border-radius: var(--space-s);
   --padding-block: 0;
-  --page-padding-inline: var(--space-5xs);
+  --padding-inline: var(--space-5xs);
   --letter-spacing: var(--space-4xs);
-  --word-spacing: var(--space-3xs);
+  --word-spacing: var(--space-5xs);
 
   /* Font families */
   --font-primary: 'pompiere_regular', sans-serif;
@@ -251,8 +247,8 @@
   }
 }
 
-/*------global styles-------*/
-
+/*-----------------global styles---------------------*/
+html,
 body {
   color: var(--text-color);
   font-size: var(--step-0);
@@ -266,13 +262,14 @@ body {
   background-position: center;
   background-repeat: var(--bg-repeat, no-repeat);
   /* ✅ Use theme-specific repeat */
+  padding-inline: 0 var(--padding-inline);
+  word-spacing: var(--word-spacing);
+  letter-spacing: var(--letter-spacing);
 }
 
 body>* {
   container-type: inline-size;
   margin-inline: auto;
-  padding-inline: var(--padding-inline);
-  letter-spacing: var(--letter-space-content);
 }
 
 .wrapper {
