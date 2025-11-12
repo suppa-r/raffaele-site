@@ -8,8 +8,6 @@
   /* ✅ Single image */
   --bg-repeat: no-repeat;
   /* ✅ Single image */
-  --shadow: #222;
-  /* Added shadow variable for dark theme */
 }
 /* ✅ Only add glow effect in dark theme where it makes sense */
 [data-theme="dark"] .content div span,
@@ -27,13 +25,11 @@
   --body-gradient-bottom: hsla(0, 0%, 100%, 0.658);
 
   /* Light mode grid line color */
-  --body-grid-line: rgba(0, 0, 0, 0.7);
+  --body-grid-line: rgb(0, 0, 0);
   /* Darker shadow colors for animation */
   --shadow-color: rgb(0, 0, 0);
   --shadow-color2: rgba(0, 0, 0, 0);
   --shadow-color3: rgb(0, 0, 0);
-  --shadow: #ccc;
-  /* Added shadow variable for light theme */
 }
 
 [data-theme="light"] body::before {
@@ -247,7 +243,7 @@ body>* {
   container-type: inline-size;
   margin-inline: auto;
   padding-inline: var(--padding-inline);
-  letter-spacing: var(--letter-spacing);
+  letter-spacing: var(--letter-space-content);
 }
 
 .wrapper {
@@ -345,27 +341,23 @@ header {
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
   background-color: transparent;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3xl);
-  margin-block: var(--space-2xl);
-  padding-inline: var(--page-padding-inline);
-  margin-inline: auto;
 }
+
+/*-------------curvature-----------------*/
 
 .curve-container {
   position: relative;
-  margin-top: var(--space-l);
-  margin-block-end: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3xl);
+  margin-block: var(--space-2xl);
+  padding-inline: var(--padding-inline);
+  margin-inline: auto;
 }
-
 
 .content {
   display: flex;
-  align-items: center;
   justify-content: center;
   position: relative;
   margin-inline: auto;
@@ -403,7 +395,6 @@ header {
 
 .content-1 {
   display: flex;
-  align-items: center;
   justify-content: center;
   position: relative;
   margin-inline: auto;
@@ -412,11 +403,11 @@ header {
 .content-1 div {
   position: absolute;
   display: flex;
-  animation: show-hide-content-1 var(--sp) ease 0s infinite;
+  animation: show-hide-content var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide-content-1 {
+@keyframes show-hide-content {
   0%,
   100% {
     opacity: 0;
@@ -625,171 +616,143 @@ header {
 }
 
 .text-container {
+  text-align: center;
   color: var(--text-color);
-  margin-top: var(--space-s);
-  word-spacing: var(--space-xs);
   user-select: none;
   overflow: hidden;
-  text-align: center;
 }
 
+/* ✅ Ensure all absolutely positioned children are relative to this container */
+.text-with-animation,
+.text-with-animation-1,
+.text-with-animation-2,
+.large-button {
+  position: absolute;
+  /* All percentage-based top/left values will be relative to .text-container */
+}
+
+
 .text-with-animation {
-  font-family: var(--font-primary), sans-serif;
-  margin-bottom: var(--space-4xl);
-  font-size: var(--step-5);
-  font-style: italic;
-  /* Makes text slanted */
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-primary);
+  font-size: var(--step-4);
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  animation: exclamation-appear 0.8s ease-out 0.2s forwards;
+}
+
+/* ✅ Animation keyframes */
+@keyframes exclamation-appear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(180deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
 }
 
 .text-with-animation-1 {
-  position: absolute;
-  top: 50%;
-  /* ✅ Move to vertical center */
+  top: 55%;
   left: 50%;
-  /* ✅ Move to horizontal center */
   transform: translate(-50%, -50%);
-  /* ✅ Perfect center */
   font-family: var(--font-primary), sans-serif;
   font-style: normal;
   font-weight: normal;
   text-align: center;
-  font-size: var(--step-4);
-  letter-spacing: var(--space-xs);
-  width: 100%;
   line-height: normal;
-  margin-bottom: var(--space-xl);
-}
+  font-size: var(--step-3);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-s);
 
-.text-with-animation-1 span:first-of-type {
-  position: relative;
+  letter-spacing: var(--space-xs);
   opacity: 0;
-  animation: word-animation 0.5s ease-in 0.5s forwards;
+  animation: text-slide-in .3s ease-out 0.6s forwards;
 }
 
-.text-with-animation-1 span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-in 0.8s forwards;
-}
-
-@keyframes word-animation {
+@keyframes text-slide-in {
   0% {
-    top: 10dvw;
-    /* ✅ Use transform instead of top */
     opacity: 0;
+    transform: translate(-50%, -50%) translateY(clamp(2vh, 4vh, 6vh)) scale(0.8);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) translateY(clamp(-0.2vh, -0.5vh, -1vh)) scale(1.05);
   }
   100% {
-    top: 2dvw;
-    /* ✅ Use transform instead of top */
     opacity: 1;
+    transform: translate(-50%, -50%) translateY(0) scale(1);
   }
 }
 
 .text-with-animation-2 {
-  position: absolute;
-  top: 65%;
+  top: 60%;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -50%);
   font-family: var(--font-secondary), sans-serif;
   font-style: normal;
   font-weight: normal;
   text-align: center;
   line-height: normal;
-  animation: main-text-animation-desktop 1s ease-in-out forwards;
   font-size: var(--step-2);
   overflow: visible;
-  width: 100%;
-  max-width: 90vw;
-  margin-left: 0;
   letter-spacing: var(--space-3xs);
   word-spacing: var(--space-4xs);
   white-space: nowrap;
+  opacity: 0;
+  /* ✅ Start hidden */
+  animation: main-text-animation .6s cubic-bezier(0.25, 0.46, 0.45, 0.94) .6s forwards;
+
 }
 
-/* ✅ Desktop animation */
-@keyframes main-text-animation-desktop {
+/* ✅ Smooth, natural animation */
+@keyframes main-text-animation {
   0% {
-    letter-spacing: 4rem;
-    word-spacing: 2rem;
     opacity: 0;
-    transform: translate(-50%, -100%) scale(0.5);
-  }
-  100% {
-    letter-spacing: var(--space-xs);
-    word-spacing: var(--space-5xs);
-    opacity: 1;
-    transform: translate(-50%, -100%) scale(1);
-  }
-}
-
-/* ✅ Tablet screens */
-@media (max-width: 768px) {
-
-  .text-with-animation-2 {
-    animation: main-text-animation-mobile 1s ease-in-out forwards;
-    font-size: var(--step-1);
-    top: 60%;
-    /* ✅ Adjust position */
-    transform: translate(-60%, -50%);
-    /* ✅ Center properly */
-    max-width: 80dvw;
-    /* ✅ Adjust width for tablets */
-  }
-}
-
-@keyframes main-text-animation-mobile {
-  0% {
-    letter-spacing: 1rem;
-    word-spacing: .7rem;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.6);
-    /* ✅ Center properly */
-  }
-  100% {
-    letter-spacing: var(--space-2xs);
-    word-spacing: var(--space-5xs);
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    /* ✅ Center properly */
-  }
-}
-
-/* ✅ Very small screens */
-@media (max-width: 480px) {
-  .text-with-animation-2 {
-    margin-top: auto;
-    animation: main-text-animation-small 1s ease-in-out forwards;
-    font-size: var(--step-0);
-    top: 60%;
-    /* ✅ Move to true center */
-    transform: translate(-50%, -50%);
-    /* ✅ Perfect centering */
-    max-width: 80dvw;
-    /* ✅ More space on tiny screens */
-  }
-}
-
-@keyframes main-text-animation-small {
-  0% {
-    letter-spacing: 0.3rem;
-    word-spacing: 0.1rem;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.7);
-    /* ✅ Maintain centering */
-  }
-  100% {
+    transform: translate(-50%, -50%) translateY(clamp(1.5vh, 3vh, 4vh)) scale(0.75);
+    filter: blur(2px);
     letter-spacing: var(--space-3xs);
-    word-spacing: var(--space-5xs);
+  }
+  25% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) translateY(clamp(0.8vh, 1.5vh, 2vh)) scale(0.9);
+    filter: blur(1px);
+    letter-spacing: var(--space-5xs);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) translateY(clamp(0.2vh, 0.4vh, 0.6vh)) scale(1.02);
+    filter: blur(0.3px);
+    letter-spacing: var(--space-2xs);
+  }
+  85% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) translateY(clamp(0.1vh, 0.1vh, 0.2vh)) scale(1.01);
+    filter: blur(0.1px);
+  }
+  100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    /* ✅ Maintain centering */
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+    filter: blur(0);
+    letter-spacing: var(--space-3xs);
   }
 }
+
+/*------large button-------*/
 
 .large-button {
-  position: relative;
-  margin-top: var(--space-4xl);
-  margin-inline: auto;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -799,12 +762,32 @@ header {
   box-shadow: 0 10px 10px 0 var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(20rem, 85vw);
-  height: min(11rem, 55vw);
+  width: min(22rem, 90vw);
+  height: min(10rem, 50vw);
   text-align: center;
   user-select: none;
   cursor: pointer;
   pointer-events: all;
+  animation: button-appear .5s ease-in .8s forwards;
+  opacity: 0;
+}
+
+@keyframes button-appear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(30px) scale(0.8);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) translateY(-5px) scale(1.05);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 .large-button:focus,
@@ -813,23 +796,14 @@ header {
   outline: 6px solid var(--text-span);
 }
 
-.button-text {
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  height: 100%;
-}
-
-.button-text span {
-  font-size: var(--step-0);
-  font-family: var(--font-primary), sans-serif;
-  margin: 0;
-  /* ✅ Remove margins */
+.large-button span {
+  margin-top: var(--space-2xs);
+  background-color: transparent;
+  transition: box-shadow 0.3s, outline 0.3s;
+  text-align: center;
   color: var(--text-color);
   user-select: none;
-  text-align: center;
-  white-space: nowrap;
+  pointer-events: none;
 }
 
 .large-button svg {
@@ -850,6 +824,124 @@ header {
   transition: transform 0.1s, box-shadow 0.3s, fill 0.3s;
 }
 
+.button-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-2xs);
+  flex: 1;
+  /* ✅ Take remaining space */
+}
+
+.button-text span {
+  font-size: var(--step-0);
+  font-family: var(--font-primary), sans-serif;
+  margin: 0;
+  /* ✅ Remove all margins */
+  color: var(--text-color);
+  user-select: none;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@container (max-width: 768px) {
+  .text-with-animation-2 {
+
+    font-size: var(--step-1);
+
+  }
+}
+@container (max-width: 480px) {
+  .text-container {
+
+    min-height: 20vh;
+    /* ✅ Reduce height for smaller screens */
+  }
+
+  .text-with-animation-1 {
+
+    font-size: var(--step--1);
+
+  }
+
+  .text-with-animation-2 {
+
+    font-size: var(--step--1);
+
+  }
+
+  .large-button {
+    height: min(8rem, 40vw);
+  }
+}
+
+
+/*@container (max-width: 768px) {
+
+  .large-button {
+    top: 75%;
+    /* ✅ Adjust position for mobile *
+    width: min(16rem, 90vw);
+    /* ✅ Better mobile sizing *
+    height: min(9rem, 45vw);
+  }
+
+
+  .text-with-animation {
+    top: 12%;
+    font-size: var(--step-2);
+  }
+
+  .text-with-animation-1 {
+    top: 30%;
+    font-size: var(--step-1);
+    gap: var(--space-xs);
+    animation: text-slide-in-mobile 0.8s ease-out 0.6s forwards
+  }
+
+  .text-with-animation-2 {
+    top: 55%;
+    font-size: var(--step-0);
+    animation: main-text-animation-mobile 1.2s ease-out 2s forwards;
+  }
+}
+
+@keyframes text-slide-in-mobile {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(2vh) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+  }
+}
+
+
+@container (max-width: 480px) {
+
+  .large-button {
+    top: 70%;
+    /* ✅ Higher up on very small screens *
+    width: min(14rem, 95vw);
+    height: min(8rem, 40vw);
+  }
+
+  .large-button svg {
+    width: var(--space-m);
+    /* ✅ Even smaller icon on mobile *
+    height: var(--space-m);
+  }
+
+  .button-text span {
+    font-size: var(--step--1);
+    /* ✅ Smaller text on mobile *
+  }
+  .text-with-animation-2 {
+    animation-duration: 1.2s;
+    animation-delay: 1.5s;
+  }
+}
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
