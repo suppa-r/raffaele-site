@@ -620,7 +620,7 @@ header {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-xs);
+  margin-top: var(--space-s);
   word-spacing: var(--space-xs);
   user-select: none;
   overflow: hidden;
@@ -629,7 +629,7 @@ header {
 
 .text-with-animation {
   font-family: var(--font-primary), sans-serif;
-  margin-block: var(--space-2xl);
+  margin-bottom: var(--space-4xl);
   font-size: var(--step-5);
   font-style: italic;
   /* Makes text slanted */
@@ -669,17 +669,6 @@ header {
   animation: word-animation 0.5s ease-in 0.8s forwards;
 }
 
-@keyframes main-text-animation {
-  0% {
-    width: 500vw;
-    margin-left: -200vw;
-  }
-  100% {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
 @keyframes word-animation {
   0% {
     top: 10dvw;
@@ -695,17 +684,109 @@ header {
 
 
 .text-with-animation-2 {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -100%);
   font-family: var(--font-secondary), sans-serif;
   font-style: normal;
   font-weight: normal;
   text-align: center;
+  line-height: normal;
+  animation: main-text-animation-desktop 1s ease-in-out forwards;
   font-size: var(--step-2);
-  margin-top: var(--space-l);
+  overflow: visible;
+  width: 100%;
+  max-width: 90vw;
+  margin-left: 0;
+  letter-spacing: var(--space-3xs);
+  word-spacing: var(--space-4xs);
+  white-space: nowrap;
+}
+
+/* ✅ Desktop animation */
+@keyframes main-text-animation-desktop {
+  0% {
+    letter-spacing: 4rem;
+    word-spacing: 2rem;
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.5);
+  }
+  100% {
+    letter-spacing: var(--space-xs);
+    word-spacing: var(--space-5xs);
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+/* ✅ Tablet screens */
+@media (max-width: 768px) {
+
+  .text-with-animation-2 {
+    animation: main-text-animation-mobile 1s ease-in-out forwards;
+    font-size: var(--step-1);
+    top: 60%;
+    /* ✅ Adjust position */
+    transform: translate(-60%, -50%);
+    /* ✅ Center properly */
+    max-width: 80dvw;
+    /* ✅ Adjust width for tablets */
+  }
+}
+
+@keyframes main-text-animation-mobile {
+  0% {
+    letter-spacing: 1rem;
+    word-spacing: .7rem;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    /* ✅ Center properly */
+  }
+  100% {
+    letter-spacing: var(--space-2xs);
+    word-spacing: var(--space-5xs);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    /* ✅ Center properly */
+  }
+}
+
+/* ✅ Very small screens */
+@media (max-width: 480px) {
+  .text-with-animation-2 {
+    margin-top: auto;
+    animation: main-text-animation-small 1s ease-in-out forwards;
+    font-size: var(--step-0);
+    top: 60%;
+    /* ✅ Move to true center */
+    transform: translate(-50%, -50%);
+    /* ✅ Perfect centering */
+    max-width: 80dvw;
+    /* ✅ More space on tiny screens */
+  }
+}
+
+@keyframes main-text-animation-small {
+  0% {
+    letter-spacing: 0.3rem;
+    word-spacing: 0.1rem;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    /* ✅ Maintain centering */
+  }
+  100% {
+    letter-spacing: var(--space-3xs);
+    word-spacing: var(--space-5xs);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    /* ✅ Maintain centering */
+  }
 }
 
 .large-button {
   position: relative;
-  margin-top: var(--space-l);
+  margin-top: var(--space-4xl);
   margin-inline: auto;
   display: flex;
   flex-direction: column;
