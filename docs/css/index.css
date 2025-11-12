@@ -620,7 +620,7 @@ header {
 
 .text-container {
   color: var(--text-color);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xs);
   word-spacing: var(--space-xs);
   user-select: none;
   overflow: hidden;
@@ -629,20 +629,78 @@ header {
 
 .text-with-animation {
   font-family: var(--font-primary), sans-serif;
-  margin-block: var(--space-2xs);
+  margin-block: var(--space-2xl);
   font-size: var(--step-5);
   font-style: italic;
   /* Makes text slanted */
 }
 
-.text-with-animation-1,
+.text-with-animation-1 {
+  position: absolute;
+  top: 50%;
+  /* ✅ Move to vertical center */
+  left: 50%;
+  /* ✅ Move to horizontal center */
+  transform: translate(-50%, -50%);
+  /* ✅ Perfect center */
+
+  font-family: var(--font-primary), sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  font-size: var(--step-4);
+  letter-spacing: var(--space-xs);
+  width: 100%;
+
+  /* ✅ Remove problematic styles */
+  line-height: normal;
+  margin-bottom: var(--space-xl);
+}
+
+.text-with-animation-1 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-in 0.5s forwards;
+}
+
+.text-with-animation-1 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-in 0.8s forwards;
+}
+
+@keyframes main-text-animation {
+  0% {
+    width: 500vw;
+    margin-left: -200vw;
+  }
+  100% {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@keyframes word-animation {
+  0% {
+    top: 10dvw;
+    /* ✅ Use transform instead of top */
+    opacity: 0;
+  }
+  100% {
+    top: 2dvw;
+    /* ✅ Use transform instead of top */
+    opacity: 1;
+  }
+}
+
+
 .text-with-animation-2 {
   font-family: var(--font-secondary), sans-serif;
   font-style: normal;
   font-weight: normal;
   text-align: center;
   font-size: var(--step-2);
-  padding-block: var(--space-3xs);
+  margin-top: var(--space-l);
 }
 
 .large-button {
