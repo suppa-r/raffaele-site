@@ -1,56 +1,64 @@
 [data-theme="dark"] {
   --base-color: #000;
   --text-color: #fff;
-  --text-span: hsla(187, 45%, 67%, 0.74);
-  --clr-neon: hsl(191, 9%, 35%);
-  --clr-button: hsla(0, 0%, 100%, 0);
-  --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
-  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
-  --shadow: 0 30px 100px rgba(223, 223, 233, 0.271);
-  --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
-  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
-  --background: linear-gradient(270deg, #ce85a9b9, #c4bbce, #c97ba2bd);
-  --bars: #eee6e6;
+  --text-span: hsla(187, 63%, 57%, 0.644);
 
-  /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 0%, 0.95);
-  /* almost white */
-  --body-gradient-bottom: hsla(0, 0%, 0%, 0.35);
-  /* light blue/gray */
-
-  /* Light mode grid line color */
-  --body-grid-line: rgba(255, 255, 255, 0.788);
-  /* subtle dark lines */
-
-  --shadow-color: #ffffff;
-  --shadow-color2: #ffffff;
-  --shadow-color3: #ffffff;
+  --bg-image: url('/docs/images/header-desktop.jpg');
+  --bg-size: cover;
+  /* ✅ Single image */
+  --bg-repeat: no-repeat;
+  /* ✅ Single image */
+}
+/* ✅ Only add glow effect in dark theme where it makes sense */
+[data-theme="dark"] .content div span,
+[data-theme="dark"] .content-1 div span {
+  text-shadow: 0 0 3px var(--text-color);
 }
 
 [data-theme="light"] {
   --base-color: #fff;
-  --text-color: #000000;
-  --text-span: #000000;
-  --clr-neon: hsla(189, 4%, 63%, 0.733);
-  --clr-button: hsla(0, 0%, 100%, 0.671);
-  --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
-  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
-  --shadow: 0 30px 100px rgba(223, 223, 233, 0);
-  --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
-  --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
-  --background: linear-gradient(270deg, #ce85aa36, #c4bbce00, #6820449d);
-  --bars: #000000;
+  --text-color: #000;
+  --text-span: #2c4444a4;
 
   /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 100%, 0.692);
-  --body-gradient-bottom: hsla(0, 0%, 100%, 0.212);
+  --body-gradient-top: hsla(0, 0%, 100%, 0.733);
+  --body-gradient-bottom: hsla(0, 0%, 100%, 0.658);
 
   /* Light mode grid line color */
-  --body-grid-line: rgba(0, 0, 0, 1);
+  --body-grid-line: rgb(0, 0, 0);
   /* Darker shadow colors for animation */
   --shadow-color: rgb(0, 0, 0);
   --shadow-color2: rgba(0, 0, 0, 0);
   --shadow-color3: rgb(0, 0, 0);
+}
+
+[data-theme="light"] body::before {
+  opacity: 1;
+  pointer-events: none;
+  content: "";
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:
+    linear-gradient(to bottom,
+      var(--body-gradient-top) 0%,
+      var(--body-gradient-bottom) 100%),
+    linear-gradient(90deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 0 0 / 30px 30px repeat,
+    linear-gradient(180deg,
+      var(--body-grid-line) 0 1px,
+      transparent 1px 30px) 0 0 / 30px 30px repeat;
+  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
+    background-position 0.3s ease-in-out;
+  z-index: -10;
+  overflow: hidden;
 }
 
 :root {
@@ -60,43 +68,48 @@
   --word-space-content: 0.2rem;
   --transition-speed: 0.3s ease-in-out;
 
-  /* Fluid typography and spacing using cqi unit */
-  /* cqi = 1% of the size of the smaller viewport dimension (width or height) */
-
-  --step--1: clamp(0.844rem, 0.9073rem + -0.0817cqi, 0.8889rem);
-  --step-0: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
-  --step-1: clamp(1.125rem, 0.9717rem + 0.6811cqi, 1.4996rem);
-  --step-2: clamp(1.2656rem, 0.9656rem + 1.3334cqi, 1.999rem);
-  --step-3: clamp(1.4238rem, 0.9162rem + 2.2561cqi, 2.6647rem);
-  --step-4: clamp(1.6018rem, 0.804rem + 3.5458cqi, 3.552rem);
-  --step-5: clamp(1.8022rem, 0.6161rem + 5.3066cqi, 4.736rem);
+  /* Fluid typography and spacing using vw and rem units for better responsiveness */
+  /* Improved ranges for mobile to desktop scaling */
+  --step-1: clamp(1rem, 0.8944rem + 0.4444vw, 1.25rem);
+  --step-2: clamp(1.125rem, 1.0194rem + 0.4444vw, 1.375rem);
+  --step-3: clamp(1.375rem, 1.2958rem + 0.3333vw, 1.5625rem);
+  --step-4: clamp(1.75rem, 1.5917rem + 0.6667vw, 2.125rem);
 
 
-  /*---------------------- Fluid spacing ---------------------- */
 
-  --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
-  --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
-  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136cqi, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4744rem + 0.1136cqi, 0.5625rem);
-  --space-xs: clamp(0.75rem, 0.6989rem + 0.2273cqi, 0.875rem);
-  --space-s: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
-  --space-m: clamp(1.5rem, 1.4233rem + 0.3409cqi, 1.6875rem);
-  --space-l: clamp(2rem, 1.8977rem + 0.4545cqi, 2.25rem);
-  --space-xl: clamp(3rem, 2.8466rem + 0.6818cqi, 3.375rem);
-  --space-2xl: clamp(4rem, 3.7955rem + 0.9091cqi, 4.5rem);
-  --space-3xl: clamp(6rem, 5.6932rem + 1.3636cqi, 6.75rem);
-  --space-4xl: clamp(7rem, 6.642rem + 1.5909cqi, 7.875rem);
-  --space-5xl: clamp(8rem, 7.5909rem + 1.8182cqi, 9rem);
-  --space-6xl: clamp(9rem, 8.5398rem + 2.0455cqi, 10.125rem);
-  --space-7xl: clamp(10rem, 9.4886rem + 2.2727cqi, 11.25rem);
-  --space-8xl: clamp(11rem, 10.4375rem + 2.5cqi, 12.375rem);
-  --space-9xl: clamp(12rem, 11.3864rem + 2.7273cqi, 13.5rem);
-  --space-10xl: clamp(14rem, 13.2841rem + 3.1818cqi, 15.75rem);
+
+  /*---------------------- Fluid spacing with better mobile scaling ---------------------- */
+  --space-2xs: clamp(0.125rem, 0.09vw + 0.094rem, 0.1875rem);
+  --space-3xs: clamp(0.09375rem, 0.06vw + 0.070rem, 0.125rem);
+  --space-4xs: clamp(0.0625rem, 0.04vw + 0.047rem, 0.0625rem);
+  --space-1: clamp(0.25rem, 0.13vw + 0.219rem, 0.375rem);
+  --space-2: clamp(0.375rem, 0.13vw + 0.344rem, 0.5rem);
+  --space-3: clamp(0.5rem, 0.13vw + 0.469rem, 0.625rem);
+  --space-4: clamp(0.625rem, 0.13vw + 0.594rem, 0.75rem);
+  --space-5: clamp(0.75rem, 0.13vw + 0.719rem, 0.875rem);
+  --space-6: clamp(0.875rem, 0.13vw + 0.844rem, 1rem);
+  --space-7: clamp(1rem, 0.13vw + 0.969rem, 1.125rem);
+  --space-8: clamp(1.125rem, 0.13vw + 1.094rem, 1.25rem);
+  --space-9: clamp(1.25rem, 0.13vw + 1.219rem, 1.375rem);
+  --space-10: clamp(1.375rem, 0.13vw + 1.344rem, 1.5rem);
+
+  --space-m: clamp(1.5rem, 0.13vw + 1.344rem, 1.75rem);
+  --space-l: clamp(2rem, 0.13vw + 1.844rem, 2.25rem);
+  --space-xl: clamp(3rem, 0.13vw + 2.844rem, 3.75rem);
+  --space-2xl: clamp(4rem, 0.13vw + 3.844rem, 5rem);
+  --space-3xl: clamp(5rem, 0.13vw + 4.844rem, 6.25rem);
+  --space-4xl: clamp(6rem, 0.13vw + 5.844rem, 7.5rem);
+  --space-5xl: clamp(7rem, 0.13vw + 6.844rem, 8.75rem);
+  --space-6xl: clamp(8rem, 0.13vw + 7.844rem, 10rem);
+  --space-7xl: clamp(9rem, 0.13vw + 8.844rem, 11.25rem);
+  --space-8xl: clamp(10rem, 0.13vw + 9.844rem, 12.5rem);
+
 
 
   --btn-border-radius: var(--space-s);
-
-  --letter-spacing: var(--space-4xs);
+  --padding-block: 0;
+  --padding-inline: var(--space-5xs);
+  --letter-spacing: var(--space-3xs);
   --word-spacing: var(--space-3xs);
 
   /* Font families */
