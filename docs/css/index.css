@@ -146,6 +146,7 @@
   /* Font families */
   --font-primary: 'pompiere_regular',
     sans-serif;
+  --font-style-primary: italic;
   --font-secondary: 'monotonregular',
     sans-serif;
 
@@ -268,7 +269,7 @@ body {
   color: var(--text-color);
   font-size: var(--step--1);
   font-family: var(--font-primary), sans-serif;
-  font-style: normal;
+  font-style: var(--font-style-primary);
   font-weight: normal;
   background-image: var(--bg-image);
   background-size: var(--bg-size, cover);
@@ -591,8 +592,6 @@ header {
   transform: translate(-50%, -50%);
   /* ✅ Perfect center */
   font-size: var(--step-4);
-  font-style: italic;
-  /* Makes text slanted */
   text-align: center;
   width: 100%;
   display: flex;
@@ -609,7 +608,6 @@ header {
   transform: translate(-50%, -50%);
   /* ✅ Perfect center */
   font-size: var(--step-3);
-  font-style: normal;
   text-align: center;
   width: 100%;
   display: flex;
@@ -717,7 +715,6 @@ header {
   text-align: center;
   color: var(--text-color);
   font-size: var(--step--1);
-  font-style: italic;
   user-select: none;
   pointer-events: none;
 }
