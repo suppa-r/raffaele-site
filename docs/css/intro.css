@@ -90,7 +90,6 @@
   --sp: 4s;
   --burger-thickness: 2.5px;
   --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  --word-space-content: var(--space-3xs);
   --transition-speed: 0.3s ease-in-out;
 
 
@@ -184,9 +183,9 @@
 
   --btn-border-radius: var(--space-s);
   --padding-block: 0;
-  --padding-inline: 0 var(--space-4xs);
-  --letter-spacing: var(--space-3xs);
-  --word-spacing: var(--space-3xs);
+  --padding-inline: var(--space-m);
+  --letter-spacing: var(--space-5xs);
+  --word-spacing: var(--space-5xs);
 
   /* Font families */
   --font-primary: 'pompiere_regular',
@@ -201,7 +200,6 @@
   --background-transition: background 0.3s ease-in-out;
   --directional-angle: 90deg;
 }
-
 @supports (selector(::view-transition)) {
   .support.view-transition {
     display: none;
@@ -320,19 +318,23 @@ html {
 }
 
 .wrapper {
+  container-type: inline-size;
   min-height: 100dvh;
   isolation: isolate;
   z-index: 1000;
 }
 
-.navbar :not(.navbar)+.wrapper>* {
+.wrapper>* {
   container-type: inline-size;
-  max-inline-size: 100%;
-  margin-inline: auto;
   padding-inline: var(--padding-inline);
   letter-spacing: var(--letter-spacing);
+  word-spacing: var(--word-spacing);
 }
 
+/* Exclude navbar from being an inline container */
+.navbar {
+  container-type: normal;
+}
 .wrapper::before {
   opacity: 1;
   pointer-events: none;
@@ -466,16 +468,16 @@ header p span {
 main {
   margin-top: var(--space-l);
   text-align: center;
-  margin-inline: 0 auto;
+  margin-inline: auto;
   isolation: isolate;
   z-index: 1000;
 }
 
 main .ya {
   font-size: var(--step-1);
-  white-space: nowrap;
   margin-block: var(--space-5xs);
   text-align: center;
+  margin-inline: auto;
 }
 
 .fancy span {
@@ -509,14 +511,14 @@ main .ya {
 
 main .ya-1 {
   font-size: var(--step-0);
-  white-space: nowrap;
   margin-block: var(--space-4xs);
+  margin-inline: auto;
 }
 
 main .ya-2 {
   font-size: var(--step-2);
-  white-space: nowrap;
   margin-block: var(--space-4xs);
+  margin-inline: auto;
 }
 
 .wrapper-gradient-text {
@@ -555,10 +557,10 @@ main .ya-2 {
 }
 
 .navbar {
-  position: fixed;
+  position: absolute;
+  top: 10%;
   background-color: transparent;
   transition: width 600ms ease;
-  top: 0;
   width: var(--space-5xl);
   height: 100dvh;
   overflow: hidden;
@@ -738,16 +740,17 @@ main .ya-2 {
 
   .navbar {
     top: auto;
-    bottom: 2%;
+    bottom: .75%;
     left: 0;
     right: 0;
     border-radius: var(--space-l);
     margin-inline: auto;
     width: 90%;
     height: auto;
-
-
+    background: var(--gradient-header);
+    backdrop-filter: var(--backdrop-blur);
     box-shadow: var(--navbar-shadow);
+    transition: var(--background-transition), box-shadow 0.3s ease-in-out;
   }
 
   .navbar:hover {
@@ -763,7 +766,7 @@ main .ya-2 {
     padding: 0;
     margin: 0;
     gap: 0;
-    margin-block: var(--space-2xs);
+    margin-block: var(--space-s);
   }
 
   .nav-item {
@@ -796,14 +799,9 @@ main .ya-2 {
     display: none;
   }
 
-  /* ✅ Adjust wrapper */
-  .wrapper {
-    padding: 0 1rem;
-    padding-bottom: 60px;
-  }
-
   /* ✅ Adjust header */
   header {
     padding: 0;
   }
+
 }
