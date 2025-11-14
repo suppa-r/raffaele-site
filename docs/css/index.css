@@ -82,8 +82,6 @@
   --step-5: clamp(2.4883rem, 1.6128rem + 3.8914cqi, 5.2609rem);
   --step-6: clamp(2.986rem, 1.7144rem + 5.6517cqi, 7.0128rem);
 
-
-
   /*---------------------- Fluid spacing with better mobile scaling --------------- */
 
   /* Space 5xs: 2px → 3px */
@@ -305,9 +303,6 @@ body {
   word-spacing: var(--word-space-content);
 }
 
-.wrapper {
-  container-type: inline-size;
-}
 
 .wrapper {
   min-height: 100dvh;
