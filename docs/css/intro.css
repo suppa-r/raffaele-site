@@ -136,6 +136,7 @@
   --space-9xl: clamp(192px, 176.8421px + 4.2105cqi, 240px);
   /* Space 10xl: 208px → 260px */
   --space-10xl: clamp(208px, 191.5789px + 4.5614cqi, 260px);
+  --space-11xl: clamp(224px, 206.3158px + 4.9123cqi, 280px);
 
   /* One-up pairs */
   /* Space 5xs-4xs: 2px → 4px */
@@ -354,8 +355,8 @@ header {
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
   transition: var(--background-transition), box-shadow 0.3s ease-in-out;
-  margin: var(--space-2xs) var(--space-10xl);
-  padding: var(--space-2xs) 0;
+  margin: var(--space-3xs) var(--space-11xl);
+  padding: var(--space-2xs) var(--space-xl);
   border-radius: var(--space-l);
   isolation: isolate;
 }
@@ -364,7 +365,6 @@ header {
 
 header p {
   display: block;
-  padding: 0 0 0 var(--space-2xl);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.849));
 }
 
@@ -465,86 +465,85 @@ main .ya-2 {
   }
 }
 
-/*------navbar-------*/
 
-/* ✅ Desktop navbar (sidebar) */
 .navbar {
-  position: absolute;
+  position: fixed;
+  background-color: transparent;
+  transition: width 600ms ease;
   top: 0;
-  left: 0;
-  width: var(--space-4xl);
+  width: var(--space-6xl);
   height: 100dvh;
-  z-index: 2000;
-  background: transparent;
-  transition: width 600ms ease-in;
   overflow: hidden;
+  z-index: 1000;
 }
 
 .navbar:hover {
-  width: var(--space-6xl);
+  width: var(--space-10xl);
 }
 
 .navbar-nav {
   list-style: none;
+  padding: 0 0 0 var(--space-l);
+  margin-top: var(--space-xs);
   display: flex;
   flex-direction: column;
-  padding: 0;
+  align-items: center;
   gap: var(--space-s);
-  min-height: 100dvh;
+  height: 100dvh;
 }
 
 .nav-item {
-  width: 100%
+  padding: 0 0 0 var(--space-s);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid #599eafb0;
+  margin: 0;
+  overflow: hidden;
 }
 
 .logo {
   display: flex;
-  flex-direction: column;
-  border-bottom: 2px solid var(--text-color, #599eafb0);
-  margin-bottom: var(--space-3xs);
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid #599eafb0;
+  margin: 0;
+  padding: var(--space-2xs) var(--space-s);
   overflow: hidden;
 }
 
-.logo .nav-link {
-  display: flex;
-  flex-direction: row;
-  padding: 0;
+/* ✅ Text styling */
+.logo .logo-text {
+  font-size: var(--step--1);
+  color: var(--text-color);
   transition: all 0.3s ease;
-  border-radius: var(--space-m);
-  isolation: isolate;
-  z-index: 1000;
+  padding: 0 var(--space-m) 0 0 0;
 }
 
-/* ✅ SVG rotation */
-.logo svg {
+.logo:hover .logo-text {
+  color: var(--text-color);
+  padding: 0 0 0 var(--space-l);
+  /* Add strong glow effect on hover */
+  text-shadow: 0 0 20px var(--text-color), 0 0 80px var(--text-color);
+  transition: all 0.3s ease-in;
+}
+
+/* Add SVG rotation to all nav-items */
+.nav-item .logo svg {
   width: var(--space-m);
   height: var(--space-m);
   color: var(--text-color);
-  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: transform 0.4s ease-out;
 }
 
-.logo:hover svg {
-  transform: rotate(360deg) scale(1.1);
-  filter: drop-shadow(0 0 100px currentColor);
+.nav-item .logo:hover svg {
+  transform: rotate(180deg) scale(1.05);
+  filter: drop-shadow(0 0 50px currentColor);
 }
 
-/* ✅ Text styling */
-.logo .link-text {
-  color: var(--text-color);
-  transition: all 0.3s ease;
-  margin-right: auto;
-  padding: var(--space-xs)0;
-}
-
-.logo:hover .link-text {
-  color: var(--text-color);
-  margin-right: auto;
-
-  /* Add glow effect on hover */
-  text-shadow: 0 0 15px currentColor;
-}
-
-/* ✅ Rotating background gradient */
+/* ✅ Rotating background gradient - properly contained and more visible */
 .logo::after {
   content: '';
   position: absolute;
@@ -553,19 +552,260 @@ main .ya-2 {
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg,
-      transparent,
-      var(--text-color, #4c7883f5),
-      transparent);
+      var(--text-color) 0%,
+      transparent 25%,
+      var(--text-color) 50%,
+      transparent 75%,
+      var(--text-color) 100%);
   opacity: 0;
-  transform: rotate(0deg);
-  transition: all 0.5s ease;
-  z-index: 0;
+  transform: rotate(0deg) scale(1);
+  transition: all 0.5s ease-out;
+  z-index: 1;
+  border-radius: var(--space-l);
+  filter: blur(0px);
+  padding: 0 0 0 var(--space-xs);
 }
-
 
 .logo:hover::after {
   opacity: 1;
-  transform: rotate(180deg);
+  transform: rotate(180deg) scale(1);
+  filter: blur(0px);
+}
+
+/*.nav-link {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-s);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition-speed);
+  margin: 0;
+
+  pointer-events: all;
+  cursor: pointer;
+  z-index: 0;
+  padding: 0 var(--space-s);
+  overflow: hidden;
+}*/
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid #599eafb0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2xs);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition-speed);
+
+  padding: 0;
+  pointer-events: all;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* ✅ Text styling */
+.nav-link .link-text {
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  padding: 0 var(--space-s);
+}
+
+.nav-link:hover {
+  filter: grayscale(0%) opacity(1);
+  border-bottom-color: var(--text-color);
+  box-shadow: 0 2px 20px var(--text-color);
+  transition: all 0.3s ease-in;
+  border-radius: var(--space-l);
+  padding: 0 0 0 var(--space-l);
+}
+
+.nav-link:hover .link-text {
+  color: var(--text-color);
+  /* Add strong glow effect on hover */
+  text-shadow: 0 0 20px var(--text-color), 0 0 80px var(--text-color);
+  transition: all 0.3s ease-in;
+  padding: 0 var(--space-l);
+}
+
+
+/* Add SVG rotation to all nav-items */
+.nav-link svg {
+  width: var(--space-m);
+  height: var(--space-m);
+  color: var(--text-color);
+  transition: transform 0.4s ease-out;
+}
+
+.nav-link:hover svg {
+  transform: rotate(180deg) scale(1.05);
+  filter: drop-shadow(0 0 50px currentColor);
+}
+
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .navbar {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+  }
+
+  .nav-link {
+    justify-content: center;
+  }
+
+  main {
+    margin: 0;
+  }
+}
+
+
+/*------navbar-------*/
+
+/* ✅ Desktop navbar (sidebar) *
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: var(--space-s);
+  height: 100dvh;
+  z-index: 2000;
+  background: transparent;
+  transition: width 600ms ease;
+  overflow: hidden;
+}
+
+.navbar:hover {
+  padding-left: var(--space-xs);
+  transition: padding-left 0.3s ease-out;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: var(--space-m);
+  min-height: 100dvh;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid #599eafb0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid #599eafb0;
+  margin: 0 var(--space-xs);
+  overflow: hidden;
+}
+
+/* Add border glow effect *
+.logo:hover {
+  border-bottom-color: var(--text-color);
+  box-shadow: 0 2px 20px var(--text-color);
+  transition: all 0.3s ease-in;
+  border-radius: var(--space-l);
+  padding: 0 0 0 var(--space-xs);
+}
+
+.logo .nav-link {
+  font-size: var(--step--1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  padding: 0 0 0 var(--space-xs);
+  transition: all 0.3s ease;
+  border-radius: var(--space-2xs);
+  isolation: isolate;
+  z-index: 2;
+}
+
+/* ✅ Text styling *
+.logo .link-text {
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  margin-right: auto;
+  padding: 0 0 0 var(--space-xs);
+}
+
+.logo:hover .link-text {
+  color: var(--text-color);
+  padding: 0 0 0 var(--space-xl);
+  /* Add strong glow effect on hover *
+  text-shadow: 0 0 20px var(--text-color), 0 0 80px var(--text-color);
+  transition: all 0.3s ease-in;
+}
+
+/* Add SVG rotation to all nav-items *
+.nav-item .logo svg {
+  width: var(--space-m);
+  height: var(--space-m);
+  color: var(--text-color);
+  transition: transform 0.4s ease-out;
+}
+
+.nav-item .logo:hover svg {
+  transform: rotate(180deg) scale(1.05);
+  filter: drop-shadow(0 0 50px currentColor);
+}
+
+/* ✅ Rotating background gradient - properly contained and more visible *
+.logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg,
+      var(--text-color) 0%,
+      transparent 25%,
+      var(--text-color) 50%,
+      transparent 75%,
+      var(--text-color) 100%);
+  opacity: 0;
+  transform: rotate(0deg) scale(1);
+  transition: all 0.5s ease-out;
+  z-index: 1;
+  border-radius: var(--space-l);
+  filter: blur(0px);
+  padding: 0 0 0 var(--space-xs);
+}
+
+.logo:hover::after {
+  opacity: 1;
+  transform: rotate(180deg) scale(1);
+  filter: blur(0px);
 }
 
 .nav-link {
@@ -574,51 +814,63 @@ main .ya-2 {
   color: var(--text-color);
   text-decoration: none;
   transition: var(--transition-speed);
+  margin: 0 0 0 var(--space-2xs);
+  padding: 0 0 0 var(--space-s);
   pointer-events: auto;
   cursor: pointer;
 }
 
 .nav-link:hover {
+  border-bottom-color: var(--text-color);
+  box-shadow: 0 2px 20px var(--text-color);
+  transition: all 0.3s ease-in;
+  border-radius: var(--space-l);
+  margin: 0 0 0 var(--space-s);
   background: rgba(255, 255, 255, 0.705);
   color: var(--text-color);
-  border-radius: var(--space-l);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-  padding: 0 var(--space-l);
+  /* padding-left: var(--space-m); *
+  text-shadow: 0 0 8px currentColor;
 }
 
 .nav-link svg {
-  width: var(--space-l);
-  height: var(--space-l);
-  margin: 0 var(--space-xs);
-  pointer-events: none;
+  width: var(--space-m);
+  height: var(--space-m);
+  color: var(--text-color);
+  transition: transform 0.4s ease-out;
 }
 
 .link-text {
   display: block;
-  margin-left: var(--space-2xs);
-  pointer-events: none;
+  pointer-events: all;
 }
 
 .navbar:hover .link-text {
   display: inline;
 }
 
+.nav-link:hover svg {
+  transform: rotate(180deg) scale(1.05);
+  filter: drop-shadow(0 0 50px currentColor);
+}
+
 /* Theme switcher styles */
 .theme-switcher {
   background-color: transparent;
   position: absolute;
-  bottom: var(--space-3xs);
-  right: var(--space-xs);
-
+  bottom: 2%;
+  right: 2%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   pointer-events: all;
   user-select: none;
   gap: var(--space-2xs);
   transition: opacity 0.3s ease-in-out;
   border-radius: var(--btn-border-radius);
-  isolation: isolate;
-  z-index: 1000;
+  font-size: var(--step--1);
+  padding: var(--space-2xs);
+  z-index: 9999;
 }
 
 .theme-button {
@@ -631,8 +883,18 @@ main .ya-2 {
   opacity: 1;
   background-color: transparent;
   color: var(--text-color);
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.2s ease;
   pointer-events: all;
+  padding: var(--space-3xs);
+  border-radius: var(--space-3xs);
+  min-width: var(--space-xl);
+  min-height: var(--space-xl);
+}
+
+.theme-button:hover {
+  transform: scale(1.1);
+  background-color: var(--text-span);
+  opacity: 0.9;
 }
 
 .theme-button.active {
@@ -673,9 +935,7 @@ main .ya-2 {
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
   color: var(--text-span);
   background-color: transparent;
-  filter: drop-shadow(0 0px 8px currentColor);
 }
-
 
 /* ✅ Mobile navbar (bottom bar) *
 @media (max-width: 768px) {
