@@ -327,7 +327,6 @@ html {
 .wrapper>* {
   container-type: inline-size;
   padding-inline: var(--padding-inline);
-  letter-spacing: var(--letter-spacing);
   word-spacing: var(--word-spacing);
 }
 
@@ -371,17 +370,19 @@ header {
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
   transition: var(--background-transition), box-shadow 0.3s ease-in-out;
-  margin: var(--space-3xs) var(--space-9xl);
-  padding: 0 var(--space-l);
+  margin: 0 var(--space-9xl);
+  padding: 0 var(--space-xl);
   border-radius: var(--space-l);
   isolation: isolate;
+  position: relative;
+
 }
 
 /*------title-------*/
 
 header p {
-  display: block;
-  padding-top: var(--space-xs);
+  display: inline-block;
+  padding: var(--space-s) var(--space-5xs);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.849));
 }
 
@@ -394,19 +395,18 @@ header p span {
   background-color: transparent;
   display: flex;
   flex-direction: row;
-  align-items: center;
   pointer-events: all;
   user-select: none;
   gap: var(--space-2xs);
   transition: opacity 0.3s ease-in-out;
   border-radius: var(--btn-border-radius);
+  padding: var(--space-s) var(--space-5xs);
   z-index: 9999;
 }
 
 .theme-button {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   cursor: pointer;
   user-select: none;
@@ -415,10 +415,14 @@ header p span {
   color: var(--text-color);
   transition: opacity 0.3s ease-in-out, transform 0.2s ease;
   pointer-events: all;
-  margin: 0 var(--space-xs) 0 0;
+  padding: 0 var(--space-3xs);
   border-radius: var(--space-3xs);
-  width: var(--space-xl);
-  height: var(--space-xl);
+}
+
+.theme-button:hover {
+  transform: scale(1.1);
+  background-color: var(--text-span);
+  opacity: 0.9;
 }
 
 .theme-button.active {
@@ -443,8 +447,8 @@ header p span {
 }
 
 .theme-button svg {
-  width: var(--space-m);
-  height: var(--space-m);
+  width: var(--space-s);
+  height: var(--space-s);
   color: var(--text-color);
   opacity: 1;
   display: inline-block;
@@ -452,15 +456,21 @@ header p span {
   user-select: none;
   pointer-events: none;
   background-color: transparent;
+  margin-bottom: var(--space-m);
 }
 
-@media (hover: hover) {
-  .theme-button:hover svg {
-    transform: scale(1.2) rotate(90deg);
-    transition: transform 0.1s, color 0.3s, background-color 0.3s;
-    color: var(--text-span);
-    background-color: transparent;
-  }
+.theme-button:hover svg {
+  transform: scale(1.2) rotate(90deg);
+  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  color: var(--text-span);
+  background-color: transparent;
+}
+
+.theme-switcher span {
+  color: var(--text-color);
+  user-select: none;
+  pointer-events: all;
+  cursor: default;
 }
 
 /*------main content-------*/
@@ -732,15 +742,15 @@ main .ya-2 {
 }
 
 /* ✅ Mobile navbar (bottom bar) */
-@media (max-width: 768px) {
+@container(max-width: 768px) {
   header {
-    margin: 0 var(--space-m);
-    padding: 0 var(--space-xs);
+    margin: 0;
+    padding: 0;
   }
 
   .navbar {
     top: auto;
-    bottom: .75%;
+    bottom: 1%;
     left: 0;
     right: 0;
     border-radius: var(--space-l);
@@ -766,7 +776,6 @@ main .ya-2 {
     padding: 0;
     margin: 0;
     gap: 0;
-    margin-block: var(--space-s);
   }
 
   .nav-item {
@@ -782,12 +791,6 @@ main .ya-2 {
     margin: 0;
   }
 
-  .nav-link svg {
-    width: var(--space-l);
-    height: var(--space-l);
-    margin: 0;
-  }
-
   .link-text {
     display: block;
     text-align: center;
@@ -798,10 +801,4 @@ main .ya-2 {
   .logo {
     display: none;
   }
-
-  /* ✅ Adjust header */
-  header {
-    padding: 0;
-  }
-
 }
