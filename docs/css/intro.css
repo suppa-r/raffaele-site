@@ -15,15 +15,20 @@
   /* Light mode grid line color */
   --body-grid-line: rgb(255, 255, 255);
   /* Darker shadow colors for animation */
-  --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
-  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
+  --gradient: linear-gradient(90deg, #cdd2d86e, #ffffff, #ddd1ddb2, #ffffff);
+  --gradient-header: linear-gradient(90deg, #ced7e06e, #1e202056, #cda4ce2d, #413a41);
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.271);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
+
+  --shadow-color: rgb(255, 255, 255);
+  --shadow-color2: rgb(250, 248, 248);
+  --shadow-color3: rgb(255, 255, 255);
 }
+
 /* ✅ Only add glow effect in dark theme where it makes sense */
 [data-theme="dark"] .content div span,
 [data-theme="dark"] .content-1 div span {
-  text-shadow: 0 0 3px var(--text-color);
+  text-shadow: 0 0 9px var(--text-color);
 }
 
 [data-theme="light"] {
@@ -38,13 +43,14 @@
   /* Light mode grid line color */
   --body-grid-line: rgb(0, 0, 0);
   /* Darker shadow colors for animation */
-  --gradient: linear-gradient(45deg, #b8c1c910, #6c888f13, #cfd6db2c, #e3e4fa17);
+  --gradient: linear-gradient(45deg, #000000, #111111da, #080808ec, #000000ee);
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
   --shadow: 0 30px 100px rgba(223, 223, 233, 0);
   --navbar-shadow: 0 30px 100px rgba(14, 13, 13, 0.863), 0 30px 100px rgba(70, 64, 64, 0.021);
   --text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.89), 0 0 0.45em currentColor;
+
   --shadow-color: rgb(0, 0, 0);
-  --shadow-color2: rgba(0, 0, 0, 0);
+  --shadow-color2: rgba(0, 0, 0, 0.062);
   --shadow-color3: rgb(0, 0, 0);
 }
 
@@ -363,8 +369,8 @@ header {
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
   transition: var(--background-transition), box-shadow 0.3s ease-in-out;
-  margin: var(--space-3xs) var(--space-11xl);
-  padding: 0 var(--space-xl);
+  margin: var(--space-3xs) var(--space-9xl);
+  padding: 0 var(--space-l);
   border-radius: var(--space-l);
   isolation: isolate;
 }
@@ -521,18 +527,17 @@ main .ya-2 {
   padding: 0;
   /* Remove default padding */
   text-align: center;
-  /* Align text to the left */
-  text-shadow: 100px 100px 100px rgb(255, 255, 255);
 }
 
 .text-layer {
   background: var(--gradient);
   background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: shadowDrip 3s infinite alternate ease-in-out;
-  /* Use theme shadow for fallback */
-  text-shadow: var(--text-shadow, 100px 150px 100px rgba(255, 255, 255, 0.966));
 }
 
 @keyframes shadowDrip {
