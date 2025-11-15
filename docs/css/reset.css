@@ -18,7 +18,7 @@ html {
 /* Set core body defaults */
 body,
 html {
-  line-height: 1.1;
+  line-height: 1.25;
   min-height: 100dvh;
   scroll-behavior: smooth;
   margin-inline: auto;
