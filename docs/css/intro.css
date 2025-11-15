@@ -305,8 +305,8 @@ html {
 
 .wrapper>* {
   container-type: inline-size;
-  padding-inline: var(--padding-inline);
-  word-spacing: var(--word-spacing);
+  word-spacing: .03rem;
+  padding: 0 var(--space-3xs);
 }
 
 /* Exclude navbar from being an inline container */
@@ -349,8 +349,7 @@ header {
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
   transition: var(--background-transition), box-shadow 0.3s ease-in-out;
-  margin: var(--space-xs) var(--space-8xl);
-
+  margin: 0 var(--space-8xl);
   border-radius: var(--space-l);
   isolation: isolate;
   position: relative;
@@ -361,8 +360,8 @@ header {
 
 header p {
   display: inline-block;
-  padding-left: var(--space-2xl);
-  padding-block: var(--space-xs);
+  padding-left: var(--space-xl);
+  padding-block: var(--space-2xs);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.849));
 }
 
@@ -380,8 +379,8 @@ header p span {
   gap: var(--space-2xs);
   transition: opacity 0.3s ease-in-out;
   border-radius: var(--btn-border-radius);
-  padding-right: var(--space-2xl);
-  padding-block: var(--space-xs);
+  padding-right: var(--space-xl);
+  padding-block: var(--space-2xs);
 }
 
 .theme-button {
@@ -427,8 +426,8 @@ header p span {
 }
 
 .theme-button svg {
-  width: var(--space-s);
-  height: var(--space-s);
+  width: var(--space-m);
+  height: var(--space-m);
   color: var(--text-color);
   opacity: 1;
   display: inline-block;
@@ -456,11 +455,12 @@ header p span {
 /*------main content-------*/
 
 main {
-  margin-top: var(--space-l);
+  margin-top: var(--space-s);
   text-align: center;
   margin-inline: auto;
   isolation: isolate;
   z-index: 1000;
+  margin-block: var(--space-l);
 }
 
 main .ya {
@@ -506,14 +506,14 @@ main .ya-1 {
 }
 
 main .ya-2 {
-  font-size: var(--step-2);
-  margin-block: var(--space-4xs);
+  font-size: var(--step-1);
+  margin-block: var(--space-5xs);
   margin-inline: auto;
 }
 
 .wrapper-gradient-text {
   font-style: italic;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   margin: 0;
   /* Remove default margins */
   padding: 0;
@@ -548,6 +548,7 @@ main .ya-2 {
 
 .navbar {
   position: absolute;
+  left: 1%;
   top: 10%;
   background-color: transparent;
   transition: width 600ms ease;
@@ -565,7 +566,7 @@ main .ya-2 {
 
 .navbar-nav {
   list-style: none;
-  padding: 0 0 0 var(--space-s);
+  padding: 0;
   margin-top: var(--space-xs);
   display: flex;
   flex-direction: column;
@@ -575,10 +576,9 @@ main .ya-2 {
 }
 
 .nav-item {
-  padding: 0 0 0 var(--space-xs);
+  padding: 0;
   display: flex;
   flex-direction: row;
-  align-items: center;
   position: relative;
   border-bottom: 2px solid #599eafb0;
   margin: 0;
@@ -592,7 +592,7 @@ main .ya-2 {
   position: relative;
   border-bottom: 2px solid #599eafb0;
   margin: 0;
-  padding: var(--space-2xs) var(--space-s);
+  padding: var(--space-3xs) var(--space-s);
   overflow: hidden;
 }
 
@@ -601,7 +601,7 @@ main .ya-2 {
   font-size: var(--step--1);
   color: var(--text-color);
   transition: all 0.3s ease;
-  padding: 0 var(--space-m) 0 0 0;
+  padding: 0 var(--space-s) 0 0;
 }
 
 @media (hover: hover) {
@@ -656,13 +656,10 @@ main .ya-2 {
   filter: blur(0px);
 }
 
-
 .nav-item {
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  position: relative;
   border-bottom: 2px solid #599eafb0;
   margin: 0;
   overflow: hidden;
@@ -671,11 +668,10 @@ main .ya-2 {
 .nav-link {
   display: flex;
   flex-direction: row;
-  gap: var(--space-xs);
+  gap: var(--space-4xs);
   color: var(--text-color);
   text-decoration: none;
   transition: var(--transition-speed);
-
   padding: 0;
   pointer-events: all;
   cursor: pointer;
@@ -710,8 +706,8 @@ main .ya-2 {
 
 /* Add SVG rotation to all nav-items */
 .nav-link svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-s);
+  height: var(--space-s);
   color: var(--text-color);
   transition: transform 0.4s ease-out;
 }
@@ -725,13 +721,15 @@ main .ya-2 {
 @container(max-width: 768px) {
   header {
     display: flex;
-    margin: var(--space-xs) var(--space-m);
-    padding: 0;
+    justify-content: space-between;
+    margin: 0 var(--space-2xs);
+    border-radius: var(--space-m);
+    position: relative;
   }
 
   header p {
-    padding-left: var(--space-xs);
-    padding-block: var(--space-xs);
+    padding-left: var(--space-4xs);
+    padding-top: var(--space-xs);
   }
 
   /* Theme switcher styles */
@@ -744,19 +742,21 @@ main .ya-2 {
     gap: var(--space-2xs);
     transition: opacity 0.3s ease-in-out;
     border-radius: var(--btn-border-radius);
-    padding-right: var(--space-xs);
-    padding-block: var(--space-xs);
+    padding-right: var(--space-4xs);
+    padding-top: var(--space-xs);
   }
 
   .navbar {
-    top: auto;
-    bottom: 1%;
+    position: absolute;
     left: 0;
     right: 0;
+    top: auto;
+    bottom: 1%;
+
     border-radius: var(--space-l);
-    margin-inline: auto;
+    margin: 0 auto;
     width: 90%;
-    height: auto;
+    height: var(--space-xl);
 
     background: var(--gradient-header);
     backdrop-filter: var(--backdrop-blur);
@@ -765,37 +765,53 @@ main .ya-2 {
   }
 
   .navbar:hover {
-    width: 100%;
+    width: 90%;
     /* ✅ Don't expand on mobile */
   }
 
   .navbar-nav {
+    list-style: none;
+    margin-top: 0;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
     height: var(--space-xl);
-    margin-block: var(--space-xs);
-    padding: 0;
-    gap: 0;
+    margin-inline: auto;
+    gap: var(--space-s);
   }
 
   .nav-item {
-    flex: 1;
-    max-width: none;
+    flex-direction: column;
+    align-items: center;
     border-bottom: none;
   }
 
   .nav-link {
+
     flex-direction: column;
-    justify-content: center;
     height: 100%;
+    justify-content: center;
+  }
+
+  .nav-link svg {
+    width: var(--space-s);
+    height: var(--space-s);
+    color: var(--text-color);
+    transition: transform 0.4s ease-out;
+    margin-left: auto;
+  }
+
+  .nav-item:first-child,
+  .nav-item:last-child {
     margin: 0;
+    border-inline-start: none;
   }
 
   .link-text {
     display: block;
     text-align: center;
     margin: 0;
+    padding: 0;
+    font-size: var(--step--1);
   }
 
   /* ✅ Hide logo text on mobile or make it shorter */
@@ -804,9 +820,8 @@ main .ya-2 {
   }
 
   main {
-    margin-top: 0;
     text-align: center;
-    margin-inline: auto;
+    padding: 0 var(--space-2xs);
     isolation: isolate;
     z-index: 1000;
   }
