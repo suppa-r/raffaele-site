@@ -345,6 +345,7 @@ html {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: var(--gradient-header);
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
@@ -353,7 +354,6 @@ header {
   border-radius: var(--space-l);
   isolation: isolate;
   position: relative;
-
 }
 
 /*------title-------*/
@@ -361,7 +361,6 @@ header {
 header p {
   display: inline-block;
   padding-left: var(--space-xl);
-  padding-block: var(--space-2xs);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.849));
 }
 
@@ -373,6 +372,7 @@ header p span {
 .theme-switcher {
   background-color: transparent;
   display: flex;
+  align-items: center;
   flex-direction: row;
   pointer-events: all;
   user-select: none;
@@ -380,8 +380,8 @@ header p span {
   transition: opacity 0.3s ease-in-out;
   border-radius: var(--btn-border-radius);
   padding-right: var(--space-xl);
-  padding-block: var(--space-2xs);
 }
+
 
 .theme-button {
   display: flex;
@@ -724,12 +724,13 @@ main .ya-2 {
     justify-content: space-between;
     margin: 0 var(--space-2xs);
     border-radius: var(--space-m);
+    padding: 0;
+    isolation: isolate;
     position: relative;
   }
 
   header p {
     padding-left: var(--space-4xs);
-    padding-top: var(--space-xs);
   }
 
   /* Theme switcher styles */
@@ -743,7 +744,6 @@ main .ya-2 {
     transition: opacity 0.3s ease-in-out;
     border-radius: var(--btn-border-radius);
     padding-right: var(--space-4xs);
-    padding-top: var(--space-xs);
   }
 
   .navbar {

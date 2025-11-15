@@ -319,6 +319,8 @@ header {
 .header-text .title {
   margin-top: var(--space-2xs);
   text-align: center;
+  white-space: nowrap;
+  letter-spacing: .015rem;
 }
 
 /*-------------curvature-----------------*/
