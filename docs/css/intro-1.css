@@ -287,19 +287,15 @@
 
 body,
 html {
-  letter-spacing: var(--letter-space-content);
-  word-spacing: var(--word-space-content);
-  padding: 0 var(--page-pad-inline);
-}
-
-body,
-html {
   background-color: var(--base-color);
   font-family: var(--pt-serif-italic);
   font-weight: var(--font-weight-1);
   font-style: var(--font-style-1);
   font-size: var(--step--1);
   color: var(--text-color);
+  letter-spacing: var(--letter-space-content);
+  word-spacing: var(--word-space-content);
+  padding: 0 var(--page-pad-inline);
 }
 
 body {
@@ -309,7 +305,20 @@ body {
   isolation: isolate;
 }
 
-body::before {
+.wrapper {
+  position: relative;
+  z-index: 1000;
+  isolation: isolate;
+  min-height: 100dvh;
+}
+
+.wrapper>* {
+  /* Ensure all direct children of body are treated as containers */
+  container-type: inline-size;
+  margin-inline: auto;
+}
+
+.wrapper::before {
   opacity: 1;
   pointer-events: none;
   content: "";
@@ -333,11 +342,6 @@ body::before {
   transition: background 0.3s ease-in-out;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-body>* {
-  /* Ensure all direct children of body are treated as containers */
-  container-type: inline-size;
-  margin-inline: auto;
 }
 
 /*------header-------*/

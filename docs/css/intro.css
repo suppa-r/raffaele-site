@@ -176,6 +176,8 @@
   --backdrop-blur: blur(1px);
   --background-transition: background 0.3s ease-in-out;
   --directional-angle: 90deg;
+
+  --s1: 1rem;
 }
 
 
@@ -296,24 +298,28 @@ html {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.wrapper {
+.sidebar-l {
   container-type: inline-size;
   min-height: 100dvh;
   isolation: isolate;
   z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
 }
 
-.wrapper>* {
+.sidebar-l>* {
   container-type: inline-size;
   word-spacing: .03rem;
   padding: 0 var(--space-3xs);
+  flex-grow: 1;
 }
 
 /* Exclude navbar from being an inline container */
 .navbar {
   container-type: normal;
 }
-.wrapper::before {
+.sidebar-l::before {
   opacity: 1;
   pointer-events: none;
   content: "";
@@ -342,6 +348,18 @@ html {
   overflow: hidden;
 }
 
+main {
+  text-align: center;
+  margin-inline: auto;
+  isolation: isolate;
+  z-index: 1000;
+  margin-block: var(--space-xs);
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 85%;
+  min-height: 100dvh;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -350,7 +368,7 @@ header {
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
   transition: var(--background-transition), box-shadow 0.3s ease-in-out;
-  margin: var(--space-xs) var(--space-8xl);
+  margin: 0 var(--space-8xl);
   border-radius: var(--space-l);
   isolation: isolate;
   position: relative;
@@ -429,14 +447,6 @@ header p span {
 
 /*------main content-------*/
 
-main {
-  margin-top: var(--space-s);
-  text-align: center;
-  margin-inline: auto;
-  isolation: isolate;
-  z-index: 1000;
-  margin-block: var(--space-l);
-}
 
 main .ya {
   font-size: var(--step-1);
@@ -522,9 +532,9 @@ main .ya-2 {
 }
 
 .navbar {
-  position: absolute;
-  left: 1%;
-  top: 10%;
+  flex-basis: 176px;
+  flex-grow: 1;
+
   background-color: transparent;
   transition: width 600ms ease;
   width: var(--space-5xl);
