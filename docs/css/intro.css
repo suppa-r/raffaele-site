@@ -20,6 +20,11 @@
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
   --shadow: 0 30px 100px rgba(223, 223, 233, 0.271);
   --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
+
+  /* Darker shadow colors for animation */
+  --shadow-color: rgb(255, 255, 255);
+  --shadow-color2: rgba(255, 255, 255, 0.945);
+  --shadow-color3: rgba(255, 255, 255, 0.856);
 }
 /* ✅ Only add glow effect in dark theme where it makes sense */
 [data-theme="dark"] .content div span,
@@ -39,9 +44,9 @@
   /* Light mode grid line color */
   --body-grid-line: rgb(0, 0, 0);
   /* Darker shadow colors for animation */
-  --shadow-color: rgb(0, 0, 0);
-  --shadow-color2: rgba(0, 0, 0, 0);
-  --shadow-color3: rgb(0, 0, 0);
+  --shadow-color: rgba(0, 0, 0, 0.877);
+  --shadow-color2: rgba(0, 0, 0, 0.726);
+  --shadow-color3: rgba(0, 0, 0, 0.534);
 
   --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
   --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
@@ -353,7 +358,6 @@ main {
   margin-inline: auto;
   isolation: isolate;
   z-index: 1000;
-  margin-block: var(--space-xs);
   flex-basis: 0;
   flex-grow: 999;
   min-inline-size: 85%;
@@ -368,7 +372,7 @@ header {
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
   transition: var(--background-transition), box-shadow 0.3s ease-in-out;
-  margin: 0 var(--space-8xl);
+  margin: var(--space-xs) var(--space-8xl);
   border-radius: var(--space-l);
   isolation: isolate;
   position: relative;
@@ -447,6 +451,9 @@ header p span {
 
 /*------main content-------*/
 
+main {
+  margin-inline: auto;
+}
 
 main .ya {
   font-size: var(--step-1);
@@ -532,35 +539,34 @@ main .ya-2 {
 }
 
 .navbar {
-  flex-basis: 176px;
+  flex-basis: 100px;
   flex-grow: 1;
-
   background-color: transparent;
   transition: width 600ms ease;
-  width: var(--space-5xl);
   height: 100dvh;
   overflow: hidden;
   z-index: 1000;
+  margin: var(--space-l);
 }
 
 @media (hover: hover) {
   .navbar:hover {
-    width: var(--space-8xl);
+    width: var(--space-3xl);
   }
 }
 
 .navbar-nav {
   list-style: none;
   padding: 0;
-  margin-top: var(--space-xs);
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--space-s);
   height: 100dvh;
 }
 
 .nav-item {
+  width: 75%;
   padding: 0;
   display: flex;
   flex-direction: row;
@@ -577,7 +583,7 @@ main .ya-2 {
   position: relative;
   border-bottom: 2px solid #599eafb0;
   margin: 0;
-  padding: var(--space-3xs) var(--space-s);
+  padding: 0;
   overflow: hidden;
 }
 
@@ -586,13 +592,13 @@ main .ya-2 {
   font-size: var(--step--1);
   color: var(--text-color);
   transition: all 0.3s ease;
-  padding: 0 var(--space-s) 0 0;
+  padding: 0 var(--space-xs) 0 0;
 }
 
 @media (hover: hover) {
   .logo:hover .logo-text {
     color: var(--text-color);
-    padding: 0 0 0 var(--space-l);
+    padding: 0 0 0 var(--space-5xs);
     /* Add strong glow effect on hover */
     text-shadow: 0 0 20px var(--text-color), 0 0 80px var(--text-color);
     transition: all 0.3s ease-in;
@@ -608,7 +614,7 @@ main .ya-2 {
 }
 
 .nav-item .logo:hover svg {
-  transform: rotate(180deg) scale(1.05);
+  transform: rotate(180deg) scale(1.02);
   filter: drop-shadow(0 0 50px currentColor);
 }
 
@@ -641,14 +647,6 @@ main .ya-2 {
   filter: blur(0px);
 }
 
-.nav-item {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  border-bottom: 2px solid #599eafb0;
-  margin: 0;
-  overflow: hidden;
-}
 
 .nav-link {
   display: flex;
@@ -672,12 +670,11 @@ main .ya-2 {
 
 @media (hover: hover) {
   .nav-link:hover {
-    filter: grayscale(0%) opacity(1);
-    border-bottom-color: var(--text-color);
-    box-shadow: 0 2px 20px var(--text-color);
+    color: var(--text-color);
+    padding: 0 0 0 var(--space-xs);
+    /* Add strong glow effect on hover */
+    text-shadow: 0 0 20px var(--text-color), 0 0 80px var(--text-color);
     transition: all 0.3s ease-in;
-    border-radius: var(--space-l);
-    padding: 0 0 0 var(--space-l);
   }
 }
 
@@ -686,7 +683,7 @@ main .ya-2 {
   /* Add strong glow effect on hover */
   text-shadow: 0 0 20px var(--text-color), 0 0 80px var(--text-color);
   transition: all 0.3s ease-in;
-  padding: 0 var(--space-l);
+  padding: 0 0 0 var(--space-xs);
 }
 
 /* Add SVG rotation to all nav-items */
@@ -705,9 +702,8 @@ main .ya-2 {
 /* ✅ Mobile navbar (bottom bar) */
 @container(max-width: 768px) {
   header {
-
     align-items: flex-start;
-    margin: var(--space-4xs) 0;
+    margin: 0;
     padding: 0;
     isolation: isolate;
     position: relative;
@@ -740,7 +736,7 @@ main .ya-2 {
   }
 
   .navbar:hover {
-    width: 90%;
+    width: 100%;
     /* ✅ Don't expand on mobile */
   }
 
@@ -795,11 +791,9 @@ main .ya-2 {
   }
 
   main {
-    margin-top: 0;
     text-align: center;
     margin-inline: auto;
     isolation: isolate;
     z-index: 1000;
-    margin-block: var(--space-m);
   }
 }
