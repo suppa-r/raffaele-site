@@ -316,7 +316,7 @@ html {
 .sidebar-l>* {
   container-type: inline-size;
   word-spacing: .03rem;
-  padding: 0 var(--space-3xs);
+  padding: 0;
   flex-grow: 1;
 }
 
@@ -353,9 +353,12 @@ html {
   overflow: hidden;
 }
 
+
+
 main {
-  text-align: center;
+  margin-top: var(--space-2xs);
   margin-inline: auto;
+  text-align: center;
   isolation: isolate;
   z-index: 1000;
   flex-basis: 0;
@@ -364,7 +367,7 @@ main {
   min-height: 100dvh;
 }
 
-header {
+.title-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -372,7 +375,7 @@ header {
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
   transition: var(--background-transition), box-shadow 0.3s ease-in-out;
-  margin: var(--space-xs) var(--space-8xl);
+  margin: 0 var(--space-8xl);
   border-radius: var(--space-l);
   isolation: isolate;
   position: relative;
@@ -380,12 +383,12 @@ header {
 
 /*------title-------*/
 
-header p {
+.title-header p {
   padding: var(--space-2xs) var(--space-xl);
 }
 
 
-header p span {
+.title-header p span {
   color: var(--text-span);
 }
 
@@ -450,12 +453,14 @@ header p span {
 }
 
 /*------main content-------*/
-
-main {
+.content {
+  margin-top: var(--space-s);
+  text-align: center;
   margin-inline: auto;
 }
 
-main .ya {
+
+.content .ya {
   font-size: var(--step-1);
   margin-block: var(--space-5xs);
   text-align: center;
@@ -491,13 +496,13 @@ main .ya {
   }
 }
 
-main .ya-1 {
+.content .ya-1 {
   font-size: var(--step-0);
   margin-block: var(--space-4xs);
   margin-inline: auto;
 }
 
-main .ya-2 {
+.content .ya-2 {
   font-size: var(--step-1);
   margin-block: var(--space-5xs);
   margin-inline: auto;
@@ -546,7 +551,8 @@ main .ya-2 {
   height: 100dvh;
   overflow: hidden;
   z-index: 1000;
-  margin: var(--space-l);
+  margin: var(--space-s);
+  background: var(--shadow);
 }
 
 @media (hover: hover) {
@@ -701,7 +707,7 @@ main .ya-2 {
 
 /* ✅ Mobile navbar (bottom bar) */
 @container(max-width: 768px) {
-  header {
+  .title-header {
     align-items: flex-start;
     margin: 0;
     padding: 0;
@@ -709,7 +715,7 @@ main .ya-2 {
     position: relative;
   }
 
-  header p {
+  .title-header p {
     padding: var(--space-2xs) var(--space-s) 0 0;
     white-space: nowrap;
   }
@@ -795,5 +801,9 @@ main .ya-2 {
     margin-inline: auto;
     isolation: isolate;
     z-index: 1000;
+  }
+
+  .content {
+    margin-top: var(--space-m);
   }
 }
