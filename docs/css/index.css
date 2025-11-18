@@ -21,19 +21,24 @@
   --text-span: #2c4444a4;
 
   /* Light mode background gradient */
-  --body-gradient-top: hsla(0, 0%, 100%, 0.733);
-  --body-gradient-bottom: hsla(0, 0%, 100%, 0.658);
+  --body-gradient-top: hsl(0, 0%, 100%);
+  --body-gradient-bottom: hsl(0, 0%, 100%);
 
   /* Light mode grid line color */
-  --body-grid-line: rgb(0, 0, 0);
+  --body-grid-line: rgba(0, 0, 0, 0.603);
   /* Darker shadow colors for animation */
-  --shadow-color: rgb(0, 0, 0);
-  --shadow-color2: rgba(0, 0, 0, 0);
-  --shadow-color3: rgb(0, 0, 0);
+  --shadow-color: rgba(0, 0, 0, 0.877);
+  --shadow-color2: rgba(0, 0, 0, 0.726);
+  --shadow-color3: rgba(0, 0, 0, 0.534);
+
+  --gradient: linear-gradient(90deg, #ced7e06e, #5daab9, #cda4ceb2, #cc77cc);
+  --gradient-header: linear-gradient(90deg, #ced7e06e, #5daab956, #cda4ce2d, #413a41);
+  --shadow: 0 30px 100px rgba(223, 223, 233, 0.271);
+  --navbar-shadow: 0 30px 100px rgba(189, 159, 159, 0.863), 0 30px 100px rgba(204, 190, 190, 0.603);
 }
 
 [data-theme="light"] body::before {
-  opacity: 1;
+  opacity: 0.7;
   pointer-events: none;
   content: "";
   width: 100dvw;
@@ -42,22 +47,22 @@
   top: 0;
   left: 0;
   background:
-    linear-gradient(to bottom,
-      var(--body-gradient-top) 0%,
-      var(--body-gradient-bottom) 100%),
     linear-gradient(90deg,
-      var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat,
+      var(--body-grid-line) 1px,
+      transparent 1px) 0 0 / 30px 30px,
     linear-gradient(180deg,
-      var(--body-grid-line) 0 1px,
-      transparent 1px 30px) 0 0 / 30px 30px repeat;
-  mask-image: linear-gradient(-100deg, transparent 0%, var(--body-grid-line) 100%);
+      var(--body-grid-line) 1px,
+      transparent 1px) 0 0 / 30px 30px,
+    rgb(255, 255, 255);
+  mask-image: linear-gradient(-100deg, transparent 0%, black 100%);
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
     background-position 0.3s ease-in-out;
-  z-index: -10;
+  isolation: isolate;
+  /* ✅ Above background */
+  z-index: -1000;
   overflow: hidden;
 }
 
