@@ -165,6 +165,8 @@
   --backdrop-blur: blur(1px);
   --background-transition: background 0.3s ease-in-out;
   --directional-angle: 90deg;
+
+  --measure: 60ch;
 }
 
 
@@ -274,6 +276,20 @@
 
 /*------global styles-------*/
 
+* {
+  max-inline-size: var(--measure);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
 html,
 body {
   color: var(--text-color);
@@ -295,7 +311,6 @@ body {
 .wrapper {
   min-height: 100dvh;
   /* ✅ Use min-height for flexibility */
-  padding: var(--padding-inline);
   margin-inline: auto;
   position: relative;
   /* ✅ For any absolutely positioned children */
@@ -308,9 +323,8 @@ body {
 
 .wrapper>* {
   container-type: inline-size;
-  max-inline-size: 100%;
+  max-inline-size: var(--measure);
   margin-inline: auto;
-  padding-inline: var(--padding-inline);
   letter-spacing: var(--letter-spacing);
 }
 
@@ -324,8 +338,8 @@ header {
 .header-text .title {
   margin-top: var(--space-2xs);
   text-align: center;
-  white-space: nowrap;
-  letter-spacing: .015rem;
+  letter-spacing: .010rem;
+  margin-inline: auto;
 }
 
 /*-------------curvature-----------------*/
@@ -692,6 +706,7 @@ header {
   /* ✅ Perfect center */
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   text-decoration: none;
   background-color: transparent;
@@ -700,12 +715,15 @@ header {
   box-shadow: 0 20px 20px 0 var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(20rem, 90vw);
-  height: min(8rem, 50vw);
+  width: min(20rem, 85vw);
+  height: min(10rem, 60vw);
   text-align: center;
   user-select: none;
   cursor: pointer;
   pointer-events: all;
+  isolation: isolate;
+  z-index: 2000;
+  margin: var(--space-xs);
 }
 
 .large-button:focus,
@@ -717,13 +735,27 @@ header {
 .button-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: var(--space-xs) var(--space-s);
+  gap: var(--space-4xs);
+  width: 100%;
+  max-width: 90%;
   background-color: transparent;
   transition: box-shadow 0.3s, outline 0.3s;
   text-align: center;
   color: var(--text-color);
   font-size: var(--step--1);
+  user-select: none;
+  pointer-events: none;
+}
+
+.button-text span {
+  display: block;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  background-color: transparent;
   user-select: none;
   pointer-events: none;
 }
