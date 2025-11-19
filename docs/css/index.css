@@ -311,7 +311,6 @@ body {
 .wrapper {
   min-height: 100dvh;
   /* ✅ Use min-height for flexibility */
-  margin-inline: auto;
   position: relative;
   /* ✅ For any absolutely positioned children */
   isolation: isolate;
@@ -339,7 +338,6 @@ header {
   margin-top: var(--space-2xs);
   text-align: center;
   letter-spacing: .010rem;
-  margin-inline: auto;
 }
 
 /*-------------curvature-----------------*/
@@ -350,9 +348,8 @@ header {
   justify-content: center;
   gap: var(--space-2xl);
   margin-top: var(--space-xl);
-  font-size: var(--step-1);
-  margin-inline: auto;
 }
+
 
 .content {
   display: flex;
@@ -611,8 +608,7 @@ header {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: var(--step-4);
-  text-align: center;
+  font-size: var(--step-3);
 }
 
 .text-with-animation-1 {
@@ -656,7 +652,6 @@ header {
   /* ✅ Perfect center */
   font-family: var(--font-secondary), sans-serif;
   font-style: normal;
-
   text-align: center;
   font-size: var(--step-1);
   white-space: normal;
@@ -680,7 +675,7 @@ header {
 
 .large-button {
   position: absolute;
-  top: 80%;
+  top: 78%;
   /* ✅ Move to vertical center */
   left: 50%;
   /* ✅ Move to horizontal center */
@@ -765,7 +760,7 @@ header {
 .theme-switcher {
   background-color: transparent;
   position: absolute;
-  bottom: 1%;
+  bottom: 0;
   right: 2%;
   display: flex;
   flex-direction: row;
