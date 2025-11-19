@@ -9,15 +9,6 @@
         word-break: break-word;
     }
 
-    body {
-        margin: 0;
-        padding: 0;
-        @media (width < 500px) {
-            padding: 1rem;
-        }
-    }
-
-
     /* Box sizing rules */
     *,
     *::before,
@@ -49,6 +40,14 @@
         overflow-wrap: normal;
         hyphens: none;
         overflow: hidden;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        @media (width < 500px) {
+            padding: 1rem;
+        }
     }
 
     /* Remove default margin in favour of better control in authored CSS */

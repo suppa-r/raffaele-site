@@ -349,13 +349,13 @@ header {
   flex-direction: column;
   justify-content: center;
   gap: var(--space-2xl);
-  margin-block: var(--space-2xl);
+  margin-top: var(--space-xl);
   font-size: var(--step-1);
+  margin-inline: auto;
 }
 
 .content {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -389,7 +389,6 @@ header {
 
 .content-1 {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -414,7 +413,7 @@ header {
 }
 
 .content-1 div span {
-  width: 10vmin;
+  width: 8vmin;
   position: relative;
   text-align: center;
   box-sizing: border-box;
@@ -423,27 +422,28 @@ header {
 
 .up:before,
 .down:before {
-  width: 100%;
-  height: 0.1vmin;
   background: radial-gradient(ellipse at 50% 50%, var(--text-color), #ffffff00 70%);
   content: "";
   position: absolute;
   border-radius: 100%;
-  filter: blur(2px);
-  left: 10%;
-  top: 49%;
-  box-shadow: 0 0 100px 0 var(--text-color);
+  box-shadow: 100px 10px 100px 10px var(--text-color);
   animation: shadow var(--sp) ease 0s infinite;
 }
 
+.up:before {
+  width: 100%;
+  height: 0.1vmin;
+  filter: blur(2px);
+  left: 10%;
+  top: 49%;
+}
+
 .down:before {
-  /* Small focused shadow */
   width: 1vmin;
   height: 0.5vmin;
   filter: blur(3px);
   left: calc(50% - 0.5vmin);
   top: 45%;
-  box-shadow: 0 0 100px 0 var(--text-color);
 }
 
 @keyframes shadow {
@@ -455,7 +455,7 @@ header {
   }
   45%,
   55% {
-    opacity: 0.25;
+    opacity: 0.5;
     height: 0.25vmin;
   }
 }
@@ -463,7 +463,7 @@ header {
 .up span,
 .down span {
   animation-duration: var(--sp);
-  animation-timing-function: ease;
+  animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: infinite;
 }
@@ -608,75 +608,57 @@ header {
 
 .text-with-animation {
   position: absolute;
-  top: 40%;
-  /* ✅ Move to vertical center */
+  top: 45%;
   left: 50%;
-  /* ✅ Move to horizontal center */
   transform: translate(-50%, -50%);
-  /* ✅ Perfect center */
   font-size: var(--step-4);
   text-align: center;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .text-with-animation-1 {
   position: absolute;
-  top: 45%;
-  /* ✅ Move to vertical center */
+  top: 50%;
   left: 50%;
-  /* ✅ Move to horizontal center */
   transform: translate(-50%, -50%);
-  /* ✅ Perfect center */
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   text-align: center;
-  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-s);
 }
 
 .text-with-animation-1 span:first-of-type {
-  position: relative;
   opacity: 0;
   animation: word-animation 0.5s ease-in 0.5s forwards;
 }
 
 .text-with-animation-1 span:nth-of-type(2) {
-  position: relative;
   opacity: 0;
   animation: word-animation 0.5s ease-in 0.8s forwards;
 }
 
 @keyframes word-animation {
   0% {
-    top: 10dvw;
-    /* ✅ Use transform instead of top */
+    transform: translateY(10dvw);
     opacity: 0;
   }
   100% {
-    top: 2dvw;
-    /* ✅ Use transform instead of top */
+    transform: translateY(2dvw);
     opacity: 1;
   }
 }
 
 .text-with-animation-2 {
   position: absolute;
-  top: 55%;
-  /* ✅ Move to vertical center */
+  top: 60%;
   left: 50%;
-  /* ✅ Move to horizontal center */
   transform: translate(-50%, -50%);
   /* ✅ Perfect center */
   font-family: var(--font-secondary), sans-serif;
   font-style: normal;
-  font-weight: normal;
+
   text-align: center;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   white-space: normal;
   width: 100%;
   display: flex;
@@ -698,7 +680,7 @@ header {
 
 .large-button {
   position: absolute;
-  top: 75%;
+  top: 80%;
   /* ✅ Move to vertical center */
   left: 50%;
   /* ✅ Move to horizontal center */
@@ -715,8 +697,8 @@ header {
   box-shadow: 0 20px 20px 0 var(--text-color);
   transition: box-shadow 0.3s, outline 0.3s;
   overflow: hidden;
-  width: min(20rem, 85vw);
-  height: min(10rem, 60vw);
+  width: min(25rem, 85vw);
+  height: min(9rem, 60vw);
   text-align: center;
   user-select: none;
   cursor: pointer;
@@ -783,7 +765,7 @@ header {
 .theme-switcher {
   background-color: transparent;
   position: absolute;
-  bottom: 2%;
+  bottom: 1%;
   right: 2%;
   display: flex;
   flex-direction: row;
