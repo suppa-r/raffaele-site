@@ -18,12 +18,12 @@
         padding: 0;
     }
 
-    /* Prevent font size inflation */
+    /* Prevent font size inflation (allow user-agent zooming) */
     html {
-        -moz-text-size-adjust: none;
-        -ms-text-size-adjust: none;
-        -webkit-text-size-adjust: none;
-        text-size-adjust: none;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
     }
 
     /* Set core body defaults */
@@ -32,22 +32,19 @@
         line-height: 1.25;
         min-height: 100dvh;
         scroll-behavior: smooth;
-        margin-inline: auto;
+        margin: 0;
         word-spacing: normal;
-        white-space: nowrap;
+        white-space: normal;
         word-wrap: normal;
         word-break: normal;
         overflow-wrap: normal;
         hyphens: none;
-        overflow: hidden;
+        overflow: auto;
     }
 
     body {
         margin: 0;
         padding: 0;
-        @media (width < 500px) {
-            padding: 1rem;
-        }
     }
 
     /* Remove default margin in favour of better control in authored CSS */
@@ -272,7 +269,7 @@
     }
 
     [hidden] {
-        display: none !important;
+        display: none;
     }
     .screenreader-only:not(:focus):not(:active) {
         clip: rect(0 0 0 0);

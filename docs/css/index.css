@@ -605,7 +605,7 @@ header {
 
 .text-with-animation {
   position: absolute;
-  top: 45%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--step-3);
@@ -613,7 +613,7 @@ header {
 
 .text-with-animation-1 {
   position: absolute;
-  top: 50%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--step-2);
@@ -646,7 +646,7 @@ header {
 
 .text-with-animation-2 {
   position: absolute;
-  top: 60%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
   /* ✅ Perfect center */
