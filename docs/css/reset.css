@@ -6,7 +6,6 @@
             sans-serif;
         tab-size: 2;
         hanging-punctuation: first allow-end last;
-        word-break: break-word;
     }
 
     /* Box sizing rules */
@@ -32,7 +31,6 @@
         line-height: 1.25;
         min-height: 100dvh;
         scroll-behavior: smooth;
-        margin: 0;
         word-spacing: normal;
         white-space: normal;
         word-wrap: normal;
