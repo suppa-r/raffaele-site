@@ -20,10 +20,10 @@
 
   /* Light mode background gradient */
   --body-gradient-top: oklch(100% 0.00011 271.152);
-  --body-gradient-bottom: oklch(100% 0.00011 271.152 / 0.664);
+  --body-gradient-bottom: oklch(100% 0.00011 271.152 / 0.322);
 
   /* Light mode grid line color */
-  --body-grid-line: oklch(0% 0 0 / 0.13);
+  --body-grid-line: oklch(0% 0 0 / 0.329);
   /* Darker shadow colors for animation */
   --shadow-color: oklch(0% 0 0 / 0.877);
   --shadow-color2: oklch(0% 0 0 / 0.726);
@@ -53,7 +53,7 @@
       var(--body-grid-line) 1px,
       transparent 1px) 0 0 / 30px 30px,
     oklch(100% 0.00011 271.152);
-  mask-image: linear-gradient(300deg, transparent 0%, oklch(100% 0.00011 271.152) 100%);
+  mask-image: linear-gradient(-10deg, transparent 0%, oklch(100% 0.00011 271.152) 30%);
   mask-size: 500% 500%;
   mask-repeat: no-repeat;
   transform-style: preserve-3d;
