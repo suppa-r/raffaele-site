@@ -9,16 +9,29 @@
   --bg-repeat: no-repeat;
   /* ✅ Single image */
 
+<<<<<<< HEAD
   --shadow: 0 30px 100px oklab(97.215% 0.0026 -0.00903);
+=======
+  /* ✅ Only add glow effect in dark theme where it makes sense *
+[data-theme="dark"] .content div span,
+[data-theme="dark"] .content-1 div span {
+  text-shadow: 0 0 3px var(--text-color);*/
+  --shadow: 0 30px 100px oklab(97.21499999999999% 0.0026 -0.00903);
+>>>>>>> 30c2c41 (feat: add initial website structure with theme switching functionality)
   --navbar-shadow: 0 30px 100px oklab(72.926% 0.03382 0.0109 / 0.863), 0 30px 100px oklab(81.308% 0.01513 0.00467 / 0.603);
 }
 
 [data-theme="light"] {
+<<<<<<< HEAD
   --base-color: oklch(100% 0.00011 271.152);
+=======
+  --base-color: oklab(100% 0 -0.00011);
+>>>>>>> 30c2c41 (feat: add initial website structure with theme switching functionality)
   --text-color: oklab(0% 0 0);
   --text-span: oklab(36.706% -0.02852 -0.00819 / 0.643);
 
   /* Light mode background gradient */
+<<<<<<< HEAD
   --body-gradient-top: oklch(100% 0.00011 271.152);
   --body-gradient-bottom: oklch(100% 0.00011 271.152 / 0.322);
 
@@ -34,6 +47,23 @@
 
   --shadow: 0 30px 100px oklch(0% 0 0);
   --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
+=======
+  --body-gradient-top: oklab(100% 0 -0.00011);
+  --body-gradient-bottom: oklab(100% 0 -0.00011);
+
+  /* Light mode grid line color */
+  --body-grid-line: oklab(0% 0 0 / 0.603);
+  /* Darker shadow colors for animation */
+  --shadow-color: oklab(0% 0 0 / 0.877);
+  --shadow-color2: oklab(0% 0 0 / 0.726);
+  --shadow-color3: oklab(0% 0 0 / 0.534);
+
+  --gradient: linear-gradient(90deg, oklab(87.496% -0.00592 -0.01477 / 0.431), oklab(69.426% -0.06731 -0.04163), oklab(76.915% 0.06124 -0.04215 / 0.698), oklab(69.099% 0.12723 -0.08251));
+  --gradient-header: linear-gradient(90deg, oklab(87.496% -0.00592 -0.01477 / 0.431), oklab(69.426% -0.06731 -0.04163 / 0.337), oklab(76.915% 0.06124 -0.04215 / 0.176), oklab(35.825% 0.01258 -0.00856));
+
+  --shadow: 0 30px 100px oklab(0% 0 0);
+  --navbar-shadow: 0 30px 100px oklab(72.926% 0.03382 0.0109 / 0.863), 0 30px 100px oklab(81.308% 0.01513 0.00467 / 0.603);
+>>>>>>> 30c2c41 (feat: add initial website structure with theme switching functionality)
 }
 
 [data-theme="light"] body::before {
@@ -52,9 +82,15 @@
     linear-gradient(180deg,
       var(--body-grid-line) 1px,
       transparent 1px) 0 0 / 30px 30px,
+<<<<<<< HEAD
     oklch(100% 0.00011 271.152);
   mask-image: linear-gradient(-10deg, transparent 0%, oklch(100% 0.00011 271.152) 30%);
   mask-size: 500% 500%;
+=======
+    rgb(255, 255, 255);
+  mask-image: linear-gradient(-0deg, transparent 0%, oklab(0% 0 0) 100%);
+  mask-size: 100% 100%;
+>>>>>>> 30c2c41 (feat: add initial website structure with theme switching functionality)
   mask-repeat: no-repeat;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
@@ -156,6 +192,18 @@
   --background-transition: background 0.3s ease-in-out;
   --directional-angle: 90deg;
   --measure: 60ch;
+<<<<<<< HEAD
+=======
+
+  /*---------------------- Animation and transition settings ------------------- */
+
+  --sp: 4s;
+  --burger-thickness: 2.5px;
+  --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  --word-space-content: var(--space-3xs);
+  --transition-speed: 0.3s ease-in-out;
+}
+>>>>>>> 30c2c41 (feat: add initial website structure with theme switching functionality)
 
   /*---------------------- Animation and transition settings ------------------- */
 
