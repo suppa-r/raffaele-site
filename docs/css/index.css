@@ -165,7 +165,6 @@
   --word-space-content: var(--space-3xs);
   --transition-speed: 0.3s ease-in-out;
 
-
   --clr-warn-1: hsl(34.2, 45.2%, 84.1%);
   --clr-warn-2: hsl(34.2, 65.2%, 74.1%);
 
@@ -176,7 +175,7 @@
     display: none;
   }
 }
-@container not style(--theme: 🥔) {
+@container not style(--theme: potato) {
   .support.style-query {
     display: none;
   }
