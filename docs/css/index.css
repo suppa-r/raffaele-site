@@ -700,7 +700,7 @@ body {
   color: var(--text-color);
   border-radius: 50% / 50%;
   box-shadow: 0 20px 20px 0 var(--text-color);
-  transition: box-shadow 0.3s, outline 0.3s;
+  transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s;
   overflow: hidden;
   width: min(25rem, 85vw);
   height: min(9rem, 60vw);
@@ -751,7 +751,7 @@ body {
   fill: var(--text-color);
   width: var(--space-l);
   height: var(--space-l);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, fill 0.3s, opacity 0.3s;
   display: block;
   margin: 0 auto;
   flex-shrink: 0;
@@ -762,7 +762,7 @@ body {
 .large-button:hover svg,
 .large-button:focus svg {
   fill: var(--text-span);
-  transform: scale(0.6) rotate(45deg);
+  transform: scale(1.6) rotate(45deg);
   transition: transform 0.1s, box-shadow 0.3s, fill 0.3s;
 }
 
@@ -771,7 +771,7 @@ body {
   background-color: transparent;
   position: absolute;
   bottom: 0;
-  right: 2%;
+  right: 1%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -782,6 +782,7 @@ body {
   border-radius: var(--btn-border-radius);
   font-size: var(--step--1);
   padding: var(--space-2xs);
+  isolation: isolate;
   z-index: 9999;
 }
 
@@ -801,11 +802,13 @@ body {
   border-radius: var(--space-3xs);
   min-width: var(--space-xl);
   min-height: var(--space-xl);
+  isolation: isolate;
+  z-index: 9999;
 }
 
 .theme-button:hover {
   transform: scale(1.1);
-  background-color: var(--text-span);
+  background-color: #b3dad3;
   opacity: 0.9;
 }
 
@@ -843,12 +846,11 @@ body {
 }
 
 .theme-button:hover svg {
-  transform: scale(1.2) rotate(90deg);
+  transform: scale(1.5) rotate(90deg);
   transition: transform 0.1s, color 0.3s, background-color 0.3s;
-  color: var(--text-span);
-  background-color: transparent;
+  background-color: oklch(85.841% 0.04208 183.344 / 0.466);
+  border-radius: var(--btn-border-radius);
 }
-
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -865,6 +867,10 @@ body {
 
   .large-button:hover>svg,
   .large-button:focus>svg {
+    transform: none;
+  }
+
+  .theme-button:hover svg {
     transform: none;
   }
 }
