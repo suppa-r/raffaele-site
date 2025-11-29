@@ -196,7 +196,7 @@
   perspective: 2500px;
   perspective-origin: center;
   transform-style: preserve-3d;
-  transform-origin: 50% 50% 100vw;
+  transform-origin: 50% 50% 50dvh;
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 }
 ::view-transition-old(root),
@@ -215,8 +215,9 @@
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
   /*   perspective: 800px; */
-  transform: translateZ(-50vw) scale(var(--scale)) rotatey(var(--rotation)) translatez(50vw);
+  transform: translateZ(-25dvh) scale(var(--scale)) rotateY(var(--rotation)) translateZ(25dvh);
   backface-visibility: hidden;
+  will-change: transform;
 }
 ::view-transition-old(root) {
   animation-name: reveal-out;
