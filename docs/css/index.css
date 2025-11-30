@@ -18,19 +18,7 @@
   --text-color: oklab(0% 0 0);
   --text-span: oklab(36.706% -0.02852 -0.00819 / 0.643);
 
-  /* Light mode background gradient */
-  --body-gradient-top: oklch(100% 0.00011 271.152);
-  --body-gradient-bottom: oklch(100% 0.00011 271.152 / 0.322);
-
-  /* Light mode grid line color */
   --body-grid-line: oklch(0% 0 0 / 0.329);
-  /* Darker shadow colors for animation */
-  --shadow-color: oklch(0% 0 0 / 0.877);
-  --shadow-color2: oklch(0% 0 0 / 0.726);
-  --shadow-color3: oklch(0% 0 0 / 0.534);
-
-  --gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
-  --gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 
   --shadow: 0 30px 100px oklch(0% 0 0);
   --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
@@ -166,13 +154,8 @@
 
   --sp: 4s;
   --burger-thickness: 2.5px;
-  --navigation__transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   --word-space-content: var(--space-3xs);
   --transition-speed: 0.3s ease-in-out;
-
-  --clr-warn-1: hsl(34.2, 45.2%, 84.1%);
-  --clr-warn-2: hsl(34.2, 65.2%, 74.1%);
-
 }
 
 @supports (selector(::view-transition)) {
@@ -317,8 +300,6 @@ body {
 
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
   min-height: 100dvh;
   overflow: hidden;
 }
@@ -332,11 +313,12 @@ body {
 
 /*-------------header text-----------------*/
 
-.header-text .title {
-  margin-top: var(--space-2xs);
+.title {
   text-align: center;
-  letter-spacing: .010rem;
+  margin-top: var(--space-2xs);
   font-size: var(--step--1);
+  letter-spacing: .010rem;
+  white-space: nowrap;
   margin-inline: auto;
 }
 
@@ -604,22 +586,20 @@ body {
   }
 }
 
+.animated-text-container {
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
 .text-with-animation {
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: var(--step-3);
+  font-size: var(--step-5);
 }
 
 .text-with-animation-1 {
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  gap: var(--space-s);
+  margin-block: var(--space-s);
   font-size: var(--step-2);
 }
 
@@ -634,16 +614,8 @@ body {
 }
 
 .text-with-animation-2 {
-  position: absolute;
-  top: 58%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
+  margin-block: var(--space-s);
   font-size: var(--step-2);
-  text-align: center;
 }
 
 .text-with-animation-2 span:first-child {
@@ -668,27 +640,23 @@ body {
 }
 
 .large-button {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  z-index: 2000;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: min(25rem, 85vw);
-  height: min(9rem, 60vw);
+  height: min(10rem, 60vw);
   overflow: hidden;
   isolation: isolate;
   border-radius: 50% / 50%;
+  color: var(--text-color);
   text-decoration: none;
-  background-color: transparent;
   box-shadow: 0 20px 20px 0 var(--text-color);
   cursor: pointer;
   user-select: none;
   pointer-events: all;
   transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s;
+  margin-inline: auto;
 }
 
 .large-button:focus,
@@ -702,31 +670,22 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4xs);
+  gap: var(--space-xs);
   width: 100%;
   max-width: 90%;
   font-size: var(--step--1);
   text-align: center;
-  user-select: none;
-  pointer-events: none;
 }
 
 .button-text span {
-  width: 100%;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: var(--text-color);
 }
 
 .large-button svg {
-  display: block;
-  flex-shrink: 0;
-  width: var(--space-l);
-  height: var(--space-l);
-  margin: 0 auto;
+  width: var(--space-xl);
+  height: var(--space-xl);
   fill: var(--text-color);
-  user-select: none;
-  pointer-events: none;
   transition: transform 0.3s, fill 0.3s, opacity 0.3s;
 }
 
@@ -736,58 +695,46 @@ body {
   transition: transform 0.1s, fill 0.3s;
 }
 
-.theme-switcher {
-  position: absolute;
-  bottom: 1%;
-  right: 1%;
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 var(--space-xs);
-  box-sizing: border-box;
+  padding: var(--space-s);
+  pointer-events: none;
+}
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--step--2);
+  pointer-events: auto;
 }
 
 .theme-button {
-  position: relative;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  user-select: none;
-  opacity: 1;
-  background-color: transparent;
-  transition: opacity 0.3s ease-in-out, transform 0.2s ease;
-  pointer-events: all;
-  padding: var(--space-3xs);
-  border-radius: var(--space-3xs);
   min-width: var(--space-xl);
   min-height: var(--space-xl);
-  isolation: isolate;
-  z-index: 9999;
+  padding: var(--space-3xs);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, background-color 0.3s ease-in-out;
 }
 
 .theme-button:hover {
   transform: scale(1.1);
-  background-color: #b3dad3;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out, transform 0.2s ease, background-color 0.3s ease-in-out;
+  /*background-color: #b3dad3;*/
 }
 
 .theme-button.active {
   display: none;
-}
-
-.theme-button:not(.active) {
-  display: block;
-  opacity: 1;
-  pointer-events: all;
-  transition: opacity 0.3s ease-in-out;
-  background-color: transparent;
-  border: none;
-  border-radius: var(--btn-border-radius);
-  user-select: none;
 }
 
 .theme-button input[type="radio"] {
@@ -797,20 +744,15 @@ body {
 .theme-button svg {
   width: var(--space-m);
   height: var(--space-m);
-  color: var(--text-color);
-  opacity: 1;
-  display: inline-block;
-  transition: transform 0.1s, color 0.3s, background-color 0.3s;
-  user-select: none;
-  pointer-events: none;
-  background-color: transparent;
+  fill: var(--text-color);
+  transition: transform 0.1s, fill 0.3s, background-color 0.3s, padding 0.3s;
 }
 
 .theme-button:hover svg {
   transform: scale(1.5) rotate(90deg);
-  transition: transform 0.1s, color 0.3s, background-color 0.3s;
+  padding: var(--space-3xs);
   background-color: oklch(85.841% 0.04208 183.344 / 0.466);
-  border-radius: var(--btn-border-radius);
+  border-radius: 50%;
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
