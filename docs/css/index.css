@@ -65,6 +65,11 @@
   overflow: hidden;
 }
 
+[data-theme="light"] .content div,
+[data-theme="light"] .content-1 div {
+  mix-blend-mode: multiply;
+}
+
 :root {
 
   /*------------------- Fluid typography with better mobile scaling ------------- */
@@ -376,6 +381,7 @@ body {
   width: 8.5vmin;
   position: relative;
   text-align: center;
+  color: var(--text-color);
 }
 
 .content-1 {
@@ -409,6 +415,7 @@ body {
   width: 8vmin;
   position: relative;
   text-align: center;
+  color: var(--text-color);
 }
 
 .up:before,
@@ -698,18 +705,17 @@ body {
   gap: var(--space-4xs);
   width: 100%;
   max-width: 90%;
-  color: var(--text-color);
   font-size: var(--step--1);
   text-align: center;
   user-select: none;
   pointer-events: none;
-  transition: box-shadow 0.3s, outline 0.3s;
 }
 
 .button-text span {
   width: 100%;
   overflow-wrap: break-word;
   hyphens: auto;
+  color: var(--text-color);
 }
 
 .large-button svg {
@@ -726,7 +732,6 @@ body {
 
 .large-button:hover svg,
 .large-button:focus svg {
-  fill: var(--text-color);
   transform: scale(1.6) rotate(45deg);
   transition: transform 0.1s, fill 0.3s;
 }
