@@ -182,9 +182,9 @@
 }
 
 .support {
-  background-color: var(--clr-warn-1);
-  border-inline-start: 0.5rem solid var(--clr-warn-2);
-  color: var(--clr-warn-text);
+  background-color: var(--base-color);
+  border-inline-start: 0.5rem solid var(--text-color);
+  color: var(--text-color);
   border-radius: 0.5rem;
   padding: 1em 2em;
 }
@@ -214,7 +214,7 @@
       1);
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
-  /*   perspective: 800px; */
+  perspective: 800px;
   transform: translateZ(-25dvh) scale(var(--scale)) rotateY(var(--rotation)) translateZ(25dvh);
   backface-visibility: hidden;
   will-change: transform;
@@ -316,14 +316,6 @@ body {
   flex-direction: column;
   min-height: 100dvh;
   overflow: hidden;
-  /* ✅ Use min-height for flexibility *
-  position: relative;
-  /* ✅ For any absolutely positioned children *
-  isolation: isolate;
-  /* ✅ Above background *
-  z-index: 1000;
-  background-color: transparent;
-  /* ✅ Ensure transparency */
 }
 
 .wrapper>* {
@@ -384,8 +376,6 @@ body {
   width: 8.5vmin;
   position: relative;
   text-align: center;
-  box-sizing: border-box;
-  color: var(--text-color);
 }
 
 .content-1 {
@@ -419,8 +409,6 @@ body {
   width: 8vmin;
   position: relative;
   text-align: center;
-  box-sizing: border-box;
-  color: var(--text-color);
 }
 
 .up:before,
@@ -684,13 +672,11 @@ body {
   justify-content: center;
   width: min(25rem, 85vw);
   height: min(9rem, 60vw);
-  margin: var(--space-xs);
   overflow: hidden;
   isolation: isolate;
   border-radius: 50% / 50%;
-  color: var(--text-color);
-  text-align: center;
   text-decoration: none;
+  background-color: transparent;
   box-shadow: 0 20px 20px 0 var(--text-color);
   cursor: pointer;
   user-select: none;
@@ -740,7 +726,7 @@ body {
 
 .large-button:hover svg,
 .large-button:focus svg {
-  fill: var(--text-span);
+  fill: var(--text-color);
   transform: scale(1.6) rotate(45deg);
   transition: transform 0.1s, fill 0.3s;
 }
@@ -767,7 +753,6 @@ body {
   user-select: none;
   opacity: 1;
   background-color: transparent;
-  color: var(--text-color);
   transition: opacity 0.3s ease-in-out, transform 0.2s ease;
   pointer-events: all;
   padding: var(--space-3xs);
@@ -781,7 +766,8 @@ body {
 .theme-button:hover {
   transform: scale(1.1);
   background-color: #b3dad3;
-  opacity: 0.9;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, transform 0.2s ease, background-color 0.3s ease-in-out;
 }
 
 .theme-button.active {
@@ -794,11 +780,9 @@ body {
   pointer-events: all;
   transition: opacity 0.3s ease-in-out;
   background-color: transparent;
-  color: var(--text-color);
   border: none;
   border-radius: var(--btn-border-radius);
   user-select: none;
-  cursor: pointer;
 }
 
 .theme-button input[type="radio"] {
