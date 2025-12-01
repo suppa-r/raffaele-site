@@ -618,7 +618,6 @@ body {
 .text-with-animation-2 {
   font-size: var(--step-3);
   display: flex;
-  flex-direction: row;
   gap: var(--space-m);
 }
 
