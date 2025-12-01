@@ -131,8 +131,7 @@
   --btn-border-radius: var(--space-s);
   --padding-block: 0;
   --padding-inline: 0 var(--space-4xs);
-  --letter-spacing: var(--space-3xs);
-  --word-spacing: var(--space-3xs);
+
 
   /* Font families */
   --font-primary: 'pompiere_regular',
@@ -146,15 +145,20 @@
   --backdrop-blur: blur(1px);
   --background-transition: background 0.3s ease-in-out;
   --directional-angle: 90deg;
-  --measure: 60ch;
 
   /*---------------------- Animation and transition settings ------------------- */
 
   --sp: 4s;
   --burger-thickness: 2.5px;
-  --word-space-content: var(--space-3xs);
   --transition-speed: 0.3s ease-in-out;
+
+  /*---------------------- letter and word spacing settings ------------------- */
+
+  --measure: 60ch;
+  --letter-spacing: var(--space-4xs);
+  --word-spacing: var(--space-4xs);
 }
+
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -178,6 +182,7 @@
 ::view-transition {
   background: #555;
 }
+
 ::view-transition-image-pair(root) {
   perspective: 2500px;
   perspective-origin: center;
@@ -185,6 +190,7 @@
   transform-origin: 50% 50% 50dvh;
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: 1.5s linear(0,
@@ -205,9 +211,11 @@
   backface-visibility: hidden;
   will-change: transform;
 }
+
 ::view-transition-old(root) {
   animation-name: reveal-out;
 }
+
 ::view-transition-new(root) {
   animation-name: reveal-in;
 }
@@ -217,6 +225,7 @@
   inherits: false;
   initial-value: 0deg;
 }
+
 @property --scale {
   syntax: "<number>";
   inherits: false;
@@ -241,6 +250,7 @@
     --rotation: 0deg;
   }
 }
+
 @keyframes reveal-out {
   from {
     --rotation: 0deg;
@@ -262,7 +272,14 @@
 
 /*------global styles-------*/
 
-* {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li {
   max-inline-size: var(--measure);
 }
 
@@ -278,24 +295,20 @@ footer {
 
 html,
 body {
-  color: var(--text-color);
-  font-size: var(--step-0);
-  font-family: var(--font-primary), sans-serif;
-  font-style: var(--font-style-primary);
-  font-weight: normal;
-  background-image: var(--bg-image);
-  background-size: var(--bg-size, cover);
-  /* ✅ Use theme-specific sizes */
   background-attachment: fixed;
+  background-image: var(--bg-image);
   background-position: center;
   background-repeat: var(--bg-repeat, no-repeat);
-  /* ✅ Use theme-specific repeat */
-  word-spacing: var(--word-space-content);
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out,
-    background-image var(--background-transition),
-    background-position 0.3s ease-in-out;
+  background-size: var(--bg-size, cover);
+  color: var(--text-color);
+  font-family: var(--font-primary), sans-serif;
+  font-size: var(--step-0);
+  font-style: var(--font-style-primary);
+  font-weight: normal;
+  word-spacing: var(--word-spacing);
+  letter-spacing: var(--letter-spacing);
+  transition: color 0.3s ease-in-out, background-image 0.3s ease-in-out;
 }
-
 
 .wrapper {
   min-height: 100dvh;
@@ -306,7 +319,6 @@ body {
   container-type: inline-size;
   max-inline-size: var(--measure);
   margin-inline: auto;
-  letter-spacing: var(--letter-spacing);
 }
 
 /*-------------header text-----------------*/
@@ -716,8 +728,20 @@ footer {
   display: flex;
   align-items: center;
   gap: var(--space-2xs);
-  font-size: var(--step--1);
+  font-size: var(--step--2);
   pointer-events: auto;
+}
+
+.theme-button span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .theme-button {
@@ -726,7 +750,7 @@ footer {
   justify-content: center;
   min-width: var(--space-xl);
   min-height: var(--space-xl);
-  padding: var(--space-3xs);
+  padding: var(--space-5xs);
   border: none;
   background-color: transparent;
   color: var(--text-color);
@@ -734,7 +758,7 @@ footer {
   user-select: none;
   transition: transform 0.2s ease;
   isolation: isolate;
-  z-index: 200;
+  z-index: 2000;
 }
 
 .theme-button svg {
