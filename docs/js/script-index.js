@@ -59,14 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setActiveThemeButton(savedTheme);
   updateFavicon(savedTheme);
 
-  // Single event delegation for theme buttons
+  // Event listener for theme button clicks
   themeButtons.forEach(btn => {
-    const input = btn.querySelector('input[type="radio"]');
-    if (!input) return;
-
-    input.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        setTheme(e.target.value);
+    btn.addEventListener('click', () => {
+      const input = btn.querySelector('input[type="radio"]');
+      if (input) {
+        setTheme(input.value);
       }
     });
   });
