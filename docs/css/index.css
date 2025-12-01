@@ -152,9 +152,9 @@
   --burger-thickness: 2.5px;
   --transition-speed: 0.3s ease-in-out;
 
-  /*---------------------- letter and word spacing settings ------------------- */
+  /*---------------------- letter and word spacing settings -------------------/
 
-  --measure: 60ch;
+  --measure: 60ch;*/
   --letter-spacing: var(--space-4xs);
   --word-spacing: var(--space-4xs);
 }
@@ -272,20 +272,8 @@
 
 /*------global styles-------*/
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li {
-  max-inline-size: var(--measure);
-}
-
 html,
 body,
-div,
 header,
 nav,
 main,
