@@ -83,9 +83,7 @@
   /* Step 7: 64.4973px → 149.5688px */
   --step-7: clamp(4.0311rem, 2.0224rem + 9.4524cqi, 9.3481rem);
 
-
   /*---------------------- Fluid spacing with better mobile scaling --------------- */
-
 
   /* Space 5xs: 2px → 3px */
   --space-5xs: clamp(0.125rem, 0.1014rem + 0.1111cqi, 0.1875rem);
@@ -586,21 +584,25 @@ body {
   }
 }
 
-.animated-text-container {
+.text-animation-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-inline: auto;
+  align-items: center;
   text-align: center;
+  margin-inline: auto;
   margin-top: var(--space-2xl);
 }
 
 .text-with-animation {
-  font-size: var(--step-5);
+  font-size: var(--step-6);
 }
 
 .text-with-animation-1 {
-  margin-block: var(--space-s);
   font-size: var(--step-2);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-m);
 }
 
 .text-with-animation-1 span:first-child {
@@ -614,8 +616,10 @@ body {
 }
 
 .text-with-animation-2 {
-  margin-block: var(--space-s);
-  font-size: var(--step-2);
+  font-size: var(--step-3);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-m);
 }
 
 .text-with-animation-2 span:first-child {
@@ -640,6 +644,7 @@ body {
 }
 
 .large-button {
+  margin-top: var(--space-2xl);
   display: flex;
   flex-direction: column;
   align-items: center;
