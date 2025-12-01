@@ -272,6 +272,18 @@
 
 /*------global styles-------*/
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+figcaption {
+  max-inline-size: var(--measure);
+}
+
 html,
 body,
 header,

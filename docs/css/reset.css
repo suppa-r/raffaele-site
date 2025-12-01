@@ -100,18 +100,6 @@
         word-wrap: normal;
     }
 
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    li,
-    figcaption {
-        max-inline-size: 60ch;
-    }
-
     /* A elements that don't have a class get default styles */
     a:not([class]) {
         text-decoration-skip-ink: auto;
