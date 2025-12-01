@@ -645,7 +645,7 @@ body {
 }
 
 .large-button {
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
