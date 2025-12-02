@@ -331,7 +331,7 @@ body {
   margin-top: var(--space-2xs);
   font-size: var(--step--1);
   letter-spacing: .010rem;
-  white-space: wrap;
+  white-space: normal;
   margin-inline: auto;
 }
 
@@ -696,7 +696,7 @@ body {
   max-width: 90%;
   font-size: var(--step--1);
   text-align: center;
-  white-space: wrap;
+  white-space: normal;
 }
 
 .button-text span {
