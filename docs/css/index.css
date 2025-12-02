@@ -180,7 +180,7 @@
 }
 
 ::view-transition {
-  background: #555;
+  background: var(--base-color);
 }
 
 ::view-transition-image-pair(root) {
@@ -635,7 +635,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin-inline: auto;
 }
 
 .text-with-animation-2 span:first-child {
@@ -665,8 +665,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: min(25rem, 85vw);
-  height: min(10rem, 60vw);
+  width: min(25rem, 85dvw);
+  height: min(9rem, 60dvh);
   overflow: hidden;
   isolation: isolate;
   border-radius: 50% / 50%;
@@ -724,7 +724,7 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: var(--space-s);
+  padding: var(--space-4xs);
   pointer-events: none;
 }
 

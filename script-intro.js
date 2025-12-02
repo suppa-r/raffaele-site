@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ✅ FIXED: Element declarations to match your HTML structure
   const themeSwitcher = document.querySelector('.theme-switcher');
   const themeButtons = document.querySelectorAll('.theme-button');
-  //const wrapper = document.querySelector('.wrapper');
+  const wrapper = document.querySelector('.wrapper');
   const navBar = document.querySelector('.navbar');
   const main = document.querySelector('main');
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (themeSwitcher) {
           themeSwitcher.classList.add('active');
         }
-        //if (wrapper) wrapper.style.display = 'none';
+        if (wrapper) wrapper.style.display = 'none';
         if (main) main.style.display = 'none';
         if (navBar) navBar.style.display = 'none';
       } else if (input) {
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close theme switcher
         if (themeSwitcher) themeSwitcher.classList.remove('active');
-        //if (wrapper) wrapper.style.display = 'block';
+        if (wrapper) wrapper.style.display = 'block';
         if (main) main.style.display = 'block';
         if (navigation) navigation.style.display = 'block';
       }
@@ -153,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
       headerSmallMenuLinks: headerSmallMenuLinks.length,
       headerLogoContainer: !!headerLogoContainer
     });
-  });
-
-
+  });    // Show main content
+  if (wrapper) wrapper.style.display = 'block';
 });
