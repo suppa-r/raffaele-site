@@ -316,6 +316,8 @@ body {
 }
 
 .wrapper>* {
+  display: block;
+  box-sizing: content-box;
   container-type: inline-size;
   max-inline-size: var(--measure);
   margin-inline: auto;
