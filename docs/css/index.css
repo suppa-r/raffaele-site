@@ -333,6 +333,7 @@ header p {
   white-space: normal;
   word-wrap: normal;
   word-break: normal;
+  padding-top: var(--space-xs);
 }
 
 /*-------------main-----------------*/
