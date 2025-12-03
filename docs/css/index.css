@@ -316,7 +316,7 @@ body {
 }
 
 .wrapper>* {
-  box-sizing: content-box;
+  /*box-sizing: content-box;*/
   container-type: inline-size;
   max-inline-size: var(--measure);
   margin-inline: auto;
@@ -326,13 +326,10 @@ body {
 /*-------------header-----------------*/
 
 header {
-  margin-inline: auto;
   text-align: center;
 }
 
 header p {
-  padding: 0;
-  font-size: var(--step--1);
   letter-spacing: .010rem;
   white-space: normal;
   max-inline-size: var(--measure);
