@@ -323,15 +323,19 @@ body {
   padding-inline: var(--space-s);
 }
 
-/*-------------header text-----------------*/
+/*-------------header-----------------*/
 
-.title {
+header {
+  margin-inline: auto;
   text-align: center;
-  margin-top: var(--space-2xs);
+}
+
+header p {
+  padding: 0;
   font-size: var(--step--1);
   letter-spacing: .010rem;
-  white-space: wrap;
-  margin-inline: auto;
+  white-space: normal;
+  max-inline-size: var(--measure);
 }
 
 /*-------------curvature-----------------*/
@@ -717,43 +721,34 @@ body {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: var(--space-s);
-  pointer-events: none;
+  padding-inline-end: var(--space-xs);
 }
 
 .theme-switcher {
+  position: fixed;
+  bottom: var(--space-3xs);
+  right: var(--space-l);
+  z-index: 2000;
   display: flex;
   align-items: center;
-  gap: var(--space-2xs);
   font-size: var(--step--2);
   pointer-events: auto;
 }
 
 .theme-button span {
-  position: absolute;
+  /*position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip-path: inset(50%);
+  clip-path: inset(50%);*/
+  clip: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
 }
 
 .theme-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: var(--space-xl);
-  min-height: var(--space-xl);
-  padding: var(--space-5xs);
   border: none;
   background-color: transparent;
   color: var(--text-color);
@@ -765,8 +760,8 @@ footer {
 }
 
 .theme-button svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-m);
+  height: var(--space-m);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
