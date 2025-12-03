@@ -180,7 +180,7 @@
 }
 
 ::view-transition {
-  background: var(--base-color);
+  background: #555;
 }
 
 ::view-transition-image-pair(root) {
@@ -193,12 +193,7 @@
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: (0.34, 1, 0.66, 0);
-
-
-
-
-  /*animation: 1.5s linear(0,
+  animation: 1.5s linear(0,
       0.324 9.1%,
       0.584 18.6%,
       0.782 28.6%,
@@ -208,7 +203,7 @@
       1.021 55.1%,
       1.033 61%,
       1.035 71.7%,
-      1);*/
+      1);
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
   perspective: 800px;
@@ -313,44 +308,30 @@ body {
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
   transition: color 0.3s ease-in-out, background-image 0.3s ease-in-out;
-
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
   min-height: 100dvh;
   overflow: hidden;
 }
 
 .wrapper>* {
-  margin-block: var(--space-s);
+  box-sizing: content-box;
+  container-type: inline-size;
   max-inline-size: var(--measure);
   margin-inline: auto;
   padding-inline: var(--space-s);
 }
 
-.wrapper>main {
-  margin-block: auto;
-}
-
-.wrapper> :first-child:not(main) {
-  margin-block-start: 0;
-}
-
-.wrapper> :last-child:not(main) {
-  margin-block-end: 0;
-}
-
-
 /*-------------header text-----------------*/
 
 .title {
+  text-align: center;
+  margin-top: var(--space-2xs);
   font-size: var(--step--1);
   letter-spacing: .010rem;
-  white-space: normal;
+  white-space: wrap;
   margin-inline: auto;
-  padding: var(--space-5xs) 0;
 }
 
 /*-------------curvature-----------------*/
@@ -359,7 +340,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
-  margin-top: var(--space-m);
+  margin-top: var(--space-xl);
   margin-inline: auto;
 }
 
@@ -653,7 +634,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-inline: auto;
+  align-items: center;
 }
 
 .text-with-animation-2 span:first-child {
@@ -683,8 +664,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: min(25rem, 85dvw);
-  height: min(9rem, 60dvh);
+  width: min(25rem, 85vw);
+  height: min(10rem, 60vw);
   overflow: hidden;
   isolation: isolate;
   border-radius: 50% / 50%;
@@ -714,7 +695,7 @@ body {
   max-width: 90%;
   font-size: var(--step--1);
   text-align: center;
-  white-space: normal;
+  white-space: wrap;
 }
 
 .button-text span {
@@ -742,7 +723,7 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: var(--space-4xs);
+  padding: var(--space-s);
   pointer-events: none;
 }
 
