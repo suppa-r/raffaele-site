@@ -622,6 +622,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: var(--space-xs);
 }
 
 .text-with-animation-1 span:first-child {
@@ -631,7 +632,7 @@ main {
 
 .text-with-animation-1 span:last-child {
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1s forwards;
+  animation: word-animation 0.5s ease-out 1.2s forwards;
 }
 
 .text-with-animation-2 {
@@ -648,7 +649,7 @@ main {
 
 .text-with-animation-2 span:last-child {
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1s forwards;
+  animation: word-animation 0.5s ease-out 1.4s forwards;
 }
 
 @keyframes word-animation {
@@ -663,7 +664,7 @@ main {
 }
 
 .large-button {
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
