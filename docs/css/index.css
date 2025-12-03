@@ -60,7 +60,7 @@
 
 :root {
 
-  /*------------------- Fluid typography with better mobile scaling ------------- */
+  /*-------- Fluid typography with better mobile scaling ------ */
 
   /* Step -2: 12.5px → 11.2556px */
   --step--2: clamp(0.7035rem, 0.8106rem + -0.1383cqi, 0.7813rem);
@@ -83,7 +83,7 @@
   /* Step 7: 64.4973px → 149.5688px */
   --step-7: clamp(4.0311rem, 2.0224rem + 9.4524cqi, 9.3481rem);
 
-  /*---------------------- Fluid spacing with better mobile scaling --------------- */
+  /*-------- Fluid spacing with better mobile scaling ---------- */
 
   /* Space 5xs: 2px → 3px */
   --space-5xs: clamp(0.125rem, 0.1014rem + 0.1111cqi, 0.1875rem);
@@ -126,7 +126,7 @@
   /* Space 12xl: 240px → 300px */
   --space-12xl: clamp(15rem, 13.5833rem + 6.6667cqi, 18.75rem);
 
-  /*---------------------- Button and padding settings ---------------------- */
+  /*--------------- Button and padding settings ---------------- */
 
   --btn-border-radius: var(--space-s);
   --padding-block: 0;
@@ -146,13 +146,13 @@
   --background-transition: background 0.3s ease-in-out;
   --directional-angle: 90deg;
 
-  /*---------------------- Animation and transition settings ------------------- */
+  /*----------- Animation and transition settings -------------- */
 
   --sp: 4s;
   --burger-thickness: 2.5px;
   --transition-speed: 0.3s ease-in-out;
 
-  /*---------------------- letter and word spacing settings ---------------------*/
+  /*------------- letter and word spacing settings ---------------*/
 
   --measure: 60ch;
   --letter-spacing: var(--space-4xs);
@@ -172,15 +172,15 @@
 }
 
 .support {
-  background-color: var(--clr-warn-1);
-  border-inline-start: 0.5rem solid var(--clr-warn-2);
-  color: var(--clr-warn-text);
+  background-color: var(--base-color);
+  border-inline-start: 0.5rem solid var(--text-color);
+  color: var(--text-color);
   border-radius: 0.5rem;
   padding: 1em 2em;
 }
 
 ::view-transition {
-  background: #555;
+  background: var(--base-color);
 }
 ::view-transition-image-pair(root) {
   perspective: 2000px;
@@ -204,8 +204,8 @@
       1);
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
-  /*   perspective: 800px; */
-  transform: translatez(-50vw) scale(var(--scale)) rotatey(var(--rotation)) translatez(50vw);
+  perspective: 800px;
+  transform: translateZ(-10vw) scale(var(--scale)) rotateY(var(--rotation)) translateZ(10vw);
   backface-visibility: hidden;
 }
 ::view-transition-old(root) {
@@ -263,7 +263,7 @@
   }
 }
 
-/*------global styles-------*/
+/*----------------  global styles  ---------------*/
 
 p,
 h1,
@@ -285,6 +285,8 @@ main,
 footer {
   max-inline-size: none;
 }
+
+/*------------------ Body styles  ------------------*/
 
 html,
 body {
@@ -604,6 +606,8 @@ main {
   }
 }
 
+/*------------------ Text styles  ------------------*/
+
 .text-animation-container {
   display: flex;
   flex-direction: column;
@@ -720,6 +724,8 @@ main {
   transform: scale(1.6) rotate(45deg);
   transition: transform 0.1s, fill 0.3s;
 }
+
+/*------------------ Theme switcher  ---------------*/
 
 .theme-switcher {
   position: absolute;
