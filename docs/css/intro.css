@@ -189,9 +189,9 @@
 
   /*------------- letter and word spacing settings ---------------*/
 
-  --measure: 60ch;
+  --measure: 65ch;
   --letter-spacing: var(--space-4xs);
-  --word-spacing: var(--space-4xs);
+  --word-spacing: var(--space-5xs);
   --threshold: 30rem;
 }
 
@@ -447,7 +447,8 @@ body {
     justify-content: center;
   }
 
-  main {
+  .main {
+    flex-grow: 1;
     margin: 0;
   }
 }
@@ -569,6 +570,7 @@ body {
 }
 
 .page-content {
+  margin-top: var(--space-s);
   display: flex;
   flex-direction: column;
   align-items: center;
