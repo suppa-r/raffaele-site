@@ -354,18 +354,16 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   height: 100%;
 }
 
 .nav-item {
-  width: 100%;
+  padding: 0 var(--space-5xs);
 }
 
 .nav-link {
   display: flex;
-  align-items: center;
-  height: 5rem;
+  padding: var(--space-xs) 0;
   color: var(--text-color);
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
@@ -380,13 +378,13 @@ body {
 
 .link-text {
   display: none;
-  margin-left: 1rem;
+  margin-left: var(--space-2xs);
 }
 
 .nav-link svg {
-  width: 2rem;
-  min-width: 2rem;
-  margin: 0 1.5rem;
+  width: var(--space-m);
+  min-width: var(--space-m);
+  margin: 0 var(--space-s);
 }
 
 .fa-primary {
@@ -394,7 +392,7 @@ body {
 }
 
 .fa-secondary {
-  color: #49dfcb;
+  color: #0e574d;
 }
 
 .fa-primary,
@@ -404,11 +402,23 @@ body {
 
 .logo {
   text-align: center;
-  color: var(--text-secondary);
-  background: var(--bg-secondary);
-  font-size: 1.5rem;
-  letter-spacing: 0.3ch;
-  width: 100%;
+  color: var(--text-color);
+  background: transparent;
+  font-size: var(--step--1);
+  letter-spacing: var(--letter-spacing);
+  padding-left: var(--space-2xl);
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition-speed);
+  position: relative;
+}
+
+.logo .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-5xs);
+  margin-right: var(--space-s);
 }
 
 .logo svg {
@@ -417,10 +427,18 @@ body {
 }
 
 .logo-text {
-  display: inline;
+  display: none;
   position: absolute;
-  left: -999px;
+  right: var(--space-l);
   transition: var(--transition-speed);
+}
+
+.navbar:hover .logo-text {
+  display: inline;
+}
+
+.navbar:hover .logo .nav-link {
+  gap: var(--space-5xs);
 }
 
 .navbar:hover .logo svg {
@@ -462,19 +480,21 @@ body {
   }
 
   .navbar:hover {
-    width: 16rem;
+    width: 10rem;
+  }
+
+  .navbar:hover .logo.link-text {
+    display: inline;
+    margin-left: var(--space-xl);
   }
 
   .navbar:hover .link-text {
     display: inline;
+    margin-left: var(--space-xs);
   }
 
   .navbar:hover .logo svg {
-    margin-left: 11rem;
-  }
-
-  .navbar:hover .logo-text {
-    left: 0px;
+    margin: 0 0 0 var(--space-3xl);
   }
 }
 
