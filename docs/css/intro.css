@@ -347,14 +347,12 @@ body {
 
 .navbar {
   flex: 0 0 auto;
-  box-shadow: var(--navbar-shadow);
   z-index: 1500;
   transition: width 600ms ease;
   min-height: 100dvh;
   overflow: hidden;
 }
 .navbar:hover {
-  box-shadow: var(--navbar-shadow);
   width: 10rem;
 }
 
