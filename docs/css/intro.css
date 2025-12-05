@@ -120,6 +120,10 @@
 
   /*-------- Fluid spacing with better mobile scaling ---------- */
 
+
+  /* --------- Spacing settings (from 2px to 300px) ---------- */
+  /* Space 6xs: 2px → 3px */
+  --space-6xs: clamp(0.05rem, 0.0914rem + 0.1111cqi, 0.1475rem);
   /* Space 5xs: 2px → 3px */
   --space-5xs: clamp(0.125rem, 0.1014rem + 0.1111cqi, 0.1875rem);
   /* Space 4xs: 3px → 4px */
@@ -190,9 +194,8 @@
   /*------------- letter and word spacing settings ---------------*/
 
   --measure: 65ch;
-  --letter-spacing: var(--space-4xs);
-  --word-spacing: var(--space-5xs);
-  --threshold: 30rem;
+  --letter-spacing: 0.05em;
+  --word-spacing: var(--space-6xs);
 }
 
 
@@ -410,7 +413,6 @@ body {
   cursor: pointer;
   user-select: none;
   transition: var(--transition-speed);
-  position: relative;
 }
 
 .logo .nav-link {
@@ -451,6 +453,7 @@ body {
     bottom: 0;
     width: 100vw;
     height: 5rem;
+    margin-inline: auto;
   }
 
   .logo {
@@ -459,6 +462,7 @@ body {
 
   .navbar-nav {
     flex-direction: row;
+    margin-inline: auto;
   }
 
   .nav-link {
@@ -466,13 +470,34 @@ body {
   }
 
   .main {
-    flex-grow: 1;
-    margin: 0;
+    max-inline-size: none;
+    margin-inline: auto;
+    margin-right: 5rem;
+    isolation: isolate;
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  .title-header {
+    max-inline-size: none;
+    margin: var(--space-5xs)0;
+    padding: var(--space-2xs)0;
+  }
+
+  .page-content {
+    max-inline-size: none;
+
+    padding-inline: var(--space-3xs);
+    margin-inline: 0;
   }
 }
 
 /* Large screens */
 @media only screen and (min-width: 600px) {
+  .page-content {
+    max-inline-size: var(--measure);
+  }
+
   .navbar {
     top: 0;
     width: 5rem;
@@ -558,13 +583,21 @@ body {
   border-radius: 50%;
 }
 
-.main {
+main {
+  margin-top: var(--space-s);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-inline-size: var(--measure);
   margin-inline: auto;
-  margin-left: 5rem;
-  padding: var(--space-s);
   text-align: center;
+  margin-left: 5rem;
+  padding: var(--space-2xs);
+
   isolation: isolate;
   z-index: 1000;
+  min-height: 100dvh;
   overflow: hidden;
 }
 

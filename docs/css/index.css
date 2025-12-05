@@ -155,8 +155,8 @@
   /*------------- letter and word spacing settings ---------------*/
 
   --measure: 60ch;
-  --letter-spacing: var(--space-4xs);
-  --word-spacing: var(--space-4xs);
+  --letter-spacing: var(--space-5xs);
+  --word-spacing: var(--space-5xs);
 }
 
 
@@ -338,8 +338,28 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-s);
   margin-block: auto;
+}
+
+.content-title {
+  text-align: center;
+  margin-block-start: var(--space-xs);
+  color: oklch(62.793% 0.25768 29.223 / 0.603);
+}
+
+.content-title h1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5xs);
+  font-size: var(--step-0);
+}
+
+.content-title .attention {
+  display: block;
+}
+
+.content-title .subtitle {
+  display: block;
 }
 
 /*-------------curvature-----------------*/
