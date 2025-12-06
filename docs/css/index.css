@@ -130,7 +130,7 @@
 
   --btn-border-radius: var(--space-s);
   --padding-block: 0;
-  --padding-inline: 0 var(--space-4xs);
+  --padding-inline: var(--space-4xs);
 
 
   /* Font families */
@@ -273,7 +273,6 @@ h3,
 h4,
 h5,
 h6,
-li,
 figcaption {
   max-inline-size: var(--measure);
 }
@@ -337,29 +336,13 @@ header p {
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-block: auto;
 }
 
-.content-title .subtitle {
+main h1 {
+  padding-top: var(--space-s);
   text-align: center;
-  margin-block-start: var(--space-xs);
-}
-
-.content-title h1 {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5xs);
   font-size: var(--step-0);
-}
-
-.content-title .attention {
-  display: block;
-}
-
-.content-title .subtitle {
-  display: block;
+  font-weight: 400;
 }
 
 /*-------------curvature-----------------*/
@@ -367,9 +350,8 @@ main {
 .curve-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: var(--space-3xl);
   margin-block: var(--space-xl);
-  margin-inline: auto;
 }
 
 .content {
@@ -631,11 +613,8 @@ main {
 .text-animation-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
-  margin-inline: auto;
   margin-top: var(--space-l);
-  gap: var(--space-xs)
 }
 
 .text-with-animation {
@@ -647,12 +626,12 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: var(--space-xs);
 }
 
 .text-with-animation-1 span:first-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
+  margin-right: var(--space-xs);
 }
 
 .text-with-animation-1 span:last-child {
