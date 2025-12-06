@@ -157,6 +157,7 @@
   --measure: 60ch;
   --letter-spacing: var(--space-5xs);
   --word-spacing: var(--space-5xs);
+  --sl: 0.4rem;
 }
 
 
