@@ -195,17 +195,7 @@
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: 0.8s linear(0,
-      0.324 9.1%,
-      0.584 18.6%,
-      0.782 28.6%,
-      0.858 33.8%,
-      0.92 39.2%,
-      0.997 49.5%,
-      1.021 55.1%,
-      1.033 61%,
-      1.035 71.7%,
-      1);
+  animation: 1.2s ease-in-out;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
   perspective: 2000px;
