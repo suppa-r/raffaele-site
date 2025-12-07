@@ -6,5 +6,5 @@
             "inline": true
         }
     },
-    "github.copilot.nextEditSuggestions.enabled": true
+    "github.copilot.nextEditSuggestions.enabled": false
 }
