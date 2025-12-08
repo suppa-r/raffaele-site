@@ -224,27 +224,12 @@
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
-  .content div,
-  .content-1 div {
-    animation: none;
-  }
-
-  .down:before,
-  .up:before {
-    animation: none;
-  }
-
-  .large-button:hover>svg,
-  .large-button:focus>svg {
-    transform: none;
-  }
-
-  .theme-button:hover svg {
-    transform: none;
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }
-
 
 /*----------------  global styles  ---------------*/
 
@@ -770,13 +755,6 @@ main h1 {
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
-
   .content div,
   .content-1 div {
     animation: none;
