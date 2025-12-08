@@ -221,6 +221,31 @@
     --rotation: 90deg;
   }
 }
+
+/* Accessibility: Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .content div,
+  .content-1 div {
+    animation: none;
+  }
+
+  .down:before,
+  .up:before {
+    animation: none;
+  }
+
+  .large-button:hover>svg,
+  .large-button:focus>svg {
+    transform: none;
+  }
+
+  .theme-button:hover svg {
+    transform: none;
+  }
+}
+
+
 /*----------------  global styles  ---------------*/
 
 p,
@@ -322,7 +347,7 @@ main h1 {
   position: absolute;
   left: 50%;
   display: flex;
-  /*animation: show-hide-content var(--sp) ease 0s infinite;*/
+  animation: show-hide-content var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -356,7 +381,7 @@ main h1 {
   position: absolute;
   left: 50%;
   display: flex;
-  /*animation: show-hide-content-1 var(--sp) ease 0s infinite;*/
+  animation: show-hide-content-1 var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
 
@@ -380,13 +405,13 @@ main h1 {
   color: var(--text-color);
 }
 
-/*.up:before,
+.up:before,
 .down:before {
   background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 70%);
   content: "";
   position: absolute;
   box-shadow: 0 0 100px 10px var(--text-color);
-  /*animation: shadow var(--sp) ease 0s infinite;*
+  animation: shadow var(--sp) ease 0s infinite;
 }
 
 .up:before {
@@ -428,7 +453,7 @@ main h1 {
   animation-iteration-count: infinite;
 }
 
-/*up*
+/*up*/
 .up-2-8 {
   animation-name: go-up-2-8;
 }
@@ -445,7 +470,7 @@ main h1 {
   animation-name: go-up-5;
 }
 
-/*down*
+/*down*/
 .down-2-8 {
   animation-name: go-down-2-8;
 }
@@ -587,16 +612,16 @@ main h1 {
   justify-content: center;
 }
 
-/*.text-with-animation-1 span:first-child {
+.text-with-animation-1 span:first-child {
   opacity: 0;
-  /*animation: word-animation 0.5s ease-out 0.5s forwards;*
+  animation: word-animation 0.5s ease-out 0.5s forwards;
   margin-right: var(--space-xs);
 }
 
 .text-with-animation-1 span:last-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.2s forwards;
-}*/
+}
 
 .text-with-animation-2 {
   display: flex;
@@ -604,7 +629,7 @@ main h1 {
   justify-content: center;
 }
 
-/*.text-with-animation-2 span:first-child {
+.text-with-animation-2 span:first-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
 }
@@ -745,6 +770,12 @@ main h1 {
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 
   .content div,
   .content-1 div {
