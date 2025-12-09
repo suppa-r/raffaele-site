@@ -160,12 +160,13 @@
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: 1.2s ease-in-out;
+  animation: 1.2s ease-in-out both;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
   perspective: 2000px;
   transform: translateZ(-100dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(10dvw);
   backface-visibility: hidden;
+  will-change: transform;
 }
 ::view-transition-old(root) {
   animation-name: reveal-out;
@@ -326,6 +327,7 @@ main h1 {
   display: flex;
   justify-content: center;
   position: relative;
+  view-transition-name: none;
 }
 
 .content div {
@@ -333,6 +335,7 @@ main h1 {
   left: 50%;
   display: flex;
   animation: show-hide-content var(--sp) ease 0s infinite;
+  view-transition-name: none;
   mix-blend-mode: plus-lighter;
 }
 
@@ -360,12 +363,14 @@ main h1 {
   display: flex;
   justify-content: center;
   position: relative;
+  view-transition-name: none;
 }
 
 .content-1 div {
   position: absolute;
   left: 50%;
   display: flex;
+  view-transition-name: none;
   animation: show-hide-content-1 var(--sp) ease 0s infinite;
   mix-blend-mode: plus-lighter;
 }
@@ -601,11 +606,13 @@ main h1 {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
   margin-right: var(--space-xs);
+  view-transition-name: none;
 }
 
 .text-with-animation-1 span:last-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.2s forwards;
+  view-transition-name: none;
 }
 
 .text-with-animation-2 {
@@ -617,11 +624,13 @@ main h1 {
 .text-with-animation-2 span:first-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
+  view-transition-name: none;
 }
 
 .text-with-animation-2 span:last-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.4s forwards;
+  view-transition-name: none;
 }
 
 @keyframes word-animation {
