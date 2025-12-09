@@ -319,6 +319,7 @@ main h1 {
 .curve-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-3xl);
   margin-top: var(--space-xl);
 }
@@ -327,15 +328,15 @@ main h1 {
   display: flex;
   justify-content: center;
   position: relative;
-  view-transition-name: none;
+
 }
 
 .content div {
   position: absolute;
   left: 50%;
   display: flex;
-  animation: show-hide-content var(--sp) ease 0s infinite;
-  view-transition-name: none;
+  opacity: 1;
+  transform: translateX(-50%) scale(1.4);
   mix-blend-mode: plus-lighter;
 }
 
@@ -363,15 +364,15 @@ main h1 {
   display: flex;
   justify-content: center;
   position: relative;
-  view-transition-name: none;
+
 }
 
 .content-1 div {
   position: absolute;
   left: 50%;
   display: flex;
-  view-transition-name: none;
-  animation: show-hide-content-1 var(--sp) ease 0s infinite;
+  opacity: 1;
+  transform: translateX(-50%) scale(1.4);
   mix-blend-mode: plus-lighter;
 }
 
@@ -602,18 +603,16 @@ main h1 {
   justify-content: center;
 }
 
-.text-with-animation-1 span:first-child {
+/*.text-with-animation-1 span:first-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
   margin-right: var(--space-xs);
-  view-transition-name: none;
 }
 
 .text-with-animation-1 span:last-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.2s forwards;
-  view-transition-name: none;
-}
+}*/
 
 .text-with-animation-2 {
   display: flex;
@@ -621,7 +620,7 @@ main h1 {
   justify-content: center;
 }
 
-.text-with-animation-2 span:first-child {
+/*.text-with-animation-2 span:first-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
   view-transition-name: none;
