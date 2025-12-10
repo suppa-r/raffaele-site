@@ -223,6 +223,13 @@
   }
 }
 
+@media (max-width: 600px) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
