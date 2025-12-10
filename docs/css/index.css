@@ -175,8 +175,8 @@
   animation-name: reveal-in;
 }
 
-::view-transition-old(.curve-container .text-animation-container),
-::view-transition-new(.curve-container .text-animation-container) {
+::view-transition-old(text-animation),
+::view-transition-new(text-animation) {
   animation: 1.2s ease-in-out both;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
@@ -235,8 +235,8 @@
 }
 
 @container (max-width: 600px) {
-  ::view-transition-old(.curve-container .text-animation-container),
-  ::view-transition-new(.curve-container .text-animation-container) {
+  ::view-transition-old(text-animation),
+  ::view-transition-new(text-animation) {
     animation: none;
   }
 }
@@ -608,6 +608,7 @@ main h1 {
   text-align: center;
   margin-block: var(--space-xl);
   font-size: var(--step-1);
+  view-transition-name: text-animation;
 }
 
 .text-with-animation {
@@ -682,6 +683,7 @@ main h1 {
   pointer-events: all;
   transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s;
   margin-inline: auto;
+  view-transition-name: large-button;
 }
 
 .large-button:focus,
