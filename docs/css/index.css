@@ -224,7 +224,7 @@
 }
 
 @media (max-width: 600px) {
-  ::view-transition-old(root),
+  ::view-transition-image-pair(root) ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none;
   }
