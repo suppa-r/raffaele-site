@@ -175,6 +175,17 @@
   animation-name: reveal-in;
 }
 
+::view-transition-old(.curve-container .text-animation-container),
+::view-transition-new(.curve-container .text-animation-container) {
+  animation: 1.2s ease-in-out both;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 0;
+  perspective: 2000px;
+  transform: translateZ(-100dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(10dvw);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
 @property --rotation {
   syntax: "<angle>";
   inherits: false;
@@ -224,8 +235,8 @@
 }
 
 @media (max-width: 600px) {
-  ::view-transition-image-pair(root) ::view-transition-old(root),
-  ::view-transition-new(root) {
+  ::view-transition-old(.curve-container .text-animation-container),
+  ::view-transition-new(.curve-container .text-animation-container) {
     animation: none;
   }
 }
