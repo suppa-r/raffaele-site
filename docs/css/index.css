@@ -157,7 +157,6 @@
   transform-style: preserve-3d;
   transform-origin: 50% 50% 100dvw;
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
-
 }
 
 ::view-transition-old(root),
@@ -166,7 +165,7 @@
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
   /*perspective: 2000px;*/
-  transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(50dvw);
+  transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translateZ(50dvw);
   backface-visibility: hidden;
   will-change: transform;
   mix-blend-mode: plus-lighter;
@@ -179,8 +178,8 @@
   animation-name: reveal-in;
 }
 
-::view-transition-old(text-animation),
-::view-transition-new(text-animation) {
+::view-transition-old(curve-container),
+::view-transition-new(curve-container) {
   animation: 1.2s ease-in-out both;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
@@ -241,9 +240,18 @@
 }
 
 @container (max-width: 600px) {
-  ::view-transition-old(text-animation),
-  ::view-transition-new(text-animation) {
+  ::view-transition-old(curve-container),
+  ::view-transition-new(curve-container) {
     animation: none;
+    mix-blend-mode: normal;
+  }
+}
+
+@container (max-width: 600px) {
+  ::view-transition-old(text-animation-container),
+  ::view-transition-new(.text-animation-container) {
+    animation: none;
+    mix-blend-mode: normal;
   }
 }
 
@@ -346,6 +354,7 @@ main h1 {
   align-items: center;
   gap: var(--space-3xl);
   margin-top: var(--space-xl);
+  view-transition-name: curve-container;
 }
 
 .content {
@@ -614,7 +623,7 @@ main h1 {
   text-align: center;
   margin-block: var(--space-xl);
   font-size: var(--step-1);
-  view-transition-name: text-animation;
+  view-transition-name: text-animation-container;
 }
 
 .text-with-animation {
