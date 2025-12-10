@@ -150,6 +150,7 @@
 ::view-transition {
   background: var(--base-color);
 }
+
 ::view-transition-image-pair(root) {
   perspective: 2500px;
   perspective-origin: center;
@@ -158,15 +159,18 @@
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 
 }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: 1.2s ease-in-out both;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
-  perspective: 2000px;
-  transform: translateZ(-100dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(10dvw);
+  /*perspective: 2000px;*/
+  transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(50dvw);
   backface-visibility: hidden;
   will-change: transform;
+  mix-blend-mode: plus-lighter;
+  isolation: isolate;
 }
 ::view-transition-old(root) {
   animation-name: reveal-out;
@@ -180,9 +184,11 @@
   animation: 1.2s ease-in-out both;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
-  perspective: 2000px;
-  transform: translateZ(-100dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(10dvw);
+  /*perspective: 2000px;*/
+  transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(50dvw);
   backface-visibility: hidden;
+  mix-blend-mode: plus-lighter;
+  isolation: isolate;
   will-change: transform;
 }
 
