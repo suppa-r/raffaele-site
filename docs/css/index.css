@@ -234,7 +234,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@container (max-width: 600px) {
   ::view-transition-old(.curve-container .text-animation-container),
   ::view-transition-new(.curve-container .text-animation-container) {
     animation: none;
@@ -621,7 +621,7 @@ main h1 {
   justify-content: center;
 }
 
-/*.text-with-animation-1 span:first-child {
+.text-with-animation-1 span:first-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
   margin-right: var(--space-xs);
@@ -630,7 +630,7 @@ main h1 {
 .text-with-animation-1 span:last-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 1.2s forwards;
-}*/
+}
 
 .text-with-animation-2 {
   display: flex;
@@ -638,7 +638,7 @@ main h1 {
   justify-content: center;
 }
 
-/*.text-with-animation-2 span:first-child {
+.text-with-animation-2 span:first-child {
   opacity: 0;
   animation: word-animation 0.5s ease-out 0.5s forwards;
   view-transition-name: none;
