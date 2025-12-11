@@ -178,19 +178,6 @@
   animation-name: reveal-in;
 }
 
-::view-transition-old(curve-container),
-::view-transition-new(curve-container) {
-  animation: 1.2s ease-in-out both;
-  transform-style: preserve-3d;
-  transform-origin: 50% 50% 0;
-  /*perspective: 2000px;*/
-  transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(50dvw);
-  backface-visibility: hidden;
-  mix-blend-mode: plus-lighter;
-  isolation: isolate;
-  will-change: transform;
-}
-
 @property --rotation {
   syntax: "<angle>";
   inherits: false;
@@ -208,11 +195,11 @@
     animation-timing-function: ease-in-out;
   }
   15% {
-    --scale: 0.8;
+    --scale: 0.5;
     --rotation: -90deg;
   }
   85% {
-    --scale: 0.8;
+    --scale: 1;
     --rotation: 0deg;
     animation-timing-function: ease-in-out;
   }
@@ -226,11 +213,11 @@
     animation-timing-function: ease-in-out;
   }
   15% {
-    --scale: 0.8;
+    --scale: 0.5;
     --rotation: 0deg;
   }
   85% {
-    --scale: 0.8;
+    --scale: 1;
     --rotation: 90deg;
     animation-timing-function: ease-in-out;
   }
@@ -244,6 +231,7 @@
   ::view-transition-new(curve-container) {
     animation: none;
     mix-blend-mode: normal;
+
   }
 }
 
