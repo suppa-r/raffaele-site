@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to update active class on theme buttons
   function setActiveThemeButton(theme) {
     themeButtons.forEach(btn => {
-      const input = btn.querySelector('input[type="radio"]');
+      const inputId = btn.getAttribute('for');
+      const input = document.getElementById(inputId);
       if (input) {
         input.checked = (input.value === theme);
         btn.classList.toggle('active', input.checked);
@@ -38,8 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function setTheme(theme) {
     if (!isValidTheme(theme)) return;
 
-    // Check if View Transition API is supported
-    if (document.startViewTransition && !prefersReducedMotion.matches) {
+    // Always respect prefers-reduced-motion, regardless of View Transition API support
+    if (prefersReducedMotion.matches) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    } else if (document.startViewTransition) {
       document.startViewTransition(() => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
@@ -54,15 +58,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initialize theme
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  setActiveThemeButton(savedTheme);
-  updateFavicon(savedTheme);
+  const savedTheme = localStorage.getItem('theme');
+  const theme = isValidTheme(savedTheme) ? savedTheme : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  setActiveThemeButton(theme);
+  updateFavicon(theme);
 
   // Event listener for theme button clicks
   themeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const input = btn.querySelector('input[type="radio"]');
+      const inputId = btn.getAttribute('for');
+      const input = document.getElementById(inputId);
       if (input) {
         setTheme(input.value);
       }

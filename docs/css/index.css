@@ -150,32 +150,41 @@
 ::view-transition {
   background: var(--base-color);
 }
-
 ::view-transition-image-pair(root) {
   perspective: 2500px;
   perspective-origin: center;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 100dvw;
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
-}
 
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: 1.2s ease-in-out both;
+  animation: 1.2s ease-in-out;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
-  /*perspective: 2000px;*/
-  transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translateZ(50dvw);
+  perspective: 2000px;
+  transform: translateZ(-100dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(10dvw);
   backface-visibility: hidden;
-  will-change: transform;
-  mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 ::view-transition-old(root) {
   animation-name: reveal-out;
 }
 ::view-transition-new(root) {
   animation-name: reveal-in;
+}
+
+::view-transition-old(curve-container),
+::view-transition-new(curve-container),
+::view-transition-old(text-animation-container),
+::view-transition-new(text-animation-container) {
+  display: none;
+}
+
+::view-transition-old(large-button),
+::view-transition-new(large-button) {
+  filter: invert(0);
+  transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s;
 }
 
 @property --rotation {
@@ -195,11 +204,11 @@
     animation-timing-function: ease-in-out;
   }
   15% {
-    --scale: 0.5;
+    --scale: 0.8;
     --rotation: -90deg;
   }
   85% {
-    --scale: 1;
+    --scale: 0.8;
     --rotation: 0deg;
     animation-timing-function: ease-in-out;
   }
@@ -213,11 +222,11 @@
     animation-timing-function: ease-in-out;
   }
   15% {
-    --scale: 0.5;
+    --scale: 0.8;
     --rotation: 0deg;
   }
   85% {
-    --scale: 1;
+    --scale: 0.8;
     --rotation: 90deg;
     animation-timing-function: ease-in-out;
   }
@@ -237,7 +246,7 @@
 
 @container (max-width: 600px) {
   ::view-transition-old(text-animation-container),
-  ::view-transition-new(.text-animation-container) {
+  ::view-transition-new(text-animation-container) {
     animation: none;
     mix-blend-mode: normal;
   }
@@ -361,19 +370,6 @@ main h1 {
   mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide-content {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.4);
-  }
-  20%,
-  80% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.4);
-  }
-}
-
 .content div span {
   width: 8.5vmin;
   position: relative;
@@ -397,18 +393,6 @@ main h1 {
   mix-blend-mode: plus-lighter;
 }
 
-@keyframes show-hide-content-1 {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.4);
-  }
-  20%,
-  80% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.4);
-  }
-}
 
 .content-1 div span {
   width: 8.5vmin;
@@ -728,60 +712,75 @@ main h1 {
 
 /*------------------ Theme switcher  ---------------*/
 
+/* Theme switcher styles */
 .theme-switcher {
   position: absolute;
   bottom: var(--space-xs);
   right: var(--space-s);
-  gap: var(--space-s);
-  z-index: 2000;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: var(--space-2xs);
   pointer-events: auto;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
-.theme-button span {
-  clip-path: inset(50%);
-  overflow: hidden;
-  white-space: normal;
-  word-wrap: break-word;
+.theme-switcher legend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-switcher input[type="radio"] {
+  position: absolute;
   width: 1px;
   height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .theme-button {
-  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--space-l);
+  min-height: var(--space-l);
+  padding: var(--space-3xs);
   background-color: transparent;
   color: var(--text-color);
   cursor: pointer;
   user-select: none;
-  /*transition: transform 0.2s ease;*/
+  transition: transform 0.2s ease;
   isolation: isolate;
   z-index: 2000;
 }
 
 .theme-button svg {
+  margin-left: var(--space-s);
   width: var(--space-m);
   height: var(--space-m);
-  /*transition: transform 0.3s, background-color 0.3s;*/
-  display: block;
+  transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
-.theme-button.active {
-  display: none;
-}
-
-.theme-button input[type="radio"] {
+.theme-switcher input[type="radio"]:checked+.theme-button {
   display: none;
 }
 
 .theme-button:hover svg,
 .theme-button:focus svg {
   transform: scale(1.5) rotate(90deg);
-  transform-origin: center;
-  transition: transform 0.2s ease;
+  padding: var(--space-5xs);
   background-color: oklch(85.841% 0.04208 183.344 / 0.466);
   border-radius: 50%;
-  /*padding: var(--space-3xs);*/
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */

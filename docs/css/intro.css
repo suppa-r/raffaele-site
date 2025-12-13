@@ -327,13 +327,25 @@ main {
 /* Theme switcher styles */
 .theme-switcher {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: var(--space-2xs);
-  font-size: var(--step--2);
   pointer-events: auto;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
-.theme-button span {
+.theme-switcher legend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-switcher input[type="radio"] {
+  position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
@@ -346,12 +358,12 @@ main {
 
 .theme-button {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   min-width: var(--space-l);
   min-height: var(--space-l);
   padding: var(--space-3xs);
-  border: none;
   background-color: transparent;
   color: var(--text-color);
   cursor: pointer;
@@ -362,16 +374,13 @@ main {
 }
 
 .theme-button svg {
+  margin-left: var(--space-s);
   width: var(--space-m);
   height: var(--space-m);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
-.theme-button.active {
-  display: none;
-}
-
-.theme-button input[type="radio"] {
+.theme-switcher input[type="radio"]:checked+.theme-button {
   display: none;
 }
 

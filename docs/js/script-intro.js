@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setActiveThemeButton() {
     themeButtons.forEach(btn => {
-      const input = btn.querySelector('input[type="radio"]');
+      const inputId = btn.getAttribute('for');
+      const input = document.getElementById(inputId);
       btn.classList.toggle('active', input && input.checked);
     });
   }
@@ -45,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update radio buttons
   themeButtons.forEach(btn => {
-    const radio = btn.querySelector('input[type="radio"]');
+    const inputId = btn.getAttribute('for');
+    const radio = document.getElementById(inputId);
     if (radio) {
       radio.checked = (radio.value === savedTheme);
     }
@@ -57,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Theme button handlers
   themeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const input = btn.querySelector('input[type="radio"]');
+      const inputId = btn.getAttribute('for');
+      const input = document.getElementById(inputId);
 
       if (input && !btn.classList.contains('active')) {
         input.checked = true;
