@@ -62,6 +62,7 @@
 
   /*-------- Fluid typography with better mobile scaling ------ */
 
+  --step--1: clamp(0.8rem, 0.7489rem + 0.1818cqi, 0.9rem);
   --step-0: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
   --step-1: clamp(1.25rem, 1.1861rem + 0.2841cqi, 1.4063rem);
   --step-2: clamp(1.5625rem, 1.4826rem + 0.3551cqi, 1.7578rem);
@@ -300,7 +301,6 @@ body {
   transition: color 0.3s ease-in-out;
 }
 
-
 .wrapper {
   min-height: 100dvh;
   overflow: hidden;
@@ -308,36 +308,26 @@ body {
 
 .wrapper>* {
   container-type: inline-size;
-  max-inline-size: var(--measure);
   margin-inline: auto;
   padding-inline: var(--padding-inline);
 }
 
-
-/*-------------header-----------------*/
-
-
-
-header p {
-  text-align: center;
-  max-block-size: none;
-  letter-spacing: var(--letter-spacing);
-  padding-top: var(--space-xs);
+/*------------------ Blockquote styles  ------------------*/
+blockquote p {
+  padding-block: var(--space-xs);
+  font-size: var(--step--1);
   white-space: nowrap;
-}
-
-/*-------------main-----------------*/
-
-main {
-  display: flex;
-  flex-direction: column;
-}
-
-main h1 {
-  padding-top: var(--space-s);
   text-align: center;
-  font-weight: 400;
-  font-size: var(--step-1);
+  font-style: italic;
+  letter-spacing: var(--letter-spacing);
+  margin-inline: auto;
+}
+
+.main-title {
+  margin-inline: auto;
+  text-align: center;
+  font-size: var(--step--1);
+  view-transition-name: main-title;
 }
 
 /*-------------curvature-----------------*/
@@ -351,36 +341,14 @@ main h1 {
   view-transition-name: curve-container;
 }
 
-.content {
-  display: flex;
-  justify-content: center;
-  position: relative;
-
-}
-
-.content div {
-  position: absolute;
-  left: 50%;
-  display: flex;
-  opacity: 1;
-  transform: translateX(-50%) scale(1.4);
-  mix-blend-mode: plus-lighter;
-}
-
-.content div span {
-  width: 8.5vmin;
-  position: relative;
-  text-align: center;
-  color: var(--text-color);
-}
-
+.content,
 .content-1 {
   display: flex;
   justify-content: center;
   position: relative;
-
 }
 
+.content div,
 .content-1 div {
   position: absolute;
   left: 50%;
@@ -390,7 +358,7 @@ main h1 {
   mix-blend-mode: plus-lighter;
 }
 
-
+.content div span,
 .content-1 div span {
   width: 8.5vmin;
   position: relative;
@@ -597,14 +565,14 @@ main h1 {
 
 .text-with-animation {
   font-size: var(--step-4);
-  margin-top: var(--space-l);
+  margin-top: var(--space-s);
 }
 
 .text-with-animation-1 {
   display: flex;
   justify-content: center;
   font-size: var(--step-4);
-  margin-bottom: var(--space-m);
+  margin-bottom: var(--space-s);
 }
 
 
@@ -623,7 +591,6 @@ main h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: var(--space-l);
 }
 
 .text-with-animation-2 span:first-child {
@@ -652,7 +619,7 @@ main h1 {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-l);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -683,7 +650,6 @@ main h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: var(--space-2xs);
   width: 100%;
   max-width: 90%;
@@ -710,13 +676,28 @@ main h1 {
   transition: transform 0.1s, fill 0.3s;
 }
 
+/*-------------footer-----------------*/
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: var(--step--1);
+  font-style: normal;
+  padding-left: var(--space-3xl);
+  white-space: nowrap;
+}
+
 /*------------------ Theme switcher  ---------------*/
 
-/* Theme switcher styles */
 .theme-switcher {
-  position: absolute;
-  bottom: var(--space-xs);
-  right: var(--space-s);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -725,6 +706,8 @@ main h1 {
   border: none;
   padding: 0;
   margin: 0;
+  font-style: normal;
+  padding-right: var(--space-3xl);
 }
 
 .theme-switcher legend {
@@ -808,12 +791,13 @@ main h1 {
     margin-top: var(--space-s);
   }
 
-  /*------------------ Large button styles  ---------------*/
-
   .large-button {
-    margin-top: var(--space-m)
+    width: min(20rem, 70vw);
+    height: min(8rem, 28vw);
+    margin-top: var(--space-l);
   }
 }
+
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
