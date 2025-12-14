@@ -787,11 +787,11 @@ footer {
   }
 
   footer {
-    padding-inline: var(--space-2xs);
+    padding-inline: var(--space-4xs);
   }
 
   .footer-text {
-    padding-left: var(--space-xs);
+    padding-left: var(--space-3xs);
     font-size: var(--step--1);
   }
 
