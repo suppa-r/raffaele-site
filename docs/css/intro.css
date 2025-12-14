@@ -189,7 +189,7 @@
   perspective: 2500px;
   perspective-origin: center;
   transform-style: preserve-3d;
-  transform-origin: 50% 50% 100dvw;
+  transform-origin: 50% 50% 0;
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 
 }
@@ -199,7 +199,7 @@
   transform-style: preserve-3d;
   transform-origin: 50% 50% 0;
   perspective: 2000px;
-  transform: translateZ(-100dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(10dvw);
+  transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
   backface-visibility: hidden;
 }
 ::view-transition-old(root) {
@@ -254,6 +254,24 @@
   }
   to {
     --rotation: 90deg;
+  }
+}
+
+@container (max-width: 600px) {
+  ::view-transition-old(curve-container),
+  ::view-transition-new(curve-container) {
+    animation: none;
+    mix-blend-mode: normal;
+
+  }
+}
+
+/* Accessibility: Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
   }
 }
 
@@ -457,6 +475,7 @@ main {
   padding: 0;
   /* Remove default padding */
   text-align: center;
+  view-transition-name: wrapper-gradient-text;
 }
 
 .text-layer {
