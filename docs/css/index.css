@@ -783,6 +783,12 @@ main h1 {
   border-radius: 50%;
 }
 
+@container (max-width: 600px) {
+  main>* {
+    margin: 0;
+  }
+}
+
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .content div,
