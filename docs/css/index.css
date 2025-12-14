@@ -177,7 +177,9 @@
 ::view-transition-old(curve-container),
 ::view-transition-new(curve-container),
 ::view-transition-old(text-animation-container),
-::view-transition-new(text-animation-container) {
+::view-transition-new(text-animation-container),
+::view-transition-old(large-button),
+::view-transition-new(large-button) {
   display: none;
 }
 
@@ -314,13 +316,14 @@ body {
 
 /*-------------header-----------------*/
 
-header {
-  text-align: center;
-}
+
 
 header p {
+  text-align: center;
+  max-block-size: none;
   letter-spacing: var(--letter-spacing);
   padding-top: var(--space-xs);
+  white-space: nowrap;
 }
 
 /*-------------main-----------------*/
@@ -599,9 +602,11 @@ main h1 {
 
 .text-with-animation-1 {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  font-size: var(--step-4);
+  margin-bottom: var(--space-m);
 }
+
 
 .text-with-animation-1 span:first-child {
   opacity: 0;
@@ -618,6 +623,7 @@ main h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: var(--space-l);
 }
 
 .text-with-animation-2 span:first-child {
@@ -646,7 +652,7 @@ main h1 {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
