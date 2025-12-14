@@ -783,9 +783,37 @@ main h1 {
   border-radius: 50%;
 }
 
+
 @container (max-width: 600px) {
-  main>* {
-    margin: 0;
+  .text-animation-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: var(--space-l);
+    font-size: var(--step-1);
+    view-transition-name: text-animation-container;
+  }
+
+  .text-with-animation {
+    font-size: var(--step-4);
+    margin-top: var(--space-s);
+  }
+
+  .text-with-animation-1 {
+    display: flex;
+    justify-content: center;
+    font-size: var(--step-4);
+    margin-bottom: var(--space-s);
+  }
+
+  .text-with-animation-2 {
+    margin-top: var(--space-s);
+  }
+
+  /*------------------ Large button styles  ---------------*/
+
+  .large-button {
+    margin-top: var(--space-m)
   }
 }
 
