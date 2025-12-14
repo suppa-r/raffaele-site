@@ -786,8 +786,9 @@ main h1 {
 
 @container (max-width: 600px) {
   .curve-container {
-    margin-block: var(--space-s);
-    gap: var(--space-l);
+    margin-block: var(--space-xl);
+    display: flex;
+    gap: var(--space-2xl);
   }
 
   .text-animation-container {
