@@ -705,6 +705,11 @@ footer {
   margin: 0;
   font-style: normal;
   padding-right: var(--space-3xl);
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-color);
+  background-color: transparent;
+  font-size: var(--step--1);
 }
 
 .theme-switcher legend {
@@ -765,10 +770,6 @@ footer {
 
 
 @media (max-width: 600px) {
-
-  blockquote p {
-    white-space: wrap;
-  }
 
   .curve-container {
     gap: var(--space-2xl);
