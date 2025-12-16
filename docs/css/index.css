@@ -1,7 +1,7 @@
 [data-theme="dark"] {
-  --base-color: oklab(0% 0 0);
-  --text-color: oklab(100% 0 -0.00011);
-  --text-span: oklab(76.519% -0.09658 -0.05001 / 0.644);
+  --base-color: oklch(0% 0 0);
+  --text-color: oklch(100% 0.00011 271.152);
+  --text-span: oklch(76.519% 0.10876 207.377 / 0.644);
 
   --bg-image: url('/docs/images/header-desktop.jpg');
   --bg-size: cover;
@@ -9,19 +9,27 @@
   --bg-repeat: no-repeat;
   /* ✅ Single image */
 
-  --shadow: 0 30px 100px oklab(97.215% 0.0026 -0.00903);
-  --navbar-shadow: 0 30px 100px oklab(72.926% 0.03382 0.0109 / 0.863), 0 30px 100px oklab(81.308% 0.01513 0.00467 / 0.603);
+  --shadow: 0 30px 100px oklch(97.215% 0.0094 286.056);
+  --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 }
 
 [data-theme="light"] {
   --base-color: oklch(100% 0.00011 271.152);
-  --text-color: oklab(0% 0 0);
-  --text-span: oklab(36.706% -0.02852 -0.00819 / 0.643);
+  --text-color: oklch(0% 0 0);
+  --text-span: oklch(36.706% 0.02967 196.014 / 0.643);
 
   --body-grid-line: oklch(0% 0 0 / 0.329);
 
   --shadow: 0 30px 100px oklch(0% 0 0);
   --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
+
+  /* Darker shadow colors for animation */
+  --shadow-color: oklch(0% 0 0 / 0.877);
+  --shadow-color2: oklch(0% 0 0 / 0.726);
+  --shadow-color3: oklch(0% 0 0 / 0.534);
+
+  --gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
+  --gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 [data-theme="light"] body::before {
@@ -41,20 +49,27 @@
       var(--body-grid-line) 1px,
       transparent 1px) 0 0 / 30px 30px,
     oklch(100% 0.00011 271.152);
-  mask-image: linear-gradient(-10deg, transparent 0%, oklch(100% 0.00011 271.152) 30%);
-  mask-size: 500% 500%;
+  mask-image: linear-gradient(-135deg, transparent 0%, oklch(100% 0.00011 271.152) 70%);
+  mask-size: 400% 100%;
   mask-repeat: no-repeat;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
     background-position 0.3s ease-in-out;
   isolation: isolate;
-  /* ✅ Above background */
   z-index: -2000;
   overflow: hidden;
 }
 
 [data-theme="light"] .content div,
 [data-theme="light"] .content-1 div {
+  mix-blend-mode: multiply;
+}
+
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] a,
+[data-theme="light"] legend,
+[data-theme="light"] .button-text {
   mix-blend-mode: multiply;
 }
 
@@ -232,16 +247,9 @@
   }
 }
 
-@container (max-width: 600px) {
+@media (max-width: 600px) {
   ::view-transition-old(curve-container),
-  ::view-transition-new(curve-container) {
-    animation: none;
-    mix-blend-mode: normal;
-
-  }
-}
-
-@container (max-width: 600px) {
+  ::view-transition-new(curve-container),
   ::view-transition-old(text-animation-container),
   ::view-transition-new(text-animation-container) {
     animation: none;
@@ -315,6 +323,7 @@ body {
 /*------------------ Blockquote styles  ------------------*/
 
 blockquote p {
+  color: var(--text-color);
   margin-top: var(--space-xs);
   font-size: var(--step--1);
   text-align: center;
@@ -325,6 +334,7 @@ blockquote p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  mix-blend-mode: plus-darker;
 }
 
 /*-------------curvature-----------------*/
@@ -352,7 +362,7 @@ blockquote p {
   display: flex;
   opacity: 1;
   transform: translateX(-50%) scale(1.4);
-  mix-blend-mode: plus-lighter;
+  mix-blend-mode: multiply;
 }
 
 .content div span,
@@ -688,7 +698,7 @@ footer {
 .footer-text {
   font-size: var(--step--1);
   font-style: normal;
-  padding-left: var(--space-3xl);
+  padding-left: var(--space-2xl);
   white-space: nowrap;
 }
 
@@ -704,7 +714,7 @@ footer {
   padding: 0;
   margin: 0;
   font-style: normal;
-  padding-right: var(--space-3xl);
+  padding-right: var(--space-2xl);
   cursor: pointer;
   user-select: none;
   color: var(--text-color);
