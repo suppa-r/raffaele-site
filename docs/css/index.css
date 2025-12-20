@@ -192,8 +192,8 @@
 
 ::view-transition-old(curve-container),
 ::view-transition-new(curve-container),
-::view-transition-old(text-animation-container),
-::view-transition-new(text-animation-container),
+::view-transition-old(main-content),
+::view-transition-new(main-content),
 ::view-transition-old(large-button),
 ::view-transition-new(large-button) {
   display: none;
@@ -247,25 +247,6 @@
   }
 }
 
-@media (max-width: 600px) {
-  ::view-transition-old(curve-container),
-  ::view-transition-new(curve-container),
-  ::view-transition-old(text-animation-container),
-  ::view-transition-new(text-animation-container) {
-    animation: none;
-    mix-blend-mode: normal;
-  }
-}
-
-/* Accessibility: Disable animations for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none;
-  }
-}
-
 /*----------------  global styles  ---------------*/
 
 p,
@@ -279,6 +260,7 @@ figcaption {
   max-inline-size: var(--measure);
   word-break: normal;
   overflow-wrap: break-word;
+  margin-top: 0;
 }
 
 html,
@@ -312,39 +294,66 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  min-block-size: 100dvh;
-  padding: 0;
+  min-height: 100dvh;
 }
 
 .wrapper>* {
-  margin-block: 0;
+  margin-inline: auto;
 }
 
-/*------------------ Blockquote styles  ------------------*/
+.wrapper>figure {
+  flex-shrink: 0;
+}
+
+.wrapper>footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/*------------------ Quote styles  ------------------*/
+
+figure {
+  margin: 0;
+  padding: var(--space-xs) 0 0 0;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+}
 
 blockquote p {
   color: var(--text-color);
-  margin-top: var(--space-xs);
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   text-align: center;
   font-style: italic;
   letter-spacing: var(--letter-spacing);
-  margin-inline: auto;
   max-inline-size: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  mix-blend-mode: plus-darker;
+  margin: 0 auto;
+}
+
+/*------------------ Main styles  ------------------*/
+
+main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: var(--space-s);
+  view-transition-name: main-content;
+}
+
+main>p {
+  font-size: var(--step--1);
+  padding-top: var(--space-xs);
 }
 
 /*-------------curvature-----------------*/
 
 .curve-container {
+  padding-top: var(--space-m);
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--space-3xl);
-  margin-top: var(--space-2xl);
   view-transition-name: curve-container;
 }
 
@@ -561,25 +570,15 @@ blockquote p {
 
 /*------------------ Text styles  ------------------*/
 
-.text-animation-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-top: var(--space-2xl);
-  font-size: var(--step-1);
-  view-transition-name: text-animation-container;
-}
-
 .text-with-animation {
+  padding-top: var(--space-xl);
   font-size: var(--step-4);
-  margin-top: var(--space-s);
 }
 
 .text-with-animation-1 {
   display: flex;
   justify-content: center;
   font-size: var(--step-4);
-  margin-bottom: var(--space-s);
 }
 
 
@@ -626,13 +625,9 @@ blockquote p {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
-  margin-top: var(--space-l);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: min(25rem, 85vw);
-  height: min(10rem, 34vw);
+  display: inline-block;
+  padding: var(--space-s) var(--space-l);
+  background: transparent;
   overflow: hidden;
   isolation: isolate;
   border-radius: 50% / 50%;
@@ -642,8 +637,8 @@ blockquote p {
   cursor: pointer;
   user-select: none;
   pointer-events: all;
-  transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s;
-  margin-inline: auto;
+  transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s, transform 0.3s;
+  margin-top: var(--space-m);
   view-transition-name: large-button;
 }
 
@@ -656,12 +651,9 @@ blockquote p {
 .button-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--space-2xs);
-  width: 100%;
-  max-width: 90%;
+  padding: var(--space-s) var(--space-l);
   text-align: center;
-
 }
 
 .button-text span {
@@ -671,6 +663,8 @@ blockquote p {
 }
 
 .large-button svg {
+  display: block;
+  margin: 0 auto;
   width: var(--space-l);
   height: var(--space-l);
   fill: var(--text-color);
@@ -693,13 +687,20 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline: var(--space-l);
+  margin-bottom: auto;
 }
 
 .footer-text {
   font-size: var(--step--1);
   font-style: normal;
-  padding-left: var(--space-2xl);
   white-space: nowrap;
+  font-weight: bold;
+}
+
+.footer-text span {
+  font-style: italic;
+  padding-left: var(--space-xl);
 }
 
 /*------------------ Theme switcher  ---------------*/
@@ -714,7 +715,6 @@ footer {
   padding: 0;
   margin: 0;
   font-style: normal;
-  padding-right: var(--space-2xl);
   cursor: pointer;
   user-select: none;
   color: var(--text-color);
@@ -778,47 +778,38 @@ footer {
   border-radius: 50%;
 }
 
-
 @media (max-width: 600px) {
-
-  .curve-container {
-    gap: var(--space-2xl);
-  }
-
-  .text-animation-container {
-    margin-top: var(--space-l);
-  }
-
-  .text-with-animation {
-    margin-top: var(--space-m);
-  }
-
-  .text-with-animation-2 {
-    margin-top: var(--space-s);
+  ::view-transition-old(curve-container),
+  ::view-transition-new(curve-container),
+  ::view-transition-old(main-content),
+  ::view-transition-new(main-content) {
+    animation: none;
+    mix-blend-mode: normal;
   }
 
   footer {
-    padding-inline: var(--space-4xs);
+    flex-direction: column;
   }
 
   .footer-text {
-    padding-left: var(--space-3xs);
-    font-size: var(--step--1);
+    white-space: normal;
+    text-align: center;
   }
 
-  .theme-switcher {
-    padding-right: var(--space-xs);
-    gap: var(--space-3xs);
-  }
-
-  .theme-button svg {
-    width: var(--space-s);
-    height: var(--space-s);
+  .footer-text span {
+    padding-left: var(--space-5xs);
+    margin-top: var(--space-3xs);
   }
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+
   .content div,
   .content-1 div {
     animation: none;
