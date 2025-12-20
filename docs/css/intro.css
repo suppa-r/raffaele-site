@@ -278,19 +278,10 @@ body {
   transition: color 0.3s ease-in-out;
 }
 
-main {
-  margin-left: var(--space-2xl);
-  padding: var(--space-2xs);
-  text-align: center;
-  isolation: isolate;
-  z-index: 1000;
-  overflow: hidden;
-  min-height: 100dvh;
-}
 
 /*------main content-------*/
 
-.title-header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -378,22 +369,26 @@ main {
 }
 
 .page-content {
-  padding-inline: var(--padding-inline);
-  margin-top: var(--space-s);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  margin-left: var(--space-2xl);
+  padding: var(--space-2xs);
+  text-align: center;
+  isolation: isolate;
+  z-index: 1000;
+  overflow: hidden;
 }
 
-.page-content .ya {
+.ya {
   font-size: var(--step-1);
   margin-block: var(--space-5xs);
   text-align: center;
   margin-inline: auto;
 }
 
-.page-content .fancy span {
+.fancy span {
   display: inline-block;
   background: linear-gradient(270deg, #645960, #3f3e44, #262726, #dde1e2, #e8ebee, #8180868f, #bdb5b9, #272926);
   background-size: 200% 200%;
@@ -422,13 +417,13 @@ main {
   }
 }
 
-.page-content .ya-1 {
+.ya-1 {
   font-size: var(--step-1);
   margin-block: var(--space-4xs);
   margin-inline: auto;
 }
 
-.page-content .ya-2 {
+.ya-2 {
   font-size: var(--step-4);
   margin-block: var(--space-4xs);
   margin-inline: auto;
@@ -533,7 +528,8 @@ main {
 }
 
 .nav-item {
-  padding-left: var(--space-m);
+  max-width: fit-content;
+  padding-left: var(--space-s);
 }
 
 .nav-link {
@@ -547,7 +543,17 @@ main {
   transition: var(--transition-speed);
   gap: var(--space-4xs);
   white-space: nowrap;
-  width: fit-content;
+  min-width: fit-content;
+  padding-left: var(--space-s);
+
+}
+
+.nav-link {
+  padding: var(--space-2xs) var(--space-s);
+}
+
+.nav-link:hover svg {
+  transform: scale(1.2);
 }
 
 .link-text {
@@ -555,7 +561,7 @@ main {
 }
 
 .navbar:hover {
-  width: var(--space-7xl);
+  width: fit-content;
 }
 
 .navbar:hover .link-text {
@@ -567,7 +573,6 @@ main {
   filter: grayscale(0%) opacity(1);
   background: transparent;
   color: var(--text-color);
-  width: var(--space-7xl);
 }
 
 .nav-link svg {
