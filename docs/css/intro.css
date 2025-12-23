@@ -288,25 +288,25 @@ body {
 .navbar-nav {
   list-style: none;
   padding: 0;
+  padding-left: var(--space-s);
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
-}
-
-.nav-item {
-  width: 100%;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  height: 5rem;
-  color: var(--text-primary);
+  /*height: 0rem;*/
+  margin: var(--space-s) 0;
+  color: var(--text-color);
   text-decoration: none;
-  filter: grayscale(100%) opacity(0.7);
+  filter: grayscale(100%) opacity(1);
   transition: var(--transition-speed);
+  transform: translateZ(0);
+  /* Force GPU acceleration */
 }
 
 .nav-link:hover {
@@ -317,21 +317,30 @@ body {
 
 .link-text {
   display: none;
-  margin-left: 1rem;
+  margin-left: var(--space-3xs);
+  white-space: nowrap;
 }
 
+
 .nav-link svg {
-  width: 2rem;
-  min-width: 2rem;
-  margin: 0 1.5rem;
+  width: var(--space-m);
+  height: var(--space-m);
+  margin: 0 var(--space-2xs) 0 0;
+  transform: rotate(0deg);
+  transition: var(--transition-speed);
+}
+
+.nav-link:hover svg {
+  transform: rotate(360deg);
+  color: var(--text-span);
 }
 
 .fa-primary {
-  color: #ff7eee;
+  color: #509099;
 }
 
 .fa-secondary {
-  color: #df49a6;
+  color: #224d55;
 }
 
 .fa-primary,
@@ -340,13 +349,11 @@ body {
 }
 
 .logo {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   text-align: center;
-  color: var(--text-secondary);
-  background: var(--bg-secondary);
-  font-size: 1.5rem;
+  color: var(--text-color);
+  background: transparent;
+  font-size: var(--step-0);
   letter-spacing: 0.3ch;
   width: 100%;
 }
@@ -364,7 +371,7 @@ body {
 }
 
 .navbar:hover .logo svg {
-  transform: rotate(-180deg);
+  transform: rotate(360deg);
 }
 
 
@@ -372,12 +379,12 @@ body {
 @media only screen and (min-width: 600px) {
   .navbar {
     top: 0;
-    width: 5rem;
-    height: 100vh;
+    width: var(--space-3xl);
+    height: 100dvh;
   }
 
   .navbar:hover {
-    width: 16rem;
+    width: var(--space-7xl);
   }
 
   .navbar:hover .link-text {
@@ -385,7 +392,7 @@ body {
   }
 
   .navbar:hover .logo svg {
-    margin-left: 11rem;
+    margin-left: var(--space-3xl);
   }
 
   .navbar:hover .logo-text {
@@ -616,6 +623,8 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: var(--space-xs);
+    margin: 0;
   }
 
   .link-text {
@@ -625,15 +634,13 @@ header {
   }
 
   main {
-    padding-block: var(--space-2xs);
     margin: 0;
-    min-height: 100%;
     overflow: hidden;
   }
 
   .page-content {
+    flex-grow: 0;
     margin-top: var(--space-l);
-    padding: 0;
   }
 
   .ya-2 {
