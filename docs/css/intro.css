@@ -603,8 +603,16 @@ header {
     padding-inline: var(--padding-inline);
   }
 
+  .link-text {
+    display: none;
+    margin-left: 1rem;
+  }
+
   .nav-link {
+    display: inline;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   main {
@@ -616,5 +624,13 @@ header {
   .page-content {
     margin: 0;
     padding: 0;
+  }
+
+  .ya-2 {
+    font-size: var(--step-2);
+  }
+
+  .wrapper-gradient-text {
+    font-size: var(--step-2);
   }
 }
