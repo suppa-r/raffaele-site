@@ -8,9 +8,6 @@
   /* ✅ Single image */
   --bg-repeat: no-repeat;
   /* ✅ Single image */
-
-  --shadow: 0 30px 100px oklch(97.215% 0.0094 286.056);
-  --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 }
 
 [data-theme="light"] {
@@ -19,17 +16,6 @@
   --text-span: oklch(36.706% 0.02967 196.014 / 0.643);
 
   --body-grid-line: oklch(0% 0 0 / 0.329);
-
-  --shadow: 0 30px 100px oklch(0% 0 0);
-  --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
-
-  /* Darker shadow colors for animation */
-  --shadow-color: oklch(0% 0 0 / 0.877);
-  --shadow-color2: oklch(0% 0 0 / 0.726);
-  --shadow-color3: oklch(0% 0 0 / 0.534);
-
-  --gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
-  --gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 [data-theme="light"] body::before {
@@ -301,15 +287,6 @@ body {
   margin-inline: auto;
 }
 
-.wrapper>figure {
-  flex-shrink: 0;
-}
-
-.wrapper>footer {
-  flex-shrink: 0;
-  margin-top: auto;
-}
-
 /*------------------ Quote styles  ------------------*/
 
 figure {
@@ -344,7 +321,7 @@ main {
 
 main>p {
   font-size: var(--step--1);
-  padding-top: var(--space-xs);
+  padding-top: 0;
 }
 
 /*-------------curvature-----------------*/
@@ -371,7 +348,7 @@ main>p {
   display: flex;
   opacity: 1;
   transform: translateX(-50%) scale(1.4);
-  mix-blend-mode: multiply;
+
 }
 
 .content div span,
@@ -597,6 +574,7 @@ main>p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size: var(--step-1);
 }
 
 .text-with-animation-2 span:first-child {
@@ -680,28 +658,21 @@ main>p {
 /*-------------footer-----------------*/
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: var(--space-l);
-  margin-bottom: auto;
+  font-size: var(--step--1);
+  letter-spacing: var(--letter-spacing);
+  view-transition-name: footer;
 }
 
 .footer-text {
   font-size: var(--step--1);
-  font-style: normal;
+  padding-left: var(--space-l);
 }
 
-.footer-text span {
-  font-style: italic;
-  padding-left: var(--space-xl);
-}
-
-/*------------------ Theme switcher  ---------------*/
+/*------------------ Theme switcher styles  ---------------*/
 
 .theme-switcher {
   display: flex;
@@ -709,24 +680,17 @@ footer {
   align-items: center;
   gap: var(--space-2xs);
   pointer-events: auto;
-  border: none;
+  padding: 0;
+  margin: 0;
+  padding-right: var(--space-l);
+}
+
+.theme-switcher span {
   padding: 0;
   margin: 0;
   font-style: normal;
-  cursor: pointer;
-  user-select: none;
-  color: var(--text-color);
-  background-color: transparent;
   font-size: var(--step--1);
-}
-
-.theme-switcher legend {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  isolation: isolate;
+  color: var(--text-color);
 }
 
 .theme-switcher input[type="radio"] {
@@ -746,9 +710,9 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  min-width: var(--space-l);
-  min-height: var(--space-l);
-  padding: var(--space-3xs);
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0;
   background-color: transparent;
   color: var(--text-color);
   cursor: pointer;
@@ -759,7 +723,7 @@ footer {
 }
 
 .theme-button svg {
-  margin-left: var(--space-s);
+  margin-left: var(--space-xs);
   width: var(--space-m);
   height: var(--space-m);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
@@ -772,7 +736,7 @@ footer {
 .theme-button:hover svg,
 .theme-button:focus svg {
   transform: scale(1.5) rotate(90deg);
-  padding: var(--space-5xs);
+  padding: 0;
   background-color: oklch(85.841% 0.04208 183.344 / 0.466);
   border-radius: 50%;
 }
@@ -787,7 +751,10 @@ footer {
   }
 
   footer {
-    padding-inline: var(--space-m);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 var(--space-l);
   }
 }
 
