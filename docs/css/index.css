@@ -316,6 +316,8 @@ main {
   flex-direction: column;
   text-align: center;
   gap: var(--space-s);
+  padding-inline: var(--space-m);
+  max-inline-size: 90rem;
   view-transition-name: main-content;
 }
 
@@ -604,7 +606,7 @@ main>p {
 
 .large-button {
   display: inline-block;
-  padding: var(--space-s) var(--space-l);
+  padding: var(--space-s) var(--space-m);
   background: transparent;
   overflow: hidden;
   isolation: isolate;
@@ -630,7 +632,7 @@ main>p {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
-  padding: var(--space-s) var(--space-l);
+  padding: var(--space-s);
   text-align: center;
 }
 
