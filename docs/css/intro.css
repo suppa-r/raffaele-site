@@ -248,7 +248,7 @@ footer {
   max-inline-size: none;
 }
 
-p,
+
 h1,
 h2,
 h3,
@@ -258,7 +258,7 @@ h6,
 figcaption {
   max-inline-size: var(--measure);
   word-break: normal;
-  margin-top: 0;
+  margin-block: var(--space-4xs);
 }
 
 /*------------------ Body styles  ------------------*/
@@ -527,6 +527,12 @@ header {
   margin-inline: auto;
 }
 
+p span {
+  font-size: var(--step-1);
+  padding-left: var(--space-xs);
+  font-weight: bold;
+}
+
 .fancy span {
   display: inline-block;
   background: linear-gradient(270deg, #645960, #3f3e44, #262726, #dde1e2, #e8ebee, #8180868f, #bdb5b9, #272926);
@@ -540,6 +546,7 @@ header {
   animation-direction: alternate reverse;
   padding-left: var(--space-2xs);
   padding-right: var(--space-2xs);
+  font-size: var(--step-2);
 }
 
 @keyframes gradientAnimation {
