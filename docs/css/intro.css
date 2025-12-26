@@ -104,7 +104,7 @@ body::before {
 
   --btn-border-radius: var(--space-s);
   --padding-block: 0;
-  --padding-inline: var(--space-4xs);
+  --padding-inline: var(--space-5xs);
 
 
   /* Font families */
@@ -127,7 +127,7 @@ body::before {
 
   /*------------- letter and word spacing settings ---------------*/
 
-  --measure: 65ch;
+  --measure: 70ch;
   --letter-spacing: var(--space-5xs);
   --word-spacing: var(--space-5xs);
   --sl: 0.4rem;
@@ -239,6 +239,15 @@ body::before {
 
 /*----------------  global styles  ---------------*/
 
+html,
+body,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
 p,
 h1,
 h2,
@@ -249,17 +258,7 @@ h6,
 figcaption {
   max-inline-size: var(--measure);
   word-break: normal;
-  overflow-wrap: break-word;
   margin-top: 0;
-}
-
-html,
-body,
-header,
-nav,
-main,
-footer {
-  max-inline-size: none;
 }
 
 /*------------------ Body styles  ------------------*/
