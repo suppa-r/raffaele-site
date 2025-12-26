@@ -756,7 +756,16 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 0 var(--space-xs);
+    padding: 0 var(--space-5xs);
+  }
+
+  .footer-text {
+    font-size: var(--step--1);
+    padding: 0 0 var(--space-s) var(--space-xs);
+  }
+
+  .theme-switcher {
+    padding: 0 var(--space-xs) var(--space-s) 0;
   }
 }
 
