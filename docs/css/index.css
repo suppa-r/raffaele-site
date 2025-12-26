@@ -548,7 +548,7 @@ main>p {
 /*------------------ Text styles  ------------------*/
 
 .text-with-animation {
-  padding-top: var(--space-xl);
+  padding-top: var(--space-2xl);
   font-size: var(--step-4);
 }
 
