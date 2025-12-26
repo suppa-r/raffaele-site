@@ -752,6 +752,10 @@ footer {
     mix-blend-mode: normal;
   }
 
+  .curve-container {
+    gap: var(--space-xl);
+  }
+
   footer {
     position: absolute;
     bottom: 0;
