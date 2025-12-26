@@ -311,7 +311,7 @@ body {
 .nav-link:hover {
   filter: grayscale(0%) opacity(1);
   background: transparent;
-  color: var(--text-secondary);
+  color: var(--text-span);
 }
 
 .link-text {
@@ -347,32 +347,37 @@ body {
   transition: var(--transition-speed);
 }
 
+
 .logo {
-  margin-bottom: 0rem;
+  position: relative;
   text-align: center;
   color: var(--text-color);
-  background: transparent;
   font-size: var(--step-0);
   letter-spacing: 0.3ch;
   width: 100%;
 }
 
 .logo svg {
-  transform: rotate(0deg);
   transition: var(--transition-speed);
+  will-change: transform;
 }
 
 .logo-text {
-  display: inline;
   position: absolute;
-  left: -999px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
   transition: var(--transition-speed);
+  color: var(--text-color);
 }
 
 .navbar:hover .logo svg {
   transform: rotate(360deg);
 }
-
 
 /* Large screens */
 @media only screen and (min-width: 600px) {
@@ -391,11 +396,18 @@ body {
   }
 
   .navbar:hover .logo svg {
-    margin-left: var(--space-3xl);
+    margin-left: var(--space-l);
   }
 
   .navbar:hover .logo-text {
-    left: 0px;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: initial;
+    margin: initial;
+    overflow: visible;
+    clip-path: none;
+    white-space: nowrap;
   }
 }
 
@@ -405,7 +417,7 @@ main {
   display: flex;
   flex-direction: column;
   padding-block: var(--space-s);
-  margin-left: 5rem;
+  margin-left: var(--space-3xl);
   min-height: 100dvh;
   overflow: hidden;
 }
