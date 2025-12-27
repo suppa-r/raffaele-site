@@ -438,7 +438,17 @@ header {
 
 /*------title-------*/
 
-.title-header p span {
+.title-header {
+  color: var(--text-color);
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+.title-header span {
+  margin: 0;
+  padding: 0 var(--space-xs) 0 0;
+  font-size: inherit;
   color: var(--text-span);
 }
 
@@ -615,7 +625,7 @@ p span {
 @media only screen and (max-width: 600px) {
   header {
     margin: var(--space-5xs) var(--space-xs) 0 var(--space-xs);
-    padding: var(--space-5xs) var(--space-xs);
+    padding: var(--space-5xs) var(--space-s);
   }
 
   .navbar {
