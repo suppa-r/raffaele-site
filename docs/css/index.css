@@ -281,6 +281,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+  max-inline-size: none;
 }
 
 .wrapper>* {
@@ -315,9 +316,9 @@ main {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: var(--space-s);
-  padding-inline: var(--space-m);
-  max-inline-size: 90rem;
+  padding-inline: var(--padding-inline);
+  padding-block: var(--space-s);
+  flex: 1;
   view-transition-name: main-content;
 }
 
@@ -329,7 +330,7 @@ main>p {
 /*-------------curvature-----------------*/
 
 .curve-container {
-  padding-top: var(--space-m);
+  padding-top: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-3xl);
@@ -605,8 +606,8 @@ main>p {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
-  display: inline-block;
-  padding: var(--space-s) var(--space-m);
+  display: block;
+  padding: var(--space-s) var(--space-l);
   background: transparent;
   overflow: hidden;
   isolation: isolate;
@@ -618,7 +619,7 @@ main>p {
   user-select: none;
   pointer-events: all;
   transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s, transform 0.3s;
-  margin-top: var(--space-m);
+  margin-top: var(--space-2xl);
   view-transition-name: large-button;
 }
 
@@ -660,38 +661,36 @@ main>p {
 /*-------------footer-----------------*/
 
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: var(--step--1);
   letter-spacing: var(--letter-spacing);
+  margin-block: var(--space-xs);
+  margin-block-start: auto;
   view-transition-name: footer;
 }
 
 .footer-text {
-  padding: 0 0 var(--space-xs) var(--space-l);
+  max-inline-size: none;
+  padding-left: var(--space-l);
+
 }
 
 /*------------------ Theme switcher styles  ---------------*/
 
 .theme-switcher {
+  max-inline-size: none;
+  padding-right: var(--space-l);
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: var(--space-2xs);
   pointer-events: auto;
-  margin: 0;
-  padding: 0 var(--space-l) var(--space-xs) 0;
 }
 
 .theme-switcher span {
-  padding: 0;
-  margin: 0;
-  font-style: normal;
   font-size: var(--step--1);
   color: var(--text-color);
 }
@@ -715,7 +714,6 @@ footer {
   justify-content: center;
   min-width: 2.75rem;
   min-height: 2.75rem;
-  padding: 0;
   background-color: transparent;
   color: var(--text-color);
   cursor: pointer;
