@@ -8,28 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const profile = document.querySelector('.profile');
   const profileTabs = document.querySelectorAll('.profile-tab');
   const navLinksTabs = document.querySelectorAll('.nav-links a');
+  const profileMenu = document.querySelector('.profile-menu');
 
 
   // Initially hide profile tabs container
   profile && (profile.style.display = 'block');
 
+  // Toggle profile menu on menu-btn click
   bars.addEventListener('click', (e) => {
     e.stopPropagation();
-    h && (h.style.display = 'block'); // Always show header p
-    if (nav) {
-      const isOpen = nav.classList.toggle('open');
-      nav.style.display = isOpen ? 'block' : '';
-      themeList && themeList.classList.remove('active');
-      profile && (profile.style.display = 'none');
-      // Hide all profile tabs when menu is open
-      profileTabs.forEach(tab => {
-        tab.style.display = isOpen ? 'none' : '';
-      });
-
+    if (profileMenu) {
+      const isOpen = !profileMenu.hasAttribute('hidden');
       if (isOpen) {
-        themeList && themeList.classList.remove('active');
+        profileMenu.setAttribute('hidden', '');
       } else {
-        themeList && (themeList.style.display = 'none');
+        profileMenu.removeAttribute('hidden');
+      }
+    }
+  });
+
+  // Close profile menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (profileMenu && !profileMenu.hasAttribute('hidden')) {
+      if (!profileMenu.contains(event.target) && !bars.contains(event.target)) {
+        profileMenu.setAttribute('hidden', '');
       }
     }
   });
