@@ -15,36 +15,11 @@
   --text-color: oklch(0% 0 0);
   --text-span: oklch(21.424% 0.0259 195.446 / 0.643);
 
-  --body-grid-line: oklch(0% 0 0 / 0.507);
-}
-
-[data-theme="light"] body::before {
-  opacity: 1;
-  pointer-events: none;
-  content: "";
-  width: 100dvw;
-  height: 100dvh;
-
-  top: 0;
-  left: 0;
-  background:
-    linear-gradient(90deg,
-      var(--body-grid-line) 1px,
-      transparent 1px) 0 0 / 30px 30px,
-    linear-gradient(180deg,
-      var(--body-grid-line) 1px,
-      transparent 1px) 0 0 / 30px 30px,
-    oklch(100% 0.00011 271.152);
-  position: fixed;
-  mask-image: linear-gradient(180deg, oklch(100% 0.00011 271.152 / 0.911) 100%, transparent 0%);
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
-    background-position 0.3s ease-in-out;
-  isolation: isolate;
-  z-index: -2000;
-  overflow: hidden;
+  --bg-image: url('/docs/images/white-2.jpg');
+  --bg-size: cover;
+  /* ✅ Single image */
+  --bg-repeat: no-repeat;
+  /* ✅ Single image */
 }
 
 [data-theme="light"] .content div,
@@ -57,7 +32,7 @@
 [data-theme="light"] .footer-text,
 [data-theme="light"] .theme-switcher,
 [data-theme="light"] .large-button {
-  mix-blend-mode: multiply;
+  mix-blend-mode: darken;
 }
 
 :root {
