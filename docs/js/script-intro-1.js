@@ -5,27 +5,55 @@ document.addEventListener('DOMContentLoaded', () => {
   const h = document.querySelector('header p');
   const nav = document.querySelector('.nav-links');
   const bars = document.querySelector('.menu-btn');
+  const navigation = document.querySelector('.navigation');
   const profile = document.querySelector('.profile');
-  const profileTabs = document.querySelectorAll('.profile-tab');
-  const navLinksTabs = document.querySelectorAll('.nav-links a');
+  const profileTabs = document.querySelectorAll('.data-tab.genesis, .data-tab.early, .data-tab.beginnings, .data-tab.ryerson');
+  const navLinksTabs = document.querySelectorAll('.nav-links a[data-tab]');
+
+  function showTab(tab) {
+    profileTabs.forEach(tabEl => tabEl.classList.remove('open'));
+    const showTab = document.querySelector('.data-tab.' + tab);
+    if (showTab) showTab.classList.add('open');
+  }
+
+  function setActiveNav(tab) {
+    navLinksTabs.forEach(l => l.classList.remove('active'));
+    const activeLink = document.querySelector('.nav-links a[data-tab="' + tab + '"]');
+    if (activeLink) activeLink.classList.add('active');
+  }
+
+  navLinksTabs.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const tab = this.getAttribute('data-tab');
+      setActiveNav(tab);
+      showTab(tab);
+    });
+  });
+
+  // On load, show the first tab and set nav active
+  if (navLinksTabs.length > 0) {
+    const firstTab = navLinksTabs[0].getAttribute('data-tab');
+    setActiveNav(firstTab);
+    showTab(firstTab);
+  }
   const profileMenu = document.querySelector('.profile-menu');
 
 
   // Initially hide profile tabs container
   profile && (profile.style.display = 'block');
 
-  // Toggle profile menu on menu-btn click
+  // Toggle navigation on menu-btn click
   bars.addEventListener('click', (e) => {
     e.stopPropagation();
     // Toggle hamburger animation
     bars.classList.toggle('open');
+    if (navigation) {
+      navigation.classList.toggle('open');
+    }
+    // Optionally, close profile menu if open
     if (profileMenu) {
-      const isOpen = !profileMenu.hasAttribute('hidden');
-      if (isOpen) {
-        profileMenu.setAttribute('hidden', '');
-      } else {
-        profileMenu.removeAttribute('hidden');
-      }
+      profileMenu.setAttribute('hidden', '');
     }
   });
 

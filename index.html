@@ -20,10 +20,10 @@
   <body>
     <div class="wrapper">
       <blockquote>
-        <p>"there will an answer; Let It Be!"&nbsp;&nbsp;&nbsp;&nbsp;--the beatles</p>
+        <p>"there will be an answer; Let It Be!"&nbsp;&nbsp;&nbsp;&nbsp;--the beatles</p>
       </blockquote>
       <main>
-        <p>this Site Contains 1 ( One )</p>
+        <p>This site Contains 1 ( One )</p>
         <div class="curve-container">
           <div class="content">
             <div class="up">
@@ -83,18 +83,20 @@
       </main>
       <footer>
         <p class="footer-text">my two cents into a True Story</p>
-        <div class="theme-switcher" role="group" aria-label="Theme selection">
-          <span>themify</span>
-          <input type="radio" name="theme" value="dark" id="dark" checked>
-          <label for="dark" class="theme-button active" aria-label="Dark theme">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <div class="theme-switcher" role="radiogroup" aria-labelledby="theme-switcher-label">
+          <span id="theme-switcher-label">Theme selection</span>
+          <input type="radio" name="theme" value="dark" id="dark" checked aria-checked="true" aria-labelledby="theme-switcher-label dark-label">
+          <label for="dark" id="dark-label" class="theme-button active">
+            <span class="visually-hidden">Dark theme</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor"
                     d="M12.075 21q-1.888 0-3.543-.713T5.64 18.336t-1.951-2.893t-.714-3.543q0-2.639 1.395-4.846t3.77-3.345q.177-.067.35-.058q.174.008.308.093q.123.079.197.238t.074.39q.108 2.09.925 3.963t2.295 3.351t3.353 2.295t3.968.925q.236 0 .386.068t.229.192q.085.134.099.313t-.053.35q-1.13 2.375-3.344 3.773T12.075 21m0-1q2.2 0 4.075-1.1t2.95-3.025q-2.15-.2-4.075-1.097t-3.45-2.422t-2.425-3.44T8.075 4.85Q6.15 5.925 5.063 7.813T3.975 11.9q0 3.375 2.363 5.738T12.075 20m2.071-12.97L12.99 5.874q-.243-.242-.243-.565q0-.324.243-.566l1.157-1.158q.243-.242.566-.242t.565.242l1.158 1.158q.242.242.242.566t-.242.565l-1.158 1.158q-.242.242-.565.242t-.566-.242m5.212 3.211l-.581-.561q-.165-.165-.165-.373t.165-.373l.58-.562q.166-.165.364-.165t.364.165l.561.562q.166.165.166.373t-.166.373l-.561.561q-.166.166-.364.166t-.363-.166" />
             </svg>
           </label>
-          <input type="radio" name="theme" value="light" id="light">
-          <label for="light" class="theme-button" aria-label="Light theme">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <input type="radio" name="theme" value="light" id="light" aria-checked="false" aria-labelledby="theme-switcher-label light-label">
+          <label for="light" id="light-label" class="theme-button">
+            <span class="visually-hidden">Light theme</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor"
                     d="M12 15q1.25 0 2.125-.875T15 12t-.875-2.125T12 9t-2.125.875T9 12t.875 2.125T12 15m0 1q-1.671 0-2.835-1.164Q8 13.67 8 12t1.165-2.835T12 8t2.836 1.165T16 12t-1.164 2.836T12 16M2 12.5q-.213 0-.356-.144t-.144-.357t.144-.356T2 11.5h2.5q.213 0 .356.144t.144.357t-.144.356t-.356.143zm17.5 0q-.213 0-.356-.144T19 11.999t.144-.356t.356-.143H22q.213 0 .356.144t.144.357t-.144.356T22 12.5zM12 5q-.213 0-.357-.144T11.5 4.5V2q0-.213.144-.356t.357-.144t.356.144T12.5 2v2.5q0 .213-.144.356T11.999 5m0 17.5q-.212 0-.356-.144T11.5 22v-2.5q0-.213.144-.356t.357-.144t.356.144t.143.356V22q0 .213-.144.356t-.357.144M6.362 7.03l-1.44-1.395q-.147-.14-.144-.344t.149-.37q.16-.165.354-.165t.354.165L7.05 6.342q.16.166.16.354q0 .189-.15.354t-.342.153t-.356-.172m12.004 12.048l-1.416-1.421q-.16-.166-.16-.357t.16-.351q.13-.165.327-.153q.196.013.362.172l1.44 1.397q.146.14.143.344t-.149.369q-.16.165-.354.165t-.354-.165M16.95 7.059q-.165-.15-.153-.34t.172-.358l1.397-1.44q.14-.146.344-.143t.369.149q.165.16.165.354t-.165.353L17.658 7.05q-.166.16-.354.16t-.354-.15M4.921 19.083q-.165-.17-.165-.364t.165-.353l1.421-1.416q.166-.16.357-.16q.192 0 .351.16q.146.13.134.327q-.013.196-.153.362l-1.397 1.44q-.159.165-.353.162q-.195-.002-.36-.158M12 12" />
             </svg>
