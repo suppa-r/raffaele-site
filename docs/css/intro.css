@@ -20,7 +20,7 @@
 [data-theme="light"] {
   --base-color: oklch(100% 0.00011 271.152);
   --text-color: oklch(0% 0 0);
-  --text-span: oklch(59.264% 0.05888 209.245);
+  --text-span: oklch(30.097% 0.03588 210.108 / 0.795);
 
   --body-grid-line: oklch(0% 0 0 / 0.329);
 
@@ -66,7 +66,7 @@ body::before {
 
 :root {
 
-  /*------------ Fluid typography with mobile scaling --------- */
+  /*-------- Fluid typography with better mobile scaling ------ */
 
   --step--1: clamp(0.8rem, 0.7489rem + 0.1818cqi, 0.9rem);
   --step-0: clamp(1rem, 0.9489rem + 0.2273cqi, 1.125rem);
@@ -78,7 +78,7 @@ body::before {
   --step-6: clamp(3.8147rem, 3.6196rem + 0.867cqi, 4.2915rem);
   --step-7: clamp(4.7684rem, 4.5245rem + 1.0837cqi, 5.3644rem);
 
-  /*-------------- Fluid spacing mobile scaling --------------- */
+  /*-------- Fluid spacing with better mobile scaling ---------- */
 
   --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136cqi, 0.1875rem);
   --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136cqi, 0.25rem);
@@ -102,8 +102,6 @@ body::before {
 
   /*--------------- Button and padding settings ---------------- */
 
-  --btn-border-radius: var(--space-s);
-  --padding-block: 0;
   --padding-inline: var(--space-5xs);
 
 
@@ -114,12 +112,6 @@ body::before {
   --font-secondary: 'monotonregular',
     sans-serif;
 
-  /* Base grid and background settings */
-  --grid-size: 30px;
-  --backdrop-blur: blur(1px);
-  --background-transition: background 0.3s ease-in-out;
-  --directional-angle: 90deg;
-
   /*----------- Animation and transition settings -------------- */
 
   --sp: 4s;
@@ -127,10 +119,9 @@ body::before {
 
   /*------------- letter and word spacing settings ---------------*/
 
-  --measure: 70ch;
+  --measure: 65ch;
   --letter-spacing: var(--space-5xs);
   --word-spacing: var(--space-5xs);
-  --sl: 0.4rem;
 }
 
 
@@ -239,16 +230,7 @@ body::before {
 
 /*----------------  global styles  ---------------*/
 
-html,
-body,
-header,
-nav,
-main,
-footer {
-  max-inline-size: none;
-}
-
-
+p,
 h1,
 h2,
 h3,
@@ -258,21 +240,36 @@ h6,
 figcaption {
   max-inline-size: var(--measure);
   word-break: normal;
-  margin-block: var(--space-4xs);
+  overflow-wrap: break-word;
+  margin-block: 0;
+}
+
+html,
+body,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
 }
 
 /*------------------ Body styles  ------------------*/
 
 html,
 body {
+  background-attachment: fixed;
+  background-image: var(--bg-image);
+  background-position: center;
+  background-repeat: var(--bg-repeat, no-repeat);
+  background-size: var(--bg-size, cover);
   color: var(--text-color);
   font-family: var(--font-primary), sans-serif;
   font-size: var(--step-0);
   font-style: var(--font-style-primary);
+  font-weight: normal;
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
   transition: color 0.3s ease-in-out;
-  overflow-x: hidden;
 }
 
 /*---------------- Navigation styles  ----------------*/
