@@ -15,7 +15,7 @@
   --text-color: oklch(0% 0 0);
   --text-span: oklch(21.424% 0.0259 195.446 / 0.643);
 
-  --bg-image: url('/docs/images/white-2.jpg');
+  --bg-image: url('/docs/images/white-1.jpg');
   --bg-size: cover;
   /* ✅ Single image */
   --bg-repeat: no-repeat;
