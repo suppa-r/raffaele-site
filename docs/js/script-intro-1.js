@@ -3,15 +3,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeButtons = document.querySelectorAll('.theme-button');
   const wrapper = document.querySelector('.wrapper');
   const h = document.querySelector('header p');
-  const nav = document.querySelector('.nav-links');
   const bars = document.querySelector('.menu-btn');
   const navigation = document.querySelector('.navigation');
-  const profile = document.querySelector('.profile');
-  const profileTabs = document.querySelectorAll('.data-tab.genesis, .data-tab.early, .data-tab.beginnings, .data-tab.ryerson');
+  const nav = document.querySelector('.nav-links');
   const navLinksTabs = document.querySelectorAll('.nav-links a[data-tab]');
+  const dataTabs = document.querySelectorAll('.data-tab.genesis, .data-tab.early, .data-tab.beginnings, .data-tab.ryerson');
+
+  // Toggle navigation on menu-btn click
+  bars.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // Toggle hamburger animation
+    bars.classList.toggle('open');
+    // Toggle navigation visibility
+    if (navigation) {
+      navigation.classList.toggle('open');
+    }
+    // Optionally, close profile menu if open
+    if (dataTabs && !dataTabs.hasAttribute('hidden')) {
+      dataTabs.setAttribute('hidden', '');
+    }
+  });
+
 
   function showTab(tab) {
-    profileTabs.forEach(tabEl => tabEl.classList.remove('open'));
+    dataTabs.forEach(tabEl => tabEl.classList.remove('open'));
     const showTab = document.querySelector('.data-tab.' + tab);
     if (showTab) showTab.classList.add('open');
   }
@@ -37,31 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setActiveNav(firstTab);
     showTab(firstTab);
   }
-  const profileMenu = document.querySelector('.profile-menu');
+
 
 
   // Initially hide profile tabs container
-  profile && (profile.style.display = 'block');
+  dataTabs && (dataTabs.style.display = 'block');
 
-  // Toggle navigation on menu-btn click
-  bars.addEventListener('click', (e) => {
-    e.stopPropagation();
-    // Toggle hamburger animation
-    bars.classList.toggle('open');
-    if (navigation) {
-      navigation.classList.toggle('open');
-    }
-    // Optionally, close profile menu if open
-    if (profileMenu) {
-      profileMenu.setAttribute('hidden', '');
-    }
-  });
 
   // Close profile menu when clicking outside
   document.addEventListener('click', (event) => {
-    if (profileMenu && !profileMenu.hasAttribute('hidden')) {
-      if (!profileMenu.contains(event.target) && !bars.contains(event.target)) {
-        profileMenu.setAttribute('hidden', '');
+    if (dataTabs && !dataTabs.hasAttribute('hidden')) {
+      if (!dataTabs.contains(event.target) && !bars.contains(event.target)) {
+        dataTabs.setAttribute('hidden', '');
       }
     }
   });

@@ -1,7 +1,7 @@
 [data-theme="dark"] {
   --base-color: oklch(0% 0 0);
   --text-color: oklch(100% 0.00011 271.152);
-  --text-span: oklch(67.53% 0.04556 196.219 / 0.966);
+  --text-span: oklch(67.53% 0.04556 196.219 / 0.692);
 
   --body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
@@ -20,7 +20,7 @@
 [data-theme="light"] {
   --base-color: oklch(100% 0.00011 271.152);
   --text-color: oklch(0% 0 0);
-  --text-span: oklch(30.097% 0.03588 210.108 / 0.795);
+  --text-span: oklch(36.946% 0.04471 211.103 / 0.849);
 
   --body-grid-line: oklch(0% 0 0 / 0.329);
 
@@ -260,11 +260,6 @@ footer {
 
 html,
 body {
-  background-attachment: fixed;
-  background-image: var(--bg-image);
-  background-position: center;
-  background-repeat: var(--bg-repeat, no-repeat);
-  background-size: var(--bg-size, cover);
   color: var(--text-color);
   font-family: var(--font-primary), sans-serif;
   font-size: var(--step-0);
@@ -290,7 +285,7 @@ header {
   background: var(--gradient-header);
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
-  margin: var(--space-3xs) var(--space-3xl) 0 var(--space-3xl);
+  margin: var(--space-5xs) var(--space-3xl);
   padding: var(--space-4xs) var(--space-xl);
   border-radius: var(--space-l);
   isolation: isolate;
@@ -299,14 +294,14 @@ header {
 
 /*------title-------*/
 
-header p {
+.title-header {
   color: var(--text-color);
   text-align: right;
   margin: 0;
   padding: 0;
 }
 
-header p span {
+.title-header span {
   margin: 0;
   padding: 0 var(--space-xs) 0 0;
   font-size: inherit;
@@ -394,8 +389,6 @@ header p span {
   position: relative;
   top: var(--space-l);
   text-align: center;
-  width: fit-content;
-  max-width: 90vw;
   z-index: 1000;
   isolation: isolate;
   animation: fadeIn 0.9s ease-in-out;
@@ -411,17 +404,24 @@ header p span {
   position: relative;
   z-index: 1000;
   isolation: isolate;
+  user-select: none;
+  pointer-events: none;
+  margin-inline: auto;
+  font-size: var(--step-2);
   white-space: nowrap;
   text-align: center;
+  color: var(--text-color);
   text-shadow: var(--text-shadow);
-  padding: var(--space-2xs) var(--space-xl);
-  margin-block: var(--space-2xs);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradientAnimation 3s ease-in-out infinite alternate;
-  border-radius: var(--space-m);
+  border-radius: var(--space-l);
   box-shadow: var(--shadow);
   display: inline-block;
+  margin: var(--space-4xs) auto;
+  padding: var(--space-2xs) var(--space-xl);
+  margin-block: var(--space-2xs);
+  background: var(--gradient);
 }
 
 @keyframes gradientAnimation {
@@ -436,10 +436,8 @@ header p span {
   }
 }
 
-/*------menu button-------*/
-
 .menu-btn {
-  margin: var(--space-xl) auto 0 auto;
+  margin: var(--space-2xl) auto 0 auto;
   position: relative;
   background: var(--base-color, #fff);
   border: 2px solid var(--text-color, #e0e0e0);
@@ -458,6 +456,15 @@ header p span {
   transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
   z-index: 20000;
   outline: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-btn.open {
+  border-color: var(--text-span, #b3b3b3);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.24);
+  background: var(--gradient-header, #e0e0e0);
+  /* Styles for the open (active) state */
 }
 .menu-btn:focus-visible,
 .menu-btn:hover {
@@ -471,68 +478,116 @@ header p span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   position: relative;
+  cursor: pointer;
+  z-index: 20100;
 }
 
 .menu-btn__burger span {
   display: block;
-  width: 24px;
-  height: var(--burger-thickness);
-  margin: 3px 0;
+  width: 28px;
+  height: 3px;
+  margin: 4px 0;
   background: var(--bars, #333);
   border-radius: 2px;
-  transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s cubic-bezier(.4, 0, .2, 1), background 0.3s;
   position: relative;
+  will-change: transform, opacity;
 }
 
-.menu-btn.open .menu-btn__burger span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: var(--burger-thickness);
+  background: var(--bars);
+  border-radius: 5px;
+  transition: all .2s ease-in-out;
 }
-.menu-btn.open .menu-btn__burger span:nth-child(2) {
-  opacity: 0;
+
+.menu-btn__burger::before {
+  transform: translateY(-8px);
 }
-.menu-btn.open .menu-btn__burger span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+
+.menu-btn__burger::after {
+  transform: translateY(8px);
+}
+
+.menu-btn__burger.open {
+  transform: rotate(90deg);
+  /* Example: rotate when open */
+}
+
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(0px);
+  background: transparent;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(0px, 0px);
+  background: var(--bars);
+}
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(0px, 0px);
+  background: var(--bars);
+}
+
+/*------profile image-------*/
+
+.profile-header {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  margin: 0 auto;
+  z-index: 1000;
+  isolation: isolate;
+}
+
+.profile-header img {
+  inline-size: 500px;
+  /* larger size for larger screens */
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+
+  background-color: transparent;
+  margin: var(--space-m);
+  box-shadow: var(--shadow);
+  user-select: none;
+  pointer-events: none;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-header:hover img {
+  transform: scale(1.5);
+  /* zoom effect on hover */
+  transition: transform 0.3s ease-in-out;
 }
 
 /*------navigation-------*/
 
 .navigation {
   margin-inline: auto;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-m) var(--space-xl);
-  background: var(--gradient-header, #fff);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), var(--navbar-shadow);
-  border-radius: var(--space-l);
-  border: 1px solid hsla(0, 0%, 100%, 0.18);
-  opacity: 0;
-  z-index: 2000;
-  pointer-events: none;
-  transition: opacity 0.4s, transform 0.4s, box-shadow 0.4s;
-  transform: translateY(-20px) scale(0.98);
-}
-
-.navigation.open {
-  display: flex;
+  display: block;
+  /* or flex if you want its children in a row */
+  padding: var(--space-7xs) var(--space-2xl);
+  background-color: transparent;
   opacity: 1;
+  z-index: 1000;
   pointer-events: all;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22), var(--navbar-shadow);
-  transform: translateY(0) scale(1);
-}
-
-.navigation.open .nav-links {
-  display: flex;
-  pointer-events: all;
-  opacity: 1;
-  flex-direction: row;
-  gap: var(--space-l);
-  justify-content: center;
-  align-items: center;
+  transition: opacity 0.4s ease-in;
 }
 
 .nav-links {
@@ -555,16 +610,20 @@ header p span {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   max-width: 90vw;
+
   box-sizing: border-box;
   text-align: center;
   border-radius: var(--btn-border-radius);
   box-shadow: var(--shadow);
+
+
   border: 1px solid hsla(0, 0%, 100%, 0.18);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   background-clip: border-box;
-  background-color: var(--base-color);
+  background-color: var(--clr-button);
 
 }
 
@@ -661,101 +720,6 @@ header p span {
 }
 
 
-.profile {
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-  user-select: none;
-  pointer-events: none;
-  background: transparent;
-  z-index: 1000;
-  isolation: isolate;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  min-width: 180px;
-  padding: 1rem 0.5rem;
-}
-
-
-.profile-menu[hidden] {
-  display: none;
-}
-.profile-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.profile-menu li {
-  margin: 0;
-  padding: 0;
-}
-.profile-menu a {
-  display: block;
-  padding: 0.75rem 1.25rem;
-  color: inherit;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.15s;
-}
-.profile-menu a:hover,
-.profile-menu a:focus {
-  background: var(--text-span, #f0f0f0);
-  color: var(--base-color, #222);
-}
-
-.profile-overlay {
-  display: block;
-  margin-top: var(--space-4xl);
-  background-color: transparent;
-  opacity: 1;
-  text-align: center;
-  width: fit-content;
-  max-width: 90vw;
-  height: auto;
-  padding: 0;
-  user-select: none;
-  pointer-events: none;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1000;
-  isolation: isolate;
-}
-
-.profile-header {
-  display: block;
-  margin-top: var(--space-4xl);
-  z-index: 1000;
-  isolation: isolate;
-  user-select: none;
-  pointer-events: none;
-  margin-inline: auto;
-}
-
-.profile-header img {
-  position: relative;
-  inline-size: 350px;
-  height: auto;
-  object-fit: cover;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  margin: 0 auto;
-  box-shadow: var(--shadow);
-  user-select: none;
-  pointer-events: none;
-  border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
-  animation: fadeIn 0.9s ease-in-out;
-}
-
-.profile-header:hover img {
-  transform: scale(1.05);
-  /* zoom effect on hover */
-  transition: transform 0.3s ease-in-out;
-}
-
 /*------profile-------*/
 
 .data-tab {
@@ -785,8 +749,13 @@ header p span {
   overflow: auto;
   max-height: 100dvh;
 }
-
-/* Navigation */
+.image-container-profile {
+  display: block;
+  z-index: 1000;
+  isolation: isolate;
+  user-select: none;
+  pointer-events: none;
+}
 
 .burger-check~.navigation li {
   transform: translateY(0);
@@ -794,7 +763,7 @@ header p span {
   transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 }
 
-.data-tabs {
+.data-tab {
   display: none;
   margin-inline: auto;
 }
@@ -834,15 +803,18 @@ header p span {
 
 
 .section-title {
+  font-family: var(--ff-monoton-regular);
+  font-weight: var(--font-weight-regular);
+  font-style: var(--font-style-regular);
   font-size: var(--step-0);
-  font-family: var(--font-secondary);
+  text-align: center;
   color: var(--text-color);
-  font-style: normal;
-  margin-block: var(--space-3xs-2xs) var(--space-xs-s);
+  padding: var(--space-2xs) var(--space-s);
+  margin-block: var(--space-2xs) var(--space-s);
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradient var(--sp) linear infinite alternate;
-  border-radius: var(--space-l-xl);
+  border-radius: var(--space-xl);
   box-shadow: var(--shadow);
   max-width: 50ch;
   /* limits width to about 16 characters */
@@ -850,12 +822,6 @@ header p span {
   /* centers the title */
   display: block;
   /* ensures margin works */
-}
-
-.image-container-profile {
-  margin-inline: auto;
-  box-shadow: var(--shadow);
-  margin: var(--space-2xl-3xl);
 }
 
 .data-tab .row-text p {
@@ -872,7 +838,7 @@ header p span {
   font-size: var(--step-0);
   color: var(--text-color);
   text-align: center;
-  margin-block: var(--space-3xs-2xs);
+  margin-block: var(--space-2xs);
   margin-inline: auto;
 }
 
@@ -882,7 +848,7 @@ header p span {
   text-align: center;
   /* limits width to about 16 characters */
   margin-inline: auto;
-  margin-block: var(--space-3xs-2xs);
+  margin-block: var(--space-2xs);
 }
 
 .data-tab .row-img>img {
@@ -900,7 +866,7 @@ header p span {
   margin-inline: auto;
 }
 
-@media (max-width: 600px) {
+@container (max-width: 600px) {
 
   header p {
 
@@ -910,7 +876,7 @@ header p span {
 
 
 
-  .data-tab {
+  .profile-tab {
     flex-direction: column;
   }
 
@@ -918,7 +884,7 @@ header p span {
     margin-top: var(--space-2xl);
   }
 
-  .data-header img {
+  .profile-header img {
     inline-size: 200px;
     /* smaller size for small screens */
     height: auto;
@@ -936,7 +902,7 @@ header p span {
     animation: fadeIn 0.9s ease-in-out;
   }
 
-  .data-tab .row-img>img {
+  .profile-tab .row-img>img {
     inline-size: 175px;
     /* or your preferred size */
     aspect-ratio: 1 / 1;
