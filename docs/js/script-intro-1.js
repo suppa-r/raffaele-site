@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const themeList = document.querySelector('.theme-list');
+  const themeSwitcher = document.querySelector('.theme-switcher');
   const themeButtons = document.querySelectorAll('.theme-button');
   const wrapper = document.querySelector('.wrapper');
   const h = document.querySelector('header p');
@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Toggle profile menu on menu-btn click
   bars.addEventListener('click', (e) => {
     e.stopPropagation();
+    // Toggle hamburger animation
+    bars.classList.toggle('open');
     if (profileMenu) {
       const isOpen = !profileMenu.hasAttribute('hidden');
       if (isOpen) {
@@ -35,37 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
   // Function to update active class on theme buttons
   function setActiveThemeButton() {
-    themeButtons.forEach(btn => {
-      const input = btn.querySelector('input[type="radio"]');
-      btn.classList.toggle('active', input && input.checked);
+    themeLabels.forEach(label => {
+      const input = themeSwitcher.querySelector(`#${label.getAttribute('for')}`);
+      label.classList.toggle('active', input && input.checked);
     });
   }
 
   // Open dropdown when clicking the active theme button
-  themeButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const input = btn.querySelector('input[type="radio"]');
-      if (btn.classList.contains('active')) {
-        // Open dropdown (show non-active options)
-        e.stopPropagation();
-        themeList.classList.add('active');
-        intro && (intro.style.display = 'block');
-        h && (h.style.display = 'block');
-        nav && (nav.style.display = 'flex');
-      } else if (input) {
-        // Switch theme if non-active button is clicked
+  themeLabels.forEach(label => {
+    label.addEventListener('click', (e) => {
+      const input = themeSwitcher.querySelector(`#${label.getAttribute('for')}`);
+      if (input && !input.checked) {
         input.checked = true;
-        const selectedTheme = input.value;
-        document.documentElement.setAttribute('data-theme', selectedTheme);
-        localStorage.setItem('theme', selectedTheme);
-        setActiveThemeButton();
-        themeList.classList.remove('active');
-        intro && (intro.style.display = 'block');
-        h && (h.style.display = 'block');
-        nav && (nav.style.display = ''); // <-- Hide nav-links
-        nav && nav.classList.remove('open'); // <-- Remove open class if used
+        setTheme(input.value);
       }
     });
   });
@@ -122,16 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Listen to radio button changes directly
-  themeButtons.forEach(btn => {
-    const input = btn.querySelector('input[type="radio"]');
-    if (input) {
-      input.addEventListener('change', (e) => {
-        console.log('Radio button changed:', e.target.value); // Debug
-        if (e.target.checked) {
-          setTheme(e.target.value);
-        }
-      });
-    }
+  themeRadios.forEach(input => {
+    input.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        setTheme(e.target.value);
+      }
+    });
   });
 
   // Media query for system theme preference
