@@ -13,9 +13,9 @@
 [data-theme="light"] {
   --base-color: oklch(100% 0.00011 271.152);
   --text-color: oklch(0% 0 0);
-  --text-span: oklch(36.706% 0.02967 196.014 / 0.643);
+  --text-span: oklch(21.424% 0.0259 195.446 / 0.643);
 
-  --body-grid-line: oklch(0% 0 0 / 0.329);
+  --body-grid-line: oklch(0% 0 0 / 0.507);
 }
 
 [data-theme="light"] body::before {
@@ -24,7 +24,7 @@
   content: "";
   width: 100dvw;
   height: 100dvh;
-  position: fixed;
+
   top: 0;
   left: 0;
   background:
@@ -35,8 +35,9 @@
       var(--body-grid-line) 1px,
       transparent 1px) 0 0 / 30px 30px,
     oklch(100% 0.00011 271.152);
-  mask-image: linear-gradient(-135deg, transparent 0%, oklch(100% 0.00011 271.152) 70%);
-  mask-size: 400% 100%;
+  position: fixed;
+  mask-image: linear-gradient(180deg, oklch(100% 0.00011 271.152 / 0.911) 100%, transparent 0%);
+  mask-size: 100% 100%;
   mask-repeat: no-repeat;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
@@ -97,9 +98,7 @@
 
   /*--------------- Button and padding settings ---------------- */
 
-  --btn-border-radius: var(--space-s);
-  --padding-block: 0;
-  --padding-inline: var(--space-4xs);
+  --padding-inline: var(--space-5xs);
 
 
   /* Font families */
@@ -109,16 +108,9 @@
   --font-secondary: 'monotonregular',
     sans-serif;
 
-  /* Base grid and background settings */
-  --grid-size: 30px;
-  --backdrop-blur: blur(1px);
-  --background-transition: background 0.3s ease-in-out;
-  --directional-angle: 90deg;
-
   /*----------- Animation and transition settings -------------- */
 
   --sp: 4s;
-  --burger-thickness: 2.5px;
   --transition-speed: 0.3s ease-in-out;
 
   /*------------- letter and word spacing settings ---------------*/
@@ -126,7 +118,6 @@
   --measure: 65ch;
   --letter-spacing: var(--space-5xs);
   --word-spacing: var(--space-5xs);
-  --sl: 0.4rem;
 }
 
 
@@ -246,7 +237,7 @@ figcaption {
   max-inline-size: var(--measure);
   word-break: normal;
   overflow-wrap: break-word;
-  margin-top: 0;
+  margin-block: 0;
 }
 
 html,
@@ -281,19 +272,12 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  max-inline-size: none;
-}
-
-.wrapper>* {
-  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+  max-width: 80rem;
+  margin: 0 auto;
 }
 
 /*------------------ Quote styles  ------------------*/
-
-figure {
-  margin: 0;
-  padding: var(--space-xs) 0 0 0;
-}
 
 blockquote {
   margin: 0;
@@ -308,6 +292,7 @@ blockquote p {
   letter-spacing: var(--letter-spacing);
   max-inline-size: none;
   margin: 0 auto;
+  padding-top: var(--space-xs);
 }
 
 /*------------------ Main styles  ------------------*/
@@ -316,8 +301,7 @@ main {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-inline: var(--padding-inline);
-  padding-block: var(--space-s);
+  margin: 0 auto;
   flex: 1;
   view-transition-name: main-content;
 }
@@ -609,12 +593,18 @@ main>p {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
-  display: block;
-  padding: var(--space-xs) var(--space-l);
+  /*display: block;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-11xl);
+  height: var(--space-5xl);
+  margin: 0 auto;
   background: transparent;
   overflow: hidden;
   isolation: isolate;
-  border-radius: 50% / 50%;
+  border-radius: 50%;
   color: var(--text-color);
   text-decoration: none;
   box-shadow: 0 20px 10px 0 var(--text-color);
@@ -629,14 +619,14 @@ main>p {
 .large-button:focus,
 .large-button:hover {
   box-shadow: 0 0 50px 10px var(--text-color);
-  outline: 6px solid var(--text-color);
+  outline: 4px solid var(--text-color);
 }
 
 .button-text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
-  padding: var(--space-s);
+  gap: var(--space-5xs);
+  padding: 0 var(--space-l);
   text-align: center;
 }
 
@@ -677,7 +667,7 @@ footer {
 
 .footer-text {
   max-inline-size: none;
-  padding-left: var(--space-l);
+  padding-left: var(--space-s);
 
 }
 
@@ -685,7 +675,7 @@ footer {
 
 .theme-switcher {
   max-inline-size: none;
-  padding-right: var(--space-l);
+  padding-right: var(--space-s);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -740,7 +730,7 @@ footer {
 .theme-button:focus svg {
   transform: scale(1.5) rotate(90deg);
   padding: 0;
-  background-color: oklch(85.841% 0.04208 183.344 / 0.466);
+  background-color: var(--text-span);
   border-radius: 50%;
 }
 
