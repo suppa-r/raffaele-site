@@ -579,8 +579,8 @@ main>p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: var(--space-11xl);
-  height: var(--space-5xl);
+  width: var(--space-14xl);
+  height: var(--space-6xl);
   margin: 0 auto;
   background: transparent;
   overflow: hidden;
@@ -607,12 +607,12 @@ main>p {
   display: flex;
   flex-direction: column;
   gap: var(--space-5xs);
-  padding: 0 var(--space-l);
+  padding: 0 var(--space-2xl);
   text-align: center;
 }
 
 .button-text span {
-  white-space: normal;
+  white-space: nowrap;
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -671,9 +671,9 @@ footer {
   max-inline-size: none;
   padding-right: var(--space-s);
   display: flex;
+  justify-content: flex-end;
   flex-direction: row;
   align-items: center;
-  gap: var(--space-2xs);
   pointer-events: auto;
 }
 
@@ -699,8 +699,8 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  min-width: 2.75rem;
-  min-height: 2.75rem;
+  min-width: var(--space-2xl);
+  min-height: var(--space-2xl);
   background-color: transparent;
   color: var(--text-color);
   cursor: pointer;
