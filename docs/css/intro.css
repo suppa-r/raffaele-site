@@ -179,15 +179,6 @@ body::before {
   animation-name: reveal-in;
 }
 
-::view-transition-old(curve-container),
-::view-transition-new(curve-container),
-::view-transition-old(main-content),
-::view-transition-new(main-content),
-::view-transition-old(large-button),
-::view-transition-new(large-button) {
-  display: none;
-}
-
 @property --rotation {
   syntax: "<angle>";
   inherits: false;
@@ -265,11 +256,6 @@ footer {
 
 html,
 body {
-  background-attachment: fixed;
-  background-image: var(--bg-image);
-  background-position: center;
-  background-repeat: var(--bg-repeat, no-repeat);
-  background-size: var(--bg-size, cover);
   color: var(--text-color);
   font-family: var(--font-primary), sans-serif;
   font-size: var(--step-0);
@@ -277,7 +263,6 @@ body {
   font-weight: normal;
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
-  transition: color 0.3s ease-in-out;
 }
 
 /*---------------- Navigation styles  ----------------*/

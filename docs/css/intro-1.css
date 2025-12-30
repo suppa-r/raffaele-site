@@ -1,13 +1,7 @@
-/* View Transition theme switch animation */
-.theme-transition {
-  transition: transform 0.7s cubic-bezier(.4, 0, .2, 1), opacity 0.7s cubic-bezier(.4, 0, .2, 1);
-  opacity: 0.5;
-  transform: rotateY(20deg) scale(0.98);
-}
 [data-theme="dark"] {
   --base-color: oklch(0% 0 0);
   --text-color: oklch(100% 0.00011 271.152);
-  --text-span: oklch(67.53% 0.04556 196.219 / 0.692);
+  --text-span: oklch(67.53% 0.04556 196.219 / 0.966);
 
   --body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
@@ -26,7 +20,7 @@
 [data-theme="light"] {
   --base-color: oklch(100% 0.00011 271.152);
   --text-color: oklch(0% 0 0);
-  --text-span: oklch(36.946% 0.04471 211.103 / 0.849);
+  --text-span: oklch(30.097% 0.03588 210.108 / 0.795);
 
   --body-grid-line: oklch(0% 0 0 / 0.329);
 
@@ -136,11 +130,6 @@ body::before {
   --measure: 65ch;
   --letter-spacing: var(--space-5xs);
   --word-spacing: var(--space-5xs);
-  --burger-thickness: 0.3rem;
-
-
-  --bars: var(--text-color);
-  --btn-border-radius: var(--space-s);
 }
 
 
@@ -237,7 +226,6 @@ body::before {
     --rotation: 90deg;
   }
 }
-
 /*----------------  global styles  ---------------*/
 
 p,
@@ -251,7 +239,7 @@ figcaption {
   max-inline-size: var(--measure);
   word-break: normal;
   overflow-wrap: break-word;
-  margin-block: 0;
+  margin-top: 0;
 }
 
 html,
@@ -278,8 +266,6 @@ body {
 
 .wrapper {
   min-height: 100dvh;
-  padding: 0;
-  margin: 0;
   overflow: hidden;
 }
 
@@ -740,9 +726,7 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-
-  background-color: transparent;
-  margin: var(--space-m);
+  margin: 0 auto;
   box-shadow: var(--shadow);
   user-select: none;
   pointer-events: none;
@@ -755,8 +739,6 @@ header {
   /* zoom effect on hover */
   transition: transform 0.3s ease-in-out;
 }
-
-
 
 /*------profile-------*/
 
@@ -904,15 +886,12 @@ header {
   margin-inline: auto;
 }
 
-@container (max-width: 600px) {
+@media (max-width: 600px) {
 
-  header p {
-
-    padding: 0 var(--space-5xl) 0 0;
-
+  header {
+    margin: var(--space-5xs) var(--space-xs) 0 var(--space-xs);
+    padding: var(--space-5xs) var(--space-s);
   }
-
-
 
   .profile-tab {
     flex-direction: column;
