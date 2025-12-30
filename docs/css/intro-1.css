@@ -535,7 +535,6 @@ main {
 
 /*------navigation-------*/
 
-
 .navigation {
   position: absolute;
   top: 60%;
@@ -737,7 +736,7 @@ main {
 }
 
 .profile-header img {
-  inline-size: 250px;
+  inline-size: 450px;
   /* larger size for larger screens */
   object-fit: cover;
   background-position: center;
