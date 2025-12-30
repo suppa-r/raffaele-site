@@ -1,42 +1,110 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const themeSwitcher = document.querySelector('.theme-switcher');
+  // Element declarations to match HTML structure
   const themeButtons = document.querySelectorAll('.theme-button');
-  const wrapper = document.querySelector('.wrapper');
-  const h = document.querySelector('header p');
   const bars = document.querySelector('.menu-btn');
   const navigation = document.querySelector('.navigation');
   const nav = document.querySelector('.nav-links');
   const navLinksTabs = document.querySelectorAll('.nav-links a[data-tab]');
-  const dataTabs = document.querySelectorAll('.data-tab.genesis, .data-tab.early, .data-tab.beginnings, .data-tab.ryerson');
+  const dataTabs = document.querySelectorAll('.data-tab.genesis, .data-tab.early, .data-tab.beginnings, .data-tab.ryerson')
+    ;
+  const profileheader = document.querySelector('.profile-header');
 
-  // Toggle navigation on menu-btn click
-  bars.addEventListener('click', (e) => {
-    e.stopPropagation();
-    // Toggle hamburger animation
-    bars.classList.toggle('open');
-    // Toggle navigation visibility
-    if (navigation) {
-      navigation.classList.toggle('open');
+  // Helper functions
+  function getDefaultTheme() {
+    return 'dark';
+  }
+  function isValidTheme(theme) {
+    return ['dark', 'light'].includes(theme);
+  }
+  function setActiveThemeButton() {
+    themeButtons.forEach(btn => {
+      const inputId = btn.getAttribute('for');
+      const input = document.getElementById(inputId);
+      btn.classList.toggle('active', input && input.checked);
+    });
+  }
+  function updateFavicon(theme) {
+    const favicon = document.getElementById("favicon") || document.querySelector("link[rel='icon']");
+    if (favicon) {
+      const faviconPath = theme === "dark"
+        ? "/favicons/dark-1.png"
+        : "/favicons/light-1.png";
+      favicon.href = faviconPath + "?v=" + Date.now();
     }
-    // Optionally, close profile menu if open
-    if (dataTabs && !dataTabs.hasAttribute('hidden')) {
-      dataTabs.setAttribute('hidden', '');
-    }
+  }
+
+  // Theme initialization
+  let savedTheme = localStorage.getItem('theme');
+  if (!savedTheme || !isValidTheme(savedTheme)) {
+    savedTheme = getDefaultTheme();
+    localStorage.setItem('theme', savedTheme);
+  }
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  themeButtons.forEach(btn => {
+    const inputId = btn.getAttribute('for');
+    const radio = document.getElementById(inputId);
+    if (radio) radio.checked = (radio.value === savedTheme);
+  });
+  setActiveThemeButton();
+  updateFavicon(savedTheme);
+  // Theme button handlers
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const inputId = btn.getAttribute('for');
+      const input = document.getElementById(inputId);
+      if (input && !btn.classList.contains('active')) {
+        input.checked = true;
+        const selectedTheme = input.value;
+        if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.startViewTransition(() => {
+            document.documentElement.setAttribute('data-theme', selectedTheme);
+            localStorage.setItem('theme', selectedTheme);
+            updateFavicon(selectedTheme);
+          });
+        } else {
+          document.documentElement.setAttribute('data-theme', selectedTheme);
+          localStorage.setItem('theme', selectedTheme);
+          updateFavicon(selectedTheme);
+        }
+        setActiveThemeButton();
+      }
+    });
   });
 
+  // Navigation menu toggle
+  if (bars && navigation && nav) {
+    const burger = bars.querySelector('.menu-btn__burger');
+    bars.addEventListener('click', (e) => {
+      e.stopPropagation();
+      bars.classList.toggle('open');
+      if (burger) burger.classList.toggle('open');
+      navigation.classList.toggle('open');
+      nav.classList.toggle('open');
+      if (navigation.classList.contains('open')) {
+        profileheader.style.display = 'none';
+      } else {
+        profileheader.style.display = 'block';
+      }
+      // Hide all dataTabs on menu open
+      if (dataTabs) {
+        dataTabs.forEach(tab => {
+          tab.style.display = 'none';
+        });
+      }
+    });
+  }
 
+  // Tab logic
   function showTab(tab) {
     dataTabs.forEach(tabEl => tabEl.classList.remove('open'));
     const showTab = document.querySelector('.data-tab.' + tab);
     if (showTab) showTab.classList.add('open');
   }
-
   function setActiveNav(tab) {
     navLinksTabs.forEach(l => l.classList.remove('active'));
     const activeLink = document.querySelector('.nav-links a[data-tab="' + tab + '"]');
     if (activeLink) activeLink.classList.add('active');
   }
-
   navLinksTabs.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -45,149 +113,40 @@ document.addEventListener('DOMContentLoaded', () => {
       showTab(tab);
     });
   });
-
   // On load, show the first tab and set nav active
   if (navLinksTabs.length > 0) {
     const firstTab = navLinksTabs[0].getAttribute('data-tab');
     setActiveNav(firstTab);
     showTab(firstTab);
   }
-
-
-
-  // Initially hide profile tabs container
-  dataTabs && (dataTabs.style.display = 'block');
-
-
-  // Close profile menu when clicking outside
-  document.addEventListener('click', (event) => {
-    if (dataTabs && !dataTabs.hasAttribute('hidden')) {
-      if (!dataTabs.contains(event.target) && !bars.contains(event.target)) {
-        dataTabs.setAttribute('hidden', '');
-      }
-    }
-  });
-
-  // Function to update active class on theme buttons
-  function setActiveThemeButton() {
-    themeLabels.forEach(label => {
-      const input = themeSwitcher.querySelector(`#${label.getAttribute('for')}`);
-      label.classList.toggle('active', input && input.checked);
-    });
+  // Hide all dataTabs initially
+  if (dataTabs) {
+    dataTabs.forEach(tab => tab.style.display = 'none');
   }
 
-  // Open dropdown when clicking the active theme button
-  themeLabels.forEach(label => {
-    label.addEventListener('click', (e) => {
-      const input = themeSwitcher.querySelector(`#${label.getAttribute('for')}`);
-      if (input && !input.checked) {
-        input.checked = true;
-        setTheme(input.value);
-      }
-    });
-  });
-
-  // Function to set theme with view transitions and update favicon
-  function setTheme(theme) {
-    console.log('Setting theme to:', theme); // Debug
-
-    // Check if View Transition API is supported
-    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      // Use View Transition API for the rotation effect
-      document.startViewTransition(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        updateFavicon(theme);
+  // Close menus/tabs when clicking outside
+  document.addEventListener('click', (event) => {
+    // Close nav menu if open and click outside
+    if (navigation && navigation.classList.contains('open') && !navigation.contains(event.target) && !bars.contains(event.target)) {
+      navigation.classList.remove('open');
+      nav.classList.remove('open');
+      bars.classList.remove('open');
+      profileheader.style.display = 'none';
+      const burger = bars.querySelector('.menu-btn__burger');
+      if (burger) burger.classList.remove('open');
+    }
+    // Ensure profileheader is displayed when menu is closed
+    if (navigation && !navigation.classList.contains('open')) {
+      profileheader.style.display = 'block';
+    }
+    // Hide all dataTabs if open and click outside
+    if (dataTabs) {
+      dataTabs.forEach(tab => {
+        if (tab.classList.contains('open') && !tab.contains(event.target)) {
+          tab.classList.remove('open');
+          tab.style.display = 'none';
+        }
       });
-    } else {
-      // Fallback for browsers without View Transition API or reduced motion preference
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      updateFavicon(theme);
-    }
-
-    // Update radio button states
-    themeButtons.forEach(btn => {
-      const radio = btn.querySelector('input[type="radio"]');
-      if (radio) radio.checked = (radio.value === theme);
-    });
-    setActiveThemeButton();
-  }
-
-  // Open dropdown when clicking the active theme button
-  themeButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      console.log('Button clicked'); // Debug
-      const input = btn.querySelector('input[type="radio"]');
-
-      if (btn.classList.contains('active')) {
-        // Open dropdown (show non-active options)
-        e.stopPropagation();
-        themeList && themeList.classList.add('active');
-        intro && (intro.style.display = 'block');
-        title && (title.style.display = 'block');
-      } else if (input) {
-        // Switch theme if non-active button is clicked
-        console.log('Switching to theme:', input.value); // Debug
-        input.checked = true;
-        setTheme(input.value); // Use setTheme function for view transitions
-        themeList && themeList.classList.remove('active');
-        intro && (intro.style.display = 'block');
-        title && (title.style.display = 'block');
-      }
-    });
-  });
-
-  // Listen to radio button changes directly
-  themeRadios.forEach(input => {
-    input.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        setTheme(e.target.value);
-      }
-    });
-  });
-
-  // Media query for system theme preference
-  const mql = window.matchMedia('(prefers-color-scheme: dark)');
-  let sysListener;
-
-  // Load saved theme from localStorage
-  let savedTheme = localStorage.getItem('theme');
-  if (!savedTheme) {
-    savedTheme = 'dark';
-    localStorage.setItem('theme', 'dark');
-  }
-
-  console.log('Initial theme:', savedTheme); // Debug
-
-  // Set initial theme and favicon
-  setTheme(savedTheme);
-
-  if (savedTheme === 'system') {
-    const systemTheme = mql.matches ? 'dark' : 'light';
-    setTheme(systemTheme);
-
-    sysListener = e => {
-      const newSystemTheme = e.matches ? 'dark' : 'light';
-      setTheme(newSystemTheme);
-    };
-    mql.addEventListener('change', sysListener);
-  } else if (sysListener) {
-    mql.removeEventListener('change', sysListener);
-  }
-
-
-  // Close dropdown if clicking outside
-  document.addEventListener('click', (event) => {
-    if (
-      themeList &&
-      themeList.classList.contains('active') &&
-      !themeList.contains(event.target)
-    ) {
-      themeList.classList.remove('active');
-      intro && (intro.style.display = 'block');
-      h && (h.style.display = 'block');
-      nav && (nav.style.display = 'flex');
     }
   });
 });

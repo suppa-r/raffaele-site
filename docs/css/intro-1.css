@@ -1,3 +1,9 @@
+/* View Transition theme switch animation */
+.theme-transition {
+  transition: transform 0.7s cubic-bezier(.4, 0, .2, 1), opacity 0.7s cubic-bezier(.4, 0, .2, 1);
+  opacity: 0.5;
+  transform: rotateY(20deg) scale(0.98);
+}
 [data-theme="dark"] {
   --base-color: oklch(0% 0 0);
   --text-color: oklch(100% 0.00011 271.152);
@@ -134,6 +140,7 @@ body::before {
 
 
   --bars: var(--text-color);
+  --btn-border-radius: var(--space-s);
 }
 
 
@@ -285,7 +292,7 @@ header {
   background: var(--gradient-header);
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
-  margin: var(--space-5xs) var(--space-3xl);
+  margin: var(--space-xs) var(--space-3xl) 0 var(--space-3xl);
   padding: var(--space-4xs) var(--space-xl);
   border-radius: var(--space-l);
   isolation: isolate;
@@ -436,36 +443,39 @@ header {
   }
 }
 
+
+/* --- Menu Button Styles --- */
+
 .menu-btn {
   margin: var(--space-2xl) auto 0 auto;
   position: relative;
-  background: var(--base-color, #fff);
-  border: 2px solid var(--text-color, #e0e0e0);
-  border-radius: 50%;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   width: 48px;
   height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--base-color, #fff);
+  border: 2px solid var(--text-color, #e0e0e0);
+  border-radius: 50%;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   cursor: pointer;
   pointer-events: all;
   user-select: none;
   padding: 0;
   opacity: 1;
-  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
   z-index: 20000;
   outline: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .menu-btn.open {
   border-color: var(--text-span, #b3b3b3);
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.24);
   background: var(--gradient-header, #e0e0e0);
-  /* Styles for the open (active) state */
 }
+
 .menu-btn:focus-visible,
 .menu-btn:hover {
   border-color: var(--text-span, #b3b3b3);
@@ -473,6 +483,7 @@ header {
   background: var(--gradient-header, #f8f8f8);
 }
 
+/* --- Burger Icon Styles --- */
 .menu-btn__burger {
   display: flex;
   flex-direction: column;
@@ -483,7 +494,9 @@ header {
   position: relative;
   cursor: pointer;
   z-index: 20100;
+  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
 }
+
 
 .menu-btn__burger span {
   display: block;
@@ -492,139 +505,123 @@ header {
   margin: 4px 0;
   background: var(--bars, #333);
   border-radius: 2px;
-  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s cubic-bezier(.4, 0, .2, 1), background 0.3s;
   position: relative;
+  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s cubic-bezier(.4, 0, .2, 1), background 0.3s;
   will-change: transform, opacity;
 }
 
-
-.menu-btn__burger::before,
-.menu-btn__burger::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: var(--burger-thickness);
-  background: var(--bars);
-  border-radius: 5px;
-  transition: all .2s ease-in-out;
+/* Hamburger animation: hide middle bar, rotate top/bottom bars */
+.menu-btn.open .menu-btn__burger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-btn.open .menu-btn__burger span:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn.open .menu-btn__burger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
-.menu-btn__burger::before {
-  transform: translateY(-8px);
-}
 
-.menu-btn__burger::after {
-  transform: translateY(8px);
-}
+/* Remove pseudo-elements for burger, use 3 spans for lines */
 
+/* Optional: rotate the burger icon for extra effect */
 .menu-btn__burger.open {
   transform: rotate(90deg);
-  /* Example: rotate when open */
-}
-
-.menu-btn.open .menu-btn__burger {
-  transform: translateX(0px);
-  background: transparent;
-}
-
-.menu-btn.open .menu-btn__burger::before {
-  transform: rotate(45deg) translate(0px, 0px);
-  background: var(--bars);
-}
-
-.menu-btn.open .menu-btn__burger::after {
-  transform: rotate(-45deg) translate(0px, 0px);
-  background: var(--bars);
-}
-
-/*------profile image-------*/
-
-.profile-header {
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  user-select: none;
-  pointer-events: none;
-  margin: 0 auto;
-  z-index: 1000;
-  isolation: isolate;
-}
-
-.profile-header img {
-  inline-size: 500px;
-  /* larger size for larger screens */
-  object-fit: cover;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-
-  background-color: transparent;
-  margin: var(--space-m);
-  box-shadow: var(--shadow);
-  user-select: none;
-  pointer-events: none;
-  border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.profile-header:hover img {
-  transform: scale(1.5);
-  /* zoom effect on hover */
-  transition: transform 0.3s ease-in-out;
 }
 
 /*------navigation-------*/
 
-.navigation {
-  margin-inline: auto;
-  display: block;
-  /* or flex if you want its children in a row */
-  padding: var(--space-7xs) var(--space-2xl);
-  background-color: transparent;
-  opacity: 1;
-  z-index: 1000;
-  pointer-events: all;
-  transition: opacity 0.4s ease-in;
-}
 
-.nav-links {
+.navigation {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--base-color);
   display: none;
+  opacity: 0;
   gap: var(--space-l);
   list-style: none;
   margin: 0;
   padding: 0;
   user-select: none;
   pointer-events: none;
-  transition: opacity 0.4s ease-in;
   z-index: 1000;
   isolation: isolate;
-  animation: fadeIn 0.9s ease-in-out;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
   max-width: 90vw;
-
   box-sizing: border-box;
   text-align: center;
   border-radius: var(--btn-border-radius);
   box-shadow: var(--shadow);
-
-
   border: 1px solid hsla(0, 0%, 100%, 0.18);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   background-clip: border-box;
   background-color: var(--clr-button);
+  transition: opacity 0.4s cubic-bezier(.4, 0, .2, 1), filter 0.4s cubic-bezier(.4, 0, .2, 1), transform 0.4s cubic-bezier(.4, 0, .2, 1);
+  filter: blur(8px) scale(0.98);
+}
 
+.navigation.open {
+  display: flex;
+  pointer-events: all;
+  opacity: 1;
+  filter: blur(10) scale(1);
+  transition: opacity 0.4s cubic-bezier(.4, 0, .2, 1), filter 0.4s cubic-bezier(.4, 0, .2, 1), transform 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.nav-links {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--base-color);
+  display: none;
+  opacity: 0;
+  gap: var(--space-l);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1000;
+  isolation: isolate;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 90vw;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid hsla(0, 0%, 100%, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-clip: border-box;
+  background-color: var(--clr-button);
+  transition: opacity 0.4s cubic-bezier(.4, 0, .2, 1), filter 0.4s cubic-bezier(.4, 0, .2, 1), transform 0.4s cubic-bezier(.4, 0, .2, 1);
+  filter: blur(8px) scale(0.98);
+}
+
+.nav-links.open {
+  display: flex;
+  pointer-events: all;
+  opacity: 1;
+  filter: blur(0) scale(1);
+  transition: opacity 0.4s cubic-bezier(.4, 0, .2, 1), filter 0.4s cubic-bezier(.4, 0, .2, 1), transform 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.navigation.open {
+  display: flex;
+  pointer-events: all;
+}
+
+.nav-links.open {
+  display: flex;
+  pointer-events: all;
 }
 
 .nav-links,
@@ -718,6 +715,47 @@ header {
   background-color: transparent;
   /* Or another color if you want */
 }
+
+
+/*------profile image-------*/
+
+.profile-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  margin: 0 auto;
+  z-index: 1000;
+  isolation: isolate;
+}
+
+.profile-header img {
+  inline-size: 250px;
+  /* larger size for larger screens */
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+
+  background-color: transparent;
+  margin: var(--space-m);
+  box-shadow: var(--shadow);
+  user-select: none;
+  pointer-events: none;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-header:hover img {
+  transform: scale(1.5);
+  /* zoom effect on hover */
+  transition: transform 0.3s ease-in-out;
+}
+
 
 
 /*------profile-------*/
