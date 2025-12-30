@@ -266,7 +266,15 @@ body {
 
 .wrapper {
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+}
+footer {
+  margin-top: auto;
+  padding: var(--space-xs) 0;
+  text-align: center;
+  background: transparent;
 }
 
 /*------header-------*/
@@ -377,10 +385,20 @@ header {
   border-radius: 50%;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-block: var(--space-2xl);
+  padding: var(--space-5xs) var(--space-s);
+}
+
 .profile-title {
   margin: 0 auto;
   position: relative;
-  top: var(--space-l);
+  display: block;
+
   text-align: center;
   z-index: 1000;
   isolation: isolate;
@@ -489,7 +507,7 @@ header {
   width: 28px;
   height: 3px;
   margin: 4px 0;
-  background: var(--bars, #333);
+  background: var(--bars, var(--text-color, #000));
   border-radius: 2px;
   position: relative;
   transition: transform 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s cubic-bezier(.4, 0, .2, 1), background 0.3s;
