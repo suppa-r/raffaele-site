@@ -270,6 +270,7 @@ body {
   flex-direction: column;
   overflow: hidden;
 }
+
 footer {
   margin-top: auto;
   padding: var(--space-xs) 0;
@@ -398,7 +399,6 @@ main {
   margin: 0 auto;
   position: relative;
   display: block;
-
   text-align: center;
   z-index: 1000;
   isolation: isolate;
@@ -451,7 +451,7 @@ main {
 /* --- Menu Button Styles --- */
 
 .menu-btn {
-  margin: var(--space-2xl) auto 0 auto;
+  margin: var(--space-s) auto 0 auto;
   position: relative;
   width: 48px;
   height: 48px;
@@ -641,11 +641,11 @@ main {
 .nav-links li {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0;
+  padding: 0 var(--space-xl);
   user-select: none;
   list-style: none;
   background-color: transparent;
@@ -659,7 +659,7 @@ main {
 
 .nav-links li a {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-decoration: none;
   align-items: center;
   justify-content: center;
@@ -689,8 +689,8 @@ main {
 }
 
 .nav-links li svg {
-  height: var(--space-l);
-  width: var(--space-l);
+  height: var(--space-m);
+  width: var(--space-m);
   object-fit: cover;
   stroke-linecap: round;
   stroke-linejoin: miter;
@@ -733,14 +733,16 @@ main {
   margin: 0 auto;
   z-index: 1000;
   isolation: isolate;
+  background: transparent;
 }
 
 .profile-header img {
-  inline-size: 450px;
+  inline-size: 400px;
   /* larger size for larger screens */
-  object-fit: cover;
+  aspect-ratio: 1/1;
+  object-fit: contain;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   display: block;
   margin: 0 auto;
