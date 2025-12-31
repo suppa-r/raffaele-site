@@ -456,9 +456,8 @@ main {
   justify-content: center;
   align-items: center;
   background: var(--base-color, #fff);
-  border: 2px solid var(--text-color, #e0e0e0);
+  border: 2px solid var(--text-color);
   border-radius: 50%;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   cursor: pointer;
   pointer-events: all;
   user-select: none;
@@ -468,20 +467,17 @@ main {
   outline: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .menu-btn.open {
   border-color: var(--text-span, #b3b3b3);
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.24);
-  background: var(--gradient-header, #e0e0e0);
+background: var(--gradient-header, #e0e0e0);
 }
 
 .menu-btn:focus-visible,
 .menu-btn:hover {
   border-color: var(--text-span, #b3b3b3);
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.16);
-  background: var(--gradient-header, #f8f8f8);
+ background: var(--gradient-header, #f8f8f8);
 }
 
 /* --- Burger Icon Styles --- */
@@ -724,6 +720,7 @@ main {
   margin: 0 auto;
   background: radial-gradient(circle at center, var(--base-color) 100%, transparent 100%);
   border-radius: 50%;
+  box-shadow: var(--shadow);
 }
 
 .profile-header img {
@@ -735,7 +732,6 @@ main {
   border-radius: 50%;
   user-select: none;
   pointer-events: none;
-  z-index: -200;
 }
 
 /*------profile-------*/
