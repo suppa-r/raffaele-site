@@ -99,7 +99,7 @@
 
   --measure: 70ch;
   --letter-spacing: var(--space-5xs);
-  --word-spacing: var(--space-5xs);
+  --word-spacing: .02rem;
 }
 
 
@@ -277,7 +277,6 @@ blockquote p {
   color: var(--text-color);
   text-align: center;
   font-style: italic;
-  letter-spacing: var(--letter-spacing);
   max-inline-size: none;
   margin: 0 auto;
   padding-top: var(--space-xs);
@@ -294,14 +293,10 @@ main {
   max-inline-size: none;
   view-transition-name: main-content;
   margin: 0 auto;
-  padding: 0 var(--space-s);
+  padding: 0 var(--space-xs);
 }
 
-/*main>p {
-  padding-top: 0;
-}
-
-*-------------curvature-----------------*/
+/*-------------curvature-----------------*/
 
 .curve-container {
   padding-top: var(--space-xl);
@@ -601,7 +596,7 @@ main {
   user-select: none;
   pointer-events: all;
   transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s, transform 0.3s;
-  margin-top: var(--space-l);
+  margin-top: var(--space-xl);
   view-transition-name: large-button;
 }
 
@@ -648,7 +643,6 @@ footer {
   justify-content: space-between;
   align-items: center;
   font-size: var(--step--1);
-  letter-spacing: var(--letter-spacing);
   margin-block: var(--space-3xs);
   margin-block-start: auto;
   view-transition-name: footer;
@@ -657,7 +651,7 @@ footer {
 .footer-text {
   max-inline-size: none;
   padding-left: var(--space-s);
-
+  word-spacing: 0;
 }
 
 /*------------------ Theme switcher styles  ---------------*/
@@ -757,6 +751,7 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
+    word-spacing: normal;
   }
 }
 
