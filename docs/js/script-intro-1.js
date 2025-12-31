@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinksTabs = document.querySelectorAll('.nav-links a[data-tab]');
   const dataTabs = document.querySelectorAll('.data-tab.genesis, .data-tab.early, .data-tab.beginnings, .data-tab.ryerson')
     ;
-  const profileheader = document.querySelector('.profile-header');
+  const profileheader = document.querySelector('.profile-header-img');
 
   // Helper functions
   function getDefaultTheme() {
