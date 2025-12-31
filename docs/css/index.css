@@ -37,7 +37,7 @@
 
 :root {
 
-  /*-------- Fluid typography with better mobile scaling ------ */
+  /*----------- Fluid typography with mobile scaling ------------- */
 
   --step--2: clamp(0.6331rem, 0.7195rem + -0.1115vw, 0.6944rem);
   --step--1: clamp(0.8333rem, 0.829rem + 0.0193vw, 0.844rem);
@@ -45,12 +45,11 @@
   --step-1: clamp(1.2rem, 1.0774rem + 0.5448vw, 1.4996rem);
   --step-2: clamp(1.44rem, 1.2113rem + 1.0164vw, 1.999rem);
   --step-3: clamp(1.728rem, 1.3448rem + 1.703vw, 2.6647rem);
-  --step-4: clamp(2.0736rem, 1.4688rem + 2.688vw, 3.552rem);
-  --step-5: clamp(2.4883rem, 1.5693rem + 4.0845vw, 4.7348rem);
+  --step-4: clamp(2.0736rem, 1.4688rem + 2.688vw, 3.552rem) --step-5: clamp(2.4883rem, 1.5693rem + 4.0845vw, 4.7348rem);
   --step-6: clamp(2.986rem, 1.6255rem + 6.0464vw, 6.3115rem);
   --step-7: clamp(3.5832rem, 1.6072rem + 8.7819vw, 8.4132rem);
 
-  /*-------- Fluid spacing with better mobile scaling ---------- */
+  /*----------Fluid spacing with mobile scaling ------------------ */
 
   --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136vw, 0.1875rem);
   --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136vw, 0.25rem);
@@ -79,7 +78,7 @@
   --space-17xl: clamp(19rem, 18.0284rem + 4.3182vw, 21.375rem);
   --space-18xl: clamp(20rem, 18.9773rem + 4.5455vw, 22.5rem);
 
-  /*--------------- Button and padding settings ---------------- */
+  /*---------------- Button and padding settings ----------------- */
 
   --padding-inline: var(--space-5xs);
 
@@ -98,7 +97,7 @@
 
   /*------------- letter and word spacing settings ---------------*/
 
-  --measure: 65ch;
+  --measure: 70ch;
   --letter-spacing: var(--space-5xs);
   --word-spacing: var(--space-5xs);
 }
@@ -126,6 +125,7 @@
 ::view-transition {
   background: var(--base-color);
 }
+
 ::view-transition-image-pair(root) {
   perspective: 2500px;
   perspective-origin: center;
@@ -134,6 +134,7 @@
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 
 }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: 1.2s ease-in-out;
@@ -143,20 +144,13 @@
   transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
   backface-visibility: hidden;
 }
+
 ::view-transition-old(root) {
   animation-name: reveal-out;
 }
+
 ::view-transition-new(root) {
   animation-name: reveal-in;
-}
-
-::view-transition-old(curve-container),
-::view-transition-new(curve-container),
-::view-transition-old(main-content),
-::view-transition-new(main-content),
-::view-transition-old(large-button),
-::view-transition-new(large-button) {
-  display: none;
 }
 
 @property --rotation {
@@ -164,6 +158,7 @@
   inherits: false;
   initial-value: 0deg;
 }
+
 @property --scale {
   syntax: "<number>";
   inherits: false;
@@ -188,6 +183,7 @@
     --rotation: 0deg;
   }
 }
+
 @keyframes reveal-out {
   from {
     --rotation: 0deg;
@@ -260,6 +256,16 @@ body {
   margin: 0 auto;
 }
 
+/*------header-------*/
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+  view-transition-name: header;
+}
+
 /*------------------ Quote styles  ------------------*/
 
 blockquote {
@@ -280,19 +286,22 @@ blockquote p {
 /*------------------ Main styles  ------------------*/
 
 main {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  max-inline-size: none;
   view-transition-name: main-content;
+  margin: 0 auto;
+  padding: 0 var(--space-s);
 }
 
-main>p {
+/*main>p {
   padding-top: 0;
 }
 
-/*-------------curvature-----------------*/
+*-------------curvature-----------------*/
 
 .curve-container {
   padding-top: var(--space-xl);
@@ -574,7 +583,6 @@ main>p {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
-  /*display: block;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -593,7 +601,7 @@ main>p {
   user-select: none;
   pointer-events: all;
   transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s, transform 0.3s;
-  margin-top: var(--space-xl);
+  margin-top: var(--space-l);
   view-transition-name: large-button;
 }
 
@@ -623,13 +631,13 @@ main>p {
   width: var(--space-l);
   height: var(--space-l);
   fill: var(--text-color);
-  transition: transform 0.3s, fill 0.3s, opacity 0.3s;
+  transition: transform 0.3s, fill 0.3s;
 }
 
 .large-button:hover svg,
 .large-button:focus svg {
   transform: scale(1.6) rotate(45deg);
-  transition: transform 0.1s, fill 0.3s;
+  transition: transform 0.2s, fill 0.3s;
 }
 
 /*-------------footer-----------------*/
@@ -655,6 +663,7 @@ footer {
 /*------------------ Theme switcher styles  ---------------*/
 
 /* Visually hidden utility for accessibility */
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -671,9 +680,9 @@ footer {
   max-inline-size: none;
   padding-right: var(--space-s);
   display: flex;
-  justify-content: flex-end;
   flex-direction: row;
   align-items: center;
+  gap: 0;
   pointer-events: auto;
 }
 
@@ -699,8 +708,8 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  min-width: var(--space-2xl);
-  min-height: var(--space-2xl);
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   background-color: transparent;
   color: var(--text-color);
   cursor: pointer;
@@ -728,6 +737,8 @@ footer {
   border-radius: 50%;
 }
 
+/*------------------ Responsive styles  ------------------*/
+
 @media (max-width: 600px) {
   ::view-transition-old(curve-container),
   ::view-transition-new(curve-container),
@@ -750,6 +761,7 @@ footer {
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),
