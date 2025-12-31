@@ -328,7 +328,7 @@ header {
 
 .theme-switcher {
   max-inline-size: none;
-  padding-right: var(--space-s);
+  padding-right: var(--space-xs);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -715,36 +715,27 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: block;
+  overflow: hidden;
+  z-index: 100;
+  isolation: isolate;
+  opacity: 1;
   user-select: none;
   pointer-events: none;
   margin: 0 auto;
-  z-index: 1000;
-  isolation: isolate;
-  background: transparent;
+  background: radial-gradient(circle at center, var(--base-color) 100%, transparent 100%);
+  border-radius: 50%;
 }
 
 .profile-header img {
-  inline-size: 400px;
-  /* larger size for larger screens */
-  aspect-ratio: 1/1;
+  inline-size: 100%;
+  aspect-ratio: 16/9;
   object-fit: contain;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
   display: block;
   margin: 0 auto;
-  box-shadow: var(--shadow);
+  border-radius: 50%;
   user-select: none;
   pointer-events: none;
-  border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.profile-header:hover img {
-  transform: scale(1.5);
-  /* zoom effect on hover */
-  transition: transform 0.3s ease-in-out;
+  z-index: -200;
 }
 
 /*------profile-------*/
@@ -902,45 +893,12 @@ footer {
 
   header {
     margin: var(--space-5xs) var(--space-xs) 0 var(--space-xs);
-    padding: var(--space-5xs) var(--space-s);
+    padding: var(--space-5xs) var(--space-xs);
+  }
+
+  .title-header span {
+    color: var(--text-color);
   }
 
   /*----------profile image----------*/
-
-  .profile-header {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    user-select: none;
-    pointer-events: none;
-    margin: 0 auto;
-    z-index: 1000;
-    isolation: isolate;
-    background: transparent;
-  }
-
-  .profile-header img {
-    inline-size: 200px;
-    /* larger size for larger screens */
-    aspect-ratio: 1/1;
-    object-fit: contain;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: block;
-    margin: 0 auto;
-    box-shadow: var(--shadow);
-    user-select: none;
-    pointer-events: none;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .profile-header:hover img {
-    transform: scale(1.5);
-    /* zoom effect on hover */
-    transition: transform 0.3s ease-in-out;
-  }
 }
