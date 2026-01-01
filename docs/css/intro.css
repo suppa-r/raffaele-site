@@ -66,7 +66,7 @@ body::before {
 
 :root {
 
-  /*-------- Fluid typography with better mobile scaling ------ */
+  /*----------- Fluid typography with mobile scaling ------------- */
 
   --step--2: clamp(0.6331rem, 0.7195rem + -0.1115vw, 0.6944rem);
   --step--1: clamp(0.8333rem, 0.829rem + 0.0193vw, 0.844rem);
@@ -74,12 +74,11 @@ body::before {
   --step-1: clamp(1.2rem, 1.0774rem + 0.5448vw, 1.4996rem);
   --step-2: clamp(1.44rem, 1.2113rem + 1.0164vw, 1.999rem);
   --step-3: clamp(1.728rem, 1.3448rem + 1.703vw, 2.6647rem);
-  --step-4: clamp(2.0736rem, 1.4688rem + 2.688vw, 3.552rem);
-  --step-5: clamp(2.4883rem, 1.5693rem + 4.0845vw, 4.7348rem);
+  --step-4: clamp(2.0736rem, 1.4688rem + 2.688vw, 3.552rem) --step-5: clamp(2.4883rem, 1.5693rem + 4.0845vw, 4.7348rem);
   --step-6: clamp(2.986rem, 1.6255rem + 6.0464vw, 6.3115rem);
   --step-7: clamp(3.5832rem, 1.6072rem + 8.7819vw, 8.4132rem);
 
-  /*-------- Fluid spacing with better mobile scaling ---------- */
+  /*----------Fluid spacing with mobile scaling ------------------ */
 
   --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136vw, 0.1875rem);
   --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136vw, 0.25rem);
@@ -108,7 +107,7 @@ body::before {
   --space-17xl: clamp(19rem, 18.0284rem + 4.3182vw, 21.375rem);
   --space-18xl: clamp(20rem, 18.9773rem + 4.5455vw, 22.5rem);
 
-  /*--------------- Button and padding settings ---------------- */
+  /*---------------- Button and padding settings ----------------- */
 
   --padding-inline: var(--space-5xs);
 
@@ -127,9 +126,9 @@ body::before {
 
   /*------------- letter and word spacing settings ---------------*/
 
-  --measure: 65ch;
+  --measure: 70ch;
   --letter-spacing: var(--space-5xs);
-  --word-spacing: var(--space-5xs);
+  --word-spacing: .02rem;
 }
 
 
@@ -155,6 +154,7 @@ body::before {
 ::view-transition {
   background: var(--base-color);
 }
+
 ::view-transition-image-pair(root) {
   perspective: 2500px;
   perspective-origin: center;
@@ -163,6 +163,7 @@ body::before {
   filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 
 }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: 1.2s ease-in-out;
@@ -172,9 +173,11 @@ body::before {
   transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
   backface-visibility: hidden;
 }
+
 ::view-transition-old(root) {
   animation-name: reveal-out;
 }
+
 ::view-transition-new(root) {
   animation-name: reveal-in;
 }
@@ -184,6 +187,7 @@ body::before {
   inherits: false;
   initial-value: 0deg;
 }
+
 @property --scale {
   syntax: "<number>";
   inherits: false;
@@ -208,6 +212,7 @@ body::before {
     --rotation: 0deg;
   }
 }
+
 @keyframes reveal-out {
   from {
     --rotation: 0deg;
@@ -240,7 +245,7 @@ figcaption {
   max-inline-size: var(--measure);
   word-break: normal;
   overflow-wrap: break-word;
-  margin-top: 0;
+  margin-block: 0;
 }
 
 html,
@@ -260,7 +265,7 @@ body {
   font-family: var(--font-primary), sans-serif;
   font-size: var(--step-0);
   font-style: var(--font-style-primary);
-  font-weight: normal;
+  font-weight: 400;
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
@@ -405,11 +410,15 @@ body {
 
 main {
   display: flex;
+  flex-grow: 1;
+  margin-block: var(--space-xs);
   flex-direction: column;
   margin-left: var(--space-3xl);
   min-height: 100dvh;
   overflow: hidden;
 }
+
+/*----------------  header styles  ---------------*/
 
 header {
   display: flex;
@@ -444,6 +453,7 @@ header {
 /*------------------ Theme switcher styles  ---------------*/
 
 /* Visually hidden utility for accessibility */
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -462,7 +472,7 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--space-2xs);
+  gap: 0;
   pointer-events: auto;
 }
 

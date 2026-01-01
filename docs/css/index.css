@@ -203,6 +203,23 @@
   }
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
 /*----------------  global styles  ---------------*/
 
 p,
@@ -244,16 +261,11 @@ body {
   font-weight: normal;
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
-  transition: color 0.3s ease-in-out;
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  padding-inline: var(--padding-inline);
-  max-width: 80rem;
-  margin: 0 auto;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 /*------header-------*/
@@ -262,7 +274,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  isolation: isolate;
   view-transition-name: header;
 }
 
@@ -285,15 +296,16 @@ blockquote p {
 /*------------------ Main styles  ------------------*/
 
 main {
-  flex-grow: 1;
+  max-inline-size: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  max-inline-size: none;
-  view-transition-name: main-content;
   margin: 0 auto;
-  padding: 0 var(--space-xs);
+  text-align: center;
+  view-transition-name: main-content;
+}
+
+main p {
+  margin: 0 auto;
 }
 
 /*-------------curvature-----------------*/
@@ -582,8 +594,8 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: var(--space-14xl);
-  height: var(--space-6xl);
+  width: var(--space-13xl);
+  height: var(--space-5xl);
   margin: 0 auto;
   background: transparent;
   overflow: hidden;
@@ -638,19 +650,20 @@ main {
 /*-------------footer-----------------*/
 
 footer {
-  width: 100%;
+  max-inline-size: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--step--1);
-  margin-block: var(--space-3xs);
+  padding: 0 var(--space-5xs);
+  /*margin-block: var(--space-3xs);*/
   margin-block-start: auto;
+  margin-inline-end: auto;
   view-transition-name: footer;
 }
 
 .footer-text {
   max-inline-size: none;
-  padding-left: var(--space-s);
+  padding-left: var(--space-xs);
   word-spacing: 0;
 }
 
@@ -672,7 +685,7 @@ footer {
 
 .theme-switcher {
   max-inline-size: none;
-  padding-right: var(--space-s);
+  padding-right: var(--space-xs);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -751,7 +764,7 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    word-spacing: normal;
+    word-spacing: var(--word-spacing);
   }
 }
 

@@ -63,7 +63,6 @@ body::before {
   z-index: -2000;
   overflow: hidden;
 }
-
 :root {
 
   /*----------- Fluid typography with mobile scaling ------------- */
@@ -128,7 +127,7 @@ body::before {
 
   --measure: 70ch;
   --letter-spacing: var(--space-5xs);
-  --word-spacing: var(--space-5xs);
+  --word-spacing: .02rem;
 }
 
 
@@ -232,6 +231,23 @@ body::before {
   }
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
 /*----------------  global styles  ---------------*/
 
 p,
@@ -257,6 +273,7 @@ footer {
   max-inline-size: none;
 }
 
+
 /*------------------ Body styles  ------------------*/
 
 html,
@@ -274,8 +291,6 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
@@ -288,7 +303,7 @@ header {
   background: var(--gradient-header);
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
-  margin: var(--space-xs) var(--space-3xl) 0 var(--space-3xl);
+  margin: var(--space-2xs) var(--space-3xl);
   padding: var(--space-4xs) var(--space-xl);
   border-radius: var(--space-l);
   isolation: isolate;
@@ -306,7 +321,7 @@ header {
 
 .title-header span {
   margin: 0;
-  padding: 0 var(--space-xs) 0 0;
+  padding: 0 var(--space-2xs) 0 0;
   font-size: inherit;
   color: var(--text-span);
 }
@@ -328,11 +343,10 @@ header {
 
 .theme-switcher {
   max-inline-size: none;
-  padding-right: var(--space-xs);
+  padding-right: var(--space-2xs);
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--space-2xs);
   pointer-events: auto;
 }
 
@@ -389,7 +403,7 @@ header {
 
 main {
   flex-grow: 1;
-  margin-block: var(--space-xs);
+  margin-block: var(--space-s);
 }
 
 .profile-title {
@@ -427,7 +441,7 @@ main {
   box-shadow: var(--shadow);
   display: inline-block;
   margin: var(--space-4xs) auto;
-  padding: var(--space-2xs) var(--space-xl);
+  padding: var(--space-2xs) var(--space-4xl);
   margin-block: var(--space-2xs);
   background: var(--gradient);
 }
@@ -714,26 +728,17 @@ main {
   width: 350px;
   height: auto;
   max-width: 100%;
-  background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   object-fit: cover;
-  display: block;
   user-select: none;
   pointer-events: none;
   margin: 0 auto;
   border-radius: 50%;
   box-shadow: var(--shadow);
-  isolation: isolate;
-  z-index: -1000;
 }
 
-@media (max-width: 600px) {
-  .profile-header-img {
-    max-width: 200px;
-    width: 80vw;
-  }
-}
+
 
 /*------profile-------*/
 
@@ -881,8 +886,17 @@ main {
   margin-inline: auto;
 }
 
+/*-------------footer-----------------*/
+
 footer {
-  padding: var(--space-3xs) 0;
+  max-inline-size: none;
+  margin-block-start: auto;
+  view-transition-name: footer;
+}
+
+.profile-title {
+  max-inline-size: none;
+  margin: 0 auto;
 }
 
 
@@ -898,4 +912,9 @@ footer {
   }
 
   /*----------profile image----------*/
+
+  .profile-header-img {
+    max-width: 200px;
+    width: 80vw;
+  }
 }

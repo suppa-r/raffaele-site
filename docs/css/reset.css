@@ -31,13 +31,7 @@
         line-height: 1.25;
         min-height: 100dvh;
         scroll-behavior: smooth;
-        word-spacing: normal;
-        white-space: normal;
-        word-wrap: normal;
-        word-break: normal;
-        overflow-wrap: normal;
-        hyphens: none;
-        overflow: auto;
+        overflow: hidden;
     }
 
     body {
@@ -56,12 +50,12 @@
     blockquote,
     dl,
     dd {
-        margin-block-end: 0;
+        margin-block: 0;
     }
 
     h1,
     h2 {
-        font-weight: 900;
+        font-weight: 700;
         letter-spacing: -0.02rem;
     }
     h1,
@@ -78,14 +72,14 @@
     /* FUTURE :heading */
         {
         text-wrap: balance;
-        margin-block-start: 0;
+        margin-block: 0;
     }
 
     p,
     li,
     dd {
         text-wrap: pretty;
-        margin-block-start: 0;
+        margin-block: 0;
     }
 
 
@@ -169,6 +163,7 @@
         inline-size: fit-content;
         margin-inline: auto;
     }
+
     figcaption {
         contain: inline-size;
         font-size: 90%;
@@ -181,9 +176,11 @@
         font: inherit;
         /* FUTURE: appearance: base; */
     }
+
     label {
         display: block;
     }
+
     input:not( :where([type="submit"],
             [type="checkbox"],
             [type="radio"],
@@ -191,6 +188,7 @@
             [type="reset"])) {
         inline-size: 100%;
     }
+
     button,
     input:where([type="submit"],
         [type="reset"],
@@ -199,6 +197,7 @@
         color: Canvas;
         border: 1px solid transparent;
     }
+
     textarea {
         field-sizing: content;
         min-block-size: 5lh;
@@ -212,6 +211,7 @@
     samp {
         font-family: ui-monospace, SFMono-Regular, monospace;
     }
+
     pre {
         white-space: pre-wrap;
         background: CanvasText;
@@ -223,6 +223,7 @@
     [disabled] {
         cursor: not-allowed;
     }
+
     [disabled],
     label:has(input[disabled]) {
         opacity: 0.5;
@@ -258,9 +259,11 @@
             padding: 0.5rem;
         }
     }
+
     [role="region"][aria-labelledby][tabindex] {
         overflow: auto;
     }
+
     caption {
         font-size: 90%;
     }
@@ -268,6 +271,7 @@
     [hidden] {
         display: none;
     }
+
     .screenreader-only:not(:focus):not(:active) {
         clip: rect(0 0 0 0);
         clip-path: inset(50%);
@@ -277,6 +281,7 @@
         white-space: nowrap;
         width: 1px;
     }
+
     :focus-visible {
         outline-offset: 2px;
     }
