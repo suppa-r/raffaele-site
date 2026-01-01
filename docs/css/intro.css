@@ -429,9 +429,8 @@ body::before {
 /*----------------- main content -------------------*/
 
 main {
-  margin: 0 auto;
-  padding: var(--space-4xs) var(--space-xl);
-  max-inline-size: calc(100dvw - var(--space-6xl) - var(--space-xl) * 2);
+  margin-left: var(--space-3xl);
+
   overflow: hidden;
 }
 
