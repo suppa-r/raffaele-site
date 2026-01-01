@@ -276,9 +276,17 @@ body {
 
 .navbar {
   position: fixed;
-  background-color: transparent;
+  top: 0;
+  left: 0;
+  width: var(--space-3xl);
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
   transition: width 600ms ease;
-  overflow: hidden;
+  /* Add padding, border, etc. as needed */
 }
 
 .navbar-nav {
@@ -316,7 +324,6 @@ body {
   margin-left: var(--space-3xs);
   white-space: nowrap;
 }
-
 
 .nav-link svg {
   width: var(--space-m);
@@ -379,13 +386,12 @@ body {
 /* Large screens */
 @media only screen and (min-width: 600px) {
   .navbar {
-    top: 0;
     width: var(--space-3xl);
     height: 100dvh;
   }
 
   .navbar:hover {
-    width: var(--space-7xl);
+    width: var(--space-6xl);
   }
 
   .navbar:hover .link-text {
@@ -411,13 +417,16 @@ body {
 /*----------------- main content -------------------*/
 
 main {
-  display: flex;
-  flex-grow: 1;
-  margin-block: var(--space-xs);
-  flex-direction: column;
   margin-left: var(--space-3xl);
+}
+
+.main-content {
+  padding: var(--space-m);
+  padding-left: var(--space-3xl);
+  margin: 0 auto;
   min-height: 100dvh;
   overflow: hidden;
+  /* Add more styles as needed */
 }
 
 /*----------------  header styles  ---------------*/
@@ -536,15 +545,20 @@ header {
   align-items: center;
   text-align: center;
   isolation: isolate;
-  flex: 1;
 }
 
-.ya {
+.page-content>*+* {
+  margin-block: 0;
+}
+
+.p-small {
   font-size: var(--step-1);
-  margin-top: var(--space-4xs);
-  margin-bottom: 0;
-  text-align: center;
-  margin-inline: auto;
+  padding-block: var(--space-5xs);
+}
+
+.p-large {
+  font-size: var(--step-2);
+  padding-block: var(--space-5xs);
 }
 
 .fancy span {
@@ -560,7 +574,6 @@ header {
   animation-direction: alternate reverse;
   padding-left: var(--space-2xs);
   padding-right: var(--space-2xs);
-  font-size: var(--step-2);
 }
 
 @keyframes gradientAnimation {
@@ -577,23 +590,9 @@ header {
   }
 }
 
-.ya-1 {
-  font-size: var(--step-1);
-  margin-top: var(--space-4xs);
-  margin-bottom: 0;
-  margin-inline: auto;
-}
-
-.ya-2 {
-  font-size: var(--step-3);
-  margin-top: var(--space-4xs);
-  margin-bottom: 0;
-  margin-inline: auto;
-}
-
 .wrapper-gradient-text {
   font-style: italic;
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   margin: 0;
   /* Remove default margins */
   padding: 0;
