@@ -205,22 +205,8 @@
   }
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 
-footer {
-  margin-top: auto;
-}
 
 /*----------------  global styles  ---------------*/
 
@@ -251,23 +237,34 @@ footer {
 
 html,
 body {
+  height: 100%;
+}
+
+body {
+  min-block-size: 100dvh;
   background-attachment: fixed;
   background-image: var(--bg-image);
   background-position: center;
   background-repeat: var(--bg-repeat, no-repeat);
-  background-size: var(--bg-size, cover);
+  background-size: cover;
   color: var(--text-color);
   font-family: var(--font-primary), sans-serif;
-  font-size: var(--step-0);
   font-style: var(--font-style);
   font-weight: var(--font-weight);
+  font-size: var(--step--2);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
 
+/* Make .wrapper take full viewport height */
 .wrapper {
-  min-height: 100vh;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100dvh;
+}
+
+.wrapper>* {
+  margin-block: 0;
 }
 
 /*------header-------*/
@@ -276,14 +273,14 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  view-transition-name: header;
+  margin-block-start: 0;
 }
 
 /*------------------ Quote styles  ------------------*/
 
 blockquote {
   margin: 0;
-  padding: 0;
+  padding: var(--space-xs) 0 0 0;
 }
 
 blockquote p {
@@ -292,17 +289,17 @@ blockquote p {
   font-style: italic;
   max-inline-size: none;
   margin: 0 auto;
-  padding-top: var(--space-xs);
 }
 
 /*------------------ Main styles  ------------------*/
 
 main {
-  max-inline-size: none;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   margin: 0 auto;
   text-align: center;
+  margin-block: auto;
   view-transition-name: main-content;
 }
 
@@ -535,14 +532,14 @@ main p {
 
 .text-with-animation {
   padding-top: var(--space-3xl);
-  font-size: var(--step-3);
+  font-size: var(--step-2);
 }
 
 .text-with-animation-1 {
   display: flex;
   justify-content: center;
   gap: var(--space-xl);
-  font-size: var(--step-3);
+  font-size: var(--step-0);
   letter-spacing: var(--space-m);
 }
 
@@ -560,7 +557,7 @@ main p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: var(--step-2);
+  font-size: var(--step-0);
   letter-spacing: var(--space-s);
 }
 
@@ -596,8 +593,8 @@ main p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: var(--space-13xl);
-  height: var(--space-5xl);
+  width: var(--space-12xl);
+  height: var(--space-4xl);
   margin: 0 auto;
   background: transparent;
   overflow: hidden;
@@ -652,19 +649,19 @@ main p {
 /*-------------footer-----------------*/
 
 footer {
-  max-inline-size: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 var(--space-5xs);
-  /*margin-block: var(--space-3xs);*/
-  margin-block-start: auto;
-  margin-inline-end: auto;
+  padding: 0 var(--space-m);
+  margin-top: auto;
+  color: var(--text-color);
+  font-size: var(--step--2);
+  letter-spacing: var(--letter-spacing);
+  word-spacing: var(--word-spacing);
   view-transition-name: footer;
 }
 
 .footer-text {
-  max-inline-size: none;
   padding-left: var(--space-xs);
   word-spacing: 0;
 }
@@ -686,17 +683,14 @@ footer {
 }
 
 .theme-switcher {
-  max-inline-size: none;
-  padding-right: var(--space-xs);
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 0;
   pointer-events: auto;
 }
 
 .theme-switcher span {
-  font-size: var(--step--1);
+  font-size: var(--step--2);
   color: var(--text-color);
 }
 
@@ -729,8 +723,8 @@ footer {
 }
 
 .theme-button svg {
-  width: var(--space-m);
-  height: var(--space-m);
+  width: var(--space-s);
+  height: var(--space-s);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
@@ -741,7 +735,7 @@ footer {
 .theme-button:hover svg,
 .theme-button:focus svg {
   transform: scale(1.5) rotate(90deg);
-  padding: 0;
+  padding: var(--space-5xs);
   background-color: var(--text-span);
   border-radius: 50%;
 }
@@ -761,13 +755,6 @@ footer {
     gap: var(--space-2xl);
   }
 
-  footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    word-spacing: var(--word-spacing);
-  }
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */

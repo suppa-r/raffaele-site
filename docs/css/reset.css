@@ -79,9 +79,6 @@ body {
     overflow: hidden;
 }
 
-/* ...existing code... */
-
-
 /* A elements that don't have a class get default styles */
 a:not([class]) {
     text-decoration-skip-ink: auto;
@@ -111,6 +108,7 @@ sub {
 sup {
     inset-block-start: -0.5em;
 }
+
 ul,
 ol,
 dl {
@@ -141,6 +139,8 @@ picture {
     height: auto;
     vertical-align: middle;
 }
+
+
 
 svg {
     fill: currentColor;
