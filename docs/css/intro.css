@@ -36,34 +36,6 @@
   --gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
-body::before {
-  opacity: 1;
-  pointer-events: none;
-  content: "";
-  width: 100dvw;
-  height: 100dvh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background:
-    linear-gradient(90deg,
-      var(--body-grid-line) 1px,
-      transparent 1px) 0 0 / 30px 30px,
-    linear-gradient(180deg,
-      var(--body-grid-line) 1px,
-      transparent 1px) 0 0 / 30px 30px,
-    var(--base-color);
-  mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
-  mask-size: 400% 100%;
-  mask-repeat: no-repeat;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
-    background-position 0.3s ease-in-out;
-  isolation: isolate;
-  z-index: -2000;
-  overflow: hidden;
-}
-
 :root {
 
   /*----------- Fluid typography with mobile scaling ------------- */
@@ -236,6 +208,20 @@ body::before {
 
 /*----------------  global styles  ---------------*/
 
+* {
+  max-inline-size: var(--measure);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
 p,
 h1,
 h2,
@@ -244,19 +230,8 @@ h4,
 h5,
 h6,
 figcaption {
-  max-inline-size: var(--measure);
   word-break: normal;
   overflow-wrap: break-word;
-  margin-block: 0;
-}
-
-html,
-body,
-header,
-nav,
-main,
-footer {
-  max-inline-size: none;
 }
 
 /*------------------ Body styles  ------------------*/
@@ -270,6 +245,43 @@ body {
   font-weight: 400;
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
+}
+
+body::before {
+  opacity: 1;
+  pointer-events: none;
+  content: "";
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:
+    linear-gradient(90deg,
+      var(--body-grid-line) 1px,
+      transparent 1px) 0 0 / 30px 30px,
+    linear-gradient(180deg,
+      var(--body-grid-line) 1px,
+      transparent 1px) 0 0 / 30px 30px,
+    var(--base-color);
+  mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
+  mask-size: 400% 100%;
+  mask-repeat: no-repeat;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
+    background-position 0.3s ease-in-out;
+  isolation: isolate;
+  z-index: -2000;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  overflow: hidden;
 }
 
 /*---------------- Navigation styles  ----------------*/
@@ -417,12 +429,13 @@ body {
 /*----------------- main content -------------------*/
 
 main {
-  margin-left: var(--space-3xl);
+  margin: 0 auto;
+  padding: var(--space-4xs) var(--space-xl);
+  max-inline-size: calc(100dvw - var(--space-6xl) - var(--space-xl) * 2);
+  overflow: hidden;
 }
 
 .main-content {
-  padding: var(--space-m);
-  padding-left: var(--space-3xl);
   margin: 0 auto;
   min-height: 100dvh;
   overflow: hidden;
