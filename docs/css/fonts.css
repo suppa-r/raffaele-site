@@ -7,7 +7,7 @@
     src: url('/docs/fonts/Woff2/alumnisanspinstripe-italic-webfont.woff2') format('woff2'),
         url('/docs/fonts/Woff2/alumnisanspinstripe-italic-webfont.woff') format('woff');
     font-weight: normal;
-    font-style: normal;
+    font-style: italic;
 
 }
 
@@ -17,7 +17,7 @@
 @font-face {
     font-family: 'grupporegular';
     src: url('/docs/fonts/Woff2/gruppo-regular-webfont.woff2') format('woff2'),
-        url('/docs/fonts/Gruppo-Regular.woff') format('woff');
+        url('/docs/fonts/Woff2/gruppo-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

@@ -113,9 +113,11 @@ body::before {
 
 
   /* Font families */
-  --font-primary: 'pompiere_regular',
-    sans-serif;
-  --font-style-primary: italic;
+  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
+
+  --font-weight: normal;
+  --font-style: normal;
+
   --font-secondary: 'monotonregular',
     sans-serif;
 

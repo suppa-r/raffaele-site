@@ -84,9 +84,11 @@
 
 
   /* Font families */
-  --font-primary: 'pompiere_regular',
-    sans-serif;
-  --font-style-primary: italic;
+  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
+
+  --font-weight: normal;
+  --font-style: normal;
+
   --font-secondary: 'monotonregular',
     sans-serif;
 
@@ -257,8 +259,8 @@ body {
   color: var(--text-color);
   font-family: var(--font-primary), sans-serif;
   font-size: var(--step-0);
-  font-style: var(--font-style-primary);
-  font-weight: normal;
+  font-style: var(--font-style);
+  font-weight: var(--font-weight);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
