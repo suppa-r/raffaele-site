@@ -208,7 +208,7 @@
 
 /*----------------  global styles  ---------------*/
 
-* {
+header {
   max-inline-size: var(--measure);
 }
 
@@ -218,6 +218,9 @@ div,
 header,
 nav,
 main,
+section,
+article,
+aside,
 footer {
   max-inline-size: none;
 }
@@ -278,6 +281,7 @@ body::before {
 .wrapper {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   min-height: 100dvh;
@@ -290,33 +294,32 @@ body::before {
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--space-3xl);
-  height: 100dvh;
+  flex-basis: var(--space-3xl);
+  flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   background: transparent;
+  backdrop-filter: var(--backdrop-blur);
+  box-shadow: var(--navbar-shadow);
   transition: width 600ms ease;
-  /* Add padding, border, etc. as needed */
+  overflow: hidden;
+  z-index: 1000;
 }
 
 .navbar-nav {
   list-style: none;
   padding: 0;
-  padding-left: var(--space-s);
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: var(--space-m);
   height: 100%;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  /*height: 0rem;*/
-  margin: var(--space-s) 0;
+  margin: var(--space-xs) 0 0 var(--space-s);
   color: var(--text-color);
   text-decoration: none;
   filter: grayscale(100%) opacity(1);
@@ -403,7 +406,7 @@ body::before {
   }
 
   .navbar:hover {
-    width: var(--space-6xl);
+    width: var(--space-7xl);
   }
 
   .navbar:hover .link-text {
@@ -429,16 +432,12 @@ body::before {
 /*----------------- main content -------------------*/
 
 main {
-  margin-left: var(--space-3xl);
-
-  overflow: hidden;
-}
-
-.main-content {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 80%;
   margin: 0 auto;
   min-height: 100dvh;
   overflow: hidden;
-  /* Add more styles as needed */
 }
 
 /*----------------  header styles  ---------------*/
@@ -450,21 +449,14 @@ header {
   background: var(--gradient-header);
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
-  margin: var(--space-5xs) var(--space-11xl);
-  padding: var(--space-4xs) var(--space-xl);
+  margin: var(--space-2xs) 0;
+  padding: var(--space-4xs) var(--space-m);
   border-radius: var(--space-l);
   isolation: isolate;
   transition: var(--transition-speed);
 }
 
 /*------title-------*/
-
-.title-header {
-  color: var(--text-color);
-  text-align: right;
-  margin: 0;
-  padding: 0;
-}
 
 .title-header span {
   margin: 0;
@@ -491,7 +483,6 @@ header {
 
 .theme-switcher {
   max-inline-size: none;
-  padding-right: var(--space-s);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -550,16 +541,14 @@ header {
   border-radius: 50%;
 }
 
-.page-content {
+.main-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  isolation: isolate;
 }
 
-.page-content>*+* {
+.main-content>*+* {
   margin-block: 0;
 }
 
@@ -604,7 +593,7 @@ header {
 
 .wrapper-gradient-text {
   font-style: italic;
-  font-size: var(--step-2);
+  font-size: var(--step-3);
   margin: 0;
   /* Remove default margins */
   padding: 0;
@@ -641,26 +630,30 @@ header {
 /* Small screens */
 @media only screen and (max-width: 600px) {
   header {
-    margin: var(--space-5xs) var(--space-xs) 0 var(--space-xs);
-    padding: var(--space-5xs) var(--space-s);
+    margin: 0 var(--space-xs);
+    padding: var(--space-5xs) var(--space-xs);
   }
 
   .navbar {
+    position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: var(--space-2xl);
-    border-radius: var(--space-l);
-  }
-
-  .logo {
-    display: none;
+    top: auto;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Optional: style background, border, etc. */
+    background: transparent;
   }
 
   .navbar-nav {
     flex-direction: row;
-    padding-inline: var(--padding-inline);
-    gap: var(--space-3xs);
+    gap: var(--space-xs);
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  .logo {
+    display: none;
   }
 
   .nav-link {
@@ -669,7 +662,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: var(--space-xs);
-    margin: 0;
+    margin: 0 auto;
   }
 
   .link-text {
@@ -677,23 +670,9 @@ header {
     margin-left: 0;
     white-space: nowrap;
   }
-
   main {
+    width: 100%;
     margin: 0;
-    overflow: hidden;
-  }
-
-  .page-content {
-    flex-grow: 0;
-    margin-top: var(--space-s);
-  }
-
-  .ya-2 {
-    font-size: var(--step-2);
-    margin-bottom: 0;
-  }
-
-  .wrapper-gradient-text {
-    font-size: var(--step-2);
+    padding: 0;
   }
 }
