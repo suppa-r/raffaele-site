@@ -40,7 +40,6 @@
 
   /*----------- Fluid typography with mobile scaling ------------- */
 
-  --step--2: clamp(0.6331rem, 0.7195rem + -0.1115vw, 0.6944rem);
   --step--1: clamp(0.8333rem, 0.829rem + 0.0193vw, 0.844rem);
   --step-0: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
   --step-1: clamp(1.2rem, 1.0774rem + 0.5448vw, 1.4996rem);
@@ -86,17 +85,15 @@
 
 
   /* Font families */
-  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
+  --font-family-primary: 'wire_oneregular', monospace, sans-serif;
 
   --font-weight: normal;
   --font-style: normal;
 
-  --font-secondary: 'monotonregular',
-    sans-serif;
+  --font-family-secondary: 'monotonregular', sans-serif;
 
   /*----------- Animation and transition settings -------------- */
 
-  --sp: 4s;
   --transition-speed: 0.3s ease-in-out;
 
   /*------------- letter and word spacing settings ---------------*/
@@ -105,7 +102,6 @@
   --letter-spacing: var(--space-5xs);
   --word-spacing: .02rem;
 }
-
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -118,13 +114,7 @@
   }
 }
 
-.support {
-  background-color: var(--base-color);
-  border-inline-start: 0.5rem solid var(--text-color);
-  color: var(--text-color);
-  border-radius: 0.5rem;
-  padding: 1em 2em;
-}
+/*---------------- View Transition styles  ------------------*/
 
 ::view-transition {
   background: var(--base-color);
@@ -209,23 +199,6 @@
 
 /*----------------  global styles  ---------------*/
 
-header {
-  max-inline-size: var(--measure);
-}
-
-html,
-body,
-div,
-header,
-nav,
-main,
-section,
-article,
-aside,
-footer {
-  max-inline-size: none;
-}
-
 p,
 h1,
 h2,
@@ -234,8 +207,20 @@ h4,
 h5,
 h6,
 figcaption {
+  max-inline-size: var(--measure);
   word-break: normal;
   overflow-wrap: break-word;
+  margin-block: 0;
+}
+
+html,
+body,
+header,
+nav,
+main,
+section,
+footer {
+  max-inline-size: none;
 }
 
 /*------------------ Body styles  ------------------*/
@@ -243,10 +228,10 @@ figcaption {
 html,
 body {
   color: var(--text-color);
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-family-primary), sans-serif;
   font-size: var(--step-0);
-  font-style: var(--font-style-primary);
-  font-weight: 400;
+  font-style: var(--font-style);
+  font-weight: var(--font-weight);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
@@ -295,7 +280,9 @@ body::before {
   position: fixed;
   top: 0;
   left: 0;
-  flex-basis: var(--space-3xl);
+  bottom: 0;
+  padding-inline-start: var(--space-xs);
+  flex-basis: 0;
   flex-grow: 1;
   display: flex;
   transition: width 600ms ease;
@@ -309,21 +296,43 @@ body::before {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: var(--space-m);
   height: 100%;
+}
+
+.navbar:hover {
+  inline-size: var(--space-5xl);
+}
+
+.navbar:hover .link-text {
+  display: inline;
+}
+
+.navbar:hover .logo svg {
+  margin-inline-start: var(--space-l);
+}
+
+.navbar:hover .logo-text {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: initial;
+  margin: initial;
+  overflow: visible;
+  clip-path: none;
+  white-space: nowrap;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  margin: var(--space-xs) 0 0 var(--space-s);
+  margin-block-start: var(--space-xs);
+  margin-inline-end: var(--space-xs);
   color: var(--text-color);
   text-decoration: none;
   filter: grayscale(100%) opacity(1);
   transition: var(--transition-speed);
   transform: translateZ(0);
-  /* Force GPU acceleration */
 }
 
 .nav-link:hover {
@@ -334,14 +343,15 @@ body::before {
 
 .link-text {
   display: none;
-  margin-left: var(--space-3xs);
+  margin-inline-start: var(--space-3xs);
   white-space: nowrap;
 }
 
 .nav-link svg {
   width: var(--space-m);
   height: var(--space-m);
-  margin: 0 var(--space-2xs) 0 0;
+  margin-inline-end: var(--space-2xs);
+  will-change: transform;
   transform: rotate(0deg);
   transition: var(--transition-speed);
 }
@@ -396,37 +406,6 @@ body::before {
   transform: rotate(360deg);
 }
 
-/* Large screens */
-@media only screen and (min-width: 600px) {
-  .navbar {
-    width: var(--space-3xl);
-    height: 100dvh;
-  }
-
-  .navbar:hover {
-    width: var(--space-7xl);
-  }
-
-  .navbar:hover .link-text {
-    display: inline;
-  }
-
-  .navbar:hover .logo svg {
-    margin-left: var(--space-l);
-  }
-
-  .navbar:hover .logo-text {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: initial;
-    margin: initial;
-    overflow: visible;
-    clip-path: none;
-    white-space: nowrap;
-  }
-}
-
 /*----------------- main content -------------------*/
 
 main {
@@ -447,8 +426,13 @@ header {
   background: var(--gradient-header);
   backdrop-filter: var(--backdrop-blur);
   box-shadow: var(--navbar-shadow);
-  margin: var(--space-2xs) 0;
-  padding: var(--space-4xs) var(--space-m);
+  margin-block-start: var(--space-2xs);
+  margin-block-end: var(--space-2xs);
+  margin-inline: var(--space-m);
+  padding-block-start: var(--space-4xs);
+  padding-block-end: var(--space-4xs);
+  padding-inline-start: var(--space-m);
+  padding-inline-end: var(--space-m);
   border-radius: var(--space-l);
   isolation: isolate;
   transition: var(--transition-speed);
@@ -458,7 +442,8 @@ header {
 
 .title-header span {
   margin: 0;
-  padding: 0 var(--space-xs) 0 0;
+  padding: 0;
+  padding-inline-end: var(--space-xs);
   font-size: inherit;
   color: var(--text-span);
 }
@@ -522,8 +507,8 @@ header {
 }
 
 .theme-button svg {
-  width: var(--space-m);
-  height: var(--space-m);
+  inline-size: var(--space-m);
+  block-size: var(--space-m);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
@@ -552,7 +537,8 @@ header {
 
 .p-small {
   font-size: var(--step-1);
-  padding-block: var(--space-5xs);
+  padding-block-start: var(--space-5xs);
+  padding-block-end: var(--space-5xs);
 }
 
 .p-large {
@@ -571,8 +557,8 @@ header {
   -webkit-text-fill-color: transparent;
   animation: gradientAnimation 2s ease-in-out infinite alternate;
   animation-direction: alternate reverse;
-  padding-left: var(--space-2xs);
-  padding-right: var(--space-2xs);
+  padding-inline-start: var(--space-2xs);
+  padding-inline-end: var(--space-2xs);
 }
 
 @keyframes gradientAnimation {
@@ -628,8 +614,11 @@ header {
 /* Small screens */
 @media only screen and (max-width: 600px) {
   header {
-    margin: 0 var(--space-xs);
-    padding: var(--space-5xs) var(--space-xs);
+    margin: 0;
+    margin-inline-start: var(--space-5xs);
+    margin-inline-end: var(--space-5xs);
+    padding-block-start: var(--space-xs);
+    padding-block-end: var(--space-xs);
   }
 
   .navbar {
@@ -637,7 +626,7 @@ header {
     bottom: 0;
     top: auto;
     left: 0;
-    width: 100%;
+    inline-size: 100%;
     z-index: 1000;
     /* Optional: style background, border, etc. */
     background: transparent;
@@ -666,12 +655,12 @@ header {
 
   .link-text {
     display: inline;
-    margin-left: 0;
+    margin-inline-start: 0;
     white-space: nowrap;
   }
 
   main {
-    width: 100%;
+    inline-size: 100%;
     margin: 0;
     padding: 0;
   }
