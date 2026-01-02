@@ -32,22 +32,13 @@
 [data-theme="light"] .footer-text,
 [data-theme="light"] .theme-switcher,
 [data-theme="light"] .large-button {
-  mix-blend-mode: darken;
+  color: oklch(0% 0 0);
+  mix-blend-mode: normal;
+  font-weight: 600;
+  /* optional, for more contrast */
 }
 
 :root {
-
-  /*----------- Fluid typography with mobile scaling ------------- */
-
-  --step--2: clamp(0.6331rem, 0.7195rem + -0.1115vw, 0.6944rem);
-  --step--1: clamp(0.8333rem, 0.829rem + 0.0193vw, 0.844rem);
-  --step-0: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
-  --step-1: clamp(1.2rem, 1.0774rem + 0.5448vw, 1.4996rem);
-  --step-2: clamp(1.44rem, 1.2113rem + 1.0164vw, 1.999rem);
-  --step-3: clamp(1.728rem, 1.3448rem + 1.703vw, 2.6647rem);
-  --step-4: clamp(2.0736rem, 1.4688rem + 2.688vw, 3.552rem) --step-5: clamp(2.4883rem, 1.5693rem + 4.0845vw, 4.7348rem);
-  --step-6: clamp(2.986rem, 1.6255rem + 6.0464vw, 6.3115rem);
-  --step-7: clamp(3.5832rem, 1.6072rem + 8.7819vw, 8.4132rem);
 
   /*----------Fluid spacing with mobile scaling ------------------ */
 
@@ -84,7 +75,9 @@
 
 
   /* Font families */
-  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
+  --font-primary: 'wire_oneregular',
+    monospace,
+    'sans-serif';
 
   --font-weight: normal;
   --font-style: normal;
@@ -118,10 +111,10 @@
 
 .support {
   background-color: var(--base-color);
-  border-inline-start: 0.5rem solid var(--text-color);
+  border-inline-start: 0 solid var(--text-color);
   color: var(--text-color);
   border-radius: 0.5rem;
-  padding: 1em 2em;
+  padding: 0;
 }
 
 ::view-transition {
@@ -207,7 +200,6 @@
 
 
 
-
 /*----------------  global styles  ---------------*/
 
 p,
@@ -235,9 +227,11 @@ footer {
 
 /*------------------ Body styles  ------------------*/
 
+
 html,
 body {
   height: 100%;
+  min-height: 100dvh;
 }
 
 body {
@@ -257,11 +251,15 @@ body {
 }
 
 /* Make .wrapper take full viewport height */
+
 .wrapper {
   display: flex;
   flex-direction: column;
+  min-height: 100dvh;
   min-block-size: 100dvh;
+  width: 100%;
 }
+
 
 .wrapper>* {
   margin-block: 0;
@@ -269,18 +267,19 @@ body {
 
 /*------header-------*/
 
+
 header {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-block-start: 0;
+  flex-shrink: 0;
 }
 
 /*------------------ Quote styles  ------------------*/
 
 blockquote {
   margin: 0;
-  padding: var(--space-xs) 0 0 0;
+  padding: 0;
 }
 
 blockquote p {
@@ -288,19 +287,21 @@ blockquote p {
   text-align: center;
   font-style: italic;
   max-inline-size: none;
+  padding-top: var(--space-3xs);
   margin: 0 auto;
 }
 
 /*------------------ Main styles  ------------------*/
 
+
 main {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
+  flex: 1 1 auto;
   margin: 0 auto;
   text-align: center;
-  margin-block: auto;
   view-transition-name: main-content;
+  min-height: 0;
 }
 
 main p {
@@ -648,21 +649,21 @@ main p {
 
 /*-------------footer-----------------*/
 
+
 footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 0 var(--space-m);
   margin-top: auto;
   color: var(--text-color);
-  font-size: var(--step--2);
   letter-spacing: var(--letter-spacing);
   word-spacing: var(--word-spacing);
   view-transition-name: footer;
+  flex-shrink: 0;
 }
 
 .footer-text {
-  padding-left: var(--space-xs);
   word-spacing: 0;
 }
 
@@ -684,8 +685,7 @@ footer {
 
 .theme-switcher {
   display: flex;
-  align-items: center;
-  gap: 0;
+  align-items: flex-start;
   pointer-events: auto;
 }
 
@@ -709,7 +709,7 @@ footer {
 .theme-button {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   min-width: 2.75rem;
   min-height: 2.75rem;
@@ -735,7 +735,7 @@ footer {
 .theme-button:hover svg,
 .theme-button:focus svg {
   transform: scale(1.5) rotate(90deg);
-  padding: var(--space-5xs);
+  padding: 0;
   background-color: var(--text-span);
   border-radius: 50%;
 }

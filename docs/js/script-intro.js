@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         input.checked = true;
         const selectedTheme = input.value;
 
-        // Apply theme with transitions
+
         if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           document.startViewTransition(() => {
             document.documentElement.setAttribute('data-theme', selectedTheme);

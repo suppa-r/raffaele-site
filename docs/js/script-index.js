@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function setTheme(theme) {
     if (!isValidTheme(theme)) return;
 
+
     // Always respect prefers-reduced-motion, regardless of View Transition API support
     if (prefersReducedMotion.matches) {
       document.documentElement.setAttribute('data-theme', theme);
