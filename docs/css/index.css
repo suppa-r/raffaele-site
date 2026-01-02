@@ -4,10 +4,8 @@
   --text-span: oklch(76.519% 0.10876 207.377 / 0.644);
 
   --bg-image: url('/docs/images/header-desktop.jpg');
-  --bg-size: cover;
-  /* ✅ Single image */
-  --bg-repeat: no-repeat;
-  /* ✅ Single image */
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 [data-theme="light"] {
@@ -16,10 +14,8 @@
   --text-span: oklch(21.424% 0.0259 195.446 / 0.643);
 
   --bg-image: url('/docs/images/white-1.jpg');
-  --bg-size: cover;
-  /* ✅ Single image */
-  --bg-repeat: no-repeat;
-  /* ✅ Single image */
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 [data-theme="light"] .content div,
@@ -39,6 +35,17 @@
 }
 
 :root {
+
+  /*----------- Fluid typography with mobile scaling ------------- */
+
+  --step--1: clamp(0.8333rem, 0.829rem + 0.0193vw, 0.844rem);
+  --step-0: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.0774rem + 0.5448vw, 1.4996rem);
+  --step-2: clamp(1.44rem, 1.2113rem + 1.0164vw, 1.999rem);
+  --step-3: clamp(1.728rem, 1.3448rem + 1.703vw, 2.6647rem);
+  --step-4: clamp(2.0736rem, 1.4688rem + 2.688vw, 3.552rem) --step-5: clamp(2.4883rem, 1.5693rem + 4.0845vw, 4.7348rem);
+  --step-6: clamp(2.986rem, 1.6255rem + 6.0464vw, 6.3115rem);
+  --step-7: clamp(3.5832rem, 1.6072rem + 8.7819vw, 8.4132rem);
 
   /*----------Fluid spacing with mobile scaling ------------------ */
 
@@ -75,15 +82,12 @@
 
 
   /* Font families */
-  --font-primary: 'wire_oneregular',
-    monospace,
-    'sans-serif';
+  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
 
   --font-weight: normal;
   --font-style: normal;
 
-  --font-secondary: 'monotonregular',
-    sans-serif;
+  --font-secondary: 'monotonregular', sans-serif;
 
   /*----------- Animation and transition settings -------------- */
 
@@ -239,13 +243,13 @@ body {
   background-attachment: fixed;
   background-image: var(--bg-image);
   background-position: center;
-  background-repeat: var(--bg-repeat, no-repeat);
+  background-repeat: no-repeat;
   background-size: cover;
   color: var(--text-color);
   font-family: var(--font-primary), sans-serif;
   font-style: var(--font-style);
   font-weight: var(--font-weight);
-  font-size: var(--step--2);
+  font-size: var(--step--1);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
@@ -260,13 +264,11 @@ body {
   width: 100%;
 }
 
-
 .wrapper>* {
   margin-block: 0;
 }
 
 /*------header-------*/
-
 
 header {
   display: flex;
@@ -532,7 +534,7 @@ main p {
 /*------------------ Text styles  ------------------*/
 
 .text-with-animation {
-  padding-top: var(--space-3xl);
+  padding-top: var(--space-2xl);
   font-size: var(--step-2);
 }
 
@@ -654,7 +656,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 var(--space-m);
+  padding: 0 var(--space-m) var(--space-s) var(--space-m);
   margin-top: auto;
   color: var(--text-color);
   letter-spacing: var(--letter-spacing);
@@ -664,6 +666,7 @@ footer {
 }
 
 .footer-text {
+  padding: var(--space-2xs);
   word-spacing: 0;
 }
 
@@ -687,11 +690,15 @@ footer {
   display: flex;
   align-items: flex-start;
   pointer-events: auto;
+  padding-bottom: var(--space-xs);
+
 }
 
 .theme-switcher span {
-  font-size: var(--step--2);
   color: var(--text-color);
+  font-size: var(--step--1);
+  margin-inline-end: var(--space-xs);
+  padding: var(--space-2xs);
 }
 
 .theme-switcher input[type="radio"] {
@@ -723,8 +730,10 @@ footer {
 }
 
 .theme-button svg {
-  width: var(--space-s);
-  height: var(--space-s);
+  width: var(--space-m);
+  height: var(--space-m);
+  fill: var(--text-color);
+  margin-bottom: var(--space-s);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
@@ -734,7 +743,7 @@ footer {
 
 .theme-button:hover svg,
 .theme-button:focus svg {
-  transform: scale(1.5) rotate(90deg);
+  transform: scale(1.4) rotate(90deg);
   padding: 0;
   background-color: var(--text-span);
   border-radius: 50%;
