@@ -626,7 +626,7 @@ header {
     bottom: 0;
     top: auto;
     left: 0;
-    inline-size: 100%;
+
     z-index: 1000;
     padding-inline-start: 0;
     padding-inline-end: 0;
