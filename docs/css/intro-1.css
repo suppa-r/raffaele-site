@@ -63,48 +63,56 @@ body::before {
   z-index: -2000;
   overflow: hidden;
 }
+
 :root {
 
   /*----------- Fluid typography with mobile scaling ------------- */
 
-  --step--2: clamp(0.6331rem, 0.7195rem + -0.1115vw, 0.6944rem);
-  --step--1: clamp(0.8333rem, 0.829rem + 0.0193vw, 0.844rem);
-  --step-0: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
-  --step-1: clamp(1.2rem, 1.0774rem + 0.5448vw, 1.4996rem);
-  --step-2: clamp(1.44rem, 1.2113rem + 1.0164vw, 1.999rem);
-  --step-3: clamp(1.728rem, 1.3448rem + 1.703vw, 2.6647rem);
-  --step-4: clamp(2.0736rem, 1.4688rem + 2.688vw, 3.552rem) --step-5: clamp(2.4883rem, 1.5693rem + 4.0845vw, 4.7348rem);
-  --step-6: clamp(2.986rem, 1.6255rem + 6.0464vw, 6.3115rem);
-  --step-7: clamp(3.5832rem, 1.6072rem + 8.7819vw, 8.4132rem);
+  --step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.1632rem + 0.4341vw, 1.4996rem);
+  --step-2: clamp(1.5625rem, 1.4107rem + 0.7591vw, 1.999rem);
+  --step-3: clamp(1.9531rem, 1.7056rem + 1.2375vw, 2.6647rem);
+  --step-4: clamp(2.4414rem, 2.0551rem + 1.9315vw, 3.552rem);
+  --step-5: clamp(3.0518rem, 2.4663rem + 2.9271vw, 4.7348rem);
+  --step-6: clamp(3.8147rem, 2.9462rem + 4.3423vw, 6.3115rem);
+  --step-7: clamp(4.7684rem, 3.5006rem + 6.3389vw, 8.4132rem);
 
   /*----------Fluid spacing with mobile scaling ------------------ */
 
-  --space-5xs: clamp(0.125rem, 0.0994rem + 0.1136vw, 0.1875rem);
-  --space-4xs: clamp(0.1875rem, 0.1619rem + 0.1136vw, 0.25rem);
-  --space-3xs: clamp(0.25rem, 0.2244rem + 0.1136vw, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4744rem + 0.1136vw, 0.5625rem);
-  --space-xs: clamp(0.75rem, 0.6989rem + 0.2273vw, 0.875rem);
-  --space-s: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
-  --space-m: clamp(1.5rem, 1.4233rem + 0.3409vw, 1.6875rem);
-  --space-l: clamp(2rem, 1.8977rem + 0.4545vw, 2.25rem);
-  --space-xl: clamp(3rem, 2.8466rem + 0.6818vw, 3.375rem);
-  --space-2xl: clamp(4rem, 3.7955rem + 0.9091vw, 4.5rem);
-  --space-3xl: clamp(5rem, 4.7443rem + 1.1364vw, 5.625rem);
-  --space-4xl: clamp(6rem, 5.6932rem + 1.3636vw, 6.75rem);
-  --space-5xl: clamp(7rem, 6.642rem + 1.5909vw, 7.875rem);
-  --space-6xl: clamp(8rem, 7.5909rem + 1.8182vw, 9rem);
-  --space-7xl: clamp(9rem, 8.5398rem + 2.0455vw, 10.125rem);
-  --space-8xl: clamp(10rem, 9.4886rem + 2.2727vw, 11.25rem);
-  --space-9xl: clamp(11rem, 10.4375rem + 2.5vw, 12.375rem);
-  --space-10xl: clamp(12rem, 11.3864rem + 2.7273vw, 13.5rem);
-  --space-11xl: clamp(13rem, 12.3352rem + 2.9545vw, 14.625rem);
-  --space-12xl: clamp(14rem, 13.2841rem + 3.1818vw, 15.75rem);
-  --space-13xl: clamp(15rem, 14.233rem + 3.4091vw, 16.875rem);
-  --space-14xl: clamp(16rem, 15.1818rem + 3.6364vw, 18rem);
-  --space-15xl: clamp(17rem, 16.1307rem + 3.8636vw, 19.125rem);
-  --space-16xl: clamp(18rem, 17.0795rem + 4.0909vw, 20.25rem);
-  --space-17xl: clamp(19rem, 18.0284rem + 4.3182vw, 21.375rem);
-  --space-18xl: clamp(20rem, 18.9773rem + 4.5455vw, 22.5rem);
+
+  --space-4xs: clamp(0.125rem, 0.1033rem + 0.1087vw, 0.1875rem);
+  --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4783rem + 0.1087vw, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.7065rem + 0.2174vw, 0.875rem);
+  --space-s: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4348rem + 0.3261vw, 1.6875rem);
+  --space-l: clamp(2rem, 1.913rem + 0.4348vw, 2.25rem);
+  --space-xl: clamp(3rem, 2.8696rem + 0.6522vw, 3.375rem);
+  --space-2xl: clamp(4rem, 3.8261rem + 0.8696vw, 4.5rem);
+  --space-3xl: clamp(6rem, 5.7391rem + 1.3043vw, 6.75rem);
+  --space-4xl: clamp(7rem, 6.6957rem + 1.5217vw, 7.875rem);
+  --space-5xl: clamp(8rem, 7.6522rem + 1.7391vw, 9rem);
+  --space-6xl: clamp(9rem, 8.6087rem + 1.9565vw, 10.125rem);
+  --space-7xl: clamp(10rem, 9.5652rem + 2.1739vw, 11.25rem);
+  --space-8xl: clamp(11rem, 10.5217rem + 2.3913vw, 12.375rem);
+  --space-9xl: clamp(12rem, 11.4783rem + 2.6087vw, 13.5rem);
+  --space-10xl: clamp(13rem, 12.4348rem + 2.8261vw, 14.625rem);
+
+
+  --space-2xs-xs: clamp(0.5rem, 0.3696rem + 0.6522vw, 0.875rem);
+  --space-xs-s: clamp(0.75rem, 0.6196rem + 0.6522vw, 1.125rem);
+  --space-s-m: clamp(1rem, 0.7609rem + 1.1957vw, 1.6875rem);
+  --space-m-l: clamp(1.5rem, 1.2391rem + 1.3043vw, 2.25rem);
+  --space-l-xl: clamp(2rem, 1.5217rem + 2.3913vw, 3.375rem);
+  --space-xl-2xl: clamp(3rem, 2.4783rem + 2.6087vw, 4.5rem);
+  --space-2xl-3xl: clamp(4rem, 3.0435rem + 4.7826vw, 6.75rem);
+  --space-3xl-4xl: clamp(6rem, 5.3478rem + 3.2609vw, 7.875rem);
+  --space-4xl-5xl: clamp(7rem, 6.3043rem + 3.4783vw, 9rem);
+  --space-5xl-6xl: clamp(8rem, 7.2609rem + 3.6957vw, 10.125rem);
+  --space-6xl-7xl: clamp(9rem, 8.2174rem + 3.913vw, 11.25rem);
+  --space-7xl-8xl: clamp(10rem, 9.1739rem + 4.1304vw, 12.375rem);
+  --space-8xl-9xl: clamp(11rem, 10.1304rem + 4.3478vw, 13.5rem);
+  --space-9xl-10xl: clamp(12rem, 11.087rem + 4.5652vw, 14.625rem);
 
   /*---------------- Button and padding settings ----------------- */
 
@@ -112,26 +120,24 @@ body::before {
 
 
   /* Font families */
-  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
+  --font-family-primary: 'wire_oneregular', monospace, sans-serif;
 
   --font-weight: normal;
   --font-style: normal;
 
-  --font-secondary: 'monotonregular',
-    sans-serif;
+  --font-family-secondary: 'monotonregular', sans-serif;
 
   /*----------- Animation and transition settings -------------- */
 
-  --sp: 4s;
   --transition-speed: 0.3s ease-in-out;
 
   /*------------- letter and word spacing settings ---------------*/
 
   --measure: 70ch;
-  --letter-spacing: var(--space-5xs);
-  --word-spacing: .02rem;
+  --letter-spacing: var(--space-4xs);
+  --word-spacing: var(--space-5xs);
+  --sp: 4s;
 }
-
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -240,12 +246,6 @@ body {
   padding: 0;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 footer {
   margin-top: auto;
 }
@@ -280,11 +280,14 @@ footer {
 
 html,
 body {
+
+  display: flex;
+  flex-direction: column;
   color: var(--text-color);
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-family-primary), sans-serif;
   font-size: var(--step-0);
-  font-style: var(--font-style-primary);
-  font-weight: 400;
+  font-style: var(--font-style);
+  font-weight: var(--font-weight);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
