@@ -85,16 +85,18 @@
 
 
   /* Font families */
-  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
+  --font-family-primary: 'wire_oneregular',
+    monospace,
+    sans-serif;
 
   --font-weight: normal;
   --font-style: normal;
 
-  --font-secondary: 'monotonregular', sans-serif;
+  --font-family-secondary: 'monotonregular',
+    sans-serif;
 
   /*----------- Animation and transition settings -------------- */
 
-  --sp: 4s;
   --transition-speed: 0.3s ease-in-out;
 
   /*------------- letter and word spacing settings ---------------*/
@@ -103,7 +105,6 @@
   --letter-spacing: var(--space-5xs);
   --word-spacing: .02rem;
 }
-
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -199,8 +200,6 @@
   }
 }
 
-
-
 /*----------------  global styles  ---------------*/
 
 p,
@@ -222,19 +221,14 @@ body,
 header,
 nav,
 main,
+section,
 footer {
   max-inline-size: none;
 }
 
 /*------------------ Body styles  ------------------*/
 
-
 html,
-body {
-  height: 100%;
-  min-height: 100dvh;
-}
-
 body {
   background-attachment: fixed;
   background-image: var(--bg-image);
@@ -242,11 +236,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: var(--text-color);
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-family-primary), sans-serif;
+  font-size: var(--step-0);
   font-style: var(--font-style);
   font-weight: var(--font-weight);
-  font-size: var(--step--1);
-  word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
 
@@ -528,14 +521,14 @@ main p {
 
 .text-with-animation {
   padding-block-start: var(--space-2xl);
-  font-size: var(--step-2);
+  font-size: var(--step-4);
 }
 
 .text-with-animation-1 {
   display: flex;
   justify-content: center;
   gap: var(--space-xl);
-  font-size: var(--step-0);
+  font-size: var(--step-2);
   letter-spacing: var(--space-m);
 }
 
@@ -553,7 +546,7 @@ main p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: var(--step-0);
+  font-size: var(--step-2);
   letter-spacing: var(--space-s);
 }
 
@@ -590,7 +583,7 @@ main p {
   align-items: center;
   justify-content: center;
   width: var(--space-12xl);
-  height: var(--space-4xl);
+  height: var(--space-6xl);
   margin: 0 auto;
   background: transparent;
   overflow: hidden;
@@ -617,7 +610,7 @@ main p {
   display: flex;
   flex-direction: column;
   gap: var(--space-5xs);
-  padding: 0 var(--space-2xl);
+  padding: var(--space-xs) var(--space-2xl);
   text-align: center;
 }
 
@@ -632,7 +625,7 @@ main p {
   margin: 0 auto;
   width: var(--space-l);
   height: var(--space-l);
-  fill: var(--text-color);
+  fill: red;
   transition: transform 0.3s, fill 0.3s;
 }
 
@@ -659,6 +652,7 @@ footer {
 }
 
 .footer-text {
+  font-size: var(--step--1);
   padding: var(--space-2xs);
   word-spacing: 0;
 }
@@ -680,18 +674,17 @@ footer {
 }
 
 .theme-switcher {
+  max-inline-size: none;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 0;
   pointer-events: auto;
-  padding-block-end: 0;
-
 }
 
 .theme-switcher span {
-  color: var(--text-color);
   font-size: var(--step--1);
-  margin-inline-end: 0;
-  padding: 0;
+  color: var(--text-color);
 }
 
 .theme-switcher input[type="radio"] {
@@ -723,9 +716,8 @@ footer {
 }
 
 .theme-button svg {
-  width: var(--space-m);
-  height: var(--space-m);
-  fill: var(--text-color);
+  inline-size: var(--space-m);
+  block-size: var(--space-m);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
@@ -735,7 +727,7 @@ footer {
 
 .theme-button:hover svg,
 .theme-button:focus svg {
-  transform: scale(1.4) rotate(90deg);
+  transform: scale(1.5) rotate(90deg);
   padding: 0;
   background-color: var(--text-span);
   border-radius: 50%;
