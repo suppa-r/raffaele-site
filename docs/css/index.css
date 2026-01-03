@@ -85,18 +85,16 @@
 
 
   /* Font families */
-  --font-family-primary: 'wire_oneregular',
-    monospace,
-    sans-serif;
+  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
 
   --font-weight: normal;
   --font-style: normal;
 
-  --font-family-secondary: 'monotonregular',
-    sans-serif;
+  --font-secondary: 'monotonregular', sans-serif;
 
   /*----------- Animation and transition settings -------------- */
 
+  --sp: 4s;
   --transition-speed: 0.3s ease-in-out;
 
   /*------------- letter and word spacing settings ---------------*/
@@ -105,6 +103,7 @@
   --letter-spacing: var(--space-5xs);
   --word-spacing: .02rem;
 }
+
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -200,6 +199,8 @@
   }
 }
 
+
+
 /*----------------  global styles  ---------------*/
 
 p,
@@ -221,14 +222,19 @@ body,
 header,
 nav,
 main,
-section,
 footer {
   max-inline-size: none;
 }
 
 /*------------------ Body styles  ------------------*/
 
+
 html,
+body {
+  height: 100%;
+  min-height: 100dvh;
+}
+
 body {
   background-attachment: fixed;
   background-image: var(--bg-image);
@@ -236,10 +242,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: var(--text-color);
-  font-family: var(--font-family-primary), sans-serif;
-  font-size: var(--step-0);
+  font-family: var(--font-primary), sans-serif;
   font-style: var(--font-style);
   font-weight: var(--font-weight);
+  font-size: var(--step--1);
+  word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
 }
 
@@ -521,15 +528,17 @@ main p {
 
 .text-with-animation {
   padding-block-start: var(--space-2xl);
-  font-size: var(--step-4);
+  font-size: var(--step-2);
+  text-align: center;
 }
 
 .text-with-animation-1 {
   display: flex;
   justify-content: center;
   gap: var(--space-xl);
-  font-size: var(--step-2);
+  font-size: var(--step-0);
   letter-spacing: var(--space-m);
+  text-align: center;
 }
 
 .text-with-animation-1 span:first-child {
@@ -546,8 +555,9 @@ main p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: var(--step-2);
+  font-size: var(--step-0);
   letter-spacing: var(--space-s);
+  text-align: center;
 }
 
 .text-with-animation-2 span:first-child {
@@ -580,10 +590,9 @@ main p {
 .large-button {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: var(--space-12xl);
-  height: var(--space-6xl);
+  height: var(--space-4xl);
   margin: 0 auto;
   background: transparent;
   overflow: hidden;
@@ -598,6 +607,7 @@ main p {
   transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s, transform 0.3s;
   margin-block-start: var(--space-xl);
   view-transition-name: large-button;
+  text-align: center;
 }
 
 .large-button:focus,
@@ -610,7 +620,7 @@ main p {
   display: flex;
   flex-direction: column;
   gap: var(--space-5xs);
-  padding: var(--space-xs) var(--space-2xl);
+  padding: 0 var(--space-2xl);
   text-align: center;
 }
 
@@ -625,6 +635,7 @@ main p {
   margin: 0 auto;
   width: var(--space-l);
   height: var(--space-l);
+  fill: var(--text-color);
   transition: transform 0.3s, fill 0.3s;
 }
 
@@ -641,7 +652,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 var(--space-m) var(--space-s) var(--space-m);
+  padding: 0 var(--space-s);
   margin-block-start: auto;
   color: var(--text-color);
   letter-spacing: var(--letter-spacing);
@@ -651,9 +662,9 @@ footer {
 }
 
 .footer-text {
-  font-size: var(--step--1);
   padding: var(--space-2xs);
   word-spacing: 0;
+  white-space: nowrap;
 }
 
 /*------------------ Theme switcher styles  ---------------*/
@@ -673,17 +684,18 @@ footer {
 }
 
 .theme-switcher {
-  max-inline-size: none;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 0;
   pointer-events: auto;
+  padding-block-end: 0;
+
 }
 
 .theme-switcher span {
-  font-size: var(--step--1);
   color: var(--text-color);
+  font-size: var(--step--1);
+  margin-inline-end: 0;
+  padding: 0;
 }
 
 .theme-switcher input[type="radio"] {
@@ -715,8 +727,9 @@ footer {
 }
 
 .theme-button svg {
-  inline-size: var(--space-m);
-  block-size: var(--space-m);
+  width: var(--space-m);
+  height: var(--space-m);
+  fill: var(--text-color);
   transition: transform 0.3s, background-color 0.3s, padding 0.3s;
 }
 
@@ -726,7 +739,7 @@ footer {
 
 .theme-button:hover svg,
 .theme-button:focus svg {
-  transform: scale(1.5) rotate(90deg);
+  transform: scale(1.4) rotate(90deg);
   padding: 0;
   background-color: var(--text-span);
   border-radius: 50%;
@@ -754,7 +767,7 @@ footer {
     /* aligns items vertically centered in the horizontal row */
     justify-content: space-between;
     /* or center, or flex-start, as needed */
-    padding: 0 var(--space-m);
+    padding: 0 var(--space-xs);
   }
 }
 
