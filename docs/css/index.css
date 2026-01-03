@@ -32,7 +32,7 @@
 [data-theme="light"] .large-button {
   color: oklch(0% 0 0);
   mix-blend-mode: normal;
-  font-weight: 600;
+  font-weight: 400;
   /* optional, for more contrast */
 }
 
@@ -85,16 +85,15 @@
 
 
   /* Font families */
-  --font-primary: 'wire_oneregular', monospace, 'sans-serif';
+  --font-family-primary: 'wire_oneregular', monospace, sans-serif;
 
   --font-weight: normal;
   --font-style: normal;
 
-  --font-secondary: 'monotonregular', sans-serif;
+  --font-family-secondary: 'monotonregular', sans-serif;
 
   /*----------- Animation and transition settings -------------- */
 
-  --sp: 4s;
   --transition-speed: 0.3s ease-in-out;
 
   /*------------- letter and word spacing settings ---------------*/
@@ -103,7 +102,6 @@
   --letter-spacing: var(--space-5xs);
   --word-spacing: .02rem;
 }
-
 
 @supports (selector(::view-transition)) {
   .support.view-transition {
@@ -199,8 +197,6 @@
   }
 }
 
-
-
 /*----------------  global styles  ---------------*/
 
 p,
@@ -222,32 +218,26 @@ body,
 header,
 nav,
 main,
+section,
 footer {
   max-inline-size: none;
 }
 
 /*------------------ Body styles  ------------------*/
 
-
 html,
 body {
-  height: 100%;
-  min-height: 100dvh;
-}
-
-body {
-  background-attachment: fixed;
   background-image: var(--bg-image);
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
-  color: var(--text-color);
-  font-family: var(--font-primary), sans-serif;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: var(--font-family-primary), sans-serif;
+  font-size: var(--step-0);
   font-style: var(--font-style);
   font-weight: var(--font-weight);
-  font-size: var(--step--1);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
+  color: var(--text-color);
 }
 
 /* Make .wrapper take full viewport height */
@@ -528,7 +518,7 @@ main p {
 
 .text-with-animation {
   padding-block-start: var(--space-2xl);
-  font-size: var(--step-2);
+  font-size: var(--step-4);
   text-align: center;
 }
 
