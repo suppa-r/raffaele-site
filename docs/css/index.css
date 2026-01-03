@@ -625,7 +625,6 @@ main p {
   margin: 0 auto;
   width: var(--space-l);
   height: var(--space-l);
-  fill: red;
   transition: transform 0.3s, fill 0.3s;
 }
 
