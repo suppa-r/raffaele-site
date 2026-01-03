@@ -270,7 +270,6 @@ body::before {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -282,8 +281,8 @@ body::before {
   left: 0;
   bottom: 0;
   padding-inline-start: var(--space-xs);
-  flex-basis: 0;
-  flex-grow: 1;
+  flex-basis: var(--space-3xl);
+
   display: flex;
   transition: width 600ms ease;
   overflow: hidden;
@@ -409,11 +408,11 @@ body::before {
 /*----------------- main content -------------------*/
 
 main {
-  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
   flex-grow: 999;
-  min-inline-size: 80%;
-  margin: 0 auto;
-  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -428,7 +427,8 @@ header {
   box-shadow: var(--navbar-shadow);
   margin-block-start: var(--space-2xs);
   margin-block-end: var(--space-2xs);
-  margin-inline: var(--space-m);
+  margin-inline-start: var(--space-m);
+  margin-inline-end: var(--space-m);
   padding-block-start: var(--space-4xs);
   padding-block-end: var(--space-4xs);
   padding-inline-start: var(--space-m);
@@ -528,6 +528,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -614,7 +615,6 @@ header {
 /* Small screens */
 @media only screen and (max-width: 600px) {
   header {
-    margin: 0;
     margin-inline-start: var(--space-5xs);
     margin-inline-end: var(--space-5xs);
     padding-block-start: var(--space-xs);
@@ -628,6 +628,9 @@ header {
     left: 0;
     inline-size: 100%;
     z-index: 1000;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    width: 100%;
     /* Optional: style background, border, etc. */
     background: transparent;
   }
