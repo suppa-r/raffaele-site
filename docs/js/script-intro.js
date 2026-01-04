@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Element declarations to match HTML structure
   const themeSwitcher = document.querySelector('.theme-switcher');
   const themeButtons = document.querySelectorAll('.theme-button');
-  const navBar = document.querySelector('.navbar');
-  const main = document.querySelector('.main');
+
 
   // Helper functions
   function getDefaultTheme() {

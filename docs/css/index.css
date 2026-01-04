@@ -1,3 +1,8 @@
+@media (max-width: 600px) {
+  .footer-break {
+    display: block;
+  }
+}
 [data-theme="dark"] {
   --base-color: oklch(0% 0 0);
   --text-color: oklch(100% 0.00011 271.152);
@@ -39,7 +44,7 @@
 :root {
 
   /*----------- Fluid typography with mobile scaling ------------- */
-
+  --step-01: clamp(0.875rem, 0.8348rem + 0.1087vw, 1rem);
   --step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
   --step-1: clamp(1.25rem, 1.1632rem + 0.4341vw, 1.4996rem);
   --step-2: clamp(1.5625rem, 1.4107rem + 0.7591vw, 1.999rem);
@@ -646,15 +651,14 @@ main p {
 footer {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--space-2xs);
+  padding: 0 var(--space-s);
+  font-size: var(--step-01);
   view-transition-name: footer;
   grid-area: footer;
 }
 
 .footer-text {
-  padding: var(--space-2xs);
-  word-spacing: 0;
-  white-space: nowrap;
+  display: block;
 }
 
 /*------------------ Theme switcher styles  ---------------*/
@@ -750,6 +754,8 @@ footer {
     gap: var(--space-2xl);
   }
 }
+
+
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 
