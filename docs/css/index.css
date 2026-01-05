@@ -800,7 +800,7 @@ footer {
 
   footer {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0;
     margin: 0;
@@ -825,8 +825,8 @@ footer {
   }
 
   .theme-button svg {
-    width: var(--space-l);
-    height: var(--space-l);
+    width: var(--space-m);
+    height: var(--space-m);
     margin: 0;
     padding: 0;
   }
