@@ -807,20 +807,21 @@ footer {
     overflow: auto;
   }
 
-  .footer-title {
-    padding-left: 0;
-  }
-
   .footer-text {
-    padding-left: var(--space-xs);
+    display: block;
+    margin: 0;
+    padding-left: var(--space-2xs);
   }
 
   .footer-break {
-    white-space: nowrap;
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .theme-switcher {
-    margin: 0;
+    margin-left: var(--space-xs);
     padding: 0;
   }
 
