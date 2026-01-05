@@ -744,7 +744,7 @@ footer {
 
 /* Responsive footer title wrapping for small screens */
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   ::view-transition-old(curve-container),
   ::view-transition-new(curve-container) {
     animation: none;
@@ -793,6 +793,12 @@ footer {
 }
 
 @media (max-width: 400px) {
+  ::view-transition-old(curve-container),
+  ::view-transition-new(curve-container) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
   .wrapper {
     min-height: 100vh;
     width: 100%;
