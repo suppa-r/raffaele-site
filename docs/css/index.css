@@ -1,27 +1,39 @@
 [data-theme="dark"] {
   --base-color: oklch(0% 0 0);
   --text-color: oklch(100% 0.00011 271.152);
-  --text-span: oklch(79.833% 0.06154 206.649 / 0.438);
-  --text-title-span: oklch(80.721% 0.00786 16.678 / 0.589);
+  --text-span: oklch(67.53% 0.04556 196.219 / 0.966);
 
-  --bg-image: url('/docs/images/header-desktop.jpg');
+  --body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
+
+  --shadow: 0 30px 100px oklch(100% 0.00011 271.152);
+  --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
+
+  /* Darker shadow colors for animation */
+  --shadow-color: oklch(100% 0.00011 271.152 / 0.877);
+  --shadow-color2: oklch(100% 0.00011 271.152 / 0.726);
+  --shadow-color3: oklch(100% 0.00011 271.152 / 0.534);
+
+  --gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
+  --gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 [data-theme="light"] {
   --base-color: oklch(100% 0.00011 271.152);
   --text-color: oklch(0% 0 0);
-  --text-span: oklch(21.424% 0.0259 195.446 / 0.643);
-  --text-title-span: oklch(27.821% 0.00743 17.375 / 0.952);
+  --text-span: oklch(30.097% 0.03588 210.108 / 0.795);
 
+  --body-grid-line: oklch(0% 0 0 / 0.329);
 
-  --bg-image: url('/docs/images/white-1.jpg');
-}
+  --shadow: 0 30px 100px oklch(0% 0 0);
+  --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 
-[data-theme="light"] body,
-[data-theme="light"] .wrapper {
-  color: oklch(0% 0 0);
-  opacity: 1;
-  z-index: 1000;
+  /* Darker shadow colors for animation */
+  --shadow-color: oklch(0% 0 0 / 0.877);
+  --shadow-color2: oklch(0% 0 0 / 0.726);
+  --shadow-color3: oklch(0% 0 0 / 0.534);
+
+  --gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
+  --gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 :root {
@@ -197,17 +209,14 @@ figcaption {
 
 html,
 body {
-  background-image: var(--bg-image);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-family: var(--font-family-primary), sans-serif;
+  font-family: var(--font-family-primary);
   font-size: var(--step-0);
   font-style: var(--font-style);
   font-weight: var(--font-weight);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
   color: var(--text-color);
+  z-index: 0;
 }
 
 /* Make .wrapper take full viewport height */
@@ -581,7 +590,7 @@ blockquote {
   border-radius: 50%;
   color: var(--text-color);
   text-decoration: none;
-  box-shadow: 0 20px 10px 0 var(--text-color);
+  box-shadow: 0 20px 10px 0 var(--box-shadow-color);
   cursor: pointer;
   user-select: none;
   pointer-events: all;
@@ -593,7 +602,7 @@ blockquote {
 
 .large-button:focus,
 .large-button:hover {
-  box-shadow: 0 0 50px 10px var(--text-color);
+  box-shadow: 0 0 50px 10px var(--box-shadow-color);
   outline: 4px solid var(--text-color);
 }
 

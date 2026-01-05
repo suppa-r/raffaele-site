@@ -1,0 +1,51 @@
+[data-theme="dark"] {
+    --dot-bg: oklch(0% 0 0);
+    --dot-color: oklch(100% 0.00011 271.152 / 0.699);
+    --dot-size: 1px;
+    --dot-space: 22px;
+    --text-color: oklch(100% 0.00011 271.152);
+    --text-span: oklch(79.833% 0.06154 206.649 / 0.438);
+    --text-title-span: oklch(80.721% 0.00786 16.678 / 0.589);
+    --box-shadow-color: oklch(100% 0.00011 271.152 / 0.562);
+}
+
+[data-theme="light"] {
+    --dot-bg: oklch(94.109% 0.00766 207.862);
+    --dot-color: oklch(0% 0 0 / 0.979);
+    --dot-size: 1px;
+    --dot-space: 22px;
+    --text-color: oklch(0% 0 0);
+    --text-span: oklch(43.064% 0.03709 206.184 / 0.438);
+    --text-title-span: oklch(31.455% 0.01761 18.019);
+    --box-shadow-color: oklch(0% 0 0 / 0.904);
+}
+
+[data-theme="light"] body,
+[data-theme="light"] .wrapper {
+    color: oklch(0% 0 0);
+    opacity: 1;
+    z-index: 0;
+    position: relative;
+}
+
+[data-theme="light"] .wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(235, 229, 229, 0.199);
+    /* adjust opacity as needed */
+    z-index: -1000;
+    pointer-events: none;
+}
+
+
+body {
+    background:
+        linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        var(--dot-color);
+    z-index: -1000;
+}
