@@ -216,7 +216,6 @@ body {
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
   color: var(--text-color);
-  z-index: 0;
 }
 
 /* Make .wrapper take full viewport height */
@@ -228,6 +227,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  z-index: 1000;
   view-transition-name: wrapper;
 }
 
@@ -263,11 +263,9 @@ blockquote {
   font-style: italic;
   text-align: center;
   padding-block-start: var(--space-3xs);
-  font-size: var(--step-0);
 }
 
 .main-title {
-  font-size: var(--step-0);
   text-align: center;
   padding-block-start: var(--space-xs);
 }
@@ -276,7 +274,6 @@ blockquote {
   font-family: var(--font-family-secondary);
   font-weight: 400;
   font-style: italic;
-  font-size: var(--step-0);
   color: var(--text-title-span);
   padding-left: var(--space-xs);
 }
@@ -547,6 +544,7 @@ blockquote {
 }
 
 .text-with-animation-2 {
+  font-size: var(--step-2);
   display: grid;
   letter-spacing: var(--space-xs);
   text-align: center;
@@ -643,14 +641,12 @@ footer {
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  font-size: var(--step-01);
-  white-space: normal;
+  White-space: normal;
   word-break: break-word;
   view-transition-name: footer;
 }
 
 .footer-title {
-  font-size: var(--step-01);
   text-align: left;
   padding-left: var(--space-l);
 
@@ -674,7 +670,6 @@ footer {
 
 .theme-switcher span {
   color: var(--text-color);
-  font-size: var(--step-0);
   margin: 0;
   padding: 0;
 }
@@ -696,8 +691,6 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /*min-width: 5rem;
-  min-height: 2.75rem;*/
   padding: var(--space-xs);
   margin-left: var(--space-s);
   background-color: transparent;
