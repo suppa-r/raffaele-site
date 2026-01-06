@@ -3,7 +3,7 @@
   --text-color: oklch(100% 0.00011 271.152);
   --text-span: oklch(67.53% 0.04556 196.219 / 0.966);
 
-  --body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
+  --body-grid-line: oklch(100% 0.00011 271.152 / 0.2);
 
   --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
   --box-shadow-color: oklch(100% 0.00011 271.152 / 0.65);
@@ -22,7 +22,7 @@
   --text-color: oklch(0% 0 0);
   --text-span: oklch(30.097% 0.03588 210.108 / 0.795);
 
-  --body-grid-line: oklch(0% 0 0 / 0.329);
+  --body-grid-line: oklch(0% 0 0 / 0.514);
 
   --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
   --box-shadow-color: oklch(0% 0 0 / 1);
@@ -209,13 +209,38 @@ figcaption {
 
 html,
 body {
-  font-family: var(--font-family-primary);
+  color: var(--text-color);
+  font-family: var(--font-family-primary), sans-serif;
   font-size: var(--step-0);
   font-style: var(--font-style);
   font-weight: var(--font-weight);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
-  color: var(--text-color);
+}
+
+body {
+  background: var(--base-color);
+}
+
+body::before {
+  --size: 50px;
+  --line: var(--body-grid-line);
+  content: '';
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: linear-gradient(90deg,
+      var(--line) 1px,
+      transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+  mask-image: linear-gradient(-20deg, transparent 15%, var(--text-color));
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out;
+  isolation: isolate;
+  z-index: -2000;
+  overflow: hidden;
 }
 
 /* Make .wrapper take full viewport height */
@@ -229,6 +254,7 @@ body {
   margin: 0 auto;
   z-index: 1000;
   view-transition-name: wrapper;
+  overflow: hidden;
 }
 
 .wrapper>* {
@@ -821,8 +847,9 @@ footer {
   }
 
   .theme-switcher {
-    margin-left: var(--space-xs);
-    padding: 0;
+    display: flex;
+    pointer-events: auto;
+    margin-right: 0;
   }
 
   .theme-button svg {
