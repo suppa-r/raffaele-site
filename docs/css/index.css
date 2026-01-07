@@ -587,7 +587,7 @@ blockquote {
 .text-with-animation {
   font-size: var(--step-3);
   text-align: center;
-  animation: main-text-animation 2s ease-in-out forwards;
+  animation: main-text-animation 1s ease-in forwards;
   opacity: 0.1;
 }
 
