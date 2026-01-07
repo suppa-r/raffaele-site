@@ -2,6 +2,7 @@
   --base-color: oklch(0% 0 0);
   --text-color: oklch(100% 0.00011 271.152);
   --text-span: oklch(67.53% 0.04556 196.219 / 0.966);
+  --text-title-span: oklch(87.496% 0.01591 248.156 / 0.644);
 
   --body-grid-line: oklch(100% 0.00011 271.152 / 0.2);
 
@@ -82,7 +83,7 @@
   --font-weight: normal;
   --font-style: normal;
 
-  --font-family-secondary: 'monotonregular', sans-serif;
+  --font-family-secondary: 'pompiere_regular', sans-serif;
 
   /*----------- Animation and transition settings -------------- */
 
@@ -291,17 +292,24 @@ blockquote {
   padding-block-start: var(--space-3xs);
 }
 
-.main-title {
+.page-title {
   text-align: center;
-  padding-block-start: var(--space-xs);
+  padding-block-start: var(--space-3xs);
 }
 
-.main-title span {
-  font-family: var(--font-family-secondary);
-  font-weight: 400;
+.page-title span {
+  font-family: 'grupporegular', sans-serif;
+  font-size: var(--step-1);
+  font-weight: normal;
   font-style: italic;
   color: var(--text-title-span);
-  padding-left: var(--space-xs);
+  padding-left: var(--space-s);
+  box-shadow:
+    0 -100px 100px -200px var(--text-color),
+    /* Top shadow */
+    0 100px 100px -200px var(--text-color);
+  /* Bottom shadow */
+  animation: shadow ease-in-out 1.5s infinite;
 }
 
 /*------------------ Main styles  ------------------*/
