@@ -215,6 +215,7 @@ h4,
 h5,
 h6,
 figcaption {
+  max-inline-size: block;
   word-break: normal;
   overflow-wrap: break-word;
   margin-block: 0;
@@ -275,6 +276,7 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   view-transition-name: wrapper;
 }
@@ -296,6 +298,7 @@ header {
   padding-bottom: 0;
   padding-left: var(--padding-inline);
   view-transition-name: header;
+
 }
 
 /*------------------ Quote styles  ------------------*/
@@ -333,11 +336,8 @@ blockquote {
 .main-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-
-
-  gap: var(--space-l);
+  justify-content: flex-start;
+  gap: var(--space-s);
   view-transition-name: main;
 }
 
@@ -349,10 +349,10 @@ blockquote {
 
 .curve-container {
   font-size: var(--step-1);
+  /*padding-block: var(--space-l);*/
   display: grid;
   justify-content: center;
   gap: var(--space-3xl);
-  margin-block: var(--space-l);
   view-transition-name: curve-container;
 }
 
@@ -569,97 +569,59 @@ blockquote {
 
 /*------------------ Text and animations  ------------------*/
 
-.spacer-large {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-block-start: var(--space-xl);
+  view-transition-name: container;
 }
 
-
-.container-title {
+.text-with-animation-0 {
   font-size: var(--step-3);
   text-align: center;
-
 }
 
 .text-with-animation {
-  display: inline-block;
-
-
   font-size: var(--step-3);
   text-align: center;
+  display: inline-block;
+  overflow: hidden;
   animation: main-text-animation 1.7s ease-in-out forwards;
-  width: 500vw;
-  margin-left: -200vw;
-  margin-bottom: 0;
-  padding-bottom: 0;
 }
 
-.subtext-with-animation {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: var(--step-2);
+.text-with-animation-1 {
+  font-size: var(--step-3);
   text-align: center;
-  letter-spacing: var(--space-xs);
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.subtext-with-animation span {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
   display: block;
-}
-
-.subtext-with-animation span:first-of-type {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
-}
-
-.subtext-with-animation span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.7s forwards;
+  overflow: hidden;
+  animation: main-text-animation 1.7s ease-in-out forwards;
 }
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 25vw;
-    word-spacing: 100vw;
+    letter-spacing: 0.1em;
+    word-spacing: 1em;
     opacity: 0;
+    transform: translateY(0);
   }
-
   100% {
-    letter-spacing: 4px;
-    word-spacing: 1vw;
+    letter-spacing: 0.04em;
+    word-spacing: 0.2em;
     opacity: 1;
-  }
-}
-
-@keyframes word-animation {
-  0% {
-    top: 6vw;
-    opacity: 0;
-  }
-
-  100% {
-    top: 3.5vw;
-    opacity: 1;
+    transform: translateY(20px);
   }
 }
 
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
-  margin-block-start: var(--space-xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: var(--space-10xl);
+  width: var(--space-11xl);
   height: var(--space-5xl);
   margin: 0 auto;
   background: transparent;
@@ -672,7 +634,8 @@ blockquote {
   cursor: pointer;
   user-select: none;
   pointer-events: all;
-  transition: box-shadow 0.3s ease-in-out, outline 0.3s ease-in-out;
+  transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s, transform 0.3s;
+  margin-block-start: var(--space-s);
   text-align: center;
   view-transition-name: large-button;
 }
