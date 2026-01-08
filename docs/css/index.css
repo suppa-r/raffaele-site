@@ -589,7 +589,7 @@ blockquote {
   text-align: center;
   display: inline-block;
   overflow: hidden;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.9s ease-in-out forwards infinite;
 }
 
 .text-with-animation-1 {
@@ -597,7 +597,7 @@ blockquote {
   text-align: center;
   display: block;
   overflow: hidden;
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 1.9s ease-in-out forwards infinite;
 }
 
 @keyframes main-text-animation {
