@@ -703,6 +703,12 @@ footer {
 
 .footer-break {
   display: inline;
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  text-align: left;
+  margin-left: var(--space-m);
 }
 
 /*------------------ Theme switcher styles  ---------------*/
@@ -776,10 +782,16 @@ footer {
 /* Responsive footer title wrapping for small screens */
 
 @media (max-width: 768px) {
+
+
   ::view-transition-old(curve-container),
   ::view-transition-new(curve-container) {
     animation: none;
     mix-blend-mode: normal;
+  }
+
+  .wrapper {
+    overflow: hidden;
   }
 
   .curve-container {
@@ -798,14 +810,13 @@ footer {
   }
 
   .footer-break {
-    display: block;
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
+    display: inline;
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
     text-align: left;
-    font-size: 0.98em;
-    line-height: 1.3;
+    margin-left: 0;
   }
 
   .theme-switcher {
