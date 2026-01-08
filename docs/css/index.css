@@ -215,7 +215,6 @@ h4,
 h5,
 h6,
 figcaption {
-  max-inline-size: block;
   word-break: normal;
   overflow-wrap: break-word;
   margin-block: 0;
@@ -276,7 +275,6 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   margin: 0 auto;
   view-transition-name: wrapper;
 }
@@ -298,7 +296,6 @@ header {
   padding-bottom: 0;
   padding-left: var(--padding-inline);
   view-transition-name: header;
-
 }
 
 /*------------------ Quote styles  ------------------*/
@@ -336,8 +333,11 @@ blockquote {
 .main-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: var(--space-s);
+  justify-content: space-between;
+
+
+
+  gap: var(--space-l);
   view-transition-name: main;
 }
 
@@ -349,10 +349,10 @@ blockquote {
 
 .curve-container {
   font-size: var(--step-1);
-  /*padding-block: var(--space-l);*/
   display: grid;
   justify-content: center;
   gap: var(--space-3xl);
+  margin-block: var(--space-l);
   view-transition-name: curve-container;
 }
 
@@ -569,80 +569,85 @@ blockquote {
 
 /*------------------ Text and animations  ------------------*/
 
-.container {
+.spacer-large {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: var(--space-s);
-  padding-block-start: var(--space-xl);
-  view-transition-name: container;
 }
 
-.text-with-animation-0 {
+
+.container-title {
   font-size: var(--step-3);
   text-align: center;
+
 }
 
 .text-with-animation {
+  display: inline-block;
+
+
   font-size: var(--step-3);
   text-align: center;
-  animation: main-text-animation 1s ease-in forwards;
-  opacity: 0.1;
+  animation: main-text-animation 1.7s ease-in-out forwards;
+  width: 500vw;
+  margin-left: -200vw;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.subtext-with-animation {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--step-2);
+  text-align: center;
+  letter-spacing: var(--space-xs);
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.subtext-with-animation span {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: block;
+}
+
+.subtext-with-animation span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
+.subtext-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.7s forwards;
 }
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 10dvw;
-    word-spacing: 100dvw;
+    letter-spacing: 25vw;
+    word-spacing: 100vw;
     opacity: 0;
-    transform: translateY(-100dvw);
   }
-  40% {
-    letter-spacing: 2dvw;
-    word-spacing: 20dvw;
-    opacity: 0.5;
-    transform: translateY(10dvw);
-  }
-  80% {
-    letter-spacing: 8px;
-    word-spacing: 2dvw;
-    opacity: 0.9;
-    transform: translateY(-2dvw);
-  }
+
   100% {
     letter-spacing: 4px;
-    word-spacing: 1dvw;
+    word-spacing: 1vw;
     opacity: 1;
-    transform: translateY(0);
   }
-}
-
-.subtext-with-animation {
-  font-size: var(--step-2);
-  text-align: center;
-  letter-spacing: var(--space-s);
-  word-spacing: var(--space-s);
-}
-
-.subtext-with-animation span :first-of-type {
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1s forwards;
-
-}
-
-.subtext-with-animation span :last-of-type {
-  opacity: 0;
-  animation: word-animation 0.5s ease-out 1.4s forwards;
 }
 
 @keyframes word-animation {
   0% {
-    top: 10dvw;
+    top: 6vw;
     opacity: 0;
   }
+
   100% {
-    top: 3.5dvw;
+    top: 3.5vw;
     opacity: 1;
   }
 }
@@ -650,10 +655,11 @@ blockquote {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
+  margin-block-start: var(--space-xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: var(--space-11xl);
+  width: var(--space-10xl);
   height: var(--space-5xl);
   margin: 0 auto;
   background: transparent;
@@ -666,8 +672,7 @@ blockquote {
   cursor: pointer;
   user-select: none;
   pointer-events: all;
-  transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s, transform 0.3s;
-  margin-block-start: var(--space-s);
+  transition: box-shadow 0.3s ease-in-out, outline 0.3s ease-in-out;
   text-align: center;
   view-transition-name: large-button;
 }
