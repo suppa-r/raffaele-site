@@ -69,6 +69,7 @@
   --space-8xl: clamp(11rem, 10.5217rem + 2.3913vw, 12.375rem);
   --space-9xl: clamp(12rem, 11.4783rem + 2.6087vw, 13.5rem);
   --space-10xl: clamp(13rem, 12.4348rem + 2.8261vw, 14.625rem);
+  --space-11xl: clamp(14rem, 13.3913rem + 3.0435vw, 15.75rem);
 
 
   --space-2xs-xs: clamp(0.5rem, 0.3696rem + 0.6522vw, 0.875rem);
@@ -648,8 +649,7 @@ blockquote {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: var(--space-xs) var(--space-s);
-  text-align: center;
+  padding: var(--space-s);
   margin: 0 auto;
 }
 
@@ -680,35 +680,31 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-2xs);
+  padding: 0 var(--space-2xs);
   view-transition-name: footer;
 }
 
 .footer-title {
-  margin-left: var(--space-l);
-}
-
-.theme-switcher {
-  display: flex;
-  pointer-events: auto;
-  margin-inline: 0;
-  flex-basis: 0;
-  flex-grow: 1;
-  justify-content: flex-end;
+  padding-left: var(--space-s);
+  white-space: wrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .footer-text {
   display: block;
+  padding-left: var(--space-s);
+  white-space: wrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .footer-break {
   display: inline;
-  white-space: nowrap;
-  word-break: normal;
-  overflow-wrap: normal;
-  hyphens: none;
-  text-align: left;
-  margin-left: var(--space-m);
+  text-align: center;
+  margin-left: var(--space-2xs);
 }
 
 /*------------------ Theme switcher styles  ---------------*/
@@ -783,7 +779,6 @@ footer {
 
 @media (max-width: 768px) {
 
-
   ::view-transition-old(curve-container),
   ::view-transition-new(curve-container) {
     animation: none;
@@ -806,21 +801,68 @@ footer {
   }
 
   .footer-title {
-    padding-left: var(--space-2xs);
-  }
-
-  .footer-break {
-    display: inline;
-    white-space: nowrap;
+    padding-left: 0;
+    white-space: wrap;
     word-break: normal;
     overflow-wrap: normal;
     hyphens: none;
+  }
+
+  .footer-break {
+    display: block;
     text-align: left;
     margin-left: 0;
   }
 
   .theme-switcher {
-    margin-right: var(--space-2xs);
+    margin-right: var(--space-m);
+  }
+
+  .theme-button svg {
+    width: var(--space-l);
+    height: var(--space-l);
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  ::view-transition-old(curve-container),
+  ::view-transition-new(curve-container) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  .wrapper {
+    overflow: hidden;
+  }
+
+  .footer-title {
+    padding-left: var(--space-2xs);
+    white-space: wrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  .footer-text {
+    padding-left: 0;
+    white-space: wrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  .footer-break {
+    display: block;
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .theme-switcher {
+    margin-right: var(--space-xs);
   }
 
   .theme-button svg {
