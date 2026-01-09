@@ -71,26 +71,7 @@
   --space-10xl: clamp(13rem, 12.4348rem + 2.8261vw, 14.625rem);
   --space-11xl: clamp(14rem, 13.3913rem + 3.0435vw, 15.75rem);
 
-
-  --space-2xs-xs: clamp(0.5rem, 0.3696rem + 0.6522vw, 0.875rem);
-  --space-xs-s: clamp(0.75rem, 0.6196rem + 0.6522vw, 1.125rem);
-  --space-s-m: clamp(1rem, 0.7609rem + 1.1957vw, 1.6875rem);
-  --space-m-l: clamp(1.5rem, 1.2391rem + 1.3043vw, 2.25rem);
-  --space-l-xl: clamp(2rem, 1.5217rem + 2.3913vw, 3.375rem);
-  --space-xl-2xl: clamp(3rem, 2.4783rem + 2.6087vw, 4.5rem);
-  --space-2xl-3xl: clamp(4rem, 3.0435rem + 4.7826vw, 6.75rem);
-  --space-3xl-4xl: clamp(6rem, 5.3478rem + 3.2609vw, 7.875rem);
-  --space-4xl-5xl: clamp(7rem, 6.3043rem + 3.4783vw, 9rem);
-  --space-5xl-6xl: clamp(8rem, 7.2609rem + 3.6957vw, 10.125rem);
-  --space-6xl-7xl: clamp(9rem, 8.2174rem + 3.913vw, 11.25rem);
-  --space-7xl-8xl: clamp(10rem, 9.1739rem + 4.1304vw, 12.375rem);
-  --space-8xl-9xl: clamp(11rem, 10.1304rem + 4.3478vw, 13.5rem);
-  --space-9xl-10xl: clamp(12rem, 11.087rem + 4.5652vw, 14.625rem);
-
   /*---------------- Button and padding settings ----------------- */
-
-
-
 
   /* Font families */
   --font-family-primary: 'wire_oneregular', monospace, sans-serif;
@@ -596,7 +577,7 @@ blockquote {
   text-align: center;
   display: inline-block;
   overflow: hidden;
-  animation: main-text-animation 1.9s ease-in-out forwards infinite;
+  animation: main-text-animation 1.2s ease-in-out forwards;
 }
 
 .text-with-animation-1 {
@@ -604,7 +585,7 @@ blockquote {
   text-align: center;
   display: block;
   overflow: hidden;
-  animation: main-text-animation 1.9s ease-in-out forwards infinite;
+  animation: main-text-animation 1.6s ease-in-out forwards infinite;
 }
 
 @keyframes main-text-animation {
@@ -686,7 +667,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 var(--space-2xs);
+  padding: var(--space-xs) var(--padding-inline);
   view-transition-name: footer;
 }
 
@@ -790,10 +771,6 @@ footer {
     animation: none;
     mix-blend-mode: normal;
   }
-  body,
-  .wrapper {
-    overflow: hidden;
-  }
 
   .curve-container {
     gap: var(--space-2xl);
@@ -803,7 +780,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0;
+    padding: var(--space-xs) var(--padding-inline);
   }
 
   .footer-title {
@@ -831,6 +808,11 @@ footer {
     padding: 0;
   }
 
+  body,
+  .wrapper {
+    overflow: hidden;
+  }
+
 }
 
 @media (max-width: 400px) {
@@ -843,6 +825,13 @@ footer {
   body,
   .wrapper {
     overflow: hidden;
+  }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xs) var(--padding-inline);
   }
 
   .footer-title {
@@ -868,7 +857,7 @@ footer {
   }
 
   .theme-switcher {
-    margin: var(--space-3xs);
+    margin: var(--space-2xs);
   }
 
   .theme-button svg {

@@ -15,76 +15,25 @@
     <link rel="stylesheet" href="/docs/css/fonts.css" />
     <link rel="stylesheet" href="/docs/css/intro.css" />
     <script type="text/javascript" src="/docs/js/script-intro.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="nav.js" defer></script>
   </head>
 
   <body>
     <div class="wrapper">
-      <nav class="navbar" aria-label="Primary navigation">
-        <ul class="navbar-nav">
-          <li class="logo">
-            <a href="#" class="nav-link">
-              <span class="link-text logo-text">aweSOME</span>
-              <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="angle-double-right" role="img"
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                   class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x">
-                <g class="fa-group">
-                  <path fill="currentColor"
-                        d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z"
-                        class="fa-primary"></path>
-                  <path fill="currentColor"
-                        d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z"
-                        class="fa-primary"></path>
-                </g>
-              </svg>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="intro-1.html" class="nav-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                      d="M3.5 21.23q-.213 0-.356-.143Q3 20.943 3 20.73t.144-.356t.356-.143h17q.213 0 .356.144t.144.356t-.144.356t-.356.144zM5.808 19q-.343 0-.576-.232T5 18.192v-3.884q-.863-1.716-1.304-3.305q-.44-1.59-.44-3.01q0-1.18.3-2.453q.302-1.273.923-2.948q.084-.256.284-.424T5.244 2q.333 0 .556.266q.223.265.18.605l-.255 2.064q-.15 1.315.318 2.582T7.4 9.78t2.087 1.608T12 12q1.558 0 2.83.216q1.272.217 2.166.638q.952.46 1.478 1.184T19 15.85v2.342q0 .344-.232.576t-.576.232zM6 18h12v-2.15q0-.696-.358-1.216q-.357-.52-1.061-.853q-.814-.385-1.99-.583Q13.413 13 12 13q-1.535 0-2.928-.713q-1.393-.714-2.419-1.87Q5.627 9.258 5.098 7.79T4.75 4.8q-.25.75-.363 1.562t-.112 1.63q0 1.277.445 2.75q.446 1.472 1.28 3.285zm6-7.461q-1.237 0-2.119-.882T9 7.54t.881-2.12T12 4.54t2.119.88T15 7.54t-.881 2.118T12 10.54m0-1q.825 0 1.413-.588T14 7.539t-.587-1.413T12 5.539t-1.412.587T10 7.539t.588 1.412T12 9.539M8.539 19v-.406q0-1.406.989-2.385q.99-.978 2.395-.978h2.885q.212 0 .356.144t.144.356t-.144.356t-.356.144h-2.885q-1.013 0-1.699.69q-.685.689-.685 1.673V19zM12 7.539" />
-              </svg>
-              <span class="link-text">about me</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                      d="M2.73 19.116V4.192q0-.44.3-.739q.299-.3.74-.3h6.922q.44 0 .74.3q.299.299.299.74v2.96h8.5q.44 0 .74.3q.298.299.298.74v10.923q0 .44-.299.739t-.74.299H3.77q-.441 0-.74-.3t-.3-.738m1 .038h3v-3h-3zm0-4h3v-3h-3zm0-4h3v-3h-3zm0-4h3v-3h-3zm4 12h3v-3h-3zm0-4h3v-3h-3zm0-4h3v-3h-3zm0-4h3v-3h-3zm4 12h8.54v-11h-8.54v3h2.386v1H11.73v3h2.385v1H11.73zm4.77-7v-1h1v1zm0 4v-1h1v1z" />
-              </svg>
-              <span class="link-text">revit</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                      d="M20.1 7.037q0-1.727-1.215-2.942q-1.214-1.214-2.94-1.214q-.174 0-.3-.137t-.126-.315t.126-.3t.3-.123q2.088 0 3.559 1.471t1.471 3.56q0 .173-.127.299t-.302.126t-.31-.126t-.136-.3m-2.661.006q0-.63-.435-1.065t-1.065-.435q-.178 0-.299-.13q-.12-.131-.12-.3q0-.173.125-.3q.126-.126.3-.126q.97 0 1.66.69t.69 1.66q0 .174-.128.3q-.127.126-.302.126t-.3-.121t-.126-.299M4.616 20q-.691 0-1.153-.462T3 18.384V7.616q0-.691.463-1.153T4.615 6h2.958l1.366-1.485q.22-.238.533-.376Q9.783 4 10.125 4h3.914q.212 0 .356.144t.143.357t-.143.356t-.357.143H9.86L8.012 7H4.615q-.269 0-.442.173T4 7.616v10.769q0 .269.173.442t.443.173h14.769q.269 0 .442-.173t.173-.443V8.962q0-.212.144-.356t.357-.144t.356.144t.143.356v9.423q0 .691-.462 1.153T19.385 20zM12 16.73q1.567 0 2.649-1.081T15.731 13t-1.082-2.649T12 9.269t-2.649 1.082T8.269 13t1.082 2.649T12 16.731m0-1q-1.165 0-1.948-.783T9.269 13t.783-1.948T12 10.269t1.948.783t.783 1.948t-.783 1.948t-1.948.783" />
-              </svg>
-              <span class="link-text">photos</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                      d="m15.489 21.27l-3.558-3.558l.708-.708l2.85 2.85l5.688-5.688l.708.707zM12 11l7.692-5H4.308zm0 1.116L4 6.885v10.5q0 .269.173.442t.443.173H9.4l1 1H4.616q-.691 0-1.153-.462T3 17.384V6.616q0-.691.463-1.153T4.615 5h14.77q.69 0 1.152.463T21 6.616v4.926l-1 1V6.885zm0 0" />
-              </svg>
-              <span class="link-text">get in touch</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="index.html" class="nav-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                      d="M7.308 19q-.671 0-1.143-.472q-.473-.472-.473-1.144V9.947L3 11.952q-.177.115-.365.097q-.189-.018-.323-.195q-.135-.177-.114-.365q.021-.189.198-.324l8.629-6.451q.217-.162.463-.233T12 4.409t.513.072t.462.232l3.371 2.51v-1.28q0-.395.274-.669T17.288 5t.669.274t.274.668v2.696l3.392 2.528q.171.134.195.323t-.11.365t-.323.195t-.366-.097l-2.692-2.006v7.439q0 .67-.472 1.143q-.472.472-1.143.472h-1.866q-.671 0-1.143-.472t-.472-1.144v-3q0-.269-.173-.442t-.442-.173h-1.231q-.27 0-.443.173t-.173.442v3q0 .672-.472 1.144T9.154 19zm0-1h1.846q.269 0 .442-.173t.173-.442v-3q0-.671.472-1.144q.473-.472 1.144-.472h1.23q.672 0 1.144.472q.472.473.472 1.144v3q0 .269.173.442t.442.173h1.866q.269 0 .442-.173t.173-.442V9.21l-4.962-3.685Q12.213 5.41 12 5.41t-.365.115L6.692 9.21v8.175q0 .269.174.442q.173.173.442.173m2.884-7.994h3.616q0-.704-.542-1.159q-.543-.455-1.266-.455t-1.265.455t-.543 1.159M9.154 18q.269 0 .442-.173t.173-.442v-3q0-.671.472-1.144q.473-.472 1.144-.472h1.23q.672 0 1.144.472q.472.473.472 1.144v3q0 .269.173.442t.442.173q-.269 0-.442-.173t-.173-.442v-3q0-.671-.472-1.144t-1.143-.472h-1.231q-.671 0-1.144.472q-.472.473-.472 1.144v3q0 .269-.173.442T9.154 18" />
-              </svg>
-              <span class="link-text">home</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+
+      <div class="overlay-navigation">
+        <nav role="navigation">
+          <ul>
+            <li><a href="#" data-content="The beginning">Home</a></li>
+            <li><a href="#" data-content="Curious?">About</a></li>
+            <li><a href="#" data-content="I got game">Skills</a></li>
+            <li><a href="#" data-content="Only the finest">Works</a></li>
+            <li><a href="#" data-content="Don't hesitate">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
 
       <main aria-label="Introduction text">
         <header>
@@ -111,46 +60,40 @@
             </label>
           </div>
         </header>
-        <div class="main-content">
-
-          <p>Once upon a time ( approx. 1956 ) it began</p>
-          <p>If I had a secret .. I'm telling it now!</p>
-          <p>I found a new hand to play</p>
-          <p>Talk to the Dealer, you too!</p>
-          <p class="fancy">with a whole lotta Grace from <span>3:16</span></p>
-          <p>I walked the streets paved with gold,</p>
-          <p>touched all the bases,</p>
-          <p>and walked out of Buckingham Palace with the Crown Jewels</p>
-          <p class="p-small">wait a second; who was that?</p><br>
-          <p>everything I needed to know, found me.</p>
-          <p>it's one prayer, one Blessing, one Miracle at a time.</p>
-          <p>-- you couldn't microwave it then, or now --</p>
-          <p class="p-large">St. Pete open The Gates.</p>
-          <p class="p-large" aria-label="affirmation">--Ya--</p>
-          <p class="wrapper-gradient-text" aria-label="merci beaucoup">
-            <span class="text-layer" aria-hidden="true">m</span>
-            <span class="text-layer" aria-hidden="true">e</span>
-            <span class="text-layer" aria-hidden="true">r</span>
-            <span class="text-layer" aria-hidden="true">c</span>
-            <span class="text-layer" aria-hidden="true">i</span>
-            <span class="text-layer" aria-hidden="true"> </span>
-            <span class="text-layer" aria-hidden="true">b</span>
-            <span class="text-layer" aria-hidden="true">e</span>
-            <span class="text-layer" aria-hidden="true">a</span>
-            <span class="text-layer" aria-hidden="true">u</span>
-            <span class="text-layer" aria-hidden="true">c</span>
-            <span class="text-layer" aria-hidden="true">o</span>
-            <span class="text-layer" aria-hidden="true">p</span>
-          </p>
+        <div class="open-overlay">
+          <span class="bar-top"></span>
+          <span class="bar-middle"></span>
+          <span class="bar-bottom"></span>
         </div>
-
+        <p>Once upon a time ( approx. 1956 ) it began</p>
+        <p>If I had a secret .. I'm telling it now!</p>
+        <p class="fancy">with a whole lotta Grace from <span>3:16</span></p>
+        <p>I walked the streets paved with gold,</p>
+        <p>touched all the bases,</p>
+        <p>and walked out of Buckingham Palace with the Crown Jewels</p>
+        <p class="p-small">wait a second; who was that?</p>
+        <p>everything I needed to know, found me.</p>
+        <p>it's one prayer, one Blessing, one Miracle at a time.</p>
+        <p>-- you couldn't microwave it then, or now --</p>
+        <p class="p-large">St. Pete open The Gates.</p>
+        <p class="p-large" aria-label="affirmation">--Ya--</p>
+        <p class="wrapper-gradient-text" aria-label="merci beaucoup">
+          <span class="text-layer" aria-hidden="true">m</span>
+          <span class="text-layer" aria-hidden="true">e</span>
+          <span class="text-layer" aria-hidden="true">r</span>
+          <span class="text-layer" aria-hidden="true">c</span>
+          <span class="text-layer" aria-hidden="true">i</span>
+          <span class="text-layer" aria-hidden="true"> </span>
+          <span class="text-layer" aria-hidden="true">b</span>
+          <span class="text-layer" aria-hidden="true">e</span>
+          <span class="text-layer" aria-hidden="true">a</span>
+          <span class="text-layer" aria-hidden="true">u</span>
+          <span class="text-layer" aria-hidden="true">c</span>
+          <span class="text-layer" aria-hidden="true">o</span>
+          <span class="text-layer" aria-hidden="true">p</span>
+        </p>
       </main>
     </div>
-
-    <footer>
-      <p><span class="footer-text">a True Story of life in the cheap seats<span class="footer-break">( accomplished,
-            primarily, for taking the wrong fork! )</span></span></p>
-    </footer>
   </body>
 
 </html>
