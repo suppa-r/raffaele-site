@@ -51,7 +51,6 @@
 
   /*----------Fluid spacing with mobile scaling ------------------ */
 
-
   --space-4xs: clamp(0.125rem, 0.1033rem + 0.1087vw, 0.1875rem);
   --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vw, 0.3125rem);
   --space-2xs: clamp(0.5rem, 0.4783rem + 0.1087vw, 0.5625rem);
@@ -87,7 +86,7 @@
 
   /*------------- letter and word spacing settings ---------------*/
 
-  --padding-inline: var(--space-l);
+  --padding-inline: var(--space-2xs);
   --letter-spacing: var(--space-4xs);
   --word-spacing: var(--space-4xs);
   --sp: 4s;
@@ -258,14 +257,9 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   margin: 0 auto;
+  padding-inline: var(--padding-inline);
   view-transition-name: wrapper;
-}
-
-.wrapper>* {
-  width: 100%;
-  max-width: 100%;
 }
 
 /*------------------ Header styles  ------------------*/
@@ -667,7 +661,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-xs) var(--padding-inline);
+  margin: var(--space-xs) var(--space-xs);
   view-transition-name: footer;
 }
 
@@ -688,7 +682,6 @@ footer {
 
 .footer-break {
   display: inline;
-  text-align: left;
 }
 
 /*------------------ Theme switcher styles  ---------------*/
@@ -785,7 +778,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-xs) var(--padding-inline);
+    margin: var(--space-xs) var(--space-xs);
     view-transition-name: footer;
   }
 
@@ -806,7 +799,6 @@ footer {
 
   .footer-break {
     display: block;
-    text-align: left;
   }
 
   /*------------------ Theme switcher styles  ---------------*/
