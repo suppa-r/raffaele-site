@@ -857,7 +857,7 @@ footer {
   }
 
   .theme-switcher {
-    margin: var(--space-2xs);
+    margin-left: var(--space-xs);
   }
 
   .theme-button svg {
