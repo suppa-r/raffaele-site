@@ -672,7 +672,6 @@ footer {
 }
 
 .footer-title {
-  padding-left: var(--space-s);
   white-space: normal;
   word-break: normal;
   overflow-wrap: normal;
@@ -681,7 +680,6 @@ footer {
 
 .footer-text {
   display: block;
-  padding-left: var(--space-s);
   white-space: normal;
   word-break: normal;
   overflow-wrap: normal;
@@ -690,8 +688,7 @@ footer {
 
 .footer-break {
   display: inline;
-  text-align: center;
-  margin-left: var(--space-2xs);
+  text-align: left;
 }
 
 /*------------------ Theme switcher styles  ---------------*/
@@ -699,8 +696,6 @@ footer {
 .theme-switcher {
   display: flex;
   pointer-events: auto;
-  margin-right: var(--space-l);
-
 }
 
 .theme-switcher input[type="radio"] {
@@ -781,66 +776,20 @@ footer {
     gap: var(--space-2xl);
   }
 
-  footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-xs) var(--padding-inline);
-  }
-
-  .footer-title {
-    padding-left: 0;
-    white-space: normal;
-    word-break: normal;
-    overflow-wrap: normal;
-    hyphens: none;
-  }
-
-  .footer-break {
-    display: block;
-    text-align: left;
-    margin-left: 0;
-  }
-
-  .theme-switcher {
-    margin-right: var(--space-m);
-  }
-
-  .theme-button svg {
-    width: var(--space-l);
-    height: var(--space-l);
-    margin: 0;
-    padding: 0;
-  }
-
-  body,
-  .wrapper {
-    overflow: hidden;
-  }
-
-}
-
-@media (max-width: 400px) {
-
-  ::view-transition-old(curve-container),
-  ::view-transition-new(curve-container) {
-    animation: none;
-    mix-blend-mode: normal;
-  }
   body,
   .wrapper {
     overflow: hidden;
   }
 
   footer {
-    flex-direction: row;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--space-xs) var(--padding-inline);
+    view-transition-name: footer;
   }
 
   .footer-title {
-    margin: 0 0 var(--space-2xs) var(--space-2xs);
     white-space: normal;
     word-break: normal;
     overflow-wrap: normal;
@@ -848,7 +797,7 @@ footer {
   }
 
   .footer-text {
-    padding-left: 0;
+    display: block;
     white-space: normal;
     word-break: normal;
     overflow-wrap: normal;
@@ -858,18 +807,58 @@ footer {
   .footer-break {
     display: block;
     text-align: left;
-    margin-left: 0;
   }
 
+  /*------------------ Theme switcher styles  ---------------*/
+
   .theme-switcher {
-    margin: 0 var(--space-2xs) var(--space-2xs) 0;
+    display: flex;
+    pointer-events: auto;
+  }
+
+  .theme-switcher input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .theme-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+    isolation: isolate;
+    z-index: 2000;
   }
 
   .theme-button svg {
     width: var(--space-l);
     height: var(--space-l);
-    margin: 0;
+    fill: var(--text-color);
+    transition: transform 0.3s, background-color 0.3s, padding 0.3s;
+  }
+
+  .theme-switcher input[type="radio"]:checked+.theme-button {
+    display: none;
+  }
+
+  .theme-button:hover svg,
+  .theme-button:focus svg {
+    transform: scale(1.4) rotate(90deg);
     padding: 0;
+    background-color: var(--text-span);
+    border-radius: 50%;
   }
 }
 
