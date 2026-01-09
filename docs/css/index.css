@@ -39,7 +39,7 @@
 :root {
 
   /*----------- Fluid typography with mobile scaling ------------- */
-
+  --step-01: clamp(0.875rem, 0.8348rem + 0.1087vw, 1rem);
   --step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
   --step-1: clamp(1.25rem, 1.1632rem + 0.4341vw, 1.4996rem);
   --step-2: clamp(1.5625rem, 1.4107rem + 0.7591vw, 1.999rem);
@@ -216,7 +216,7 @@ h4,
 h5,
 h6,
 figcaption {
-  max-inline-size: block;
+  white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
   margin-block: 0;
@@ -310,17 +310,23 @@ blockquote {
 }
 
 .header-title {
-  color: var(--text-color);
-  font-style: italic;
-  text-align: center;
   padding-block-start: var(--space-3xs);
   font-size: var(--step-01);
 }
 
 .header-subtitle {
+
   font-size: var(--step-01);
   text-align: center;
   padding-block-start: var(--space-3xs);
+}
+
+.header-text {
+  display: block;
+  font-size: var(--step-01);
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
 }
 
 .main-title span {
@@ -328,7 +334,7 @@ blockquote {
   font-weight: 400;
   font-style: italic;
   font-size: var(--step-0);
-  color: var(--text-title-span);
+  color: var(--text-span);
   padding-left: var(--space-xs);
 }
 
@@ -670,7 +676,7 @@ blockquote {
 
 .large-button:hover svg,
 .large-button:focus svg {
-  transform: scale(1.6) rotate(45deg);
+  transform: scale(1.5) rotate(45deg);
   transition: transform 0.2s, fill 0.3s;
 }
 
@@ -686,7 +692,7 @@ footer {
 
 .footer-title {
   padding-left: var(--space-s);
-  white-space: wrap;
+  white-space: normal;
   word-break: normal;
   overflow-wrap: normal;
   hyphens: none;
@@ -695,7 +701,7 @@ footer {
 .footer-text {
   display: block;
   padding-left: var(--space-s);
-  white-space: wrap;
+  white-space: normal;
   word-break: normal;
   overflow-wrap: normal;
   hyphens: none;
@@ -784,7 +790,7 @@ footer {
     animation: none;
     mix-blend-mode: normal;
   }
-
+  body,
   .wrapper {
     overflow: hidden;
   }
@@ -802,7 +808,7 @@ footer {
 
   .footer-title {
     padding-left: 0;
-    white-space: wrap;
+    white-space: normal;
     word-break: normal;
     overflow-wrap: normal;
     hyphens: none;
@@ -834,14 +840,14 @@ footer {
     animation: none;
     mix-blend-mode: normal;
   }
-
+  body,
   .wrapper {
     overflow: hidden;
   }
 
   .footer-title {
     padding-left: var(--space-2xs);
-    white-space: wrap;
+    white-space: normal;
     word-break: normal;
     overflow-wrap: normal;
     hyphens: none;
@@ -849,7 +855,7 @@ footer {
 
   .footer-text {
     padding-left: 0;
-    white-space: wrap;
+    white-space: normal;
     word-break: normal;
     overflow-wrap: normal;
     hyphens: none;
