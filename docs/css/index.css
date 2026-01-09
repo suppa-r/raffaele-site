@@ -846,7 +846,7 @@ footer {
   }
 
   .footer-title {
-    padding-left: var(--space-2xs);
+    margin: 0 0 var(--space-2xs) var(--space-2xs);
     white-space: normal;
     word-break: normal;
     overflow-wrap: normal;
@@ -868,7 +868,7 @@ footer {
   }
 
   .theme-switcher {
-    margin-right: var(--space-xs);
+    margin: var(--space-3xs);
   }
 
   .theme-button svg {
@@ -877,7 +877,6 @@ footer {
     margin: 0;
     padding: 0;
   }
-
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
