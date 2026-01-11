@@ -579,7 +579,7 @@ blockquote {
   text-align: center;
   display: block;
   overflow: hidden;
-  animation: main-text-animation 1.6s ease-in-out forwards infinite;
+  animation: main-text-animation 1.6s ease-in-out forwards;
 }
 
 @keyframes main-text-animation {
@@ -752,7 +752,7 @@ footer {
 
 /* Responsive footer title wrapping for small screens */
 
-@media (max-width: 768px) {
+@media (max-width: 675px) {
 
   ::view-transition-old(curve-container),
   ::view-transition-new(curve-container) {
