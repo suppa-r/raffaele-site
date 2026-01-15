@@ -773,7 +773,7 @@ nav li:nth-of-type(5) {
 
 .wrapper-gradient-text {
     font-style: italic;
-    font-size: var(--step-1);
+    font-size: var(--step-2);
     margin: 0;
     /* Remove default margins */
     padding: 0;
@@ -807,7 +807,7 @@ nav li:nth-of-type(5) {
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 675px) {
 
     nav ul li a {
         font-size: 11px;
