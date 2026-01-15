@@ -20,7 +20,7 @@
 [data-theme="light"] {
   --base-color: oklch(100% 0.00011 271.152);
   --text-color: oklch(0% 0 0);
-  --text-span: oklch(30.097% 0.03588 210.108 / 0.795);
+  --text-span: oklch(30.097% 0.03588 210.108 / 0.192);
 
   --body-grid-line: oklch(0% 0 0 / 0.329);
 

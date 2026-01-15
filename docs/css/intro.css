@@ -20,7 +20,8 @@
 [data-theme="light"] {
     --base-color: oklch(100% 0.00011 271.152);
     --text-color: oklch(0% 0 0);
-    --text-span: oklch(30.097% 0.03588 210.108 / 0.795);
+    /* much darker text for light mode */
+    --text-span: oklch(37.786% 0.06082 213.062);
 
     --body-grid-line: oklch(0% 0 0 / 0.329);
 
@@ -28,9 +29,9 @@
     --navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 
     /* Darker shadow colors for animation */
-    --shadow-color: oklch(0% 0 0 / 0.877);
-    --shadow-color2: oklch(0% 0 0 / 0.726);
-    --shadow-color3: oklch(0% 0 0 / 0.534);
+    --shadow-color: oklch(0% 0 0);
+    --shadow-color2: oklch(0% 0 0 / 0.925);
+    --shadow-color3: oklch(0% 0 0 / 0.904);
 
     --gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
     --gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
@@ -39,6 +40,7 @@
 :root {
 
     /*----------- Fluid typography with mobile scaling ------------- */
+
     --step-01: clamp(0.875rem, 0.8348rem + 0.1087vw, 1rem);
     --step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
     --step-1: clamp(1.25rem, 1.1632rem + 0.4341vw, 1.4996rem);
@@ -50,7 +52,6 @@
     --step-7: clamp(4.7684rem, 3.5006rem + 6.3389vw, 8.4132rem);
 
     /*----------Fluid spacing with mobile scaling ------------------ */
-
 
     --space-4xs: clamp(0.125rem, 0.1033rem + 0.1087vw, 0.1875rem);
     --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vw, 0.3125rem);
@@ -71,9 +72,7 @@
     --space-10xl: clamp(13rem, 12.4348rem + 2.8261vw, 14.625rem);
     --space-11xl: clamp(14rem, 13.3913rem + 3.0435vw, 15.75rem);
 
-
     /*---------------- Button and padding settings ----------------- */
-
 
     /* Font families */
     --font-family-primary: 'wire_oneregular', monospace, sans-serif;
@@ -89,14 +88,11 @@
 
     /*------------- letter and word spacing settings ---------------*/
 
-    --padding-inline: var(--space-4xs);
+    --padding-inline: var(--space-2xs);
     --letter-spacing: var(--space-4xs);
     --word-spacing: var(--space-4xs);
     --sp: 4s;
-    --measure: 65ch;
 }
-
-/*---------------- Feature support detection ------------------*/
 
 @supports (selector(::view-transition)) {
     .support.view-transition {
@@ -202,7 +198,7 @@ h4,
 h5,
 h6,
 figcaption {
-    max-inline-size: var(--measure);
+    white-space: normal;
     word-break: normal;
     overflow-wrap: break-word;
     margin-block: 0;
@@ -213,6 +209,7 @@ body,
 header,
 nav,
 main,
+section,
 footer {
     max-inline-size: none;
 }
@@ -221,9 +218,6 @@ footer {
 
 html,
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
     color: var(--text-color);
     font-family: var(--font-family-primary), sans-serif;
     font-size: var(--step-0);
@@ -258,56 +252,39 @@ body::before {
     overflow: hidden;
 }
 
+/* Make .wrapper take full viewport height */
+
 .wrapper {
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    overflow: hidden;
+    justify-content: space-between;
     view-transition-name: wrapper;
 }
 
-.wrapper>* {
-    width: 100dvw;
-    max-width: 100%;
-}
-
-/*------header-------*/
+/*------------------ Header styles  ------------------*/
 
 header {
-    inline-size: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--gradient-header);
-    backdrop-filter: var(--backdrop-blur);
-    box-shadow: var(--navbar-shadow);
-    margin: var(--space-2xs) var(--space-xl);
-    padding: var(--space-4xs) var(--space-3xl);
-    border-radius: var(--space-l);
-    isolation: isolate;
-    transition: var(--transition-speed);
+    view-transition-name: header;
 }
 
-/*------title-------*/
+/*------------Header Title Quote styles  ------------*/
 
-.title-header {
-    color: var(--text-color);
-    text-align: right;
-    margin: 0;
-    padding: 0;
+.header-title {
+    padding-inline-start: var(--space-s);
+    margin-inline-end: 0;
+    font-size: var(--step-01);
 }
 
-.title-header span {
-    margin: 0;
-    padding: 0 var(--space-2xs) 0 0;
-    font-size: inherit;
+.header-title span {
     color: var(--text-span);
+    margin-inline-end: var(--space-xs);
 }
 
-/*------------------ Theme switcher styles  ---------------*/
+/*--------------- Theme switcher styles  -------------*/
 
 /* Visually hidden utility for accessibility */
 .visually-hidden {
@@ -324,7 +301,7 @@ header {
 
 .theme-switcher {
     max-inline-size: none;
-    padding-right: var(--space-2xs);
+    padding-inline-end: var(--space-s);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -385,12 +362,10 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    inline-size: 100%;
-    margin: 0 auto;
     flex-grow: 1;
-    margin-block: var(--space-s);
+    text-align: center;
+    view-transition-name: main;
 }
 
 /* ===============================  Navigation   ================================ */
@@ -561,12 +536,14 @@ nav li:nth-of-type(5) {
 /* =============================    Burger king    ============================= */
 
 .open-overlay {
+    display: block;
+    margin: 0 auto;
     /* position: absolute;
     right: 5rem;
     top: 3.2rem;*/
     z-index: 100;
     width: 34px;
-    display: block;
+
     cursor: pointer;
 }
 
