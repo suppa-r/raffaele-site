@@ -76,8 +76,8 @@
   /* Font families */
   --font-family-primary: 'wire_oneregular', monospace, sans-serif;
 
-  --font-weight: normal;
-  --font-style: normal;
+  --font-weight: 400;
+  --font-style: italic;
 
   --font-family-secondary: 'monotonregular', sans-serif;
 
@@ -203,6 +203,14 @@ figcaption {
   margin-block: 0;
 }
 
+h2, h3{
+  font-size: var(--step-2);
+  line-height: 1.2;
+  margin-block-start: 0;
+  font-weight: 400;
+  font-style: italic;
+}
+
 /*------------------ Body styles  ------------------*/
 
 html,
@@ -214,6 +222,7 @@ body {
   font-weight: var(--font-weight);
   word-spacing: var(--word-spacing);
   letter-spacing: var(--letter-spacing);
+  line-height: 1.5;
 }
 
 body {
@@ -257,45 +266,34 @@ header {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-view-transition-name: header;
+  view-transition-name: header;
 }
 
 /*------------------ Quote styles  ------------------*/
 
 .header-title {
   padding-block-start: var(--space-3xs);
- text-align: center;
+  text-align: center;
 }
 
 .header-text span {
-padding-inline-start: var(--space-l);
+  padding-inline-start: var(--space-l);
 }
 
 h1{
   font-size: var(--step-1);
-  font-family: var(--font-family-primary);
   font-style: italic;
   font-weight: 400;
   letter-spacing: var(--letter-spacing);
 }
 
 .header-subtitle {
-padding-block-start: var(--space-3xs);
+  padding-block-start: var(--space-3xs);
 }
 
 .header-subtitle span {
-  font-size: var(--step-2);
-padding-left: var(--space-xl);
+  padding-inline-start: var(--space-xl);
 } 
-
-.main-title span {
-  font-family: var(--font-family-secondary);
-  font-weight: 400;
-  font-style: italic;
-  font-size: var(--step-0);
-  color: var(--text-span);
-  padding-left: var(--space-xs);
-}
 
 /*------------------ Main styles  ------------------*/
 
@@ -310,7 +308,7 @@ padding-left: var(--space-xl);
 /*-------------curvature-----------------*/
 
 .curve-container {
-  font-size: var(--step-1);
+  font-size: var(--step-2);
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -532,8 +530,7 @@ padding-left: var(--space-xl);
 /*------------------ Text and animations  ------------------*/
 
 .container {
-  font-family: var(--font-family-primary);
-  display: flex;
+ display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -543,26 +540,21 @@ padding-left: var(--space-xl);
 }
 
 /* Style the semantic elements instead of divs */
-.container h2{
-  font-size: var(--step-2);
-  text-align: center;
-  display:block;
- font-style: italic;
-  font-weight: 400;
-}
 
 .container .text-with-animation-0 {
-  display: block;
-font-size: var(--step-4);
+  font-size: var(--step-4);
+text-align: center;
+  display:block;
+
   }
 
 .container .text-with-animation {
-    display: block;
+display: block;
 animation: main-text-animation 1.2s ease-in-out forwards;
 }
 
 .container .text-with-animation-1 {
-    display:block;
+display:block;
 animation: main-text-animation 1.6s ease-in-out forwards;
 }
 
@@ -716,7 +708,7 @@ footer {
 
 .theme-button:hover svg,
 .theme-button:focus svg {
-  transform: scale(1.4) rotate(90deg);
+  transform: scale(1.3) rotate(90deg);
   padding: 0;
   background-color: var(--text-span);
   border-radius: 50%;
