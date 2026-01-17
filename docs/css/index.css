@@ -39,6 +39,7 @@
 :root {
 
   /*----------- Fluid typography with mobile scaling ------------- */
+
   --step-01: clamp(0.875rem, 0.8348rem + 0.1087vw, 1rem);
   --step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
   --step-1: clamp(1.25rem, 1.1632rem + 0.4341vw, 1.4996rem);
@@ -86,7 +87,7 @@
 
   /*------------- letter and word spacing settings ---------------*/
 
-  --padding-inline: var(--space-2xs);
+  --padding-inline: var(--space-3xs);
   --letter-spacing: var(--space-4xs);
   --word-spacing: var(--space-4xs);
   --sp: 4s;
@@ -202,16 +203,6 @@ figcaption {
   margin-block: 0;
 }
 
-html,
-body,
-header,
-nav,
-main,
-section,
-footer {
-  max-inline-size: none;
-}
-
 /*------------------ Body styles  ------------------*/
 
 html,
@@ -230,7 +221,7 @@ body {
 }
 
 body::before {
-  --size: 50px;
+  --size: 30px;
   --line: var(--body-grid-line);
   content: '';
   height: 100vh;
@@ -257,9 +248,7 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 auto;
-  padding-inline: var(--padding-inline);
-  view-transition-name: wrapper;
+view-transition-name: wrapper;
 }
 
 /*------------------ Header styles  ------------------*/
@@ -268,41 +257,36 @@ header {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 0;
-  padding-top: 0;
-  padding-right: var(--padding-inline);
-  padding-bottom: 0;
-  padding-left: var(--padding-inline);
-  view-transition-name: header;
-
+view-transition-name: header;
 }
 
 /*------------------ Quote styles  ------------------*/
 
-blockquote {
-  margin: 0;
-  padding: 0;
-}
-
 .header-title {
   padding-block-start: var(--space-3xs);
-  font-size: var(--step-01);
+ text-align: center;
+}
+
+.header-text span {
+padding-inline-start: var(--space-l);
+}
+
+h1{
+  font-size: var(--step-1);
+  font-family: var(--font-family-primary);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing);
 }
 
 .header-subtitle {
-
-  font-size: var(--step-01);
-  text-align: center;
-  padding-block-start: var(--space-3xs);
+padding-block-start: var(--space-3xs);
 }
 
-.header-text {
-  display: block;
-  font-size: var(--step-01);
-  font-style: italic;
-  font-weight: 400;
-  text-align: center;
-}
+.header-subtitle span {
+  font-size: var(--step-2);
+padding-left: var(--space-xl);
+} 
 
 .main-title span {
   font-family: var(--font-family-secondary);
@@ -323,18 +307,14 @@ blockquote {
   view-transition-name: main;
 }
 
-.rows>div {
-  width: 100%;
-}
-
 /*-------------curvature-----------------*/
 
 .curve-container {
   font-size: var(--step-1);
-  /*padding-block: var(--space-l);*/
-  display: grid;
-  justify-content: center;
-  gap: var(--space-3xl);
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ gap: var(--space-3xl);
   view-transition-name: curve-container;
 }
 
@@ -552,6 +532,7 @@ blockquote {
 /*------------------ Text and animations  ------------------*/
 
 .container {
+  font-family: var(--font-family-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -561,25 +542,28 @@ blockquote {
   view-transition-name: container;
 }
 
-.text-with-animation-0 {
-  font-size: var(--step-3);
+/* Style the semantic elements instead of divs */
+.container h2{
+  font-size: var(--step-2);
   text-align: center;
+  display:block;
+ font-style: italic;
+  font-weight: 400;
 }
 
-.text-with-animation {
-  font-size: var(--step-3);
-  text-align: center;
-  display: inline-block;
-  overflow: hidden;
-  animation: main-text-animation 1.2s ease-in-out forwards;
-}
-
-.text-with-animation-1 {
-  font-size: var(--step-3);
-  text-align: center;
+.container .text-with-animation-0 {
   display: block;
-  overflow: hidden;
-  animation: main-text-animation 1.6s ease-in-out forwards;
+font-size: var(--step-4);
+  }
+
+.container .text-with-animation {
+    display: block;
+animation: main-text-animation 1.2s ease-in-out forwards;
+}
+
+.container .text-with-animation-1 {
+    display:block;
+animation: main-text-animation 1.6s ease-in-out forwards;
 }
 
 @keyframes main-text-animation {
@@ -661,7 +645,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: var(--space-xs) var(--space-xs);
+  margin: var(--space-xs) var(--space-s);
   view-transition-name: footer;
 }
 
@@ -670,6 +654,7 @@ footer {
   word-break: normal;
   overflow-wrap: normal;
   hyphens: none;
+  margin-left: var(--space-s);
 }
 
 .footer-text {
@@ -689,6 +674,7 @@ footer {
 .theme-switcher {
   display: flex;
   pointer-events: auto;
+  margin-right: var(--space-s);
 }
 
 .theme-switcher input[type="radio"] {
