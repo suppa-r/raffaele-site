@@ -98,6 +98,7 @@
     display: none;
   }
 }
+
 @container not style(--theme: 🥔) {
   .support.style-query {
     display: none;
@@ -154,15 +155,18 @@
     --rotation: -90deg;
     animation-timing-function: ease-in-out;
   }
+
   15% {
     --scale: 0.8;
     --rotation: -90deg;
   }
+
   85% {
     --scale: 0.8;
     --rotation: 0deg;
     animation-timing-function: ease-in-out;
   }
+
   to {
     --rotation: 0deg;
   }
@@ -173,15 +177,18 @@
     --rotation: 0deg;
     animation-timing-function: ease-in-out;
   }
+
   15% {
     --scale: 0.8;
     --rotation: 0deg;
   }
+
   85% {
     --scale: 0.8;
     --rotation: 90deg;
     animation-timing-function: ease-in-out;
   }
+
   to {
     --rotation: 90deg;
   }
@@ -203,7 +210,8 @@ figcaption {
   margin-block: 0;
 }
 
-h2, h3{
+h2,
+h3 {
   font-size: var(--step-2);
   line-height: 1.2;
   margin-block-start: 0;
@@ -257,7 +265,7 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-view-transition-name: wrapper;
+  view-transition-name: wrapper;
 }
 
 /*------------------ Header styles  ------------------*/
@@ -280,7 +288,7 @@ header {
   padding-inline-start: var(--space-l);
 }
 
-h1{
+h1 {
   font-size: var(--step-1);
   font-style: italic;
   font-weight: 400;
@@ -293,7 +301,7 @@ h1{
 
 .header-subtitle span {
   padding-inline-start: var(--space-xl);
-} 
+}
 
 /*------------------ Main styles  ------------------*/
 
@@ -309,10 +317,10 @@ h1{
 
 .curve-container {
   font-size: var(--step-2);
- display: flex;
- flex-direction: column;
- justify-content: center;
- gap: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3xl);
   view-transition-name: curve-container;
 }
 
@@ -368,12 +376,14 @@ h1{
 }
 
 @keyframes shadow {
+
   0%,
   10%,
   90%,
   100% {
     opacity: 0;
   }
+
   45%,
   55% {
     opacity: 0.5;
@@ -424,12 +434,14 @@ h1{
 }
 
 @keyframes go-up-2-8 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: -0.6vmin;
@@ -437,12 +449,14 @@ h1{
 }
 
 @keyframes go-up-3-7 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: -1.2vmin;
@@ -450,12 +464,14 @@ h1{
 }
 
 @keyframes go-up-4-6 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: -1.8vmin;
@@ -463,12 +479,14 @@ h1{
 }
 
 @keyframes go-up-5 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: -2.4vmin;
@@ -476,12 +494,14 @@ h1{
 }
 
 @keyframes go-down-2-8 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: 0.6vmin;
@@ -489,12 +509,14 @@ h1{
 }
 
 @keyframes go-down-3-7 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: 1.2vmin;
@@ -502,12 +524,14 @@ h1{
 }
 
 @keyframes go-down-4-6 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: 1.8vmin;
@@ -515,12 +539,14 @@ h1{
 }
 
 @keyframes go-down-5 {
+
   0%,
   10%,
   90%,
   100% {
     top: 0;
   }
+
   40%,
   60% {
     top: 2.4vmin;
@@ -530,7 +556,7 @@ h1{
 /*------------------ Text and animations  ------------------*/
 
 .container {
- display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -543,19 +569,19 @@ h1{
 
 .container .text-with-animation-0 {
   font-size: var(--step-4);
-text-align: center;
-  display:block;
+  text-align: center;
+  display: block;
 
-  }
+}
 
 .container .text-with-animation {
-display: block;
-animation: main-text-animation 1.2s ease-in-out forwards;
+  display: block;
+  animation: main-text-animation 1.2s ease-in-out forwards;
 }
 
 .container .text-with-animation-1 {
-display:block;
-animation: main-text-animation 1.6s ease-in-out forwards;
+  display: block;
+  animation: main-text-animation 1.6s ease-in-out forwards;
 }
 
 @keyframes main-text-animation {
@@ -564,6 +590,7 @@ animation: main-text-animation 1.6s ease-in-out forwards;
     word-spacing: 1em;
     opacity: 0;
   }
+
   100% {
     letter-spacing: 0.04em;
     word-spacing: 0.2em;
@@ -755,6 +782,7 @@ footer {
 /* Accessibility: Disable animations for users who prefer reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
+
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
