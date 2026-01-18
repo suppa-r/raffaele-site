@@ -76,7 +76,7 @@
 	--padding-inline: var(--space-3xs);
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-4xs);
-	--sp: 4s;
+	--sp: 3.5s;
 }
 
 @supports (selector(::view-transition)) {
@@ -332,11 +332,11 @@ h1 {
 
 .up:before,
 .down:before {
-	background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 70%);
+	background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 60%);
 	content: "";
 	position: absolute;
 	box-shadow: 0 0 100px 10px var(--text-color);
-	animation: shadow var(--sp) ease-in 0.6s infinite;
+	animation: shadow var(--sp) ease-in-out 0.6s infinite;
 }
 
 .up:before {
@@ -344,7 +344,7 @@ h1 {
 	height: 0.1vmin;
 	filter: blur(2px);
 	left: 0;
-	top: 49%;
+	top: 50%;
 }
 
 .down:before {
@@ -353,7 +353,7 @@ h1 {
 	filter: blur(3px);
 	left: 50%;
 	transform: translateX(-50%);
-	top: 45%;
+	top: 50%;
 }
 
 @keyframes shadow {
