@@ -565,7 +565,7 @@ h1 {
 	0% {
 		letter-spacing: 0.2em;
 		word-spacing: 10em;
-		opacity: 0;
+		opacity: 1;
 	}
 
 	100% {
