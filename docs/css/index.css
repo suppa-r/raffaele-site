@@ -33,6 +33,8 @@
 	--step-2: clamp(1.5625rem, 1.4107rem + 0.7591vw, 1.999rem);
 	--step-3: clamp(1.9531rem, 1.7056rem + 1.2375vw, 2.6647rem);
 	--step-4: clamp(2.4414rem, 2.0551rem + 1.9315vw, 3.552rem);
+	--step-5: clamp(3.0518rem, 2.4685rem + 2.9871vw, 4.736rem);
+	--step-6: clamp(3.8147rem, 2.9556rem + 4.4933vw, 6.3168rem);
 
 	/*----------Fluid spacing with mobile scaling ------------------ */
 
@@ -355,6 +357,7 @@ h1 {
 }
 
 @keyframes shadow {
+
 	0%,
 	10%,
 	90%,
@@ -412,6 +415,7 @@ h1 {
 }
 
 @keyframes go-up-2-8 {
+
 	0%,
 	10%,
 	90%,
@@ -426,6 +430,7 @@ h1 {
 }
 
 @keyframes go-up-3-7 {
+
 	0%,
 	10%,
 	90%,
@@ -440,6 +445,7 @@ h1 {
 }
 
 @keyframes go-up-4-6 {
+
 	0%,
 	10%,
 	90%,
@@ -454,6 +460,7 @@ h1 {
 }
 
 @keyframes go-up-5 {
+
 	0%,
 	10%,
 	90%,
@@ -468,6 +475,7 @@ h1 {
 }
 
 @keyframes go-down-2-8 {
+
 	0%,
 	10%,
 	90%,
@@ -482,6 +490,7 @@ h1 {
 }
 
 @keyframes go-down-3-7 {
+
 	0%,
 	10%,
 	90%,
@@ -496,6 +505,7 @@ h1 {
 }
 
 @keyframes go-down-4-6 {
+
 	0%,
 	10%,
 	90%,
@@ -510,6 +520,7 @@ h1 {
 }
 
 @keyframes go-down-5 {
+
 	0%,
 	10%,
 	90%,
@@ -538,7 +549,7 @@ h1 {
 /* Style the semantic elements instead of divs */
 
 .container .text-with-animation-0 {
-	font-size: var(--step-4);
+	font-size: var(--step-6);
 	display: block;
 }
 
@@ -708,7 +719,7 @@ footer {
 		padding 0.3s;
 }
 
-.theme-switcher input[type="radio"]:checked + .theme-button {
+.theme-switcher input[type="radio"]:checked+.theme-button {
 	display: none;
 }
 
@@ -737,6 +748,7 @@ footer {
 /* Responsive footer title wrapping for small screens */
 
 @media (max-width: 675px) {
+
 	::view-transition-old(curve-container),
 	::view-transition-new(curve-container) {
 		animation: none;
@@ -759,6 +771,7 @@ footer {
 /* Accessibility: Disable animations for users who prefer reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
+
 	::view-transition-group(*),
 	::view-transition-old(*),
 	::view-transition-new(*) {
@@ -775,8 +788,8 @@ footer {
 		animation: none;
 	}
 
-	.large-button:hover > svg,
-	.large-button:focus > svg {
+	.large-button:hover>svg,
+	.large-button:focus>svg {
 		transform: none;
 	}
 
