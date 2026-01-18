@@ -110,11 +110,11 @@
 
 	--font-family-secondary: "monotonregular", sans-serif;
 
-	/*----------- Animation and transition settings -------------- */
+	/*----------- Animation and transition settings ---------------- */
 
 	--transition-speed: 0.3s ease-in-out;
 
-	/*------------- letter and word spacing settings ---------------*/
+	/*------------- letter and word spacing settings ----------------*/
 
 	--padding-inline: var(--space-3xs);
 	--letter-spacing: var(--space-4xs);
@@ -134,7 +134,7 @@
 	}
 }
 
-/*---------------- View Transition styles  ------------------*/
+/*------------------- View Transition styles  --------------------*/
 
 ::view-transition {
 	background: var(--base-color);
@@ -222,7 +222,7 @@
 	}
 }
 
-/*----------------  global styles  ---------------*/
+/*--------------------------  global styles  ----------------------*/
 
 p,
 h1,
@@ -247,7 +247,7 @@ h3 {
 	font-style: italic;
 }
 
-/*------------------ Body styles  ------------------*/
+/*-------------------------- Body styles  -------------------------*/
 
 html,
 body {
@@ -297,14 +297,14 @@ body::before {
 	view-transition-name: wrapper;
 }
 
-/*------------------ Header styles  ------------------*/
+/*----------------------- Header styles  ------------------------*/
 
 header {
 	view-transition-name: header;
 	mix-blend-mode: var(--blend-mode);
 }
 
-/*------------------ Quote styles  ------------------*/
+/*---------------------- Quote styles  --------------------------*/
 
 .header-title {
 	padding-block-start: var(--space-3xs);
@@ -330,8 +330,7 @@ h1 {
 	padding-inline-start: var(--space-xl);
 }
 
-/*------------------ Main styles  ------------------*/
-
+/*----------------------- Main styles  --------------------------*/
 .main-content {
 	display: flex;
 	flex-direction: column;
@@ -340,7 +339,7 @@ h1 {
 	view-transition-name: main;
 }
 
-/*-------------curvature-----------------*/
+/* -----------------------curvature-------------------------------*/
 
 .curve-container {
 	font-size: var(--step-2);
