@@ -76,7 +76,7 @@
 	--padding-inline: var(--space-3xs);
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-4xs);
-	--sp: 3.5s;
+	--sp: 6s;
 }
 
 @supports (selector(::view-transition)) {
@@ -332,11 +332,11 @@ h1 {
 
 .up:before,
 .down:before {
-	background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 60%);
+	background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 80%);
 	content: "";
 	position: absolute;
-	box-shadow: 0 0 100px 10px var(--text-color);
-	animation: shadow var(--sp) ease-in-out 0.6s infinite;
+	box-shadow: 0 0 300px 20px var(--text-color);
+	animation: shadow var(--sp) ease-in-out 1.2s infinite;
 }
 
 .up:before {
@@ -553,24 +553,24 @@ h1 {
 
 .container .text-with-animation {
 	display: block;
-	animation: main-text-animation 1.2s ease-in-out forwards;
+	animation: main-text-animation 1.5s ease-in forwards;
 }
 
 .container .text-with-animation-1 {
 	display: block;
-	animation: main-text-animation 1.6s ease-in-out forwards;
+	animation: main-text-animation 10s ease-in forwards;
 }
 
 @keyframes main-text-animation {
 	0% {
 		letter-spacing: 0.2em;
-		word-spacing: 4em;
+		word-spacing: 10em;
 		opacity: 0;
 	}
 
 	100% {
-		letter-spacing: 0.3em;
-		word-spacing: 0.2em;
+		letter-spacing: 0.4em;
+		word-spacing: 0.3em;
 		opacity: 1;
 	}
 }
