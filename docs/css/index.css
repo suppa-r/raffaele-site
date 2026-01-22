@@ -794,34 +794,11 @@ footer {
 		}
 	}
 
-
-
 	.footer-break {
 		display: block;
 	}
 
-	/*.container .text-with-animation {
-		animation: mobile-text-animation 0.8s ease-out forwards;
-		will-change: letter-spacing, word-spacing;
-	}
-
-	.container .text-with-animation-1 {
-		animation: mobile-text-animation 0.8s ease-out forwards;
-		will-change: letter-spacing, word-spacing;
-	}
-
-	@keyframes mobile-text-animation {
-		0% {
-			letter-spacing: 0.3em;
-			word-spacing: 1em;
-		}
-		100% {
-			letter-spacing: var(--letter-spacing);
-			word-spacing: var(--word-spacing);
-		}
-	}
-
-	/* Simplify button interactions on mobile *
+	/* Simplify button interactions on mobile */
 	.large-button {
 		box-shadow: 0 10px 5px 0 var(--text-color);
 	}
@@ -829,7 +806,7 @@ footer {
 	.large-button:hover svg,
 	.large-button:focus svg {
 		transform: scale(1.2) rotate(45deg);
-	}*/
+	}
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
