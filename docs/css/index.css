@@ -554,24 +554,24 @@ h1 {
 
 .container .text-with-animation {
 	display: block;
-	animation: main-text-animation 1.5s ease-in forwards;
+	animation: main-text-animation 5s ease-out infinite;
 }
 
 .container .text-with-animation-1 {
 	display: block;
-	animation: main-text-animation 10s ease-in forwards;
+	animation: main-text-animation 5s ease-out infinite;
 }
 
 @keyframes main-text-animation {
 	0% {
 		letter-spacing: 0.2em;
-		word-spacing: 10em;
-		opacity: 1;
+		word-spacing: 20em;
+		opacity: 0;
 	}
 
 	100% {
 		letter-spacing: 0.4em;
-		word-spacing: 0.3em;
+		word-spacing: 0.5em;
 		opacity: 1;
 	}
 }
@@ -768,24 +768,39 @@ footer {
 		gap: var(--space-2xl);
 	}
 
+	.container .text-with-animation {
+		display: block;
+		animation: main-text-animation 5s ease-out infinite;
+		will-change: letter-spacing, word-spacing;
+	}
+
+	.container .text-with-animation-1 {
+		display: block;
+		animation: main-text-animation 5s ease-out infinite;
+		will-change: letter-spacing, word-spacing;
+	}
+
+	@keyframes main-text-animation {
+		0% {
+			letter-spacing: 0.2em;
+			word-spacing: 10em;
+			opacity: 0;
+		}
+
+		100% {
+			letter-spacing: 0.4em;
+			word-spacing: 0.5em;
+			opacity: 1;
+		}
+	}
+
+
+
 	.footer-break {
 		display: block;
 	}
 
-	/* Disable expensive animations on mobile for better performance */
-	.up span,
-	.down span {
-		animation: none;
-	}
-
-	.up:before,
-	.down:before {
-		animation: none;
-		box-shadow: none;
-		opacity: 0;
-	}
-
-	.container .text-with-animation {
+	/*.container .text-with-animation {
 		animation: mobile-text-animation 0.8s ease-out forwards;
 		will-change: letter-spacing, word-spacing;
 	}
@@ -806,7 +821,7 @@ footer {
 		}
 	}
 
-	/* Simplify button interactions on mobile */
+	/* Simplify button interactions on mobile *
 	.large-button {
 		box-shadow: 0 10px 5px 0 var(--text-color);
 	}
@@ -814,7 +829,7 @@ footer {
 	.large-button:hover svg,
 	.large-button:focus svg {
 		transform: scale(1.2) rotate(45deg);
-	}
+	}*/
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
