@@ -2,26 +2,32 @@
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
 	--text-color-semi: oklch(100% 0.00011 271.152 / 0.5);
-	--text-span: oklch(67.53% 0.04556 196.219 / 0.966);
+	--text-span: oklch(26.239% 0.04211 189.859 / 0.842);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
 	--shadow: 0 30px 100px oklch(100% 0.00011 271.152);
 
 	--blend-mode: normal;
+
+	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(69.426% 0.07915 211.737), oklch(94.713% 0.00765 207.868 / 0.884), oklch(78.484% 0.08038 198.735));
+	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.904), oklch(89.425% 0.02547 212.442 / 0.801), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 [data-theme="light"] {
 	--base-color: oklch(100% 0.00011 271.152);
 	--text-color: oklch(0% 0 0);
 	--text-color-semi: oklch(0% 0 0 / 0.5);
-	--text-span: oklch(30.097% 0.03588 210.108 / 0.192);
+	--text-span: oklch(50.242% 0.06887 214.218);
 
 	--body-grid-line: oklch(0% 0 0 / 0.329);
 
 	--shadow: 0 30px 100px oklch(0% 0 0);
 
 	--blend-mode: multiply;
+
+	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(69.426% 0.07915 211.737), oklch(81.5% 0.04154 202.283 / 0.884), oklch(78.484% 0.08038 198.735));
+	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 :root {
@@ -439,7 +445,12 @@ nav li:nth-of-type(5) {
 /* =====================    Burger king    ================ */
 
 .open-overlay {
+	position: fixed;
+	top: var(--space-3xl);
+	right: 50%;
+	transform: translateX(50%);
 	display: block;
+	margin-block-end: var(--space-3xl);
 	margin: 0 auto;
 	z-index: 1000;
 	width: 34px;
@@ -606,23 +617,33 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: var(--space-s);
-	view-transition-name: header;
+	background: var(--gradient-header);
+	backdrop-filter: var(--backdrop-blur);
+	box-shadow: var(--navbar-shadow);
+	margin: var(--space-2xs) var(--space-3xl);
+	padding: var(--space-4xs) var(--space-xl);
+	border-radius: var(--space-l);
+	isolation: isolate;
+	transition: var(--transition-speed);
 }
 
-/*------------Header Title Quote styles  ------------*/
+/*---------------------title-----------------------*/
 
-.header-title {
-	padding-inline-start: var(--space-s);
-	margin-inline-end: 0;
+.title-header {
+	color: var(--text-color);
+	text-align: right;
+	margin: 0;
+	padding: 0;
 }
 
-.header-title span {
+.title-header span {
+	margin: 0;
+	padding: 0 var(--space-2xs) 0 0;
+	font-size: inherit;
 	color: var(--text-span);
-	margin-inline-end: var(--space-xs);
 }
 
-/*--------------- Theme switcher styles  ------------*/
+/*------------------ Theme switcher styles  ---------------*/
 
 /* Visually hidden utility for accessibility */
 .visually-hidden {
@@ -698,7 +719,7 @@ header {
 }
 
 main {
-	margin-block-start: var(--space-2xl);
+	margin-block-start: var(--space-4xl);
 	text-align: center;
 	view-transition-name: main;
 }
@@ -795,6 +816,7 @@ main {
 }
 
 @media (max-width: 675px) {
+
 	nav ul li a {
 		font-size: 11px;
 	}
@@ -813,7 +835,24 @@ main {
 
 	main {
 		inline-size: 100%;
-		margin: 0;
-		padding: 0;
+		margin-block-start: var(--space-3xl);
+	}
+
+	header {
+		margin: 0 var(--space-s);
+		padding: 0 var(--space-s);
+	}
+
+	.open-overlay {
+		position: fixed;
+		top: var(--space-3xl);
+		right: 50%;
+		transform: translateX(50%);
+		display: block;
+		margin-block-end: var(--space-3xl);
+		margin: 0 auto;
+		z-index: 1000;
+		width: 34px;
+		cursor: pointer;
 	}
 }

@@ -2,7 +2,7 @@
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
 	--text-color-semi: oklch(100% 0.00011 271.152 / 0.5);
-	--text-span: oklch(67.53% 0.04556 196.219 / 0.966);
+	--text-span: oklch(26.239% 0.04211 189.859 / 0.842);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
@@ -10,14 +10,15 @@
 
 	--blend-mode: normal;
 
-	--gradient: linear-gradient(90deg, oklch(63.177% 0.05186 247.753) 0%, oklch(79.334% 0.10378 151.523) 50%, oklch(28.335% 0.04789 146.182) 100%);
+	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(69.426% 0.07915 211.737), oklch(94.713% 0.00765 207.868 / 0.884), oklch(78.484% 0.08038 198.735));
+	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.904), oklch(89.425% 0.02547 212.442 / 0.801), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 [data-theme="light"] {
 	--base-color: oklch(100% 0.00011 271.152);
 	--text-color: oklch(0% 0 0);
 	--text-color-semi: oklch(0% 0 0 / 0.5);
-	--text-span: oklch(30.097% 0.03588 210.108 / 0.192);
+	--text-span: oklch(50.242% 0.06887 214.218);
 
 	--body-grid-line: oklch(0% 0 0 / 0.329);
 
@@ -25,7 +26,8 @@
 
 	--blend-mode: multiply;
 
-	--gradient: linear-gradient(90deg, oklch(63.177% 0.05186 247.753) 0%, oklch(79.334% 0.10378 151.523) 50%, oklch(28.335% 0.04789 146.182) 100%);
+	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(69.426% 0.07915 211.737), oklch(81.5% 0.04154 202.283 / 0.884), oklch(78.484% 0.08038 198.735));
+	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 :root {
@@ -233,15 +235,13 @@ body::before {
 	height: 100vh;
 	width: 100vw;
 	position: fixed;
-	background:
-		linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+	background: linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
 		linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
 	mask-image: linear-gradient(-20deg, transparent 15%, var(--text-color));
 	mask-size: 100% 100%;
 	mask-repeat: no-repeat;
 	transform-style: preserve-3d;
-	transition:
-		transform 0.3s ease-in-out,
+	transition: transform 0.3s ease-in-out,
 		opacity 0.7s ease-in-out;
 	isolation: isolate;
 	z-index: -2000;
@@ -368,7 +368,7 @@ header {
 
 main {
 	flex-grow: 1;
-	margin-block: var(--space-s);
+	view-transition-name: main;
 }
 
 .profile-title {
@@ -399,9 +399,9 @@ main {
 	text-align: center;
 	color: var(--text-color);
 	text-shadow: var(--text-shadow);
-	background: var(--gradient);
+	background: var(--gradient-header);
 	background-size: 400% 400%;
-	animation: gradientAnimation 4s ease-in-out infinite alternate;
+	animation: gradientAnimation 4s ease-in infinite alternate;
 	border-radius: var(--space-l);
 	box-shadow: var(--shadow);
 	display: inline-block;
