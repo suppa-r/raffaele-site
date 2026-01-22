@@ -21,7 +21,7 @@
 
 	--shadow: 0 30px 100px oklch(0% 0 0);
 
-	--blend-mode: multiply;
+	--blend-mode: normal;
 }
 
 :root {
@@ -38,6 +38,7 @@
 
 	/*----------Fluid spacing with mobile scaling ------------------ */
 
+	--space-5xs: clamp(0.0625rem, 0.0516rem + 0.0543vw, 0.09375rem);
 	--space-4xs: clamp(0.125rem, 0.1033rem + 0.1087vw, 0.1875rem);
 	--space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vw, 0.3125rem);
 	--space-2xs: clamp(0.5rem, 0.4783rem + 0.1087vw, 0.5625rem);
@@ -75,7 +76,7 @@
 
 	--padding-inline: var(--space-3xs);
 	--letter-spacing: var(--space-4xs);
-	--word-spacing: var(--space-4xs);
+	--word-spacing: var(--space-5xs);
 	--sp: 6s;
 }
 
@@ -769,6 +770,50 @@ footer {
 
 	.footer-break {
 		display: block;
+	}
+
+	/* Disable expensive animations on mobile for better performance */
+	.up span,
+	.down span {
+		animation: none;
+	}
+
+	.up:before,
+	.down:before {
+		animation: none;
+		box-shadow: none;
+		opacity: 0;
+	}
+
+	.container .text-with-animation {
+		animation: mobile-text-animation 0.8s ease-out forwards;
+		will-change: letter-spacing, word-spacing;
+	}
+
+	.container .text-with-animation-1 {
+		animation: mobile-text-animation 0.8s ease-out forwards;
+		will-change: letter-spacing, word-spacing;
+	}
+
+	@keyframes mobile-text-animation {
+		0% {
+			letter-spacing: 0.3em;
+			word-spacing: 1em;
+		}
+		100% {
+			letter-spacing: var(--letter-spacing);
+			word-spacing: var(--word-spacing);
+		}
+	}
+
+	/* Simplify button interactions on mobile */
+	.large-button {
+		box-shadow: 0 10px 5px 0 var(--text-color);
+	}
+
+	.large-button:hover svg,
+	.large-button:focus svg {
+		transform: scale(1.2) rotate(45deg);
 	}
 }
 
