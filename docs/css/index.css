@@ -782,14 +782,14 @@ footer {
 
 	@keyframes main-text-animation {
 		0% {
-			letter-spacing: 0.2em;
-			word-spacing: 10em;
+			letter-spacing: 0em;
+			word-spacing: 8em;
 			opacity: 0;
 		}
 
 		100% {
-			letter-spacing: 0.4em;
-			word-spacing: 0.5em;
+			letter-spacing: 0.6em;
+			word-spacing: 1em;
 			opacity: 1;
 		}
 	}
