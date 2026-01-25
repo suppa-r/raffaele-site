@@ -559,13 +559,13 @@ h1 {
 
 @keyframes main-text-animation {
 	0% {
-		letter-spacing: 0.2em;
+		letter-spacing: 0.4em;
 		word-spacing: 20em;
 		opacity: 0;
 	}
 
 	100% {
-		letter-spacing: 0.4em;
+		letter-spacing: 0.2em;
 		word-spacing: 0.5em;
 		opacity: 1;
 	}
@@ -766,13 +766,13 @@ footer {
 
 	@keyframes main-text-animation {
 		0% {
-			letter-spacing: 0.12em;
+			letter-spacing: 0.24em;
 			word-spacing: 4em;
 			opacity: 0;
 		}
 
 		100% {
-			letter-spacing: 0.24em;
+			letter-spacing: 0.12em;
 			word-spacing: 0.4em;
 			opacity: 1;
 		}
