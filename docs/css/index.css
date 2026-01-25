@@ -750,16 +750,17 @@ footer {
 		will-change: letter-spacing, word-spacing;
 	}
 
+
 	@keyframes main-text-animation-mobile {
 		0% {
-			letter-spacing: 0.24em;
-			word-spacing: 4em;
+			letter-spacing: 0.4em;
+			word-spacing: 15em;
 			opacity: 0;
 		}
 
 		100% {
-			letter-spacing: 0.12em;
-			word-spacing: 0.4em;
+			letter-spacing: 0.2em;
+			word-spacing: 1em;
 			opacity: 1;
 		}
 	}
