@@ -194,15 +194,8 @@ figcaption {
 	word-break: normal;
 	overflow-wrap: break-word;
 	margin-block: 0;
-}
-
-h2,
-h3 {
-	font-size: var(--step-2);
-	line-height: 1.2;
-	margin-block-start: 0;
-	font-weight: 400;
-	font-style: italic;
+	margin-inline: auto;
+	hyphens: auto;
 }
 
 /*-------------------------- Body styles  -------------------------*/
@@ -264,24 +257,18 @@ header {
 
 /*---------------------- Quote styles  --------------------------*/
 
-.header-title {
+.header-text {
 	padding-block-start: var(--space-3xs);
 	text-align: center;
 }
 
 .header-text span {
-	padding-inline-start: var(--space-l);
-}
-
-h1 {
-	font-size: var(--step-1);
-	font-style: italic;
-	font-weight: 400;
-	letter-spacing: var(--letter-spacing);
+	padding-inline-start: var(--space-s);
 }
 
 .header-subtitle {
-	padding-block-start: var(--space-3xs);
+	padding-block-start: var(--space-s);
+	text-align: center;
 }
 
 .header-subtitle span {
@@ -289,6 +276,7 @@ h1 {
 }
 
 /*----------------------- Main styles  --------------------------*/
+
 .main-content {
 	display: flex;
 	flex-direction: column;
@@ -545,14 +533,12 @@ h1 {
 	view-transition-name: container;
 }
 
-/* Style the semantic elements instead of divs */
-
 .container .text-with-animation {
-	font-size: var(--step-6);
-	display: block;
+	font-size: var(--step-5);
 }
 
 .container .text-with-animation-1 {
+	font-size: var(--step-3);
 	display: block;
 	animation: main-text-animation 5s ease-out infinite;
 }
