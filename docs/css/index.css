@@ -547,14 +547,9 @@ h1 {
 
 /* Style the semantic elements instead of divs */
 
-.container .text-with-animation-0 {
+.container .text-with-animation {
 	font-size: var(--step-6);
 	display: block;
-}
-
-.container .text-with-animation {
-	display: block;
-	animation: main-text-animation 5s ease-out infinite;
 }
 
 .container .text-with-animation-1 {
@@ -754,11 +749,6 @@ footer {
 
 @media (max-width: 675px) {
 
-	::view-transition-old(curve-container),
-	::view-transition-new(curve-container) {
-		animation: none;
-	}
-
 	body,
 	.wrapper {
 		overflow: hidden;
@@ -774,21 +764,15 @@ footer {
 		will-change: letter-spacing, word-spacing;
 	}
 
-	.container .text-with-animation-1 {
-		display: block;
-		animation: main-text-animation 5s ease-out infinite;
-		will-change: letter-spacing, word-spacing;
-	}
-
 	@keyframes main-text-animation {
 		0% {
-			letter-spacing: 0em;
-			word-spacing: 8em;
+			letter-spacing: 0.2em;
+			word-spacing: 10em;
 			opacity: 0;
 		}
 
 		100% {
-			letter-spacing: 0.6em;
+			letter-spacing: 0.4em;
 			word-spacing: 1em;
 			opacity: 1;
 		}
