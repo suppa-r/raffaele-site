@@ -2,7 +2,7 @@
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
 	--text-color-semi: oklch(100% 0.00011 271.152 / 0.5);
-	--text-span: oklch(26.239% 0.04211 189.859 / 0.842);
+	--text-span: oklch(26.239% 0.04211 189.859 / 0.473);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
@@ -12,6 +12,10 @@
 
 	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(69.426% 0.07915 211.737), oklch(94.713% 0.00765 207.868 / 0.884), oklch(78.484% 0.08038 198.735));
 	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.904), oklch(89.425% 0.02547 212.442 / 0.801), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
+
+	--shadow-color: oklch(100% 0.00011 271.152 / 0.98);
+	--shadow-color2: oklch(100% 0.00011 271.152 / 0.95);
+	--shadow-color3: oklch(100% 0.00011 271.152 / 0.92);
 }
 
 [data-theme="light"] {
@@ -26,8 +30,12 @@
 
 	--blend-mode: multiply;
 
-	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(69.426% 0.07915 211.737), oklch(81.5% 0.04154 202.283 / 0.884), oklch(78.484% 0.08038 198.735));
+	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(20.583% 0.02141 211.893), oklch(81.5% 0.04154 202.283 / 0.884), oklch(78.484% 0.08038 198.735));
 	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
+
+	--shadow-color: oklch(0% 0 0 / 0.85);
+	--shadow-color2: oklch(0% 0 0 / 0.7);
+	--shadow-color3: oklch(0% 0 0 / 0.55);
 }
 
 :root {
@@ -201,15 +209,6 @@ figcaption {
 	margin-block: 0;
 }
 
-h2,
-h3 {
-	font-size: var(--step-2);
-	line-height: 1.2;
-	margin-block-start: 0;
-	font-weight: 400;
-	font-style: italic;
-}
-
 /*-------------------------- Body styles  -------------------------*/
 
 html,
@@ -248,6 +247,24 @@ body::before {
 	isolation: isolate;
 	z-index: -2000;
 	overflow: hidden;
+}
+
+/* Hide grid pattern in light theme */
+[data-theme="light"] body::before {
+	display: none;
+}
+
+/* Light theme: ensure nav items 4 and 5 have white text for contrast */
+[data-theme="light"] nav li:nth-of-type(4) a,
+[data-theme="light"] nav li:nth-of-type(4) a:before,
+[data-theme="light"] nav li:nth-of-type(4) a:after {
+	color: oklch(100% 0.00011 271.152);
+}
+
+[data-theme="light"] nav li:nth-of-type(5) a,
+[data-theme="light"] nav li:nth-of-type(5) a:before,
+[data-theme="light"] nav li:nth-of-type(5) a:after {
+	color: oklch(100% 0.00011 271.152);
 }
 
 /* Make .wrapper take full viewport height */
@@ -305,12 +322,12 @@ nav ul li {
 
 nav li a {
 	position: relative;
-	top: 46%;
+	top: 50%;
 	color: var(--text-color);
 	text-decoration: none;
 	display: block;
 	text-align: center;
-	font-size: var(--step-1);
+	font-size: var(--step-2);
 }
 
 nav li a:before {
@@ -329,7 +346,7 @@ nav li a:before {
 
 nav li a:after {
 	content: attr(data-content);
-	font-size: var(--step-1);
+	font-size: var(--step-2);
 	transition: all 0.2s linear;
 	opacity: 0;
 	position: absolute;
@@ -357,23 +374,41 @@ nav li a:hover:after {
 }
 
 nav li:nth-of-type(1) {
-	background-color: color-mix(in oklch, var(--base-color) 100%, white 0%);
+	background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%);
+	z-index: 1000;
 }
 
 nav li:nth-of-type(2) {
-	background-color: color-mix(in oklch, var(--base-color) 80%, white 20%);
+	background-color: color-mix(in oklch, var(--base-color) 80%, var(--text-color) 20%);
+	z-index: 1000;
 }
 
 nav li:nth-of-type(3) {
-	background-color: color-mix(in oklch, var(--base-color) 60%, white 40%);
+	background-color: color-mix(in oklch, var(--base-color) 60%, var(--text-color) 40%);
+	z-index: 1000;
 }
 
 nav li:nth-of-type(4) {
-	background-color: color-mix(in oklch, var(--base-color) 40%, white 60%);
+	background-color: color-mix(in oklch, var(--base-color) 40%, var(--text-color) 60%);
+	z-index: 1000;
 }
 
 nav li:nth-of-type(5) {
-	background-color: color-mix(in oklch, var(--base-color) 20%, white 80%);
+	background-color: color-mix(in oklch, var(--base-color) 20%, var(--text-color) 80%);
+	z-index: 1000;
+}
+
+/* Darken text on lighter backgrounds for better contrast */
+nav li:nth-of-type(4) a,
+nav li:nth-of-type(4) a:before {
+	color: oklch(0% 0 0);
+	z-index: 1000;
+}
+
+nav li:nth-of-type(5) a,
+nav li:nth-of-type(5) a:before {
+	color: oklch(0% 0 0);
+	z-index: 1000;
 }
 
 .slide-in-nav-item {
@@ -625,20 +660,41 @@ header {
 	border-radius: var(--space-l);
 	isolation: isolate;
 	transition: var(--transition-speed);
+	position: relative;
+	z-index: 2000;
+}
+
+/* Hide header background and title when nav is open */
+.overlay-slide-down~header {
+	background: transparent;
+	box-shadow: none;
+}
+
+.overlay-slide-down~header .header-title {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.overlay-slide-down~header .theme-switcher {
+	pointer-events: all;
+	z-index: 2000;
+	color: inherit;
 }
 
 /*---------------------title-----------------------*/
 
-.title-header {
+.header-title {
 	color: var(--text-color);
+	font-size: var(--step-0);
+	font-weight: 400;
 	text-align: right;
 	margin: 0;
 	padding: 0;
 }
 
-.title-header span {
+.header-title span {
 	margin: 0;
-	padding: 0 var(--space-2xs) 0 0;
+	padding: 0 var(--space-xs) 0 0;
 	font-size: inherit;
 	color: var(--text-span);
 }
@@ -665,6 +721,8 @@ header {
 	flex-direction: row;
 	align-items: center;
 	pointer-events: auto;
+	position: relative;
+	z-index: 2000;
 }
 
 .theme-switcher span {
@@ -718,6 +776,25 @@ header {
 	border-radius: 50%;
 }
 
+/* Theme-specific colors for theme-switcher */
+[data-theme="dark"] .theme-button {
+	color: oklch(100% 0.00011 271.152);
+}
+
+[data-theme="dark"] .theme-button:hover svg,
+[data-theme="dark"] .theme-button:focus svg {
+	background-color: oklch(70% 0.08 210);
+}
+
+[data-theme="light"] .theme-button {
+	color: oklch(100% 0.00011 271.152);
+}
+
+[data-theme="light"] .theme-button:hover svg,
+[data-theme="light"] .theme-button:focus svg {
+	background-color: oklch(50.242% 0.06887 214.218);
+}
+
 main {
 	margin-block-start: var(--space-4xl);
 	text-align: center;
@@ -740,46 +817,17 @@ main {
 	padding-block: var(--space-4xs);
 }
 
-.fancy span {
+p span {
 	display: inline-block;
-	background: linear-gradient(270deg,
-			#645960,
-			#3f3e44,
-			#262726,
-			#dde1e2,
-			#e8ebee,
-			#8180868f,
-			#bdb5b9,
-			#272926);
-	background-size: 200% 200%;
-	background-clip: text;
-	-webkit-background-clip: text;
-	-moz-background-clip: text;
-	color: transparent;
-	-webkit-text-fill-color: transparent;
-	animation: gradientAnimation 2s ease-in-out infinite alternate;
-	animation-direction: alternate reverse;
+	color: var(--text-color);
 	padding-inline-start: var(--space-2xs);
-	padding-inline-end: var(--space-2xs);
-}
-
-@keyframes gradientAnimation {
-	0% {
-		background-position: 0% 50%;
-	}
-
-	50% {
-		background-position: 100% 50%;
-	}
-
-	100% {
-		background-position: 0% 50%;
-	}
+	font-style: italic;
+	font-size: var(--step-1);
 }
 
 .wrapper-gradient-text {
 	font-style: italic;
-	font-size: var(--step-2);
+	font-size: var(--step-3);
 	margin: 0;
 	/* Remove default margins */
 	padding: 0;
@@ -801,15 +849,13 @@ main {
 
 @keyframes shadowDrip {
 	0% {
-		text-shadow:
-			0px 0px 0px var(--shadow-color),
+		text-shadow: 0px 0px 0px var(--shadow-color),
 			0px 0px 0px var(--shadow-color2),
 			0px 0px 0px var(--shadow-color3);
 	}
 
 	100% {
-		text-shadow:
-			0px 50px 100px var(--shadow-color),
+		text-shadow: 0px 50px 100px var(--shadow-color),
 			0px 15px 20px var(--shadow-color2),
 			0px 30px 5px var(--shadow-color3);
 	}
