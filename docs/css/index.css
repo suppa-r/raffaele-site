@@ -746,21 +746,20 @@ footer {
 
 	.container .text-with-animation {
 		display: block;
-		animation: main-text-animation-mobile 5s ease-out infinite;
+		animation: main-text-animation 5s ease-out infinite;
 		will-change: letter-spacing, word-spacing;
 	}
 
-
-	@keyframes main-text-animation-mobile {
+	@keyframes main-text-animation {
 		0% {
-			letter-spacing: 0.4em;
-			word-spacing: 15em;
+			letter-spacing: 0.24em;
+			word-spacing: 4em;
 			opacity: 0;
 		}
 
 		100% {
-			letter-spacing: 0.2em;
-			word-spacing: 1em;
+			letter-spacing: 0.12em;
+			word-spacing: 0.4em;
 			opacity: 1;
 		}
 	}
