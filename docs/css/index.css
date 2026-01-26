@@ -6,7 +6,7 @@
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
-	--shadow: 0 30px 100px oklch(100% 0.00011 271.152);
+	--shadow: 0 30px 100px oklch(100% 0.00011 271.152 / 0.479);
 
 	--blend-mode: normal;
 }
@@ -76,7 +76,16 @@
 	--padding-inline: var(--space-3xs);
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-4xs);
-	--sp: 6s;
+	--sp: 8s;
+
+	/*------------ Curve animation viewport units ----------------*/
+
+	--curve-char-width: 8.5vmin;
+	--curve-blur: clamp(1.5px, 0.15vmin, 3px);
+	--move-2-8: 0.6vmin;
+	--move-3-7: 1.2vmin;
+	--move-4-6: 1.8vmin;
+	--move-5: 2.4vmin;
 }
 
 @supports (selector(::view-transition)) {
@@ -272,19 +281,13 @@ header {
 	padding-inline-start: var(--space-l);
 }
 
-h1 {
-	font-size: var(--step-1);
-	font-style: italic;
-	font-weight: 400;
-	letter-spacing: var(--letter-spacing);
-}
-
 .header-subtitle {
 	padding-block-start: var(--space-3xs);
 }
 
 .header-subtitle span {
-	padding-inline-start: var(--space-xl);
+	padding-inline-start: var(--space-m);
+	font-weight: bold;
 }
 
 /*----------------------- Main styles  --------------------------*/
@@ -317,14 +320,14 @@ h1 {
 .content-1 div {
 	position: absolute;
 	left: 50%;
+	transform: translateX(-50%);
 	display: flex;
-	opacity: 1;
-	transform: translateX(-50%) scale(1);
+	will-change: transform;
 }
 
 .content div span,
 .content-1 div span {
-	width: 8.5vmin;
+	width: var(--curve-char-width);
 	position: relative;
 	text-align: center;
 	color: var(--text-color);
@@ -332,17 +335,18 @@ h1 {
 
 .up:before,
 .down:before {
-	background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 80%);
+	background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 100%);
 	content: "";
 	position: absolute;
-	box-shadow: 0 0 300px 20px var(--text-color);
-	animation: shadow var(--sp) ease-in-out 1.2s infinite;
+	box-shadow: 0 0 500px 20px var(--text-color);
+	animation: shadow 6s ease-out 1.2s forwards infinite;
+	will-change: opacity;
 }
 
 .up:before {
 	width: 100%;
 	height: 0.1vmin;
-	filter: blur(2px);
+	filter: blur(var(--curve-blur));
 	left: 0;
 	top: 50%;
 }
@@ -350,7 +354,7 @@ h1 {
 .down:before {
 	width: 1vmin;
 	height: 0.5vmin;
-	filter: blur(3px);
+	filter: blur(var(--curve-blur));
 	left: 50%;
 	transform: translateX(-50%);
 	top: 50%;
@@ -376,8 +380,8 @@ h1 {
 .down span {
 	animation-duration: var(--sp);
 	animation-timing-function: ease-in-out;
-	animation-delay: 0s;
 	animation-iteration-count: infinite;
+	will-change: transform;
 }
 
 /*up*/
@@ -420,12 +424,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: -0.6vmin;
+		transform: translateY(calc(-1 * var(--move-2-8)));
 	}
 }
 
@@ -435,12 +439,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: -1.2vmin;
+		transform: translateY(calc(-1 * var(--move-3-7)));
 	}
 }
 
@@ -450,12 +454,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: -1.8vmin;
+		transform: translateY(calc(-1 * var(--move-4-6)));
 	}
 }
 
@@ -465,12 +469,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: -2.4vmin;
+		transform: translateY(calc(-1 * var(--move-5)));
 	}
 }
 
@@ -480,12 +484,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: 0.6vmin;
+		transform: translateY(var(--move-2-8));
 	}
 }
 
@@ -495,12 +499,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: 1.2vmin;
+		transform: translateY(var(--move-3-7));
 	}
 }
 
@@ -510,12 +514,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: 1.8vmin;
+		transform: translateY(var(--move-4-6));
 	}
 }
 
@@ -525,12 +529,12 @@ h1 {
 	10%,
 	90%,
 	100% {
-		top: 0;
+		transform: translateY(0);
 	}
 
 	40%,
 	60% {
-		top: 2.4vmin;
+		transform: translateY(var(--move-5));
 	}
 }
 
@@ -546,19 +550,15 @@ h1 {
 
 /* Style the semantic elements instead of divs */
 
-.container .text-with-animation-0 {
+.container .text-with-animation {
 	font-size: var(--step-6);
 	display: block;
 }
 
-.container .text-with-animation {
-	display: block;
-	animation: main-text-animation 1.5s ease-in forwards;
-}
-
 .container .text-with-animation-1 {
+	font-size: var(--step-3);
 	display: block;
-	animation: main-text-animation 10s ease-in forwards;
+	animation: main-text-animation 3.5s ease forwards;
 }
 
 @keyframes main-text-animation {
@@ -570,7 +570,7 @@ h1 {
 
 	100% {
 		letter-spacing: 0.4em;
-		word-spacing: 0.3em;
+		word-spacing: 1em;
 		opacity: 1;
 	}
 }
