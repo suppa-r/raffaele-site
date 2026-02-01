@@ -68,51 +68,39 @@ body::before {
 
 	/*----------- Fluid typography with mobile scaling ------------- */
 
-	--step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
-	--step-1: clamp(1.25rem, 1.1632rem + 0.4341vw, 1.4996rem);
-	--step-2: clamp(1.5625rem, 1.4107rem + 0.7591vw, 1.999rem);
-	--step-3: clamp(1.9531rem, 1.7056rem + 1.2375vw, 2.6647rem);
-	--step-4: clamp(2.4414rem, 2.0551rem + 1.9315vw, 3.552rem);
-	--step-5: clamp(3.0518rem, 2.4663rem + 2.9271vw, 4.7348rem);
-	--step-6: clamp(3.8147rem, 2.9462rem + 4.3423vw, 6.3115rem);
-	--step-7: clamp(4.7684rem, 3.5006rem + 6.3389vw, 8.4132rem);
+	--step--1: clamp(0.844rem, 0.8967rem + -0.0562vw, 0.8854rem);
+	--step-0: clamp(1.0625rem, 1.0456rem + 0.0847vw, 1.125rem);
+	--step-1: clamp(1.275rem, 1.2141rem + 0.3046vw, 1.4996rem);
+	--step-2: clamp(1.53rem, 1.4028rem + 0.6359vw, 1.999rem);
+	--step-3: clamp(1.836rem, 1.6113rem + 1.1236vw, 2.6647rem);
+	--step-4: clamp(2.2032rem, 1.8374rem + 1.8289vw, 3.552rem);
+	--step-5: clamp(2.6438rem, 2.0768rem + 2.8352vw, 4.7348rem);
+	--step-6: clamp(3.1726rem, 2.3214rem + 4.2561vw, 6.3115rem);
+	--step-7: clamp(3.8071rem, 2.558rem + 6.2456vw, 8.4132rem);
+	--step-8: clamp(4.5686rem, 2.7662rem + 9.0119vw, 11.2149rem);
+
 
 	/*----------Fluid spacing with mobile scaling ------------------ */
 
-
-	--space-4xs: clamp(0.125rem, 0.1033rem + 0.1087vw, 0.1875rem);
-	--space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vw, 0.3125rem);
-	--space-2xs: clamp(0.5rem, 0.4783rem + 0.1087vw, 0.5625rem);
-	--space-xs: clamp(0.75rem, 0.7065rem + 0.2174vw, 0.875rem);
-	--space-s: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
-	--space-m: clamp(1.5rem, 1.4348rem + 0.3261vw, 1.6875rem);
-	--space-l: clamp(2rem, 1.913rem + 0.4348vw, 2.25rem);
-	--space-xl: clamp(3rem, 2.8696rem + 0.6522vw, 3.375rem);
-	--space-2xl: clamp(4rem, 3.8261rem + 0.8696vw, 4.5rem);
-	--space-3xl: clamp(6rem, 5.7391rem + 1.3043vw, 6.75rem);
-	--space-4xl: clamp(7rem, 6.6957rem + 1.5217vw, 7.875rem);
-	--space-5xl: clamp(8rem, 7.6522rem + 1.7391vw, 9rem);
-	--space-6xl: clamp(9rem, 8.6087rem + 1.9565vw, 10.125rem);
-	--space-7xl: clamp(10rem, 9.5652rem + 2.1739vw, 11.25rem);
-	--space-8xl: clamp(11rem, 10.5217rem + 2.3913vw, 12.375rem);
-	--space-9xl: clamp(12rem, 11.4783rem + 2.6087vw, 13.5rem);
-	--space-10xl: clamp(13rem, 12.4348rem + 2.8261vw, 14.625rem);
-
-
-	--space-2xs-xs: clamp(0.5rem, 0.3696rem + 0.6522vw, 0.875rem);
-	--space-xs-s: clamp(0.75rem, 0.6196rem + 0.6522vw, 1.125rem);
-	--space-s-m: clamp(1rem, 0.7609rem + 1.1957vw, 1.6875rem);
-	--space-m-l: clamp(1.5rem, 1.2391rem + 1.3043vw, 2.25rem);
-	--space-l-xl: clamp(2rem, 1.5217rem + 2.3913vw, 3.375rem);
-	--space-xl-2xl: clamp(3rem, 2.4783rem + 2.6087vw, 4.5rem);
-	--space-2xl-3xl: clamp(4rem, 3.0435rem + 4.7826vw, 6.75rem);
-	--space-3xl-4xl: clamp(6rem, 5.3478rem + 3.2609vw, 7.875rem);
-	--space-4xl-5xl: clamp(7rem, 6.3043rem + 3.4783vw, 9rem);
-	--space-5xl-6xl: clamp(8rem, 7.2609rem + 3.6957vw, 10.125rem);
-	--space-6xl-7xl: clamp(9rem, 8.2174rem + 3.913vw, 11.25rem);
-	--space-7xl-8xl: clamp(10rem, 9.1739rem + 4.1304vw, 12.375rem);
-	--space-8xl-9xl: clamp(11rem, 10.1304rem + 4.3478vw, 13.5rem);
-	--space-9xl-10xl: clamp(12rem, 11.087rem + 4.5652vw, 14.625rem);
+	--space-4xs: clamp(0.125rem, 0.1081rem + 0.0847vw, 0.1875rem);
+	--space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
+	--space-2xs: clamp(0.5625rem, 0.5625rem + 0vw, 0.5625rem);
+	--space-xs: clamp(0.8125rem, 0.7956rem + 0.0847vw, 0.875rem);
+	--space-s: clamp(1.0625rem, 1.0456rem + 0.0847vw, 1.125rem);
+	--space-m: clamp(1.625rem, 1.6081rem + 0.0847vw, 1.6875rem);
+	--space-l: clamp(2.125rem, 2.0911rem + 0.1695vw, 2.25rem);
+	--space-xl: clamp(3.1875rem, 3.1367rem + 0.2542vw, 3.375rem);
+	--space-2xl: clamp(4.25rem, 4.1822rem + 0.339vw, 4.5rem);
+	--space-3xl: clamp(6.375rem, 6.2733rem + 0.5085vw, 6.75rem);
+	--space-4xl: clamp(7.4375rem, 7.3189rem + 0.5932vw, 7.875rem);
+	--space-5xl: clamp(8.5rem, 8.3644rem + 0.678vw, 9rem);
+	--space-6xl: clamp(9.5625rem, 9.41rem + 0.7627vw, 10.125rem);
+	--space-7xl: clamp(10.625rem, 10.4555rem + 0.8475vw, 11.25rem);
+	--space-8xl: clamp(11.6875rem, 11.5011rem + 0.9322vw, 12.375rem);
+	--space-9xl: clamp(12.75rem, 12.5466rem + 1.0169vw, 13.5rem);
+	--space-10xl: clamp(13.8125rem, 13.5922rem + 1.1017vw, 14.625rem);
+	--space-11xl: clamp(14.875rem, 14.6377rem + 1.1864vw, 15.75rem);
+	--space-12xl: clamp(15.9375rem, 15.6833rem + 1.2712vw, 16.875rem);
 
 	/*---------------- Button and padding settings ----------------- */
 
