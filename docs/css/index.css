@@ -843,18 +843,17 @@ footer {
 		display: block;
 	}
 
-	@keyframes main-text-animation {
-		0% {
-			letter-spacing: 0.2em;
-			word-spacing: 6em;
-			opacity: 1;
-		}
+	.theme-switcher {
+		margin-inline-end: var(--space-xs);
+	}
 
-		100% {
-			letter-spacing: 0.4em;
-			word-spacing: 1em;
-			opacity: 1;
-		}
+	.theme-button {
+		padding: var(--space-3xs);
+	}
+
+	.theme-button svg {
+		width: clamp(1.5rem, 4vw, 2rem);
+		height: clamp(1.5rem, 4vw, 2rem);
 	}
 }
 
