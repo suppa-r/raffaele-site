@@ -633,26 +633,6 @@ header {
 	display: block;
 }
 
-.container .text-with-animation-1 {
-	font-size: var(--step-3);
-	display: block;
-	animation: main-text-animation 3.5s ease forwards;
-}
-
-@keyframes main-text-animation {
-	0% {
-		letter-spacing: 0.2em;
-		word-spacing: 30em;
-		opacity: 1;
-	}
-
-	100% {
-		letter-spacing: 0.4em;
-		word-spacing: 1em;
-		opacity: 1;
-	}
-}
-
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
