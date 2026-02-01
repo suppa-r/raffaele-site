@@ -1,27 +1,67 @@
 [data-theme="dark"] {
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
-	--text-color-semi: oklch(100% 0.00011 271.152 / 0.5);
 	--text-span: oklch(67.53% 0.04556 196.219 / 0.966);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
-	--shadow: 0 30px 100px oklch(100% 0.00011 271.152 / 0.479);
+	--shadow: 0 30px 100px oklch(100% 0.00011 271.152);
+	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 
-	--blend-mode: normal;
+	/* Darker shadow colors for animation */
+	--shadow-color: oklch(100% 0.00011 271.152 / 0.877);
+	--shadow-color2: oklch(100% 0.00011 271.152 / 0.726);
+	--shadow-color3: oklch(100% 0.00011 271.152 / 0.534);
+
+	--gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
+	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 [data-theme="light"] {
 	--base-color: oklch(100% 0.00011 271.152);
 	--text-color: oklch(0% 0 0);
-	--text-color-semi: oklch(0% 0 0 / 0.5);
-	--text-span: oklch(30.097% 0.03588 210.108 / 0.192);
+	--text-span: oklch(30.097% 0.03588 210.108 / 0.795);
 
 	--body-grid-line: oklch(0% 0 0 / 0.329);
 
 	--shadow: 0 30px 100px oklch(0% 0 0);
+	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 
-	--blend-mode: multiply;
+	/* Darker shadow colors for animation */
+	--shadow-color: oklch(0% 0 0 / 0.877);
+	--shadow-color2: oklch(0% 0 0 / 0.726);
+	--shadow-color3: oklch(0% 0 0 / 0.534);
+
+	--gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
+	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
+}
+
+body::before {
+	opacity: 1;
+	pointer-events: none;
+	content: "";
+	width: 100dvw;
+	height: 100dvh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:
+		linear-gradient(90deg,
+			var(--body-grid-line) 1px,
+			transparent 1px) 0 0 / 30px 30px,
+		linear-gradient(180deg,
+			var(--body-grid-line) 1px,
+			transparent 1px) 0 0 / 30px 30px,
+		var(--base-color);
+	mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
+	mask-size: 400% 100%;
+	mask-repeat: no-repeat;
+	transform-style: preserve-3d;
+	transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
+		background-position 0.3s ease-in-out;
+	isolation: isolate;
+	z-index: -2000;
+	overflow: hidden;
 }
 
 :root {
@@ -111,12 +151,14 @@
 	perspective-origin: center;
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
-	filter: drop-shadow(0px 0px 6px var(--text-color)) drop-shadow(0px 0px 25px var(--text-color-semi));
+	filter: drop-shadow(0px 0px 6px var(--text-color)) drop-shadow(0px 0px 25px var(--text-color));
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation: 1.2s ease-in-out;
+	animation-duration: 1.2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
 	perspective: 2000px;
@@ -130,6 +172,31 @@
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
+}
+
+/* Hide main content during theme transition, keep header/footer visible */
+::view-transition-old(main),
+::view-transition-new(main) {
+	opacity: 0;
+	animation: none;
+}
+
+::view-transition-old(curve-container),
+::view-transition-new(curve-container) {
+	opacity: 0;
+	animation: none;
+}
+
+::view-transition-old(container),
+::view-transition-new(container) {
+	opacity: 0;
+	animation: none;
+}
+
+::view-transition-old(large-button),
+::view-transition-new(large-button) {
+	opacity: 0;
+	animation: none;
 }
 
 @property --rotation {
@@ -245,9 +312,6 @@ body::before {
 	mask-size: 100% 100%;
 	mask-repeat: no-repeat;
 	transform-style: preserve-3d;
-	transition:
-		transform 0.3s ease-in-out,
-		opacity 0.7s ease-in-out;
 	isolation: isolate;
 	z-index: -2000;
 	overflow: hidden;
@@ -261,7 +325,7 @@ body::before {
 	flex-direction: column;
 	justify-content: space-between;
 	view-transition-name: wrapper;
-	mix-blend-mode: var(--blend-mode);
+
 }
 
 /*----------------------- Header styles  ------------------------*/
@@ -340,8 +404,37 @@ header {
 	content: "";
 	position: absolute;
 	box-shadow: 0 0 500px 20px var(--text-color);
-	animation: shadow 6s ease-out 1.2s forwards infinite;
+	animation: shadow 6s ease-in-out forwards infinite;
 	will-change: opacity;
+}
+
+@keyframes shadow {
+
+	0% {
+		opacity: 0;
+		height: 0.1vmin;
+	}
+
+	25% {
+		opacity: 0.4;
+		height: 0.18vmin;
+	}
+
+	45%,
+	55% {
+		opacity: 1;
+		height: 0.25vmin;
+	}
+
+	75% {
+		opacity: 0.4;
+		height: 0.18vmin;
+	}
+
+	100% {
+		opacity: 0;
+		height: 0.1vmin;
+	}
 }
 
 .up:before {
@@ -359,22 +452,6 @@ header {
 	left: 50%;
 	transform: translateX(-50%);
 	top: 50%;
-}
-
-@keyframes shadow {
-
-	0%,
-	10%,
-	90%,
-	100% {
-		opacity: 0;
-	}
-
-	45%,
-	55% {
-		opacity: 1;
-		height: 0.25vmin;
-	}
 }
 
 .up span,
@@ -565,7 +642,7 @@ header {
 @keyframes main-text-animation {
 	0% {
 		letter-spacing: 0.2em;
-		word-spacing: 10em;
+		word-spacing: 30em;
 		opacity: 1;
 	}
 
@@ -712,9 +789,11 @@ footer {
 	width: var(--space-l);
 	height: var(--space-l);
 	fill: var(--text-color);
+	transform: scale(1) rotate(0deg);
+	transform-origin: center center;
 	transition:
-		transform 0.3s,
-		background-color 0.3s;
+		transform 0.3s ease-in-out,
+		background-color 0.3s ease-in-out;
 }
 
 .theme-switcher input[type="radio"]:checked+.theme-button {
@@ -762,6 +841,20 @@ footer {
 
 	.footer-break {
 		display: block;
+	}
+
+	@keyframes main-text-animation {
+		0% {
+			letter-spacing: 0.2em;
+			word-spacing: 6em;
+			opacity: 1;
+		}
+
+		100% {
+			letter-spacing: 0.4em;
+			word-spacing: 1em;
+			opacity: 1;
+		}
 	}
 }
 

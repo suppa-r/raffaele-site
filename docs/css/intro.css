@@ -1,41 +1,67 @@
 [data-theme="dark"] {
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
-	--text-color-semi: oklch(100% 0.00011 271.152 / 0.5);
-	--text-span: oklch(26.239% 0.04211 189.859 / 0.473);
+	--text-span: oklch(67.53% 0.04556 196.219 / 0.966);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
 
 	--shadow: 0 30px 100px oklch(100% 0.00011 271.152);
+	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 
-	--blend-mode: normal;
+	/* Darker shadow colors for animation */
+	--shadow-color: oklch(100% 0.00011 271.152 / 0.877);
+	--shadow-color2: oklch(100% 0.00011 271.152 / 0.726);
+	--shadow-color3: oklch(100% 0.00011 271.152 / 0.534);
 
-	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(69.426% 0.07915 211.737), oklch(94.713% 0.00765 207.868 / 0.884), oklch(78.484% 0.08038 198.735));
-	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.904), oklch(89.425% 0.02547 212.442 / 0.801), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
-
-	--shadow-color: oklch(100% 0.00011 271.152 / 0.98);
-	--shadow-color2: oklch(100% 0.00011 271.152 / 0.95);
-	--shadow-color3: oklch(100% 0.00011 271.152 / 0.92);
+	--gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
+	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
 }
 
 [data-theme="light"] {
 	--base-color: oklch(100% 0.00011 271.152);
 	--text-color: oklch(0% 0 0);
-	--text-color-semi: oklch(0% 0 0 / 0.5);
-	--text-span: oklch(50.242% 0.06887 214.218);
+	--text-span: oklch(30.097% 0.03588 210.108 / 0.795);
 
 	--body-grid-line: oklch(0% 0 0 / 0.329);
 
 	--shadow: 0 30px 100px oklch(0% 0 0);
+	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
 
-	--blend-mode: multiply;
+	/* Darker shadow colors for animation */
+	--shadow-color: oklch(0% 0 0 / 0.877);
+	--shadow-color2: oklch(0% 0 0 / 0.726);
+	--shadow-color3: oklch(0% 0 0 / 0.534);
 
-	--gradient: linear-gradient(90deg, oklch(88.713% 0.01672 211.344 / 0.431), oklch(20.583% 0.02141 211.893), oklch(81.5% 0.04154 202.283 / 0.884), oklch(78.484% 0.08038 198.735));
+	--gradient: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737), oklch(76.915% 0.07434 325.46 / 0.698), oklch(69.099% 0.15164 327.036));
 	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337), oklch(76.915% 0.07434 325.46 / 0.176), oklch(35.825% 0.01521 325.764));
+}
 
-	--shadow-color: oklch(0% 0 0 / 0.85);
-	--shadow-color2: oklch(0% 0 0 / 0.7);
-	--shadow-color3: oklch(0% 0 0 / 0.55);
+body::before {
+	opacity: 1;
+	pointer-events: none;
+	content: "";
+	width: 100dvw;
+	height: 100dvh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:
+		linear-gradient(90deg,
+			var(--body-grid-line) 1px,
+			transparent 1px) 0 0 / 30px 30px,
+		linear-gradient(180deg,
+			var(--body-grid-line) 1px,
+			transparent 1px) 0 0 / 30px 30px,
+		var(--base-color);
+	mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
+	mask-size: 400% 100%;
+	mask-repeat: no-repeat;
+	transform-style: preserve-3d;
+	transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
+		background-position 0.3s ease-in-out;
+	isolation: isolate;
+	z-index: -2000;
+	overflow: hidden;
 }
 
 :root {
@@ -127,6 +153,12 @@
 	perspective: 2000px;
 	transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
 	backface-visibility: hidden;
+}
+
+::view-transition-old(main),
+::view-transition-new(main) {
+	animation: none;
+	opacity: 0;
 }
 
 ::view-transition-old(root) {
@@ -660,8 +692,8 @@ header {
 	background: var(--gradient-header);
 	backdrop-filter: var(--backdrop-blur);
 	box-shadow: var(--navbar-shadow);
-	margin: var(--space-2xs) var(--space-3xl);
-	padding: var(--space-4xs) var(--space-xl);
+	margin: var(--space-xs) var(--space-3xl);
+	padding: var(--space-xs) var(--space-xl);
 	border-radius: var(--space-l);
 	isolation: isolate;
 	transition: var(--transition-speed);
@@ -725,18 +757,13 @@ header {
 
 .theme-switcher {
 	max-inline-size: none;
-	padding-right: var(--space-2xs);
+	padding-inline-end: var(--space-2xs);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	pointer-events: auto;
 	position: relative;
 	z-index: 2000;
-}
-
-.theme-switcher span {
-	font-size: var(--step--1);
-	color: var(--text-color);
 }
 
 .theme-switcher input[type="radio"] {
@@ -756,21 +783,24 @@ header {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	min-width: 2.75rem;
-	min-height: 2.75rem;
 	background-color: transparent;
 	color: var(--text-color);
 	cursor: pointer;
 	user-select: none;
-	transition: transform 0.2s ease;
+	transition: transform 0.2s ease-in-out;
 	isolation: isolate;
 	z-index: 2000;
 }
 
 .theme-button svg {
-	width: var(--space-m);
-	height: var(--space-m);
-	transition: transform 0.3s, background-color 0.3s, padding 0.3s;
+	width: var(--space-l);
+	height: var(--space-l);
+	fill: var(--text-color);
+	transform: scale(1) rotate(0deg);
+	transform-origin: center center;
+	transition:
+		transform 0.3s ease-in-out,
+		background-color 0.3s ease-in-out;
 }
 
 .theme-switcher input[type="radio"]:checked+.theme-button {
@@ -779,11 +809,11 @@ header {
 
 .theme-button:hover svg,
 .theme-button:focus svg {
-	transform: scale(1.5) rotate(90deg);
-	padding: 0;
+	transform: scale(1.3) rotate(90deg);
 	background-color: var(--text-span);
 	border-radius: 50%;
 }
+
 
 /* Theme-specific colors for theme-switcher */
 [data-theme="dark"] .theme-button {
@@ -842,7 +872,6 @@ p span {
 	padding: 0;
 	/* Remove default padding */
 	text-align: center;
-	view-transition-name: wrapper-gradient-text;
 }
 
 .text-layer {
