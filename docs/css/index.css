@@ -3,7 +3,7 @@
 	--text-color: oklch(100% 0.00011 271.152);
 	--text-span: oklch(47.898% 0.06036 195.377 / 0.850);
 
-	--body-grid-line: oklch(100% 0.00011 271.152 / 0.240);
+	--body-grid-line: oklch(100% 0.00011 271.152 / 0.085);
 
 	--shadow: 0 30px 100px oklch(100% 0.00011 271.152);
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18 / 0.800), 0 30px 100px oklch(81% 0.01500 17.000 / 0.600);
@@ -33,7 +33,7 @@
 	--text-color: oklch(0% 0 0);
 	--text-span: oklch(53.447% 0.06872 209.921 / 0.61);
 
-	--body-grid-line: oklch(0% 0 0 / 0.938);
+	--body-grid-line: oklch(0% 0 0 / 0.25);
 
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18 / 0.800), 0 30px 100px oklch(81% 0.01500 17.000 / 0.600);
 
@@ -58,7 +58,7 @@
 
 }
 
-body::before {
+[data-theme] body::before {
 	opacity: 1;
 	pointer-events: none;
 	content: "";
@@ -131,15 +131,9 @@ body::before {
 	--font-weight: 400;
 	--font-style: italic;
 
-	--font-family-secondary: "monotonregular", sans-serif;
-
-	/*----------- Animation and transition settings ---------------- */
-
-	--transition-speed: 0.3s ease-in-out;
-
 	/*------------- letter and word spacing settings ----------------*/
 
-	--padding-inline: var(--space-3xs);
+	--padding-inline: var(--space-4xs);
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-4xs);
 	--sp: 8s;
@@ -383,7 +377,7 @@ header {
 }
 
 .header-subtitle span {
-	padding-inline-start: var(--space-m);
+	padding-inline-start: var(--space-s);
 	font-weight: bold;
 }
 
