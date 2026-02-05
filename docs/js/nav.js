@@ -27,8 +27,14 @@ function setTheme(theme) {
 	if (!isValidTheme(theme)) return;
 
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	const overlayNavigation = document.querySelector('.overlay-navigation');
+	const isNavOpen = overlayNavigation && overlayNavigation.classList.contains('overlay-active');
 
-	if (prefersReducedMotion.matches) {
+	if (isNavOpen && typeof $ === 'function') {
+		$('.open-overlay').trigger('click');
+	}
+
+	if (prefersReducedMotion.matches || isNavOpen) {
 		document.documentElement.setAttribute('data-theme', theme);
 		localStorage.setItem('theme', theme);
 		updateFavicon(theme);
