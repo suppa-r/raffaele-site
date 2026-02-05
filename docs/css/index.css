@@ -140,7 +140,8 @@
 
 	/*------------ Curve animation viewport units ----------------*/
 
-	--curve-char-width: var(--space-3xl);
+	--curve-char-width: var(--space-4xl);
+
 	--curve-blur: var(--space-4xl);
 	--move-2-8: 0.6vmin;
 	--move-3-7: 1.2vmin;
@@ -155,6 +156,22 @@
 	--glow-down-height: clamp(0.4vmin, 0.5vmin, 0.7vmin);
 }
 
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--theme: light;
+		color-scheme: light;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--theme: dark;
+		color-scheme: dark;
+	}
+}
+
+
 @supports (selector(::view-transition)) {
 	.support.view-transition {
 		display: none;
@@ -167,30 +184,49 @@
 	}
 }
 
-/*------------------- View Transition styles  --------------------*/
+.support {
+	background-color: var(--base-color);
+	border-inline-start: 2rem solid var(--text-color);
+	color: var(--text-color);
+	border-radius: 0.5rem;
+	padding: 1em 2em;
+}
 
 ::view-transition {
-	background: var(--base-color);
+	background: var(--text-color);
 }
 
 ::view-transition-image-pair(root) {
 	perspective: 2500px;
 	perspective-origin: center;
 	transform-style: preserve-3d;
-	transform-origin: 50% 50% 0;
-	filter: drop-shadow(0px 0px 6px var(--text-color)) drop-shadow(0px 0px 25px var(--text-color));
+	transform-origin: 50% 50% 100vw;
+	filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation-duration: 1.2s;
-	animation-timing-function: ease-in-out;
-	animation-fill-mode: both;
+	animation: 1.5s linear(0,
+			0.324 9.1%,
+			0.584 18.6%,
+			0.782 28.6%,
+			0.858 33.8%,
+			0.92 39.2%,
+			0.997 49.5%,
+			1.021 55.1%,
+			1.033 61%,
+			1.035 71.7%,
+			1);
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
-	perspective: 2000px;
-	transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
+	/*   perspective: 800px; */
+	transform: translateZ(-50vw) scale(var(--scale)) rotateY(var(--rotation)) translateZ(50vw);
 	backface-visibility: hidden;
+}
+
+::view-transition-old(curve-container),
+::view-transition-new(curve-container) {
+	animation-duration: 0;
 }
 
 ::view-transition-old(root) {
@@ -199,31 +235,6 @@
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
-}
-
-/* Hide main content during theme transition, keep header/footer visible */
-::view-transition-old(main),
-::view-transition-new(main) {
-	opacity: 0;
-	animation: none;
-}
-
-::view-transition-old(curve-container),
-::view-transition-new(curve-container) {
-	opacity: 0;
-	animation: none;
-}
-
-::view-transition-old(container),
-::view-transition-new(container) {
-	opacity: 0;
-	animation: none;
-}
-
-::view-transition-old(large-button),
-::view-transition-new(large-button) {
-	opacity: 0;
-	animation: none;
 }
 
 @property --rotation {
@@ -394,7 +405,7 @@ header {
 /* -----------------------curvature-------------------------------*/
 
 .curve-container {
-	font-size: var(--step-2);
+	font-size: var(--step-3);
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-3xl);
@@ -419,7 +430,7 @@ header {
 
 .content div span,
 .content-1 div span {
-	width: var(--curve-char-width);
+	width: clamp(var(--space-xl), 8vw, var(--curve-char-width));
 	position: relative;
 	text-align: center;
 	color: var(--text-color);
@@ -823,7 +834,6 @@ label:has(> input:checked) {
 	}
 }
 
-
 .color-picker label svg {
 	width: var(--space-m);
 	height: var(--space-m);
@@ -869,6 +879,14 @@ label:has(> input[type="radio"]:checked) svg {
 
 	.curve-container {
 		gap: var(--space-2xl);
+	}
+
+	.content div span,
+	.content-1 div span {
+		width: clamp(var(--space-xl), 7vw, var(--curve-char-width));
+		position: relative;
+		text-align: center;
+		color: var(--text-color);
 	}
 
 	.footer-break {
