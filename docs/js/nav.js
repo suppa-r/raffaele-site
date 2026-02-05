@@ -17,14 +17,9 @@ function updateFavicon(theme) {
 }
 
 function setActiveThemeButton(theme) {
-	const themeButtons = document.querySelectorAll('.theme-button');
-	themeButtons.forEach(btn => {
-		const inputId = btn.getAttribute('for');
-		const input = document.getElementById(inputId);
-		if (input) {
-			input.checked = (input.value === theme);
-			btn.classList.toggle('active', input.checked);
-		}
+	const themeInputs = document.querySelectorAll('input[name="theme"]');
+	themeInputs.forEach(input => {
+		input.checked = (input.value === theme);
 	});
 }
 
@@ -86,18 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				setTheme(radio.value);
 			}
 		});
-	});
-
-	// Also support direct label clicks
-	const themeLabels = document.querySelectorAll('label[for^="dark"], label[for^="light"]');
-	themeLabels.forEach(label => {
-		label.addEventListener('click', (e) => {
-			const inputId = label.getAttribute('for');
-			const input = document.getElementById(inputId);
-			if (input) {
-				input.click();
-				input.checked = true;
-			}
+		// Trigger change event on click (for nested label interaction)
+		radio.addEventListener('click', () => {
+			setTheme(radio.value);
+			radio.dispatchEvent(new Event('change', { bubbles: true }));
 		});
 	});
 
