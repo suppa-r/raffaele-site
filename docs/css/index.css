@@ -883,7 +883,7 @@ label:has(> input[type="radio"]:checked) svg {
 
 	.content div span,
 	.content-1 div span {
-		width: clamp(var(--space-xl), 7vw, var(--curve-char-width));
+		width: clamp(var(--space-xl), 6vw, var(--curve-char-width));
 		position: relative;
 		text-align: center;
 		color: var(--text-color);
