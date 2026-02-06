@@ -6,38 +6,42 @@
 			sans-serif;
 		tab-size: 2;
 		hanging-punctuation: first allow-end last;
-		-moz-text-size-adjust: 100%;
-		-ms-text-size-adjust: 100%;
-		-webkit-text-size-adjust: 100%;
 		text-size-adjust: 100%;
 	}
 }
 
-h1,
-h2 {
-	font-weight: 700;
-	letter-spacing: -0.02rem;
-}
-
-h1,
-h2,
-h3 {
-	line-height: 1.2;
-}
-
 /* Grouped text-wrap and word-break rules for headings, paragraphs, figcaption */
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+	font-weight: 500;
+	line-height: 1.2;
+	overflow-wrap: break-word;
+	display: block;
+	margin-block: 1.5rem 0.5rem;
+}
+
+h1,
+h2,
+h3 {
+	text-wrap: balance;
+	letter-spacing: -0.02rem;
+}
+
+h4,
+h5,
+h6 {
+	text-wrap: pretty;
+}
+
 p,
 figcaption {
-	word-break: normal;
 	overflow-wrap: break-word;
-	text-wrap: balance;
-	word-wrap: normal;
+	text-wrap: pretty;
 	display: block;
 }
 
@@ -63,31 +67,21 @@ figcaption {
 	padding: 0;
 }
 
-/* Prevent font size inflation (allow user-agent zooming) now merged above */
-
 /* Set core body defaults */
+
 body,
 html {
-	line-height: 1.25;
 	min-height: 100dvh;
-
 }
 
 body {
-	margin: 0;
-	padding: 0;
 	overflow: hidden;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-	text-decoration-skip-ink: auto;
-	color: currentColor;
 }
 
 a {
 	color: oklch(0.68 0.17 228);
 	text-underline-offset: 2px;
+	text-decoration-skip-ink: auto;
 
 	&:not(:is(:hover, :focus)) {
 		text-decoration-color: color-mix(in srgb, currentColor, transparent 50%);
@@ -134,9 +128,6 @@ dl dl {
 img,
 picture {
 	display: block;
-	font-style: italic;
-	background-repeat: no-repeat;
-	background-size: cover;
 	max-width: 100%;
 	height: auto;
 }
@@ -151,7 +142,7 @@ iframe {
 	display: block;
 	max-inline-size: 100%;
 	block-size: auto;
-	border-style: none;
+	border: none;
 }
 
 figure {
@@ -169,7 +160,6 @@ select,
 textarea,
 button {
 	font: inherit;
-	/* FUTURE: appearance: base; */
 }
 
 label {
@@ -182,15 +172,6 @@ input:not( :where([type="submit"],
 		[type="button"],
 		[type="reset"])) {
 	inline-size: 100%;
-}
-
-button,
-input:where([type="submit"],
-	[type="reset"],
-	[type="button"]) {
-	background: CanvasText;
-	color: Canvas;
-	border: 1px solid transparent;
 }
 
 @supports (field-sizing: content) {
@@ -233,7 +214,7 @@ hr {
 }
 
 :target {
-	scroll-margin: 3rlh;
+	scroll-margin: 3rem;
 }
 
 table {
