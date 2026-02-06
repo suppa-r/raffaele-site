@@ -59,6 +59,7 @@
 }
 
 [data-theme] body::before {
+	--size: clamp(20px, 3vw, 30px);
 	opacity: 1;
 	pointer-events: none;
 	content: "";
@@ -70,10 +71,10 @@
 	background:
 		linear-gradient(90deg,
 			var(--body-grid-line) 1px,
-			transparent 1px) 0 0 / 30px 30px,
+			transparent 1px) 0 0 / var(--size) var(--size),
 		linear-gradient(180deg,
 			var(--body-grid-line) 1px,
-			transparent 1px) 0 0 / 30px 30px,
+			transparent 1px) 0 0 / var(--size) var(--size),
 		var(--base-color);
 	mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
 	mask-size: 400% 100%;
@@ -126,10 +127,10 @@
 	/*---------------- Button and padding settings ----------------- */
 
 	/* Font families */
-	--font-family-primary: "wire_oneregular", monospace, sans-serif;
 
-	--font-weight: 400;
-	--font-style: italic;
+	--font-family-primary: "wire_oneregular", monospace, sans-serif;
+	--font-weight: normal;
+	--font-style: normal;
 
 	/*------------- letter and word spacing settings ----------------*/
 
@@ -156,6 +157,7 @@
 	--glow-down-height: clamp(0.4vmin, 0.5vmin, 0.7vmin);
 }
 
+/*--------------- Transitions and animations --------------------*/
 
 @media (prefers-color-scheme: light) {
 	:root {
@@ -219,14 +221,8 @@
 			1);
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
-	/*   perspective: 800px; */
 	transform: translateZ(-50vw) scale(var(--scale)) rotateY(var(--rotation)) translateZ(50vw);
 	backface-visibility: hidden;
-}
-
-::view-transition-old(curve-container),
-::view-transition-new(curve-container) {
-	animation-duration: 0;
 }
 
 ::view-transition-old(root) {
@@ -256,12 +252,12 @@
 	}
 
 	15% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: -90deg;
 	}
 
 	85% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
@@ -278,12 +274,12 @@
 	}
 
 	15% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: 0deg;
 	}
 
 	85% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: 90deg;
 		animation-timing-function: ease-in-out;
 	}
@@ -309,6 +305,7 @@ figcaption {
 	margin-block: 0;
 }
 
+h1,
 h2,
 h3 {
 	font-size: var(--step-2);
@@ -329,7 +326,6 @@ body {
 	font-weight: var(--font-weight);
 	word-spacing: var(--word-spacing);
 	letter-spacing: var(--letter-spacing);
-	line-height: 1.5;
 }
 
 body {
@@ -362,8 +358,8 @@ body::before {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	margin-inline: auto;
 	view-transition-name: wrapper;
-
 }
 
 /*----------------------- Header styles  ------------------------*/
