@@ -868,7 +868,7 @@ label:has(> input[type="radio"]:checked) svg {
 @media (max-width: 675px) {
 
 	:root {
-		--curve-char-width: clamp(3rem, 7vw, 6rem);
+		--curve-char-width: clamp(2.8rem, 6.8vw, 5.8rem);
 	}
 
 	body,
