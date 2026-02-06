@@ -667,6 +667,7 @@ header {
 .container .text-with-animation {
 	font-size: var(--step-6);
 	display: block;
+	font-style: italic;
 }
 
 /*------------------ Large button styles  ---------------*/
@@ -811,10 +812,10 @@ label {
 	place-items: center;
 	cursor: pointer;
 
-	&::before {
+	&::before,
+	&&::after {
 		position: absolute;
-		background-color: transparent;
-		color: var(--text-color);
+		background-color: var(--text-span);
 		border-radius: 100%;
 		z-index: -1;
 		inset: var(--space-s);
@@ -822,7 +823,7 @@ label {
 }
 
 label:has(> input:checked) {
-	color: var(--text-span);
+	display: none;
 	pointer-events: none;
 
 	&::before {
@@ -833,30 +834,22 @@ label:has(> input:checked) {
 .color-picker label svg {
 	width: var(--space-m);
 	height: var(--space-m);
-	fill: var(--text-color);
-	transform: scale(1) rotate(0deg);
-	transform-origin: center center;
+	padding: 0;
+	background-color: transparent;
+	border-radius: 50%;
+	box-sizing: border-box;
 	transition:
-		transform 0.3s ease-in-out,
-		background-color 0.3s ease-in-out,
+		transform 0.5s ease-in-out,
+		background-color 0.5s ease-in-out,
+		padding 0.5s ease-in-out,
 		fill 0.3s ease-in-out;
 }
 
-label:has(> input:checked) svg {
-	fill: var(--text-span);
-}
-
-[data-theme="dark"] .color-picker label:has(> input[value="dark"]:checked) svg {
-	fill: var(--text-span);
-}
-
-[data-theme="light"] .color-picker label:has(> input[value="light"]:checked) svg {
-	fill: var(--text-span);
-}
-
-
-label:has(> input[type="radio"]:checked) svg {
-	display: none;
+.color-picker label:hover svg,
+.color-picker label:focus-within svg {
+	background-color: var(--text-span);
+	transform: scale(0.8) rotate(90deg);
+	padding: var(--space-4xs);
 }
 
 /* Responsive footer title wrapping for small screens */
