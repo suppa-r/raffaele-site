@@ -129,7 +129,7 @@
 	/* Font families */
 
 	--font-family-primary: "wire_oneregular", monospace, sans-serif;
-	--font-weight: normal;
+	--font-weight: 500;
 	--font-style: normal;
 
 	/*------------- letter and word spacing settings ----------------*/
