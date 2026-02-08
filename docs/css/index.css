@@ -112,6 +112,7 @@
 
 	/*----------Fluid spacing with mobile scaling ------------------ */
 
+	--space-5xs: clamp(0.25rem, 0.2244rem + 0.1136vw, 0.3125rem);
 	--space-4xs: clamp(0.3125rem, 0.2869rem + 0.1136vw, 0.375rem);
 	--space-3xs: clamp(0.4375rem, 0.4119rem + 0.1136vw, 0.5rem);
 	--space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem);
@@ -749,7 +750,7 @@ footer {
 
 .footer-break {
 	display: inline;
-	padding-inline-start: var(--space-l);
+	padding-inline-start: var(--space-m);
 }
 
 /*----------- Theme switcher styles  -----------*/
