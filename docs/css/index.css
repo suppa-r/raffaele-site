@@ -97,42 +97,43 @@
 
 	/*----------- Fluid typography with mobile scaling ------------- */
 
-	--step--1: clamp(0.844rem, 0.8967rem + -0.0562vw, 0.8854rem);
-	--step-0: clamp(1.0625rem, 1.0456rem + 0.0847vw, 1.125rem);
-	--step-1: clamp(1.275rem, 1.2141rem + 0.3046vw, 1.4996rem);
-	--step-2: clamp(1.53rem, 1.4028rem + 0.6359vw, 1.999rem);
-	--step-3: clamp(1.836rem, 1.6113rem + 1.1236vw, 2.6647rem);
-	--step-4: clamp(2.2032rem, 1.8374rem + 1.8289vw, 3.552rem);
-	--step-5: clamp(2.6438rem, 2.0768rem + 2.8352vw, 4.7348rem);
-	--step-6: clamp(3.1726rem, 2.3214rem + 4.2561vw, 6.3115rem);
-	--step-7: clamp(3.8071rem, 2.558rem + 6.2456vw, 8.4132rem);
-	--step-8: clamp(4.5686rem, 2.7662rem + 9.0119vw, 11.2149rem);
+	--step--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
+	--step-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+	--step-1: clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem);
+	--step-2: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+	--step-3: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+	--step-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+	--step-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+	--step-6: clamp(3.3592rem, 2.7828rem + 2.5621vw, 4.7684rem);
+	--step-7: clamp(4.0311rem, 3.2418rem + 3.508vw, 5.9605rem);
+	--step-8: clamp(4.8373rem, 3.7682rem + 4.7514vw, 7.4506rem);
+	--step-9: clamp(5.8048rem, 4.3695rem + 6.379vw, 9.3132rem);
+	--step-10: clamp(6.9657rem, 5.0529rem + 8.5015vw, 11.6415rem);
 
 	/*----------Fluid spacing with mobile scaling ------------------ */
 
-	--space-4xs: clamp(0.125rem, 0.1081rem + 0.0847vw, 0.1875rem);
-	--space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
-	--space-2xs: clamp(0.5625rem, 0.5625rem + 0vw, 0.5625rem);
-	--space-xs: clamp(0.8125rem, 0.7956rem + 0.0847vw, 0.875rem);
-	--space-s: clamp(1.0625rem, 1.0456rem + 0.0847vw, 1.125rem);
-	--space-m: clamp(1.625rem, 1.6081rem + 0.0847vw, 1.6875rem);
-	--space-l: clamp(2.125rem, 2.0911rem + 0.1695vw, 2.25rem);
-	--space-xl: clamp(3.1875rem, 3.1367rem + 0.2542vw, 3.375rem);
-	--space-2xl: clamp(4.25rem, 4.1822rem + 0.339vw, 4.5rem);
-	--space-3xl: clamp(6.375rem, 6.2733rem + 0.5085vw, 6.75rem);
-	--space-4xl: clamp(7.4375rem, 7.3189rem + 0.5932vw, 7.875rem);
-	--space-5xl: clamp(8.5rem, 8.3644rem + 0.678vw, 9rem);
-	--space-6xl: clamp(9.5625rem, 9.41rem + 0.7627vw, 10.125rem);
-	--space-7xl: clamp(10.625rem, 10.4555rem + 0.8475vw, 11.25rem);
-	--space-8xl: clamp(11.6875rem, 11.5011rem + 0.9322vw, 12.375rem);
-	--space-9xl: clamp(12.75rem, 12.5466rem + 1.0169vw, 13.5rem);
-	--space-10xl: clamp(13.8125rem, 13.5922rem + 1.1017vw, 14.625rem);
-	--space-11xl: clamp(14.875rem, 14.6377rem + 1.1864vw, 15.75rem);
-	--space-12xl: clamp(15.9375rem, 15.6833rem + 1.2712vw, 16.875rem);
+	--space-4xs: clamp(0.3125rem, 0.2869rem + 0.1136vw, 0.375rem);
+	--space-3xs: clamp(0.4375rem, 0.4119rem + 0.1136vw, 0.5rem);
+	--space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem);
+	--space-xs: clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem);
+	--space-s: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+	--space-m: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
+	--space-l: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem);
+	--space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem);
+	--space-2xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem);
+	--space-3xl: clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem);
+	--space-4xl: clamp(7.875rem, 7.517rem + 1.5909vw, 8.75rem);
+	--space-5xl: clamp(9rem, 8.5909rem + 1.8182vw, 10rem);
+	--space-6xl: clamp(10.125rem, 9.6648rem + 2.0455vw, 11.25rem);
+	--space-7xl: clamp(11.25rem, 10.7386rem + 2.2727vw, 12.5rem);
+	--space-8xl: clamp(12.375rem, 11.8125rem + 2.5vw, 13.75rem);
+	--space-9xl: clamp(13.5rem, 12.8864rem + 2.7273vw, 15rem);
 
 	/*---------------- Font Families settings ----------------- */
 
-	--font-family-primary: "wire_oneregular", monospace, sans-serif;
+	--font-family-primary: "wire_oneregular",
+		monospace,
+		sans-serif;
 	--font-weight: 500;
 	--font-style: normal;
 
@@ -310,7 +311,7 @@ html,
 body {
 	color: var(--text-color);
 	font-family: var(--font-family-primary), sans-serif;
-	font-size: var(--step-0);
+	font-size: var(--step--1);
 	font-style: var(--font-style);
 	font-weight: var(--font-weight);
 	word-spacing: var(--word-spacing);
