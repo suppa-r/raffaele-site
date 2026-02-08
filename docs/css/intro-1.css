@@ -162,7 +162,7 @@ body::before {
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation-duration: 1.2s;
+	animation-duration: 0.9s;
 	animation-timing-function: ease-in-out;
 	animation-fill-mode: both;
 	transform-style: preserve-3d;
@@ -180,9 +180,13 @@ body::before {
 	animation-name: reveal-in;
 }
 
-/* Hide main content during theme transition, keep header/footer visible */
+/* Hide main content during theme transition, fade it in with the new color scheme */
 ::view-transition-old(footer),
-::view-transition-new(footer) {
+::view-transition-new(footer),
+::view-transition-old(main),
+::view-transition-new(main),
+::view-transition-old(wrapper),
+::view-transition-new(wrapper) {
 	opacity: 0;
 	animation: none;
 }

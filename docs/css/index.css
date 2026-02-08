@@ -212,7 +212,7 @@
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation: 1.5s linear(0,
+	animation: 0.9s linear(0,
 			0.324 9.1%,
 			0.584 18.6%,
 			0.782 28.6%,
@@ -235,6 +235,15 @@
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
+}
+
+/* Hide main content during transition, fade it in with the new color scheme */
+::view-transition-old(main),
+::view-transition-new(main),
+::view-transition-old(wrapper),
+::view-transition-new(wrapper) {
+	animation: none;
+	opacity: 0;
 }
 
 @property --rotation {
@@ -753,10 +762,12 @@ footer {
 	word-break: normal;
 	overflow-wrap: normal;
 	hyphens: none;
+
 }
 
 .footer-break {
 	display: inline;
+	padding-inline-start: var(--space-l);
 }
 
 /*----------- Theme switcher styles  -----------*/
@@ -835,11 +846,15 @@ label:has(> input:checked) {
 		fill 0.3s ease-in-out;
 }
 
-.color-picker label:hover svg,
-.color-picker label:focus-within svg {
-	background-color: var(--text-span);
-	transform: scale(0.8) rotate(90deg);
-	padding: var(--space-4xs);
+/* Only apply hover effects on devices with hover capability (not touch devices) */
+@media (hover: hover) and (pointer: fine) {
+
+	.color-picker label:hover svg,
+	.color-picker label:focus-within svg {
+		background-color: var(--text-span);
+		transform: scale(0.8) rotate(90deg);
+		padding: var(--space-4xs);
+	}
 }
 
 /* Responsive footer title wrapping for small screens */
@@ -861,6 +876,7 @@ label:has(> input:checked) {
 
 	.footer-break {
 		display: block;
+		padding-inline-start: 0;
 	}
 }
 

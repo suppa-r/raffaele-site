@@ -1,56 +1,45 @@
 [data-theme="dark"] {
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
-	--text-span: oklch(81.03% 0.04235 196.468);
+	--text-span: oklch(84.352% 0.03404 196.681);
 	--nav-contrast-color: oklch(0% 0 0);
-	--theme-icon-color: oklch(100% 0.00011 271.152);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.085);
 
 	--shadow: 0 30px 100px oklch(100% 0.00011 271.152);
-
-	/* Darker shadow colors for animation */
-	--shadow-color: oklch(100% 0.00011 271.152);
-	--shadow-color2: oklch(100% 0.00011 271.152 / 0.89);
-	--shadow-color3: oklch(100% 0.00011 271.152 / 0.849);
-
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18 / 0.800), 0 30px 100px oklch(81% 0.01500 17.000 / 0.600);
 
+	/* Darker shadow colors for animation */
+	--shadow-color: oklch(100% 0.00011 271.152 / 0.8);
+	--shadow-color2: oklch(100% 0.00011 271.152 / 0.7);
+	--shadow-color3: oklch(100% 0.00011 271.152 / 0.5);
+
 	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337),
-			oklch(75% 0.07 325 / 0.2), oklch(40.093% 0.04856 211.604));
+			oklch(55.728% 0.07474 207.281 / 0.2), oklch(41.982% 0.0557 181.639));
 }
 
 [data-theme="light"] {
 	--base-color: oklch(100% 0.00011 271.152);
 	--text-color: oklch(0% 0 0);
-	--text-span: oklch(28.453% 0.04652 194.896 / 0.993);
+	--text-span: oklch(53.447% 0.06872 209.921);
 	--nav-contrast-color: oklch(100% 0.00011 271.152);
-	--theme-icon-color: oklch(100% 0.00011 271.152);
 
 	--body-grid-line: oklch(0% 0 0 / 0.25);
 
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18 / 0.800), 0 30px 100px oklch(81% 0.01500 17.000 / 0.600);
 
-	--shadow: 0 30px 100px oklch(0% 0 0);
-
 	/* Darker shadow colors for animation */
-	--shadow-color: oklch(0% 0 0);
-	--shadow-color2: oklch(0% 0 0 / 0.89);
-	--shadow-color3: oklch(0% 0 0 / 0.849);
+	--shadow-color: oklch(18.674% 0.00002 271.152);
+	--shadow-color2: oklch(0% 0 0 / 0.7);
+	--shadow-color3: oklch(0% 0 0 / 0.5);
 
 	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337),
-			oklch(75% 0.07 325 / 0.2), oklch(40.093% 0.04856 211.604));
-}
+			oklch(55.728% 0.07474 207.281 / 0.2), oklch(41.982% 0.0557 181.639));
 
-[data-theme="light"] body:has(.overlay-navigation.overlay-slide-down)::before {
-	display: none;
-}
-
-[data-theme="dark"] body:has(.overlay-navigation.overlay-slide-down)::before {
-	display: none;
 }
 
 [data-theme] body::before {
+	--size: clamp(20px, 3vw, 30px);
 	opacity: 1;
 	pointer-events: none;
 	content: "";
@@ -62,11 +51,14 @@
 	background:
 		linear-gradient(90deg,
 			var(--body-grid-line) 1px,
-			transparent 1px) 0 0 / 30px 30px,
+			transparent 1px) 0 0 / var(--size) var(--size),
 		linear-gradient(180deg,
 			var(--body-grid-line) 1px,
-			transparent 1px) 0 0 / 30px 30px,
+			transparent 1px) 0 0 / var(--size) var(--size),
 		var(--base-color);
+	-webkit-mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
+	-webkit-mask-size: 400% 100%;
+	-webkit-mask-repeat: no-repeat;
 	mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
 	mask-size: 400% 100%;
 	mask-repeat: no-repeat;
@@ -74,8 +66,13 @@
 	transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
 		background-position 0.3s ease-in-out;
 	isolation: isolate;
-	z-index: -2000;
+	z-index: -1;
 	overflow: hidden;
+}
+
+[data-theme] body {
+	position: relative;
+	z-index: 0;
 }
 
 :root {
@@ -115,13 +112,11 @@
 	--space-11xl: clamp(14.875rem, 14.6377rem + 1.1864vw, 15.75rem);
 	--space-12xl: clamp(15.9375rem, 15.6833rem + 1.2712vw, 16.875rem);
 
-	/*---------------- Button and padding settings ----------------- */
+	/*---------------- Font Families settings ----------------- */
 
-	/* Font families */
 	--font-family-primary: "wire_oneregular", monospace, sans-serif;
-
-	--font-weight: 400;
-	--font-style: italic;
+	--font-weight: 500;
+	--font-style: normal;
 
 	/*------------- letter and word spacing settings ----------------*/
 
@@ -129,7 +124,170 @@
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-4xs);
 	--sp: 8s;
-	--transition-speed: 0.6s ease-in-out;
+
+	--blend-mode: normal;
+}
+
+/*--------------- Transitions and animations --------------------*/
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--theme: light;
+		color-scheme: light;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--theme: dark;
+		color-scheme: dark;
+	}
+}
+
+
+@supports (selector(::view-transition)) {
+	.support.view-transition {
+		display: none;
+	}
+}
+
+@container not style(--theme: 🥔) {
+	.support.style-query {
+		display: none;
+	}
+}
+
+.support {
+	background-color: var(--base-color);
+	border-inline-start: 2rem solid var(--text-color);
+	color: var(--text-color);
+	border-radius: 0.5rem;
+	padding: 1em 2em;
+}
+
+::view-transition {
+	background: var(--base-color);
+}
+
+::view-transition-image-pair(root) {
+	perspective: 2500px;
+	perspective-origin: center;
+	transform-style: preserve-3d;
+	transform-origin: 50% 50% 100vw;
+	filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: 0.9s linear(0,
+			0.324 9.1%,
+			0.584 18.6%,
+			0.782 28.6%,
+			0.858 33.8%,
+			0.92 39.2%,
+			0.997 49.5%,
+			1.021 55.1%,
+			1.033 61%,
+			1.035 71.7%,
+			1);
+	transform-style: preserve-3d;
+	transform-origin: 50% 50% 0;
+	transform: translateZ(-50vw) scale(var(--scale)) rotateY(var(--rotation)) translateZ(50vw);
+	backface-visibility: hidden;
+}
+
+::view-transition-old(root) {
+	animation-name: reveal-out;
+}
+
+::view-transition-new(root) {
+	animation-name: reveal-in;
+}
+
+/* Hide main content during transition, fade it in with the new color scheme */
+::view-transition-old(main),
+::view-transition-new(main),
+::view-transition-old(wrapper),
+::view-transition-new(wrapper) {
+	animation: none;
+	opacity: 0;
+}
+
+@property --rotation {
+	syntax: "<angle>";
+	inherits: false;
+	initial-value: 0deg;
+}
+
+@property --scale {
+	syntax: "<number>";
+	inherits: false;
+	initial-value: 1;
+}
+
+@keyframes reveal-in {
+	from {
+		--rotation: -90deg;
+		animation-timing-function: ease-in-out;
+	}
+
+	15% {
+		--scale: 0.7;
+		--rotation: -90deg;
+	}
+
+	85% {
+		--scale: 0.7;
+		--rotation: 0deg;
+		animation-timing-function: ease-in-out;
+	}
+
+	to {
+		--rotation: 0deg;
+	}
+}
+
+@keyframes reveal-out {
+	from {
+		--rotation: 0deg;
+		animation-timing-function: ease-in-out;
+	}
+
+	15% {
+		--scale: 0.7;
+		--rotation: 0deg;
+	}
+
+	85% {
+		--scale: 0.7;
+		--rotation: 90deg;
+		animation-timing-function: ease-in-out;
+	}
+
+	to {
+		--rotation: 90deg;
+	}
+}
+
+/*--------------------------  global styles  ----------------------*/
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figcaption {
+	white-space: normal;
+}
+
+h1,
+h2,
+h3 {
+	font-size: var(--step-2);
+	font-weight: 400;
+	font-style: italic;
 }
 
 /*-------------------------- Body styles  -------------------------*/
@@ -209,12 +367,12 @@ nav li a {
 	text-decoration: none;
 	display: block;
 	text-align: center;
-	font-size: var(--step-1);
+	font-size: var(--step-2);
 }
 
 nav li a:before {
 	content: "";
-	width: var(--space-xl);
+	width: var(--space-2xl);
 	height: var(--space-3xs);
 	background-color: var(--text-color);
 	position: absolute;
@@ -545,10 +703,9 @@ header {
 	backdrop-filter: var(--backdrop-blur);
 	box-shadow: var(--navbar-shadow);
 	margin: var(--space-xs) var(--space-3xl) 0 var(--space-3xl);
-	padding: 0 var(--space-xl);
+	padding: var(--space-s) var(--space-xl);
 	border-radius: var(--space-l);
 	isolation: isolate;
-	transition: var(--transition-speed);
 	position: relative;
 	z-index: 2000;
 }
@@ -571,6 +728,10 @@ header {
 	color: inherit;
 }
 
+.overlay-slide-down~header .color-picker label svg {
+	fill: oklch(100% 0.00011 271.152);
+}
+
 /*--------------------- Header Title Styles  --------------------*/
 
 .header-title {
@@ -589,7 +750,7 @@ header {
 	color: var(--text-span);
 }
 
-/*------------------ Theme switcher styles  -------------------*/
+/*----------- Theme switcher styles  -----------*/
 
 .visually-hidden {
 	clip: rect(0 0 0 0);
@@ -602,17 +763,16 @@ header {
 }
 
 .color-picker {
+	display: block;
 	margin-block: 0;
 	view-transition-name: match-element;
 }
 
 .color-picker>fieldset {
-	display: grid;
-	gap: 0;
-	grid-template-rows: repeat(2, 1.5em);
-	grid-auto-flow: row;
+	display: block;
 	margin-inline: auto;
-	width: min-content;
+	width: 100%;
+	height: 100%;
 	border: 0;
 	background: transparent;
 	position: relative;
@@ -627,39 +787,35 @@ input[type="radio"] {
 }
 
 .color-picker label {
-	position: relative;
+	position: absolute;
+	inset: 0;
+	pointer-events: all;
 	isolation: isolate;
 	display: grid;
-	place-items: center;
+	align-content: end;
 	cursor: pointer;
-	width: 1.5em;
-	height: 1.5em;
+	transition: opacity 0.5s ease-in-out;
+}
 
-	&::before,
-	&&::after {
-		position: absolute;
-		background-color: var(--text-span);
-		fill: var(--theme-icon-color);
-		border-radius: 100%;
-		z-index: -1;
-		inset: var(--space-s);
-	}
+.color-picker label::before,
+.color-picker label::after {
+	position: absolute;
+	background-color: var(--text-span);
+	border-radius: 100%;
+	z-index: -1;
+	inset: var(--space-s);
+	transition: transform 0.5s ease-in-out, opacity 0.5s
 }
 
 label:has(> input:checked) {
-	display: none;
+	opacity: 0;
 	pointer-events: none;
-
-	&::before {
-		content: "";
-	}
 }
 
 .color-picker label svg {
 	width: var(--space-m);
 	height: var(--space-m);
 	padding: 0;
-	fill: var(--theme-icon-color);
 	background-color: transparent;
 	border-radius: 50%;
 	box-sizing: border-box;
@@ -670,12 +826,15 @@ label:has(> input:checked) {
 		fill 0.3s ease-in-out;
 }
 
-.color-picker label:hover svg,
-.color-picker label:focus-within svg {
-	background-color: var(--text-span);
-	fill: var(--theme-icon-color);
-	transform: scale(0.8) rotate(90deg);
-	padding: var(--space-4xs);
+/* Only apply hover effects on devices with hover capability (not touch devices) */
+@media (hover: hover) and (pointer: fine) {
+
+	.color-picker label:hover svg,
+	.color-picker label:focus-within svg {
+		background-color: var(--text-span);
+		transform: scale(0.8) rotate(90deg);
+		padding: var(--space-4xs);
+	}
 }
 
 main {
