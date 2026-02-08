@@ -163,21 +163,6 @@
 
 /*--------------- Transitions and animations --------------------*/
 
-@media (prefers-color-scheme: light) {
-	:root {
-		--theme: light;
-		color-scheme: light;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--theme: dark;
-		color-scheme: dark;
-	}
-}
-
-
 @supports (selector(::view-transition)) {
 	.support.view-transition {
 		display: none;
@@ -192,7 +177,7 @@
 
 .support {
 	background-color: var(--base-color);
-	border-inline-start: 2rem solid var(--text-color);
+	border-inline-start: 0.5rem solid var(--text-color);
 	color: var(--text-color);
 	border-radius: 0.5rem;
 	padding: 1em 2em;
@@ -206,26 +191,20 @@
 	perspective: 2500px;
 	perspective-origin: center;
 	transform-style: preserve-3d;
-	transform-origin: 50% 50% 100vw;
+	transform-origin: 50% 50% 0;
 	filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation: 0.9s linear(0,
-			0.324 9.1%,
-			0.584 18.6%,
-			0.782 28.6%,
-			0.858 33.8%,
-			0.92 39.2%,
-			0.997 49.5%,
-			1.021 55.1%,
-			1.033 61%,
-			1.035 71.7%,
-			1);
+	animation-duration: 0.9s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
-	transform: translateZ(-50vw) scale(var(--scale)) rotateY(var(--rotation)) translateZ(50vw);
+	perspective: 2000px;
+	transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
 	backface-visibility: hidden;
 }
 
@@ -237,13 +216,15 @@
 	animation-name: reveal-in;
 }
 
-/* Hide main content during transition, fade it in with the new color scheme */
+/* Hide main content during theme transition, fade it in with the new color scheme */
+::view-transition-old(footer),
+::view-transition-new(footer),
 ::view-transition-old(main),
 ::view-transition-new(main),
 ::view-transition-old(wrapper),
 ::view-transition-new(wrapper) {
-	animation: none;
 	opacity: 0;
+	animation: none;
 }
 
 @property --rotation {
@@ -265,12 +246,12 @@
 	}
 
 	15% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: -90deg;
 	}
 
 	85% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
@@ -287,12 +268,12 @@
 	}
 
 	15% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: 0deg;
 	}
 
 	85% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: 90deg;
 		animation-timing-function: ease-in-out;
 	}
