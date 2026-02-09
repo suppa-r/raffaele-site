@@ -345,15 +345,33 @@ header {
 .header-title {
 	padding-block-start: var(--space-3xs);
 	text-align: center;
+	display: block;
+	white-space: normal;
+	word-break: normal;
+	overflow-wrap: normal;
+	hyphens: none;
 }
 
 .header-text {
 	padding-block-start: var(--space-3xs);
 	text-align: center;
+	display: block;
+	white-space: normal;
+	word-break: normal;
+	overflow-wrap: normal;
+	hyphens: none;
 }
 
-.header-text span {
-	padding-inline-start: var(--space-l);
+.header-break {
+	display: inline;
+	padding-inline-start: var(--space-m);
+}
+
+@media (max-width: 675px) {
+	.header-break {
+		display: block;
+		padding-inline-start: 0;
+	}
 }
 
 .main-subtitle {
@@ -753,7 +771,7 @@ footer {
 	padding-inline-start: var(--space-m);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 675px) {
 	.footer-break {
 		display: block;
 		padding-inline-start: 0;
