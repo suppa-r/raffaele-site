@@ -2,6 +2,7 @@
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
 	--text-span: oklch(47.898% 0.06036 195.377 / 0.850);
+	--background-color: rgba(0, 0, 0, 0.4);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.085);
 
@@ -31,8 +32,9 @@
 	--base-color: oklch(100% 0.00011 271.152);
 	--text-color: oklch(0% 0 0);
 	--text-span: oklch(53.447% 0.06872 209.921 / 0.61);
+	--background-color: rgba(202, 190, 190, 0.212);
 
-	--body-grid-line: oklch(0% 0 0 / 0.25);
+	--body-grid-line: oklch(0% 0 0 / 0.15);
 
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18 / 0.800), 0 30px 100px oklch(81% 0.01500 17.000 / 0.600);
 
@@ -141,8 +143,8 @@
 	/*------------- letter and word spacing settings ----------------*/
 
 	--padding-inline: var(--space-4xs);
-	--letter-spacing: var(--space-4xs);
-	--word-spacing: var(--space-4xs);
+	--letter-spacing: var(--space-5xs);
+	--word-spacing: var(--space-5xs);
 	--sp: 8s;
 
 	/*------------ Curve animation viewport units ----------------*/
@@ -315,8 +317,8 @@ body {
 	font-size: var(--step--1);
 	font-style: var(--font-style);
 	font-weight: var(--font-weight);
-	word-spacing: var(--word-spacing);
 	letter-spacing: var(--letter-spacing);
+	word-spacing: var(--word-spacing);
 }
 
 body {
@@ -669,8 +671,22 @@ header {
 /* Style the semantic container elements */
 
 .container .text-with-animation {
+	display: block;
 	font-size: var(--step-6);
 	font-style: italic;
+	animation: slide-in 2s ease-in-out forwards;
+}
+
+@keyframes slide-in {
+	from {
+		transform: translateY(-400%);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
 
 /*------------------ Large button styles  ---------------*/
@@ -681,10 +697,9 @@ header {
 	justify-content: center;
 	align-items: center;
 	width: var(--space-11xl);
-	height: var(--space-5xl);
+	height: var(--space-6xl);
 	margin: 0 auto;
-	background-color: var(--base-color);
-	opacity: 1;
+	background-color: var(--background-color);
 	box-shadow: 0 20px 10px 0 var(--text-color);
 	outline: var(--space-xs) solid transparent;
 	overflow: hidden;
@@ -715,8 +730,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: var(--space-s);
-	margin: 0 auto;
+	padding: var(--space-l);
 }
 
 .large-button svg {
