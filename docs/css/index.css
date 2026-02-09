@@ -753,6 +753,13 @@ footer {
 	padding-inline-start: var(--space-m);
 }
 
+@media (max-width: 900px) {
+	.footer-break {
+		display: block;
+		padding-inline-start: 0;
+	}
+}
+
 /*----------- Theme switcher styles  -----------*/
 
 .visually-hidden {
@@ -855,6 +862,14 @@ label:has(> input:checked) {
 
 	.curve-container {
 		gap: var(--space-2xl);
+	}
+
+	footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: var(--space-3xs);
+		padding-inline: var(--padding-inline);
 	}
 
 	.footer-break {
