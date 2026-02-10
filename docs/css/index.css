@@ -2,7 +2,6 @@
 	--base-color: oklch(0% 0 0);
 	--text-color: oklch(100% 0.00011 271.152);
 	--text-span: oklch(47.898% 0.06036 195.377 / 0.850);
-	--background-color: rgba(0, 0, 0, 0.4);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.085);
 
@@ -32,7 +31,6 @@
 	--base-color: oklch(100% 0.00011 271.152);
 	--text-color: oklch(0% 0 0);
 	--text-span: oklch(53.447% 0.06872 209.921 / 0.61);
-	--background-color: rgba(202, 190, 190, 0.212);
 
 	--body-grid-line: oklch(0% 0 0 / 0.15);
 
@@ -699,9 +697,8 @@ header {
 	width: var(--space-11xl);
 	height: var(--space-6xl);
 	margin: 0 auto;
-	background-color: var(--background-color);
 	box-shadow: 0 20px 10px 0 var(--text-color);
-	outline: var(--space-xs) solid transparent;
+
 	overflow: hidden;
 	isolation: isolate;
 	border-radius: 50%;
@@ -723,7 +720,9 @@ header {
 .large-button:focus,
 .large-button:hover {
 	box-shadow: 0 0 50px 10px var(--text-color);
-	outline: 4px solid var(--text-color);
+	outline: 6px solid var(--text-span);
+	background-color: var(--text-color);
+	color: var(--base-color);
 }
 
 .button-text {
@@ -747,10 +746,13 @@ header {
 .large-button:hover svg,
 .large-button:focus svg {
 	transform: scale(1.5) rotate(45deg);
+	fill: var(--base-color);
 	transition:
 		transform 0.2s,
 		fill 0.3s;
 }
+
+
 
 /*----------------footer----------------------*/
 
