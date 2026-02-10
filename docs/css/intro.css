@@ -16,6 +16,8 @@
 
 	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337),
 			oklch(55.728% 0.07474 207.281 / 0.2), oklch(41.982% 0.0557 181.639));
+
+	--blend-mode: normal;
 }
 
 [data-theme="light"] {
@@ -35,6 +37,8 @@
 
 	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156 / 0.431), oklch(69.426% 0.07915 211.737 / 0.337),
 			oklch(55.728% 0.07474 207.281 / 0.2), oklch(41.982% 0.0557 181.639));
+
+	--blend-mode: normal;
 
 }
 
@@ -114,7 +118,9 @@
 
 	/*---------------- Font Families settings ----------------- */
 
-	--font-family-primary: "wire_oneregular", monospace, sans-serif;
+	--font-family-primary: "wire_oneregular",
+		monospace,
+		sans-serif;
 	--font-weight: 500;
 	--font-style: normal;
 
@@ -122,9 +128,8 @@
 
 	--padding-inline: var(--space-4xs);
 	--letter-spacing: var(--space-5xs);
+	--word-spacing: var(--space-5xs);
 	--sp: 8s;
-
-	--blend-mode: normal;
 }
 
 /*--------------- Transitions and animations --------------------*/
@@ -276,23 +281,31 @@ html,
 body {
 	color: var(--text-color);
 	font-family: var(--font-family-primary), sans-serif;
-	font-size: var(--step-0);
+	font-size: var(--step--1);
 	font-style: var(--font-style);
 	font-weight: var(--font-weight);
 	letter-spacing: var(--letter-spacing);
-	padding-inline: var(--padding-inline);
+	word-spacing: var(--word-spacing);
 }
 
 body {
 	background: var(--base-color);
 }
 
-/* Make .wrapper take full viewport height */
+/*----------- Make .wrapper take full viewport height -------------*/
 
 .wrapper {
 	min-height: 100dvh;
-	view-transition-name: wrapper;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-inline: auto;
 	mix-blend-mode: var(--blend-mode);
+	view-transition-name: wrapper;
+}
+
+[data-theme="light"] .wrapper {
+	filter: drop-shadow(0 0 50px rgba(0, 0, 0, .6));
 }
 
 /*------------------------ Navigation  ------------------------*/
@@ -304,7 +317,6 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: var(--base-color);
 	transform: translateY(-100%);
 }
 
@@ -692,6 +704,12 @@ header {
 
 
 /* Hide header background and title when nav is open */
+
+.overlay-slide-down~body {
+	background: transparent;
+	box-shadow: none;
+}
+
 .overlay-slide-down~header {
 	background: transparent;
 	box-shadow: none;
@@ -743,18 +761,24 @@ header {
 }
 
 .color-picker {
-	display: block;
+	display: grid;
+	place-items: center;
 	margin-block: 0;
+	width: var(--space-l);
+	height: var(--space-l);
+	cursor: pointer;
+	position: relative;
+	border-radius: 50%;
 	view-transition-name: match-element;
 }
 
 .color-picker>fieldset {
-	display: block;
-	margin-inline: auto;
 	width: 100%;
 	height: 100%;
 	border: 0;
 	background: transparent;
+	display: grid;
+	place-items: center;
 	position: relative;
 }
 
@@ -764,6 +788,8 @@ input[type="radio"] {
 	height: 100%;
 	cursor: pointer;
 	margin: 0;
+	position: absolute;
+	inset: 0;
 }
 
 .color-picker label {
@@ -772,7 +798,7 @@ input[type="radio"] {
 	pointer-events: all;
 	isolation: isolate;
 	display: grid;
-	align-content: end;
+	place-items: center;
 	cursor: pointer;
 	transition: opacity 0.5s ease-in-out;
 }
@@ -783,7 +809,7 @@ input[type="radio"] {
 	background-color: var(--text-span);
 	border-radius: 100%;
 	z-index: -1;
-	inset: var(--space-s);
+	inset: 0;
 	transition: transform 0.5s ease-in-out, opacity 0.5s
 }
 
@@ -793,9 +819,9 @@ label:has(> input:checked) {
 }
 
 .color-picker label svg {
-	width: var(--space-m);
-	height: var(--space-m);
-	padding: 0;
+	width: var(--space-l);
+	height: var(--space-l);
+	display: block;
 	background-color: transparent;
 	border-radius: 50%;
 	box-sizing: border-box;
