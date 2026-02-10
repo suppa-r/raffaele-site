@@ -300,6 +300,7 @@ body {
 	flex-direction: column;
 	justify-content: flex-start;
 	margin-inline: auto;
+	padding-inline: var(--padding-inline);
 	mix-blend-mode: var(--blend-mode);
 	view-transition-name: wrapper;
 }
@@ -926,8 +927,6 @@ p span {
 	}
 
 	main {
-		inline-size: 100%;
-		max-inline-size: 65ch;
 		margin-inline: auto;
 		margin-block-start: var(--space-3xl);
 	}
