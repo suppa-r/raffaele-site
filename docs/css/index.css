@@ -182,7 +182,7 @@
 }
 
 .support {
-	background-color: var(--base-color);
+	background-color: transparent;
 	border-inline-start: 0.5rem solid var(--text-color);
 	color: var(--text-color);
 	border-radius: 0.5rem;
@@ -190,7 +190,7 @@
 }
 
 ::view-transition {
-	background: var(--base-color);
+	background: transparent;
 }
 
 ::view-transition-image-pair(root) {
@@ -198,13 +198,13 @@
 	perspective-origin: center;
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
-	filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+	filter: drop-shadow(0px 0px 6px hsl(0, 0%, 100%)) drop-shadow(0px 0px 25px hsla(0, 0%, 100%, 0.5));
 
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation-duration: 0.9s;
+	animation-duration: 1s;
 	animation-timing-function: ease-in-out;
 	animation-fill-mode: both;
 	transform-style: preserve-3d;
@@ -223,14 +223,19 @@
 }
 
 /* Hide main content during theme transition, fade it in with the new color scheme */
+::view-transition-old(header),
+::view-transition-new(header),
+::view-transition-old(main-subtitle),
+::view-transition-new(main-subtitle),
+::view-transition-old(curve-container),
+::view-transition-new(curve-container),
+::view-transition-old(text-with-animation),
+::view-transition-new(text-with-animation),
+::view-transition-old(large-button),
+::view-transition-new(large-button),
 ::view-transition-old(footer),
-::view-transition-new(footer),
-::view-transition-old(main),
-::view-transition-new(main),
-::view-transition-old(wrapper),
-::view-transition-new(wrapper) {
-	opacity: 0;
-	animation: none;
+::view-transition-new(footer) {
+	display: none;
 }
 
 @property --rotation {
@@ -249,6 +254,7 @@
 	from {
 		--rotation: -90deg;
 		animation-timing-function: ease-in-out;
+		background-color: transparent;
 	}
 
 	15% {
@@ -271,6 +277,7 @@
 	from {
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
+		background-color: transparent;
 	}
 
 	15% {
@@ -384,6 +391,7 @@ header {
 
 .main-subtitle {
 	margin-inline: auto;
+	view-transition-name: main-subtitle;
 }
 
 .main-subtitle span {
@@ -398,7 +406,7 @@ header {
 	flex-direction: column;
 	justify-content: space-around;
 	flex: 1;
-	view-transition-name: main;
+	view-transition-name: main-content;
 }
 
 /* -----------------------curvature-------------------------*/
@@ -683,6 +691,7 @@ header {
 	gap: var(--space-xl);
 	font-size: var(--step-3);
 	font-style: italic;
+	view-transition-name: text-with-animation;
 }
 
 .text-with-animation span:first-child {
@@ -720,6 +729,7 @@ header {
 	box-shadow: 0 20px 10px 0 var(--text-color);
 	overflow: hidden;
 	isolation: isolate;
+	z-index: 2000;
 	border-radius: 50%;
 	color: var(--text-color);
 	text-decoration: none;

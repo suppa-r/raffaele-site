@@ -8,7 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="author" content="Raffaele Suppa" />
 	<title>Raffaele Suppa - Web Page</title>
-
+	<script>
+		const savedTheme = localStorage.getItem('theme') || 'dark';
+		document.documentElement.setAttribute('data-theme', savedTheme);
+	</script>
 	<!-- Favicon links -->
 	<link rel="icon" href="/favicons/dark-1.png" type="image/png" id="favicon" />
 	<link rel="stylesheet" href="/docs/css/reset.css" />
@@ -75,9 +78,10 @@
 			<p>I walked the streets paved with gold,</p>
 			<p>touched all the bases,</p>
 			<p>and walked out of Buckingham Palace with the Crown Jewels</p>
-			<p class="p-small">wait a second; who was that?</p>
+			<p class="p-large">wait a second; who was that?</p>
 			<p>everything I needed to know, found me.</p>
-			<p>it's one prayer, one Blessing, one Miracle at a time.</p>
+			<p>it's one prayer, one Blessing</p>
+			<p>one Miracle at a time.</p>
 			<p>-- you couldn't microwave it then, or now --</p>
 
 			<p class="wrapper-gradient-text" aria-label="merci beaucoup">

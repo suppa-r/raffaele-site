@@ -169,7 +169,7 @@
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation-duration: 0.9s;
+	animation-duration: 1s;
 	animation-timing-function: ease-in-out;
 	animation-fill-mode: both;
 	transform-style: preserve-3d;
@@ -194,8 +194,8 @@
 ::view-transition-new(main),
 ::view-transition-old(wrapper),
 ::view-transition-new(wrapper) {
-	opacity: 0;
-	animation: none;
+	display: none;
+
 }
 
 @property --rotation {
@@ -281,7 +281,7 @@ html,
 body {
 	color: var(--text-color);
 	font-family: var(--font-family-primary), sans-serif;
-	font-size: var(--step--1);
+	font-size: var(--step-0);
 	font-style: var(--font-style);
 	font-weight: var(--font-weight);
 	letter-spacing: var(--letter-spacing);
@@ -860,17 +860,22 @@ main {
 	padding-block: var(--space-4xs);
 }
 
-.p-large {
-	font-size: var(--step-1);
-	padding-block: var(--space-4xs);
+.fancy {
+	font-style: italic;
+
 }
 
-p span {
+.fancy span {
 	display: inline-block;
-	color: var(--text-color);
-	padding-inline-start: var(--space-2xs);
+	padding-block: var(--space-3xs);
 	font-style: italic;
 	font-size: var(--step-1);
+}
+
+.p-large {
+	padding-block: var(--space-3xs);
+	font-size: var(--step-1);
+	font-weight: 600;
 }
 
 .wrapper-gradient-text {
@@ -952,6 +957,11 @@ p span {
 		padding: 0;
 		font-size: inherit;
 		color: var(--text-span);
+	}
+
+	.color-picker label svg {
+		width: var(--space-m);
+		height: var(--space-m);
 	}
 
 	.open-overlay {
