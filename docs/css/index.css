@@ -676,17 +676,29 @@ header {
 
 /* Style the semantic container elements */
 
-.container .text-with-animation {
-	display: block;
-	font-size: var(--step-6);
+.text-with-animation {
+	margin: 0 auto;
+	padding-block-start: var(--space-2xl);
+	display: flex;
+	gap: var(--space-xl);
+	font-size: var(--step-3);
 	font-style: italic;
-	animation: slide-in 2s ease-in-out forwards;
+}
+
+.text-with-animation span:first-child {
+	display: block;
+	animation: slide-in 1.5s ease;
+}
+
+.text-with-animation span:last-child {
+	display: block;
+	animation: slide-in 2.5s ease;
 }
 
 @keyframes slide-in {
 	from {
-		transform: translateY(-400%);
-		opacity: 0;
+		transform: translateY(-600%);
+		opacity: .1;
 	}
 
 	to {
@@ -702,11 +714,10 @@ header {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: var(--space-11xl);
+	width: var(--space-10xl);
 	height: var(--space-6xl);
 	margin: 0 auto;
 	box-shadow: 0 20px 10px 0 var(--text-color);
-
 	overflow: hidden;
 	isolation: isolate;
 	border-radius: 50%;
