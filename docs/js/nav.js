@@ -64,38 +64,89 @@ function setTheme(theme) {
 	}
 }
 
-// Theme initialization on page load
-document.addEventListener('DOMContentLoaded', () => {
-	let savedTheme = localStorage.getItem('theme');
+// Navigation with View Transitions
+async function navigateWithTransition(url) {
+	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-	// Validate and set default theme
-	if (!savedTheme || !isValidTheme(savedTheme)) {
-		savedTheme = getDefaultTheme();
-		localStorage.setItem('theme', savedTheme);
+	if (!document.startViewTransition || prefersReducedMotion) {
+		window.location.href = url;
+		return;
 	}
 
-	// Apply theme immediately
-	document.documentElement.setAttribute('data-theme', savedTheme);
-	setActiveThemeButton(savedTheme);
-	updateFavicon(savedTheme);
+	try {
+		const response = await fetch(url);
+		if (!response.ok) throw new Error('Navigation failed');
 
-	// Theme button change handlers
-	const themeRadios = document.querySelectorAll('input[name="theme"]');
-	themeRadios.forEach(radio => {
-		radio.addEventListener('change', () => {
-			if (radio.checked) {
-				setTheme(radio.value);
+		const html = await response.text();
+		const parser = new DOMParser();
+		const newDocument = parser.parseFromString(html, 'text/html');
+
+		const transition = document.startViewTransition(() => {
+			// Update body content
+			document.body.innerHTML = newDocument.body.innerHTML;
+
+			// Update title
+			document.title = newDocument.title;
+
+			// Update stylesheet links if different
+			const currentStylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
+			const newStylesheets = Array.from(newDocument.querySelectorAll('link[rel="stylesheet"]'));
+
+			const currentHrefs = currentStylesheets.map(link => link.getAttribute('href'));
+			const newHrefs = newStylesheets.map(link => link.getAttribute('href'));
+
+			// Only update if stylesheets are different
+			if (JSON.stringify(currentHrefs) !== JSON.stringify(newHrefs)) {
+				currentStylesheets.forEach(link => {
+					if (!newHrefs.includes(link.getAttribute('href'))) {
+						link.remove();
+					}
+				});
+
+				newStylesheets.forEach(link => {
+					if (!currentHrefs.includes(link.getAttribute('href'))) {
+						document.head.appendChild(link.cloneNode(true));
+					}
+				});
 			}
 		});
-		// Trigger change event on click (for nested label interaction)
-		radio.addEventListener('click', () => {
-			setTheme(radio.value);
-			radio.dispatchEvent(new Event('change', { bubbles: true }));
-		});
-	});
 
-	// Navigation toggle
-	$('.open-overlay').click(function () {
+		await transition.finished;
+
+		// Reinitialize theme and navigation after content swap
+		const savedTheme = localStorage.getItem('theme') || 'dark';
+		document.documentElement.setAttribute('data-theme', savedTheme);
+		setActiveThemeButton(savedTheme);
+		updateFavicon(savedTheme);
+		initializeEventListeners();
+		window.history.pushState({}, '', url);
+
+		// Scroll to top
+		window.scrollTo(0, 0);
+	});
+});
+
+// Intercept navigation links
+document.querySelectorAll('a[href]').forEach(link => {
+	const href = link.getAttribute('href');
+	// Only intercept internal HTML links
+	if (href &&
+		!href.startsWith('#') &&
+		!href.startsWith('http') &&
+		!href.startsWith('mailto:') &&
+		href.endsWith('.html')) {
+
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+			const url = link.href;
+			navigateWithTransition(url);
+		});
+	}
+});
+
+// Navigation toggle (if jQuery is loaded)
+if (typeof $ === 'function' && $('.open-overlay').length) {
+	$('.open-overlay').off('click').click(function () {
 		var overlay_navigation = $('.overlay-navigation'),
 			nav_item_1 = $('nav li:nth-of-type(1)'),
 			nav_item_2 = $('nav li:nth-of-type(2)'),
@@ -108,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		overlay_navigation.toggleClass('overlay-active');
 		if (overlay_navigation.hasClass('overlay-active')) {
-
 			top_bar.removeClass('animate-out-top-bar').addClass('animate-top-bar');
 			middle_bar.removeClass('animate-out-middle-bar').addClass('animate-middle-bar');
 			bottom_bar.removeClass('animate-out-bottom-bar').addClass('animate-bottom-bar');
@@ -130,4 +180,29 @@ document.addEventListener('DOMContentLoaded', () => {
 			nav_item_5.removeClass('slide-in-nav-item-delay-4').addClass('slide-in-nav-item-delay-4-reverse');
 		}
 	});
+}
+}
+
+// Theme initialization on page load
+document.addEventListener('DOMContentLoaded', () => {
+	let savedTheme = localStorage.getItem('theme');
+
+	// Validate and set default theme
+	if (!savedTheme || !isValidTheme(savedTheme)) {
+		savedTheme = getDefaultTheme();
+		localStorage.setItem('theme', savedTheme);
+	}
+
+	// Apply theme immediately
+	document.documentElement.setAttribute('data-theme', savedTheme);
+	setActiveThemeButton(savedTheme);
+	updateFavicon(savedTheme);
+
+	// Initialize all event listeners
+	initializeEventListeners();
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', () => {
+	location.reload();
 });
