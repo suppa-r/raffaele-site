@@ -76,12 +76,10 @@
 	mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
 	mask-size: 400% 100%;
 	mask-repeat: no-repeat;
-	transform-style: preserve-3d;
-	transition: transform 0.3s ease-in-out, opacity 0.7s ease-in-out,
-		background-position 0.3s ease-in-out;
+	transition: opacity 0.7s ease-in-out;
 	isolation: isolate;
 	z-index: -1;
-	overflow: hidden;
+	will-change: opacity;
 }
 
 [data-theme] body {
@@ -815,16 +813,6 @@ input[type="radio"] {
 	cursor: pointer;
 	transition: opacity 0.5s ease-in-out;
 	border-radius: 50%;
-}
-
-.color-picker label::before,
-.color-picker label::after {
-	position: absolute;
-	background-color: var(--text-span);
-	border-radius: 100%;
-	z-index: -1;
-	inset: 0;
-	transition: transform 0.5s ease-in-out, opacity 0.5s;
 }
 
 label:has(> input:checked) {
