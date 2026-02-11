@@ -1,9 +1,17 @@
 [data-theme="dark"] {
-	--base-color: oklch(0% 0 0);
-	--text-color: oklch(100% 0.00011 271.152);
-	--text-span: oklch(47.898% 0.06036 195.377 / 0.850);
+	/* Fallback colors for browsers without OKLCH support */
+	--base-color: #000000;
+	--text-color: #ffffff;
+	--text-span: rgba(102, 153, 204, 0.850);
+	--body-grid-line: rgba(255, 255, 255, 0.085);
 
-	--body-grid-line: oklch(100% 0.00011 271.152 / 0.085);
+	/* OKLCH colors for modern browsers */
+	@supports (color: oklch(0% 0 0)) {
+		--base-color: oklch(0% 0 0);
+		--text-color: oklch(100% 0.00011 271.152);
+		--text-span: oklch(47.898% 0.06036 195.377 / 0.850);
+		--body-grid-line: oklch(100% 0.00011 271.152 / 0.085);
+	}
 
 	/* Glow animation opacity values for dark mode */
 	--glow-opacity-low: 0.4;
@@ -19,11 +27,19 @@
 }
 
 [data-theme="light"] {
-	--base-color: oklch(100% 0.00011 271.152);
-	--text-color: oklch(0% 0 0);
-	--text-span: oklch(53.447% 0.06872 209.921 / 0.61);
+	/* Fallback colors for browsers without OKLCH support */
+	--base-color: #ffffff;
+	--text-color: #000000;
+	--text-span: rgba(104, 122, 141, 0.61);
+	--body-grid-line: rgba(0, 0, 0, 0.15);
 
-	--body-grid-line: oklch(0% 0 0 / 0.15);
+	/* OKLCH colors for modern browsers */
+	@supports (color: oklch(0% 0 0)) {
+		--base-color: oklch(100% 0.00011 271.152);
+		--text-color: oklch(0% 0 0);
+		--text-span: oklch(53.447% 0.06872 209.921 / 0.61);
+		--body-grid-line: oklch(0% 0 0 / 0.15);
+	}
 
 	/* Glow animation opacity values for light mode (higher for visibility) */
 	--glow-opacity-low: 0.5;
@@ -67,11 +83,11 @@
 	opacity: 1;
 	pointer-events: none;
 	content: "";
+	position: fixed;
+	inset: 0;
+	/* Modern dynamic viewport units for browsers that support them */
 	width: 100dvw;
 	height: 100dvh;
-	position: fixed;
-	top: 0;
-	left: 0;
 	background:
 		linear-gradient(90deg,
 			var(--body-grid-line) 1px,
@@ -89,7 +105,6 @@
 	transition: opacity 0.7s ease-in-out;
 	isolation: isolate;
 	z-index: 0;
-	will-change: opacity;
 }
 
 [data-theme] body {
@@ -658,7 +673,8 @@ footer {
 
 /*----------- Theme switcher styles  -----------*/
 
-.visually-hidden {
+.visually-hidden,
+input[type="radio"] {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	height: 1px;
@@ -666,6 +682,11 @@ footer {
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
+}
+
+input[type="radio"] {
+	cursor: pointer;
+	margin: 0;
 }
 
 .color-picker {
@@ -688,18 +709,6 @@ footer {
 	display: grid;
 	place-items: center;
 	position: relative;
-}
-
-input[type="radio"] {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-	cursor: pointer;
-	margin: 0;
 }
 
 .color-picker label {
@@ -746,11 +755,17 @@ label:has(> input:checked) {
 	white-space: normal;
 }
 
+/* Keyboard focus styling - works on all devices */
+.color-picker label:focus-within svg {
+	background-color: var(--text-span);
+	transform: scale(0.8) rotate(90deg);
+	padding: var(--space-4xs);
+}
+
 /* Only apply hover effects on devices with hover capability (not touch devices) */
 @media (hover: hover) and (pointer: fine) {
 
-	.color-picker label:hover svg,
-	.color-picker label:focus-within svg {
+	.color-picker label:hover svg {
 		background-color: var(--text-span);
 		transform: scale(0.8) rotate(90deg);
 		padding: var(--space-4xs);
@@ -767,7 +782,7 @@ label:has(> input:checked) {
 
 	body,
 	.wrapper {
-		overflow-x: hidden;
+		overflow: hidden;
 	}
 
 	.header-break {
