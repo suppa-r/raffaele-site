@@ -5,14 +5,6 @@
 	--text-span: rgba(102, 153, 204, 0.850);
 	--body-grid-line: rgba(255, 255, 255, 0.085);
 
-	/* OKLCH colors for modern browsers */
-	@supports (color: oklch(0% 0 0)) {
-		--base-color: oklch(0% 0 0);
-		--text-color: oklch(100% 0.00011 271.152);
-		--text-span: oklch(47.898% 0.06036 195.377 / 0.850);
-		--body-grid-line: oklch(100% 0.00011 271.152 / 0.085);
-	}
-
 	/* Glow animation opacity values for dark mode */
 	--glow-opacity-low: 0.4;
 	--glow-opacity-mid: 0.7;
@@ -21,7 +13,7 @@
 	--glow-background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 80%);
 
 	/* Glow box-shadow for dark mode */
-	--glow-box-shadow: 0 0 60px 20px var(--text-color);
+	--glow-box-shadow: 0 0 40px 10px var(--text-color);
 
 	--blend-mode: normal;
 }
@@ -32,14 +24,6 @@
 	--text-color: #000000;
 	--text-span: rgba(104, 122, 141, 0.61);
 	--body-grid-line: rgba(0, 0, 0, 0.15);
-
-	/* OKLCH colors for modern browsers */
-	@supports (color: oklch(0% 0 0)) {
-		--base-color: oklch(100% 0.00011 271.152);
-		--text-color: oklch(0% 0 0);
-		--text-span: oklch(53.447% 0.06872 209.921 / 0.61);
-		--body-grid-line: oklch(0% 0 0 / 0.15);
-	}
 
 	/* Glow animation opacity values for light mode (higher for visibility) */
 	--glow-opacity-low: 0.5;
@@ -52,6 +36,23 @@
 	--glow-box-shadow: none;
 
 	--blend-mode: normal;
+}
+
+/* OKLCH colors for modern browsers - top-level @supports for maximum compatibility */
+@supports (color: oklch(0% 0 0deg)) {
+	[data-theme="dark"] {
+		--base-color: oklch(0% 0 0deg);
+		--text-color: oklch(100% 0.00011 271.152deg);
+		--text-span: oklch(47.898% 0.06036 195.377deg / 0.850);
+		--body-grid-line: oklch(100% 0.00011 271.152deg / 0.085);
+	}
+
+	[data-theme="light"] {
+		--base-color: oklch(100% 0.00011 271.152deg);
+		--text-color: oklch(0% 0 0deg);
+		--text-span: oklch(53.447% 0.06872 209.921deg / 0.61);
+		--body-grid-line: oklch(0% 0 0deg / 0.15);
+	}
 }
 
 [data-theme="light"] .header-text,
@@ -318,7 +319,7 @@ h1,
 h2,
 h3 {
 	font-size: var(--step-2);
-	font-weight: 400;
+	font-weight: 500;
 	font-style: italic;
 }
 
@@ -437,7 +438,6 @@ header {
 	box-shadow: var(--glow-box-shadow);
 	transform-origin: center;
 	will-change: transform, opacity;
-	animation: shadow var(--curve-animation-duration) ease-in-out infinite;
 	contain: layout style paint;
 }
 
@@ -519,17 +519,14 @@ header {
 /*down*/
 .down-2-8 {
 	--curve-move: var(--move-2-8);
-	animation-name: curve-wave;
 }
 
 .down-4-6 {
 	--curve-move: var(--move-4-6);
-	animation-name: curve-wave;
 }
 
 .down-5 {
 	--curve-move: var(--move-5);
-	animation-name: curve-wave;
 }
 
 /* Shared animation for all up/down curve-wave classes */
@@ -737,7 +734,7 @@ input[type="radio"] {
 	border-radius: 50%;
 }
 
-label:has(> input:checked) {
+.color-picker label:has(> input:checked) {
 	opacity: 0;
 	pointer-events: none;
 }
