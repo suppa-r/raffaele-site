@@ -766,7 +766,8 @@ header {
 /*----------- Theme switcher styles  -----------*/
 
 .visually-hidden,
-.color-picker input[type="radio"] {
+.color-picker input[type="radio"],
+.color-picker .theme-input {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	height: 1px;
@@ -803,7 +804,8 @@ input[type="radio"] {
 	position: relative;
 }
 
-.color-picker label {
+.color-picker label,
+.color-picker .theme-label {
 	position: absolute;
 	inset: 0;
 	pointer-events: all;
@@ -816,18 +818,22 @@ input[type="radio"] {
 }
 
 @supports selector(:has(*)) {
-	.color-picker label:has(> input:checked) {
+
+	.color-picker label:has(> input:checked),
+	.color-picker .theme-label:has(> .theme-input:checked) {
 		opacity: 0;
 		pointer-events: none;
 	}
 }
 
-.color-picker label.checked {
+.color-picker label.checked,
+.color-picker .theme-label.checked {
 	opacity: 0;
 	pointer-events: none;
 }
 
-.color-picker label svg {
+.color-picker label svg,
+.color-picker .theme-label svg {
 	width: var(--space-l);
 	height: var(--space-l);
 	display: block;
@@ -842,7 +848,8 @@ input[type="radio"] {
 }
 
 /* Visible focus indicator for keyboard navigation */
-.color-picker input[type="radio"]:focus-visible {
+.color-picker input[type="radio"]:focus-visible,
+.color-picker .theme-input:focus-visible {
 	outline: 3px solid var(--text-span);
 	outline-offset: 2px;
 	clip: auto;
@@ -855,7 +862,8 @@ input[type="radio"] {
 }
 
 /* Keyboard focus styling - works on all devices */
-.color-picker label:focus-within svg {
+.color-picker label:focus-within svg,
+.color-picker .theme-label:focus-within svg {
 	background-color: var(--text-span);
 	transform: scale(0.8) rotate(90deg);
 	padding: var(--space-4xs);

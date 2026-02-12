@@ -738,7 +738,8 @@ footer {
 /*----------- Theme switcher styles  -----------*/
 
 .visually-hidden,
-.color-picker input[type="radio"] {
+.color-picker input[type="radio"],
+.color-picker .theme-input {
 	border: 0;
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
@@ -778,7 +779,8 @@ input[type="radio"] {
 	position: relative;
 }
 
-.color-picker label {
+.color-picker label,
+.color-picker .theme-label {
 	position: absolute;
 	inset: 0;
 	pointer-events: all;
@@ -791,18 +793,22 @@ input[type="radio"] {
 }
 
 @supports selector(:has(*)) {
-	.color-picker label:has(> input:checked) {
+
+	.color-picker label:has(> input:checked),
+	.color-picker .theme-label:has(> .theme-input:checked) {
 		opacity: 0;
 		pointer-events: none;
 	}
 }
 
-.color-picker label.checked {
+.color-picker label.checked,
+.color-picker .theme-label.checked {
 	opacity: 0;
 	pointer-events: none;
 }
 
-.color-picker label svg {
+.color-picker label svg,
+.color-picker .theme-label svg {
 	width: var(--space-m);
 	height: var(--space-m);
 	display: block;
@@ -814,7 +820,8 @@ input[type="radio"] {
 		padding 0.3s;
 }
 
-.color-picker label:is(:hover, :focus-within) svg {
+.color-picker label:is(:hover, :focus-within) svg,
+.color-picker .theme-label:is(:hover, :focus-within) svg {
 	background-color: var(--text-span);
 	fill: var(--base-color);
 	transform: scale(1.2) rotate(90deg);
@@ -822,7 +829,8 @@ input[type="radio"] {
 	border-radius: 50%;
 }
 
-.color-picker label:focus-within svg {
+.color-picker label:focus-within svg,
+.color-picker .theme-label:focus-within svg {
 	outline: 2px solid var(--text-color);
 	outline-offset: 2px;
 }
