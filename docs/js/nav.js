@@ -19,7 +19,12 @@ function updateFavicon(theme) {
 function setActiveThemeButton(theme) {
 	const themeInputs = document.querySelectorAll('input[name="theme"]');
 	themeInputs.forEach(input => {
-		input.checked = (input.value === theme);
+		const isChecked = (input.value === theme);
+		input.checked = isChecked;
+		const label = input.closest('label');
+		if (label) {
+			label.classList.toggle('checked', isChecked);
+		}
 	});
 }
 

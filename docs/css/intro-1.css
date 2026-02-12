@@ -4,6 +4,7 @@
 	--text-span: oklch(67.53% 0.04556 196.219 / 0.966);
 
 	--body-grid-line: oklch(100% 0.00011 271.152 / 0.123);
+	--theme: dark;
 
 	--shadow: 0 30px 100px oklch(100% 0.00011 271.152);
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
@@ -23,6 +24,7 @@
 	--text-span: oklch(30.097% 0.03588 210.108 / 0.795);
 
 	--body-grid-line: oklch(0% 0 0 / 0.329);
+	--theme: light;
 
 	--shadow: 0 30px 100px oklch(0% 0 0);
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 17.87 / 0.863), 0 30px 100px oklch(81.308% 0.01583 17.164 / 0.603);
@@ -129,9 +131,24 @@ body::before {
 	}
 }
 
-@container not style(--theme: 🥔) {
+
+.support.style-query {
+	display: block;
+}
+
+@supports (container-type: style) {
+	:root {
+		container-type: style;
+	}
+
 	.support.style-query {
 		display: none;
+	}
+
+	@container not style(--theme: light) and not style(--theme: dark) {
+		.support.style-query {
+			display: block;
+		}
 	}
 }
 

@@ -5,17 +5,18 @@
 	--text-span: rgba(198, 238, 238, 0.603);
 	--body-grid-line: rgba(255, 255, 255, 0.085);
 	--nav-contrast-color: #000000;
+	--theme: dark;
 
 
-	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18deg / 0.800), 0 30px 100px oklch(81% 0.01500 17.000deg / 0.600);
+	--navbar-shadow: 0 30px 100px rgba(196, 140, 130, 0.8), 0 30px 100px rgba(215, 190, 185, 0.6);
 
 	/* Darker shadow colors for animation */
-	--shadow-color: oklch(100% 0.00011 271.152deg / 0.8);
-	--shadow-color2: oklch(100% 0.00011 271.152deg / 0.7);
-	--shadow-color3: oklch(100% 0.00011 271.152deg / 0.5);
+	--shadow-color: rgba(255, 255, 255, 0.8);
+	--shadow-color2: rgba(255, 255, 255, 0.7);
+	--shadow-color3: rgba(255, 255, 255, 0.5);
 
-	--gradient-header: linear-gradient(90deg, oklch(94.194% 0.00638 255.743 / 0.431), oklch(80.908% 0.04481 210.936 / 0),
-			oklch(55.728% 0.07474 207.281deg / 0.2), oklch(41.982% 0.0557 181.639deg));
+	--gradient-header: linear-gradient(90deg, rgba(235, 235, 243, 0.431), rgba(118, 166, 200, 0),
+			rgba(80, 146, 163, 0.2), rgb(52, 102, 108));
 
 	--gradient: linear-gradient(90deg, var(--text-span), var(--text-color), var(--text-span));
 	--backdrop-blur: blur(10px);
@@ -30,16 +31,17 @@
 	--text-span: rgb(55, 156, 187);
 	--body-grid-line: rgba(0, 0, 0, 0.15);
 	--nav-contrast-color: #ffffff;
+	--theme: light;
 
-	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18deg / 0.800), 0 30px 100px oklch(81% 0.01500 17.000deg / 0.600);
+	--navbar-shadow: 0 30px 100px rgba(196, 140, 130, 0.8), 0 30px 100px rgba(215, 190, 185, 0.6);
 
 	/* Darker shadow colors for animation */
-	--shadow-color: oklch(18.674% 0.00002 271.152deg);
-	--shadow-color2: oklch(0% 0 0deg / 0.7);
-	--shadow-color3: oklch(0% 0 0deg / 0.5);
+	--shadow-color: rgb(48, 48, 48);
+	--shadow-color2: rgba(0, 0, 0, 0.7);
+	--shadow-color3: rgba(0, 0, 0, 0.5);
 
-	--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156deg / 0.431), oklch(69.426% 0.07915 211.737deg / 0.337),
-			oklch(55.728% 0.07474 207.281deg / 0.2), oklch(41.982% 0.0557 181.639deg));
+	--gradient-header: linear-gradient(90deg, rgba(214, 218, 230, 0.431), rgba(84, 144, 202, 0.337),
+			rgba(80, 146, 163, 0.2), rgb(52, 102, 108));
 
 	--gradient: linear-gradient(90deg, var(--text-span), var(--text-color), var(--text-span));
 	--backdrop-blur: blur(10px);
@@ -55,6 +57,16 @@
 		--text-span: oklch(58% 0.08 195.377deg / 0.65);
 		--body-grid-line: oklch(100% 0.00011 271.152deg / 0.085);
 		--nav-contrast-color: oklch(0% 0 0deg);
+
+		--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18deg / 0.800), 0 30px 100px oklch(81% 0.01500 17.000deg / 0.600);
+
+		/* Darker shadow colors for animation */
+		--shadow-color: oklch(100% 0.00011 271.152deg / 0.8);
+		--shadow-color2: oklch(100% 0.00011 271.152deg / 0.7);
+		--shadow-color3: oklch(100% 0.00011 271.152deg / 0.5);
+
+		--gradient-header: linear-gradient(90deg, oklch(94.194% 0.00638 255.743 / 0.431), oklch(80.908% 0.04481 210.936 / 0),
+				oklch(55.728% 0.07474 207.281deg / 0.2), oklch(41.982% 0.0557 181.639deg));
 	}
 
 	[data-theme="light"] {
@@ -63,6 +75,16 @@
 		--text-span: oklch(53.447% 0.06872 209.921);
 		--body-grid-line: oklch(0% 0 0deg / 0.15);
 		--nav-contrast-color: oklch(100% 0.00011 271.152deg);
+
+		--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18deg / 0.800), 0 30px 100px oklch(81% 0.01500 17.000deg / 0.600);
+
+		/* Darker shadow colors for animation */
+		--shadow-color: oklch(18.674% 0.00002 271.152deg);
+		--shadow-color2: oklch(0% 0 0deg / 0.7);
+		--shadow-color3: oklch(0% 0 0deg / 0.5);
+
+		--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156deg / 0.431), oklch(69.426% 0.07915 211.737deg / 0.337),
+				oklch(55.728% 0.07474 207.281deg / 0.2), oklch(41.982% 0.0557 181.639deg));
 	}
 }
 
@@ -172,10 +194,20 @@
 	}
 }
 
+
 .support.style-query {
-	display: none;
+	display: block;
 }
 
+@supports (container-type: style) {
+	:root {
+		container-type: style;
+	}
+
+	.support.style-query {
+		display: none;
+	}
+}
 
 .support {
 	background-color: var(--base-color);
@@ -218,15 +250,10 @@
 	animation-name: reveal-in;
 }
 
-/* Hide main content during theme transition, fade it in with the new color scheme */
-::view-transition-old(footer),
-::view-transition-new(footer),
-::view-transition-old(main),
-::view-transition-new(main),
+/* Hide transitioning wrapper content during theme transition */
 ::view-transition-old(wrapper),
 ::view-transition-new(wrapper) {
 	display: none;
-
 }
 
 @property --rotation {
@@ -250,6 +277,16 @@
 	15% {
 		--scale: 0.8;
 		--rotation: -90deg;
+
+		.visually-hidden {
+			clip: rect(0 0 0 0);
+			clip-path: inset(50%);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+		}
 	}
 
 	85% {
@@ -447,85 +484,100 @@ nav li:nth-of-type(1) {
 	z-index: 1000;
 }
 
-nav li:nth-of-type(2) {
-	background-color: color-mix(in oklch, var(--base-color) 80%, var(--text-color) 20%);
-	z-index: 1000;
-}
-
-nav li:nth-of-type(3) {
-	background-color: color-mix(in oklch, var(--base-color) 60%, var(--text-color) 40%);
-	z-index: 1000;
-}
-
-nav li:nth-of-type(4) {
-	background-color: color-mix(in oklch, var(--base-color) 40%, var(--text-color) 60%);
-	z-index: 1000;
-}
-
+/* Fallback background-color for browsers without color-mix/oklch support */
+nav li:nth-of-type(1),
+nav li:nth-of-type(2),
+nav li:nth-of-type(3),
+nav li:nth-of-type(4),
 nav li:nth-of-type(5) {
-	background-color: color-mix(in oklch, var(--base-color) 20%, var(--text-color) 80%);
+	background-color: var(--base-color);
 	z-index: 1000;
 }
 
-/* Darken text on lighter backgrounds for better contrast */
-nav li:nth-of-type(4) a,
-nav li:nth-of-type(4) a:before,
-nav li:nth-of-type(4) a:after,
-nav li:nth-of-type(5) a,
-nav li:nth-of-type(5) a:before,
-nav li:nth-of-type(5) a:after {
-	color: var(--nav-contrast-color);
-	z-index: 1000;
-}
+/* Use color-mix when supported to create stepped backgrounds */
+@supports (background-color: color-mix(in oklch, #000000 100%, #ffffff 0%)) {
+	nav li:nth-of-type(1) {
+		background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%);
+		z-index: 1000;
+	}
 
-nav li:nth-of-type(4) a:before,
-nav li:nth-of-type(5) a:before {
-	background-color: currentColor;
-}
+	nav li:nth-of-type(2) {
+		background-color: color-mix(in oklch, var(--base-color) 80%, var(--text-color) 20%);
+		z-index: 1000;
+	}
 
-nav li:nth-of-type(4) a:hover:after,
-nav li:nth-of-type(5) a:hover:after {
-	color: var(--nav-contrast-color);
-}
+	nav li:nth-of-type(3) {
+		background-color: color-mix(in oklch, var(--base-color) 60%, var(--text-color) 40%);
+		z-index: 1000;
+	}
 
-.slide-in-nav-item {
-	animation: slide-in-nav-item 0.4s linear 1 0.2s both;
-}
+	nav li:nth-of-type(4) {
+		background-color: color-mix(in oklch, var(--base-color) 40%, var(--text-color) 60%);
+		z-index: 1000;
+	}
 
-.slide-in-nav-item-delay-1 {
-	animation: slide-in-nav-item 0.4s linear 1 0.4s both;
-}
+	nav li:nth-of-type(5) {
+		background-color: color-mix(in oklch, var(--base-color) 20%, var(--text-color) 80%);
+		z-index: 1000;
+	}
 
-.slide-in-nav-item-delay-2 {
-	animation: slide-in-nav-item 0.4s linear 1 0.6s both;
-}
+	nav li:nth-of-type(4) a:after,
+	nav li:nth-of-type(5) a,
+	nav li:nth-of-type(5) a:before,
+	nav li:nth-of-type(5) a:after {
+		color: var(--nav-contrast-color);
+		z-index: 1000;
+	}
 
-.slide-in-nav-item-delay-3 {
-	animation: slide-in-nav-item 0.4s linear 1 0.8s both;
-}
+	nav li:nth-of-type(4) a:before,
+	nav li:nth-of-type(5) a:before {
+		background-color: currentColor;
+	}
 
-.slide-in-nav-item-delay-4 {
-	animation: slide-in-nav-item 0.4s linear 1 1s both;
-}
+	nav li:nth-of-type(4) a:hover:after,
+	nav li:nth-of-type(5) a:hover:after {
+		color: var(--nav-contrast-color);
+	}
 
-.slide-in-nav-item-reverse {
-	animation: slide-in-nav-item-reverse 0.3s linear 1 0.5s both;
+	.slide-in-nav-item {
+		animation: slide-in-nav-item 0.4s linear 1 0.2s both;
+	}
+
+	.slide-in-nav-item-delay-1 {
+		animation: slide-in-nav-item 0.4s linear 1 0.4s both;
+	}
+
+	.slide-in-nav-item-delay-2 {
+		animation: slide-in-nav-item 0.4s linear 1 0.6s both;
+	}
+
+	.slide-in-nav-item-delay-3 {
+		animation: slide-in-nav-item 0.4s linear 1 0.8s both;
+	}
+
+	.slide-in-nav-item-delay-4 {
+		animation: slide-in-nav-item 0.4s linear 1 1s both;
+	}
+
+	.slide-in-nav-item-reverse {
+		animation: slide-in-nav-item-reverse 0.3s linear 1 var(--slide-in-nav-item-reverse-delay, 0.5s) both;
+	}
 }
 
 .slide-in-nav-item-delay-1-reverse {
-	animation: slide-in-nav-item-reverse 0.3s linear 1 0.4s both;
+	--slide-in-nav-item-reverse-delay: 0.4s;
 }
 
 .slide-in-nav-item-delay-2-reverse {
-	animation: slide-in-nav-item-reverse 0.3s linear 1 0.3s both;
+	--slide-in-nav-item-reverse-delay: 0.3s;
 }
 
 .slide-in-nav-item-delay-3-reverse {
-	animation: slide-in-nav-item-reverse 0.3s linear 1 0.2s both;
+	--slide-in-nav-item-reverse-delay: 0.2s;
 }
 
 .slide-in-nav-item-delay-4-reverse {
-	animation: slide-in-nav-item-reverse 0.3s linear 1 both;
+	--slide-in-nav-item-reverse-delay: 0s;
 }
 
 /*------------------------Animation Keyframes  -------------------*/
@@ -554,6 +606,7 @@ nav li:nth-of-type(5) a:hover:after {
 	}
 }
 
+
 /*------------------------ Burger King  ------------------------*/
 
 .open-overlay {
@@ -567,6 +620,11 @@ nav li:nth-of-type(5) a:hover:after {
 	z-index: 1000;
 	width: var(--space-m);
 	cursor: pointer;
+}
+
+.open-overlay:focus-visible {
+	outline: 2px solid var(--text-color);
+	outline-offset: 4px;
 }
 
 .open-overlay span {
@@ -739,6 +797,15 @@ header {
 	z-index: 2000;
 }
 
+/*--------------------- Header Title Styles  --------------------*/
+
+.header-title span {
+	margin: 0;
+	padding: 0 var(--space-xs) 0 0;
+	font-size: inherit;
+	color: var(--text-span);
+}
+
 /* Hide header background and title when nav is open */
 
 .overlay-slide-down~header {
@@ -762,23 +829,10 @@ header {
 	fill: oklch(100% 0.00011 271.152deg);
 }
 
-/*--------------------- Header Title Styles  --------------------*/
-
-header {
-	/* Intentionally override header padding from earlier definition */
-	padding: var(--space-s) var(--space-xl);
-}
-
-.header-title span {
-	margin: 0;
-	padding: 0 var(--space-xs) 0 0;
-	font-size: inherit;
-	color: var(--text-span);
-}
-
 /*----------- Theme switcher styles  -----------*/
 
-.visually-hidden {
+.visually-hidden,
+input[type="radio"] {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	height: 1px;
@@ -788,14 +842,7 @@ header {
 	width: 1px;
 }
 
-.color-picker input[type="radio"] {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
+input[type="radio"] {
 	cursor: pointer;
 	margin: 0;
 }
@@ -834,7 +881,6 @@ header {
 	border-radius: 50%;
 }
 
-/* Hide checked label for modern browsers with :has() support */
 @supports selector(:has(*)) {
 	.color-picker label:has(> input:checked) {
 		opacity: 0;
@@ -842,12 +888,6 @@ header {
 	}
 }
 
-/* Fallback for older browsers: rely on JavaScript to toggle a 'checked' class */
-/* If you prefer CSS-only without JS, restructure HTML so input is before label sibling:
-   <input type="radio" id="theme-dark" ...>
-   <label for="theme-dark">...</label>
-   Then use: input:checked + label { opacity: 0; pointer-events: none; }
-*/
 .color-picker label.checked {
 	opacity: 0;
 	pointer-events: none;
@@ -865,6 +905,19 @@ header {
 		background-color 0.5s ease-in-out,
 		padding 0.5s ease-in-out,
 		fill 0.3s ease-in-out;
+}
+
+/* Visible focus indicator for keyboard navigation */
+.color-picker input[type="radio"]:focus-visible {
+	outline: 3px solid var(--text-span);
+	outline-offset: 2px;
+	clip: auto;
+	clip-path: none;
+	width: auto;
+	height: auto;
+	position: relative;
+	overflow: visible;
+	white-space: normal;
 }
 
 /* Keyboard focus styling - works on all devices */
@@ -953,6 +1006,51 @@ main>*+* {
 		text-shadow: 0px 50px 100px var(--shadow-color),
 			0px 15px 20px var(--shadow-color2),
 			0px 30px 5px var(--shadow-color3);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none;
+	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		transform: none;
+		perspective: none;
+		transform-style: flat;
+		backface-visibility: visible;
+	}
+
+	.overlay-slide-down,
+	.overlay-slide-up,
+	nav li a:before,
+	nav li a:after,
+	.open-overlay span {
+		transition: none;
+	}
+
+	.slide-in-nav-item,
+	.slide-in-nav-item-delay-1,
+	.slide-in-nav-item-delay-2,
+	.slide-in-nav-item-delay-3,
+	.slide-in-nav-item-delay-4,
+	.slide-in-nav-item-reverse,
+	.slide-in-nav-item-delay-1-reverse,
+	.slide-in-nav-item-delay-2-reverse,
+	.slide-in-nav-item-delay-3-reverse,
+	.slide-in-nav-item-delay-4-reverse,
+	.animate-top-bar,
+	.animate-bottom-bar,
+	.animate-middle-bar,
+	.animate-out-top-bar,
+	.animate-out-bottom-bar,
+	.animate-out-middle-bar,
+	.text-layer {
+		animation: none;
 	}
 }
 
