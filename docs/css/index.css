@@ -286,8 +286,6 @@ html.theme-transitioning body::before {
 ::view-transition-new(header),
 ::view-transition-old(main-subtitle),
 ::view-transition-new(main-subtitle),
-::view-transition-old(main),
-::view-transition-new(main),
 ::view-transition-old(curve-container),
 ::view-transition-new(curve-container),
 ::view-transition-old(large-button),

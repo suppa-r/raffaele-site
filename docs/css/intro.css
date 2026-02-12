@@ -262,14 +262,13 @@ html.theme-transitioning body::before {
 }
 
 /* Hide main content during theme transition, fade it in with the new color scheme */
-::view-transition-old(footer),
-::view-transition-new(footer),
+::view-transition-old(header),
+::view-transition-new(header),
 ::view-transition-old(main),
 ::view-transition-new(main),
-::view-transition-old(wrapper),
-::view-transition-new(wrapper) {
+::view-transition-old(footer),
+::view-transition-new(footer) {
 	display: none;
-
 }
 
 @property --rotation {
@@ -918,6 +917,7 @@ main>*+* {
 	padding: 0;
 	/* Remove default padding */
 	text-align: center;
+	view-transition-name: wrapper-gradient-text;
 }
 
 .text-layer {
