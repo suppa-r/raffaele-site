@@ -313,8 +313,7 @@ html.theme-transitioning body::before {
 	display: none;
 }
 
-/* During theme toggle, route the whole page through the root transition so custom
-   ::view-transition-old/new(root) animations are visible. */
+/* During theme toggle, route named elements through the root transition. */
 html.theme-transitioning .wrapper,
 html.theme-transitioning header,
 html.theme-transitioning .main-subtitle,
@@ -328,6 +327,7 @@ html.theme-transitioning .theme-label--dark {
 	view-transition-name: none;
 }
 
+/* During page navigation, route named elements through the root transition. */
 html.page-transitioning .wrapper,
 html.page-transitioning header,
 html.page-transitioning .main-subtitle,

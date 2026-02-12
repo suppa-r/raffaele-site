@@ -204,6 +204,16 @@ body::before {
 	animation: none;
 }
 
+/* During theme toggle, route named elements through the root transition. */
+html.theme-transitioning footer {
+	view-transition-name: none;
+}
+
+/* During page navigation, route named elements through the root transition. */
+html.page-transitioning footer {
+	view-transition-name: none;
+}
+
 @property --rotation {
 	syntax: "<angle>";
 	inherits: false;
