@@ -107,7 +107,7 @@
 	mask-repeat: no-repeat;
 	transition: opacity 0.7s ease-in-out;
 	isolation: isolate;
-	z-index: 0;
+	z-index: -1;
 }
 
 /* Modern dynamic viewport units for browsers that support them */
@@ -118,13 +118,24 @@
 	}
 }
 
+@media (prefers-reduced-transparency: reduce),
+(prefers-reduced-motion: reduce) {
+	[data-theme] body::before {
+		background: var(--base-color);
+		-webkit-mask-image: none;
+		mask-image: none;
+		transition: none;
+	}
+}
+
 html.theme-transitioning body::before {
 	will-change: opacity;
 }
 
 [data-theme] body {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
+	isolation: isolate;
 }
 
 :root {
@@ -183,7 +194,6 @@ html.theme-transitioning body::before {
 	--curve-blur: var(--space-l);
 	--move-2-8: 0.6vmin;
 	--move-3-7: 1.2vmin;
-	--move-4-6: 1.8vmin;
 	--move-5: 2.4vmin;
 
 	/*------------ Glow effect responsive dimensions ----------------*/
@@ -533,9 +543,28 @@ header {
 	animation-duration: var(--curve-animation-duration);
 	animation-iteration-count: infinite;
 	animation-name: curve-wave;
-	--curve-rise: 0vmin;
 	--curve-move: calc(var(--curve-direction) * var(--curve-rise));
 
+}
+
+.content.curve-row .curve-char:nth-child(1),
+.content.curve-row .curve-char:nth-child(8) {
+	--curve-rise: 0vmin;
+}
+
+.content.curve-row .curve-char:nth-child(2),
+.content.curve-row .curve-char:nth-child(7) {
+	--curve-rise: var(--move-2-8);
+}
+
+.content.curve-row .curve-char:nth-child(3),
+.content.curve-row .curve-char:nth-child(6) {
+	--curve-rise: var(--move-3-7);
+}
+
+.content.curve-row .curve-char:nth-child(4),
+.content.curve-row .curve-char:nth-child(5) {
+	--curve-rise: var(--move-5);
 }
 
 
