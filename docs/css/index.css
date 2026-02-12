@@ -65,7 +65,7 @@
 [data-theme="light"] .large-button,
 [data-theme="light"] .footer-text,
 [data-theme="light"] .color-picker label svg {
-	color: var(--text-color);
+
 	mix-blend-mode: var(--blend-mode);
 	font-weight: 500;
 }
@@ -183,7 +183,7 @@ html.theme-transitioning body::before {
 	--padding-inline: var(--space-4xs);
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-4xs);
-	--curve-animation-duration: 8s;
+	--curve-animation-duration: 5s;
 	/* Backwards-compatible alias for existing usages */
 	--sp: var(--curve-animation-duration);
 
@@ -192,9 +192,9 @@ html.theme-transitioning body::before {
 	--curve-char-width: clamp(3rem, 6vw, 5rem);
 
 	--curve-blur: var(--space-l);
-	--move-2-8: 0.6vmin;
-	--move-3-7: 1.2vmin;
-	--move-5: 2.4vmin;
+	--curve-rise-outer-near: 0.75vmin;
+	--curve-rise-mid: 1.4vmin;
+	--curve-rise-center: 2.7vmin;
 
 	/*------------ Glow effect responsive dimensions ----------------*/
 
@@ -246,15 +246,20 @@ html.theme-transitioning body::before {
 	filter: drop-shadow(0px 0px 25px hsl(165deg 11% 3% / 50%));
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce),
+(prefers-reduced-transparency: reduce) {
 	::view-transition-image-pair(root) {
 		filter: none;
 	}
 }
 
 @media (prefers-reduced-transparency: reduce) {
-	::view-transition-image-pair(root) {
+
+	.down::before,
+	.up::before {
+		animation: none;
 		filter: none;
+		box-shadow: none;
 	}
 }
 
@@ -504,6 +509,7 @@ header {
 	box-shadow: var(--glow-box-shadow);
 	transform-origin: center;
 	animation: shadow var(--curve-animation-duration) ease-in-out infinite;
+	will-change: transform, opacity;
 
 	contain: layout style;
 }
@@ -554,17 +560,17 @@ header {
 
 .content.curve-row .curve-char:nth-child(2),
 .content.curve-row .curve-char:nth-child(7) {
-	--curve-rise: var(--move-2-8);
+	--curve-rise: var(--curve-rise-outer-near);
 }
 
 .content.curve-row .curve-char:nth-child(3),
 .content.curve-row .curve-char:nth-child(6) {
-	--curve-rise: var(--move-3-7);
+	--curve-rise: var(--curve-rise-mid);
 }
 
 .content.curve-row .curve-char:nth-child(4),
 .content.curve-row .curve-char:nth-child(5) {
-	--curve-rise: var(--move-5);
+	--curve-rise: var(--curve-rise-center);
 }
 
 
@@ -920,6 +926,8 @@ input[type="radio"] {
 	.down::before,
 	.up::before {
 		animation: none;
+		filter: none;
+		box-shadow: none;
 	}
 
 	.text-with-animation span:first-child,
