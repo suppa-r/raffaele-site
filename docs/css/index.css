@@ -252,12 +252,21 @@ html.theme-transitioning body::before {
 /* Hide main content during theme transition, fade it in with the new color scheme */
 ::view-transition-old(footer),
 ::view-transition-new(footer),
+::view-transition-old(wrapper),
+::view-transition-new(wrapper),
+::view-transition-old(header),
+::view-transition-new(header),
+::view-transition-old(main-subtitle),
+::view-transition-new(main-subtitle),
 ::view-transition-old(main),
 ::view-transition-new(main),
-::view-transition-old(wrapper),
-::view-transition-new(wrapper) {
+::view-transition-old(curve-container),
+::view-transition-new(curve-container),
+::view-transition-old(large-button),
+::view-transition-new(large-button),
+::view-transition-old(match-element),
+::view-transition-new(match-element) {
 	display: none;
-
 }
 
 @property --rotation {
@@ -409,7 +418,7 @@ header {
 	flex-direction: column;
 	justify-content: space-around;
 	flex: 1;
-	view-transition-name: main-content;
+	view-transition-name: main;
 }
 
 /* -----------------------curvature-------------------------*/
@@ -451,6 +460,7 @@ header {
 	background: var(--glow-background);
 	box-shadow: var(--glow-box-shadow);
 	transform-origin: center;
+	animation: shadow var(--curve-animation-duration) ease-in-out infinite;
 	will-change: transform, opacity;
 	contain: layout style paint;
 }
@@ -544,8 +554,8 @@ header {
 }
 
 /* Shared animation for all up/down curve-wave classes */
-[class^="up-"],
-[class^="down-"] {
+.curve-container .curve-row span[class^="up-"],
+.curve-container .curve-row span[class^="down-"] {
 	animation-name: curve-wave;
 }
 
@@ -699,7 +709,7 @@ footer {
 /*----------- Theme switcher styles  -----------*/
 
 .visually-hidden,
-input[type="radio"] {
+.color-picker input[type="radio"] {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	height: 1px;

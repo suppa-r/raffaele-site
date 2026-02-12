@@ -372,7 +372,7 @@ body {
 }
 
 [data-theme="light"] .wrapper {
-	filter: drop-shadow(0 0 50px rgba(0, 0, 0, .6));
+	box-shadow: 0 0 50px rgba(0, 0, 0, .6);
 }
 
 /*------------------------ Navigation  ------------------------*/
@@ -385,16 +385,18 @@ body {
 	width: 100%;
 	height: 100%;
 	transform: translateY(-100%);
+	transition: transform 0.6s ease-in-out;
+	--nav-close-delay: 0.9s;
 }
 
 .overlay-navigation.overlay-slide-down {
-	transition: transform 0.6s ease-in-out;
 	transform: translateY(0);
+	transition-delay: 0s;
 }
 
 .overlay-navigation.overlay-slide-up {
-	transition: transform 0.6s ease-in-out;
 	transform: translateY(-100%);
+	transition-delay: var(--nav-close-delay);
 }
 
 nav,
@@ -516,46 +518,48 @@ nav li a:hover:after {
 	nav li:nth-of-type(5) a:hover:after {
 		color: var(--nav-contrast-color);
 	}
+}
 
-	.slide-in-nav-item {
-		animation: slide-in-nav-item 0.4s linear 1 0.2s both;
-	}
+/* Opening animation - staggered slide down */
+.slide-in-nav-item {
+	animation: slide-in-nav-item 0.4s ease-out 1 0.2s both;
+}
 
-	.slide-in-nav-item-delay-1 {
-		animation: slide-in-nav-item 0.4s linear 1 0.4s both;
-	}
+.slide-in-nav-item-delay-1 {
+	animation: slide-in-nav-item 0.4s ease-out 1 0.4s both;
+}
 
-	.slide-in-nav-item-delay-2 {
-		animation: slide-in-nav-item 0.4s linear 1 0.6s both;
-	}
+.slide-in-nav-item-delay-2 {
+	animation: slide-in-nav-item 0.4s ease-out 1 0.6s both;
+}
 
-	.slide-in-nav-item-delay-3 {
-		animation: slide-in-nav-item 0.4s linear 1 0.8s both;
-	}
+.slide-in-nav-item-delay-3 {
+	animation: slide-in-nav-item 0.4s ease-out 1 0.8s both;
+}
 
-	.slide-in-nav-item-delay-4 {
-		animation: slide-in-nav-item 0.4s linear 1 1s both;
-	}
+.slide-in-nav-item-delay-4 {
+	animation: slide-in-nav-item 0.4s ease-out 1 1s both;
+}
 
-	.slide-in-nav-item-reverse {
-		animation: slide-in-nav-item-reverse 0.3s linear 1 var(--slide-in-nav-item-reverse-delay, 0.5s) both;
-	}
+/* Closing animation - reverse staggered slide up */
+.slide-in-nav-item-reverse {
+	animation: slide-out-nav-item 0.4s ease-in 1 0s both;
 }
 
 .slide-in-nav-item-delay-1-reverse {
-	--slide-in-nav-item-reverse-delay: 0.4s;
+	animation: slide-out-nav-item 0.4s ease-in 1 0.1s both;
 }
 
 .slide-in-nav-item-delay-2-reverse {
-	--slide-in-nav-item-reverse-delay: 0.3s;
+	animation: slide-out-nav-item 0.4s ease-in 1 0.2s both;
 }
 
 .slide-in-nav-item-delay-3-reverse {
-	--slide-in-nav-item-reverse-delay: 0.2s;
+	animation: slide-out-nav-item 0.4s ease-in 1 0.3s both;
 }
 
 .slide-in-nav-item-delay-4-reverse {
-	--slide-in-nav-item-reverse-delay: 0s;
+	animation: slide-out-nav-item 0.4s ease-in 1 0.4s both;
 }
 
 /*------------------------Animation Keyframes  -------------------*/
@@ -564,26 +568,29 @@ nav li a:hover:after {
 	from {
 		-webkit-transform: translateY(-100%);
 		transform: translateY(-100%);
+		opacity: 0;
 	}
 
 	to {
 		-webkit-transform: translateY(0);
 		transform: translateY(0);
+		opacity: 1;
 	}
 }
 
-@keyframes slide-in-nav-item-reverse {
+@keyframes slide-out-nav-item {
 	from {
 		-webkit-transform: translateY(0);
 		transform: translateY(0);
+		opacity: 1;
 	}
 
 	to {
 		-webkit-transform: translateY(-100%);
 		transform: translateY(-100%);
+		opacity: 0;
 	}
 }
-
 
 /*------------------------ Burger King  ------------------------*/
 
@@ -626,15 +633,15 @@ nav li a:hover:after {
 }
 
 .animate-out-top-bar {
-	animation: animate-out-top-bar 0.6s linear 1 both;
+	animation: animate-top-bar 0.6s linear 1 both reverse;
 }
 
 .animate-out-bottom-bar {
-	animation: animate-out-bottom-bar 0.6s linear 1 both;
+	animation: animate-bottom-bar 0.6s linear 1 both reverse;
 }
 
 .animate-out-middle-bar {
-	animation: animate-out-middle-bar 0.6s linear 1 both;
+	animation: animate-middle-bar 0.6s linear 1 both reverse;
 }
 
 @keyframes animate-top-bar {
@@ -697,65 +704,6 @@ nav li a:hover:after {
 	}
 }
 
-@keyframes animate-out-top-bar {
-	0% {
-		background-color: var(--text-color);
-	}
-
-	50% {
-		-webkit-transform: translateY(9px);
-		transform: translateY(9px);
-	}
-
-	80% {
-		-webkit-transform: translateY(5px);
-		transform: translateY(5px);
-		background-color: var(--text-color);
-	}
-
-	100% {
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-		background-color: var(--text-color);
-	}
-}
-
-@keyframes animate-out-bottom-bar {
-	0% {
-		background-color: var(--text-color);
-	}
-
-	50% {
-		-webkit-transform: translateY(-9px);
-		transform: translateY(-9px);
-	}
-
-	80% {
-		-webkit-transform: translateY(-5px);
-		transform: translateY(-5px);
-		background-color: var(--text-color);
-	}
-
-	100% {
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-		background-color: var(--text-color);
-	}
-}
-
-@keyframes animate-out-middle-bar {
-	0% {
-		background-color: var(--text-color);
-	}
-
-	80% {
-		background-color: var(--text-color);
-	}
-
-	100% {
-		background-color: var(--text-color);
-	}
-}
 
 /*------------------------ Header Styles  ------------------------*/
 
@@ -773,6 +721,7 @@ header {
 	isolation: isolate;
 	position: relative;
 	z-index: 2000;
+	view-transition-name: header;
 }
 
 /*--------------------- Header Title Styles  --------------------*/
@@ -810,7 +759,7 @@ header {
 /*----------- Theme switcher styles  -----------*/
 
 .visually-hidden,
-input[type="radio"] {
+.color-picker input[type="radio"] {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	height: 1px;
@@ -923,6 +872,7 @@ main {
 	padding-inline: var(--padding-inline);
 	mix-blend-mode: var(--blend-mode);
 	text-align: center;
+	view-transition-name: main;
 }
 
 main>*+* {
