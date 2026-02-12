@@ -1,6 +1,6 @@
 (function () {
 	var letters = ['s', 'u', 'p', 'p', 'a'];
-	var curveRises = ['1.2vmin', '1.8vmin', '2.4vmin', '1.8vmin', '1.2vmin'];
+	var curveRises = ['1.8vmin', '2.4vmin', '3vmin', '2.4vmin', '1.8vmin'];
 
 	var upContainer = document.getElementById('name-up');
 	var downContainer = document.getElementById('name-down');

@@ -3,6 +3,7 @@
 	--base-color: #000000;
 	--text-color: #ffffff;
 	--text-span: rgba(102, 153, 204, 0.850);
+	--focus-ring-color: #ffffff;
 	--body-grid-line: rgba(255, 255, 255, 0.085);
 	--theme: dark;
 
@@ -24,6 +25,7 @@
 	--base-color: #ffffff;
 	--text-color: #000000;
 	--text-span: rgba(104, 122, 141, 0.61);
+	--focus-ring-color: #000000;
 	--body-grid-line: rgba(0, 0, 0, 0.15);
 	--theme: light;
 
@@ -46,6 +48,7 @@
 		--base-color: oklch(0% 0 0deg);
 		--text-color: oklch(100% 0.00011 271.152deg);
 		--text-span: oklch(47.898% 0.06036 195.377deg / 0.850);
+		--focus-ring-color: oklch(100% 0.00011 271.152deg);
 		--body-grid-line: oklch(100% 0.00011 271.152deg / 0.085);
 	}
 
@@ -53,6 +56,7 @@
 		--base-color: oklch(100% 0.00011 271.152deg);
 		--text-color: oklch(0% 0 0deg);
 		--text-span: oklch(53.447% 0.06872 209.921deg / 0.61);
+		--focus-ring-color: oklch(0% 0 0deg);
 		--body-grid-line: oklch(0% 0 0deg / 0.15);
 	}
 }
@@ -67,6 +71,7 @@
 [data-theme="light"] .color-picker label svg {
 
 	mix-blend-mode: var(--blend-mode);
+
 	font-weight: 500;
 }
 
@@ -397,7 +402,6 @@ body {
 	font-style: var(--font-style);
 	font-weight: var(--font-weight);
 	letter-spacing: var(--letter-spacing);
-	word-spacing: var(--word-spacing);
 }
 
 body {
@@ -509,7 +513,7 @@ header {
 	box-shadow: var(--glow-box-shadow);
 	transform-origin: center;
 	animation: shadow var(--curve-animation-duration) ease-in-out infinite;
-	will-change: transform, opacity;
+
 
 	contain: layout style;
 }
@@ -517,8 +521,7 @@ header {
 .up::before {
 	width: var(--glow-up-width);
 	height: var(--glow-up-height);
-	filter: blur(var(--curve-blur));
-	left: 0;
+	will-change: opacity, transform;
 	top: 50%;
 }
 
@@ -549,28 +552,9 @@ header {
 	animation-duration: var(--curve-animation-duration);
 	animation-iteration-count: infinite;
 	animation-name: curve-wave;
-	--curve-move: calc(var(--curve-direction) * var(--curve-rise));
+	/* Curve profile is controlled per character via --curve-rise (inline style / JS). */
+	--curve-move: calc(var(--curve-direction) * var(--curve-rise, 0vmin));
 
-}
-
-.content.curve-row .curve-char:nth-child(1),
-.content.curve-row .curve-char:nth-child(8) {
-	--curve-rise: 0vmin;
-}
-
-.content.curve-row .curve-char:nth-child(2),
-.content.curve-row .curve-char:nth-child(7) {
-	--curve-rise: var(--curve-rise-outer-near);
-}
-
-.content.curve-row .curve-char:nth-child(3),
-.content.curve-row .curve-char:nth-child(6) {
-	--curve-rise: var(--curve-rise-mid);
-}
-
-.content.curve-row .curve-char:nth-child(4),
-.content.curve-row .curve-char:nth-child(5) {
-	--curve-rise: var(--curve-rise-center);
 }
 
 
@@ -688,7 +672,7 @@ header {
 }
 
 .large-button:focus-visible {
-	outline: 6px solid var(--text-span);
+	outline: 6px solid var(--focus-ring-color);
 }
 
 .button-text {
@@ -734,7 +718,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	gap: var(--space-xl);
-	padding: var(--space-s);
+	padding: var(--space-xs) var(--padding-inline);
 	view-transition-name: footer;
 }
 
@@ -767,9 +751,16 @@ footer {
 	width: 1px;
 }
 
-input[type="radio"] {
-	cursor: pointer;
-	margin: 0;
+.color-picker input[type="radio"] {
+	/* Keep radios for form state and focus only; do not animate the hidden control */
+	view-transition-name: none;
+}
+
+.color-picker label,
+.color-picker .theme-label,
+.color-picker svg {
+	/* Animate the visible theme control instead of the 1px hidden input */
+	view-transition-name: match-element;
 }
 
 .color-picker {
@@ -777,8 +768,11 @@ input[type="radio"] {
 	place-items: center;
 	margin-block: 0;
 	width: var(--space-l);
-	height: var(--space-l);
+}
+
+.color-picker input[type="radio"] {
 	cursor: pointer;
+	margin: 0;
 	position: relative;
 	border-radius: 50%;
 	view-transition-name: match-element;
@@ -898,6 +892,7 @@ input[type="radio"] {
 	}
 }
 
+
 /* Accessibility: Disable animations for users who prefer reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
@@ -945,7 +940,7 @@ input[type="radio"] {
 	}
 
 	.large-button:focus-visible {
-		outline: 6px solid var(--text-span);
+		outline: 6px solid var(--focus-ring-color);
 		background-color: var(--text-color);
 		color: var(--base-color);
 		box-shadow: 0 0 50px 10px var(--text-color);
