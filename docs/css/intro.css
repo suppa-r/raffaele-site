@@ -11,9 +11,9 @@
 	--navbar-shadow: 0 30px 100px rgba(196, 140, 130, 0.8), 0 30px 100px rgba(215, 190, 185, 0.6);
 
 	/* Darker shadow colors for animation */
-	--shadow-color: rgba(255, 255, 255, 0.8);
-	--shadow-color2: rgba(255, 255, 255, 0.7);
-	--shadow-color3: rgba(255, 255, 255, 0.5);
+	--shadow-color-primary: rgba(255, 255, 255, 0.8);
+	--shadow-color-secondary: rgba(255, 255, 255, 0.7);
+	--shadow-color-tertiary: rgba(255, 255, 255, 0.5);
 
 	--gradient-header: linear-gradient(90deg, rgba(235, 235, 243, 0.431), rgba(118, 166, 200, 0),
 			rgba(80, 146, 163, 0.2), rgb(52, 102, 108));
@@ -36,9 +36,9 @@
 	--navbar-shadow: 0 30px 100px rgba(196, 140, 130, 0.8), 0 30px 100px rgba(215, 190, 185, 0.6);
 
 	/* Darker shadow colors for animation */
-	--shadow-color: rgb(48, 48, 48);
-	--shadow-color2: rgba(0, 0, 0, 0.7);
-	--shadow-color3: rgba(0, 0, 0, 0.5);
+	--shadow-color-primary: rgb(48, 48, 48);
+	--shadow-color-secondary: rgba(0, 0, 0, 0.7);
+	--shadow-color-tertiary: rgba(0, 0, 0, 0.5);
 
 	--gradient-header: linear-gradient(90deg, rgba(214, 218, 230, 0.431), rgba(84, 144, 202, 0.337),
 			rgba(80, 146, 163, 0.2), rgb(52, 102, 108));
@@ -61,9 +61,9 @@
 		--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18deg / 0.800), 0 30px 100px oklch(81% 0.01500 17.000deg / 0.600);
 
 		/* Darker shadow colors for animation */
-		--shadow-color: oklch(100% 0.00011 271.152deg / 0.8);
-		--shadow-color2: oklch(100% 0.00011 271.152deg / 0.7);
-		--shadow-color3: oklch(100% 0.00011 271.152deg / 0.5);
+		--shadow-color-primary: oklch(100% 0.00011 271.152deg / 0.8);
+		--shadow-color-secondary: oklch(100% 0.00011 271.152deg / 0.7);
+		--shadow-color-tertiary: oklch(100% 0.00011 271.152deg / 0.5);
 
 		--gradient-header: linear-gradient(90deg, oklch(94.194% 0.00638 255.743 / 0.431), oklch(80.908% 0.04481 210.936 / 0),
 				oklch(55.728% 0.07474 207.281deg / 0.2), oklch(41.982% 0.0557 181.639deg));
@@ -79,9 +79,9 @@
 		--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18deg / 0.800), 0 30px 100px oklch(81% 0.01500 17.000deg / 0.600);
 
 		/* Darker shadow colors for animation */
-		--shadow-color: oklch(18.674% 0.00002 271.152deg);
-		--shadow-color2: oklch(0% 0 0deg / 0.7);
-		--shadow-color3: oklch(0% 0 0deg / 0.5);
+		--shadow-color-primary: oklch(18.674% 0.00002 271.152deg);
+		--shadow-color-secondary: oklch(0% 0 0deg / 0.7);
+		--shadow-color-tertiary: oklch(0% 0 0deg / 0.5);
 
 		--gradient-header: linear-gradient(90deg, oklch(87.496% 0.01591 248.156deg / 0.431), oklch(69.426% 0.07915 211.737deg / 0.337),
 				oklch(55.728% 0.07474 207.281deg / 0.2), oklch(41.982% 0.0557 181.639deg));
@@ -131,6 +131,10 @@
 	transition: opacity 0.7s ease-in-out;
 	isolation: isolate;
 	z-index: 0;
+}
+
+html.theme-transitioning body::before {
+	will-change: opacity;
 }
 
 [data-theme] body {
@@ -194,7 +198,6 @@
 	}
 }
 
-
 .support.style-query {
 	display: block;
 }
@@ -250,10 +253,15 @@
 	animation-name: reveal-in;
 }
 
-/* Hide transitioning wrapper content during theme transition */
+/* Hide main content during theme transition, fade it in with the new color scheme */
+::view-transition-old(footer),
+::view-transition-new(footer),
+::view-transition-old(main),
+::view-transition-new(main),
 ::view-transition-old(wrapper),
 ::view-transition-new(wrapper) {
 	display: none;
+
 }
 
 @property --rotation {
@@ -277,16 +285,6 @@
 	15% {
 		--scale: 0.8;
 		--rotation: -90deg;
-
-		.visually-hidden {
-			clip: rect(0 0 0 0);
-			clip-path: inset(50%);
-			height: 1px;
-			overflow: hidden;
-			position: absolute;
-			white-space: nowrap;
-			width: 1px;
-		}
 	}
 
 	85% {
@@ -389,12 +387,12 @@ body {
 	transform: translateY(-100%);
 }
 
-.overlay-slide-down {
+.overlay-navigation.overlay-slide-down {
 	transition: transform 0.6s ease-in-out;
 	transform: translateY(0);
 }
 
-.overlay-slide-up {
+.overlay-navigation.overlay-slide-up {
 	transition: transform 0.6s ease-in-out;
 	transform: translateY(-100%);
 }
@@ -414,11 +412,11 @@ nav ul {
 
 nav ul li {
 	flex-basis: 20%;
-	justify-content: center;
-	align-items: center;
 	height: 100%;
 	overflow: hidden;
 	transform: translateY(-100%);
+	background-color: var(--base-color);
+	z-index: 1000;
 }
 
 nav li a {
@@ -453,7 +451,7 @@ nav li a:before {
 nav li a:after {
 	content: attr(data-content);
 	font-size: var(--step-1);
-	transition: opacity 0.2s linear;
+	transition: opacity 0.2s linear, transform 0.2s linear;
 	opacity: 0;
 	position: absolute;
 	z-index: 100;
@@ -464,6 +462,7 @@ nav li a:after {
 	left: 0;
 	right: 0;
 	bottom: var(--space-3xl);
+	transform: translateY(0);
 	text-transform: none;
 	font-style: italic;
 	letter-spacing: 0;
@@ -479,46 +478,26 @@ nav li a:hover:after {
 	opacity: 1;
 }
 
-nav li:nth-of-type(1) {
-	background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%);
-	z-index: 1000;
-}
-
-/* Fallback background-color for browsers without color-mix/oklch support */
-nav li:nth-of-type(1),
-nav li:nth-of-type(2),
-nav li:nth-of-type(3),
-nav li:nth-of-type(4),
-nav li:nth-of-type(5) {
-	background-color: var(--base-color);
-	z-index: 1000;
-}
-
 /* Use color-mix when supported to create stepped backgrounds */
 @supports (background-color: color-mix(in oklch, #000000 100%, #ffffff 0%)) {
 	nav li:nth-of-type(1) {
 		background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%);
-		z-index: 1000;
 	}
 
 	nav li:nth-of-type(2) {
 		background-color: color-mix(in oklch, var(--base-color) 80%, var(--text-color) 20%);
-		z-index: 1000;
 	}
 
 	nav li:nth-of-type(3) {
 		background-color: color-mix(in oklch, var(--base-color) 60%, var(--text-color) 40%);
-		z-index: 1000;
 	}
 
 	nav li:nth-of-type(4) {
 		background-color: color-mix(in oklch, var(--base-color) 40%, var(--text-color) 60%);
-		z-index: 1000;
 	}
 
 	nav li:nth-of-type(5) {
 		background-color: color-mix(in oklch, var(--base-color) 20%, var(--text-color) 80%);
-		z-index: 1000;
 	}
 
 	nav li:nth-of-type(4) a:after,
@@ -526,7 +505,6 @@ nav li:nth-of-type(5) {
 	nav li:nth-of-type(5) a:before,
 	nav li:nth-of-type(5) a:after {
 		color: var(--nav-contrast-color);
-		z-index: 1000;
 	}
 
 	nav li:nth-of-type(4) a:before,
@@ -997,15 +975,15 @@ main>*+* {
 
 @keyframes shadowDrip {
 	0% {
-		text-shadow: 0px 0px 0px var(--shadow-color),
-			0px 0px 0px var(--shadow-color2),
-			0px 0px 0px var(--shadow-color3);
+		text-shadow: 0px 0px 0px var(--shadow-color-primary),
+			0px 0px 0px var(--shadow-color-secondary),
+			0px 0px 0px var(--shadow-color-tertiary);
 	}
 
 	100% {
-		text-shadow: 0px 50px 100px var(--shadow-color),
-			0px 15px 20px var(--shadow-color2),
-			0px 30px 5px var(--shadow-color3);
+		text-shadow: 0px 50px 100px var(--shadow-color-primary),
+			0px 15px 20px var(--shadow-color-secondary),
+			0px 30px 5px var(--shadow-color-tertiary);
 	}
 }
 

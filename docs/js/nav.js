@@ -7,6 +7,36 @@ function getDefaultTheme() {
 	return 'dark';
 }
 
+const THEME_TRANSITION_CLASS = 'theme-transitioning';
+const THEME_TRANSITION_MS = 700;
+let themeTransitionTimeoutId = null;
+
+function startThemeTransition() {
+	if (themeTransitionTimeoutId) {
+		clearTimeout(themeTransitionTimeoutId);
+		themeTransitionTimeoutId = null;
+	}
+	document.documentElement.classList.add(THEME_TRANSITION_CLASS);
+}
+
+function endThemeTransition() {
+	if (themeTransitionTimeoutId) {
+		clearTimeout(themeTransitionTimeoutId);
+		themeTransitionTimeoutId = null;
+	}
+	document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+}
+
+function endThemeTransitionAfterDelay(delayMs) {
+	if (themeTransitionTimeoutId) {
+		clearTimeout(themeTransitionTimeoutId);
+	}
+	themeTransitionTimeoutId = window.setTimeout(() => {
+		document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+		themeTransitionTimeoutId = null;
+	}, delayMs);
+}
+
 function updateFavicon(theme) {
 	const favicon = document.getElementById('favicon') || document.querySelector('link[rel="icon"]');
 	if (favicon) {
@@ -47,6 +77,8 @@ function setTheme(theme) {
 		return;
 	}
 
+	startThemeTransition();
+
 	if (document.startViewTransition) {
 		try {
 			const transition = document.startViewTransition(() => {
@@ -56,10 +88,13 @@ function setTheme(theme) {
 			transition.finished.then(() => {
 				updateFavicon(theme);
 				setActiveThemeButton(theme);
+			}).finally(() => {
+				endThemeTransition();
 			});
 			return;
 		} catch (e) {
 			console.error('View transition error:', e);
+			endThemeTransition();
 		}
 	}
 
@@ -67,6 +102,7 @@ function setTheme(theme) {
 	localStorage.setItem('theme', theme);
 	updateFavicon(theme);
 	setActiveThemeButton(theme);
+	endThemeTransitionAfterDelay(THEME_TRANSITION_MS);
 }
 
 function bindThemeInputs() {

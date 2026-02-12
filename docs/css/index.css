@@ -110,6 +110,10 @@
 	z-index: 0;
 }
 
+html.theme-transitioning body::before {
+	will-change: opacity;
+}
+
 [data-theme] body {
 	position: relative;
 	z-index: 1;
