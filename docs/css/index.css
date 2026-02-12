@@ -309,10 +309,23 @@ html.theme-transitioning body::before {
 ::view-transition-old(curve-container),
 ::view-transition-new(curve-container),
 ::view-transition-old(large-button),
-::view-transition-new(large-button),
-::view-transition-old(match-element),
-::view-transition-new(match-element) {
+::view-transition-new(large-button) {
 	display: none;
+}
+
+/* During theme toggle, route the whole page through the root transition so custom
+   ::view-transition-old/new(root) animations are visible. */
+html.theme-transitioning .wrapper,
+html.theme-transitioning header,
+html.theme-transitioning .main-subtitle,
+html.theme-transitioning .main-content,
+html.theme-transitioning .curve-container,
+html.theme-transitioning .text-with-animation,
+html.theme-transitioning .large-button,
+html.theme-transitioning footer,
+html.theme-transitioning .theme-label--light,
+html.theme-transitioning .theme-label--dark {
+	view-transition-name: none;
 }
 
 @property --rotation {
@@ -756,11 +769,17 @@ footer {
 	view-transition-name: none;
 }
 
-.color-picker label,
-.color-picker .theme-label,
 .color-picker svg {
-	/* Animate the visible theme control instead of the 1px hidden input */
-	view-transition-name: match-element;
+	/* Exclude icons from view-transition snapshots to avoid duplicate naming */
+	view-transition-name: none;
+}
+
+.color-picker .theme-label--light {
+	view-transition-name: theme-toggle-light;
+}
+
+.color-picker .theme-label--dark {
+	view-transition-name: theme-toggle-dark;
 }
 
 .color-picker {
@@ -768,14 +787,10 @@ footer {
 	place-items: center;
 	margin-block: 0;
 	width: var(--space-l);
-}
-
-.color-picker input[type="radio"] {
+	height: var(--space-l);
 	cursor: pointer;
-	margin: 0;
 	position: relative;
 	border-radius: 50%;
-	view-transition-name: match-element;
 }
 
 .color-picker>fieldset {
