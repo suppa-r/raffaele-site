@@ -829,6 +829,10 @@ footer {
 	border-radius: 50%;
 }
 
+.color-picker.is-animating .theme-label {
+	transition-duration: 0.35s;
+}
+
 @supports selector(:has(*)) {
 
 	.color-picker label:has(> input:checked),
@@ -857,6 +861,38 @@ footer {
 		padding 0.3s;
 }
 
+.color-picker .theme-label.is-outgoing svg {
+	animation: theme-picker-out 0.35s ease-in-out both;
+}
+
+.color-picker .theme-label.is-incoming svg {
+	animation: theme-picker-in 0.35s ease-in-out both;
+}
+
+@keyframes theme-picker-out {
+	from {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+	}
+
+	to {
+		opacity: 0;
+		transform: scale(0.75) rotate(-80deg);
+	}
+}
+
+@keyframes theme-picker-in {
+	from {
+		opacity: 0;
+		transform: scale(0.75) rotate(80deg);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+	}
+}
+
 .color-picker label:is(:hover, :focus-within) svg,
 .color-picker .theme-label:is(:hover, :focus-within) svg {
 	background-color: var(--text-span);
@@ -870,6 +906,19 @@ footer {
 .color-picker .theme-label:focus-within svg {
 	outline: 2px solid var(--text-color);
 	outline-offset: 2px;
+}
+
+@media (hover: none),
+(pointer: coarse) {
+
+	.color-picker label:is(:hover, :focus-within) svg,
+	.color-picker .theme-label:is(:hover, :focus-within) svg {
+		background-color: transparent;
+		fill: var(--text-color);
+		transform: scale(1) rotate(0deg);
+		padding: 0;
+		border-radius: 0;
+	}
 }
 
 /* Responsive footer title wrapping for small screens */
@@ -917,6 +966,30 @@ footer {
 	.color-picker label svg {
 		width: var(--space-m);
 		height: var(--space-m);
+	}
+}
+
+/* Mobile/touch: Remove sticky hover/focus styles for color-picker */
+@media (hover: none),
+(pointer: coarse) {
+
+	.color-picker .theme-label,
+	.color-picker .theme-label:active,
+	.color-picker .theme-label:focus,
+	.color-picker .theme-label:hover {
+		background: none;
+		box-shadow: none;
+		color: inherit;
+		transform: none;
+		padding: 0;
+		transition: none;
+		outline: none;
+	}
+
+	.color-picker .theme-label svg {
+		filter: none;
+		fill: currentColor;
+		transition: none;
 	}
 }
 
@@ -986,6 +1059,11 @@ footer {
 
 	.color-picker label svg {
 		transition: none;
+	}
+
+	.color-picker .theme-label.is-outgoing svg,
+	.color-picker .theme-label.is-incoming svg {
+		animation: none;
 	}
 
 	.color-picker label:hover svg,

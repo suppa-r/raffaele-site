@@ -10,7 +10,55 @@ function getDefaultTheme() {
 const THEME_TRANSITION_CLASS = 'theme-transitioning';
 const PAGE_TRANSITION_CLASS = 'page-transitioning';
 const THEME_TRANSITION_MS = 700;
+const THEME_PICKER_ANIMATION_MS = 380;
 let themeTransitionTimeoutId = null;
+let themePickerAnimationTimeoutId = null;
+
+function clearThemePickerAnimation() {
+	if (themePickerAnimationTimeoutId) {
+		clearTimeout(themePickerAnimationTimeoutId);
+		themePickerAnimationTimeoutId = null;
+	}
+
+	const colorPicker = document.querySelector('.color-picker');
+	if (!colorPicker) return;
+
+	colorPicker.classList.remove('is-animating');
+	colorPicker.querySelectorAll('.theme-label').forEach(label => {
+		label.classList.remove('is-incoming', 'is-outgoing');
+	});
+}
+
+function animateThemePicker(nextTheme) {
+	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	if (prefersReducedMotion) {
+		clearThemePickerAnimation();
+		return;
+	}
+
+	const colorPicker = document.querySelector('.color-picker');
+	if (!colorPicker) return;
+
+	const currentInput = colorPicker.querySelector('input[name="theme"]:checked');
+	const nextInput = colorPicker.querySelector(`input[name="theme"][value="${nextTheme}"]`);
+	const currentLabel = currentInput ? currentInput.closest('.theme-label') : null;
+	const nextLabel = nextInput ? nextInput.closest('.theme-label') : null;
+
+	clearThemePickerAnimation();
+	colorPicker.classList.add('is-animating');
+
+	if (currentLabel && currentLabel !== nextLabel) {
+		currentLabel.classList.add('is-outgoing');
+	}
+
+	if (nextLabel) {
+		nextLabel.classList.add('is-incoming');
+	}
+
+	themePickerAnimationTimeoutId = window.setTimeout(() => {
+		clearThemePickerAnimation();
+	}, THEME_PICKER_ANIMATION_MS);
+}
 
 function startThemeTransition() {
 	if (themeTransitionTimeoutId) {
@@ -55,12 +103,23 @@ function setActiveThemeButton(theme) {
 		const label = input.closest('label');
 		if (label) {
 			label.classList.toggle('checked', isChecked);
+			label.classList.toggle('active', isChecked);
 		}
 	});
 }
 
 function setTheme(theme) {
 	if (!isValidTheme(theme)) return;
+
+	const currentTheme = document.documentElement.getAttribute('data-theme');
+	if (theme === currentTheme) {
+		setActiveThemeButton(theme);
+		updateFavicon(theme);
+		clearThemePickerAnimation();
+		return;
+	}
+
+	animateThemePicker(theme);
 
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 	const overlayNavigation = document.querySelector('.overlay-navigation');

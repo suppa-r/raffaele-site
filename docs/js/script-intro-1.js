@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 	// Element declarations to match HTML structure
 	const themeButtons = document.querySelectorAll('.theme-label');
+	const themeInputs = document.querySelectorAll('input[name="theme"]');
+	const colorPicker = document.querySelector('.color-picker');
 	const bars = document.querySelector('.menu-btn');
 	const navigation = document.querySelector('.navigation');
 	const nav = document.querySelector('.nav-links');
@@ -8,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const dataTabs = document.querySelectorAll('.data-tab.genesis, .data-tab.early, .data-tab.beginnings, .data-tab.ryerson')
 		;
 	const profileheader = document.querySelector('.profile-header-img');
+	const THEME_TRANSITION_CLASS = 'theme-transitioning';
+	const THEME_TRANSITION_MS = 700;
+	const THEME_PICKER_ANIMATION_MS = 380;
+	let themeTransitionTimeoutId = null;
+	let themePickerAnimationTimeoutId = null;
 
 	// Helper functions
 	function getDefaultTheme() {
@@ -17,12 +24,79 @@ document.addEventListener('DOMContentLoaded', () => {
 	function isValidTheme(theme) {
 		return ['dark', 'light'].includes(theme);
 	}
-	function setActiveThemeButton() {
-		themeButtons.forEach(btn => {
-			const inputId = btn.getAttribute('for');
-			const input = document.getElementById(inputId);
-			btn.classList.toggle('active', input && input.checked);
+	function setActiveThemeButton(theme) {
+		themeInputs.forEach(input => {
+			const isChecked = input.value === theme;
+			input.checked = isChecked;
+			const label = input.closest('.theme-label');
+			if (label) {
+				label.classList.toggle('active', isChecked);
+				label.classList.toggle('checked', isChecked);
+			}
 		});
+	}
+	function startThemeTransition() {
+		if (themeTransitionTimeoutId) {
+			clearTimeout(themeTransitionTimeoutId);
+			themeTransitionTimeoutId = null;
+		}
+		document.documentElement.classList.add(THEME_TRANSITION_CLASS);
+	}
+	function endThemeTransition() {
+		if (themeTransitionTimeoutId) {
+			clearTimeout(themeTransitionTimeoutId);
+			themeTransitionTimeoutId = null;
+		}
+		document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+	}
+	function endThemeTransitionAfterDelay(delayMs) {
+		if (themeTransitionTimeoutId) {
+			clearTimeout(themeTransitionTimeoutId);
+		}
+		themeTransitionTimeoutId = window.setTimeout(() => {
+			document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+			themeTransitionTimeoutId = null;
+		}, delayMs);
+	}
+	function clearThemePickerAnimation() {
+		if (themePickerAnimationTimeoutId) {
+			clearTimeout(themePickerAnimationTimeoutId);
+			themePickerAnimationTimeoutId = null;
+		}
+
+		if (!colorPicker) return;
+
+		colorPicker.classList.remove('is-animating');
+		colorPicker.querySelectorAll('.theme-label').forEach(label => {
+			label.classList.remove('is-incoming', 'is-outgoing');
+		});
+	}
+	function animateThemePicker(nextTheme) {
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (prefersReducedMotion || !colorPicker) {
+			clearThemePickerAnimation();
+			return;
+		}
+
+		const currentInput = colorPicker.querySelector('input[name="theme"]:checked');
+		const nextInput = colorPicker.querySelector(`input[name="theme"][value="${nextTheme}"]`);
+		const currentLabel = currentInput ? currentInput.closest('.theme-label') : null;
+		const nextLabel = nextInput ? nextInput.closest('.theme-label') : null;
+
+		clearThemePickerAnimation();
+		colorPicker.classList.add('is-animating');
+
+		if (currentLabel && currentLabel !== nextLabel) {
+			currentLabel.classList.add('is-outgoing');
+		}
+
+		if (nextLabel) {
+			nextLabel.classList.add('is-incoming');
+		}
+
+		themePickerAnimationTimeoutId = window.setTimeout(() => {
+			clearThemePickerAnimation();
+		}, THEME_PICKER_ANIMATION_MS);
 	}
 	function updateFavicon(theme) {
 		const favicon = document.getElementById("favicon") || document.querySelector("link[rel='icon']");
@@ -33,6 +107,56 @@ document.addEventListener('DOMContentLoaded', () => {
 			favicon.href = faviconPath + "?v=" + Date.now();
 		}
 	}
+	function setTheme(theme) {
+		if (!isValidTheme(theme)) return;
+
+		const currentTheme = document.documentElement.getAttribute('data-theme');
+		if (theme === currentTheme) {
+			setActiveThemeButton(theme);
+			updateFavicon(theme);
+			clearThemePickerAnimation();
+			return;
+		}
+
+		animateThemePicker(theme);
+
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (prefersReducedMotion) {
+			document.documentElement.setAttribute('data-theme', theme);
+			localStorage.setItem('theme', theme);
+			setActiveThemeButton(theme);
+			updateFavicon(theme);
+			return;
+		}
+
+		startThemeTransition();
+
+		if (document.startViewTransition) {
+			try {
+				const transition = document.startViewTransition(() => {
+					document.documentElement.setAttribute('data-theme', theme);
+					localStorage.setItem('theme', theme);
+				});
+
+				transition.finished.then(() => {
+					setActiveThemeButton(theme);
+					updateFavicon(theme);
+				}).finally(() => {
+					endThemeTransition();
+				});
+				return;
+			} catch (error) {
+				console.error('View transition error:', error);
+				endThemeTransition();
+			}
+		}
+
+		document.documentElement.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
+		setActiveThemeButton(theme);
+		updateFavicon(theme);
+		endThemeTransitionAfterDelay(THEME_TRANSITION_MS);
+	}
 
 	// Theme initialization
 	let savedTheme = localStorage.getItem('theme');
@@ -41,34 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('theme', savedTheme);
 	}
 	document.documentElement.setAttribute('data-theme', savedTheme);
-	themeButtons.forEach(btn => {
-		const inputId = btn.getAttribute('for');
-		const radio = document.getElementById(inputId);
-		if (radio) radio.checked = (radio.value === savedTheme);
-	});
-	setActiveThemeButton();
+	setActiveThemeButton(savedTheme);
 	updateFavicon(savedTheme);
 	// Theme button handlers
-	themeButtons.forEach(btn => {
-		btn.addEventListener('click', () => {
-			const inputId = btn.getAttribute('for');
-			const input = document.getElementById(inputId);
-			if (input && !btn.classList.contains('active')) {
-				input.checked = true;
-				const selectedTheme = input.value;
-				if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-					document.startViewTransition(() => {
-						document.documentElement.setAttribute('data-theme', selectedTheme);
-						localStorage.setItem('theme', selectedTheme);
-						updateFavicon(selectedTheme);
-					});
-				} else {
-					document.documentElement.setAttribute('data-theme', selectedTheme);
-					localStorage.setItem('theme', selectedTheme);
-					updateFavicon(selectedTheme);
-				}
-				setActiveThemeButton();
-			}
+	themeInputs.forEach(input => {
+		input.addEventListener('change', (event) => {
+			setTheme(event.target.value);
 		});
 	});
 
