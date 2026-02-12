@@ -111,9 +111,9 @@
 	content: "";
 	position: fixed;
 	inset: 0;
-	/* Modern dynamic viewport units for browsers that support them */
-	width: 100dvw;
-	height: 100dvh;
+	/* Fallback viewport units for older browsers */
+	width: 100vw;
+	height: 100vh;
 	background:
 		linear-gradient(90deg,
 			var(--body-grid-line) 1px,
@@ -131,6 +131,14 @@
 	transition: opacity 0.7s ease-in-out;
 	isolation: isolate;
 	z-index: 0;
+}
+
+/* Modern dynamic viewport units for browsers that support them */
+@supports (width: 100dvw) and (height: 100dvh) {
+	[data-theme] body::before {
+		width: 100dvw;
+		height: 100dvh;
+	}
 }
 
 html.theme-transitioning body::before {
