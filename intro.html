@@ -8,15 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="author" content="Raffaele Suppa" />
 	<title>Raffaele Suppa - Web Page</title>
-	<script>
-		const savedTheme = localStorage.getItem('theme');
-		const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-		const theme = (savedTheme === 'light' || savedTheme === 'dark') ? savedTheme : (prefersLight ? 'light' : 'dark');
-		document.documentElement.setAttribute('data-theme', theme);
-		if (savedTheme !== theme) {
-			localStorage.setItem('theme', theme);
-		}
-	</script>
+	<script src="/docs/js/theme-init.js"></script>
 	<!-- Favicon links -->
 	<link rel="icon" href="/favicons/dark-1.png" type="image/png" id="favicon" />
 	<link rel="stylesheet" href="/docs/css/reset.css" />

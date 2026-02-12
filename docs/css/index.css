@@ -328,6 +328,19 @@ html.theme-transitioning .theme-label--dark {
 	view-transition-name: none;
 }
 
+html.page-transitioning .wrapper,
+html.page-transitioning header,
+html.page-transitioning .main-subtitle,
+html.page-transitioning .main-content,
+html.page-transitioning .curve-container,
+html.page-transitioning .text-with-animation,
+html.page-transitioning .large-button,
+html.page-transitioning footer,
+html.page-transitioning .theme-label--light,
+html.page-transitioning .theme-label--dark {
+	view-transition-name: none;
+}
+
 @property --rotation {
 	syntax: "<angle>";
 	inherits: false;

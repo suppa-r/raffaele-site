@@ -271,6 +271,27 @@ html.theme-transitioning body::before {
 	display: none;
 }
 
+/* During theme toggle, route the page through the root transition so custom
+   ::view-transition-old/new(root) animations remain visible. */
+html.theme-transitioning .wrapper,
+html.theme-transitioning header,
+html.theme-transitioning main,
+html.theme-transitioning footer,
+html.theme-transitioning .theme-label--light,
+html.theme-transitioning .theme-label--dark {
+	view-transition-name: none;
+}
+
+html.page-transitioning .wrapper,
+html.page-transitioning header,
+html.page-transitioning main,
+html.page-transitioning footer,
+html.page-transitioning .wrapper-gradient-text,
+html.page-transitioning .theme-label--light,
+html.page-transitioning .theme-label--dark {
+	view-transition-name: none;
+}
+
 @property --rotation {
 	syntax: "<angle>";
 	inherits: false;
@@ -768,18 +789,34 @@ header {
 .visually-hidden,
 .color-picker input[type="radio"],
 .color-picker .theme-input {
+	border: 0;
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	height: 1px;
+	margin: -1px;
 	overflow: hidden;
+	padding: 0;
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
 }
 
-input[type="radio"] {
-	cursor: pointer;
-	margin: 0;
+.color-picker input[type="radio"] {
+	/* Keep radios for form state and focus only; do not animate the hidden control */
+	view-transition-name: none;
+}
+
+.color-picker svg {
+	/* Exclude icons from view-transition snapshots to avoid duplicate naming */
+	view-transition-name: none;
+}
+
+.color-picker .theme-label--light {
+	view-transition-name: theme-toggle-light;
+}
+
+.color-picker .theme-label--dark {
+	view-transition-name: theme-toggle-dark;
 }
 
 .color-picker {
@@ -791,7 +828,6 @@ input[type="radio"] {
 	cursor: pointer;
 	position: relative;
 	border-radius: 50%;
-	view-transition-name: match-element;
 }
 
 .color-picker>fieldset {
@@ -834,49 +870,30 @@ input[type="radio"] {
 
 .color-picker label svg,
 .color-picker .theme-label svg {
-	width: var(--space-l);
-	height: var(--space-l);
+	width: var(--space-m);
+	height: var(--space-m);
 	display: block;
-	background-color: transparent;
-	border-radius: 50%;
-	box-sizing: border-box;
+	fill: var(--text-color);
 	transition:
-		transform 0.5s ease-in-out,
-		background-color 0.5s ease-in-out,
-		padding 0.5s ease-in-out,
-		fill 0.3s ease-in-out;
+		background-color 0.3s,
+		fill 0.3s,
+		transform 0.3s,
+		padding 0.3s;
 }
 
-/* Visible focus indicator for keyboard navigation */
-.color-picker input[type="radio"]:focus-visible,
-.color-picker .theme-input:focus-visible {
-	outline: 3px solid var(--text-span);
-	outline-offset: 2px;
-	clip: auto;
-	clip-path: none;
-	width: auto;
-	height: auto;
-	position: relative;
-	overflow: visible;
-	white-space: normal;
+.color-picker label:is(:hover, :focus-within) svg,
+.color-picker .theme-label:is(:hover, :focus-within) svg {
+	background-color: var(--text-span);
+	fill: var(--base-color);
+	transform: scale(1.2) rotate(90deg);
+	padding: var(--space-4xs);
+	border-radius: 50%;
 }
 
-/* Keyboard focus styling - works on all devices */
 .color-picker label:focus-within svg,
 .color-picker .theme-label:focus-within svg {
-	background-color: var(--text-span);
-	transform: scale(0.8) rotate(90deg);
-	padding: var(--space-4xs);
-}
-
-/* Only apply hover effects on devices with hover capability (not touch devices) */
-@media (hover: hover) and (pointer: fine) {
-
-	.color-picker label:hover svg {
-		background-color: var(--text-span);
-		transform: scale(0.8) rotate(90deg);
-		padding: var(--space-4xs);
-	}
+	outline: 2px solid var(--text-color);
+	outline-offset: 2px;
 }
 
 /*----------------------- main content ------------------------*/

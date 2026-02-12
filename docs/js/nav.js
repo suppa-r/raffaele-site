@@ -8,6 +8,7 @@ function getDefaultTheme() {
 }
 
 const THEME_TRANSITION_CLASS = 'theme-transitioning';
+const PAGE_TRANSITION_CLASS = 'page-transitioning';
 const THEME_TRANSITION_MS = 700;
 let themeTransitionTimeoutId = null;
 
@@ -243,6 +244,14 @@ function initializeEventListeners() {
 	bindOverlayNavigation();
 }
 
+function startPageTransition() {
+	document.documentElement.classList.add(PAGE_TRANSITION_CLASS);
+}
+
+function endPageTransition() {
+	document.documentElement.classList.remove(PAGE_TRANSITION_CLASS);
+}
+
 // Navigation with View Transitions
 async function navigateWithTransition(url) {
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -253,6 +262,8 @@ async function navigateWithTransition(url) {
 	}
 
 	try {
+		startPageTransition();
+
 		const response = await fetch(url);
 		if (!response.ok) throw new Error('Navigation failed');
 
@@ -260,10 +271,7 @@ async function navigateWithTransition(url) {
 		const parser = new DOMParser();
 		const newDocument = parser.parseFromString(html, 'text/html');
 
-		const transition = document.startViewTransition(() => {
-			document.body.innerHTML = newDocument.body.innerHTML;
-			document.title = newDocument.title;
-
+		const transition = document.startViewTransition(async () => {
 			const currentStylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
 			const newStylesheets = Array.from(newDocument.querySelectorAll('link[rel="stylesheet"]'));
 
@@ -271,18 +279,33 @@ async function navigateWithTransition(url) {
 			const newHrefs = newStylesheets.map(link => link.getAttribute('href'));
 
 			if (JSON.stringify(currentHrefs) !== JSON.stringify(newHrefs)) {
+				const stylesheetLoadPromises = [];
+
+				newStylesheets.forEach(link => {
+					if (!currentHrefs.includes(link.getAttribute('href'))) {
+						const clone = link.cloneNode(true);
+						const loadPromise = new Promise(resolve => {
+							clone.addEventListener('load', resolve, { once: true });
+							clone.addEventListener('error', resolve, { once: true });
+						});
+						stylesheetLoadPromises.push(loadPromise);
+						document.head.appendChild(clone);
+					}
+				});
+
+				if (stylesheetLoadPromises.length > 0) {
+					await Promise.all(stylesheetLoadPromises);
+				}
+
 				currentStylesheets.forEach(link => {
 					if (!newHrefs.includes(link.getAttribute('href'))) {
 						link.remove();
 					}
 				});
-
-				newStylesheets.forEach(link => {
-					if (!currentHrefs.includes(link.getAttribute('href'))) {
-						document.head.appendChild(link.cloneNode(true));
-					}
-				});
 			}
+
+			document.body.innerHTML = newDocument.body.innerHTML;
+			document.title = newDocument.title;
 		});
 
 		await transition.finished;
@@ -297,6 +320,8 @@ async function navigateWithTransition(url) {
 	} catch (e) {
 		console.error('Navigation error:', e);
 		window.location.href = url;
+	} finally {
+		endPageTransition();
 	}
 }
 
