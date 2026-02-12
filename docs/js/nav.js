@@ -4,8 +4,7 @@ function isValidTheme(theme) {
 }
 
 function getDefaultTheme() {
-	const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-	return prefersLight ? 'light' : 'dark';
+	return 'dark';
 }
 
 const THEME_TRANSITION_CLASS = 'theme-transitioning';

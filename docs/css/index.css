@@ -178,7 +178,7 @@ html.theme-transitioning body::before {
 
 	/*------------ Curve animation viewport units ----------------*/
 
-	--curve-char-width: var(--space-4xl);
+	--curve-char-width: clamp(3rem, 6vw, 5rem);
 
 	--curve-blur: var(--space-l);
 	--move-2-8: 0.6vmin;
@@ -440,6 +440,7 @@ header {
 
 .main-subtitle span {
 	padding-inline-start: var(--space-xs);
+	letter-spacing: 0.2em;
 	font-weight: bold;
 }
 
@@ -519,10 +520,21 @@ header {
 	position: relative;
 }
 
+.up {
+	--curve-direction: -1;
+}
+
+.down {
+	--curve-direction: 1;
+}
+
 .up span,
 .down span {
 	animation-duration: var(--curve-animation-duration);
 	animation-iteration-count: infinite;
+	animation-name: curve-wave;
+	--curve-rise: 0vmin;
+	--curve-move: calc(var(--curve-direction) * var(--curve-rise));
 
 }
 
@@ -554,38 +566,6 @@ header {
 		opacity: 0;
 		transform: scaleY(0);
 	}
-}
-
-/*up*/
-.up-2-8 {
-	--curve-move: calc(-1 * var(--move-2-8));
-}
-
-.up-3-7 {
-	--curve-move: calc(-1 * var(--move-3-7));
-}
-
-.up-4-6 {
-	--curve-move: calc(-1 * var(--move-4-6));
-}
-
-/*down*/
-.down-2-8 {
-	--curve-move: var(--move-2-8);
-}
-
-.down-4-6 {
-	--curve-move: var(--move-4-6);
-}
-
-.down-5 {
-	--curve-move: var(--move-5);
-}
-
-/* Shared animation for all up/down curve-wave classes */
-.curve-container .curve-row span[class^="up-"],
-.curve-container .curve-row span[class^="down-"] {
-	animation-name: curve-wave;
 }
 
 @keyframes curve-wave {
@@ -840,7 +820,7 @@ input[type="radio"] {
 @media (max-width: 675px) {
 
 	:root {
-		--curve-char-width: clamp(2.8rem, 6.8vw, 5.8rem);
+		--curve-char-width: clamp(2.5rem, 7.2vw, 4rem);
 	}
 
 	body,
