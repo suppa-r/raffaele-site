@@ -962,8 +962,12 @@ main>*+* {
 		font-size: 18px;
 	}
 
+	nav li a:before {
+		width: 20px;
+	}
+
 	nav li a:after {
-		font-size: 0.75rem;
+		font-size: 1rem;
 	}
 
 	.open-overlay {
@@ -977,10 +981,6 @@ main>*+* {
 		z-index: 1000;
 		width: 34px;
 		cursor: pointer;
-	}
-
-	nav li a:before {
-		width: 20px;
 	}
 
 	main {
