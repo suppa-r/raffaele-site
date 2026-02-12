@@ -6,7 +6,7 @@
 	--body-grid-line: rgba(255, 255, 255, 0.085);
 	--nav-contrast-color: #000000;
 
-	--shadow: 0 30px 100px oklch(100% 0.00011 271.152deg);
+
 	--navbar-shadow: 0 30px 100px oklch(72.926% 0.03553 18deg / 0.800), 0 30px 100px oklch(81% 0.01500 17.000deg / 0.600);
 
 	/* Darker shadow colors for animation */
@@ -172,11 +172,10 @@
 	}
 }
 
-@container not style(--theme: 🥔) {
-	.support.style-query {
-		display: none;
-	}
+.support.style-query {
+	display: none;
 }
+
 
 .support {
 	background-color: var(--base-color);
@@ -411,13 +410,13 @@ nav li a:before {
 	z-index: 100;
 	transform: translateX(-100%);
 	opacity: 0;
-	transition: all 0.2s linear;
+	transition: opacity 0.2s linear, transform 0.2s linear;
 }
 
 nav li a:after {
 	content: attr(data-content);
 	font-size: var(--step-1);
-	transition: all 0.2s linear;
+	transition: opacity 0.2s linear;
 	opacity: 0;
 	position: absolute;
 	z-index: 100;
@@ -766,6 +765,7 @@ header {
 /*--------------------- Header Title Styles  --------------------*/
 
 header {
+	/* Intentionally override header padding from earlier definition */
 	padding: var(--space-s) var(--space-xl);
 }
 
@@ -834,7 +834,21 @@ header {
 	border-radius: 50%;
 }
 
-.color-picker label:has(> input:checked) {
+/* Hide checked label for modern browsers with :has() support */
+@supports selector(:has(*)) {
+	.color-picker label:has(> input:checked) {
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+
+/* Fallback for older browsers: rely on JavaScript to toggle a 'checked' class */
+/* If you prefer CSS-only without JS, restructure HTML so input is before label sibling:
+   <input type="radio" id="theme-dark" ...>
+   <label for="theme-dark">...</label>
+   Then use: input:checked + label { opacity: 0; pointer-events: none; }
+*/
+.color-picker label.checked {
 	opacity: 0;
 	pointer-events: none;
 }
@@ -851,19 +865,6 @@ header {
 		background-color 0.5s ease-in-out,
 		padding 0.5s ease-in-out,
 		fill 0.3s ease-in-out;
-}
-
-/* Visible focus indicator for keyboard navigation */
-.color-picker input[type="radio"]:focus-visible {
-	outline: 3px solid var(--text-span);
-	outline-offset: 2px;
-	clip: auto;
-	clip-path: none;
-	width: auto;
-	height: auto;
-	position: relative;
-	overflow: visible;
-	white-space: normal;
 }
 
 /* Keyboard focus styling - works on all devices */
@@ -958,19 +959,28 @@ main>*+* {
 @media (max-width: 675px) {
 
 	nav ul li a {
-		font-size: 11px;
+		font-size: 18px;
 	}
 
 	nav li a:after {
-		font-size: 0.6rem;
+		font-size: 0.75rem;
 	}
 
 	.open-overlay {
-		right: 1rem;
+		position: fixed;
+		top: var(--space-2xl);
+		right: 50%;
+		transform: translateX(50%);
+		display: block;
+		margin-block-end: var(--space-3xl);
+		margin: 0 auto;
+		z-index: 1000;
+		width: 34px;
+		cursor: pointer;
 	}
 
 	nav li a:before {
-		width: 15px;
+		width: 20px;
 	}
 
 	main {
@@ -1004,18 +1014,5 @@ main>*+* {
 	.color-picker label svg {
 		width: var(--space-m);
 		height: var(--space-m);
-	}
-
-	.open-overlay {
-		position: fixed;
-		top: var(--space-xl);
-		right: 50%;
-		transform: translateX(50%);
-		display: block;
-		margin-block-end: var(--space-3xl);
-		margin: 0 auto;
-		z-index: 1000;
-		width: 34px;
-		cursor: pointer;
 	}
 }
