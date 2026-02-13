@@ -68,22 +68,14 @@
 [data-theme="light"] .text-with-animation span,
 [data-theme="light"] .large-button,
 [data-theme="light"] .footer-text,
-[data-theme="light"] .color-picker label svg {
+[data-theme="light"] .footer-break {
 
 	mix-blend-mode: var(--blend-mode);
-
 	font-weight: 500;
 }
 
 [data-theme="light"] .color-picker label svg {
 	fill: currentColor;
-}
-
-[data-theme="light"] .up::before,
-[data-theme="light"] .down::before {
-	/* Disable invisible glow pseudo-elements and their animation in light mode */
-	animation: none;
-	content: none;
 }
 
 [data-theme] body::before {
@@ -211,7 +203,7 @@ html.theme-transitioning body::before {
 
 /*--------------- Transitions and animations --------------------*/
 
-@supports (selector(::view-transition)) {
+@supports selector(::view-transition) {
 	.support.view-transition {
 		display: none;
 	}
@@ -496,7 +488,7 @@ header {
 	flex-direction: column;
 	justify-content: space-around;
 	flex: 1;
-	view-transition-name: main;
+	view-transition-name: main-content;
 }
 
 /* -----------------------curvature-------------------------*/
@@ -911,6 +903,30 @@ footer {
 @media (hover: none),
 (pointer: coarse) {
 
+	/* Remove sticky hover/active styles for color-picker and theme-label, but keep focus-visible outline for accessibility */
+	.color-picker .theme-label,
+	.color-picker .theme-label:active,
+	.color-picker .theme-label:hover {
+		background: none;
+		box-shadow: none;
+		color: inherit;
+		transform: none;
+		padding: 0;
+		transition: none;
+	}
+
+	/* Keep focus-visible outline for accessibility */
+	.color-picker .theme-label:focus-visible {
+		outline: 2px solid var(--text-color);
+		outline-offset: 2px;
+	}
+
+	.color-picker .theme-label svg {
+		filter: none;
+		fill: currentColor;
+		transition: none;
+	}
+
 	.color-picker label:is(:hover, :focus-within) svg,
 	.color-picker .theme-label:is(:hover, :focus-within) svg {
 		background-color: transparent;
@@ -969,29 +985,6 @@ footer {
 	}
 }
 
-/* Mobile/touch: Remove sticky hover/focus styles for color-picker */
-@media (hover: none),
-(pointer: coarse) {
-
-	.color-picker .theme-label,
-	.color-picker .theme-label:active,
-	.color-picker .theme-label:focus,
-	.color-picker .theme-label:hover {
-		background: none;
-		box-shadow: none;
-		color: inherit;
-		transform: none;
-		padding: 0;
-		transition: none;
-		outline: none;
-	}
-
-	.color-picker .theme-label svg {
-		filter: none;
-		fill: currentColor;
-		transition: none;
-	}
-}
 
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
