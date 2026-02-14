@@ -142,6 +142,8 @@ function setTheme(theme) {
 
 	startThemeTransition();
 
+	// No expensive view transition event listeners; .text-with-animation behaves normally
+
 	if (document.startViewTransition) {
 		try {
 			const transition = document.startViewTransition(() => {
