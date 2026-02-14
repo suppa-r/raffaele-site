@@ -339,12 +339,12 @@ html.theme-transitioning .theme-label--dark {
 	}
 
 	15% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: -90deg;
 	}
 
 	85% {
-		--scale: 0.8;
+		--scale: 0.9;
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
@@ -361,12 +361,12 @@ html.theme-transitioning .theme-label--dark {
 	}
 
 	15% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: 0deg;
 	}
 
 	85% {
-		--scale: 0.8;
+		--scale: 0.9;
 		--rotation: 90deg;
 		animation-timing-function: ease-in-out;
 	}
