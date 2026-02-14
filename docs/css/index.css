@@ -69,7 +69,7 @@
 [data-theme="light"] .large-button,
 [data-theme="light"] .footer-text,
 [data-theme="light"] .footer-break {
-
+	color: var(--text-color);
 	mix-blend-mode: var(--blend-mode);
 	font-weight: 500;
 }
@@ -175,6 +175,7 @@ html.theme-transitioning body::before {
 	--font-family-primary: "wire_oneregular", monospace;
 	--font-weight: 500;
 	--font-style: normal;
+
 	/*------------- letter and word spacing settings ----------------*/
 
 	--padding-inline: var(--space-4xs);

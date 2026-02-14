@@ -134,10 +134,20 @@
 }
 
 /* Modern dynamic viewport units for browsers that support them */
-@supports (width: 100dvw) and (height: 100dvh) {
+@supports (height: 100dvh) and (width: 100dvw) {
 	[data-theme] body::before {
 		width: 100dvw;
 		height: 100dvh;
+	}
+}
+
+@media (prefers-reduced-transparency: reduce),
+(prefers-reduced-motion: reduce) {
+	[data-theme] body::before {
+		background: var(--base-color);
+		-webkit-mask-image: none;
+		mask-image: none;
+		transition: none;
 	}
 }
 
@@ -147,7 +157,8 @@ html.theme-transitioning body::before {
 
 [data-theme] body {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
+	isolation: isolate;
 }
 
 :root {
@@ -190,6 +201,7 @@ html.theme-transitioning body::before {
 	--font-family-primary: "wire_oneregular", monospace;
 	--font-weight: 500;
 	--font-style: normal;
+
 	/*------------- letter and word spacing settings ----------------*/
 
 	--padding-inline: var(--space-4xs);
@@ -200,7 +212,7 @@ html.theme-transitioning body::before {
 
 /*--------------- Transitions and animations --------------------*/
 
-@supports (selector(::view-transition)) {
+@supports selector(::view-transition) {
 	.support.view-transition {
 		display: none;
 	}
@@ -237,8 +249,24 @@ html.theme-transitioning body::before {
 	perspective-origin: center;
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
-	filter: drop-shadow(0px 0px 6px hsl(165deg 11% 3%)) drop-shadow(0px 0px 25px hsl(165deg 11% 3%/50%));
+	filter: drop-shadow(0px 0px 25px hsl(165deg 11% 3% / 50%));
+}
 
+@media (prefers-reduced-motion: reduce),
+(prefers-reduced-transparency: reduce) {
+	::view-transition-image-pair(root) {
+		filter: none;
+	}
+}
+
+@media (prefers-reduced-transparency: reduce) {
+
+	.down::before,
+	.up::before {
+		animation: none;
+		filter: none;
+		box-shadow: none;
+	}
 }
 
 ::view-transition-old(root),
@@ -249,8 +277,17 @@ html.theme-transitioning body::before {
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
 	perspective: 2000px;
-	transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
+	transform: translateZ(-50vw) scale(var(--scale)) rotateY(var(--rotation)) translate(5vw);
 	backface-visibility: hidden;
+}
+
+/* Modern dynamic viewport units for browsers that support them */
+@supports (width: 100dvw) {
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
+	}
 }
 
 ::view-transition-old(root) {
@@ -262,12 +299,14 @@ html.theme-transitioning body::before {
 }
 
 /* Hide main content during theme transition, fade it in with the new color scheme */
+::view-transition-old(footer),
+::view-transition-new(footer),
+::view-transition-old(wrapper),
+::view-transition-new(wrapper),
 ::view-transition-old(header),
 ::view-transition-new(header),
 ::view-transition-old(main),
-::view-transition-new(main),
-::view-transition-old(footer),
-::view-transition-new(footer) {
+::view-transition-new(main) {
 	display: none;
 }
 
@@ -278,17 +317,6 @@ html.theme-transitioning main,
 html.theme-transitioning footer,
 html.theme-transitioning .theme-label--light,
 html.theme-transitioning .theme-label--dark {
-	view-transition-name: none;
-}
-
-/* During page navigation, route named elements through the root transition. */
-html.page-transitioning .wrapper,
-html.page-transitioning header,
-html.page-transitioning main,
-html.page-transitioning footer,
-html.page-transitioning .wrapper-gradient-text,
-html.page-transitioning .theme-label--light,
-html.page-transitioning .theme-label--dark {
 	view-transition-name: none;
 }
 
@@ -389,18 +417,22 @@ body {
 /*----------- Make .wrapper take full viewport height -------------*/
 
 .wrapper {
-	min-height: 100dvh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: space-between;
 	margin-inline: auto;
-	padding-inline: var(--padding-inline);
-	mix-blend-mode: var(--blend-mode);
 	view-transition-name: wrapper;
 }
 
+@supports (min-height: 100dvh) {
+	.wrapper {
+		min-height: 100dvh;
+	}
+}
+
 [data-theme="light"] .wrapper {
-	box-shadow: 0 0 50px rgba(0, 0, 0, .6);
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
 }
 
 /*------------------------ Navigation  ------------------------*/
@@ -628,7 +660,7 @@ nav li a:hover:after {
 	right: 50%;
 	transform: translateX(50%);
 	display: block;
-	margin-block-end: var(--space-3xl);
+
 	margin: 0 auto;
 	z-index: 1000;
 	width: var(--space-m);
@@ -743,7 +775,7 @@ header {
 	background-color: var(--base-color);
 	backdrop-filter: var(--backdrop-blur);
 	box-shadow: var(--navbar-shadow);
-	margin: var(--space-4xs) var(--space-3xl) var(--space-4xs) var(--space-3xl);
+	margin: var(--space-4xs) var(--space-xl) var(--space-4xs) var(--space-xl);
 	padding: var(--space-xs) var(--space-xl);
 	border-radius: var(--space-l);
 	isolation: isolate;
@@ -935,6 +967,30 @@ header {
 @media (hover: none),
 (pointer: coarse) {
 
+	/* Remove sticky hover/active styles for color-picker and theme-label, but keep focus-visible outline for accessibility */
+	.color-picker .theme-label,
+	.color-picker .theme-label:active,
+	.color-picker .theme-label:hover {
+		background: none;
+		box-shadow: none;
+		color: inherit;
+		transform: none;
+		padding: 0;
+		transition: none;
+	}
+
+	/* Keep focus-visible outline for accessibility */
+	.color-picker .theme-label:focus-visible {
+		outline: 2px solid var(--text-color);
+		outline-offset: 2px;
+	}
+
+	.color-picker .theme-label svg {
+		filter: none;
+		fill: currentColor;
+		transition: none;
+	}
+
 	.color-picker label:is(:hover, :focus-within) svg,
 	.color-picker .theme-label:is(:hover, :focus-within) svg {
 		background-color: transparent;
@@ -953,6 +1009,7 @@ main {
 	padding-inline: var(--padding-inline);
 	mix-blend-mode: var(--blend-mode);
 	text-align: center;
+	flex-grow: 1;
 	view-transition-name: main;
 }
 
@@ -1066,9 +1123,24 @@ main>*+* {
 	.color-picker .theme-label.is-incoming svg {
 		animation: none;
 	}
+
+	.color-picker label svg {
+		transition: none;
+	}
+
+
+	.color-picker label:hover svg,
+	.color-picker label:focus-within svg {
+		transform: none;
+	}
 }
 
 @media (max-width: 675px) {
+
+	body,
+	.wrapper {
+		overflow-x: hidden;
+	}
 
 	nav ul li a {
 		font-size: 18px;
@@ -1088,7 +1160,7 @@ main>*+* {
 		right: 50%;
 		transform: translateX(50%);
 		display: block;
-		margin-block-end: var(--space-3xl);
+
 		margin: 0 auto;
 		z-index: 1000;
 		width: 34px;
@@ -1121,6 +1193,10 @@ main>*+* {
 		padding: 0;
 		font-size: inherit;
 		color: var(--text-span);
+	}
+
+	.color-picker {
+		margin: var(--space-4xs);
 	}
 
 	.color-picker label svg {
