@@ -1,16 +1,3 @@
-/* Ensure svg changes color and animates on .large-button hover or focus */
-.large-button:hover svg,
-.large-button:focus-visible svg {
-	transform: scale(1.4) rotate(45deg);
-	fill: #111111;
-	transition-duration: 0.2s, 0.3s;
-}
-
-/* Change svg color when .btn-cells is hovered and svg is a sibling */
-.large-button .btn-cells:hover~svg {
-	fill: #111111;
-}
-
 [data-theme="dark"] {
 	/* Fallback colors for browsers without OKLCH support */
 	--base-color: #000000;
@@ -85,6 +72,23 @@
 	color: var(--text-color);
 	mix-blend-mode: var(--blend-mode);
 	font-weight: 500;
+}
+
+
+[data-theme="dark"] .large-button:hover svg,
+[data-theme="dark"] .large-button:hover .btn-content span,
+[data-theme="dark"] .large-button:focus-visible svg,
+[data-theme="dark"] .large-button:focus-visible .btn-content span,
+[data-theme="dark"] .large-button:active svg,
+[data-theme="dark"] .large-button:active .btn-content span {
+	color: var(--base-color);
+	fill: var(--base-color);
+	background-color: transparent;
+}
+
+[data-theme="dark"] .large-button .btn-content span,
+[data-theme="dark"] .large-button svg {
+	color: var(--text-color);
 }
 
 [data-theme="light"] .color-picker label svg {
@@ -675,6 +679,7 @@ header {
 .large-button {
 	position: relative;
 	display: flex;
+	gap: var(--space-s);
 	flex-direction: column;
 	justify-content: center;
 	width: var(--space-12xl);
@@ -690,15 +695,40 @@ header {
 	cursor: pointer;
 	user-select: none;
 	pointer-events: all;
-
 	transition: box-shadow 0.3s,
 		outline 0.3s,
 		opacity 0.3s,
 }
 
+.large-button svg {
+	width: var(--space-l);
+	height: var(--space-l);
+	fill: var(--text-color);
+	transition: fill 0.3s, transform 0.3s;
+	margin-inline: auto;
+}
+
+.large-button:hover svg,
+.large-button:focus-visible svg,
+.large-button:active svg,
+.large-button:focus-within svg,
+.large-button:has(:hover) svg,
+.large-button:has(:focus-visible) svg,
+.large-button:has(:active) svg,
+.large-button:has(:focus-within) svg {
+	fill: var(--base-color);
+	transform: scale(1.2) rotate(90deg);
+	z-index: 11;
+}
+
 .btn-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
 	pointer-events: none;
 	position: relative;
+	margin-inline: auto;
 	z-index: 3;
 }
 
@@ -728,10 +758,10 @@ header {
 
 		width: 10px;
 		aspect-ratio: 1;
-		background: #51f0ed;
+		background: #cee6e5;
 		background-image: linear-gradient(to right,
-				#51f0ed,
-				color-mix(in srgb, #51f0ed, white 50%));
+				#d6e2e2,
+				color-mix(in srgb, #93d4d3, white 50%));
 		border-radius: 100vw;
 
 		/* The margin changes depending on whether we
@@ -777,15 +807,6 @@ header {
 	& span:hover {
 		anchor-name: --hovered-cell;
 		transition: anchor-name 0ms;
-	}
-}
-
-/* Ensure svg is visible on white hover background for .large-button */
-@media (prefers-color-scheme: light) {
-
-	.large-button:hover svg,
-	.large-button:focus-visible svg {
-		fill: var(--text-color);
 	}
 }
 
@@ -1049,7 +1070,8 @@ footer {
 		width: var(--space-8xl);
 		height: var(--space-4xl);
 		font-size: var(--step-1);
-		margin: var(--space-xs);
+		margin-inline: auto;
+
 	}
 
 	.large-button svg {
