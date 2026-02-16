@@ -1,3 +1,16 @@
+/* Ensure svg changes color and animates on .large-button hover or focus */
+.large-button:hover svg,
+.large-button:focus-visible svg {
+	transform: scale(1.4) rotate(45deg);
+	fill: #111111;
+	transition-duration: 0.2s, 0.3s;
+}
+
+/* Change svg color when .btn-cells is hovered and svg is a sibling */
+.large-button .btn-cells:hover~svg {
+	fill: #111111;
+}
+
 [data-theme="dark"] {
 	/* Fallback colors for browsers without OKLCH support */
 	--base-color: #000000;
@@ -200,6 +213,8 @@ html.theme-transitioning body::before {
 	--glow-up-height: clamp(0.04vmin, 0.07vmin, 0.13vmin);
 	--glow-down-width: clamp(0.8vmin, 1vmin, 1.5vmin);
 	--glow-down-height: clamp(0.1vmin, 0.30vmin, 0.42vmin);
+
+	--transition-duration: 400ms;
 }
 
 /*--------------- Transitions and animations --------------------*/
@@ -658,6 +673,7 @@ header {
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -674,60 +690,103 @@ header {
 	cursor: pointer;
 	user-select: none;
 	pointer-events: all;
-	transition:
-		box-shadow 0.3s,
+
+	transition: box-shadow 0.3s,
 		outline 0.3s,
 		opacity 0.3s,
-		transform 0.3s;
-	text-align: center;
-	view-transition-name: large-button;
 }
 
-.large-button:focus-visible,
-.large-button:hover {
-	box-shadow: 0 0 50px 10px var(--text-color);
-	background-color: var(--text-color);
-	color: var(--base-color);
+.btn-content {
+	pointer-events: none;
+	position: relative;
+	z-index: 3;
 }
 
-.large-button:focus-visible {
-	outline: 6px solid var(--focus-ring-color);
+.btn-cells {
+	position: absolute;
+	z-index: 2;
+	inset: 0;
+
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	/* Make 5 columns for the spans */
+
+	/* anchor positioning plays a big role here.
+       right now, I'm just telling our element what
+       anchor to, the real trick is lower down where
+       we create the named anchor */
+	&::before {
+		content: "";
+		position: absolute;
+		position-anchor: --hovered-cell;
+		left: calc(anchor(left) - 20px);
+		right: calc(anchor(right) - 20px);
+		top: calc(anchor(top) - 20px);
+		bottom: calc(anchor(bottom) - 20px);
+		/* pushes the element to the top */
+		margin: 0 auto auto;
+
+		width: 10px;
+		aspect-ratio: 1;
+		background: #51f0ed;
+		background-image: linear-gradient(to right,
+				#51f0ed,
+				color-mix(in srgb, #51f0ed, white 50%));
+		border-radius: 100vw;
+
+		/* The margin changes depending on whether we
+           hover on the top or bottom row, and I want to
+           delay that when we aren't hovering */
+		transition: all var(--transition-duration) ease,
+			margin 0ms var(--transition-duration);
+		transition-behavior: allow-discrete;
+		transform: scale(0);
+	}
+
+	/* if we're hovering on the 2nd row,
+       we push it to the bottom, instead of the top */
+	&:has(> :nth-child(n + 11):hover)::before {
+		margin: auto auto 0;
+	}
+
+	/* when we do hover, I want the margin to instantly
+       change, so I've removed the delay */
+	&:hover::before {
+		transform: scale(55);
+		transition: transform var(--transition-duration) ease, margin 0ms 0ms;
+	}
+
+	& span {
+		/*     width: 100%;
+    height: 100%;
+    display: block; */
+		position: relative;
+	}
+
+	&:not(:hover) span {
+		/* we need the  allow-discrete here because
+         we're going to be transitioning anchor-name
+      
+         I don't actually want to transition it, but when we
+         aren't hovering, I want to delay the name from changing */
+		transition: anchor-name 0ms var(--transition-duration);
+		transition-behavior: allow-discrete;
+	}
+
+	/* when we hover, we need to the anchor-name to switch instantly */
+	& span:hover {
+		anchor-name: --hovered-cell;
+		transition: anchor-name 0ms;
+	}
 }
 
-.button-text {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 0 var(--space-2xs);
-}
+/* Ensure svg is visible on white hover background for .large-button */
+@media (prefers-color-scheme: light) {
 
-.button-text span:first-child {
-	font-size: var(--step-0);
-	display: block;
-	line-height: 1.2;
-}
-
-.button-text span:last-child {
-	font-size: var(--step-0);
-	display: block;
-	line-height: 1.2;
-}
-
-.large-button svg {
-	display: block;
-	margin: 0 auto;
-	width: var(--space-l);
-	height: var(--space-l);
-	fill: var(--text-color);
-	transition-property: transform, fill;
-	transition-duration: 0.3s, 0.3s;
-}
-
-.large-button:hover svg,
-.large-button:focus-visible svg {
-	transform: scale(1.4) rotate(45deg);
-	fill: var(--base-color);
-	transition-duration: 0.2s, 0.3s;
+	.large-button:hover svg,
+	.large-button:focus-visible svg {
+		fill: var(--text-color);
+	}
 }
 
 /*----------------footer----------------------*/
@@ -981,6 +1040,19 @@ footer {
 	}
 
 	.color-picker label svg {
+		width: var(--space-m);
+		height: var(--space-m);
+	}
+
+	/* Make .large-button more responsive on small screens */
+	.large-button {
+		width: var(--space-8xl);
+		height: var(--space-4xl);
+		font-size: var(--step-1);
+		margin: var(--space-xs);
+	}
+
+	.large-button svg {
 		width: var(--space-m);
 		height: var(--space-m);
 	}
