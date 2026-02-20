@@ -318,8 +318,6 @@ html.theme-transitioning body::before {
 ::view-transition-new(header),
 ::view-transition-old(main-subtitle),
 ::view-transition-new(main-subtitle),
-::view-transition-old(curve-container),
-::view-transition-new(curve-container),
 ::view-transition-old(large-button),
 ::view-transition-new(large-button) {
 	display: none;
@@ -330,7 +328,6 @@ html.theme-transitioning .wrapper,
 html.theme-transitioning header,
 html.theme-transitioning .main-subtitle,
 html.theme-transitioning .main-content,
-html.theme-transitioning .curve-container,
 html.theme-transitioning .text-with-animation,
 html.theme-transitioning .large-button,
 html.theme-transitioning footer,
@@ -344,7 +341,6 @@ html.page-transitioning .wrapper,
 html.page-transitioning header,
 html.page-transitioning .main-subtitle,
 html.page-transitioning .main-content,
-html.page-transitioning .curve-container,
 html.page-transitioning .text-with-animation,
 html.page-transitioning .large-button,
 html.page-transitioning footer,
@@ -795,7 +791,7 @@ header {
 	&:not(:hover) span {
 		/* we need the  allow-discrete here because
          we're going to be transitioning anchor-name
-      
+
          I don't actually want to transition it, but when we
          aren't hovering, I want to delay the name from changing */
 		transition: anchor-name 0ms var(--transition-duration);
@@ -817,6 +813,7 @@ footer {
 	align-items: center;
 	gap: var(--space-xl);
 	padding-block: var(--space-xs);
+	padding-inline: var(--space-3xs);
 	view-transition-name: footer;
 }
 
@@ -1060,7 +1057,6 @@ footer {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-inline: var(--padding-inline);
 	}
 
 	.color-picker {
