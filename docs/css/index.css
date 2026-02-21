@@ -486,10 +486,14 @@ main {
 	view-transition-name: site-title;
 }
 
+.site-title span {
+	padding-inline-start: var(--space-m);
+}
+
 /* -----------------------curvature-------------------------*/
 
 .curve-container {
-	font-size: var(--step-2);
+	font-size: var(--step-3);
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-3xl);
@@ -669,7 +673,7 @@ main {
 	pointer-events: all;
 	transition: box-shadow 0.3s,
 		outline 0.3s,
-		opacity 0.3s,
+		opacity 0.3s;
 }
 
 .large-button svg {
@@ -682,10 +686,12 @@ main {
 
 .large-button:hover svg,
 .large-button:focus-visible svg,
+.large-button:focus svg,
 .large-button:active svg,
 .large-button:focus-within svg,
 .large-button:has(:hover) svg,
 .large-button:has(:focus-visible) svg,
+.large-button:has(:focus) svg,
 .large-button:has(:active) svg,
 .large-button:has(:focus-within) svg {
 	fill: var(--base-color);
@@ -711,7 +717,7 @@ main {
 
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
-	/* Make 5 columns for the spans */
+	/* Make 10 columns for the spans */
 
 	/* anchor positioning plays a big role here.
        right now, I'm just telling our element what
@@ -1017,16 +1023,9 @@ footer {
 		gap: var(--space-m);
 	}
 
-	/* Make .large-button more responsive on small screens */
 	.large-button {
-		font-size: var(--step-1);
-		margin-inline: auto;
-
-	}
-
-	.large-button svg {
-		width: var(--space-m);
-		height: var(--space-m);
+		width: var(--space-11xl);
+		height: var(--space-4xl);
 	}
 
 	footer {
@@ -1047,7 +1046,30 @@ footer {
 
 }
 
+/*------ Touch device interaction support ------*/
 
+@media (hover: none) and (pointer: coarse) {
+	/* On touch devices, use focus to show interaction feedback */
+	.large-button:focus,
+	.large-button:active {
+		box-shadow: 0 0 20px 5px var(--text-color);
+	}
+
+	.large-button:focus svg,
+	.large-button:active svg {
+		fill: var(--base-color);
+		transform: scale(1.2) rotate(90deg);
+	}
+
+	.btn-cells span {
+		/* Make cells more responsive to touch */
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.btn-cells span:focus {
+		anchor-name: --hovered-cell;
+	}
+}
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
 
