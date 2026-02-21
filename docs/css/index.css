@@ -307,6 +307,20 @@ html.theme-transitioning body::before {
 	}
 }
 
+/* Hide main content during theme transition, fade it in with the new color scheme */
+::view-transition-old(header),
+::view-transition-new(header),
+::view-transition-old(large-button),
+::view-transition-new(large-button),
+::view-transition-old(curve-container),
+::view-transition-new(curve-container),
+::view-transition-old(footer),
+::view-transition-new(footer) {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
 ::view-transition-old(root) {
 	animation-name: reveal-out;
 }
@@ -315,52 +329,11 @@ html.theme-transitioning body::before {
 	animation-name: reveal-in;
 }
 
-/* Hide main content during theme transition, fade it in with the new color scheme */
-::view-transition-old(footer),
-::view-transition-new(footer),
-::view-transition-old(wrapper),
-::view-transition-new(wrapper),
-::view-transition-old(header),
-::view-transition-new(header),
-::view-transition-old(site-title),
-::view-transition-new(site-title),
-::view-transition-old(large-button),
-::view-transition-new(large-button) {
-	display: none;
-}
-
-/* During theme toggle, route named elements through the root transition. */
-html.theme-transitioning .wrapper,
-html.theme-transitioning header,
-html.theme-transitioning .site-title,
-html.theme-transitioning .main-content,
-html.theme-transitioning .text-with-animation,
-html.theme-transitioning .large-button,
-html.theme-transitioning footer,
-html.theme-transitioning .theme-label--light,
-html.theme-transitioning .theme-label--dark {
-	view-transition-name: none;
-}
-
-/* During page navigation, route named elements through the root transition. */
-html.page-transitioning .wrapper,
-html.page-transitioning header,
-html.page-transitioning .sitetitle,
-html.page-transitioning .main-content,
-html.page-transitioning .text-with-animation,
-html.page-transitioning .large-button,
-html.page-transitioning footer,
-html.page-transitioning .theme-label--light,
-html.page-transitioning .theme-label--dark {
-	view-transition-name: none;
-}
-
 @property --rotation {
 	syntax: "<angle>";
 	inherits: false;
 	initial-value: 0deg;
 }
-
 @property --scale {
 	syntax: "<number>";
 	inherits: false;
@@ -372,45 +345,37 @@ html.page-transitioning .theme-label--dark {
 		--rotation: -90deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	15% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: -90deg;
 	}
-
 	85% {
-		--scale: 0.9;
+		--scale: 0.8;
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	to {
 		--rotation: 0deg;
 	}
 }
-
 @keyframes reveal-out {
 	from {
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	15% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: 0deg;
 	}
-
 	85% {
-		--scale: 0.9;
+		--scale: 0.8;
 		--rotation: 90deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	to {
 		--rotation: 90deg;
 	}
 }
-
 /*--------------------------  global styles  ----------------------*/
 
 p,
@@ -674,6 +639,7 @@ main {
 	transition: box-shadow 0.3s,
 		outline 0.3s,
 		opacity 0.3s;
+	view-transition-name: large-button;
 }
 
 .large-button svg {

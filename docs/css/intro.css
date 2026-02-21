@@ -325,7 +325,6 @@ html.theme-transitioning .theme-label--dark {
 	inherits: false;
 	initial-value: 0deg;
 }
-
 @property --scale {
 	syntax: "<number>";
 	inherits: false;
@@ -337,40 +336,33 @@ html.theme-transitioning .theme-label--dark {
 		--rotation: -90deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	15% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: -90deg;
 	}
-
 	85% {
-		--scale: 0.9;
+		--scale: 0.8;
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	to {
 		--rotation: 0deg;
 	}
 }
-
 @keyframes reveal-out {
 	from {
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	15% {
-		--scale: 0.7;
+		--scale: 0.8;
 		--rotation: 0deg;
 	}
-
 	85% {
-		--scale: 0.9;
+		--scale: 0.8;
 		--rotation: 90deg;
 		animation-timing-function: ease-in-out;
 	}
-
 	to {
 		--rotation: 90deg;
 	}
