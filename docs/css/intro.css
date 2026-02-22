@@ -852,6 +852,7 @@ header {
 	cursor: pointer;
 	position: relative;
 	border-radius: 50%;
+	view-transition-name: color-picker;
 }
 
 .color-picker>fieldset {

@@ -329,20 +329,6 @@ html.theme-transitioning body::before {
 	}
 }
 
-/* Hide main content during theme transition, fade it in with the new color scheme */
-::view-transition-old(header),
-::view-transition-new(header),
-::view-transition-old(large-button),
-::view-transition-new(large-button),
-::view-transition-old(curve-container),
-::view-transition-new(curve-container),
-::view-transition-old(footer),
-::view-transition-new(footer) {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-}
-
 ::view-transition-old(root) {
 	animation-name: reveal-out;
 }
@@ -351,11 +337,39 @@ html.theme-transitioning body::before {
 	animation-name: reveal-in;
 }
 
+/* Hide main content during view transition */
+::view-transition-old(header-text),
+::view-transition-new(header-text),
+::view-transition-old(curve-container),
+::view-transition-new(curve-container),
+::view-transition-old(large-button),
+::view-transition-new(large-button),
+::view-transition-old(button-text),
+::view-transition-new(button-text),
+::view-transition-old(footer-text),
+::view-transition-new(footer-text) {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+/* Hide index.html elements during page transition */
+html.page-transitioning .header-text,
+html.page-transitioning .curve-container,
+html.page-transitioning .large-button,
+html.page-transitioning .button-text,
+html.page-transitioning .footer-text {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
 @property --rotation {
 	syntax: "<angle>";
 	inherits: false;
 	initial-value: 0deg;
 }
+
 @property --scale {
 	syntax: "<number>";
 	inherits: false;
@@ -367,33 +381,40 @@ html.theme-transitioning body::before {
 		--rotation: -90deg;
 		animation-timing-function: ease-in-out;
 	}
+
 	15% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: -90deg;
 	}
+
 	85% {
-		--scale: 0.8;
+		--scale: 0.9;
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
+
 	to {
 		--rotation: 0deg;
 	}
 }
+
 @keyframes reveal-out {
 	from {
 		--rotation: 0deg;
 		animation-timing-function: ease-in-out;
 	}
+
 	15% {
-		--scale: 0.8;
+		--scale: 0.7;
 		--rotation: 0deg;
 	}
+
 	85% {
-		--scale: 0.8;
+		--scale: 0.9;
 		--rotation: 90deg;
 		animation-timing-function: ease-in-out;
 	}
+
 	to {
 		--rotation: 90deg;
 	}
@@ -454,6 +475,7 @@ header {
 	word-break: normal;
 	overflow-wrap: normal;
 	hyphens: none;
+	view-transition-name: header-text;
 }
 
 .header-break {
@@ -781,7 +803,7 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-block: var(--space-xs);
+	margin-block: var(--space-xs);
 	padding-inline: var(--space-m);
 	view-transition-name: footer;
 }
@@ -790,12 +812,12 @@ footer {
 	white-space: normal;
 	word-break: normal;
 	hyphens: none;
+	view-transition-name: footer-text;
 }
-
 
 .footer-break {
 	display: inline;
-	padding-inline-start: var(--space-xs);
+	padding-inline-start: var(--space-s);
 }
 
 /*----------- Theme switcher styles  -----------*/
@@ -1012,20 +1034,18 @@ footer {
 
 	.large-button {
 		width: var(--space-11xl);
-		height: var(--space-4xl);
+		height: var(--space-6xl);
 	}
 
-	footer {
-		display: flex;
-
+	.footer-break {
+		display: block;
+		padding-inline-start: 0;
 	}
 
 	.color-picker label svg {
 		width: var(--space-m);
 		height: var(--space-m);
 	}
-
-
 }
 
 /*------ Touch device interaction support ------*/
