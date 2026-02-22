@@ -817,8 +817,8 @@ footer {
 	display: grid;
 	place-items: center;
 	margin-block: 0;
-	width: var(--space-l);
-	height: var(--space-l);
+	width: var(--space-xl);
+	height: var(--space-xl);
 	cursor: pointer;
 	position: relative;
 	border-radius: 50%;
@@ -927,9 +927,7 @@ footer {
 	outline-offset: 2px;
 }
 
-@media (hover: none),
-(pointer: coarse) {
-
+@media (hover: none) and (pointer: coarse) {
 	/* Remove sticky hover/active styles for color-picker and theme-label, but keep focus-visible outline for accessibility */
 	.color-picker .theme-label,
 	.color-picker .theme-label:active,
@@ -1101,9 +1099,14 @@ footer {
 	.color-picker .theme-label.is-incoming svg {
 		animation: none;
 	}
-
-	.color-picker label:hover svg,
-	.color-picker label:focus-within svg {
+	.color-picker label:focus-within svg,
+	.color-picker .theme-label:hover svg,
+	.color-picker .theme-label:focus-within svg,
+	.color-picker label:hover svg {
+		background-color: transparent;
+		fill: var(--text-color);
 		transform: none;
+		padding: 0;
+		border-radius: 0;
 	}
 }
