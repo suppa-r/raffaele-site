@@ -18,6 +18,33 @@
 	--glow-box-shadow: 0 0 40px 10px var(--text-color);
 
 	--blend-mode: normal;
+
+	/* Button cell colors for dark mode */
+	--btn-cell-bg: #cee6e5;
+	--btn-cell-gradient-start: #d6e2e2;
+	--btn-cell-gradient-end: #93d4d3;
+}
+
+/* Dark theme button SVG interactive states */
+[data-theme="dark"] .large-button:hover svg,
+[data-theme="dark"] .large-button:focus-visible svg,
+[data-theme="dark"] .large-button:active svg {
+	color: var(--base-color);
+	fill: var(--base-color);
+}
+
+/* Dark theme button text interactive states */
+[data-theme="dark"] .large-button:hover .button-text span,
+[data-theme="dark"] .large-button:focus-visible .button-text span,
+[data-theme="dark"] .large-button:active .button-text span {
+	color: var(--base-color);
+	background-color: transparent;
+}
+
+/* Dark theme button default state */
+[data-theme="dark"] .large-button svg,
+[data-theme="dark"] .large-button .button-text span {
+	color: var(--text-color);
 }
 
 [data-theme="light"] {
@@ -40,25 +67,11 @@
 	--glow-box-shadow: none;
 
 	--blend-mode: normal;
-}
 
-/* OKLCH colors for modern browsers - top-level @supports for maximum compatibility */
-@supports (color: oklch(0% 0 0deg)) {
-	[data-theme="dark"] {
-		--base-color: oklch(0% 0 0deg);
-		--text-color: oklch(100% 0.00011 271.152deg);
-		--text-span: oklch(47.898% 0.06036 195.377deg / 0.850);
-		--focus-ring-color: oklch(100% 0.00011 271.152deg);
-		--body-grid-line: oklch(100% 0.00011 271.152deg / 0.085);
-	}
-
-	[data-theme="light"] {
-		--base-color: oklch(100% 0.00011 271.152deg);
-		--text-color: oklch(0% 0 0deg);
-		--text-span: oklch(53.447% 0.06872 209.921deg / 0.61);
-		--focus-ring-color: oklch(0% 0 0deg);
-		--body-grid-line: oklch(0% 0 0deg / 0.15);
-	}
+	/* Button cell colors for light mode */
+	--btn-cell-bg: #4a9c9a;
+	--btn-cell-gradient-start: #3a8b89;
+	--btn-cell-gradient-end: #2d7a76;
 }
 
 [data-theme="light"] .header-text,
@@ -74,29 +87,38 @@
 	font-weight: 500;
 }
 
-[data-theme="dark"] .large-button:hover svg,
-[data-theme="dark"] .large-button:hover .button-text span,
-[data-theme="dark"] .large-button:focus-visible svg,
-[data-theme="dark"] .large-button:focus-visible .button-text span,
-[data-theme="dark"] .large-button:active svg,
-[data-theme="dark"] .large-button:active .button-text span {
-	color: var(--base-color);
-	fill: var(--base-color);
-	background-color: transparent;
-}
-
-[data-theme="dark"] .large-button .button-text span,
-[data-theme="dark"] .large-button svg {
-	color: var(--text-color);
-}
-
 .color-picker .theme-label.is-outgoing svg,
 .color-picker .theme-label.is-incoming svg {
-	transition-duration: 0.1s;
+	transition-duration: var(--transition-duration);
 }
 
 [data-theme="light"] .color-picker label svg {
 	fill: currentColor;
+}
+
+/* OKLCH colors for modern browsers - top-level @supports for maximum compatibility */
+@supports (color: oklch(0% 0 0deg)) {
+	[data-theme="dark"] {
+		--base-color: oklch(0% 0 0deg);
+		--text-color: oklch(100% 0.00011 271.152deg);
+		--text-span: oklch(47.898% 0.06036 195.377deg / 0.850);
+		--focus-ring-color: oklch(100% 0.00011 271.152deg);
+		--body-grid-line: oklch(100% 0.00011 271.152deg / 0.085);
+		--btn-cell-bg: oklch(71.233% 0.06844 198.156deg);
+		--btn-cell-gradient-start: oklch(72.882% 0.06436 199.321deg);
+		--btn-cell-gradient-end: oklch(50.932% 0.06289 198.812deg);
+	}
+
+	[data-theme="light"] {
+		--base-color: oklch(100% 0.00011 271.152deg);
+		--text-color: oklch(0% 0 0deg);
+		--text-span: oklch(53.447% 0.06872 209.921deg / 0.61);
+		--focus-ring-color: oklch(0% 0 0deg);
+		--body-grid-line: oklch(0% 0 0deg / 0.15);
+		--btn-cell-bg: oklch(47.298% 0.06814 197.548deg);
+		--btn-cell-gradient-start: oklch(40.816% 0.06438 198.521deg);
+		--btn-cell-gradient-end: oklch(36.419% 0.05967 199.267deg);
+	}
 }
 
 [data-theme] body::before {
@@ -152,7 +174,7 @@ html.theme-transitioning body::before {
 
 [data-theme] body {
 	position: relative;
-	z-index: 0;
+	z-index: 1;
 	isolation: isolate;
 }
 
@@ -206,7 +228,7 @@ html.theme-transitioning body::before {
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-5xs);
 	--curve-animation-duration: 5s;
-	/* Backwards-compatible alias for existing usages */
+
 	--sp: var(--curve-animation-duration);
 
 	/*------------ Curve animation viewport units ----------------*/
@@ -393,6 +415,7 @@ h1,
 h2,
 h3 {
 	font-style: italic;
+	letter-spacing: var(--letter-spacing);
 }
 
 /*-------------------------- Body styles  -------------------------*/
@@ -702,10 +725,10 @@ main {
 
 		width: 10px;
 		aspect-ratio: 1;
-		background: #cee6e5;
+		background: var(--btn-cell-bg);
 		background-image: linear-gradient(to right,
-				#d6e2e2,
-				color-mix(in srgb, #93d4d3, white 50%));
+				var(--btn-cell-gradient-start),
+				color-mix(in srgb, var(--btn-cell-gradient-end), white 50%));
 		border-radius: 100vw;
 
 		/* The margin changes depending on whether we
@@ -731,9 +754,7 @@ main {
 	}
 
 	& span {
-		/*     width: 100%;
-    height: 100%;
-    display: block; */
+
 		position: relative;
 	}
 
@@ -996,12 +1017,7 @@ footer {
 
 	footer {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
 
-	.color-picker {
-		margin: 0 var(--space-2xs);
 	}
 
 	.color-picker label svg {
