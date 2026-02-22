@@ -25,19 +25,10 @@
 	--btn-cell-gradient-end: #93d4d3;
 }
 
-/* Dark theme button SVG interactive states */
-[data-theme="dark"] .large-button:hover svg,
-[data-theme="dark"] .large-button:focus-visible svg,
-[data-theme="dark"] .large-button:active svg {
+/* Dark theme button interactive states */
+[data-theme="dark"] .large-button:is(:hover, :focus-visible, :active) :is(svg, .button-text span) {
 	color: var(--base-color);
 	fill: var(--base-color);
-}
-
-/* Dark theme button text interactive states */
-[data-theme="dark"] .large-button:hover .button-text span,
-[data-theme="dark"] .large-button:focus-visible .button-text span,
-[data-theme="dark"] .large-button:active .button-text span {
-	color: var(--base-color);
 	background-color: transparent;
 }
 
@@ -69,31 +60,9 @@
 	--blend-mode: normal;
 
 	/* Button cell colors for light mode */
-	--btn-cell-bg: #4a9c9a;
-	--btn-cell-gradient-start: #3a8b89;
-	--btn-cell-gradient-end: #2d7a76;
-}
-
-[data-theme="light"] .header-text,
-[data-theme="light"] .header-text .header-break,
-[data-theme="light"] .main-subtitle,
-[data-theme="light"] .curve-container,
-[data-theme="light"] .text-with-animation span,
-[data-theme="light"] .large-button,
-[data-theme="light"] .footer-text,
-[data-theme="light"] .footer-break {
-	color: var(--text-color);
-	mix-blend-mode: var(--blend-mode);
-	font-weight: 500;
-}
-
-.color-picker .theme-label.is-outgoing svg,
-.color-picker .theme-label.is-incoming svg {
-	transition-duration: var(--transition-duration);
-}
-
-[data-theme="light"] .color-picker label svg {
-	fill: currentColor;
+	--btn-cell-bg: #315756;
+	--btn-cell-gradient-start: #244b4a;
+	--btn-cell-gradient-end: #123b39;
 }
 
 /* OKLCH colors for modern browsers - top-level @supports for maximum compatibility */
@@ -119,6 +88,22 @@
 		--btn-cell-gradient-start: oklch(40.816% 0.06438 198.521deg);
 		--btn-cell-gradient-end: oklch(36.419% 0.05967 199.267deg);
 	}
+}
+
+[data-theme="light"] .main-subtitle,
+[data-theme="light"] .curve-container,
+[data-theme="light"] .text-with-animation span,
+[data-theme="light"] .large-button,
+[data-theme="light"] .footer-text,
+[data-theme="light"] .footer-break {
+	color: var(--text-color);
+	mix-blend-mode: var(--blend-mode);
+	font-weight: 500;
+}
+
+.color-picker .theme-label.is-outgoing svg,
+.color-picker .theme-label.is-incoming svg {
+	transition-duration: var(--transition-duration);
 }
 
 [data-theme] body::before {
@@ -168,17 +153,11 @@
 	}
 }
 
-html.theme-transitioning body::before {
-	will-change: opacity;
-}
-
 [data-theme] body {
 	position: relative;
 	z-index: 1;
 	isolation: isolate;
 }
-
-/*------------------------------  layouts ------------------------ */
 
 :root {
 
@@ -222,7 +201,7 @@ html.theme-transitioning body::before {
 	--font-weight: 500;
 	--font-style: normal;
 
-	/*------------- letter and word spacing settings ----------------*/
+	/*------------- letter and word spacing settings -----------*/
 
 	--padding-inline: var(--space-3xs);
 	--letter-spacing: var(--space-4xs);
@@ -231,7 +210,7 @@ html.theme-transitioning body::before {
 
 	--sp: var(--curve-animation-duration);
 
-	/*------------ Curve animation viewport units ----------------*/
+	/*------------ Curve animation viewport units --------------*/
 
 	--curve-char-width: clamp(3rem, 6vw, 5rem);
 	--curve-blur: var(--space-l);
@@ -239,7 +218,7 @@ html.theme-transitioning body::before {
 	--curve-rise-mid: 1.4vmin;
 	--curve-rise-center: 2.7vmin;
 
-	/*------------ Glow effect responsive dimensions ----------------*/
+	/*---------- Glow effect responsive dimensions --------------*/
 
 	--glow-up-width: 100%;
 	--glow-up-height: clamp(0.04vmin, 0.07vmin, 0.13vmin);
@@ -249,7 +228,7 @@ html.theme-transitioning body::before {
 	--transition-duration: 400ms;
 }
 
-/*--------------- Transitions and animations --------------------*/
+/*--------------- Transitions and animations ------------------*/
 
 @supports selector(::view-transition) {
 	.support.view-transition {
@@ -299,7 +278,6 @@ html.theme-transitioning body::before {
 }
 
 @media (prefers-reduced-transparency: reduce) {
-
 	.down::before,
 	.up::before {
 		animation: none;
@@ -322,7 +300,6 @@ html.theme-transitioning body::before {
 
 /* Modern dynamic viewport units for browsers that support them */
 @supports (width: 100dvw) {
-
 	::view-transition-old(root),
 	::view-transition-new(root) {
 		transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
@@ -337,7 +314,7 @@ html.theme-transitioning body::before {
 	animation-name: reveal-in;
 }
 
-/* Hide main content during view transition */
+/* Hide content during view and page transitions */
 ::view-transition-old(header-text),
 ::view-transition-new(header-text),
 ::view-transition-old(curve-container),
@@ -347,13 +324,7 @@ html.theme-transitioning body::before {
 ::view-transition-old(button-text),
 ::view-transition-new(button-text),
 ::view-transition-old(footer-text),
-::view-transition-new(footer-text) {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-}
-
-/* Hide index.html elements during page transition */
+::view-transition-new(footer-text),
 html.page-transitioning .header-text,
 html.page-transitioning .curve-container,
 html.page-transitioning .large-button,
@@ -419,18 +390,8 @@ html.page-transitioning .footer-text {
 		--rotation: 90deg;
 	}
 }
-/*--------------------------  global styles  ----------------------*/
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-figcaption {
-	white-space: normal;
-}
+/*--------------------------  global styles  ----------------------*/
 
 h1,
 h2,
@@ -463,6 +424,10 @@ body {
 /*----------------------- Header styles  --------------------------*/
 
 header {
+	text-align: center;
+	color: var(--text-color);
+	mix-blend-mode: var(--blend-mode);
+	font-weight: 500;
 	view-transition-name: header;
 }
 
@@ -470,7 +435,6 @@ header {
 
 .header-text {
 	padding-block-start: var(--space-2xs);
-	text-align: center;
 	white-space: normal;
 	word-break: normal;
 	overflow-wrap: normal;
@@ -483,12 +447,14 @@ header {
 	padding-inline-start: var(--space-m);
 }
 
+/*----------------- Main Section styles  ----------------------*/
+
 main {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	view-transition-name: main-content;
+	view-transition-name: main;
 }
 
 .site-title {
@@ -695,16 +661,8 @@ main {
 	margin-inline: auto;
 }
 
-.large-button:hover svg,
-.large-button:focus-visible svg,
-.large-button:focus svg,
-.large-button:active svg,
-.large-button:focus-within svg,
-.large-button:has(:hover) svg,
-.large-button:has(:focus-visible) svg,
-.large-button:has(:focus) svg,
-.large-button:has(:active) svg,
-.large-button:has(:focus-within) svg {
+.large-button:is(:hover, :focus-visible, :focus, :active, :focus-within) svg,
+.large-button:has(:is(:hover, :focus-visible, :focus, :active, :focus-within)) svg {
 	fill: var(--base-color);
 	transform: scale(1.2) rotate(90deg);
 	z-index: 11;
