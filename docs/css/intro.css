@@ -140,10 +140,8 @@
 
 [data-theme] body {
 	position: relative;
-	z-index: 1;
 	isolation: isolate;
 }
-
 :root {
 
 	/*----------- Fluid typography with mobile scaling ------------- */
@@ -298,8 +296,7 @@
 html.page-transitioning .header-title,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
-html.page-transitioning .open-overlay,
-html.page-transitioning main {
+html.page-transitioning .open-overlay {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
@@ -393,26 +390,10 @@ body {
 
 /* Modern dynamic viewport units for browsers that support them */
 @supports (height: 100dvh) and (width: 100dvw) {
-	[data-theme] body::before {
+	[data-theme] body {
 		width: 100dvw;
 		height: 100dvh;
 	}
-}
-
-@media (prefers-reduced-transparency: reduce),
-(prefers-reduced-motion: reduce) {
-	[data-theme] body::before {
-		background: var(--base-color);
-		-webkit-mask-image: none;
-		mask-image: none;
-		transition: none;
-	}
-}
-
-[data-theme] body {
-	position: relative;
-	z-index: 0;
-	isolation: isolate;
 }
 
 :root {
@@ -450,17 +431,7 @@ body {
 	--space-11xl: clamp(14rem, 13.0508rem + 4.7458vw, 17.5rem);
 	--space-12xl: clamp(15rem, 13.983rem + 5.0847vw, 18.75rem);
 
-	/*---------------- Font Families settings ----------------- */
 
-	--font-family-primary: "wire_oneregular", monospace;
-	--font-weight: 500;
-	--font-style: normal;
-
-	/*------------- letter and word spacing settings ----------------*/
-
-	--padding-inline: var(--space-4xs);
-	--letter-spacing: var(--space-4xs);
-	--word-spacing: var(--space-4xs);
 }
 
 /*------------------------ Navigation  ------------------------*/

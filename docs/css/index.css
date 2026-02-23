@@ -208,7 +208,6 @@
 	--word-spacing: var(--space-5xs);
 	--curve-animation-duration: 5s;
 
-	--sp: var(--curve-animation-duration);
 
 	/*------------ Curve animation viewport units --------------*/
 
@@ -288,7 +287,7 @@
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation-duration: 1s;
+	animation-duration: 0.8s;
 	animation-timing-function: ease-in-out;
 	animation-fill-mode: both;
 	transform-style: preserve-3d;
@@ -312,6 +311,7 @@
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
+	animation-delay: 1.2s;
 }
 
 /* Hide content during view and page transitions */
@@ -325,14 +325,18 @@
 ::view-transition-new(button-text),
 ::view-transition-old(footer-text),
 ::view-transition-new(footer-text),
-html.page-transitioning .header-text,
-html.page-transitioning .curve-container,
-html.page-transitioning .large-button,
-html.page-transitioning .button-text,
-html.page-transitioning .footer-text {
+html.page-transitioning header,
+html.page-transitioning footer {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
+}
+
+/* Show text-with-animation during transitions */
+html.page-transitioning main .text-with-animation {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
 }
 
 @property --rotation {
@@ -627,6 +631,7 @@ main {
 }
 
 /*------------------ Large button styles  ---------------*/
+/*------------------ Large button styles  ---------------*/
 
 .large-button {
 	position: relative;
@@ -754,7 +759,6 @@ main {
 		transition: anchor-name 0ms;
 	}
 }
-
 /*----------------footer----------------------*/
 
 footer {
