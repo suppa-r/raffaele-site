@@ -190,6 +190,7 @@
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-5xs);
 	--curve-animation-duration: 5s;
+	--reveal-duration: 0.8s;
 
 	--sp: var(--curve-animation-duration);
 	--transition-duration: 400ms;
@@ -255,7 +256,7 @@
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation-duration: 1s;
+	animation-duration: var(--reveal-duration);
 	animation-timing-function: ease-in-out;
 	animation-fill-mode: both;
 	transform-style: preserve-3d;
@@ -279,6 +280,7 @@
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
+	animation-delay: var(--reveal-duration);
 }
 
 /* Hide content during view and page transitions */
