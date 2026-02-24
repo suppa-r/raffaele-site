@@ -456,16 +456,22 @@ main {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
+
 	view-transition-name: main;
 }
 
 .site-title {
+	white-space: normal;
+	word-break: normal;
+	hyphens: none;
 	margin-inline: auto;
+	padding-block-end: var(--space-xs);
 	view-transition-name: site-title;
 }
 
-.site-title span {
+.site-title-break {
+	display: inline;
 	padding-inline-start: var(--space-m);
 	padding-inline-end: var(--space-m);
 }
@@ -477,7 +483,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-3xl);
-	margin-block-start: var(--space-xl);
+	margin-block-start: var(--space-m);
 	view-transition-name: curve-container;
 }
 
@@ -604,7 +610,7 @@ main {
 	gap: var(--space-l);
 	font-size: var(--step-3);
 	font-style: italic;
-	margin-block-start: var(--space-3xl);
+	margin-block-start: var(--space-2xl);
 	view-transition-name: text-with-animation;
 }
 
@@ -637,10 +643,10 @@ main {
 .large-button {
 	position: relative;
 	display: flex;
-	gap: var(--space-3xs);
+	gap: var(--space-4xs);
 	flex-direction: column;
 	justify-content: center;
-	width: var(--space-13xl);
+	width: var(--space-12xl);
 	height: var(--space-5xl);
 	margin-inline: auto;
 	box-shadow: 0 20px 10px 0 var(--text-color);
@@ -980,23 +986,48 @@ footer {
 	.wrapper {
 		overflow-x: hidden;
 	}
+	main {
+		justify-content: start;
+	}
 
-	.header-break {
+	.site-title {
+		white-space: normal;
+		word-break: normal;
+		hyphens: none;
+		margin-inline: auto;
+		view-transition-name: site-title;
+		text-align: center;
+		margin-block-start: var(--space-m);
+	}
+
+	.site-title-break {
 		display: block;
-		padding-inline-start: 0;
+		padding-inline-start: var(--space-s);
+		padding-inline-end: var(--space-m);
+	}
+
+	.site-title-end {
+		display: block;
+		margin-inline: auto;
+		width: fit-content;
 	}
 
 	.curve-container {
-		gap: var(--space-2xl);
+		margin-block-start: var(--space-m);
 	}
 
 	.text-with-animation {
-		gap: var(--space-m);
+		margin-inline: auto;
+		display: flex;
+		justify-content: center;
+		font-size: var(--step-3);
+		font-style: italic;
+		margin-block-start: var(--space-3xl);
+		view-transition-name: text-with-animation;
 	}
 
 	.large-button {
-		width: var(--space-11xl);
-		height: var(--space-6xl);
+		margin-block-start: var(--space-2xl);
 	}
 
 	.footer-break {
@@ -1008,30 +1039,30 @@ footer {
 		width: var(--space-m);
 		height: var(--space-m);
 	}
-}
 
-/*------ Touch device interaction support ------*/
+	/*------ Touch device interaction support ------*/
 
-@media (hover: none) and (pointer: coarse) {
-	/* On touch devices, use focus to show interaction feedback */
-	.large-button:focus,
-	.large-button:active {
-		box-shadow: 0 0 20px 5px var(--text-color);
-	}
+	@media (hover: none) and (pointer: coarse) {
+		/* On touch devices, use focus to show interaction feedback */
+		.large-button:focus,
+		.large-button:active {
+			box-shadow: 0 0 20px 5px var(--text-color);
+		}
 
-	.large-button:focus svg,
-	.large-button:active svg {
-		fill: var(--base-color);
-		transform: scale(1.2) rotate(90deg);
-	}
+		.large-button:focus svg,
+		.large-button:active svg {
+			fill: var(--base-color);
+			transform: scale(1.2) rotate(90deg);
+		}
 
-	.btn-cells span {
-		/* Make cells more responsive to touch */
-		-webkit-tap-highlight-color: transparent;
-	}
+		.btn-cells span {
+			/* Make cells more responsive to touch */
+			-webkit-tap-highlight-color: transparent;
+		}
 
-	.btn-cells span:focus {
-		anchor-name: --hovered-cell;
+		.btn-cells span:focus {
+			anchor-name: --hovered-cell;
+		}
 	}
 }
 
