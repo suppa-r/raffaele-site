@@ -7,6 +7,10 @@
 	--nav-contrast-color: #000000;
 	--theme: dark;
 
+	/* Warning colors for dark mode */
+	--clr-warn-1: #2a1f14;
+	--clr-warn-2: #6b5646;
+	--clr-warn-text: #e8dcc8;
 
 	--navbar-shadow: 0 30px 100px rgba(196, 140, 130, 0.8), 0 30px 100px rgba(215, 190, 185, 0.6);
 
@@ -47,6 +51,11 @@
 	--backdrop-blur: blur(10px);
 
 	--blend-mode: normal;
+
+	/* Warning colors for light mode */
+	--clr-warn-1: #f9f5f0;
+	--clr-warn-2: #9d8b7e;
+	--clr-warn-text: #5d4e45;
 }
 
 [data-theme="light"] .header-title,
@@ -198,6 +207,10 @@
 
 /*--------------- Transitions and animations ------------------*/
 
+.support.view-transition {
+	display: block;
+}
+
 @supports selector(::view-transition) {
 	.support.view-transition {
 		display: none;
@@ -205,19 +218,20 @@
 }
 
 .support.style-query {
-	display: block;
+	display: none;
+}
+
+@supports not (container-type: style) {
+	.support.style-query {
+		display: block;
+	}
 }
 
 @supports (container-type: style) {
 	:root {
 		container-type: style;
 	}
-
-	.support.style-query {
-		display: none;
-	}
 }
-
 .support {
 	background-color: var(--base-color);
 	border-inline-start: 0.5rem solid var(--text-color);
