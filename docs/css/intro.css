@@ -1012,12 +1012,52 @@ header {
 
 main {
 	margin-inline: auto;
-	margin-block-start: var(--space-4xl);
-	padding-inline: var(--padding-inline);
+	margin-block-start: var(--space-2xl);
 	mix-blend-mode: var(--blend-mode);
 	text-align: center;
 	flex-grow: 1;
 	view-transition-name: main;
+}
+
+main>* {
+	padding-inline: var(--padding-inline);
+}
+
+/*------------------ Text and animations  ------------------*/
+
+.text-with-animation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-l);
+	font-size: var(--step-3);
+	font-style: italic;
+	margin-block: var(--space-m);
+	view-transition-name: text-with-animation;
+}
+
+.text-with-animation span:first-child {
+	display: block;
+	animation: slide-in var(--reveal-duration) ease-in-out backwards;
+	animation-delay: calc(var(--reveal-duration) * 0.3);
+}
+
+.text-with-animation span:last-child {
+	display: block;
+	animation: slide-in var(--reveal-duration) ease-in-out backwards;
+	animation-delay: calc(var(--reveal-duration) * 0.5);
+}
+
+@keyframes slide-in {
+	from {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
 
 main>*+* {
