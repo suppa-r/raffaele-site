@@ -313,7 +313,7 @@
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
-	animation-delay: var(--reveal-duration);
+	animation-delay: calc(var(--reveal-duration) * 0.3);
 }
 
 /* Hide content during view and page transitions */
@@ -327,14 +327,12 @@
 ::view-transition-new(button-text),
 ::view-transition-old(footer-text),
 ::view-transition-new(footer-text),
+::view-transition-old(footer-break),
+::view-transition-old(main),
+::view-transition-new(main),
+
 html.page-transitioning header,
-html.page-transitioning main,
-html.page-transitioning .header-text,
-html.page-transitioning .site-title,
-html.page-transitioning .site-title span,
-html.page-transitioning .content,
-html.page-transitioning .curve-container,
-html.page-transitioning footer {
+html.page-transitioning main {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;

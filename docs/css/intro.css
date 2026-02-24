@@ -280,7 +280,7 @@
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
-	animation-delay: var(--reveal-duration);
+	animation-delay: calc(var(--reveal-duration) * 0.3);
 }
 
 /* Hide content during view and page transitions */
@@ -298,7 +298,8 @@
 html.page-transitioning .header-title,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
-html.page-transitioning .open-overlay {
+html.page-transitioning .open-overlay,
+html.page-transitioning .overlay-navigation {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
