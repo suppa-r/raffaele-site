@@ -307,11 +307,12 @@
 
 ::view-transition-old(root) {
 	animation-name: reveal-out;
+
 }
 
 ::view-transition-new(root) {
 	animation-name: reveal-in;
-	animation-delay: 1.2s;
+	animation-delay: 1s;
 }
 
 /* Hide content during view and page transitions */
@@ -468,6 +469,7 @@ main {
 
 .site-title span {
 	padding-inline-start: var(--space-m);
+	padding-inline-end: var(--space-m);
 }
 
 /* -----------------------curvature-------------------------*/
@@ -477,7 +479,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-3xl);
-	margin-block: var(--space-xl);
+	margin-block-start: var(--space-xl);
 	view-transition-name: curve-container;
 }
 
@@ -604,7 +606,7 @@ main {
 	gap: var(--space-l);
 	font-size: var(--step-3);
 	font-style: italic;
-	margin-block: var(--space-l);
+	margin-block-start: var(--space-3xl);
 	view-transition-name: text-with-animation;
 }
 
@@ -630,7 +632,6 @@ main {
 	}
 }
 
-/*------------------ Large button styles  ---------------*/
 /*------------------ Large button styles  ---------------*/
 
 .large-button {
@@ -759,6 +760,7 @@ main {
 		transition: anchor-name 0ms;
 	}
 }
+
 /*----------------footer----------------------*/
 
 footer {
