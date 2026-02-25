@@ -234,7 +234,7 @@
 	--glow-down-height: clamp(0.1vmin, 0.30vmin, 0.42vmin);
 
 	--transition-duration: 400ms;
-	--reveal-duration: 0.8s;
+	--reveal-duration: 1.2s;
 }
 
 /*--------------- Transitions and animations ------------------*/
@@ -332,24 +332,32 @@
 /* Hide content during view and page transitions */
 ::view-transition-old(header-text),
 ::view-transition-new(header-text),
-::view-transition-old(site-title),
+::view-transition-old(header-text),
 ::view-transition-new(site-title),
 ::view-transition-old(theme-toggle-light),
 ::view-transition-new(theme-toggle-light),
 ::view-transition-old(theme-toggle-dark),
 ::view-transition-new(theme-toggle-dark),
+::view-transition-old(header-text),
+::view-transition-new(curve-container),
 ::view-transition-old(large-button),
 ::view-transition-new(large-button),
 ::view-transition-old(footer-text),
 ::view-transition-new(footer-text),
 ::view-transition-old(footer-break),
-::view-transition-new(footer-break),
+::view-transition-new(footer-break) {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
 html.page-transitioning .header-text,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
+html.page-transitioning .header-text,
 html.page-transitioning .curve-container,
 html.page-transitioning .large-button,
-html.page-transitioning .footer-text {
+html.page-transitioning .site-title {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
@@ -369,45 +377,31 @@ html.page-transitioning .footer-text {
 
 @keyframes reveal-in {
 	from {
-		--rotation: -90deg;
-		animation-timing-function: ease-in-out;
-	}
-
-	15% {
-		--scale: 0.7;
-		--rotation: -90deg;
-	}
-
-	85% {
-		--scale: 0.9;
-		--rotation: 0deg;
+		opacity: 0;
+		--rotation: 80deg;
+		--scale: 0.75;
 		animation-timing-function: ease-in-out;
 	}
 
 	to {
+		opacity: 1;
 		--rotation: 0deg;
+		--scale: 1;
 	}
 }
 
 @keyframes reveal-out {
 	from {
+		opacity: 1;
 		--rotation: 0deg;
-		animation-timing-function: ease-in-out;
-	}
-
-	15% {
-		--scale: 0.7;
-		--rotation: 0deg;
-	}
-
-	85% {
-		--scale: 0.9;
-		--rotation: 90deg;
+		--scale: 1;
 		animation-timing-function: ease-in-out;
 	}
 
 	to {
-		--rotation: 90deg;
+		opacity: 0;
+		--rotation: -80deg;
+		--scale: 0.75;
 	}
 }
 

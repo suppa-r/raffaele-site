@@ -199,10 +199,11 @@
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-5xs);
 	--curve-animation-duration: 5s;
-	--reveal-duration: 0.8s;
+
 
 	--sp: var(--curve-animation-duration);
 	--transition-duration: 400ms;
+	--reveal-duration: 1.2s;
 }
 
 /*--------------- Transitions and animations ------------------*/
@@ -308,12 +309,23 @@
 ::view-transition-new(open-overlay),
 ::view-transition-old(main),
 ::view-transition-new(main),
+::view-transition-old(text-with-animation),
+::view-transition-new(text-with-animation),
+::view-transition-old(wrapper-gradient-text),
+::view-transition-new(wrapper-gradient-text),
 
 html.page-transitioning .header-title,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
 html.page-transitioning .open-overlay,
 html.page-transitioning .overlay-navigation {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+html.page-transitioning .large-button,
+html.page-transitioning .site-title {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
@@ -333,45 +345,31 @@ html.page-transitioning .overlay-navigation {
 
 @keyframes reveal-in {
 	from {
-		--rotation: -90deg;
-		animation-timing-function: ease-in-out;
-	}
-
-	15% {
-		--scale: 0.7;
-		--rotation: -90deg;
-	}
-
-	85% {
-		--scale: 0.9;
-		--rotation: 0deg;
+		opacity: 0;
+		--rotation: 80deg;
+		--scale: 0.75;
 		animation-timing-function: ease-in-out;
 	}
 
 	to {
+		opacity: 1;
 		--rotation: 0deg;
+		--scale: 1;
 	}
 }
 
 @keyframes reveal-out {
 	from {
+		opacity: 1;
 		--rotation: 0deg;
-		animation-timing-function: ease-in-out;
-	}
-
-	15% {
-		--scale: 0.7;
-		--rotation: 0deg;
-	}
-
-	85% {
-		--scale: 0.9;
-		--rotation: 90deg;
+		--scale: 1;
 		animation-timing-function: ease-in-out;
 	}
 
 	to {
-		--rotation: 90deg;
+		opacity: 0;
+		--rotation: -80deg;
+		--scale: 0.75;
 	}
 }
 
@@ -411,44 +409,6 @@ body {
 		width: 100dvw;
 		height: 100dvh;
 	}
-}
-
-:root {
-
-	/*----------- Fluid typography with mobile scaling ------------- */
-
-	--step-0: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
-	--step-1: clamp(1.2rem, 1.0736rem + 0.6322vw, 1.6663rem);
-	--step-2: clamp(1.44rem, 1.2282rem + 1.0591vw, 2.2211rem);
-	--step-3: clamp(1.728rem, 1.3937rem + 1.6715vw, 2.9607rem);
-	--step-4: clamp(2.0736rem, 1.5656rem + 2.5398vw, 3.9467rem);
-	--step-5: clamp(2.4883rem, 1.7364rem + 3.7594vw, 5.2609rem);
-	--step-6: clamp(2.986rem, 1.894rem + 5.4601vw, 7.0128rem);
-
-	/*----------Fluid spacing with mobile scaling ------------------ */
-
-	--space-5xs: clamp(0.125rem, 0.1081rem + 0.0847vw, 0.1875rem);
-	--space-4xs: clamp(0.1875rem, 0.1706rem + 0.0847vw, 0.25rem);
-	--space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
-	--space-2xs: clamp(0.5rem, 0.4661rem + 0.1695vw, 0.625rem);
-	--space-xs: clamp(0.75rem, 0.6992rem + 0.2542vw, 0.9375rem);
-	--space-s: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
-	--space-m: clamp(1.5rem, 1.3983rem + 0.5085vw, 1.875rem);
-	--space-l: clamp(2rem, 1.8644rem + 0.678vw, 2.5rem);
-	--space-xl: clamp(3rem, 2.7966rem + 1.0169vw, 3.75rem);
-	--space-2xl: clamp(4rem, 3.7288rem + 1.3559vw, 5rem);
-	--space-3xl: clamp(6rem, 5.5932rem + 2.0339vw, 7.5rem);
-	--space-4xl: clamp(7rem, 6.5254rem + 2.3729vw, 8.75rem);
-	--space-5xl: clamp(8rem, 7.4576rem + 2.7119vw, 10rem);
-	--space-6xl: clamp(9rem, 8.3898rem + 3.0508vw, 11.25rem);
-	--space-7xl: clamp(10rem, 9.322rem + 3.3898vw, 12.5rem);
-	--space-8xl: clamp(11rem, 10.2542rem + 3.7288vw, 13.75rem);
-	--space-9xl: clamp(12rem, 11.1864rem + 4.0678vw, 15rem);
-	--space-10xl: clamp(13rem, 12.1186rem + 4.4068vw, 16.25rem);
-	--space-11xl: clamp(14rem, 13.0508rem + 4.7458vw, 17.5rem);
-	--space-12xl: clamp(15rem, 13.983rem + 5.0847vw, 18.75rem);
-
-
 }
 
 /*------------------------ Navigation  ------------------------*/
@@ -604,7 +564,6 @@ nav li a:hover:after {
 	right: 50%;
 	transform: translateX(50%);
 	display: block;
-
 	margin: 0 auto;
 	z-index: 1000;
 	width: var(--space-m);
@@ -1021,7 +980,6 @@ header {
 		border-radius: 0;
 	}
 }
-
 /*----------------------- main content ------------------------*/
 
 main {
@@ -1053,13 +1011,22 @@ main>* {
 .text-with-animation span:first-child {
 	display: block;
 	animation: slide-in var(--reveal-duration) ease-in-out backwards;
-	animation-delay: calc(var(--reveal-duration) * 0.3);
+	animation-delay: 0;
 }
 
 .text-with-animation span:last-child {
 	display: block;
 	animation: slide-in var(--reveal-duration) ease-in-out backwards;
-	animation-delay: calc(var(--reveal-duration) * 0.5);
+	animation-delay: 0;
+}
+
+/* Add delay only during page transitions */
+html.page-transitioning .text-with-animation span:first-child {
+	animation-delay: var(--reveal-duration);
+}
+
+html.page-transitioning .text-with-animation span:last-child {
+	animation-delay: calc(var(--reveal-duration) * 1.2);
 }
 
 @keyframes slide-in {
