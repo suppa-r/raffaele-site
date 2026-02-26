@@ -200,10 +200,12 @@
 	--word-spacing: var(--space-5xs);
 	--curve-animation-duration: 5s;
 
-
-	--sp: var(--curve-animation-duration);
+	/* Preferred variable name for curve animation speed */
+	--curve-animation-speed: var(--curve-animation-duration);
+	/* Backward-compatible alias (deprecated): use --curve-animation-speed instead */
+	--sp: var(--curve-animation-speed);
 	--transition-duration: 400ms;
-	--reveal-duration: 1.2s;
+	--reveal-duration: 1s;
 }
 
 /*--------------- Transitions and animations ------------------*/
@@ -309,10 +311,6 @@
 ::view-transition-new(open-overlay),
 ::view-transition-old(main),
 ::view-transition-new(main),
-::view-transition-old(text-with-animation),
-::view-transition-new(text-with-animation),
-::view-transition-old(wrapper-gradient-text),
-::view-transition-new(wrapper-gradient-text),
 
 html.page-transitioning .header-title,
 html.page-transitioning .theme-toggle-light,
@@ -750,8 +748,8 @@ header {
 	background-color: var(--base-color);
 	backdrop-filter: var(--backdrop-blur);
 	box-shadow: var(--navbar-shadow);
-	margin: var(--space-4xs) var(--space-xl);
-	padding: var(--space-4xs) var(--space-xl);
+	margin: var(--space-5xs) var(--space-xl);
+	padding: 0 var(--space-xl);
 	border-radius: var(--space-l);
 	isolation: isolate;
 	position: relative;
@@ -1010,23 +1008,14 @@ main>* {
 
 .text-with-animation span:first-child {
 	display: block;
-	animation: slide-in var(--reveal-duration) ease-in-out backwards;
-	animation-delay: 0;
+	animation: slide-in var(--reveal-duration) ease-in-out both;
+	animation-delay: calc(var(--reveal-duration) * 1);
 }
 
 .text-with-animation span:last-child {
 	display: block;
-	animation: slide-in var(--reveal-duration) ease-in-out backwards;
-	animation-delay: 0;
-}
-
-/* Add delay only during page transitions */
-html.page-transitioning .text-with-animation span:first-child {
-	animation-delay: var(--reveal-duration);
-}
-
-html.page-transitioning .text-with-animation span:last-child {
-	animation-delay: calc(var(--reveal-duration) * 1.2);
+	animation: slide-in var(--reveal-duration) ease-in-out both;
+	animation-delay: calc(var(--reveal-duration) * 0.6);
 }
 
 @keyframes slide-in {
@@ -1041,6 +1030,19 @@ html.page-transitioning .text-with-animation span:last-child {
 	}
 }
 
+/* Add delay during page transitions and theme changes */
+html.page-transitioning .text-with-animation span:first-child,
+html.theme-transitioning .text-with-animation span:first-child {
+	animation: slide-in var(--reveal-duration) ease-in-out both;
+	animation-delay: calc(var(--reveal-duration) * 1.9);
+}
+
+html.page-transitioning .text-with-animation span:last-child,
+html.theme-transitioning .text-with-animation span:last-child {
+	animation: slide-in var(--reveal-duration) ease-in-out both;
+	animation-delay: calc(var(--reveal-duration) * 0.9);
+}
+
 main>*+* {
 	margin-block: 0;
 	margin-inline: auto;
@@ -1048,11 +1050,6 @@ main>*+* {
 
 .p-small {
 	padding-block: var(--space-4xs);
-}
-
-.fancy {
-	font-style: italic;
-
 }
 
 .fancy span {
@@ -1063,9 +1060,9 @@ main>*+* {
 }
 
 .p-large {
-	padding-block: var(--space-3xs);
+	padding-block: var(--space-4xs);
 	font-size: var(--step-1);
-	font-weight: 600;
+	font-weight: 500;
 }
 
 .wrapper-gradient-text {
@@ -1184,7 +1181,7 @@ main>*+* {
 
 	.open-overlay {
 		position: fixed;
-		top: var(--space-2xl);
+		top: var(--space-4xl);
 		right: 50%;
 		transform: translateX(50%);
 		display: block;
@@ -1208,8 +1205,7 @@ main>*+* {
 		background-color: var(--base-color);
 		backdrop-filter: var(--backdrop-blur);
 		box-shadow: var(--navbar-shadow);
-		margin: var(--space-3xs) var(--space-2xs);
-		padding: var(--space-4xs) var(--space-xs);
+		margin: var(--space-4xs) var(--space-2xs);
 		border-radius: var(--space-l);
 		isolation: isolate;
 		position: relative;

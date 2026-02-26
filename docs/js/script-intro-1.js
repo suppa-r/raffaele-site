@@ -142,12 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
 					setActiveThemeButton(theme);
 					updateFavicon(theme);
 				}).finally(() => {
-					endThemeTransition();
+					endThemeTransitionAfterDelay(3000);
 				});
 				return;
 			} catch (error) {
 				console.error('View transition error:', error);
-				endThemeTransition();
+				endThemeTransitionAfterDelay(3000);
 			}
 		}
 

@@ -234,7 +234,7 @@
 	--glow-down-height: clamp(0.1vmin, 0.30vmin, 0.42vmin);
 
 	--transition-duration: 400ms;
-	--reveal-duration: 1.2s;
+	--reveal-duration: 1s;
 }
 
 /*--------------- Transitions and animations ------------------*/

@@ -1,3 +1,13 @@
+// Constants
+const THEME_TRANSITION_CLASS = 'theme-transitioning';
+const PAGE_TRANSITION_CLASS = 'page-transitioning';
+const THEME_TRANSITION_MS = 700;
+const THEME_PICKER_ANIMATION_MS = 350;
+
+// State variables
+let themeTransitionTimeoutId = null;
+let themePickerAnimationTimeoutId = null;
+
 // Theme management functions
 function isValidTheme(theme) {
 	return ['dark', 'light'].includes(theme);
@@ -6,13 +16,6 @@ function isValidTheme(theme) {
 function getDefaultTheme() {
 	return 'dark';
 }
-
-const THEME_TRANSITION_CLASS = 'theme-transitioning';
-const PAGE_TRANSITION_CLASS = 'page-transitioning';
-const THEME_TRANSITION_MS = 700;
-const THEME_PICKER_ANIMATION_MS = 380;
-let themeTransitionTimeoutId = null;
-let themePickerAnimationTimeoutId = null;
 
 function clearThemePickerAnimation() {
 	if (themePickerAnimationTimeoutId) {
@@ -142,8 +145,6 @@ function setTheme(theme) {
 
 	startThemeTransition();
 
-	// No expensive view transition event listeners; .text-with-animation behaves normally
-
 	if (document.startViewTransition) {
 		try {
 			const transition = document.startViewTransition(() => {
@@ -153,7 +154,8 @@ function setTheme(theme) {
 			transition.finished.then(() => {
 				updateFavicon(theme);
 				setActiveThemeButton(theme);
-			}).finally(() => {
+				endThemeTransitionAfterDelay(2900);
+			}).catch(() => {
 				endThemeTransition();
 			});
 			return;
@@ -204,9 +206,11 @@ function bindOverlayNavigation() {
 	const openOverlay = document.querySelector('.open-overlay');
 	if (!openOverlay) return;
 
-	if (openOverlay._overlayHandler) {
-		openOverlay.removeEventListener('click', openOverlay._overlayHandler);
+	if (openOverlay._overlayAbortController) {
+		openOverlay._overlayAbortController.abort();
 	}
+
+	const abortController = new AbortController();
 
 	const handler = () => {
 		const overlayNavigation = document.querySelector('.overlay-navigation');
@@ -295,8 +299,8 @@ function bindOverlayNavigation() {
 		});
 	};
 
-	openOverlay.addEventListener('click', handler);
-	openOverlay._overlayHandler = handler;
+	openOverlay.addEventListener('click', handler, { signal: abortController.signal });
+	openOverlay._overlayAbortController = abortController;
 }
 
 function initializeEventListeners() {
@@ -313,7 +317,6 @@ function endPageTransition() {
 	document.documentElement.classList.remove(PAGE_TRANSITION_CLASS);
 }
 
-// Navigation with View Transitions
 async function navigateWithTransition(url) {
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -339,7 +342,10 @@ async function navigateWithTransition(url) {
 			const currentHrefs = currentStylesheets.map(link => link.getAttribute('href'));
 			const newHrefs = newStylesheets.map(link => link.getAttribute('href'));
 
-			if (JSON.stringify(currentHrefs) !== JSON.stringify(newHrefs)) {
+			const stylesheetsChanged = currentHrefs.length !== newHrefs.length ||
+				currentHrefs.some((href, i) => href !== newHrefs[i]);
+
+			if (stylesheetsChanged) {
 				const stylesheetLoadPromises = [];
 
 				newStylesheets.forEach(link => {
@@ -365,7 +371,8 @@ async function navigateWithTransition(url) {
 				});
 			}
 
-			document.body.innerHTML = newDocument.body.innerHTML;
+			const newBody = document.adoptNode(newDocument.body);
+			document.documentElement.replaceChild(newBody, document.body);
 			document.title = newDocument.title;
 		});
 
@@ -386,7 +393,6 @@ async function navigateWithTransition(url) {
 	}
 }
 
-// Theme initialization on page load
 document.addEventListener('DOMContentLoaded', () => {
 	let savedTheme = localStorage.getItem('theme');
 
@@ -402,7 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	initializeEventListeners();
 });
 
-// Handle browser back/forward buttons
 window.addEventListener('popstate', () => {
 	location.reload();
 });
