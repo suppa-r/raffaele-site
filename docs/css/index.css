@@ -448,16 +448,17 @@ header {
 /*---------------------- Quote styles  --------------------------*/
 
 .header-text {
+	padding-block-start: var(--space-2xs);
 	white-space: normal;
 	word-break: normal;
+	overflow-wrap: normal;
 	hyphens: none;
 	view-transition-name: header-text;
 }
 
 .header-break {
-	display: block;
-	padding-inline-start: var(--space-s);
-	view-transition-name: header-break;
+	display: inline;
+	padding-inline-start: var(--space-m);
 }
 
 /*----------------- Main Section styles  ----------------------*/
@@ -959,6 +960,12 @@ footer {
 	.wrapper {
 		overflow-x: hidden;
 	}
+
+	.header-break {
+		display: block;
+		padding-inline: 0;
+	}
+
 	main {
 		justify-content: start;
 	}
@@ -1005,7 +1012,7 @@ footer {
 
 	.footer-break {
 		display: block;
-		padding-inline-start: 0;
+		padding-inline: 0;
 	}
 
 	.color-picker label svg {
