@@ -448,17 +448,16 @@ header {
 /*---------------------- Quote styles  --------------------------*/
 
 .header-text {
-	padding-block-start: var(--space-2xs);
 	white-space: normal;
 	word-break: normal;
-	overflow-wrap: normal;
 	hyphens: none;
 	view-transition-name: header-text;
 }
 
 .header-break {
-	display: inline;
-	padding-inline-start: var(--space-m);
+	display: block;
+	padding-inline-start: var(--space-s);
+	view-transition-name: header-break;
 }
 
 /*----------------- Main Section styles  ----------------------*/
