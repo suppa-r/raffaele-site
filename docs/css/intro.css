@@ -301,6 +301,8 @@
 }
 
 /* Hide content during view and page transitions */
+::view-transition-old(header),
+::view-transition-new(header),
 ::view-transition-old(header-title),
 ::view-transition-new(header-title),
 ::view-transition-old(theme-toggle-light),
@@ -999,7 +1001,7 @@ main>* {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: var(--space-l);
+	gap: var(--space-xs);
 	font-size: var(--step-3);
 	font-style: italic;
 	margin-block: var(--space-m);
@@ -1068,7 +1070,7 @@ main>*+* {
 .wrapper-gradient-text {
 	font-style: italic;
 	font-size: var(--step-3);
-	margin: 0;
+	margin-block-start: var(--space-2xl);
 	/* Remove default margins */
 	padding: 0;
 	/* Remove default padding */
