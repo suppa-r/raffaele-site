@@ -22,6 +22,8 @@
 	--backdrop-blur: blur(10px);
 
 	--blend-mode: normal;
+	--transition-duration: 400ms;
+	--reveal-duration: 0.8s;
 }
 
 [data-theme="light"] {
@@ -47,6 +49,8 @@
 	--backdrop-blur: blur(10px);
 
 	--blend-mode: normal;
+	--transition-duration: 400ms;
+	--reveal-duration: 0.8s;
 }
 
 /* OKLCH colors for modern browsers - top-level @supports for maximum compatibility */

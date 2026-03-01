@@ -16,6 +16,8 @@
 	--gradient: linear-gradient(90deg, var(--text-span), var(--text-color), var(--text-span));
 	--backdrop-blur: blur(10px);
 	--blend-mode: normal;
+	--transition-duration: 400ms;
+	--reveal-duration: 0.8s;
 }
 [data-theme="light"] {
 	--base-color: #ffffff;
@@ -35,6 +37,8 @@
 	--clr-warn-1: #f9f5f0;
 	--clr-warn-2: #9d8b7e;
 	--clr-warn-text: #5d4e45;
+	--transition-duration: 400ms;
+	--reveal-duration: 0.8s;
 }
 [data-theme="light"] .header-title,
 [data-theme="light"] .open-overlay span,
