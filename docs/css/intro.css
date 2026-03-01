@@ -1008,13 +1008,13 @@ main>* {
 .text-with-animation span:first-child {
 	display: block;
 	animation: slide-in var(--reveal-duration) ease-in-out both;
-	animation-delay: calc(var(--reveal-duration) * 1);
+	animation-delay: calc(var(--reveal-duration) * 0.6);
 }
 
 .text-with-animation span:last-child {
 	display: block;
 	animation: slide-in var(--reveal-duration) ease-in-out both;
-	animation-delay: calc(var(--reveal-duration) * 0.6);
+	animation-delay: calc(var(--reveal-duration) * 1);
 }
 
 @keyframes slide-in {
@@ -1033,7 +1033,7 @@ main>* {
 html.page-transitioning .text-with-animation span:first-child,
 html.theme-transitioning .text-with-animation span:first-child {
 	animation: slide-in var(--reveal-duration) ease-in-out both;
-	animation-delay: calc(var(--reveal-duration) * 1.9);
+	animation-delay: calc(var(--reveal-duration) * 1.2);
 }
 
 html.page-transitioning .text-with-animation span:last-child,
@@ -1204,7 +1204,6 @@ main>*+* {
 		background-color: var(--base-color);
 		backdrop-filter: var(--backdrop-blur);
 		box-shadow: var(--navbar-shadow);
-		margin: var(--space-4xs) var(--space-2xs);
 		border-radius: var(--space-l);
 		isolation: isolate;
 		position: relative;
