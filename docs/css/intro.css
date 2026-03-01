@@ -244,7 +244,7 @@
 	visibility: hidden;
 	pointer-events: none;
 }
-/*html.page-transitioning header,
+html.page-transitioning header,
 html.page-transitioning .header-title,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
@@ -254,7 +254,7 @@ html.page-transitioning .overlay-navigation {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
-}*/
+}
 
 /* Conditional transitions based on source page */
 html.from-index ::view-transition-new(root) {
@@ -284,27 +284,27 @@ html.from-intro-1 ::view-transition-old(root) {
 	animation-name: reveal-out;
 }
 
-/* Transitions FROM index page - default staggered reveal */
+/* Transitions FROM index page */
 html.from-index.page-transitioning header {
 	animation: fade-out var(--transition-duration) ease-in-out forwards;
 }
 
 html.from-index.page-transitioning .wrapper-gradient-text {
-	animation: fade-out calc(var(--transition-duration) * 0.8) ease-in-out forwards;
+	animation: fade-out var(--transition-duration) ease-in-out forwards;
 }
 
-/* Transitions FROM intro page - medium speed */
+/* Transitions FROM intro page */
 html.from-intro.page-transitioning header {
-	animation: fade-out calc(var(--transition-duration) * 0.7) ease-in-out forwards;
+	animation: fade-out var(--transition-duration) ease-in-out forwards;
 }
 
 html.from-intro.page-transitioning .wrapper-gradient-text {
-	animation: fade-out calc(var(--transition-duration) * 0.65) ease-in-out forwards;
+	animation: fade-out var(--transition-duration) ease-in-out forwards;
 }
 
-/* Transitions FROM intro-1 page - faster header animation */
+/* Transitions FROM intro-1 page */
 html.from-intro-1.page-transitioning header {
-	animation: fade-out calc(var(--transition-duration) * 0.6) ease-in-out forwards;
+	animation: fade-out var(--transition-duration) ease-in-out forwards;
 }
 
 @keyframes fade-out {
