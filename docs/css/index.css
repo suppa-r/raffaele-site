@@ -269,16 +269,66 @@
 	visibility: hidden;
 	pointer-events: none;
 }
-html.page-transitioning .header-text,
-html.page-transitioning .theme-toggle-light,
-html.page-transitioning .theme-toggle-dark,
-html.page-transitioning .header-text,
-html.page-transitioning .curve-container,
-html.page-transitioning .large-button,
-html.page-transitioning .site-title {
+/* Conditional transitions based on source page */
+html.from-index ::view-transition-new(root) {
+	animation-name: reveal-in;
+	animation-delay: calc(var(--reveal-duration) * 0.3);
+}
 
-	visibility: hidden;
-	pointer-events: none;
+html.from-intro ::view-transition-new(root) {
+	animation-name: reveal-in;
+	animation-delay: calc(var(--reveal-duration) * 0.25);
+}
+
+html.from-intro-1 ::view-transition-new(root) {
+	animation-name: reveal-in;
+	animation-delay: calc(var(--reveal-duration) * 0.2);
+}
+
+html.from-index ::view-transition-old(root) {
+	animation-name: reveal-out;
+}
+
+html.from-intro ::view-transition-old(root) {
+	animation-name: reveal-out;
+}
+
+html.from-intro-1 ::view-transition-old(root) {
+	animation-name: reveal-out;
+}
+
+/* Transitions FROM index page - default staggered reveal */
+html.from-index.page-transitioning header {
+	animation: fade-out var(--transition-duration) ease-in-out forwards;
+}
+
+html.from-index.page-transitioning .wrapper-gradient-text {
+	animation: fade-out calc(var(--transition-duration) * 0.8) ease-in-out forwards;
+}
+
+/* Transitions FROM intro page - medium speed */
+html.from-intro.page-transitioning header {
+	animation: fade-out calc(var(--transition-duration) * 0.7) ease-in-out forwards;
+}
+
+html.from-intro.page-transitioning .wrapper-gradient-text {
+	animation: fade-out calc(var(--transition-duration) * 0.65) ease-in-out forwards;
+}
+
+/* Transitions FROM intro-1 page - faster header animation */
+html.from-intro-1.page-transitioning header {
+	animation: fade-out calc(var(--transition-duration) * 0.6) ease-in-out forwards;
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+	to {
+		opacity: 0;
+		visibility: hidden;
+	}
 }
 @property --rotation {
 	syntax: "<angle>";
