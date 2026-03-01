@@ -8,13 +8,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="author" content="Raffaele Suppa" />
 		<title>Raffaele Suppa - Web Page</title>
-		<script src="/docs/js/theme-init.js"></script>
-		<!-- Favicon links -->
-		<link rel="icon" href="/favicons/dark-1.png" type="image/png" id="favicon" />
+
+		<!-- Defer theme initialization to prevent render blocking -->
+		<script src="/docs/js/theme-init.js" defer></script>
+
+		<!-- Critical CSS (inline or keep render-blocking) -->
 		<link rel="stylesheet" href="/docs/css/reset.css" />
-		<link rel="stylesheet" href="/docs/css/fonts.css" />
 		<link rel="stylesheet" href="/docs/css/intro-1.css" />
 
+		<!-- Preload critical font to improve FCP/LCP -->
+		<link rel="preload" as="font" href="/docs/fonts/Woff2/wireone-regular-webfont.woff2" type="font/woff2" crossorigin>
+
+		<!-- Non-blocking font stylesheet (loads after critical CSS) -->
+		<link rel="stylesheet" href="/docs/css/fonts.css" media="print" onload="this.media='all'">
+		<noscript>
+			<link rel="stylesheet" href="/docs/css/fonts.css">
+		</noscript>
+
+		<!-- Favicon links -->
+		<link rel="icon" href="/favicons/dark-1.png" type="image/png" id="favicon" />
+
+		<!-- Deferred scripts -->
 		<script type="text/javascript" src="/docs/js/nav.js" defer></script>
 	</head>
 
