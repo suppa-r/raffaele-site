@@ -314,16 +314,13 @@
 ::view-transition-old(main),
 ::view-transition-new(main),
 
+html.page-transitioning header,
+html.page-transitioning main,
 html.page-transitioning .header-title,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
 html.page-transitioning .open-overlay,
-html.page-transitioning .overlay-navigation {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-}
-
+html.page-transitioning .overlay-navigation,
 html.page-transitioning .large-button,
 html.page-transitioning .site-title {
 	opacity: 0;
