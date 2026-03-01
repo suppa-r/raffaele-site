@@ -782,6 +782,7 @@ header {
 	position: relative;
 	z-index: 2000;
 	view-transition-name: header;
+	transition: background-color var(--transition-duration) ease-in-out, background var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out, backdrop-filter var(--transition-duration) ease-in-out;
 }
 
 /*--------------------- Header Title Styles  --------------------*/

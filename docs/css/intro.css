@@ -50,7 +50,7 @@
 [data-theme="light"] .color-picker label svg {
 	fill: currentColor;
 }
-@supports (color: oklch(0% 0 0deg)) {
+@supports (color:oklch(0% 0 0deg)) {
 	[data-theme="dark"] {
 		--base-color: oklch(0% 0 0deg);
 		--text-color: oklch(100% 0.00011 271.152deg);
@@ -88,14 +88,14 @@
 	isolation: isolate;
 	z-index: -1;
 }
-@supports (height: 100dvh) and (width: 100dvw) {
+@supports (height:100dvh) and (width:100dvw) {
 	[data-theme] body::before {
 		width: 100dvw;
 		height: 100dvh;
 	}
 }
-@media (prefers-reduced-transparency: reduce),
-(prefers-reduced-motion: reduce) {
+@media (prefers-reduced-transparency:reduce),
+(prefers-reduced-motion:reduce) {
 	[data-theme] body::before {
 		background: var(--base-color);
 		-webkit-mask-image: none;
@@ -146,7 +146,7 @@
 	--curve-animation-speed: var(--curve-animation-duration);
 	--sp: var(--curve-animation-speed);
 	--transition-duration: 400ms;
-	--reveal-duration: 1s;
+	--reveal-duration: 0.8s;
 }
 .support.view-transition {
 	display: block;
@@ -224,6 +224,7 @@
 	animation-name: reveal-in;
 	animation-delay: calc(var(--reveal-duration) * 0.3);
 }
+
 ::view-transition-old(header),
 ::view-transition-new(header),
 ::view-transition-old(header-title),
@@ -235,16 +236,17 @@
 ::view-transition-old(open-overlay),
 ::view-transition-new(open-overlay),
 ::view-transition-old(main),
-::view-transition-new(main),
+::view-transition-new(main) {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
 html.page-transitioning header,
-html.page-transitioning main,
 html.page-transitioning .header-title,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
 html.page-transitioning .open-overlay,
-html.page-transitioning .overlay-navigation,
-html.page-transitioning .large-button,
-html.page-transitioning .site-title {
+html.page-transitioning main {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
@@ -308,7 +310,7 @@ body {
 	min-height: 100dvh;
 	overflow: clip;
 }
-@supports (height: 100dvh) and (width: 100dvw) {
+@supports (height:100dvh) and (width:100dvw) {
 	[data-theme] body {
 		width: 100dvw;
 		height: 100dvh;
@@ -405,7 +407,7 @@ nav li a:hover:after {
 	transform: translateY(var(--space-s));
 	opacity: 1;
 }
-@supports (background-color: color-mix(in oklch, #000000 100%, #ffffff 0%)) {
+@supports (background-color:color-mix(in oklch, #000000 100%, #ffffff 0%)) {
 	nav li:nth-of-type(1) {
 		background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%);
 	}
@@ -595,6 +597,7 @@ header {
 	position: relative;
 	z-index: 2000;
 	view-transition-name: header;
+	transition: background-color var(--transition-duration) ease-in-out, background var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out, backdrop-filter var(--transition-duration) ease-in-out;
 }
 .header-title {
 	margin: 0;
@@ -608,7 +611,7 @@ header {
 	color: var(--text-span);
 }
 .overlay-slide-down~header {
-	background: transparent;
+	background: #fff0;
 	box-shadow: none;
 	backdrop-filter: none;
 }
@@ -622,7 +625,7 @@ header {
 	color: inherit;
 }
 .overlay-slide-down~header .color-picker label svg {
-	fill: oklch(100% 0.00011 271.152deg);
+	fill: oklch(100% .00011 271.152deg);
 }
 .visually-hidden,
 .color-picker input[type="radio"],
@@ -664,7 +667,7 @@ header {
 	width: 100%;
 	height: 100%;
 	border: 0;
-	background: transparent;
+	background: #fff0;
 	display: grid;
 	place-items: center;
 	position: relative;
@@ -685,8 +688,8 @@ header {
 	transition-duration: 0.35s;
 }
 @supports selector(:has(*)) {
-	.color-picker label:has(> input:checked),
-	.color-picker .theme-label:has(> .theme-input:checked) {
+	.color-picker label:has(>input:checked),
+	.color-picker .theme-label:has(>.theme-input:checked) {
 		opacity: 0;
 		pointer-events: none;
 	}
@@ -718,13 +721,13 @@ header {
 	}
 	to {
 		opacity: 0;
-		transform: scale(0.75) rotate(-80deg);
+		transform: scale(.75) rotate(-80deg);
 	}
 }
 @keyframes theme-picker-in {
 	from {
 		opacity: 0;
-		transform: scale(0.75) rotate(80deg);
+		transform: scale(.75) rotate(80deg);
 	}
 	to {
 		opacity: 1;
@@ -744,7 +747,7 @@ header {
 	outline: 2px solid var(--text-color);
 	outline-offset: 2px;
 }
-@media (hover: none) and (pointer: coarse) {
+@media (hover:none) and (pointer:coarse) {
 	.color-picker .theme-label,
 	.color-picker .theme-label:active,
 	.color-picker .theme-label:hover {
@@ -757,7 +760,7 @@ header {
 	}
 	.color-picker .theme-label:focus-visible {
 		outline: 2px solid var(--text-color);
-		outline-offset: 2px;
+		outline-offset: 2px
 	}
 	.color-picker .theme-label svg {
 		filter: none;
@@ -766,7 +769,7 @@ header {
 	}
 	.color-picker label:is(:hover, :focus-within) svg,
 	.color-picker .theme-label:is(:hover, :focus-within) svg {
-		background-color: transparent;
+		background-color: #fff0;
 		fill: var(--text-color);
 		transform: scale(1) rotate(0deg);
 		padding: 0;
@@ -856,19 +859,19 @@ main>*+* {
 	-webkit-background-clip: text;
 	-moz-background-clip: text;
 	background-clip: text;
-	color: transparent;
-	-webkit-text-fill-color: transparent;
+	color: #fff0;
+	-webkit-text-fill-color: #fff0;
 	animation: shadowDrip 3s infinite alternate ease-in-out;
 }
 @keyframes shadowDrip {
 	0% {
-		text-shadow: 0px 0px 0px var(--shadow-color-primary), 0px 0px 0px var(--shadow-color-secondary), 0px 0px 0px var(--shadow-color-tertiary);
+		text-shadow: 0 0 0 var(--shadow-color-primary), 0 0 0 var(--shadow-color-secondary), 0 0 0 var(--shadow-color-tertiary);
 	}
 	100% {
-		text-shadow: 0px 50px 100px var(--shadow-color-primary), 0px 15px 20px var(--shadow-color-secondary), 0px 30px 5px var(--shadow-color-tertiary);
+		text-shadow: 0 50px 100px var(--shadow-color-primary), 0 15px 20px var(--shadow-color-secondary), 0 30px 5px var(--shadow-color-tertiary);
 	}
 }
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion:reduce) {
 	::view-transition-group(*),
 	::view-transition-old(*),
 	::view-transition-new(*) {
@@ -919,16 +922,16 @@ main>*+* {
 		transform: none;
 	}
 }
-@media (max-width: 675px) {
+@media (max-width:675px) {
 	body,
 	.wrapper {
 		overflow-x: hidden;
 	}
 	nav ul li a {
-		font-size: 18px;
+		font-size: var(--step-1);
 	}
 	nav li a:before {
-		width: 20px;
+		width: var(--space-m);
 	}
 	nav li a:after {
 		font-size: 1rem;
@@ -941,7 +944,7 @@ main>*+* {
 		display: block;
 		margin: 0 auto;
 		z-index: 1000;
-		width: 34px;
+		width: var(--space-l);
 		cursor: pointer;
 	}
 	main {
@@ -975,8 +978,8 @@ main>*+* {
 		height: var(--space-m);
 	}
 }
-@media (hover: none),
-(pointer: coarse) {
+@media (hover:none),
+(pointer:coarse) {
 	.color-picker .theme-label,
 	.color-picker .theme-label:active,
 	.color-picker .theme-label:focus,

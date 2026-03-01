@@ -17,15 +17,18 @@
 	--btn-cell-gradient-start: #d6e2e2;
 	--btn-cell-gradient-end: #93d4d3;
 }
+
 [data-theme="dark"] .large-button:is(:hover, :focus-visible, :active) :is(svg, .button-text span) {
 	color: var(--base-color);
 	fill: var(--base-color);
 	background-color: transparent;
 }
+
 [data-theme="dark"] .large-button svg,
 [data-theme="dark"] .large-button .button-text span {
 	color: var(--text-color);
 }
+
 [data-theme="light"] {
 	--base-color: #ffffff;
 	--text-color: #000000;
@@ -45,6 +48,7 @@
 	--btn-cell-gradient-start: #244b4a;
 	--btn-cell-gradient-end: #123b39;
 }
+
 @supports (color: oklch(0% 0 0deg)) {
 	[data-theme="dark"] {
 		--base-color: oklch(0% 0 0deg);
@@ -56,6 +60,7 @@
 		--btn-cell-gradient-start: oklch(72.882% 0.06436 199.321deg);
 		--btn-cell-gradient-end: oklch(50.932% 0.06289 198.812deg);
 	}
+
 	[data-theme="light"] {
 		--base-color: oklch(100% 0.00011 271.152deg);
 		--text-color: oklch(0% 0 0deg);
@@ -67,6 +72,7 @@
 		--btn-cell-gradient-end: oklch(36.419% 0.05967 199.267deg);
 	}
 }
+
 [data-theme="light"] .main-subtitle,
 [data-theme="light"] .curve-container,
 [data-theme="light"] .text-with-animation span,
@@ -77,10 +83,12 @@
 	mix-blend-mode: var(--blend-mode);
 	font-weight: 500;
 }
+
 .color-picker .theme-label.is-outgoing svg,
 .color-picker .theme-label.is-incoming svg {
 	transition-duration: var(--transition-duration);
 }
+
 [data-theme] body::before {
 	--size: clamp(20px, 3vw, 30px);
 	opacity: 1;
@@ -247,15 +255,11 @@
 }
 ::view-transition-old(header-text),
 ::view-transition-new(header-text),
-::view-transition-old(header-text),
 ::view-transition-new(site-title),
 ::view-transition-old(theme-toggle-light),
 ::view-transition-new(theme-toggle-light),
 ::view-transition-old(theme-toggle-dark),
 ::view-transition-new(theme-toggle-dark),
-::view-transition-old(header-text),
-::view-transition-new(curve-container),
-::view-transition-old(large-button),
 ::view-transition-new(large-button),
 ::view-transition-old(footer-text),
 ::view-transition-new(footer-text),
@@ -272,7 +276,7 @@ html.page-transitioning .header-text,
 html.page-transitioning .curve-container,
 html.page-transitioning .large-button,
 html.page-transitioning .site-title {
-	opacity: 0;
+
 	visibility: hidden;
 	pointer-events: none;
 }
@@ -341,6 +345,7 @@ header {
 	mix-blend-mode: var(--blend-mode);
 	font-weight: 500;
 	view-transition-name: header;
+	transition: color var(--transition-duration) ease-in-out, background-color var(--transition-duration) ease-in-out;
 }
 .header-text {
 	padding-block-start: var(--space-2xs);
