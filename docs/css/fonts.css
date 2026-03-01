@@ -6,6 +6,7 @@
 		url('/docs/fonts/Woff2/alumnisanspinstripe-italic-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: italic;
+	font-display: swap;
 }
 
 @font-face {
@@ -14,6 +15,7 @@
 		url('/docs/fonts/Woff2/gruppo-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
@@ -22,6 +24,7 @@
 		url('/docs/fonts/Woff2/monoton-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
@@ -30,6 +33,7 @@
 		url('/docs/fonts/Woff2/pompiere-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
@@ -38,4 +42,5 @@
 		url('/docs/fonts/Woff2/wireone-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }

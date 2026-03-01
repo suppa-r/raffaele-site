@@ -8,14 +8,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="author" content="Raffaele Suppa" />
 		<title>Raffaele Suppa - Web Page</title>
-		<script src="docs/js/theme-init.js"></script>
+
+		<!-- Preconnect to font server -->
+		<link rel="preconnect" href="/docs/fonts/Woff2/" crossorigin>
+
+		<!-- Defer theme initialization to prevent render blocking -->
+		<script src="docs/js/theme-init.js" defer></script>
+
+		<!-- Critical CSS (inline or keep render-blocking) -->
+		<link rel="stylesheet" href="docs/css/reset.css" />
+		<link rel="stylesheet" href="docs/css/index.css" />
+
+		<!-- Preload critical fonts to improve FCP/LCP -->
+		<link rel="preload" as="font" href="/docs/fonts/Woff2/wireone-regular-webfont.woff2" type="font/woff2" crossorigin>
+
+		<!-- Non-blocking font stylesheet (loads after critical CSS) -->
+		<link rel="stylesheet" href="docs/css/fonts.css" media="print" onload="this.media='all'">
+		<noscript>
+			<link rel="stylesheet" href="docs/css/fonts.css">
+		</noscript>
+
 		<!-- Favicon links -->
 		<link rel="icon" type="image/png" sizes="32x32" href="favicons/dark-1.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="favicons/dark-1.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="favicons/dark-1.png" />
-		<link rel="stylesheet" href="docs/css/fonts.css" />
-		<link rel="stylesheet" href="docs/css/reset.css" />
-		<link rel="stylesheet" href="docs/css/index.css" />
+
+		<!-- Deferred scripts -->
 		<script src="docs/js/name-curve.js" defer></script>
 		<script src="docs/js/nav.js" defer></script>
 	</head>
@@ -75,6 +93,21 @@
 			<!-- Navigation Button -->
 			<a href="intro.html" class="large-button" aria-label="Go to introduction page">
 				<div class="btn-cells">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
 					<span></span>
 					<span></span>
 					<span></span>

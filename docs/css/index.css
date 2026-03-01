@@ -671,13 +671,9 @@ main {
 	inset: 0;
 
 	display: grid;
-	grid-template-columns: repeat(10, 1fr);
-	/* Make 10 columns for the spans */
+	grid-template-columns: repeat(6, 1fr);
+	/* Make 6 columns for the spans (6×6 grid = 36 cells) */
 
-	/* anchor positioning plays a big role here.
-       right now, I'm just telling our element what
-       anchor to, the real trick is lower down where
-       we create the named anchor */
 	&::before {
 		content: "";
 		position: absolute;
@@ -708,7 +704,7 @@ main {
 
 	/* if we're hovering on the 2nd row,
        we push it to the bottom, instead of the top */
-	&:has(> :nth-child(n + 11):hover)::before {
+	&:has(> :nth-child(n + 19):hover)::before {
 		margin: auto auto 0;
 	}
 
@@ -720,7 +716,6 @@ main {
 	}
 
 	& span {
-
 		position: relative;
 	}
 
@@ -740,6 +735,7 @@ main {
 		transition: anchor-name 0ms;
 	}
 }
+
 
 /*----------------footer----------------------*/
 
