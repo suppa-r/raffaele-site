@@ -1,81 +1,50 @@
 [data-theme="dark"] {
-	/* Fallback colors for browsers without OKLCH support */
 	--base-color: #000000;
 	--text-color: #ffffff;
 	--text-span: rgba(102, 153, 204, 0.850);
 	--focus-ring-color: #ffffff;
 	--body-grid-line: rgba(255, 255, 255, 0.085);
 	--theme: dark;
-
-	/* Warning colors for dark mode */
 	--clr-warn-1: #2a1f14;
 	--clr-warn-2: #6b5646;
 	--clr-warn-text: #e8dcc8;
-
-	/* Glow animation opacity values for dark mode */
 	--glow-opacity-low: 0.4;
 	--glow-opacity-mid: 0.7;
-
-	/* Glow background gradient for dark mode */
 	--glow-background: radial-gradient(ellipse at 50% 50%, var(--text-color), transparent 80%);
-
-	/* Glow box-shadow for dark mode */
 	--glow-box-shadow: 0 0 40px 10px var(--text-color);
-
 	--blend-mode: normal;
-
-	/* Button cell colors for dark mode */
 	--btn-cell-bg: #cee6e5;
 	--btn-cell-gradient-start: #d6e2e2;
 	--btn-cell-gradient-end: #93d4d3;
 }
-
-/* Dark theme button interactive states */
 [data-theme="dark"] .large-button:is(:hover, :focus-visible, :active) :is(svg, .button-text span) {
 	color: var(--base-color);
 	fill: var(--base-color);
 	background-color: transparent;
 }
-
-/* Dark theme button default state */
 [data-theme="dark"] .large-button svg,
 [data-theme="dark"] .large-button .button-text span {
 	color: var(--text-color);
 }
-
 [data-theme="light"] {
-	/* Fallback colors for browsers without OKLCH support */
 	--base-color: #ffffff;
 	--text-color: #000000;
 	--text-span: rgba(104, 122, 141, 0.61);
 	--focus-ring-color: #000000;
 	--body-grid-line: rgba(0, 0, 0, 0.15);
 	--theme: light;
-
-	/* Warning colors for light mode */
 	--clr-warn-1: #f9f5f0;
 	--clr-warn-2: #9d8b7e;
 	--clr-warn-text: #5d4e45;
-
-	/* Glow animation opacity values for light mode (higher for visibility) */
 	--glow-opacity-low: 0.5;
 	--glow-opacity-mid: 1.0;
-
-	/* No glow background gradient in light mode */
 	--glow-background: none;
-
-	/* No glow box-shadow in light mode */
 	--glow-box-shadow: none;
-
 	--blend-mode: normal;
-
-	/* Button cell colors for light mode */
 	--btn-cell-bg: #315756;
 	--btn-cell-gradient-start: #244b4a;
 	--btn-cell-gradient-end: #123b39;
 }
-
-/* OKLCH colors for modern browsers - top-level @supports for maximum compatibility */
 @supports (color: oklch(0% 0 0deg)) {
 	[data-theme="dark"] {
 		--base-color: oklch(0% 0 0deg);
@@ -87,7 +56,6 @@
 		--btn-cell-gradient-start: oklch(72.882% 0.06436 199.321deg);
 		--btn-cell-gradient-end: oklch(50.932% 0.06289 198.812deg);
 	}
-
 	[data-theme="light"] {
 		--base-color: oklch(100% 0.00011 271.152deg);
 		--text-color: oklch(0% 0 0deg);
@@ -99,7 +67,6 @@
 		--btn-cell-gradient-end: oklch(36.419% 0.05967 199.267deg);
 	}
 }
-
 [data-theme="light"] .main-subtitle,
 [data-theme="light"] .curve-container,
 [data-theme="light"] .text-with-animation span,
@@ -110,12 +77,10 @@
 	mix-blend-mode: var(--blend-mode);
 	font-weight: 500;
 }
-
 .color-picker .theme-label.is-outgoing svg,
 .color-picker .theme-label.is-incoming svg {
 	transition-duration: var(--transition-duration);
 }
-
 [data-theme] body::before {
 	--size: clamp(20px, 3vw, 30px);
 	opacity: 1;
@@ -123,17 +88,9 @@
 	content: "";
 	position: fixed;
 	inset: 0;
-	/* Fallback viewport units for older browsers */
 	width: 100vw;
 	height: 100vh;
-	background:
-		linear-gradient(90deg,
-			var(--body-grid-line) 1px,
-			transparent 1px) 0 0 / var(--size) var(--size),
-		linear-gradient(180deg,
-			var(--body-grid-line) 1px,
-			transparent 1px) 0 0 / var(--size) var(--size),
-		var(--base-color);
+	background: linear-gradient(90deg, var(--body-grid-line) 1px, transparent 1px) 0 0 / var(--size) var(--size), linear-gradient(180deg, var(--body-grid-line) 1px, transparent 1px) 0 0 / var(--size) var(--size), var(--base-color);
 	-webkit-mask-image: linear-gradient(-135deg, transparent 0%, var(--base-color) 20%);
 	-webkit-mask-size: 400% 100%;
 	-webkit-mask-repeat: no-repeat;
@@ -144,15 +101,12 @@
 	isolation: isolate;
 	z-index: -1;
 }
-
-/* Modern dynamic viewport units for browsers that support them */
 @supports (height: 100dvh) and (width: 100dvw) {
 	[data-theme] body::before {
 		width: 100dvw;
 		height: 100dvh;
 	}
 }
-
 @media (prefers-reduced-transparency: reduce),
 (prefers-reduced-motion: reduce) {
 	[data-theme] body::before {
@@ -162,17 +116,12 @@
 		transition: none;
 	}
 }
-
 [data-theme] body {
 	position: relative;
 	z-index: 1;
 	isolation: isolate;
 }
-
 :root {
-
-	/*----------- Fluid typography with mobile scaling ------------- */
-
 	--step-0: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
 	--step-1: clamp(1.2rem, 1.0736rem + 0.6322vw, 1.6663rem);
 	--step-2: clamp(1.44rem, 1.2282rem + 1.0591vw, 2.2211rem);
@@ -180,9 +129,6 @@
 	--step-4: clamp(2.0736rem, 1.5656rem + 2.5398vw, 3.9467rem);
 	--step-5: clamp(2.4883rem, 1.7364rem + 3.7594vw, 5.2609rem);
 	--step-6: clamp(2.986rem, 1.894rem + 5.4601vw, 7.0128rem);
-
-	/*----------Fluid spacing with mobile scaling ------------------ */
-
 	--space-5xs: clamp(0.125rem, 0.1081rem + 0.0847vw, 0.1875rem);
 	--space-4xs: clamp(0.1875rem, 0.1706rem + 0.0847vw, 0.25rem);
 	--space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
@@ -204,61 +150,41 @@
 	--space-11xl: clamp(14rem, 13.0508rem + 4.7458vw, 17.5rem);
 	--space-12xl: clamp(15rem, 13.983rem + 5.0847vw, 18.75rem);
 	--space-13xl: clamp(16rem, 14.9152rem + 5.4237vw, 20rem);
-
-	/*---------------- Font Families settings ----------------- */
-
 	--font-family-primary: "wire_oneregular", monospace;
 	--font-weight: 500;
 	--font-style: normal;
-
-	/*------------- letter and word spacing settings -----------*/
-
 	--padding-inline: var(--space-3xs);
 	--letter-spacing: var(--space-4xs);
 	--word-spacing: var(--space-5xs);
 	--curve-animation-duration: 5s;
-
-	/*------------ Curve animation viewport units --------------*/
-
 	--curve-char-width: clamp(3rem, 6vw, 5rem);
 	--curve-blur: var(--space-l);
 	--curve-rise-outer-near: 0.75vmin;
 	--curve-rise-mid: 1.4vmin;
 	--curve-rise-center: 2.7vmin;
-
-	/*---------- Glow effect responsive dimensions --------------*/
-
 	--glow-up-width: 100%;
 	--glow-up-height: clamp(0.04vmin, 0.07vmin, 0.13vmin);
 	--glow-down-width: clamp(0.8vmin, 1vmin, 1.5vmin);
 	--glow-down-height: clamp(0.1vmin, 0.30vmin, 0.42vmin);
-
 	--transition-duration: 400ms;
 	--reveal-duration: 1s;
 }
-
-/*--------------- Transitions and animations ------------------*/
-
 .support.view-transition {
 	display: block;
 }
-
 @supports selector(::view-transition) {
 	.support.view-transition {
 		display: none;
 	}
 }
-
 .support.style-query {
 	display: none;
 }
-
 @supports not (container-type: style) {
 	.support.style-query {
 		display: block;
 	}
 }
-
 @supports (container-type: style) {
 	:root {
 		container-type: style;
@@ -271,11 +197,9 @@
 	border-radius: 0.5rem;
 	padding: 1em 2em;
 }
-
 ::view-transition {
 	background: var(--base-color);
 }
-
 ::view-transition-image-pair(root) {
 	perspective: 2500px;
 	perspective-origin: center;
@@ -283,14 +207,12 @@
 	transform-origin: 50% 50% 0;
 	filter: drop-shadow(0px 0px 25px hsl(165deg 11% 3% / 50%));
 }
-
 @media (prefers-reduced-motion: reduce),
 (prefers-reduced-transparency: reduce) {
 	::view-transition-image-pair(root) {
 		filter: none;
 	}
 }
-
 @media (prefers-reduced-transparency: reduce) {
 	.down::before,
 	.up::before {
@@ -299,7 +221,6 @@
 		box-shadow: none;
 	}
 }
-
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation-duration: var(--reveal-duration);
@@ -311,25 +232,19 @@
 	transform: translateZ(-50vw) scale(var(--scale)) rotateY(var(--rotation)) translate(5vw);
 	backface-visibility: hidden;
 }
-
-/* Modern dynamic viewport units for browsers that support them */
 @supports (width: 100dvw) {
 	::view-transition-old(root),
 	::view-transition-new(root) {
 		transform: translateZ(-50dvw) scale(var(--scale)) rotateY(var(--rotation)) translate(5dvw);
 	}
 }
-
 ::view-transition-old(root) {
 	animation-name: reveal-out;
 }
-
 ::view-transition-new(root) {
 	animation-name: reveal-in;
 	animation-delay: calc(var(--reveal-duration) * 0.3);
 }
-
-/* Hide content during view and page transitions */
 ::view-transition-old(header-text),
 ::view-transition-new(header-text),
 ::view-transition-old(header-text),
@@ -350,7 +265,6 @@
 	visibility: hidden;
 	pointer-events: none;
 }
-
 html.page-transitioning .header-text,
 html.page-transitioning .theme-toggle-light,
 html.page-transitioning .theme-toggle-dark,
@@ -362,19 +276,16 @@ html.page-transitioning .site-title {
 	visibility: hidden;
 	pointer-events: none;
 }
-
 @property --rotation {
 	syntax: "<angle>";
 	inherits: false;
 	initial-value: 0deg;
 }
-
 @property --scale {
 	syntax: "<number>";
 	inherits: false;
 	initial-value: 1;
 }
-
 @keyframes reveal-in {
 	from {
 		opacity: 0;
@@ -382,14 +293,12 @@ html.page-transitioning .site-title {
 		--scale: 0.75;
 		animation-timing-function: ease-in-out;
 	}
-
 	to {
 		opacity: 1;
 		--rotation: 0deg;
 		--scale: 1;
 	}
 }
-
 @keyframes reveal-out {
 	from {
 		opacity: 1;
@@ -397,25 +306,18 @@ html.page-transitioning .site-title {
 		--scale: 1;
 		animation-timing-function: ease-in-out;
 	}
-
 	to {
 		opacity: 0;
 		--rotation: -80deg;
 		--scale: 0.75;
 	}
 }
-
-/*--------------------------  global styles  ----------------------*/
-
 h1,
 h2,
 h3 {
 	font-style: italic;
 	letter-spacing: var(--letter-spacing);
 }
-
-/*-------------------------- Body styles  -------------------------*/
-
 html,
 body {
 	color: var(--text-color);
@@ -426,7 +328,6 @@ body {
 	letter-spacing: var(--letter-spacing);
 	word-spacing: var(--word-spacing);
 }
-
 body {
 	background: var(--base-color);
 	display: flex;
@@ -434,9 +335,6 @@ body {
 	min-height: 100dvh;
 	overflow: clip;
 }
-
-/*----------------------- Header styles  --------------------------*/
-
 header {
 	text-align: center;
 	color: var(--text-color);
@@ -444,9 +342,6 @@ header {
 	font-weight: 500;
 	view-transition-name: header;
 }
-
-/*---------------------- Quote styles  --------------------------*/
-
 .header-text {
 	padding-block-start: var(--space-2xs);
 	white-space: normal;
@@ -455,14 +350,10 @@ header {
 	hyphens: none;
 	view-transition-name: header-text;
 }
-
 .header-break {
 	display: inline;
 	padding-inline-start: var(--space-m);
 }
-
-/*----------------- Main Section styles  ----------------------*/
-
 main {
 	flex: 1;
 	display: flex;
@@ -470,7 +361,6 @@ main {
 	justify-content: space-around;
 	view-transition-name: main;
 }
-
 .site-title {
 	white-space: normal;
 	word-break: normal;
@@ -478,16 +368,12 @@ main {
 	margin-inline: auto;
 	view-transition-name: site-title;
 }
-
 .site-title-break {
 	display: inline;
 	padding-inline-start: var(--space-m);
 	padding-inline-end: var(--space-m);
 	view-transition-name: site-title-break;
 }
-
-/* -----------------------curvature-------------------------*/
-
 .curve-container {
 	font-size: var(--step-4);
 	display: flex;
@@ -496,28 +382,24 @@ main {
 	margin-block-end: var(--space-2xl);
 	view-transition-name: curve-container;
 }
-
 .content,
 .content-1 {
 	display: flex;
 	justify-content: center;
 	position: relative;
 }
-
 .curve-row div {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
 }
-
 .curve-row div span {
 	width: var(--curve-char-width);
 	position: relative;
 	text-align: center;
 	color: var(--text-color);
 }
-
 .up::before,
 .down::before {
 	content: "";
@@ -529,14 +411,12 @@ main {
 	animation: shadow var(--curve-animation-duration) ease-in-out infinite;
 	contain: layout style;
 }
-
 .up::before {
 	width: var(--glow-up-width);
 	height: var(--glow-up-height);
 	will-change: opacity, transform;
 	top: 50%;
 }
-
 .down::before {
 	width: var(--glow-down-width);
 	height: var(--glow-down-height);
@@ -545,75 +425,58 @@ main {
 	top: 50%;
 	transform: translateX(-50%);
 }
-
 .up,
 .down {
 	position: relative;
 }
-
 .up {
 	--curve-direction: -1;
 }
-
 .down {
 	--curve-direction: 1;
 }
-
 .up span,
 .down span {
 	animation-duration: var(--curve-animation-duration);
 	animation-iteration-count: infinite;
 	animation-name: curve-wave;
-	/* Curve profile is controlled per character via --curve-rise (inline style / JS). */
 	--curve-move: calc(var(--curve-direction) * var(--curve-rise, 0vmin));
 }
-
 @keyframes shadow {
-
 	0% {
 		opacity: 0;
 		transform: scaleY(0);
 	}
-
 	25% {
 		opacity: var(--glow-opacity-low);
 		transform: scaleY(0.7);
 	}
-
 	45%,
 	55% {
 		opacity: var(--glow-opacity-mid);
 		transform: scaleY(1);
 	}
-
 	75% {
 		opacity: var(--glow-opacity-low);
 		transform: scaleY(0.7);
 	}
-
 	100% {
 		opacity: 0;
 		transform: scaleY(0);
 	}
 }
-
 @keyframes curve-wave {
-
 	0%,
 	10%,
 	90%,
 	100% {
 		transform: translateY(0);
 	}
-
 	40%,
 	60% {
 		transform: translateY(var(--curve-move));
 	}
 }
-
-/*------------------ Large button styles  ---------------*/
-
 .large-button {
 	position: relative;
 	display: flex;
@@ -633,12 +496,9 @@ main {
 	cursor: pointer;
 	user-select: none;
 	pointer-events: all;
-	transition: box-shadow 0.3s,
-		outline 0.3s,
-		opacity 0.3s;
+	transition: box-shadow 0.3s, outline 0.3s, opacity 0.3s;
 	view-transition-name: large-button;
 }
-
 .large-button svg {
 	width: var(--space-l);
 	height: var(--space-l);
@@ -646,14 +506,12 @@ main {
 	transition: fill 0.3s, transform 0.3s;
 	margin-inline: auto;
 }
-
 .large-button:is(:hover, :focus-visible, :focus, :active, :focus-within) svg,
 .large-button:has(:is(:hover, :focus-visible, :focus, :active, :focus-within)) svg {
 	fill: var(--base-color);
 	transform: scale(1.2) rotate(90deg);
 	z-index: 11;
 }
-
 .button-text {
 	display: flex;
 	flex-direction: column;
@@ -664,16 +522,12 @@ main {
 	margin-inline: auto;
 	z-index: 12;
 }
-
 .btn-cells {
 	position: absolute;
 	z-index: 2;
 	inset: 0;
-
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
-	/* Make 6 columns for the spans (6×6 grid = 36 cells) */
-
 	&::before {
 		content: "";
 		position: absolute;
@@ -682,63 +536,35 @@ main {
 		right: calc(anchor(right) - 20px);
 		top: calc(anchor(top) - 20px);
 		bottom: calc(anchor(bottom) - 20px);
-		/* pushes the element to the top */
 		margin: 0 auto auto;
-
 		width: 10px;
 		aspect-ratio: 1;
 		background: var(--btn-cell-bg);
-		background-image: linear-gradient(to right,
-				var(--btn-cell-gradient-start),
-				color-mix(in srgb, var(--btn-cell-gradient-end), white 50%));
+		background-image: linear-gradient(to right, var(--btn-cell-gradient-start), color-mix(in srgb, var(--btn-cell-gradient-end), white 50%));
 		border-radius: 100vw;
-
-		/* The margin changes depending on whether we
-           hover on the top or bottom row, and I want to
-           delay that when we aren't hovering */
-		transition: all var(--transition-duration) ease,
-			margin 0ms var(--transition-duration);
+		transition: all var(--transition-duration) ease, margin 0ms var(--transition-duration);
 		transition-behavior: allow-discrete;
 		transform: scale(0);
 	}
-
-	/* if we're hovering on the 2nd row,
-       we push it to the bottom, instead of the top */
 	&:has(> :nth-child(n + 19):hover)::before {
 		margin: auto auto 0;
 	}
-
-	/* when we do hover, I want the margin to instantly
-       change, so I've removed the delay */
 	&:hover::before {
 		transform: scale(55);
 		transition: transform var(--transition-duration) ease, margin 0ms 0ms;
 	}
-
 	& span {
 		position: relative;
 	}
-
 	&:not(:hover) span {
-		/* we need the  allow-discrete here because
-         we're going to be transitioning anchor-name
-
-         I don't actually want to transition it, but when we
-         aren't hovering, I want to delay the name from changing */
 		transition: anchor-name 0ms var(--transition-duration);
 		transition-behavior: allow-discrete;
 	}
-
-	/* when we hover, we need to the anchor-name to switch instantly */
 	& span:hover {
 		anchor-name: --hovered-cell;
 		transition: anchor-name 0ms;
 	}
 }
-
-
-/*----------------footer----------------------*/
-
 footer {
 	display: flex;
 	justify-content: space-between;
@@ -747,22 +573,17 @@ footer {
 	padding-inline: var(--space-m);
 	view-transition-name: footer;
 }
-
 .footer-text {
 	white-space: normal;
 	word-break: normal;
 	hyphens: none;
 	view-transition-name: footer-text;
 }
-
 .footer-break {
 	display: inline;
 	padding-inline-start: var(--space-s);
 	view-transition-name: footer-break;
 }
-
-/*----------- Theme switcher styles  -----------*/
-
 .visually-hidden,
 .color-picker input[type="radio"],
 .color-picker .theme-input {
@@ -777,25 +598,18 @@ footer {
 	white-space: nowrap;
 	width: 1px;
 }
-
 .color-picker input[type="radio"] {
-	/* Keep radios for form state and focus only; do not animate the hidden control */
 	view-transition-name: none;
 }
-
 .color-picker svg {
-	/* Exclude icons from view-transition snapshots to avoid duplicate naming */
 	view-transition-name: none;
 }
-
 .color-picker .theme-label--light {
 	view-transition-name: theme-toggle-light;
 }
-
 .color-picker .theme-label--dark {
 	view-transition-name: theme-toggle-dark;
 }
-
 .color-picker {
 	display: grid;
 	place-items: center;
@@ -806,7 +620,6 @@ footer {
 	position: relative;
 	border-radius: 50%;
 }
-
 .color-picker>fieldset {
 	width: 100%;
 	height: 100%;
@@ -816,7 +629,6 @@ footer {
 	place-items: center;
 	position: relative;
 }
-
 .color-picker label,
 .color-picker .theme-label {
 	position: absolute;
@@ -829,26 +641,21 @@ footer {
 	transition: opacity 0.5s ease-in-out;
 	border-radius: 50%;
 }
-
 .color-picker.is-animating .theme-label {
 	transition-duration: 0.35s;
 }
-
 @supports selector(:has(*)) {
-
 	.color-picker label:has(> input:checked),
 	.color-picker .theme-label:has(> .theme-input:checked) {
 		opacity: 0;
 		pointer-events: none;
 	}
 }
-
 .color-picker label.checked,
 .color-picker .theme-label.checked {
 	opacity: 0;
 	pointer-events: none;
 }
-
 .color-picker label svg,
 .color-picker .theme-label svg {
 	width: var(--space-m);
@@ -856,45 +663,34 @@ footer {
 	display: block;
 	fill: var(--text-color);
 	transform: scale(1) rotate(0deg);
-	transition:
-		background-color 0.3s,
-		fill 0.3s,
-		transform 0.3s,
-		padding 0.3s;
+	transition: background-color 0.3s, fill 0.3s, transform 0.3s, padding 0.3s;
 }
-
 .color-picker .theme-label.is-outgoing svg {
 	animation: theme-picker-out 0.35s ease-in-out both;
 }
-
 .color-picker .theme-label.is-incoming svg {
 	animation: theme-picker-in 0.35s ease-in-out both;
 }
-
 @keyframes theme-picker-out {
 	from {
 		opacity: 1;
 		transform: scale(1) rotate(0deg);
 	}
-
 	to {
 		opacity: 0;
 		transform: scale(0.75) rotate(-80deg);
 	}
 }
-
 @keyframes theme-picker-in {
 	from {
 		opacity: 0;
 		transform: scale(0.75) rotate(80deg);
 	}
-
 	to {
 		opacity: 1;
 		transform: scale(1) rotate(0deg);
 	}
 }
-
 .color-picker label:is(:hover, :focus-within) svg,
 .color-picker .theme-label:is(:hover, :focus-within) svg {
 	background-color: var(--text-span);
@@ -903,15 +699,12 @@ footer {
 	padding: var(--space-5xs);
 	border-radius: 50%;
 }
-
 .color-picker label:focus-within svg,
 .color-picker .theme-label:focus-within svg {
 	outline: 2px solid var(--text-color);
 	outline-offset: 2px;
 }
-
 @media (hover: none) and (pointer: coarse) {
-	/* Remove sticky hover/active styles for color-picker and theme-label, but keep focus-visible outline for accessibility */
 	.color-picker .theme-label,
 	.color-picker .theme-label:active,
 	.color-picker .theme-label:hover {
@@ -922,19 +715,15 @@ footer {
 		padding: 0;
 		transition: none;
 	}
-
-	/* Keep focus-visible outline for accessibility */
 	.color-picker .theme-label:focus-visible {
 		outline: 2px solid var(--text-color);
 		outline-offset: 2px;
 	}
-
 	.color-picker .theme-label svg {
 		filter: none;
 		fill: currentColor;
 		transition: none;
 	}
-
 	.color-picker label:is(:hover, :focus-within) svg,
 	.color-picker .theme-label:is(:hover, :focus-within) svg {
 		background-color: transparent;
@@ -944,29 +733,21 @@ footer {
 		border-radius: 0;
 	}
 }
-
-/*------ Responsiveness for small screens ------------*/
-
 @media (max-width: 675px) {
-
 	:root {
 		--curve-char-width: clamp(2.5rem, 7.2vw, 4rem);
 	}
-
 	body,
 	.wrapper {
 		overflow-x: hidden;
 	}
-
 	.header-break {
 		display: block;
 		padding-inline: 0;
 	}
-
 	main {
 		justify-content: start;
 	}
-
 	.site-title {
 		white-space: normal;
 		word-break: normal;
@@ -976,73 +757,54 @@ footer {
 		text-align: center;
 		margin-block-start: var(--space-m);
 	}
-
 	.site-title-break {
 		display: block;
 		padding-inline-start: var(--space-s);
 		padding-inline-end: var(--space-m);
 	}
-
 	.site-title-end {
 		display: block;
 		margin-inline: auto;
 		width: fit-content;
 	}
-
 	.curve-container {
 		margin-block-start: var(--space-2xl);
 	}
-
 	.large-button {
 		margin-block-start: var(--space-2xl);
 	}
-
 	.footer-break {
 		display: block;
 		padding-inline: 0;
 	}
-
 	.color-picker label svg {
 		width: var(--space-m);
 		height: var(--space-m);
 	}
-
-	/*--------------- Touch device interaction support -------------*/
-
 	@media (hover: none) and (pointer: coarse) {
-		/* On touch devices, use focus to show interaction feedback */
 		.large-button:focus,
 		.large-button:active {
 			box-shadow: 0 0 20px 5px var(--text-color);
 		}
-
 		.large-button:focus svg,
 		.large-button:active svg {
 			fill: var(--base-color);
 			transform: scale(1.2) rotate(90deg);
 		}
-
 		.btn-cells span {
-			/* Make cells more responsive to touch */
 			-webkit-tap-highlight-color: transparent;
 		}
-
 		.btn-cells span:focus {
 			anchor-name: --hovered-cell;
 		}
 	}
 }
-
-/* Accessibility: Disable animations for users who prefer reduced motion */
-
 @media (prefers-reduced-motion: reduce) {
-
 	::view-transition-group(*),
 	::view-transition-old(*),
 	::view-transition-new(*) {
 		animation: none;
 	}
-
 	::view-transition-old(root),
 	::view-transition-new(root) {
 		transform: none;
@@ -1050,34 +812,28 @@ footer {
 		transform-style: flat;
 		backface-visibility: visible;
 	}
-
 	.up span,
 	.down span {
 		animation: none;
 		transition: none;
 	}
-
 	.down::before,
 	.up::before {
 		animation: none;
 		filter: none;
 		box-shadow: none;
 	}
-
 	.text-with-animation span:first-child,
 	.text-with-animation span:last-child {
 		animation: none;
 	}
-
 	.large-button {
 		transition: none;
 	}
-
 	.large-button:hover {
 		box-shadow: 0 20px 10px 0 var(--text-color);
 		transform: none;
 	}
-
 	.large-button:focus-visible {
 		outline: 6px solid var(--focus-ring-color);
 		background-color: var(--text-color);
@@ -1085,20 +841,16 @@ footer {
 		box-shadow: 0 0 50px 10px var(--text-color);
 		transform: none;
 	}
-
 	.large-button svg {
 		transition: none;
 	}
-
 	.large-button:hover svg,
 	.large-button:focus-visible svg {
 		transform: none;
 	}
-
 	.color-picker label svg {
 		transition: none;
 	}
-
 	.color-picker .theme-label.is-outgoing svg,
 	.color-picker .theme-label.is-incoming svg {
 		animation: none;
