@@ -1,0 +1,247 @@
+/* ============================================
+   THEME SWITCHER - CONTAINER
+   ============================================ */
+/* ============================================
+   ACCESSIBILITY VISUALLY HIDDEN UTILITY
+   ============================================ */
+
+.visually-hidden,
+.sr-only,
+.screen-reader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ✅ Restore visibility when focused - keyboard nav */
+.visually-hidden:focus,
+.visually-hidden:active {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid currentcolor;
+    outline-offset: 3px;
+}
+
+
+.theme-switcher {
+    position: relative;
+    display: flex;
+    background-color: transparent;
+    border: none;
+}
+
+.theme-switcher legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+/* ============================================
+   BUTTON STATES
+   ============================================ */
+
+.theme-switcher button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    min-width: var(--space-l);
+    min-height: var(--space-l);
+}
+
+.theme-switcher button:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 3px;
+    background-color: var(--text-color);
+    color: var(--base-color);
+}
+
+/* ============================================
+   SVG ICONS
+   ============================================ */
+
+.theme-switcher button svg {
+    width: var(--space-l);
+    height: var(--space-l);
+    stroke-width: 0.15;
+    stroke: var(--text-color);
+    fill: currentcolor;
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
+
+}
+
+/* ============================================
+   HIDE ACTIVE BUTTON  /* Active/pressed state 
+   ============================================ */
+
+/* Hide the currently active theme button */
+.theme-switcher button[aria-pressed="true"] {
+    display: none;
+}
+
+/* Always show the auto/system button UNLESS it is the active one */
+.theme-switcher button[data-theme-toggle="auto"]:not([aria-pressed="true"]) {
+    display: block;
+}
+
+.theme-switcher button:hover {
+    color: var(--base-color);
+    background-color: var(--text-color);
+    /* was on ::after */
+    box-shadow: 0 4px 8px rgba(0 0 0 / 0.2);
+}
+
+/* ============================================
+   THEME SWITCHER - SVG HOVER ANIMATION
+   ============================================ */
+
+.theme-switcher button:hover svg {
+    will-change: transform;
+    animation: spin-and-scale 0.9s ease-in-out;
+}
+
+@keyframes spin-and-scale {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1) rotate(45deg);
+    }
+
+    50% {
+        transform: scale(0.6) rotate(-45deg);
+    }
+
+    75% {
+        transform: scale(1) rotate(45deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+@media (prefers-contrast: high) {
+    /* ✅ Respects dark theme */
+    [data-theme="dark"] {
+        --text-color: #ffffff;
+        --base-color: #000000;
+    }
+
+    /* ✅ Respects light theme */
+    [data-theme="light"] {
+        --text-color: #000000;
+        --base-color: #ffffff;
+    }
+
+    /* ✅ Only theme-switcher needs explicit overrides */
+    .theme-switcher {
+        border: 2px solid var(--text-color);
+        background-color: var(--base-color);
+    }
+
+    .theme-switcher button {
+        border: 2px solid var(--text-color);
+        background-color: var(--base-color);
+    }
+
+    .theme-switcher button:hover {
+        border-width: 3px;
+        background-color: var(--text-color);
+        color: var(--base-color);
+    }
+
+    .theme-switcher button:focus-visible {
+        outline: 3px solid var(--text-color);
+        outline-offset: 3px;
+        border-width: 3px;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICES - Enhanced tap experience
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    .theme-switcher button {
+        /* Touch-specific WebKit properties */
+        -webkit-tap-highlight-color: rgb(255 255 255 / 10);
+        /* iOS-specific */
+        -webkit-touch-callout: none;
+        /* Standard properties */
+        user-select: none;
+        touch-action: manipulation;
+        cursor: pointer;
+        /* WCAG 2.5.5 - Minimum touch target size */
+        min-width: 44px;
+        min-height: 44px;
+        /* Faster transitions for touch */
+        will-change: transform;
+        transition:
+            transform 0.1s ease,
+            background-color 0.2s ease;
+    }
+
+    /* Active state - visual feedback on tap */
+    .theme-switcher button:active {
+        transform: scale(0.95);
+        background-color: var(--text-color);
+        color: var(--base-color);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    /* Disable animations on custom elements */
+    .theme-switcher button:hover svg {
+        will-change: transform;
+        animation: none !important;
+        transform: scale(1);
+        /* Simple scale instead */
+    }
+}
+
+@media (min-width: 768px) {
+    .theme-switcher {
+        position: relative;
+        display: flex;
+        gap: var(--space-s);
+        /* or a fixed value like 0.5rem */
+        background-color: transparent;
+        border: none;
+    }
+}

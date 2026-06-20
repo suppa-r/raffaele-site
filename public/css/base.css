@@ -1,0 +1,322 @@
+/* ============================================
+         ------------CSS RESET------------
+   1. CSS Reset
+   2. Document Root (html, body)
+   3. Layout Elements
+   4. Typography
+   5. Media Elements
+   6. Form Elements
+   7. Accessibility
+   8. Motion & Transitions
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   DOCUMENT ROOT
+   ============================================ */
+
+html {
+  /* Behavior */
+  scroll-padding-top: 2rem;
+  scrollbar-gutter: stable;
+  interpolate-size: allow-keywords;
+  /* Typography */
+  font-size: 100%;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 1fr;
+  min-height: 100svh;
+  overflow: clip;
+  margin-inline: auto;
+  background-color: var(--base-color);
+  /* Typography */
+  font-family: var(--primary-font);
+  font-size: var(--step-0);
+  color: var(--text-color);
+  text-rendering: optimizelegibility;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  mix-blend-mode: var(--mix-blend-mode);
+}
+
+[data-theme] body {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Base .wrapper — declared once */
+.wrapper {
+  inline-size: 100%;
+  margin-inline: auto;
+  overflow: clip;
+}
+
+/* ============================================
+   LAYOUT ELEMENTS
+   ============================================ */
+
+/* Prevent margin collapse */
+header,
+main,
+footer {
+  display: flow-root;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3,
+h4, h5, h6 {
+  display: block;
+  font-weight: 500;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3,
+h4, h5, h6 button,
+input,
+label {
+  margin-block: 0.2em;
+  margin-inline: 0;
+  letter-spacing: 0.05em;
+  text-wrap: balance;
+  overflow: clip;
+}
+
+p {
+  margin-block: 0.1em;
+  margin-inline: 0;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  overflow: clip;
+  text-wrap: pretty;
+}
+
+/* ============================================
+   MEDIA ELEMENTS
+   ============================================ */
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+canvas {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  /* cover, contain, fill, none, scale-down */
+  background-position: center;
+  background-size: cover;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  /* Prevent color change on hover */
+  transition: all 0.2s ease-in-out;
+  /* Smooth transition for all properties */
+}
+
+/* ============================================
+   MOTION & TRANSITIONS
+   ============================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Set core root defaults */
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body::before {
+  --size: clamp(12px, 2vw, 24px);
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, var(--linear-gradient-image) 1px, transparent 1px),
+    linear-gradient(var(--linear-gradient-image) 1px, transparent 1px);
+  background-size: var(--size) var(--size);
+  background-position: center;
+  background-color: unset;
+  -webkit-mask-image: radial-gradient(ellipse 85% 60% at center,
+      transparent 50%,
+      black 70%);
+  mask-image: radial-gradient(ellipse 85% 60% at center,
+      transparent 50%,
+      black 70%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  z-index: -100;
+  transition: opacity 0.7s ease-in;
+  contain: layout;
+  margin-inline: auto;
+}
+
+@media (prefers-reduced-transparency: reduce),
+(prefers-reduced-motion: reduce) {
+  body::before {
+    mask-image: none;
+    transition: none;
+  }
+}
+
+/* ===============================================
+   RESPONSIVE LAYOUT - Large Mobile (480px - 767px)
+   ============================================ */
+
+@media (min-width: 480px) {
+  :root {
+    --content-max-width: min(600px, 92vw);
+    --padding-inline: var(--space-s);
+  }
+
+  .wrapper {
+    max-inline-size: var(--content-max-width);
+    padding-inline: var(--padding-inline);
+  }
+
+}
+
+/* ===============================================
+   RESPONSIVE LAYOUT - Tablet(768px - 1023px)
+   ============================================ */
+
+@media (min-width: 768px) {
+  :root {
+    --content-max-width: min(900px, 95vw);
+    --padding-inline: var(--space-m);
+  }
+
+  body::before {
+    -webkit-mask-image: radial-gradient(ellipse 50% 75% at center,
+        transparent 50%,
+        black 70%);
+    mask-image: radial-gradient(ellipse 50% 75% at center,
+        transparent 50%,
+        black 70%);
+  }
+
+  .wrapper {
+    max-inline-size: var(--content-max-width);
+    padding-inline: var(--padding-inline);
+  }
+}
+
+/* ===============================================
+   RESPONSIVE LAYOUT - Desktop(1024px - 1439px)
+   ============================================ */
+
+@media (min-width: 1024px) {
+  :root {
+    --content-max-width: min(1200px, 95vw);
+    --padding-inline: var(--space-l);
+  }
+
+  .wrapper {
+    max-inline-size: var(--content-max-width);
+    padding-inline: var(--padding-inline);
+  }
+}
+
+/* ===============================================
+   RESPONSIVE LAYOUT - XL-Desktop(1440px+)
+   ============================================ */
+
+@media (min-width: 1440px) {
+  :root {
+    --content-max-width: min(1400px, 95vw);
+    --padding-inline: var(--space-xl);
+  }
+
+  .wrapper {
+    max-inline-size: var(--content-max-width);
+    padding-inline: var(--padding-inline);
+  }
+}

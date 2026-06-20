@@ -1,0 +1,82 @@
+/* ============================================
+   BROWSER SUPPORT DETECTION
+   ============================================ */
+
+@supports (selector(::view-transition)) {
+    .support.view-transition {
+        display: none;
+    }
+}
+
+@supports (container-type: inline-size) {
+    @container not style(--theme: green) {
+        .support.style-query {
+            display: none;
+        }
+    }
+}
+
+/* ============================================
+   SUPPORT WARNING STYLES
+   ============================================ */
+
+.support {
+    background-color: var(--clr-warn-1);
+    border-inline-start: 0.5rem solid var(--clr-warn-2);
+    color: var(--clr-warn-text);
+    border-radius: 0.5rem;
+    padding: 1em 2em;
+}
+
+/* ============================================
+   VIEW TRANSITION - BASE STYLES
+   ============================================ */
+
+::view-transition {
+    background: var(--text-color);
+}
+
+/* ============================================
+   ROOT TRANSITION
+   ============================================ */
+
+::view-transition-old(root) {
+    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-out;
+}
+
+::view-transition-new(root) {
+    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-in;
+}
+
+@keyframes move-out {
+    from {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes move-in {
+    from {
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+
+    to {
+        clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+}
+
+/* ============================================
+REDUCED MOTION - disable animations only
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}
