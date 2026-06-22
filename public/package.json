@@ -5,9 +5,9 @@
     "main": "index.html",
     "scripts": {
         "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
-        "lint:js": "eslint '**/*.js'",
-        "lint:css": "stylelint '**/*.css'",
-        "lint:html": "htmlhint '**/*.html'"
+        "lint:js": "eslint **/*.js",
+        "lint:css": "stylelint **/*.css",
+        "lint:html": "htmlhint **/*.html"
     },
     "keywords": [
         "portfolio"
