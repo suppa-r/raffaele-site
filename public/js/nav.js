@@ -34,6 +34,7 @@ function getStoredTheme() {
 		const theme = localStorage.getItem('theme');
 		return VALID_THEMES.includes(theme) ? theme : null;
 	} catch {
+		// ignore storage errors
 		return null;
 	}
 }
@@ -44,6 +45,7 @@ function saveTheme(theme) {
 	} catch {
 		// ignore storage errors
 	}
+
 }
 
 function resolveTheme(theme) {
@@ -337,6 +339,7 @@ function setTheme(theme) {
 
 			return;
 		} catch (error) {
+			// eslint-disable-next-line no-console
 			console.error('View transition error:', error);
 			document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
 		}

@@ -131,6 +131,7 @@ async function handleNavigation(event) {
             try {
                 newDocument = await fetchDocument(event.destination.url);
             } catch (error) {
+                // eslint-disable-next-line no-console
                 console.error('Navigation fetch failed:', error);
                 window.location.href = event.destination.url;
                 return;

@@ -3,7 +3,18 @@
     "rules": {
         "color-hex-length": "long",
         "color-function-notation": "modern",
-        "alpha-value-notation": "percentage",
+        "alpha-value-notation": [
+            "percentage",
+            {
+                "exceptProperties": [
+                    "opacity",
+                    "fill-opacity",
+                    "flood-opacity",
+                    "stop-opacity",
+                    "stroke-opacity"
+                ]
+            }
+        ],
         "lightness-notation": "percentage",
         "at-rule-empty-line-before": "always",
         "rule-empty-line-before": "always",

@@ -1,6 +1,7 @@
 .wrapper {
 display: grid;
     grid-template-rows: auto 1fr auto;
+    color:var(--text-color);
 }
 
 header {
@@ -41,17 +42,17 @@ main {
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-2xs);
-overflow: hidden
+    overflow: hidden;
 }
 
 .text-with-animation span:first-child {
     position: relative;
-    opacity: 0%;
+    opacity: 0;
 }
 
 .text-with-animation span:last-child {
     position: relative;
-   opacity: 0%;
+    opacity: 0;
 }
 
 .subtext-with-animation {
@@ -63,17 +64,17 @@ overflow: hidden
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-2xs);
-overflow: hidden
+    overflow: hidden;
 }
 
 .subtext-with-animation span:first-of-type {
     position: relative;
-    opacity: 0%
+    opacity: 0;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
     position: relative;
-    opacity: 0%
+    opacity: 0
 }
 
 .subtext-with-animation-1 {
@@ -85,29 +86,28 @@ overflow: hidden
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-xs);
-
-    overflow: hidden
+    overflow: hidden;
 }
 
 .subtext-with-animation-1 span:first-of-type {
     position: relative;
-    opacity: 0%;
+    opacity: 0;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
-    opacity: 0%;
+    opacity: 0;
 }
 
 @keyframes word-animation {
 
     0% {
         transform: translateX(30vw);
-    opacity: 0%;
+    opacity: 0;
     }
 
     100% {
         transform: translateX(0);
-        opacity: 0.9%;
+        opacity: 0.9;
     }
 }
 
@@ -115,12 +115,12 @@ overflow: hidden
 
     0% {
         transform: translateX(-30vw);
-        opacity: 0%;
+        opacity: 0;
     }
 
     100% {
         transform: translateX(0);
-        opacity: 0.9%;
+        opacity: 0.9;
     }
 }
 
@@ -128,17 +128,17 @@ overflow: hidden
 
     0% {
         transform: translateY(-30svh);
-        opacity: 1%
+        opacity: 1
     }
 
     50% {
         transform: translateY(-15svh);
-    opacity: 1%;
+    opacity: 1;
     }
 
     100% {
         transform: translateY(0);
-        opacity: 1%;
+        opacity: 1;
     }
 }
 
@@ -169,7 +169,7 @@ overflow: hidden
     background: var(--text-color);
     border-radius: 50%;
     pointer-events: none;
-    opacity: 1%;
+    opacity: 1;
     transform: translate(0, 0);
     animation: particleAnim 1s ease-out forwards
 }
@@ -177,7 +177,7 @@ overflow: hidden
 @keyframes particleAnim {
 
     to {
-        opacity: 0%;
+        opacity: 0;
         transform: translate(var(--tx), var(--ty))
     }
 }
@@ -236,7 +236,7 @@ footer {
 
     .up::before,
     .down::before {
-        opacity: 0%;
+        opacity: 0;
     }
 
     .btn,
