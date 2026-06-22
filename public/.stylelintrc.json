@@ -1,6 +1,11 @@
 {
     "extends": "stylelint-config-standard",
     "rules": {
+        "color-hex-length": "long",
+        "color-function-notation": "modern",
+        "alpha-value-notation": "percentage",
+        "lightness-notation": "percentage",
+        "at-rule-empty-line-before": "never",
         "keyframes-name-pattern": "^[a-zA-Z][a-zA-Z0-9-]*$",
         "no-descending-specificity": null,
         "rule-empty-line-before": null,
