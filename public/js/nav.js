@@ -41,7 +41,9 @@ function getStoredTheme() {
 function saveTheme(theme) {
 	try {
 		localStorage.setItem('theme', theme);
-	} catch { }
+	} catch {
+		// ignore storage errors
+	}
 }
 
 function resolveTheme(theme) {
