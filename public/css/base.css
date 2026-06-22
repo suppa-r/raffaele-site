@@ -5,25 +5,25 @@
 }
 
 * {
+
     margin: 0;
     padding: 0;
 }
 
 html {
+
     scroll-padding-top: 2rem;
     scrollbar-gutter: stable;
     interpolate-size: allow-keywords;
     font-size: 100%;
     text-size-adjust: 100%;
-    text-size-adjust: 100%;
     overflow-wrap: break-word;
     word-break: break-word;
     hyphens: auto;
-    hyphens: auto;
-}
+  }
 
 body {
-    display: grid;
+display: grid;
     grid-template-rows: 1fr;
     min-height: 100svh;
     overflow: clip;
@@ -138,7 +138,9 @@ a {
 }
 
 @media (prefers-reduced-motion:no-preference) {
+
     @view-transition {
+
         navigation: auto
     }
 
@@ -148,6 +150,7 @@ a {
 }
 
 @media (prefers-reduced-motion:reduce) {
+
     html {
         scroll-behavior: auto
     }
@@ -163,6 +166,7 @@ a {
 }
 
 @media (prefers-reduced-motion:no-preference) {
+
     html {
         interpolate-size: allow-keywords
     }
@@ -178,14 +182,10 @@ body::before {
     background-size: var(--size) var(--size);
     background-position: center;
     background-color: unset;
-    mask-image: radial-gradient(ellipse 75% 75% at center, transparent 50%, black 70%);
-    mask-image: radial-gradient(ellipse 75% 75% at center, transparent 50%, black 70%);
-    mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    mask-position: center;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
+mask-image: radial-gradient(ellipse 75% 75% at center, transparent 50%, black 70%);
+   mask-size: 100% 100%;
+mask-position: center;
+ mask-repeat: no-repeat;
     z-index: -100;
     transition: opacity 0.7s ease-in;
     contain: layout;
@@ -194,6 +194,7 @@ body::before {
 
 @media (prefers-reduced-transparency:reduce),
 (prefers-reduced-motion:reduce) {
+
     body::before {
         mask-image: none;
         transition: none;
@@ -201,6 +202,7 @@ body::before {
 }
 
 @media (width >=768px) {
+
     :root {
         --content-max-width: min(900px, 95vw);
         --padding-inline: var(--space-m)
@@ -208,8 +210,7 @@ body::before {
 
     body::before {
         mask-image: radial-gradient(ellipse 60% 75% at center, transparent 50%, black 70%);
-        mask-image: radial-gradient(ellipse 60% 75% at center, transparent 50%, black 70%)
-    }
+      }
 
     .wrapper {
         max-inline-size: var(--content-max-width);
@@ -218,6 +219,7 @@ body::before {
 }
 
 @media (width >=1024px) {
+
     :root {
         --content-max-width: min(1200px, 95vw);
         --padding-inline: var(--space-l)
@@ -229,7 +231,12 @@ body::before {
     }
 }
 
+/* ===============================================
+   RESPONSIVE LAYOUT - XL-Desktop (1440px+)
+   ============================================ */
+
 @media (width >=1440px) {
+
     :root {
         --content-max-width: min(1400px, 95vw);
         --padding-inline: var(--space-xl)
