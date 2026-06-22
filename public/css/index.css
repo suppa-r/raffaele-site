@@ -1,8 +1,6 @@
 .wrapper {
-    container-type: inline-size;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    --step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
 }
 
 header {
@@ -23,6 +21,7 @@ main {
     justify-content: center;
     text-align: center;
     gap: var(--space-l);
+    padding-block: var(--space-l)
 }
 
 .site-title {
@@ -42,8 +41,7 @@ main {
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-2xs);
-
-    overflow: hidden
+overflow: hidden
 }
 
 .text-with-animation span:first-child {
@@ -65,8 +63,7 @@ main {
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-2xs);
-
-    overflow: hidden
+overflow: hidden
 }
 
 .subtext-with-animation span:first-of-type {
@@ -144,7 +141,6 @@ main {
 }
 
 .btn {
-
     width: fit-content;
     margin-inline: auto;
     display: flex;
