@@ -3,6 +3,7 @@
     "rules": {
         "color-hex-length": "long",
         "color-function-notation": "modern",
+        "function-url-quotes": "never",
         "alpha-value-notation": [
             "percentage",
             {
