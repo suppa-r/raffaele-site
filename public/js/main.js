@@ -159,11 +159,12 @@ async function handleNavigation(event) {
 }
 
 function initNavigationInterception() {
-    if (typeof navigation === 'undefined' || typeof navigation.addEventListener !== 'function') {
+    const nav = window.navigation;
+    if (!nav || typeof nav.addEventListener !== 'function') {
         return;
     }
 
-    navigation.addEventListener('navigate', handleNavigation);
+    nav.addEventListener('navigate', handleNavigation);
 }
 
 function initMainPage() {
