@@ -39,6 +39,7 @@
    --space-13xl: clamp(16rem, 14.6087rem + 6.9565vw, 20rem);
 
    /* One-up pairs */
+   --space-4xs: clamp(0.15rem, 0.1283rem + 0.009vw, 0.2125rem);
    --space-3xs-2xs: clamp(0.25rem, 0.1196rem + 0.6522vw, 0.625rem);
    --space-2xs-xs: clamp(0.5rem, 0.3478rem + 0.7609vw, 0.9375rem);
    --space-xs-s: clamp(0.75rem, 0.5761rem + 0.8696vw, 1.25rem);
@@ -101,6 +102,7 @@
       --step-9: clamp(7.4506rem, 4.2645rem + 15.9302cqi, 16.6104rem);
 
       /* Spacing */
+      --space-4xs: clamp(0.15rem, 0.1283rem + 0.009cqi, 0.2125rem);
       --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087cqi, 0.3125rem);
       --space-2xs: clamp(0.5rem, 0.4565rem + 0.2174cqi, 0.625rem);
       --space-xs: clamp(0.75rem, 0.6848rem + 0.3261cqi, 0.9375rem);
