@@ -3,13 +3,16 @@
    ============================================ */
 
 @supports (selector(::view-transition)) {
+
     .support.view-transition {
         display: none;
     }
 }
 
 @supports (container-type: inline-size) {
+
     @container not style(--theme: green) {
+
         .support.style-query {
             display: none;
         }
@@ -49,6 +52,7 @@
 }
 
 @keyframes move-out {
+
     from {
         opacity: 0;
         transform: translateY(0);
@@ -61,6 +65,7 @@
 }
 
 @keyframes move-in {
+
     from {
         clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
     }
@@ -73,7 +78,9 @@
 /* ============================================
 REDUCED MOTION - disable animations only
    ============================================ */
+
 @media (prefers-reduced-motion: reduce) {
+
     ::view-transition-group(*),
     ::view-transition-old(*),
     ::view-transition-new(*) {
