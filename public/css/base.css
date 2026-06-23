@@ -201,7 +201,7 @@ body::before {
     }
 }
 
-@media (width >=768px) {
+@media (width:768px) {
 
     :root {
         --content-max-width: min(900px, 95vw);
@@ -216,7 +216,7 @@ body::before {
     }
 }
 
-@media (width >=1024px) {
+@media (width:1024px) {
 
     :root {
         --content-max-width: min(1200px, 95vw)
@@ -231,7 +231,7 @@ body::before {
    RESPONSIVE LAYOUT - XL-Desktop (1440px+)
    ============================================ */
 
-@media (width >=1440px) {
+@media (width:1440px) {
 
     :root {
         --content-max-width: min(1400px, 95vw)

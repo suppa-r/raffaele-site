@@ -474,8 +474,7 @@ main {
     will-change: transform;
     transform: translateZ(0);
     animation: shadow-drip 3s infinite alternate ease-in-out;
-
-    --shadow-color-primary: rgb(255 255 255 / 70%);
+--shadow-color-primary: rgb(255 255 255 / 70%);
     --shadow-color-secondary: rgb(255 255 255 / 30%);
     --shadow-color-tertiary: rgb(255 255 255 / 10%);
 }
@@ -553,7 +552,7 @@ footer {
     }
 }
 
-@media (width >=768px) {
+@media (min-width: 768px) {
 
 header {
         display: flex;
