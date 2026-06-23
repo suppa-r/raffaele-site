@@ -20,7 +20,7 @@ const OVERLAY_NAV_HTML = `<div class="overlay-navigation">
 </div>`;
 const OVERLAY_OPEN_CLASSES = ['slide-in-nav-item', 'slide-in-nav-item-delay-1', 'slide-in-nav-item-delay-2', 'slide-in-nav-item-delay-3', 'slide-in-nav-item-delay-4'];
 const OVERLAY_CLOSE_CLASSES = ['slide-in-nav-item-reverse', 'slide-in-nav-item-delay-1-reverse', 'slide-in-nav-item-delay-2-reverse', 'slide-in-nav-item-delay-3-reverse', 'slide-in-nav-item-delay-4-reverse'];
-const OVERLAY_CLOSE_DELAY_MS = 800;
+const OVERLAY_CLOSE_DELAY_MS = 1200;
 
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
@@ -88,18 +88,18 @@ function resetElementAnimations(selector, animations) {
 
 function replayTextAnimations() {
 	resetElementAnimations('.text-with-animation span', [
-		'word-animation 0.5s ease-out 0.1s forwards',
-		'word-animation 0.5s ease-out 0.4s forwards'
+		'word-animation 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards',
+		'word-animation 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards'
 	]);
 
 	resetElementAnimations('.subtext-with-animation span', [
-		'word-animation-1 0.5s ease-out 0.1s forwards',
-		'word-animation-1 0.5s ease-out 0.4s forwards'
+		'word-animation-1 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards',
+		'word-animation-1 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards'
 	]);
 
 	resetElementAnimations('.subtext-with-animation-1 span', [
-		'word-animation-2 0.5s ease-out 0.1s forwards',
-		'word-animation-2 0.5s ease-out 0.4s forwards'
+		'word-animation-2 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards',
+		'word-animation-2 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards'
 	]);
 }
 

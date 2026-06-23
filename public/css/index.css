@@ -159,7 +159,7 @@ main {
     border: none;
     cursor: pointer;
     overflow: hidden;
-    transition: 0.2s
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1)
 }
 
 .particle {
@@ -186,15 +186,54 @@ main {
     width: var(--space-l);
     height: var(--space-l);
     fill: var(--text-color);
-    transition: fill 0.3s, transform 0.3s;
+    transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
     margin-inline: auto
 }
 
 .btn:hover svg {
     transform: scale(1.5) rotate(45deg);
     fill: var(--text-color);
-    transition: fill 0.3s, transform 0.3s;
+    transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
     margin-inline: auto
+}
+
+@media (hover:none) and (pointer:coarse) {
+
+    .btn {
+        -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
+        touch-action: manipulation;
+        transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:active {
+        transform: scale(0.97);
+        box-shadow: 0 12px 8px 0 var(--text-color);
+    }
+
+    .btn svg {
+        transition: fill 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:active svg {
+        transform: scale(1.12) rotate(12deg);
+    }
+
+    @supports (-webkit-touch-callout: none) {
+
+        .btn {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        .btn:active {
+            transform: scale(0.985);
+            box-shadow: 0 10px 7px 0 var(--text-color);
+        }
+
+        .btn:active svg {
+            transform: scale(1.08) rotate(10deg);
+        }
+    }
 }
 
 .button-text {

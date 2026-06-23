@@ -63,6 +63,7 @@
     cursor:pointer;
     min-width:var(--space-l);
     min-height:var(--space-l);
+    transition:background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),color 0.3s cubic-bezier(0.22, 1, 0.36, 1),box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .theme-switcher button:focus-visible{
@@ -169,13 +170,26 @@
       min-width:44px;
       min-height:44px;
       will-change:transform;
-      transition:transform 0.1s ease,background-color 0.2s ease;
+      transition:transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .theme-switcher button:active{
-      transform:scale(.95);
+      transform:scale(.97);
       background-color:var(--text-color);
       color:var(--base-color);
+      box-shadow:0 2px 6px rgba(0 0 0 / 18%);
+    }
+
+    @supports (-webkit-touch-callout: none){
+
+      .theme-switcher button{
+        -webkit-tap-highlight-color:transparent;
+      }
+
+      .theme-switcher button:active{
+        transform:scale(.985);
+        box-shadow:0 1px 5px rgba(0 0 0 / 16%);
+      }
     }
   }
 
