@@ -11,8 +11,7 @@
 }
 
 html {
-
-    scroll-padding-top: 2rem;
+scroll-padding-top: 2rem;
     scrollbar-gutter: stable;
     interpolate-size: allow-keywords;
     font-size: 100%;
@@ -47,6 +46,7 @@ display: grid;
 .wrapper {
     inline-size: 100%;
     margin-inline: auto;
+    padding-inline: var(--padding-inline);
     overflow: clip;
     container-type: inline-size;
 }
@@ -182,10 +182,10 @@ body::before {
     background-size: var(--size) var(--size);
     background-position: center;
     background-color: unset;
-mask-image: radial-gradient(ellipse 75% 75% at center, transparent 50%, black 70%);
-   mask-size: 100% 100%;
-mask-position: center;
- mask-repeat: no-repeat;
+    mask-image: radial-gradient(ellipse 75% 75% at center, transparent 50%, black 70%);
+    mask-size: 100% 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
     z-index: -100;
     transition: opacity 0.7s ease-in;
     contain: layout;
@@ -205,7 +205,6 @@ mask-position: center;
 
     :root {
         --content-max-width: min(900px, 95vw);
-        --padding-inline: var(--space-m)
     }
 
     body::before {
@@ -213,21 +212,18 @@ mask-position: center;
       }
 
     .wrapper {
-        max-inline-size: var(--content-max-width);
-        padding-inline: var(--padding-inline)
+        max-inline-size: var(--content-max-width)
     }
 }
 
 @media (width >=1024px) {
 
     :root {
-        --content-max-width: min(1200px, 95vw);
-        --padding-inline: var(--space-l)
+        --content-max-width: min(1200px, 95vw)
     }
 
     .wrapper {
-        max-inline-size: var(--content-max-width);
-        padding-inline: var(--padding-inline)
+        max-inline-size: var(--content-max-width)
     }
 }
 
@@ -238,12 +234,10 @@ mask-position: center;
 @media (width >=1440px) {
 
     :root {
-        --content-max-width: min(1400px, 95vw);
-        --padding-inline: var(--space-xl)
+        --content-max-width: min(1400px, 95vw)
     }
 
     .wrapper {
-        max-inline-size: var(--content-max-width);
-        padding-inline: var(--padding-inline)
+        max-inline-size: var(--content-max-width)
     }
 }

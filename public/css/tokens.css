@@ -86,6 +86,7 @@
 
 
 @supports (font-size: 1cqi) {
+
    :root {
       /* Font sizes */
       --step-n2: clamp(0.64rem, 0.6179rem + 0.1104cqi, 0.7035rem);

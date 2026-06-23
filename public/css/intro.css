@@ -1,6 +1,7 @@
-body {
-    mix-blend-mode: var(--blend-mode)
-}
+
+:root {
+        --nav-close-delay: 1s;
+   }
 
 .wrapper {
     display: grid;
@@ -16,7 +17,6 @@ body {
     height: 100%;
     transform: translateY(-100%);
     transition: transform 0.6s ease-in-out;
-    --nav-close-delay: 1s;
     background-color: var(--base-color)
 }
 
@@ -78,7 +78,7 @@ nav li a::before {
     left: 0;
     z-index: 100;
     transform: translateX(-100%);
-    opacity: 0%;
+    opacity: 0;
     transition: opacity 0.2s linear, transform 0.2s linear
 }
 
@@ -86,7 +86,7 @@ nav li a::after {
     content: attr(data-content);
     font-size: var(--step-0);
     transition: opacity 0.2s linear, transform 0.2s linear;
-    opacity: 0%;
+    opacity: 0;
     position: absolute;
     z-index: 100;
     color: var(--text-color);
@@ -104,15 +104,16 @@ nav li a::after {
 
 nav li a:hover::before {
     transform: translateX(0);
-    opacity: 100%
+    opacity: 1;
 }
 
 nav li a:hover::after {
     transform: translateY(var(--space-s));
-    opacity: 100%
+    opacity: 1;
 }
 
 @supports (background-color:color-mix(in oklch, #000000 100%, #ffffff 0%)) {
+
     nav li:nth-of-type(1) {
         background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%)
     }
@@ -192,26 +193,28 @@ slide-in-nav-item-delay-3 {
 }
 
 @keyframes slide-in-nav-item {
+
     from {
         transform: translateY(-100%);
-        opacity: 0%
+        opacity: 0;
     }
 
     to {
         transform: translateY(0);
-        opacity: 100%
+        opacity: 1;
     }
 }
 
 @keyframes slide-out-nav-item {
+
     from {
         transform: translateY(0);
-        opacity: 100%
+        opacity: 1;
     }
 
     to {
         transform: translateY(-100%);
-        opacity: 0%
+        opacity: 0;
     }
 }
 
@@ -321,6 +324,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 }
 
 @keyframes animate-top-bar {
+
     0% {
         transform: translateY(0)
     }
@@ -339,6 +343,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 }
 
 @keyframes animate-bottom-bar {
+
     0% {
         transform: translateY(0)
     }
@@ -357,6 +362,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 }
 
 @keyframes animate-middle-bar {
+
     0% {
         transform: translateY(0)
     }
@@ -377,8 +383,9 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-block: var(--space-4xl);
 }
 
 .text-with-animation {
@@ -410,6 +417,7 @@ main {
 }
 
 @keyframes slide-in {
+
     from {
         transform: translateY(100%);
         opacity: 0
@@ -422,6 +430,7 @@ main {
 }
 
 @keyframes word-animation {
+
     0% {
         transform: translateX(30vw);
         opacity: 0
@@ -450,37 +459,41 @@ main {
     font-weight: var(--font-weight);
     font-style: var(--font-style);
     font-size: var(--step-2);
-    text-align: center
+    text-align: center;
+    display: inline-block;
+    line-height: 1.25;
+    padding-block-end: var(--space-xl)
 }
 
 .text-layer {
     background: var(--gradient);
     background-size: 100% 100%;
     background-clip: text;
-    -webkit-background-clip: text;
     color: var(--text-color);
     -webkit-text-fill-color: var(--text-color);
     will-change: transform;
     transform: translateZ(0);
     animation: shadow-drip 3s infinite alternate ease-in-out;
-    --shadow-color-primary: rgba(255, 255, 255, 0.7);
-    --shadow-color-secondary: rgba(255, 255, 255, 0.3);
-    --shadow-color-tertiary: rgba(255, 255, 255, 0.1)
+
+    --shadow-color-primary: rgb(255 255 255 / 70%);
+    --shadow-color-secondary: rgb(255 255 255 / 30%);
+    --shadow-color-tertiary: rgb(255 255 255 / 10%);
 }
 
 [data-theme="light"] .text-layer {
-    --shadow-color-primary: rgba(0, 0, 0, 0.7);
-    --shadow-color-secondary: rgba(0, 0, 0, 0.3);
-    --shadow-color-tertiary: rgba(0, 0, 0, 0.1)
+    --shadow-color-primary: rgb(0 0 0 / 70%);
+    --shadow-color-secondary: rgb(0 0 0 / 30%);
+    --shadow-color-tertiary: rgb(0 0 0 / 10%);
 }
 
 @keyframes shadow-drip {
+
     0% {
         text-shadow: 0 0 0 var(--shadow-color-primary), 0 0 0 var(--shadow-color-secondary), 0 0 0 var(--shadow-color-tertiary)
     }
 
     100% {
-        text-shadow: 0 50px 5px var(--shadow-color-primary), 0 10px 10px var(--shadow-color-secondary), 0 5px 5px var(--shadow-color-tertiary)
+        text-shadow: 0 30px 5px var(--shadow-color-primary), 0 10px 10px var(--shadow-color-secondary), 0 5px 5px var(--shadow-color-tertiary)
     }
 }
 
@@ -540,8 +553,9 @@ footer {
     }
 }
 
-@media (min-width:768px) {
-    header {
+@media (width >=768px) {
+
+header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -557,14 +571,7 @@ footer {
         background-color: var(--base-color)
     }
 
-    main {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        margin-block: var(--space-2xl)
-    }
-
-    nav ul {
+nav ul {
         flex-direction: row
     }
 
