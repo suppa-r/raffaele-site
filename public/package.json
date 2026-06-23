@@ -24,16 +24,13 @@
     },
     "lint-staged": {
         "**/*.css": [
-            "stylelint --fix",
-            "git add"
+            "stylelint --fix"
         ],
         "**/*.{js,ts}": [
-            "eslint --fix",
-            "git add"
+            "eslint --fix"
         ],
         "**/*.html": [
-            "htmlhint",
-            "git add"
+            "htmlhint"
         ]
     }
 }
