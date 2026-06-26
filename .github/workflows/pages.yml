@@ -1,6 +1,4 @@
 name: Deploy static HTML to Pages (safe)
-cat > .github/workflows/pages.yml <<'YAML'
-name: Deploy static HTML to Pages (safe)
 
 on:
   push:
