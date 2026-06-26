@@ -222,7 +222,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-block-start: var(--space-xs);
     margin: var(--space-2xs) var(--space-s);
     padding: var(--space-xs) var(--space-xs);
     z-index: 1100;
@@ -436,7 +435,7 @@ main {
     font-style: italic;
     gap: var(--space-s);
     letter-spacing: var(--space-xs);
-    padding-block-end: var(--space-l);
+    padding-block-end: var(--space-s);
     overflow: hidden;
 }
 
@@ -513,7 +512,7 @@ main {
     will-change: transform;
     transform: translateZ(0);
     animation: shadow-drip 3s infinite alternate ease-in-out;
---shadow-color-primary: rgb(255 255 255 / 70%);
+    --shadow-color-primary: rgb(255 255 255 / 70%);
     --shadow-color-secondary: rgb(255 255 255 / 30%);
     --shadow-color-tertiary: rgb(255 255 255 / 10%);
 }
@@ -539,12 +538,10 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: var(--space-3xs) var(--space-4xs);
     isolation: isolate;
     position: relative;
     z-index: 100;
-    margin-block-end: var(--space-2xs)
-}
+   }
 
 @media (prefers-reduced-motion:reduce) {
 
@@ -597,7 +594,6 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-block-start: var(--space-s);
         margin: var(--space-xs) var(--space-s);
         padding: var(--space-xs) var(--space-l);
         z-index: 1100;
@@ -609,16 +605,11 @@ header {
         background-color: var(--base-color)
     }
 
-nav ul {
+    nav ul {
         flex-direction: row
     }
 
     nav ul a {
         font-size: var(--step-1)
-    }
-
-    footer {
-        padding: var(--space-3xs) var(--space-xs);
-        margin-block-end: var(--space-xs)
     }
 }

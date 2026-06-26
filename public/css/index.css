@@ -1,5 +1,5 @@
 .wrapper {
-display: grid;
+    display: grid;
     grid-template-rows: auto 1fr auto;
     color:var(--text-color);
 }
@@ -8,12 +8,10 @@ header {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
-    margin-block-start: var(--space-xs);
 }
 
 .header-text {
-    padding-block-start: var(--space-xs)
+    padding-block-start: var(--space-4xs)
 }
 
 .header-text,
@@ -26,12 +24,12 @@ main {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    gap: var(--space-l);
-    padding-block: var(--space-l)
+    gap: var(--space-s);
 }
 
 .site-title {
     font-size: var(--step-1);
+    margin:0;
 }
 
 .site-title-break {
@@ -155,10 +153,10 @@ main {
     box-shadow: 0 20px 10px 0 var(--text-color);
     isolation: isolate;
     z-index: 10;
-    border-radius: 100px;
+    border-radius: var(--border-radius);
     text-decoration: none;
     position: relative;
-    padding: var(--space-2xs) var(--space-xl);
+    padding: var(--space-xs) var(--space-xl);
     color: var(--text-color);
     background: var(--base-color);
     border: none;
@@ -245,6 +243,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     pointer-events: none;
     position: relative;
@@ -256,12 +255,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-block-end: var(--space-xs)
-}
-
-.footer-text {
-    padding-left: var(--space-m)
-}
+    padding-inline: var(--space-m);
+ }
 
 @media (prefers-reduced-motion:reduce) {
 

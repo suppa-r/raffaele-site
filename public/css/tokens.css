@@ -71,6 +71,7 @@
    --mix-blend-mode: normal;
    --transition-duration: 400ms;
    --reveal-duration: 4s;
+   --border-radius: var(--space-2xl);
 
    /* ============================================
         BASE- Mobile (320px - 479x)
