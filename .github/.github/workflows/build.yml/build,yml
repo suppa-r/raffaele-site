@@ -2,17 +2,22 @@ name: build
 
 on:
   push:
-  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
 
       - name: Build site
-        run: |
-          echo "Add your real build steps here"
+        run: echo "Add your real build steps here"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v5
