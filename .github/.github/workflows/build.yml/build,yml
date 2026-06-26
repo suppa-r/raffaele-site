@@ -1,0 +1,21 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build site
+        run: |
+          echo "Add your real build steps here"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: site
+          path: .
