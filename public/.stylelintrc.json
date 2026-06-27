@@ -1,44 +1,42 @@
 {
-    "extends": "stylelint-config-standard",
-    "rules":
-    {
-        "color-hex-length": "long",
-        "color-function-notation": "modern",
-        "function-url-quotes": null,
-        "alpha-value-notation": [
-            "percentage",
-            {
-
-"exceptProperties": [
-                    "opacity",
-                    "fill-opacity",
-                    "flood-opacity",
-                    "stop-opacity",
-                    "stroke-opacity"
-                ]
-            }
-        ],
-        "lightness-notation": "percentage",
-        "at-rule-empty-line-before": "always",
-         "custom-property-empty-line-before":"never",
-        "rule-empty-line-before": "always",
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-length": "long",
+    "color-function-notation": "modern",
+    "function-url-quotes": null,
+    "alpha-value-notation": [
+      "percentage",
+      {
+        "exceptProperties": [
+          "opacity",
+          "fill-opacity",
+          "flood-opacity",
+          "stop-opacity",
+          "stroke-opacity"
+        ]
+      }
+    ],
+    "lightness-notation": "percentage",
+    "at-rule-empty-line-before": "always",
+    "custom-property-empty-line-before": "never",
+    "rule-empty-line-before": "always",
     "no-descending-specificity": null,
-        "declaration-empty-line-before": null,
-         "hue-degree-notation":"angle",
-    "no-duplicate-selectors":null,
-    "media-feature-range-notation":"prefix",
-    "property-no-vendor-prefix":null,
-    "number-max-precision":null,
-   "selector-max-type":null,
-    "comment-empty-line-before":null,
-    "selector-no-qualifying-type":null,
-    "value-keyword-case":"lower",
-    "keyframes-name-pattern":null,
-    "keyframe-selector-notation":"percentage-unless-within-keyword-only-block",
-    "declaration-property-unit-allowed-list":{
-      "transform-origin":["%","vw","vh","px","rem","em"],
-      "perspective":["px","rem","em"],
-      "perspective-origin":["%","px","rem","em"]
+    "declaration-empty-line-before": null,
+    "hue-degree-notation": "angle",
+    "no-duplicate-selectors": null,
+    "media-feature-range-notation": "prefix",
+    "property-no-vendor-prefix": null,
+    "number-max-precision": null,
+    "selector-max-type": null,
+    "comment-empty-line-before": null,
+    "selector-no-qualifying-type": null,
+    "value-keyword-case": "lower",
+    "keyframes-name-pattern": null,
+    "keyframe-selector-notation": "percentage-unless-within-keyword-only-block",
+    "declaration-property-unit-allowed-list": {
+      "transform-origin": ["%", "vw", "vh", "px", "rem", "em"],
+      "perspective": ["px", "rem", "em"],
+      "perspective-origin": ["%", "px", "rem", "em"]
     }
-    }
+  }
 }

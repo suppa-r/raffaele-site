@@ -1,7 +1,6 @@
-
 :root {
-        --nav-close-delay: 1s;
-   }
+    --nav-close-delay: 1s;
+}
 
 .wrapper {
     display: grid;
@@ -424,10 +423,10 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
- }
+}
 
 main p {
- margin-block: 0;
+    margin-block: 0;
 }
 
 .text-with-animation {
@@ -545,7 +544,7 @@ footer {
     isolation: isolate;
     position: relative;
     z-index: 100;
-   }
+}
 
 @media (prefers-reduced-motion:reduce) {
 
@@ -594,7 +593,7 @@ footer {
 
 @media (min-width: 768px) {
 
-header {
+    header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -606,10 +605,10 @@ header {
     }
 
     .header-title span {
-    margin-inline-end: var(--space-xs);
-    font-size: var(--step-1);
-    color: var(--text-span)
-}
+        margin-inline-end: var(--space-xs);
+        font-size: var(--step-1);
+        color: var(--text-span)
+    }
 
     .open-overlay[aria-expanded="true"] span {
         background-color: var(--base-color)
