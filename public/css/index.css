@@ -45,7 +45,7 @@ main {
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-2xs);
-   }
+}
 
 .text-with-animation span:first-child {
     position: relative;
@@ -66,7 +66,7 @@ main {
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-xs);
-   }
+}
 
 .subtext-with-animation span {
     position: relative;

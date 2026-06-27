@@ -26,7 +26,9 @@ button,
 textarea,
 select {
     font: inherit;
-    color: inherit
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 ul[role="list"],
