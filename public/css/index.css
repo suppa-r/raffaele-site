@@ -295,7 +295,7 @@ footer {
 
 @container( min-width: 768px) {
 
-  .theme-switcher{
-gap:var(--space-m);
+     .theme-switcher{
+        gap:var(--space-m);
  }
 }
