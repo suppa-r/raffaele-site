@@ -37,8 +37,8 @@
     display:flex;
     background-color:transparent;
     border:none;
-    gap:var(--space-4xs);
-   }
+    gap:var(--space-xs);
+ }
 
   .theme-switcher legend{
     position:absolute;
@@ -52,19 +52,15 @@
   }
 
   .theme-switcher button{
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
+   border-radius:50%;
     background-color:transparent;
     color:var(--text-color);
     border:none;
-    padding:var(--space-4xs) 0;
     cursor:pointer;
     min-width:var(--space-l);
     min-height:var(--space-l);
     transition:background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),color 0.3s cubic-bezier(0.22, 1, 0.36, 1),box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-block:0;
   }
 
   .theme-switcher button:focus-visible{
@@ -169,13 +165,14 @@
       user-select:none;
       touch-action:manipulation;
       cursor:pointer;
-      min-width:44px;
-      min-height:44px;
-      will-change:transform;
+      /* min-width:44px;
+      min-height:44px; */
+        will-change:transform;
       transition:transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+
     }
 
-    .theme-switcher button:active{
+.theme-switcher button:active{
       transform:scale(.95);
       background-color:var(--text-color);
       color:var(--base-color);
@@ -205,8 +202,7 @@
     .theme-switcher{
       position:relative;
       display:flex;
-      gap:var(--space-2xs);
-      background-color:transparent;
+    background-color:transparent;
       border:none;
     }
   }

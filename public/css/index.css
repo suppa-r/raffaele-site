@@ -250,9 +250,9 @@ main {
 
 footer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: var(--space-4xs);
+    justify-content:space-between;
+    padding-block-end: var(--space-xs);
+    padding-inline: var(--space-xs);
  }
 
 @media (prefers-reduced-motion:reduce) {
@@ -291,4 +291,11 @@ footer {
         color: var(--base-color);
         box-shadow: 0 0 50px 10px var(--text-color)
     }
+}
+
+@container( min-width: 768px) {
+
+  .theme-switcher{
+gap:var(--space-m);
+ }
 }
