@@ -426,6 +426,10 @@ main {
     text-align: center;
 }
 
+main p {
+ margin-block: 0;
+}
+
 .text-with-animation {
     font-family: var(--primary-font-secondary);
     display: flex;
