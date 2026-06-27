@@ -45,8 +45,7 @@ main {
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-2xs);
-    overflow: hidden;
-}
+   }
 
 .text-with-animation span:first-child {
     position: relative;
@@ -66,9 +65,8 @@ main {
     font-size: var(--step-2);
     font-style: italic;
     gap: var(--space-m);
-    letter-spacing: var(--space-2xs);
-    overflow: hidden;
-}
+    letter-spacing: var(--space-xs);
+   }
 
 .subtext-with-animation span {
     position: relative;
@@ -84,7 +82,6 @@ main {
     font-style: italic;
     gap: var(--space-m);
     letter-spacing: var(--space-xs);
-    overflow: hidden;
 }
 
 .subtext-with-animation-1 span:first-of-type {
@@ -294,6 +291,10 @@ footer {
 }
 
 @container(min-width: 768px) {
+
+    .text-with-animation, .subtext-with-animation, .subtext-with-animation-1 {
+        letter-spacing: var(--space-xs);
+    }
 
     .theme-switcher {
         gap: var(--space-m);
