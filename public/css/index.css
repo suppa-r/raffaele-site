@@ -24,7 +24,7 @@ main {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    gap: var(--space-s);
+    gap: var(--space-xs);
 }
 
 .site-title {
@@ -70,14 +70,9 @@ main {
     overflow: hidden;
 }
 
-.subtext-with-animation span:first-of-type {
+.subtext-with-animation span {
     position: relative;
     opacity: 0;
-}
-
-.subtext-with-animation span:nth-of-type(2) {
-    position: relative;
-    opacity: 0
 }
 
 .subtext-with-animation-1 {
@@ -190,7 +185,8 @@ main {
     height: var(--space-l);
     fill: var(--text-color);
     transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-    margin-inline: auto
+    margin-inline: auto;
+    padding: var(--space-4xs) 0;
 }
 
 .btn:hover svg {
@@ -248,6 +244,7 @@ main {
     pointer-events: none;
     position: relative;
     margin-inline: auto;
+    padding: var(--space-2xs) 0;
     z-index: 12
 }
 
@@ -255,7 +252,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline: var(--space-m);
+    padding-inline: var(--space-4xs);
  }
 
 @media (prefers-reduced-motion:reduce) {
