@@ -75,7 +75,7 @@ p {
     max-width: var(--p-max-width, 65ch);
     margin-block: .3em;
     margin-inline: 0;
-    line-height: 1.3;
+    line-height: 1.4;
     letter-spacing: .04em;
     text-wrap: pretty
 }

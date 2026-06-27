@@ -5,7 +5,8 @@
 
 .wrapper {
     display: grid;
-    grid-template-rows: auto 1fr auto
+    grid-template-rows: auto 1fr auto;
+    line-height: 1.5;
 }
 
 .overlay-navigation {
@@ -222,10 +223,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: var(--space-2xs) var(--space-s);
+    margin: var(--space-2xs) var(--space-2xs);
     padding: var(--space-xs) var(--space-xs);
     z-index: 1100;
-    font-size: var(--step-0);
     position: relative
 }
 
@@ -245,7 +245,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 }
 
 .header-title span {
-    margin-inline-end: var(--space-xs);
+    margin-inline-end: 0;
     font-size: var(--step-0);
     color: var(--text-span)
 }
@@ -261,23 +261,23 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 body:has(.open-overlay[aria-expanded="true"]) main,
 body:has(.open-overlay[aria-expanded="true"]) footer {
     opacity: 0;
-    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1)
+    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body:has(.open-overlay[aria-expanded="false"]) main,
 body:has(.open-overlay[aria-expanded="false"]) footer {
     opacity: 1;
-    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
 }
 
 header:has(.open-overlay[aria-expanded="true"]) .header-title {
     opacity: 0;
-    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1)
+    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 header:has(.open-overlay[aria-expanded="false"]) .header-title {
     opacity: 1;
-    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
 }
 
 .open-overlay[aria-expanded="true"] span {
@@ -424,7 +424,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
+ }
 
 main p {
  margin-block: 0;
@@ -604,6 +604,12 @@ header {
         font-size: var(--step-0);
         position: relative
     }
+
+    .header-title span {
+    margin-inline-end: var(--space-xs);
+    font-size: var(--step-1);
+    color: var(--text-span)
+}
 
     .open-overlay[aria-expanded="true"] span {
         background-color: var(--base-color)
