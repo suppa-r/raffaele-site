@@ -6,17 +6,15 @@
 
 header {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    line-height: 1;
 }
 
-.header-text {
-    padding-block-start: var(--space-4xs-2xs);
-}
-
-.header-text,
-.header-break {
-    margin-inline: auto;
+header .header-text,
+header .header-break {
+    margin-block: 0;
+    padding-block-start: var(--space-3xs-2xs);
 }
 
 main {
@@ -29,11 +27,11 @@ main {
 
 .site-title {
     font-size: var(--step-1);
-    margin: 0;
+    margin-block: 0;
 }
 
 .site-title-break {
-    display: block
+    margin-block: 0;
 }
 
 .text-with-animation {

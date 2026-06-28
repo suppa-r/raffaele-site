@@ -22,7 +22,7 @@ body {
     overflow-wrap: anywhere;
     hyphens: auto;
     mix-blend-mode: var(--blend-mode);
-    line-height: 1.3;
+    line-height: 1.5;
 }
 
 [data-theme] body {
@@ -68,7 +68,7 @@ h6,
 button,
 input,
 label {
-    margin-block: .3em;
+    margin-block: 0.3em;
     margin-inline: 0;
     letter-spacing: .05em;
     text-wrap: balance
@@ -76,9 +76,8 @@ label {
 
 p {
     max-width: var(--p-max-width, 65ch);
-    margin-block: .3em;
+    margin-block: 0.5em;
     margin-inline: 0;
-    line-height: 1.4;
     letter-spacing: .04em;
     text-wrap: pretty
 }
