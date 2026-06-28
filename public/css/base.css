@@ -21,7 +21,7 @@ body {
     text-rendering: optimizelegibility;
     overflow-wrap: anywhere;
     hyphens: auto;
-    mix-blend-mode: var(--mix-blend-mode);
+    mix-blend-mode: var(--blend-mode);
     line-height: 1.3;
 }
 

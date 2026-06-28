@@ -11,7 +11,7 @@ header {
 }
 
 .header-text {
-    padding-block-start: var(--space-4xs)
+    padding-block-start: var(--space-4xs-2xs);
 }
 
 .header-text,
@@ -24,7 +24,7 @@ main {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    gap: var(--space-xs);
+    gap: var(--space-xs-2xs);
 }
 
 .site-title {
@@ -43,8 +43,8 @@ main {
     align-items: center;
     font-size: var(--step-3);
     font-style: italic;
-    gap: var(--space-m);
-    letter-spacing: var(--space-2xs);
+    gap: var(--space-m-l);
+    letter-spacing: var(--space-2xs-xs);
 }
 
 .text-with-animation span:first-child {
@@ -64,8 +64,8 @@ main {
     align-items: center;
     font-size: var(--step-2);
     font-style: italic;
-    gap: var(--space-m);
-    letter-spacing: var(--space-xs);
+    gap: var(--space-m-l);
+    letter-spacing: var(--space-2xs-xs);
 }
 
 .subtext-with-animation span {
@@ -80,8 +80,8 @@ main {
     align-items: center;
     font-size: var(--step-6);
     font-style: italic;
-    gap: var(--space-m);
-    letter-spacing: var(--space-xs);
+    gap: var(--space-m-l);
+    letter-spacing: var(--space-2xs-xs);
 }
 
 .subtext-with-animation-1 span:first-of-type {
@@ -102,7 +102,7 @@ main {
 
     100% {
         transform: translateX(0);
-        opacity: 0.9;
+        opacity: 1;
     }
 }
 
@@ -115,20 +115,15 @@ main {
 
     100% {
         transform: translateX(0);
-        opacity: 0.9;
+        opacity: 1;
     }
 }
 
 @keyframes word-animation-2 {
 
     0% {
-        transform: translateY(-30svh);
-        opacity: 1
-    }
-
-    50% {
-        transform: translateY(-15svh);
-        opacity: 1;
+        transform: translateY(-50svh);
+        opacity: 0;
     }
 
     100% {
@@ -148,7 +143,7 @@ main {
     border-radius: var(--border-radius);
     text-decoration: none;
     position: relative;
-    padding: var(--space-xs) var(--space-xl);
+    padding: var(--space-xs-s) var(--space-xl-2xl);
     color: var(--text-color);
     background: var(--base-color);
     border: none;
@@ -178,12 +173,12 @@ main {
 }
 
 .btn svg {
-    width: var(--space-l);
-    height: var(--space-l);
+    width: var(--space-m-l);
+    height: var(--space-m-l);
     fill: var(--text-color);
     transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
     margin-inline: auto;
-    padding: var(--space-4xs) 0;
+    padding: var(--space-3xs-2xs) 0;
 }
 
 .btn:hover svg {
@@ -241,15 +236,15 @@ main {
     pointer-events: none;
     position: relative;
     margin-inline: auto;
-    padding: var(--space-2xs) 0;
+    padding: var(--space-3xs-2xs) 0;
     z-index: 12
 }
 
 footer {
     display: flex;
     justify-content: space-between;
-    padding-block-end: var(--space-xs);
-    padding-inline: var(--space-xs);
+    padding-inline: var(--space-s-m);
+    padding-block-end: var(--space-2xs-xs);
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -287,16 +282,5 @@ footer {
         background-color: var(--text-color);
         color: var(--base-color);
         box-shadow: 0 0 50px 10px var(--text-color)
-    }
-}
-
-@container(min-width: 768px) {
-
-    .text-with-animation, .subtext-with-animation, .subtext-with-animation-1 {
-        letter-spacing: var(--space-xs);
-    }
-
-    .theme-switcher {
-        gap: var(--space-m);
     }
 }

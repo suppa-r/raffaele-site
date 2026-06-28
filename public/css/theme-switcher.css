@@ -37,7 +37,7 @@
   display: flex;
   background-color: transparent;
   border: none;
-  gap: var(--space-xs);
+  gap: var(--space-s-m);
 }
 
 .theme-switcher legend {
