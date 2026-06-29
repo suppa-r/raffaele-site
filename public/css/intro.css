@@ -221,10 +221,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-block: var(--space-2xs-xs);
+    margin-block-start: var(--space-xs);
+    margin-inline: var(--space-2xs-s);
+    padding-inline: var(--space-s-m);
     padding-block: var(--space-2xs-xs);
-    margin-inline: var(--space-s-m);
-    padding-inline: var(--space-m-l);
+    border-radius: var(--space-l-xl);
     z-index: 1100;
     position: relative;
 }
@@ -332,7 +333,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 
     .open-overlay:active {
         transform: scale(0.98);
-        opacity: 0.9;
+        opacity: 1;
     }
 
     .animate-top-bar,
@@ -458,19 +459,6 @@ main p {
     opacity: 0
 }
 
-@keyframes slide-in {
-
-    from {
-        transform: translateY(100%);
-        opacity: 0
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1
-    }
-}
-
 @keyframes word-animation {
 
     0% {
@@ -480,7 +468,7 @@ main p {
 
     100% {
         transform: translateX(0);
-        opacity: .9
+        opacity: 1
     }
 }
 
@@ -546,8 +534,8 @@ footer {
     isolation: isolate;
     position: relative;
     z-index: 100;
-    padding-block-end: var(--space-2xs-3xs);
-    padding-inline-end: var(--space-m-s);
+    padding-block-end: var(--space-2xs-xs);
+    padding-inline-end: var(--space-xs-s);
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -595,12 +583,7 @@ footer {
     }
 }
 
-@media (min-width: 768px) {
-
-    .header-title span {
-        margin-inline-end: var(--space-s);
-        font-size: var(--step-1);
-    }
+@container (min-width: 768px) {
 
     .open-overlay[aria-expanded="true"] span {
         background-color: var(--base-color)
