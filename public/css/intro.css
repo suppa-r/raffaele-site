@@ -59,7 +59,7 @@ nav li a {
     text-decoration: none;
     display: block;
     text-align: center;
-    font-size: var(--step-1)
+    font-size: var(--step-0)
 }
 
 nav li a:focus-visible {
@@ -94,7 +94,7 @@ nav li a::after {
     margin-left: auto;
     left: 0;
     right: 0;
-    bottom: var(--space-3xl);
+    bottom: var(--space-3xl-2xl);
     transform: translateY(0);
     text-transform: none;
     font-style: italic;
@@ -107,7 +107,7 @@ nav li a:hover::before {
 }
 
 nav li a:hover::after {
-    transform: translateY(var(--space-s));
+    transform: translateY(var(--space-m-s));
     opacity: 1;
 }
 
@@ -221,10 +221,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: var(--space-2xs) var(--space-2xs);
-    padding: var(--space-xs) var(--space-xs);
+    margin-block: var(--space-2xs-xs);
+    padding-block: var(--space-2xs-xs);
+    margin-inline: var(--space-s-m);
+    padding-inline: var(--space-m-l);
     z-index: 1100;
-    position: relative
+    position: relative;
 }
 
 header::before {
@@ -232,7 +234,7 @@ header::before {
     position: absolute;
     inset: 0;
     background-color: var(--base-color);
-    border-radius: var(--space-xl);
+    border-radius: var(--space-l-xl);
     z-index: -1;
     transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1) 0.65s
 }
@@ -253,7 +255,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: var(--space-3xs-2xs)
+    gap: var(--space-3xs-2xs);
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
@@ -290,7 +292,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 
 .open-overlay span {
     display: block;
-    width: var(--space-s-m);
+    width: var(--space-m-l);
     height: 1px;
     background-color: var(--text-color);
     cursor: pointer
@@ -354,7 +356,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 
         .open-overlay:active {
             transform: scale(0.99);
-            opacity: 0.94;
+            opacity: 1;
         }
     }
 }
@@ -436,8 +438,8 @@ main p {
     font-size: var(--step-3);
     font-style: italic;
     gap: var(--space-s);
-    letter-spacing: var(--space-xs);
-    padding-block-end: var(--space-s);
+    letter-spacing: var(--space-s-xs);
+    padding-block-end: var(--space-s-xs);
     overflow: hidden;
 }
 
@@ -483,13 +485,13 @@ main p {
 }
 
 .fancy {
-    padding-block: var(--space-3xs);
+    padding-block: var(--space-2sx-3xs);
     font-style: italic;
     font-size: var(--step-1)
 }
 
 .p-large {
-    padding-block: var(--space-3xs);
+    padding-block: var(--space-2xs-3xs);
     font-size: var(--step-1);
     font-weight: 600
 }
@@ -502,7 +504,8 @@ main p {
     text-align: center;
     display: inline-block;
     line-height: 1.25;
-    padding-block-end: var(--space-xl)
+    padding-block-end: var(--space-l-xl);
+    letter-spacing: var(--space-s-xs);
 }
 
 .text-layer {
@@ -543,6 +546,8 @@ footer {
     isolation: isolate;
     position: relative;
     z-index: 100;
+    padding-block-end: var(--space-2xs-3xs);
+    padding-inline-end: var(--space-m-s);
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -592,21 +597,9 @@ footer {
 
 @media (min-width: 768px) {
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: var(--space-xs) var(--space-s);
-        padding: var(--space-xs) var(--space-l);
-        z-index: 1100;
-        font-size: var(--step-0);
-        position: relative
-    }
-
     .header-title span {
-        margin-inline-end: var(--space-xs);
+        margin-inline-end: var(--space-s);
         font-size: var(--step-1);
-        color: var(--text-span)
     }
 
     .open-overlay[aria-expanded="true"] span {
