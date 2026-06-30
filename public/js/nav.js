@@ -97,9 +97,8 @@ function replayTextAnimations() {
 		'word-animation-1 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards'
 	]);
 
-	resetElementAnimations('.subtext-with-animation-1 span', [
-		'word-animation-2 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards',
-		'word-animation-2 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards'
+	resetElementAnimations('.subtext-with-animation-1', [
+		'word-animation-2 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.50s forwards',
 	]);
 }
 

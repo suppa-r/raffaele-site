@@ -39,7 +39,7 @@ nav ul {
 
 nav ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     list-style: none
 }
 
@@ -590,10 +590,10 @@ footer {
     }
 
     nav ul {
-        flex-direction: row
+        flex-direction: row;
     }
 
     nav ul a {
-        font-size: var(--step-1)
+        font-size: var(--step-1);
     }
 }
