@@ -26,7 +26,7 @@ main {
 
 .site-title {
     font-size: var(--step-1);
-    margin-block: 0;
+    margin-block-end: var(--space-2xl-3xl);
 }
 
 .site-title-break {
@@ -40,7 +40,7 @@ main {
     align-items: center;
     font-size: var(--step-3);
     font-style: italic;
-    gap: var(--space-2xs-xs);
+    gap: var(--space-xs-s);
     letter-spacing: var(--space-2xs-xs);
 }
 
@@ -61,7 +61,7 @@ main {
     align-items: center;
     font-size: var(--step-2);
     font-style: italic;
-    gap: var(--space-2xs-xs);
+    gap: var(--space-xs-s);
     letter-spacing: var(--space-2xs-xs);
 }
 
@@ -130,7 +130,7 @@ main {
     border-radius: var(--border-radius);
     text-decoration: none;
     position: relative;
-    padding: var(--space-2xs-xs) var(--space-xl-2xl);
+    padding: var(--space-2xs-xs) var(--space-l-xl);
     color: var(--text-color);
     background: var(--base-color);
     border: none;
