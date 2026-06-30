@@ -23,6 +23,7 @@ body {
     hyphens: auto;
     mix-blend-mode: var(--blend-mode);
     line-height: 1.5;
+    overflow: hidden;
 }
 
 [data-theme] body {
