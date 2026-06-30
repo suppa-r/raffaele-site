@@ -534,8 +534,8 @@ footer {
     isolation: isolate;
     position: relative;
     z-index: 100;
-    padding-block-end: var(--space-2xs-xs);
-    padding-inline-end: var(--space-xs-s);
+    padding-inline: var(--space-2xs-s);
+    margin-block-end: var(--space-2xs-s);
 }
 
 @media (prefers-reduced-motion:reduce) {

@@ -229,8 +229,8 @@ main {
 footer {
     display: flex;
     justify-content: space-between;
-    padding-inline: var(--space-s-m);
-    padding-block-end: var(--space-2xs-xs);
+    padding-inline: var(--space-2xs-s);
+    margin-block-end: var(--space-2xs-s);
 }
 
 @media (prefers-reduced-motion:reduce) {
