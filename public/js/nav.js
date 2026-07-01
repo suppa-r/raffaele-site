@@ -121,7 +121,7 @@ function replayTextAnimations() {
   ]);
 
   resetElementAnimations(".subtext-with-animation-1", [
-    `word-animation-2 1.1s ${HERO_TEXT_EASE} 0.98s forwards`,
+    `word-animation-2 0.95s ${HERO_TEXT_EASE} 1.72s forwards`,
   ]);
 }
 

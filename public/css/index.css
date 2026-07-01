@@ -100,7 +100,7 @@ main> :not(.site-title) {
 .subtext-with-animation-1 {
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
-    font-size: var(--step-5);
+    font-size: var(--step-7);
     font-style: italic;
     margin-block: 0;
     opacity: 0;
@@ -146,7 +146,7 @@ main> :not(.site-title) {
 @keyframes word-animation-2 {
 
     0% {
-        transform: translate3d(-5vw, 0, 0);
+        transform: translate3d(0, -8svh, 0);
         opacity: 0;
     }
 
