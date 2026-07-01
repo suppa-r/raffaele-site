@@ -535,7 +535,7 @@ footer {
     position: relative;
     z-index: 100;
     padding-inline: var(--space-2xs-s);
-    margin-block-end: var(--space-2xs-s);
+    margin-block-end: var(--space-xs-s);
 }
 
 @media (prefers-reduced-motion:reduce) {

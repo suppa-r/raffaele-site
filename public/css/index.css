@@ -80,9 +80,8 @@ main> :not(.site-title) {
 }
 
 .subtext-with-animation {
-    font-family: var(--primary-font-secondary);
+    font-family: var(--primary-font);
     font-size: var(--step-2);
-    font-style: italic;
     gap: var(--space-2xs-xs);
     letter-spacing: var(--space-3xs-2xs);
     margin-block: 0;
