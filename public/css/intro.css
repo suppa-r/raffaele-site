@@ -431,6 +431,10 @@ main p {
     margin-block: 0;
 }
 
+main p:not(.wrapper-gradient-text) {
+    opacity: 0;
+}
+
 .text-with-animation {
     font-family: var(--primary-font-secondary);
     display: flex;
