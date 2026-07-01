@@ -21,12 +21,17 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+main> :not(.site-title) {
+    margin-block-start: var(--space-xs-s);
 }
 
 .site-title {
     font-size: var(--step-1);
-    margin-block-end: var(--space-2xl-3xl);
+    margin-block: 0;
 }
 
 .site-title-break {
@@ -35,37 +40,60 @@ main {
 
 .text-with-animation {
     font-family: var(--primary-font-secondary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    --main-text-gap: var(--space-s-m);
+    --main-text-letter-spacing-end: var(--space-xs-s);
+    --main-text-word-spacing-end: var(--space-s-m);
+    --main-enter-offset: -6vw;
+    gap: var(--main-text-gap);
+    letter-spacing: var(--main-text-letter-spacing-end);
+    word-spacing: var(--main-text-word-spacing-end);
+    text-align: center;
     font-size: var(--step-3);
     font-style: italic;
-    gap: var(--space-xs-s);
-    letter-spacing: var(--space-2xs-xs);
+    margin-block: 0;
 }
 
-.text-with-animation span:first-child {
-    position: relative;
-    opacity: 0;
+@keyframes main-text-enter {
+
+    0% {
+        transform: translate3d(var(--main-enter-offset), 0, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
 }
 
-.text-with-animation span:last-child {
-    position: relative;
-    opacity: 0;
+@keyframes word-animation {
+
+    0% {
+        transform: translate3d(-7vw, 0, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
 }
 
 .subtext-with-animation {
     font-family: var(--primary-font-secondary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: var(--step-2);
     font-style: italic;
-    gap: var(--space-xs-s);
-    letter-spacing: var(--space-2xs-xs);
+    gap: var(--space-2xs-xs);
+    letter-spacing: var(--space-3xs-2xs);
+    margin-block: 0;
 }
 
-.subtext-with-animation span {
+.subtext-with-animation span:first-child {
+    position: relative;
+    opacity: 0;
+}
+
+.subtext-with-animation span:last-child {
     position: relative;
     opacity: 0;
 }
@@ -76,30 +104,42 @@ main {
     font-size: var(--step-5);
     font-style: italic;
     margin-block: 0;
+    opacity: 0;
 }
 
-@keyframes word-animation {
+.text-with-animation,
+.subtext-with-animation,
+.subtext-with-animation-1 {
+    min-block-size: var(--space-l-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
 
-    0% {
-        transform: translateX(30vw);
-        opacity: 0;
-    }
+.text-with-animation span,
+.subtext-with-animation span,
+.subtext-with-animation-1 span {
+    display: block;
+    line-height: 1;
+    will-change: transform, opacity;
+}
 
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.text-with-animation span:first-child,
+.text-with-animation span:last-child {
+    position: relative;
+    opacity: 0;
 }
 
 @keyframes word-animation-1 {
 
     0% {
-        transform: translateX(-30vw);
+        transform: translate3d(-4vw, 0, 0);
         opacity: 0;
     }
 
     100% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
@@ -107,12 +147,12 @@ main {
 @keyframes word-animation-2 {
 
     0% {
-        transform: translateY(-100svh);
+        transform: translate3d(-5vw, 0, 0);
         opacity: 0;
     }
 
     100% {
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
@@ -231,6 +271,21 @@ footer {
     justify-content: space-between;
     padding-inline: var(--space-2xs-s);
     margin-block-end: var(--space-2xs-s);
+}
+
+@container (min-width: 768px) {
+
+    .text-with-animation {
+        --main-text-gap: var(--space-l-xl);
+        --main-text-letter-spacing-end: var(--space-s-m);
+        --main-text-word-spacing-end: var(--space-l-xl);
+        --main-enter-offset: -4vw;
+    }
+
+    .subtext-with-animation {
+        gap: var(--space-xs-s);
+        letter-spacing: var(--space-2xs-xs);
+    }
 }
 
 @media (prefers-reduced-motion:reduce) {
