@@ -501,6 +501,8 @@ main p:not(.wrapper-gradient-text) {
     padding-block-end: var(--space-2xl);
     margin-block-end: var(--space-l-xl);
     overflow: visible;
+    opacity: 0;
+    transform: translateX(30vw);
 }
 
 .text-layer {

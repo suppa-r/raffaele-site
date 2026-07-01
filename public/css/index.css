@@ -53,32 +53,6 @@ main> :not(.site-title) {
     margin-block: 0;
 }
 
-@keyframes main-text-enter {
-
-    0% {
-        transform: translate3d(var(--main-enter-offset), 0, 0);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
-}
-
-@keyframes word-animation {
-
-    0% {
-        transform: translate3d(-7vw, 0, 0);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
-}
-
 .subtext-with-animation {
     font-family: var(--primary-font);
     font-size: var(--step-2);
@@ -128,32 +102,6 @@ main> :not(.site-title) {
 .text-with-animation span:last-child {
     position: relative;
     opacity: 0;
-}
-
-@keyframes word-animation-1 {
-
-    0% {
-        transform: translate3d(-4vw, 0, 0);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
-}
-
-@keyframes word-animation-2 {
-
-    0% {
-        transform: translate3d(0, -8svh, 0);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
 }
 
 .btn {

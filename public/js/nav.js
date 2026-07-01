@@ -34,6 +34,11 @@ const OVERLAY_CLOSE_CLASSES = [
 ];
 const OVERLAY_CLOSE_DELAY_MS = 1200;
 const HERO_TEXT_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+const HERO_REVEAL_DURATION = 0.9;
+const HERO_REVEAL_STAGGER = 0.16;
+const HERO_REVEAL_DELAY = 0.06;
+const HERO_SUBTEXT_DELAY = 0.18;
+const HERO_PUNCTUATION_DELAY = 0.28;
 const HERO_ANIMATION_TARGETS = [
   ".text-with-animation span",
   ".subtext-with-animation span",
@@ -100,29 +105,57 @@ function updateFavicon(theme) {
   favicon.href = THEME_FAVICONS[theme] || THEME_FAVICONS.light;
 }
 
-function resetElementAnimations(selector, animations) {
-  document.querySelectorAll(selector).forEach((element, index) => {
-    const animation = animations[index] ?? animations[animations.length - 1];
-    element.style.animation = "none";
-    void element.offsetWidth;
-    element.style.animation = animation;
-  });
+function getGsap() {
+  return typeof window !== "undefined" ? window.gsap : null;
+}
+
+function hasElements(selector) {
+  return !!document.querySelector(selector);
 }
 
 function replayTextAnimations() {
-  resetElementAnimations(".text-with-animation span", [
-    `word-animation 1.15s ${HERO_TEXT_EASE} 0.28s forwards`,
-    `word-animation 1.15s ${HERO_TEXT_EASE} 0.42s forwards`,
-  ]);
+  const gsapLib = getGsap();
+  if (!gsapLib) return;
 
-  resetElementAnimations(".subtext-with-animation span", [
-    `word-animation-1 1.05s ${HERO_TEXT_EASE} 0.62s forwards`,
-    `word-animation-1 1.05s ${HERO_TEXT_EASE} 0.9s forwards`,
-  ]);
+  const existingTargets = HERO_ANIMATION_TARGETS.filter(hasElements);
+  if (existingTargets.length === 0) return;
 
-  resetElementAnimations(".subtext-with-animation-1", [
-    `word-animation-2 0.95s ${HERO_TEXT_EASE} 1.72s forwards`,
-  ]);
+  gsapLib.killTweensOf(existingTargets.join(", "));
+
+  if (hasElements(".text-with-animation span")) {
+    gsapLib.to(".text-with-animation span", {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION,
+      ease: HERO_TEXT_EASE,
+      delay: HERO_REVEAL_DELAY,
+      stagger: HERO_REVEAL_STAGGER,
+      overwrite: "auto",
+    });
+  }
+
+  if (hasElements(".subtext-with-animation span")) {
+    gsapLib.to(".subtext-with-animation span", {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION,
+      ease: HERO_TEXT_EASE,
+      delay: HERO_SUBTEXT_DELAY,
+      stagger: HERO_REVEAL_STAGGER,
+      overwrite: "auto",
+    });
+  }
+
+  if (hasElements(".subtext-with-animation-1")) {
+    gsapLib.to(".subtext-with-animation-1", {
+      y: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION,
+      ease: HERO_TEXT_EASE,
+      delay: HERO_PUNCTUATION_DELAY,
+      overwrite: "auto",
+    });
+  }
 }
 
 function hideTextAnimations() {
@@ -138,6 +171,26 @@ function hideTextAnimations() {
       element.style.opacity = "0";
     });
   });
+
+  const gsapLib = getGsap();
+  if (!gsapLib) return;
+
+  const existingTargets = HERO_ANIMATION_TARGETS.filter(hasElements);
+  if (existingTargets.length === 0) return;
+
+  gsapLib.killTweensOf(existingTargets.join(", "));
+
+  if (hasElements(".text-with-animation span")) {
+    gsapLib.set(".text-with-animation span", { x: "-7vw", opacity: 0 });
+  }
+
+  if (hasElements(".subtext-with-animation span")) {
+    gsapLib.set(".subtext-with-animation span", { x: "-4vw", opacity: 0 });
+  }
+
+  if (hasElements(".subtext-with-animation-1")) {
+    gsapLib.set(".subtext-with-animation-1", { y: "-8svh", opacity: 0 });
+  }
 }
 
 function replayTextAnimationsAfterTransitions() {
@@ -367,6 +420,14 @@ function initNavPage() {
   (navInitializers[currentPage] || initDefaultNav)();
 }
 
+function notifyThemeTransitioned() {
+  document.dispatchEvent(new Event("theme:transitioned"));
+}
+
+function notifyThemeTransitionStarted() {
+  document.dispatchEvent(new Event("theme:transition:start"));
+}
+
 function setTheme(theme) {
   if (!isThemeValid(theme)) return;
 
@@ -381,6 +442,7 @@ function setTheme(theme) {
   }
 
   animateThemePicker(theme);
+  notifyThemeTransitionStarted();
 
   if (overlayWasOpen) {
     closeOverlayNavigation();
@@ -391,6 +453,7 @@ function setTheme(theme) {
   if (isReducedMotionPreferred() || overlayWasOpen) {
     applyThemeState(resolvedTheme, theme);
     replayTextAnimationsAfterTransitions();
+    notifyThemeTransitioned();
     return;
   }
 
@@ -416,6 +479,7 @@ function setTheme(theme) {
           updateFavicon(resolvedTheme);
           updateThemeButtonState(theme);
           replayTextAnimationsAfterTransitions();
+          notifyThemeTransitioned();
           endTransition(0);
         })
         .catch(() => {
@@ -432,6 +496,7 @@ function setTheme(theme) {
 
   applyThemeState(resolvedTheme, theme);
   replayTextAnimationsAfterTransitions();
+  notifyThemeTransitioned();
   endTransition(0);
 }
 
