@@ -491,19 +491,23 @@ main p {
     font-size: var(--step-2);
     text-align: center;
     display: inline-block;
-    line-height: 1.25;
-    padding-block-end: var(--space-l-xl);
-    letter-spacing: var(--space-s-xs);
+    line-height: 1.5;
+    letter-spacing: var(--letter-spacing);
+    word-spacing: var(--word-spacing);
+    padding-block-end: var(--space-2xl);
+    margin-block-end: var(--space-l-xl);
+    overflow: visible;
 }
 
 .text-layer {
     background: var(--gradient);
-    background-size: 100% 100%;
+    background-size: 200% 200%;
     background-clip: text;
     color: var(--text-color);
     -webkit-text-fill-color: var(--text-color);
     will-change: transform;
     transform: translateZ(0);
+    overflow: visible !important;
     animation: shadow-drip 3s infinite alternate ease-in-out;
     --shadow-color-primary: rgb(255 255 255 / 70%);
     --shadow-color-secondary: rgb(255 255 255 / 30%);

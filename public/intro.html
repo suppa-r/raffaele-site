@@ -76,6 +76,12 @@
   <link rel="manifest" href="favicons/site.webmanifest" />
   <script src="js/nav.js" defer></script>
   <script src="js/main.js" defer></script>
+  <!-- Third-party libraries (defer keeps parsing unblocked; order is preserved) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <!-- Page scripts -->
+  <script src="js/introgasp.js" defer></script>
 </head>
 
 <body data-page="intro">
