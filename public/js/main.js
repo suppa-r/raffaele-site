@@ -5,6 +5,49 @@ const PARTICLE_DISTANCE_MIN = 20;
 const PARTICLE_DISTANCE_MAX = 100;
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
 
+const NAV_DEBUG_QUERY = "debugNav";
+const NAV_DEBUG_STORAGE_KEY = "debugNav";
+let navDebugTraverseOnlyActive = false;
+
+function isNavigationDebugEnabled() {
+  const queryFlag = new URLSearchParams(window.location.search).get(
+    NAV_DEBUG_QUERY,
+  );
+  if (queryFlag === "1") {
+    try {
+      localStorage.setItem(NAV_DEBUG_STORAGE_KEY, "1");
+    } catch {
+      // ignore storage errors
+    }
+    return true;
+  }
+
+  if (queryFlag === "0") {
+    try {
+      localStorage.removeItem(NAV_DEBUG_STORAGE_KEY);
+    } catch {
+      // ignore storage errors
+    }
+    return false;
+  }
+
+  try {
+    return localStorage.getItem(NAV_DEBUG_STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function navDebugLog(message, details) {
+  if (!isNavigationDebugEnabled()) return;
+  if (!navDebugTraverseOnlyActive) return;
+  if (details === undefined) {
+    console.info(`[nav-debug] ${message}`);
+    return;
+  }
+  console.info(`[nav-debug] ${message}`, details);
+}
+
 function getSneakerButton() {
   return document.querySelector(".btn");
 }
@@ -53,6 +96,11 @@ function handleSneakerClick(event) {
 
   document.body.classList.add(PAGE_LEAVE_CLASS);
   emitParticles(button, x, y);
+  navDebugLog("Sneaker click transition start", {
+    x,
+    y,
+    target: "intro.html",
+  });
 
   setTimeout(() => {
     if (document.startViewTransition) {
@@ -128,22 +176,43 @@ async function fetchDocument(url) {
 }
 
 async function handleNavigation(event) {
+  navDebugTraverseOnlyActive = event.navigationType === "traverse";
+
+  navDebugLog("Navigation event received", {
+    from: window.location.href,
+    to: event.destination.url,
+    canIntercept: typeof event.intercept === "function",
+    navigationType: event.navigationType,
+  });
+
   if (new URL(event.destination.url).origin !== location.origin) {
+    navDebugLog("Skipped non-origin navigation", event.destination.url);
+    navDebugTraverseOnlyActive = false;
     return;
   }
 
   event.intercept({
     handler: async () => {
+      navDebugLog("Intercept handler begin", event.destination.url);
       const overlayNav = document.querySelector(".overlay-navigation");
       if (overlayNav) overlayNav.remove();
 
       let newDocument;
       try {
         newDocument = await fetchDocument(event.destination.url);
+        navDebugLog("Navigation document fetched", {
+          title: newDocument.title,
+          url: event.destination.url,
+        });
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error("Navigation fetch failed:", error);
+        navDebugLog("Navigation fetch fallback to hard load", {
+          url: event.destination.url,
+          error: String(error),
+        });
         window.location.href = event.destination.url;
+        navDebugTraverseOnlyActive = false;
         return;
       }
 
@@ -160,16 +229,53 @@ async function handleNavigation(event) {
 
       await loadNewStylesheets(newStylesheets, currentHrefs);
       removeOldStylesheets(newHrefs);
+      navDebugLog("Stylesheet swap complete", {
+        added: newHrefs.filter((href) => !currentHrefs.includes(href)).length,
+        removed: currentHrefs.filter((href) => !newHrefs.includes(href)).length,
+      });
 
       const savedTheme = localStorage.getItem("theme") ?? "dark";
+      if (!document.startViewTransition) {
+        navDebugLog("ViewTransition API unavailable; using fallback swap");
+        adoptNewBody(newDocument, savedTheme);
+        window.scrollTo(0, 0);
+        document.body.classList.remove("page-entering");
+        document.dispatchEvent(new CustomEvent("page:transitioned"));
+        navDebugLog("Fallback navigation completed", event.destination.url);
+        navDebugTraverseOnlyActive = false;
+        return;
+      }
+
       const transition = document.startViewTransition(() => {
+        navDebugLog("startViewTransition callback executing", {
+          savedTheme,
+          destination: event.destination.url,
+        });
         adoptNewBody(newDocument, savedTheme);
       });
 
-      transition.ready.then(() => window.scrollTo(0, 0));
-      await transition.finished;
+      transition.ready
+        .then(() => {
+          navDebugLog("Transition ready", event.destination.url);
+          window.scrollTo(0, 0);
+        })
+        .catch(() => {
+          // Transition can be interrupted by browser navigation controls.
+          navDebugLog("Transition ready rejected (likely interrupted)");
+        });
+
+      try {
+        await transition.finished;
+        navDebugLog("Transition finished", event.destination.url);
+      } catch {
+        // Transition promises can reject when the user interrupts navigation.
+        navDebugLog("Transition finished rejected (likely interrupted)");
+      }
+
       document.body.classList.remove("page-entering");
       document.dispatchEvent(new CustomEvent("page:transitioned"));
+      navDebugLog("Custom page:transitioned dispatched", event.destination.url);
+      navDebugTraverseOnlyActive = false;
     },
     scroll: NAVIGATION_SCROLL_BEHAVIOR,
   });
@@ -187,6 +293,10 @@ function initNavigationInterception() {
 function initMainPage() {
   bindSneakerButton();
   initNavigationInterception();
+  navDebugLog("Main page initialized", {
+    href: window.location.href,
+    debugEnabled: isNavigationDebugEnabled(),
+  });
 }
 
 document.addEventListener("DOMContentLoaded", initMainPage);

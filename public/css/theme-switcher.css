@@ -33,11 +33,13 @@
 }
 
 .theme-switcher {
+  --theme-switcher-button-size: var(--space-l-xl);
+  --theme-switcher-icon-size: var(--space-m-l);
   position: relative;
   display: flex;
   background-color: transparent;
   border: none;
-  gap: var(--space-s-m);
+  gap: var(--space-5xs-4xs);
 }
 
 .theme-switcher legend {
@@ -59,10 +61,10 @@
   cursor: pointer;
   display: grid;
   place-items: center;
-  inline-size: var(--space-l);
-  block-size: var(--space-l);
-  min-inline-size: var(--space-l);
-  min-block-size: var(--space-l);
+  inline-size: var(--theme-switcher-button-size);
+  block-size: var(--theme-switcher-button-size);
+  min-inline-size: var(--theme-switcher-button-size);
+  min-block-size: var(--theme-switcher-button-size);
   padding: 0;
   transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   margin-block: 0;
@@ -76,8 +78,8 @@
 }
 
 .theme-switcher button svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--theme-switcher-icon-size);
+  height: var(--theme-switcher-icon-size);
   stroke-width: 0.15;
   stroke: var(--text-color);
   fill: currentcolor;
@@ -90,10 +92,6 @@
   display: none;
 }
 
-.theme-switcher button[data-theme-toggle="auto"]:not([aria-pressed="true"]) {
-  display: block;
-}
-
 .theme-switcher button:hover {
   color: var(--base-color);
   background-color: var(--text-color);
@@ -102,7 +100,7 @@
 
 .theme-switcher button:hover svg {
   will-change: transform;
-  animation: spin-and-scale 0.9s ease-in-out;
+  animation: spin-and-scale 0.8s ease-in-out;
 }
 
 @keyframes spin-and-scale {
@@ -174,15 +172,13 @@
     user-select: none;
     touch-action: manipulation;
     cursor: pointer;
-    /* min-width:44px;
-      min-height:44px; */
     will-change: transform;
     transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1), color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 
   }
 
   .theme-switcher button:active {
-    transform: scale(.95);
+    transform: scale(.90);
     background-color: var(--text-color);
     color: var(--base-color);
     box-shadow: 0 2px 6px rgba(0 0 0 / 18%);
@@ -203,5 +199,4 @@
     animation: none !important;
     transform: scale(1);
   }
-
 }

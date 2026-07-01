@@ -216,8 +216,12 @@ main> :not(.site-title) {
 footer {
     display: flex;
     justify-content: space-between;
-    padding-inline: var(--space-2xs-s);
-    margin-block-end: var(--space-2xs-s);
+    align-items: center;
+    margin-block-end: var(--space-2xs-xs);
+}
+
+.footer-text {
+    margin-block: 0;
 }
 
 @container (min-width: 768px) {

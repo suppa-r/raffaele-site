@@ -68,47 +68,19 @@ nav li a:focus-visible {
 }
 
 nav li a::before {
-    content: "";
-    width: var(--space-xl);
-    height: var(--space-3xs);
-    background-color: var(--text-color);
-    position: absolute;
-    top: 50%;
-    left: 0;
-    z-index: 100;
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)
+    content: none;
 }
 
 nav li a::after {
-    content: attr(data-content);
-    font-size: var(--step-0);
-    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    opacity: 0;
-    position: absolute;
-    z-index: 100;
-    color: var(--text-color);
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    left: 0;
-    right: 0;
-    bottom: var(--space-3xl-2xl);
-    transform: translateY(0);
-    text-transform: none;
-    font-style: italic;
-    letter-spacing: 0
+    content: none;
 }
 
 nav li a:hover::before {
-    transform: translateX(0);
-    opacity: 1;
+    opacity: 0;
 }
 
 nav li a:hover::after {
-    transform: translateY(var(--space-m-s));
-    opacity: 1;
+    opacity: 0;
 }
 
 @supports (background-color:color-mix(in oklch, #000000 100%, #ffffff 0%)) {
@@ -544,7 +516,6 @@ footer {
     isolation: isolate;
     position: relative;
     z-index: 100;
-    padding-inline: var(--space-2xs-s);
     margin-block-end: var(--space-xs-s);
 }
 
@@ -605,5 +576,49 @@ footer {
 
     nav ul a {
         font-size: var(--step-1);
+    }
+
+    nav li a::before {
+        content: "";
+        width: var(--space-xl);
+        height: var(--space-3xs);
+        background-color: var(--text-color);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 100;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    nav li a::after {
+        content: attr(data-content);
+        font-size: var(--step-0);
+        transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity: 0;
+        position: absolute;
+        z-index: 100;
+        color: var(--text-color);
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        left: 0;
+        right: 0;
+        bottom: var(--space-3xl-2xl);
+        transform: translateY(0);
+        text-transform: none;
+        font-style: italic;
+        letter-spacing: 0;
+    }
+
+    nav li a:hover::before {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    nav li a:hover::after {
+        transform: translateY(var(--space-m-s));
+        opacity: 1;
     }
 }

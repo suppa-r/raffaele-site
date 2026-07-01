@@ -523,5 +523,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavPage();
   replayTextAnimationsAfterTransitions();
 });
-
-window.addEventListener("popstate", () => location.reload());
