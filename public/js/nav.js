@@ -34,9 +34,15 @@ const OVERLAY_CLOSE_CLASSES = [
 ];
 const OVERLAY_CLOSE_DELAY_MS = 1200;
 const HERO_TEXT_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+const HERO_ANIMATION_TARGETS = [
+  ".text-with-animation span",
+  ".subtext-with-animation span",
+  ".subtext-with-animation-1",
+];
 
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
+let replayTextAnimationsTimeoutId = null;
 
 function isReducedMotionPreferred() {
   return window.matchMedia(REDUCED_MOTION_QUERY).matches;
@@ -117,6 +123,38 @@ function replayTextAnimations() {
   resetElementAnimations(".subtext-with-animation-1", [
     `word-animation-2 1.1s ${HERO_TEXT_EASE} 0.98s forwards`,
   ]);
+}
+
+function hideTextAnimations() {
+  if (
+    !HERO_ANIMATION_TARGETS.some((selector) => document.querySelector(selector))
+  ) {
+    return;
+  }
+
+  HERO_ANIMATION_TARGETS.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.style.animation = "none";
+      element.style.opacity = "0";
+    });
+  });
+}
+
+function replayTextAnimationsAfterTransitions() {
+  if (
+    !HERO_ANIMATION_TARGETS.some((selector) => document.querySelector(selector))
+  ) {
+    return;
+  }
+
+  clearTimeout(replayTextAnimationsTimeoutId);
+  replayTextAnimationsTimeoutId = setTimeout(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        replayTextAnimations();
+      });
+    });
+  }, 0);
 }
 
 function clearThemePickerAnimation() {
@@ -221,7 +259,8 @@ function addOverlayCloseClasses(overlayNavigation) {
 function openOverlayNavigation() {
   if (isOverlayOpen()) return;
 
-  document.body.insertAdjacentHTML("afterbegin", OVERLAY_NAV_HTML);
+  const overlayHost = document.querySelector(".wrapper") || document.body;
+  overlayHost.insertAdjacentHTML("afterbegin", OVERLAY_NAV_HTML);
   const overlayNavigation = document.querySelector(".overlay-navigation");
   if (!overlayNavigation) return;
 
@@ -306,8 +345,26 @@ function attachNavEventHandlers() {
   document.addEventListener("keydown", handleDocumentKeydown);
 }
 
-function initNavPage() {
+function getCurrentPage() {
+  return document.body?.dataset.page || "default";
+}
+
+function initDefaultNav() {
   attachNavEventHandlers();
+}
+
+function initIntro1ProfileNav() {
+  // Placeholder for intro-1 profile navigation behavior.
+  attachNavEventHandlers();
+}
+
+function initNavPage() {
+  const navInitializers = {
+    "intro-1": initIntro1ProfileNav,
+  };
+
+  const currentPage = getCurrentPage();
+  (navInitializers[currentPage] || initDefaultNav)();
 }
 
 function setTheme(theme) {
@@ -329,8 +386,11 @@ function setTheme(theme) {
     closeOverlayNavigation();
   }
 
+  hideTextAnimations();
+
   if (isReducedMotionPreferred() || overlayWasOpen) {
     applyThemeState(resolvedTheme, theme);
+    replayTextAnimationsAfterTransitions();
     return;
   }
 
@@ -355,7 +415,7 @@ function setTheme(theme) {
         .then(() => {
           updateFavicon(resolvedTheme);
           updateThemeButtonState(theme);
-          setTimeout(replayTextAnimations, 0);
+          replayTextAnimationsAfterTransitions();
           endTransition(0);
         })
         .catch(() => {
@@ -371,17 +431,19 @@ function setTheme(theme) {
   }
 
   applyThemeState(resolvedTheme, theme);
-  setTimeout(replayTextAnimations, 0);
+  replayTextAnimationsAfterTransitions();
   endTransition(0);
 }
 
 document.addEventListener("page:transitioned", () => {
+  hideTextAnimations();
   updateThemeButtonState(getStoredTheme() || "auto");
   initNavPage();
-  setTimeout(replayTextAnimations, 0);
+  replayTextAnimationsAfterTransitions();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  hideTextAnimations();
   const storedTheme = getStoredTheme();
   const theme = storedTheme || "auto";
 
@@ -394,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateThemeButtonState(theme);
   updateFavicon(resolvedTheme);
   initNavPage();
-  setTimeout(replayTextAnimations, 0);
+  replayTextAnimationsAfterTransitions();
 });
 
 window.addEventListener("popstate", () => location.reload());

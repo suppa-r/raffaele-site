@@ -16,7 +16,7 @@
     height: 100%;
     transform: translateY(-100%);
     transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    background-color: var(--base-color)
+    background-color: var(--base-color);
 }
 
 .overlay-navigation.overlay-slide-down {
@@ -39,7 +39,7 @@ nav ul {
 
 nav ul {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     list-style: none
 }
 
