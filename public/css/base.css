@@ -124,7 +124,7 @@ body::before {
     background-position: center;
     background-color: unset;
     opacity: var(--pattern-opacity, 1);
-    mask-image: radial-gradient(ellipse 75% 55% at center, transparent 55%, black 80%);
+    mask-image: radial-gradient(ellipse 78% 58% at center, transparent 56%, black 80%);
     mask-size: 100% 100%;
     mask-position: center;
     mask-repeat: no-repeat;
@@ -146,11 +146,11 @@ body::before {
 @container (min-width: 768px) {
 
     :root {
-        --content-max-width: min(900px, 95vw);
+        --content-max-width: min(840px, 94vw);
     }
 
     body::before {
-        mask-image: radial-gradient(ellipse 60% 75% at center, transparent 65%, black 80%);
+        mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, black 80%);
     }
 
     .wrapper {
@@ -159,22 +159,37 @@ body::before {
     }
 }
 
-@container (min-width: 1200px) {
-
-    body::before {
-        mask-image: radial-gradient(ellipse 50% 85% at center, transparent 65%, black 80%);
-    }
-}
-
 @container (min-width: 1024px) {
 
     :root {
-        --content-max-width: min(1200px, 95vw)
+        --content-max-width: min(1040px, 94vw);
+    }
+
+    body::before {
+        mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, black 80%);
     }
 
     .wrapper {
         max-inline-size: var(--content-max-width)
     }
+}
+
+@container (min-width: 1200px) {
+
+    :root {
+        --content-max-width: min(1180px, 94vw)
+    }
+
+
+    body::before {
+        mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, black 80%);
+    }
+
+
+    .wrapper {
+        max-inline-size: var(--content-max-width)
+    }
+
 }
 
 /* ===============================================
@@ -184,10 +199,16 @@ body::before {
 @container (min-width: 1440px) {
 
     :root {
-        --content-max-width: min(1400px, 95vw)
+        --content-max-width: min(1320px, 93vw)
     }
 
+
+    body::before {
+        mask-image: radial-gradient(ellipse 58% 78% at center, transparent 60%, black 80%);
+    }
+
+
     .wrapper {
-        max-inline-size: var(--content-max-width);
+        max-inline-size: var(--content-max-width)
     }
 }

@@ -40,13 +40,13 @@ main> :not(.site-title) {
 
 .text-with-animation {
     font-family: var(--primary-font-secondary);
-    --main-text-gap: var(--space-s-m);
-    --main-text-letter-spacing-end: var(--space-xs-s);
-    --main-text-word-spacing-end: var(--space-s-m);
+    --main-text-gap: var(--space-3xs);
+    --main-text-letter-spacing-end: var(--space-4xs-3xs);
+    --main-text-word-spacing-end: var(--space-4xs-3xs);
     --main-enter-offset: -6vw;
-    gap: var(--main-text-gap);
+    /* gap: var(--main-text-gap); */
     letter-spacing: var(--main-text-letter-spacing-end);
-    word-spacing: var(--main-text-word-spacing-end);
+    /* word-spacing: var(--main-text-word-spacing-end); */
     text-align: center;
     font-size: var(--step-3);
     font-style: italic;
@@ -56,8 +56,7 @@ main> :not(.site-title) {
 .subtext-with-animation {
     font-family: var(--primary-font);
     font-size: var(--step-2);
-    gap: var(--space-2xs-xs);
-    letter-spacing: var(--space-3xs-2xs);
+    letter-spacing: var(--main-text-letter-spacing-end);
     margin-block: 0;
 }
 
@@ -74,7 +73,7 @@ main> :not(.site-title) {
 .subtext-with-animation-1 {
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
-    font-size: var(--step-7);
+    font-size: var(--step-6);
     font-style: italic;
     margin-block: 0;
     opacity: 0;
@@ -117,13 +116,13 @@ main> :not(.site-title) {
     border-radius: var(--border-radius);
     text-decoration: none;
     position: relative;
-    padding: var(--space-2xs-xs) var(--space-l-xl);
+    padding: var(--space-2xs-xs) var(--space-m-l);
     color: var(--text-color);
     background: var(--base-color);
     border: none;
     cursor: pointer;
     overflow: hidden;
-    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1)
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .particle {
@@ -157,8 +156,9 @@ main> :not(.site-title) {
 .btn:hover svg {
     transform: scale(1.5) rotate(45deg);
     fill: var(--text-color);
+    opacity: 0.6;
     transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-    margin-inline: auto
+    margin-inline: auto;
 }
 
 @media (hover:none) and (pointer:coarse) {
@@ -209,8 +209,8 @@ main> :not(.site-title) {
     pointer-events: none;
     position: relative;
     margin-inline: auto;
-    padding: var(--space-3xs-2xs) var(--space-xs-s);
-    z-index: 12
+    padding: var(--space-4xs-3xs) var(--space-2xs-xs);
+    z-index: 12;
 }
 
 footer {
@@ -241,33 +241,17 @@ footer {
 
 @media (prefers-reduced-motion:reduce) {
 
-    .up,
-    .down,
-    .up::before,
-    .down::before {
-        animation: none !important;
-        will-change: auto
-    }
-
-    .up,
-    .down {
-        transform: translateY(0)
-    }
-
-    .up::before,
-    .down::before {
-        opacity: 0;
-    }
-
     .btn,
     .btn svg {
         transition: none !important;
         transform: none !important
     }
 
+
     .btn:hover {
         box-shadow: 0 20px 10px 0 var(--text-color)
     }
+
 
     .btn:focus-visible {
         outline: 6px solid var(--focus-ring-color);

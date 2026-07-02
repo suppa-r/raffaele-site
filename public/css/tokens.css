@@ -71,11 +71,13 @@
   --transition-duration: 400ms;
   --reveal-duration: 4s;
   --border-radius: var(--space-2xl);
+  --theme-switcher-button-size: var(--space-l-xl);
+  --theme-switcher-icon-size: var(--space-m-l);
 
   /* ============================================
         BASE- Mobile (320px - 479x)
       ============================================ */
-  --content-max-width: min(450px, 90vw);
+  --content-max-width: min(520px, 92vw);
   --padding-inline: var(--space-xs);
 }
 
