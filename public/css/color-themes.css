@@ -17,9 +17,9 @@
                         rgb(148 193 204 / 65%),
                         rgb(38 88 94 / 94%));
         --gradient: linear-gradient(90deg,
-                        #4d83a0,
-                        #000000,
-                        #4d83a0);
+                        #a1c4ca99,
+                        #6d606099,
+                        #8ebcc499);
         --backdrop-blur: blur(0px);
         --glow-background: radial-gradient(ellipse,
                         rgb(255 255 255 / 40%) 0%,
@@ -33,7 +33,7 @@
 [data-theme="light"] {
         --base-color: #f3ecec;
         --text-color: #000000;
-        --text-color-1: #ffffffff;
+        --text-color-1: #000000;
         --text-span: #4d83a0;
         --nav-contrast-color: #ffffff;
         --focus-ring-color: #2a2a2a;
@@ -49,9 +49,9 @@
                         rgb(148 193 204 / 65%),
                         rgb(38 88 94));
         --gradient: linear-gradient(90deg,
-                        #4d83a0,
-                        #000000,
-                        #4d83a0);
+                        #a1c4ca99,
+                        #6d606099,
+                        #8ebcc499);
         --backdrop-blur: blur(0px);
         --glow-background: radial-gradient(ellipse,
                         rgb(255 255 255 / 40%) 0%,
@@ -85,9 +85,9 @@
                                 oklch(78.255% 0.0500 214.464deg / 40%),
                                 oklch(42.877% 0.0543 205.934deg));
                 --gradient: linear-gradient(90deg,
-                                oklch(58.418% 0.0727 233.425deg),
-                                oklch(0% 0 0deg),
-                                oklch(58.418% 0.0727 233.425deg));
+                                oklch(79.668% 0.03844 209.228deg / 60%),
+                                oklch(50.146% 0.01675 17.538deg / 60%),
+                                oklch(76.5% 0.05 210.5deg / 60%));
                 --backdrop-blur: blur(7px);
                 --glow-background: radial-gradient(ellipse,
                                 oklch(100% 0.0001 271.152deg / 40%) 0%,
@@ -106,7 +106,7 @@
 [data-theme="light"] {
         --base-color: oklch(94.854% 0.0075 16.503deg);
         --text-color: oklch(0% 0 0deg);
-        --text-color-1: oklch(100% 0.0001 271.152deg);
+        --text-color-1: oklch(0% 0 0deg);
         --text-span: oklch(58.418% 0.0727 233.425deg);
         --nav-contrast-color: oklch(100% 0.0001 271.152deg);
         --focus-ring-color: oklch(28.502% 0.0000 271.152deg);
@@ -122,9 +122,9 @@
                         oklch(78.255% 0.0500 214.464deg / 65%),
                         oklch(42.877% 0.0543 205.934deg));
         --gradient: linear-gradient(90deg,
-                        oklch(58.418% 0.0727 233.425deg),
-                        oklch(0% 0 0deg),
-                        oklch(58.418% 0.0727 233.425deg));
+                        oklch(79.668% 0.03844 209.228deg / 60%),
+                        oklch(50.146% 0.01675 17.538deg / 60%),
+                        oklch(76.5% 0.05 210.5deg / 60%));
         --backdrop-blur: blur(0px);
         --glow-background: radial-gradient(ellipse,
                         oklch(100% 0.0001 271.152deg/ 40%) 0%,
