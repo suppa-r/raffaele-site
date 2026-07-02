@@ -79,7 +79,7 @@ main {
   border-radius: 50%;
   object-fit: cover;
   margin-inline: auto;
-  margin-block-start: var(--space-4xl);
+  margin-block-start: var(--space-3xl-4xl);
 }
 
 .navigation {
@@ -112,17 +112,17 @@ main {
   gap: var(--space-m);
   list-style: none;
   box-shadow: var(--shadow);
-  border-radius: var(--space-l);
+  border-radius: var(--space-m-l);
   z-index: 200;
   opacity: 1;
   width: var(--space-8xl);
-  margin-block: var(--space-xl);
+  margin-block: var(--space-l-xl);
 }
 
 .navigation li {
   position: relative;
   box-shadow: var(--shadow);
-  border-radius: var(--space-l);
+  border-radius: var(--space-m-l);
 }
 
 .navigation a {
@@ -133,12 +133,12 @@ main {
   align-items: center;
   font-size: var(--step-0);
   color: var(--base-color);
-  border-radius: var(--space-l);
+  border-radius: var(--space-m-l);
 }
 
 .navigation svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   fill: var(--text-color);
   margin-bottom: .25em;
   color: #ffffff;
@@ -154,21 +154,16 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: var(--space-3xs) var(--space-4xs);
+  padding: var(--space-4xs-3xs) var(--space-4xs-3xs);
   isolation: isolate;
   position: relative;
   z-index: 100;
-  margin-block-end: var(--space-s);
+  margin-block-end: var(--space-2xs-xs);
 }
 
-@media (min-width:1024px) {
+/* @container (min-width:1024px) {
 
-  :root {
-    --content-max-width: min(1200px, 90vw);
-    --padding-inline: var(--space-m);
-  }
-
-  .profile-header-img {
+.profile-header-img {
     width: var(--space-7xl);
     height: var(--space-7xl);
     border-radius: 50%;
@@ -188,4 +183,4 @@ footer {
     border-radius: 50%;
     box-shadow: var(--shadow);
   }
-}
+} */
