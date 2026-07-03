@@ -73,12 +73,16 @@
   --border-radius: var(--space-2xl);
   --theme-switcher-button-size: var(--space-l-xl);
   --theme-switcher-icon-size: var(--space-m-l);
+  --menu-btn-size: clamp(2.25rem, 6vw, 3rem);
+  --burger-width: var(--space-l-xl);
+  --burger-thickness: clamp(2px, 0.45vw, 3px);
+  --burger-gap: var(--space-2xs-xs);
 
   /* ============================================
         BASE- Mobile (320px - 479x)
       ============================================ */
   --content-max-width: min(520px, 92vw);
-  --padding-inline: var(--space-xs);
+  --padding-inline: var(--space-2xs-xs);
 }
 
 /* ==========================================================

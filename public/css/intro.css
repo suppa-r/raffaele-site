@@ -259,8 +259,8 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 }
 
 .open-overlay:focus-visible {
-    outline: 2px solid var(--text-color);
-    outline-offset: 4px
+    outline: 1px solid var(--text-color);
+    outline-offset: 2px
 }
 
 .open-overlay span {
