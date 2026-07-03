@@ -88,7 +88,7 @@
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="navigation.js" defer></script>
+  <script src="js/nav-intro-1.js" defer></script>
   <script src="js/introgasp.js" defer></script>
 </head>
 
@@ -99,10 +99,11 @@
     </header>
     <main>
       <img src="images/welcome-1.jpg" alt="Raffaele Suppa Profile Picture" class="profile-header-img" />
-      <button class="menu-btn" type="button" aria-label="Open profile menu" aria-expanded="false"
-        aria-controls="profile-nav">
-        <span class="menu-btn-burger" aria-hidden="true"></span>
-      </button>
+      <div class="open-menu" aria-label="Open navigation menu" role="button" tabindex="0">
+        <span class="bar-top" aria-hidden="true"></span>
+        <span class="bar-middle" aria-hidden="true"></span>
+        <span class="bar-bottom" aria-hidden="true"></span>
+      </div>
       <nav id="profile-nav" class="nav-menu" aria-label="Profile Sections">
         <ul class="nav-links">
           <li style="--i: 1" aria-label="go to genesis">
