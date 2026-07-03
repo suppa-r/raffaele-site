@@ -1,4 +1,7 @@
 const MENU_HANDLER_FLAG = "menuBtnHandlerAttached";
+const TOUCH_CLICK_DEDUP_MS = 450;
+
+let lastTouchToggleAt = 0;
 
 const getMenuElements = () => {
   const menuBtn = document.querySelector(".menu-btn");
@@ -21,6 +24,44 @@ const closeMenu = () => {
   syncMenuState(menuBtn, navList, false);
 };
 
+const toggleMenu = (menuBtn) => {
+  const navList = document.querySelector(".nav-links");
+  if (!navList) {
+    return;
+  }
+
+  const isOpen = menuBtn.classList.contains("open");
+  syncMenuState(menuBtn, navList, !isOpen);
+};
+
+const handleMenuInteraction = (event) => {
+  const clickedMenuBtn = event.target.closest(".menu-btn");
+  if (!clickedMenuBtn) {
+    return false;
+  }
+
+  const now = Date.now();
+  const isTouchInteraction =
+    event.type === "touchend" ||
+    (event.type === "pointerup" && event.pointerType !== "mouse");
+
+  // Ignore the synthetic click that often follows touch/pointer interactions.
+  if (
+    event.type === "click" &&
+    now - lastTouchToggleAt < TOUCH_CLICK_DEDUP_MS
+  ) {
+    return true;
+  }
+
+  if (isTouchInteraction) {
+    lastTouchToggleAt = now;
+    event.preventDefault();
+  }
+
+  toggleMenu(clickedMenuBtn);
+  return true;
+};
+
 const initializeMenu = () => {
   const { menuBtn, navList } = getMenuElements();
   if (!menuBtn || !navList) {
@@ -32,20 +73,24 @@ const initializeMenu = () => {
 };
 
 if (!document.documentElement.dataset[MENU_HANDLER_FLAG]) {
-  document.addEventListener("click", (event) => {
-    const clickedMenuBtn = event.target.closest(".menu-btn");
-    const clickedInsideNav = event.target.closest(".nav-menu");
+  document.addEventListener("touchend", (event) => {
+    handleMenuInteraction(event);
+  });
 
-    if (clickedMenuBtn) {
-      const navList = document.querySelector(".nav-links");
-      if (!navList) {
-        return;
-      }
-
-      const isOpen = clickedMenuBtn.classList.contains("open");
-      syncMenuState(clickedMenuBtn, navList, !isOpen);
+  document.addEventListener("pointerup", (event) => {
+    if (event.button !== 0) {
       return;
     }
+
+    handleMenuInteraction(event);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (handleMenuInteraction(event)) {
+      return;
+    }
+
+    const clickedInsideNav = event.target.closest(".nav-menu");
 
     if (!clickedInsideNav) {
       closeMenu();
