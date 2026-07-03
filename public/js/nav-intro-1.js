@@ -1,5 +1,8 @@
 const INTRO1_MENU_HANDLER_FLAG = "intro1MenuHandlerAttached";
 const OPEN_MENU_BOUND_FLAG = "intro1MenuBound";
+const TOUCH_CLICK_DEDUP_MS = 500;
+
+let lastTouchActivateAt = 0;
 
 function getIntro1MenuElements() {
   const openMenu = document.querySelector(".open-menu");
@@ -79,7 +82,22 @@ function toggleIntro1Menu(shouldAnimate = true) {
   syncIntro1MenuState(openMenu, navMenu, navLinks, !isOpen, shouldAnimate);
 }
 
-function handleOpenMenuActivateEvent() {
+function handleOpenMenuActivateEvent(event) {
+  const now = Date.now();
+
+  if (
+    event &&
+    event.type === "click" &&
+    now - lastTouchActivateAt < TOUCH_CLICK_DEDUP_MS
+  ) {
+    return;
+  }
+
+  if (event && event.type === "touchend") {
+    lastTouchActivateAt = now;
+    event.preventDefault();
+  }
+
   toggleIntro1Menu(true);
 }
 
@@ -99,10 +117,15 @@ function initializeIntro1Menu() {
     return;
   }
 
+  openMenu.addEventListener("touchend", (event) => {
+    event.stopPropagation();
+    handleOpenMenuActivateEvent(event);
+  });
+
   openMenu.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    handleOpenMenuActivateEvent();
+    handleOpenMenuActivateEvent(event);
   });
 
   openMenu.addEventListener("keydown", (event) => {
