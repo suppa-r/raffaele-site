@@ -76,9 +76,9 @@ SPACING - Custom properties ` - vw fallback (older browsers)
   --theme-switcher-button-size: var(--space-l-xl);
   --theme-switcher-icon-size: var(--space-m-l);
   --menu-btn-size: clamp(2.25rem, 6vw, 3rem);
-  --burger-width: var(--space-l-xl);
+  --burger-width: var(--space-m-l);
   --burger-thickness: clamp(2px, 0.45vw, 3px);
-  --burger-gap: var(--space-2xs-xs);
+  --burger-gap: var(--space-4xs-3xs);
 
   /* ============================================
         BASE- Mobile (320px - 479x)
