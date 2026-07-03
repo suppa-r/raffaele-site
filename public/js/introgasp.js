@@ -2,9 +2,32 @@
 
 let lenis;
 let splitInstance;
+let hasPlayedIntro1MainAnimation = false;
+let lastInitTimestamp = 0;
+const INIT_DEDUPE_WINDOW_MS = 450;
 const THEME_REPLAY_DELAY_MS = 100;
 const INTRO_ANIMATION_TARGET = "main p:not(.wrapper-gradient-text)";
 const WRAPPER_GRADIENT_TARGET = ".wrapper-gradient-text";
+const INTRO1_MAIN_CHILDREN_TARGET = 'body[data-page="intro-1"] main > *';
+
+if (typeof document !== "undefined") {
+  document.documentElement.classList.add("js-intro-anim");
+}
+
+function isIntro1Page() {
+  return document.body?.dataset?.page === "intro-1";
+}
+
+function prefersReducedMotion() {
+  if (
+    typeof window === "undefined" ||
+    typeof window.matchMedia !== "function"
+  ) {
+    return false;
+  }
+
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 function hasElements(selector) {
   return !!document.querySelector(selector);
@@ -143,23 +166,157 @@ function hideIntroContent() {
   });
 }
 
+function revealIntro1MainContent() {
+  const gsapLib = typeof window !== "undefined" ? window.gsap : null;
+  if (gsapLib) {
+    gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, {
+      clearProps: "opacity,transform",
+    });
+    gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, { autoAlpha: 1, y: 0 });
+    return;
+  }
+
+  document.querySelectorAll(INTRO1_MAIN_CHILDREN_TARGET).forEach((el) => {
+    el.style.opacity = "1";
+    el.style.transform = "translateY(0)";
+  });
+}
+
+function hideIntro1MainContent() {
+  const children = document.querySelectorAll(INTRO1_MAIN_CHILDREN_TARGET);
+  if (!children.length) return;
+
+  const gsapLib = typeof window !== "undefined" ? window.gsap : null;
+  if (!gsapLib) {
+    children.forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(66px)";
+    });
+    return;
+  }
+
+  gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, { autoAlpha: 0, y: 66 });
+}
+
+function shouldAnimateIntro1MainContent() {
+  return (
+    !!document.querySelector(INTRO1_MAIN_CHILDREN_TARGET) &&
+    !hasPlayedIntro1MainAnimation
+  );
+}
+
+function animateIntro1MainContent() {
+  const children = document.querySelectorAll(INTRO1_MAIN_CHILDREN_TARGET);
+  if (!children.length) return;
+
+  if (!shouldAnimateIntro1MainContent()) {
+    revealIntro1MainContent();
+    return;
+  }
+
+  if (prefersReducedMotion()) {
+    revealIntro1MainContent();
+    hasPlayedIntro1MainAnimation = true;
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.remove("js-intro-anim");
+    }
+    return;
+  }
+
+  const gsapLib = typeof window !== "undefined" ? window.gsap : null;
+  if (!gsapLib) {
+    revealIntro1MainContent();
+    hasPlayedIntro1MainAnimation = true;
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.remove("js-intro-anim");
+    }
+    return;
+  }
+
+  gsapLib.killTweensOf(INTRO1_MAIN_CHILDREN_TARGET);
+
+  gsapLib.fromTo(
+    INTRO1_MAIN_CHILDREN_TARGET,
+    { autoAlpha: 0, y: 66 },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      stagger: 0.54,
+      delay: 0.32,
+      clearProps: "opacity,transform",
+      onComplete: () => {
+        if (typeof document !== "undefined") {
+          document.documentElement.classList.remove("js-intro-anim");
+        }
+      },
+    },
+  );
+
+  hasPlayedIntro1MainAnimation = true;
+}
+
 function initPage() {
+  const now = Date.now();
+  if (now - lastInitTimestamp < INIT_DEDUPE_WINDOW_MS) {
+    return;
+  }
+
+  lastInitTimestamp = now;
+
   try {
+    if (!isIntro1Page()) {
+      hasPlayedIntro1MainAnimation = false;
+      if (typeof document !== "undefined") {
+        document.documentElement.classList.remove("js-intro-anim");
+      }
+    } else if (
+      !hasPlayedIntro1MainAnimation &&
+      typeof document !== "undefined"
+    ) {
+      document.documentElement.classList.add("js-intro-anim");
+    } else if (isIntro1Page() && hasPlayedIntro1MainAnimation) {
+      if (typeof document !== "undefined") {
+        document.documentElement.classList.remove("js-intro-anim");
+      }
+      revealIntro1MainContent();
+      return;
+    }
+
     hideIntroContent();
+    if (shouldAnimateIntro1MainContent()) {
+      hideIntro1MainContent();
+    } else {
+      revealIntro1MainContent();
+    }
     initializeLenis();
     initializeAnimations();
+    animateIntro1MainContent();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("Intro animation init failed:", error);
     revealIntroContent();
+    revealIntro1MainContent();
   }
 }
 
 function handleThemeTransitionStart() {
+  if (isIntro1Page() && hasPlayedIntro1MainAnimation) {
+    return;
+  }
+
   hideIntroContent();
+  if (shouldAnimateIntro1MainContent()) {
+    hideIntro1MainContent();
+  }
 }
 
 function handleThemeTransitioned() {
+  if (isIntro1Page() && hasPlayedIntro1MainAnimation) {
+    return;
+  }
+
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       setTimeout(() => {
