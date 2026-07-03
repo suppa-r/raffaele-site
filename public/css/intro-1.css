@@ -97,6 +97,7 @@ main {
   flex-direction: column;
   justify-content: center;
   gap: var(--space-3xs-2xs);
+  z-index: 1000;
 }
 
 .open-menu[aria-expanded="true"] span {
