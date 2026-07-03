@@ -2,6 +2,7 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     color: var(--text-color);
+    font-size: var(--fs-0);
 }
 
 header {
@@ -30,7 +31,7 @@ main> :not(.site-title) {
 }
 
 .site-title {
-    font-size: var(--step-1);
+    font-size: var(--fs-100);
     margin-block: 0;
 }
 
@@ -44,18 +45,16 @@ main> :not(.site-title) {
     --main-text-letter-spacing-end: var(--space-4xs-3xs);
     --main-text-word-spacing-end: var(--space-4xs-3xs);
     --main-enter-offset: -6vw;
-    /* gap: var(--main-text-gap); */
     letter-spacing: var(--main-text-letter-spacing-end);
-    /* word-spacing: var(--main-text-word-spacing-end); */
     text-align: center;
-    font-size: var(--step-3);
+    font-size: var(--fs-400);
     font-style: italic;
     margin-block: 0;
 }
 
 .subtext-with-animation {
     font-family: var(--primary-font);
-    font-size: var(--step-2);
+    font-size: var(--fs-300);
     letter-spacing: var(--main-text-letter-spacing-end);
     margin-block: 0;
 }
@@ -73,7 +72,7 @@ main> :not(.site-title) {
 .subtext-with-animation-1 {
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
-    font-size: var(--step-6);
+    font-size: var(--fs-600);
     font-style: italic;
     margin-block: 0;
     opacity: 0;
