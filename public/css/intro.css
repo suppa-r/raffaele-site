@@ -416,7 +416,7 @@ main p:not(.wrapper-gradient-text) {
     font-size: var(--fs-300);
     font-style: italic;
     gap: var(--space-s-m);
-    letter-spacing: var(--space-xs-s);
+    letter-spacing: var(--space-2xs-xs);
     padding-block-end: var(--space-xs-s);
     overflow: hidden;
 }

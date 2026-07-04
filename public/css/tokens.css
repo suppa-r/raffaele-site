@@ -65,7 +65,7 @@ SPACING - Custom properties ` - vw fallback (older browsers)
 ========================================================== */
   --primary-font: "poiret_oneregular", sans-serif;
   --primary-font-secondary: "cormorant_uprightmedium", sans-serif;
-  --letter-spacing: 0.06em;
+  --letter-spacing: 0.04em;
   --word-spacing: normal;
   --font-weight: normal;
   --font-style: normal;
