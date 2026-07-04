@@ -398,26 +398,8 @@ function attachNavEventHandlers() {
   document.addEventListener("keydown", handleDocumentKeydown);
 }
 
-function getCurrentPage() {
-  return document.body?.dataset.page || "default";
-}
-
-function initDefaultNav() {
+function initIntroNav() {
   attachNavEventHandlers();
-}
-
-function initIntro1ProfileNav() {
-  // Placeholder for intro-1 profile navigation behavior.
-  attachNavEventHandlers();
-}
-
-function initNavPage() {
-  const navInitializers = {
-    "intro-1": initIntro1ProfileNav,
-  };
-
-  const currentPage = getCurrentPage();
-  (navInitializers[currentPage] || initDefaultNav)();
 }
 
 function notifyThemeTransitioned() {
@@ -503,7 +485,7 @@ function setTheme(theme) {
 document.addEventListener("page:transitioned", () => {
   hideTextAnimations();
   updateThemeButtonState(getStoredTheme() || "auto");
-  initNavPage();
+  initIntroNav();
   replayTextAnimationsAfterTransitions();
 });
 
@@ -520,6 +502,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.documentElement.setAttribute("data-theme", resolvedTheme);
   updateThemeButtonState(theme);
   updateFavicon(resolvedTheme);
-  initNavPage();
+  initIntroNav();
   replayTextAnimationsAfterTransitions();
 });
