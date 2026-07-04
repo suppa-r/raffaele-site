@@ -166,13 +166,62 @@ function hideIntroContent() {
   });
 }
 
-function revealIntro1MainContent() {
+function revealIntro1MainContent(animate = false) {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
   if (gsapLib) {
-    gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, {
-      clearProps: "opacity,transform",
+    if (!animate) {
+      gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, {
+        clearProps: "opacity,transform",
+      });
+      gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, { autoAlpha: 1, y: 0 });
+      return;
+    }
+
+    const introChildren = Array.from(
+      document.querySelectorAll(INTRO1_MAIN_CHILDREN_TARGET),
+    );
+    const [introImage, introMenuButton, ...introMenuRest] = introChildren;
+    const timeline = gsapLib.timeline({
+      defaults: {
+        duration: 0.7,
+        ease: "power3.out",
+      },
+      onComplete: () => {
+        if (typeof document !== "undefined") {
+          document.documentElement.classList.remove("js-intro-anim");
+        }
+      },
     });
-    gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, { autoAlpha: 1, y: 0 });
+
+    if (introImage) {
+      gsapLib.killTweensOf(introImage);
+      timeline.fromTo(
+        introImage,
+        { autoAlpha: 0, y: 120 },
+        { autoAlpha: 1, y: 0 },
+        0,
+      );
+    }
+
+    if (introMenuButton) {
+      gsapLib.killTweensOf(introMenuButton);
+      timeline.fromTo(
+        introMenuButton,
+        { autoAlpha: 0, y: 150 },
+        { autoAlpha: 1, y: 0 },
+        0.34,
+      );
+    }
+
+    introMenuRest.forEach((el, index) => {
+      gsapLib.killTweensOf(el);
+      timeline.fromTo(
+        el,
+        { autoAlpha: 0, y: 150 },
+        { autoAlpha: 1, y: 0 },
+        0.52 + index * 0.18,
+      );
+    });
     return;
   }
 
@@ -190,12 +239,12 @@ function hideIntro1MainContent() {
   if (!gsapLib) {
     children.forEach((el) => {
       el.style.opacity = "0";
-      el.style.transform = "translateY(66px)";
+      el.style.transform = "translateY(140px)";
     });
     return;
   }
 
-  gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, { autoAlpha: 0, y: 66 });
+  gsapLib.set(INTRO1_MAIN_CHILDREN_TARGET, { autoAlpha: 0, y: 140 });
 }
 
 function shouldAnimateIntro1MainContent() {
@@ -235,24 +284,8 @@ function animateIntro1MainContent() {
 
   gsapLib.killTweensOf(INTRO1_MAIN_CHILDREN_TARGET);
 
-  gsapLib.fromTo(
-    INTRO1_MAIN_CHILDREN_TARGET,
-    { autoAlpha: 0, y: 66 },
-    {
-      autoAlpha: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power3.out",
-      stagger: 0.54,
-      delay: 0.32,
-      clearProps: "opacity,transform",
-      onComplete: () => {
-        if (typeof document !== "undefined") {
-          document.documentElement.classList.remove("js-intro-anim");
-        }
-      },
-    },
-  );
+  hideIntro1MainContent();
+  revealIntro1MainContent(true);
 
   hasPlayedIntro1MainAnimation = true;
 }

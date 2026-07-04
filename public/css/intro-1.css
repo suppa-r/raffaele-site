@@ -75,7 +75,7 @@ main {
 
 .js-intro-anim body[data-page="intro-1"] main>* {
   opacity: 0;
-  transform: translateY(66px);
+  transform: translateY(140px);
 }
 
 .profile-header-img {
