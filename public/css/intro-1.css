@@ -89,15 +89,14 @@ main {
 }
 
 .open-menu {
-  margin-inline: auto;
-  position: relative;
-  margin-block-start: var(--space-s-m);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--space-3xs-2xs);
-  z-index: 1000;
+  margin-inline: auto;
+  padding: var(--space-5xs-4xs);
+  margin-block-start: var(--space-s-m);
 }
 
 .open-menu[aria-expanded="true"] span {
@@ -236,11 +235,6 @@ main {
   100% {
     transform: translateY(0)
   }
-}
-
-html::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
 }
 
 .nav-menu {
