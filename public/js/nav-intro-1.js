@@ -13,6 +13,8 @@ const HERO_REVEAL_STAGGER = 0.16;
 const HERO_REVEAL_DELAY = 0.06;
 const HERO_SUBTEXT_DELAY = 0.18;
 const HERO_PUNCTUATION_DELAY = 0.28;
+const INTRO1_DEBUG_QUERY = "debugIntro1";
+const INTRO1_DEBUG_STORAGE_KEY = "debugIntro1";
 const HERO_ANIMATION_TARGETS = [
   ".text-with-animation span",
   ".subtext-with-animation span",
@@ -22,6 +24,47 @@ const HERO_ANIMATION_TARGETS = [
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
 let replayTextAnimationsTimeoutId = null;
+
+function isIntro1DebugEnabled() {
+  const queryFlag = new URLSearchParams(window.location.search).get(
+    INTRO1_DEBUG_QUERY,
+  );
+
+  if (queryFlag === "1") {
+    try {
+      localStorage.setItem(INTRO1_DEBUG_STORAGE_KEY, "1");
+    } catch {
+      // ignore storage errors
+    }
+    return true;
+  }
+
+  if (queryFlag === "0") {
+    try {
+      localStorage.removeItem(INTRO1_DEBUG_STORAGE_KEY);
+    } catch {
+      // ignore storage errors
+    }
+    return false;
+  }
+
+  try {
+    return localStorage.getItem(INTRO1_DEBUG_STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function intro1DebugLog(message, details) {
+  if (!isIntro1DebugEnabled()) return;
+
+  if (details === undefined) {
+    console.info(`[intro1-debug] ${message}`);
+    return;
+  }
+
+  console.info(`[intro1-debug] ${message}`, details);
+}
 
 function isReducedMotionPreferred() {
   return window.matchMedia(REDUCED_MOTION_QUERY).matches;
@@ -271,7 +314,14 @@ function animateHamburgerButton(opening) {
 
 function openOverlayNavigation() {
   const { openMenu, navMenu, navLinks } = getIntro1MenuElements();
-  if (!openMenu || !navMenu || !navLinks) return;
+  if (!openMenu || !navMenu || !navLinks) {
+    intro1DebugLog("open skipped: required elements missing", {
+      openMenu: !!openMenu,
+      navMenu: !!navMenu,
+      navLinks: !!navLinks,
+    });
+    return;
+  }
 
   openMenu.classList.add("open");
   openMenu.setAttribute("aria-label", "Close navigation menu");
@@ -279,6 +329,10 @@ function openOverlayNavigation() {
 
   navMenu.classList.add("open");
   navLinks.classList.add("open");
+  intro1DebugLog("menu opened", {
+    ariaExpanded: openMenu.getAttribute("aria-expanded"),
+    navLinksOpen: navLinks.classList.contains("open"),
+  });
 
   animateHamburgerButton(true);
 }
@@ -293,6 +347,10 @@ function closeOverlayNavigation() {
 
   navMenu.classList.remove("open");
   navLinks.classList.remove("open");
+  intro1DebugLog("menu closed", {
+    ariaExpanded: openMenu.getAttribute("aria-expanded"),
+    navLinksOpen: navLinks.classList.contains("open"),
+  });
 
   animateHamburgerButton(false);
 }
@@ -300,6 +358,10 @@ function closeOverlayNavigation() {
 let navEventsAttached = false;
 
 function handleOverlayToggle() {
+  intro1DebugLog("toggle requested", {
+    currentlyOpen: isOverlayOpen(),
+  });
+
   if (isOverlayOpen()) {
     closeOverlayNavigation();
   } else {
@@ -318,6 +380,10 @@ function handleDocumentClick(event) {
   const openOverlayButton = event.target.closest(".open-menu");
   if (openOverlayButton) {
     event.preventDefault();
+    intro1DebugLog("open-menu click", {
+      tag: event.target.tagName,
+      className: event.target.className,
+    });
     handleOverlayToggle();
     return;
   }
@@ -342,6 +408,7 @@ function handleDocumentKeydown(event) {
     (event.key === "Enter" || event.key === " ")
   ) {
     event.preventDefault();
+    intro1DebugLog("open-menu keyboard toggle", { key: event.key });
     handleOverlayToggle();
     return;
   }
@@ -373,6 +440,10 @@ function initIntroNav() {
 
   closeOverlayNavigation();
   attachNavEventHandlers();
+  intro1DebugLog("intro-1 nav initialized", {
+    hasOpenMenu: !!openMenu,
+    hasNavMenu: !!navMenu,
+  });
 }
 
 function notifyThemeTransitioned() {
