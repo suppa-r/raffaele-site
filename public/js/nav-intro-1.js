@@ -14,9 +14,9 @@ function getIntro1MenuElements() {
 function animateOpenMenuBars(openMenu, opening) {
   if (!openMenu) return;
 
-  const topBar = openMenu.querySelector(".bar-top");
-  const middleBar = openMenu.querySelector(".bar-middle");
-  const bottomBar = openMenu.querySelector(".bar-bottom");
+  const topBar = document.querySelector(".bar-top");
+  const middleBar = document.querySelector(".bar-middle");
+  const bottomBar = document.querySelector(".bar-bottom");
   if (!topBar || !middleBar || !bottomBar) return;
 
   const toggle = (element, removeClass, addClass) => {
