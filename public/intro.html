@@ -74,11 +74,17 @@
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="raffaele.site" />
   <link rel="manifest" href="favicons/site.webmanifest" />
-  <script src="js/nav.js" defer></script>
+  <!--<script src="js/nav.js" defer></script> -->
   <script src="js/main.js" defer></script>
+  <!-- Third-party libraries (defer keeps parsing unblocked; order is preserved) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <!-- Page scripts -->
+  <script src="js/introgasp.js" defer></script>
 </head>
 
-<body>
+<body data-page="intro">
   <div class="wrapper">
     <div class="support view-transition" role="alert" aria-live="polite">
       Your browser doesn't support View Transitions
@@ -90,11 +96,14 @@
       <p class="header-title">
         sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
       </p>
-      <div class="open-overlay" aria-label="Open navigation menu" role="button" tabindex="0">
-        <span class="bar-top" aria-hidden="true"></span>
-        <span class="bar-middle" aria-hidden="true"></span>
-        <span class="bar-bottom" aria-hidden="true"></span>
-      </div>
+      <a href="intro-1.html" class="open-bio" aria-label="Open Bio Page">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="currentColor"
+            d="m11.898 17.017l8.24-8.24q.135-.135.135-.327t-.134-.327l-.647-.646q-.134-.135-.326-.135q-.193 0-.327.135l-8.241 8.24zm-9.013-1.723q0 .898.615 1.414q.616.515 1.92.698q.207.03.339.19q.132.158.126.366q-.006.213-.156.354t-.338.109q-1.718-.212-2.612-.999t-.894-2.132q0-1.413 1.212-2.291q1.213-.878 3.376-1.078q1.206-.113 1.809-.476q.603-.362.603-.999q0-.761-.612-1.199T6.269 8.6q-.207-.03-.358-.183q-.151-.152-.12-.36q.03-.213.205-.35t.402-.088q1.748.281 2.618.988q.869.706.869 1.843q0 1.056-.867 1.7t-2.472.775q-1.83.163-2.746.751t-.915 1.618m9.007 3.15l-2.72-2.721l9.126-9.108q.385-.384.88-.375t.88.375l.942.943q.385.384.385.889t-.385.89zM9.187 19q-.252.062-.443-.129q-.19-.19-.128-.442l.555-2.706l2.721 2.721z" />
+        </svg>
+
+        <span>Bio</span></a>
+
     </header>
     <main aria-label="Introduction text">
       <div class="text-with-animation" aria-hidden="true">
@@ -112,14 +121,13 @@
       <p class="p-large">wait a second; who was that?</p>
       <p>it's one prayer, one Blessing</p>
       <p>one Miracle at a time.</p>
-
       <p class="wrapper-gradient-text" aria-label="merci beaucoup">
         <span class="text-layer" aria-hidden="true">m</span>
         <span class="text-layer" aria-hidden="true">e</span>
         <span class="text-layer" aria-hidden="true">r</span>
         <span class="text-layer" aria-hidden="true">c</span>
         <span class="text-layer" aria-hidden="true">i</span>
-        <span class="text-layer" aria-hidden="true">&nbsp;</span>
+        <span class="text-layer" aria-hidden="true">&nbsp;&nbsp;</span>
         <span class="text-layer" aria-hidden="true">b</span>
         <span class="text-layer" aria-hidden="true">e</span>
         <span class="text-layer" aria-hidden="true">a</span>

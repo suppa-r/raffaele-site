@@ -74,11 +74,15 @@
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="raffaele.site" />
   <link rel="manifest" href="favicons/site.webmanifest" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/introgasp.js" defer></script>
 </head>
 
-<body>
+<body data-page="index">
   <div class="wrapper">
     <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
     <div class="support view-transition" role="alert" aria-live="assertive">
@@ -101,10 +105,10 @@
         This site contains 1 (One);
       </h1>
       <div class="text-with-animation">
-        <span>raffaele</span><span>suppa</span>
+        <span>raffaele</span>&nbsp;<span>suppa</span>
       </div>
       <div class="subtext-with-animation">
-        <span>imagine</span> <span>that</span>
+        <span>imagine</span>&nbsp;<span>that</span>
       </div>
       <div class="subtext-with-animation-1">
         !

@@ -1,0 +1,166 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+
+.open-menu {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3xs-2xs);
+  margin-inline: auto;
+  padding: var(--space-5xs-4xs);
+  margin-block-start: var(--space-s-m);
+}
+
+.open-menu[aria-expanded="true"] span {
+  display: block;
+  background-color: var(--text-color)
+}
+
+.open-menu:focus-visible {
+  outline: 1px solid var(--text-color);
+  outline-offset: 2px
+}
+
+.open-menu span {
+  display: block;
+  width: var(--space-m-l);
+  height: 1px;
+  background-color: var(--text-color);
+  cursor: pointer
+}
+
+.animate-top-bar {
+  animation: animate-top-bar 0.5s ease-in-out 1 both
+}
+
+.animate-bottom-bar {
+  animation: animate-bottom-bar 0.5s ease-in-out 1 both
+}
+
+.animate-middle-bar {
+  animation: animate-middle-bar 0.3s ease-in-out 1 both
+}
+
+.animate-out-top-bar {
+  animation: animate-top-bar 0.5s ease-in-out 1 both reverse
+}
+
+.animate-out-bottom-bar {
+  animation: animate-bottom-bar 0.5s ease-in-out 1 both reverse
+}
+
+.animate-out-middle-bar {
+  animation: animate-middle-bar 0.3s ease-in-out 1 both reverse
+}
+
+@media (hover:none) and (pointer:coarse) {
+
+  .open-menu {
+    -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
+    touch-action: manipulation;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .open-menu:active {
+    transform: scale(0.98);
+    opacity: 1;
+  }
+
+  .animate-top-bar,
+  .animate-bottom-bar,
+  .animate-out-top-bar,
+  .animate-out-bottom-bar {
+    animation-duration: 0.58s;
+  }
+
+  .animate-middle-bar,
+  .animate-out-middle-bar {
+    animation-duration: 0.4s;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+
+    .open-menu {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+    }
+
+    .open-menu:active {
+      transform: scale(0.99);
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes animate-top-bar {
+
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(9px)
+  }
+
+  80% {
+    transform: translateY(6px)
+  }
+
+  100% {
+    transform: translateY(0)
+  }
+}
+
+@keyframes animate-bottom-bar {
+
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-9px)
+  }
+
+  80% {
+    transform: translateY(-6px)
+  }
+
+  100% {
+    transform: translateY(0)
+  }
+}
+
+@keyframes animate-middle-bar {
+
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-9px)
+  }
+
+  80% {
+    transform: translateY(-6px)
+  }
+
+  100% {
+    transform: translateY(0)
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: var(--space-4xs-3xs) var(--space-4xs-3xs);
+  isolation: isolate;
+  position: relative;
+  z-index: 100;
+  margin-block-end: var(--space-2xs-xs);
+}

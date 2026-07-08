@@ -35,9 +35,11 @@
 .theme-switcher {
   position: relative;
   display: flex;
-  background-color: transparent;
+  justify-content: center;
+  align-items: center;
   border: none;
-  gap: var(--space-s-m);
+  gap: var(--space-5xs-4xs);
+  z-index: 100;
 }
 
 .theme-switcher legend {
@@ -53,19 +55,21 @@
 
 .theme-switcher button {
   border-radius: 50%;
-  background-color: transparent;
+  background-color: var(--theme-switcher-background-color);
   color: var(--text-color);
   border: none;
   cursor: pointer;
   display: grid;
   place-items: center;
-  inline-size: var(--space-l);
-  block-size: var(--space-l);
-  min-inline-size: var(--space-l);
-  min-block-size: var(--space-l);
-  padding: 0;
+  box-sizing: border-box;
+  inline-size: var(--theme-switcher-button-size);
+  block-size: var(--theme-switcher-button-size);
+  min-inline-size: var(--theme-switcher-button-size);
+  min-block-size: var(--theme-switcher-button-size);
+  padding: var(--space-5xs);
   transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   margin-block: 0;
+  z-index: 100;
 }
 
 .theme-switcher button:focus-visible {
@@ -76,33 +80,31 @@
 }
 
 .theme-switcher button svg {
-  width: var(--space-l);
-  height: var(--space-l);
-  stroke-width: 0.15;
+  width: var(--theme-switcher-icon-size);
+  height: var(--theme-switcher-icon-size);
+  stroke-width: 0.01;
   stroke: var(--text-color);
   fill: currentcolor;
   transform-origin: center;
   position: relative;
-  z-index: 1;
+  z-index: 100;
 }
 
 .theme-switcher button[aria-pressed="true"] {
   display: none;
 }
 
-.theme-switcher button[data-theme-toggle="auto"]:not([aria-pressed="true"]) {
-  display: block;
-}
-
 .theme-switcher button:hover {
   color: var(--base-color);
   background-color: var(--text-color);
   box-shadow: 0 5px 8px var(--text-color, rgba(0 0 0 0.20%));
+  z-index: 100;
 }
 
 .theme-switcher button:hover svg {
   will-change: transform;
-  animation: spin-and-scale 0.9s ease-in-out;
+  animation: spin-and-scale 0.8s ease-in-out;
+  z-index: 100;
 }
 
 @keyframes spin-and-scale {
@@ -145,12 +147,12 @@
 
   .theme-switcher {
     border: 2px solid var(--text-color);
-    background-color: var(--base-color);
+    background-color: var(--theme-switcher-background-color);
   }
 
   .theme-switcher button {
     border: 2px solid var(--text-color);
-    background-color: var(--base-color);
+    background-color: var(--theme-switcher-background-color);
   }
 
   .theme-switcher button:hover {
@@ -174,15 +176,13 @@
     user-select: none;
     touch-action: manipulation;
     cursor: pointer;
-    /* min-width:44px;
-      min-height:44px; */
     will-change: transform;
     transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1), color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 
   }
 
   .theme-switcher button:active {
-    transform: scale(.95);
+    transform: scale(.90);
     background-color: var(--text-color);
     color: var(--base-color);
     box-shadow: 0 2px 6px rgba(0 0 0 / 18%);
@@ -203,5 +203,4 @@
     animation: none !important;
     transform: scale(1);
   }
-
 }

@@ -7,30 +7,19 @@ const THEME_FAVICONS = {
   light: "/favicons/favicon-96x96.png",
   auto: "/favicons/favicon-96x96.png",
 };
-const HERO_ANIMATION_TARGETS = [
-  ".text-with-animation span",
-  ".subtext-with-animation span",
-  ".subtext-with-animation-1",
-];
 const HERO_TEXT_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 const HERO_REVEAL_DURATION = 0.9;
 const HERO_REVEAL_STAGGER = 0.16;
 const HERO_REVEAL_DELAY = 0.06;
 const HERO_SUBTEXT_DELAY = 0.18;
 const HERO_PUNCTUATION_DELAY = 0.28;
+const theme = getStoredTheme() || "auto";
 
-const handleOverlayToggle = () => {
-  const overlay = document.querySelector(".overlay-navigation");
-  if (!overlay) return;
-
-  const isOpen = overlay.classList.contains("overlay-active");
-  overlay.classList.toggle("overlay-active", !isOpen);
-  animateHamburgerButton(!isOpen);
-};
-
-function navEventsAttached() {
-  return document.body.hasAttribute("data-nav-events-attached");
-}
+const HERO_ANIMATION_TARGETS = [
+  ".text-with-animation span",
+  ".subtext-with-animation span",
+  ".subtext-with-animation-1",
+];
 
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
@@ -64,10 +53,6 @@ function resolveTheme(theme) {
       ? "dark"
       : "light"
     : theme;
-}
-
-function isThemeValid(theme) {
-  return VALID_THEMES.includes(theme);
 }
 
 function isThemeAlreadyApplied(theme, resolvedTheme) {
@@ -247,71 +232,6 @@ function applyThemeState(resolvedTheme, theme) {
   updateThemeButtonState(theme);
 }
 
-function isOverlayOpen() {
-  return document
-    .querySelector(".overlay-navigation")
-    ?.classList.contains("overlay-active");
-}
-
-function animateHamburgerButton(opening) {
-  const topBar = document.querySelector(".bar-top");
-  const middleBar = document.querySelector(".bar-middle");
-  const bottomBar = document.querySelector(".bar-bottom");
-  if (!topBar || !middleBar || !bottomBar) return;
-
-  const toggle = (element, removeClass, addClass) => {
-    element.classList.remove(removeClass);
-    element.classList.remove(addClass);
-    void element.offsetWidth;
-    element.classList.add(addClass);
-  };
-
-  if (opening) {
-    toggle(topBar, "animate-out-top-bar", "animate-top-bar");
-    toggle(middleBar, "animate-out-middle-bar", "animate-middle-bar");
-    toggle(bottomBar, "animate-out-bottom-bar", "animate-bottom-bar");
-  } else {
-    toggle(topBar, "animate-top-bar", "animate-out-top-bar");
-    toggle(middleBar, "animate-middle-bar", "animate-out-middle-bar");
-    toggle(bottomBar, "animate-middle-bar", "animate-out-bottom-bar");
-  }
-}
-
-function handleDocumentClick(event) {
-  const themeToggleButton = event.target.closest("[data-theme-toggle]");
-  if (themeToggleButton) {
-    event.preventDefault();
-    setTheme(themeToggleButton.dataset.themeToggle);
-    return;
-  }
-
-  const openOverlayButton = event.target.closest(".open-overlay");
-  if (openOverlayButton) {
-    event.preventDefault();
-    handleOverlayToggle();
-  }
-}
-
-function handleDocumentKeydown(event) {
-  if (!event.target.closest(".open-overlay")) return;
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    handleOverlayToggle();
-  }
-}
-
-function attachNavEventHandlers() {
-  if (navEventsAttached()) return;
-  document.body.setAttribute("data-nav-events-attached", "true");
-
-  document.addEventListener("click", handleDocumentClick);
-  document.addEventListener("keydown", handleDocumentKeydown);
-}
-
-function initIntroNav() {
-  attachNavEventHandlers();
-}
-
 function notifyThemeTransitioned() {
   document.dispatchEvent(new Event("theme:transitioned"));
 }
@@ -320,82 +240,68 @@ function notifyThemeTransitionStarted() {
   document.dispatchEvent(new Event("theme:transition:start"));
 }
 
-function setTheme(theme) {
-  if (!isThemeValid(theme)) return;
+const resolvedTheme = resolveTheme(theme);
 
-  const resolvedTheme = resolveTheme(theme);
-  const overlayWasOpen = isOverlayOpen();
+if (isThemeAlreadyApplied(theme, resolvedTheme)) {
+  updateThemeButtonState(theme);
+  updateFavicon(resolvedTheme);
+  clearThemePickerAnimation();
+}
 
-  if (isThemeAlreadyApplied(theme, resolvedTheme)) {
-    updateThemeButtonState(theme);
-    updateFavicon(resolvedTheme);
-    clearThemePickerAnimation();
-    return;
-  }
+animateThemePicker(theme);
+notifyThemeTransitionStarted();
 
-  animateThemePicker(theme);
-  notifyThemeTransitionStarted();
+hideTextAnimations();
 
-  if (overlayWasOpen) {
-    handleOverlayToggle();
-  }
-
-  hideTextAnimations();
-
-  if (isReducedMotionPreferred() || overlayWasOpen) {
-    applyThemeState(resolvedTheme, theme);
-    replayTextAnimationsAfterTransitions();
-    notifyThemeTransitioned();
-    return;
-  }
-
-  clearTimeout(themeTransitionTimeoutId);
-  document.documentElement.classList.add(THEME_TRANSITION_CLASS);
-
-  const endTransition = (delayMs) => {
-    clearTimeout(themeTransitionTimeoutId);
-    themeTransitionTimeoutId = setTimeout(() => {
-      document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-    }, delayMs);
-  };
-
-  if (document.startViewTransition) {
-    try {
-      const transition = document.startViewTransition(() => {
-        document.documentElement.setAttribute("data-theme", resolvedTheme);
-        saveTheme(theme);
-      });
-
-      transition.finished
-        .then(() => {
-          updateFavicon(resolvedTheme);
-          updateThemeButtonState(theme);
-          replayTextAnimationsAfterTransitions();
-          notifyThemeTransitioned();
-          endTransition(0);
-        })
-        .catch(() => {
-          document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-        });
-
-      return;
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error("View transition error:", error);
-      document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-    }
-  }
-
+if (isReducedMotionPreferred()) {
   applyThemeState(resolvedTheme, theme);
   replayTextAnimationsAfterTransitions();
   notifyThemeTransitioned();
-  endTransition(0);
 }
+
+clearTimeout(themeTransitionTimeoutId);
+document.documentElement.classList.add(THEME_TRANSITION_CLASS);
+
+const endTransition = (delayMs) => {
+  clearTimeout(themeTransitionTimeoutId);
+  themeTransitionTimeoutId = setTimeout(() => {
+    document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+  }, delayMs);
+};
+
+if (document.startViewTransition) {
+  try {
+    const transition = document.startViewTransition(() => {
+      document.documentElement.setAttribute("data-theme", resolvedTheme);
+      saveTheme(theme);
+    });
+
+    transition.finished
+      .then(() => {
+        updateFavicon(resolvedTheme);
+        updateThemeButtonState(theme);
+        replayTextAnimationsAfterTransitions();
+        notifyThemeTransitioned();
+        endTransition(0);
+      })
+      .catch(() => {
+        document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+      });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("View transition error:", error);
+    document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+  }
+}
+
+applyThemeState(resolvedTheme, theme);
+replayTextAnimationsAfterTransitions();
+notifyThemeTransitioned();
+endTransition(0);
 
 document.addEventListener("page:transitioned", () => {
   hideTextAnimations();
   updateThemeButtonState(getStoredTheme() || "auto");
-  initIntroNav();
   replayTextAnimationsAfterTransitions();
 });
 
@@ -412,6 +318,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document.documentElement.setAttribute("data-theme", resolvedTheme);
   updateThemeButtonState(theme);
   updateFavicon(resolvedTheme);
-  initIntroNav();
   replayTextAnimationsAfterTransitions();
 });

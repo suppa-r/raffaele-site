@@ -7,30 +7,43 @@ const THEME_FAVICONS = {
   light: "/favicons/favicon-96x96.png",
   auto: "/favicons/favicon-96x96.png",
 };
-const HERO_ANIMATION_TARGETS = [
-  ".text-with-animation span",
-  ".subtext-with-animation span",
-  ".subtext-with-animation-1",
+const OVERLAY_NAV_HTML = `<div class="overlay-navigation">
+<nav role="navigation">
+<ul>
+<li><a href="index.html" data-content="start over">home</a></li>
+<li><a href="index.orig.html" data-content="hmmmmmm">about me</a></li>
+<li><a href="#" data-content="things; though, never built!">revit</a></li>
+<li><a href="#" data-content="simple things">stuff</a></li>
+<li><a href="#" data-content="coffee's on me">call me</a></li>
+</ul>
+</nav>
+</div>`;
+const OVERLAY_OPEN_CLASSES = [
+  "slide-in-nav-item",
+  "slide-in-nav-item-delay-1",
+  "slide-in-nav-item-delay-2",
+  "slide-in-nav-item-delay-3",
+  "slide-in-nav-item-delay-4",
 ];
+const OVERLAY_CLOSE_CLASSES = [
+  "slide-in-nav-item-reverse",
+  "slide-in-nav-item-delay-1-reverse",
+  "slide-in-nav-item-delay-2-reverse",
+  "slide-in-nav-item-delay-3-reverse",
+  "slide-in-nav-item-delay-4-reverse",
+];
+const OVERLAY_CLOSE_DELAY_MS = 1200;
 const HERO_TEXT_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 const HERO_REVEAL_DURATION = 0.9;
 const HERO_REVEAL_STAGGER = 0.16;
 const HERO_REVEAL_DELAY = 0.06;
 const HERO_SUBTEXT_DELAY = 0.18;
 const HERO_PUNCTUATION_DELAY = 0.28;
-
-const handleOverlayToggle = () => {
-  const overlay = document.querySelector(".overlay-navigation");
-  if (!overlay) return;
-
-  const isOpen = overlay.classList.contains("overlay-active");
-  overlay.classList.toggle("overlay-active", !isOpen);
-  animateHamburgerButton(!isOpen);
-};
-
-function navEventsAttached() {
-  return document.body.hasAttribute("data-nav-events-attached");
-}
+const HERO_ANIMATION_TARGETS = [
+  ".text-with-animation span",
+  ".subtext-with-animation span",
+  ".subtext-with-animation-1",
+];
 
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
@@ -277,6 +290,83 @@ function animateHamburgerButton(opening) {
   }
 }
 
+function addOverlayOpenClasses(overlayNavigation) {
+  overlayNavigation.querySelectorAll("nav li").forEach((item, index) => {
+    if (index < OVERLAY_OPEN_CLASSES.length) {
+      item.classList.add(OVERLAY_OPEN_CLASSES[index]);
+    }
+  });
+}
+
+function addOverlayCloseClasses(overlayNavigation) {
+  const navItems = [...overlayNavigation.querySelectorAll("nav li")];
+  const lastIndex = Math.min(navItems.length, OVERLAY_CLOSE_CLASSES.length) - 1;
+
+  navItems.forEach((item, index) => {
+    if (index >= OVERLAY_CLOSE_CLASSES.length) return;
+    item.classList.remove(OVERLAY_OPEN_CLASSES[index]);
+    item.classList.add(OVERLAY_CLOSE_CLASSES[lastIndex - index]);
+  });
+}
+
+function openOverlayNavigation() {
+  if (isOverlayOpen()) return;
+
+  const overlayHost = document.querySelector(".wrapper") || document.body;
+  overlayHost.insertAdjacentHTML("afterbegin", OVERLAY_NAV_HTML);
+  const overlayNavigation = document.querySelector(".overlay-navigation");
+  if (!overlayNavigation) return;
+
+  overlayNavigation.classList.add("overlay-active");
+  overlayNavigation.getBoundingClientRect();
+  overlayNavigation.classList.add("overlay-slide-down");
+
+  const openOverlay = document.querySelector(".open-overlay");
+  if (openOverlay) {
+    openOverlay.setAttribute("aria-label", "Close navigation menu");
+    openOverlay.setAttribute("aria-expanded", "true");
+  }
+
+  animateHamburgerButton(true);
+  addOverlayOpenClasses(overlayNavigation);
+}
+
+function closeOverlayNavigation() {
+  const overlayNavigation = document.querySelector(".overlay-navigation");
+  if (!overlayNavigation) return;
+
+  const openOverlay = document.querySelector(".open-overlay");
+  if (openOverlay) {
+    openOverlay.setAttribute("aria-label", "Open navigation menu");
+    openOverlay.setAttribute("aria-expanded", "false");
+  }
+
+  animateHamburgerButton(false);
+  addOverlayCloseClasses(overlayNavigation);
+
+  setTimeout(() => {
+    overlayNavigation.classList.replace(
+      "overlay-slide-down",
+      "overlay-slide-up",
+    );
+    overlayNavigation.addEventListener(
+      "transitionend",
+      () => overlayNavigation.remove(),
+      { once: true },
+    );
+  }, OVERLAY_CLOSE_DELAY_MS);
+}
+
+let navEventsAttached = false;
+
+function handleOverlayToggle() {
+  if (isOverlayOpen()) {
+    closeOverlayNavigation();
+  } else {
+    openOverlayNavigation();
+  }
+}
+
 function handleDocumentClick(event) {
   const themeToggleButton = event.target.closest("[data-theme-toggle]");
   if (themeToggleButton) {
@@ -301,8 +391,8 @@ function handleDocumentKeydown(event) {
 }
 
 function attachNavEventHandlers() {
-  if (navEventsAttached()) return;
-  document.body.setAttribute("data-nav-events-attached", "true");
+  if (navEventsAttached) return;
+  navEventsAttached = true;
 
   document.addEventListener("click", handleDocumentClick);
   document.addEventListener("keydown", handleDocumentKeydown);
@@ -337,7 +427,7 @@ function setTheme(theme) {
   notifyThemeTransitionStarted();
 
   if (overlayWasOpen) {
-    handleOverlayToggle();
+    closeOverlayNavigation();
   }
 
   hideTextAnimations();
