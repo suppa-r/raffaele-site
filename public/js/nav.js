@@ -7,36 +7,61 @@ const THEME_FAVICONS = {
   light: "/favicons/favicon-96x96.png",
   auto: "/favicons/favicon-96x96.png",
 };
-const HERO_ANIMATION_TARGETS = [
-  ".text-with-animation span",
-  ".subtext-with-animation span",
-  ".subtext-with-animation-1",
+const OVERLAY_NAV_HTML = `<div class="overlay-navigation">
+<nav role="navigation">
+<ul>
+<li><a href="#" data-content=""></a></li>
+<li><a href="index.html" data-content="start over">home</a></li>
+<li><a href="#" data-content=""></a></li>
+<li><a href="intro-1.html" data-content="hmmmmm">about me</a></li>
+<li><a href="#" data-content=""></a></li>
+</ul>
+</nav>
+</div>`;
+const OVERLAY_OPEN_CLASSES = [
+  "slide-in-nav-item",
+  "slide-in-nav-item-delay-1",
+  "slide-in-nav-item-delay-2",
+  "slide-in-nav-item-delay-3",
+  "slide-in-nav-item-delay-4",
 ];
+const OVERLAY_CLOSE_CLASSES = [
+  "slide-in-nav-item-reverse",
+  "slide-in-nav-item-delay-1-reverse",
+  "slide-in-nav-item-delay-2-reverse",
+  "slide-in-nav-item-delay-3-reverse",
+  "slide-in-nav-item-delay-4-reverse",
+];
+const OVERLAY_CLOSE_DELAY_MS = 1200;
 const HERO_TEXT_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 const HERO_REVEAL_DURATION = 0.9;
 const HERO_REVEAL_STAGGER = 0.16;
 const HERO_REVEAL_DELAY = 0.06;
 const HERO_SUBTEXT_DELAY = 0.18;
 const HERO_PUNCTUATION_DELAY = 0.28;
-
-const handleOverlayToggle = () => {
-  const overlay = document.querySelector(".overlay-navigation");
-  if (!overlay) return;
-
-  const isOpen = overlay.classList.contains("overlay-active");
-  overlay.classList.toggle("overlay-active", !isOpen);
-  animateHamburgerButton(!isOpen);
-};
-
-function navEventsAttached() {
-  return document.body.hasAttribute("data-nav-events-attached");
-}
+const HERO_ANIMATION_TARGETS = [
+  ".text-with-animation span",
+  ".subtext-with-animation span",
+  ".subtext-with-animation-1",
+];
+const TEXT_SPAN_SELECTOR = ".text-with-animation span";
+const SUBTEXT_SPAN_SELECTOR = ".subtext-with-animation span";
+const PUNCTUATION_SELECTOR = ".subtext-with-animation-1";
+const THEME_SWITCHER_SELECTOR = ".theme-switcher";
+const OPEN_OVERLAY_SELECTOR = ".open-overlay";
 
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
 let replayTextAnimationsTimeoutId = null;
 
 function isReducedMotionPreferred() {
+  if (
+    typeof window === "undefined" ||
+    typeof window.matchMedia !== "function"
+  ) {
+    return false;
+  }
+
   return window.matchMedia(REDUCED_MOTION_QUERY).matches;
 }
 
@@ -100,17 +125,25 @@ function hasElements(selector) {
   return !!document.querySelector(selector);
 }
 
+function hasHeroTargets() {
+  return HERO_ANIMATION_TARGETS.some(hasElements);
+}
+
+function getExistingHeroTargets() {
+  return HERO_ANIMATION_TARGETS.filter(hasElements);
+}
+
 function replayTextAnimations() {
   const gsapLib = getGsap();
   if (!gsapLib) return;
 
-  const existingTargets = HERO_ANIMATION_TARGETS.filter(hasElements);
+  const existingTargets = getExistingHeroTargets();
   if (existingTargets.length === 0) return;
 
   gsapLib.killTweensOf(existingTargets.join(", "));
 
-  if (hasElements(".text-with-animation span")) {
-    gsapLib.to(".text-with-animation span", {
+  if (hasElements(TEXT_SPAN_SELECTOR)) {
+    gsapLib.to(TEXT_SPAN_SELECTOR, {
       x: 0,
       opacity: 1,
       duration: HERO_REVEAL_DURATION,
@@ -121,8 +154,8 @@ function replayTextAnimations() {
     });
   }
 
-  if (hasElements(".subtext-with-animation span")) {
-    gsapLib.to(".subtext-with-animation span", {
+  if (hasElements(SUBTEXT_SPAN_SELECTOR)) {
+    gsapLib.to(SUBTEXT_SPAN_SELECTOR, {
       x: 0,
       opacity: 1,
       duration: HERO_REVEAL_DURATION,
@@ -133,8 +166,8 @@ function replayTextAnimations() {
     });
   }
 
-  if (hasElements(".subtext-with-animation-1")) {
-    gsapLib.to(".subtext-with-animation-1", {
+  if (hasElements(PUNCTUATION_SELECTOR)) {
+    gsapLib.to(PUNCTUATION_SELECTOR, {
       y: 0,
       opacity: 1,
       duration: HERO_REVEAL_DURATION,
@@ -146,9 +179,7 @@ function replayTextAnimations() {
 }
 
 function hideTextAnimations() {
-  if (
-    !HERO_ANIMATION_TARGETS.some((selector) => document.querySelector(selector))
-  ) {
+  if (!hasHeroTargets()) {
     return;
   }
 
@@ -162,28 +193,26 @@ function hideTextAnimations() {
   const gsapLib = getGsap();
   if (!gsapLib) return;
 
-  const existingTargets = HERO_ANIMATION_TARGETS.filter(hasElements);
+  const existingTargets = getExistingHeroTargets();
   if (existingTargets.length === 0) return;
 
   gsapLib.killTweensOf(existingTargets.join(", "));
 
-  if (hasElements(".text-with-animation span")) {
-    gsapLib.set(".text-with-animation span", { x: "-7vw", opacity: 0 });
+  if (hasElements(TEXT_SPAN_SELECTOR)) {
+    gsapLib.set(TEXT_SPAN_SELECTOR, { x: "-7vw", opacity: 0 });
   }
 
-  if (hasElements(".subtext-with-animation span")) {
-    gsapLib.set(".subtext-with-animation span", { x: "-4vw", opacity: 0 });
+  if (hasElements(SUBTEXT_SPAN_SELECTOR)) {
+    gsapLib.set(SUBTEXT_SPAN_SELECTOR, { x: "-4vw", opacity: 0 });
   }
 
-  if (hasElements(".subtext-with-animation-1")) {
-    gsapLib.set(".subtext-with-animation-1", { y: "-8svh", opacity: 0 });
+  if (hasElements(PUNCTUATION_SELECTOR)) {
+    gsapLib.set(PUNCTUATION_SELECTOR, { y: "-8svh", opacity: 0 });
   }
 }
 
 function replayTextAnimationsAfterTransitions() {
-  if (
-    !HERO_ANIMATION_TARGETS.some((selector) => document.querySelector(selector))
-  ) {
+  if (!hasHeroTargets()) {
     return;
   }
 
@@ -201,7 +230,7 @@ function clearThemePickerAnimation() {
   clearTimeout(themePickerAnimationTimeoutId);
   themePickerAnimationTimeoutId = null;
 
-  const themeSwitcher = document.querySelector(".theme-switcher");
+  const themeSwitcher = document.querySelector(THEME_SWITCHER_SELECTOR);
   if (!themeSwitcher) return;
 
   themeSwitcher.classList.remove("is-animating");
@@ -216,7 +245,7 @@ function animateThemePicker(nextTheme) {
     return;
   }
 
-  const themeSwitcher = document.querySelector(".theme-switcher");
+  const themeSwitcher = document.querySelector(THEME_SWITCHER_SELECTOR);
   if (!themeSwitcher) return;
 
   const currentButton = themeSwitcher.querySelector(
@@ -273,8 +302,90 @@ function animateHamburgerButton(opening) {
   } else {
     toggle(topBar, "animate-top-bar", "animate-out-top-bar");
     toggle(middleBar, "animate-middle-bar", "animate-out-middle-bar");
-    toggle(bottomBar, "animate-middle-bar", "animate-out-bottom-bar");
+    toggle(bottomBar, "animate-bottom-bar", "animate-out-bottom-bar");
   }
+}
+
+function addOverlayOpenClasses(overlayNavigation) {
+  overlayNavigation.querySelectorAll("nav li").forEach((item, index) => {
+    if (index < OVERLAY_OPEN_CLASSES.length) {
+      item.classList.add(OVERLAY_OPEN_CLASSES[index]);
+    }
+  });
+}
+
+function addOverlayCloseClasses(overlayNavigation) {
+  const navItems = [...overlayNavigation.querySelectorAll("nav li")];
+  const lastIndex = Math.min(navItems.length, OVERLAY_CLOSE_CLASSES.length) - 1;
+
+  navItems.forEach((item, index) => {
+    if (index >= OVERLAY_CLOSE_CLASSES.length) return;
+    item.classList.remove(OVERLAY_OPEN_CLASSES[index]);
+    item.classList.add(OVERLAY_CLOSE_CLASSES[lastIndex - index]);
+  });
+}
+
+function openOverlayNavigation() {
+  if (isOverlayOpen()) return;
+
+  const overlayHost = document.querySelector(".wrapper") || document.body;
+  overlayHost.insertAdjacentHTML("afterbegin", OVERLAY_NAV_HTML);
+  const overlayNavigation = document.querySelector(".overlay-navigation");
+  if (!overlayNavigation) return;
+
+  overlayNavigation.classList.add("overlay-active");
+  overlayNavigation.getBoundingClientRect();
+  overlayNavigation.classList.add("overlay-slide-down");
+
+  const openOverlay = document.querySelector(OPEN_OVERLAY_SELECTOR);
+  if (openOverlay) {
+    openOverlay.setAttribute("aria-label", "Close navigation menu");
+    openOverlay.setAttribute("aria-expanded", "true");
+  }
+
+  animateHamburgerButton(true);
+  addOverlayOpenClasses(overlayNavigation);
+}
+
+function closeOverlayNavigation() {
+  const overlayNavigation = document.querySelector(".overlay-navigation");
+  if (!overlayNavigation) return;
+
+  const openOverlay = document.querySelector(OPEN_OVERLAY_SELECTOR);
+  if (openOverlay) {
+    openOverlay.setAttribute("aria-label", "Open navigation menu");
+    openOverlay.setAttribute("aria-expanded", "false");
+  }
+
+  animateHamburgerButton(false);
+  addOverlayCloseClasses(overlayNavigation);
+
+  setTimeout(() => {
+    overlayNavigation.classList.replace(
+      "overlay-slide-down",
+      "overlay-slide-up",
+    );
+    overlayNavigation.addEventListener(
+      "transitionend",
+      () => overlayNavigation.remove(),
+      { once: true },
+    );
+  }, OVERLAY_CLOSE_DELAY_MS);
+}
+
+let navEventsAttached = false;
+
+function handleOverlayToggle() {
+  if (isOverlayOpen()) {
+    closeOverlayNavigation();
+  } else {
+    openOverlayNavigation();
+  }
+}
+
+function isNavigationOverlayLink(openOverlayButton) {
+  const href = openOverlayButton.getAttribute("href");
+  return !!href && href.trim() !== "" && href !== "#";
 }
 
 function handleDocumentClick(event) {
@@ -285,24 +396,36 @@ function handleDocumentClick(event) {
     return;
   }
 
-  const openOverlayButton = event.target.closest(".open-overlay");
+  const openOverlayButton = event.target.closest(OPEN_OVERLAY_SELECTOR);
   if (openOverlayButton) {
+    if (isNavigationOverlayLink(openOverlayButton)) {
+      return;
+    }
     event.preventDefault();
     handleOverlayToggle();
   }
 }
 
 function handleDocumentKeydown(event) {
-  if (!event.target.closest(".open-overlay")) return;
+  const openOverlayButton = event.target.closest(OPEN_OVERLAY_SELECTOR);
+  if (!openOverlayButton) return;
+  if (isNavigationOverlayLink(openOverlayButton)) return;
+
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
     handleOverlayToggle();
   }
 }
 
+function finalizeThemeChange(resolvedTheme, theme) {
+  applyThemeState(resolvedTheme, theme);
+  replayTextAnimationsAfterTransitions();
+  notifyThemeTransitioned();
+}
+
 function attachNavEventHandlers() {
-  if (navEventsAttached()) return;
-  document.body.setAttribute("data-nav-events-attached", "true");
+  if (navEventsAttached) return;
+  navEventsAttached = true;
 
   document.addEventListener("click", handleDocumentClick);
   document.addEventListener("keydown", handleDocumentKeydown);
@@ -337,15 +460,13 @@ function setTheme(theme) {
   notifyThemeTransitionStarted();
 
   if (overlayWasOpen) {
-    handleOverlayToggle();
+    closeOverlayNavigation();
   }
 
   hideTextAnimations();
 
   if (isReducedMotionPreferred() || overlayWasOpen) {
-    applyThemeState(resolvedTheme, theme);
-    replayTextAnimationsAfterTransitions();
-    notifyThemeTransitioned();
+    finalizeThemeChange(resolvedTheme, theme);
     return;
   }
 
@@ -386,9 +507,7 @@ function setTheme(theme) {
     }
   }
 
-  applyThemeState(resolvedTheme, theme);
-  replayTextAnimationsAfterTransitions();
-  notifyThemeTransitioned();
+  finalizeThemeChange(resolvedTheme, theme);
   endTransition(0);
 }
 
