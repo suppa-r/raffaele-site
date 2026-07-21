@@ -40,8 +40,6 @@ window.addEventListener("scroll", () => {
     alterStyles(isBackToTopRendered);
   }
 });
-<<<<<<< HEAD
-=======
 
 const headerText = document.querySelector(".header__text");
 const sectionTargets = document.querySelectorAll("main > section[id]");
@@ -61,4 +59,3 @@ const updateHeaderTextVisibility = () => {
 
 window.addEventListener("hashchange", updateHeaderTextVisibility);
 updateHeaderTextVisibility();
->>>>>>> ab68ad7 (Add package.json for project dependencies and linting setup)
