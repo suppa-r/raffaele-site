@@ -59,3 +59,23 @@ const updateHeaderTextVisibility = () => {
 
 window.addEventListener("hashchange", updateHeaderTextVisibility);
 updateHeaderTextVisibility();
+
+const nav = document.querySelector(".nav");
+
+if (nav) {
+  nav.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) {
+      return;
+    }
+
+    const targetHash = link.getAttribute("href");
+    if (sectionHashes.has(targetHash)) {
+      headerText.hidden = true;
+      headerText.setAttribute("aria-hidden", "true");
+    }
+
+    // Keep behavior in sync once the URL hash update settles.
+    requestAnimationFrame(updateHeaderTextVisibility);
+  });
+}

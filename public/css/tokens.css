@@ -84,7 +84,7 @@ SPACING - Custom properties ` - vw fallback (older browsers)
         BASE- Mobile (320px - 479x)
       ============================================ */
   --content-max-width: min(520px, 92vw);
-  --padding-inline: var(--space-2xs-xs);
+
 }
 
 @supports (font-size: 1cqi) {

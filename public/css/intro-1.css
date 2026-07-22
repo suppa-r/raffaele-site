@@ -37,15 +37,16 @@ body {
 
 
 .header__text p {
-     margin: 1.5rem 0 3.5rem;
+
     font-family:var( --primary-font);
     font-size: var(--fs-100);
     }
 
 .header__text p span {
+
     font-family: var(--primary-font-secondary);
     color: var(--text-span);
-    padding-left: 0.4rem;
+    padding-right: 1rem;
     font-size: var(--fs-200);
     }
 
@@ -91,13 +92,33 @@ main > section[id]:target {
     .row {
         padding: 0 var(--gutter-medium);
     }
-}
+}*/
 
 @media(max-width: 600px) {
-    .row {
-        padding: 0 var(--gutter-small);
+
+.header__text p {
+    font-family:var( --primary-font);
+    font-size: var(--fs-0);
     }
-} */
+
+.header__text p span {
+    font-family: var(--primary-font-secondary);
+    color: var(--text-span);
+    padding-left: 0.4rem;
+    font-size: var(--fs-100);
+    }
+}
+
+/* --------------------------------------- */
+/* ----- Footer ----- */
+/* --------------------------------------- */
+
+footer {
+    display:flex;
+    justify-content: space-between;
+    font-size: var(--fs-0);
+    padding: var(--space-s) var(--space-xs);
+ }
 
 
 /* --------------------------------------- */
@@ -158,9 +179,9 @@ a:focus-visible {
 /* ----- Back to Top ----- */
 
 .back-to-top {
-    position: fixed;
+    /*position: fixed;
     bottom: 1rem;
-    right: 4rem;
+    right: 4rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +198,7 @@ a:focus-visible {
     height: 70%;
 }
 
-@media(max-width: 900px) {
+/* @media(max-width: 900px) {
     .back-to-top {
         right: 2rem;
     }
@@ -279,20 +300,5 @@ a:focus-visible {
 
     .header__text p {
         transform: scale(.8);
-    }
-}
-
-/* --------------------------------------- */
-/* ----- Footer ----- */
-/* --------------------------------------- */
-
-.footer {
-    text-align: center;
-    padding: var(--space-l) 0 var(--space-m);
-}
-
-@media(max-width: 500px) {
-    .footer {
-        padding: var(--space-s) 0;
     }
 }
