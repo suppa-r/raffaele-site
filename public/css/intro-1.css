@@ -20,6 +20,91 @@ body {
     min-height: 100svh;
     }
 
+header {
+  position: relative;
+  height: 4rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+
+header .bars {
+  position: relative;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background-color: #888888;
+  margin-right: 10px;
+  display: none;
+  z-index: 2000;
+}
+
+header .bars.is-active {
+  width: 35px;
+  transform-origin: right;
+  transform: translateY(15px) rotate(45deg);
+}
+
+header .bars::after,
+header .bars::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  left: 0;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+  cursor: pointer;
+}
+
+header .bars::after {
+  bottom: 7px;
+}
+
+header .bars::before {
+  top: 7px;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0.7vw;
+  margin: 0 0.7vw;
+}
+
+.nav-links li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888888;
+  text-decoration: none;
+}
+
+.nav-links li a span {
+  font-family: "Turret Road", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+.nav-links li svg {
+  height: 1.3rem;
+  width: 1.3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
 .header__row {
     margin-inline: auto;
@@ -49,6 +134,7 @@ body {
     padding-right: 1rem;
     font-size: var(--fs-200);
     }
+
 
 /* =======================================================
 vw fallback - modern browsers only
@@ -155,26 +241,6 @@ p {
 /* ----- Buttons and Links ----- */
 /* --------------------------------------- */
 
-a {
-    color: var(--text-color);
-    font-weight: 400;
-    font-family:var(--primary-font);
-    transition: all .2s;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-}
-
-::-moz-focus-inner {
-    border: 0;
-}
-
-a:focus:not(:focus-visible) {
-    outline: none;
-}
-
-a:focus-visible {
-    outline: 2px solid var(--text-span);
-}
 
 /* ----- Back to Top ----- */
 
@@ -214,69 +280,7 @@ a:focus-visible {
 /* ----- Navigation ----- */
 /* --------------------------------------- */
 
-.nav {
-    display: flex;
-    justify-content: center;
-    font-size: var(--fs-0);
-}
 
-.nav__items {
-    display: flex;
-    list-style: none;
-   }
-
-.nav__link {
-    position: relative;
-    display:flex;
-    padding:var(--space-s) var(--space-xs);
-    text-decoration: none;
-    color: inherit;
-    transition: all .2s;
-    gap: var(--space-5xs);
-}
-
-.nav__link:focus {
-    outline: none;
-}
-
-.nav__link:focus-visible {
-    outline: 2px solid var(--text-span);
-    outline-offset: 2px;
-}
-
-.nav__link svg {
-    display: inline-block;
-    height: 2rem;
-    width: 2rem;
-    fill: var(--text-color);
-}
-
-.nav__link span{
-    display: inline-block;
-    font-family: var(--primary-font-secondary);
-   }
-
-.nav__link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 100%;
-    display: inline-block;
-    height: 0.2rem;
-    background: var(--text-color);
-    transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.9);
-}
-
-.nav__link:hover {
-    color: var(--text-span);
-}
-
-.nav__link:hover::after {
-    right: 0;
-    height: 0.2rem;
-    background: var(--text-span);
-}
 
 /* --------------------------------------- */
 /* ----- Header ----- */
@@ -301,4 +305,43 @@ a:focus-visible {
     .header__text p {
         transform: scale(.8);
     }
+} */
+
+@media only screen and (max-width: 768px) {
+  header .logo {
+    margin-right: 50px;
+  }
+
+  header .bars {
+    display: block;
+    transition: 0.5s;
+  }
+
+  nav {
+    position: fixed;
+    z-index: 3;
+  }
+
+  .nav-links {
+    background: #111111;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    padding-top: 1rem;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+    transition: 0.5s;
+    opacity: 0;
+  }
+
+  .nav-links li {
+    margin: 1.5vw 0;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
