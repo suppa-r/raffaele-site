@@ -222,16 +222,6 @@ main {
     text-align: center;
 }
 
-
-
-
-/*main {
-   max-inline-size: var(--content-max-width);
- padding: 0;
-  margin: 0;
-  margin-inline: auto;
-}*/
-
 section {
   min-height: 100%;
   padding: 0;
