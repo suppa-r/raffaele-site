@@ -204,7 +204,7 @@ header .bars.is-active::after {
 .intro-1-page-title p span {
   font-family: var(--primary-font-secondary);
   color: var(--text-span);
-  padding-right: var(--space-2xs-xs);
+  padding-inline-start: var(--space-xs-s);
   font-size: var(--fs-200);
 }
 
@@ -212,7 +212,7 @@ header .bars.is-active::after {
 /* =======================================================
 vw fallback - modern browsers only
 Replaces vw-based fluid values with container-query units
-FONT SIZES - Custom properties ` - vw fallback (older browsers)
+FONT SIZES - custom properties vw fallback (older browsers)
 ========================================================== */
 main {
     display: flex;
@@ -246,7 +246,7 @@ main>section[id]:target {
 @keyframes section-reveal {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(24px);
   }
 
   to {
@@ -270,7 +270,7 @@ main>section[id]:target {
   font-size: var(--fs-100);
   color: var(--text-color);
   text-align: center;
-  margin-block-start: var(--space-l-xl);
+  margin-block-start: var(--space-xl-2xl);
 }
 
 /* --------------------------------------- */
@@ -278,13 +278,53 @@ main>section[id]:target {
 /* --------------------------------------- */
 
 .footer {
-   max-inline-size: var(--content-max-width);
-    padding-inline: var(--space-3xs-2xs);
+  max-inline-size: var(--content-max-width);
+  padding-inline: var(--space-3xs-2xs);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: var(--fs-0);
   padding: var(--space-xs) 0;
+}
+
+.footer__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.55rem, 1.6vw, 0.95rem);
+}
+
+.footer__actions .theme-switcher {
+  margin: 0;
+  gap: clamp(0.3rem, 1vw, 0.55rem);
+}
+
+.footer__actions .theme-switcher button {
+  box-shadow:
+    0 6px 14px var(--shadow-color-tertiary),
+    0 2px 5px var(--shadow-color-secondary);
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer__actions .theme-switcher button:hover {
+  transform: translateY(-0.5px) scale(1.015);
+  box-shadow:
+    0 8px 16px var(--shadow-color-tertiary),
+    0 3px 8px var(--shadow-color-secondary);
+}
+
+.footer__actions .theme-switcher button.is-tapped {
+  transform: translateY(-0.5px) scale(1.015);
+  box-shadow:
+    0 8px 16px var(--shadow-color-tertiary),
+    0 3px 8px var(--shadow-color-secondary);
+}
+
+.footer__actions .theme-switcher button.is-tapped svg {
+  animation: spin-and-scale 0.8s ease-in-out;
 }
 
 .footer__text {
@@ -311,7 +351,22 @@ main>section[id]:target {
   border-radius: 50%;
   z-index: 10;
   visibility: visible;
-  transition: all .4s;
+  box-shadow:
+    0 6px 14px var(--shadow-color-tertiary),
+    0 2px 5px var(--shadow-color-secondary);
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.back-to-top:hover {
+  transform: translateY(-0.5px) scale(1.02);
+  box-shadow:
+    0 8px 16px var(--shadow-color-tertiary),
+    0 3px 8px var(--shadow-color-secondary);
 }
 
 .intro-nav-open .back-to-top {
@@ -319,6 +374,12 @@ main>section[id]:target {
   opacity: 0 !important;
   pointer-events: none;
   transform: scale(0) !important;
+}
+
+.intro-nav-open .footer__actions .theme-switcher {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .back-to-top__image {
@@ -337,6 +398,21 @@ main>section[id]:target {
 
 @media only screen and (max-width: 768px) {
 
+  .footer {
+    align-items: center;
+    gap: var(--space-2xs-xs);
+  }
+
+  .footer__actions {
+    gap: var(--space-3xs-2xs);
+  }
+
+  .footer__actions .theme-switcher button {
+    box-shadow:
+      0 8px 16px var(--shadow-color-tertiary),
+      0 3px 8px var(--shadow-color-secondary);
+  }
+
   .back-to-top {
     visibility: visible !important;
     opacity: 1 !important;
@@ -347,8 +423,7 @@ main>section[id]:target {
   header .bars {
     display: block;
     position: fixed;
-    top: max(0.5rem, env(safe-area-inset-top));
-    right: max(0.5rem, env(safe-area-inset-right));
+   right: max(0.5rem, env(safe-area-inset-right));
     transition: 0.5s;
     z-index: 4000;
     pointer-events: all;
@@ -371,8 +446,6 @@ main>section[id]:target {
     justify-content: center;
     align-items: center;
     pointer-events: none;
-    /* Missing footer text restored */
-    /* Add your footer text here */
     transition: 0.5s;
     opacity: 0;
 
@@ -405,5 +478,35 @@ font-family: var(--primary-font-secondary);
   .footer__name {
     color: var(--text-span);
     font-size: var(--fs-01);
+  }
+}
+
+@media (hover:none) and (pointer:coarse) {
+  .footer__actions .theme-switcher button:active {
+    transform: translateY(-0.5px) scale(1.015);
+    box-shadow:
+      0 8px 16px var(--shadow-color-tertiary),
+      0 3px 8px var(--shadow-color-secondary);
+  }
+
+  .footer__actions .theme-switcher button:active svg {
+    animation: spin-and-scale 0.8s ease-in-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-switcher {
+    animation: none;
+  }
+
+  .theme-switcher button:hover,
+  .theme-switcher button.is-tapped,
+  .theme-switcher button:active,
+  .back-to-top:hover {
+    transform: none;
+  }
+
+  .theme-switcher button.is-tapped svg {
+    animation: none !important;
   }
 }

@@ -1,5 +1,5 @@
 const THEME_TRANSITION_CLASS = "theme-transitioning";
-const VALID_THEMES = ["dark", "light", "auto"];
+const VALID_THEMES = ["dark", "auto"];
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const THEME_FAVICONS = {
@@ -513,7 +513,7 @@ function setTheme(theme) {
 
 document.addEventListener("page:transitioned", () => {
   hideTextAnimations();
-  updateThemeButtonState(getStoredTheme() || "auto");
+  updateThemeButtonState(getStoredTheme() || "dark");
   initIntroNav();
   replayTextAnimationsAfterTransitions();
 });
@@ -521,7 +521,7 @@ document.addEventListener("page:transitioned", () => {
 document.addEventListener("DOMContentLoaded", () => {
   hideTextAnimations();
   const storedTheme = getStoredTheme();
-  const theme = storedTheme || "auto";
+  const theme = storedTheme || "dark";
 
   if (!storedTheme) {
     saveTheme(theme);
