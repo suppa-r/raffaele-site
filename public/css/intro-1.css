@@ -59,14 +59,18 @@ header .bars {
   border: 0;
   padding: 0;
   position: relative;
-  height: 1px;
-  width: 20px;
-  border-radius: 1px;
-  background-color: var(--text-color);
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 6px;
+  background: transparent;
   margin-right: 10px;
   display: none;
   cursor: pointer;
   z-index: 2000;
+  background-image: linear-gradient(var(--text-color), var(--text-color));
+  background-repeat: no-repeat;
+  background-size: 22px 1px;
+  background-position: center;
 }
 
 header .bars:focus-visible {
@@ -75,9 +79,7 @@ header .bars:focus-visible {
 }
 
 header .bars.is-active {
-  width: 35px;
-  transform-origin: right;
-  transform: translateY(15px) rotate(45deg);
+  background-size: 0 0;
 }
 
 header .bars::after,
@@ -85,19 +87,32 @@ header .bars::before {
   position: absolute;
   content: "";
   height: 1px;
-  left: 0;
-  width: 20px;
+  left: 50%;
+  width: 22px;
     border-radius: 1px;
   background: var(--text-color);
   cursor: pointer;
+  transform: translateX(-50%);
+  transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
 }
 
 header .bars::after {
-  bottom: 7px;
+  bottom: 14px;
 }
 
 header .bars::before {
-  top: 7px;
+  top: 14px;
+}
+
+header .bars.is-active::before {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+header .bars.is-active::after {
+  top: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* --------------------------------------- */
