@@ -228,7 +228,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
     color: var(--text-color);
-    text-align:left;
+    text-align: left;
     margin-block-start: 0;
     margin-block-end: 0;
 }

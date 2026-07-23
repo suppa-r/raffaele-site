@@ -220,15 +220,15 @@ main> :not(.site-title) {
 
 footer {
     display: grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
     margin-block-end: var(--space-2xs-xs);
-    padding-inline:var(--space-xs-s);
+    padding-inline: var(--space-xs-s);
 }
 
 .footer-text {
-   white-space: nowrap;
+    white-space: nowrap;
     margin: 0;
 }
 

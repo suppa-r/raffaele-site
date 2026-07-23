@@ -27,14 +27,14 @@ body {
 }
 
 [data-theme] body {
- isolation: isolate;
+    isolation: isolate;
 }
 
 .wrapper,
 header,
 main,
 footer {
- display: flow-root;
+    display: flow-root;
 }
 
 button {
@@ -150,7 +150,7 @@ body::before {
     }
 
     body::before {
-         max-inline-size:100%;
+        max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, black 80%);
     }
 }
@@ -161,14 +161,14 @@ body::before {
         --content-max-width: min(1040px, 94vw);
     }
 
-        .wrapper,
-        main,
-        footer {
+    .wrapper,
+    main,
+    footer {
         max-inline-size: var(--content-max-width);
     }
 
     body::before {
-         max-inline-size:100%;
+        max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, black 80%);
     }
 }
@@ -179,14 +179,14 @@ body::before {
         --content-max-width: min(1180px, 94vw)
     }
 
-     .wrapper,
+    .wrapper,
     main,
     footer {
         max-inline-size: var(--content-max-width);
     }
 
-body::before {
-     max-inline-size:100%;
+    body::before {
+        max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, black 80%);
     }
 }
@@ -208,7 +208,7 @@ body::before {
     }
 
     body::before {
-         max-inline-size:100%;
+        max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 58% 78% at center, transparent 60%, black 80%);
     }
 }

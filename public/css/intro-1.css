@@ -39,15 +39,15 @@ body {
 }
 
 .wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    color: var(--text-color);
-    font-size: var(--fs-0);
-    margin-inline: auto;
-    min-height: 100svh;
-    width: 100%;
-    max-inline-size: var(--content-max-width);
-    padding-inline: var(--space-3xs-2xs);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  color: var(--text-color);
+  font-size: var(--fs-0);
+  margin-inline: auto;
+  min-height: 100svh;
+  width: 100%;
+  max-inline-size: var(--content-max-width);
+  padding-inline: var(--space-3xs-2xs);
   box-sizing: border-box;
 }
 
@@ -56,15 +56,15 @@ body {
 /* ----- Header ----- */
 /* --------------------------------------- */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-block-start: var(--space-xs);
-    padding-inline: var(--space-xs-s);
-    padding-block: var(--space-2xs-xs);
-    border-radius: var(--space-l-xl);
-    z-index: 1100;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: var(--space-xs);
+  padding-inline: var(--space-xs-s);
+  padding-block: var(--space-2xs-xs);
+  border-radius: var(--space-l-xl);
+  z-index: 1100;
+  position: relative;
 }
 
 header .bars {
@@ -215,11 +215,11 @@ Replaces vw-based fluid values with container-query units
 FONT SIZES - custom properties vw fallback (older browsers)
 ========================================================== */
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 section {
@@ -423,7 +423,7 @@ main>section[id]:target {
   header .bars {
     display: block;
     position: fixed;
-   right: max(0.5rem, env(safe-area-inset-right));
+    right: max(0.5rem, env(safe-area-inset-right));
     transition: 0.5s;
     z-index: 4000;
     pointer-events: all;
@@ -462,15 +462,15 @@ main>section[id]:target {
   }
 
   .intro-1-page-title p {
-font-size: var(--fs-0);
-}
-
-  .intro-1-page-title p span {
-font-size: var(--fs-100);
+    font-size: var(--fs-0);
   }
 
- .footer__text {
-font-family: var(--primary-font-secondary);
+  .intro-1-page-title p span {
+    font-size: var(--fs-100);
+  }
+
+  .footer__text {
+    font-family: var(--primary-font-secondary);
     color: var(--text-color);
     font-size: var(--fs-01);
   }
