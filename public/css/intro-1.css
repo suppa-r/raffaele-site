@@ -71,6 +71,8 @@ header .bars {
   background-repeat: no-repeat;
   background-size: 22px 1px;
   background-position: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 header .bars:focus-visible {
@@ -296,13 +298,20 @@ footer {
 
 header .bars {
     display: block;
+    position: fixed;
+    top: max(0.5rem, env(safe-area-inset-top));
+    right: max(0.5rem, env(safe-area-inset-right));
     transition: 0.5s;
-    margin-inline-end:var(--space-xl);
+    margin-inline-end: 0;
+    z-index: 4000;
+    pointer-events: auto;
   }
 
   nav {
     position: fixed;
+    inset: 0;
     z-index: 3;
+    pointer-events: none;
   }
 
   .nav-links {
