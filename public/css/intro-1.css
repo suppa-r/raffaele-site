@@ -11,7 +11,6 @@ body {
     display:grid;
     grid-template-rows: auto 1fr auto;
     font-size: var(--fs-0);
-    font-family: var(--primary-font);
     line-height:1.4;
     color: var(--text-color);
     font-family: var(--primary-font);
@@ -20,11 +19,34 @@ body {
     min-height: 100svh;
     }
 
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-140%);
+  z-index: 3000;
+  padding: 0.65rem 1rem;
+  color: var(--base-color);
+  background: var(--text-color);
+  border-radius: 0 0 0.4rem 0;
+  text-decoration: none;
+  font-family: var(--primary-font-secondary);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--text-span);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------- */
+/* ----- Header ----- */
+/* --------------------------------------- */
+
 header {
   position: relative;
   height: 4rem;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,14 +55,23 @@ header {
 
 
 header .bars {
+  appearance: none;
+  border: 0;
+  padding: 0;
   position: relative;
-  height: 3px;
+  height: 1px;
   width: 20px;
-  border-radius: 2px;
-  background-color: #888888;
+  border-radius: 1px;
+  background-color: var(--text-color);
   margin-right: 10px;
   display: none;
+  cursor: pointer;
   z-index: 2000;
+}
+
+header .bars:focus-visible {
+  outline: 2px solid var(--text-span);
+  outline-offset: 6px;
 }
 
 header .bars.is-active {
@@ -53,11 +84,11 @@ header .bars::after,
 header .bars::before {
   position: absolute;
   content: "";
-  height: 3px;
+  height: 1px;
   left: 0;
   width: 20px;
-  border-radius: 2px;
-  background: #888888;
+    border-radius: 1px;
+  background: var(--text-color);
   cursor: pointer;
 }
 
@@ -69,9 +100,15 @@ header .bars::before {
   top: 7px;
 }
 
+/* --------------------------------------- */
+/* ----- Navigation ----- */
+/* --------------------------------------- */
+
 .nav-links {
   display: flex;
-}
+    justify-content: center;
+    margin-block-start: var(--space-l);
+    }
 
 .nav-links li {
   list-style: none;
@@ -85,25 +122,26 @@ header .bars::before {
 }
 
 .nav-links li a {
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
+    letter-spacing: 1px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #888888;
+  color: var(--text-color);
   text-decoration: none;
 }
 
 .nav-links li a span {
-  font-family: "Turret Road", sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  margin-top: 0.2rem;
-}
+font-size: var(--fs-0);
+ }
 
 .nav-links li svg {
-  height: 1.3rem;
-  width: 1.3rem;
+  height:var(--space-m-l);
+  width: var(--space-m-l);
   object-fit: cover;
   border-radius: 50%;
+  fill: var(--text-color);
 }
 
 .header__row {
@@ -111,27 +149,28 @@ header .bars::before {
     max-width: var(--container-max-width);
    }
 
-.header__text {
+.intro-1-page-title {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 1;
+    white-space: nowrap;
    }
 
 
-.header__text p {
-
+.intro-1-page-title p {
     font-family:var( --primary-font);
     font-size: var(--fs-100);
+    white-space: nowrap;
+    word-break: keep-all;
     }
 
-.header__text p span {
-
+.intro-1-page-title p span {
     font-family: var(--primary-font-secondary);
     color: var(--text-span);
-    padding-right: 1rem;
+    padding-right: var(--space-2xs-xs);
     font-size: var(--fs-200);
     }
 
@@ -148,12 +187,11 @@ padding: 0;
 }
 
  section{
-transition: opacity var(--transition-duration) ease-in-out;
-min-height:100%;
- padding: 0;
-  margin: 0;
-  margin-inline: auto;
- border-top: var(--border-light);
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    margin-inline: auto;
+    border-top: var(--border-light);
  }
 
 main > section[id] {
@@ -162,37 +200,37 @@ main > section[id] {
 
 main > section[id]:target {
     display: block;
+        animation: section-reveal 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes section-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    main > section[id]:target {
+        animation: none;
+    }
 }
 
 .row {
    margin: 0 auto;
 }
 
-/*@media(max-width: 1340px) {
-    .row {
-        max-width: 1100px;
-    }
-}
-
-@media(max-width: 1240px) {
-    .row {
-        padding: 0 var(--gutter-medium);
-    }
-}*/
-
-@media(max-width: 600px) {
-
-.header__text p {
-    font-family:var( --primary-font);
-    font-size: var(--fs-0);
-    }
-
-.header__text p span {
+.row h2 {
     font-family: var(--primary-font-secondary);
-    color: var(--text-span);
-    padding-left: 0.4rem;
     font-size: var(--fs-100);
-    }
+    color: var(--text-color);
+    text-align: center;
+    margin-block-start: var(--space-l-xl);
 }
 
 /* --------------------------------------- */
@@ -206,53 +244,27 @@ footer {
     padding: var(--space-s) var(--space-xs);
  }
 
+ .footer__text {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-5xs-4xs);
+    font-family: var(--primary-font-secondary);
+    color: var(--text-color);
+  }
 
-/* --------------------------------------- */
-/* ----- Headlines and Paragraphs ----- */
-/* --------------------------------------- */
-
-
-
-/*@media(max-width: 500px) {
-    .heading-primary {
-        font-size: var(--font-size-large);
-    }
-
-    h2 {
-        font-size: var(--font-size-medium-1);
-    }
-
-    h3 {
-        font-size: var(--font-size-medium);
-    }
-}
-
-p {
-    margin: var(--gutter-small-1) 0;
-}
-
-@media(max-width: 900px) {
-    p {
-        max-width: var(--container-small-width);
-    }
-}
-
-/* --------------------------------------- */
-/* ----- Buttons and Links ----- */
-/* --------------------------------------- */
-
+  .footer__text span {
+    color: var(--text-span);
+  }
 
 /* ----- Back to Top ----- */
 
 .back-to-top {
-    /*position: fixed;
-    bottom: 1rem;
-    right: 4rem; */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: var(--space-l-xl);
+    width: var(--space-l-xl);
     background-color: var(--text-span);
     border-radius: 50%;
     z-index: 10;
@@ -261,60 +273,16 @@ p {
 }
 
 .back-to-top__image {
-    height: 70%;
+    height: 85%;
 }
 
-/* @media(max-width: 900px) {
-    .back-to-top {
-        right: 2rem;
-    }
-}
-
-@media(max-width: 500px) {
-    .back-to-top {
-        right: 1rem;
-    }
-}
-
-/* --------------------------------------- */
-/* ----- Navigation ----- */
-/* --------------------------------------- */
-
-
-
-/* --------------------------------------- */
-/* ----- Header ----- */
-/* --------------------------------------- *
-
-.header {
-    background: linear-gradient(rgba(0,0,0, .1), rgba(0,0,0, .4)),
-        url('/public/images/header.jpg') no-repeat;
-    /*min-height: 100svh;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; *
-} */
-
-
-
-/*@media(max-width: 500px) {
-    .header {
-        text-align: center;
-    }
-
-    .header__text p {
-        transform: scale(.8);
-    }
-} */
 
 @media only screen and (max-width: 768px) {
-  header .logo {
-    margin-right: 50px;
-  }
 
-  header .bars {
+header .bars {
     display: block;
     transition: 0.5s;
+    margin-inline-end:var(--space-xl);
   }
 
   nav {
@@ -323,14 +291,13 @@ p {
   }
 
   .nav-links {
-    background: #111111;
     position: fixed;
-    top: 4rem;
-    left: 0;
-    padding-top: 1rem;
+        inset: 0;
+        inline-size: 100vw;
+        min-block-size: 100svh;
     flex-direction: column;
-    height: 100vh;
-    width: 100%;
+        justify-content: center;
+        align-items: center;
     pointer-events: none;
     transition: 0.5s;
     opacity: 0;
@@ -343,5 +310,9 @@ p {
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
+  }
+
+   .footer__text {
+   font-size: var(--fs-01);
   }
 }

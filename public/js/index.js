@@ -41,7 +41,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-const headerText = document.querySelector(".header__text");
+const headerText = document.querySelector(".intro-1-page-title");
 const sectionTargets = document.querySelectorAll("main > section[id]");
 const sectionHashes = new Set(
   Array.from(sectionTargets, (section) => `#${section.id}`),
