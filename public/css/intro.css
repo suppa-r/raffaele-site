@@ -5,6 +5,14 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    color: var(--text-color);
+    font-size: var(--fs-0);
+    margin-inline: auto;
+    min-height: 100svh;
+    width: 100%;
+    max-inline-size: var(--content-max-width);
+    padding-inline: var(--space-3xs-2xs);
+    box-sizing: border-box;
 }
 
 .overlay-navigation {
@@ -194,8 +202,7 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-block-start: var(--space-xs);
-    margin-inline: var(--space-2xs-xs);
-    padding-inline: var(--space-s-m);
+    padding-inline: var(--space-xs-s);
     padding-block: var(--space-2xs-xs);
     border-radius: var(--space-l-xl);
     z-index: 1100;
@@ -217,10 +224,19 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1)
 }
 
+.header-title {
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
+    color: var(--text-color);
+    text-align:left;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
 .header-title span {
     margin-inline-end: 0;
     font-size: var(--fs-0);
-    color: var(--text-span)
+    color: var(--text-span);
 }
 
 .open-overlay {
@@ -397,7 +413,6 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-inline: auto;
 }
 
 main p {
@@ -556,7 +571,7 @@ footer {
     }
 }
 
-@container (min-width: 768px) {
+@media (min-width: 768px) {
 
     .open-overlay[aria-expanded="true"] span {
         background-color: var(--base-color)

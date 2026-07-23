@@ -39,31 +39,33 @@ body {
 }
 
 .wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100svh;
-  width: 100%;
-  max-inline-size: var(--content-max-width);
-  margin-inline: auto;
-  padding-inline: var(--space-xs);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    color: var(--text-color);
+    font-size: var(--fs-0);
+    margin-inline: auto;
+    min-height: 100svh;
+    width: 100%;
+    max-inline-size: var(--content-max-width);
+    padding-inline: var(--space-3xs-2xs);
   box-sizing: border-box;
 }
+
 
 /* --------------------------------------- */
 /* ----- Header ----- */
 /* --------------------------------------- */
-
 header {
-  position: relative;
-  /*height: 4rem; */
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow);
-  padding-block: var(--space-s);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-start: var(--space-xs);
+    padding-inline: var(--space-xs-s);
+    padding-block: var(--space-2xs-xs);
+    border-radius: var(--space-l-xl);
+    z-index: 1100;
+    position: relative;
 }
-
 
 header .bars {
   appearance: none;
@@ -184,7 +186,6 @@ header .bars.is-active::after {
   text-align: center;
   z-index: 1;
   white-space: nowrap;
-  padding-inline: var(--space-xl);
 }
 
 .intro-nav-open .intro-1-page-title {
@@ -214,10 +215,22 @@ Replaces vw-based fluid values with container-query units
 FONT SIZES - Custom properties ` - vw fallback (older browsers)
 ========================================================== */
 main {
-  padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+
+/*main {
+   max-inline-size: var(--content-max-width);
+ padding: 0;
   margin: 0;
   margin-inline: auto;
-}
+}*/
 
 section {
   min-height: 100%;
@@ -275,6 +288,8 @@ main>section[id]:target {
 /* --------------------------------------- */
 
 .footer {
+   max-inline-size: var(--content-max-width);
+    padding-inline: var(--space-3xs-2xs);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -345,7 +360,6 @@ main>section[id]:target {
     top: max(0.5rem, env(safe-area-inset-top));
     right: max(0.5rem, env(safe-area-inset-right));
     transition: 0.5s;
-    margin-inline-end: 0;
     z-index: 4000;
     pointer-events: all;
   }

@@ -3,6 +3,12 @@
     grid-template-rows: auto 1fr auto;
     color: var(--text-color);
     font-size: var(--fs-0);
+    margin-inline: auto;
+    min-height: 100svh;
+    width: 100%;
+    max-inline-size: var(--content-max-width);
+    padding-inline: var(--space-xs);
+    box-sizing: border-box;
 }
 
 header {
@@ -213,17 +219,24 @@ main> :not(.site-title) {
 }
 
 footer {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    justify-content: center;
     align-items: center;
     margin-block-end: var(--space-2xs-xs);
+    padding-inline:var(--space-xs-s);
 }
 
 .footer-text {
-    margin-block: 0;
+   white-space: nowrap;
+    margin: 0;
 }
 
-@container (min-width: 768px) {
+footer[aria-label="Site settings"] .theme-switcher {
+    justify-self: end;
+}
+
+@media (min-width: 768px) {
 
     .text-with-animation {
         --main-text-gap: var(--space-l-xl);
