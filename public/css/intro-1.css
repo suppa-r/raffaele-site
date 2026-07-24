@@ -51,12 +51,13 @@ body {
   box-sizing: border-box;
 }
 
+
 /* --------------------------------------- */
 /* ----- Header ----- */
 /* --------------------------------------- */
-.header {
+header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin-block-start: var(--space-xs);
   padding-inline: var(--space-xs-s);
@@ -66,18 +67,7 @@ body {
   position: relative;
 }
 
-.header::after {
-  content: "";
-  display:block;
-  position:relative;
-  height:1.5px;
-  width:100%;
-  margin-block-start: var(--space-2xs-xs);
-  background: var(--text-color);
-  margin-left: var(--space-l-xl);
- }
-
-.header .bars {
+header .bars {
   appearance: none;
   border: 0;
   padding: 0;
@@ -98,17 +88,17 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.header .bars:focus-visible {
+header .bars:focus-visible {
   outline: 2px solid var(--text-span);
   outline-offset: 6px;
 }
 
-.header .bars.is-active {
+header .bars.is-active {
   background-size: 0 0;
 }
 
-.header .bars::after,
-.header .bars::before {
+header .bars::after,
+header .bars::before {
   position: absolute;
   content: "";
   height: 1px;
@@ -121,20 +111,20 @@ body {
   transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
 }
 
-.header .bars::after {
+header .bars::after {
   bottom: 14px;
 }
 
-.header .bars::before {
+header .bars::before {
   top: 14px;
 }
 
-.header .bars.is-active::before {
+header .bars.is-active::before {
   top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.header .bars.is-active::after {
+header .bars.is-active::after {
   top: 50%;
   bottom: auto;
   transform: translate(-50%, -50%) rotate(-45deg);
@@ -149,40 +139,33 @@ body {
   justify-content: center;
 }
 
-.nav-item {
-  display:flex;
-  flex-direction: row;
+.nav-links li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  list-style: none;
-  margin-inline: var(--space-3xs-2xs);
+  position: relative;
+  padding: 0.7vw;
+  margin: 0 0.7vw;
 }
 
-.nav-link {
-  position:relative;
+.nav-links li a {
   font-family: var(--primary-font-secondary);
   font-size: var(--fs-0);
   letter-spacing: 1px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-4xs-3xs);
-  white-space: nowrap;
-  line-height: 1;
   color: var(--text-color);
   text-decoration: none;
-  transition: all .2s;
 }
 
-.nav-link span {
-  display: inline-block;
+.nav-links li a span {
   font-size: var(--fs-0);
-  line-height: 1;
 }
 
-.nav-link svg {
-  flex: 0 0 auto;
+.nav-links li svg {
   height: var(--space-m-l);
   width: var(--space-m-l);
   object-fit: cover;
@@ -190,38 +173,9 @@ body {
   fill: var(--text-color);
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -0.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display:inline-block;
-  width: 0;
-  height: 2px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: var(--text-span);
-  border-radius: 1px;
-  transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.8);
-}
-
-
-.nav-link:hover::after {
-  width: 100%;
-  height:2px;
-  background-color: var(--text-span);
-}
-
-.nav-link:focus-visible::after {
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-span);
-}
-
 .header__row {
   margin-inline: auto;
-  max-width: var(--content-max-width);
+  max-width: var(--container-max-width);
 }
 
 .intro-1-page-title {
@@ -388,31 +342,61 @@ main>section[id]:target {
 /* ----- Back to Top ----- */
 
 .back-to-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--theme-switcher-button-size);
-  height: var(--theme-switcher-button-size);
-  background-color: var(--text-span);
-  border-radius: 50%;
-  z-index: 10;
-  visibility: visible;
-  box-shadow:
-    0 6px 14px var(--shadow-color-tertiary),
-    0 2px 5px var(--shadow-color-secondary);
-  transition:
-    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+   border-radius: 50%;
+  background-color: var(--theme-switcher-background-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  inline-size: var(--theme-switcher-button-size);
+  block-size: var(--theme-switcher-button-size);
+  min-inline-size: var(--theme-switcher-button-size);
+  min-block-size: var(--theme-switcher-button-size);
+  padding: 0;
+  transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-block: 0;
+  z-index: 100;
 }
 
 .back-to-top:hover {
-  transform: translateY(-0.5px) scale(1.02);
-  box-shadow:
-    0 8px 16px var(--shadow-color-tertiary),
-    0 3px 8px var(--shadow-color-secondary);
+  color: var(--text-color);
+  background-color: var(--text-span);
+  box-shadow: 0 5px 8px var(--text-color, rgba(0 0 0 0.20%));
+  z-index: 100;
+}
+
+.back-to-top:hover .back-to-top__image {
+  will-change: transform;
+  animation: spin-and-scale 0.8s ease-in-out;
+  z-index: 100;
+}
+
+@keyframes spin-and-scale {
+
+  0% {
+    transform: scale(1) rotate(0deg);
+
+  }
+
+  25% {
+    transform: scale(.5) rotate(45deg);
+
+  }
+
+  50% {
+    transform: scale(.5) rotate(-45deg);
+
+  }
+
+  75% {
+    transform: scale(.5) rotate(45deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .intro-nav-open .back-to-top {
@@ -430,9 +414,6 @@ main>section[id]:target {
 
 .back-to-top__image {
   height: var(--theme-switcher-icon-size);
-  width: var(--theme-switcher-icon-size);
-  object-fit: cover;
-  fill: var(--base-color);
 }
 
 @media only screen and (min-width: 769px) {
@@ -446,10 +427,6 @@ main>section[id]:target {
 
 
 @media only screen and (max-width: 768px) {
-
-  .header::after {
- display:none;
-  }
 
   .footer {
     align-items: center;
@@ -473,7 +450,7 @@ main>section[id]:target {
     pointer-events: auto !important;
   }
 
-  .header .bars {
+  header .bars {
     display: block;
     position: fixed;
     right: max(0.5rem, env(safe-area-inset-right));
@@ -504,7 +481,7 @@ main>section[id]:target {
 
   }
 
-  .nav-item {
+  .nav-links li {
     margin: 1.5vw 0;
   }
 
