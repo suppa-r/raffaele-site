@@ -51,7 +51,6 @@ body {
   box-sizing: border-box;
 }
 
-
 /* --------------------------------------- */
 /* ----- Header ----- */
 /* --------------------------------------- */
@@ -139,7 +138,7 @@ header .bars.is-active::after {
   justify-content: center;
 }
 
-.nav-links li {
+.nav-link {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -150,7 +149,8 @@ header .bars.is-active::after {
   margin: 0 0.7vw;
 }
 
-.nav-links li a {
+.nav-link {
+  position:relative;
   font-family: var(--primary-font-secondary);
   font-size: var(--fs-0);
   letter-spacing: 1px;
@@ -159,18 +159,37 @@ header .bars.is-active::after {
   align-items: center;
   color: var(--text-color);
   text-decoration: none;
+  transition: all .2s;
 }
 
-.nav-links li a span {
+.nav-link span {
   font-size: var(--fs-0);
 }
 
-.nav-links li svg {
+.nav-link svg {
   height: var(--space-m-l);
   width: var(--space-m-l);
   object-fit: cover;
   border-radius: 50%;
   fill: var(--text-color);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display:inline-block;
+  width: 0;
+  height: 2px;
+ transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.8);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  height:2px;
+  background-color: var(--text-span);
 }
 
 .header__row {
@@ -345,8 +364,8 @@ main>section[id]:target {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--space-xl);
-  width: var(--space-xl);
+  width: var(--theme-switcher-button-size);
+  height: var(--theme-switcher-button-size);
   background-color: var(--text-span);
   border-radius: 50%;
   z-index: 10;
@@ -383,7 +402,10 @@ main>section[id]:target {
 }
 
 .back-to-top__image {
-  height: 85%;
+  height: var(--theme-switcher-icon-size);
+  width: var(--theme-switcher-icon-size);
+  object-fit: cover;
+  fill: var(--base-color);
 }
 
 @media only screen and (min-width: 769px) {
@@ -451,7 +473,7 @@ main>section[id]:target {
 
   }
 
-  .nav-links li {
+  .nav-link {
     margin: 1.5vw 0;
   }
 
