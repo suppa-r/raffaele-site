@@ -63,6 +63,7 @@ SPACING - Custom properties ` - vw fallback (older browsers)
   TYPOGRAPHY & TRANSITIONS - Custom properties `
    - vw fallback (older browsers)
 ========================================================== */
+
   --primary-font: "poiret_oneregular", sans-serif;
   --primary-font-secondary: "cormorant_uprightmedium", sans-serif;
   --letter-spacing: 0.02em;
@@ -83,8 +84,10 @@ SPACING - Custom properties ` - vw fallback (older browsers)
   /* ============================================
         BASE- Mobile (320px - 479x)
       ============================================ */
-  --content-max-width: min(520px, 92vw);
 
+  --content-max-width: min(450px, 90vw);
+  --padding-inline: var(--space-xs);
+  --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
 }
 
 @supports (font-size: 1cqi) {

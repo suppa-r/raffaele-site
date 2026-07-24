@@ -18,6 +18,7 @@
     max-inline-size: none;
     padding-inline: var(--padding-inline);
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .overlay-navigation {
@@ -490,6 +491,7 @@ main p:not(.wrapper-gradient-text) {
     font-size: var(--fs-300);
     letter-spacing: 0.005em;
     padding-block-end: var(--space-2xl);
+    white-space: nowrap;
 }
 
 .text-layer {

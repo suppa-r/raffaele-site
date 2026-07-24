@@ -9,16 +9,10 @@ html {
     hanging-punctuation: first last;
 }
 
-:root {
-    --padding-inline: clamp(1rem, 3vw, 2rem);
-    --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-}
-
 body {
     display: grid;
     grid-template-rows: 1fr;
     min-height: 100svh;
-    margin-inline: auto;
     background-color: var(--base-color);
     font-family: var(--primary-font);
     font-size: var(--fs-0);
@@ -35,17 +29,16 @@ body {
     isolation: isolate;
 }
 
+body,
 .wrapper,
 header,
 main,
 footer {
-    display: flow-root;
-    width: 100%;
-    max-inline-size: none;
-    margin-inline: 0;
-    box-sizing: border-box;
+    max-inline-size: var(--content-max-width);
     padding-inline: var(--padding-inline);
-}
+    inline-size: 100%;
+    margin-inline: auto;
+  }
 
 .wrapper {
     row-gap: var(--layout-block-gap);
@@ -149,13 +142,15 @@ body::before {
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
 
     :root {
+        --content-max-width: min(600px, 92vw);
+        --padding-inline:var(--space-s);
         --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
     }
 
-    h1,
+   /* h1,
     h2,
     h3,
     h4,
@@ -172,21 +167,14 @@ body::before {
         max-width: min(58ch, 100%);
         margin-block: 0.4em;
         letter-spacing: 0.03em;
-    }
-}
-
-@media (min-width: 768px) {
-
-    :root {
-        --content-max-width: min(840px, 94vw);
-        --padding-inline: clamp(1rem, 2.8vw, 2rem);
-    }
+    } */
 
     .wrapper,
     header,
     main,
     footer {
-        padding-inline: var(--padding-inline);
+        max-inline-size: var(--content-max-width);
+         padding-inline: var(--padding-inline);
     }
 
     body::before {
@@ -195,37 +183,19 @@ body::before {
     }
 }
 
-@media (min-width: 1024px) {
-
-    :root {
-        --content-max-width: min(1040px, 94vw);
-        --padding-inline: clamp(1.25rem, 3vw, 2.5rem);
-    }
-
-    .wrapper,
-    header,
-    main,
-    footer {
-        padding-inline: var(--padding-inline);
-    }
-
-    body::before {
-        max-inline-size: 100%;
-        mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, black 80%);
-    }
-}
-
 @media (min-width: 1200px) {
 
     :root {
         --content-max-width: min(1180px, 94vw);
-        --padding-inline: clamp(1.5rem, 3.2vw, 3rem);
+        --padding-inline: var(--space-l-xl);
+
     }
 
     .wrapper,
     header,
     main,
     footer {
+        max-inline-size: var(--content-max-width);
         padding-inline: var(--padding-inline);
     }
     body::before {
@@ -242,13 +212,14 @@ body::before {
 
     :root {
         --content-max-width: min(1320px, 93vw);
-        --padding-inline: clamp(1.75rem, 3.4vw, 3.5rem);
+        --padding-inline: var(--space-xl-2xl);
     }
 
     .wrapper,
     header,
     main,
     footer {
+        max-inline-size: var(--content-max-width);
         padding-inline: var(--padding-inline);
     }
 

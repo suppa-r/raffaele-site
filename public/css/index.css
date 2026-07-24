@@ -1,23 +1,11 @@
-.wrapper, header, main, footer{
-    width: 100%;
-    max-inline-size: none;
-    margin-inline: 0;
-    box-sizing: border-box;
-}
-
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
     row-gap: var(--layout-block-gap);
     color: var(--text-color);
     font-size: var(--fs-0);
-    margin-inline: 0;
     min-height: 100svh;
-    width: 100%;
-    max-inline-size: none;
-    padding-inline: var(--padding-inline);
-    box-sizing: border-box;
-}
+  }
 
 header {
     display: flex;
@@ -65,7 +53,7 @@ main> :not(.site-title) {
     font-size: var(--fs-400);
     font-style: italic;
     margin-block: 0;
-       white-space: nowrap;
+    white-space: nowrap;
 }
 
 .subtext-with-animation {
@@ -235,8 +223,7 @@ footer {
     align-items: center;
     margin-block-start: var(--layout-block-gap);
     margin-block-end: var(--space-2xs-xs);
-    padding-inline: var(--padding-inline);
-}
+  }
 
 .footer-text {
     white-space: nowrap;
