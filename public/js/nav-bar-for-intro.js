@@ -11,6 +11,7 @@ const INTRO_THEME_TRANSITION_CLASS = "theme-transitioning";
 const INTRO_THEME_BUTTON_PULSE_CLASS = "is-tapped";
 const INTRO_THEME_BUTTON_PULSE_MS = 520;
 const INTRO_THEME_TRANSITION_START_DELAY_MS = 820;
+const INTRO_NAV_CLOSE_HIDE_FALLBACK_MS = 320;
 const introSectionHashes = new Set(
   Array.from(
     document.querySelectorAll("main > section[id]"),
@@ -22,9 +23,62 @@ let isMenuOpen = false;
 let introThemeTransitionTimeoutId = null;
 let introThemeButtonPulseTimeoutId = null;
 let introThemeTransitionStartTimeoutId = null;
+let introNavHideTimeoutId = null;
 
 function introIsReducedMotionPreferred() {
   return window.matchMedia(INTRO_REDUCED_MOTION_QUERY).matches;
+}
+
+function introParseTimeToMs(timeValue) {
+  const value = timeValue.trim();
+  if (!value) {
+    return 0;
+  }
+
+  if (value.endsWith("ms")) {
+    const milliseconds = Number.parseFloat(value.slice(0, -2));
+    return Number.isFinite(milliseconds) ? milliseconds : 0;
+  }
+
+  if (value.endsWith("s")) {
+    const seconds = Number.parseFloat(value.slice(0, -1));
+    return Number.isFinite(seconds) ? seconds * 1000 : 0;
+  }
+
+  return 0;
+}
+
+function introGetNavCloseHideDelayMs() {
+  if (!navlinks || introIsReducedMotionPreferred()) {
+    return 0;
+  }
+
+  const styles = window.getComputedStyle(navlinks);
+  const durationValues = styles.transitionDuration
+    .split(",")
+    .map((value) => introParseTimeToMs(value));
+  const delayValues = styles.transitionDelay
+    .split(",")
+    .map((value) => introParseTimeToMs(value));
+
+  const pairCount = Math.max(durationValues.length, delayValues.length);
+  if (pairCount === 0) {
+    return INTRO_NAV_CLOSE_HIDE_FALLBACK_MS;
+  }
+
+  let maxTimeMs = 0;
+  for (let i = 0; i < pairCount; i += 1) {
+    const duration = durationValues[i % durationValues.length] ?? 0;
+    const delay = delayValues[i % delayValues.length] ?? 0;
+    maxTimeMs = Math.max(maxTimeMs, duration + delay);
+  }
+
+  if (maxTimeMs <= 0) {
+    return 0;
+  }
+
+  // Add one frame so hidden is toggled after paint of the last animation frame.
+  return Math.ceil(maxTimeMs + 16);
 }
 
 function introGetStoredTheme() {
@@ -208,7 +262,7 @@ function setPageTitleVisibility(isVisible) {
     return;
   }
 
-  pageTitle.hidden = !isVisible;
+  pageTitle.classList.toggle("is-hidden", !isVisible);
   pageTitle.setAttribute("aria-hidden", isVisible ? "false" : "true");
 }
 
@@ -219,6 +273,8 @@ function setIntroNavOpenState(isOpen) {
 function setMenuState(isOpen, options = {}) {
   const { moveFocus = false, returnFocus = false, showTitle = true } = options;
   isMenuOpen = isOpen;
+
+  clearTimeout(introNavHideTimeoutId);
 
   if (!mobileQuery.matches) {
     navlinks.classList.remove("open");
@@ -235,6 +291,11 @@ function setMenuState(isOpen, options = {}) {
     return;
   }
 
+  const wasOpen = navlinks.classList.contains("open");
+  if (isMenuOpen) {
+    navlinks.hidden = false;
+  }
+
   navlinks.classList.toggle("open", isMenuOpen);
   menu.classList.toggle("is-active", isMenuOpen);
   menu.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
@@ -242,11 +303,24 @@ function setMenuState(isOpen, options = {}) {
     "aria-label",
     isMenuOpen ? "Close navigation menu" : "Open navigation menu",
   );
-  navlinks.hidden = !isMenuOpen;
   navlinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
   if ("inert" in navlinks) {
     navlinks.inert = !isMenuOpen;
   }
+
+  if (!isMenuOpen) {
+    if (wasOpen) {
+      const navCloseHideDelayMs = introGetNavCloseHideDelayMs();
+      introNavHideTimeoutId = setTimeout(() => {
+        if (!isMenuOpen) {
+          navlinks.hidden = true;
+        }
+      }, navCloseHideDelayMs);
+    } else {
+      navlinks.hidden = true;
+    }
+  }
+
   setIntroNavOpenState(isMenuOpen);
   setPageTitleVisibility(isMenuOpen ? false : showTitle);
 

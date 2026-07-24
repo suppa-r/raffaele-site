@@ -2,6 +2,13 @@
 /* ----- Basic Setup ----- */
 /* --------------------------------------- */
 
+:root {
+  --intro-overlay-duration: 0.8s;
+  --intro-nav-fade-out-duration: 0.22s;
+  --intro-nav-fade-in-duration: 0.4s;
+  --intro-nav-fade-in-delay: 0.9s;
+}
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -41,13 +48,14 @@ body {
 .wrapper {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  row-gap: var(--layout-block-gap);
   color: var(--text-color);
   font-size: var(--fs-0);
-  margin-inline: auto;
+  margin-inline: 0;
   min-height: 100svh;
   width: 100%;
-  max-inline-size: var(--content-max-width);
-  padding-inline: var(--space-3xs-2xs);
+  max-inline-size: none;
+  padding-inline: var(--padding-inline);
   box-sizing: border-box;
 }
 
@@ -60,6 +68,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-block-start: var(--space-xs);
+  margin-block-end: var(--layout-block-gap);
   padding-inline: var(--space-xs-s);
   padding-block: var(--space-2xs-xs);
   border-radius: var(--space-l-xl);
@@ -174,8 +183,9 @@ header .bars.is-active::after {
 }
 
 .header__row {
-  margin-inline: auto;
-  max-width: var(--container-max-width);
+  margin-inline: 0;
+  width: 100%;
+  max-width: none;
 }
 
 .intro-1-page-title {
@@ -186,12 +196,15 @@ header .bars.is-active::after {
   text-align: center;
   z-index: 1;
   white-space: nowrap;
+  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay), visibility 0s linear 0s;
 }
 
+.intro-1-page-title.is-hidden,
 .intro-nav-open .intro-1-page-title {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear var(--intro-nav-fade-out-duration);
 }
 
 .intro-1-page-title p {
@@ -220,6 +233,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-block: var(--space-xs-s) var(--layout-block-gap);
 }
 
 section {
@@ -278,13 +292,15 @@ main>section[id]:target {
 /* --------------------------------------- */
 
 .footer {
-  max-inline-size: var(--content-max-width);
-  padding-inline: var(--space-3xs-2xs);
+  width: 100%;
+  max-inline-size: none;
+  padding-inline: var(--padding-inline);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: var(--fs-0);
-  padding: var(--space-xs) 0;
+  padding-block: var(--space-xs);
+  margin-block-start: var(--layout-block-gap);
 }
 
 .footer__actions {
@@ -428,9 +444,26 @@ main>section[id]:target {
 
 @media only screen and (max-width: 768px) {
 
+  :root {
+    --intro-overlay-duration: 0.62s;
+    --intro-nav-fade-out-duration: 0.18s;
+    --intro-nav-fade-in-duration: 0.3s;
+    --intro-nav-fade-in-delay: 0.56s;
+  }
+
+  header {
+    margin-block-end: var(--space-2xs-xs);
+    padding-block: var(--space-3xs-2xs);
+  }
+
+  main {
+    padding-block: var(--space-2xs-xs) var(--space-xs-s);
+  }
+
   .footer {
     align-items: center;
     gap: var(--space-2xs-xs);
+    margin-block-start: var(--space-xs);
   }
 
   .footer__actions {
@@ -476,27 +509,35 @@ main>section[id]:target {
     justify-content: center;
     align-items: center;
     pointer-events: none;
-    transition: 0.5s;
+    transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1), transform var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(10px);
     opacity: 0;
 
   }
 
   .nav-links li {
-    margin: 1.5vw 0;
+    margin: var(--space-2xs-xs) 0;
   }
 
   .nav-links.open {
     opacity: 1;
+    transform: translateY(0);
     pointer-events: all;
-    margin-block-end: var(--space-3xl);
+    margin-block-end: 0;
+    padding-block-end: var(--space-l-xl);
   }
 
   .intro-1-page-title p {
     font-size: var(--fs-0);
+    line-height: 1.15;
   }
 
   .intro-1-page-title p span {
     font-size: var(--fs-100);
+  }
+
+  .row h2 {
+    margin-block-start: var(--space-l-xl);
   }
 
   .footer__text {

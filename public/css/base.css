@@ -9,6 +9,11 @@ html {
     hanging-punctuation: first last;
 }
 
+:root {
+    --padding-inline: clamp(0.75rem, 2.4vw, 1.5rem);
+    --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
+}
+
 body {
     display: grid;
     grid-template-rows: 1fr;
@@ -35,6 +40,15 @@ header,
 main,
 footer {
     display: flow-root;
+    width: 100%;
+    max-inline-size: none;
+    margin-inline: 0;
+    box-sizing: border-box;
+    padding-inline: var(--padding-inline);
+}
+
+.wrapper {
+    row-gap: var(--layout-block-gap);
 }
 
 button {
@@ -136,16 +150,43 @@ body::before {
     }
 }
 
+@media (max-width: 768px) {
+
+    :root {
+        --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        margin-block: 0.22em;
+        letter-spacing: 0.035em;
+    }
+
+    p {
+        max-width: min(58ch, 100%);
+        margin-block: 0.4em;
+        letter-spacing: 0.03em;
+    }
+}
+
 @media (min-width: 768px) {
 
     :root {
         --content-max-width: min(840px, 94vw);
+        --padding-inline: clamp(1rem, 2.8vw, 2rem);
     }
 
     .wrapper,
+    header,
     main,
     footer {
-        max-inline-size: var(--content-max-width);
         padding-inline: var(--padding-inline);
     }
 
@@ -159,12 +200,14 @@ body::before {
 
     :root {
         --content-max-width: min(1040px, 94vw);
+        --padding-inline: clamp(1.25rem, 3vw, 2.5rem);
     }
 
     .wrapper,
+    header,
     main,
     footer {
-        max-inline-size: var(--content-max-width);
+        padding-inline: var(--padding-inline);
     }
 
     body::before {
@@ -176,15 +219,16 @@ body::before {
 @media (min-width: 1200px) {
 
     :root {
-        --content-max-width: min(1180px, 94vw)
+        --content-max-width: min(1180px, 94vw);
+        --padding-inline: clamp(1.5rem, 3.2vw, 3rem);
     }
 
     .wrapper,
+    header,
     main,
     footer {
-        max-inline-size: var(--content-max-width);
+        padding-inline: var(--padding-inline);
     }
-
     body::before {
         max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, black 80%);
@@ -198,13 +242,15 @@ body::before {
 @media (min-width: 1440px) {
 
     :root {
-        --content-max-width: min(1320px, 93vw)
+        --content-max-width: min(1320px, 93vw);
+        --padding-inline: clamp(1.75rem, 3.4vw, 3.5rem);
     }
 
     .wrapper,
+    header,
     main,
     footer {
-        max-inline-size: var(--content-max-width);
+        padding-inline: var(--padding-inline);
     }
 
     body::before {

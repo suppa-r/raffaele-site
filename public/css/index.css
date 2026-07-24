@@ -1,13 +1,21 @@
+.wrapper, header, main, footer{
+    width: 100%;
+    max-inline-size: none;
+    margin-inline: 0;
+    box-sizing: border-box;
+}
+
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    row-gap: var(--layout-block-gap);
     color: var(--text-color);
     font-size: var(--fs-0);
-    margin-inline: auto;
+    margin-inline: 0;
     min-height: 100svh;
     width: 100%;
-    max-inline-size: var(--content-max-width);
-    padding-inline: var(--space-xs);
+    max-inline-size: none;
+    padding-inline: var(--padding-inline);
     box-sizing: border-box;
 }
 
@@ -16,6 +24,8 @@ header {
     flex-direction: column;
     align-items: center;
     line-height: 1;
+    margin-block-start: var(--space-2xs-xs);
+    margin-block-end: var(--layout-block-gap);
 }
 
 header .header-text,
@@ -30,15 +40,18 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-block: var(--space-xs-s) var(--layout-block-gap);
 }
 
 main> :not(.site-title) {
-    margin-block-start: var(--space-xs-s);
+    margin-block-start: var(--layout-block-gap);
 }
 
 .site-title {
-    font-size: var(--fs-100);
-    margin-block: 0;
+    font-size: var(--fs-400);
+   white-space: nowrap;
+font-style: italic;
+margin-inline:auto;
 }
 
 .site-title-break {
@@ -223,8 +236,9 @@ footer {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
+    margin-block-start: var(--layout-block-gap);
     margin-block-end: var(--space-2xs-xs);
-    padding-inline: var(--space-xs-s);
+    padding-inline: var(--padding-inline);
 }
 
 .footer-text {
@@ -234,6 +248,33 @@ footer {
 
 footer[aria-label="Site settings"] .theme-switcher {
     justify-self: end;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        margin-block-start: var(--space-3xs-2xs);
+        margin-block-end: var(--space-2xs-xs);
+    }
+
+    main {
+        padding-block: var(--space-2xs-xs) var(--space-xs-s);
+    }
+
+    .site-title {
+        line-height: 1.05;
+    }
+
+    .text-with-animation,
+    .subtext-with-animation,
+    .subtext-with-animation-1 {
+        min-block-size: var(--space-m-l);
+    }
+
+    footer {
+        margin-block-start: var(--space-xs);
+        margin-block-end: var(--space-3xs-2xs);
+    }
 }
 
 @media (min-width: 768px) {
