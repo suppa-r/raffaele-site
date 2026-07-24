@@ -48,14 +48,10 @@ main> :not(.site-title) {
 }
 
 .site-title {
-    font-size: var(--fs-400);
-   white-space: nowrap;
-font-style: italic;
-margin-inline:auto;
-}
-
-.site-title-break {
-    margin-block: 0;
+    font-size: var(--fs-300);
+    white-space: nowrap;
+    font-style: italic;
+    margin-inline:auto;
 }
 
 .text-with-animation {
@@ -69,6 +65,7 @@ margin-inline:auto;
     font-size: var(--fs-400);
     font-style: italic;
     margin-block: 0;
+       white-space: nowrap;
 }
 
 .subtext-with-animation {
