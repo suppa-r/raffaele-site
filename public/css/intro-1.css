@@ -54,9 +54,9 @@ body {
 /* --------------------------------------- */
 /* ----- Header ----- */
 /* --------------------------------------- */
-header {
+.header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-block-start: var(--space-xs);
   padding-inline: var(--space-xs-s);
@@ -66,7 +66,18 @@ header {
   position: relative;
 }
 
-header .bars {
+.header::after {
+  content: "";
+  display:block;
+  position:relative;
+  height:1.5px;
+  width:100%;
+  margin-block-start: var(--space-2xs-xs);
+  background: var(--text-color);
+  margin-left: var(--space-l-xl);
+ }
+
+.header .bars {
   appearance: none;
   border: 0;
   padding: 0;
@@ -87,17 +98,17 @@ header .bars {
   -webkit-tap-highlight-color: transparent;
 }
 
-header .bars:focus-visible {
+.header .bars:focus-visible {
   outline: 2px solid var(--text-span);
   outline-offset: 6px;
 }
 
-header .bars.is-active {
+.header .bars.is-active {
   background-size: 0 0;
 }
 
-header .bars::after,
-header .bars::before {
+.header .bars::after,
+.header .bars::before {
   position: absolute;
   content: "";
   height: 1px;
@@ -110,20 +121,20 @@ header .bars::before {
   transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
 }
 
-header .bars::after {
+.header .bars::after {
   bottom: 14px;
 }
 
-header .bars::before {
+.header .bars::before {
   top: 14px;
 }
 
-header .bars.is-active::before {
+.header .bars.is-active::before {
   top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-header .bars.is-active::after {
+.header .bars.is-active::after {
   top: 50%;
   bottom: auto;
   transform: translate(-50%, -50%) rotate(-45deg);
@@ -138,15 +149,13 @@ header .bars.is-active::after {
   justify-content: center;
 }
 
-.nav-link {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+.nav-item {
+  display:flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: relative;
-  padding: 0.7vw;
-  margin: 0 0.7vw;
+  list-style: none;
+  margin-inline: var(--space-3xs-2xs);
 }
 
 .nav-link {
@@ -155,18 +164,25 @@ header .bars.is-active::after {
   font-size: var(--fs-0);
   letter-spacing: 1px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: var(--space-4xs-3xs);
+  white-space: nowrap;
+  line-height: 1;
   color: var(--text-color);
   text-decoration: none;
   transition: all .2s;
 }
 
 .nav-link span {
+  display: inline-block;
   font-size: var(--fs-0);
+  line-height: 1;
 }
 
 .nav-link svg {
+  flex: 0 0 auto;
   height: var(--space-m-l);
   width: var(--space-m-l);
   object-fit: cover;
@@ -183,8 +199,13 @@ header .bars.is-active::after {
   display:inline-block;
   width: 0;
   height: 2px;
- transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.8);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--text-span);
+  border-radius: 1px;
+  transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.8);
 }
+
 
 .nav-link:hover::after {
   width: 100%;
@@ -192,9 +213,15 @@ header .bars.is-active::after {
   background-color: var(--text-span);
 }
 
+.nav-link:focus-visible::after {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-span);
+}
+
 .header__row {
   margin-inline: auto;
-  max-width: var(--container-max-width);
+  max-width: var(--content-max-width);
 }
 
 .intro-1-page-title {
@@ -420,6 +447,10 @@ main>section[id]:target {
 
 @media only screen and (max-width: 768px) {
 
+  .header::after {
+ display:none;
+  }
+
   .footer {
     align-items: center;
     gap: var(--space-2xs-xs);
@@ -442,7 +473,7 @@ main>section[id]:target {
     pointer-events: auto !important;
   }
 
-  header .bars {
+  .header .bars {
     display: block;
     position: fixed;
     right: max(0.5rem, env(safe-area-inset-right));
@@ -473,7 +504,7 @@ main>section[id]:target {
 
   }
 
-  .nav-link {
+  .nav-item {
     margin: 1.5vw 0;
   }
 
