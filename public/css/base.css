@@ -1,13 +1,13 @@
 :root {
 
-  /* ============================================
-        BASE- Mobile (320px - 479x)
-      ============================================ */
+    /* ============================================
+                BASE - Mobile (320px - 479px)
+            ============================================ */
 
-  --content-max-width: min(400px, 95vw);
-  --padding-inline: var(--space-xs);
-  --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-  --margin-inline: auto;
+    --content-max-width: min(420px, calc(100% - (2 * var(--padding-inline))));
+    --padding-inline: var(--space-2xs);
+    --layout-block-gap: clamp(0.55rem, 2.2vw, 0.85rem);
+    --margin-inline: auto;
 
 }
 
@@ -26,8 +26,6 @@ body {
     display: grid;
     grid-template-rows: 1fr;
     min-height: 100svh;
-    max-inline-size: var(--content-max-width);
-    margin-inline: var(--margin-inline);
     background-color: var(--base-color);
     font-family: var(--primary-font);
     font-size: var(--fs-0);
@@ -51,7 +49,8 @@ footer {
     max-inline-size: var(--content-max-width);
     inline-size: 100%;
     margin-inline: var(--margin-inline);
-  }
+    padding-inline: var(--padding-inline);
+}
 
 button {
     cursor: pointer
@@ -78,17 +77,17 @@ h6,
 button,
 input,
 label {
-    margin-block: 0.3em;
+    margin-block: 0.18em;
     margin-inline: 0;
-    letter-spacing: .05em;
+    letter-spacing: 0.028em;
     text-wrap: balance;
 }
 
 p {
-    max-width: var(--p-max-width, 65ch);
-    margin-block: 0.5em;
+    max-width: min(56ch, 100%);
+    margin-block: 0.38em;
     margin-inline: 0;
-    letter-spacing: .04em;
+    letter-spacing: 0.026em;
     text-wrap: pretty;
 }
 
@@ -133,7 +132,7 @@ body::before {
     background-position: center;
     background-color: unset;
     opacity: var(--pattern-opacity, 1);
-    mask-image: radial-gradient(ellipse 78% 58% at center, transparent 56%, black 80%);
+    mask-image: radial-gradient(ellipse 72% 64% at center, transparent 58%, black 80%);
     mask-size: 100% 100%;
     mask-position: center;
     mask-repeat: no-repeat;
@@ -151,45 +150,15 @@ body::before {
     }
 }
 
-@media (max-width: 479px) {
+/* ===============================================
+    SM - Large Mobile / Small Tablet (480px+)
+    ============================================ */
+
+@media (min-width: 480px) {
 
     :root {
-        --content-max-width: min(420px, 95vw);
-        --padding-inline: var(--space-2xs-xs);
-        --layout-block-gap: clamp(0.55rem, 2.2vw, 0.85rem);
-        --margin-inline: auto;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button,
-    input,
-    label {
-        margin-block: 0.18em;
-        letter-spacing: 0.028em;
-    }
-
-    p {
-        max-width: min(56ch, 100%);
-        margin-block: 0.38em;
-        letter-spacing: 0.026em;
-    }
-
-    body::before {
-        max-inline-size: 100%;
-        mask-image: radial-gradient(ellipse 72% 64% at center, transparent 58%, black 80%);
-    }
-}
-
-@media (min-width: 480px) and (max-width: 767px) {
-
-    :root {
-        --content-max-width: min(560px, 94vw);
-        --padding-inline: var(--space-xs-s);
+        --content-max-width: min(560px, calc(100% - (2 * var(--padding-inline))));
+        --padding-inline: var(--space-xs);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
         --margin-inline: auto;
     }
@@ -219,11 +188,16 @@ body::before {
     }
 }
 
+/* ===============================================
+    MD - Tablet (768px+)
+    ============================================ */
+
 @media (min-width: 768px) {
 
     :root {
-        --content-max-width: min(840px, 96vw);
+        --content-max-width: min(840px, calc(100% - (2 * var(--padding-inline))));
         --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
+          --padding-inline: var(--space-s);
         --margin-inline: auto;
     }
 
@@ -246,17 +220,22 @@ body::before {
         letter-spacing: 0.028em;
     }
 
-body::before {
+    body::before {
         max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, black 80%);
     }
 }
 
+/* ===============================================
+    LG - Laptop (1024px+)
+    ============================================ */
+
 @media (min-width: 1024px) {
 
     :root {
-       --content-max-width: min(1040px, 96vw);
-       --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
+        --content-max-width: min(1040px, calc(100% - (2 * var(--padding-inline))));
+        --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
+          --padding-inline: var(--space-s);
         --margin-inline: auto;
     }
 
@@ -285,16 +264,21 @@ body::before {
     }
 }
 
+/* ===============================================
+    XL - Desktop (1200px+)
+    ============================================ */
+
 @media (min-width: 1200px) {
 
     :root {
-        --content-max-width: min(1180px, 96vw);
-       --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
+        --content-max-width: min(1180px, calc(100% - (2 * var(--padding-inline))));
+          --padding-inline: var(--space-s);
+        --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
         --margin-inline: auto;
 
     }
 
-     h1,
+    h1,
     h2,
     h3,
     h4,
@@ -313,25 +297,26 @@ body::before {
         letter-spacing: 0.03em;
     }
 
-     body::before {
+    body::before {
         max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, black 80%);
     }
 }
 
 /* ===============================================
-   RESPONSIVE LAYOUT - XL-Desktop (1440px+)
-   ============================================ */
+    XXL - Wide Desktop (1440px+)
+    ============================================ */
 
 @media (min-width: 1440px) {
 
     :root {
-        --content-max-width: min(1320px, 93vw);
-       --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
+        --content-max-width: min(1320px, calc(100% - (2 * var(--padding-inline))));
+          --padding-inline: var(--space-s);
+        --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
         --margin-inline: auto;
     }
 
-     h1,
+    h1,
     h2,
     h3,
     h4,
@@ -350,7 +335,7 @@ body::before {
         letter-spacing: 0.032em;
     }
 
-   body::before {
+    body::before {
         max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 58% 78% at center, transparent 60%, black 80%);
     }

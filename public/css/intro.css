@@ -9,10 +9,8 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    max-inline-size: var(--content-max-width);
-   color: var(--text-color);
+    color: var(--text-color);
     font-size: var(--fs-0);
-    margin-inline: auto;
     min-height: 100svh;
     overflow: hidden;
   }
@@ -209,7 +207,6 @@ header {
     line-height: 1;
     margin-block-start: var(--space-2xs-xs);
     margin-block-end: var(--layout-block-gap);
-    padding-inline: var(--space-s-m);
 }
 
 .header-title {

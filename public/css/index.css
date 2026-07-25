@@ -1,12 +1,10 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    max-inline-size: var(--content-max-width);
-    row-gap: var(--layout-block-gap);
     color: var(--text-color);
     font-size: var(--fs-0);
-    margin-inline: auto;
     min-height: 100svh;
+    overflow: hidden;
   }
 
 header {
@@ -30,8 +28,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-block: var(--space-xs-s) var(--layout-block-gap);
-}
+  }
 
 main> :not(.site-title) {
     margin-block-start: var(--layout-block-gap);
@@ -219,12 +216,14 @@ main> :not(.site-title) {
 }
 
 footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
+   display: flex;
+    justify-content:space-between;
     align-items: center;
+    isolation: isolate;
+    position: relative;
+    z-index: 100;
     margin-block-start: var(--layout-block-gap);
-    margin-block-end: var(--space-2xs-xs);
+    margin-block-end: var(--space-xs-s);
   }
 
 .footer-text {
