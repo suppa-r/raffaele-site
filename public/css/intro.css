@@ -9,17 +9,13 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    row-gap: var(--layout-block-gap);
-    color: var(--text-color);
+    max-inline-size: var(--content-max-width);
+   color: var(--text-color);
     font-size: var(--fs-0);
-    margin-inline: 0;
+    margin-inline: auto;
     min-height: 100svh;
-    width: 100%;
-    max-inline-size: none;
-    padding-inline: var(--padding-inline);
-    box-sizing: border-box;
     overflow: hidden;
-}
+  }
 
 .overlay-navigation {
     position: fixed;
@@ -53,8 +49,11 @@ nav ul {
 
 nav ul {
     display: flex;
-    flex-direction: column;
-    list-style: none
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+list-style: none
 }
 
 nav ul li {
@@ -205,30 +204,11 @@ nav li a:hover::after {
 
 header {
     display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
     align-items: center;
-    margin-block-start: var(--space-xs);
+    line-height: 1;
+    margin-block-start: var(--space-2xs-xs);
     margin-block-end: var(--layout-block-gap);
-    padding-inline: var(--space-xs-s);
-    padding-block: var(--space-2xs-xs);
-    border-radius: var(--space-l-xl);
-    z-index: 1100;
-    position: relative;
-}
-
-header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--base-color);
-    border-radius: var(--space-l-xl);
-    z-index: -1;
-    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1) 0.65s
-}
-
-header:has(.open-overlay[aria-expanded="true"])::before {
-    opacity: 0;
-    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1)
 }
 
 .header-title {
@@ -241,7 +221,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 }
 
 .header-title span {
-    margin-inline-end: 0;
+    margin-inline-end: var(--space-3xs-2xs);
     font-size: var(--fs-0);
     color: var(--text-span);
 }
@@ -252,6 +232,15 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     flex-direction: column;
     justify-content: center;
     gap: var(--space-3xs-2xs);
+    position: relative;
+    z-index: 2001;
+}
+
+.open-overlay[aria-expanded="true"] {
+    position: fixed;
+    top: var(--space-xs-s);
+    right: var(--space-xs-s);
+    z-index: 2001;
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
@@ -278,7 +267,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 
 .open-overlay[aria-expanded="true"] span {
     display: block;
-    background-color: var(--text-color)
+    background-color: var(--base-color)
 }
 
 .open-overlay:focus-visible {
@@ -288,7 +277,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 
 .open-overlay span {
     display: block;
-    width: var(--space-m-l);
+    width: var(--space-s-m);
     height: 1px;
     background-color: var(--text-color);
     cursor: pointer
@@ -420,8 +409,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-block: var(--space-xs-s) var(--layout-block-gap);
-}
+  }
 
 main p {
     margin-block: 0;
@@ -440,7 +428,7 @@ main p:not(.wrapper-gradient-text) {
     font-style: italic;
     gap: var(--space-s-m);
     letter-spacing: var(--space-2xs-xs);
-    padding-block-end: var(--space-xs-s);
+    padding-block: var(--space-xs-s);
     overflow: hidden;
 }
 
@@ -490,7 +478,7 @@ main p:not(.wrapper-gradient-text) {
     font-style: var(--font-style);
     font-size: var(--fs-300);
     letter-spacing: 0.005em;
-    padding-block-end: var(--space-2xl);
+    padding-block: var(--space-l-xl);
     white-space: nowrap;
 }
 
@@ -534,50 +522,6 @@ footer {
     z-index: 100;
     margin-block-start: var(--layout-block-gap);
     margin-block-end: var(--space-xs-s);
-}
-
-@media (max-width: 768px) {
-
-    :root {
-        --intro-overlay-duration: 0.62s;
-        --intro-nav-fade-out-duration: 0.18s;
-        --intro-nav-fade-in-duration: 0.3s;
-        --intro-nav-fade-in-delay: 0.56s;
-    }
-
-    header {
-        margin-block-end: var(--space-2xs-xs);
-        padding-block: var(--space-3xs-2xs);
-    }
-
-    nav ul {
-        justify-content: center;
-        gap: var(--space-3xs-2xs);
-        padding-block: var(--space-xs-s);
-    }
-
-    nav ul li {
-        flex-basis: clamp(3.5rem, 14vh, 5.75rem);
-        height: auto;
-    }
-
-    main {
-        padding-block: var(--space-2xs-xs) var(--space-xs-s);
-    }
-
-    .text-with-animation {
-        gap: var(--space-xs-s);
-        padding-block-end: var(--space-2xs-xs);
-    }
-
-    .wrapper-gradient-text {
-        padding-block-end: var(--space-l-xl);
-    }
-
-    footer {
-        margin-block-start: var(--space-xs);
-        margin-block-end: var(--space-3xs-2xs);
-    }
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -625,15 +569,120 @@ footer {
     }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
 
-    .open-overlay[aria-expanded="true"] span {
-        background-color: var(--base-color)
+:root {
+        --intro-overlay-duration: 0.62s;
+        --intro-nav-fade-out-duration: 0.18s;
+        --intro-nav-fade-in-duration: 0.3s;
+        --intro-nav-fade-in-delay: 0.56s;
+    }
+
+    header {
+        margin-block-end: var(--space-2xs-xs);
+        padding-block: var(--space-3xs-2xs);
+        padding-inline: var(--space-xl);
     }
 
     nav ul {
-        flex-direction: row;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: var(--space-4xs-3xs);
+        padding-block: var(--space-xs-s);
+        padding-inline: var(--space-s-m);
     }
+
+    nav ul li {
+        flex: 0 0 auto;
+        inline-size: 100%;
+        min-inline-size: 0;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav ul a {
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-block-size: clamp(3.25rem, 8vw, 4.25rem);
+        font-size: var(--fs-100);
+        text-align: center;
+        line-height: 1.1;
+    }
+
+    main {
+        padding-block: var(--space-2xs-xs) var(--space-xs-s);
+    }
+
+    .text-with-animation {
+        gap: var(--space-xs-s);
+        padding-block-end: var(--space-2xs-xs);
+    }
+
+    .wrapper-gradient-text {
+        padding-block-end: var(--space-l-xl);
+    }
+
+    footer {
+        margin-block-start: var(--space-xs);
+        margin-block-end: var(--space-3xs-2xs);
+    }
+
+.open-overlay[aria-expanded="true"] span {
+        background-color: var(--base-color)
+    }
+
+    nav li a::before {
+        content: "";
+        width: var(--space-xl);
+        height: var(--space-3xs);
+        background-color: var(--text-color);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 100;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    nav li a::after {
+        content: attr(data-content);
+        font-size: var(--fs-200);
+        transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity: 0;
+        position: absolute;
+        z-index: 100;
+        color: var(--text-color);
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        left: 0;
+        right: 0;
+        bottom: var(--space-2xl-3xl);
+        transform: translateY(0);
+        text-transform: none;
+        font-style: italic;
+        letter-spacing: 0;
+    }
+
+    nav li a:is(:hover, :focus-visible)::before {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    nav li a:is(:hover, :focus-visible)::after {
+        transform: translateY(var(--space-s-m));
+        opacity: 1;
+    }
+
+}
+
+@media (min-width: 768px) {
 
     nav ul a {
         font-size: var(--fs-200);
@@ -673,13 +722,28 @@ footer {
         letter-spacing: 0;
     }
 
-    nav li a:hover::before {
+    nav li a:is(:hover, :focus-visible)::before {
         transform: translateX(0);
         opacity: 1;
     }
 
-    nav li a:hover::after {
+    nav li a:is(:hover, :focus-visible)::after {
         transform: translateY(var(--space-s-m));
         opacity: 1;
+    }
+}
+
+@media (hover:none) and (pointer:coarse) {
+    nav li a:hover::before,
+    nav li a:hover::after {
+        opacity: 0 !important;
+    }
+
+    nav li a:hover::before {
+        transform: translateX(-100%) !important;
+    }
+
+    nav li a:hover::after {
+        transform: translateY(0) !important;
     }
 }

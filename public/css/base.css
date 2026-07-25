@@ -1,3 +1,16 @@
+:root {
+
+  /* ============================================
+        BASE- Mobile (320px - 479x)
+      ============================================ */
+
+  --content-max-width: min(400px, 95vw);
+  --padding-inline: var(--space-xs);
+  --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
+  --margin-inline: auto;
+
+}
+
 html {
     scroll-padding-top: 2rem;
     scrollbar-gutter: stable;
@@ -13,6 +26,8 @@ body {
     display: grid;
     grid-template-rows: 1fr;
     min-height: 100svh;
+    max-inline-size: var(--content-max-width);
+    margin-inline: var(--margin-inline);
     background-color: var(--base-color);
     font-family: var(--primary-font);
     font-size: var(--fs-0);
@@ -29,20 +44,14 @@ body {
     isolation: isolate;
 }
 
-body,
 .wrapper,
 header,
 main,
 footer {
     max-inline-size: var(--content-max-width);
-    padding-inline: var(--padding-inline);
     inline-size: 100%;
-    margin-inline: auto;
+    margin-inline: var(--margin-inline);
   }
-
-.wrapper {
-    row-gap: var(--layout-block-gap);
-}
 
 button {
     cursor: pointer
@@ -142,15 +151,150 @@ body::before {
     }
 }
 
+@media (max-width: 479px) {
+
+    :root {
+        --content-max-width: min(420px, 95vw);
+        --padding-inline: var(--space-2xs-xs);
+        --layout-block-gap: clamp(0.55rem, 2.2vw, 0.85rem);
+        --margin-inline: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        margin-block: 0.18em;
+        letter-spacing: 0.028em;
+    }
+
+    p {
+        max-width: min(56ch, 100%);
+        margin-block: 0.38em;
+        letter-spacing: 0.026em;
+    }
+
+    body::before {
+        max-inline-size: 100%;
+        mask-image: radial-gradient(ellipse 72% 64% at center, transparent 58%, black 80%);
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    :root {
+        --content-max-width: min(560px, 94vw);
+        --padding-inline: var(--space-xs-s);
+        --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
+        --margin-inline: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        margin-block: 0.19em;
+        letter-spacing: 0.029em;
+    }
+
+    p {
+        max-width: min(58ch, 100%);
+        margin-block: 0.42em;
+        letter-spacing: 0.028em;
+    }
+
+    body::before {
+        max-inline-size: 100%;
+        mask-image: radial-gradient(ellipse 70% 68% at center, transparent 59%, black 80%);
+    }
+}
+
 @media (min-width: 768px) {
 
     :root {
-        --content-max-width: min(600px, 92vw);
-        --padding-inline:var(--space-s);
+        --content-max-width: min(840px, 96vw);
         --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
+        --margin-inline: auto;
     }
 
-   /* h1,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        margin-block: 0.2em;
+        letter-spacing: 0.03em;
+    }
+
+    p {
+        max-width: min(60ch, 100%);
+        margin-block: 0.45em;
+        letter-spacing: 0.028em;
+    }
+
+body::before {
+        max-inline-size: 100%;
+        mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, black 80%);
+    }
+}
+
+@media (min-width: 1024px) {
+
+    :root {
+       --content-max-width: min(1040px, 96vw);
+       --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
+        --margin-inline: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        margin-block: 0.21em;
+        letter-spacing: 0.033em;
+    }
+
+    p {
+        max-width: min(62ch, 100%);
+        margin-block: 0.48em;
+        letter-spacing: 0.03em;
+    }
+
+    body::before {
+        max-inline-size: 100%;
+        mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, black 80%);
+    }
+}
+
+@media (min-width: 1200px) {
+
+    :root {
+        --content-max-width: min(1180px, 96vw);
+       --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
+        --margin-inline: auto;
+
+    }
+
+     h1,
     h2,
     h3,
     h4,
@@ -164,41 +308,12 @@ body::before {
     }
 
     p {
-        max-width: min(58ch, 100%);
-        margin-block: 0.4em;
+        max-width: min(64ch, 100%);
+        margin-block: 0.5em;
         letter-spacing: 0.03em;
-    } */
-
-    .wrapper,
-    header,
-    main,
-    footer {
-        max-inline-size: var(--content-max-width);
-         padding-inline: var(--padding-inline);
     }
 
-    body::before {
-        max-inline-size: 100%;
-        mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, black 80%);
-    }
-}
-
-@media (min-width: 1200px) {
-
-    :root {
-        --content-max-width: min(1180px, 94vw);
-        --padding-inline: var(--space-l-xl);
-
-    }
-
-    .wrapper,
-    header,
-    main,
-    footer {
-        max-inline-size: var(--content-max-width);
-        padding-inline: var(--padding-inline);
-    }
-    body::before {
+     body::before {
         max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, black 80%);
     }
@@ -212,18 +327,30 @@ body::before {
 
     :root {
         --content-max-width: min(1320px, 93vw);
-        --padding-inline: var(--space-xl-2xl);
+       --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
+        --margin-inline: auto;
     }
 
-    .wrapper,
-    header,
-    main,
-    footer {
-        max-inline-size: var(--content-max-width);
-        padding-inline: var(--padding-inline);
+     h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        margin-block: 0.24em;
+        letter-spacing: 0.04em;
     }
 
-    body::before {
+    p {
+        max-width: min(68ch, 100%);
+        margin-block: 0.55em;
+        letter-spacing: 0.032em;
+    }
+
+   body::before {
         max-inline-size: 100%;
         mask-image: radial-gradient(ellipse 58% 78% at center, transparent 60%, black 80%);
     }

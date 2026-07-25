@@ -80,14 +80,6 @@ SPACING - Custom properties ` - vw fallback (older browsers)
   --burger-width: var(--space-m-l);
   --burger-thickness: clamp(2px, 0.45vw, 3px);
   --burger-gap: var(--space-4xs-3xs);
-
-  /* ============================================
-        BASE- Mobile (320px - 479x)
-      ============================================ */
-
-  --content-max-width: min(450px, 90vw);
-  --padding-inline: var(--space-xs);
-  --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
 }
 
 @supports (font-size: 1cqi) {
