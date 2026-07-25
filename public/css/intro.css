@@ -581,8 +581,7 @@ footer {
     header {
         margin-block-end: var(--space-2xs-xs);
         padding-block: var(--space-3xs-2xs);
-        padding-inline: var(--space-xl);
-    }
+       }
 
     nav ul {
         flex-direction: column;
