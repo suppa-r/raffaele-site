@@ -8,16 +8,15 @@
   }
 
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1;
-    margin-block-start: var(--space-2xs-xs);
-    margin-block-end: var(--layout-block-gap);
+   text-align: center;
+   line-height: 1;
+   margin-block-start: var(--space-2xs-xs);
 }
 
-header .header-text,
-header .header-break {
+.header-text,
+.header-break {
+    display:block;
+    inline-size: 100%;
     margin-block: 0;
     padding-block-start: var(--space-3xs-2xs);
 }

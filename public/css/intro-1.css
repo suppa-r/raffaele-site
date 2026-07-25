@@ -55,7 +55,6 @@ body {
   min-height: 100svh;
   width: 100%;
   max-inline-size: none;
-  padding-inline: var(--padding-inline);
   box-sizing: border-box;
 }
 
@@ -67,6 +66,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  inline-size: 100%;
   margin-block-start: var(--space-xs);
   margin-block-end: var(--layout-block-gap);
   padding-inline: var(--space-xs-s);
@@ -145,6 +145,7 @@ header .bars.is-active::after {
 
 .nav-links {
   display: flex;
+  inline-size: 100%;
   justify-content: center;
 }
 
@@ -183,8 +184,11 @@ header .bars.is-active::after {
 }
 
 .header__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  inline-size: 100%;
   margin-inline: 0;
-  width: 100%;
   max-width: none;
 }
 
@@ -294,7 +298,6 @@ main>section[id]:target {
 .footer {
   width: 100%;
   max-inline-size: none;
-  padding-inline: var(--padding-inline);
   display: flex;
   justify-content: space-between;
   align-items: center;

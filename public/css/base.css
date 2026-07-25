@@ -4,12 +4,9 @@
                 BASE - Mobile (320px - 479px)
             ============================================ */
 
-    --content-max-width: min(420px, calc(100% - (2 * var(--padding-inline))));
-    --padding-inline: var(--space-2xs);
+        --content-max-width: min(420px, 100%);
     --layout-block-gap: clamp(0.55rem, 2.2vw, 0.85rem);
-    --margin-inline: auto;
-
-}
+  }
 
 html {
     scroll-padding-top: 2rem;
@@ -40,16 +37,6 @@ body {
 
 [data-theme] body {
     isolation: isolate;
-}
-
-.wrapper,
-header,
-main,
-footer {
-    max-inline-size: var(--content-max-width);
-    inline-size: 100%;
-    margin-inline: var(--margin-inline);
-    padding-inline: var(--padding-inline);
 }
 
 button {
@@ -84,6 +71,7 @@ label {
 }
 
 p {
+    display: block;
     max-width: min(56ch, 100%);
     margin-block: 0.38em;
     margin-inline: 0;
@@ -150,6 +138,15 @@ body::before {
     }
 }
 
+.wrapper,
+header,
+main,
+footer {
+    max-inline-size: var(--content-max-width);
+    inline-size: 100%;
+    margin-inline: auto;
+}
+
 /* ===============================================
     SM - Large Mobile / Small Tablet (480px+)
     ============================================ */
@@ -157,11 +154,9 @@ body::before {
 @media (min-width: 480px) {
 
     :root {
-        --content-max-width: min(560px, calc(100% - (2 * var(--padding-inline))));
-        --padding-inline: var(--space-xs);
+                --content-max-width: min(560px, 100%);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-        --margin-inline: auto;
-    }
+      }
 
     h1,
     h2,
@@ -195,11 +190,9 @@ body::before {
 @media (min-width: 768px) {
 
     :root {
-        --content-max-width: min(840px, calc(100% - (2 * var(--padding-inline))));
-        --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
-          --padding-inline: var(--space-s);
-        --margin-inline: auto;
-    }
+                --content-max-width: min(840px, 100%);
+                --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
+       }
 
     h1,
     h2,
@@ -233,11 +226,9 @@ body::before {
 @media (min-width: 1024px) {
 
     :root {
-        --content-max-width: min(1040px, calc(100% - (2 * var(--padding-inline))));
-        --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
-          --padding-inline: var(--space-s);
-        --margin-inline: auto;
-    }
+                --content-max-width: min(1040px, 100%);
+                --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
+}
 
     h1,
     h2,
@@ -271,12 +262,9 @@ body::before {
 @media (min-width: 1200px) {
 
     :root {
-        --content-max-width: min(1180px, calc(100% - (2 * var(--padding-inline))));
-          --padding-inline: var(--space-s);
+                --content-max-width: min(1180px, 100%);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-        --margin-inline: auto;
-
-    }
+     }
 
     h1,
     h2,
@@ -310,11 +298,9 @@ body::before {
 @media (min-width: 1440px) {
 
     :root {
-        --content-max-width: min(1320px, calc(100% - (2 * var(--padding-inline))));
-          --padding-inline: var(--space-s);
+        --content-max-width: min(1320px, 100%);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-        --margin-inline: auto;
-    }
+       }
 
     h1,
     h2,
