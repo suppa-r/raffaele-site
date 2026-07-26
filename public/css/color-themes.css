@@ -27,7 +27,9 @@
                         transparent 100%);
         --box-shadow: 0 0 12px rgb(255 255 255 / 70%), 0 0 6px rgb(255 255 255 / 55%);
         --linear-gradient-image: #ffffff33;
-        --theme-switcher-background-color: #25222298;
+        --theme-switcher-background-color: #ece2e298;
+
+        --blend-mode: normal;
 }
 
 [data-theme="light"] {
@@ -61,7 +63,6 @@
         --linear-gradient-image: #1e18186e;
         --theme-switcher-background-color: #534a4a3d;
         --blend-mode: multiply;
-
 }
 
 @supports (color:oklch(0% 0 0deg)) {
@@ -96,11 +97,9 @@
                 --box-shadow: 0 0 12px oklch(100% 0.0001 271deg / 58%), 0 0 6px oklch(100% 0.0001 271deg / 44%);
                 --linear-gradient-image: oklch(100% 0.00011 271.152deg / 20%);
                 --pattern-opacity: 1;
-                --theme-switcher-background-color: oklch(25.526% 0.00453 17.102deg / 59.6%);
+                --theme-switcher-background-color: oklch(92.069% 0.01089 16.827deg / 0.596);
                 --blend-mode: normal;
         }
-
-
 }
 
 [data-theme="light"] {
@@ -133,8 +132,8 @@
         --box-shadow: 0 0 12px oklch(0% 0 0deg / 62%), 0 0 6px oklch(0% 0 0deg / 48%);
         --linear-gradient-image: oklch(14% 0.01 17.182deg / 48%);
         --pattern-opacity: 0.9;
-        --theme-switcher-background-color: oklch(41.804% 0.0121 17.432deg / 24%);
-        --blend-mode: normal;
+        --theme-switcher-background-color: oklch(41.804% 0.0121 17.432deg / 0.239);
+        --blend-mode: multiply;
 }
 
 
