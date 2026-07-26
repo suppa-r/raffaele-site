@@ -4,9 +4,9 @@
                 BASE - Mobile (320px - 479px)
             ============================================ */
 
-        --content-max-width: min(420px, 100%);
+    --content-max-width: min(420px, 100%);
     --layout-block-gap: clamp(0.55rem, 2.2vw, 0.85rem);
-  }
+}
 
 html {
     scroll-padding-top: 2rem;
@@ -32,6 +32,7 @@ body {
     hyphens: auto;
     mix-blend-mode: var(--blend-mode);
     line-height: 1.5;
+
     overflow: hidden;
 }
 
@@ -52,7 +53,9 @@ h6 {
     display: block;
     font-weight: 500;
     line-height: 1.2;
-    text-wrap: balance
+    text-wrap: balance;
+    max-inline-size: var(--content-max-width);
+    margin-inline: auto;
 }
 
 h1,
@@ -65,7 +68,6 @@ button,
 input,
 label {
     margin-block: 0.18em;
-    margin-inline: 0;
     letter-spacing: 0.028em;
     text-wrap: balance;
 }
@@ -73,8 +75,9 @@ label {
 p {
     display: block;
     max-width: min(56ch, 100%);
+    max-inline-size: var(--content-max-width);
     margin-block: 0.38em;
-    margin-inline: 0;
+    margin-inline: auto;
     letter-spacing: 0.026em;
     text-wrap: pretty;
 }
@@ -109,7 +112,7 @@ a:focus-visible {
     }
 }
 
-body::before {
+.wrapper::before {
     --size: clamp(12px, 2vw, 24px);
     content: "";
     position: absolute;
@@ -132,19 +135,15 @@ body::before {
 @media (prefers-reduced-transparency:reduce),
 (prefers-reduced-motion:reduce) {
 
-    body::before {
+    .wrapper::before {
         mask-image: none;
         transition: none;
     }
 }
 
-.wrapper,
-header,
-main,
-footer {
-    max-inline-size: var(--content-max-width);
+.wrapper {
+    position: relative;
     inline-size: 100%;
-    margin-inline: auto;
 }
 
 /* ===============================================
@@ -154,9 +153,9 @@ footer {
 @media (min-width: 480px) {
 
     :root {
-                --content-max-width: min(560px, 100%);
+        --content-max-width: min(560px, 100%);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-      }
+    }
 
     h1,
     h2,
@@ -177,8 +176,7 @@ footer {
         letter-spacing: 0.028em;
     }
 
-    body::before {
-        max-inline-size: 100%;
+    .wrapper::before {
         mask-image: radial-gradient(ellipse 70% 68% at center, transparent 59%, black 80%);
     }
 }
@@ -190,9 +188,9 @@ footer {
 @media (min-width: 768px) {
 
     :root {
-                --content-max-width: min(840px, 100%);
-                --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
-       }
+        --content-max-width: min(840px, 100%);
+        --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
+    }
 
     h1,
     h2,
@@ -213,8 +211,7 @@ footer {
         letter-spacing: 0.028em;
     }
 
-    body::before {
-        max-inline-size: 100%;
+    .wrapper::before {
         mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, black 80%);
     }
 }
@@ -226,9 +223,9 @@ footer {
 @media (min-width: 1024px) {
 
     :root {
-                --content-max-width: min(1040px, 100%);
-                --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
-}
+        --content-max-width: min(1040px, 100%);
+        --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
+    }
 
     h1,
     h2,
@@ -249,8 +246,7 @@ footer {
         letter-spacing: 0.03em;
     }
 
-    body::before {
-        max-inline-size: 100%;
+    .wrapper::before {
         mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, black 80%);
     }
 }
@@ -262,9 +258,9 @@ footer {
 @media (min-width: 1200px) {
 
     :root {
-                --content-max-width: min(1180px, 100%);
+        --content-max-width: min(1180px, 100%);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-     }
+    }
 
     h1,
     h2,
@@ -285,8 +281,7 @@ footer {
         letter-spacing: 0.03em;
     }
 
-    body::before {
-        max-inline-size: 100%;
+    .wrapper::before {
         mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, black 80%);
     }
 }
@@ -300,7 +295,7 @@ footer {
     :root {
         --content-max-width: min(1320px, 100%);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-       }
+    }
 
     h1,
     h2,
@@ -321,8 +316,42 @@ footer {
         letter-spacing: 0.032em;
     }
 
-    body::before {
-        max-inline-size: 100%;
+    .wrapper::before {
         mask-image: radial-gradient(ellipse 58% 78% at center, transparent 60%, black 80%);
+    }
+}
+
+/* ===============================================
+    3XL - Ultra-Wide / 4K (1920px+)
+    ============================================ */
+
+@media (min-width: 1920px) {
+
+    :root {
+        --content-max-width: min(1600px, 100%);
+        --layout-block-gap: clamp(0.75rem, 1.6vw, 1.75rem);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        margin-block: 0.26em;
+        letter-spacing: 0.042em;
+    }
+
+    p {
+        max-width: min(72ch, 100%);
+        margin-block: 0.6em;
+        letter-spacing: 0.034em;
+    }
+
+    .wrapper::before {
+        mask-image: radial-gradient(ellipse 52% 80% at center, transparent 60%, black 80%);
     }
 }
