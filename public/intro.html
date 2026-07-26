@@ -156,7 +156,8 @@
           <span class="text-layer" aria-hidden="true">p</span>
         </p>
       </main>
-      <footer aria-label="Site footer">
+      <footer aria-label="Site settings">
+        <!-- ✅ fieldset/legend is the correct pattern for grouped buttons -->
         <fieldset class="theme-switcher" aria-label="Theme switcher">
           <button
             data-theme-toggle="dark"
@@ -193,13 +194,14 @@
             </svg>
           </button>
         </fieldset>
-        <!--Live region: announces theme changes to screen readers.
-                        role=status + aria-live=polite ensures non-intrusive announcements.-->
+
+        <!-- ✅ Live region announces theme changes to screen readers -->
         <div
           id="theme-announcement"
           class="visually-hidden"
           role="status"
           aria-live="polite"
+          aria-atomic="true"
         ></div>
       </footer>
     </div>

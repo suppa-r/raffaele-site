@@ -195,13 +195,11 @@ header {
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
-    margin-block-end: var(--space-2xs-xs);
-    padding-block: var(--space-3xs-2xs);
-    margin-block-start: var(--space-2xs-xs);
+    margin-block-start: var(--space-xs-s);
 }
 
 .header-title {
-    padding-inline-start: var(--space-xs-s);
+    padding-inline-start: var(--space-s-m);
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
     color: var(--text-color);
@@ -210,12 +208,12 @@ header {
 }
 
 .header-title span {
-    margin-inline-end: var(--space-3xs-2xs);
+    margin-inline-end: var(--space-s-m);
     color: var(--text-span);
 }
 
 .open-overlay {
-    padding-inline-end: var(--space-xs-s);
+    padding-inline-end: var(--space-s-m);
   margin-block:0;
 background: none;
     cursor: pointer;
@@ -223,19 +221,6 @@ background: none;
 gap: var(--space-3xs-2xs);
     z-index: 2001;
 }
-
-
-/*.open-overlay {
-    position: fixed;
-    right: var(--space-2xl-3xl);
-    background: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-3xs-2xs);
-    z-index: 2001;
-}*/
 
 body:has(.open-overlay[aria-expanded="true"]) main,
 body:has(.open-overlay[aria-expanded="true"]) footer {
@@ -510,22 +495,25 @@ main p:not(.wrapper-gradient-text) {
 }
 
 footer {
-     display: grid;
-    grid-template-columns: auto;
-    justify-content:end;
+    display: grid;
+    grid-template-columns:auto;
+    justify-content: end;
     align-items: center;
-    margin-block: var(--space-xs-s);
-   padding-inline-end: var(--space-xs-s);
+    white-space: nowrap;
+    margin-block-end: var(--space-s-m);
 }
 
-/*footer {
+.theme-switcher {
     display: grid;
+    grid-template-columns: auto auto;
     justify-content: end;
-    line-height: 1;
-    padding-inline-end: var(--space-2xl-3xl);
-    padding-block-end: var(--space-3xs-2xs);
+    align-items: center;
+    gap: var(--space-3xs-2xs);
+    margin-block: 0;
+    margin-inline-end: var(--space-s-m);
 }
-*/
+
+
 @media (prefers-reduced-motion:reduce) {
 
     ::view-transition-group(*),
@@ -571,7 +559,7 @@ footer {
     }
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 
     /* .open-overlay {
         top: var(--space-s-m);
@@ -590,7 +578,7 @@ footer {
         color: var(--text-color);
     } */
 
-    :root {
+    /* :root {
         --intro-overlay-duration: 0.62s;
         --intro-nav-fade-out-duration: 0.18s;
         --intro-nav-fade-in-duration: 0.3s;
@@ -695,8 +683,7 @@ footer {
 }
 
 @media (min-width: 768px) {
-
-    nav ul a {
+nav ul a {
         font-size: var(--fs-200);
     }
 
@@ -743,7 +730,7 @@ footer {
         transform: translateY(var(--space-s-m));
         opacity: 1;
     }
-}
+} */
 
 @media (hover:none) and (pointer:coarse) {
 
