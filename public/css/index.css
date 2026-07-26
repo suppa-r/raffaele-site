@@ -27,7 +27,7 @@ main {
 }
 
 .site-title {
-    font-size: var(--fs-300);
+    font-size: var(--fs-200);
     white-space: nowrap;
     font-style: italic;
     margin-inline: auto;
@@ -49,7 +49,7 @@ main {
 
 .subtext-with-animation {
     font-family: var(--primary-font);
-    font-size: var(--fs-300);
+    font-size: var(--fs-200);
     letter-spacing: var(--main-text-letter-spacing-end);
     margin-block: 0;
 }
@@ -68,6 +68,8 @@ main {
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-600);
+    letter-spacing: var(--main-text-letter-spacing-end);
+    text-align: center;
     font-style: italic;
     margin-block: 0;
     opacity: 0;
@@ -203,19 +205,43 @@ main {
     z-index: 12;
 }
 
+/* --------------------------------------- */
+/* ----- Footer ----- */
+/* --------------------------------------- */
+
 footer {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5xl-6xl);
+    justify-items:space-between;
     align-items: center;
-    margin-block-end: var(--space-2xs-xs);
-}
-
-
-.footer-text {
-    display: flex;
-    text-align: left;
+    line-height: 1;
+    margin-block-end: var(--space-xs-s);
+    padding-inline:var(--space-xs-s);
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
     white-space: nowrap;
 }
+
+.footer-text {
+   inline-size: 100%;
+    margin-block: 0;
+    padding-block-start: var(--space-3xs-2xs);
+   font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.theme-switcher {
+ display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: none;
+  gap: var(--space-3xs-2xs);
+  z-index: 100;
+}
+
 
 
 
