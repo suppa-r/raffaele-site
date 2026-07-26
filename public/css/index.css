@@ -15,7 +15,6 @@ header {
 
 .header-text,
 .header-break {
-    display:block;
     inline-size: 100%;
     margin-block: 0;
     padding-block-start: var(--space-3xs-2xs);
@@ -151,15 +150,11 @@ main> :not(.site-title) {
     height: var(--space-m-l);
     fill: var(--text-color);
     transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-    margin-inline: auto;
 }
 
 .btn:hover svg {
     transform: scale(1.5) rotate(45deg);
-    fill: var(--text-color);
     opacity: 0.6;
-    transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-    margin-inline: auto;
 }
 
 @media (hover:none) and (pointer:coarse) {
@@ -227,7 +222,6 @@ footer {
 
 .footer-text {
     white-space: nowrap;
-    margin: 0;
 }
 
 footer[aria-label="Site settings"] .theme-switcher {

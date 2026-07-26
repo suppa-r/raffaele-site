@@ -50,7 +50,6 @@ nav ul {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
     list-style: none;
 }
 
@@ -60,7 +59,6 @@ nav ul li {
     overflow: hidden;
     transform: translateY(-100%);
     background-color: var(--base-color);
-    z-index: 1000;
 }
 
 nav li a {
@@ -76,14 +74,6 @@ nav li a {
 nav li a:focus-visible {
     outline: 2px solid currentcolor;
     outline-offset: 4px
-}
-
-nav li a::before {
-    content: none;
-}
-
-nav li a::after {
-    content: none;
 }
 
 nav li a:hover::before {
@@ -135,43 +125,43 @@ nav li a:hover::after {
 }
 
 .slide-in-nav-item {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.12s both
+    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both
 }
 
 .slide-in-nav-item-delay-1 {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.3s both
+    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both
 }
 
 .slide-in-nav-item-delay-2 {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.48s both
+    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both
 }
 
 .slide-in-nav-item-delay-3 {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.66s both
+    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.66s both
 }
 
 .slide-in-nav-item-delay-4 {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.84s both
+    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.84s both
 }
 
 .slide-in-nav-item-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0s both
+    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 0s both
 }
 
 .slide-in-nav-item-delay-1-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.18s both
+    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 0.18s both
 }
 
 .slide-in-nav-item-delay-2-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.36s both
+    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 0.36s both
 }
 
 .slide-in-nav-item-delay-3-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.54s both
+    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 0.54s both
 }
 
 .slide-in-nav-item-delay-4-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.72s both
+    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 0.72s both
 }
 
 @keyframes slide-in-nav-item {
@@ -221,7 +211,6 @@ header {
 
 .header-title span {
     margin-inline-end: var(--space-3xs-2xs);
-    font-size: var(--fs-0);
     color: var(--text-span);
 }
 
@@ -235,10 +224,6 @@ header {
     flex-direction: column;
     justify-content: center;
     gap: var(--space-3xs-2xs);
-    z-index: 2001;
-}
-
-.open-overlay[aria-expanded="true"] {
     z-index: 2001;
 }
 
