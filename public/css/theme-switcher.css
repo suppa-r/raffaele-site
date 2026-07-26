@@ -174,7 +174,7 @@ display: grid;
 @media (hover:none) and (pointer:coarse) {
 
   .theme-switcher button {
-    -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
     -webkit-touch-callout: none;
     user-select: none;
     touch-action: manipulation;

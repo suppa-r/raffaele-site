@@ -1,4 +1,4 @@
-const menu = document.querySelector(".bars");
+const menu = document.querySelector(".open-overlay");
 const navlinks = document.querySelector(".nav-links");
 const pageTitle = document.querySelector(".intro-1-page-title");
 const mobileQuery = window.matchMedia("(max-width: 768px)");
@@ -27,6 +27,31 @@ let introNavHideTimeoutId = null;
 
 function introIsReducedMotionPreferred() {
   return window.matchMedia(INTRO_REDUCED_MOTION_QUERY).matches;
+}
+
+function animateHamburgerButton(opening) {
+  if (introIsReducedMotionPreferred()) return;
+  const topBar = menu ? menu.querySelector(".bar-top") : null;
+  const middleBar = menu ? menu.querySelector(".bar-middle") : null;
+  const bottomBar = menu ? menu.querySelector(".bar-bottom") : null;
+  if (!topBar || !middleBar || !bottomBar) return;
+
+  const toggle = (element, removeClass, addClass) => {
+    element.classList.remove(removeClass);
+    element.classList.remove(addClass);
+    void element.offsetWidth;
+    element.classList.add(addClass);
+  };
+
+  if (opening) {
+    toggle(topBar, "animate-out-top-bar", "animate-top-bar");
+    toggle(middleBar, "animate-out-middle-bar", "animate-middle-bar");
+    toggle(bottomBar, "animate-out-bottom-bar", "animate-bottom-bar");
+  } else {
+    toggle(topBar, "animate-top-bar", "animate-out-top-bar");
+    toggle(middleBar, "animate-middle-bar", "animate-out-middle-bar");
+    toggle(bottomBar, "animate-bottom-bar", "animate-out-bottom-bar");
+  }
 }
 
 function introParseTimeToMs(timeValue) {
@@ -323,6 +348,7 @@ function setMenuState(isOpen, options = {}) {
 
   setIntroNavOpenState(isMenuOpen);
   setPageTitleVisibility(isMenuOpen ? false : showTitle);
+  animateHamburgerButton(isMenuOpen);
 
   if (isMenuOpen && moveFocus && firstNavLink) {
     firstNavLink.focus();
