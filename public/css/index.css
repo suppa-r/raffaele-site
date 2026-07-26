@@ -34,12 +34,11 @@ main {
 }
 
 .text-with-animation {
+    margin-inline:auto;
     font-family: var(--primary-font-secondary);
-    --main-text-gap: var(--space-3xs);
-    --main-text-letter-spacing-end: var(--space-4xs-3xs);
-    --main-text-word-spacing-end: var(--space-4xs-3xs);
+    --main-text-letter-spacing: var(--space-3xs-2xs);
     --main-enter-offset: -6vw;
-    letter-spacing: var(--main-text-letter-spacing-end);
+    letter-spacing: var(--main-text-letter-spacing);
     text-align: center;
     font-size: var(--fs-400);
     font-style: italic;
@@ -67,10 +66,10 @@ main {
 .subtext-with-animation-1 {
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-600);
-    letter-spacing: var(--main-text-letter-spacing-end);
+    font-size: var(--fs-700);
     text-align: center;
     font-style: italic;
+    font-weight: bold;
     margin-block: 0;
     opacity: 0;
 }

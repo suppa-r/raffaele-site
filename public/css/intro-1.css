@@ -33,8 +33,12 @@
 
 header {
     display: grid;
+    grid-template-columns: auto auto;
     justify-content: space-between;
-    line-height: 1;
+    align-items: center;
+    white-space: nowrap;
+    margin-block-end: var(--space-s-m);
+    margin-inline: var(--space-m-l);
   }
 
 /* --------------------------------------- */
@@ -44,6 +48,7 @@ header {
   nav {
  z-index: 3000;
     pointer-events:all;
+    margin-inline-start:var(--space-5xl);
  }
 
 .nav-links {
@@ -263,16 +268,16 @@ main>section[id]:target {
 /* --------------------------------------- */
 
 footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
     justify-content: space-between;
-    line-height: 1;
-    padding-inline:var(--space-xs-s);
-    padding-block: var(--space-3xs-2xs);
- }
+    align-items: center;
+    white-space: nowrap;
+    margin-block-end: var(--space-s-m);
+    margin-inline: var(--space-m-l);
+}
 
-.footer__text {
+.footer-text {
   inline-size: 100%;
   block-size: 100%;
   display: flex;
@@ -281,6 +286,7 @@ footer {
   gap: var(--space-5xs-4xs);
   font-family: var(--primary-font-secondary);
   color: var(--text-color);
+   font-size: var(--fs-100);
   white-space: nowrap;
   word-break: keep-all;
 }
@@ -288,7 +294,7 @@ footer {
 .footer__name {
   color: var(--text-span);
   font-family: var(--primary-font-secondary);
-  font-size: var(--fs-01);
+  font-size: var(--fs-100);
   white-space: nowrap;
   word-break: keep-all;
   padding-inline-start: var(--space-3xs-2xs);
@@ -501,25 +507,28 @@ header .bars {
     font-size: var(--fs-100);
   }
 
-  .footer {
-    align-items: center;
-    gap: var(--space-2xs-xs);
-  }
+  .footer-text {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-5xs-4xs);
+  font-family: var(--primary-font-secondary);
+  color: var(--text-color);
+   font-size: var(--fs-0);
+  white-space: nowrap;
+  word-break: keep-all;
+}
 
-    .footer__text {
-    font-family: var(--primary-font-secondary);
-    color: var(--text-color);
-    font-size: var(--fs-01);
-  }
-
-  .footer__name {
-    color: var(--text-span);
-    font-size: var(--fs-01);
-  }
-
-  .footer__actions {
-    gap: var(--space-3xs-2xs);
-  }
+.footer__name {
+  color: var(--text-span);
+  font-family: var(--primary-font-secondary);
+  font-size: var(--fs-0);
+  white-space: nowrap;
+  word-break: keep-all;
+  padding-inline-start: var(--space-3xs-2xs);
+}
 
   .footer__actions .theme-switcher button {
     box-shadow:
