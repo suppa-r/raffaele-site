@@ -5,12 +5,12 @@
     font-size: var(--fs-0);
     min-height: 100svh;
     overflow: hidden;
-  }
+}
 
 header {
-   text-align: center;
-   line-height: 1;
-   margin-block-start: var(--space-2xs-xs);
+    text-align: center;
+    line-height: 1;
+    margin-block-start: var(--space-2xs-xs);
 }
 
 .header-text,
@@ -21,22 +21,16 @@ header {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    align-content: center;
     text-align: center;
-  }
-
-main> :not(.site-title) {
-    margin-block-start: var(--layout-block-gap);
 }
 
 .site-title {
     font-size: var(--fs-300);
     white-space: nowrap;
     font-style: italic;
-    margin-inline:auto;
+    margin-inline: auto;
 }
 
 .text-with-animation {
@@ -210,33 +204,25 @@ main> :not(.site-title) {
 }
 
 footer {
-   display: flex;
-    justify-content:space-between;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    isolation: isolate;
-    position: relative;
-    z-index: 100;
-    margin-block-start: var(--layout-block-gap);
-    margin-block-end: var(--space-xs-s);
-  }
+    margin-block-end: var(--space-2xs-xs);
+}
+
 
 .footer-text {
+    display: flex;
+    text-align: left;
     white-space: nowrap;
 }
 
-footer[aria-label="Site settings"] .theme-switcher {
-    justify-self: end;
-}
 
-@media (max-width: 768px) {
+
+/*@media (max-width: 768px) {
 
     header {
         margin-block-start: var(--space-3xs-2xs);
-        margin-block-end: var(--space-2xs-xs);
-    }
-
-    main {
-        padding-block: var(--space-2xs-xs) var(--space-xs-s);
     }
 
     .site-title {
@@ -248,12 +234,9 @@ footer[aria-label="Site settings"] .theme-switcher {
     .subtext-with-animation-1 {
         min-block-size: var(--space-m-l);
     }
-
-    footer {
-        margin-block-start: var(--space-xs);
-        margin-block-end: var(--space-3xs-2xs);
-    }
 }
+
+
 
 @media (min-width: 768px) {
 
@@ -268,7 +251,7 @@ footer[aria-label="Site settings"] .theme-switcher {
         gap: var(--space-xs-s);
         letter-spacing: var(--space-2xs-xs);
     }
-}
+} */
 
 @media (prefers-reduced-motion:reduce) {
 

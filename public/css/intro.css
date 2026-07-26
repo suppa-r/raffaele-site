@@ -191,23 +191,22 @@ nav li a:hover::after {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     line-height: 1;
     margin-block-start: var(--space-2xs-xs);
-    margin-block-end: var(--layout-block-gap);
-}
+  }
 
 .header-title {
+    margin-left: var(--space-m-l);
+    display:inline-block;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
     color: var(--text-color);
-    text-align: left;
-    line-height: 1;
-    margin-block-start: var(--space-2xs-xs);
-    margin-block-end: var(--layout-block-gap);
- }
+    text-align:right;
+    white-space: nowrap;
+  }
 
 .header-title span {
     margin-inline-end: var(--space-3xs-2xs);
@@ -216,7 +215,6 @@ header {
 
 .open-overlay {
     position: fixed;
-    top: var(--space-2xs-xs);
     right: var(--space-2xl-3xl);
     background: none;
     cursor: pointer;
@@ -386,11 +384,9 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    align-content: center;
+text-align: center;
   }
 
 main p {
@@ -496,15 +492,16 @@ main p:not(.wrapper-gradient-text) {
 }
 
 footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    isolation: isolate;
-    position: relative;
-    z-index: 100;
-    margin-block-start: var(--layout-block-gap);
-    margin-block-end: var(--space-xs-s);
-}
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        line-height: 1;
+        padding-inline-end: var(--space-2xl-3xl);
+  }
+
+.theme-switcher {
+        position: static;
+  }
 
 @media (prefers-reduced-motion:reduce) {
 
@@ -582,6 +579,10 @@ footer {
         padding-block: var(--space-3xs-2xs);
        }
 
+    footer {
+        padding-inline-end: var(--space-s-m);
+    }
+
     nav ul {
         flex-direction: column;
         justify-content: center;
@@ -611,11 +612,7 @@ footer {
         line-height: 1.1;
     }
 
-    main {
-        padding-block: var(--space-2xs-xs) var(--space-xs-s);
-    }
-
-    .text-with-animation {
+.text-with-animation {
         gap: var(--space-xs-s);
         padding-block-end: var(--space-2xs-xs);
     }
@@ -624,14 +621,9 @@ footer {
         padding-block-end: var(--space-l-xl);
     }
 
-    footer {
-        margin-block-start: var(--space-xs);
-        margin-block-end: var(--space-3xs-2xs);
-    }
-
 .open-overlay[aria-expanded="true"] span {
-    background-color: currentColor
-    }
+    background-color: currentColor;
+}
 
     nav li a::before {
         content: "";
