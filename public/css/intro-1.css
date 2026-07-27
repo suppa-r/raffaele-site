@@ -273,6 +273,13 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
   text-align: center;
   z-index: 1;
   white-space: nowrap;
+  color: var(--text-color);
+  view-transition-name: intro1-page-title;
+}
+
+.page-entering .intro-1-page-title {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .intro-nav-open .intro-1-page-title {
@@ -281,18 +288,29 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
   pointer-events: none;
 }
 
-.intro-1-page-title p {
+.intro-1-page-title {
   font-family: var(--primary-font);
   font-size: var(--fs-100);
   white-space: nowrap;
   word-break: keep-all;
+  color: var(--text-color);
 }
 
-.intro-1-page-title p span {
+.intro-1-page-title span {
   font-family: var(--primary-font-secondary);
   color: var(--text-span);
   padding-inline-start: var(--space-xs-s);
   font-size: var(--fs-200);
+}
+
+::view-transition-old(intro1-page-title) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-new(intro1-page-title) {
+  animation: none;
+  opacity: 0;
 }
 
 /* =======================================================

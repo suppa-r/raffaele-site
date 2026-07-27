@@ -1,20 +1,20 @@
 const THEME_TRANSITION_CLASS = "theme-transitioning";
-const VALID_THEMES = ["dark", "auto"];
+const VALID_THEMES = ["dark", "system"];
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const THEME_FAVICONS = {
   dark: "/favicons/web-app-manifest-192x192.png",
   light: "/favicons/favicon-96x96.png",
-  auto: "/favicons/favicon-96x96.png",
+  system: "/favicons/favicon-96x96.png",
 };
-const OVERLAY_NAV_HTML = `<div class="overlay-navigation">
-<nav role="navigation">
+const OVERLAY_NAV_HTML = `<div class="overlay-navigation" id="site-nav-links">
+<nav role="navigation" aria-label="Primary overlay navigation">
 <ul>
-<li></li>
+<li aria-hidden="true" role="presentation"></li>
 <li><a href="index.html" data-content="start over">home</a></li>
-<li></li>
+<li aria-hidden="true" role="presentation"></li>
 <li><a href="intro-1.html" data-content="hmmmmm">about me</a></li>
-<li></li>
+<li aria-hidden="true" role="presentation"></li>
 </ul>
 </nav>
 </div>`;
@@ -32,7 +32,8 @@ const OVERLAY_CLOSE_CLASSES = [
   "slide-in-nav-item-delay-3-reverse",
   "slide-in-nav-item-delay-4-reverse",
 ];
-const OVERLAY_CLOSE_DELAY_MS = 1200;
+const OVERLAY_CLOSE_DELAY_MS = 900;
+const OVERLAY_CLOSE_FALLBACK_MS = 1000;
 const HERO_TEXT_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 const HERO_REVEAL_DURATION = 0.9;
 const HERO_REVEAL_STAGGER = 0.16;
@@ -49,10 +50,14 @@ const SUBTEXT_SPAN_SELECTOR = ".subtext-with-animation span";
 const PUNCTUATION_SELECTOR = ".subtext-with-animation-1";
 const THEME_SWITCHER_SELECTOR = ".theme-switcher";
 const OPEN_OVERLAY_SELECTOR = ".open-overlay";
+const OVERLAY_FIRST_LINK_SELECTOR = ".overlay-navigation a[href]";
+const THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
 
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
 let replayTextAnimationsTimeoutId = null;
+let overlayTriggerElement = null;
+let themeVisualSwapState = false;
 
 function isReducedMotionPreferred() {
   if (
@@ -68,6 +73,10 @@ function isReducedMotionPreferred() {
 function getStoredTheme() {
   try {
     const theme = localStorage.getItem("theme");
+    if (theme === "auto") {
+      saveTheme("system");
+      return "system";
+    }
     return VALID_THEMES.includes(theme) ? theme : null;
   } catch {
     // ignore storage errors
@@ -84,7 +93,7 @@ function saveTheme(theme) {
 }
 
 function resolveTheme(theme) {
-  return theme === "auto"
+  return theme === "system"
     ? window.matchMedia(COLOR_SCHEME_QUERY).matches
       ? "dark"
       : "light"
@@ -269,6 +278,14 @@ function animateThemePicker(nextTheme) {
   themePickerAnimationTimeoutId = setTimeout(clearThemePickerAnimation, 0);
 }
 
+function toggleThemeVisualSwapState() {
+  themeVisualSwapState = !themeVisualSwapState;
+  document.documentElement.classList.toggle(
+    THEME_VISUAL_TOGGLE_CLASS,
+    themeVisualSwapState,
+  );
+}
+
 function applyThemeState(resolvedTheme, theme) {
   document.documentElement.setAttribute("data-theme", resolvedTheme);
   saveTheme(theme);
@@ -328,16 +345,33 @@ function addOverlayCloseClasses(overlayNavigation) {
 function openOverlayNavigation() {
   if (isOverlayOpen()) return;
 
+  document.querySelectorAll(".overlay-navigation").forEach((overlay) => {
+    overlay.remove();
+  });
+
+  const openOverlay = document.querySelector(OPEN_OVERLAY_SELECTOR);
+
+  overlayTriggerElement =
+    openOverlay instanceof HTMLElement
+      ? openOverlay
+      : document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+
   const overlayHost = document.querySelector(".wrapper") || document.body;
   overlayHost.insertAdjacentHTML("afterbegin", OVERLAY_NAV_HTML);
   const overlayNavigation = document.querySelector(".overlay-navigation");
   if (!overlayNavigation) return;
 
   overlayNavigation.classList.add("overlay-active");
+  overlayNavigation.style.pointerEvents = "auto";
+  overlayNavigation.removeAttribute("aria-hidden");
+  if ("inert" in overlayNavigation) {
+    overlayNavigation.inert = false;
+  }
   overlayNavigation.getBoundingClientRect();
   overlayNavigation.classList.add("overlay-slide-down");
 
-  const openOverlay = document.querySelector(OPEN_OVERLAY_SELECTOR);
   if (openOverlay) {
     openOverlay.setAttribute("aria-label", "Close navigation menu");
     openOverlay.setAttribute("aria-expanded", "true");
@@ -345,16 +379,50 @@ function openOverlayNavigation() {
 
   animateHamburgerButton(true);
   addOverlayOpenClasses(overlayNavigation);
+
+  const firstOverlayLink = overlayNavigation.querySelector(
+    OVERLAY_FIRST_LINK_SELECTOR,
+  );
+  if (firstOverlayLink instanceof HTMLElement) {
+    requestAnimationFrame(() => {
+      firstOverlayLink.focus();
+    });
+  }
 }
 
-function closeOverlayNavigation() {
+function restoreOverlayTriggerFocus() {
+  if (overlayTriggerElement instanceof HTMLElement) {
+    overlayTriggerElement.focus();
+  } else {
+    const openOverlay = document.querySelector(OPEN_OVERLAY_SELECTOR);
+    if (openOverlay instanceof HTMLElement) {
+      openOverlay.focus();
+    }
+  }
+
+  overlayTriggerElement = null;
+}
+
+function closeOverlayNavigation(options = {}) {
+  const { returnFocus = false } = options;
   const overlayNavigation = document.querySelector(".overlay-navigation");
   if (!overlayNavigation) return;
+
+  overlayNavigation.classList.remove("overlay-active");
+  overlayNavigation.setAttribute("aria-hidden", "true");
+  overlayNavigation.style.pointerEvents = "none";
+  if ("inert" in overlayNavigation) {
+    overlayNavigation.inert = true;
+  }
 
   const openOverlay = document.querySelector(OPEN_OVERLAY_SELECTOR);
   if (openOverlay) {
     openOverlay.setAttribute("aria-label", "Open navigation menu");
     openOverlay.setAttribute("aria-expanded", "false");
+  }
+
+  if (returnFocus) {
+    restoreOverlayTriggerFocus();
   }
 
   animateHamburgerButton(false);
@@ -365,11 +433,22 @@ function closeOverlayNavigation() {
       "overlay-slide-down",
       "overlay-slide-up",
     );
-    overlayNavigation.addEventListener(
-      "transitionend",
-      () => overlayNavigation.remove(),
-      { once: true },
-    );
+
+    let isClosed = false;
+    const finalizeClose = () => {
+      if (isClosed) {
+        return;
+      }
+
+      isClosed = true;
+      overlayNavigation.remove();
+    };
+
+    overlayNavigation.addEventListener("transitionend", finalizeClose, {
+      once: true,
+    });
+
+    setTimeout(finalizeClose, OVERLAY_CLOSE_FALLBACK_MS);
   }, OVERLAY_CLOSE_DELAY_MS);
 }
 
@@ -377,7 +456,7 @@ let navEventsAttached = false;
 
 function handleOverlayToggle() {
   if (isOverlayOpen()) {
-    closeOverlayNavigation();
+    closeOverlayNavigation({ returnFocus: true });
   } else {
     openOverlayNavigation();
   }
@@ -407,6 +486,12 @@ function handleDocumentClick(event) {
 }
 
 function handleDocumentKeydown(event) {
+  if (event.key === "Escape" && isOverlayOpen()) {
+    event.preventDefault();
+    closeOverlayNavigation({ returnFocus: true });
+    return;
+  }
+
   const openOverlayButton = event.target.closest(OPEN_OVERLAY_SELECTOR);
   if (!openOverlayButton) return;
   if (isNavigationOverlayLink(openOverlayButton)) return;
@@ -447,12 +532,50 @@ function setTheme(theme) {
   if (!isThemeValid(theme)) return;
 
   const resolvedTheme = resolveTheme(theme);
+  const currentTheme = document.documentElement.getAttribute("data-theme");
   const overlayWasOpen = isOverlayOpen();
 
   if (isThemeAlreadyApplied(theme, resolvedTheme)) {
     updateThemeButtonState(theme);
     updateFavicon(resolvedTheme);
     clearThemePickerAnimation();
+    return;
+  }
+
+  // If the resolved color stays the same (e.g. dark <-> system on dark OS),
+  // still run a lightweight transition so every click gets visual feedback.
+  if (currentTheme === resolvedTheme) {
+    animateThemePicker(theme);
+    notifyThemeTransitionStarted();
+
+    if (isReducedMotionPreferred() || !document.startViewTransition) {
+      applyThemeState(resolvedTheme, theme);
+      replayTextAnimationsAfterTransitions();
+      notifyThemeTransitioned();
+      return;
+    }
+
+    clearTimeout(themeTransitionTimeoutId);
+    document.documentElement.classList.add(THEME_TRANSITION_CLASS);
+
+    const transition = document.startViewTransition(() => {
+      toggleThemeVisualSwapState();
+      applyThemeState(resolvedTheme, theme);
+    });
+
+    transition.finished
+      .then(() => {
+        replayTextAnimationsAfterTransitions();
+        notifyThemeTransitioned();
+        clearTimeout(themeTransitionTimeoutId);
+        themeTransitionTimeoutId = setTimeout(() => {
+          document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+        }, 0);
+      })
+      .catch(() => {
+        document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
+      });
+
     return;
   }
 
@@ -483,6 +606,7 @@ function setTheme(theme) {
   if (document.startViewTransition) {
     try {
       const transition = document.startViewTransition(() => {
+        toggleThemeVisualSwapState();
         document.documentElement.setAttribute("data-theme", resolvedTheme);
         saveTheme(theme);
       });

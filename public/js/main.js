@@ -4,6 +4,7 @@ const PAGE_LEAVE_CLASS = "is-leaving";
 const PARTICLE_DISTANCE_MIN = 20;
 const PARTICLE_DISTANCE_MAX = 100;
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
+const MAIN_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 
 function getSneakerButton() {
   return document.querySelector(".btn");
@@ -77,6 +78,28 @@ function getAbsoluteHref(href, baseUrl) {
   }
 }
 
+function getSavedThemePreference() {
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "auto") {
+      localStorage.setItem("theme", "system");
+      return "system";
+    }
+
+    return ["dark", "system"].includes(savedTheme) ? savedTheme : "dark";
+  } catch {
+    return "dark";
+  }
+}
+
+function resolveSavedThemePreference(themePreference) {
+  if (themePreference !== "system") {
+    return themePreference;
+  }
+
+  return window.matchMedia(MAIN_COLOR_SCHEME_QUERY).matches ? "dark" : "light";
+}
+
 function loadNewStylesheets(newStylesheets, currentHrefSet, destinationUrl) {
   const promises = [];
 
@@ -110,6 +133,37 @@ function removeOldStylesheets(newHrefSet) {
 
     link.remove();
   });
+}
+
+async function loadMissingScripts(newScripts, currentSrcSet, destinationUrl) {
+  for (const script of newScripts) {
+    const src = script.getAttribute("src");
+    if (!src) continue;
+
+    const absoluteSrc = getAbsoluteHref(src, destinationUrl);
+    if (currentSrcSet.has(absoluteSrc)) continue;
+
+    await new Promise((resolve) => {
+      const clone = document.createElement("script");
+      clone.src = absoluteSrc;
+
+      const type = script.getAttribute("type");
+      if (type) {
+        clone.type = type;
+      }
+
+      if (script.noModule) {
+        clone.noModule = true;
+      }
+
+      clone.async = false;
+      clone.defer = true;
+      clone.addEventListener("load", resolve, { once: true });
+      clone.addEventListener("error", resolve, { once: true });
+      document.head.appendChild(clone);
+      currentSrcSet.add(absoluteSrc);
+    });
+  }
 }
 
 function adoptNewBody(newDocument, savedTheme) {
@@ -150,12 +204,6 @@ async function handleNavigation(event) {
   const currentUrl = new URL(window.location.href);
   const destinationUrl = new URL(event.destination.url);
 
-  // intro-1 has page-specific scripts that should run in a clean page scope.
-  // Skip interception so the browser performs a normal full navigation.
-  if (destinationUrl.pathname.endsWith("/intro-1.html")) {
-    return;
-  }
-
   if (
     currentUrl.pathname === destinationUrl.pathname &&
     currentUrl.search === destinationUrl.search
@@ -183,10 +231,10 @@ async function handleNavigation(event) {
         newDocument.querySelectorAll('link[rel="stylesheet"]'),
       );
       const currentScripts = Array.from(
-        document.querySelectorAll("head script[src]"),
+        document.querySelectorAll("script[src]"),
       );
       const newScripts = Array.from(
-        newDocument.querySelectorAll("head script[src]"),
+        newDocument.querySelectorAll("script[src]"),
       );
       const currentHrefSet = new Set(
         currentStylesheets.map((link) => link.href).filter(Boolean),
@@ -194,20 +242,6 @@ async function handleNavigation(event) {
       const currentSrcSet = new Set(
         currentScripts.map((script) => script.src).filter(Boolean),
       );
-      const destinationScriptSrcs = newScripts
-        .map((script) => script.getAttribute("src"))
-        .filter(Boolean)
-        .map((src) => getAbsoluteHref(src, event.destination.url));
-      const hasMissingScripts = destinationScriptSrcs.some(
-        (src) => !currentSrcSet.has(src),
-      );
-
-      // If destination introduces scripts not currently loaded, perform a hard
-      // navigation so they execute in a clean page scope.
-      if (hasMissingScripts) {
-        window.location.href = event.destination.url;
-        return;
-      }
       const newHrefSet = new Set(
         newStylesheets
           .map((link) => link.getAttribute("href"))
@@ -222,9 +256,14 @@ async function handleNavigation(event) {
       );
       removeOldStylesheets(newHrefSet);
 
-      const savedTheme = localStorage.getItem("theme") ?? "dark";
+      const savedTheme = resolveSavedThemePreference(getSavedThemePreference());
       if (!document.startViewTransition) {
         adoptNewBody(newDocument, savedTheme);
+        await loadMissingScripts(
+          newScripts,
+          currentSrcSet,
+          event.destination.url,
+        );
         window.scrollTo(0, 0);
         document.body.classList.remove("page-entering");
         document.dispatchEvent(new CustomEvent("page:transitioned"));
@@ -248,6 +287,12 @@ async function handleNavigation(event) {
       } catch {
         // no-op: transition finished may reject when interrupted
       }
+
+      await loadMissingScripts(
+        newScripts,
+        currentSrcSet,
+        event.destination.url,
+      );
 
       document.body.classList.remove("page-entering");
       document.dispatchEvent(new CustomEvent("page:transitioned"));

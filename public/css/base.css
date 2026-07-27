@@ -45,6 +45,26 @@ body {
     overflow: hidden;
 }
 
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-140%);
+    z-index: 3000;
+    padding: 0.65rem 1rem;
+    color: var(--base-color);
+    background: var(--text-color);
+    border-radius: 0 0 0.4rem 0;
+    text-decoration: none;
+    font-family: var(--primary-font-secondary);
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--text-span);
+    outline-offset: 2px;
+}
+
 button {
     cursor: pointer
 }

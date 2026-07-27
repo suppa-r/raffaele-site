@@ -4,13 +4,13 @@ const pageTitle = document.querySelector(".intro-1-page-title");
 const mobileQuery = window.matchMedia("(max-width: 768px)");
 const firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
 const introThemeAnnouncement = document.getElementById("theme-announcement");
-const INTRO_VALID_THEMES = ["dark", "auto"];
+const INTRO_VALID_THEMES = ["dark", "system"];
 const INTRO_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INTRO_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const INTRO_THEME_TRANSITION_CLASS = "theme-transitioning";
+const INTRO_THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
 const INTRO_THEME_BUTTON_PULSE_CLASS = "is-tapped";
 const INTRO_THEME_BUTTON_PULSE_MS = 520;
-const INTRO_THEME_TRANSITION_START_DELAY_MS = 820;
 const INTRO_NAV_CLOSE_HIDE_FALLBACK_MS = 320;
 const introSectionHashes = new Set(
   Array.from(
@@ -22,8 +22,8 @@ const introSectionHashes = new Set(
 let isMenuOpen = false;
 let introThemeTransitionTimeoutId = null;
 let introThemeButtonPulseTimeoutId = null;
-let introThemeTransitionStartTimeoutId = null;
 let introNavHideTimeoutId = null;
+let introThemeVisualSwapState = false;
 
 function introIsReducedMotionPreferred() {
   return window.matchMedia(INTRO_REDUCED_MOTION_QUERY).matches;
@@ -109,6 +109,10 @@ function introGetNavCloseHideDelayMs() {
 function introGetStoredTheme() {
   try {
     const saved = localStorage.getItem("theme");
+    if (saved === "auto") {
+      introSaveTheme("system");
+      return "system";
+    }
     return INTRO_VALID_THEMES.includes(saved) ? saved : "dark";
   } catch {
     return "dark";
@@ -124,7 +128,7 @@ function introSaveTheme(theme) {
 }
 
 function introResolveTheme(theme) {
-  if (theme !== "auto") {
+  if (theme !== "system") {
     return theme;
   }
 
@@ -146,7 +150,7 @@ function introAnnounceTheme(theme) {
   }
 
   introThemeAnnouncement.textContent =
-    theme === "auto" ? "Theme set to device preference" : "Theme set to dark";
+    theme === "system" ? "Theme set to device preference" : "Theme set to dark";
 }
 
 function introApplyTheme(theme, announce = true) {
@@ -171,12 +175,21 @@ function introEndThemeTransition() {
   }, 0);
 }
 
+function introToggleThemeVisualSwapState() {
+  introThemeVisualSwapState = !introThemeVisualSwapState;
+  document.documentElement.classList.toggle(
+    INTRO_THEME_VISUAL_TOGGLE_CLASS,
+    introThemeVisualSwapState,
+  );
+}
+
 function introRunThemeTransition(theme, announce) {
   document.documentElement.classList.add(INTRO_THEME_TRANSITION_CLASS);
 
   if (document.startViewTransition) {
     try {
       const transition = document.startViewTransition(() => {
+        introToggleThemeVisualSwapState();
         introApplyTheme(theme, announce);
       });
 
@@ -211,20 +224,27 @@ function introSetTheme(theme, options = {}) {
 
   if (currentTheme === resolvedTheme && storedTheme === theme) {
     introUpdateThemeButtons(theme);
-    clearTimeout(introThemeTransitionStartTimeoutId);
+    return;
+  }
+
+  // Dark <-> system can resolve to the same visual theme.
+  // Keep transition feedback even if resolved colors are the same.
+  if (currentTheme === resolvedTheme) {
+    if (!withTransition || introIsReducedMotionPreferred()) {
+      introApplyTheme(theme, announce);
+      return;
+    }
+
+    introRunThemeTransition(theme, announce);
     return;
   }
 
   if (!withTransition || introIsReducedMotionPreferred()) {
-    clearTimeout(introThemeTransitionStartTimeoutId);
     introApplyTheme(theme, announce);
     return;
   }
 
-  clearTimeout(introThemeTransitionStartTimeoutId);
-  introThemeTransitionStartTimeoutId = setTimeout(() => {
-    introRunThemeTransition(theme, announce);
-  }, INTRO_THEME_TRANSITION_START_DELAY_MS);
+  introRunThemeTransition(theme, announce);
 }
 
 function introPulseThemeButton(button) {
@@ -261,11 +281,11 @@ function handleThemeToggleClick(event) {
 }
 
 function handleSystemThemeChange() {
-  if (introGetStoredTheme() !== "auto") {
+  if (introGetStoredTheme() !== "system") {
     return;
   }
 
-  introSetTheme("auto", { announce: false, withTransition: false });
+  introSetTheme("system", { announce: false, withTransition: false });
 }
 
 function initIntroThemeSwitcher() {

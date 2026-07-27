@@ -6,8 +6,11 @@ let splitInstance;
 let lastInitTimestamp = 0;
 const INIT_DEDUPE_WINDOW_MS = 450;
 const THEME_REPLAY_DELAY_MS = 100;
-const INTRO_ANIMATION_TARGET = "main p:not(.wrapper-gradient-text)";
-const WRAPPER_GRADIENT_TARGET = ".wrapper-gradient-text";
+const INTRO_PAGE_SELECTOR = 'body[data-page="intro"]';
+const INTRO_ANIMATION_TARGET =
+  'body[data-page="intro"] main p:not(.wrapper-gradient-text)';
+const WRAPPER_GRADIENT_TARGET =
+  'body[data-page="intro"] .wrapper-gradient-text';
 
 if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-intro-anim");
@@ -15,6 +18,10 @@ if (typeof document !== "undefined") {
 
 function hasElements(selector) {
   return !!document.querySelector(selector);
+}
+
+function isIntroPage() {
+  return !!document.querySelector(INTRO_PAGE_SELECTOR);
 }
 
 function initializeLenis() {
@@ -151,6 +158,14 @@ function hideIntroContent() {
 }
 
 function initPage() {
+  if (!isIntroPage()) {
+    if (lenis) {
+      lenis.destroy();
+      lenis = null;
+    }
+    return;
+  }
+
   const now = Date.now();
   if (now - lastInitTimestamp < INIT_DEDUPE_WINDOW_MS) {
     return;

@@ -15,14 +15,18 @@
         const getSavedTheme = () => {
           try {
             const saved = localStorage.getItem("theme");
-            return ["dark", "auto"].includes(saved) ? saved : "dark";
+            if (saved === "auto") {
+              localStorage.setItem("theme", "system");
+              return "system";
+            }
+            return ["dark", "system"].includes(saved) ? saved : "dark";
           } catch {
             return "dark";
           }
         };
 
         const resolveTheme = (theme) =>
-          theme === "auto" ? getSystemTheme() : theme;
+          theme === "system" ? getSystemTheme() : theme;
         const actualTheme = resolveTheme(getSavedTheme());
         const current = document.documentElement.getAttribute("data-theme");
 
@@ -30,20 +34,6 @@
         if (current !== actualTheme) {
           document.documentElement.setAttribute("data-theme", actualTheme);
         }
-
-        // Stamp aria-pressed before first paint so CSS hides the active button immediately,
-        // preventing layout shift caused by deferred JS toggling display:none after render.
-        const savedTheme = getSavedTheme();
-        document.addEventListener("DOMContentLoaded", function () {
-          document
-            .querySelectorAll("[data-theme-toggle]")
-            .forEach(function (btn) {
-              btn.setAttribute(
-                "aria-pressed",
-                btn.dataset.themeToggle === savedTheme ? "true" : "false",
-              );
-            });
-        });
       })();
     </script>
 
@@ -101,6 +91,7 @@
 
   <body data-page="index">
     <div class="wrapper">
+      <a class="skip-link" href="#main-content">Skip to main content</a>
       <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
       <div class="support view-transition" role="alert" aria-live="assertive">
         ⚠️ Your browser doesn't support View Transitions
@@ -117,7 +108,7 @@
         <p class="header-break" aria-hidden="true">--the beatles</p>
       </header>
       <!-- ✅ main: labelledby ties main to visible h1 -->
-      <main aria-labelledby="site-heading">
+      <main id="main-content" aria-labelledby="site-heading" tabindex="-1">
         <h1 id="site-heading" class="site-title">doin' business as:</h1>
         <div class="text-with-animation">
           <span>raffaele</span>&nbsp;<span>suppa</span>
@@ -175,7 +166,7 @@
             </svg>
           </button>
           <button
-            data-theme-toggle="auto"
+            data-theme-toggle="system"
             aria-label="Use my device color preference"
             aria-pressed="false"
           >
