@@ -1,11 +1,7 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    color: var(--text-color);
-    font-size: var(--fs-0);
-    min-height: 100svh;
-    overflow: hidden;
-}
+   }
 
 header {
     text-align: center;
@@ -219,11 +215,11 @@ footer {
 
 .footer-text {
 white-space: nowrap;
-padding-inline-start: var(--space-m-l);
+padding-inline-start: var(--space-s-m);
 }
 
 .theme-switcher {
-    margin-inline-end: var(--space-m-l);
+    margin-inline-end: var(--space-s-m);
 }
 
 @media (prefers-reduced-motion:reduce) {

@@ -37,6 +37,14 @@ body {
     isolation: isolate;
 }
 
+.wrapper {
+    margin-inline: auto;
+    position: relative;
+    inline-size: 100%;
+    min-height: 100svh;
+    overflow: hidden;
+}
+
 button {
     cursor: pointer
 }
@@ -136,15 +144,6 @@ a:focus-visible {
         mask-image: none;
         transition: none;
     }
-}
-
-.wrapper {
-    position: relative;
-    inline-size: 100%;
-    min-height: 100svh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    overflow: hidden;
 }
 
 /* ===============================================

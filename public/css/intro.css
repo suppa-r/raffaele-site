@@ -9,10 +9,6 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    color: var(--text-color);
-    font-size: var(--fs-0);
-    min-height: 100svh;
-    overflow: hidden;
 }
 
 .overlay-navigation {
@@ -37,8 +33,15 @@
     transition-delay: 0s
 }
 
-nav,
-nav ul {
+.open-overlay[aria-expanded="true"] {
+    z-index: 5000;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    color: var(--text-color);
+}
+nav{
+    position: relative;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -47,47 +50,105 @@ nav ul {
 
 nav ul {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-4xs-3xs);
+    padding-block: var(--space-xs-s);
+    height: 100%;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
-    flex-basis: 20%;
-    height: 100%;
-    overflow: hidden;
-    transform: translateY(-100%);
-    background-color: var(--base-color);
+    flex: 0 0 auto;
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: clamp(3.25rem, 8vw, 4.25rem);
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav li a {
-    position: relative;
-    top: 50%;
-    color: var(--text-color);
-    text-decoration: none;
-    display: block;
+nav ul a {
+   display: flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: clamp(3.25rem, 8vw, 4.25rem);
+    font-size: var(--fs-100);
     text-align: center;
-    font-size: var(--fs-0)
+    line-height: 1.1;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
 }
 
-nav li a:focus-visible {
-    outline: 2px solid currentcolor;
-    outline-offset: 4px
+.text-with-animation {
+    gap: var(--space-xs-s);
+    padding-block-end: var(--space-2xs-xs);
 }
 
-nav li a:hover::before {
+.wrapper-gradient-text {
+    padding-block-end: var(--space-l-xl);
+}
+
+.open-overlay[aria-expanded="true"] span {
+    background-color: currentColor;
+}
+
+nav li a::before {
+    content: "";
+    width: var(--space-xl);
+    height: var(--space-3xs);
+    background-color: var(--text-color);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 100;
+    transform: translateX(-100%);
     opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-nav li a:hover::after {
+nav li a::after {
+    content: attr(data-content);
+    font-size: var(--fs-200);
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     opacity: 0;
+    position: absolute;
+    z-index: 100;
+    color: var(--text-color);
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    bottom: var(--space-2xl-3xl);
+    transform: translateY(0);
+    text-transform: none;
+    font-style: italic;
+    letter-spacing: 0;
 }
+
+nav li a:is(:hover, :focus-visible)::before {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+nav li a:is(:hover, :focus-visible)::after {
+    transform: translateY(var(--space-s-m));
+    opacity: 1;
+}
+
+
+
 
 @supports (background-color:color-mix(in oklch, #000000 100%, #ffffff 0%)) {
 
     nav li:nth-of-type(1) {
-        background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%)
+        background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 10%)
     }
 
     nav li:nth-of-type(2) {
@@ -164,6 +225,14 @@ nav li a:hover::after {
     animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 0.72s both
 }
 
+nav ul li[class^="slide-in-nav-item"],
+nav ul li[class*=" slide-in-nav-item"] {
+    min-block-size: clamp(3.25rem, 8vw, 4.25rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @keyframes slide-in-nav-item {
 
     from {
@@ -196,10 +265,10 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-block-start: var(--space-xs-s);
+    padding-inline: var(--space-s-m);
 }
 
 .header-title {
-    padding-inline-start: var(--space-s-m);
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
     color: var(--text-color);
@@ -213,6 +282,11 @@ header {
 }
 
 .open-overlay {
+    opacity: 1;
+    position: relative;
+    background: none;
+    border: none;
+    padding-block: var(--space-3xs-2xs);
     padding-inline-end: var(--space-s-m);
     margin-block: 0;
     background: none;
@@ -221,6 +295,7 @@ header {
     gap: var(--space-3xs-2xs);
     z-index: 2001;
 }
+
 
 body:has(.open-overlay[aria-expanded="true"]) main,
 body:has(.open-overlay[aria-expanded="true"]) footer {
@@ -559,84 +634,69 @@ footer {
     }
 }
 
-/* @media (max-width: 767px) {
+@media (min-width: 768px) {
 
-    /* .open-overlay {
-        top: var(--space-s-m);
-        right: var(--space-s-m);
-        visibility: visible;
-        opacity: 1;
-        pointer-events: auto;
-        color: var(--text-color);
-    }
-
-    .open-overlay[aria-expanded="true"] {
-        z-index: 5000;
-        visibility: visible;
-        opacity: 1;
-        pointer-events: auto;
-        color: var(--text-color);
-    } */
-
-/* :root {
-        --intro-overlay-duration: 0.62s;
-        --intro-nav-fade-out-duration: 0.18s;
-        --intro-nav-fade-in-duration: 0.3s;
-        --intro-nav-fade-in-delay: 0.56s;
-    }
-
-    header {
-        margin-block-end: var(--space-2xs-xs);
-        padding-block: var(--space-3xs-2xs);
-    }
-
-    footer {
-        padding-inline-end: var(--space-s-m);
+    nav,
+    nav ul {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     nav ul {
-        flex-direction: column;
-        justify-content: center;
-        align-items: stretch;
-        gap: var(--space-4xs-3xs);
-        padding-block: var(--space-xs-s);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
     }
 
     nav ul li {
-        flex: 0 0 auto;
+        flex-basis: 20%;
+        height: 100%;
+        overflow: hidden;
+        transform: translateY(-100%);
+        background-color: var(--base-color);
+    }
+
+    nav li a {
         inline-size: 100%;
-        min-inline-size: 0;
-        height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    nav ul a {
-        top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-block-size: clamp(3.25rem, 8vw, 4.25rem);
-        font-size: var(--fs-100);
+        position: relative;
+       color: var(--text-color);
+        text-decoration: none;
+        display: inline-block;
         text-align: center;
-        line-height: 1.1;
+        font-size: var(--fs-200);
     }
 
-    .text-with-animation {
-        gap: var(--space-xs-s);
-        padding-block-end: var(--space-2xs-xs);
+    nav li a:focus-visible {
+        outline: 2px solid currentcolor;
+        outline-offset: 4px
     }
 
-    .wrapper-gradient-text {
-        padding-block-end: var(--space-l-xl);
+    nav li a:hover::before {
+        opacity: 0;
     }
 
-    .open-overlay[aria-expanded="true"] span {
-        background-color: currentColor;
+    nav li a:hover::after {
+        opacity: 0;
     }
 
-    nav li a::before {
+nav li a:focus-visible {
+        outline: 2px solid currentcolor;
+        outline-offset: 4px
+    }
+
+    nav li a:hover::before {
+        opacity: 0;
+    }
+
+    nav li a:hover::after {
+        opacity: 0;
+    }
+
+nav li a::before {
         content: "";
         width: var(--space-xl);
         height: var(--space-3xs);
@@ -679,58 +739,7 @@ footer {
         transform: translateY(var(--space-s-m));
         opacity: 1;
     }
-
 }
-
-@media (min-width: 768px) {
-nav ul a {
-        font-size: var(--fs-200);
-    }
-
-    nav li a::before {
-        content: "";
-        width: var(--space-xl);
-        height: var(--space-3xs);
-        background-color: var(--text-color);
-        position: absolute;
-        top: 50%;
-        left: 0;
-        z-index: 100;
-        transform: translateX(-100%);
-        opacity: 0;
-        transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    nav li a::after {
-        content: attr(data-content);
-        font-size: var(--fs-200);
-        transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        opacity: 0;
-        position: absolute;
-        z-index: 100;
-        color: var(--text-color);
-        display: block;
-        margin-right: auto;
-        margin-left: auto;
-        left: 0;
-        right: 0;
-        bottom: var(--space-2xl-3xl);
-        transform: translateY(0);
-        text-transform: none;
-        font-style: italic;
-        letter-spacing: 0;
-    }
-
-    nav li a:is(:hover, :focus-visible)::before {
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    nav li a:is(:hover, :focus-visible)::after {
-        transform: translateY(var(--space-s-m));
-        opacity: 1;
-    }
-} */
 
 @media (hover:none) and (pointer:coarse) {
 

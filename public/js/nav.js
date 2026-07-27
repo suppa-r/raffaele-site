@@ -10,11 +10,11 @@ const THEME_FAVICONS = {
 const OVERLAY_NAV_HTML = `<div class="overlay-navigation">
 <nav role="navigation">
 <ul>
-<li><a href="#" data-content=""></a></li>
+<li></li>
 <li><a href="index.html" data-content="start over">home</a></li>
-<li><a href="#" data-content=""></a></li>
+<li></li>
 <li><a href="intro-1.html" data-content="hmmmmm">about me</a></li>
-<li><a href="#" data-content=""></a></li>
+<li></li>
 </ul>
 </nav>
 </div>`;
