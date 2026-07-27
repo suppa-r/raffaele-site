@@ -9,18 +9,12 @@
 }
 
 html {
-    scroll-padding-top: 2rem;
-    scrollbar-gutter: stable;
     interpolate-size: allow-keywords;
     font-size: 100%;
     text-size-adjust: 100%;
-    --moz-text-size-adjust: none;
-    --webkit-text-size-adjust: none;
-    hanging-punctuation: first last;
-}
+ }
 
 body {
-    display: block;
     background-color: var(--base-color);
     font-family: var(--primary-font);
     font-size: var(--fs-0);
@@ -28,13 +22,7 @@ body {
     text-rendering: optimizelegibility;
     overflow-wrap: anywhere;
     hyphens: auto;
-    mix-blend-mode: var(--blend-mode);
-    line-height: 1.5;
-    overflow: hidden;
-}
-
-[data-theme] body {
-    isolation: isolate;
+    line-height: 1.3;
 }
 
 .wrapper {
@@ -43,6 +31,15 @@ body {
     inline-size: 100%;
     min-height: 100svh;
     overflow: hidden;
+    isolation: isolate;
+}
+
+.wrapper > header,
+.wrapper > main,
+.wrapper > footer,
+.wrapper > .overlay-navigation {
+    mix-blend-mode: var(--blend-mode);
+    text-shadow: var(--content-legibility-shadow, none);
 }
 
 .skip-link {
@@ -99,8 +96,7 @@ label {
 
 p {
     display: block;
-    max-width: min(56ch, 100%);
-    max-inline-size: var(--content-max-width);
+    max-inline-size: min(56ch, var(--content-max-width));
     margin-block: var(--layout-block-gap);
     margin-inline: auto;
     letter-spacing: 0.026em;
@@ -130,10 +126,6 @@ a:focus-visible {
     @view-transition {
 
         navigation: auto
-    }
-
-    html:focus-within {
-        scroll-behavior: smooth
     }
 }
 
@@ -186,13 +178,11 @@ a:focus-visible {
     button,
     input,
     label {
-        margin-block: var(--layout-block-gap);
         letter-spacing: 0.029em;
     }
 
     p {
-        max-width: min(58ch, 100%);
-        margin-block: var(--layout-block-gap);
+        max-inline-size: min(58ch, var(--content-max-width));
         letter-spacing: 0.028em;
     }
 
@@ -221,13 +211,11 @@ a:focus-visible {
     button,
     input,
     label {
-        margin-block: var(--layout-block-gap);
         letter-spacing: 0.03em;
     }
 
     p {
-        max-width: min(60ch, 100%);
-        margin-block: var(--layout-block-gap);
+        max-inline-size: min(60ch, var(--content-max-width));
         letter-spacing: 0.028em;
     }
 
@@ -256,13 +244,11 @@ a:focus-visible {
     button,
     input,
     label {
-        margin-block: var(--layout-block-gap);
         letter-spacing: 0.033em;
     }
 
     p {
-        max-width: min(62ch, 100%);
-        margin-block: var(--layout-block-gap);
+        max-inline-size: min(62ch, var(--content-max-width));
         letter-spacing: 0.03em;
     }
 
@@ -291,13 +277,11 @@ a:focus-visible {
     button,
     input,
     label {
-        margin-block: var(--layout-block-gap);
         letter-spacing: 0.035em;
     }
 
     p {
-        max-width: min(64ch, 100%);
-        margin-block: var(--layout-block-gap);
+        max-inline-size: min(64ch, var(--content-max-width));
         letter-spacing: 0.03em;
     }
 
@@ -326,13 +310,11 @@ a:focus-visible {
     button,
     input,
     label {
-        margin-block: var(--layout-block-gap);
         letter-spacing: 0.04em;
     }
 
     p {
-        max-width: min(68ch, 100%);
-        margin-block: var(--layout-block-gap);
+        max-inline-size: min(68ch, var(--content-max-width));
         letter-spacing: 0.032em;
     }
 
@@ -361,13 +343,11 @@ a:focus-visible {
     button,
     input,
     label {
-        margin-block: var(--layout-block-gap);
         letter-spacing: 0.042em;
     }
 
     p {
-        max-width: min(72ch, 100%);
-        margin-block: var(--layout-block-gap);
+        max-inline-size: min(72ch, var(--content-max-width));
         letter-spacing: 0.034em;
     }
 
