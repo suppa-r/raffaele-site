@@ -142,9 +142,6 @@ nav li a:is(:hover, :focus-visible)::after {
     opacity: 1;
 }
 
-
-
-
 @supports (background-color:color-mix(in oklch, #000000 100%, #ffffff 0%)) {
 
     nav li:nth-of-type(1) {
@@ -295,7 +292,6 @@ header {
     gap: var(--space-3xs-2xs);
     z-index: 2001;
 }
-
 
 body:has(.open-overlay[aria-expanded="true"]) main,
 body:has(.open-overlay[aria-expanded="true"]) footer {
@@ -534,7 +530,7 @@ main p:not(.wrapper-gradient-text) {
     font-style: var(--font-style);
     font-size: var(--fs-300);
     letter-spacing: 0.005em;
-    padding-block: var(--space-l-xl);
+    padding-block-start: var(--space-2xs-xs);
     white-space: nowrap;
 }
 
