@@ -1,3 +1,13 @@
+:root{  --gradient: linear-gradient(90deg,
+      var(--text-span),
+      var(--text-color),
+      var(--text-span));
+    --intro-nav-fade-out-duration: 0.22s;
+    --intro-nav-fade-in-duration: 0.4s;
+    --intro-nav-fade-in-delay: 0.2s;
+    --profile-title-inline-size: min(92vw, 24ch);
+    }
+
 .skip-link {
   position: absolute;
   top: 0;
@@ -44,7 +54,7 @@ header {
 /* ----- Navigation ----- */
 /* --------------------------------------- */
 
-  nav {
+nav {
  z-index: 3000;
     pointer-events:all;
     margin-inline-start:var(--space-5xl);
@@ -331,7 +341,9 @@ main {
     display: grid;
     align-content: center;
     text-align: center;
-    line-height:1.3;
+  line-height:1.3;
+  position: relative;
+  overflow: hidden;
 }
 
 main p {
@@ -347,22 +359,36 @@ section {
 }
 
 main>section[id] {
-  display: none;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 main>section[id]:target {
-  display: block;
-  animation: section-reveal 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  animation: section-reveal 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+main>section[id]:target .profile-title {
+  animation: profile-title-enter 1080ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .intro-nav-open main>section[id] {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 @keyframes section-reveal {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(18px);
   }
 
   to {
@@ -371,8 +397,24 @@ main>section[id]:target {
   }
 }
 
+@keyframes profile-title-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -18%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   main>section[id]:target {
+    animation: none;
+  }
+
+  main>section[id]:target .profile-title {
     animation: none;
   }
 }
@@ -381,12 +423,74 @@ main>section[id]:target {
   margin: 0 auto;
 }
 
-.row h2 {
-  font-family: var(--primary-font-secondary);
-  font-size: var(--fs-100);
-  color: var(--text-color);
-  text-align: center;
-  margin-block-start: var(--space-xl-2xl);
+.profile-title {
+position: absolute;
+  top: clamp(0.35rem, 2.5vh, 1.25rem);
+    left: 50%;
+  transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap;
+    word-break: keep-all;
+    font-family: var(--primary-font-secondary);
+    color: var(--text-color);
+    border-radius: var(--space-l-xl);
+    display: block;
+    inline-size: var(--profile-title-inline-size);
+    box-sizing: border-box;
+    z-index: 1000;
+    isolation: isolate;
+    margin-inline: auto;
+    margin-block: 0;
+    min-block-size: var(--space-l-xl);
+    padding-block: var(--space-m-l);
+    padding-inline: var(--space-xl-2xl);
+    font-size: var(--fs-300, 2rem);
+ }
+
+  .profile-title span {
+    position: relative;
+    z-index: 1000;
+    isolation: isolate;
+    user-select: none;
+    pointer-events: none;
+    margin-inline: auto;
+    font-size: var(--fs-300, 2rem);
+    white-space: nowrap;
+    text-align: center;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+    background: var(--gradient);
+    background-size: 220% 220%;
+    animation: none;
+    border-radius: var(--space-l-xl);
+    box-shadow: var(--shadow);
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    box-sizing: border-box;
+    font-variant-ligatures: none;
+    font-kerning: normal;
+    padding-block: var(--space-m-l);
+    margin-inline: auto;
+    isolation: isolate;
+    }
+
+main>section[id]:target .profile-title span {
+  animation: gradientAnimation 1.6s ease-out 2 both;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* --------------------------------------- */
@@ -562,6 +666,34 @@ footer {
 
 @media(max-width: 768px) {
 
+  main>section[id]:target {
+    animation: none;
+  }
+
+  main>section[id]:target .profile-title {
+    animation: profile-title-center-in 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  main>section[id]:target .profile-title span {
+    animation: gradientAnimation 1050ms cubic-bezier(0.2, 0.85, 0.3, 1) 1 both;
+  }
+
+  .profile-title {
+    inline-size: min(90vw, 22ch);
+    min-block-size: clamp(6.25rem, 24vw, 8rem);
+    padding-inline: var(--space-s-m);
+    padding-block: var(--space-s-m);
+    font-size: var(--fs-200, 1.75rem);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-origin: center center;
+  }
+
+  .profile-title span {
+    font-size: var(--fs-200, 1.75rem);
+    padding-block: var(--space-xs-s);
+  }
+
 nav {
   position: relative;
   inline-size: 0;
@@ -683,6 +815,28 @@ nav {
     pointer-events: auto !important;
   }
 
+}
+
+@keyframes section-fade-mobile {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes profile-title-center-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-50%, -18%, 0) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
 }
 
 @media (hover:none) and (pointer:coarse) {

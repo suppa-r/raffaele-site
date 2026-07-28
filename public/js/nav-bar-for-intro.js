@@ -400,9 +400,28 @@ function handleNavLinkClick(event) {
     return;
   }
 
+  const href = link.getAttribute("href") || "";
+  const isIntroSectionHash =
+    href.startsWith("#") && introSectionHashes.has(href);
+
   setPageTitleVisibility(false);
 
   if (mobileQuery.matches) {
+    if (isIntroSectionHash) {
+      event.preventDefault();
+      setMenuState(false, { showTitle: false });
+
+      // Apply hash on the next paint frames after close state is committed.
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          if (window.location.hash !== href) {
+            window.location.hash = href;
+          }
+        });
+      });
+      return;
+    }
+
     setMenuState(false, { showTitle: false });
   }
 }

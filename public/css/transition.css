@@ -44,20 +44,20 @@
    ============================================ */
 
 ::view-transition-old(root) {
-    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-out;
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-out;
 }
 
 ::view-transition-new(root) {
-    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-in;
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-in;
 }
 
 /* Theme toggles use the same root transition motion as regular theme changes. */
 :root.theme-transitioning::view-transition-old(root) {
-    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-out !important;
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-out !important;
 }
 
 :root.theme-transitioning::view-transition-new(root) {
-    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-in !important;
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-in !important;
 }
 
 @keyframes move-out {
