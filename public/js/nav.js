@@ -144,7 +144,30 @@ function getExistingHeroTargets() {
 
 function replayTextAnimations() {
   const gsapLib = getGsap();
-  if (!gsapLib) return;
+  if (!gsapLib) {
+    if (hasElements(TEXT_SPAN_SELECTOR)) {
+      document.querySelectorAll(TEXT_SPAN_SELECTOR).forEach((element) => {
+        element.style.opacity = "1";
+        element.style.transform = "translateX(0)";
+      });
+    }
+
+    if (hasElements(SUBTEXT_SPAN_SELECTOR)) {
+      document.querySelectorAll(SUBTEXT_SPAN_SELECTOR).forEach((element) => {
+        element.style.opacity = "1";
+        element.style.transform = "translateX(0)";
+      });
+    }
+
+    if (hasElements(PUNCTUATION_SELECTOR)) {
+      document.querySelectorAll(PUNCTUATION_SELECTOR).forEach((element) => {
+        element.style.opacity = "1";
+        element.style.transform = "translateY(0)";
+      });
+    }
+
+    return;
+  }
 
   const existingTargets = getExistingHeroTargets();
   if (existingTargets.length === 0) return;
@@ -192,15 +215,15 @@ function hideTextAnimations() {
     return;
   }
 
+  const gsapLib = getGsap();
+  if (!gsapLib) return;
+
   HERO_ANIMATION_TARGETS.forEach((selector) => {
     document.querySelectorAll(selector).forEach((element) => {
       element.style.animation = "none";
       element.style.opacity = "0";
     });
   });
-
-  const gsapLib = getGsap();
-  if (!gsapLib) return;
 
   const existingTargets = getExistingHeroTargets();
   if (existingTargets.length === 0) return;

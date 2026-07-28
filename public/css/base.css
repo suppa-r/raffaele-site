@@ -22,7 +22,7 @@ body {
     color: var(--text-color);
     font-size: var(--fs-0);
     word-spacing: normal;
-    letter-spacing: var(--main-text-letter-spacing-start);
+    letter-spacing: var(--letter-spacing-body, var(--letter-spacing));
     text-wrap: pretty;
     text-rendering: optimizelegibility;
     overflow-wrap: anywhere;
@@ -103,7 +103,7 @@ button,
 input,
 label {
     margin-block: var(--layout-block-gap);
-    letter-spacing: 0.028em;
+    letter-spacing: var(--letter-spacing-heading, var(--letter-spacing));
     text-wrap: balance;
 }
 
@@ -112,8 +112,7 @@ p {
     max-inline-size: min(56ch, var(--content-max-width));
     margin-block: var(--layout-block-gap);
     margin-inline: auto;
-    letter-spacing: 0.026em;
-    text-wrap: pretty;
+text-wrap: pretty;
 }
 
 a {
@@ -183,22 +182,9 @@ a:focus-visible {
         --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button,
-    input,
-    label {
-        letter-spacing: 0.029em;
-    }
-
     p {
         max-inline-size: min(58ch, var(--content-max-width));
-        letter-spacing: 0.028em;
-    }
+   }
 
     .wrapper::before {
         mask-image: radial-gradient(ellipse 70% 68% at center, transparent 59%, black 80%);
@@ -217,22 +203,9 @@ a:focus-visible {
         --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button,
-    input,
-    label {
-        letter-spacing: 0.03em;
-    }
-
     p {
         max-inline-size: min(60ch, var(--content-max-width));
-        letter-spacing: 0.028em;
-    }
+      }
 
     .wrapper::before {
         mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, black 80%);
@@ -251,22 +224,9 @@ a:focus-visible {
         --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button,
-    input,
-    label {
-        letter-spacing: 0.033em;
-    }
-
     p {
         max-inline-size: min(62ch, var(--content-max-width));
-        letter-spacing: 0.03em;
-    }
+      }
 
     .wrapper::before {
         mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, black 80%);
@@ -285,22 +245,9 @@ a:focus-visible {
         --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button,
-    input,
-    label {
-        letter-spacing: 0.035em;
-    }
-
     p {
         max-inline-size: min(64ch, var(--content-max-width));
-        letter-spacing: 0.03em;
-    }
+  }
 
     .wrapper::before {
         mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, black 80%);
@@ -319,21 +266,8 @@ a:focus-visible {
           --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button,
-    input,
-    label {
-        letter-spacing: 0.04em;
-    }
-
     p {
         max-inline-size: min(68ch, var(--content-max-width));
-        letter-spacing: 0.032em;
     }
 
     .wrapper::before {
@@ -353,22 +287,9 @@ a:focus-visible {
           --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button,
-    input,
-    label {
-        letter-spacing: 0.042em;
-    }
-
     p {
         max-inline-size: min(72ch, var(--content-max-width));
-        letter-spacing: 0.034em;
-    }
+  }
 
     .wrapper::before {
         mask-image: radial-gradient(ellipse 52% 80% at center, transparent 60%, black 80%);

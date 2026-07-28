@@ -11,6 +11,13 @@ const INTRO_ANIMATION_TARGET =
   'body[data-page="intro"] main p:not(.wrapper-gradient-text)';
 const WRAPPER_GRADIENT_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text';
+const WRAPPER_GRADIENT_WORD_TARGET =
+  'body[data-page="intro"] .wrapper-gradient-text .text-layer';
+const INTRO_WORDS_TARGET = 'body[data-page="intro"] .text-with-animation span';
+const HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+const HERO_REVEAL_DURATION = 1.4;
+const HERO_REVEAL_STAGGER = 0.28;
+const HERO_REVEAL_DELAY = 0.14;
 
 if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-intro-anim");
@@ -93,13 +100,37 @@ function initializeAnimations() {
   });
 
   // Match the side-entry feel used by the hero text animation.
-  if (hasElements(WRAPPER_GRADIENT_TARGET)) {
+  if (hasElements(INTRO_WORDS_TARGET)) {
+    gsapLib.to(INTRO_WORDS_TARGET, {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION,
+      ease: HERO_TEXT_EASE,
+      delay: HERO_REVEAL_DELAY,
+      stagger: HERO_REVEAL_STAGGER,
+      overwrite: "auto",
+    });
+  }
+
+  // Match the side-entry feel used by the hero text animation.
+  if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
+    gsapLib.to(WRAPPER_GRADIENT_WORD_TARGET, {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION,
+      ease: HERO_TEXT_EASE,
+      delay: HERO_REVEAL_DELAY,
+      stagger: HERO_REVEAL_STAGGER,
+      overwrite: "auto",
+    });
+  } else if (hasElements(WRAPPER_GRADIENT_TARGET)) {
     gsapLib.to(WRAPPER_GRADIENT_TARGET, {
       x: 0,
       opacity: 1,
-      duration: 0.9,
-      ease: "power3.out",
-      delay: 0.12,
+      duration: HERO_REVEAL_DURATION,
+      ease: HERO_TEXT_EASE,
+      delay: HERO_REVEAL_DELAY,
+      overwrite: "auto",
     });
   }
 
@@ -120,6 +151,14 @@ function revealIntroContent() {
       gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, opacity: 1 });
     }
 
+    if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
+      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: 0, opacity: 1 });
+    }
+
+    if (hasElements(INTRO_WORDS_TARGET)) {
+      gsapLib.set(INTRO_WORDS_TARGET, { x: 0, opacity: 1 });
+    }
+
     return;
   }
 
@@ -128,6 +167,16 @@ function revealIntroContent() {
   });
 
   document.querySelectorAll(WRAPPER_GRADIENT_TARGET).forEach((el) => {
+    el.style.opacity = "1";
+    el.style.transform = "translateX(0)";
+  });
+
+  document.querySelectorAll(WRAPPER_GRADIENT_WORD_TARGET).forEach((el) => {
+    el.style.opacity = "1";
+    el.style.transform = "translateX(0)";
+  });
+
+  document.querySelectorAll(INTRO_WORDS_TARGET).forEach((el) => {
     el.style.opacity = "1";
     el.style.transform = "translateX(0)";
   });
@@ -141,7 +190,15 @@ function hideIntroContent() {
     }
 
     if (hasElements(WRAPPER_GRADIENT_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: "30vw", opacity: 0 });
+      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: "-7vw", opacity: 0 });
+    }
+
+    if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
+      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: "-7vw", opacity: 0 });
+    }
+
+    if (hasElements(INTRO_WORDS_TARGET)) {
+      gsapLib.set(INTRO_WORDS_TARGET, { x: "-7vw", opacity: 0 });
     }
 
     return;
@@ -153,7 +210,17 @@ function hideIntroContent() {
 
   document.querySelectorAll(WRAPPER_GRADIENT_TARGET).forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateX(30vw)";
+    el.style.transform = "translateX(-7vw)";
+  });
+
+  document.querySelectorAll(WRAPPER_GRADIENT_WORD_TARGET).forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateX(-7vw)";
+  });
+
+  document.querySelectorAll(INTRO_WORDS_TARGET).forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateX(-7vw)";
   });
 }
 

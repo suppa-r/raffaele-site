@@ -467,7 +467,7 @@ main p {
 }
 
 main p:not(.wrapper-gradient-text) {
-    opacity: 0;
+    opacity: 1;
 }
 
 .text-with-animation {
@@ -485,17 +485,49 @@ main p:not(.wrapper-gradient-text) {
 
 .text-with-animation span:first-child {
     display: block;
-    opacity: 0
+    opacity: 1;
+    animation: intro-word-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
 }
 
 .text-with-animation span:nth-child(2) {
     display: block;
-    opacity: 0
+    opacity: 1;
+    animation: intro-word-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
 }
 
 .text-with-animation span:last-child {
     display: block;
-    opacity: 0
+    opacity: 1;
+    animation: intro-word-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+}
+
+html.js-intro-anim body[data-page="intro"] .text-with-animation span {
+    opacity: 0;
+}
+
+.wrapper-gradient-text .text-layer:first-child {
+    animation:
+    intro-word-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both,
+        shadow-drip 3s infinite alternate ease-in-out;
+}
+
+.wrapper-gradient-text .text-layer:last-child {
+    animation:
+    intro-word-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both,
+        shadow-drip 3s infinite alternate ease-in-out;
+}
+
+@keyframes intro-word-in {
+
+    from {
+        transform: translateX(-7vw);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 @keyframes word-animation {
@@ -528,12 +560,18 @@ main p:not(.wrapper-gradient-text) {
     font-weight: var(--font-weight);
     font-style: var(--font-style);
     font-size: var(--fs-300);
-    letter-spacing: 0.005em;
+    letter-spacing: var(--space-2xs-xs);
     padding-block-start: var(--space-2xs-xs);
     white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-s-m);
 }
 
 .text-layer {
+    display: inline-block;
+    opacity: 1;
     background: var(--gradient);
     background-size: 200% 200%;
     background-clip: text;
@@ -541,7 +579,6 @@ main p:not(.wrapper-gradient-text) {
     -webkit-text-fill-color: var(--text-color);
     will-change: transform;
     transform: translateZ(0);
-    animation: shadow-drip 3s infinite alternate ease-in-out;
     --shadow-color-primary: rgb(255 255 255 / 70%);
     --shadow-color-secondary: rgb(255 255 255 / 30%);
     --shadow-color-tertiary: rgb(255 255 255 / 10%);
@@ -624,6 +661,8 @@ footer {
     .animate-out-top-bar,
     .animate-out-bottom-bar,
     .animate-out-middle-bar,
+    .text-with-animation span,
+    .wrapper-gradient-text .text-layer,
     .text-layer {
         animation: none
     }
