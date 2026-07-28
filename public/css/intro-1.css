@@ -1,7 +1,7 @@
 :root{  --gradient: linear-gradient(90deg,
-      var(--text-span),
+      var(--base-color),
       var(--text-color),
-      var(--text-span));
+      var(--base-color));
     --intro-nav-fade-out-duration: 0.22s;
     --intro-nav-fade-in-duration: 0.4s;
     --intro-nav-fade-in-delay: 0.2s;
@@ -432,7 +432,7 @@ position: absolute;
     white-space: nowrap;
     word-break: keep-all;
     font-family: var(--primary-font-secondary);
-    color: var(--text-color);
+    color: var(--base-color);
     border-radius: var(--space-l-xl);
     display: block;
     inline-size: var(--profile-title-inline-size);
@@ -441,10 +441,9 @@ position: absolute;
     isolation: isolate;
     margin-inline: auto;
     margin-block: 0;
-    min-block-size: var(--space-l-xl);
-    padding-block: var(--space-m-l);
-    padding-inline: var(--space-xl-2xl);
-    font-size: var(--fs-300, 2rem);
+    min-block-size: var(--space-m-l);
+    padding-block: var(--space-2xs-xs);
+    font-size: var(--fs-100);
  }
 
   .profile-title span {
@@ -454,10 +453,10 @@ position: absolute;
     user-select: none;
     pointer-events: none;
     margin-inline: auto;
-    font-size: var(--fs-300, 2rem);
+    font-size: var(--fs-100);
     white-space: nowrap;
     text-align: center;
-    color: var(--text-color);
+    color: var(--base-color);
     text-shadow: var(--text-shadow);
     background: var(--gradient);
     background-size: 220% 220%;
@@ -470,13 +469,13 @@ position: absolute;
     box-sizing: border-box;
     font-variant-ligatures: none;
     font-kerning: normal;
-    padding-block: var(--space-m-l);
-    margin-inline: auto;
+   margin-inline: auto;
     isolation: isolate;
+     padding-block: var(--space-2xs-xs);
     }
 
 main>section[id]:target .profile-title span {
-  animation: gradientAnimation 1.6s ease-out 2 both;
+  animation: gradientAnimation 5s ease-out both infinite;
 }
 
 @keyframes gradientAnimation {
@@ -674,24 +673,20 @@ footer {
     animation: profile-title-center-in 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  main>section[id]:target .profile-title span {
-    animation: gradientAnimation 1050ms cubic-bezier(0.2, 0.85, 0.3, 1) 1 both;
-  }
 
-  .profile-title {
-    inline-size: min(90vw, 22ch);
+.profile-title {
+    inline-size: min(95vw, 25ch);
     min-block-size: clamp(6.25rem, 24vw, 8rem);
-    padding-inline: var(--space-s-m);
-    padding-block: var(--space-s-m);
-    font-size: var(--fs-200, 1.75rem);
+    padding-block: var(--space-2xs-xs);
+    font-size: var(--fs-100);
     will-change: transform, opacity;
     backface-visibility: hidden;
     transform-origin: center center;
   }
 
   .profile-title span {
-    font-size: var(--fs-200, 1.75rem);
-    padding-block: var(--space-xs-s);
+    font-size: var(--fs-100);
+     padding-block: var(--space-2xs-xs);
   }
 
 nav {
