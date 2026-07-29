@@ -113,17 +113,20 @@ nav {
 }
 
 .open-overlay {
-  opacity: 0;
+  opacity: 1;
   position: relative;
-  background: none;
-  border: none;
-  padding-block: var(--space-3xs-2xs);
-  padding-inline-end: var(--space-s-m);
-  margin-block: 0;
-  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.32rem;
+  margin-inline-start: auto;
+  padding: 0.35rem;
+  min-inline-size: 2.5rem;
+  min-block-size: 2.5rem;
+  background: transparent;
+  border: 0;
   cursor: pointer;
-  display: grid;
-  gap: var(--space-3xs-2xs);
   z-index: 2001;
 }
 
@@ -146,15 +149,31 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
 
 .open-overlay:focus-visible {
   outline: 1px solid var(--text-color);
-  outline-offset: 2px
+  outline-offset: 3px;
 }
 
 .open-overlay span {
   display: block;
-  width: var(--space-s-m);
-  height: 1px;
+  width: 1.25rem;
+  height: 2px;
+  border-radius: 999px;
   background-color: var(--text-color);
-  cursor: pointer
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.open-overlay[aria-expanded="true"] .bar-top {
+  transform: translateY(0.42rem) rotate(45deg);
+}
+
+.open-overlay[aria-expanded="true"] .bar-middle {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.open-overlay[aria-expanded="true"] .bar-bottom {
+  transform: translateY(-0.42rem) rotate(-45deg);
 }
 
 .animate-top-bar {
