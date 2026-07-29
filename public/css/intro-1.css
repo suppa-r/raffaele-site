@@ -318,8 +318,8 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
 
 .intro-1-page-title span {
   font-family: var(--primary-font-secondary);
-  color: var(--text-span);
-  padding-inline-start: var(--space-3xs-2xs);
+white-space: nowrap;
+  color: var(--text-color);
   font-size: var(--fs-200);
 }
 
