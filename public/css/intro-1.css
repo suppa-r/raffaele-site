@@ -58,7 +58,7 @@ header {
 nav {
   z-index: 3000;
   pointer-events: all;
-  margin-inline-start: var(--space-5xl);
+ /* margin-inline-start: var(--space-5xl); */
 }
 
 .nav-links {
