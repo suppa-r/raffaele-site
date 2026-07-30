@@ -14,10 +14,10 @@ const WRAPPER_GRADIENT_TARGET =
 const WRAPPER_GRADIENT_WORD_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text .text-layer';
 const INTRO_WORDS_TARGET = 'body[data-page="intro"] .text-with-animation span';
-const HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
-const HERO_REVEAL_DURATION = 1.4;
-const HERO_REVEAL_STAGGER = 0.28;
-const HERO_REVEAL_DELAY = 0.14;
+const HERO_TEXT_EASE_INTRO = "cubic-bezier(0.22, 1, 0.36, 1)";
+const HERO_REVEAL_DURATION_INTRO = 1.4;
+const HERO_REVEAL_STAGGER_INTRO = 0.28;
+const HERO_REVEAL_DELAY_INTRO = 0.14;
 
 if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-intro-anim");
@@ -104,10 +104,10 @@ function initializeAnimations() {
     gsapLib.to(INTRO_WORDS_TARGET, {
       x: 0,
       opacity: 1,
-      duration: HERO_REVEAL_DURATION,
-      ease: HERO_TEXT_EASE,
-      delay: HERO_REVEAL_DELAY,
-      stagger: HERO_REVEAL_STAGGER,
+      duration: HERO_REVEAL_DURATION_INTRO,
+      ease: HERO_TEXT_EASE_INTRO,
+      delay: HERO_REVEAL_DELAY_INTRO,
+      stagger: HERO_REVEAL_STAGGER_INTRO,
       overwrite: "auto",
     });
   }
@@ -117,19 +117,19 @@ function initializeAnimations() {
     gsapLib.to(WRAPPER_GRADIENT_WORD_TARGET, {
       x: 0,
       opacity: 1,
-      duration: HERO_REVEAL_DURATION,
-      ease: HERO_TEXT_EASE,
-      delay: HERO_REVEAL_DELAY,
-      stagger: HERO_REVEAL_STAGGER,
+      duration: HERO_REVEAL_DURATION_INTRO,
+      ease: HERO_TEXT_EASE_INTRO,
+      delay: HERO_REVEAL_DELAY_INTRO,
+      stagger: HERO_REVEAL_STAGGER_INTRO,
       overwrite: "auto",
     });
   } else if (hasElements(WRAPPER_GRADIENT_TARGET)) {
     gsapLib.to(WRAPPER_GRADIENT_TARGET, {
       x: 0,
       opacity: 1,
-      duration: HERO_REVEAL_DURATION,
-      ease: HERO_TEXT_EASE,
-      delay: HERO_REVEAL_DELAY,
+      duration: HERO_REVEAL_DURATION_INTRO,
+      ease: HERO_TEXT_EASE_INTRO,
+      delay: HERO_REVEAL_DELAY_INTRO,
       overwrite: "auto",
     });
   }

@@ -34,10 +34,10 @@ const OVERLAY_CLOSE_CLASSES = [
 ];
 const OVERLAY_CLOSE_DELAY_MS = 900;
 const OVERLAY_CLOSE_FALLBACK_MS = 1000;
-const HERO_TEXT_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
-const HERO_REVEAL_DURATION = 0.9;
-const HERO_REVEAL_STAGGER = 0.16;
-const HERO_REVEAL_DELAY = 0.06;
+const HERO_TEXT_EASE_NAV = "cubic-bezier(0.16, 1, 0.3, 1)";
+const HERO_REVEAL_DURATION_NAV = 0.9;
+const HERO_REVEAL_STAGGER_NAV = 0.16;
+const HERO_REVEAL_DELAY_NAV = 0.06;
 const HERO_SUBTEXT_DELAY = 0.18;
 const HERO_PUNCTUATION_DELAY = 0.28;
 const HERO_ANIMATION_TARGETS = [
@@ -155,10 +155,10 @@ function replayTextAnimations() {
     gsapLib.to(TEXT_SPAN_SELECTOR, {
       x: 0,
       opacity: 1,
-      duration: HERO_REVEAL_DURATION,
-      ease: HERO_TEXT_EASE,
-      delay: HERO_REVEAL_DELAY,
-      stagger: HERO_REVEAL_STAGGER,
+      duration: HERO_REVEAL_DURATION_NAV,
+      ease: HERO_TEXT_EASE_NAV,
+      delay: HERO_REVEAL_DELAY_NAV,
+      stagger: HERO_REVEAL_STAGGER_NAV,
       overwrite: "auto",
     });
   }
@@ -167,10 +167,10 @@ function replayTextAnimations() {
     gsapLib.to(SUBTEXT_SPAN_SELECTOR, {
       x: 0,
       opacity: 1,
-      duration: HERO_REVEAL_DURATION,
-      ease: HERO_TEXT_EASE,
+      duration: HERO_REVEAL_DURATION_NAV,
+      ease: HERO_TEXT_EASE_NAV,
       delay: HERO_SUBTEXT_DELAY,
-      stagger: HERO_REVEAL_STAGGER,
+      stagger: HERO_REVEAL_STAGGER_NAV,
       overwrite: "auto",
     });
   }
@@ -179,8 +179,8 @@ function replayTextAnimations() {
     gsapLib.to(PUNCTUATION_SELECTOR, {
       y: 0,
       opacity: 1,
-      duration: HERO_REVEAL_DURATION,
-      ease: HERO_TEXT_EASE,
+      duration: HERO_REVEAL_DURATION_NAV,
+      ease: HERO_TEXT_EASE_NAV,
       delay: HERO_PUNCTUATION_DELAY,
       overwrite: "auto",
     });
