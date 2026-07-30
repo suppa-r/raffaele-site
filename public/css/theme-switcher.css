@@ -100,6 +100,30 @@ display: grid;
   z-index: 100;
 }
 
+.theme-switcher button[data-theme-toggle="system"] {
+  position: relative;
+}
+
+.theme-switcher button[data-theme-toggle="system"]::after {
+  content: attr(aria-label);
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: -1.7rem;
+  display: inline-block;
+  transform: translateX(calc(-100% - 0.35rem));
+  font-size: 0.7rem;
+  white-space: nowrap;
+  color: var(--text-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.theme-switcher button[data-theme-toggle="system"]:hover::after,
+.theme-switcher button[data-theme-toggle="system"]:focus-visible::after {
+  opacity: 1;
+}
+
 .theme-switcher button:hover svg {
   will-change: transform;
   animation: spin-and-scale 0.8s ease-in-out;

@@ -58,10 +58,10 @@ function handleSneakerClick(event) {
   setTimeout(() => {
     if (document.startViewTransition) {
       document.startViewTransition(() => {
-        window.location.href = "intro.html";
+        window.location.assign("intro.html");
       });
     } else {
-      window.location.href = "intro.html";
+      window.location.assign("intro.html");
     }
   }, 800);
 }

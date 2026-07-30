@@ -84,7 +84,7 @@ function saveTheme(theme) {
 }
 
 function resolveTheme(theme) {
-  return theme === "auto"
+  return theme === "system"
     ? window.matchMedia(COLOR_SCHEME_QUERY).matches
       ? "dark"
       : "light"
