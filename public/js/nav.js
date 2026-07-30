@@ -1,5 +1,5 @@
 const THEME_TRANSITION_CLASS = "theme-transitioning";
-const VALID_THEMES = ["dark", "system"];
+const VALID_THEMES = ["light", "dark", "system"];
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const THEME_FAVICONS = {
@@ -116,6 +116,14 @@ function updateThemeButtonState(theme) {
       button.dataset.themeToggle === theme ? "true" : "false",
     );
   });
+
+  const themeSelector = document.getElementById("theme-selector");
+  if (themeSelector instanceof HTMLSelectElement) {
+    themeSelector.value =
+      theme === "light" || theme === "dark" || theme === "system"
+        ? theme
+        : "dark";
+  }
 }
 
 function updateFavicon(theme) {
@@ -525,6 +533,20 @@ function attachNavEventHandlers() {
         event.preventDefault();
         event.stopPropagation();
         handleOverlayToggle();
+      }
+    });
+  }
+
+  const themeSelector = document.getElementById("theme-selector");
+  if (themeSelector instanceof HTMLSelectElement) {
+    themeSelector.addEventListener("change", (event) => {
+      const nextTheme = event.target.value;
+      if (
+        nextTheme === "light" ||
+        nextTheme === "dark" ||
+        nextTheme === "system"
+      ) {
+        setTheme(nextTheme);
       }
     });
   }

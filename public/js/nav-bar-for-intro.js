@@ -4,7 +4,7 @@ const pageTitle = document.querySelector(".intro-1-page-title");
 const mobileQuery = window.matchMedia("(max-width: 768px)");
 const firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
 const introThemeAnnouncement = document.getElementById("theme-announcement");
-const INTRO_VALID_THEMES = ["dark", "system"];
+const INTRO_VALID_THEMES = ["light", "dark", "system"];
 const INTRO_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INTRO_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const INTRO_THEME_TRANSITION_CLASS = "theme-transitioning";
@@ -142,6 +142,14 @@ function introUpdateThemeButtons(theme) {
       button.dataset.themeToggle === theme ? "true" : "false",
     );
   });
+
+  const themeSelector = document.getElementById("theme-selector");
+  if (themeSelector instanceof HTMLSelectElement) {
+    themeSelector.value =
+      theme === "light" || theme === "dark" || theme === "system"
+        ? theme
+        : "dark";
+  }
 }
 
 function introAnnounceTheme(theme) {
@@ -150,7 +158,11 @@ function introAnnounceTheme(theme) {
   }
 
   introThemeAnnouncement.textContent =
-    theme === "system" ? "Theme set to device preference" : "Theme set to dark";
+    theme === "system"
+      ? "Theme set to device preference"
+      : theme === "light"
+        ? "Theme set to light"
+        : "Theme set to dark";
 }
 
 function introApplyTheme(theme, announce = true) {
@@ -297,6 +309,20 @@ function initIntroThemeSwitcher() {
     mediaQueryList.addEventListener("change", handleSystemThemeChange);
   } else {
     mediaQueryList.addListener(handleSystemThemeChange);
+  }
+
+  const themeSelector = document.getElementById("theme-selector");
+  if (themeSelector instanceof HTMLSelectElement) {
+    themeSelector.addEventListener("change", (event) => {
+      const nextTheme = event.target.value;
+      if (
+        nextTheme === "light" ||
+        nextTheme === "dark" ||
+        nextTheme === "system"
+      ) {
+        introSetTheme(nextTheme, { announce: true, withTransition: true });
+      }
+    });
   }
 
   document.addEventListener("click", handleThemeToggleClick);

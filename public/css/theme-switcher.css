@@ -28,212 +28,72 @@
   outline-offset: 3px;
 }
 
-.theme-switcher {
-display: grid;
-  place-items: center;
-  border: none;
-  z-index: 100;
-  inline-size: var(--theme-switcher-button-size);
-  block-size: var(--theme-switcher-button-size);
+/* Form Styles for Dropdown Selector */
+.theme-selector-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  line-height: 1;
 }
 
-.theme-switcher legend {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+.theme-selector-container label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
-.theme-switcher button {
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--theme-switcher-background-color);
+#theme-selector {
+  appearance: none;
+  background-color: var(--theme-switcher-background-color, var(--base-color));
   color: var(--text-color);
-  border: none;
+  border: 1px solid var(--text-color);
+  padding: 0.55rem 2.2rem 0.55rem 0.9rem;
+  border-radius: 999px;
   cursor: pointer;
-  display: grid;
-  place-items: center;
-  box-sizing: border-box;
-  inline-size: var(--theme-switcher-button-size);
-  block-size: var(--theme-switcher-button-size);
-  min-inline-size: var(--theme-switcher-button-size);
-  min-block-size: var(--theme-switcher-button-size);
-  padding: 0;
-  transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out, background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  margin-block: 0;
-  z-index: 100;
-  opacity: 1;
-  visibility: visible;
+  font: inherit;
+  line-height: 1.2;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 0.95rem;
 }
 
-.theme-switcher button:focus-visible {
-  outline: 2px solid currentcolor;
-  outline-offset: 3px;
+#theme-selector:hover,
+#theme-selector:focus {
   background-color: var(--text-color);
   color: var(--base-color);
+  border-color: var(--base-color);
+  transform: translateY(-1px);
 }
 
-.theme-switcher button svg {
-  width: var(--theme-switcher-icon-size);
-  height: var(--theme-switcher-icon-size);
-  stroke-width: 0.01;
-  stroke: var(--text-color);
-  fill: currentcolor;
-  transform-origin: center;
-  position: relative;
-  z-index: 100;
-}
-
-.theme-switcher button[aria-pressed="true"] {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.theme-switcher button:hover {
-  color: var(--base-color);
-  background-color: var(--text-color);
-  box-shadow: 0 5px 8px var(--text-color, rgba(0 0 0 0.20%));
-  z-index: 100;
-}
-
-.theme-switcher button[data-theme-toggle="system"] {
-  position: relative;
-}
-
-.theme-switcher button[data-theme-toggle="system"]::after {
-  content: attr(aria-label);
-  position: absolute;
-  inset-inline-start: 0;
-  inset-block-start: -1.7rem;
-  display: inline-block;
-  transform: translateX(calc(-100% - 0.7rem));
-  font-size: 0.7rem;
-  white-space: nowrap;
+#theme-selector option {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  background-color: var(--base-color);
   color: var(--text-color);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
 }
 
-.theme-switcher button[data-theme-toggle="system"]:hover::after,
-.theme-switcher button[data-theme-toggle="system"]:focus-visible::after {
-  opacity: 1;
+#theme-selector option:hover,
+#theme-selector option:focus {
+  background-color: var(--text-color);
+  color: var(--base-color);
 }
 
-.theme-switcher button:hover svg {
-  will-change: transform;
-  animation: spin-and-scale 0.8s ease-in-out;
-  z-index: 100;
-}
-
-@keyframes spin-and-scale {
-
-  0% {
-    transform: scale(1) rotate(0deg);
-
+@media (max-width: 768px) {
+  .theme-selector-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    font-size: 0.95rem;
   }
 
-  25% {
-    transform: scale(.5) rotate(45deg);
-
-  }
-
-  50% {
-    transform: scale(.5) rotate(-45deg);
-
-  }
-
-  75% {
-    transform: scale(.5) rotate(45deg);
-  }
-
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@media (prefers-contrast:high) {
-
-  [data-theme="dark"] {
-    --text-color: #ffffff;
-    --base-color: #000000;
-  }
-
-  [data-theme="light"] {
-    --text-color: #000000;
-    --base-color: #ffffff;
-  }
-
-  .theme-switcher {
-    border: 2px solid var(--text-color);
-    background-color: var(--theme-switcher-background-color);
-  }
-
-  .theme-switcher button {
-    border: 2px solid var(--text-color);
-    background-color: var(--theme-switcher-background-color);
-  }
-
-  .theme-switcher button:hover {
-    border-width: 3px;
-    background-color: var(--text-color);
-    color: var(--base-color);
-  }
-
-  .theme-switcher button:focus-visible {
-    outline: 3px solid var(--text-color);
-    outline-offset: 3px;
-    border-width: 3px;
-  }
-}
-
-@media (hover:none) and (pointer:coarse) {
-
-  .theme-switcher button {
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
-    -webkit-touch-callout: none;
-    user-select: none;
-    touch-action: manipulation;
-    cursor: pointer;
-    will-change: transform;
-    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1), color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-
-  }
-
-  .theme-switcher button:active {
-    transform: scale(.90);
-    background-color: var(--text-color);
-    color: var(--base-color);
-    box-shadow: 0 2px 6px rgba(0 0 0 / 18%);
-  }
-
-  .theme-switcher button[data-theme-toggle="system"]::after {
-    opacity: 1;
-  }
-
-  .theme-switcher button[data-theme-toggle="system"]:active::after,
-  .theme-switcher button[data-theme-toggle="system"]:focus-visible::after,
-  .theme-switcher button[data-theme-toggle="system"]:focus::after {
-    opacity: 1;
-  }
-
-  @supports (-webkit-touch-callout: none) {
-
-    .theme-switcher button {
-      -webkit-tap-highlight-color: transparent;
-    }
-  }
-}
-
-@media (prefers-reduced-motion:reduce) {
-
-  .theme-switcher button:hover svg {
-    will-change: transform;
-    animation: none !important;
-    transform: scale(1);
+  #theme-selector {
+    padding: 0.45rem 1.8rem 0.45rem 0.75rem;
+    font-size: 0.95rem;
+    background-position: right 0.6rem center;
+    background-size: 0.85rem;
   }
 }
