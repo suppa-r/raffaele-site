@@ -8,24 +8,21 @@
     letter-spacing: var(--letter-spacing-body);
 }
 
-
-
 header {
     display: grid;
-    grid-template-columns:auto auto;
+    grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
-    z-index: 1100;
-}
-
-header:has(.open-overlay[aria-expanded="true"])::before {
-    opacity: 0;
-    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1)
+    z-index: 1000;
+    margin: var(--space-2xs-xs) var(--space-m-l);
+    padding: 0 var(--space-l-xl);
+    border-radius: var(--space-l-xl);
+    position: relative;
+    isolation: isolate;
+    background: var(--base-color);
 }
 
 .header-title {
-    display: inline-block;
-    justify-self: start;
     text-align: start;
     font-family: var(--primary-font-secondary);
 }
@@ -33,8 +30,6 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 .header-title span {
 color: var(--text-span);
 }
-
-
 
 main {
     text-align: center;

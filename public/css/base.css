@@ -48,13 +48,12 @@ footer {
     isolation: isolate;
 }
 
-.wrapper>header,
-.wrapper>main,
+/*.wrapper>main,
 .wrapper>footer,
 .wrapper>.overlay-navigation {
     mix-blend-mode: var(--blend-mode);
     text-shadow: var(--content-legibility-shadow, none);
-}
+}*/
 
 .skip-link {
     position: absolute;
@@ -149,16 +148,16 @@ a:focus-visible {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    background-color:var(--base-color);
     background-image: linear-gradient(90deg, var(--linear-gradient-image) 1px, transparent 1px), linear-gradient(var(--linear-gradient-image) 1px, transparent 1px);
     background-size: var(--size) var(--size);
     background-position: center;
-    background-color: unset;
-    opacity: var(--pattern-opacity, 1);
+    opacity: 1;
     mask-image: radial-gradient(ellipse 72% 64% at center, transparent 58%, black 80%);
     mask-size: 100% 100%;
     mask-position: center;
     mask-repeat: no-repeat;
-    z-index: -100;
+    z-index: -1000;
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     contain: layout;
 }
