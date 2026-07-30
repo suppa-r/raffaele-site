@@ -48,13 +48,6 @@ footer {
     isolation: isolate;
 }
 
-/*.wrapper>main,
-.wrapper>footer,
-.wrapper>.overlay-navigation {
-    mix-blend-mode: var(--blend-mode);
-    text-shadow: var(--content-legibility-shadow, none);
-}*/
-
 .skip-link {
     position: absolute;
     top: 0;
