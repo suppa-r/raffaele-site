@@ -12,6 +12,10 @@ const INTRO_THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
 const INTRO_THEME_BUTTON_PULSE_CLASS = "is-tapped";
 const INTRO_THEME_BUTTON_PULSE_MS = 520;
 const INTRO_NAV_CLOSE_HIDE_FALLBACK_MS = 320;
+const INTRO_CUSTOM_THEME_SELECTOR_ROOT = "[data-theme-selector]";
+const INTRO_CUSTOM_THEME_SELECTOR_TRIGGER = "[data-theme-selector-trigger]";
+const INTRO_CUSTOM_THEME_SELECTOR_OPTION = "[data-theme-option]";
+const INTRO_CUSTOM_THEME_SELECTOR_MENU = "[data-theme-selector-menu]";
 const introSectionHashes = new Set(
   Array.from(
     document.querySelectorAll("main > section[id]"),
@@ -150,6 +154,121 @@ function introUpdateThemeButtons(theme) {
         ? theme
         : "dark";
   }
+
+  introSyncCustomThemeSelector(theme);
+}
+
+function introGetCustomThemeSelectorRoot() {
+  return document.querySelector(INTRO_CUSTOM_THEME_SELECTOR_ROOT);
+}
+
+function introGetCustomThemeSelectorElements() {
+  const root = introGetCustomThemeSelectorRoot();
+  if (!root) {
+    return {};
+  }
+
+  return {
+    root,
+    trigger: root.querySelector(INTRO_CUSTOM_THEME_SELECTOR_TRIGGER),
+    menu: root.querySelector(INTRO_CUSTOM_THEME_SELECTOR_MENU),
+    options: [...root.querySelectorAll(INTRO_CUSTOM_THEME_SELECTOR_OPTION)],
+  };
+}
+
+function introCloseCustomThemeSelector({ returnFocus = false } = {}) {
+  const { root, trigger, menu } = introGetCustomThemeSelectorElements();
+  if (!root || !trigger || !menu) {
+    return;
+  }
+
+  root.classList.remove("is-open");
+  trigger.setAttribute("aria-expanded", "false");
+  menu.hidden = true;
+
+  if (returnFocus && trigger instanceof HTMLElement) {
+    trigger.focus();
+  }
+}
+
+function introOpenCustomThemeSelector() {
+  const { root, trigger, menu } = introGetCustomThemeSelectorElements();
+  if (!root || !trigger || !menu) {
+    return;
+  }
+
+  root.classList.add("is-open");
+  trigger.setAttribute("aria-expanded", "true");
+  menu.hidden = false;
+}
+
+function introSyncCustomThemeSelector(theme) {
+  const { root, options } = introGetCustomThemeSelectorElements();
+  if (!root || options.length === 0) {
+    return;
+  }
+
+  const selectedTheme = INTRO_VALID_THEMES.includes(theme) ? theme : "dark";
+  let selectedOption = null;
+
+  options.forEach((option) => {
+    const isSelected = option.dataset.themeOption === selectedTheme;
+    option.setAttribute("aria-selected", isSelected ? "true" : "false");
+    if (isSelected) {
+      selectedOption = option;
+    }
+  });
+
+  if (!selectedOption) {
+    return;
+  }
+
+  const triggerIcon = root.querySelector(".theme-selector-trigger-icon");
+  const triggerText = root.querySelector(".theme-selector-trigger-text");
+  const optionIcon = selectedOption.querySelector(".theme-option-icon");
+  const optionText = selectedOption.querySelector(".theme-option-label");
+
+  if (triggerIcon && optionIcon) {
+    triggerIcon.innerHTML = optionIcon.innerHTML;
+  }
+
+  if (triggerText && optionText) {
+    triggerText.textContent = optionText.textContent;
+  }
+}
+
+function introFocusCustomThemeOption(direction = 1) {
+  const { options } = introGetCustomThemeSelectorElements();
+  if (!options || options.length === 0) {
+    return;
+  }
+
+  const activeElement = document.activeElement;
+  const activeIndex = options.findIndex((option) => option === activeElement);
+  const fallbackIndex = options.findIndex(
+    (option) => option.getAttribute("aria-selected") === "true",
+  );
+  const startIndex =
+    activeIndex >= 0 ? activeIndex : Math.max(fallbackIndex, 0);
+  const nextIndex = (startIndex + direction + options.length) % options.length;
+
+  options[nextIndex]?.focus();
+}
+
+function introApplyThemeFromCustomOption(optionButton) {
+  const nextTheme = optionButton?.dataset.themeOption;
+  if (nextTheme !== "light" && nextTheme !== "dark" && nextTheme !== "system") {
+    return;
+  }
+
+  const themeSelector = document.getElementById("theme-selector");
+  if (themeSelector instanceof HTMLSelectElement) {
+    themeSelector.value = nextTheme;
+    themeSelector.dispatchEvent(new Event("change", { bubbles: true }));
+    return;
+  }
+
+  introSetTheme(nextTheme, { announce: true, withTransition: true });
 }
 
 function introAnnounceTheme(theme) {
@@ -279,6 +398,38 @@ function introPulseThemeButton(button) {
 }
 
 function handleThemeToggleClick(event) {
+  const customThemeOption = event.target.closest(
+    INTRO_CUSTOM_THEME_SELECTOR_OPTION,
+  );
+  if (customThemeOption) {
+    event.preventDefault();
+    introApplyThemeFromCustomOption(customThemeOption);
+    introCloseCustomThemeSelector({ returnFocus: true });
+    return;
+  }
+
+  const customThemeTrigger = event.target.closest(
+    INTRO_CUSTOM_THEME_SELECTOR_TRIGGER,
+  );
+  if (customThemeTrigger) {
+    event.preventDefault();
+    const isExpanded =
+      customThemeTrigger.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      introCloseCustomThemeSelector();
+    } else {
+      introOpenCustomThemeSelector();
+    }
+    return;
+  }
+
+  const customThemeRoot = event.target.closest(
+    INTRO_CUSTOM_THEME_SELECTOR_ROOT,
+  );
+  if (!customThemeRoot) {
+    introCloseCustomThemeSelector();
+  }
+
   const themeButton = event.target.closest("button[data-theme-toggle]");
   if (!themeButton) {
     return;
@@ -453,6 +604,71 @@ function handleNavLinkClick(event) {
 }
 
 function handleDocumentKeydown(event) {
+  const customThemeIsOpen =
+    introGetCustomThemeSelectorRoot()?.classList.contains("is-open") || false;
+  const onCustomThemeTrigger =
+    event.target.closest(INTRO_CUSTOM_THEME_SELECTOR_TRIGGER) !== null;
+  const onCustomThemeOption =
+    event.target.closest(INTRO_CUSTOM_THEME_SELECTOR_OPTION) !== null;
+
+  if (customThemeIsOpen && event.key === "Escape") {
+    event.preventDefault();
+    introCloseCustomThemeSelector({ returnFocus: true });
+    return;
+  }
+
+  if (onCustomThemeTrigger && (event.key === "Enter" || event.key === " ")) {
+    event.preventDefault();
+    const { trigger } = introGetCustomThemeSelectorElements();
+    const isExpanded = trigger?.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      introCloseCustomThemeSelector();
+    } else {
+      introOpenCustomThemeSelector();
+      introFocusCustomThemeOption(1);
+    }
+    return;
+  }
+
+  if (onCustomThemeTrigger && event.key === "ArrowDown") {
+    event.preventDefault();
+    introOpenCustomThemeSelector();
+    introFocusCustomThemeOption(1);
+    return;
+  }
+
+  if (onCustomThemeTrigger && event.key === "ArrowUp") {
+    event.preventDefault();
+    introOpenCustomThemeSelector();
+    introFocusCustomThemeOption(-1);
+    return;
+  }
+
+  if (customThemeIsOpen && onCustomThemeOption && event.key === "ArrowDown") {
+    event.preventDefault();
+    introFocusCustomThemeOption(1);
+    return;
+  }
+
+  if (customThemeIsOpen && onCustomThemeOption && event.key === "ArrowUp") {
+    event.preventDefault();
+    introFocusCustomThemeOption(-1);
+    return;
+  }
+
+  if (
+    customThemeIsOpen &&
+    onCustomThemeOption &&
+    (event.key === "Enter" || event.key === " ")
+  ) {
+    event.preventDefault();
+    introApplyThemeFromCustomOption(
+      event.target.closest(INTRO_CUSTOM_THEME_SELECTOR_OPTION),
+    );
+    introCloseCustomThemeSelector({ returnFocus: true });
+    return;
+  }
+
   if (event.key !== "Escape" || !mobileQuery.matches || !isMenuOpen) {
     return;
   }
