@@ -24,8 +24,9 @@
 }
 
 :focus-visible {
-  outline: 3px solid currentcolor;
+  outline: 3px solid var(--focus-ring-color, currentcolor);
   outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--base-color, #ffffff);
 }
 
 /* Form Styles for Custom Theme Selector */
@@ -74,6 +75,13 @@
   color: var(--base-color);
   border-color: var(--base-color);
   transform: translateY(-1px);
+}
+
+.theme-selector-trigger:focus-visible,
+.theme-selector-option:focus-visible {
+  outline: 3px solid var(--focus-ring-color, currentcolor);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--base-color, #ffffff);
 }
 
 .theme-selector-trigger-icon,
@@ -184,6 +192,7 @@
 
 .theme-selector-option[aria-selected="true"] {
   background-color: color-mix(in oklab, var(--text-color) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--text-color) 36%, transparent);
 }
 
 .theme-option-label {
@@ -202,6 +211,35 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-selector-trigger,
+  .theme-selector-chevron,
+  .theme-selector-option {
+    transition: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .theme-selector-trigger,
+  .theme-selector-menu,
+  .theme-selector-option {
+    forced-color-adjust: auto;
+    border-color: CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .theme-selector-trigger:hover,
+  .theme-selector-trigger:focus-visible,
+  .theme-selector.is-open .theme-selector-trigger,
+  .theme-selector-option:hover,
+  .theme-selector-option:focus-visible,
+  .theme-selector-option[aria-selected="true"] {
+    background-color: Highlight;
+    color: HighlightText;
+  }
 }
 
 @media (max-width: 768px) {

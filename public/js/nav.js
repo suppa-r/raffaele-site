@@ -209,6 +209,13 @@ function syncCustomThemeSelector(theme) {
   if (triggerText && optionText) {
     triggerText.textContent = optionText.textContent;
   }
+
+  if (trigger instanceof HTMLButtonElement && optionText) {
+    trigger.setAttribute(
+      "aria-label",
+      `Select color theme, current selection ${optionText.textContent.trim()}`,
+    );
+  }
 }
 
 function focusCustomThemeOption(direction = 1) {

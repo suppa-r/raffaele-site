@@ -235,6 +235,19 @@ function introSyncCustomThemeSelector(theme) {
   if (triggerText && optionText) {
     triggerText.textContent = optionText.textContent;
   }
+
+  if (
+    root.querySelector("[data-theme-selector-trigger]") instanceof
+      HTMLButtonElement &&
+    optionText
+  ) {
+    root
+      .querySelector("[data-theme-selector-trigger]")
+      .setAttribute(
+        "aria-label",
+        `Select color theme, current selection ${optionText.textContent.trim()}`,
+      );
+  }
 }
 
 function introFocusCustomThemeOption(direction = 1) {
