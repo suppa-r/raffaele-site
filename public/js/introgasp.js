@@ -4,6 +4,8 @@ let lenis;
 let splitInstance;
 
 let lastInitTimestamp = 0;
+let introInitState = "idle";
+let introInitScheduled = false;
 const INIT_DEDUPE_WINDOW_MS = 450;
 const THEME_REPLAY_DELAY_MS = 100;
 const INTRO_PAGE_SELECTOR = 'body[data-page="intro"]';
@@ -46,10 +48,61 @@ function initializeLenis() {
   });
 }
 
+function resetIntroAnimationState() {
+  const gsapLib = typeof window !== "undefined" ? window.gsap : null;
+
+  if (gsapLib) {
+    [
+      INTRO_ANIMATION_TARGET,
+      `${INTRO_ANIMATION_TARGET} .line`,
+      `${INTRO_ANIMATION_TARGET} .line span`,
+      INTRO_WORDS_TARGET,
+      WRAPPER_GRADIENT_TARGET,
+      WRAPPER_GRADIENT_WORD_TARGET,
+    ].forEach((target) => gsapLib.killTweensOf(target));
+  }
+
+  if (splitInstance) {
+    splitInstance.revert();
+    splitInstance = null;
+  }
+
+  document
+    .querySelectorAll(`${INTRO_ANIMATION_TARGET} .line`)
+    .forEach((line) => {
+      line.style.display = "";
+      line.style.overflow = "";
+    });
+
+  document
+    .querySelectorAll(`${INTRO_ANIMATION_TARGET} .line span`)
+    .forEach((span) => {
+      span.style.transform = "";
+      span.style.opacity = "";
+      span.style.removeProperty("transform");
+      span.style.removeProperty("opacity");
+    });
+
+  document.querySelectorAll(INTRO_ANIMATION_TARGET).forEach((element) => {
+    element.style.opacity = "";
+    element.style.transform = "";
+  });
+
+  document
+    .querySelectorAll(
+      `${WRAPPER_GRADIENT_TARGET}, ${WRAPPER_GRADIENT_WORD_TARGET}, ${INTRO_WORDS_TARGET}`,
+    )
+    .forEach((element) => {
+      element.style.opacity = "";
+      element.style.transform = "";
+    });
+}
+
 function initializeAnimations() {
   if (!document.querySelector(INTRO_ANIMATION_TARGET)) return;
 
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
+  resetIntroAnimationState();
   if (!gsapLib || typeof SplitType === "undefined") {
     revealIntroContent();
     return;
@@ -104,6 +157,7 @@ function initializeAnimations() {
     gsapLib.to(INTRO_WORDS_TARGET, {
       x: 0,
       opacity: 1,
+      visibility: "visible",
       duration: HERO_REVEAL_DURATION_INTRO,
       ease: HERO_TEXT_EASE_INTRO,
       delay: HERO_REVEAL_DELAY_INTRO,
@@ -225,13 +279,20 @@ function hideIntroContent() {
 }
 
 function initPage() {
+  if (introInitState === "running" || introInitState === "done") {
+    return;
+  }
+
   if (!isIntroPage()) {
     if (lenis) {
       lenis.destroy();
       lenis = null;
     }
+    introInitState = "idle";
     return;
   }
+
+  introInitState = "running";
 
   const now = Date.now();
   if (now - lastInitTimestamp < INIT_DEDUPE_WINDOW_MS) {
@@ -244,20 +305,35 @@ function initPage() {
     hideIntroContent();
     initializeLenis();
     initializeAnimations();
+    introInitState = "done";
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("Intro animation init failed:", error);
+    introInitState = "idle";
     revealIntroContent();
   }
 }
 
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      initPage();
-    }, THEME_REPLAY_DELAY_MS);
-  });
-});
+function scheduleIntroInit() {
+  if (
+    introInitScheduled ||
+    introInitState === "running" ||
+    introInitState === "done"
+  ) {
+    return;
+  }
 
-document.addEventListener("DOMContentLoaded", initPage);
-document.addEventListener("page:transitioned", initPage);
+  introInitScheduled = true;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        introInitScheduled = false;
+        initPage();
+      }, THEME_REPLAY_DELAY_MS);
+    });
+  });
+}
+
+scheduleIntroInit();
+document.addEventListener("DOMContentLoaded", scheduleIntroInit);
+document.addEventListener("page:transitioned", scheduleIntroInit);

@@ -60,6 +60,22 @@ main p:not(.wrapper-gradient-text) {
     opacity: 1;
 }
 
+.js-intro-anim main p:not(.wrapper-gradient-text),
+.js-intro-anim .wrapper-gradient-text,
+.js-intro-anim .wrapper-gradient-text .text-layer,
+.js-intro-anim main p:not(.wrapper-gradient-text) .line span {
+    opacity: 0;
+}
+
+.js-intro-anim .wrapper-gradient-text,
+.js-intro-anim .wrapper-gradient-text .text-layer {
+    transform: translateX(-7vw);
+}
+
+.js-intro-anim main p:not(.wrapper-gradient-text) .line span {
+    transform: translateY(100%);
+}
+
 .text-with-animation {
     font-family: var(--primary-font-secondary);
     display: flex;
@@ -73,19 +89,22 @@ main p:not(.wrapper-gradient-text) {
  overflow: hidden;
 }
 
-.text-with-animation span:first-child {
-    display: block;
-    opacity: 1
-}
-
-.text-with-animation span:nth-child(2) {
-    display: block;
-    opacity: 1
-}
-
+.text-with-animation span:first-child,
+.text-with-animation span:nth-child(2),
 .text-with-animation span:last-child {
     display: block;
-    opacity: 1
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-7vw);
+}
+
+.js-intro-anim .text-with-animation span,
+.js-intro-anim .text-with-animation span:first-child,
+.js-intro-anim .text-with-animation span:nth-child(2),
+.js-intro-anim .text-with-animation span:last-child {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-7vw);
 }
 
 @keyframes word-animation {
