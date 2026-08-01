@@ -50,6 +50,16 @@
   min-width: 14.5rem;
 }
 
+.theme-selector-trigger,
+.theme-selector-option {
+  outline: none;
+}
+
+.theme-selector-trigger:focus,
+.theme-selector-option:focus {
+  outline: none;
+}
+
 .theme-selector-trigger {
   width: 100%;
   display: inline-flex;

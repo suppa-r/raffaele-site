@@ -1,5 +1,8 @@
 const menu = document.querySelector(".open-overlay");
-const navlinks = document.querySelector(".nav-links");
+const overlayNavigation = document.querySelector(".overlay-navigation");
+const navlinks = overlayNavigation
+  ? overlayNavigation.querySelector(".nav-links")
+  : document.querySelector(".nav-links");
 const pageTitle = document.querySelector(".intro-1-page-title");
 const mobileQuery = window.matchMedia("(max-width: 768px)");
 const firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
@@ -511,48 +514,49 @@ function setMenuState(isOpen, options = {}) {
 
   clearTimeout(introNavHideTimeoutId);
 
-  if (!mobileQuery.matches) {
-    navlinks.classList.remove("open");
-    menu.classList.remove("is-active");
-    menu.setAttribute("aria-expanded", "false");
-    menu.setAttribute("aria-label", "Open navigation menu");
-    navlinks.hidden = false;
-    navlinks.removeAttribute("aria-hidden");
-    if ("inert" in navlinks) {
-      navlinks.inert = false;
-    }
-    setIntroNavOpenState(false);
-    setPageTitleVisibility(showTitle);
-    return;
+  const wasOpen =
+    overlayNavigation?.classList.contains("overlay-slide-down") ||
+    navlinks?.classList.contains("open");
+
+  if (isMenuOpen && overlayNavigation) {
+    overlayNavigation.hidden = false;
+    overlayNavigation.removeAttribute("aria-hidden");
   }
 
-  const wasOpen = navlinks.classList.contains("open");
-  if (isMenuOpen) {
-    navlinks.hidden = false;
+  navlinks?.classList.toggle("open", isMenuOpen);
+  if (overlayNavigation) {
+    overlayNavigation.classList.toggle("overlay-slide-down", isMenuOpen);
+    overlayNavigation.classList.toggle("overlay-slide-up", !isMenuOpen);
   }
-
-  navlinks.classList.toggle("open", isMenuOpen);
   menu.classList.toggle("is-active", isMenuOpen);
   menu.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
   menu.setAttribute(
     "aria-label",
     isMenuOpen ? "Close navigation menu" : "Open navigation menu",
   );
-  navlinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
-  if ("inert" in navlinks) {
-    navlinks.inert = !isMenuOpen;
+  if (overlayNavigation) {
+    overlayNavigation.setAttribute(
+      "aria-hidden",
+      isMenuOpen ? "false" : "true",
+    );
+  }
+  if (navlinks) {
+    navlinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
+    if ("inert" in navlinks) {
+      navlinks.inert = !isMenuOpen;
+    }
   }
 
   if (!isMenuOpen) {
     if (wasOpen) {
       const navCloseHideDelayMs = introGetNavCloseHideDelayMs();
       introNavHideTimeoutId = setTimeout(() => {
-        if (!isMenuOpen) {
-          navlinks.hidden = true;
+        if (!isMenuOpen && overlayNavigation) {
+          overlayNavigation.hidden = true;
         }
       }, navCloseHideDelayMs);
-    } else {
-      navlinks.hidden = true;
+    } else if (overlayNavigation) {
+      overlayNavigation.hidden = true;
     }
   }
 
@@ -570,10 +574,6 @@ function setMenuState(isOpen, options = {}) {
 }
 
 function toggleMenu() {
-  if (!mobileQuery.matches) {
-    return;
-  }
-
   setMenuState(!isMenuOpen, {
     moveFocus: true,
     returnFocus: true,
@@ -595,24 +595,19 @@ function handleNavLinkClick(event) {
     href.startsWith("#") && introSectionHashes.has(href);
 
   setPageTitleVisibility(false);
+  setMenuState(false, { showTitle: false });
 
-  if (mobileQuery.matches) {
-    if (isIntroSectionHash) {
-      event.preventDefault();
-      setMenuState(false, { showTitle: false });
+  if (mobileQuery.matches && isIntroSectionHash) {
+    event.preventDefault();
 
-      // Apply hash on the next paint frames after close state is committed.
+    // Apply hash on the next paint frames after close state is committed.
+    window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => {
-          if (window.location.hash !== href) {
-            window.location.hash = href;
-          }
-        });
+        if (window.location.hash !== href) {
+          window.location.hash = href;
+        }
       });
-      return;
-    }
-
-    setMenuState(false, { showTitle: false });
+    });
   }
 }
 
@@ -682,7 +677,7 @@ function handleDocumentKeydown(event) {
     return;
   }
 
-  if (event.key !== "Escape" || !mobileQuery.matches || !isMenuOpen) {
+  if (event.key !== "Escape" || !isMenuOpen) {
     return;
   }
 
