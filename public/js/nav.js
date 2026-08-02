@@ -81,10 +81,10 @@ function getStoredTheme() {
       saveTheme("system");
       return "system";
     }
-    return VALID_THEMES.includes(theme) ? theme : null;
+    return VALID_THEMES.includes(theme) ? theme : "system";
   } catch {
     // ignore storage errors
-    return null;
+    return "system";
   }
 }
 
@@ -126,7 +126,7 @@ function updateThemeButtonState(theme) {
     themeSelector.value =
       theme === "light" || theme === "dark" || theme === "system"
         ? theme
-        : "dark";
+        : "system";
   }
 
   syncCustomThemeSelector(theme);
@@ -182,7 +182,7 @@ function syncCustomThemeSelector(theme) {
     return;
   }
 
-  const selectedTheme = VALID_THEMES.includes(theme) ? theme : "dark";
+  const selectedTheme = VALID_THEMES.includes(theme) ? theme : "system";
   let selectedOption = null;
 
   options.forEach((option) => {
@@ -894,7 +894,7 @@ function setTheme(theme) {
 
 document.addEventListener("page:transitioned", () => {
   hideTextAnimations();
-  updateThemeButtonState(getStoredTheme() || "dark");
+  updateThemeButtonState(getStoredTheme() || "system");
   initIntroNav();
   replayTextAnimationsAfterTransitions();
 });
@@ -902,7 +902,7 @@ document.addEventListener("page:transitioned", () => {
 document.addEventListener("DOMContentLoaded", () => {
   hideTextAnimations();
   const storedTheme = getStoredTheme();
-  const theme = storedTheme || "dark";
+  const theme = storedTheme || "system";
 
   if (!storedTheme) {
     saveTheme(theme);

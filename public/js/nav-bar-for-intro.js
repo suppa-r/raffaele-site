@@ -161,7 +161,7 @@ function introUpdateThemeButtons(theme) {
     themeSelector.value =
       theme === "light" || theme === "dark" || theme === "system"
         ? theme
-        : "dark";
+        : "system";
   }
 
   introSyncCustomThemeSelector(theme);
@@ -217,7 +217,7 @@ function introSyncCustomThemeSelector(theme) {
     return;
   }
 
-  const selectedTheme = INTRO_VALID_THEMES.includes(theme) ? theme : "dark";
+  const selectedTheme = INTRO_VALID_THEMES.includes(theme) ? theme : "system";
   let selectedOption = null;
 
   options.forEach((option) => {
