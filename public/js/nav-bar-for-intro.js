@@ -15,6 +15,7 @@ const INTRO_THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
 const INTRO_THEME_BUTTON_PULSE_CLASS = "is-tapped";
 const INTRO_THEME_BUTTON_PULSE_MS = 520;
 const INTRO_NAV_CLOSE_HIDE_FALLBACK_MS = 320;
+const INTRO_NAV_CLOSING_CLASS = "intro-nav-closing";
 const INTRO_CUSTOM_THEME_SELECTOR_ROOT = "[data-theme-selector]";
 const INTRO_CUSTOM_THEME_SELECTOR_TRIGGER = "[data-theme-selector-trigger]";
 const INTRO_CUSTOM_THEME_SELECTOR_OPTION = "[data-theme-option]";
@@ -81,11 +82,16 @@ function introParseTimeToMs(timeValue) {
 }
 
 function introGetNavCloseHideDelayMs() {
-  if (!navlinks || introIsReducedMotionPreferred()) {
+  if (introIsReducedMotionPreferred()) {
     return 0;
   }
 
-  const styles = window.getComputedStyle(navlinks);
+  const transitionElement = overlayNavigation || navlinks;
+  if (!transitionElement) {
+    return 0;
+  }
+
+  const styles = window.getComputedStyle(transitionElement);
   const durationValues = styles.transitionDuration
     .split(",")
     .map((value) => introParseTimeToMs(value));
@@ -508,6 +514,10 @@ function setIntroNavOpenState(isOpen) {
   document.documentElement.classList.toggle("intro-nav-open", isOpen);
 }
 
+function setIntroNavClosingState(isClosing) {
+  document.documentElement.classList.toggle(INTRO_NAV_CLOSING_CLASS, isClosing);
+}
+
 function setMenuState(isOpen, options = {}) {
   const { moveFocus = false, returnFocus = false, showTitle = true } = options;
   isMenuOpen = isOpen;
@@ -519,8 +529,14 @@ function setMenuState(isOpen, options = {}) {
     navlinks?.classList.contains("open");
 
   if (isMenuOpen && overlayNavigation) {
+    const wasHidden = overlayNavigation.hidden;
     overlayNavigation.hidden = false;
     overlayNavigation.removeAttribute("aria-hidden");
+    setIntroNavClosingState(false);
+    if (wasHidden) {
+      // Ensure the closed transform state is painted before toggling to open.
+      void overlayNavigation.offsetHeight;
+    }
   }
 
   navlinks?.classList.toggle("open", isMenuOpen);
@@ -549,14 +565,17 @@ function setMenuState(isOpen, options = {}) {
 
   if (!isMenuOpen) {
     if (wasOpen) {
+      setIntroNavClosingState(true);
       const navCloseHideDelayMs = introGetNavCloseHideDelayMs();
       introNavHideTimeoutId = setTimeout(() => {
         if (!isMenuOpen && overlayNavigation) {
           overlayNavigation.hidden = true;
+          setIntroNavClosingState(false);
         }
       }, navCloseHideDelayMs);
     } else if (overlayNavigation) {
       overlayNavigation.hidden = true;
+      setIntroNavClosingState(false);
     }
   }
 
