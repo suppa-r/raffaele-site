@@ -126,9 +126,9 @@ function introGetStoredTheme() {
       introSaveTheme("system");
       return "system";
     }
-    return INTRO_VALID_THEMES.includes(saved) ? saved : "dark";
+    return INTRO_VALID_THEMES.includes(saved) ? saved : "system";
   } catch {
-    return "dark";
+    return "system";
   }
 }
 
