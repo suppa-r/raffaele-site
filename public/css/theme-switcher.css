@@ -252,6 +252,14 @@
   }
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .theme-selector-trigger:focus-visible,
+  .theme-selector-option:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 @media (max-width: 768px) {
   .theme-selector-container {
     display: inline-flex;
