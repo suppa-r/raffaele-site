@@ -62,6 +62,10 @@ function animateHamburgerButton(opening) {
   }
 }
 
+function getIntroNavigationElements() {
+  return { menu, overlayNavigation, navlinks, firstNavLink };
+}
+
 function introParseTimeToMs(timeValue) {
   const value = timeValue.trim();
   if (!value) {
@@ -561,7 +565,7 @@ function setMenuState(isOpen, options = {}) {
     if ("inert" in navlinks) {
       navlinks.inert = !isMenuOpen;
     }
-  }
+      menu.focus();
 
   if (!isMenuOpen) {
     if (wasOpen) {
@@ -588,7 +592,7 @@ function setMenuState(isOpen, options = {}) {
   }
 
   if (!isMenuOpen && returnFocus) {
-    menu.focus();
+    currentMenu?.focus();
   }
 }
 
@@ -712,8 +716,7 @@ function handleNavFocusOut(event) {
   const nextFocusedElement = event.relatedTarget;
   const focusStaysInNav =
     !!nextFocusedElement &&
-    (navlinks.contains(nextFocusedElement) ||
-      menu.contains(nextFocusedElement));
+    (navlinks.contains(nextFocusedElement) || menu.contains(nextFocusedElement));
 
   if (!focusStaysInNav) {
     setPageTitleVisibility(true);
