@@ -279,7 +279,7 @@ function hideIntroContent() {
 }
 
 function initPage() {
-  if (introInitState === "running" || introInitState === "done") {
+  if (introInitState === "running") {
     return;
   }
 
@@ -288,7 +288,15 @@ function initPage() {
       lenis.destroy();
       lenis = null;
     }
+    if (splitInstance) {
+      splitInstance.revert();
+      splitInstance = null;
+    }
     introInitState = "idle";
+    return;
+  }
+
+  if (introInitState === "done") {
     return;
   }
 
@@ -315,10 +323,12 @@ function initPage() {
 }
 
 function scheduleIntroInit() {
+  const currentlyIntroPage = isIntroPage();
+
   if (
     introInitScheduled ||
     introInitState === "running" ||
-    introInitState === "done"
+    (introInitState === "done" && currentlyIntroPage)
   ) {
     return;
   }

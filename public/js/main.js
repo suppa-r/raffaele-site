@@ -170,6 +170,10 @@ function adoptNewBody(newDocument, savedTheme) {
   const newBody = document.adoptNode(newDocument.body);
   newBody.classList.add("page-entering");
   document.documentElement.replaceChild(newBody, document.body);
+  document.documentElement.classList.remove(
+    "intro-nav-open",
+    "intro-nav-closing",
+  );
   document.title = newDocument.title;
 
   const currentTheme = document.documentElement.getAttribute("data-theme");
