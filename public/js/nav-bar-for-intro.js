@@ -1,25 +1,24 @@
-const menu = document.querySelector(".open-overlay");
-const overlayNavigation = document.querySelector(".overlay-navigation");
-const navlinks = overlayNavigation
-  ? overlayNavigation.querySelector(".nav-links")
-  : document.querySelector(".nav-links");
-const pageTitle = document.querySelector(".intro-1-page-title");
+let menu = null;
+let overlayNavigation = null;
+let navlinks = null;
+let pageTitle = null;
 const mobileQuery = window.matchMedia("(max-width: 768px)");
-const firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
+let firstNavLink = null;
 const introThemeAnnouncement = document.getElementById("theme-announcement");
+
 const INTRO_VALID_THEMES = ["light", "dark", "system"];
 const INTRO_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INTRO_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const INTRO_THEME_TRANSITION_CLASS = "theme-transitioning";
 const INTRO_THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
-const INTRO_THEME_BUTTON_PULSE_CLASS = "is-tapped";
-const INTRO_THEME_BUTTON_PULSE_MS = 520;
 const INTRO_NAV_CLOSE_HIDE_FALLBACK_MS = 320;
 const INTRO_NAV_CLOSING_CLASS = "intro-nav-closing";
+
 const INTRO_CUSTOM_THEME_SELECTOR_ROOT = "[data-theme-selector]";
 const INTRO_CUSTOM_THEME_SELECTOR_TRIGGER = "[data-theme-selector-trigger]";
 const INTRO_CUSTOM_THEME_SELECTOR_OPTION = "[data-theme-option]";
 const INTRO_CUSTOM_THEME_SELECTOR_MENU = "[data-theme-selector-menu]";
+
 const introSectionHashes = new Set(
   Array.from(
     document.querySelectorAll("main > section[id]"),
@@ -29,41 +28,28 @@ const introSectionHashes = new Set(
 
 let isMenuOpen = false;
 let introThemeTransitionTimeoutId = null;
-let introThemeButtonPulseTimeoutId = null;
 let introNavHideTimeoutId = null;
 let introThemeVisualSwapState = false;
+let introDocumentEventsAttached = false;
+let introBoundMenuElement = null;
+let introBoundNavLinksElement = null;
+
+function isIntroPage() {
+  return document.body?.dataset?.page === "intro";
+}
+
+function refreshIntroNavElements() {
+  menu = document.querySelector(".open-overlay");
+  overlayNavigation = document.querySelector(".overlay-navigation");
+  navlinks = overlayNavigation
+    ? overlayNavigation.querySelector(".nav-links")
+    : document.querySelector(".nav-links");
+  pageTitle = document.querySelector(".intro-1-page-title");
+  firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
+}
 
 function introIsReducedMotionPreferred() {
   return window.matchMedia(INTRO_REDUCED_MOTION_QUERY).matches;
-}
-
-function animateHamburgerButton(opening) {
-  if (introIsReducedMotionPreferred()) return;
-  const topBar = menu ? menu.querySelector(".bar-top") : null;
-  const middleBar = menu ? menu.querySelector(".bar-middle") : null;
-  const bottomBar = menu ? menu.querySelector(".bar-bottom") : null;
-  if (!topBar || !middleBar || !bottomBar) return;
-
-  const toggle = (element, removeClass, addClass) => {
-    element.classList.remove(removeClass);
-    element.classList.remove(addClass);
-    void element.offsetWidth;
-    element.classList.add(addClass);
-  };
-
-  if (opening) {
-    toggle(topBar, "animate-out-top-bar", "animate-top-bar");
-    toggle(middleBar, "animate-out-middle-bar", "animate-middle-bar");
-    toggle(bottomBar, "animate-out-bottom-bar", "animate-bottom-bar");
-  } else {
-    toggle(topBar, "animate-top-bar", "animate-out-top-bar");
-    toggle(middleBar, "animate-middle-bar", "animate-out-middle-bar");
-    toggle(bottomBar, "animate-bottom-bar", "animate-out-bottom-bar");
-  }
-}
-
-function getIntroNavigationElements() {
-  return { menu, overlayNavigation, navlinks, firstNavLink };
 }
 
 function introParseTimeToMs(timeValue) {
@@ -119,7 +105,6 @@ function introGetNavCloseHideDelayMs() {
     return 0;
   }
 
-  // Add one frame so hidden is toggled after paint of the last animation frame.
   return Math.ceil(maxTimeMs + 16);
 }
 
@@ -145,30 +130,11 @@ function introSaveTheme(theme) {
 }
 
 function introResolveTheme(theme) {
-  if (theme !== "system") {
-    return theme;
-  }
-
-  return window.matchMedia(INTRO_COLOR_SCHEME_QUERY).matches ? "dark" : "light";
-}
-
-function introUpdateThemeButtons(theme) {
-  document.querySelectorAll("button[data-theme-toggle]").forEach((button) => {
-    button.setAttribute(
-      "aria-pressed",
-      button.dataset.themeToggle === theme ? "true" : "false",
-    );
-  });
-
-  const themeSelector = document.getElementById("theme-selector");
-  if (themeSelector instanceof HTMLSelectElement) {
-    themeSelector.value =
-      theme === "light" || theme === "dark" || theme === "system"
-        ? theme
-        : "system";
-  }
-
-  introSyncCustomThemeSelector(theme);
+  return theme === "system"
+    ? window.matchMedia(INTRO_COLOR_SCHEME_QUERY).matches
+      ? "dark"
+      : "light"
+    : theme;
 }
 
 function introGetCustomThemeSelectorRoot() {
@@ -216,8 +182,8 @@ function introOpenCustomThemeSelector() {
 }
 
 function introSyncCustomThemeSelector(theme) {
-  const { root, options } = introGetCustomThemeSelectorElements();
-  if (!root || options.length === 0) {
+  const { root, options, trigger } = introGetCustomThemeSelectorElements();
+  if (!root || !trigger || options.length === 0) {
     return;
   }
 
@@ -249,18 +215,31 @@ function introSyncCustomThemeSelector(theme) {
     triggerText.textContent = optionText.textContent;
   }
 
-  if (
-    root.querySelector("[data-theme-selector-trigger]") instanceof
-      HTMLButtonElement &&
-    optionText
-  ) {
-    root
-      .querySelector("[data-theme-selector-trigger]")
-      .setAttribute(
-        "aria-label",
-        `Select color theme, current selection ${optionText.textContent.trim()}`,
-      );
+  if (trigger instanceof HTMLButtonElement && optionText) {
+    trigger.setAttribute(
+      "aria-label",
+      `Select color theme, current selection ${optionText.textContent.trim()}`,
+    );
   }
+}
+
+function introUpdateThemeButtons(theme) {
+  document.querySelectorAll("button[data-theme-toggle]").forEach((button) => {
+    button.setAttribute(
+      "aria-pressed",
+      button.dataset.themeToggle === theme ? "true" : "false",
+    );
+  });
+
+  const themeSelector = document.getElementById("theme-selector");
+  if (themeSelector instanceof HTMLSelectElement) {
+    themeSelector.value =
+      theme === "light" || theme === "dark" || theme === "system"
+        ? theme
+        : "system";
+  }
+
+  introSyncCustomThemeSelector(theme);
 }
 
 function introFocusCustomThemeOption(direction = 1) {
@@ -281,20 +260,51 @@ function introFocusCustomThemeOption(direction = 1) {
   options[nextIndex]?.focus();
 }
 
+function introFocusSelectedCustomThemeOption() {
+  const { options } = introGetCustomThemeSelectorElements();
+  if (!options || options.length === 0) {
+    return;
+  }
+
+  const selectedOption = options.find(
+    (option) => option.getAttribute("aria-selected") === "true",
+  );
+
+  (selectedOption || options[0])?.focus();
+}
+
 function introApplyThemeFromCustomOption(optionButton) {
   const nextTheme = optionButton?.dataset.themeOption;
-  if (nextTheme !== "light" && nextTheme !== "dark" && nextTheme !== "system") {
+  if (!INTRO_VALID_THEMES.includes(nextTheme)) {
     return;
   }
 
   const themeSelector = document.getElementById("theme-selector");
   if (themeSelector instanceof HTMLSelectElement) {
     themeSelector.value = nextTheme;
-    themeSelector.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+
+  introSetTheme(nextTheme);
+}
+
+function handleIntroDocumentThemeSelectorChange(event) {
+  if (!isIntroPage()) {
     return;
   }
 
-  introSetTheme(nextTheme, { announce: true, withTransition: true });
+  const themeSelector = event.target;
+  if (!(themeSelector instanceof HTMLSelectElement)) {
+    return;
+  }
+
+  if (themeSelector.id !== "theme-selector") {
+    return;
+  }
+
+  const nextTheme = themeSelector.value;
+  if (nextTheme === "light" || nextTheme === "dark" || nextTheme === "system") {
+    introSetTheme(nextTheme);
+  }
 }
 
 function introAnnounceTheme(theme) {
@@ -310,12 +320,7 @@ function introAnnounceTheme(theme) {
         : "Theme set to dark";
 }
 
-function introApplyTheme(theme, announce = true) {
-  if (!INTRO_VALID_THEMES.includes(theme)) {
-    return;
-  }
-
-  const resolvedTheme = introResolveTheme(theme);
+function introApplyThemeState(resolvedTheme, theme, announce) {
   document.documentElement.setAttribute("data-theme", resolvedTheme);
   introSaveTheme(theme);
   introUpdateThemeButtons(theme);
@@ -323,13 +328,6 @@ function introApplyTheme(theme, announce = true) {
   if (announce) {
     introAnnounceTheme(theme);
   }
-}
-
-function introEndThemeTransition() {
-  clearTimeout(introThemeTransitionTimeoutId);
-  introThemeTransitionTimeoutId = setTimeout(() => {
-    document.documentElement.classList.remove(INTRO_THEME_TRANSITION_CLASS);
-  }, 0);
 }
 
 function introToggleThemeVisualSwapState() {
@@ -340,19 +338,42 @@ function introToggleThemeVisualSwapState() {
   );
 }
 
-function introRunThemeTransition(theme, announce) {
+function introSetTheme(theme, options = {}) {
+  const { announce = true, withTransition = true } = options;
+  if (!INTRO_VALID_THEMES.includes(theme)) {
+    return;
+  }
+
+  const resolvedTheme = introResolveTheme(theme);
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+
+  if (currentTheme === resolvedTheme && introGetStoredTheme() === theme) {
+    introUpdateThemeButtons(theme);
+    return;
+  }
+
+  if (!withTransition || introIsReducedMotionPreferred()) {
+    introApplyThemeState(resolvedTheme, theme, announce);
+    return;
+  }
+
+  clearTimeout(introThemeTransitionTimeoutId);
   document.documentElement.classList.add(INTRO_THEME_TRANSITION_CLASS);
 
   if (document.startViewTransition) {
     try {
       const transition = document.startViewTransition(() => {
         introToggleThemeVisualSwapState();
-        introApplyTheme(theme, announce);
+        introApplyThemeState(resolvedTheme, theme, announce);
       });
 
       transition.finished
         .then(() => {
-          introEndThemeTransition();
+          introThemeTransitionTimeoutId = setTimeout(() => {
+            document.documentElement.classList.remove(
+              INTRO_THEME_TRANSITION_CLASS,
+            );
+          }, 0);
         })
         .catch(() => {
           document.documentElement.classList.remove(
@@ -365,65 +386,147 @@ function introRunThemeTransition(theme, announce) {
     }
   }
 
-  introApplyTheme(theme, announce);
-  introEndThemeTransition();
+  introApplyThemeState(resolvedTheme, theme, announce);
+  introThemeTransitionTimeoutId = setTimeout(() => {
+    document.documentElement.classList.remove(INTRO_THEME_TRANSITION_CLASS);
+  }, 0);
 }
 
-function introSetTheme(theme, options = {}) {
-  const { announce = true, withTransition = true } = options;
-  if (!INTRO_VALID_THEMES.includes(theme)) {
+function animateHamburgerButton(opening) {
+  if (introIsReducedMotionPreferred()) return;
+  const topBar = menu ? menu.querySelector(".bar-top") : null;
+  const middleBar = menu ? menu.querySelector(".bar-middle") : null;
+  const bottomBar = menu ? menu.querySelector(".bar-bottom") : null;
+  if (!topBar || !middleBar || !bottomBar) return;
+
+  const toggle = (element, removeClass, addClass) => {
+    element.classList.remove(removeClass);
+    element.classList.remove(addClass);
+    void element.offsetWidth;
+    element.classList.add(addClass);
+  };
+
+  if (opening) {
+    toggle(topBar, "animate-out-top-bar", "animate-top-bar");
+    toggle(middleBar, "animate-out-middle-bar", "animate-middle-bar");
+    toggle(bottomBar, "animate-out-bottom-bar", "animate-bottom-bar");
+  } else {
+    toggle(topBar, "animate-top-bar", "animate-out-top-bar");
+    toggle(middleBar, "animate-middle-bar", "animate-out-middle-bar");
+    toggle(bottomBar, "animate-bottom-bar", "animate-out-bottom-bar");
+  }
+}
+
+function setPageTitleVisibility(isVisible) {
+  if (!pageTitle) {
     return;
   }
 
-  const resolvedTheme = introResolveTheme(theme);
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  const storedTheme = introGetStoredTheme();
+  pageTitle.classList.toggle("is-hidden", !isVisible);
+  pageTitle.setAttribute("aria-hidden", isVisible ? "false" : "true");
+}
 
-  if (currentTheme === resolvedTheme && storedTheme === theme) {
-    introUpdateThemeButtons(theme);
-    return;
+function setIntroNavOpenState(isOpen) {
+  document.documentElement.classList.toggle("intro-nav-open", isOpen);
+}
+
+function setIntroNavClosingState(isClosing) {
+  document.documentElement.classList.toggle(INTRO_NAV_CLOSING_CLASS, isClosing);
+}
+
+function setMenuState(isOpen, options = {}) {
+  if (!menu || !overlayNavigation || !navlinks) {
+    refreshIntroNavElements();
   }
 
-  // Dark <-> system can resolve to the same visual theme.
-  // Keep transition feedback even if resolved colors are the same.
-  if (currentTheme === resolvedTheme) {
-    if (!withTransition || introIsReducedMotionPreferred()) {
-      introApplyTheme(theme, announce);
-      return;
+  const { moveFocus = false, returnFocus = false, showTitle = true } = options;
+  isMenuOpen = isOpen;
+
+  clearTimeout(introNavHideTimeoutId);
+
+  const wasOpen =
+    overlayNavigation?.classList.contains("overlay-slide-down") ||
+    navlinks?.classList.contains("open");
+
+  if (isMenuOpen && overlayNavigation) {
+    const wasHidden = overlayNavigation.hidden;
+    overlayNavigation.hidden = false;
+    overlayNavigation.removeAttribute("aria-hidden");
+    setIntroNavClosingState(false);
+    if (wasHidden) {
+      void overlayNavigation.offsetHeight;
+    }
+  }
+
+  navlinks?.classList.toggle("open", isMenuOpen);
+  if (overlayNavigation) {
+    overlayNavigation.classList.toggle("overlay-slide-down", isMenuOpen);
+    overlayNavigation.classList.toggle("overlay-slide-up", !isMenuOpen);
+    overlayNavigation.setAttribute(
+      "aria-hidden",
+      isMenuOpen ? "false" : "true",
+    );
+  }
+
+  if (menu) {
+    menu.classList.toggle("is-active", isMenuOpen);
+    menu.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
+    menu.setAttribute(
+      "aria-label",
+      isMenuOpen ? "Close navigation menu" : "Open navigation menu",
+    );
+  }
+
+  if (navlinks) {
+    navlinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
+    if ("inert" in navlinks) {
+      navlinks.inert = !isMenuOpen;
     }
 
-    introRunThemeTransition(theme, announce);
-    return;
+    if (!isMenuOpen) {
+      if (wasOpen) {
+        setIntroNavClosingState(true);
+        const navCloseHideDelayMs = introGetNavCloseHideDelayMs();
+        introNavHideTimeoutId = setTimeout(() => {
+          if (!isMenuOpen && overlayNavigation) {
+            overlayNavigation.hidden = true;
+            setIntroNavClosingState(false);
+          }
+        }, navCloseHideDelayMs);
+      } else if (overlayNavigation) {
+        overlayNavigation.hidden = true;
+        setIntroNavClosingState(false);
+      }
+    }
   }
 
-  if (!withTransition || introIsReducedMotionPreferred()) {
-    introApplyTheme(theme, announce);
-    return;
+  setIntroNavOpenState(isMenuOpen);
+  setPageTitleVisibility(isMenuOpen ? false : showTitle);
+  animateHamburgerButton(isMenuOpen);
+
+  if (isMenuOpen && moveFocus && firstNavLink) {
+    firstNavLink.focus();
   }
 
-  introRunThemeTransition(theme, announce);
+  if (!isMenuOpen && returnFocus && menu) {
+    menu.focus();
+  }
 }
 
-function introPulseThemeButton(button) {
-  if (introIsReducedMotionPreferred()) {
-    return;
-  }
-
-  if (!button) {
-    return;
-  }
-
-  clearTimeout(introThemeButtonPulseTimeoutId);
-  button.classList.remove(INTRO_THEME_BUTTON_PULSE_CLASS);
-  void button.offsetWidth;
-  button.classList.add(INTRO_THEME_BUTTON_PULSE_CLASS);
-
-  introThemeButtonPulseTimeoutId = setTimeout(() => {
-    button.classList.remove(INTRO_THEME_BUTTON_PULSE_CLASS);
-  }, INTRO_THEME_BUTTON_PULSE_MS);
+function handleOverlayToggle() {
+  setMenuState(!isMenuOpen, { moveFocus: true, returnFocus: true });
 }
 
-function handleThemeToggleClick(event) {
+function isNavigationOverlayLink(openOverlayButton) {
+  const href = openOverlayButton.getAttribute("href");
+  return !!href && href.trim() !== "" && href !== "#";
+}
+
+function handleDocumentClick(event) {
+  if (!isIntroPage()) {
+    return;
+  }
+
   const customThemeOption = event.target.closest(
     INTRO_CUSTOM_THEME_SELECTOR_OPTION,
   );
@@ -445,6 +548,7 @@ function handleThemeToggleClick(event) {
       introCloseCustomThemeSelector();
     } else {
       introOpenCustomThemeSelector();
+      introFocusSelectedCustomThemeOption();
     }
     return;
   }
@@ -457,154 +561,20 @@ function handleThemeToggleClick(event) {
   }
 
   const themeButton = event.target.closest("button[data-theme-toggle]");
-  if (!themeButton) {
+  if (themeButton) {
+    event.preventDefault();
+    introSetTheme(themeButton.dataset.themeToggle);
     return;
   }
 
-  event.preventDefault();
-  introPulseThemeButton(themeButton);
-  introSetTheme(themeButton.dataset.themeToggle, {
-    announce: true,
-    withTransition: true,
-  });
-}
-
-function handleSystemThemeChange() {
-  if (introGetStoredTheme() !== "system") {
-    return;
-  }
-
-  introSetTheme("system", { announce: false, withTransition: false });
-}
-
-function initIntroThemeSwitcher() {
-  const storedTheme = introGetStoredTheme();
-  introSetTheme(storedTheme, { announce: false, withTransition: false });
-
-  const mediaQueryList = window.matchMedia(INTRO_COLOR_SCHEME_QUERY);
-  if (typeof mediaQueryList.addEventListener === "function") {
-    mediaQueryList.addEventListener("change", handleSystemThemeChange);
-  } else {
-    mediaQueryList.addListener(handleSystemThemeChange);
-  }
-
-  const themeSelector = document.getElementById("theme-selector");
-  if (themeSelector instanceof HTMLSelectElement) {
-    themeSelector.addEventListener("change", (event) => {
-      const nextTheme = event.target.value;
-      if (
-        nextTheme === "light" ||
-        nextTheme === "dark" ||
-        nextTheme === "system"
-      ) {
-        introSetTheme(nextTheme, { announce: true, withTransition: true });
-      }
-    });
-  }
-
-  document.addEventListener("click", handleThemeToggleClick);
-}
-
-function setPageTitleVisibility(isVisible) {
-  if (!pageTitle) {
-    return;
-  }
-
-  pageTitle.classList.toggle("is-hidden", !isVisible);
-  pageTitle.setAttribute("aria-hidden", isVisible ? "false" : "true");
-}
-
-function setIntroNavOpenState(isOpen) {
-  document.documentElement.classList.toggle("intro-nav-open", isOpen);
-}
-
-function setIntroNavClosingState(isClosing) {
-  document.documentElement.classList.toggle(INTRO_NAV_CLOSING_CLASS, isClosing);
-}
-
-function setMenuState(isOpen, options = {}) {
-  const { moveFocus = false, returnFocus = false, showTitle = true } = options;
-  isMenuOpen = isOpen;
-
-  clearTimeout(introNavHideTimeoutId);
-
-  const wasOpen =
-    overlayNavigation?.classList.contains("overlay-slide-down") ||
-    navlinks?.classList.contains("open");
-
-  if (isMenuOpen && overlayNavigation) {
-    const wasHidden = overlayNavigation.hidden;
-    overlayNavigation.hidden = false;
-    overlayNavigation.removeAttribute("aria-hidden");
-    setIntroNavClosingState(false);
-    if (wasHidden) {
-      // Ensure the closed transform state is painted before toggling to open.
-      void overlayNavigation.offsetHeight;
+  const openOverlayButton = event.target.closest(".open-overlay");
+  if (openOverlayButton) {
+    if (isNavigationOverlayLink(openOverlayButton)) {
+      return;
     }
+    event.preventDefault();
+    handleOverlayToggle();
   }
-
-  navlinks?.classList.toggle("open", isMenuOpen);
-  if (overlayNavigation) {
-    overlayNavigation.classList.toggle("overlay-slide-down", isMenuOpen);
-    overlayNavigation.classList.toggle("overlay-slide-up", !isMenuOpen);
-  }
-  menu.classList.toggle("is-active", isMenuOpen);
-  menu.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
-  menu.setAttribute(
-    "aria-label",
-    isMenuOpen ? "Close navigation menu" : "Open navigation menu",
-  );
-  if (overlayNavigation) {
-    overlayNavigation.setAttribute(
-      "aria-hidden",
-      isMenuOpen ? "false" : "true",
-    );
-  }
-  if (navlinks) {
-    navlinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
-    if ("inert" in navlinks) {
-      navlinks.inert = !isMenuOpen;
-    }
-      menu.focus();
-
-  if (!isMenuOpen) {
-    if (wasOpen) {
-      setIntroNavClosingState(true);
-      const navCloseHideDelayMs = introGetNavCloseHideDelayMs();
-      introNavHideTimeoutId = setTimeout(() => {
-        if (!isMenuOpen && overlayNavigation) {
-          overlayNavigation.hidden = true;
-          setIntroNavClosingState(false);
-        }
-      }, navCloseHideDelayMs);
-    } else if (overlayNavigation) {
-      overlayNavigation.hidden = true;
-      setIntroNavClosingState(false);
-    }
-  }
-
-  setIntroNavOpenState(isMenuOpen);
-  setPageTitleVisibility(isMenuOpen ? false : showTitle);
-  animateHamburgerButton(isMenuOpen);
-
-  if (isMenuOpen && moveFocus && firstNavLink) {
-    firstNavLink.focus();
-  }
-
-  if (!isMenuOpen && returnFocus) {
-    currentMenu?.focus();
-  }
-}
-
-function toggleMenu() {
-  setMenuState(!isMenuOpen, {
-    moveFocus: true,
-    returnFocus: true,
-  });
-}
-
-function handleViewportChange() {
-  setMenuState(false);
 }
 
 function handleNavLinkClick(event) {
@@ -622,8 +592,6 @@ function handleNavLinkClick(event) {
 
   if (mobileQuery.matches && isIntroSectionHash) {
     event.preventDefault();
-
-    // Apply hash on the next paint frames after close state is committed.
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         if (window.location.hash !== href) {
@@ -634,7 +602,31 @@ function handleNavLinkClick(event) {
   }
 }
 
+function handleViewportChange() {
+  setMenuState(false);
+}
+
+function handleNavFocusIn() {
+  setPageTitleVisibility(false);
+}
+
+function handleNavFocusOut(event) {
+  const nextFocusedElement = event.relatedTarget;
+  const focusStaysInNav =
+    !!nextFocusedElement &&
+    (navlinks.contains(nextFocusedElement) ||
+      menu.contains(nextFocusedElement));
+
+  if (!focusStaysInNav) {
+    setPageTitleVisibility(true);
+  }
+}
+
 function handleDocumentKeydown(event) {
+  if (!isIntroPage()) {
+    return;
+  }
+
   const customThemeIsOpen =
     introGetCustomThemeSelectorRoot()?.classList.contains("is-open") || false;
   const onCustomThemeTrigger =
@@ -656,7 +648,7 @@ function handleDocumentKeydown(event) {
       introCloseCustomThemeSelector();
     } else {
       introOpenCustomThemeSelector();
-      introFocusCustomThemeOption(1);
+      introFocusSelectedCustomThemeOption();
     }
     return;
   }
@@ -687,6 +679,22 @@ function handleDocumentKeydown(event) {
     return;
   }
 
+  if (customThemeIsOpen && (onCustomThemeTrigger || onCustomThemeOption)) {
+    if (event.key === "Home") {
+      event.preventDefault();
+      const { options } = introGetCustomThemeSelectorElements();
+      options?.[0]?.focus();
+      return;
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      const { options } = introGetCustomThemeSelectorElements();
+      options?.[options.length - 1]?.focus();
+      return;
+    }
+  }
+
   if (
     customThemeIsOpen &&
     onCustomThemeOption &&
@@ -700,26 +708,23 @@ function handleDocumentKeydown(event) {
     return;
   }
 
-  if (event.key !== "Escape" || !isMenuOpen) {
+  if (event.key === "Escape" && isMenuOpen) {
+    event.preventDefault();
+    setMenuState(false, { returnFocus: true });
     return;
   }
 
-  event.preventDefault();
-  setMenuState(false, { returnFocus: true });
-}
+  const openOverlayButton = event.target.closest(".open-overlay");
+  if (!openOverlayButton) {
+    return;
+  }
+  if (isNavigationOverlayLink(openOverlayButton)) {
+    return;
+  }
 
-function handleNavFocusIn() {
-  setPageTitleVisibility(false);
-}
-
-function handleNavFocusOut(event) {
-  const nextFocusedElement = event.relatedTarget;
-  const focusStaysInNav =
-    !!nextFocusedElement &&
-    (navlinks.contains(nextFocusedElement) || menu.contains(nextFocusedElement));
-
-  if (!focusStaysInNav) {
-    setPageTitleVisibility(true);
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    handleOverlayToggle();
   }
 }
 
@@ -736,31 +741,120 @@ function clearSectionHashOnClosedLoad() {
   window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 }
 
-if (menu && navlinks) {
-  initIntroThemeSwitcher();
-  menu.addEventListener("click", toggleMenu);
+function handleSystemThemeChange() {
+  if (introGetStoredTheme() !== "system") {
+    return;
+  }
+
+  introSetTheme("system", { announce: false, withTransition: false });
+}
+
+function attachIntroNavEvents() {
+  if (!isIntroPage()) {
+    return;
+  }
+
+  refreshIntroNavElements();
+
+  if (!menu || !navlinks) {
+    return;
+  }
+
+  if (
+    introBoundMenuElement === menu &&
+    introBoundNavLinksElement === navlinks
+  ) {
+    return;
+  }
+
+  introBoundMenuElement = menu;
+  introBoundNavLinksElement = navlinks;
+
+  const openOverlayButton = document.querySelector(".open-overlay");
+  if (openOverlayButton instanceof HTMLElement) {
+    openOverlayButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      handleOverlayToggle();
+    });
+
+    openOverlayButton.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.stopPropagation();
+        handleOverlayToggle();
+      }
+    });
+  }
+
   navlinks.addEventListener("click", handleNavLinkClick);
   navlinks.addEventListener("focusin", handleNavFocusIn);
   navlinks.addEventListener("focusout", handleNavFocusOut);
   menu.addEventListener("focusin", handleNavFocusIn);
   menu.addEventListener("focusout", handleNavFocusOut);
-  document.addEventListener("keydown", handleDocumentKeydown);
-  document.addEventListener("click", (event) => {
-    if (!mobileQuery.matches || !isMenuOpen) {
-      return;
-    }
 
-    if (event.target.closest(".back-to-top")) {
-      setMenuState(false);
-    }
-  });
+  if (!introDocumentEventsAttached) {
+    introDocumentEventsAttached = true;
+
+    document.addEventListener("click", handleDocumentClick);
+    document.addEventListener("keydown", handleDocumentKeydown);
+    document.addEventListener("change", handleIntroDocumentThemeSelectorChange);
+
+    document.addEventListener("click", (event) => {
+      if (!mobileQuery.matches || !isMenuOpen) {
+        return;
+      }
+
+      if (event.target.closest(".back-to-top")) {
+        setMenuState(false);
+      }
+    });
+  }
 
   if (typeof mobileQuery.addEventListener === "function") {
     mobileQuery.addEventListener("change", handleViewportChange);
   } else {
     mobileQuery.addListener(handleViewportChange);
   }
+}
 
+function initIntroThemeSwitcher() {
+  if (!isIntroPage()) {
+    return;
+  }
+
+  const storedTheme = introGetStoredTheme();
+  introSetTheme(storedTheme, { announce: false, withTransition: false });
+
+  const mediaQueryList = window.matchMedia(INTRO_COLOR_SCHEME_QUERY);
+  if (typeof mediaQueryList.addEventListener === "function") {
+    mediaQueryList.addEventListener("change", handleSystemThemeChange);
+  } else {
+    mediaQueryList.addListener(handleSystemThemeChange);
+  }
+
+  // Change handling is delegated at the document level to survive body swaps.
+}
+
+function initIntroNav() {
+  if (!isIntroPage()) {
+    introBoundMenuElement = null;
+    introBoundNavLinksElement = null;
+    return;
+  }
+
+  refreshIntroNavElements();
+
+  initIntroThemeSwitcher();
+  attachIntroNavEvents();
   handleViewportChange();
   clearSectionHashOnClosedLoad();
 }
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initIntroNav);
+} else {
+  initIntroNav();
+}
+
+document.addEventListener("page:transitioned", initIntroNav);

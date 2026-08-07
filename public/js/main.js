@@ -86,9 +86,11 @@ function getSavedThemePreference() {
       return "system";
     }
 
-    return ["dark", "system"].includes(savedTheme) ? savedTheme : "dark";
+    return ["light", "dark", "system"].includes(savedTheme)
+      ? savedTheme
+      : "system";
   } catch {
-    return "dark";
+    return "system";
   }
 }
 

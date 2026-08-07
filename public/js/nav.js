@@ -63,6 +63,10 @@ let replayTextAnimationsTimeoutId = null;
 let overlayTriggerElement = null;
 let themeVisualSwapState = false;
 
+function isIndexPage() {
+  return document.body?.dataset?.page === "index";
+}
+
 function isReducedMotionPreferred() {
   if (
     typeof window === "undefined" ||
@@ -245,8 +249,27 @@ function applyThemeFromCustomOption(optionButton) {
   const themeSelector = document.getElementById("theme-selector");
   if (themeSelector instanceof HTMLSelectElement) {
     themeSelector.value = nextTheme;
-    themeSelector.dispatchEvent(new Event("change", { bubbles: true }));
-  } else {
+  }
+
+  setTheme(nextTheme);
+}
+
+function handleDocumentThemeSelectorChange(event) {
+  if (!isIndexPage()) {
+    return;
+  }
+
+  const themeSelector = event.target;
+  if (!(themeSelector instanceof HTMLSelectElement)) {
+    return;
+  }
+
+  if (themeSelector.id !== "theme-selector") {
+    return;
+  }
+
+  const nextTheme = themeSelector.value;
+  if (nextTheme === "light" || nextTheme === "dark" || nextTheme === "system") {
     setTheme(nextTheme);
   }
 }
@@ -585,7 +608,9 @@ function closeOverlayNavigation(options = {}) {
   }, OVERLAY_CLOSE_DELAY_MS);
 }
 
-let navEventsAttached = false;
+let navDocumentEventsAttached = false;
+let boundIndexThemeSelector = null;
+let boundIndexOverlayButton = null;
 
 function handleOverlayToggle() {
   if (isOverlayOpen()) {
@@ -601,6 +626,10 @@ function isNavigationOverlayLink(openOverlayButton) {
 }
 
 function handleDocumentClick(event) {
+  if (!isIndexPage()) {
+    return;
+  }
+
   const customThemeOption = event.target.closest(CUSTOM_THEME_SELECTOR_OPTION);
   if (customThemeOption) {
     event.preventDefault();
@@ -647,6 +676,10 @@ function handleDocumentClick(event) {
 }
 
 function handleDocumentKeydown(event) {
+  if (!isIndexPage()) {
+    return;
+  }
+
   const customThemeIsOpen =
     getCustomThemeSelectorRoot()?.classList.contains("is-open") || false;
   const onCustomThemeTrigger =
@@ -735,11 +768,17 @@ function finalizeThemeChange(resolvedTheme, theme) {
 }
 
 function attachNavEventHandlers() {
-  if (navEventsAttached) return;
-  navEventsAttached = true;
+  if (!isIndexPage()) {
+    return;
+  }
 
   const openOverlayButton = document.querySelector(OPEN_OVERLAY_SELECTOR);
-  if (openOverlayButton instanceof HTMLElement) {
+  if (
+    openOverlayButton instanceof HTMLElement &&
+    boundIndexOverlayButton !== openOverlayButton
+  ) {
+    boundIndexOverlayButton = openOverlayButton;
+
     openOverlayButton.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -757,23 +796,24 @@ function attachNavEventHandlers() {
 
   const themeSelector = document.getElementById("theme-selector");
   if (themeSelector instanceof HTMLSelectElement) {
-    themeSelector.addEventListener("change", (event) => {
-      const nextTheme = event.target.value;
-      if (
-        nextTheme === "light" ||
-        nextTheme === "dark" ||
-        nextTheme === "system"
-      ) {
-        setTheme(nextTheme);
-      }
-    });
+    boundIndexThemeSelector = themeSelector;
   }
 
-  document.addEventListener("click", handleDocumentClick);
-  document.addEventListener("keydown", handleDocumentKeydown);
+  if (!navDocumentEventsAttached) {
+    navDocumentEventsAttached = true;
+    document.addEventListener("click", handleDocumentClick);
+    document.addEventListener("keydown", handleDocumentKeydown);
+    document.addEventListener("change", handleDocumentThemeSelectorChange);
+  }
 }
 
 function initIntroNav() {
+  if (!isIndexPage()) {
+    boundIndexThemeSelector = null;
+    boundIndexOverlayButton = null;
+    return;
+  }
+
   attachNavEventHandlers();
 }
 
@@ -893,6 +933,10 @@ function setTheme(theme) {
 }
 
 document.addEventListener("page:transitioned", () => {
+  if (!isIndexPage()) {
+    return;
+  }
+
   hideTextAnimations();
   updateThemeButtonState(getStoredTheme() || "system");
   initIntroNav();
@@ -900,6 +944,10 @@ document.addEventListener("page:transitioned", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!isIndexPage()) {
+    return;
+  }
+
   hideTextAnimations();
   const storedTheme = getStoredTheme();
   const theme = storedTheme || "system";
