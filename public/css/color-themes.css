@@ -1,6 +1,6 @@
 [data-theme="dark"] {
-        --base-color: #121212;
-        --text-color: #f4f4f4;
+        --base-color: #222222;
+        --text-color: #f9f9f9;
         --text-color-1: #ffffffff;
         --text-span: #4d83a0;
         --nav-contrast-color: #000000;
@@ -26,7 +26,7 @@
                         rgb(255 255 255 / 20%) 50%,
                         transparent 100%);
         --box-shadow: 0 0 12px rgb(255 255 255 / 70%), 0 0 6px rgb(255 255 255 / 55%);
-       --linear-gradient-image: #252323;
+       --linear-gradient-image: #8b858573;
         --theme-switcher-background-color: #252121;
 
         --blend-mode: screen;
@@ -70,8 +70,8 @@
 @supports (color:oklch(0% 0 0deg)) {
 
         [data-theme="dark"] {
-                --base-color: oklch(18.22% 0.00002 271.152);
-                --text-color: oklch(96.715% 0.00011 271.152);
+              --base-color: oklch(25.197% 0.00003 271.152);
+                --text-color: oklch(98.212% 0.00011 271.152);
                 --text-color-1: oklch(100% 0.0001 271.152deg);
                 --text-span: oklch(58.418% 0.0727 233.425deg);
                 --nav-contrast-color: oklch(0% 0 0deg);
@@ -97,7 +97,7 @@
                                 oklch(100% 0.0001 271.152deg / 20%) 50%,
                                 transparent 100%);
                 --box-shadow: 0 0 12px oklch(100% 0.0001 271deg / 58%), 0 0 6px oklch(100% 0.0001 271deg / 44%);
-               --linear-gradient-image: oklch(25.832% 0.00299 16.811);
+              --linear-gradient-image: oklch(62.193% 0.00721 16.812 / 0.451);
                 --pattern-opacity: 1;
                 --theme-switcher-background-color: oklch(16.8% 0.0058 17.5);
                 --blend-mode: screen;

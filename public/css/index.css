@@ -2,7 +2,7 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     letter-spacing: var(--letter-spacing);
-   }
+}
 
 header {
     text-align: center;
@@ -14,7 +14,7 @@ header {
 .header-break {
     inline-size: 100%;
     margin-block: 0;
-   }
+}
 
 main {
     display: grid;
@@ -31,10 +31,10 @@ main {
 }
 
 .text-with-animation {
-    margin-inline:auto;
+    margin-inline: auto;
     font-family: var(--primary-font-secondary);
     --main-enter-offset: -6vw;
-text-align: center;
+    text-align: center;
     font-size: var(--fs-400);
     font-style: italic;
     margin-block: 0;
@@ -77,7 +77,7 @@ text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-   }
+}
 
 .text-with-animation span,
 .subtext-with-animation span,
