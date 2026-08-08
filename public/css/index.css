@@ -213,8 +213,19 @@ footer {
 }
 
 .footer-text {
-white-space: nowrap;
-padding-inline-start: var(--space-s-m);
+    white-space: nowrap;
+    padding-inline-start: var(--space-s-m);
+    color: var(--text-color-1);
+    opacity: 1;
+    text-shadow: var(--content-legibility-shadow);
+    font-weight: 550;
+}
+
+[data-theme="light"] .footer-text,
+[data-theme="light"] #theme-selector-label {
+    /* shadow blooms light in light mode; remove it and go heavier */
+    text-shadow: none;
+    font-weight: 600;
 }
 
 .theme-switcher {
