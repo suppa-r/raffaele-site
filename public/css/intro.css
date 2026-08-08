@@ -242,16 +242,18 @@ nav li a:hover::after {
 
 header {
     display: grid;
+    /* grid-template-columns: minmax(0, 1fr) auto; */
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    margin: var(--space-2xs-xs) var(--space-m-l);
-    padding: 0 var(--space-l-xl);
+
     border-radius: var(--space-l-xl);
     position: relative;
     isolation: isolate;
     background: var(--base-color);
+    line-height: 1;
+
 }
 
 header::before {
@@ -263,7 +265,7 @@ header::before {
     background: var(--base-color);
     opacity: 0.9;
     backdrop-filter: blur(10px);
-}
+   }
 
 header:has(.open-overlay[aria-expanded="true"])::before {
     opacity: 0;
@@ -282,6 +284,8 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 }
 
 .open-overlay {
+    --burger-line-thickness: 1px;
+    --burger-shift: calc(var(--space-3xs-2xs) + var(--burger-line-thickness));
     opacity: 1;
     position: relative;
     display: flex;
@@ -289,18 +293,18 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     justify-content: center;
     align-items: center;
     justify-self: end;
-    gap: 0.32rem;
-    flex-shrink: 0;
+    gap:var(--space-3xs-2xs);
+    background: transparent;
     margin-inline-start: 0;
     padding: 0.35rem;
-    min-inline-size: 2.5rem;
-    min-block-size: 2.5rem;
-    background: transparent;
+    min-inline-size:var(--space-m-l);
+    min-block-size: var(--space-m-l);
     border: 0;
     appearance: none;
     pointer-events: all;
     cursor: pointer;
     z-index: 2001;
+    box-sizing: border-box;
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
@@ -351,7 +355,7 @@ html.intro-nav-closing body:has(.overlay-navigation:not([hidden])) header .heade
 .open-overlay span {
     display: block;
     width: var(--space-m-l);
-    height: 1px;
+    height: var(--burger-line-thickness);
     border-radius: 999px;
     background-color: var(--text-color);
     cursor: pointer;
@@ -427,11 +431,11 @@ html.intro-nav-closing body:has(.overlay-navigation:not([hidden])) header .heade
     }
 
     50% {
-        transform: translateY(0.42rem) rotate(0deg);
+        transform: translateY(var(--burger-shift)) rotate(0deg);
     }
 
     100% {
-        transform: translateY(0.42rem) rotate(45deg);
+        transform: translateY(var(--burger-shift)) rotate(45deg);
     }
 }
 
@@ -442,11 +446,11 @@ html.intro-nav-closing body:has(.overlay-navigation:not([hidden])) header .heade
     }
 
     50% {
-        transform: translateY(-0.42rem) rotate(0deg);
+        transform: translateY(calc(-1 * var(--burger-shift))) rotate(0deg);
     }
 
     100% {
-        transform: translateY(-0.42rem) rotate(-45deg);
+        transform: translateY(calc(-1 * var(--burger-shift))) rotate(-45deg);
     }
 }
 
@@ -669,6 +673,11 @@ footer {
 }
 
 @media (min-width: 768px) {
+
+    nav ul {
+        flex-direction: row;
+        gap: clamp(1.5rem, 8vw, 8rem);
+    }
 
     .open-overlay[aria-expanded="true"] span {
         background-color: var(--text-color);

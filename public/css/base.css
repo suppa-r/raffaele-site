@@ -224,7 +224,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(1180px, 95dvw);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-        --padding-inline: clamp(0.5rem, 2vw, 1rem);
+        --padding-inline: clamp(0.75rem, 2.2vw, 1.5rem);
     }
 
     .wrapper::before {
@@ -241,7 +241,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(1400px, 96dvw);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-        --padding-inline: clamp(0.5rem, 2vw, 1rem);
+        --padding-inline: clamp(0.9rem, 2.4vw, 1.8rem);
     }
 
     .wrapper::before {
@@ -258,7 +258,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(1920px, 95dvw);
         --layout-block-gap: clamp(0.75rem, 1.6vw, 1.75rem);
-        --padding-inline: clamp(0.5rem, 2vw, 1rem);
+        --padding-inline: clamp(1rem, 2.6vw, 2.2rem);
     }
 
     .wrapper::before {
