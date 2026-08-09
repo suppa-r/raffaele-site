@@ -200,7 +200,7 @@ header {
     position: relative;
     isolation: isolate;
     line-height: 1;
-    margin: var(--space-xs-s) var(--space-xl-2xl);
+    margin: var(--space-2xs) var(--space-xl);
     padding: 0 var(--space-l-xl);
     background: transparent;
 }
@@ -624,6 +624,12 @@ footer {
 }
 
 @media (min-width: 768px) {
+
+    header {
+   margin: var(--space-2xs) var(--space-xl);
+    padding: 0 var(--space-l-xl);
+    }
+
 nav ul {
         flex-direction: row;
         gap: clamp(1.5rem, 8vw, 8rem);
