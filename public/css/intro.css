@@ -46,6 +46,10 @@
         transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    nav ul {
+        gap: 1.25rem;
+    }
+
     .overlay-navigation.overlay-slide-up {
         transition-delay: 0.12s;
     }
@@ -91,26 +95,35 @@ nav ul {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 0.4rem;
     list-style: none;
 }
 
 nav ul li {
-    flex-basis: 20%;
-    height: 100%;
+    flex: 0 1 auto;
+    min-block-size: 0;
     width: 100%;
+    max-inline-size: min(100%, 20rem);
+    min-block-size: 3.5rem;
     overflow: hidden;
     transform: translateY(0%);
     z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
 
 nav li a {
-    position: relative;
-    top: 50%;
     color: var(--text-color);
     text-decoration: none;
-    display: block;
+    display: grid;
+    place-content: center;
+    inline-size: 100%;
+    block-size: 100%;
     text-align: center;
-    font-size: var(--fs-100)
+    font-size: var(--fs-100);
+    min-block-size: 3.25rem;
+    padding-block: 0.6rem;
 }
 
 nav li a:focus-visible {
@@ -134,46 +147,6 @@ nav li a:hover::after {
     opacity: 0;
 }
 
-@supports (background-color:color-mix(in oklch, #000000 100%, #ffffff 0%)) {
-
-    nav li:nth-of-type(1) {
-        background-color: color-mix(in oklch, var(--base-color) 100%, var(--text-color) 0%)
-    }
-
-    nav li:nth-of-type(2) {
-        background-color: color-mix(in oklch, var(--base-color) 80%, var(--text-color) 20%)
-    }
-
-    nav li:nth-of-type(3) {
-        background-color: color-mix(in oklch, var(--base-color) 60%, var(--text-color) 40%)
-    }
-
-    nav li:nth-of-type(4) {
-        background-color: color-mix(in oklch, var(--base-color) 40%, var(--text-color) 60%)
-    }
-
-    nav li:nth-of-type(5) {
-        background-color: color-mix(in oklch, var(--base-color) 20%, var(--text-color) 80%)
-    }
-
-    nav li:nth-of-type(4) a::before,
-    nav li:nth-of-type(5) a::before {
-        background-color: currentcolor
-    }
-
-    nav li:nth-of-type(4) a,
-    nav li:nth-of-type(5) a,
-    nav li:nth-of-type(4) a::after,
-    nav li:nth-of-type(5) a::after {
-        color: var(--nav-contrast-color)
-    }
-
-    nav li:nth-of-type(4) a:hover::after,
-    nav li:nth-of-type(5) a:hover::after {
-        color: var(--nav-contrast-color)
-    }
-}
-
 .slide-in-nav-item {
     animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.12s both
 }
@@ -182,36 +155,12 @@ nav li a:hover::after {
     animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.3s both
 }
 
-.slide-in-nav-item-delay-2 {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.48s both
-}
-
-.slide-in-nav-item-delay-3 {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.66s both
-}
-
-.slide-in-nav-item-delay-4 {
-    animation: slide-in-nav-item 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1 0.84s both
-}
-
 .slide-in-nav-item-reverse {
     animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0s both
 }
 
 .slide-in-nav-item-delay-1-reverse {
     animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.18s both
-}
-
-.slide-in-nav-item-delay-2-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.36s both
-}
-
-.slide-in-nav-item-delay-3-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.54s both
-}
-
-.slide-in-nav-item-delay-4-reverse {
-    animation: slide-out-nav-item 0.45s cubic-bezier(0.4, 0, 1, 1) 1 0.72s both
 }
 
 @keyframes slide-in-nav-item {
@@ -706,7 +655,8 @@ nav ul {
     }
 
     nav ul li {
-        flex-basis: 20%;
+        flex: 1 1 0;
+        min-block-size: 0;
         height: 100%;
         overflow: hidden;
         opacity: 0;
