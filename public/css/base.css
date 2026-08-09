@@ -46,6 +46,9 @@ footer {
     min-height: 100svh;
     overflow: hidden;
     isolation: isolate;
+    display: grid;
+    justify-items: center;
+    align-content: start;
 }
 
 .skip-link {
