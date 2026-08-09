@@ -242,29 +242,30 @@ nav li a:hover::after {
 
 header {
     display: grid;
-    /* grid-template-columns: minmax(0, 1fr) auto; */
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
+    margin-block-start: var(--space-s-m);
     z-index: 1000;
-
     border-radius: var(--space-l-xl);
     position: relative;
     isolation: isolate;
     background: var(--base-color);
     line-height: 1;
-
+    padding: 0 var(--space-xl-2xl);
+    background: var(--gradient-header);
+    backdrop-filter: var(--backdrop-blur);
 }
 
-header::before {
+ header::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
     border-radius: var(--space-l-xl);
-    background: var(--base-color);
-    opacity: 0.9;
-    backdrop-filter: blur(10px);
+ opacity: 0.9;
+      background: var(--gradient-header);
+    backdrop-filter: var(--backdrop-blur);
    }
 
 header:has(.open-overlay[aria-expanded="true"])::before {
