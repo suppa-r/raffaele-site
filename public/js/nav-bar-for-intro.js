@@ -34,15 +34,62 @@ let introDocumentEventsAttached = false;
 let introBoundMenuElement = null;
 let introBoundNavLinksElement = null;
 
+function normalizeIntroOverlayNav() {
+  const overlays = [...document.querySelectorAll(".overlay-navigation")];
+  if (overlays.length === 0) {
+    return;
+  }
+
+  const overlayWithIntroLinks = overlays.find((overlay) =>
+    overlay.querySelector(".nav-links"),
+  );
+  const primaryOverlay = overlayWithIntroLinks || overlays[0];
+
+  overlays.forEach((overlay) => {
+    if (overlay !== primaryOverlay) {
+      overlay.remove();
+    }
+  });
+
+  let introNavLinks = primaryOverlay.querySelector(".nav-links");
+  if (!introNavLinks) {
+    const fallbackList = primaryOverlay.querySelector("ul");
+    if (fallbackList) {
+      fallbackList.classList.add("nav-links");
+      introNavLinks = fallbackList;
+    }
+  }
+
+  if (!introNavLinks) {
+    return;
+  }
+
+  [...introNavLinks.querySelectorAll("li")].forEach((item) => {
+    if (!item.querySelector("a[href]")) {
+      item.remove();
+    }
+  });
+
+  const linkedItems = [...introNavLinks.querySelectorAll("li")].filter((item) =>
+    item.querySelector("a[href]"),
+  );
+
+  linkedItems.slice(2).forEach((item) => {
+    item.remove();
+  });
+}
+
 function isIntroPage() {
   return document.body?.dataset?.page === "intro";
 }
 
 function refreshIntroNavElements() {
+  normalizeIntroOverlayNav();
   menu = document.querySelector(".open-overlay");
   overlayNavigation = document.querySelector(".overlay-navigation");
   navlinks = overlayNavigation
-    ? overlayNavigation.querySelector(".nav-links")
+    ? overlayNavigation.querySelector(".nav-links") ||
+      overlayNavigation.querySelector("ul")
     : document.querySelector(".nav-links");
   pageTitle = document.querySelector(".intro-1-page-title");
   firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
@@ -477,26 +524,26 @@ function setMenuState(isOpen, options = {}) {
     );
   }
 
+  if (!isMenuOpen && overlayNavigation) {
+    if (wasOpen) {
+      setIntroNavClosingState(true);
+      const navCloseHideDelayMs = introGetNavCloseHideDelayMs();
+      introNavHideTimeoutId = setTimeout(() => {
+        if (!isMenuOpen && overlayNavigation) {
+          overlayNavigation.hidden = true;
+          setIntroNavClosingState(false);
+        }
+      }, navCloseHideDelayMs);
+    } else {
+      overlayNavigation.hidden = true;
+      setIntroNavClosingState(false);
+    }
+  }
+
   if (navlinks) {
     navlinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
     if ("inert" in navlinks) {
       navlinks.inert = !isMenuOpen;
-    }
-
-    if (!isMenuOpen) {
-      if (wasOpen) {
-        setIntroNavClosingState(true);
-        const navCloseHideDelayMs = introGetNavCloseHideDelayMs();
-        introNavHideTimeoutId = setTimeout(() => {
-          if (!isMenuOpen && overlayNavigation) {
-            overlayNavigation.hidden = true;
-            setIntroNavClosingState(false);
-          }
-        }, navCloseHideDelayMs);
-      } else if (overlayNavigation) {
-        overlayNavigation.hidden = true;
-        setIntroNavClosingState(false);
-      }
     }
   }
 
@@ -514,6 +561,11 @@ function setMenuState(isOpen, options = {}) {
 }
 
 function handleOverlayToggle() {
+  refreshIntroNavElements();
+  if (!menu || !overlayNavigation || !navlinks) {
+    return;
+  }
+
   setMenuState(!isMenuOpen, { moveFocus: true, returnFocus: true });
 }
 
@@ -756,43 +808,6 @@ function attachIntroNavEvents() {
 
   refreshIntroNavElements();
 
-  if (!menu || !navlinks) {
-    return;
-  }
-
-  if (
-    introBoundMenuElement === menu &&
-    introBoundNavLinksElement === navlinks
-  ) {
-    return;
-  }
-
-  introBoundMenuElement = menu;
-  introBoundNavLinksElement = navlinks;
-
-  const openOverlayButton = document.querySelector(".open-overlay");
-  if (openOverlayButton instanceof HTMLElement) {
-    openOverlayButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      handleOverlayToggle();
-    });
-
-    openOverlayButton.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        event.stopPropagation();
-        handleOverlayToggle();
-      }
-    });
-  }
-
-  navlinks.addEventListener("click", handleNavLinkClick);
-  navlinks.addEventListener("focusin", handleNavFocusIn);
-  navlinks.addEventListener("focusout", handleNavFocusOut);
-  menu.addEventListener("focusin", handleNavFocusIn);
-  menu.addEventListener("focusout", handleNavFocusOut);
-
   if (!introDocumentEventsAttached) {
     introDocumentEventsAttached = true;
 
@@ -810,6 +825,43 @@ function attachIntroNavEvents() {
       }
     });
   }
+
+  if (!menu) {
+    return;
+  }
+
+  if (introBoundMenuElement !== menu) {
+    introBoundMenuElement = menu;
+
+    const openOverlayButton = document.querySelector(".open-overlay");
+    if (openOverlayButton instanceof HTMLElement) {
+      openOverlayButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        handleOverlayToggle();
+      });
+
+      openOverlayButton.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          event.stopPropagation();
+          handleOverlayToggle();
+        }
+      });
+    }
+
+    menu.addEventListener("focusin", handleNavFocusIn);
+    menu.addEventListener("focusout", handleNavFocusOut);
+  }
+
+  if (!navlinks || introBoundNavLinksElement === navlinks) {
+    return;
+  }
+
+  introBoundNavLinksElement = navlinks;
+  navlinks.addEventListener("click", handleNavLinkClick);
+  navlinks.addEventListener("focusin", handleNavFocusIn);
+  navlinks.addEventListener("focusout", handleNavFocusOut);
 
   if (typeof mobileQuery.addEventListener === "function") {
     mobileQuery.addEventListener("change", handleViewportChange);

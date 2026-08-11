@@ -499,6 +499,7 @@ function addOverlayCloseClasses(overlayNavigation) {
 }
 
 function openOverlayNavigation() {
+  if (!isIndexPage()) return;
   if (isOverlayOpen()) return;
 
   document.querySelectorAll(".overlay-navigation").forEach((overlay) => {
@@ -560,6 +561,7 @@ function restoreOverlayTriggerFocus() {
 }
 
 function closeOverlayNavigation(options = {}) {
+  if (!isIndexPage()) return;
   const { returnFocus = false } = options;
   const overlayNavigation = document.querySelector(".overlay-navigation");
   if (!overlayNavigation) return;
@@ -613,6 +615,7 @@ let boundIndexThemeSelector = null;
 let boundIndexOverlayButton = null;
 
 function handleOverlayToggle() {
+  if (!isIndexPage()) return;
   if (isOverlayOpen()) {
     closeOverlayNavigation({ returnFocus: true });
   } else {
