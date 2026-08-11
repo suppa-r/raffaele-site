@@ -1,3 +1,14 @@
+:root {
+    --nav-close-delay: 1s;
+    --intro-nav-fade-out-duration: 0.2s;
+    --intro-nav-fade-in-duration: 0.4s;
+    --intro-nav-fade-in-delay: 0.1s;
+    --intro-overlay-duration: 0.48s;
+    --intro-overlay-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --intro-overlay-item-duration: 0.55s;
+    --intro-overlay-item-reverse-duration: 0.45s;
+}
+
 .overlay-navigation {
     position: fixed;
     z-index: 1000;
@@ -6,7 +17,7 @@
     width: 100%;
     height: 100%;
     transform: translateY(-100%);
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform var(--intro-overlay-duration) var(--intro-overlay-ease);
     background-color: var(--base-color);
 }
 
@@ -286,7 +297,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 @media (hover:none) and (pointer:coarse) {
 
     .open-overlay {
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
         touch-action: manipulation;
         transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
     }
@@ -406,7 +417,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
     color: var(--text-color);
 }
 
-nav{
+nav {
     position: relative;
     width: 100%;
     height: 100%;
@@ -452,7 +463,7 @@ nav ul a {
 }
 
 .open-overlay[aria-expanded="true"] span {
-    background-color: currentColor;
+    background-color: currentcolor;
 }
 
 nav li a::before {
@@ -644,9 +655,8 @@ nav ul li[class*=" slide-in-nav-item"] {
         block-size: 100%;
         position: relative;
         top: 0;
-       color: var(--text-color);
+        color: var(--text-color);
         text-decoration: none;
-        display: inline-block;
         text-align: center;
         font-size: var(--fs-200);
         display: flex;
@@ -667,7 +677,7 @@ nav ul li[class*=" slide-in-nav-item"] {
         opacity: 0;
     }
 
-nav li a:focus-visible {
+    nav li a:focus-visible {
         outline: 2px solid currentcolor;
         outline-offset: 4px
     }
@@ -680,16 +690,16 @@ nav li a:focus-visible {
         opacity: 0;
     }
 
-nav li a::before {
+    nav li a::before {
         content: "";
         width: var(--space-xl);
         height: var(--space-3xs);
         background-color: var(--text-color);
         position: absolute;
         top: 50%;
-    left: 0;
+        left: 0;
         z-index: 100;
-    transform: translateX(-220%) translateY(-50%);
+        transform: translateX(-220%) translateY(-50%);
         opacity: 0;
         transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }

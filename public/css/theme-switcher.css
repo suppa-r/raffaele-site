@@ -30,6 +30,7 @@
 }
 
 /* Form Styles for Custom Theme Selector */
+
 .theme-selector-container {
   display: flex;
   justify-content: center;
@@ -172,7 +173,7 @@
   gap: 0.55rem;
   text-align: left;
   font: inherit;
-  padding:0.7rem 0.7rem;
+  padding: 0.7rem;
   border-radius: 0.55rem;
   cursor: pointer;
 }
@@ -224,6 +225,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .theme-selector-trigger,
   .theme-selector-chevron,
   .theme-selector-option {
@@ -232,6 +234,7 @@
 }
 
 @media (forced-colors: active) {
+
   .theme-selector-trigger,
   .theme-selector-menu,
   .theme-selector-option {
@@ -253,6 +256,7 @@
 }
 
 @media (hover: none) and (pointer: coarse) {
+
   .theme-selector-trigger:focus-visible,
   .theme-selector-option:focus-visible {
     outline: none;
@@ -261,6 +265,7 @@
 }
 
 @media (max-width: 768px) {
+
   .theme-selector-container {
     display: inline-flex;
     flex-direction: column;

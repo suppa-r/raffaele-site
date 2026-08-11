@@ -12,10 +12,10 @@
         --shadow-color-secondary: rgb(0 0 0 / 80%);
         --shadow-color-tertiary: rgb(0 0 0 / 60%);
         --gradient-header: linear-gradient(90deg,
-                        rgba(77, 136, 133, 0.11),
-                        rgba(79, 102, 102, 0.185),
-                        rgba(79, 96, 100, 0.65),
-                        rgb(68, 99, 102));
+                        rgb(77 136 133 / 11%),
+                        rgb(79 102 102 / 18.5%),
+                        rgb(79 96 100 / 65%),
+                        rgb(68 99 102));
         --gradient: linear-gradient(90deg,
                         #a1c4ca99,
                         #6d606099,
@@ -28,7 +28,6 @@
         --box-shadow: 0 0 12px rgb(255 255 255 / 70%), 0 0 6px rgb(255 255 255 / 55%);
         --linear-gradient-image: #8b858573;
         --theme-switcher-background-color: #252121;
-
         --blend-mode: screen;
         --content-legibility-shadow: 0 1px 0 rgb(12 12 12 / 48%), 0 0 18px rgb(12 12 12 / 26%);
 }
@@ -46,11 +45,11 @@
         --shadow-color-primary: rgb(30 30 30);
         --shadow-color-secondary: rgb(0 0 0 / 80%);
         --shadow-color-tertiary: rgb(0 0 0 / 60%);
-         --gradient-header: linear-gradient(90deg,
-                        rgba(96, 112, 112, 0.671),
-                        rgba(216, 233, 233, 0.185),
-                        rgba(205, 222, 226, 0.65),
-                        rgb(206, 226, 228));
+        --gradient-header: linear-gradient(90deg,
+                        rgb(96 112 112 / 67.1%),
+                        rgb(216 233 233 / 18.5%),
+                        rgb(205 222 226 / 65%),
+                        rgb(206 226 228));
         --gradient: linear-gradient(90deg,
                         #a1c4ca99,
                         #6d606099,
@@ -70,8 +69,8 @@
 @supports (color:oklch(0% 0 0deg)) {
 
         [data-theme="dark"] {
-                --base-color: oklch(25.197% 0.00003 271.152);
-                --text-color: oklch(98.212% 0.00011 271.152);
+                --base-color: oklch(25.197% 0.00003 271.152deg);
+                --text-color: oklch(98.212% 0.00011 271.152deg);
                 --text-color-1: oklch(100% 0.0001 271.152deg);
                 --text-span: oklch(58.418% 0.0727 233.425deg);
                 --nav-contrast-color: oklch(0% 0 0deg);
@@ -83,10 +82,10 @@
                 --shadow-color-secondary: oklch(0% 0 0deg / 80%);
                 --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
                 --gradient-header: linear-gradient(90deg,
-                                oklch(58.578% 0.06206 191.437 / 0.11),
-                                oklch(49.172% 0.02746 196.407 / 0.185),
-                                oklch(47.628% 0.02178 213.684 / 0.65),
-                                oklch(47.679% 0.03648 203.662));
+                                oklch(58.578% 0.06206 191.437deg / 11%),
+                                oklch(49.172% 0.02746 196.407deg / 18.5%),
+                                oklch(47.628% 0.02178 213.684deg / 65%),
+                                oklch(47.679% 0.03648 203.662deg));
                 --gradient: linear-gradient(90deg,
                                 oklch(79.668% 0.03844 209.228deg / 60%),
                                 oklch(50.146% 0.01675 17.538deg / 60%),
@@ -97,16 +96,16 @@
                                 oklch(100% 0.0001 271.152deg / 20%) 50%,
                                 transparent 100%);
                 --box-shadow: 0 0 12px oklch(100% 0.0001 271deg / 58%), 0 0 6px oklch(100% 0.0001 271deg / 44%);
-                --linear-gradient-image: oklch(62.193% 0.00721 16.812 / 0.451);
+                --linear-gradient-image: oklch(62.193% 0.00721 16.812deg / 45.1%);
                 --pattern-opacity: 1;
-                --theme-switcher-background-color: oklch(16.8% 0.0058 17.5);
+                --theme-switcher-background-color: oklch(16.8% 0.0058 17.5deg);
                 --blend-mode: screen;
                 --content-legibility-shadow: 0 1px 0 oklch(15.434% 0 271.152deg / 48%), 0 0 18px oklch(15.434% 0 271.152deg / 26%);
         }
 }
 
 [data-theme="light"] {
-        --text-color: oklch(25.197% 0.00003 271.152);
+        --text-color: oklch(25.197% 0.00003 271.152deg);
         --base-color: oklab(96.71499999999999% 0 -0.00011);
         --text-color-1: oklch(0% 0 0deg);
         --text-span: oklch(58.418% 0.0727 233.425deg);
@@ -118,11 +117,11 @@
         --shadow-color-primary: oklch(23.503% 0.0000 271.152deg);
         --shadow-color-secondary: oklch(0% 0 0deg / 80%);
         --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
-           --gradient-header: linear-gradient(90deg,
-                        oklch(53.196% 0.0192 196.764 / 0.671),
-                        oklch(92.137% 0.0181 197.164 / 0.185),
-                        oklch(88.904% 0.01912 213.679 / 0.65),
-                        oklch(46.277% 0.01884 206.506));
+        --gradient-header: linear-gradient(90deg,
+                        oklch(53.196% 0.0192 196.764deg / 67.1%),
+                        oklch(92.137% 0.0181 197.164deg / 18.5%),
+                        oklch(88.904% 0.01912 213.679deg / 65%),
+                        oklch(46.277% 0.01884 206.506deg));
         --gradient: linear-gradient(90deg,
                         oklch(79.668% 0.03844 209.228deg / 60%),
                         oklch(50.146% 0.01675 17.538deg / 60%),
@@ -133,9 +132,9 @@
                         oklch(100% 0.0001 271.152deg / 20%) 50%,
                         transparent 100%);
         --box-shadow: 0 0 12px oklch(0% 0 0deg / 62%), 0 0 6px oklch(0% 0 0deg / 48%);
-        --linear-gradient-image: oklch(16.029% 0.00168 16.738 / 0.184);
+        --linear-gradient-image: oklch(16.029% 0.00168 16.738deg / 18.4%);
         --pattern-opacity: 0.9;
-        --theme-switcher-background-color: oklch(97.5% 0.004 16.5);
+        --theme-switcher-background-color: oklch(97.5% 0.004 16.5deg);
         --blend-mode: multiply;
         --content-legibility-shadow: 0 1px 0 oklch(94.854% 0.0075 16.503deg / 42%), 0 0 14px oklch(94.854% 0.0075 16.503deg / 18%);
 }

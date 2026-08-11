@@ -32,8 +32,8 @@ const OVERLAY_CLOSE_CLASSES = [
   "slide-in-nav-item-delay-3-reverse",
   "slide-in-nav-item-delay-4-reverse",
 ];
-const OVERLAY_CLOSE_DELAY_MS = 900;
-const OVERLAY_CLOSE_FALLBACK_MS = 1000;
+const OVERLAY_CLOSE_DELAY_MS = 1000;
+const OVERLAY_CLOSE_FALLBACK_MS = 1100;
 const HERO_TEXT_EASE_NAV = "cubic-bezier(0.16, 1, 0.3, 1)";
 const HERO_REVEAL_DURATION_NAV = 0.9;
 const HERO_REVEAL_STAGGER_NAV = 0.16;
@@ -55,6 +55,8 @@ const CUSTOM_THEME_SELECTOR_MENU = "[data-theme-selector-menu]";
 const CUSTOM_THEME_SELECTOR_OPTION = "[data-theme-option]";
 const OPEN_OVERLAY_SELECTOR = ".open-overlay";
 const OVERLAY_FIRST_LINK_SELECTOR = ".overlay-navigation a[href]";
+const OVERLAY_FOCUSABLE_SELECTOR =
+  ".overlay-navigation a[href], .overlay-navigation button:not([disabled]), .overlay-navigation [tabindex]:not([tabindex='-1'])";
 const THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
 
 let themeTransitionTimeoutId = null;
@@ -542,8 +544,67 @@ function openOverlayNavigation() {
   );
   if (firstOverlayLink instanceof HTMLElement) {
     requestAnimationFrame(() => {
-      firstOverlayLink.focus();
+      focusFirstOverlayItem();
     });
+  }
+}
+
+function getOverlayFocusableItems() {
+  const overlayNavigation = document.querySelector(".overlay-navigation");
+  if (!(overlayNavigation instanceof HTMLElement)) {
+    return [];
+  }
+
+  return [
+    ...overlayNavigation.querySelectorAll(OVERLAY_FOCUSABLE_SELECTOR),
+  ].filter((element) => {
+    if (!(element instanceof HTMLElement)) {
+      return false;
+    }
+
+    return !element.hasAttribute("disabled") && !element.closest("[hidden]");
+  });
+}
+
+function focusFirstOverlayItem() {
+  const [firstItem] = getOverlayFocusableItems();
+  if (firstItem instanceof HTMLElement) {
+    firstItem.focus();
+  }
+}
+
+function focusLastOverlayItem() {
+  const focusableItems = getOverlayFocusableItems();
+  const lastItem = focusableItems[focusableItems.length - 1];
+  if (lastItem instanceof HTMLElement) {
+    lastItem.focus();
+  }
+}
+
+function trapOverlayFocus(event) {
+  if (!isOverlayOpen() || event.key !== "Tab") {
+    return;
+  }
+
+  const focusableItems = getOverlayFocusableItems();
+  if (focusableItems.length === 0) {
+    event.preventDefault();
+    return;
+  }
+
+  const firstItem = focusableItems[0];
+  const lastItem = focusableItems[focusableItems.length - 1];
+  const activeElement = document.activeElement;
+
+  if (event.shiftKey && activeElement === firstItem) {
+    event.preventDefault();
+    lastItem.focus();
+    return;
+  }
+
+  if (!event.shiftKey && activeElement === lastItem) {
+    event.preventDefault();
+    firstItem.focus();
   }
 }
 
@@ -746,6 +807,10 @@ function handleDocumentKeydown(event) {
     );
     closeCustomThemeSelector({ returnFocus: true });
     return;
+  }
+
+  if (isOverlayOpen() && event.key === "Tab") {
+    trapOverlayFocus(event);
   }
 
   if (event.key === "Escape" && isOverlayOpen()) {

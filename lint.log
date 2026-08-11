@@ -1,0 +1,25 @@
+
+> raffaele-site-root@1.0.0 lint
+> npm run lint:js && npm run lint:css && npm run lint:html
+
+
+> raffaele-site-root@1.0.0 lint:js
+> eslint **/*.js
+
+
+C:\Users\Raffaele's Local\raffaele-site\public\js\nav.js
+  576:10  warning  'focusLastOverlayItem' is defined but never used              no-unused-vars
+  675:5   warning  'boundIndexThemeSelector' is assigned a value but never used  no-unused-vars
+
+Γ£û 2 problems (0 errors, 2 warnings)
+
+
+> raffaele-site-root@1.0.0 lint:css
+> stylelint **/*.css
+
+
+> raffaele-site-root@1.0.0 lint:html
+> htmlhint **/*.html
+
+
+Scanned 4 files, no errors found (15 ms).
