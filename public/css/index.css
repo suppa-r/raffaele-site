@@ -253,3 +253,17 @@ footer {
         box-shadow: 0 0 50px 10px var(--text-color)
     }
 }
+
+@media (max-width: 600px) {
+footer {
+    max-inline-size: 100%;
+    margin-inline: 0;
+    padding-inline:0;
+   white-space: nowrap;
+   }
+
+   .footer-text {
+    white-space: nowrap;
+    padding-inline-start: var(--space-3xs);
+   }
+}
