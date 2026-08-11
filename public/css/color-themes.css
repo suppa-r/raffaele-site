@@ -12,10 +12,10 @@
         --shadow-color-secondary: rgb(0 0 0 / 80%);
         --shadow-color-tertiary: rgb(0 0 0 / 60%);
         --gradient-header: linear-gradient(90deg,
-                        rgba(48, 51, 51, 0.932),
-                        rgb(55, 61, 65),
-                        rgba(54, 63, 66, 0.795),
-                        rgba(67, 124, 131, 0.075));
+                        rgba(51, 48, 48, 0.836),
+                        rgba(32, 33, 34, 0.377),
+                        rgba(27, 30, 31, 0.26),
+                        rgba(38, 88, 94, 0.281));
         --gradient: linear-gradient(90deg,
                         #a1c4ca99,
                         #6d606099,
@@ -82,11 +82,11 @@
                 --shadow-color-primary: oklch(23.503% 0.0000 271.152deg);
                 --shadow-color-secondary: oklch(0% 0 0deg / 80%);
                 --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
-                 --gradient-header: linear-gradient(90deg,
-                        oklch(31.814% 0.0042 197.422 / 0.932),
-                        oklch(55.061% 0.0107 237.009 / 0.171),
-                        oklch(36.058% 0.01305 219.989 / 0.795),
-                        oklch(67.124% 0.041 131 / 0.075));
+                  --gradient-header: linear-gradient(90deg,
+                        oklch(40.648% 0.00912 197.08 / 0.589),
+                        oklch(50.717% 0.02818 248.434 / 0.377),
+                        oklch(53.068% 0.03453 220.362 / 0.26),
+                        oklch(42.877% 0.05428 205.934 / 0.281));
                 --gradient: linear-gradient(90deg,
                                 oklch(79.668% 0.03844 209.228deg / 60%),
                                 oklch(50.146% 0.01675 17.538deg / 60%),
