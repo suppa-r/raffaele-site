@@ -592,13 +592,13 @@ function focusFirstOverlayItem() {
   }
 }
 
-function focusLastOverlayItem() {
-  const focusableItems = getOverlayFocusableItems();
-  const lastItem = focusableItems[focusableItems.length - 1];
-  if (lastItem instanceof HTMLElement) {
-    lastItem.focus();
-  }
-}
+//function focusLastOverlayItem() {
+// const focusableItems = getOverlayFocusableItems();
+/// const lastItem = focusableItems[focusableItems.length - 1];
+// if (lastItem instanceof HTMLElement) {
+//   lastItem.focus();
+// }
+//}
 
 function trapOverlayFocus(event) {
   if (!isOverlayOpen() || event.key !== "Tab") {
@@ -691,7 +691,7 @@ function closeOverlayNavigation(options = {}) {
 }
 
 let navDocumentEventsAttached = false;
-let boundIndexThemeSelector = null;
+//let boundIndexThemeSelector = null;
 let boundIndexOverlayButton = null;
 
 function handleOverlayToggle() {
@@ -883,7 +883,7 @@ function attachNavEventHandlers() {
 
   const themeSelector = document.getElementById("theme-selector");
   if (themeSelector instanceof HTMLSelectElement) {
-    boundIndexThemeSelector = themeSelector;
+    //boundIndexThemeSelector = themeSelector;
   }
 
   if (!navDocumentEventsAttached) {
@@ -896,7 +896,7 @@ function attachNavEventHandlers() {
 
 function initIntroNav() {
   if (!isIndexPage()) {
-    boundIndexThemeSelector = null;
+    //boundIndexThemeSelector = null;
     boundIndexOverlayButton = null;
     return;
   }
