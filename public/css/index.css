@@ -1,4 +1,5 @@
 .wrapper {
+    --hero-letter-spacing-wide: clamp(0.16em, 0.15em + 0.06vw, 0.2em);
     display: grid;
     grid-template-rows: auto 1fr auto;
     letter-spacing: var(--letter-spacing-body);
@@ -19,11 +20,14 @@ header {
 main {
     display: grid;
     align-content: center;
+    justify-items: center;
     text-align: center;
+    inline-size: 100%;
     margin-inline: auto;
 }
 
 .site-title {
+    justify-self: center;
     font-size: var(--fs-200);
     white-space: nowrap;
     font-style: italic;
@@ -31,35 +35,97 @@ main {
 }
 
 .text-with-animation {
+    justify-self: center;
+    inline-size: fit-content;
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
     --main-enter-offset: -6vw;
     text-align: center;
-    font-size: var(--fs-400);
+    font-size: var(--fs-500);
+    font-style: italic;
+    margin-block: var(--space-xs-s);
+    white-space: nowrap;
+    letter-spacing: var(--hero-letter-spacing-wide);
+}
+
+.text-with-animation span:first-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation span:last-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-1 {
+    justify-self: center;
+    inline-size: fit-content;
+    margin-inline: auto;
+    font-family: var(--primary-font-secondary);
+    --main-enter-offset: -6vw;
+    text-align: center;
+    font-size: var(--fs-300);
     font-style: italic;
     margin-block: 0;
     white-space: nowrap;
-    letter-spacing: var(--letter-spacing-heading);
+    letter-spacing: var(--hero-letter-spacing-wide);
 }
 
-.subtext-with-animation {
-    font-family: var(--primary-font);
-    font-size: var(--fs-200);
-    letter-spacing: var(--letter-spacing);
+.text-with-animation-1 span:first-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-1 span:nth-child(2) {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-1 span:last-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-2 {
+    justify-self: center;
+    inline-size: fit-content;
+    margin-inline: auto;
+    font-family: var(--primary-font-secondary);
+    --main-enter-offset: -6vw;
+    text-align: center;
+    font-size: var(--fs-300);
+    font-style: italic;
     margin-block: 0;
+    white-space: nowrap;
+    letter-spacing: var(--hero-letter-spacing-wide);
 }
 
-.subtext-with-animation span:first-child {
+.text-with-animation-2 span:first-child {
     position: relative;
     opacity: 0;
 }
 
-.subtext-with-animation span:last-child {
+.text-with-animation-2 span:nth-child(2) {
     position: relative;
     opacity: 0;
 }
 
-.subtext-with-animation-1 {
+.text-with-animation-2 span:last-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation span,
+.text-with-animation-1 span,
+.text-with-animation-2 span {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.text-with-animation-3 {
+    justify-self: center;
+    inline-size: fit-content;
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-700);
@@ -67,29 +133,6 @@ main {
     font-style: italic;
     font-weight: bold;
     margin-block: 0;
-    opacity: 0;
-}
-
-.text-with-animation,
-.subtext-with-animation,
-.subtext-with-animation-1 {
-    min-block-size: var(--space-m-l);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.text-with-animation span,
-.subtext-with-animation span,
-.subtext-with-animation-1 span {
-    display: block;
-    line-height: 1;
-    will-change: transform, opacity;
-}
-
-.text-with-animation span:first-child,
-.text-with-animation span:last-child {
-    position: relative;
     opacity: 0;
 }
 
@@ -255,6 +298,10 @@ footer {
 }
 
 @media (max-width: 600px) {
+
+    .wrapper {
+        --hero-letter-spacing-wide: clamp(0.145em, 0.13em + 0.05vw, 0.17em);
+    }
 
     footer {
         max-inline-size: 100%;
