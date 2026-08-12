@@ -64,7 +64,7 @@
     }
 
     nav ul {
-        gap: 1.25rem;
+        gap: var(--space-l);
     }
 
     .overlay-navigation.overlay-slide-up {
@@ -99,6 +99,20 @@
     }
 }
 
+@supports (background-color:color-mix(in oklab, var(--text-color) 0%, transparent)) {
+    nav li:nth-of-type(1) {
+        background-color: color-mix(in oklab, var(--text-color) 30%, transparent);
+        -webkit-backdrop-filter: var(--backdrop-blur);
+        backdrop-filter: var(--backdrop-blur);
+    }
+
+    nav li:nth-of-type(2) {
+        background-color: color-mix(in oklab, var(--text-color) 12%, transparent);
+        -webkit-backdrop-filter: var(--backdrop-blur);
+        backdrop-filter: var(--backdrop-blur);
+    }
+}
+
 nav,
 nav ul {
     width: 100vw;
@@ -118,7 +132,7 @@ nav ul {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: var(--space-m);
     list-style: none;
     background: transparent;
 }
@@ -134,6 +148,9 @@ nav ul li {
     display: flex;
     justify-content: center;
     align-items: stretch;
+    border-radius: var(--border-radius);
+    transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.82s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: var(--base-color);
 }
 
 nav li a {
@@ -223,7 +240,6 @@ header {
     position: relative;
     isolation: isolate;
     line-height: 1;
-    margin: var(--space-2xs) var(--space-xl);
     padding: 0 var(--space-l-xl);
     background: transparent;
 }
@@ -234,7 +250,7 @@ header::before {
     inset: 0;
     z-index: -1;
     border-radius: var(--space-l-xl);
-    opacity: 0.9;
+    opacity: 0.7;
     background: var(--gradient-header);
     -webkit-backdrop-filter: var(--backdrop-blur);
     backdrop-filter: var(--backdrop-blur);
@@ -542,9 +558,16 @@ main p:not(.wrapper-gradient-text) {
 .wrapper-gradient-text {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-300);
-    letter-spacing: var(--letter-spacing-heading);
+    letter-spacing: var(--letter-spacing-heading-desktop);
     white-space: nowrap;
     padding-block: var(--space-2xs-xs);
+}
+
+@media (max-width: 767.98px) {
+
+    .wrapper-gradient-text {
+        letter-spacing: var(--letter-spacing-heading-mobile);
+    }
 }
 
 .text-layer {
@@ -645,11 +668,6 @@ footer {
 
 @media (min-width: 768px) {
 
-    header {
-        margin: var(--space-2xs) var(--space-xl);
-        padding: 0 var(--space-l-xl);
-    }
-
     .open-overlay[aria-expanded="true"] span {
         background-color: var(--text-color);
     }
@@ -667,7 +685,7 @@ footer {
         flex-direction: row;
         justify-content: center;
         align-items: stretch;
-        gap: clamp(1.5rem, 6vw, 5rem);
+        gap: var(--space-m);
         list-style: none;
         background: transparent;
     }

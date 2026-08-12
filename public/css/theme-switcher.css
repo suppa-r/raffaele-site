@@ -48,7 +48,8 @@
 
 .theme-selector {
   position: relative;
-  min-width: 14.5rem;
+  width: clamp(11.2rem, 42vw, 13rem);
+  max-width: 13rem;
 }
 
 .theme-selector-trigger,
@@ -293,9 +294,8 @@
   }
 
   .theme-selector {
-    width: clamp(11.2rem, 42vw, 12.8rem);
+    width: clamp(9.5rem, 42vw, 11rem);
     max-width: 100%;
-    min-width: 0;
   }
 
   [data-theme-option] {
