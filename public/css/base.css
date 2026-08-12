@@ -43,7 +43,8 @@ footer {
 .wrapper {
     position: relative;
     min-height: 100svh;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     isolation: isolate;
     display: grid;
     justify-items: center;

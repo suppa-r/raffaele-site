@@ -1,5 +1,5 @@
 .wrapper {
-    --hero-letter-spacing-wide: clamp(0.16em, 0.15em + 0.06vw, 0.2em);
+    --hero-letter-spacing-wide: clamp(0.12em, 0.11em + 0.04vw, 0.16em);
     display: grid;
     grid-template-rows: auto 1fr auto;
     letter-spacing: var(--letter-spacing-body);
@@ -21,17 +21,23 @@ main {
     display: grid;
     align-content: center;
     justify-items: center;
+    gap: clamp(0.6rem, 0.9vw, 1rem);
     text-align: center;
     inline-size: 100%;
     margin-inline: auto;
+    padding-top: 0.6rem;
 }
 
 .site-title {
     justify-self: center;
-    font-size: var(--fs-200);
+    font-size: clamp(0.95rem, 1.7vw, 1.3rem);
     white-space: nowrap;
     font-style: italic;
     margin-inline: auto;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    transform: translateY(-0.2rem);
 }
 
 .text-with-animation {
@@ -41,11 +47,12 @@ main {
     font-family: var(--primary-font-secondary);
     --main-enter-offset: -6vw;
     text-align: center;
-    font-size: var(--fs-500);
+    font-size: clamp(2.2rem, 5vw, 4rem);
     font-style: italic;
-    margin-block: var(--space-xs-s);
     white-space: nowrap;
-    letter-spacing: var(--hero-letter-spacing-wide);
+    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.8);
+    line-height: 0.95;
+    font-weight: 500;
 }
 
 .text-with-animation span:first-child {
@@ -65,11 +72,12 @@ main {
     font-family: var(--primary-font-secondary);
     --main-enter-offset: -6vw;
     text-align: center;
-    font-size: var(--fs-300);
+    font-size: clamp(1.25rem, 2.1vw, 1.9rem);
     font-style: italic;
-    margin-block: 0;
     white-space: nowrap;
-    letter-spacing: var(--hero-letter-spacing-wide);
+    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
+    line-height: 1.08;
+    font-weight: 500;
 }
 
 .text-with-animation-1 span:first-child {
@@ -94,11 +102,12 @@ main {
     font-family: var(--primary-font-secondary);
     --main-enter-offset: -6vw;
     text-align: center;
-    font-size: var(--fs-300);
+    font-size: clamp(1.25rem, 2.1vw, 1.9rem);
     font-style: italic;
-    margin-block: 0;
     white-space: nowrap;
-    letter-spacing: var(--hero-letter-spacing-wide);
+    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
+    line-height: 1.08;
+    font-weight: 500;
 }
 
 .text-with-animation-2 span:first-child {
@@ -128,12 +137,12 @@ main {
     inline-size: fit-content;
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-700);
+    font-size: clamp(2.8rem, 6vw, 5rem);
     text-align: center;
     font-style: italic;
-    font-weight: bold;
-    margin-block: 0;
+    font-weight: 600;
     opacity: 0;
+    line-height: 0.9;
 }
 
 .btn {
@@ -143,6 +152,7 @@ main {
     flex-direction: column;
     align-items: center;
     margin-inline: auto;
+    margin-top: 0.1rem;
     box-shadow: 0 20px 10px 0 var(--text-color);
     isolation: isolate;
     z-index: 10;
@@ -306,12 +316,13 @@ footer {
     footer {
         max-inline-size: 100%;
         margin-inline: 0;
-        padding-inline: 0;
+        padding-inline: clamp(0.45rem, 2.8vw, 0.9rem);
         white-space: nowrap;
+        gap: 0.2rem;
     }
 
     .footer-text {
         white-space: nowrap;
-        padding-inline-start: var(--space-3xs);
+        padding-inline-start: 0;
     }
 }

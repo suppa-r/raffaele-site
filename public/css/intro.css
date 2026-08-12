@@ -486,31 +486,29 @@ main p:not(.wrapper-gradient-text) {
 }
 
 .text-with-animation {
-    font-family: var(--primary-font-secondary);
+    width: min(100%, 24rem);
+    max-width: 24rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: var(--primary-font-secondary);
     font-size: var(--fs-300);
     font-style: italic;
-    gap: var(--space-s-m);
     letter-spacing: var(--space-xs-2xs);
     padding-block: var(--space-xs-s);
-    overflow: hidden;
+    overflow: visible;
+    margin-inline: auto;
 }
 
-.text-with-animation span:first-child,
-.text-with-animation span:nth-child(2),
-.text-with-animation span:last-child {
+.text-with-animation span {
     display: block;
+    width: max-content;
     opacity: 0;
     visibility: hidden;
     transform: translateX(-7vw);
 }
 
-.js-intro-anim .text-with-animation span,
-.js-intro-anim .text-with-animation span:first-child,
-.js-intro-anim .text-with-animation span:nth-child(2),
-.js-intro-anim .text-with-animation span:last-child {
+.js-intro-anim .text-with-animation span {
     opacity: 0;
     visibility: visible;
     transform: translateX(-7vw);
