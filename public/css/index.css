@@ -1,8 +1,8 @@
 .wrapper {
-    --hero-letter-spacing-wide: clamp(0.12em, 0.11em + 0.04vw, 0.16em);
     display: grid;
     grid-template-rows: auto 1fr auto;
     letter-spacing: var(--letter-spacing-body);
+    overflow: hidden;
 }
 
 header {
@@ -30,111 +30,94 @@ header {
 main {
     display: grid;
     align-content: center;
-    justify-items: center;
     gap: var(--space-xs-s);
-    text-align: center;
-    inline-size: 100%;
-    margin-inline: auto;
-    margin-block: 0;
+    margin-block: var(--space-s-m);
+    overflow: hidden;
 }
 
 .text-with-animation {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
     font-family: var(--primary-font-secondary);
-    --main-enter-offset: -6vw;
-    text-align: center;
+    font-style: italic;
     font-size: var(--fs-400);
-    font-style: italic;
-    white-space: nowrap;
-    letter-spacing: var(--letter-spacing-heading-desktop);
-    margin-block: var(--space-xs-s);
-}
-
-.text-with-animation span:first-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation span:last-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-1 {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
-    --main-enter-offset: -6vw;
     text-align: center;
-    font-size: var(--fs-300);
-    font-style: italic;
-    white-space: nowrap;
-    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
-    font-weight: 500;
+    display: block;
+    animation: main-text-animation 5.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.text-with-animation-1 span:first-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-1 span:nth-child(2) {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-1 span:last-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-2 {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
-    --main-enter-offset: -6vw;
+.subtext-with-animation {
+    font-size: var(--fs-200);
     text-align: center;
-    font-size: var(--fs-300);
-    font-style: italic;
+    letter-spacing: 1rem;
+    display: block;
     white-space: nowrap;
-    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
-    font-weight: 500;
 }
 
-.text-with-animation-2 span:first-child {
+.subtext-with-animation span:first-of-type {
     position: relative;
     opacity: 0;
+    animation: word-animation 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
 }
 
-.text-with-animation-2 span:nth-child(2) {
+.subtext-with-animation span:nth-of-type(2) {
     position: relative;
     opacity: 0;
+    animation: word-animation 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
 }
 
-.text-with-animation-2 span:last-child {
+.subtext-with-animation-1 {
+    font-size: var(--fs-200);
+    text-align: center;
+    letter-spacing: 1rem;
+    display: block;
+    white-space: nowrap;
+}
+
+.subtext-with-animation-1 span:first-of-type {
     position: relative;
     opacity: 0;
+    animation: word-animation 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
 }
 
-.text-with-animation span,
-.text-with-animation-1 span,
-.text-with-animation-2 span {
-    display: inline-block;
-    will-change: transform, opacity;
+.subtext-with-animation-1 span:nth-of-type(2) {
+    position: relative;
+    opacity: 0;
+    animation: word-animation 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+}
+
+
+
+@keyframes main-text-animation {
+    0% {
+        letter-spacing: 3vw;
+        word-spacing: 8vw;
+        opacity: 0;
+    }
+
+    100% {
+        letter-spacing: 1.5rem;
+        word-spacing: 0.7vw;
+        opacity: 1;
+    }
+}
+
+@keyframes word-animation {
+    0% {
+        top: 10vw;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
 }
 
 .text-with-animation-3 {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-700);
-    text-align: center;
     font-style: italic;
-    font-weight: 600;
-    opacity: 0;
+    font-size: var(--fs-800);
+    text-align: center;
+    display: block;
 }
 
 .btn {
@@ -302,15 +285,39 @@ footer {
 @media (max-width: 600px) {
 
     .text-with-animation {
-        letter-spacing: var(--letter-spacing-heading-mobile);
+        font-size: var(--fs-300);
+        text-align: center;
+        display: block;
+        animation: main-text-animation-1 1.7s ease forwards;
     }
 
-    footer {
-        padding-inline: 0;
+}
+
+@keyframes main-text-animation-1 {
+    0% {
+        letter-spacing: 2vw;
+        word-spacing: 10vw;
+        opacity: 0;
     }
 
-    .footer-text {
-        white-space: nowrap;
-        padding-inline-start: 0;
+    100% {
+        letter-spacing: 0.75rem;
+        word-spacing: 0.06vw;
+        opacity: 1;
     }
+}
+
+.subtext-with-animation,
+.subtext-with-animation-1 {
+    font-size: var(--fs-100);
+    letter-spacing: 0.5rem;
+}
+
+footer {
+    padding-inline: 0;
+}
+
+.footer-text {
+    white-space: nowrap;
+    padding-inline-start: 0;
 }

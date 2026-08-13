@@ -34,22 +34,22 @@ const OVERLAY_CLOSE_CLASSES = [
 ];
 const OVERLAY_CLOSE_DELAY_MS = 1000;
 const OVERLAY_CLOSE_FALLBACK_MS = 1100;
-const HERO_TEXT_EASE_NAV = "cubic-bezier(0.12, 0.8, 0.2, 1)";
-const HERO_REVEAL_DURATION_NAV = 1.8;
-const HERO_REVEAL_DELAY_NAV = 0.18;
-const HERO_SUBTEXT_PRIMARY_DELAY = 0.88;
-const HERO_SUBTEXT_SECONDARY_DELAY = 1.6;
-const HERO_PUNCTUATION_DELAY = 2.35;
-const HERO_ANIMATION_TARGETS = [
-  ".text-with-animation span",
-  ".text-with-animation-1 span",
-  ".text-with-animation-2 span",
-  ".text-with-animation-3",
-];
-const TEXT_SPAN_SELECTOR = ".text-with-animation span";
-const SUBTEXT_PRIMARY_SPAN_SELECTOR = ".text-with-animation-1 span";
-const SUBTEXT_SECONDARY_SPAN_SELECTOR = ".text-with-animation-2 span";
-const PUNCTUATION_SELECTOR = ".text-with-animation-3";
+//const HERO_TEXT_EASE_NAV = "cubic-bezier(0.12, 0.8, 0.2, 1)";
+//const HERO_REVEAL_DURATION_NAV = 1.8;
+//const HERO_REVEAL_DELAY_NAV = 0.18;
+//const HERO_SUBTEXT_PRIMARY_DELAY = 0.88;
+//const HERO_SUBTEXT_SECONDARY_DELAY = 1.6;
+//const HERO_PUNCTUATION_DELAY = 2.35;
+//const HERO_ANIMATION_TARGETS = [
+//  ".text-with-animation span",
+//  ".text-with-animation-1 span",
+//  ".text-with-animation-2 span",
+//  ".text-with-animation-3",
+//];
+//const TEXT_SPAN_SELECTOR = ".text-with-animation span";
+//const SUBTEXT_PRIMARY_SPAN_SELECTOR = ".text-with-animation-1 span";
+//const SUBTEXT_SECONDARY_SPAN_SELECTOR = ".text-with-animation-2 span";
+//const PUNCTUATION_SELECTOR = ".text-with-animation-3";
 const THEME_SWITCHER_SELECTOR = ".theme-switcher";
 const CUSTOM_THEME_SELECTOR_ROOT = "[data-theme-selector]";
 const CUSTOM_THEME_SELECTOR_TRIGGER = "[data-theme-selector-trigger]";
@@ -63,7 +63,7 @@ const THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
 
 let themeTransitionTimeoutId = null;
 let themePickerAnimationTimeoutId = null;
-let replayTextAnimationsTimeoutId = null;
+//let replayTextAnimationsTimeoutId = null;
 let overlayTriggerElement = null;
 let themeVisualSwapState = false;
 
@@ -286,131 +286,131 @@ function updateFavicon(theme) {
   favicon.href = THEME_FAVICONS[theme] || THEME_FAVICONS.light;
 }
 
-function getGsap() {
-  return typeof window !== "undefined" ? window.gsap : null;
-}
+//function getGsap() {
+// return typeof window !== "undefined" ? window.gsap : null;
+//}
 
-function hasElements(selector) {
-  return !!document.querySelector(selector);
-}
+//function hasElements(selector) {
+//  return !!document.querySelector(selector);
+//}
 
-function hasHeroTargets() {
-  return HERO_ANIMATION_TARGETS.some(hasElements);
-}
+//function hasHeroTargets() {
+// return HERO_ANIMATION_TARGETS.some(hasElements);
+//}
 
-function getExistingHeroTargets() {
-  return HERO_ANIMATION_TARGETS.filter(hasElements);
-}
+//function getExistingHeroTargets() {
+//  return HERO_ANIMATION_TARGETS.filter(hasElements);
+//}
 
-function replayTextAnimations() {
-  const gsapLib = getGsap();
-  if (!gsapLib) return;
+//function replayTextAnimations() {
+// const gsapLib = getGsap();
+// if (!gsapLib) return;
 
-  const existingTargets = getExistingHeroTargets();
-  if (existingTargets.length === 0) return;
+//const existingTargets = getExistingHeroTargets();
+//if (existingTargets.length === 0) return;
 
-  gsapLib.killTweensOf(existingTargets.join(", "));
+//gsapLib.killTweensOf(existingTargets.join(", "));
 
-  if (hasElements(TEXT_SPAN_SELECTOR)) {
-    gsapLib.to(TEXT_SPAN_SELECTOR, {
-      x: 0,
-      opacity: 1,
-      duration: HERO_REVEAL_DURATION_NAV,
-      ease: HERO_TEXT_EASE_NAV,
-      delay: HERO_REVEAL_DELAY_NAV,
-      overwrite: "auto",
-    });
-  }
+//if (hasElements(TEXT_SPAN_SELECTOR)) {
+//gsapLib.to(TEXT_SPAN_SELECTOR, {
+//  x: 0,
+// opacity: 1,
+// duration: HERO_REVEAL_DURATION_NAV,
+// ease: HERO_TEXT_EASE_NAV,
+// delay: HERO_REVEAL_DELAY_NAV,
+// overwrite: "auto",
+///});
+// }
 
-  if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
-    gsapLib.to(SUBTEXT_PRIMARY_SPAN_SELECTOR, {
-      x: 0,
-      opacity: 1,
-      duration: HERO_REVEAL_DURATION_NAV,
-      ease: HERO_TEXT_EASE_NAV,
-      delay: HERO_SUBTEXT_PRIMARY_DELAY,
-      overwrite: "auto",
-    });
-  }
+// if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
+//  gsapLib.to(SUBTEXT_PRIMARY_SPAN_SELECTOR, {
+//    x: 0,
+//    opacity: 1,
+//   duration: HERO_REVEAL_DURATION_NAV,
+//   ease: HERO_TEXT_EASE_NAV,
+//   delay: HERO_SUBTEXT_PRIMARY_DELAY,
+//   overwrite: "auto",
+// });
+//}
 
-  if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
-    gsapLib.to(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
-      x: 0,
-      opacity: 1,
-      duration: HERO_REVEAL_DURATION_NAV,
-      ease: HERO_TEXT_EASE_NAV,
-      delay: HERO_SUBTEXT_SECONDARY_DELAY,
-      overwrite: "auto",
-    });
-  }
+//if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
+//   gsapLib.to(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
+//     x: 0,
+//    opacity: 1,
+//     duration: HERO_REVEAL_DURATION_NAV,
+//    ease: HERO_TEXT_EASE_NAV,
+//   delay: HERO_SUBTEXT_SECONDARY_DELAY,
+//    overwrite: "auto",
+//  });
+//}
 
-  if (hasElements(PUNCTUATION_SELECTOR)) {
-    gsapLib.to(PUNCTUATION_SELECTOR, {
-      y: 0,
-      opacity: 1,
-      duration: HERO_REVEAL_DURATION_NAV,
-      ease: HERO_TEXT_EASE_NAV,
-      delay: HERO_PUNCTUATION_DELAY,
-      overwrite: "auto",
-    });
-  }
-}
+//if (hasElements(PUNCTUATION_SELECTOR)) {
+//  gsapLib.to(PUNCTUATION_SELECTOR, {
+///   y: 0,
+//  opacity: 1,
+//   duration: HERO_REVEAL_DURATION_NAV,
+//   ease: HERO_TEXT_EASE_NAV,
+//   delay: HERO_PUNCTUATION_DELAY,
+//   overwrite: "auto",
+// });
+//}
+//}
 
-function hideTextAnimations() {
-  if (!hasHeroTargets()) {
-    return;
-  }
+//function hideTextAnimations() {
+//  if (!hasHeroTargets()) {
+//    return;
+//  }
 
-  HERO_ANIMATION_TARGETS.forEach((selector) => {
-    document.querySelectorAll(selector).forEach((element) => {
-      element.style.animation = "none";
-      element.style.opacity = "0";
-    });
-  });
+//  HERO_ANIMATION_TARGETS.forEach((selector) => {
+//   document.querySelectorAll(selector).forEach((element) => {
+//     element.style.animation = "none";
+//     element.style.opacity = "0";
+//   });
+// });
 
-  const gsapLib = getGsap();
-  if (!gsapLib) return;
+//  const gsapLib = getGsap();
+//  if (!gsapLib) return;
 
-  const existingTargets = getExistingHeroTargets();
-  if (existingTargets.length === 0) return;
+//  const existingTargets = getExistingHeroTargets();
+//  if (existingTargets.length === 0) return;
 
-  gsapLib.killTweensOf(existingTargets.join(", "));
+//  gsapLib.killTweensOf(existingTargets.join(", "));
 
-  if (hasElements(TEXT_SPAN_SELECTOR)) {
-    gsapLib.set(TEXT_SPAN_SELECTOR, { x: "-22vw", y: 0, opacity: 0 });
-  }
+// if (hasElements(TEXT_SPAN_SELECTOR)) {
+//   gsapLib.set(TEXT_SPAN_SELECTOR, { x: "-22vw", y: 0, opacity: 0 });
+// }
 
-  if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
-    gsapLib.set(SUBTEXT_PRIMARY_SPAN_SELECTOR, { x: "18vw", y: 0, opacity: 0 });
-  }
+// if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
+//  gsapLib.set(SUBTEXT_PRIMARY_SPAN_SELECTOR, { x: "18vw", y: 0, ///opacity: 0 });
+// }
 
-  if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
-    gsapLib.set(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
-      x: "-18vw",
-      y: 0,
-      opacity: 0,
-    });
-  }
+//if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
+//   gsapLib.set(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
+//   x: "-18vw",
+//    y: 0,
+//     opacity: 0,
+//   });
+// }
 
-  if (hasElements(PUNCTUATION_SELECTOR)) {
-    gsapLib.set(PUNCTUATION_SELECTOR, { x: 0, y: "-24svh", opacity: 0 });
-  }
-}
+//if (hasElements(PUNCTUATION_SELECTOR)) {
+//  gsapLib.set(PUNCTUATION_SELECTOR, { x: 0, y: "-24svh", opacity: 0 });
+//  }
+//}
 
-function replayTextAnimationsAfterTransitions() {
-  if (!hasHeroTargets()) {
-    return;
-  }
+//function replayTextAnimationsAfterTransitions() {
+// if (!hasHeroTargets()) {
+//   return;
+//  }
 
-  clearTimeout(replayTextAnimationsTimeoutId);
-  replayTextAnimationsTimeoutId = setTimeout(() => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        replayTextAnimations();
-      });
-    });
-  }, 0);
-}
+// clearTimeout(replayTextAnimationsTimeoutId);
+// replayTextAnimationsTimeoutId = setTimeout(() => {
+//    requestAnimationFrame(() => {
+//    requestAnimationFrame(() => {
+//      replayTextAnimations();
+//    });
+//   });
+// }, 0);
+//}
 
 function clearThemePickerAnimation() {
   clearTimeout(themePickerAnimationTimeoutId);
@@ -850,7 +850,7 @@ function handleDocumentKeydown(event) {
 
 function finalizeThemeChange(resolvedTheme, theme) {
   applyThemeState(resolvedTheme, theme);
-  replayTextAnimationsAfterTransitions();
+  //replayTextAnimationsAfterTransitions();
   notifyThemeTransitioned();
 }
 
@@ -934,7 +934,7 @@ function setTheme(theme) {
 
     if (isReducedMotionPreferred() || !document.startViewTransition) {
       applyThemeState(resolvedTheme, theme);
-      replayTextAnimationsAfterTransitions();
+      //replayTextAnimationsAfterTransitions();
       notifyThemeTransitioned();
       return;
     }
@@ -949,7 +949,7 @@ function setTheme(theme) {
 
     transition.finished
       .then(() => {
-        replayTextAnimationsAfterTransitions();
+        //replayTextAnimationsAfterTransitions();
         notifyThemeTransitioned();
         clearTimeout(themeTransitionTimeoutId);
         themeTransitionTimeoutId = setTimeout(() => {
@@ -970,7 +970,7 @@ function setTheme(theme) {
     closeOverlayNavigation();
   }
 
-  hideTextAnimations();
+  //hideTextAnimations();
 
   if (isReducedMotionPreferred() || overlayWasOpen) {
     finalizeThemeChange(resolvedTheme, theme);
@@ -999,7 +999,7 @@ function setTheme(theme) {
         .then(() => {
           updateFavicon(resolvedTheme);
           updateThemeButtonState(theme);
-          replayTextAnimationsAfterTransitions();
+          //replayTextAnimationsAfterTransitions();
           notifyThemeTransitioned();
           endTransition(0);
         })
@@ -1024,10 +1024,10 @@ document.addEventListener("page:transitioned", () => {
     return;
   }
 
-  hideTextAnimations();
+  // hideTextAnimations();
   updateThemeButtonState(getStoredTheme() || "system");
   initIntroNav();
-  replayTextAnimationsAfterTransitions();
+  // replayTextAnimationsAfterTransitions();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1035,7 +1035,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  hideTextAnimations();
+  // hideTextAnimations();
   const storedTheme = getStoredTheme();
   const theme = storedTheme || "system";
 
@@ -1048,5 +1048,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updateThemeButtonState(theme);
   updateFavicon(resolvedTheme);
   initIntroNav();
-  replayTextAnimationsAfterTransitions();
+  // replayTextAnimationsAfterTransitions();
 });

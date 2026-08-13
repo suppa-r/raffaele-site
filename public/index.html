@@ -26,7 +26,6 @@
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/theme-switcher.css" />
   <link rel="stylesheet" href="css/index.css" />
-
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
@@ -37,9 +36,9 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
-  <script src="js/nav.js" defer></script>
+  <!-- <script src="js/nav.js" defer></script> -->
   <script src="js/main.js" defer></script>
-  <script src="js/introgasp.js" defer></script>
+  <!-- <script src="js/introgasp.js" defer></script> -->
 </head>
 
 <body data-page="index">
@@ -65,15 +64,16 @@
     <main id="main-content" aria-labelledby="site-heading" tabindex="-1">
 
       <div class="text-with-animation">
-        <span>raffaele</span>&nbsp;<span>suppa</span>
+        raffaele&nbsp;SUPPA
       </div>
-      <div class="text-with-animation-1">
-        <span>how</span>&nbsp;<span>it</span>&nbsp;<span>started</span>
+      <div class="subtext-with-animation">
+        <span>how</span>&nbsp;<span>it was</span>
       </div>
-      <div class="text-with-animation-2">
-        <span>how</span>&nbsp;<span>it's</span>&nbsp;<span>going</span>
+      <div class="subtext-with-animation-1">
+        <span>how</span>&nbsp;<span>it's going</span>
       </div>
       <div class="text-with-animation-3">!</div>
+
       <!-- ✅ btn: labelledby ties button to its visible text -->
       <button class="btn" aria-labelledby="btn-label" aria-describedby="btn-description">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img"
@@ -87,8 +87,9 @@
           <span id="btn-description">you can get off anywhere</span>
         </span>
       </button>
+
     </main>
-    <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
+
     <footer aria-label="Site settings">
       <p class="footer-text">this is where the apple fell</p>
       <div class="theme-selector-container">
