@@ -289,6 +289,11 @@ footer {
         animation: main-text-animation-1 1.7s ease forwards;
     }
 
+    footer {
+        position: relative;
+        z-index: 20;
+    }
+
 }
 
 @keyframes main-text-animation-1 {
