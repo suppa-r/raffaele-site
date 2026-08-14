@@ -42,13 +42,36 @@
 /* --------------------------------------- */
 
 header {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: space-between;
-  align-items: center;
-  white-space: nowrap;
-  margin-block-start: var(--space-s-m);
-  margin-inline: var(--space-m-l);
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-start: var(--space-s-m);
+    z-index: 2002;
+    border-radius: var(--space-l-xl);
+    position: relative;
+    isolation: isolate;
+    line-height: 1;
+    padding: 0 var(--space-l-xl);
+    background: transparent;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: var(--space-l-xl);
+    opacity: 0.7;
+    background: var(--gradient-header);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    backdrop-filter: var(--backdrop-blur);
+    pointer-events: none;
+}
+
+header:has(.open-overlay[aria-expanded="true"])::before {
+    opacity: 0;
+    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* --------------------------------------- */
@@ -58,7 +81,7 @@ header {
 nav {
   z-index: 3000;
   pointer-events: all;
-  /* margin-inline-start: var(--space-5xl); */
+  display:none;
 }
 
 .nav-links {
@@ -113,91 +136,168 @@ nav {
 }
 
 .open-overlay {
-  opacity: 1;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.32rem;
-  margin-inline-start: auto;
-  padding: 0.35rem;
-  min-inline-size: 2.5rem;
-  min-block-size: 2.5rem;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  z-index: 2001;
+    --burger-line-thickness: 1px;
+    --burger-shift: calc(var(--space-3xs-2xs) + var(--burger-line-thickness));
+    opacity: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: end;
+    gap: var(--space-3xs-2xs);
+    background: transparent;
+    margin-inline-start: 0;
+    padding: 0.35rem;
+    min-inline-size: var(--space-m-l);
+    min-block-size: var(--space-m-l);
+    border: 0;
+    appearance: none;
+    pointer-events: all;
+    cursor: pointer;
+    z-index: 2001;
+    box-sizing: border-box;
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
 body:has(.open-overlay[aria-expanded="true"]) footer {
-  opacity: 0;
-  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0;
+    transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body:has(.open-overlay[aria-expanded="false"]) main,
+body:has(.open-overlay[aria-expanded="false"]) main {
+    opacity: 1;
+    transition: opacity var(--intro-main-redisplay-duration) var(--intro-redisplay-ease) var(--intro-main-redisplay-delay);
+}
+
 body:has(.open-overlay[aria-expanded="false"]) footer {
-  opacity: 1;
-  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
+    opacity: 1;
+    transition: opacity var(--intro-footer-redisplay-duration) var(--intro-redisplay-ease) var(--intro-footer-redisplay-delay);
 }
 
 .open-overlay[aria-expanded="true"] span {
-  display: block;
-  background-color: var(--text-color)
+    display: block;
+    background-color: var(--text-color)
 }
 
 .open-overlay:focus-visible {
-  outline: 1px solid var(--text-color);
-  outline-offset: 3px;
+    outline: 1px solid var(--text-color);
+    outline-offset: 3px;
 }
 
 .open-overlay span {
-  display: block;
-  width: 1.25rem;
-  height: 2px;
-  border-radius: 999px;
-  background-color: var(--text-color);
-  cursor: pointer;
-  transform-origin: center;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.open-overlay[aria-expanded="true"] .bar-top {
-  transform: translateY(0.42rem) rotate(45deg);
-}
-
-.open-overlay[aria-expanded="true"] .bar-middle {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.open-overlay[aria-expanded="true"] .bar-bottom {
-  transform: translateY(-0.42rem) rotate(-45deg);
+    display: block;
+    width: var(--space-m-l);
+    height: var(--burger-line-thickness);
+    border-radius: 999px;
+    background-color: var(--text-color);
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .animate-top-bar {
-  animation: animate-top-bar 0.5s ease-in-out 1 both
+    animation: animate-top-bar 0.5s ease-in-out 1 both
 }
 
 .animate-bottom-bar {
-  animation: animate-bottom-bar 0.5s ease-in-out 1 both
+    animation: animate-bottom-bar 0.5s ease-in-out 1 both
 }
 
 .animate-middle-bar {
-  animation: animate-middle-bar 0.3s ease-in-out 1 both
+    animation: animate-middle-bar 0.3s ease-in-out 1 both
 }
 
 .animate-out-top-bar {
-  animation: animate-top-bar 0.5s ease-in-out 1 both reverse
+    animation: animate-top-bar 0.5s ease-in-out 1 both reverse
 }
 
 .animate-out-bottom-bar {
-  animation: animate-bottom-bar 0.5s ease-in-out 1 both reverse
+    animation: animate-bottom-bar 0.5s ease-in-out 1 both reverse
 }
 
 .animate-out-middle-bar {
-  animation: animate-middle-bar 0.3s ease-in-out 1 both reverse
+    animation: animate-middle-bar 0.3s ease-in-out 1 both reverse
+}
+
+@media (hover:none) and (pointer:coarse) {
+
+    .open-overlay {
+        -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
+        touch-action: manipulation;
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .open-overlay:active {
+        opacity: 1;
+    }
+
+    .animate-top-bar,
+    .animate-bottom-bar,
+    .animate-out-top-bar,
+    .animate-out-bottom-bar {
+        animation-duration: 0.58s;
+    }
+
+    .animate-middle-bar,
+    .animate-out-middle-bar {
+        animation-duration: 0.4s;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+
+        .open-overlay {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        .open-overlay:active {
+            opacity: 1;
+        }
+    }
+}
+
+@keyframes animate-top-bar {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(var(--burger-shift)) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(var(--burger-shift)) rotate(45deg);
+    }
+}
+
+@keyframes animate-bottom-bar {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(calc(-1 * var(--burger-shift))) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(calc(-1 * var(--burger-shift))) rotate(-45deg);
+    }
+}
+
+@keyframes animate-middle-bar {
+
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
 }
 
 @media (hover:none) and (pointer:coarse) {
@@ -371,6 +471,34 @@ main p {
   margin-block: 0;
 }
 
+main p:not(.wrapper-gradient-text) {
+  opacity: 1;
+}
+
+/* Hide before GSAP/SplitType reveal runs, avoiding a flash on load/reload */
+.js-intro-anim main p:not(.wrapper-gradient-text, [data-simple-reveal]),
+.js-intro-anim main p:not(.wrapper-gradient-text, [data-simple-reveal]) .line span {
+  opacity: 0;
+}
+
+.js-intro-anim main p:not(.wrapper-gradient-text, [data-simple-reveal]) .line span {
+  transform: translateY(100%);
+}
+
+/* Hide nav links and footer entries before GSAP reveals them, avoiding a flash on load/reload */
+.js-intro-anim header .nav-links .nav__item,
+.js-intro-anim footer.footer > * {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* Hide the page-title lines before GSAP reveals them, matching the footer's reveal technique */
+.js-intro-anim .intro-1-page-title .title-line {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
 section {
   min-height: 100%;
   padding: 0;
@@ -521,12 +649,15 @@ main>section[id]:target .profile-title span {
 
 footer {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: minmax(0, auto) minmax(0, auto);
   justify-content: space-between;
   align-items: center;
+  column-gap: var(--space-2xs-xs);
+  padding-inline: var(--space-s-m);
   white-space: nowrap;
-  margin-block-end: var(--space-s-m);
-  margin-inline: var(--space-m-l);
+  margin-block-end: var(--space-xs-s);
+  max-inline-size: 100%;
+  box-sizing: border-box;
 }
 
 .footer-text {
@@ -549,19 +680,19 @@ footer {
   font-size: var(--fs-100);
   white-space: nowrap;
   word-break: keep-all;
-  padding-inline-start: var(--space-3xs-2xs);
+  padding-inline-start: var(--space-5xs-4xs);
 }
 
 .footer__actions {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: clamp(0.55rem, 1.6vw, 0.95rem);
+  gap: clamp(0.2rem, 0.7vw, 0.45rem);
 }
 
 .footer__actions .theme-switcher {
   margin: 0;
-  gap: clamp(0.3rem, 1vw, 0.55rem);
+  gap: clamp(0.15rem, 1vw, 0.35rem);
 }
 
 .footer__actions .theme-switcher button {
@@ -623,12 +754,15 @@ footer {
 
 .back-to-top p {
   font-family: var(--primary-font-secondary);
-  font-size: var(--fs-1);
+  font-size: clamp(0.7rem, 0.6rem + 0.5vw, 0.9rem);
   color: var(--text-color);
   text-align: center;
-  line-height: 1;
+  line-height: 1.1;
   margin-block: 0;
   margin-inline: auto;
+  max-inline-size: 100%;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 
@@ -641,7 +775,7 @@ footer {
 
 .back-to-top:hover p {
   will-change: transform;
-  animation: fade 1s ease-out;
+  animation: fade 1s ease-in-out forwards;
   z-index: 100;
 }
 
@@ -800,27 +934,40 @@ footer {
     font-size: var(--fs-100);
   }
 
+  footer {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    row-gap: var(--space-3xs-2xs);
+    white-space: normal;
+  }
+
   .footer-text {
     inline-size: 100%;
     block-size: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: var(--space-5xs-4xs);
     font-family: var(--primary-font-secondary);
     color: var(--text-color);
     font-size: var(--fs-0);
-    white-space: nowrap;
+    white-space: normal;
     word-break: keep-all;
+    text-align: center;
   }
 
   .footer__name {
     color: var(--text-span);
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
-    white-space: nowrap;
+    white-space: normal;
     word-break: keep-all;
     padding-inline-start: var(--space-3xs-2xs);
+  }
+
+  .footer__actions {
+    justify-content: center;
   }
 
   .footer__actions .theme-switcher button {

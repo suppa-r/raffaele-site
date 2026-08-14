@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#080808" />
   <title>Raffaele Suppa</title>
   <script src="js/theme-bootstrap.js"></script>
+  <script>document.documentElement.classList.add("js-intro-anim");</script>
 
   <!-- Preload critical stylesheets -->
   <link rel="preload" href="css/tokens.css" as="style" />
@@ -16,6 +17,7 @@
   <link rel="preload" href="css/transition.css" as="style" />
   <link rel="preload" href="css/fonts.css" as="style" />
   <link rel="preload" href="css/theme-switcher.css" as="style" />
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/reset.css" />
@@ -25,6 +27,7 @@
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/theme-switcher.css" />
   <link rel="stylesheet" href="css/intro-1.css" />
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
@@ -32,12 +35,21 @@
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="raffaele.site" />
   <link rel="manifest" href="favicons/site.webmanifest" />
+  <!-- Third-party libraries (defer keeps parsing unblocked; order is preserved) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <!-- Page scripts -->
+  <script src="js/nav-bar-for-intro.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/introgasp.js" defer></script>
 </head>
 
-<body data-page="index">
+<body data-page="intro">
   <div class="wrapper">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="header" role="banner" id="top">
+
       <nav aria-label="Primary">
         <ul class="nav-links" id="site-nav-links">
           <li class="nav__item">
@@ -91,7 +103,8 @@
     <main role="main" id="main-content" tabindex="-1">
       <h1 class="visually-hidden">About me</h1>
       <div class="intro-1-page-title">
-        <p>So, you've committed this far<br>you're going to have to <span><em>LISTEN</em></span></p>
+        <p data-simple-reveal><span class="title-line">you've committed this far</span><br><span class="title-line">So,
+            you're going to have to <span><em>LISTEN</em></span></span></p>
       </div>
 
       <!-- ************* early years *************** -->
@@ -128,8 +141,7 @@
     <!-- ************* footer ***************** -->
     <footer role="contentinfo" class="footer">
       <p class="footer-text">
-        &copy; 2026 <span class="footer__name">raffaele suppa</span> | Not All
-        Rights Reserved.
+        &copy; 2026 <span class="footer__name">Not All Rights Reserved.</span>
       </p>
       <div class="footer__actions">
         <div class="theme-selector-container">
@@ -198,16 +210,14 @@
             <option value="system">system (auto)</option>
           </select>
         </div>
+        <!-- ✅ Live region announces theme changes to screen readers -->
+        <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
         <a href="#top" class="back-to-top" title="Back to Top">
           <p>back to<br>top</p>
         </a>
       </div>
-
-      <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
     </footer>
   </div>
-  <script src="js/index.js"></script>
-  <script src="js/nav-bar-for-intro.js"></script>
 </body>
 
 </html>
