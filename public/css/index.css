@@ -17,6 +17,11 @@ header {
     margin-block: 0;
 }
 
+.header-break {
+    display: block;
+    margin-block-start: var(--space-2xs-xs);
+}
+
 .site-title {
     font-size: var(--fs-200);
     white-space: nowrap;
@@ -41,7 +46,13 @@ main {
     font-size: var(--fs-400);
     text-align: center;
     display: block;
-    animation: main-text-animation 5.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: main-text-animation 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.text-with-animation span {
+    display: inline-block;
+     font-size: var(--fs-500);
+    letter-spacing: 0;
 }
 
 .subtext-with-animation {
@@ -110,12 +121,27 @@ main {
     }
 }
 
+@keyframes word-animation-reverse {
+    0% {
+        top: -10vw;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
 .text-with-animation-3 {
     font-family: var(--primary-font-secondary);
     font-style: italic;
     font-size: var(--fs-800);
     text-align: center;
     display: block;
+    position: relative;
+    opacity: 0;
+    animation: word-animation-reverse 1.2s cubic-bezier(0.22, 1, 0.36, 1) 2.2s forwards;
 }
 
 .btn {
@@ -283,7 +309,7 @@ footer {
 @media (max-width: 600px) {
 
     .text-with-animation {
-        font-size: var(--fs-300);
+        font-size: var(--fs-200);
         text-align: center;
         display: block;
         animation: main-text-animation-1 1.7s ease forwards;
@@ -294,33 +320,37 @@ footer {
         z-index: 20;
     }
 
-}
-
-@keyframes main-text-animation-1 {
-    0% {
-        letter-spacing: 2.1vw;
-        word-spacing: 10vw;
-        opacity: 0;
+    .text-with-animation span {
+        font-size: var(--fs-400);
     }
 
-    100% {
-        letter-spacing: 0.66rem;
-        word-spacing: 0.05vw;
-        opacity: 1;
+
+    @keyframes main-text-animation-1 {
+        0% {
+            letter-spacing: 1.5vw;
+            word-spacing: 15vw;
+            opacity: 0;
+        }
+
+        100% {
+            letter-spacing: 0.5rem;
+            word-spacing: 0.0001vw;
+            opacity: 1;
+        }
     }
-}
 
-.subtext-with-animation,
-.subtext-with-animation-1 {
-    font-size: var(--fs-100);
-    letter-spacing: 0.5rem;
-}
+    .subtext-with-animation,
+    .subtext-with-animation-1 {
+        font-size: var(--fs-100);
+        letter-spacing: 0.5rem;
+    }
 
-footer {
-    padding-inline: 0;
-}
+    footer {
+        padding-inline: 0;
+    }
 
-.footer-text {
-    white-space: nowrap;
-    padding-inline-start: 0;
+    .footer-text {
+        white-space: nowrap;
+        padding-inline-start: 0;
+    }
 }
