@@ -9,8 +9,6 @@
   --fs-500: clamp(3.0518rem, 2.4663rem + 2.9271vw, 4.7348rem);
   --fs-600: clamp(3.8147rem, 2.9462rem + 4.3423vw, 6.3115rem);
   --fs-700: clamp(4.7684rem, 3.5006rem + 6.3389vw, 8.4132rem);
-  --fs-800: clamp(5.9605rem, 4.1473rem + 9.008vw, 11.2102rem);
-  --fs-900: clamp(7.4506rem, 4.9052rem + 12.456vw, 14.9339rem);
 
   /* Spacing */
   --space-5xs: clamp(0.125rem, 0.125rem + 0vw, 0.125rem);
@@ -55,7 +53,7 @@
 
   /* UI */
   --border-radius: var(--space-2xl);
-  --theme-switcher-button-size: var(--space-xl-2xl);
+  --theme-switcher-button-size: var(--space-l-xl);
   --theme-switcher-icon-size: var(--space-m-l);
   --letter-spacing-body: 0.02em;
   --letter-spacing-heading-desktop: 0.50em;

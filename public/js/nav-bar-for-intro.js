@@ -4,20 +4,9 @@ let navlinks = null;
 let pageTitle = null;
 const mobileQuery = window.matchMedia("(max-width: 768px)");
 let firstNavLink = null;
-const introThemeAnnouncement = document.getElementById("theme-announcement");
-
-const INTRO_VALID_THEMES = ["light", "dark", "system"];
-const INTRO_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INTRO_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
-const INTRO_THEME_TRANSITION_CLASS = "theme-transitioning";
-const INTRO_THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
 const INTRO_NAV_CLOSE_HIDE_FALLBACK_MS = 320;
 const INTRO_NAV_CLOSING_CLASS = "intro-nav-closing";
-
-const INTRO_CUSTOM_THEME_SELECTOR_ROOT = "[data-theme-selector]";
-const INTRO_CUSTOM_THEME_SELECTOR_TRIGGER = "[data-theme-selector-trigger]";
-const INTRO_CUSTOM_THEME_SELECTOR_OPTION = "[data-theme-option]";
-const INTRO_CUSTOM_THEME_SELECTOR_MENU = "[data-theme-selector-menu]";
 
 const introSectionHashes = new Set(
   Array.from(
@@ -27,10 +16,7 @@ const introSectionHashes = new Set(
 );
 
 let isMenuOpen = false;
-let introThemeTransitionTimeoutId = null;
 let introNavHideTimeoutId = null;
-let introThemeVisualSwapState = false;
-let introDocumentEventsAttached = false;
 let introBoundMenuElement = null;
 let introBoundNavLinksElement = null;
 
@@ -153,290 +139,6 @@ function introGetNavCloseHideDelayMs() {
   }
 
   return Math.ceil(maxTimeMs + 16);
-}
-
-function introGetStoredTheme() {
-  try {
-    const saved = localStorage.getItem("theme");
-    if (saved === "auto") {
-      introSaveTheme("system");
-      return "system";
-    }
-    return INTRO_VALID_THEMES.includes(saved) ? saved : "system";
-  } catch {
-    return "system";
-  }
-}
-
-function introSaveTheme(theme) {
-  try {
-    localStorage.setItem("theme", theme);
-  } catch {
-    // Ignore storage failures in private mode.
-  }
-}
-
-function introResolveTheme(theme) {
-  return theme === "system"
-    ? window.matchMedia(INTRO_COLOR_SCHEME_QUERY).matches
-      ? "dark"
-      : "light"
-    : theme;
-}
-
-function introGetCustomThemeSelectorRoot() {
-  return document.querySelector(INTRO_CUSTOM_THEME_SELECTOR_ROOT);
-}
-
-function introGetCustomThemeSelectorElements() {
-  const root = introGetCustomThemeSelectorRoot();
-  if (!root) {
-    return {};
-  }
-
-  return {
-    root,
-    trigger: root.querySelector(INTRO_CUSTOM_THEME_SELECTOR_TRIGGER),
-    menu: root.querySelector(INTRO_CUSTOM_THEME_SELECTOR_MENU),
-    options: [...root.querySelectorAll(INTRO_CUSTOM_THEME_SELECTOR_OPTION)],
-  };
-}
-
-function introCloseCustomThemeSelector({ returnFocus = false } = {}) {
-  const { root, trigger, menu } = introGetCustomThemeSelectorElements();
-  if (!root || !trigger || !menu) {
-    return;
-  }
-
-  root.classList.remove("is-open");
-  trigger.setAttribute("aria-expanded", "false");
-  menu.hidden = true;
-
-  if (returnFocus && trigger instanceof HTMLElement) {
-    trigger.focus();
-  }
-}
-
-function introOpenCustomThemeSelector() {
-  const { root, trigger, menu } = introGetCustomThemeSelectorElements();
-  if (!root || !trigger || !menu) {
-    return;
-  }
-
-  root.classList.add("is-open");
-  trigger.setAttribute("aria-expanded", "true");
-  menu.hidden = false;
-}
-
-function introSyncCustomThemeSelector(theme) {
-  const { root, options, trigger } = introGetCustomThemeSelectorElements();
-  if (!root || !trigger || options.length === 0) {
-    return;
-  }
-
-  const selectedTheme = INTRO_VALID_THEMES.includes(theme) ? theme : "system";
-  let selectedOption = null;
-
-  options.forEach((option) => {
-    const isSelected = option.dataset.themeOption === selectedTheme;
-    option.setAttribute("aria-selected", isSelected ? "true" : "false");
-    if (isSelected) {
-      selectedOption = option;
-    }
-  });
-
-  if (!selectedOption) {
-    return;
-  }
-
-  const triggerIcon = root.querySelector(".theme-selector-trigger-icon");
-  const triggerText = root.querySelector(".theme-selector-trigger-text");
-  const optionIcon = selectedOption.querySelector(".theme-option-icon");
-  const optionText = selectedOption.querySelector(".theme-option-label");
-
-  if (triggerIcon && optionIcon) {
-    triggerIcon.innerHTML = optionIcon.innerHTML;
-  }
-
-  if (triggerText && optionText) {
-    triggerText.textContent = optionText.textContent;
-  }
-
-  if (trigger instanceof HTMLButtonElement && optionText) {
-    trigger.setAttribute(
-      "aria-label",
-      `Select color theme, current selection ${optionText.textContent.trim()}`,
-    );
-  }
-}
-
-function introUpdateThemeButtons(theme) {
-  document.querySelectorAll("button[data-theme-toggle]").forEach((button) => {
-    button.setAttribute(
-      "aria-pressed",
-      button.dataset.themeToggle === theme ? "true" : "false",
-    );
-  });
-
-  const themeSelector = document.getElementById("theme-selector");
-  if (themeSelector instanceof HTMLSelectElement) {
-    themeSelector.value =
-      theme === "light" || theme === "dark" || theme === "system"
-        ? theme
-        : "system";
-  }
-
-  introSyncCustomThemeSelector(theme);
-}
-
-function introFocusCustomThemeOption(direction = 1) {
-  const { options } = introGetCustomThemeSelectorElements();
-  if (!options || options.length === 0) {
-    return;
-  }
-
-  const activeElement = document.activeElement;
-  const activeIndex = options.findIndex((option) => option === activeElement);
-  const fallbackIndex = options.findIndex(
-    (option) => option.getAttribute("aria-selected") === "true",
-  );
-  const startIndex =
-    activeIndex >= 0 ? activeIndex : Math.max(fallbackIndex, 0);
-  const nextIndex = (startIndex + direction + options.length) % options.length;
-
-  options[nextIndex]?.focus();
-}
-
-function introFocusSelectedCustomThemeOption() {
-  const { options } = introGetCustomThemeSelectorElements();
-  if (!options || options.length === 0) {
-    return;
-  }
-
-  const selectedOption = options.find(
-    (option) => option.getAttribute("aria-selected") === "true",
-  );
-
-  (selectedOption || options[0])?.focus();
-}
-
-function introApplyThemeFromCustomOption(optionButton) {
-  const nextTheme = optionButton?.dataset.themeOption;
-  if (!INTRO_VALID_THEMES.includes(nextTheme)) {
-    return;
-  }
-
-  const themeSelector = document.getElementById("theme-selector");
-  if (themeSelector instanceof HTMLSelectElement) {
-    themeSelector.value = nextTheme;
-  }
-
-  introSetTheme(nextTheme);
-}
-
-function handleIntroDocumentThemeSelectorChange(event) {
-  if (!isIntroPage()) {
-    return;
-  }
-
-  const themeSelector = event.target;
-  if (!(themeSelector instanceof HTMLSelectElement)) {
-    return;
-  }
-
-  if (themeSelector.id !== "theme-selector") {
-    return;
-  }
-
-  const nextTheme = themeSelector.value;
-  if (nextTheme === "light" || nextTheme === "dark" || nextTheme === "system") {
-    introSetTheme(nextTheme);
-  }
-}
-
-function introAnnounceTheme(theme) {
-  if (!introThemeAnnouncement) {
-    return;
-  }
-
-  introThemeAnnouncement.textContent =
-    theme === "system"
-      ? "Theme set to device preference"
-      : theme === "light"
-        ? "Theme set to light"
-        : "Theme set to dark";
-}
-
-function introApplyThemeState(resolvedTheme, theme, announce) {
-  document.documentElement.setAttribute("data-theme", resolvedTheme);
-  introSaveTheme(theme);
-  introUpdateThemeButtons(theme);
-
-  if (announce) {
-    introAnnounceTheme(theme);
-  }
-}
-
-function introToggleThemeVisualSwapState() {
-  introThemeVisualSwapState = !introThemeVisualSwapState;
-  document.documentElement.classList.toggle(
-    INTRO_THEME_VISUAL_TOGGLE_CLASS,
-    introThemeVisualSwapState,
-  );
-}
-
-function introSetTheme(theme, options = {}) {
-  const { announce = true, withTransition = true } = options;
-  if (!INTRO_VALID_THEMES.includes(theme)) {
-    return;
-  }
-
-  const resolvedTheme = introResolveTheme(theme);
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-
-  if (currentTheme === resolvedTheme && introGetStoredTheme() === theme) {
-    introUpdateThemeButtons(theme);
-    return;
-  }
-
-  if (!withTransition || introIsReducedMotionPreferred()) {
-    introApplyThemeState(resolvedTheme, theme, announce);
-    return;
-  }
-
-  clearTimeout(introThemeTransitionTimeoutId);
-  document.documentElement.classList.add(INTRO_THEME_TRANSITION_CLASS);
-
-  if (document.startViewTransition) {
-    try {
-      const transition = document.startViewTransition(() => {
-        introToggleThemeVisualSwapState();
-        introApplyThemeState(resolvedTheme, theme, announce);
-      });
-
-      transition.finished
-        .then(() => {
-          introThemeTransitionTimeoutId = setTimeout(() => {
-            document.documentElement.classList.remove(
-              INTRO_THEME_TRANSITION_CLASS,
-            );
-          }, 0);
-        })
-        .catch(() => {
-          document.documentElement.classList.remove(
-            INTRO_THEME_TRANSITION_CLASS,
-          );
-        });
-      return;
-    } catch {
-      document.documentElement.classList.remove(INTRO_THEME_TRANSITION_CLASS);
-    }
-  }
-
-  introApplyThemeState(resolvedTheme, theme, announce);
-  introThemeTransitionTimeoutId = setTimeout(() => {
-    document.documentElement.classList.remove(INTRO_THEME_TRANSITION_CLASS);
-  }, 0);
 }
 
 function animateHamburgerButton(opening) {
@@ -569,66 +271,6 @@ function handleOverlayToggle() {
   setMenuState(!isMenuOpen, { moveFocus: true, returnFocus: true });
 }
 
-function isNavigationOverlayLink(openOverlayButton) {
-  const href = openOverlayButton.getAttribute("href");
-  return !!href && href.trim() !== "" && href !== "#";
-}
-
-function handleDocumentClick(event) {
-  if (!isIntroPage()) {
-    return;
-  }
-
-  const customThemeOption = event.target.closest(
-    INTRO_CUSTOM_THEME_SELECTOR_OPTION,
-  );
-  if (customThemeOption) {
-    event.preventDefault();
-    introApplyThemeFromCustomOption(customThemeOption);
-    introCloseCustomThemeSelector({ returnFocus: true });
-    return;
-  }
-
-  const customThemeTrigger = event.target.closest(
-    INTRO_CUSTOM_THEME_SELECTOR_TRIGGER,
-  );
-  if (customThemeTrigger) {
-    event.preventDefault();
-    const isExpanded =
-      customThemeTrigger.getAttribute("aria-expanded") === "true";
-    if (isExpanded) {
-      introCloseCustomThemeSelector();
-    } else {
-      introOpenCustomThemeSelector();
-      introFocusSelectedCustomThemeOption();
-    }
-    return;
-  }
-
-  const customThemeRoot = event.target.closest(
-    INTRO_CUSTOM_THEME_SELECTOR_ROOT,
-  );
-  if (!customThemeRoot) {
-    introCloseCustomThemeSelector();
-  }
-
-  const themeButton = event.target.closest("button[data-theme-toggle]");
-  if (themeButton) {
-    event.preventDefault();
-    introSetTheme(themeButton.dataset.themeToggle);
-    return;
-  }
-
-  const openOverlayButton = event.target.closest(".open-overlay");
-  if (openOverlayButton) {
-    if (isNavigationOverlayLink(openOverlayButton)) {
-      return;
-    }
-    event.preventDefault();
-    handleOverlayToggle();
-  }
-}
-
 function handleNavLinkClick(event) {
   const link = event.target.closest("a[href]");
   if (!link) {
@@ -674,112 +316,6 @@ function handleNavFocusOut(event) {
   }
 }
 
-function handleDocumentKeydown(event) {
-  if (!isIntroPage()) {
-    return;
-  }
-
-  const customThemeIsOpen =
-    introGetCustomThemeSelectorRoot()?.classList.contains("is-open") || false;
-  const onCustomThemeTrigger =
-    event.target.closest(INTRO_CUSTOM_THEME_SELECTOR_TRIGGER) !== null;
-  const onCustomThemeOption =
-    event.target.closest(INTRO_CUSTOM_THEME_SELECTOR_OPTION) !== null;
-
-  if (customThemeIsOpen && event.key === "Escape") {
-    event.preventDefault();
-    introCloseCustomThemeSelector({ returnFocus: true });
-    return;
-  }
-
-  if (onCustomThemeTrigger && (event.key === "Enter" || event.key === " ")) {
-    event.preventDefault();
-    const { trigger } = introGetCustomThemeSelectorElements();
-    const isExpanded = trigger?.getAttribute("aria-expanded") === "true";
-    if (isExpanded) {
-      introCloseCustomThemeSelector();
-    } else {
-      introOpenCustomThemeSelector();
-      introFocusSelectedCustomThemeOption();
-    }
-    return;
-  }
-
-  if (onCustomThemeTrigger && event.key === "ArrowDown") {
-    event.preventDefault();
-    introOpenCustomThemeSelector();
-    introFocusCustomThemeOption(1);
-    return;
-  }
-
-  if (onCustomThemeTrigger && event.key === "ArrowUp") {
-    event.preventDefault();
-    introOpenCustomThemeSelector();
-    introFocusCustomThemeOption(-1);
-    return;
-  }
-
-  if (customThemeIsOpen && onCustomThemeOption && event.key === "ArrowDown") {
-    event.preventDefault();
-    introFocusCustomThemeOption(1);
-    return;
-  }
-
-  if (customThemeIsOpen && onCustomThemeOption && event.key === "ArrowUp") {
-    event.preventDefault();
-    introFocusCustomThemeOption(-1);
-    return;
-  }
-
-  if (customThemeIsOpen && (onCustomThemeTrigger || onCustomThemeOption)) {
-    if (event.key === "Home") {
-      event.preventDefault();
-      const { options } = introGetCustomThemeSelectorElements();
-      options?.[0]?.focus();
-      return;
-    }
-
-    if (event.key === "End") {
-      event.preventDefault();
-      const { options } = introGetCustomThemeSelectorElements();
-      options?.[options.length - 1]?.focus();
-      return;
-    }
-  }
-
-  if (
-    customThemeIsOpen &&
-    onCustomThemeOption &&
-    (event.key === "Enter" || event.key === " ")
-  ) {
-    event.preventDefault();
-    introApplyThemeFromCustomOption(
-      event.target.closest(INTRO_CUSTOM_THEME_SELECTOR_OPTION),
-    );
-    introCloseCustomThemeSelector({ returnFocus: true });
-    return;
-  }
-
-  if (event.key === "Escape" && isMenuOpen) {
-    event.preventDefault();
-    setMenuState(false, { returnFocus: true });
-    return;
-  }
-
-  const openOverlayButton = event.target.closest(".open-overlay");
-  if (!openOverlayButton) {
-    return;
-  }
-  if (isNavigationOverlayLink(openOverlayButton)) {
-    return;
-  }
-
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    handleOverlayToggle();
-  }
-}
-
 function clearSectionHashOnClosedLoad() {
   if (!window.location.hash || !introSectionHashes.has(window.location.hash)) {
     return;
@@ -793,38 +329,12 @@ function clearSectionHashOnClosedLoad() {
   window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 }
 
-function handleSystemThemeChange() {
-  if (introGetStoredTheme() !== "system") {
-    return;
-  }
-
-  introSetTheme("system", { announce: false, withTransition: false });
-}
-
 function attachIntroNavEvents() {
   if (!isIntroPage()) {
     return;
   }
 
   refreshIntroNavElements();
-
-  if (!introDocumentEventsAttached) {
-    introDocumentEventsAttached = true;
-
-    document.addEventListener("click", handleDocumentClick);
-    document.addEventListener("keydown", handleDocumentKeydown);
-    document.addEventListener("change", handleIntroDocumentThemeSelectorChange);
-
-    document.addEventListener("click", (event) => {
-      if (!mobileQuery.matches || !isMenuOpen) {
-        return;
-      }
-
-      if (event.target.closest(".back-to-top")) {
-        setMenuState(false);
-      }
-    });
-  }
 
   if (!menu) {
     return;
@@ -870,24 +380,6 @@ function attachIntroNavEvents() {
   }
 }
 
-function initIntroThemeSwitcher() {
-  if (!isIntroPage()) {
-    return;
-  }
-
-  const storedTheme = introGetStoredTheme();
-  introSetTheme(storedTheme, { announce: false, withTransition: false });
-
-  const mediaQueryList = window.matchMedia(INTRO_COLOR_SCHEME_QUERY);
-  if (typeof mediaQueryList.addEventListener === "function") {
-    mediaQueryList.addEventListener("change", handleSystemThemeChange);
-  } else {
-    mediaQueryList.addListener(handleSystemThemeChange);
-  }
-
-  // Change handling is delegated at the document level to survive body swaps.
-}
-
 function initIntroNav() {
   if (!isIntroPage()) {
     introBoundMenuElement = null;
@@ -897,7 +389,6 @@ function initIntroNav() {
 
   refreshIntroNavElements();
 
-  initIntroThemeSwitcher();
   attachIntroNavEvents();
   handleViewportChange();
   clearSectionHashOnClosedLoad();

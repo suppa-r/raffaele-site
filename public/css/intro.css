@@ -234,7 +234,7 @@ header {
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
-    margin-block-start: var(--space-s-m);
+    margin-block-start: var(--space-xs-s);
     z-index: 2002;
     border-radius: var(--space-l-xl);
     position: relative;

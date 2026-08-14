@@ -1,12 +1,3 @@
-const THEME_TRANSITION_CLASS = "theme-transitioning";
-const VALID_THEMES = ["light", "dark", "system"];
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
-const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
-const THEME_FAVICONS = {
-  dark: "/favicons/web-app-manifest-192x192.png",
-  light: "/favicons/favicon-96x96.png",
-  system: "/favicons/favicon-96x96.png",
-};
 const OVERLAY_NAV_HTML = `<div class="overlay-navigation" id="site-nav-links">
 <nav role="navigation" aria-label="Primary overlay navigation">
 <ul>
@@ -34,440 +25,157 @@ const OVERLAY_CLOSE_CLASSES = [
 ];
 const OVERLAY_CLOSE_DELAY_MS = 1000;
 const OVERLAY_CLOSE_FALLBACK_MS = 1100;
-//const HERO_TEXT_EASE_NAV = "cubic-bezier(0.12, 0.8, 0.2, 1)";
-//const HERO_REVEAL_DURATION_NAV = 1.8;
-//const HERO_REVEAL_DELAY_NAV = 0.18;
-//const HERO_SUBTEXT_PRIMARY_DELAY = 0.88;
-//const HERO_SUBTEXT_SECONDARY_DELAY = 1.6;
-//const HERO_PUNCTUATION_DELAY = 2.35;
-//const HERO_ANIMATION_TARGETS = [
-//  ".text-with-animation span",
-//  ".text-with-animation-1 span",
-//  ".text-with-animation-2 span",
-//  ".text-with-animation-3",
-//];
-//const TEXT_SPAN_SELECTOR = ".text-with-animation span";
-//const SUBTEXT_PRIMARY_SPAN_SELECTOR = ".text-with-animation-1 span";
-//const SUBTEXT_SECONDARY_SPAN_SELECTOR = ".text-with-animation-2 span";
-//const PUNCTUATION_SELECTOR = ".text-with-animation-3";
-const THEME_SWITCHER_SELECTOR = ".theme-switcher";
-const CUSTOM_THEME_SELECTOR_ROOT = "[data-theme-selector]";
-const CUSTOM_THEME_SELECTOR_TRIGGER = "[data-theme-selector-trigger]";
-const CUSTOM_THEME_SELECTOR_MENU = "[data-theme-selector-menu]";
-const CUSTOM_THEME_SELECTOR_OPTION = "[data-theme-option]";
+const HERO_TEXT_EASE_NAV = "cubic-bezier(0.12, 0.8, 0.2, 1)";
+const HERO_REVEAL_DURATION_NAV = 1.8;
+const HERO_REVEAL_DELAY_NAV = 0.18;
+const HERO_SUBTEXT_PRIMARY_DELAY = 0.88;
+const HERO_SUBTEXT_SECONDARY_DELAY = 1.6;
+const HERO_PUNCTUATION_DELAY = 2.35;
+const HERO_ANIMATION_TARGETS = [
+  ".text-with-animation span",
+  ".text-with-animation-1 span",
+  ".text-with-animation-2 span",
+  ".text-with-animation-3",
+];
+const TEXT_SPAN_SELECTOR = ".text-with-animation span";
+const SUBTEXT_PRIMARY_SPAN_SELECTOR = ".text-with-animation-1 span";
+const SUBTEXT_SECONDARY_SPAN_SELECTOR = ".text-with-animation-2 span";
+const PUNCTUATION_SELECTOR = ".text-with-animation-3";
 const OPEN_OVERLAY_SELECTOR = ".open-overlay";
 const OVERLAY_FIRST_LINK_SELECTOR = ".overlay-navigation a[href]";
 const OVERLAY_FOCUSABLE_SELECTOR =
   ".overlay-navigation a[href], .overlay-navigation button:not([disabled]), .overlay-navigation [tabindex]:not([tabindex='-1'])";
-const THEME_VISUAL_TOGGLE_CLASS = "theme-visual-swap";
-
-let themeTransitionTimeoutId = null;
-let themePickerAnimationTimeoutId = null;
-//let replayTextAnimationsTimeoutId = null;
+let replayTextAnimationsTimeoutId = null;
 let overlayTriggerElement = null;
-let themeVisualSwapState = false;
 
 function isIndexPage() {
   return document.body?.dataset?.page === "index";
 }
 
-function isReducedMotionPreferred() {
-  if (
-    typeof window === "undefined" ||
-    typeof window.matchMedia !== "function"
-  ) {
-    return false;
+function getGsap() {
+  return typeof window !== "undefined" ? window.gsap : null;
+}
+
+function hasElements(selector) {
+  return !!document.querySelector(selector);
+}
+
+function hasHeroTargets() {
+  return HERO_ANIMATION_TARGETS.some(hasElements);
+}
+
+function getExistingHeroTargets() {
+  return HERO_ANIMATION_TARGETS.filter(hasElements);
+}
+
+function replayTextAnimations() {
+  const gsapLib = getGsap();
+  if (!gsapLib) return;
+
+  const existingTargets = getExistingHeroTargets();
+  if (existingTargets.length === 0) return;
+
+  gsapLib.killTweensOf(existingTargets.join(", "));
+
+  if (hasElements(TEXT_SPAN_SELECTOR)) {
+    gsapLib.to(TEXT_SPAN_SELECTOR, {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION_NAV,
+      ease: HERO_TEXT_EASE_NAV,
+      delay: HERO_REVEAL_DELAY_NAV,
+      overwrite: "auto",
+    });
   }
 
-  return window.matchMedia(REDUCED_MOTION_QUERY).matches;
-}
+  if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
+    gsapLib.to(SUBTEXT_PRIMARY_SPAN_SELECTOR, {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION_NAV,
+      ease: HERO_TEXT_EASE_NAV,
+      delay: HERO_SUBTEXT_PRIMARY_DELAY,
+      overwrite: "auto",
+    });
+  }
 
-function getStoredTheme() {
-  try {
-    const theme = localStorage.getItem("theme");
-    if (theme === "auto") {
-      saveTheme("system");
-      return "system";
-    }
-    return VALID_THEMES.includes(theme) ? theme : "system";
-  } catch {
-    // ignore storage errors
-    return "system";
+  if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
+    gsapLib.to(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION_NAV,
+      ease: HERO_TEXT_EASE_NAV,
+      delay: HERO_SUBTEXT_SECONDARY_DELAY,
+      overwrite: "auto",
+    });
+  }
+
+  if (hasElements(PUNCTUATION_SELECTOR)) {
+    gsapLib.to(PUNCTUATION_SELECTOR, {
+      y: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION_NAV,
+      ease: HERO_TEXT_EASE_NAV,
+      delay: HERO_PUNCTUATION_DELAY,
+      overwrite: "auto",
+    });
   }
 }
 
-function saveTheme(theme) {
-  try {
-    localStorage.setItem("theme", theme);
-  } catch {
-    // ignore storage errors
+function hideTextAnimations() {
+  if (!hasHeroTargets()) {
+    return;
   }
-}
 
-function resolveTheme(theme) {
-  return theme === "system"
-    ? window.matchMedia(COLOR_SCHEME_QUERY).matches
-      ? "dark"
-      : "light"
-    : theme;
-}
-
-function isThemeValid(theme) {
-  return VALID_THEMES.includes(theme);
-}
-
-function isThemeAlreadyApplied(theme, resolvedTheme) {
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  return currentTheme === resolvedTheme && theme === getStoredTheme();
-}
-
-function updateThemeButtonState(theme) {
-  document.querySelectorAll("button[data-theme-toggle]").forEach((button) => {
-    button.setAttribute(
-      "aria-pressed",
-      button.dataset.themeToggle === theme ? "true" : "false",
-    );
+  HERO_ANIMATION_TARGETS.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.style.animation = "none";
+      element.style.opacity = "0";
+    });
   });
 
-  const themeSelector = document.getElementById("theme-selector");
-  if (themeSelector instanceof HTMLSelectElement) {
-    themeSelector.value =
-      theme === "light" || theme === "dark" || theme === "system"
-        ? theme
-        : "system";
+  const gsapLib = getGsap();
+  if (!gsapLib) return;
+
+  const existingTargets = getExistingHeroTargets();
+  if (existingTargets.length === 0) return;
+
+  gsapLib.killTweensOf(existingTargets.join(", "));
+
+  if (hasElements(TEXT_SPAN_SELECTOR)) {
+    gsapLib.set(TEXT_SPAN_SELECTOR, { x: "-22vw", y: 0, opacity: 0 });
   }
 
-  syncCustomThemeSelector(theme);
-}
-
-function getCustomThemeSelectorRoot() {
-  return document.querySelector(CUSTOM_THEME_SELECTOR_ROOT);
-}
-
-function getCustomThemeSelectorElements() {
-  const root = getCustomThemeSelectorRoot();
-  if (!root) {
-    return {};
+  if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
+    gsapLib.set(SUBTEXT_PRIMARY_SPAN_SELECTOR, { x: "18vw", y: 0, opacity: 0 });
   }
 
-  return {
-    root,
-    trigger: root.querySelector(CUSTOM_THEME_SELECTOR_TRIGGER),
-    menu: root.querySelector(CUSTOM_THEME_SELECTOR_MENU),
-    options: [...root.querySelectorAll(CUSTOM_THEME_SELECTOR_OPTION)],
-  };
+  if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
+    gsapLib.set(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
+      x: "-18vw",
+      y: 0,
+      opacity: 0,
+    });
+  }
+
+  if (hasElements(PUNCTUATION_SELECTOR)) {
+    gsapLib.set(PUNCTUATION_SELECTOR, { x: 0, y: "-24svh", opacity: 0 });
+  }
 }
 
-function closeCustomThemeSelector({ returnFocus = false } = {}) {
-  const { root, trigger, menu } = getCustomThemeSelectorElements();
-  if (!root || !trigger || !menu) {
+function replayTextAnimationsAfterTransitions() {
+  if (!hasHeroTargets()) {
     return;
   }
 
-  root.classList.remove("is-open");
-  trigger.setAttribute("aria-expanded", "false");
-  menu.hidden = true;
-
-  if (returnFocus && trigger instanceof HTMLElement) {
-    trigger.focus();
-  }
-}
-
-function openCustomThemeSelector() {
-  const { root, trigger, menu } = getCustomThemeSelectorElements();
-  if (!root || !trigger || !menu) {
-    return;
-  }
-
-  root.classList.add("is-open");
-  trigger.setAttribute("aria-expanded", "true");
-  menu.hidden = false;
-}
-
-function syncCustomThemeSelector(theme) {
-  const { root, options, trigger } = getCustomThemeSelectorElements();
-  if (!root || !trigger || options.length === 0) {
-    return;
-  }
-
-  const selectedTheme = VALID_THEMES.includes(theme) ? theme : "system";
-  let selectedOption = null;
-
-  options.forEach((option) => {
-    const isSelected = option.dataset.themeOption === selectedTheme;
-    option.setAttribute("aria-selected", isSelected ? "true" : "false");
-    if (isSelected) {
-      selectedOption = option;
-    }
-  });
-
-  if (!selectedOption) {
-    return;
-  }
-
-  const triggerIcon = root.querySelector(".theme-selector-trigger-icon");
-  const triggerText = root.querySelector(".theme-selector-trigger-text");
-  const optionIcon = selectedOption.querySelector(".theme-option-icon");
-  const optionText = selectedOption.querySelector(".theme-option-label");
-
-  if (triggerIcon && optionIcon) {
-    triggerIcon.innerHTML = optionIcon.innerHTML;
-  }
-
-  if (triggerText && optionText) {
-    triggerText.textContent = optionText.textContent;
-  }
-
-  if (trigger instanceof HTMLButtonElement && optionText) {
-    trigger.setAttribute(
-      "aria-label",
-      `Select color theme, current selection ${optionText.textContent.trim()}`,
-    );
-  }
-}
-
-function focusCustomThemeOption(direction = 1) {
-  const { options } = getCustomThemeSelectorElements();
-  if (!options || options.length === 0) {
-    return;
-  }
-
-  const activeElement = document.activeElement;
-  const activeIndex = options.findIndex((option) => option === activeElement);
-  const fallbackIndex = options.findIndex(
-    (option) => option.getAttribute("aria-selected") === "true",
-  );
-  const startIndex =
-    activeIndex >= 0 ? activeIndex : Math.max(fallbackIndex, 0);
-  const nextIndex = (startIndex + direction + options.length) % options.length;
-
-  options[nextIndex]?.focus();
-}
-
-function applyThemeFromCustomOption(optionButton) {
-  const nextTheme = optionButton?.dataset.themeOption;
-  if (!isThemeValid(nextTheme)) {
-    return;
-  }
-
-  const themeSelector = document.getElementById("theme-selector");
-  if (themeSelector instanceof HTMLSelectElement) {
-    themeSelector.value = nextTheme;
-  }
-
-  setTheme(nextTheme);
-}
-
-function handleDocumentThemeSelectorChange(event) {
-  if (!isIndexPage()) {
-    return;
-  }
-
-  const themeSelector = event.target;
-  if (!(themeSelector instanceof HTMLSelectElement)) {
-    return;
-  }
-
-  if (themeSelector.id !== "theme-selector") {
-    return;
-  }
-
-  const nextTheme = themeSelector.value;
-  if (nextTheme === "light" || nextTheme === "dark" || nextTheme === "system") {
-    setTheme(nextTheme);
-  }
-}
-
-function updateFavicon(theme) {
-  const favicon =
-    document.getElementById("favicon") ||
-    document.querySelector('link[rel="icon"]');
-  if (!favicon) return;
-  favicon.href = THEME_FAVICONS[theme] || THEME_FAVICONS.light;
-}
-
-//function getGsap() {
-// return typeof window !== "undefined" ? window.gsap : null;
-//}
-
-//function hasElements(selector) {
-//  return !!document.querySelector(selector);
-//}
-
-//function hasHeroTargets() {
-// return HERO_ANIMATION_TARGETS.some(hasElements);
-//}
-
-//function getExistingHeroTargets() {
-//  return HERO_ANIMATION_TARGETS.filter(hasElements);
-//}
-
-//function replayTextAnimations() {
-// const gsapLib = getGsap();
-// if (!gsapLib) return;
-
-//const existingTargets = getExistingHeroTargets();
-//if (existingTargets.length === 0) return;
-
-//gsapLib.killTweensOf(existingTargets.join(", "));
-
-//if (hasElements(TEXT_SPAN_SELECTOR)) {
-//gsapLib.to(TEXT_SPAN_SELECTOR, {
-//  x: 0,
-// opacity: 1,
-// duration: HERO_REVEAL_DURATION_NAV,
-// ease: HERO_TEXT_EASE_NAV,
-// delay: HERO_REVEAL_DELAY_NAV,
-// overwrite: "auto",
-///});
-// }
-
-// if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
-//  gsapLib.to(SUBTEXT_PRIMARY_SPAN_SELECTOR, {
-//    x: 0,
-//    opacity: 1,
-//   duration: HERO_REVEAL_DURATION_NAV,
-//   ease: HERO_TEXT_EASE_NAV,
-//   delay: HERO_SUBTEXT_PRIMARY_DELAY,
-//   overwrite: "auto",
-// });
-//}
-
-//if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
-//   gsapLib.to(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
-//     x: 0,
-//    opacity: 1,
-//     duration: HERO_REVEAL_DURATION_NAV,
-//    ease: HERO_TEXT_EASE_NAV,
-//   delay: HERO_SUBTEXT_SECONDARY_DELAY,
-//    overwrite: "auto",
-//  });
-//}
-
-//if (hasElements(PUNCTUATION_SELECTOR)) {
-//  gsapLib.to(PUNCTUATION_SELECTOR, {
-///   y: 0,
-//  opacity: 1,
-//   duration: HERO_REVEAL_DURATION_NAV,
-//   ease: HERO_TEXT_EASE_NAV,
-//   delay: HERO_PUNCTUATION_DELAY,
-//   overwrite: "auto",
-// });
-//}
-//}
-
-//function hideTextAnimations() {
-//  if (!hasHeroTargets()) {
-//    return;
-//  }
-
-//  HERO_ANIMATION_TARGETS.forEach((selector) => {
-//   document.querySelectorAll(selector).forEach((element) => {
-//     element.style.animation = "none";
-//     element.style.opacity = "0";
-//   });
-// });
-
-//  const gsapLib = getGsap();
-//  if (!gsapLib) return;
-
-//  const existingTargets = getExistingHeroTargets();
-//  if (existingTargets.length === 0) return;
-
-//  gsapLib.killTweensOf(existingTargets.join(", "));
-
-// if (hasElements(TEXT_SPAN_SELECTOR)) {
-//   gsapLib.set(TEXT_SPAN_SELECTOR, { x: "-22vw", y: 0, opacity: 0 });
-// }
-
-// if (hasElements(SUBTEXT_PRIMARY_SPAN_SELECTOR)) {
-//  gsapLib.set(SUBTEXT_PRIMARY_SPAN_SELECTOR, { x: "18vw", y: 0, ///opacity: 0 });
-// }
-
-//if (hasElements(SUBTEXT_SECONDARY_SPAN_SELECTOR)) {
-//   gsapLib.set(SUBTEXT_SECONDARY_SPAN_SELECTOR, {
-//   x: "-18vw",
-//    y: 0,
-//     opacity: 0,
-//   });
-// }
-
-//if (hasElements(PUNCTUATION_SELECTOR)) {
-//  gsapLib.set(PUNCTUATION_SELECTOR, { x: 0, y: "-24svh", opacity: 0 });
-//  }
-//}
-
-//function replayTextAnimationsAfterTransitions() {
-// if (!hasHeroTargets()) {
-//   return;
-//  }
-
-// clearTimeout(replayTextAnimationsTimeoutId);
-// replayTextAnimationsTimeoutId = setTimeout(() => {
-//    requestAnimationFrame(() => {
-//    requestAnimationFrame(() => {
-//      replayTextAnimations();
-//    });
-//   });
-// }, 0);
-//}
-
-function clearThemePickerAnimation() {
-  clearTimeout(themePickerAnimationTimeoutId);
-  themePickerAnimationTimeoutId = null;
-
-  const themeSwitcher = document.querySelector(THEME_SWITCHER_SELECTOR);
-  if (!themeSwitcher) return;
-
-  themeSwitcher.classList.remove("is-animating");
-  themeSwitcher.querySelectorAll("button[data-theme-toggle]").forEach((btn) => {
-    btn.classList.remove("is-incoming", "is-outgoing");
-  });
-}
-
-function animateThemePicker(nextTheme) {
-  if (isReducedMotionPreferred()) {
-    clearThemePickerAnimation();
-    return;
-  }
-
-  const themeSwitcher = document.querySelector(THEME_SWITCHER_SELECTOR);
-  if (!themeSwitcher) return;
-
-  const currentButton = themeSwitcher.querySelector(
-    'button[data-theme-toggle][aria-pressed="true"]',
-  );
-  const nextButton = themeSwitcher.querySelector(
-    `button[data-theme-toggle="${nextTheme}"]`,
-  );
-
-  clearThemePickerAnimation();
-  themeSwitcher.classList.add("is-animating");
-
-  if (currentButton && currentButton !== nextButton) {
-    currentButton.classList.add("is-outgoing");
-  }
-
-  if (nextButton) {
-    nextButton.classList.add("is-incoming");
-  }
-
-  themePickerAnimationTimeoutId = setTimeout(clearThemePickerAnimation, 0);
-}
-
-function toggleThemeVisualSwapState() {
-  themeVisualSwapState = !themeVisualSwapState;
-  document.documentElement.classList.toggle(
-    THEME_VISUAL_TOGGLE_CLASS,
-    themeVisualSwapState,
-  );
-}
-
-function applyThemeState(resolvedTheme, theme) {
-  document.documentElement.setAttribute("data-theme", resolvedTheme);
-  saveTheme(theme);
-  updateFavicon(resolvedTheme);
-  updateThemeButtonState(theme);
+  clearTimeout(replayTextAnimationsTimeoutId);
+  replayTextAnimationsTimeoutId = setTimeout(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        replayTextAnimations();
+      });
+    });
+  }, 0);
 }
 
 function isOverlayOpen() {
@@ -713,41 +421,6 @@ function handleDocumentClick(event) {
     return;
   }
 
-  const customThemeOption = event.target.closest(CUSTOM_THEME_SELECTOR_OPTION);
-  if (customThemeOption) {
-    event.preventDefault();
-    applyThemeFromCustomOption(customThemeOption);
-    closeCustomThemeSelector({ returnFocus: true });
-    return;
-  }
-
-  const customThemeTrigger = event.target.closest(
-    CUSTOM_THEME_SELECTOR_TRIGGER,
-  );
-  if (customThemeTrigger) {
-    event.preventDefault();
-    const isExpanded =
-      customThemeTrigger.getAttribute("aria-expanded") === "true";
-    if (isExpanded) {
-      closeCustomThemeSelector();
-    } else {
-      openCustomThemeSelector();
-    }
-    return;
-  }
-
-  const customThemeRoot = event.target.closest(CUSTOM_THEME_SELECTOR_ROOT);
-  if (!customThemeRoot) {
-    closeCustomThemeSelector();
-  }
-
-  const themeToggleButton = event.target.closest("[data-theme-toggle]");
-  if (themeToggleButton) {
-    event.preventDefault();
-    setTheme(themeToggleButton.dataset.themeToggle);
-    return;
-  }
-
   const openOverlayButton = event.target.closest(OPEN_OVERLAY_SELECTOR);
   if (openOverlayButton) {
     if (isNavigationOverlayLink(openOverlayButton)) {
@@ -760,71 +433,6 @@ function handleDocumentClick(event) {
 
 function handleDocumentKeydown(event) {
   if (!isIndexPage()) {
-    return;
-  }
-
-  const customThemeIsOpen =
-    getCustomThemeSelectorRoot()?.classList.contains("is-open") || false;
-  const onCustomThemeTrigger =
-    event.target.closest(CUSTOM_THEME_SELECTOR_TRIGGER) !== null;
-  const onCustomThemeOption =
-    event.target.closest(CUSTOM_THEME_SELECTOR_OPTION) !== null;
-
-  if (customThemeIsOpen && event.key === "Escape") {
-    event.preventDefault();
-    closeCustomThemeSelector({ returnFocus: true });
-    return;
-  }
-
-  if (onCustomThemeTrigger && (event.key === "Enter" || event.key === " ")) {
-    event.preventDefault();
-    const { trigger } = getCustomThemeSelectorElements();
-    const isExpanded = trigger?.getAttribute("aria-expanded") === "true";
-    if (isExpanded) {
-      closeCustomThemeSelector();
-    } else {
-      openCustomThemeSelector();
-      focusCustomThemeOption(1);
-    }
-    return;
-  }
-
-  if (onCustomThemeTrigger && event.key === "ArrowDown") {
-    event.preventDefault();
-    openCustomThemeSelector();
-    focusCustomThemeOption(1);
-    return;
-  }
-
-  if (onCustomThemeTrigger && event.key === "ArrowUp") {
-    event.preventDefault();
-    openCustomThemeSelector();
-    focusCustomThemeOption(-1);
-    return;
-  }
-
-  if (customThemeIsOpen && onCustomThemeOption && event.key === "ArrowDown") {
-    event.preventDefault();
-    focusCustomThemeOption(1);
-    return;
-  }
-
-  if (customThemeIsOpen && onCustomThemeOption && event.key === "ArrowUp") {
-    event.preventDefault();
-    focusCustomThemeOption(-1);
-    return;
-  }
-
-  if (
-    customThemeIsOpen &&
-    onCustomThemeOption &&
-    (event.key === "Enter" || event.key === " ")
-  ) {
-    event.preventDefault();
-    applyThemeFromCustomOption(
-      event.target.closest(CUSTOM_THEME_SELECTOR_OPTION),
-    );
-    closeCustomThemeSelector({ returnFocus: true });
     return;
   }
 
@@ -846,12 +454,6 @@ function handleDocumentKeydown(event) {
     event.preventDefault();
     handleOverlayToggle();
   }
-}
-
-function finalizeThemeChange(resolvedTheme, theme) {
-  applyThemeState(resolvedTheme, theme);
-  //replayTextAnimationsAfterTransitions();
-  notifyThemeTransitioned();
 }
 
 function attachNavEventHandlers() {
@@ -881,16 +483,10 @@ function attachNavEventHandlers() {
     });
   }
 
-  const themeSelector = document.getElementById("theme-selector");
-  if (themeSelector instanceof HTMLSelectElement) {
-    //boundIndexThemeSelector = themeSelector;
-  }
-
   if (!navDocumentEventsAttached) {
     navDocumentEventsAttached = true;
     document.addEventListener("click", handleDocumentClick);
     document.addEventListener("keydown", handleDocumentKeydown);
-    document.addEventListener("change", handleDocumentThemeSelectorChange);
   }
 }
 
@@ -904,130 +500,14 @@ function initIntroNav() {
   attachNavEventHandlers();
 }
 
-function notifyThemeTransitioned() {
-  document.dispatchEvent(new Event("theme:transitioned"));
-}
-
-function notifyThemeTransitionStarted() {
-  document.dispatchEvent(new Event("theme:transition:start"));
-}
-
-function setTheme(theme) {
-  if (!isThemeValid(theme)) return;
-
-  const resolvedTheme = resolveTheme(theme);
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  const overlayWasOpen = isOverlayOpen();
-
-  if (isThemeAlreadyApplied(theme, resolvedTheme)) {
-    updateThemeButtonState(theme);
-    updateFavicon(resolvedTheme);
-    clearThemePickerAnimation();
-    return;
-  }
-
-  // If the resolved color stays the same (e.g. dark <-> system on dark OS),
-  // still run a lightweight transition so every click gets visual feedback.
-  if (currentTheme === resolvedTheme) {
-    animateThemePicker(theme);
-    notifyThemeTransitionStarted();
-
-    if (isReducedMotionPreferred() || !document.startViewTransition) {
-      applyThemeState(resolvedTheme, theme);
-      //replayTextAnimationsAfterTransitions();
-      notifyThemeTransitioned();
-      return;
-    }
-
-    clearTimeout(themeTransitionTimeoutId);
-    document.documentElement.classList.add(THEME_TRANSITION_CLASS);
-
-    const transition = document.startViewTransition(() => {
-      toggleThemeVisualSwapState();
-      applyThemeState(resolvedTheme, theme);
-    });
-
-    transition.finished
-      .then(() => {
-        //replayTextAnimationsAfterTransitions();
-        notifyThemeTransitioned();
-        clearTimeout(themeTransitionTimeoutId);
-        themeTransitionTimeoutId = setTimeout(() => {
-          document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-        }, 0);
-      })
-      .catch(() => {
-        document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-      });
-
-    return;
-  }
-
-  animateThemePicker(theme);
-  notifyThemeTransitionStarted();
-
-  if (overlayWasOpen) {
-    closeOverlayNavigation();
-  }
-
-  //hideTextAnimations();
-
-  if (isReducedMotionPreferred() || overlayWasOpen) {
-    finalizeThemeChange(resolvedTheme, theme);
-    return;
-  }
-
-  clearTimeout(themeTransitionTimeoutId);
-  document.documentElement.classList.add(THEME_TRANSITION_CLASS);
-
-  const endTransition = (delayMs) => {
-    clearTimeout(themeTransitionTimeoutId);
-    themeTransitionTimeoutId = setTimeout(() => {
-      document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-    }, delayMs);
-  };
-
-  if (document.startViewTransition) {
-    try {
-      const transition = document.startViewTransition(() => {
-        toggleThemeVisualSwapState();
-        document.documentElement.setAttribute("data-theme", resolvedTheme);
-        saveTheme(theme);
-      });
-
-      transition.finished
-        .then(() => {
-          updateFavicon(resolvedTheme);
-          updateThemeButtonState(theme);
-          //replayTextAnimationsAfterTransitions();
-          notifyThemeTransitioned();
-          endTransition(0);
-        })
-        .catch(() => {
-          document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-        });
-
-      return;
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error("View transition error:", error);
-      document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
-    }
-  }
-
-  finalizeThemeChange(resolvedTheme, theme);
-  endTransition(0);
-}
-
 document.addEventListener("page:transitioned", () => {
   if (!isIndexPage()) {
     return;
   }
 
-  // hideTextAnimations();
-  updateThemeButtonState(getStoredTheme() || "system");
+  hideTextAnimations();
   initIntroNav();
-  // replayTextAnimationsAfterTransitions();
+  replayTextAnimationsAfterTransitions();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1035,18 +515,19 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // hideTextAnimations();
-  const storedTheme = getStoredTheme();
-  const theme = storedTheme || "system";
-
-  if (!storedTheme) {
-    saveTheme(theme);
-  }
-
-  const resolvedTheme = resolveTheme(theme);
-  document.documentElement.setAttribute("data-theme", resolvedTheme);
-  updateThemeButtonState(theme);
-  updateFavicon(resolvedTheme);
+  hideTextAnimations();
   initIntroNav();
-  // replayTextAnimationsAfterTransitions();
+  replayTextAnimationsAfterTransitions();
+});
+
+document.addEventListener("theme:transition:start", () => {
+  if (isIndexPage()) {
+    hideTextAnimations();
+  }
+});
+
+document.addEventListener("theme:transitioned", () => {
+  if (isIndexPage()) {
+    replayTextAnimationsAfterTransitions();
+  }
 });
