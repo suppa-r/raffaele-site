@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/theme-switcher.css" />
   <link rel="stylesheet" href="css/intro.css" />
+  <link rel="stylesheet" href="css/nav-new.css" />
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
@@ -34,43 +35,36 @@
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="raffaele.site" />
   <link rel="manifest" href="favicons/site.webmanifest" />
-  <!-- Third-party libraries (defer keeps parsing unblocked; order is preserved) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
-  <!-- Page scripts -->
   <script src="js/intro-theme-selector.js" defer></script>
-  <script src="js/nav-bar-for-intro.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/introgasp.js" defer></script>
 </head>
 
 <body data-page="intro">
   <div class="wrapper">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <div class="support view-transition" role="alert" aria-live="polite">
-      Your browser doesn't support View Transitions
-    </div>
-    <div class="support style-query" role="alert" aria-live="polite">
-      Your browser doesn't support Style Queries
-    </div>
     <header>
       <p class="header-title">
         sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
       </p>
-      <button class="open-overlay" type="button" aria-label="Open navigation menu" aria-controls="site-nav-links"
-        aria-expanded="false">
-        <span class="bar-top" aria-hidden="true"></span>
-        <span class="bar-middle" aria-hidden="true"></span>
-        <span class="bar-bottom" aria-hidden="true"></span>
+      <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="bar-top"></span>
+        <span class="bar-middle"></span>
+        <span class="bar-bottom"></span>
       </button>
     </header>
-    <nav class="overlay-navigation" id="site-nav-links" aria-label="Primary navigation" hidden>
-      <ul class="nav-links">
-        <li><a href="index.html" data-content="start over">home</a></li>
-        <li><a href="intro-1.html" data-content="about me">about me</a></li>
-      </ul>
-    </nav>
+    <div class="overlay-navigation" aria-hidden="true">
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" data-content="The beginning">home</a></li>
+          <li><a href="intro-1.html" data-content="Curious?">about me</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!--<section class="home">-->
     <main id="main-content" aria-label="Introduction text" tabindex="-1">
       <h1 class="visually-hidden">Introduction</h1>
       <div class="text-with-animation" aria-hidden="true">
@@ -163,7 +157,10 @@
       <!-- ✅ Live region announces theme changes to screen readers -->
       <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
     </footer>
+    <!-- </section> -->
   </div>
+
+  <script src="js/nav-bar-for-intro.js"></script>
 </body>
 
 </html>

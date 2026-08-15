@@ -300,14 +300,6 @@ function focusFirstOverlayItem() {
   }
 }
 
-//function focusLastOverlayItem() {
-// const focusableItems = getOverlayFocusableItems();
-/// const lastItem = focusableItems[focusableItems.length - 1];
-// if (lastItem instanceof HTMLElement) {
-//   lastItem.focus();
-// }
-//}
-
 function trapOverlayFocus(event) {
   if (!isOverlayOpen() || event.key !== "Tab") {
     return;
@@ -399,8 +391,7 @@ function closeOverlayNavigation(options = {}) {
 }
 
 let navDocumentEventsAttached = false;
-//let boundIndexThemeSelector = null;
-let boundIndexOverlayButton = null;
+let boundOverlayButton = null;
 
 function handleOverlayToggle() {
   if (!isIndexPage()) return;
@@ -411,11 +402,6 @@ function handleOverlayToggle() {
   }
 }
 
-function isNavigationOverlayLink(openOverlayButton) {
-  const href = openOverlayButton.getAttribute("href");
-  return !!href && href.trim() !== "" && href !== "#";
-}
-
 function handleDocumentClick(event) {
   if (!isIndexPage()) {
     return;
@@ -423,9 +409,6 @@ function handleDocumentClick(event) {
 
   const openOverlayButton = event.target.closest(OPEN_OVERLAY_SELECTOR);
   if (openOverlayButton) {
-    if (isNavigationOverlayLink(openOverlayButton)) {
-      return;
-    }
     event.preventDefault();
     handleOverlayToggle();
   }
@@ -448,7 +431,6 @@ function handleDocumentKeydown(event) {
 
   const openOverlayButton = event.target.closest(OPEN_OVERLAY_SELECTOR);
   if (!openOverlayButton) return;
-  if (isNavigationOverlayLink(openOverlayButton)) return;
 
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
@@ -464,16 +446,14 @@ function attachNavEventHandlers() {
   const openOverlayButton = document.querySelector(OPEN_OVERLAY_SELECTOR);
   if (
     openOverlayButton instanceof HTMLElement &&
-    boundIndexOverlayButton !== openOverlayButton
+    boundOverlayButton !== openOverlayButton
   ) {
-    boundIndexOverlayButton = openOverlayButton;
-
+    boundOverlayButton = openOverlayButton;
     openOverlayButton.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
       handleOverlayToggle();
     });
-
     openOverlayButton.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
@@ -492,8 +472,6 @@ function attachNavEventHandlers() {
 
 function initIntroNav() {
   if (!isIndexPage()) {
-    //boundIndexThemeSelector = null;
-    boundIndexOverlayButton = null;
     return;
   }
 
