@@ -172,6 +172,15 @@ function initializeAnimations() {
 
   // Match the side-entry feel used by the hero text animation.
   if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
+    gsapLib.to(WRAPPER_GRADIENT_TARGET, {
+      x: 0,
+      opacity: 1,
+      duration: HERO_REVEAL_DURATION_INTRO,
+      ease: HERO_TEXT_EASE_INTRO,
+      delay: HERO_REVEAL_DELAY_INTRO,
+      overwrite: "auto",
+    });
+
     gsapLib.to(WRAPPER_GRADIENT_WORD_TARGET, {
       x: 0,
       opacity: 1,

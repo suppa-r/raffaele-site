@@ -42,7 +42,6 @@ html.intro-nav-open .header-title {
     pointer-events: none;
 }
 
-
 .header-title {
     text-align: start;
     font-family: var(--primary-font-secondary);
@@ -58,8 +57,9 @@ main {
     text-align: center;
     margin-block: var(--space-2xs-xs);
     display: grid;
+    align-content: center;
     justify-items: center;
-    place-content: center center;
+    justify-content: center;
     line-height: 1.5;
 }
 
@@ -72,6 +72,7 @@ main p {
     white-space: normal;
     overflow-wrap: anywhere;
     padding-inline: var(--padding-inline);
+    text-align: center;
 }
 
 main p+p {
@@ -87,11 +88,6 @@ main p:not(.wrapper-gradient-text) {
 .js-intro-anim .wrapper-gradient-text .text-layer,
 .js-intro-anim main p:not(.wrapper-gradient-text) .line span {
     opacity: 0;
-}
-
-.js-intro-anim .wrapper-gradient-text,
-.js-intro-anim .wrapper-gradient-text .text-layer {
-    transform: translateX(-7vw);
 }
 
 .js-intro-anim main p:not(.wrapper-gradient-text) .line span {
@@ -155,9 +151,14 @@ main p:not(.wrapper-gradient-text) {
 .wrapper-gradient-text {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-300);
-    letter-spacing: var(--letter-spacing-heading-desktop);
+    letter-spacing: var(--letter-spacing-body-1);
     white-space: nowrap;
     padding-block: var(--space-2xs-xs);
+    margin-inline: auto;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    gap: 0.35ch;
 }
 
 @media (max-width: 767.98px) {
@@ -201,7 +202,7 @@ main p:not(.wrapper-gradient-text) {
 footer {
     display: grid;
     grid-template-columns: auto;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     white-space: nowrap;
     margin-block-end: var(--space-2xs-xs);

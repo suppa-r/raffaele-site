@@ -56,6 +56,7 @@
   --theme-switcher-button-size: var(--space-l-xl);
   --theme-switcher-icon-size: var(--space-m-l);
   --letter-spacing-body: 0.02em;
+  --letter-spacing-body-1: 0.4em;
   --letter-spacing-heading-desktop: 0.50em;
   --letter-spacing-heading-mobile: 0.10em;
 }
