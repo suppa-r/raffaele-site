@@ -2,14 +2,6 @@
   "name": "raffaele-site",
   "version": "1.0.0",
   "description": "Raffaele's personal website",
-  "homepage": "https://gitlab.com/raffaele-suppa-group/raffaele-site#readme",
-  "bugs": {
-    "url": "https://gitlab.com/raffaele-suppa-group/raffaele-site/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/raffaele-suppa-group/raffaele-site.git"
-  },
   "license": "ISC",
   "author": "",
   "type": "commonjs",

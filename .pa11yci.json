@@ -1,0 +1,20 @@
+{
+	"defaults": {
+		"chromeLaunchConfig": {
+			"executablePath": "/usr/bin/chromium",
+			"args": [
+				"--no-sandbox",
+				"--disable-setuid-sandbox",
+				"--disable-dev-shm-usage",
+				"--disable-gpu"
+			]
+		},
+		"timeout": 30000,
+		"wait": 1000,
+		"standard": "WCAG2AA"
+	},
+	"urls": [
+		"http://localhost:8080/index.html",
+		"http://localhost:8080/intro.html"
+	]
+}
