@@ -25,17 +25,8 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   text-align: center;
-}
-
-.site-title {
-  font-size: var(--step-1);
-  padding-block-start: var(--space-m);
-}
-
-.site-title-break {
-  display: block;
 }
 
 .text-with-animation {
@@ -44,8 +35,8 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: var(--space-m);
-  font-size: var(--step-3);
+  gap: var(--space-xs-s);
+  font-size: var(--step-4);
   letter-spacing: var(--space-xs);
   padding-block-start: var(--space-l);
 }
@@ -61,13 +52,12 @@ main {
 }
 
 .subtext-with-animation {
-  font-family: var(--primary-font-secondary);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: var(--space-m);
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   letter-spacing: var(--space-xs);
   padding-block-start: var(--space-m);
 }
@@ -82,6 +72,27 @@ main {
   opacity: 0;
 }
 
+.subtext-with-animation-0 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-m);
+  font-size: var(--step-2);
+  letter-spacing: var(--space-xs);
+  padding-block-start: var(--space-m);
+}
+
+.subtext-with-animation-0 span:first-of-type {
+  position: relative;
+  opacity: 0;
+}
+
+.subtext-with-animation-0 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+}
+
 .subtext-with-animation-1 {
   font-family: var(--primary-font-secondary);
   display: flex;
@@ -89,7 +100,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: var(--space-l);
-  font-size: var(--step-5);
+  font-size: var(--step-7);
   letter-spacing: var(--space-xs);
   padding-block-start: var(--space-l);
 }
@@ -146,7 +157,6 @@ main {
 }
 
 .btn {
-  margin-block-start: var(--space-xl);
   width: fit-content;
   margin-inline: auto;
   display: flex;
