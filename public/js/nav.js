@@ -89,11 +89,11 @@ function replayTextAnimations() {
         subtextAnimations[i] ?? subtextAnimations[subtextAnimations.length - 1];
     });
 
-  // index.html: .subtext-with-animation-0 spans use word-animation-1
+  // index.html: .subtext-with-animation-0 spans enter from the opposite side
   // Staggered to enter 2s after first element finishes
   const subtext0Animations = [
-    "word-animation-1 0.5s ease-out 2.1s forwards",
-    "word-animation-1 0.5s ease-out 2.4s forwards",
+    "word-animation-1-reverse 0.5s ease-out 2.1s forwards",
+    "word-animation-1-reverse 0.5s ease-out 2.4s forwards",
   ];
   document
     .querySelectorAll(".subtext-with-animation-0 span")
@@ -105,12 +105,9 @@ function replayTextAnimations() {
         subtext0Animations[subtext0Animations.length - 1];
     });
 
-  // index.html: .subtext-with-animation-1 spans use word-animation-2
-  // Staggered to enter 3s after first element finishes
-  const subtext1Animations = [
-    "word-animation-2 0.5s ease-out 3.1s forwards",
-    "word-animation-2 0.5s ease-out 3.4s forwards",
-  ];
+  // index.html: .subtext-with-animation-1 uses a single span with word-animation-2
+  // Staggered to enter 3s after the previous block finishes
+  const subtext1Animations = ["word-animation-2 0.5s ease-out 3.1s forwards"];
   document
     .querySelectorAll(".subtext-with-animation-1 span")
     .forEach((span, i) => {

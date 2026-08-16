@@ -67,7 +67,7 @@ nav li a {
 	text-decoration: none;
 	display: block;
 	text-align: center;
-	font-size: var(--step-1);
+	font-size: var(--fs-200);
 }
 
 nav li a:focus-visible {
@@ -93,7 +93,7 @@ nav li a::before {
 
 nav li a::after {
 	content: attr(data-content);
-	font-size: var(--step-0);
+	font-size: var(--fs-100);
 	transition:
 		opacity 0.2s linear,
 		transform 0.2s linear;
@@ -240,13 +240,14 @@ nav li a:hover::after {
    CONTENT ELEMENTS
    ============================================ */
 header {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
 	align-items: center;
+	gap: var(--space-s);
 	margin-block-start: var(--space-xs);
-	padding: var(--space-xs) var(--space-m);
+	padding: 0 var(--space-m);
 	z-index: 1100;
-	font-size: var(--step-0);
+	font-size: var(--fs-100);
 	position: relative;
 }
 
@@ -265,9 +266,17 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 	transition: opacity 0.1s ease;
 }
 
+.header-title {
+	display: inline-flex;
+	align-items: center;
+	white-space: nowrap;
+  width: fit-content;
+	max-inline-size: none;
+	margin: 0;
+}
+
 .header-title span {
-	margin-inline-end: var(--space-xs);
-	font-size: var(--step-0);
+	font-size: var(--fs-100);
 	color: var(--text-span);
 }
 
@@ -393,7 +402,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	margin-block: var(--space-4xl);
+  font-size: var(--fs-100);
 }
 
 .text-with-animation {
@@ -401,10 +410,11 @@ main {
 	justify-content: center;
 	align-items: center;
 	gap: var(--space-s);
-	font-size: var(--step-3);
+	font-size: var(--fs-300);
 	font-style: italic;
 	margin-block: var(--space-s);
 	overflow: hidden;
+  letter-spacing: clamp(0.2em, 0.08em + 0.12vw, 0.28em);
 }
 
 .text-with-animation span:first-child {
@@ -444,12 +454,12 @@ main {
 .fancy {
 	padding-block: var(--space-3xs);
 	font-style: italic;
-	font-size: var(--step-1);
+	font-size: var(--fs-200);
 }
 
 .p-large {
 	padding-block: var(--space-3xs);
-	font-size: var(--step-1);
+	font-size: var(--fs-200);
 	font-weight: 600;
 }
 
@@ -457,7 +467,7 @@ main {
 	font-family: var(--primary-font-secondary);
 	font-weight: var(--font-weight);
 	font-style: var(--font-style);
-	font-size: var(--step-2);
+	font-size: var(--fs-300);
 	text-align: center;
 }
 
@@ -566,7 +576,7 @@ footer {
 		margin-block-start: var(--space-s);
 		padding: var(--space-s) var(--space-l);
 		z-index: 1100;
-		font-size: var(--step-0);
+		font-size: var(--fs-100);
 		position: relative;
 	}
 
@@ -587,7 +597,7 @@ footer {
 	}
 
 	nav ul a {
-		font-size: var(--step-1);
+		font-size: var(--fs-100);
 	}
 
 	footer {

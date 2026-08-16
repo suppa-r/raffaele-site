@@ -48,8 +48,8 @@
   --space-8xl-9xl: clamp(11rem, 10.1304rem + 4.3478vw, 13.5rem);
 
   /* Typography */
-  --primary-font: "poiret_oneregular", sans-serif;
-  --primary-font-secondary: "cormorant_uprightmedium", sans-serif;
+  --primary-font: "poiret_oneregular", arial, sans-serif;
+  --primary-font-secondary: "cormorant_uprightregular", serif;
 
   /* UI */
   --border-radius: var(--space-2xl);
