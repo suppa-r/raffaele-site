@@ -328,17 +328,6 @@ function bindOverlayNavigation() {
   };
 
   openOverlay.addEventListener("click", handler, { signal });
-  openOverlay.addEventListener(
-    "keydown",
-    (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        e.stopPropagation();
-        handler();
-      }
-    },
-    { signal },
-  );
 }
 
 function initPage() {
