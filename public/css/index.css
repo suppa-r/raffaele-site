@@ -13,21 +13,23 @@
 header {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   text-align: center;
-  font-size: var(--fs-100);
-  letter-spacing: var(--letter-spacing-heading);
-  gap: var(--space-xs);
-
+  font-size: var(--fs-0);
+  letter-spacing: var(--letter-spacing-body);
+  gap: var(--space-3xs);
+  padding-block-start: var(--space-xs-s);
 }
 
- .header-text {
-    margin-block:0;
- }
+.header-text {
+  margin-block: 0;
+  white-space: nowrap;
+}
 
-.header-break{
-    margin-block:0;
- }
+.header-break {
+  margin-block: 0;
+}
 
 /* ✅ Parent needs to be the positioning context */
 main {
@@ -36,7 +38,7 @@ main {
   justify-content: center;
   text-align: center;
   gap: var(--space-l);
- }
+}
 
 .text-with-animation {
   font-family: var(--primary-font-secondary);
@@ -44,9 +46,9 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: var(--space-xs-s);
+  gap: var(--space-xs);
   font-size: var(--fs-400);
-  letter-spacing: var(--space-xs-s);
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 .text-with-animation span:first-of-type {
@@ -67,7 +69,7 @@ main {
   gap: var(--space-m);
   font-size: var(--fs-200);
   letter-spacing: clamp(0.2em, 0.08em + 0.12vw, 0.28em);
- }
+}
 
 .subtext-with-animation span:first-of-type {
   position: relative;
@@ -241,7 +243,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-block-end: var(--space-xs);
+  margin-block-end: var(--space-3xs-2xs);
 }
 
 .footer-text {
@@ -249,9 +251,11 @@ footer {
   width: fit-content;
   max-inline-size: none;
   margin-inline: 0;
- }
+  white-space: nowrap;
+}
 
 @media (prefers-reduced-motion: reduce) {
+
   /* Disable animations on custom elements */
   .up,
   .down,
@@ -290,25 +294,26 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
-.text-with-animation {
-  font-family: var(--primary-font-secondary);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-xs-s);
-  font-size: var(--fs-400);
-  letter-spacing: var(--space-2xs);
-}
+@media (min-width: 600px) {
+  header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: var(--fs-100);
+    letter-spacing: var(--letter-spacing-heading);
+    gap: var(--space-s);
 
-.text-with-animation span:first-of-type {
-  position: relative;
-  opacity: 0;
-}
+  }
 
-.text-with-animation span:nth-of-type(2) {
-  position: relative;
-  opacity: 0;
-}
+  .text-with-animation {
+    font-family: var(--primary-font-secondary);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-500);
+    gap: var(--space-xl);
+    letter-spacing: var(--letter-spacing-heading);
+  }
 }
