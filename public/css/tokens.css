@@ -52,7 +52,7 @@
   --primary-font-secondary: "cormorant_uprightmedium", sans-serif;
 
   /* UI */
-  --border-radius: var(--space-2xl);
+  --border-radius: var(--space-xl);
   --theme-switcher-button-size: var(--space-l-xl);
   --theme-switcher-icon-size: var(--space-m-l);
   --letter-spacing-body: 0.02em;
