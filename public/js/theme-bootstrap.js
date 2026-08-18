@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const getSystemTheme = () =>
     window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"

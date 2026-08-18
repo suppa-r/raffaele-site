@@ -1,4 +1,4 @@
-const INTRO_THEME_CONFIG = {
+﻿const INTRO_THEME_CONFIG = {
   values: ["light", "dark", "system"],
   colorSchemeQuery: "(prefers-color-scheme: dark)",
   reducedMotionQuery: "(prefers-reduced-motion: reduce)",
@@ -29,11 +29,11 @@ const getThemeElements = () => {
   const root = getThemePage();
   return root
     ? {
-        root,
-        trigger: root.querySelector(INTRO_THEME_CONFIG.selectors.trigger),
-        menu: root.querySelector(INTRO_THEME_CONFIG.selectors.menu),
-        options: [...root.querySelectorAll(INTRO_THEME_CONFIG.selectors.option)],
-      }
+      root,
+      trigger: root.querySelector(INTRO_THEME_CONFIG.selectors.trigger),
+      menu: root.querySelector(INTRO_THEME_CONFIG.selectors.menu),
+      options: [...root.querySelectorAll(INTRO_THEME_CONFIG.selectors.option)],
+    }
     : {};
 };
 

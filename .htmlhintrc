@@ -10,5 +10,7 @@
   "src-not-empty": true,
   "title-require": true,
   "alt-require": true,
-  "doctype-html5": true
+  "doctype-html5": true,
+  "indent-width": 2,
+  "line-end-style": "lf"
 }

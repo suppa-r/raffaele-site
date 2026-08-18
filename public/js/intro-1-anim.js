@@ -1,5 +1,4 @@
-/* global gsap */
-/* Standalone entrance animations for intro-1.html; does not touch introgasp.js state. */
+﻿/* Standalone entrance animations for intro-1.html; does not touch introgasp.js state. */
 
 const INTRO1_PAGE_MARKER = ".intro-1-page-title";
 const INTRO1_NAV_ITEMS_TARGET = "header .nav-links .nav__item";

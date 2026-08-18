@@ -1,4 +1,4 @@
-/* global SplitType, Lenis */
+﻿/* global SplitType, Lenis */
 
 let lenis;
 let splitInstance;

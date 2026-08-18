@@ -1,4 +1,4 @@
-const THEME_TRANSITION_CLASS = "theme-transitioning";
+﻿const THEME_TRANSITION_CLASS = "theme-transitioning";
 const VALID_THEMES = ["dark", "light", "auto"];
 
 let themeTransitionTimeoutId = null;
@@ -199,6 +199,7 @@ function setTheme(theme) {
         });
       return;
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error("View transition error:", e);
       document.documentElement.classList.remove(THEME_TRANSITION_CLASS);
     }
