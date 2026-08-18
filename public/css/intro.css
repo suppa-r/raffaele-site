@@ -24,18 +24,25 @@ body {
 	transform: translateY(-100%);
 	transition: transform 0.6s ease-in-out;
 	overflow-y: auto;
+	pointer-events: none;
 	--nav-close-delay: 1.2s;
 	background-color: transparent;
+}
+
+.open-overlay[aria-expanded="true"] {
+	z-index: 1300;
 }
 
 .overlay-navigation.overlay-slide-down {
 	transform: translateY(0);
 	transition-delay: 0s;
+	pointer-events: auto;
 }
 
 .overlay-navigation.overlay-slide-up {
 	transform: translateY(-100%);
 	transition-delay: 0s;
+	pointer-events: none;
 }
 
 nav,
@@ -55,13 +62,16 @@ nav ul {
 }
 
 nav ul li {
-	flex: 0 0 20vh;
-	height: 20vh;
-	width: 100%;
+	flex: 0 0 clamp(11rem, 20vh, 18rem);
+	height: clamp(7rem, 15vh, 12rem);
+	width: clamp(15rem, 28vw, 20rem);
+	gap: var(--space-s);
 	overflow: hidden;
 	transform: translateY(-100%);
-	/* background-color: var(--base-color); */
+	margin-block: clamp(0.5rem, 1vw, 1rem);
+	padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 3vw, 2rem);
 	z-index: 1000;
+	border-radius: var(--border-radius);
 }
 
 nav li a {
@@ -191,10 +201,11 @@ header {
 	align-items: center;
 	gap: var(--space-s);
 	margin-block-start: var(--space-xs);
-	padding: 0 var(--space-m);
-	z-index: 1100;
+	padding: 0 clamp(0.75rem, 2vw, 1.5rem);
+	z-index: 1200;
 	font-size: var(--fs-100);
 	position: relative;
+	isolation: isolate;
 }
 
 header::before {
@@ -203,7 +214,7 @@ header::before {
 	inset: 0;
 	background-color: var(--base-color);
 	border-radius: var(--space-xl);
-	z-index: -1;
+	z-index: 0;
 	transition: opacity 0.2s ease 0.65s;
 }
 
@@ -216,9 +227,11 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 	display: inline-flex;
 	align-items: center;
 	white-space: nowrap;
-  width: fit-content;
+	width: fit-content;
 	max-inline-size: none;
 	margin: 0;
+	position: relative;
+	z-index: 1;
 }
 
 .header-title span {
@@ -228,12 +241,23 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 
 .open-overlay {
 	position: relative;
-	z-index: 1101;
+	z-index: 1300;
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	gap: var(--space-2xs);
+	pointer-events: auto;
+	touch-action: manipulation;
+}
+
+@media (max-width: 767px) {
+	.open-overlay {
+		position: fixed;
+		top: clamp(0.85rem, 2vw, 1.2rem);
+		right: clamp(0.85rem, 2vw, 1.2rem);
+		z-index: 2000;
+	}
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
@@ -269,8 +293,8 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 
 .open-overlay span {
 	display: block;
-	width: var(--space-m);
-	height: 1px;
+	width: clamp(0.8rem, 1.2vw, 1.1rem);
+	height: clamp(1px, 0.1vw, 2px);
 	background-color: var(--text-color);
 	cursor: pointer;
 }
@@ -305,11 +329,11 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 	}
 
 	50% {
-		transform: translateY(9px);
+		transform: translateY(clamp(0.35rem, 1vw, 0.65rem));
 	}
 
 	80% {
-		transform: translateY(6px);
+		transform: translateY(clamp(0.2rem, 0.7vw, 0.45rem));
 	}
 
 	100% {
@@ -323,11 +347,11 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 	}
 
 	50% {
-		transform: translateY(-9px);
+		transform: translateY(clamp(-0.65rem, -1vw, -0.35rem));
 	}
 
 	80% {
-		transform: translateY(-6px);
+		transform: translateY(clamp(-0.45rem, -0.7vw, -0.2rem));
 	}
 
 	100% {
@@ -519,12 +543,16 @@ footer {
 @media (min-width: 768px) {
 	nav ul {
 		flex-direction: row;
+		gap: var(--space-s);
 	}
 
-	nav ul li {
-		flex: 0 0 20vw;
-		height: 100svh;
+nav ul li {
+		flex: 0 0 clamp(14rem, 20vw, 24rem);
+		height: clamp(24rem, 80svh, 42rem);
 		width: auto;
+		padding: clamp(1rem, 2vw, 2rem) clamp(1.25rem, 2.5vw, 2.5rem);
+		z-index: 1000;
+		border-radius: var(--border-radius);
 	}
 
 	header {

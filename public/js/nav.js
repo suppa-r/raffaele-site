@@ -267,18 +267,27 @@ function bindOverlayNavigation() {
     el.classList.add(add);
   };
 
-  const handler = () => {
+  const handler = (event) => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     const topBar = document.querySelector(".bar-top");
     const middleBar = document.querySelector(".bar-middle");
     const bottomBar = document.querySelector(".bar-bottom");
+    const isOpen = openOverlay.getAttribute("aria-expanded") === "true";
     let overlayNavigation = document.querySelector(".overlay-navigation");
 
+    openOverlay.style.pointerEvents = "auto";
+    openOverlay.style.zIndex = "2000";
+
     // OPEN
-    if (!overlayNavigation) {
+    if (!isOpen) {
       document.body.insertAdjacentHTML("afterbegin", NAV_HTML);
       overlayNavigation = document.querySelector(".overlay-navigation");
       overlayNavigation.classList.add("overlay-active");
-      // Force reflow so the browser registers translateY(-100%) before transitioning
+      overlayNavigation.style.pointerEvents = "auto";
       overlayNavigation.getBoundingClientRect();
       overlayNavigation.classList.add("overlay-slide-down");
       openOverlay.setAttribute("aria-label", "Close navigation menu");
@@ -294,8 +303,6 @@ function bindOverlayNavigation() {
     }
 
     // CLOSE
-    openOverlay.setAttribute("aria-label", "Open navigation menu");
-    openOverlay.setAttribute("aria-expanded", "false");
     toggleBar(topBar, "animate-top-bar", "animate-out-top-bar");
     toggleBar(middleBar, "animate-middle-bar", "animate-out-middle-bar");
     toggleBar(bottomBar, "animate-bottom-bar", "animate-out-bottom-bar");
@@ -304,18 +311,17 @@ function bindOverlayNavigation() {
     navItems.forEach((item, i) => {
       if (i >= NAV_CLOSE_CLASSES.length) return;
       item.classList.remove(NAV_OPEN_CLASSES[i]);
-      // Reverse order: last item exits first, first item exits last
       item.classList.add(NAV_CLOSE_CLASSES[lastIndex - i]);
     });
-    // Wait for ALL items to finish animating before sliding the overlay up
-    // Last item: delay 0.48s + duration 0.3s = 0.78s total
     const CLOSE_TOTAL_MS = 800;
     setTimeout(() => {
+      openOverlay.setAttribute("aria-label", "Open navigation menu");
+      openOverlay.setAttribute("aria-expanded", "false");
       overlayNavigation.classList.replace(
         "overlay-slide-down",
         "overlay-slide-up",
       );
-      // overlay transition is 0.6s, remove after it completes
+      overlayNavigation.style.pointerEvents = "none";
       overlayNavigation.addEventListener(
         "transitionend",
         () => overlayNavigation.remove(),
@@ -330,6 +336,7 @@ function bindOverlayNavigation() {
     (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
+        e.stopPropagation();
         handler();
       }
     },
