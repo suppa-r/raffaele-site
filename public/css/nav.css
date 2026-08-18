@@ -191,10 +191,6 @@ nav li a:hover::after {
     }
 }
 
-
-
-
-
 .open-overlay {
     opacity: 1;
     position: relative;
@@ -213,18 +209,6 @@ nav li a:hover::after {
     border: 0;
     cursor: pointer;
     z-index: 2001;
-}
-
-body:has(.open-overlay[aria-expanded="true"]) main,
-body:has(.open-overlay[aria-expanded="true"]) footer {
-    opacity: 0;
-    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body:has(.open-overlay[aria-expanded="false"]) main,
-body:has(.open-overlay[aria-expanded="false"]) footer {
-    opacity: 1;
-    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
@@ -397,16 +381,6 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
     transform: translateY(-100%);
     transition-delay: 0s;
     pointer-events: none;
-}
-
-.overlay-navigation.overlay-slide-down {
-    transform: translateY(0);
-    transition-delay: 0s
-}
-
-.overlay-navigation.overlay-slide-up {
-    transform: translateY(-100%);
-    transition-delay: 0s
 }
 
 .open-overlay[aria-expanded="true"] {
