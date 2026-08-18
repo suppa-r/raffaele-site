@@ -242,11 +242,8 @@ function bindOverlayNavigation() {
   const NAV_HTML = `<div class="overlay-navigation">
 		<nav role="navigation">
 			<ul>
-				<li><a href="index.html" data-content="start over">home</a></li>
 				<li><a href="intro-1.html" data-content="hmmmmmm">about me</a></li>
-				<li><a href="#" data-content="things; though, never built!">revit</a></li>
-				<li><a href="#" data-content="simple things">stuff</a></li>
-				<li><a href="#" data-content="coffee's on me">call me</a></li>
+        <li><a href="index.html" data-content="start over">home</a></li>
 			</ul>
 		</nav>
 	</div>`;
@@ -254,16 +251,10 @@ function bindOverlayNavigation() {
   const NAV_OPEN_CLASSES = [
     "slide-in-nav-item",
     "slide-in-nav-item-delay-1",
-    "slide-in-nav-item-delay-2",
-    "slide-in-nav-item-delay-3",
-    "slide-in-nav-item-delay-4",
   ];
   const NAV_CLOSE_CLASSES = [
     "slide-in-nav-item-reverse",
     "slide-in-nav-item-delay-1-reverse",
-    "slide-in-nav-item-delay-2-reverse",
-    "slide-in-nav-item-delay-3-reverse",
-    "slide-in-nav-item-delay-4-reverse",
   ];
 
   const toggleBar = (el, remove, add) => {
