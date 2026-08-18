@@ -1,12 +1,11 @@
 :root {
-
     /* ============================================
                 BASE - Mobile (320px - 479px)
             ============================================ */
     --content-max-width: min(420px, 95dvw);
-    --layout-block-gap: var(--space-2xs);
+    --layout-block-gap: clamp(0.4rem, 1.8vw, 0.7rem);
     --margin-inline: auto;
-    --padding-inline: var(--space-2xs);
+    --padding-inline: clamp(0.3rem, 1.2vw, 0.6rem);
 }
 
 html,
@@ -22,11 +21,13 @@ body {
     color: var(--text-color);
     font-size: var(--fs-0);
     line-height: 1.3;
-    letter-spacing: var(--letter-spacing-body);
     background-color: var(--base-color);
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     text-wrap: pretty;
+    text-align: start;
+    letter-spacing: 0;
+    word-spacing: normal;
     hyphens: auto;
 }
 
@@ -42,11 +43,8 @@ footer {
 .wrapper {
     position: relative;
     min-height: 100svh;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden;
     isolation: isolate;
-    display: grid;
-    align-content: start;
 }
 
 .skip-link {
@@ -97,13 +95,14 @@ button,
 input,
 label {
     margin-block: var(--layout-block-gap);
+    letter-spacing: var(--letter-spacing-heading, var(--letter-spacing));
     text-wrap: balance;
 }
 
 p {
     display: block;
     max-inline-size: min(64ch, var(--content-max-width));
-    margin-block: var(--layout-block-gap);
+    /* margin-block: var(--layout-block-gap); */
     margin-inline: auto;
     text-wrap: pretty;
 }
@@ -130,11 +129,11 @@ a:focus-visible {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-
     @view-transition {
         navigation: auto;
     }
 }
+
 
 .wrapper::before {
     --size: clamp(12px, 2vw, 24px);
@@ -142,7 +141,7 @@ a:focus-visible {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-color: var(--base-color);
+    background-color:var(--base-color);
     background-image: linear-gradient(90deg, var(--linear-gradient-image) 1px, transparent 1px), linear-gradient(var(--linear-gradient-image) 1px, transparent 1px);
     background-size: var(--size) var(--size);
     background-position: center;
@@ -158,7 +157,6 @@ a:focus-visible {
 
 @media (prefers-reduced-transparency: reduce),
 (prefers-reduced-motion: reduce) {
-
     .wrapper::before {
         mask-image: none;
         transition: none;
@@ -170,11 +168,10 @@ a:focus-visible {
     ============================================ */
 
 @media (min-width: 480px) {
-
     :root {
         --content-max-width: min(560px, 92dvw);
-        --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-        --padding-inline:var(--space-2xs);
+        --layout-block-gap: clamp(0.45rem, 1.6vw, 0.8rem);
+        --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
     .wrapper::before {
@@ -187,11 +184,10 @@ a:focus-visible {
     ============================================ */
 
 @media (min-width: 768px) {
-
     :root {
         --content-max-width: min(840px, 95dvw);
-        --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
-        --padding-inline:var(--space-2xs);
+        --layout-block-gap: clamp(0.5rem, 1.4vw, 0.85rem);
+        --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
     .wrapper::before {
@@ -204,11 +200,10 @@ a:focus-visible {
     ============================================ */
 
 @media (min-width: 1024px) {
-
     :root {
         --content-max-width: min(1040px, 95dvw);
-        --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
-        --padding-inline: var(--space-2xs);
+        --layout-block-gap: clamp(0.55rem, 1.2vw, 0.9rem);
+        --padding-inline: clamp(0.5rem, 2vw, 1rem);
     }
 
     .wrapper::before {
@@ -221,11 +216,10 @@ a:focus-visible {
     ============================================ */
 
 @media (min-width: 1200px) {
-
     :root {
         --content-max-width: min(1180px, 95dvw);
-        --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-        --padding-inline: var(--space-2xs);
+        --layout-block-gap: clamp(0.6rem, 1.3vw, 1rem);
+        --padding-inline: clamp(0.75rem, 2.2vw, 1.5rem);
     }
 
     .wrapper::before {
@@ -238,11 +232,10 @@ a:focus-visible {
     ============================================ */
 
 @media (min-width: 1440px) {
-
     :root {
         --content-max-width: min(1400px, 96dvw);
-        --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-        --padding-inline: var(--space-2xs);
+        --layout-block-gap: clamp(0.65rem, 1.2vw, 1.1rem);
+        --padding-inline: clamp(0.9rem, 2.4vw, 1.8rem);
     }
 
     .wrapper::before {
@@ -255,11 +248,10 @@ a:focus-visible {
     ============================================ */
 
 @media (min-width: 1920px) {
-
     :root {
         --content-max-width: min(1920px, 95dvw);
-        --layout-block-gap: clamp(0.75rem, 1.6vw, 1.75rem);
-        --padding-inline: var(--space-2xs);
+        --layout-block-gap: clamp(0.7rem, 1.1vw, 1.2rem);
+        --padding-inline: clamp(1rem, 2.6vw, 2.2rem);
     }
 
     .wrapper::before {

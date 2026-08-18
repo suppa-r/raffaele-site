@@ -1,316 +1,314 @@
+/* ============================================
+   BODY - Main Container
+   ============================================ */
+
 .wrapper {
-    --hero-letter-spacing-wide: clamp(0.12em, 0.11em + 0.04vw, 0.16em);
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    letter-spacing: var(--letter-spacing-body);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
+/* ============================================
+   CONTENT ELEMENTS
+   ============================================ */
 header {
-    text-align: center;
-    line-height: 1;
-    margin-block-start: var(--space-2xs-xs);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: var(--fs-100);
+  letter-spacing: var(--letter-spacing-heading);
+  gap: var(--space-xs);
+
 }
 
-.header-text,
-.header-break {
-    inline-size: 100%;
-    margin-block: 0;
-}
+ .header-text {
+    margin-block:0;
+ }
 
-.site-title {
-    font-size: var(--fs-200);
-    white-space: nowrap;
-    font-style: italic;
-    margin-inline: auto;
-    letter-spacing: 0.1em;
-    margin-block: 0;
-    padding-block-start: var(--space-s-m);
-}
+.header-break{
+    margin-block:0;
+ }
 
+/* ✅ Parent needs to be the positioning context */
 main {
-    display: grid;
-    align-content: center;
-    justify-items: center;
-    gap: var(--space-xs-s);
-    text-align: center;
-    inline-size: 100%;
-    margin-inline: auto;
-    margin-block: 0;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-l);
+ }
 
 .text-with-animation {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
-    font-family: var(--primary-font-secondary);
-    --main-enter-offset: -6vw;
-    text-align: center;
-    font-size: var(--fs-400);
-    font-style: italic;
-    white-space: nowrap;
-    letter-spacing: var(--letter-spacing-heading-desktop);
-    margin-block: var(--space-xs-s);
+  font-family: var(--primary-font-secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs-s);
+  font-size: var(--fs-400);
+  letter-spacing: var(--space-xs-s);
 }
 
-.text-with-animation span:first-child {
-    position: relative;
+.text-with-animation span:first-of-type {
+  position: relative;
+  opacity: 0;
+}
+
+.text-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+}
+
+.subtext-with-animation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-m);
+  font-size: var(--fs-200);
+  letter-spacing: clamp(0.2em, 0.08em + 0.12vw, 0.28em);
+ }
+
+.subtext-with-animation span:first-of-type {
+  position: relative;
+  opacity: 0;
+}
+
+.subtext-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+}
+
+.subtext-with-animation-0 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-m);
+  font-size: var(--fs-200);
+  letter-spacing: clamp(0.2em, 0.08em + 0.12vw, 0.28em);
+
+}
+
+.subtext-with-animation-0 span:first-of-type {
+  position: relative;
+  opacity: 0;
+}
+
+.subtext-with-animation-0 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+}
+
+.subtext-with-animation-1 {
+  font-family: var(--primary-font-secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-l);
+  font-size: var(--fs-700);
+}
+
+.subtext-with-animation-1 span:first-of-type {
+  position: relative;
+  opacity: 0;
+}
+
+@keyframes word-animation {
+  0% {
+    transform: translateX(30vw);
     opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 0.9;
+  }
 }
 
-.text-with-animation span:last-child {
-    position: relative;
+@keyframes word-animation-1 {
+  0% {
+    transform: translateX(-30vw);
     opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 0.9;
+  }
 }
 
-.text-with-animation-1 {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
-    --main-enter-offset: -6vw;
-    text-align: center;
-    font-size: var(--fs-300);
-    font-style: italic;
-    white-space: nowrap;
-    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
-    font-weight: 500;
-}
-
-.text-with-animation-1 span:first-child {
-    position: relative;
+@keyframes word-animation-1-reverse {
+  0% {
+    transform: translateX(30vw);
     opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 0.9;
+  }
 }
 
-.text-with-animation-1 span:nth-child(2) {
-    position: relative;
-    opacity: 0;
-}
+@keyframes word-animation-2 {
+  0% {
+    transform: translateY(-30svh);
+    opacity: 1;
+  }
 
-.text-with-animation-1 span:last-child {
-    position: relative;
-    opacity: 0;
-}
+  50% {
+    transform: translateY(-15svh);
+    opacity: 1;
+  }
 
-.text-with-animation-2 {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
-    --main-enter-offset: -6vw;
-    text-align: center;
-    font-size: var(--fs-300);
-    font-style: italic;
-    white-space: nowrap;
-    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
-    font-weight: 500;
-}
-
-.text-with-animation-2 span:first-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-2 span:nth-child(2) {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-2 span:last-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation span,
-.text-with-animation-1 span,
-.text-with-animation-2 span {
-    display: inline-block;
-    will-change: transform, opacity;
-}
-
-.text-with-animation-3 {
-    justify-self: center;
-    inline-size: fit-content;
-    margin-inline: auto;
-    font-family: var(--primary-font-secondary);
-    font-size: var(--fs-700);
-    text-align: center;
-    font-style: italic;
-    font-weight: 600;
-    opacity: 0;
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .btn {
-    width: fit-content;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    margin-inline: auto;
-    margin-top: 0.1rem;
-    box-shadow: 0 20px 10px 0 var(--text-color);
-    isolation: isolate;
-    z-index: 10;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    position: relative;
-    padding: var(--space-2xs-xs) var(--space-m-l);
-    color: var(--text-color);
-    background: var(--base-color);
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  width: fit-content;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 10px 0 var(--text-color);
+  isolation: isolate;
+  z-index: 10;
+  border-radius: 100px;
+  text-decoration: none;
+  position: relative;
+  padding: var(--space-2xs) var(--space-xl);
+  color: var(--text-color);
+  background: var(--base-color);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.2s;
 }
 
 .particle {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: var(--text-color);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 1;
-    transform: translate(0, 0);
-    animation: particleAnim 1s ease-out forwards
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--text-color);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 1;
+  transform: translate(0, 0);
+  animation: particleAnim 1s ease-out forwards;
 }
 
 @keyframes particleAnim {
-
-    to {
-        opacity: 0;
-        transform: translate(var(--tx), var(--ty))
-    }
+  to {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty));
+  }
 }
 
 .btn svg {
-    width: var(--space-m-l);
-    height: var(--space-m-l);
-    fill: var(--text-color);
-    transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  width: var(--space-l);
+  height: var(--space-l);
+  fill: var(--text-color);
+  transition:
+    fill 0.3s,
+    transform 0.3s;
+  margin-inline: auto;
 }
 
 .btn:hover svg {
-    transform: scale(1.5) rotate(45deg);
-    opacity: 0.6;
-}
-
-@media (hover:none) and (pointer:coarse) {
-
-    .btn {
-        -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
-        touch-action: manipulation;
-        transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .btn:active {
-        transform: scale(1);
-        box-shadow: 0 12px 8px 0 var(--text-color);
-    }
-
-    .btn svg {
-        transition: fill 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .btn:active svg {
-        transform: scale(1.12) rotate(12deg);
-    }
-
-    @supports (-webkit-touch-callout: none) {
-
-        .btn {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-        }
-
-        .btn:active {
-            transform: scale(1);
-            box-shadow: 0 10px 7px 0 var(--text-color);
-        }
-
-        .btn:active svg {
-            transform: scale(1.08) rotate(10deg);
-        }
-    }
+  transform: scale(1.5) rotate(45deg);
+  fill: var(--text-color);
+  transition:
+    fill 0.3s,
+    transform 0.3s;
+  margin-inline: auto;
 }
 
 .button-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    pointer-events: none;
-    position: relative;
-    margin-inline: auto;
-    padding: var(--space-4xs-3xs) var(--space-2xs-xs);
-    z-index: 12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  position: relative;
+  margin-inline: auto;
+  z-index: 12;
 }
 
-/* --------------------------------------- */
-/* ----- Footer ----- */
-/* --------------------------------------- */
-
 footer {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-    margin-block-end: var(--space-xs-s);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: var(--space-xs);
 }
 
 .footer-text {
-    white-space: nowrap;
-    padding-inline-start: var(--space-s-m);
-    color: var(--text-color-1);
-    opacity: 1;
-    text-shadow: var(--content-legibility-shadow);
-    font-weight: 550;
+  display: inline-block;
+  width: fit-content;
+  max-inline-size: none;
+  margin-inline: 0;
+ }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable animations on custom elements */
+  .up,
+  .down,
+  .up::before,
+  .down::before {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .up,
+  .down {
+    transform: translateY(0);
+  }
+
+  .up::before,
+  .down::before {
+    opacity: 0;
+  }
+
+  /* Disable large button animations */
+  .btn,
+  .btn svg {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .btn:hover {
+    box-shadow: 0 20px 10px 0 var(--text-color);
+  }
+
+  .btn:focus-visible {
+    outline: 6px solid var(--focus-ring-color);
+    background-color: var(--text-color);
+    color: var(--base-color);
+    box-shadow: 0 0 50px 10px var(--text-color);
+  }
 }
 
-[data-theme="light"] .footer-text,
-[data-theme="light"] #theme-selector-label {
-    /* shadow blooms light in light mode; remove it and go heavier */
-    text-shadow: none;
-    font-weight: 600;
+@media (max-width: 480px) {
+.text-with-animation {
+  font-family: var(--primary-font-secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs-s);
+  font-size: var(--fs-400);
+  letter-spacing: var(--space-2xs);
 }
 
-.theme-switcher {
-    margin-inline-end: var(--space-s-m);
+.text-with-animation span:first-of-type {
+  position: relative;
+  opacity: 0;
 }
 
-@media (prefers-reduced-motion:reduce) {
-
-    .btn,
-    .btn svg {
-        transition: none !important;
-        transform: none !important
-    }
-
-
-    .btn:hover {
-        box-shadow: 0 20px 10px 0 var(--text-color)
-    }
-
-
-    .btn:focus-visible {
-        outline: 6px solid var(--focus-ring-color);
-        background-color: var(--text-color);
-        color: var(--base-color);
-        box-shadow: 0 0 50px 10px var(--text-color)
-    }
+.text-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
 }
-
-@media (max-width: 600px) {
-
-    .text-with-animation {
-        letter-spacing: var(--letter-spacing-heading-mobile);
-    }
-
-    footer {
-        padding-inline: 0;
-    }
-
-    .footer-text {
-        white-space: nowrap;
-        padding-inline-start: 0;
-    }
 }

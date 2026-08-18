@@ -24,7 +24,7 @@ const intro = document.querySelector(".intro");
             navLinks.style.display = isMenuOpen ? "block" : "none";
             intro.style.display = isMenuOpen ? "none" : "block";
             logo.style.display = isMenuOpen ? "none" : "block";
-        
+
 
             //overlay.classList.toggle('active');
             document.body.style.overflow = isMenuOpen ? "block" : "";

@@ -7,19 +7,13 @@
   const getSavedTheme = () => {
     try {
       const saved = localStorage.getItem("theme");
-      if (saved === "auto") {
-        localStorage.setItem("theme", "system");
-        return "system";
-      }
-
-      return ["light", "dark", "system"].includes(saved) ? saved : "system";
+      return ["light", "dark", "auto"].includes(saved) ? saved : "auto";
     } catch {
-      return "system";
+      return "auto";
     }
   };
 
-  const resolveTheme = (theme) =>
-    theme === "system" ? getSystemTheme() : theme;
+  const resolveTheme = (theme) => (theme === "auto" ? getSystemTheme() : theme);
 
   const actualTheme = resolveTheme(getSavedTheme());
   const current = document.documentElement.getAttribute("data-theme");
@@ -27,4 +21,14 @@
   if (current !== actualTheme) {
     document.documentElement.setAttribute("data-theme", actualTheme);
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = getSavedTheme();
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute(
+        "aria-pressed",
+        button.dataset.themeToggle === savedTheme ? "true" : "false",
+      );
+    });
+  });
 })();
