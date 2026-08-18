@@ -2,6 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "htmlhint.vscode-htmlhint"
+    "htmlhint.vscode-htmlhint",
+    "anikethsaha.htmllinter"
   ]
 }
