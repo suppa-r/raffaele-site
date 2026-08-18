@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+public/node_modules/
+
+# npm package lock files created inside node_modules
+**/.package-lock.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.*.local

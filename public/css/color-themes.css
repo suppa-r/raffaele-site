@@ -1,11 +1,6 @@
-﻿/* ============================================
-   --- COLOR THEMES - LIGHT & DARK 
-   --- Fallback for older browsers - RGB/HEX 
-   ============================================ */
-
 [data-theme="dark"] {
-        --base-color: #0c0c0cf5;
-        --text-color: #f3ececf5;
+        --base-color: #222222;
+        --text-color: #f9f9f9;
         --text-color-1: #ffffffff;
         --text-span: #4d83a0;
         --nav-contrast-color: #000000;
@@ -17,29 +12,30 @@
         --shadow-color-secondary: rgb(0 0 0 / 80%);
         --shadow-color-tertiary: rgb(0 0 0 / 60%);
         --gradient-header: linear-gradient(90deg,
-                        rgba(255, 255, 255, 0.75),
-                        rgba(198, 217, 231, 0.70),
-                        rgba(148, 193, 204, 0.65),
-                        rgb(38, 88, 94));
+                        rgb(77 136 133 / 11%),
+                        rgb(79 102 102 / 18.5%),
+                        rgb(79 96 100 / 65%),
+                        rgb(68 99 102));
         --gradient: linear-gradient(90deg,
-                        #4d83a0,
-                        #000000,
-                        #4d83a0);
+                        #a1c4ca99,
+                        #6d606099,
+                        #8ebcc499);
         --backdrop-blur: blur(0px);
         --glow-background: radial-gradient(ellipse,
-                        rgb(255 255 255 / 40%) 0%,
+                        rgb(255 255 255 / 20%) 0%,
                         rgb(255 255 255 / 20%) 50%,
                         transparent 100%);
-        /* On the element */
-        --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.514), 0 2px 6px rgba(255, 255, 255, 0.623);
-        --linear-gradient-image: #ffffff41;
-        --blend-mode: normal;
+        --box-shadow: 0 0 12px rgb(255 255 255 / 70%), 0 0 6px rgb(255 255 255 / 55%);
+        --linear-gradient-image: #8b858573;
+        --theme-switcher-background-color: #252121;
+        --blend-mode: screen;
+        --content-legibility-shadow: 0 1px 0 rgb(12 12 12 / 48%), 0 0 18px rgb(12 12 12 / 26%);
 }
 
 [data-theme="light"] {
-        --base-color: #f3ecec;
-        --text-color: #000000;
-        --text-color-1: #ffffffff;
+        --text-color: #222222;
+        --base-color: #f4f4f4;
+        --text-color-1: #000000;
         --text-span: #4d83a0;
         --nav-contrast-color: #ffffff;
         --focus-ring-color: #2a2a2a;
@@ -50,98 +46,99 @@
         --shadow-color-secondary: rgb(0 0 0 / 80%);
         --shadow-color-tertiary: rgb(0 0 0 / 60%);
         --gradient-header: linear-gradient(90deg,
-                        rgba(255, 255, 255, 0.75),
-                        rgba(198, 217, 231, 0.70),
-                        rgba(148, 193, 204, 0.65),
-                        rgb(38, 88, 94));
+                        rgb(96 112 112 / 67.1%),
+                        rgb(216 233 233 / 18.5%),
+                        rgb(205 222 226 / 65%),
+                        rgb(206 226 228));
         --gradient: linear-gradient(90deg,
-                        #4d83a0,
-                        #000000,
-                        #4d83a0);
+                        #a1c4ca99,
+                        #6d606099,
+                        #8ebcc499);
         --backdrop-blur: blur(0px);
         --glow-background: radial-gradient(ellipse,
                         rgb(255 255 255 / 40%) 0%,
                         rgb(255 255 255 / 20%) 50%,
                         transparent 100%);
-        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.555), 0 2px 6px rgba(0, 0, 0, 0.671);
-        --linear-gradient-image: rgba(122, 110, 110, 0.493);
+        --box-shadow: 0 0 12px rgb(0 0 0 / 62%), 0 0 6px rgb(0 0 0 / 48%);
+        --linear-gradient-image: #0e0d0d2f;
+        --theme-switcher-background-color: #f7f0f0;
         --blend-mode: multiply;
+        --content-legibility-shadow: 0 1px 0 rgb(243 236 236 / 42%), 0 0 14px rgb(243 236 236 / 18%);
 }
 
-/* ============================================
-   --- COLOR THEMES - LIGHT & DARK 
-   --- Modern browsers - OKLCH ---
-   ============================================ */
+@supports (color:oklch(0% 0 0deg)) {
 
-@supports (color: oklch(0% 0 0deg)) {
         [data-theme="dark"] {
-                --base-color: oklch(15.434% 0.00002 271.152deg / 0.961);
-                --text-color: oklch(94.854% 0.00754 16.503deg / 0.961);
-                --text-color-1: oklch(100% 0.00011 271.152deg);
-                --text-span: oklch(58.418% 0.07273 233.425deg);
+                --base-color: oklch(25.197% 0.00003 271.152deg);
+                --text-color: oklch(98.212% 0.00011 271.152deg);
+                --text-color-1: oklch(100% 0.0001 271.152deg);
+                --text-span: oklch(58.418% 0.0727 233.425deg);
                 --nav-contrast-color: oklch(0% 0 0deg);
-                --focus-ring-color: oklch(84.522% 0.0001 271.152deg / 0.8);
-                --clr-warn-1: oklch(26.825% 0.01173 67.237deg);
-                --clr-warn-2: oklch(70.585% 0.05387 65.772deg);
+                --focus-ring-color: oklch(84.522% 0.0001 271.152deg / 80%);
+                --clr-warn-1: oklch(26.825% 0.0117 67.237deg);
+                --clr-warn-2: oklch(70.585% 0.0539 65.772deg);
                 --clr-warn-text: oklch(88.169% 0.0279 67.376deg);
-                --shadow-color-primary: oklch(23.503% 0.00003 271.152deg);
-                --shadow-color-secondary: oklch(0% 0 0deg / 0.8);
-                --shadow-color-tertiary: oklch(0% 0 0deg / 0.6);
+                --shadow-color-primary: oklch(23.503% 0.0000 271.152deg);
+                --shadow-color-secondary: oklch(0% 0 0deg / 80%);
+                --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
                 --gradient-header: linear-gradient(90deg,
-                                oklch(100% 0.00011 271.152deg / 0.55),
-                                oklch(87.537% 0.02827 239.811deg / 0.6),
-                                oklch(78.255% 0.05003 214.464deg / 0.4),
-                                oklch(42.877% 0.05428 205.934deg));
+                                oklch(58.578% 0.06206 191.437deg / 11%),
+                                oklch(49.172% 0.02746 196.407deg / 18.5%),
+                                oklch(47.628% 0.02178 213.684deg / 65%),
+                                oklch(47.679% 0.03648 203.662deg));
                 --gradient: linear-gradient(90deg,
-                                oklch(58.418% 0.07273 233.425deg),
-                                oklch(0% 0 0deg),
-                                oklch(58.418% 0.07273 233.425deg));
+                                oklch(79.668% 0.03844 209.228deg / 60%),
+                                oklch(50.146% 0.01675 17.538deg / 60%),
+                                oklch(76.5% 0.05 210.5deg / 60%));
                 --backdrop-blur: blur(7px);
                 --glow-background: radial-gradient(ellipse,
-                                oklch(100% 0.00011 271.152deg / 0.4) 0%,
-                                oklch(100% 0.00011 271.152deg / 0.2) 50%,
+                                oklch(100% 0.0001 271.152deg / 40%) 0%,
+                                oklch(100% 0.0001 271.152deg / 20%) 50%,
                                 transparent 100%);
-                --box-shadow: 0 4px 12px oklch(100% 0.00011 271deg/ 0.541), 0 2px 6px oklch(100% 0.00011 271deg / 0.849);
-                --linear-gradient-image: oklch(100% 0.00011 271.152deg / 0.255);
-                --blend-mode: normal;
-        }
-
-        [data-theme="light"] {
-                --base-color: oklch(94.854% 0.00754 16.503deg);
-                --text-color: oklch(0% 0 0deg);
-                --text-color-1: oklch(100% 0.00011 271.152deg);
-                --text-span: oklch(58.418% 0.07273 233.425deg);
-                --nav-contrast-color: oklch(100% 0.00011 271.152deg);
-                --focus-ring-color: oklch(28.502% 0.00003 271.152deg);
-                --clr-warn-1: oklch(94.257% 0.00852 67.441deg);
-                --clr-warn-2: oklch(59.043% 0.02764 61.282deg);
-                --clr-warn-text: oklch(30.929% 0.02369 53.155deg);
-                --shadow-color-primary: oklch(23.503% 0.00003 271.152deg);
-                --shadow-color-secondary: oklch(0% 0 0deg / 0.8);
-                --shadow-color-tertiary: oklch(0% 0 0deg / 0.6);
-                --gradient-header: linear-gradient(90deg,
-                                oklch(100% 0.00011 271.152deg / 0.75),
-                                oklch(87.537% 0.02827 239.811deg / 0.7),
-                                oklch(78.255% 0.05003 214.464deg / 0.65),
-                                oklch(42.877% 0.05428 205.934deg));
-                --gradient: linear-gradient(90deg,
-                                oklch(58.418% 0.07273 233.425deg),
-                                oklch(0% 0 0deg),
-                                oklch(58.418% 0.07273 233.425deg));
-                --backdrop-blur: blur(0px);
-                --glow-background: radial-gradient(ellipse,
-                                oklch(100% 0.00011 271.152deg/ 0.4) 0%,
-                                oklch(100% 0.00011 271.152deg / 0.2) 50%,
-                                transparent 100%);
-                --box-shadow: 0 4px 12px oklch(0% 0 0deg / 0.685), 0 2px 6px oklch(0% 0 0deg / 0.815);
-                --linear-gradient-image: oklch(54.932% 0.01506 17.393deg / 0.493);
-                --blend-mode: normal;
+                --box-shadow: 0 0 12px oklch(100% 0.0001 271deg / 58%), 0 0 6px oklch(100% 0.0001 271deg / 44%);
+                --linear-gradient-image: oklch(62.193% 0.00721 16.812deg / 45.1%);
+                --pattern-opacity: 1;
+                --theme-switcher-background-color: oklch(16.8% 0.0058 17.5deg);
+                --blend-mode: screen;
+                --content-legibility-shadow: 0 1px 0 oklch(15.434% 0 271.152deg / 48%), 0 0 18px oklch(15.434% 0 271.152deg / 26%);
         }
 }
 
-/* ============================================
-   LIGHT THEME
-   ============================================ */
+[data-theme="light"] {
+        --text-color: oklch(25.197% 0.00003 271.152deg);
+        --base-color: oklab(96.71499999999999% 0 -0.00011);
+        --text-color-1: oklch(0% 0 0deg);
+        --text-span: oklch(58.418% 0.0727 233.425deg);
+        --nav-contrast-color: oklch(100% 0.0001 271.152deg);
+        --focus-ring-color: oklch(28.502% 0.0000 271.152deg);
+        --clr-warn-1: oklch(94.257% 0.0085 67.441deg);
+        --clr-warn-2: oklch(59.043% 0.0276 61.282deg);
+        --clr-warn-text: oklch(30.929% 0.0237 53.155deg);
+        --shadow-color-primary: oklch(23.503% 0.0000 271.152deg);
+        --shadow-color-secondary: oklch(0% 0 0deg / 80%);
+        --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
+        --gradient-header: linear-gradient(90deg,
+                        oklch(53.196% 0.0192 196.764deg / 67.1%),
+                        oklch(92.137% 0.0181 197.164deg / 18.5%),
+                        oklch(88.904% 0.01912 213.679deg / 65%),
+                        oklch(46.277% 0.01884 206.506deg));
+        --gradient: linear-gradient(90deg,
+                        oklch(79.668% 0.03844 209.228deg / 60%),
+                        oklch(50.146% 0.01675 17.538deg / 60%),
+                        oklch(76.5% 0.05 210.5deg / 60%));
+        --backdrop-blur: blur(0px);
+        --glow-background: radial-gradient(ellipse,
+                        oklch(100% 0.0001 271.152deg/ 40%) 0%,
+                        oklch(100% 0.0001 271.152deg / 20%) 50%,
+                        transparent 100%);
+        --box-shadow: 0 0 12px oklch(0% 0 0deg / 62%), 0 0 6px oklch(0% 0 0deg / 48%);
+        --linear-gradient-image: oklch(16.029% 0.00168 16.738deg / 18.4%);
+        --pattern-opacity: 0.9;
+        --theme-switcher-background-color: oklch(97.5% 0.004 16.5deg);
+        --blend-mode: multiply;
+        --content-legibility-shadow: 0 1px 0 oklch(94.854% 0.0075 16.503deg / 42%), 0 0 14px oklch(94.854% 0.0075 16.503deg / 18%);
+}
+
 
 [data-theme="light"] body {
         font-weight: 500;

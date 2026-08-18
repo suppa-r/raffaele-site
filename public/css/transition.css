@@ -1,15 +1,18 @@
-﻿/* ============================================
+/* ============================================
    BROWSER SUPPORT DETECTION
    ============================================ */
 
 @supports (selector(::view-transition)) {
+
     .support.view-transition {
         display: none;
     }
 }
 
 @supports (container-type: inline-size) {
+
     @container not style(--theme: green) {
+
         .support.style-query {
             display: none;
         }
@@ -41,14 +44,25 @@
    ============================================ */
 
 ::view-transition-old(root) {
-    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-out;
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-out;
 }
 
 ::view-transition-new(root) {
-    animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-in;
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-in;
+}
+
+/* Theme toggles use the same root transition motion as regular theme changes. */
+
+:root.theme-transitioning::view-transition-old(root) {
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-out !important;
+}
+
+:root.theme-transitioning::view-transition-new(root) {
+    animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-in !important;
 }
 
 @keyframes move-out {
+
     from {
         opacity: 0;
         transform: translateY(0);
@@ -61,6 +75,7 @@
 }
 
 @keyframes move-in {
+
     from {
         clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
     }
@@ -73,7 +88,9 @@
 /* ============================================
 REDUCED MOTION - disable animations only
    ============================================ */
+
 @media (prefers-reduced-motion: reduce) {
+
     ::view-transition-group(*),
     ::view-transition-old(*),
     ::view-transition-new(*) {

@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   /* Font sizes */
   --fs-1: clamp(0.8rem, 0.7847rem + 0.0765vw, 0.844rem);
   --fs-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
@@ -48,13 +48,15 @@
   --space-8xl-9xl: clamp(11rem, 10.1304rem + 4.3478vw, 13.5rem);
 
   /* Typography */
-  --primary-font: "poiret_oneregular", arial, sans-serif;
-  --primary-font-secondary: "cormorant_uprightregular", serif;
+  --primary-font: "poiret_oneregular", sans-serif;
+  --primary-font-secondary: "cormorant_uprightmedium", sans-serif;
 
   /* UI */
-  --border-radius: var(--space-xl);
+  --border-radius: var(--space-2xl);
   --theme-switcher-button-size: var(--space-l-xl);
   --theme-switcher-icon-size: var(--space-m-l);
-  --letter-spacing-body: clamp(0.02em, 0.012em + 0.03vw, 0.05em);
-  --letter-spacing-heading: clamp(0.14em, 0.06em + 0.08vw, 0.16em);
+  --letter-spacing-body: 0.02em;
+  --letter-spacing-body-1: 0.4em;
+  --letter-spacing-heading-desktop: 0.50em;
+  --letter-spacing-heading-mobile: 0.10em;
 }
