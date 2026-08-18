@@ -1,22 +1,19 @@
 {
-  "name": "raffaele-site-root",
+  "name": "raffaele-site",
   "version": "1.0.0",
-  "private": true,
+  "description": "Raffaele's personal website",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "scripts": {
     "prepare": "husky install",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
     "lint:js": "eslint **/*.js",
     "lint:css": "stylelint **/*.css",
-    "lint:html": "htmlhint **/*.html"
-  },
-  "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "htmlhint": "^1.1.4",
-    "husky": "^8.0.0",
-    "lint-staged": "^17.0.8",
-    "stylelint": "^16.3.1",
-    "stylelint-config-standard": "^36.0.0"
+    "lint:html": "htmlhint **/*.html",
+    "serve": "http-server public -p 8080 -s -c-1",
+    "test:a11y:run": "pa11y-ci",
+    "test:a11y": "start-server-and-test serve http://localhost:8080 test:a11y:run"
   },
   "lint-staged": {
     "**/*.css": [
@@ -28,5 +25,14 @@
     "**/*.html": [
       "htmlhint"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "htmlhint": "^1.1.4",
+    "husky": "^8.0.0",
+    "lint-staged": "^17.0.8",
+    "pa11y-ci": "^4.1.1",
+    "stylelint": "^16.3.1",
+    "stylelint-config-standard": "^36.0.1"
   }
 }
