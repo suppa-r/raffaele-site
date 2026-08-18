@@ -279,9 +279,6 @@ function bindOverlayNavigation() {
     const isOpen = openOverlay.getAttribute("aria-expanded") === "true";
     let overlayNavigation = document.querySelector(".overlay-navigation");
 
-    openOverlay.style.pointerEvents = "auto";
-    openOverlay.style.zIndex = "2000";
-
     // OPEN
     if (!isOpen) {
       document.body.insertAdjacentHTML("afterbegin", NAV_HTML);
