@@ -1,5 +1,4 @@
 .wrapper {
-    --hero-letter-spacing-wide: clamp(0.12em, 0.11em + 0.04vw, 0.16em);
     display: grid;
     grid-template-rows: auto 1fr auto;
     letter-spacing: var(--letter-spacing-body);
@@ -31,7 +30,7 @@ main {
     display: grid;
     align-content: center;
     justify-items: center;
-    gap: var(--space-xs-s);
+    gap: var(--space-s-m);
     text-align: center;
     inline-size: 100%;
     margin-inline: auto;
@@ -48,8 +47,7 @@ main {
     font-size: var(--fs-400);
     font-style: italic;
     white-space: nowrap;
-    letter-spacing: var(--letter-spacing-heading-desktop);
-    margin-block: var(--space-xs-s);
+    letter-spacing: var(--letter-spacing-animations);
 }
 
 .text-with-animation span:first-child {
@@ -301,11 +299,7 @@ footer {
 
 @media (max-width: 600px) {
 
-    .text-with-animation {
-        letter-spacing: var(--letter-spacing-heading-mobile);
-    }
-
-    footer {
+ footer {
         padding-inline: 0;
     }
 

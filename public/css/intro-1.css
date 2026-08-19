@@ -62,7 +62,6 @@ header::before {
     inset: 0;
     z-index: -1;
     border-radius: var(--space-l-xl);
-    opacity: 0.7;
     background: var(--gradient-header);
     -webkit-backdrop-filter: var(--backdrop-blur);
     backdrop-filter: var(--backdrop-blur);

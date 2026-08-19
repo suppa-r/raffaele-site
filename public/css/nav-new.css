@@ -1,11 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,700|Open+Sans:400italic,300italic);
-body {
-  background-color:  #000000;
-  overflow: hidden;
-
-}
-
-.home {
+/* .home {
   width: 100%;
   height: 100vh;
   position: relative;
@@ -13,8 +6,8 @@ body {
   overflow: hidden;
   /* background-image: url(https://images.unsplash.com/photo-1446771326090-d910bfaf00f6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=9216e1a8598a8530ce329b41a8f3725d);
   background-size: cover;
-  background-position: center center; */
-}
+  background-position: center center; *
+} */
 
 
 /* ====================================
@@ -176,11 +169,8 @@ Burger king
 ==================================== */
 
 .open-overlay {
- /* position: absolute;
-  right: 5rem;
-  top: 3.2rem; */
   z-index: 100;
-  width: 34px;
+  width: var(--space-m-l);
   display: block;
   cursor: pointer;
   background: transparent;
@@ -458,11 +448,7 @@ nav li a:hover::after {
   opacity: 1;
 }
 
-
-  .open-overlay {
-    right: 1rem;
-  }
-  nav li a::before {
+nav li a::before {
     width: 55px;
   }
 }
