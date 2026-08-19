@@ -34,9 +34,16 @@
   <link rel="manifest" href="favicons/site.webmanifest" />
 </head>
 
-<body data-page="index">
-  <div class="wrapper">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+<body data-page="intro-1">
+<div class="wrapper">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
+  <div class="support view-transition" role="alert" aria-live="assertive">
+    ⚠️ Your browser doesn't support View Transitions
+  </div>
+  <div class="support style-query" role="alert" aria-live="assertive">
+    ⚠️ Your browser doesn't support Style Queries
+  </div>
     <header class="header" role="banner" id="top">
       <nav aria-label="Primary">
         <ul class="nav-links" id="site-nav-links">
@@ -81,17 +88,16 @@
           </li>
         </ul>
       </nav>
-      <button class="open-overlay" type="button" aria-label="Open navigation menu" aria-controls="site-nav-links"
-        aria-expanded="false">
-        <span class="bar-top" aria-hidden="true"></span>
-        <span class="bar-middle" aria-hidden="true"></span>
-        <span class="bar-bottom" aria-hidden="true"></span>
+      <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="bar-top"></span>
+        <span class="bar-middle"></span>
+        <span class="bar-bottom"></span>
       </button>
     </header>
     <main role="main" id="main-content" tabindex="-1">
       <h1 class="visually-hidden">About me</h1>
       <div class="intro-1-page-title">
-        <p>So, you've committed this far<br>you're going to have to <span><em>LISTEN</em></span></p>
+        <p>You've committed this far<br>So, you're going to have to <span><em>LISTEN</em></span></p>
       </div>
 
       <!-- ************* early years *************** -->

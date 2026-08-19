@@ -44,7 +44,15 @@
 </head>
 
 <body data-page="intro">
-  <div class="wrapper">
+<div class="wrapper">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
+  <div class="support view-transition" role="alert" aria-live="assertive">
+    ⚠️ Your browser doesn't support View Transitions
+  </div>
+  <div class="support style-query" role="alert" aria-live="assertive">
+    ⚠️ Your browser doesn't support Style Queries
+  </div>
     <header>
       <p class="header-title">
         sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
