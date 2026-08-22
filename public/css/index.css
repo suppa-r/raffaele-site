@@ -28,7 +28,7 @@ header {
 main {
     display: grid;
     align-content: center;
-    gap: var(--space-s-m);
+    gap: var(--space-m-l);
     margin-block-start: var(--space-s-m);
 }
 
@@ -121,9 +121,10 @@ main {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-700);
     text-align: center;
-    font-style: italic;
-    font-weight: 600;
+    font-style: normal;
+    font-weight: 700;
     opacity: 0;
+    will-change: transform, opacity;
 }
 
 .btn {
