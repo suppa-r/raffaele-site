@@ -27,6 +27,8 @@
                         transparent 100%);
         --box-shadow: 0 0 12px rgb(255 255 255 / 70%), 0 0 6px rgb(255 255 255 / 55%);
         --linear-gradient-image: #8b858573;
+        --grid-background-color: #222222;
+        --grid-line-color: #8b858573;
         --theme-switcher-background-color: #252121;
         --blend-mode: screen;
         --content-legibility-shadow: 0 1px 0 rgb(12 12 12 / 48%), 0 0 18px rgb(12 12 12 / 26%);
@@ -61,6 +63,8 @@
                         transparent 100%);
         --box-shadow: 0 0 12px rgb(0 0 0 / 62%), 0 0 6px rgb(0 0 0 / 48%);
         --linear-gradient-image: #0e0d0d2f;
+        --grid-background-color: #f4f4f4;
+        --grid-line-color: #0e0d0d2f;
         --theme-switcher-background-color: #f7f0f0;
         --blend-mode: multiply;
         --content-legibility-shadow: 0 1px 0 rgb(243 236 236 / 42%), 0 0 14px rgb(243 236 236 / 18%);
@@ -97,6 +101,8 @@
                                 transparent 100%);
                 --box-shadow: 0 0 12px oklch(100% 0.0001 271deg / 58%), 0 0 6px oklch(100% 0.0001 271deg / 44%);
                 --linear-gradient-image: oklch(62.193% 0.00721 16.812deg / 45.1%);
+                --grid-background-color: oklch(25.197% 0.00003 271.152deg);
+                --grid-line-color: oklch(62.193% 0.00721 16.812deg / 45.1%);
                 --pattern-opacity: 1;
                 --theme-switcher-background-color: oklch(16.8% 0.0058 17.5deg);
                 --blend-mode: screen;
@@ -133,6 +139,8 @@
                         transparent 100%);
         --box-shadow: 0 0 12px oklch(0% 0 0deg / 62%), 0 0 6px oklch(0% 0 0deg / 48%);
         --linear-gradient-image: oklch(16.029% 0.00168 16.738deg / 18.4%);
+        --grid-background-color: oklab(96.71499999999999% 0 -0.00011);
+        --grid-line-color: oklch(16.029% 0.00168 16.738deg / 18.4%);
         --pattern-opacity: 0.9;
         --theme-switcher-background-color: oklch(97.5% 0.004 16.5deg);
         --blend-mode: multiply;
