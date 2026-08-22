@@ -1,8 +1,7 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    letter-spacing: var(--letter-spacing-body);
-}
+  }
 
 header {
     text-align: center;
@@ -29,7 +28,6 @@ header {
 main {
     display: grid;
     align-content: center;
-    justify-items: center;
     gap: var(--space-s-m);
     text-align: center;
     inline-size: 100%;
@@ -38,7 +36,6 @@ main {
 }
 
 .text-with-animation {
-    justify-self: center;
     inline-size: fit-content;
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
@@ -61,7 +58,6 @@ main {
 }
 
 .text-with-animation-1 {
-    justify-self: center;
     inline-size: fit-content;
     margin-inline: auto;
     --main-enter-offset: -6vw;
@@ -69,7 +65,7 @@ main {
     font-size: var(--fs-300);
     font-style: italic;
     white-space: nowrap;
-    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
+   letter-spacing: var(--letter-spacing-animations);
     font-weight: 500;
 }
 
@@ -89,7 +85,6 @@ main {
 }
 
 .text-with-animation-2 {
-    justify-self: center;
     inline-size: fit-content;
     margin-inline: auto;
     --main-enter-offset: -6vw;
@@ -97,7 +92,7 @@ main {
     font-size: var(--fs-300);
     font-style: italic;
     white-space: nowrap;
-    letter-spacing: calc(var(--hero-letter-spacing-wide) * 0.75);
+    letter-spacing: var(--letter-spacing-body);
     font-weight: 500;
 }
 
@@ -119,12 +114,11 @@ main {
 .text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
-    display: inline-block;
-    will-change: transform, opacity;
+    display: inline-flex;
+will-change: transform, opacity;
 }
 
 .text-with-animation-3 {
-    justify-self: center;
     inline-size: fit-content;
     margin-inline: auto;
     font-family: var(--primary-font-secondary);
