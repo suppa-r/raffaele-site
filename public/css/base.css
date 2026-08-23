@@ -39,9 +39,8 @@ footer {
 
 .wrapper {
    min-height: 100svh;
-    overflow-x: hidden;
-    overflow-y: visible;
-    isolation: isolate;
+    overflow: hidden;
+   isolation: isolate;
     background-color: var(--base-color);
   }
 
