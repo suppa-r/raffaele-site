@@ -9,7 +9,6 @@ header {
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
-    margin-block-start: var(--space-xs-s);
     padding: 0 var(--padding-inline);
     z-index: 2002;
     border-radius: var(--space-l-xl);
@@ -62,6 +61,7 @@ main p {
     overflow-wrap: anywhere;
     padding-inline: var(--padding-inline);
     text-align: center;
+    font-size: var(--fs-0);
 }
 
 main p+p {
@@ -90,7 +90,7 @@ main p:not(.wrapper-gradient-text) {
     justify-content: center;
     align-items: center;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-300);
+    font-size: var(--fs-3);
     font-style: italic;
     letter-spacing: var(--letter-spacing-animations);
     padding-block: var(--space-xs-s);
@@ -128,12 +128,12 @@ main p:not(.wrapper-gradient-text) {
 .fancy {
     padding-block: var(--space-5xs-4xs);
     font-style: italic;
-    font-size: var(--fs-100);
+    font-size: var(--fs-1);
 }
 
 .wrapper-gradient-text {
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-300);
+    font-size: var(--fs-3);
     letter-spacing: var(--letter-spacing-animations);
     white-space: nowrap;
     padding-block: var(--space-2xs-xs);
@@ -181,7 +181,16 @@ footer {
     justify-content: center;
     align-items: center;
     white-space: nowrap;
-    margin-block-end: var(--space-xs-s);
+}
+
+.theme-selector-container {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: var(--space-3xs);
+  line-height: 1;
+  font-size: var(--fs-0);
 }
 
 @media (prefers-reduced-motion:reduce) {

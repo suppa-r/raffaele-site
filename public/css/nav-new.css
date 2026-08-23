@@ -93,25 +93,24 @@ nav ul {
 
 .nav-links li a::after {
   content: attr(data-content);
-  font-size: 1.5rem;
-  transition: all .2s linear;
-  opacity: 0;
   position: absolute;
   z-index: 100;
-  color: #ffffff;
   display: block;
-  margin-right: auto;
-  margin-left: auto;
-  left: 0;
-  right: 0;
-  bottom: -220px;
-  text-transform: none;
+  color: #ffffff;
+  font-size: 1.5rem;
   font-family: 'Open sans', serif;
   font-weight: 300;
   font-style: italic;
-  letter-spacing: .3em;
- white-space: nowrap;
+  text-transform: none;
+  white-space: nowrap;
   text-align: center;
+  letter-spacing: .3em;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  bottom: -220px;
+  margin-inline: auto;
+  transition: all .2s linear;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -126,13 +125,6 @@ nav ul {
     transform: translateY(40px);
     opacity: 1;
     display: block;
-  }
-}
-
-@media (hover: none), (pointer: coarse) {
-  .nav-links li a::before,
-  .nav-links li a::after {
-    display: none;
   }
 }
 
@@ -198,18 +190,6 @@ Burger king
   background: transparent;
   border: 0;
   padding: 0;
-}
-
-body:has(.open-overlay[aria-expanded="true"]) main,
-body:has(.open-overlay[aria-expanded="true"]) footer {
-  opacity: 0;
-  transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body:has(.open-overlay[aria-expanded="false"]) main,
-body:has(.open-overlay[aria-expanded="false"]) footer {
-  opacity: 1;
-  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
@@ -435,15 +415,21 @@ Animation keyframes
   }
 
  .nav-links li {
-    margin: 2rem;
-    padding: 2rem var(--space-m-l);
+    position: relative;
+    margin:var(--space-l);
+    padding:var(--space-m) var(--space-l);
   }
 
 .nav-links li a {
-    font-size: 1.5rem;
+    font-size: var(--fs-2);
   }
 
+  /* the li-anchored line below replaces the mobile a-anchored line */
   .nav-links li a::before {
+    display: none;
+  }
+
+  .nav-links li::before {
     content: '';
     width: 80px;
     height: 1.2px;
@@ -460,27 +446,17 @@ Animation keyframes
   }
 
   .nav-links li a::after {
-    content: attr(data-content);
-    font-size: 1.5rem;
-    transition: all .2s linear;
-    opacity: 0;
-    position: absolute;
-    z-index: 100;
-    color: #ffffff;
     display: inline-block;
-    margin-right: auto;
-    margin-left: auto;
+    font-size: var(--fs-2);
+    letter-spacing: 0;
     left: 0%;
+    right: auto;
+    bottom: auto;
     top: 100%;
     transform: translate(-50%, var(--space-2xs));
-    text-transform: none;
-    font-family: 'Open sans', serif;
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: 0;
   }
 
-  .nav-links li a:hover::before {
+  .nav-links li:hover::before {
     transform: scaleX(1);
     opacity: 1;
   }
@@ -488,9 +464,5 @@ Animation keyframes
   .nav-links li a:hover::after {
     transform: translate(-50%, var(--space-s));
     opacity: 1;
-  }
-
-  .nav-links li a:hover::before {
-    width: 80px;
   }
 }
