@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="js-intro-anim">
 
 <head>
   <meta charset="UTF-8" />
@@ -57,15 +57,16 @@
       <p class="header-title">
         sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
       </p>
-      <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false">
+      <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false"
+        aria-controls="intro-overlay-navigation">
         <span class="bar-top"></span>
         <span class="bar-middle"></span>
         <span class="bar-bottom"></span>
       </button>
     </header>
-    <div class="overlay-navigation" aria-hidden="true">
+    <div id="intro-overlay-navigation" class="overlay-navigation" aria-hidden="true">
       <nav role="navigation" aria-label="Main navigation">
-        <ul>
+        <ul class="nav-links">
           <li><a href="index.html" data-content="The beginning">home</a></li>
           <li><a href="intro-1.html" data-content="Curious?">about me</a></li>
         </ul>
@@ -77,8 +78,8 @@
         <span>genesis</span>
       </div>
       <p>Once upon a time it began</p>
-      <p>If I had a secret .. telling it now!</p>
-      <p class="fancy">Mercy, is never overrated</p>
+      <p>If I had a secret .. I'm telling it now!</p>
+      <p class="fancy">Mercy is never overrated</p>
       <p class="fancy">
         with a whole lotta Grace from <span aria-label="John 3:16">3:16</span>
       </p>

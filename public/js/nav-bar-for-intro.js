@@ -207,6 +207,10 @@ function setMenuState(isOpen, options = {}) {
     }
   }
 
+  if (!isMenuOpen && overlayNavigation?.contains(document.activeElement)) {
+    menu?.focus({ preventScroll: true });
+  }
+
   navlinks?.classList.toggle("open", isMenuOpen);
   if (overlayNavigation) {
     overlayNavigation.classList.toggle("overlay-slide-down", isMenuOpen);

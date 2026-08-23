@@ -10,12 +10,13 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-block-start: var(--space-xs-s);
+    padding: 0 var(--padding-inline);
     z-index: 2002;
     border-radius: var(--space-l-xl);
     position: relative;
     isolation: isolate;
     line-height: 1;
- background: transparent;
+    background: transparent;
 }
 
 header::before {
@@ -34,20 +35,12 @@ html.intro-nav-open header::before {
     opacity: 0;
 }
 
-html.intro-nav-open .header-title {
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-}
-
 .header-title {
-    text-align: start;
-    font-family: var(--primary-font-secondary);
     margin-block: 0;
 }
 
 .header-title span {
-    margin-inline-end: 0;
+    margin-inline-end: var(--space-3xs-2xs);
     color: var(--text-span);
 }
 
@@ -72,7 +65,7 @@ main p {
 }
 
 main p+p {
-    margin-block-start: 0.25rem;
+    margin-block-start: var(--space-3xs);
 }
 
 main p:not(.wrapper-gradient-text) {
@@ -133,15 +126,9 @@ main p:not(.wrapper-gradient-text) {
 }
 
 .fancy {
-    padding-block: var(--space-3xs-2xs);
+    padding-block: var(--space-5xs-4xs);
     font-style: italic;
     font-size: var(--fs-100);
-}
-
-.p-large {
-    padding-block: var(--space-2xs-3xs);
-    font-size: var(--fs-100);
-    font-weight: 600
 }
 
 .wrapper-gradient-text {
@@ -157,7 +144,6 @@ main p:not(.wrapper-gradient-text) {
     gap: 0.45ch;
 }
 
-@media (max-width: 767.98px) {
 .text-layer {
     background: var(--gradient);
     background-size: 200% 200%;
@@ -170,7 +156,6 @@ main p:not(.wrapper-gradient-text) {
     --shadow-color-primary: rgb(255 255 255 / 70%);
     --shadow-color-secondary: rgb(255 255 255 / 30%);
     --shadow-color-tertiary: rgb(255 255 255 / 10%);
-}
 }
 
 [data-theme="light"] .text-layer {
@@ -196,19 +181,8 @@ footer {
     justify-content: center;
     align-items: center;
     white-space: nowrap;
-    margin-block-end: var(--space-2xs-xs);
+    margin-block-end: var(--space-xs-s);
 }
-
-.theme-switcher {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: end;
-    align-items: center;
-    gap: var(--space-3xs-2xs);
-    margin-block: 0;
-    margin-inline-end: var(--space-s-m);
-}
-
 
 @media (prefers-reduced-motion:reduce) {
 
