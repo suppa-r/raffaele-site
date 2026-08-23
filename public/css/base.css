@@ -38,11 +38,13 @@ footer {
 }
 
 .wrapper {
-   min-height: 100svh;
-    overflow: hidden;
-   isolation: isolate;
-    background-color: var(--base-color);
-  }
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding-block: var(--space-3xs-2xs);
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--base-color);
+}
 
 .skip-link {
     position: absolute;

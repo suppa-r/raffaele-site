@@ -207,7 +207,7 @@
   font: inherit;
   min-width: 0;
   flex-wrap: nowrap;
-  padding: var(--space-4xs) var(--space-4xs);
+  padding: 0 var(--space-4xs);
   border-radius: var(--space-3xs-2xs);
   cursor: pointer;
   font-size: 0.9rem;
@@ -221,11 +221,8 @@
   height: var(--space-xs-s);
   min-height: var(--space-xs-s);
   margin-block: 0;
-  padding-block: var(--space-4xs);
-  padding-inline: var(--space-4xs);
-  gap: var(--space-4xs);
   line-height: 1;
-  font-size: 0.9rem;
+  font-size: var(--fs-01);
 }
 
 .theme-selector.is-open .theme-option-icon {
@@ -247,7 +244,7 @@
 
 .theme-option-label {
   flex: 1 1 auto;
-  font-size: 0.9rem;
+  font-size: var(--fs-01);
   line-height: 1;
   min-width: 0;
   white-space: nowrap;
@@ -261,7 +258,7 @@
   white-space: nowrap;
   overflow-wrap: normal;
   word-break: keep-all;
-  font-size: clamp(0.68rem, 2vw, 0.78rem);
+  font-size:var(--fs-01);
   letter-spacing: 0.02em;
 }
 
@@ -277,7 +274,7 @@
   border-width: 0;
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .theme-selector-option .theme-option-label {
     flex-shrink: 0;
     min-width: max-content;
@@ -290,17 +287,17 @@
     font-size: 0.72rem;
     letter-spacing: 0.02em;
   }
-}
+} */
 
 @media (min-width: 768px) {
   .theme-selector-container {
-    display: flex;
-    flex-direction: row;
+   display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width: auto;
-    gap: var(--space-2xs);
+    gap: var(--space-4xs);
     font-size: inherit;
   }
 
@@ -324,7 +321,7 @@
 
   .theme-selector-trigger {
     gap: var(--space-3xs);
-    padding: var(--space-3xs) var(--space-2xs);
+    padding: var(--space-2xs);
     font-size: inherit;
   }
 
@@ -337,9 +334,9 @@
 
   .theme-selector-trigger-icon,
   .theme-option-icon {
-    width: var(--space-s-m);
-    height: var(--space-s-m);
-    flex: 0 0 var(--space-s-m);
+    width: var(--space-s);
+    height: var(--space-s);
+    flex: 0 0 var(--space-s);
   }
 
   .theme-selector-chevron {
@@ -350,34 +347,34 @@
 
   .theme-selector-menu {
     bottom: calc(100% + var(--space-4xs));
-    gap: var(--space-m-l);
-    padding: var(--space-s-m) 0;
+    gap: var(--space-xs);
+    padding: var(--space-xs) 0;
   }
 
   .theme-selector-option {
     gap: var(--space-2xs-xs);
-    padding: var(--space-2xs-xs) var(--space-s-m);
+    padding:var(--space-2xs) var(--space-s);
     font-size: inherit;
   }
 
   .theme-selector.is-open .theme-selector-option {
-    height: var(--space-s-m);
-    min-height: var(--space-s-m);
-    padding-block: var(--space-s);
+    height: var(--space-l);
+    min-height: var(--space-l);
+    padding-block: var(--space-xs);
     padding-inline: var(--space-s);
-    gap: var(--space-2xs-xs);
-    line-height: 1.2;
-    font-size: 1.25rem;
+    gap: var(--space-2xs);
+    line-height: 1;
+    font-size:var(--fs-0);
   }
 
   .theme-selector.is-open .theme-option-icon {
-    width: var(--space-s-m);
-    height: var(--space-s-m);
-    flex: 0 0 var(--space-s-m);
+    width: var(--space-s);
+    height: var(--space-s);
+    flex: 0 0 var(--space-s);
   }
 
   .theme-option-label {
-    font-size: var(--fs-01);
+    font-size: var(--fs-0);
     line-height: 1;
     min-width: 0;
     white-space: normal;
