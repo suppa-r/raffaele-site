@@ -34,11 +34,6 @@ html.intro-nav-open header::before {
     opacity: 0;
 }
 
-/* .header-title {
-    transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1),
-        visibility 0s linear var(--intro-nav-fade-out-duration);
-} */
-
 .logo {
     display: grid;
     grid-template-columns: auto auto;
@@ -46,8 +41,8 @@ html.intro-nav-open header::before {
     align-items: center;
     position: relative;
     z-index: 2002;
-    margin-block:0;
-    padding-block:0;
+    margin-block: 0;
+    padding-block: 0;
 }
 
 .logo img {
@@ -65,7 +60,7 @@ html.intro-nav-open header::before {
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
-   }
+}
 
 .header-title span {
     font-family: var(--primary-font-secondary);
