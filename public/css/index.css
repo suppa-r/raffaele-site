@@ -240,26 +240,24 @@ main {
 
 footer {
     display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
+    grid-template-columns: auto;
+    justify-content:end;
     align-items: center;
     white-space: nowrap;
-    font-size: var(--fs-01);
     padding-inline:0;
     margin-block:0;
    }
 
-.footer-text {
-    white-space: nowrap;
-    color: var(--text-color);
-    opacity: 1;
-    text-shadow: var(--content-legibility-shadow);
-    font-weight: 550;
-    margin-block:0;
-    padding-block:0;
+ .theme-selector-container {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: var(--space-3xs);
+    line-height: 1;
+    font-size: var(--fs-0);
 }
 
-[data-theme="light"] .footer-text,
 [data-theme="light"] #theme-selector-label {
     /* shadow blooms light in light mode; remove it and go heavier */
     text-shadow: none;

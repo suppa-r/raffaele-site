@@ -204,7 +204,7 @@ main p:not(.wrapper-gradient-text) {
 footer {
     display: grid;
     grid-template-columns: auto;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     white-space: nowrap;
 }
@@ -217,6 +217,12 @@ footer {
     gap: var(--space-3xs);
     line-height: 1;
     font-size: var(--fs-0);
+}
+
+[data-theme="light"] #theme-selector-label {
+    /* shadow blooms light in light mode; remove it and go heavier */
+    text-shadow: none;
+    font-weight: 600;
 }
 
 @media (prefers-reduced-motion:reduce) {
