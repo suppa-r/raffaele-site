@@ -40,7 +40,7 @@ footer {
 .wrapper {
     box-sizing: border-box;
     min-height: 100svh;
-    padding-block: var(--space-2xs-xs);
+    padding-block: var(--space-xs-s);
     overflow: hidden;
     isolation: isolate;
     background-color: var(--base-color);
