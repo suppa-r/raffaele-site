@@ -38,12 +38,12 @@ footer {
 }
 
 .wrapper {
-  box-sizing: border-box;
-  min-height: 100svh;
-  padding-block: var(--space-3xs-2xs);
-  overflow: hidden;
-  isolation: isolate;
-  background-color: var(--base-color);
+    box-sizing: border-box;
+    min-height: 100svh;
+    padding-block: var(--space-2xs-xs);
+    overflow: hidden;
+    isolation: isolate;
+    background-color: var(--base-color);
 }
 
 .skip-link {
@@ -172,7 +172,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(560px, 92dvw);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-        --padding-inline:var(--space-xs);
+        --padding-inline: var(--space-xs);
     }
 
     .wrapper::before {
@@ -190,7 +190,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(840px, 95dvw);
         --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
-        --padding-inline:var(--space-s);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
