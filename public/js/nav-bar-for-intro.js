@@ -84,7 +84,7 @@
       ? overlayNavigation.querySelector(".nav-links") ||
       overlayNavigation.querySelector("ul")
       : document.querySelector(".nav-links");
-    pageTitle = document.querySelector(".intro-1-page-title");
+    pageTitle = document.querySelector(".header-title");
     firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
   }
 
@@ -173,13 +173,13 @@
     }
   }
 
-  function setPageTitleVisibility(isVisible) {
+  function setPageTitleVisibility() {
     if (!pageTitle) {
       return;
     }
 
-    pageTitle.classList.toggle("is-hidden", !isVisible);
-    pageTitle.setAttribute("aria-hidden", isVisible ? "false" : "true");
+    pageTitle.classList.remove("is-hidden");
+    pageTitle.setAttribute("aria-hidden", "false");
   }
 
   function setIntroNavOpenState(isOpen) {
@@ -261,7 +261,7 @@
     }
 
     setIntroNavOpenState(isMenuOpen);
-    setPageTitleVisibility(isMenuOpen ? false : showTitle);
+    setPageTitleVisibility(isMenuOpen ? true : showTitle);
     animateHamburgerButton(isMenuOpen);
 
     if (isMenuOpen && moveFocus && firstNavLink) {

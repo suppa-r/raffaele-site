@@ -205,16 +205,6 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
   transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
-header:has(.open-overlay[aria-expanded="true"]) .header-title {
-  opacity: 0;
-  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-header:has(.open-overlay[aria-expanded="false"]) .header-title {
-  opacity: 1;
-  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
-}
-
 .open-overlay[aria-expanded="true"] span {
   display: block;
   background-color: var(--text-color)
