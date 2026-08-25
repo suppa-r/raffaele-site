@@ -17,9 +17,10 @@ const WRAPPER_GRADIENT_WORD_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text .text-layer';
 const INTRO_WORDS_TARGET = 'body[data-page="intro"] .text-with-animation span';
 const HERO_TEXT_EASE_INTRO = "cubic-bezier(0.22, 1, 0.36, 1)";
-const HERO_REVEAL_DURATION_INTRO = 1.4;
-const HERO_REVEAL_STAGGER_INTRO = 0.28;
-const HERO_REVEAL_DELAY_INTRO = 0.14;
+const HERO_REVEAL_DURATION_INTRO = 1.7;
+const HERO_REVEAL_STAGGER_INTRO = 0.18;
+const HERO_REVEAL_DELAY_INTRO = 0.18;
+const INTRO_SLIDE_OFFSET = "35vw";
 
 if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-intro-anim");
@@ -151,13 +152,30 @@ function initializeAnimations() {
   // Fade in the parent paragraphs at the same time
   gsapLib.to(INTRO_ANIMATION_TARGET, {
     opacity: 1,
+    visibility: "visible",
     duration: 0.55,
     ease: "power2.out",
     delay: 0.08,
   });
 
+  gsapLib.set(WRAPPER_GRADIENT_TARGET, {
+    x: INTRO_SLIDE_OFFSET,
+    opacity: 0,
+  });
+
+  gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, {
+    x: INTRO_SLIDE_OFFSET,
+    opacity: 0,
+  });
+
   // Match the side-entry feel used by the hero text animation.
   if (hasElements(INTRO_WORDS_TARGET)) {
+    gsapLib.set(INTRO_WORDS_TARGET, {
+      x: INTRO_SLIDE_OFFSET,
+      opacity: 0,
+      visibility: "hidden",
+    });
+
     gsapLib.to(INTRO_WORDS_TARGET, {
       x: 0,
       opacity: 1,
@@ -211,19 +229,19 @@ function revealIntroContent() {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
   if (gsapLib) {
     if (hasElements(INTRO_ANIMATION_TARGET)) {
-      gsapLib.set(INTRO_ANIMATION_TARGET, { opacity: 1 });
+      gsapLib.set(INTRO_ANIMATION_TARGET, { opacity: 1, visibility: "visible" });
     }
 
     if (hasElements(WRAPPER_GRADIENT_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, opacity: 1 });
+      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, opacity: 1, visibility: "visible" });
     }
 
     if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: 0, opacity: 1 });
+      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: 0, opacity: 1, visibility: "visible" });
     }
 
     if (hasElements(INTRO_WORDS_TARGET)) {
-      gsapLib.set(INTRO_WORDS_TARGET, { x: 0, opacity: 1 });
+      gsapLib.set(INTRO_WORDS_TARGET, { x: 0, opacity: 1, visibility: "visible" });
     }
 
     return;
@@ -231,20 +249,24 @@ function revealIntroContent() {
 
   document.querySelectorAll(INTRO_ANIMATION_TARGET).forEach((el) => {
     el.style.opacity = "1";
+    el.style.visibility = "visible";
   });
 
   document.querySelectorAll(WRAPPER_GRADIENT_TARGET).forEach((el) => {
     el.style.opacity = "1";
+    el.style.visibility = "visible";
     el.style.transform = "translateX(0)";
   });
 
   document.querySelectorAll(WRAPPER_GRADIENT_WORD_TARGET).forEach((el) => {
     el.style.opacity = "1";
+    el.style.visibility = "visible";
     el.style.transform = "translateX(0)";
   });
 
   document.querySelectorAll(INTRO_WORDS_TARGET).forEach((el) => {
     el.style.opacity = "1";
+    el.style.visibility = "visible";
     el.style.transform = "translateX(0)";
   });
 }
@@ -257,15 +279,15 @@ function hideIntroContent() {
     }
 
     if (hasElements(WRAPPER_GRADIENT_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: "-7vw", opacity: 0 });
+      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: "100vw", opacity: 0 });
     }
 
     if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: "-7vw", opacity: 0 });
+      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: "100vw", opacity: 0 });
     }
 
     if (hasElements(INTRO_WORDS_TARGET)) {
-      gsapLib.set(INTRO_WORDS_TARGET, { x: "-7vw", opacity: 0 });
+      gsapLib.set(INTRO_WORDS_TARGET, { x: "100vw", opacity: 0 });
     }
 
     return;
@@ -277,17 +299,17 @@ function hideIntroContent() {
 
   document.querySelectorAll(WRAPPER_GRADIENT_TARGET).forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateX(-7vw)";
+    el.style.transform = "translateX(100vw)";
   });
 
   document.querySelectorAll(WRAPPER_GRADIENT_WORD_TARGET).forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateX(-7vw)";
+    el.style.transform = "translateX(100vw)";
   });
 
   document.querySelectorAll(INTRO_WORDS_TARGET).forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateX(-7vw)";
+    el.style.transform = "translateX(100vw)";
   });
 }
 

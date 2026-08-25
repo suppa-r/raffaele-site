@@ -1,31 +1,29 @@
 /* global gsap */
-/* Standalone entrance animations for intro-1.html; does not touch introgasp.js state. */
+/*
+ * Standalone entrance animations for intro-1.html
+ * Uses centralized animation constants from animation-constants.js
+ */
 
-const INTRO1_PAGE_MARKER = ".intro-1-page-title";
-const INTRO1_NAV_ITEMS_TARGET = "header .nav-links .nav__item";
-const INTRO1_FOOTER_ENTRIES_TARGET = "footer.footer > *";
-const INTRO1_TITLE_LINE_TARGET = ".intro-1-page-title .title-line";
-const INTRO1_TITLE_LINE_FIRST_TARGET = `${INTRO1_TITLE_LINE_TARGET}:first-of-type`;
-const INTRO1_TITLE_LINE_SECOND_TARGET = `${INTRO1_TITLE_LINE_TARGET}:last-of-type`;
-const INTRO1_PROFILE_TITLE_SPAN_TARGET = ".profile-title span";
+const INTRO1_PAGE_MARKER = window.ANIMATION_CONSTANTS.INTRO1.pageSelector;
+const INTRO1_NAV_ITEMS_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.navItems;
+const INTRO1_FOOTER_ENTRIES_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.footerEntries;
+const INTRO1_TITLE_LINE_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLine;
+const INTRO1_TITLE_LINE_FIRST_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLineFirst;
+const INTRO1_TITLE_LINE_SECOND_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLineSecond;
+const INTRO1_PROFILE_TITLE_SPAN_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.profileTitleSpan;
 
-const INTRO1_NAV_REVEAL_DURATION = 0.9;
-const INTRO1_NAV_REVEAL_STAGGER = 0.1;
-const INTRO1_NAV_REVEAL_DELAY = 0.05;
-const INTRO1_FOOTER_REVEAL_DURATION = 0.6;
-const INTRO1_FOOTER_REVEAL_STAGGER = 0.1;
-const INTRO1_FOOTER_REVEAL_DELAY = 1.8;
-const INTRO1_TITLE_LINE_DURATION = 1.6;
-const INTRO1_TITLE_LINE_SECOND_DURATION = 0.9;
-const INTRO1_TITLE_LINE_STAGGER = 1.1;
-const INTRO1_TITLE_LINE_DELAY = 0.3;
-const INTRO1_PROFILE_TITLE_REVEAL_DURATION = 1.6;
-
-let intro1InitState = "idle";
-
-function intro1IsPage() {
-  return !!document.querySelector(INTRO1_PAGE_MARKER);
-}
+const INTRO1_NAV_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealDuration;
+const INTRO1_NAV_REVEAL_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealStagger;
+const INTRO1_NAV_REVEAL_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealDelay;
+const INTRO1_FOOTER_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealDuration;
+const INTRO1_FOOTER_REVEAL_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealStagger;
+const INTRO1_FOOTER_REVEAL_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealDelay;
+const INTRO1_TITLE_LINE_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDuration;
+const INTRO1_TITLE_LINE_SECOND_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineSecondDuration;
+const INTRO1_TITLE_LINE_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineStagger;
+const INTRO1_TITLE_LINE_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDelay;
+const INTRO1_PROFILE_TITLE_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.profileTitleRevealDuration;
+const INTRO1_EASING = window.ANIMATION_CONSTANTS.EASING.standard;
 
 function intro1HasElements(selector) {
   return !!document.querySelector(selector);
