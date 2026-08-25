@@ -1,154 +1,290 @@
+/* ============================================
+   COLOR THEMES - LIGHT & DARK
+   ============================================ */
+
 [data-theme="dark"] {
-        --base-color: #222222;
-        --text-color: #f9f9f9;
-        --text-color-1: #ffffffff;
-        --text-span: #4d83a0;
-        --nav-contrast-color: #000000;
-        --focus-ring-color: #cccccc;
-        --clr-warn-1: #2a2520;
-        --clr-warn-2: #b89a7d;
-        --clr-warn-text: #e5d5c5;
-        --shadow-color-primary: rgb(30 30 30);
-        --shadow-color-secondary: rgb(0 0 0 / 80%);
-        --shadow-color-tertiary: rgb(0 0 0 / 60%);
-        --gradient-header: linear-gradient(90deg,
-                        rgb(77 136 133 / 11%),
-                        rgb(79 102 102 / 18.5%),
-                        rgb(79 96 100 / 65%),
-                        rgb(68 99 102));
-        --gradient: linear-gradient(90deg,
-                        #a1c4ca99,
-                        #6d606099,
-                        #8ebcc499);
-        --backdrop-blur: blur(0px);
-        --glow-background: radial-gradient(ellipse,
-                        rgb(255 255 255 / 20%) 0%,
-                        rgb(255 255 255 / 20%) 50%,
-                        transparent 100%);
-        --box-shadow: 0 0 12px rgb(255 255 255 / 70%), 0 0 6px rgb(255 255 255 / 55%);
-        --linear-gradient-image: #8b858573;
-        --grid-background-color: #222222;
-        --grid-line-color: #8b858573;
-        --theme-switcher-background-color: #252121;
-        --blend-mode: screen;
-        --content-legibility-shadow: 0 1px 0 rgb(12 12 12 / 48%), 0 0 18px rgb(12 12 12 / 26%);
+  --base-color: #0a0a0a;
+  --text-color: #faf8f8;
+  --text-span: rgb(100 180 220);
+  --nav-contrast-color: #00000000;
+  --focus-ring-color: #cccccccc;
+  --btn-bg: #0a0a0a;
+  --btn-cell-bg: #f5f5f5;
+  --btn-cell-gradient-start: #e5e5e5;
+  --btn-cell-gradient-end: #f5f5f5;
+  --clr-warn-1: #2a2520;
+  --clr-warn-2: #b89a7d;
+  --clr-warn-text: #e5d5c5;
+  --shadow-color-primary: rgb(5 5 5);
+  --shadow-color-secondary: rgb(0 0 0 / 90%);
+  --shadow-color-tertiary: rgb(0 0 0 / 70%);
+  --gradient-header: linear-gradient(90deg,
+      rgb(235 235 243 / 43.1%),
+      rgb(118 166 200 / 0%),
+      rgb(80 146 163 / 20%),
+      rgb(52 102 108));
+  --gradient: linear-gradient(90deg,
+      var(--text-span),
+      var(--text-color),
+      var(--text-span));
+  --backdrop-blur: blur(10px);
+  --glow-background: radial-gradient(ellipse,
+      rgb(255 255 255 / 40%) 0%,
+      rgb(255 255 255 / 20%) 50%,
+      transparent 100%);
+  --glow-box-shadow:
+    0 0 25px rgb(255 255 255 / 60%), 0 0 50px rgb(255 255 255 / 40%);
+  --linear-gradient-image: rgba(255, 255, 255, 0.3);
+  --blend-mode: screen;
 }
 
+/* Fallback for older browsers - RGB/HEX */
 [data-theme="light"] {
-        --text-color: #222222;
-        --base-color: #f4f4f4;
-        --text-color-1: #000000;
-        --text-span: #4d83a0;
-        --nav-contrast-color: #ffffff;
-        --focus-ring-color: #2a2a2a;
-        --clr-warn-1: #f0ebe6;
-        --clr-warn-2: #8a7a6d;
-        --clr-warn-text: #3a2d25;
-        --shadow-color-primary: rgb(30 30 30);
-        --shadow-color-secondary: rgb(0 0 0 / 80%);
-        --shadow-color-tertiary: rgb(0 0 0 / 60%);
-        --gradient-header: linear-gradient(90deg,
-                        rgb(96 112 112 / 67.1%),
-                        rgb(216 233 233 / 18.5%),
-                        rgb(205 222 226 / 65%),
-                        rgb(206 226 228));
-        --gradient: linear-gradient(90deg,
-                        #a1c4ca99,
-                        #6d606099,
-                        #8ebcc499);
-        --backdrop-blur: blur(0px);
-        --glow-background: radial-gradient(ellipse,
-                        rgb(255 255 255 / 40%) 0%,
-                        rgb(255 255 255 / 20%) 50%,
-                        transparent 100%);
-        --box-shadow: 0 0 12px rgb(0 0 0 / 62%), 0 0 6px rgb(0 0 0 / 48%);
-        --linear-gradient-image: #0e0d0d2f;
-        --grid-background-color: #f4f4f4;
-        --grid-line-color: #0e0d0d2f;
-        --theme-switcher-background-color: #f7f0f0;
-        --blend-mode: multiply;
-        --content-legibility-shadow: 0 1px 0 rgb(243 236 236 / 42%), 0 0 14px rgb(243 236 236 / 18%);
+  --text-color: #030303;
+  /* Very dark gray */
+  --base-color: #f7f3f1e3;
+  /* Warm off-white */
+  --text-span: rgb(35 110 140);
+  --nav-contrast-color: #ffffffff;
+  --focus-ring-color: #2a2a2a;
+  --btn-cell-bg: #0a0a0a;
+  --btn-cell-gradient-start: #1a1a1a;
+  --btn-cell-gradient-end: #0a0a0a;
+  --btn-bg: #f5f5f5;
+  --clr-warn-1: #f0ebe6;
+  --clr-warn-2: #8a7a6d;
+  --clr-warn-text: #3a2d25;
+  --shadow-color-primary: rgb(30 30 30);
+  --shadow-color-secondary: rgb(0 0 0 / 80%);
+  --shadow-color-tertiary: rgb(0 0 0 / 60%);
+  --gradient-header: linear-gradient(90deg,
+      oklch(88.885% 0.0171 271.23deg / 43.1%),
+      oklch(63.748% 0.1079 249.132deg / 33.7%),
+      oklch(62.281% 0.0719 216.497deg / 20%),
+      oklch(47.793% 0.0546 205.721deg));
+  --gradient: linear-gradient(90deg,
+      var(--text-span),
+      var(--text-color),
+      var(--text-span));
+  --backdrop-blur: blur(10px);
+  --glow-background: radial-gradient(ellipse,
+      rgb(20 60 140 / 40%) 0%,
+      rgb(20 60 140 / 25%) 50%,
+      transparent 100%);
+  --glow-box-shadow:
+    0 0 25px rgb(20 60 140 / 60%), 0 0 50px rgb(20 60 140 / 45%);
+  --linear-gradient-image: rgba(22, 21, 21, 0.089);
+  --blend-mode: normal;
 }
 
-@supports (color:oklch(0% 0 0deg)) {
+/* Modern browsers - OKLCH */
+@supports (color: oklch(0% 0 0deg)) {
+  [data-theme="dark"] {
+    --base-color: oklch(14.479% 0.0002 271.152deg);
+    --text-color: oklch(97.015% 0.0001 271.152deg);
+    --text-span: oklch(73.438% 0.0977 231.983deg);
+    --nav-contrast-color: oklch(0% 0 0deg);
+    --focus-ring-color: oklch(84.522% 0.0001 271.152deg);
+    --body-grid-line: oklch(100% 0.0011 271.152deg / 15%);
+    --btn-cell-bg: oklch(97.015% 0.0011 271.152deg);
+    --btn-cell-gradient-start: oklch(92.191% 0.0001 271.152deg);
+    --btn-cell-gradient-end: oklch(97.015% 0.0011 271.152deg);
+    --clr-warn-1: oklch(26.825% 0.0117 67.237deg);
+    --clr-warn-2: oklch(70.585% 0.0538 65.772deg);
+    --clr-warn-text: oklch(88.169% 0.0279 67.376deg);
+    --shadow-color-primary: oklch(11.492% 0.0001 271.152deg);
+    --shadow-color-secondary: oklch(0% 0 0deg / 90%);
+    --shadow-color-tertiary: oklch(0% 0 0deg / 70%);
+    --gradient-header: linear-gradient(90deg,
+        oklch(94.238% 0.0108 286.051deg / 43.1%),
+        oklch(70.363% 0.0717 239.951deg / 0%),
+        oklch(62.281% 0.0719 216.497deg / 20%),
+        oklch(47.793% 0.0547 205.721deg));
+    --gradient: linear-gradient(90deg,
+        var(--text-span),
+        var(--text-color),
+        var(--text-span));
+    --backdrop-blur: blur(10px);
+    --glow-background: radial-gradient(ellipse,
+        oklch(100% 0.0001 271.152deg / 40%) 0%,
+        oklch(100% 0.0001 271.152deg / 20%) 50%,
+        transparent 100%);
+    --glow-box-shadow:
+      0 0 25px oklch(100% 0.0011 271.152deg / 60%),
+      0 0 50px oklch(100% 0.0011 271.152deg / 40%);
+    --linear-gradient-image: oklch(100% 0.00011 271.152 / 0.3);
+  }
 
-        [data-theme="dark"] {
-                --base-color: oklch(25.197% 0.00003 271.152deg);
-                --text-color: oklch(98.212% 0.00011 271.152deg);
-                --text-color-1: oklch(100% 0.0001 271.152deg);
-                --text-span: oklch(58.418% 0.0727 233.425deg);
-                --nav-contrast-color: oklch(0% 0 0deg);
-                --focus-ring-color: oklch(84.522% 0.0001 271.152deg / 80%);
-                --clr-warn-1: oklch(26.825% 0.0117 67.237deg);
-                --clr-warn-2: oklch(70.585% 0.0539 65.772deg);
-                --clr-warn-text: oklch(88.169% 0.0279 67.376deg);
-                --shadow-color-primary: oklch(23.503% 0.0000 271.152deg);
-                --shadow-color-secondary: oklch(0% 0 0deg / 80%);
-                --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
-                --gradient-header: linear-gradient(90deg,
-                                oklch(58.578% 0.06206 191.437deg / 11%),
-                                oklch(49.172% 0.02746 196.407deg / 18.5%),
-                                oklch(47.628% 0.02178 213.684deg / 65%),
-                                oklch(47.679% 0.03648 203.662deg));
-                --gradient: linear-gradient(90deg,
-                                oklch(79.668% 0.03844 209.228deg / 60%),
-                                oklch(50.146% 0.01675 17.538deg / 60%),
-                                oklch(76.5% 0.05 210.5deg / 60%));
-                --backdrop-blur: blur(7px);
-                --glow-background: radial-gradient(ellipse,
-                                oklch(100% 0.0001 271.152deg / 40%) 0%,
-                                oklch(100% 0.0001 271.152deg / 20%) 50%,
-                                transparent 100%);
-                --box-shadow: 0 0 12px oklch(100% 0.0001 271deg / 58%), 0 0 6px oklch(100% 0.0001 271deg / 44%);
-                --linear-gradient-image: oklch(62.193% 0.00721 16.812deg / 45.1%);
-                --grid-background-color: oklch(25.197% 0.00003 271.152deg);
-                --grid-line-color: oklch(62.193% 0.00721 16.812deg / 45.1%);
-                --pattern-opacity: 1;
-                --theme-switcher-background-color: oklch(16.8% 0.0058 17.5deg);
-                --blend-mode: screen;
-                --content-legibility-shadow: 0 1px 0 oklch(15.434% 0 271.152deg / 48%), 0 0 18px oklch(15.434% 0 271.152deg / 26%);
-        }
+  [data-theme="light"] {
+    --text-color: oklch(9.693% 0.0001 271.152deg);
+    /* Very dark gray */
+    --base-color: oklch(96.668% 0.0499 47.84deg);
+    /* Warm off-white */
+    --text-span: oklch(50.655% 0.0856 229.015deg);
+    --nav-contrast-color: oklch(100% 0.0001 271.152deg);
+    --focus-ring-color: oklch(28.502% 0.0003 271.152deg);
+    --body-grid-line: rgb(0 0 0 / 20%);
+    --btn-cell-bg: oklch(14.479% 0.0002 271.152deg);
+    --btn-cell-gradient-start: oklch(21.779% 0.0002 271.152deg);
+    --btn-cell-gradient-end: oklch(14.479% 0.0002 271.152deg);
+    --clr-warn-1: oklch(94.257% 0.0852 67.441deg);
+    --clr-warn-2: oklch(59.043% 0.0764 61.282deg);
+    --clr-warn-text: oklch(30.929% 0.0237 53.155deg);
+    --shadow-color-primary: oklch(23.503% 0.0003 271.152deg);
+    --shadow-color-secondary: oklch(0% 0 0deg / 80%);
+    --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
+    --gradient-header: linear-gradient(90deg,
+        oklch(88.885% 0.0178 271.23deg / 43.1%),
+        oklch(63.748% 0.1079 249.132deg / 33.7%),
+        oklch(62.281% 0.0719 216.497deg / 20%),
+        oklch(47.793% 0.0547 205.721deg));
+    --gradient: linear-gradient(90deg,
+        var(--text-span),
+        var(--text-color),
+        var(--text-span));
+    --backdrop-blur: blur(10px);
+    --glow-background: radial-gradient(ellipse,
+        oklch(38.144% 0.1407 262.139deg / 40%) 0%,
+        oklch(38.144% 0.1407 262.139deg / 25%) 50%,
+        transparent 100%);
+    --glow-box-shadow:
+      0 0 25px oklch(38.144% 0.1407 262.139deg / 60%),
+      0 0 50px oklch(38.144% 0.1407 262.139deg / 45%);
+    --linear-gradient-image: oklch(19.689% 0.0016 16.521 / 0.3);
+  }
 }
 
-[data-theme="light"] {
-        --text-color: oklch(25.197% 0.00003 271.152deg);
-        --base-color: oklab(96.71499999999999% 0 -0.00011);
-        --text-color-1: oklch(0% 0 0deg);
-        --text-span: oklch(58.418% 0.0727 233.425deg);
-        --nav-contrast-color: oklch(100% 0.0001 271.152deg);
-        --focus-ring-color: oklch(28.502% 0.0000 271.152deg);
-        --clr-warn-1: oklch(94.257% 0.0085 67.441deg);
-        --clr-warn-2: oklch(59.043% 0.0276 61.282deg);
-        --clr-warn-text: oklch(30.929% 0.0237 53.155deg);
-        --shadow-color-primary: oklch(23.503% 0.0000 271.152deg);
-        --shadow-color-secondary: oklch(0% 0 0deg / 80%);
-        --shadow-color-tertiary: oklch(0% 0 0deg / 60%);
-        --gradient-header: linear-gradient(90deg,
-                        oklch(53.196% 0.0192 196.764deg / 67.1%),
-                        oklch(92.137% 0.0181 197.164deg / 18.5%),
-                        oklch(88.904% 0.01912 213.679deg / 65%),
-                        oklch(46.277% 0.01884 206.506deg));
-        --gradient: linear-gradient(90deg,
-                        oklch(79.668% 0.03844 209.228deg / 60%),
-                        oklch(50.146% 0.01675 17.538deg / 60%),
-                        oklch(76.5% 0.05 210.5deg / 60%));
-        --backdrop-blur: blur(0px);
-        --glow-background: radial-gradient(ellipse,
-                        oklch(100% 0.0001 271.152deg/ 40%) 0%,
-                        oklch(100% 0.0001 271.152deg / 20%) 50%,
-                        transparent 100%);
-        --box-shadow: 0 0 12px oklch(0% 0 0deg / 62%), 0 0 6px oklch(0% 0 0deg / 48%);
-        --linear-gradient-image: oklch(16.029% 0.00168 16.738deg / 18.4%);
-        --grid-background-color: oklab(96.71499999999999% 0 -0.00011);
-        --grid-line-color: oklch(16.029% 0.00168 16.738deg / 18.4%);
-        --pattern-opacity: 0.9;
-        --theme-switcher-background-color: oklch(97.5% 0.004 16.5deg);
-        --blend-mode: multiply;
-        --content-legibility-shadow: 0 1px 0 oklch(94.854% 0.0075 16.503deg / 42%), 0 0 14px oklch(94.854% 0.0075 16.503deg / 18%);
+/* ============================================
+   GRID BACKGROUND
+   ============================================ */
+.body {
+  position: relative;
+  min-height: 100svh;
 }
 
+body::before {
+  --size: clamp(12px, 2vw, 24px);
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, var(--linear-gradient-image) 1px, transparent 1px),
+    linear-gradient(var(--linear-gradient-image)1px, transparent 1px);
+  background-size: var(--size) var(--size);
+  background-position: center;
+  background-color: var(--base-color);
+  -webkit-mask-image: radial-gradient(circle,
+      black 0%,
+      black 20%,
+      rgba(0, 0, 0, 0.589) 30%,
+      rgba(0, 0, 0, 0.103) 40%,
+      transparent 55%);
+  mask-image: radial-gradient(circle,
+      black 0%,
+      black 20%,
+      rgba(0, 0, 0, 0.8) 30%,
+      rgba(0, 0, 0, 0.4) 40%,
+      transparent 55%);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  padding-inline: var(--space-xs);
+  transition: opacity 0.7s ease-in;
+  z-index: -1;
+}
+
+[data-theme] body {
+  isolation: isolate;
+}
+
+/* ============================================
+   LIGHT THEME
+   ============================================ */
 
 [data-theme="light"] body {
-        font-weight: 500;
-        text-rendering: optimizelegibility;
+  font-weight: 500;
+  text-rendering: optimizelegibility;
+}
+
+/* ============================================
+   RESPONSIVE - Large Mobile (480px - 767px)
+   ============================================ */
+
+@media (min-width: 480px) {
+  :root {
+    --content-max-width: min(600px, 95vw);
+    --padding-inline: var(--space-xs);
+    /* 16px - larger phones */
+  }
+
+  .body::before {
+    -webkit-mask-image: radial-gradient(circle,
+        black clamp(22%, 27% + 3vw, 37%),
+        transparent clamp(37%, 42% + 9vw, 60%));
+    mask-image: radial-gradient(circle,
+        black clamp(22%, 27% + 3vw, 37%),
+        transparent clamp(37%, 42% + 9vw, 60%));
+    padding-inline: var(--space-m);
+  }
+}
+/* ============================================
+   RESPONSIVE - Tablet (768px - 1023px)
+   ============================================ */
+
+@media (min-width: 768px) {
+  :root {
+    --content-max-width: min(900px, 95vw);
+    --padding-inline: var(--space-m);
+    /* 24px - tablets */
+  }
+
+  .body::before {
+    mask-image: radial-gradient(circle,
+        black clamp(25%, 30% + 3.5vw, 40%),
+        transparent clamp(40%, 45% + 10vw, 65%));
+    padding-inline: var(--space-l);
+  }
+}
+
+/* ============================================
+   RESPONSIVE - Desktop (1024px+)
+   ============================================ */
+
+@media (min-width: 1024px) {
+  :root {
+    --content-max-width: min(1200px, 95vw);
+    --padding-inline: var(--space-m);
+    /* 32px - desktop */
+  }
+
+  .body::before {
+    mask-image: radial-gradient(circle,
+        black clamp(30%, 35% + 4vw, 45%),
+        transparent clamp(45%, 50% + 12vw, 70%));
+    padding-inline: var(--space-xl);
+  }
+}
+
+/* ============================================
+   RESPONSIVE - XL Desktop (1440px+)
+   ============================================ */
+
+@media (min-width: 1200px) {
+  :root {
+    --content-max-width: min(1400px, 96vw);
+    --padding-inline: var(--space-xl);
+    /* 48px - desktop */
+  }
+
+  .body::before {
+    mask-image: radial-gradient(circle,
+        black clamp(30%, 35% + 4vw, 45%),
+        transparent clamp(45%, 50% + 12vw, 70%));
+    padding-inline: var(--space-2xl);
+  }
 }

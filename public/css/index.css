@@ -242,23 +242,34 @@ main {
 /* --------------------------------------- */
 
 footer {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content:end;
-    align-items: center;
-    white-space: nowrap;
-    padding-inline:0;
-    margin-block:0;
-   }
+  display: grid;
+  grid-template-columns: auto;
+  justify-content:end;
+  align-items: center;
+  white-space: nowrap;
+  margin-block-end: var(--space-s-m);
+  margin-inline: var(--space-m-l);
+}
 
- .theme-selector-container {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    gap: var(--space-3xs);
-    line-height: 1;
-    font-size: var(--fs-0);
+.footer-text {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-5xs-4xs);
+  font-family: var(--primary-font-secondary);
+  color: var(--text-color);
+  font-size: var(--fs-100);
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.footer__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: clamp(0.55rem, 1.6vw, 0.95rem);
 }
 
 [data-theme="light"] #theme-selector-label {
