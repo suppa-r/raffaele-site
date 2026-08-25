@@ -24,8 +24,8 @@
 }
 
 :focus-visible {
-  outline: 3px solid var(--focus-ring-color, currentcolor);
-  outline-offset: 3px;
+  outline: 1.2px solid var(--focus-ring-color, currentcolor);
+  outline-offset: 2px;
   box-shadow: 0 0 0 2px var(--base-color, #ffffff);
 }
 
@@ -131,8 +131,8 @@
 
 .theme-selector-trigger:focus-visible,
 .theme-selector-option:focus-visible {
-  outline: 3px solid var(--focus-ring-color, currentcolor);
-  outline-offset: 3px;
+  outline: 1.2px solid var(--focus-ring-color, currentcolor);
+  outline-offset: 2px;
   box-shadow: 0 0 0 2px var(--base-color, #ffffff);
 }
 

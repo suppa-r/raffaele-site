@@ -8,6 +8,10 @@
     --padding-inline: var(--space-xs);
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 html,
 body {
     interpolate-size: allow-keywords;
@@ -50,22 +54,21 @@ footer {
 .skip-link {
     position: absolute;
     top: 0;
-    left: 0;
-    transform: translateY(-140%);
+    left: 1rem;
+    transform: translateY(-160%);
     z-index: 3000;
-    padding: 0.65rem 1rem;
+    padding: 0.65rem 1.5rem;
     color: var(--base-color);
     background: var(--text-color);
-    border-radius: 0 0 0.4rem;
+    border-radius: 0 0 0.4rem 0.4rem;
     text-decoration: none;
     font-family: var(--primary-font-secondary);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1) ease-in;
 }
 
 .skip-link:focus-visible {
     transform: translateY(0);
-    outline: 2px solid var(--text-span);
-    outline-offset: 2px;
-}
+   }
 
 button {
     cursor: pointer;
@@ -119,12 +122,12 @@ a {
 
 a:hover,
 a:focus-visible {
-    text-decoration-thickness: 0.12em;
+    text-decoration-thickness: 0.09em;
 }
 
 a:focus-visible {
-    outline: 2px solid currentcolor;
-    outline-offset: 2px;
+    outline: 1.2px solid currentcolor;
+    outline-offset: 1.2px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
