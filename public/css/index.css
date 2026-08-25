@@ -258,13 +258,6 @@ footer {
   white-space: nowrap;
  }
 
-.footer__actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap:var(--space-4xs-3xs);
-}
-
 @media (prefers-reduced-motion:reduce) {
 
     .btn,

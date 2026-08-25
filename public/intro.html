@@ -7,7 +7,6 @@
   <meta name="theme-color" content="#080808" />
   <title>Raffaele Suppa</title>
   <script src="js/theme-bootstrap.js"></script>
-
   <!-- Preload critical stylesheets -->
   <link rel="preload" href="css/tokens.css" as="style" />
   <link rel="preload" href="css/reset.css" as="style" />
@@ -16,7 +15,6 @@
   <link rel="preload" href="css/transition.css" as="style" />
   <link rel="preload" href="css/fonts.css" as="style" />
   <link rel="preload" href="css/theme-switcher.css" as="style" />
-
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/reset.css" />
@@ -27,7 +25,6 @@
   <link rel="stylesheet" href="css/theme-switcher.css" />
   <link rel="stylesheet" href="css/intro.css" />
   <link rel="stylesheet" href="css/nav-new.css" />
-
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
@@ -42,24 +39,24 @@
   <script src="js/intro-theme-selector.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/introgasp.js" defer></script>
+  <script src="js/nav-bar-for-intro.js" defer></script>
 </head>
 
 <body data-page="intro">
-<div class="wrapper">
-
-  <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
-  <div class="support view-transition" role="alert" aria-live="assertive">
-    ⚠️ Your browser doesn't support View Transitions
-  </div>
-  <div class="support style-query" role="alert" aria-live="assertive">
-    ⚠️ Your browser doesn't support Style Queries
-  </div>
+  <div class="wrapper">
+    <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
+    <div class="support view-transition" role="alert" aria-live="assertive">
+      ⚠️ Your browser doesn't support View Transitions
+    </div>
+    <div class="support style-query" role="alert" aria-live="assertive">
+      ⚠️ Your browser doesn't support Style Queries
+    </div>
     <header>
       <a class="skip-link" href="#main-content">Skip to main content</a>
       <div class="logo"><img src="images/Gmail.JPG" alt="Raffaele Suppa logo" width="50" height="50" />
-<p class="header-title">
-        sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
-      </p>
+        <p class="header-title">
+          sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
+        </p>
       </div>
       <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false"
         aria-controls="intro-overlay-navigation">
@@ -99,11 +96,7 @@
       </p>
     </main>
     <footer role="contentinfo" class="footer">
-      <!-- <p class="footer-text">
-            &copy; 2026 | Not All Rights Reserved.
-          </p> -->
-      <div class="footer__actions">
-        <div class="theme-selector-container">
+ <div class="theme-selector-container">
           <label id="theme-selector-label" for="theme-selector">color theme:</label>
           <div class="theme-selector" data-theme-selector>
             <button type="button" class="theme-selector-trigger" data-theme-selector-trigger aria-haspopup="listbox"
@@ -169,11 +162,8 @@
             <option value="system">system (auto)</option>
           </select>
         </div>
-   </div>
-<div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
     </footer>
   </div>
-  <script src="js/nav-bar-for-intro.js"></script>
 </body>
-
 </html>
