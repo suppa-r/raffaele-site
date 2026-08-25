@@ -34,13 +34,13 @@
       transparent 100%);
   --glow-box-shadow:
     0 0 25px rgb(255 255 255 / 60%), 0 0 50px rgb(255 255 255 / 40%);
-  --linear-gradient-image: rgba(255, 255, 255, 0.3);
+  --linear-gradient-image: rgba(255, 255, 255, 0.100);
   --blend-mode: screen;
 }
 
 /* Fallback for older browsers - RGB/HEX */
 [data-theme="light"] {
-  --text-color: #030303;
+  --text-color: #000000;
   /* Very dark gray */
   --base-color: #f7f3f1e3;
   /* Warm off-white */
@@ -73,14 +73,14 @@
       transparent 100%);
   --glow-box-shadow:
     0 0 25px rgb(20 60 140 / 60%), 0 0 50px rgb(20 60 140 / 45%);
-  --linear-gradient-image: rgba(22, 21, 21, 0.089);
+  --linear-gradient-image: rgba(66, 64, 64, 0.31);
   --blend-mode: normal;
 }
 
 /* Modern browsers - OKLCH */
 @supports (color: oklch(0% 0 0deg)) {
   [data-theme="dark"] {
-    --base-color: oklch(14.479% 0.0002 271.152deg);
+    --base-color: oklch(0% 0 0);
     --text-color: oklch(97.015% 0.0001 271.152deg);
     --text-span: oklch(73.438% 0.0977 231.983deg);
     --nav-contrast-color: oklch(0% 0 0deg);
@@ -112,11 +112,11 @@
     --glow-box-shadow:
       0 0 25px oklch(100% 0.0011 271.152deg / 60%),
       0 0 50px oklch(100% 0.0011 271.152deg / 40%);
-    --linear-gradient-image: oklch(100% 0.00011 271.152 / 0.3);
+    --linear-gradient-image: oklch(100% 0.00011 271.152 / 0.1);
   }
 
   [data-theme="light"] {
-    --text-color: oklch(9.693% 0.0001 271.152deg);
+    --text-color: oklch(10.668% 0.00001 271.152);
     /* Very dark gray */
     --base-color: oklch(96.668% 0.0499 47.84deg);
     /* Warm off-white */
@@ -150,19 +150,19 @@
     --glow-box-shadow:
       0 0 25px oklch(38.144% 0.1407 262.139deg / 60%),
       0 0 50px oklch(38.144% 0.1407 262.139deg / 45%);
-    --linear-gradient-image: oklch(19.689% 0.0016 16.521 / 0.3);
+    --linear-gradient-image: oklch(37.346% 0.00272 16.419deg / 0.30);
   }
 }
 
 /* ============================================
    GRID BACKGROUND
    ============================================ */
-.body {
+.wrapper {
   position: relative;
   min-height: 100svh;
 }
 
-body::before {
+.wrapper::before {
   --size: clamp(12px, 2vw, 24px);
   content: "";
   position: absolute;
@@ -200,6 +200,8 @@ body::before {
 
 [data-theme] body {
   isolation: isolate;
+  position:relative;
+  z-index: 0;
 }
 
 /* ============================================
@@ -208,6 +210,19 @@ body::before {
 
 [data-theme="light"] body {
   font-weight: 500;
+  text-rendering: optimizelegibility;
+}
+
+[data-theme="light"] .theme-selector-container,
+[data-theme="light"] .theme-selector-label,
+[data-theme="light"] .theme-selector-trigger-icon,
+[data-theme="light"] .theme-selector-option,
+[data-theme="light"] .theme-selector-chevron,
+[data-theme="light"] .theme-option-label,
+[data-theme="light"] .theme-selector-native {
+  font-weight: 500;
+
+/* shadow blooms light in light mode; remove it and go heavier */
   text-rendering: optimizelegibility;
 }
 
@@ -222,14 +237,14 @@ body::before {
     /* 16px - larger phones */
   }
 
-  .body::before {
+  .wrapper::before {
     -webkit-mask-image: radial-gradient(circle,
         black clamp(22%, 27% + 3vw, 37%),
         transparent clamp(37%, 42% + 9vw, 60%));
     mask-image: radial-gradient(circle,
         black clamp(22%, 27% + 3vw, 37%),
         transparent clamp(37%, 42% + 9vw, 60%));
-    padding-inline: var(--space-m);
+    /* padding-inline: var(--space-m); */
   }
 }
 /* ============================================
@@ -243,11 +258,11 @@ body::before {
     /* 24px - tablets */
   }
 
-  .body::before {
+  .wrapper::before {
     mask-image: radial-gradient(circle,
         black clamp(25%, 30% + 3.5vw, 40%),
         transparent clamp(40%, 45% + 10vw, 65%));
-    padding-inline: var(--space-l);
+    /* padding-inline: var(--space-l); */
   }
 }
 
@@ -262,11 +277,11 @@ body::before {
     /* 32px - desktop */
   }
 
-  .body::before {
+  .wrapper::before {
     mask-image: radial-gradient(circle,
         black clamp(30%, 35% + 4vw, 45%),
         transparent clamp(45%, 50% + 12vw, 70%));
-    padding-inline: var(--space-xl);
+    /* padding-inline: var(--space-xl); */
   }
 }
 
@@ -281,10 +296,10 @@ body::before {
     /* 48px - desktop */
   }
 
-  .body::before {
+  .wrapper::before {
     mask-image: radial-gradient(circle,
         black clamp(30%, 35% + 4vw, 45%),
         transparent clamp(45%, 50% + 12vw, 70%));
-    padding-inline: var(--space-2xl);
+    /* padding-inline: var(--space-2xl); */
   }
 }

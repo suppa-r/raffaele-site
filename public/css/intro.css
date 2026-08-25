@@ -236,12 +236,6 @@ footer {
   gap: clamp(0.55rem, 1.6vw, 0.95rem);
 }
 
-[data-theme="light"] #theme-selector-label {
-    /* shadow blooms light in light mode; remove it and go heavier */
-    text-shadow: none;
-    font-weight: 600;
-}
-
 @media (prefers-reduced-motion:reduce) {
 
     ::view-transition-group(*),
