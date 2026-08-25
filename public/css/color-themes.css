@@ -5,7 +5,7 @@
 [data-theme="dark"] {
   --base-color: #0a0a0a;
   --text-color: #faf8f8;
-  --text-span: rgb(100 180 220);
+  --text-span: rgb(65, 122, 150);
   --nav-contrast-color: #00000000;
   --focus-ring-color: #cccccccc;
   --btn-bg: #0a0a0a;
@@ -44,7 +44,7 @@
   /* Very dark gray */
   --base-color: #f7f3f1e3;
   /* Warm off-white */
-  --text-span: rgb(35 110 140);
+     --text-span: #0e3849a2;
   --nav-contrast-color: #ffffffff;
   --focus-ring-color: #2a2a2a;
   --btn-cell-bg: #0a0a0a;
@@ -82,7 +82,7 @@
   [data-theme="dark"] {
     --base-color: oklch(0% 0 0);
     --text-color: oklch(97.015% 0.0001 271.152deg);
-    --text-span: oklch(73.438% 0.0977 231.983deg);
+    --text-span: oklch(55.231% 0.0741 231.595);
     --nav-contrast-color: oklch(0% 0 0deg);
     --focus-ring-color: oklch(84.522% 0.0001 271.152deg);
     --body-grid-line: oklch(100% 0.0011 271.152deg / 15%);
@@ -120,7 +120,7 @@
     /* Very dark gray */
     --base-color: oklch(96.668% 0.0499 47.84deg);
     /* Warm off-white */
-    --text-span: oklch(50.655% 0.0856 229.015deg);
+     --text-span: oklch(32.078% 0.0541 229.235 / 0.637);
     --nav-contrast-color: oklch(100% 0.0001 271.152deg);
     --focus-ring-color: oklch(28.502% 0.0003 271.152deg);
     --body-grid-line: rgb(0 0 0 / 20%);
@@ -200,7 +200,7 @@
 
 [data-theme] body {
   isolation: isolate;
-  position:relative;
+  position: relative;
   z-index: 0;
 }
 
@@ -222,7 +222,7 @@
 [data-theme="light"] .theme-selector-native {
   font-weight: 500;
 
-/* shadow blooms light in light mode; remove it and go heavier */
+  /* shadow blooms light in light mode; remove it and go heavier */
   text-rendering: optimizelegibility;
 }
 
@@ -247,6 +247,7 @@
     /* padding-inline: var(--space-m); */
   }
 }
+
 /* ============================================
    RESPONSIVE - Tablet (768px - 1023px)
    ============================================ */

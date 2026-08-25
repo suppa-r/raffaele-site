@@ -28,7 +28,7 @@ nav ul {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #00000000;
+  background-color: var(--base-color);
   overflow: hidden;
 }
 
@@ -66,7 +66,7 @@ nav ul {
   align-items: center;
   position: relative;
   top: auto;
-  color: #ffffff;
+  color: var(--text-color);
   font-weight: 300;
   letter-spacing: 4px;
   text-decoration: none;
@@ -154,7 +154,7 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
 .open-overlay span {
   display: block;
   height: 1px;
-  background-color: #ffffff;
+  background-color: var(--text-color);
   margin-bottom: 4px;
   border-radius: 1px;
   transform-origin: center;
@@ -220,92 +220,92 @@ Animation keyframes
 @keyframes animate-top-bar {
   0% {
     transform: translateY(0);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 
   60% {
     transform: translateY(5px);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 
   100% {
     transform: translateY(0);
-    background-color: #a0adb3;
+    background-color: var(--text-color);
   }
 }
 
 @keyframes animate-bottom-bar {
   0% {
     transform: translateY(0);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 
   60% {
     transform: translateY(-5px);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 
   100% {
     transform: translateY(0);
-    background-color: #cfdadf;
+    background-color: var(--text-color);
   }
 }
 
 @keyframes animate-middle-bar {
   0% {
     transform: translateY(0);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 
   100% {
     transform: translateY(0);
-    background-color: #e1e8eb;
+    background-color: var(--text-color);
   }
 }
 
 @keyframes animate-out-top-bar {
   0% {
     transform: translateY(0);
-    background-color: #dde4e7;
+    background-color: var(--text-color);
   }
 
   60% {
     transform: translateY(5px);
-    background-color: #d6dfe2;
+    background-color: var(--text-color);
   }
 
   100% {
     transform: translateY(0);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 }
 
 @keyframes animate-out-bottom-bar {
   0% {
     transform: translateY(0);
-    background-color: #e2e8eb;
+    background-color: var(--text-color);
   }
 
   60% {
     transform: translateY(-5px);
-    background-color: #cfd8db;
+    background-color: var(--text-color);
   }
 
   100% {
     transform: translateY(0);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 }
 
 @keyframes animate-out-middle-bar {
   0% {
     transform: translateY(0);
-    background-color: #e4e9eb;
+    background-color: var(--text-color);
   }
 
   100% {
     transform: translateY(0);
-    background-color: #ffffff;
+    background-color: var(--text-color);
   }
 }
 
@@ -333,7 +333,7 @@ Animation keyframes
     content: "";
     width: 80px;
     height: 1.2px;
-    background-color: #ffffff;
+    background-color: var(--text-color);
     position: absolute;
     top: 50%;
     left: 0;
@@ -350,7 +350,7 @@ Animation keyframes
     position: absolute;
     z-index: 100;
     display: block;
-    color: #ffffff;
+    color: var(--text-color);
     font-size: var(--fs-2);
     font-family: "Open sans", serif;
     font-weight: 300;
