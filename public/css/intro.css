@@ -18,6 +18,12 @@ header {
     background: transparent;
 }
 
+body[data-page="intro"] header {
+    /* Starts hidden/offset so JS entrance animates in rather than flashing visible first */
+    opacity: 0;
+    transform: translateY(-18vh);
+}
+
 header::before {
     content: "";
     position: absolute;

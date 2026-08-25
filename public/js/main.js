@@ -56,13 +56,7 @@ function handleSneakerClick(event) {
   emitParticles(button, x, y);
 
   setTimeout(() => {
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
-        window.location.assign("intro.html");
-      });
-    } else {
-      window.location.assign("intro.html");
-    }
+    window.location.assign("intro.html");
   }, 800);
 }
 

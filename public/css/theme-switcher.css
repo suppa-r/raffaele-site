@@ -116,8 +116,6 @@
   color: var(--text-color);
   font: inherit;
   line-height: 1.2;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
-    border-color 0.3s ease-in-out, transform 0.2s ease;
 }
 
 .theme-selector-trigger:hover,
@@ -126,7 +124,6 @@
   background-color: var(--text-color);
   color: var(--base-color);
   border-color: var(--base-color);
-  transform: translateY(-1px);
 }
 
 .theme-selector-trigger:focus-visible,
@@ -169,7 +166,6 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 var(--space-xs);
-  transition: transform 0.2s ease;
 }
 
 .theme-selector-chevron svg {
@@ -203,7 +199,6 @@
   line-height: 1;
   padding: 0 var(--space-4xs);
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   border-radius: var(--space-3xs-2xs);
   box-sizing: border-box;
 }

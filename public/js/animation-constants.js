@@ -36,10 +36,10 @@ window.ANIMATION_CONSTANTS = {
 
   /* ===== INTRO-1 PAGE ANIMATIONS ===== */
   INTRO1: {
-    pageSelector: '.intro-1-page-title',
+    pageSelector: ".intro-1-page-title",
     selectors: {
-      navItems: "header .nav-links .nav__item",
-      footerEntries: "footer.footer > *",
+      navItems: "header .nav-links",
+      footerEntries: "footer.footer > *:not(.theme-selector-container)",
       titleLine: ".intro-1-page-title .title-line",
       titleLineFirst: ".intro-1-page-title .title-line:first-of-type",
       titleLineSecond: ".intro-1-page-title .title-line:last-of-type",
@@ -47,15 +47,14 @@ window.ANIMATION_CONSTANTS = {
     },
     timing: {
       navRevealDuration: 0.9,
-      navRevealStagger: 0.1,
       navRevealDelay: 0.05,
       footerRevealDuration: 0.6,
       footerRevealStagger: 0.1,
       footerRevealDelay: 1.8,
-      titleLineDuration: 1.6,
-      titleLineSecondDuration: 0.9,
-      titleLineStagger: 1.1,
-      titleLineDelay: 0.3,
+      titleLineDuration: 1.7,
+      titleLineSecondDuration: 1.7,
+      titleLineStagger: 0.18,
+      titleLineDelay: 0.18,
       profileTitleRevealDuration: 1.6,
     },
   },

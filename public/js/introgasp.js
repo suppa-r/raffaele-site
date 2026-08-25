@@ -16,11 +16,14 @@ const WRAPPER_GRADIENT_TARGET =
 const WRAPPER_GRADIENT_WORD_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text .text-layer';
 const INTRO_WORDS_TARGET = 'body[data-page="intro"] .text-with-animation span';
+const INTRO_HEADER_TARGET = 'body[data-page="intro"] header';
 const HERO_TEXT_EASE_INTRO = "cubic-bezier(0.22, 1, 0.36, 1)";
 const HERO_REVEAL_DURATION_INTRO = 1.7;
 const HERO_REVEAL_STAGGER_INTRO = 0.18;
 const HERO_REVEAL_DELAY_INTRO = 0.18;
 const INTRO_SLIDE_OFFSET = "35vw";
+const INTRO_HEADER_REVEAL_DURATION = 0.9;
+const INTRO_HEADER_REVEAL_DELAY = 0.05;
 
 if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-intro-anim");
@@ -64,6 +67,7 @@ function resetIntroAnimationState() {
       INTRO_WORDS_TARGET,
       WRAPPER_GRADIENT_TARGET,
       WRAPPER_GRADIENT_WORD_TARGET,
+      INTRO_HEADER_TARGET,
     ].forEach((target) => gsapLib.killTweensOf(target));
   }
 
@@ -101,6 +105,13 @@ function resetIntroAnimationState() {
       element.style.opacity = "";
       element.style.transform = "";
     });
+
+  if (hasElements(INTRO_HEADER_TARGET)) {
+    document.querySelectorAll(INTRO_HEADER_TARGET).forEach((element) => {
+      element.style.opacity = "";
+      element.style.transform = "";
+    });
+  }
 }
 
 function initializeAnimations() {
@@ -123,6 +134,18 @@ function initializeAnimations() {
     tagName: "div",
     lineClass: "line",
   });
+
+  if (hasElements(INTRO_HEADER_TARGET)) {
+    gsapLib.set(INTRO_HEADER_TARGET, { y: "-18vh", opacity: 0 });
+    gsapLib.to(INTRO_HEADER_TARGET, {
+      y: 0,
+      opacity: 1,
+      duration: INTRO_HEADER_REVEAL_DURATION,
+      ease: "power3.out",
+      delay: INTRO_HEADER_REVEAL_DELAY,
+      overwrite: "auto",
+    });
+  }
 
   splitInstance.lines.forEach((line) => {
     const content = line.innerHTML;
@@ -244,6 +267,10 @@ function revealIntroContent() {
       gsapLib.set(INTRO_WORDS_TARGET, { x: 0, opacity: 1, visibility: "visible" });
     }
 
+    if (hasElements(INTRO_HEADER_TARGET)) {
+      gsapLib.set(INTRO_HEADER_TARGET, { y: 0, opacity: 1 });
+    }
+
     return;
   }
 
@@ -288,6 +315,10 @@ function hideIntroContent() {
 
     if (hasElements(INTRO_WORDS_TARGET)) {
       gsapLib.set(INTRO_WORDS_TARGET, { x: "100vw", opacity: 0 });
+    }
+
+    if (hasElements(INTRO_HEADER_TARGET)) {
+      gsapLib.set(INTRO_HEADER_TARGET, { y: "-18vh", opacity: 0 });
     }
 
     return;

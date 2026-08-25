@@ -132,6 +132,21 @@ nav {
   word-break: keep-all;
 }
 
+.intro-1-page-title .title-line {
+  display: block;
+  opacity: 0;
+  transform: translateX(35vw);
+  will-change: transform, opacity;
+}
+
+body[data-page="intro-1"] .intro-1-page-title {
+  opacity: 0;
+}
+
+.js-intro-anim .intro-1-page-title {
+  opacity: 1;
+}
+
 .intro-1-page-title p span {
   font-size: var(--fs-100);
 }
@@ -704,35 +719,10 @@ main>section[id]:target .profile-title {
   }
 }
 
-@media (hover:none) and (pointer:coarse) {
-
-  .theme-selector-trigger:active {
-    transform: translateY(-0.5px) scale(1.015);
-    box-shadow:
-      0 8px 16px var(--shadow-color-tertiary),
-      0 3px 8px var(--shadow-color-secondary);
-  }
-
-  .theme-selector-trigger:active svg {
-    animation: spin-and-scale 0.8s ease-in-out;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
 
-  .theme-selector-trigger {
-    animation: none;
-  }
-
-  .theme-selector-trigger:hover,
-  .theme-selector-trigger.is-tapped,
-  .theme-selector-trigger:active,
   .back-to-top:hover {
     transform: none;
-  }
-
-  .theme-selector-trigger.is-tapped svg {
-    animation: none !important;
   }
 }
 
@@ -768,7 +758,9 @@ main>section[id]:target .profile-title {
     align-items: center;
     gap: var(--space-4xs-3xs);
     pointer-events: auto;
-    opacity: 1;
+    /* Starts hidden/offset so JS entrance animates in rather than flashing visible first */
+    opacity: 0;
+    transform: translateY(-18vh);
     visibility: visible;
     margin: 0;
     transition: none;

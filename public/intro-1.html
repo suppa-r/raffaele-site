@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="js-intro-anim">
 
 <head>
   <meta charset="UTF-8" />
@@ -31,6 +31,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="raffaele.site" />
   <link rel="manifest" href="favicons/site.webmanifest" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
   <script src="js/animation-constants.js" defer></script>
   <script src="js/intro-1-anim.js" defer></script>
   <script src="js/index.js" defer></script>
@@ -101,7 +104,8 @@
     <main role="main" id="main-content" tabindex="-1">
       <h1 class="visually-hidden">About me</h1>
       <div class="intro-1-page-title">
-        <p>You've committed this far<br>So, you're going to have to <span><em>LISTEN</em></span></p>
+        <p class="title-line">You've committed this far</p>
+        <p class="title-line">So, you're going to have to <span><em>LISTEN</em></span></p>
       </div>
       <!-- ************* early years *************** -->
       <section class="early" id="early">

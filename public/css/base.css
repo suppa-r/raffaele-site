@@ -130,12 +130,7 @@ a:focus-visible {
     outline-offset: 1.2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-
-    @view-transition {
-        navigation: auto;
-    }
-}
+/* Auto cross-document view transitions double up with intro.html's own JS entrance reveal, causing a load flicker; JS already drives transitions manually. */
 
 .wrapper::before {
     --size: clamp(20px, 3vw, 30px);

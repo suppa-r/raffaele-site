@@ -13,7 +13,6 @@ const INTRO1_TITLE_LINE_SECOND_TARGET = window.ANIMATION_CONSTANTS.INTRO1.select
 const INTRO1_PROFILE_TITLE_SPAN_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.profileTitleSpan;
 
 const INTRO1_NAV_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealDuration;
-const INTRO1_NAV_REVEAL_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealStagger;
 const INTRO1_NAV_REVEAL_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealDelay;
 const INTRO1_FOOTER_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealDuration;
 const INTRO1_FOOTER_REVEAL_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealStagger;
@@ -24,6 +23,10 @@ const INTRO1_TITLE_LINE_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.title
 const INTRO1_TITLE_LINE_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDelay;
 const INTRO1_PROFILE_TITLE_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.profileTitleRevealDuration;
 const INTRO1_EASING = window.ANIMATION_CONSTANTS.EASING.standard;
+
+function intro1IsPage() {
+  return !!document.querySelector("body[data-page='intro-1']");
+}
 
 function intro1HasElements(selector) {
   return !!document.querySelector(selector);
@@ -53,13 +56,17 @@ function intro1HideContent() {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
   if (gsapLib) {
     if (intro1HasElements(INTRO1_NAV_ITEMS_TARGET)) {
-      gsapLib.set(INTRO1_NAV_ITEMS_TARGET, { y: 16, opacity: 0 });
+      gsapLib.set(INTRO1_NAV_ITEMS_TARGET, { y: "-18vh", opacity: 0 });
     }
     if (intro1HasElements(INTRO1_FOOTER_ENTRIES_TARGET)) {
       gsapLib.set(INTRO1_FOOTER_ENTRIES_TARGET, { y: 16, opacity: 0 });
     }
     if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
-      gsapLib.set(INTRO1_TITLE_LINE_TARGET, { y: 16, opacity: 0 });
+      gsapLib.set(INTRO1_TITLE_LINE_TARGET, {
+        x: "35vw",
+        y: 0,
+        opacity: 0,
+      });
     }
     return;
   }
@@ -70,8 +77,15 @@ function intro1HideContent() {
     )
     .forEach((el) => {
       el.style.opacity = "0";
-      el.style.transform = "translateY(16px)";
+      el.style.transform = "translateX(35vw)";
     });
+
+  if (intro1HasElements(INTRO1_NAV_ITEMS_TARGET)) {
+    document.querySelectorAll(INTRO1_NAV_ITEMS_TARGET).forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(-18vh)";
+    });
+  }
 }
 
 function intro1RevealContent() {
@@ -84,7 +98,7 @@ function intro1RevealContent() {
       gsapLib.set(INTRO1_FOOTER_ENTRIES_TARGET, { y: 0, opacity: 1 });
     }
     if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
-      gsapLib.set(INTRO1_TITLE_LINE_TARGET, { y: 0, opacity: 1 });
+      gsapLib.set(INTRO1_TITLE_LINE_TARGET, { x: 0, y: 0, opacity: 1 });
     }
     return;
   }
@@ -95,7 +109,7 @@ function intro1RevealContent() {
     )
     .forEach((el) => {
       el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
+      el.style.transform = "translateX(0)";
     });
 }
 
@@ -114,7 +128,6 @@ function intro1InitializeAnimations() {
       opacity: 1,
       duration: INTRO1_NAV_REVEAL_DURATION,
       ease: "power3.out",
-      stagger: INTRO1_NAV_REVEAL_STAGGER,
       delay: INTRO1_NAV_REVEAL_DELAY,
       overwrite: "auto",
     });
@@ -134,6 +147,7 @@ function intro1InitializeAnimations() {
 
   if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
     gsapLib.to(INTRO1_TITLE_LINE_FIRST_TARGET, {
+      x: 0,
       y: 0,
       opacity: 1,
       duration: INTRO1_TITLE_LINE_DURATION,
@@ -142,8 +156,8 @@ function intro1InitializeAnimations() {
       overwrite: "auto",
     });
 
-    // The LISTEN line enters at the same moment but resolves faster
     gsapLib.to(INTRO1_TITLE_LINE_SECOND_TARGET, {
+      x: 0,
       y: 0,
       opacity: 1,
       duration: INTRO1_TITLE_LINE_SECOND_DURATION,
