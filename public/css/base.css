@@ -135,7 +135,7 @@ a:focus-visible {
 }
 
 .wrapper::before {
-    --size: clamp(12px, 2vw, 24px);
+    --size: clamp(20px, 3vw, 30px);
     content: "";
     position: absolute;
     inset: 0;
@@ -145,8 +145,8 @@ a:focus-visible {
     background-size: var(--size) var(--size);
     background-position: center;
     opacity: 1;
-    -webkit-mask-image: radial-gradient(ellipse 72% 64% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
-    mask-image: radial-gradient(ellipse 72% 64% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+    -webkit-mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+    mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
     mask-size: 100% 100%;
     mask-position: center;
     mask-repeat: no-repeat;
@@ -177,8 +177,8 @@ a:focus-visible {
     }
 
     .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 70% 68% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 70% 68% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
+        -webkit-mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
+        mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
     }
 }
 
@@ -195,8 +195,8 @@ a:focus-visible {
     }
 
     .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 68% 72% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        -webkit-mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }
 }
 
@@ -213,8 +213,8 @@ a:focus-visible {
     }
 
     .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 60% 72% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+        -webkit-mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+        mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
     }
 }
 
@@ -231,8 +231,8 @@ a:focus-visible {
     }
 
     .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 54% 76% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        -webkit-mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }
 }
 
@@ -249,8 +249,8 @@ a:focus-visible {
     }
 
     .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 58% 78% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 58% 78% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        -webkit-mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }
 }
 
@@ -267,7 +267,7 @@ a:focus-visible {
     }
 
     .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 52% 80% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 52% 80% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        -webkit-mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+        mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }
 }
