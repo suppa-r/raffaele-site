@@ -41,6 +41,7 @@ html.intro-nav-open header::before {
     align-items: center;
     position: relative;
     z-index: 2002;
+
     margin-block: 0;
     padding-block: 0;
 }
@@ -56,7 +57,7 @@ html.intro-nav-open header::before {
 }
 
 .header-title {
-    padding-inline-start: var(--space-4xs-3xs);
+    padding-inline-start: var(--space-xs-s);
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -206,18 +207,18 @@ main p:not(.wrapper-gradient-text) {
 /* --------------------------------------- */
 
 footer {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: end;
-  align-items: center;
-  white-space: nowrap;
- }
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: end;
+    align-items: center;
+    white-space: nowrap;
+}
 
 .footer__actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap:var(--space-4xs-3xs);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--space-4xs-3xs);
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -256,5 +257,15 @@ footer {
     .animate-out-middle-bar,
     .text-layer {
         animation: none
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        margin-block: var(--space-xl);
+    }
+
+    main p+p {
+        margin-block-start: var(--space-4xs);
     }
 }
