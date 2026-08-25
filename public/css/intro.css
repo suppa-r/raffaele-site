@@ -211,23 +211,7 @@ footer {
   justify-content: end;
   align-items: center;
   white-space: nowrap;
-  margin-block-end: var(--space-s-m);
-  margin-inline: var(--space-m-l);
-}
-
-.footer-text {
-  inline-size: 100%;
-  block-size: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-5xs-4xs);
-  font-family: var(--primary-font-secondary);
-  color: var(--text-color);
-  font-size: var(--fs-100);
-  white-space: nowrap;
-  word-break: keep-all;
-}
+ }
 
 .footer__actions {
   display: flex;

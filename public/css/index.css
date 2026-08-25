@@ -244,16 +244,16 @@ main {
 footer {
   display: grid;
   grid-template-columns: auto;
-  justify-content:end;
+  justify-content: end;
   align-items: center;
   white-space: nowrap;
-}
+ }
 
 .footer__actions {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: clamp(0.55rem, 1.6vw, 0.95rem);
+  gap:var(--space-4xs-3xs);
 }
 
 @media (prefers-reduced-motion:reduce) {
