@@ -41,10 +41,8 @@
 /* Fallback for older browsers - RGB/HEX */
 [data-theme="light"] {
   --text-color: #000000;
-  /* Very dark gray */
-  --base-color: #f7f3f1e3;
-  /* Warm off-white */
-     --text-span: #0e3849a2;
+  --base-color: #faf8f8;
+  --text-span: #0e3849a2;
   --nav-contrast-color: #ffffffff;
   --focus-ring-color: #2a2a2a;
   --btn-cell-bg: #0a0a0a;
@@ -116,11 +114,9 @@
   }
 
   [data-theme="light"] {
-    --text-color: oklch(10.668% 0.00001 271.152);
-    /* Very dark gray */
-    --base-color: oklch(96.668% 0.0499 47.84deg);
-    /* Warm off-white */
-     --text-span: oklch(32.078% 0.0541 229.235 / 0.637);
+    --text-color: oklch(0% 0 0);
+    --base-color: oklch(98.066% 0.00211 14.279deg);
+    --text-span: oklch(32.078% 0.0541 229.235 / 0.637);
     --nav-contrast-color: oklch(100% 0.0001 271.152deg);
     --focus-ring-color: oklch(28.502% 0.0003 271.152deg);
     --body-grid-line: rgb(0 0 0 / 20%);
