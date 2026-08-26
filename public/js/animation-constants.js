@@ -38,7 +38,7 @@ window.ANIMATION_CONSTANTS = {
   INTRO1: {
     pageSelector: ".intro-1-page-title",
     selectors: {
-      navItems: "header .nav-links",
+      navItems: "header",
       footerEntries: "footer.footer > *:not(.theme-selector-container)",
       titleLine: ".intro-1-page-title .title-line",
       titleLineFirst: ".intro-1-page-title .title-line:first-of-type",
