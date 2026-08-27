@@ -58,7 +58,7 @@ function intro1HideContent() {
     if (intro1HasElements(INTRO1_NAV_ITEMS_TARGET)) {
       gsapLib.set(INTRO1_NAV_ITEMS_TARGET, {
         opacity: 0,
-        y: 86,
+        y: "-18vh",
       });
     }
     if (intro1HasElements(INTRO1_FOOTER_ENTRIES_TARGET)) {
@@ -86,7 +86,7 @@ function intro1HideContent() {
   if (intro1HasElements(INTRO1_NAV_ITEMS_TARGET)) {
     document.querySelectorAll(INTRO1_NAV_ITEMS_TARGET).forEach((el) => {
       el.style.opacity = "0";
-      el.style.transform = "translateY(86px)";
+      el.style.transform = "translateY(-18vh)";
     });
   }
 }
@@ -130,7 +130,7 @@ function intro1InitializeAnimations() {
       INTRO1_NAV_ITEMS_TARGET,
       {
         opacity: 0,
-        y: 86,
+        y: "-18vh",
       },
       {
         x: 0,

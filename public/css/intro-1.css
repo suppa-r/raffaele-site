@@ -1,8 +1,4 @@
 :root {
-  --gradient: linear-gradient(90deg,
-      var(--base-color),
-      var(--text-color),
-      var(--base-color));
   --intro-nav-fade-out-duration: 0.22s;
   --intro-nav-fade-in-duration: 0.4s;
   --intro-nav-fade-in-delay: 0.2s;
@@ -14,6 +10,7 @@
 .wrapper {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  letter-spacing: var(--letter-spacing-body);
 }
 
 /* --------------------------------------- */
@@ -21,15 +18,25 @@
 /* --------------------------------------- */
 
 header {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
-  align-items: center;
-  z-index: 2002;
-  border-radius: var(--space-l-xl);
-  position: relative;
-  isolation: isolate;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
+    padding:var(--space-4xs-3xs) 0;
+    z-index: 2002;
+    border-radius: var(--space-l-xl);
+    position: relative;
+    isolation: isolate;
+    line-height: 1;
+    background: transparent;
 }
+
+body[data-page="intro-1"] header {
+    /* Starts hidden/offset so JS entrance animates in rather than flashing visible first */
+    opacity: 0;
+    transform: translateY(-18vh);
+}
+
 
 header::before {
   content: "";
@@ -692,21 +699,29 @@ main>section[id]:target .profile-title {
     display: flex;
     flex-direction: row;
     inline-size: 100%;
+    position: relative;
     justify-content: center;
     align-items: center;
     gap: var(--space-4xs-3xs);
     white-space: nowrap;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    background-size: 0 2px;
-    transition: background-size 0.25s ease;
+    padding-block-end: var(--space-4xs-3xs);
     text-decoration: none;
   }
 
-  .nav__item a:hover,
-  .nav__item a:focus-visible {
-    background-size: 100% 2px;
+  .nav__item a::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: 0;
+    inline-size: 0;
+    block-size: 2px;
+    background-color: var(--text-span);
+    transition: inline-size 0.25s ease;
+  }
+
+  .nav__item a:hover::after,
+  .nav__item a:focus-visible::after {
+    inline-size: 100%;
   }
 
   .nav__item a span {
