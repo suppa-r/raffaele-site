@@ -5,7 +5,7 @@
             ============================================ */
     --content-max-width: min(420px, 95dvw);
     --margin-inline: auto;
-    --padding-inline: var(--space-xs);
+    --padding-inline: var(--space-s);
 }
 
 html{
@@ -23,7 +23,7 @@ body {
     font-weight: 400;
     font-style: normal;
     color: var(--text-color);
-    font-size: var(--fs-0);
+    font-size: var(--fs-1);
     line-height: 1.3;
     letter-spacing: var(--letter-spacing-body);
     text-rendering: optimizelegibility;
@@ -171,7 +171,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(560px, 92dvw);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-        --padding-inline: var(--space-xs);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
