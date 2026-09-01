@@ -254,8 +254,8 @@ footer {
     }
 }
 
-/* @media (max-width: 600px) {
-    main {
-        margin-block: var(--space-);
+@media (max-width: 600px) {
+   .wrapper-gradient-text {
+   font-size: var(--fs-2);
     }
-} */
+}
