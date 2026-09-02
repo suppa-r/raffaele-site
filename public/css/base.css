@@ -106,7 +106,7 @@ p {
     max-inline-size: min(64ch, var(--content-max-width));
     margin-block: var(--layout-block-gap);
     margin-inline: auto;
-    text-wrap: pretty;
+    text-wrap: balance;
 }
 
 a {
