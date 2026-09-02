@@ -5,7 +5,8 @@
             ============================================ */
     --content-max-width: min(420px, 95dvw);
     --margin-inline: auto;
-    --padding-inline: var(--space-s);
+    --padding-inline: var(--space-xs);
+    --layout-block-gap: clamp(0.5rem, 2vw, 0.6rem);
 }
 
 html{
@@ -171,7 +172,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(560px, 92dvw);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-        --padding-inline: var(--space-s);
+        --padding-inline: var(--space-xs);
     }
 
     .wrapper::before {
@@ -242,7 +243,6 @@ a:focus-visible {
 
     :root {
         --content-max-width: min(1400px, 96dvw);
-        --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
         --padding-inline: var(--space-xl);
     }
 
