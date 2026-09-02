@@ -49,11 +49,11 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-basis: 20%;
+  flex-basis: 14%;
   inline-size: 80vw;
-  margin: 0 3rem;
+  /* margin: 0 var(--space-l); */
   /* top, right, bottom, left */
-  padding: 0 var(--space-m-l);
+  padding: 0 var(--space-m);
   /* space inside each li */
   border-radius: 50%;
   text-align: center;
@@ -67,11 +67,10 @@ nav ul {
   position: relative;
   top: auto;
   color: var(--text-color);
-  font-weight: 300;
   letter-spacing: 4px;
   text-decoration: none;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: var(--fs-1);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -316,12 +315,13 @@ Animation keyframes
 
   .nav-links li {
     position: relative;
-    margin: var(--space-l);
-    padding: var(--space-m) var(--space-l);
+    flex-basis: 20%;
+    margin:0;
+    padding:var(--space-m) var(--space-xl);
   }
 
   .nav-links li a {
-    font-size: var(--fs-2);
+    font-size: var(--fs-1);
   }
 
   /* the li-anchored line below replaces the mobile a-anchored line */
@@ -351,9 +351,8 @@ Animation keyframes
     z-index: 100;
     display: block;
     color: var(--text-color);
-    font-size: var(--fs-2);
-    font-family: "Open sans", serif;
-    font-weight: 300;
+    font-size: var(--fs-1);
+    font-family:var(--primary-font-secondary);
     font-style: italic;
     text-transform: none;
     white-space: nowrap;
