@@ -1,220 +1,216 @@
-<!doctype html>
-<html lang="en" class="js-intro-anim">
+﻿<!doctype html>
+<html lang="en" class="js_intro_anim">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#080808" />
-  <title>Raffaele Suppa</title>
-  <script src="js/theme-bootstrap.js"></script>
-  <!-- Preload critical stylesheets -->
-  <link rel="preload" href="css/tokens.css" as="style" />
-  <link rel="preload" href="css/reset.css" as="style" />
-  <link rel="preload" href="css/color-themes.css" as="style" />
-  <link rel="preload" href="css/base.css" as="style" />
-  <link rel="preload" href="css/transition.css" as="style" />
-  <link rel="preload" href="css/fonts.css" as="style" />
-  <link rel="preload" href="css/theme-switcher.css" as="style" />
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/color-themes.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/transition.css" />
-  <link rel="stylesheet" href="css/fonts.css" />
-  <link rel="stylesheet" href="css/theme-switcher.css" />
-  <link rel="stylesheet" href="css/intro-1.css" />
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
-  <link rel="shortcut icon" href="favicons/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="raffaele.site" />
-  <link rel="manifest" href="favicons/site.webmanifest" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
-  <script src="js/animation-constants.js" defer></script>
-  <script src="js/intro-1-anim.js" defer></script>
-  <script src="js/index.js" defer></script>
-  <script src="js/intro-theme-selector.js" defer></script>
-  <script src="js/nav-bar-for-intro.js" defer></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#080808" />
+	<title>Raffaele Suppa</title>
+	<script src="js/theme-bootstrap.js"></script>
+	<!-- Preload critical stylesheets -->
+	<link rel="preload" href="css/tokens.css" as="style" />
+	<link rel="preload" href="css/reset.css" as="style" />
+	<link rel="preload" href="css/color-themes.css" as="style" />
+	<link rel="preload" href="css/base.css" as="style" />
+	<link rel="preload" href="css/transition.css" as="style" />
+	<link rel="preload" href="css/fonts.css" as="style" />
+	<link rel="preload" href="css/theme-switcher.css" as="style" />
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/tokens.css" />
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/color-themes.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/transition.css" />
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link rel="stylesheet" href="css/theme-switcher.css" />
+	<link rel="stylesheet" href="css/intro-1.css" />
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
+	<link rel="shortcut icon" href="favicons/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="raffaele.site" />
+	<link rel="manifest" href="favicons/site.webmanifest" />
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
+	<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+	<script src="js/animation-constants.js" defer></script>
+	<script src="js/intro-theme-selector.js" defer></script>
+	<script src="js/index.js" defer></script>
+	<script src="js/introgasp.js" defer></script>
+	<script src="js/nav-bar-for-intro.js" defer></script>
 </head>
 
 <body data-page="intro-1">
-  <div class="wrapper">
-    <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
-    <div class="support view-transition" role="alert" aria-live="assertive">
-      ⚠️ Your browser doesn't support View Transitions
-    </div>
-    <div class="support style-query" role="alert" aria-live="assertive">
-      ⚠️ Your browser doesn't support Style Queries
-    </div>
-    <header class="header" role="banner" id="top">
-      <a class="skip-link" href="#main-content">Skip to main content</a>
-      <nav aria-label="Primary">
-        <ul class="nav-links" id="site-nav-links">
-          <li class="nav__item">
-            <a href="#early" class="nav__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <!-- Icon downloaded from https://icon-sets.iconify.design/material-symbols-light/child-hat-outline-sharp/ -->
-              <path fill="currentColor"
-                d="M10.076 16.992q-.905-.623-1.326-1.626h6.73q-.42 1.003-1.325 1.626q-.905.624-2.04.624q-1.134 0-2.039-.624m-.838-3.95Q9 12.812 9 12.48t.238-.56t.57-.229t.56.228t.228.56t-.228.561t-.56.228t-.57-.228m4.625 0q-.228-.228-.228-.56t.228-.56t.56-.229t.56.228t.229.56t-.228.561t-.561.228q-.332 0-.56-.228M12.116 21q-1.645 0-3.07-.616q-1.427-.617-2.495-1.685t-1.685-2.494t-.616-3.07q0-.762.135-1.493q.134-.73.41-1.398l.96.197q-.274.624-.4 1.287t-.124 1.388q0 2.886 1.999 4.885T12.116 20T17 18.001t2-4.885q0-.477-.07-.942t-.182-.916q-1.91-.148-3.51-1.037T12.51 7.88l.884-.506q.916 1.137 2.178 1.864t2.751.955q-.548-1.186-1.49-2.097q-.94-.91-2.181-1.387l1.062-.596q1.92.982 3.103 2.843T20 13.135q0 1.644-.616 3.07q-.617 1.426-1.685 2.494t-2.504 1.685t-3.08.616M5.52 9.567l9.672-3.644q-.82-.958-1.953-1.43q-1.132-.472-2.394-.472q-2.202 0-3.718 1.63T5.519 9.567m-.85 1.404q-.078-.327-.114-.63q-.036-.305-.036-.643q0-2.025 1.035-3.671t2.715-2.435q-.03-.061-.033-.13q-.003-.068-.003-.135q0-.31.21-.52t.52-.21q.254 0 .456.151q.202.152.264.394q.28-.067.568-.094t.593-.027q1.579 0 2.986.66t2.403 1.865l3.646-1.362l.354.933zm5.679-3.219" />
-            </svg><span> early years</span></a>
-          </li>
-          <li class="nav__item">
-            <a href="#ryerson" class="nav__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <!-- Icon downloaded from https://icon-sets.iconify.design/material-symbols-light/school-outline-sharp/ -->
-              <path fill="currentColor"
-                d="m12 18.692l-6-3.261v-4.846L3.077 9L12 4.154L20.923 9v6.385h-1V9.562L18 10.585v4.846zm0-5.992L18.83 9L12 5.3L5.17 9zm0 4.852l5-2.7v-3.717l-5 2.708l-5-2.708v3.717zm0-3.487" />
-            </svg><span>ryerson</span></a>
-          </li>
-          <li class="nav__item">
-            <a href="#architecture" class="nav__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <!-- Icon downloaded from https://icon-sets.iconify.design/material-symbols-light/location-city/ -->
-              <path fill="currentColor"
-                d="M5.039 20.154v-13H9.5v-3.27L12 1.5l2.5 2.385v7.269h4.462v9zm1-1h3v-3h-3zm0-4h3v-3h-3zm0-4h3v-3h-3zm4.461 8h3v-3h-3zm0-4h3v-3h-3zm0-4h3v-3h-3zm0-4h3v-3h-3zm4.462 12h3v-3h-3zm0-4h3v-3h-3z" />
-            </svg><span>architecture</span></a>
-          </li>
-          <li class="nav__item">
-            <a href="#stuff" class="nav__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <!-- Icon downloaded from https://icon-sets.iconify.design/material-symbols-light/shopping-cart-outline-sharp/ -->
-              <path fill="currentColor"
-                d="M6.241 20.682q-.433-.434-.433-1.066t.433-1.067q.434-.433 1.067-.433t1.066.433t.434 1.067t-.434 1.066t-1.066.434t-1.067-.434m9.385 0q-.434-.434-.434-1.066t.434-1.067q.434-.433 1.066-.433t1.067.433q.433.434.433 1.067q0 .632-.433 1.066q-.434.434-1.067.434t-1.066-.434M5.881 5.5l2.669 5.616h7L18.627 5.5zm-.489-1h14.923l-4.167 7.616H8.1l-1.639 3h11.731v1H4.741l2.744-4.9L3.808 3.5H2v-1h2.442zm3.158 6.616h7z" />
-            </svg><span>stuff</span></a>
-          </li>
-          <li class="nav__item">
-            <a href="#contact" class="nav__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <!-- Icon downloaded from https://icon-sets.iconify.design/material-symbols-light/concierge-outline-sharp/ -->
-              <path fill="currentColor"
-                d="M2.039 11.923V3.769h4v1.296l7.615-2.219l7 2.192v2.577h-4.885v1.616l-7.357 2.692zm1-1h2V4.769h-2zm3 0h2.215l6.515-2.388v-.92H12.84l-2.925.97l-.33-.958l3.105-1.011h6.94v-.839l-6.026-1.87l-7.566 2.209zM11 21h11v-1H11zm1-2.384h9q0-1.737-1.153-3.01q-1.153-1.271-2.847-1.448v-.914h-1v.914q-1.7.177-2.85 1.449T12 18.616m1.202-1.006q.302-1.098 1.206-1.809t2.092-.71q1.183 0 2.074.71t1.193 1.809zm3.292 0" />
-            </svg><span>get in touch</span></a>
-          </li>
-          <li class="nav__item">
-            <a href="index.html" class="nav__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <!-- Icon downloaded from https://icon-sets.iconify.design/material-symbols-light/house-outline/ -->
-              <path fill="currentColor"
-                d="M5.692 19V9.946L2.604 12.25L2 11.458L12 4l4.346 3.223V5h1.885v3.639l3.788 2.819l-.603.792l-3.089-2.304V19h-5.096v-5.23h-2.462V19zm1-1H9.77v-5.23h4.462V18h3.096V9.21L12 5.256L6.692 9.21zm3.5-7.994h3.616q0-.704-.542-1.159q-.543-.455-1.266-.455t-1.265.453t-.543 1.16M9.77 18v-5.23h4.462V18v-5.23H9.769z" />
-            </svg><span> home</span></a>
-          </li>
-        </ul>
-      </nav>
-      <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false">
-        <span class="bar-top"></span>
-        <span class="bar-middle"></span>
-        <span class="bar-bottom"></span>
-      </button>
-    </header>
-    <main role="main" id="main-content" tabindex="-1">
-      <h1 class="visually-hidden">About me</h1>
-      <div class="intro-1-page-title">
-        <p class="title-line">You've committed this far</p>
-        <p class="title-line">So, you're going to have to <span><em>LISTEN</em></span></p>
-      </div>
-      <!-- ************* early years *************** -->
-      <section class="early" id="early">
-        <div class="row">
-          <h2 class="profile-title"><span>the early years</span></h2>
-        </div>
-      </section>
-      <!-- ************** ryerson ****************** -->
-      <section class="ryerson" id="ryerson">
-        <div class="row">
-          <h2 class="profile-title"><span>ryerson</span></h2>
-        </div>
-      </section>
-      <!-- *********** architecture *************** -->
-      <section class="architecture" id="architecture">
-        <div class="row">
-          <h2 class="profile-title"><span>architecture</span></h2>
-        </div>
-      </section>
-      <!-- ************* stuff ***************** -->
-      <section class="stuff" id="stuff">
-        <div class="row">
-          <h2 class="profile-title"><span>stuff</span></h2>
-        </div>
-      </section>
-      <!-- ************* contact ***************** -->
-      <section class="contact" id="contact">
-        <div class="row">
-          <h2 class="profile-title"><span>Get in Touch</span></h2>
-        </div>
-      </section>
-    </main>
-    <!-- ************* footer ***************** -->
-    <footer role="contentinfo" class="footer">
-      <a href="#top" class="back-to-top" title="Back to Top">
-        <p>back to<br>top</p>
-      </a>
-  <div class="theme-selector-container">
-          <label id="theme-selector-label" for="theme-selector">color theme:</label>
-          <div class="theme-selector" data-theme-selector>
-            <button type="button" class="theme-selector-trigger" data-theme-selector-trigger aria-haspopup="listbox"
-              aria-expanded="false" aria-controls="theme-selector-menu"
-              aria-labelledby="theme-selector-label theme-selector-value">
-              <span class="theme-selector-trigger-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                  <path fill="currentColor"
-                    d="M230.72 145.06a4 4 0 0 0-4-1A92.08 92.08 0 0 1 111.94 29.27a4 4 0 0 0-5-5a100.78 100.78 0 0 0-50.86 35.61a100 100 0 0 0 140 140a100.78 100.78 0 0 0 35.59-50.87a4 4 0 0 0-.95-3.95m-39.42 48.47A92 92 0 0 1 62.47 64.7a93 93 0 0 1 39.88-30.35a100.09 100.09 0 0 0 119.3 119.3a93 93 0 0 1-30.35 39.88" />
-                </svg>
-              </span>
-              <span id="theme-selector-value" class="theme-selector-trigger-text">dark</span>
-              <span class="theme-selector-chevron" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-            </button>
-            <ul id="theme-selector-menu" class="theme-selector-menu" data-theme-selector-menu role="listbox"
-              aria-label="Color theme options" hidden>
-              <li role="presentation">
-                <button type="button" class="theme-selector-option" data-theme-option="light" role="option"
-                  aria-selected="false">
-                  <span class="theme-option-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path fill="currentColor"
-                        d="m6.05 4.14l-.39-.39a.993.993 0 0 0-1.4 0l-.01.01a.984.984 0 0 0 0 1.4l.39.39c.39.39 1.01.39 1.4 0l.01-.01a.984.984 0 0 0 0-1.4M3.01 10.5H1.99c-.55 0-.99.44-.99.99v.01c0 .55.44.99.99.99H3c.56.01 1-.43 1-.98v-.01c0-.56-.44-1-.99-1m9-9.95H12c-.56 0-1 .44-1 .99v.96c0 .55.44.99.99.99H12c.56.01 1-.43 1-.98v-.97c0-.55-.44-.99-.99-.99m7.74 3.21c-.39-.39-1.02-.39-1.41-.01l-.39.39a.984.984 0 0 0 0 1.4l.01.01c.39.39 1.02.39 1.4 0l.39-.39a.984.984 0 0 0 0-1.4m-1.81 15.1l.39.39a.996.996 0 1 0 1.41-1.41l-.39-.39a.993.993 0 0 0-1.4 0c-.4.4-.4 1.02-.01 1.41M20 11.49v.01c0 .55.44.99.99.99H22c.55 0 .99-.44.99-.99v-.01c0-.55-.44-.99-.99-.99h-1.01c-.55 0-.99.44-.99.99M12 5.5c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6m-.01 16.95H12c.55 0 .99-.44.99-.99v-.96c0-.55-.44-.99-.99-.99h-.01c-.55 0-.99.44-.99.99v.96c0 .55.44.99.99.99m-7.74-3.21c.39.39 1.02.39 1.41 0l.39-.39a.993.993 0 0 0 0-1.4l-.01-.01a.996.996 0 0 0-1.41 0l-.39.39c-.38.4-.38 1.02.01 1.41" />
-                    </svg>
-                  </span>
-                  <span class="theme-option-label">light</span>
-                </button>
-              </li>
-              <li role="presentation">
-                <button type="button" class="theme-selector-option" data-theme-option="dark" role="option"
-                  aria-selected="true">
-                  <span class="theme-option-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                      <path fill="currentColor"
-                        d="M230.72 145.06a4 4 0 0 0-4-1A92.08 92.08 0 0 1 111.94 29.27a4 4 0 0 0-5-5a100.78 100.78 0 0 0-50.86 35.61a100 100 0 0 0 140 140a100.78 100.78 0 0 0 35.59-50.87a4 4 0 0 0-.95-3.95m-39.42 48.47A92 92 0 0 1 62.47 64.7a93 93 0 0 1 39.88-30.35a100.09 100.09 0 0 0 119.3 119.3a93 93 0 0 1-30.35 39.88" />
-                    </svg>
-                  </span>
-                  <span class="theme-option-label">dark</span>
-                </button>
-              </li>
-              <li role="presentation">
-                <button type="button" class="theme-selector-option" data-theme-option="system" role="option"
-                  aria-selected="false">
-                  <span class="theme-option-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
-                      <path fill="currentColor"
-                        d="M2000 1525q12 12 21 29t15 36t9 38t3 36q0 27-10 50t-27 40t-41 28t-50 10H128q-27 0-50-10t-40-27t-28-41t-10-50q0-16 3-35t9-39t15-36t21-29l208-208V384h1536v933zM384 1280h1280V512H384zm1536 384q0-11-4-28t-12-26l-203-202H347l-203 202q-8 8-12 25t-4 29z" />
-                    </svg>
-                  </span>
-                  <span class="theme-option-label">system (auto)</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-          <select id="theme-selector" name="theme" class="theme-selector-native" aria-label="Select color theme">
-            <option value="light">light</option>
-            <option value="dark" selected>dark</option>
-            <option value="system">system (auto)</option>
-          </select>
-        </div>
-<div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
-    </footer>
-  </div>
+	<div class="wrapper">
+		<a class="skip-link" href="#main-content">Skip to main content</a>
+		<!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
+		<div class="support view-transition" role="alert" aria-live="assertive">
+			⚠️ Your browser doesn't support View Transitions
+		</div>
+		<div class="support style-query" role="alert" aria-live="assertive">
+			⚠️ Your browser doesn't support Style Queries
+		</div>
+		<header class="header" role="banner" id="top">
+			<nav aria-label="Primary">
+				<ul class="nav-links" id="site_nav_links">
+					<li class="nav-item">
+						<a href="#early" class="nav_link"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+								<path fill="currentColor"
+									d="M10.076 16.992q-.905-.623-1.326-1.626h6.73q-.42 1.003-1.325 1.626q-.905.624-2.04.624q-1.134 0-2.039-.624m-.838-3.95Q9 12.812 9 12.48t.238-.56t.57-.229t.56.228t.228.56t-.228.561t-.56.228t-.57-.228m4.625 0q-.228-.228-.228-.56t.228-.56t.56-.229t.56.228t.229.56t-.228.561t-.561.228q-.332 0-.56-.228M12.116 21q-1.645 0-3.07-.616q-1.427-.617-2.495-1.685t-1.685-2.494t-.616-3.07q0-.762.135-1.493q.134-.73.41-1.398l.96.197q-.274.624-.4 1.287t-.124 1.388q0 2.886 1.999 4.885T12.116 20T17 18.001t2-4.885q0-.477-.07-.942t-.182-.916q-1.91-.148-3.51-1.037T12.51 7.88l.884-.506q.916 1.137 2.178 1.864t2.751.955q-.548-1.186-1.49-2.097q-.94-.91-2.181-1.387l1.062-.596q1.92.982 3.103 2.843T20 13.135q0 1.644-.616 3.07q-.617 1.426-1.685 2.494t-2.504 1.685t-3.08.616M5.52 9.567l9.672-3.644q-.82-.958-1.953-1.43q-1.132-.472-2.394-.472q-2.202 0-3.718 1.63T5.519 9.567m-.85 1.404q-.078-.327-.114-.63q-.036-.305-.036-.643q0-2.025 1.035-3.671t2.715-2.435q-.03-.061-.033-.13q-.003-.068-.003-.135q0-.31.21-.52t.52-.21q.254 0 .456.151q.202.152.264.394q.28-.067.568-.094t.593-.027q1.579 0 2.986.66t2.403 1.865l3.646-1.362l.354.933zm5.679-3.219" />
+							</svg><span> early years</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="#ryerson" class="nav_link"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+								<path fill="currentColor"
+									d="m12 18.692l-6-3.261v-4.846L3.077 9L12 4.154L20.923 9v6.385h-1V9.562L18 10.585v4.846zm0-5.992L18.83 9L12 5.3L5.17 9zm0 4.852l5-2.7v-3.717l-5 2.708l-5-2.708v3.717zm0-3.487" />
+							</svg>
+							<span>ryerson</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="#architecture" class="nav_link"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+								<path fill="currentColor"
+									d="M6.5 17V9h1v8zm5 0V9h1v8zm-7.961 3v-1h16.923v1zM16.5 17V9h1v8zM3.539 7v-.846L12 2.116l8.462 4.038V7zM6.18 6h11.638zm0 0h11.638L12 3.25z" />
+							</svg>
+							<span>architecture</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="#stuff" class="nav_link"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+								<path fill="currentColor"
+									d="M6.241 20.682q-.433-.434-.433-1.066t.433-1.067q.434-.433 1.067-.433t1.066.433t.434 1.067t-.434 1.066t-1.066.434t-1.067-.434m9.385 0q-.434-.434-.434-1.066t.434-1.067q.434-.433 1.066-.433t1.067.433q.433.434.433 1.067q0 .632-.433 1.066q-.434.434-1.067.434t-1.066-.434M5.881 5.5l2.669 5.616h7L18.627 5.5zm-.489-1h14.923l-4.167 7.616H8.1l-1.639 3h11.731v1H4.741l2.744-4.9L3.808 3.5H2v-1h2.442zm3.158 6.616h7z" />
+							</svg><span>stuff</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="#contact" class="nav_link"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+								<path fill="currentColor"
+									d="M16 11V8h-3V7h3V4h1v3h3v1h-3v3zm3.2 9q-2.702 0-5.418-1.244t-4.995-3.533t-3.533-5.021T4 4.8V4h4.439l.848 4.083l-2.696 2.51q.684 1.186 1.417 2.167t1.527 1.769q.802.84 1.808 1.57t2.296 1.44l2.611-2.708l3.75.756V20zM6.121 9.654l2.092-1.92L7.635 5h-2.63q.03 1.144.309 2.305q.278 1.16.807 2.349m8.45 8.335q.923.463 2.09.723t2.339.277v-2.605l-2.388-.475zm0 0" />
+							</svg>
+							<span>get in touch</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="index.html" class="nav_link"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+								<path fill="currentColor"
+									d="M5.73 19v-4.5h4.54V19v-4.5H5.73zM2 20v-8.5l6-4.27l6.289 4.481q-.178.177-.338.367t-.338.366L8 8.488L3 12v7h2.73v-4.5h4.54V20h-1v-4.5H6.73V20zM22 4v8.567q-.233-.2-.473-.35q-.24-.152-.527-.292V5h-9.615v2.189l-1-.72V4zm-4.77 4.77h1.54V7.23h-1.54zM18 22q-1.671 0-2.835-1.164Q14 19.67 14 18t1.165-2.835T18 14t2.836 1.165T22 18t-1.164 2.836T18 22m-.385-1.115h.77v-2.5h2.5v-.77h-2.5v-2.5h-.77v2.5h-2.5v.77h2.5z" />
+							</svg><span> home</span></a>
+					</li>
+				</ul>
+			</nav>
+			<button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false">
+				<span class="bar-top"></span>
+				<span class="bar-middle"></span>
+				<span class="bar-bottom"></span>
+			</button>
+		</header>
+		<main role="main" id="main-content" tabindex="-1">
+			<h1 class="visually-hidden">About me</h1>
+			<div class="intro-1-page-title">
+				<p>You've committed this far<br>So, you're going to have to <span><em>LISTEN</em></span></p>
+			</div>
+
+			<!-- ************* early years *************** -->
+			<section class="early" id="early">
+				<div class="row">
+					<h2 class="profile-title"><span>the early years</span></h2>
+				</div>
+			</section>
+			<!-- ************** ryerson ****************** -->
+			<section class="ryerson" id="ryerson">
+				<div class="row">
+					<h2 class="profile-title"><span>ryerson</span></h2>
+				</div>
+			</section>
+			<!-- *********** architecture *************** -->
+			<section class="architecture" id="architecture">
+				<div class="row">
+					<h2 class="profile-title"><span>architecture</span></h2>
+				</div>
+			</section>
+			<!-- ************* stuff ***************** -->
+			<section class="stuff" id="stuff">
+				<div class="row">
+					<h2 class="profile-title"><span>stuff</span></h2>
+				</div>
+			</section>
+			<!-- ************* contact ***************** -->
+			<section class="contact" id="contact">
+				<div class="row">
+					<h2 class="profile-title"><span>Get in Touch</span></h2>
+				</div>
+			</section>
+		</main>
+		<footer role="contentinfo" class="footer">
+			<a href="#top" class="back-to-top" title="Back to Top">
+				<p>back to<br>top</p>
+			</a>
+			<div class="theme-selector-container">
+				<label id="theme-selector-label" for="theme-selector">color theme:</label>
+				<div class="theme-selector" data-theme-selector>
+					<button type="button" class="theme-selector-trigger" data-theme-selector-trigger aria-haspopup="listbox"
+						aria-expanded="false" aria-controls="theme-selector-menu"
+						aria-labelledby="theme-selector-label theme-selector-value">
+						<span class="theme-selector-trigger-icon" aria-hidden="true">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+								<path fill="currentColor"
+									d="M230.72 145.06a4 4 0 0 0-4-1A92.08 92.08 0 0 1 111.94 29.27a4 4 0 0 0-5-5a100.78 100.78 0 0 0-50.86 35.61a100 100 0 0 0 140 140a100.78 100.78 0 0 0 35.59-50.87a4 4 0 0 0-.95-3.95m-39.42 48.47A92 92 0 0 1 62.47 64.7a93 93 0 0 1 39.88-30.35a100.09 100.09 0 0 0 119.3 119.3a93 93 0 0 1-30.35 39.88" />
+							</svg>
+						</span>
+						<span id="theme-selector-value" class="theme-selector-trigger-text">dark</span>
+						<span class="theme-selector-chevron" aria-hidden="true">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+								<polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="1.8"
+									stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</span>
+					</button>
+					<ul id="theme-selector-menu" class="theme-selector-menu" data-theme-selector-menu role="listbox"
+						aria-label="Color theme options" hidden>
+						<li role="presentation">
+							<button type="button" class="theme-selector-option" data-theme-option="light" role="option"
+								aria-selected="false">
+								<span class="theme-option-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path fill="currentColor"
+											d="m6.05 4.14l-.39-.39a.993.993 0 0 0-1.4 0l-.01.01a.984.984 0 0 0 0 1.4l.39.39c.39.39 1.01.39 1.4 0l.01-.01a.984.984 0 0 0 0-1.4M3.01 10.5H1.99c-.55 0-.99.44-.99.99v.01c0 .55.44.99.99.99H3c.56.01 1-.43 1-.98v-.01c0-.56-.44-1-.99-1m9-9.95H12c-.56 0-1 .44-1 .99v.96c0 .55.44.99.99.99H12c.56.01 1-.43 1-.98v-.97c0-.55-.44-.99-.99-.99m7.74 3.21c-.39-.39-1.02-.39-1.41-.01l-.39.39a.984.984 0 0 0 0 1.4l.01.01c.39.39 1.02.39 1.4 0l.39-.39a.984.984 0 0 0 0-1.4m-1.81 15.1l.39.39a.996.996 0 1 0 1.41-1.41l-.39-.39a.993.993 0 0 0-1.4 0c-.4.4-.4 1.02-.01 1.41M20 11.49v.01c0 .55.44.99.99.99H22c.55 0 .99-.44.99-.99v-.01c0-.55-.44-.99-.99-.99h-1.01c-.55 0-.99.44-.99.99M12 5.5c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6m-.01 16.95H12c.55 0 .99-.44.99-.99v-.96c0-.55-.44-.99-.99-.99h-.01c-.55 0-.99.44-.99.99v.96c0 .55.44.99.99.99m-7.74-3.21c.39.39 1.02.39 1.41 0l.39-.39a.993.993 0 0 0 0-1.4l-.01-.01a.996.996 0 0 0-1.41 0l-.39.39c-.38.4-.38 1.02.01 1.41" />
+									</svg>
+								</span>
+								<span class="theme-option-label">light</span>
+							</button>
+						</li>
+						<li role="presentation">
+							<button type="button" class="theme-selector-option" data-theme-option="dark" role="option"
+								aria-selected="true">
+								<span class="theme-option-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+										<path fill="currentColor"
+											d="M230.72 145.06a4 4 0 0 0-4-1A92.08 92.08 0 0 1 111.94 29.27a4 4 0 0 0-5-5a100.78 100.78 0 0 0-50.86 35.61a100 100 0 0 0 140 140a100.78 100.78 0 0 0 35.59-50.87a4 4 0 0 0-.95-3.95m-39.42 48.47A92 92 0 0 1 62.47 64.7a93 93 0 0 1 39.88-30.35a100.09 100.09 0 0 0 119.3 119.3a93 93 0 0 1-30.35 39.88" />
+									</svg>
+								</span>
+								<span class="theme-option-label">dark</span>
+							</button>
+						</li>
+						<li role="presentation">
+							<button type="button" class="theme-selector-option" data-theme-option="system" role="option"
+								aria-selected="false">
+								<span class="theme-option-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+										<path fill="currentColor"
+											d="M2000 1525q12 12 21 29t15 36t9 38t3 36q0 27-10 50t-27 40t-41 28t-50 10H128q-27 0-50-10t-40-27t-28-41t-10-50q0-16 3-35t9-39t15-36t21-29l208-208V384h1536v933zM384 1280h1280V512H384zm1536 384q0-11-4-28t-12-26l-203-202H347l-203 202q-8 8-12 25t-4 29z" />
+									</svg>
+								</span>
+								<span class="theme-option-label">system (auto)</span>
+							</button>
+						</li>
+					</ul>
+				</div>
+				<select id="theme-selector" name="theme" class="theme-selector-native" aria-label="Select color theme">
+					<option value="light">light</option>
+					<option value="dark" selected>dark</option>
+					<option value="system">system (auto)</option>
+				</select>
+			</div>
+			<div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+		</footer>
+	</div>
 </body>
 
 </html>

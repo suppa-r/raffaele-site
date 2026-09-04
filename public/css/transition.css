@@ -24,6 +24,7 @@
    ============================================ */
 
 .support {
+    display: none;
     background-color: var(--clr-warn-1);
     border-inline-start: 0.5rem solid var(--clr-warn-2);
     color: var(--clr-warn-text);
