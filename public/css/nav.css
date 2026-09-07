@@ -49,9 +49,10 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-basis: 20%;
-  inline-size: 80vw;
-  margin: 0 3rem;
+  flex: 0 0 auto;
+  inline-size: 75vw;
+  aspect-ratio: 5 / 1;
+  margin: 0 var(--space-m-l);
   /* top, right, bottom, left */
   padding: 0 var(--space-m-l);
   /* space inside each li */
@@ -66,52 +67,12 @@ nav ul {
   align-items: center;
   position: relative;
   top: auto;
-  color: #ffffff;
-  font-weight: 300;
+  color: var(--text-color);
   letter-spacing: 4px;
   text-decoration: none;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: var(--fs-1);
 }
-
-/* .nav-links li a::before {
-  content: '';
-  width: 80px;
-  height: 1.2px;
-  background-color: #ffffff;
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  right: auto;
-  transform: translateX(-100%) scaleX(0);
-  transform-origin: left center;
-  z-index: 100;
-  opacity: 0;
-  transition: all .2s linear;
-  display: block;
-}
-
-.nav-links li a::after {
-  content: attr(data-content);
-  position: absolute;
-  z-index: 100;
-  display: block;
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-family: 'Open sans', serif;
-  font-weight: 300;
-  font-style: italic;
-  text-transform: none;
-  white-space: nowrap;
-  text-align: center;
-  letter-spacing: .3em;
-  opacity: 0;
-  left: 0;
-  right: 0;
-  bottom: -220px;
-  margin-inline: auto;
-  transition: all .2s linear;
-} */
 
 @media (hover: hover) and (pointer: fine) {
 
@@ -203,7 +164,7 @@ header:has(.open-overlay[aria-expanded="false"]) .header-title {
 .open-overlay span {
   display: block;
   height: 1px;
-  background-color: #ffffff;
+  background-color:var(--text-color);
   margin-bottom: 4px;
   border-radius: 1px;
   transform-origin: center;
@@ -366,8 +327,9 @@ Animation keyframes
 
   .nav-links li {
     position: relative;
-    margin: var(--space-l);
-    padding: var(--space-m) var(--space-l);
+    flex-basis: 18%;
+    margin:var(--space-l);
+    padding:var(--space-s) var(--space-2xl);
   }
 
   .nav-links li a {
@@ -400,10 +362,8 @@ Animation keyframes
     position: absolute;
     z-index: 100;
     display: block;
-    color: #ffffff;
+    color:var(--text-color);
     font-size: var(--fs-2);
-    font-family: 'Open sans', serif;
-    font-weight: 300;
     font-style: italic;
     text-transform: none;
     white-space: nowrap;
@@ -417,19 +377,7 @@ Animation keyframes
     transition: all .2s linear;
   }
 
-
-
-  /* display: inline-block;
-    font-size: var(--fs-2);
-    letter-spacing: 0;
-    left: 0%;
-    right: auto;
-    bottom: auto;
-    top: 100%;
-    transform: translate(-50%, var(--space-2xs));
-  } */
-
-  .nav-links li:hover::before {
+ .nav-links li:hover::before {
     transform: scaleX(1);
     opacity: 1;
   }

@@ -9,6 +9,7 @@ header {
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
+    padding-block: var(--space-3xs-2xs) ;
     z-index: 2002;
     border-radius: var(--space-l-xl);
     position: relative;
@@ -53,15 +54,15 @@ html.intro-nav-open header::before {
 .logo img {
     display: block;
     object-fit: cover;
-    width: var(--space-l-xl);
-    height: var(--space-l-xl);
+    width: var(--space-m-l);
+    height: var(--space-m-l);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 0.5rem var(--text-color);
 }
 
 .header-title {
-    padding-inline-start: var(--space-3xs-2xs);
+    padding-inline-start: var(--space-4xs-3xs);
     margin: 0;
     padding-block: 0;
     white-space: nowrap;
@@ -252,6 +253,11 @@ footer {
 }
 
 @media (max-width: 600px) {
+    main {
+        align-content: start;
+        padding-block-start: clamp(var(--space-3xs), 4vh, var(--space-l));
+    }
+
     .wrapper-gradient-text {
         font-size: var(--fs-2);
         margin-block-end: 0;
