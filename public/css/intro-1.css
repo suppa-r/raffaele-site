@@ -57,6 +57,11 @@ header {
     background: transparent;
 }
 
+  body[data-page="intro-1"] header {
+    opacity: 0;
+    transform: translateY(-18vh);
+  }
+
 header::before {
     content: "";
     position: absolute;

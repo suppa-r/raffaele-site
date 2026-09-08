@@ -152,7 +152,7 @@ body[data-page="intro"] .text-with-animation span {
 
 .fancy {
     font-style: italic;
-    margin-block: var(--space-xs-s);
+    margin-block-start: var(--space-2xs-xs);
 }
 
 .fancy-small {

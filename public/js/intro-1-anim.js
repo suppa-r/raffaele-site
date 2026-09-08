@@ -23,6 +23,7 @@ const INTRO1_TITLE_LINE_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.title
 const INTRO1_TITLE_LINE_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDelay;
 const INTRO1_PROFILE_TITLE_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.profileTitleRevealDuration;
 const INTRO1_EASING = window.ANIMATION_CONSTANTS.EASING.standard;
+let intro1InitState = "idle";
 
 function intro1IsPage() {
   return !!document.querySelector("body[data-page='intro-1']");
