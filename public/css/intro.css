@@ -110,11 +110,10 @@ main p {
     margin-block: 0;
     margin-inline: auto;
     padding-block: 0;
-    width: min(100%, 72ch);
-    max-width: 72ch;
+    width: min(100%, 75ch);
+    max-width: 75ch;
     white-space: normal;
     overflow-wrap: anywhere;
-    padding-inline: var(--padding-inline);
     text-align: center;
 }
 
@@ -153,21 +152,26 @@ body[data-page="intro"] .text-with-animation span {
 
 .fancy {
     font-style: italic;
-    font-size: var(--fs-1);
+    margin-block: var(--space-xs-s);
+}
+
+.fancy-small {
+    font-style: italic;
+    font-size: 0.5em;
 }
 
 .wrapper-gradient-text {
+    display:grid;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-3);
     letter-spacing: var(--letter-spacing-animations);
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
-    gap: 0.45ch;
-    margin-block-end: var(--space-xs);
+    margin-block-end: var(--space-m-l);
 }
 
 .text-layer {
@@ -260,6 +264,5 @@ footer {
 
     .wrapper-gradient-text {
         font-size: var(--fs-2);
-        margin-block-end: 0;
-    }
+     }
 }

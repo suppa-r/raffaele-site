@@ -181,10 +181,7 @@ function initializeAnimations() {
     delay: 0.08,
   });
 
-  gsapLib.set(WRAPPER_GRADIENT_TARGET, {
-    x: INTRO_SLIDE_OFFSET,
-    opacity: 0,
-  });
+  gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, opacity: 1 });
 
   gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, {
     x: INTRO_SLIDE_OFFSET,
@@ -211,17 +208,8 @@ function initializeAnimations() {
     });
   }
 
-  // Match the side-entry feel used by the hero text animation.
+  // The parent remains in place; the updated single text layer owns the entry motion.
   if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
-    gsapLib.to(WRAPPER_GRADIENT_TARGET, {
-      x: 0,
-      opacity: 1,
-      duration: HERO_REVEAL_DURATION_INTRO,
-      ease: HERO_TEXT_EASE_INTRO,
-      delay: HERO_REVEAL_DELAY_INTRO,
-      overwrite: "auto",
-    });
-
     gsapLib.to(WRAPPER_GRADIENT_WORD_TARGET, {
       x: 0,
       opacity: 1,
