@@ -5,6 +5,11 @@ const PARTICLE_DISTANCE_MIN = 20;
 const PARTICLE_DISTANCE_MAX = 100;
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
 const MAIN_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
+const INDEX_HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+const INDEX_HERO_REVEAL_DURATION = 0.9;
+const INDEX_HERO_REVEAL_STAGGER = 0.12;
+const INDEX_HERO_REVEAL_DELAY = 0.1;
+const INDEX_SLIDE_OFFSET = "35vw";
 
 function getSneakerButton() {
   return document.querySelector(".btn");
@@ -62,6 +67,54 @@ function handleSneakerClick(event) {
 
 function bindSneakerButton() {
   bindOnce(".btn", "click", handleSneakerClick);
+}
+
+function animateIndexHeadings() {
+  const headingGroups = [
+    document.querySelectorAll(".text-with-animation span"),
+    document.querySelectorAll(".text-with-animation-1 span"),
+    document.querySelectorAll(".text-with-animation-2 span"),
+  ].filter((group) => group.length);
+  const headingSpans = headingGroups.flatMap((group) => [...group]);
+
+  if (!headingSpans.length) return;
+
+  const showHeadings = () => {
+    headingSpans.forEach((span) => {
+      span.style.opacity = "1";
+      span.style.transform = "translate3d(0, 0, 0)";
+    });
+  };
+
+  if (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    typeof window.gsap === "undefined"
+  ) {
+    showHeadings();
+    return;
+  }
+
+  headingGroups.forEach((group, index) => {
+    window.gsap.set(group, {
+      x: index === 1 ? `-${INDEX_SLIDE_OFFSET}` : INDEX_SLIDE_OFFSET,
+      opacity: 0,
+    });
+  });
+
+  const timeline = window.gsap.timeline({
+    delay: INDEX_HERO_REVEAL_DELAY,
+    overwrite: "auto",
+  });
+
+  headingGroups.forEach((group) => {
+    timeline.to(group, {
+      x: 0,
+      opacity: 1,
+      duration: INDEX_HERO_REVEAL_DURATION,
+      stagger: INDEX_HERO_REVEAL_STAGGER,
+      ease: INDEX_HERO_TEXT_EASE,
+    });
+  });
 }
 
 function getAbsoluteHref(href, baseUrl) {
@@ -312,6 +365,7 @@ function initNavigationInterception() {
 
 function initMainPage() {
   bindSneakerButton();
+  animateIndexHeadings();
   initNavigationInterception();
 }
 
