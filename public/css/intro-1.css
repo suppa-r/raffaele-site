@@ -6,7 +6,7 @@
   --intro-nav-fade-out-duration: 0.22s;
   --intro-nav-fade-in-duration: 0.4s;
   --intro-nav-fade-in-delay: 0.2s;
-  --profile-title-inline-size: min(92vw, 24ch);
+  --profile-title-inline-size: clamp(18rem, 42vw, 36rem);
   --back-to-top-width: var(--space-2xl);
   --back-to-top-height: var(--space-2xl);
 }
@@ -513,7 +513,7 @@ main>section[id]:target .profile-title {
   margin-block: 0;
   min-block-size: var(--space-m-l);
   padding-block: var(--space-2xs-xs);
-  font-size: var(--fs-100);
+  font-size: var(--fs-2);
 }
 
 .profile-title span {
@@ -521,7 +521,7 @@ main>section[id]:target .profile-title {
   z-index: 1000;
   user-select: none;
   pointer-events: none;
-  font-size: var(--fs-100);
+  font-size: var(--fs-2);
   white-space: nowrap;
   text-align: center;
   color: var(--base-color);
@@ -708,7 +708,7 @@ footer {
   }
 
 .profile-title {
-    inline-size: min(95vw, 25ch);
+  inline-size: min(95vw, var(--profile-title-inline-size));
     min-block-size: clamp(6.25rem, 24vw, 8rem);
     padding-block: var(--space-2xs-xs);
     font-size: var(--fs-100);

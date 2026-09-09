@@ -182,6 +182,11 @@
       return;
     }
 
+    if (!mobileQuery.matches) {
+      window.setTimeout(setActiveNavLink, 0);
+      return;
+    }
+
     // Defer closing (which sets nav inert) until after the browser
     // follows the link's hash, otherwise the navigation gets cancelled.
     window.setTimeout(() => {
@@ -197,11 +202,17 @@
   }
 
   function handleViewportChange() {
-    if (!mobileQuery.matches && isMenuOpen) {
-      setMenuState(false);
-    } else {
-      resetNavItems();
+    if (!mobileQuery.matches) {
+      isMenuOpen = false;
+      navLinks?.classList.remove("open");
+      navLinks?.setAttribute("aria-hidden", "false");
+      if (navLinks && "inert" in navLinks) {
+        navLinks.inert = false;
+      }
+      document.documentElement.classList.remove("intro-nav-open");
     }
+
+    resetNavItems();
   }
 
   function attachEvents() {
