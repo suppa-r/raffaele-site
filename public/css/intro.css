@@ -156,9 +156,19 @@ body[data-page="intro"] .text-with-animation span {
     margin-block: var(--space-2xs-xs);
 }
 
+.fancy-inline {
+    display: inline-block;
+    white-space: normal;
+    font-style: italic;
+   }
+
+   .fancy-inline span {
+       display: block;
+   }
+
 .fancy-small {
     font-style: italic;
-    font-size: 0.5em;
+    font-size: var(--fs-02);
 }
 
 .wrapper-gradient-text {
