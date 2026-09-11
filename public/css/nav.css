@@ -343,9 +343,9 @@ Animation keyframes
 
   .nav-links li::before {
     content: '';
-    width: 80px;
+    width: 60px;
     height: 1.2px;
-    background-color: #ffffff;
+    background-color:var(--text-color);
     position: absolute;
     top: 50%;
     left: 0;

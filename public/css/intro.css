@@ -85,19 +85,49 @@ main {
     width: 100%;
 }
 
-.text-with-animation {
-    display: block;
+.wrapper-gradient-text {
+    display:grid;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-3);
-    font-style: italic;
     letter-spacing: var(--letter-spacing-animations);
+    white-space: nowrap;
+    margin-inline: auto;
+    width: fit-content;
+    margin-block-end: var(--space-s-m);
 }
 
-.text-with-animation span {
-    display: block;
-    width: 100%;
-    opacity: 0;
-    transform: translateX(35vw);
+.text-layer {
+    background: var(--gradient);
+    background-size: 200% 200%;
+    background-clip: text;
+    color: var(--text-color);
+    -webkit-text-fill-color: var(--text-color);
+    will-change: transform;
+    transform: translateZ(0);
+    animation: shadow-drip 3s infinite alternate ease-in-out;
+    --shadow-color-primary: rgb(255 255 255 / 70%);
+    --shadow-color-secondary: rgb(255 255 255 / 30%);
+    --shadow-color-tertiary: rgb(255 255 255 / 10%);
+}
+
+[data-theme="light"] .text-layer {
+    --shadow-color-primary: rgb(0 0 0 / 70%);
+    --shadow-color-secondary: rgb(0 0 0 / 30%);
+    --shadow-color-tertiary: rgb(0 0 0 / 10%);
+}
+
+@keyframes shadow-drip {
+
+    0% {
+        text-shadow: 0 0 0 var(--shadow-color-primary), 0 0 0 var(--shadow-color-secondary), 0 0 0 var(--shadow-color-tertiary)
+    }
+
+    100% {
+        text-shadow: 0 30px 5px var(--shadow-color-primary), 0 10px 10px var(--shadow-color-secondary), 0 5px 5px var(--shadow-color-tertiary)
+    }
 }
 
 .js-intro-anim .text-with-animation span {
@@ -151,9 +181,11 @@ body[data-page="intro"] .text-with-animation span {
 }
 
 .fancy {
+    font-family: var(--primary-font-secondary);
     font-size: var(--fs-2);
     font-style: italic;
-    margin-block: var(--space-2xs-xs);
+    margin-block: var(--space-3xs-2xs);
+    letter-spacing: var(--letter-spacing-animations);
 }
 
 .fancy-inline {
@@ -171,50 +203,7 @@ body[data-page="intro"] .text-with-animation span {
     font-size: var(--fs-02);
 }
 
-.wrapper-gradient-text {
-    display:grid;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    font-family: var(--primary-font-secondary);
-    font-size: var(--fs-3);
-    letter-spacing: var(--letter-spacing-animations);
-    white-space: nowrap;
-    margin-inline: auto;
-    width: fit-content;
-    margin-block-end: var(--space-m-l);
-}
 
-.text-layer {
-    background: var(--gradient);
-    background-size: 200% 200%;
-    background-clip: text;
-    color: var(--text-color);
-    -webkit-text-fill-color: var(--text-color);
-    will-change: transform;
-    transform: translateZ(0);
-    animation: shadow-drip 3s infinite alternate ease-in-out;
-    --shadow-color-primary: rgb(255 255 255 / 70%);
-    --shadow-color-secondary: rgb(255 255 255 / 30%);
-    --shadow-color-tertiary: rgb(255 255 255 / 10%);
-}
-
-[data-theme="light"] .text-layer {
-    --shadow-color-primary: rgb(0 0 0 / 70%);
-    --shadow-color-secondary: rgb(0 0 0 / 30%);
-    --shadow-color-tertiary: rgb(0 0 0 / 10%);
-}
-
-@keyframes shadow-drip {
-
-    0% {
-        text-shadow: 0 0 0 var(--shadow-color-primary), 0 0 0 var(--shadow-color-secondary), 0 0 0 var(--shadow-color-tertiary)
-    }
-
-    100% {
-        text-shadow: 0 30px 5px var(--shadow-color-primary), 0 10px 10px var(--shadow-color-secondary), 0 5px 5px var(--shadow-color-tertiary)
-    }
-}
 
 /* --------------------------------------- */
 /* ----- Footer ----- */
