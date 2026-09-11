@@ -208,7 +208,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(1040px, 95dvw);
         --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
-        --padding-inline: var(--space-m);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
@@ -226,7 +226,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(1180px, 95dvw);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
@@ -243,7 +243,7 @@ a:focus-visible {
 
     :root {
         --content-max-width: min(1400px, 96dvw);
-        --padding-inline: var(--space-xl);
+        --padding-inline: var(--space-m);
     }
 
     .wrapper::before {
@@ -261,7 +261,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(1920px, 95dvw);
         --layout-block-gap: clamp(0.75rem, 1.6vw, 1.75rem);
-        --padding-inline: var(--space-xl);
+        --padding-inline: var(--space-m);
     }
 
     .wrapper::before {
