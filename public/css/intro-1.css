@@ -462,6 +462,7 @@ main>section[id] {
   z-index: 1000;
   isolation: isolate;
   margin-inline: auto;
+  margin-block-start: var(--space-s);
  }
 
 .profile-title span {
@@ -487,6 +488,7 @@ main>section[id] {
   font-kerning: normal;
   margin-inline: auto;
   isolation: isolate;
+  padding-block: var(--space-2xs);
  }
 
 main>section[id]:target .profile-title span {
@@ -575,6 +577,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   white-space: nowrap;
+  margin-block-start: var(--space-s);
 }
 
 /* ----- Back to Top ----- */
