@@ -193,6 +193,10 @@ a:focus-visible {
         --padding-inline: var(--space-s);
     }
 
+    .wrapper {
+        padding-block: 0;
+    }
+
     .wrapper::before {
         -webkit-mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
         mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
