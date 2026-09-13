@@ -13,6 +13,8 @@
   let navLinks = null;
   let firstNavLink = null;
   let isMenuOpen = false;
+  let boundMenuButton = null;
+  let boundNavLinks = null;
 
   function isIntroOnePage() {
     return document.body?.dataset?.page === "intro-1";
@@ -52,20 +54,27 @@
 
   function resetNavItems() {
     const gsapLib = getGsap();
-    if (!gsapLib || !navLinks) {
+    if (!navLinks) {
       return;
     }
 
     const navItems = navLinks.querySelectorAll(NAV_ITEM_SELECTOR);
-    if (!mobileQuery.matches) {
-      gsapLib.set(navItems, { clearProps: "opacity,transform" });
-      return;
+    if (gsapLib) {
+      gsapLib.killTweensOf(navItems);
+      if (!mobileQuery.matches) {
+        gsapLib.set(navItems, { clearProps: "opacity,transform" });
+        return;
+      }
+      gsapLib.set(navItems, {
+        opacity: 0,
+        y: -24,
+      });
+    } else {
+      navItems.forEach((item) => {
+        item.style.opacity = mobileQuery.matches ? "0" : "";
+        item.style.transform = mobileQuery.matches ? "translateY(-24px)" : "";
+      });
     }
-
-    gsapLib.set(navItems, {
-      opacity: 0,
-      y: -24,
-    });
   }
 
   function animateNavItemsIn() {
@@ -76,19 +85,21 @@
 
     const navItems = navLinks.querySelectorAll(NAV_ITEM_SELECTOR);
     if (!gsapLib || isReducedMotionPreferred()) {
+      gsapLib?.killTweensOf(navItems);
       gsapLib?.set(navItems, { opacity: 1, y: 0 });
       return;
     }
 
+    gsapLib.killTweensOf(navItems);
     gsapLib.fromTo(
       navItems,
       { opacity: 0, y: -24 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.6,
         ease: "power2.out",
-        stagger: 0.16,
+        stagger: 0.1,
         overwrite: "auto",
       },
     );
@@ -124,20 +135,18 @@
   }
 
   function setMenuState(isOpen, options = {}) {
-    if (!menuButton || !navLinks) {
-      refreshElements();
-    }
+    refreshElements();
     if (!menuButton || !navLinks) {
       return;
     }
 
-    const { moveFocus = false, returnFocus = false } = options;
-    isMenuOpen = isOpen;
+    const { isKeyboard = false } = options;
+    isMenuOpen = Boolean(isOpen);
 
     navLinks.classList.toggle("open", isMenuOpen);
     navLinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
     if ("inert" in navLinks) {
-      navLinks.inert = !isMenuOpen;
+      navLinks.inert = !isMenuOpen && mobileQuery.matches;
     }
 
     menuButton.classList.toggle("is-active", isMenuOpen);
@@ -152,28 +161,28 @@
 
     if (isMenuOpen) {
       animateNavItemsIn();
+      if (isKeyboard && firstNavLink) {
+        firstNavLink.focus({ preventScroll: true });
+      }
     } else {
       resetNavItems();
-    }
-
-    if (isMenuOpen && moveFocus && firstNavLink) {
-      firstNavLink.focus();
-    }
-
-    if (!isMenuOpen && returnFocus) {
-      menuButton.focus();
+      if (isKeyboard) {
+        menuButton.focus({ preventScroll: true });
+      }
     }
   }
 
   function handleToggleClick(event) {
     event.preventDefault();
-    setMenuState(!isMenuOpen, { moveFocus: true, returnFocus: true });
+    event.stopPropagation();
+    setMenuState(!isMenuOpen, { isKeyboard: false });
   }
 
   function handleToggleKeydown(event) {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      setMenuState(!isMenuOpen, { moveFocus: true, returnFocus: true });
+      event.stopPropagation();
+      setMenuState(!isMenuOpen, { isKeyboard: true });
     }
   }
 
@@ -187,8 +196,6 @@
       return;
     }
 
-    // Defer closing (which sets nav inert) until after the browser
-    // follows the link's hash, otherwise the navigation gets cancelled.
     window.setTimeout(() => {
       setMenuState(false);
       setActiveNavLink();
@@ -197,7 +204,7 @@
 
   function handleDocumentKeydown(event) {
     if (event.key === "Escape" && isMenuOpen) {
-      setMenuState(false, { returnFocus: true });
+      setMenuState(false, { isKeyboard: true });
     }
   }
 
@@ -221,27 +228,38 @@
       return;
     }
 
+    if (boundMenuButton !== menuButton) {
+      boundMenuButton = menuButton;
+      menuButton.addEventListener("click", handleToggleClick);
+      menuButton.addEventListener("keydown", handleToggleKeydown);
+    }
+
+    if (boundNavLinks !== navLinks) {
+      boundNavLinks = navLinks;
+      navLinks.addEventListener("click", handleNavLinksClick);
+    }
+
     resetNavItems();
     setActiveNavLink();
-
-    menuButton.addEventListener("click", handleToggleClick);
-    menuButton.addEventListener("keydown", handleToggleKeydown);
-    navLinks.addEventListener("click", handleNavLinksClick);
-    document.addEventListener("keydown", handleDocumentKeydown);
-    window.addEventListener("hashchange", setActiveNavLink);
-
-    if (typeof mobileQuery.addEventListener === "function") {
-      mobileQuery.addEventListener("change", handleViewportChange);
-    } else {
-      mobileQuery.addListener(handleViewportChange);
-    }
   }
 
   function init() {
     if (!isIntroOnePage()) {
+      boundMenuButton = null;
+      boundNavLinks = null;
+      isMenuOpen = false;
       return;
     }
     attachEvents();
+  }
+
+  document.addEventListener("keydown", handleDocumentKeydown);
+  window.addEventListener("hashchange", setActiveNavLink);
+
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", handleViewportChange);
+  } else {
+    mobileQuery.addListener(handleViewportChange);
   }
 
   if (document.readyState === "loading") {
@@ -249,4 +267,6 @@
   } else {
     init();
   }
+
+  document.addEventListener("page:transitioned", init);
 })();
