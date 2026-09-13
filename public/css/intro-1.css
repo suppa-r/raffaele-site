@@ -545,6 +545,7 @@ main>section[id]:target .profile-title {
   min-height: 0;
   padding-block-end: var(--space-s);
   -webkit-overflow-scrolling: touch;
+  padding-inline: var(--space-xs);
 }
 
 .col {
