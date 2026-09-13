@@ -328,7 +328,9 @@ nav {
 .intro-1-page-title {
   display: grid;
   place-content: center;
-  height: 100%;
+  height: auto;
+  align-self: center;
+  justify-self: center;
   text-align: center;
   z-index: 1;
   white-space: nowrap;
@@ -391,7 +393,6 @@ FONT SIZES - custom properties vw fallback (older browsers)
 
 main {
   display: grid;
-  align-content: stretch;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -405,7 +406,7 @@ main p {
 
 main>section[id] {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: var(--space-xs-s);
   position: absolute;
   inset: 0;
@@ -425,7 +426,7 @@ main>section[id] {
 }
 
 .profile-title {
- inline-size: min(95vw, var(--profile-title-inline-size)); /* fallback for older browsers */
+  inline-size: min(95vw, var(--profile-title-inline-size));
   font-size: var(--fs-1);
   position: relative;
   text-align: center;
@@ -533,18 +534,17 @@ main>section[id]:target .profile-title {
   max-width: var(--content-max-width);
   margin-inline: auto;
   display: grid;
-  gap:var(--space-m);
+  grid-template-columns: 1fr;
+  gap: var(--space-m);
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
   min-height: 0;
  }
 
-.col {
-> * + * {
+.col > * + * {
   margin-block-start: var(--prose-flow, 0.20em);
   text-wrap: balance;
-}
 }
 
 .col-stack {
