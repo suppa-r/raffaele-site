@@ -157,30 +157,6 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
 Animation keyframes
 ==================================== */
 
-@keyframes slide-in-nav-item {
-  from {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%)
-  }
-
-  to {
-    -webkit-transform: translateY(0);
-    transform: translateY(0)
-  }
-}
-
-@keyframes slide-in-nav-item-reverse {
-  from {
-    -webkit-transform: translateY(0);
-    transform: translateY(0)
-  }
-
-  to {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%)
-  }
-}
-
 @keyframes animate-top-bar {
   0% {
     transform: translateY(0);
@@ -337,12 +313,6 @@ nav {
   transition: background-size 0.3s ease;
 }
 
-/* .nav-item a:hover,
-.nav-item a:focus-visible,
-.nav-item a.is-current {
-  background-size: 100% 2px;
-} */
-
 .nav-item a span {
   font-size: var(--fs-0);
 }
@@ -436,6 +406,7 @@ main p {
 main>section[id] {
   display: grid;
   grid-template-rows: auto 1fr;
+  gap: var(--space-xs-s);
   position: absolute;
   inset: 0;
   width: 100%;
@@ -451,12 +422,11 @@ main>section[id] {
   display: grid;
   justify-items: center;
   align-items: center;
-  padding-block: var(--space-2xs-xs);
 }
 
 .profile-title {
-  inline-size: min(95vw, var(--profile-title-inline-size));
-  font-size: var(--fs-100);
+ inline-size: min(95vw, var(--profile-title-inline-size)); /* fallback for older browsers */
+  font-size: var(--fs-1);
   position: relative;
   text-align: center;
   white-space: nowrap;
@@ -469,17 +439,14 @@ main>section[id] {
   z-index: 1000;
   isolation: isolate;
   margin-inline: auto;
-  margin-block: 0;
-  min-block-size: var(--space-s-m);
-  padding-block: var(--space-3xs-2xs);
-}
+ }
 
 .profile-title span {
   position: relative;
   z-index: 1000;
   user-select: none;
   pointer-events: none;
-  font-size: var(--fs-2);
+  font-size: var(--fs-1);
   white-space: nowrap;
   text-align: center;
   color: var(--base-color);
@@ -497,8 +464,7 @@ main>section[id] {
   font-kerning: normal;
   margin-inline: auto;
   isolation: isolate;
-  padding-block: var(--space-3xs-2xs);
-}
+ }
 
 main>section[id]:target .profile-title span {
   animation: gradientAnimation 5s ease-out both infinite;
@@ -582,9 +548,11 @@ main>section[id]:target .profile-title {
 }
 
 .col {
-  display: grid;
+ display: grid;
   justify-items: center;
-  align-items: start;
+  align-items: center;
+  word-break: break-word;
+  text-wrap: pretty;
 }
 
 .col-img {
@@ -748,23 +716,15 @@ footer {
     margin: 0 0.7vw;
   }
 
+  .nav-item a:hover,
+  .nav-item a:focus-visible,
+  .nav-item a.is-current {
+    background-size: 100% 2px;
+  }
+
   .section-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-  }
-}
-
-@media (hover:none) and (pointer:coarse) {
-
-  .theme-selector-option button:active {
-    transform: translateY(-0.5px) scale(1.015);
-    box-shadow:
-      0 8px 16px var(--shadow-color-tertiary),
-      0 3px 8px var(--shadow-color-secondary);
-  }
-
-  .theme-selector-option button:active svg {
-    animation: spin-and-scale 0.8s ease-in-out;
   }
 }
 
@@ -774,14 +734,7 @@ footer {
     animation: none;
   }
 
-  .theme-selector-option button:hover,
-  .theme-selector-option button.is-tapped,
-  .theme-selector-option button:active,
   .back-to-top:hover {
     transform: none;
-  }
-
-  .theme-selector-option button.is-tapped svg {
-    animation: none !important;
   }
 }
