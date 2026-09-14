@@ -516,6 +516,12 @@ main>section[id]:target {
   pointer-events: auto;
 }
 
+html:not(.intro-section-active) main > section[id] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .intro-nav-open main>section[id] {
   opacity: 0;
   visibility: hidden;
@@ -534,6 +540,26 @@ main>section[id]:target {
   height: 100%;
   min-height: 0;
  }
+
+@media (max-width: 768px) {
+  .section-container.has-more-content:not(.at-bottom)::after {
+    content: "…";
+    position: sticky;
+    inset-block-end: 0;
+    display: block;
+    grid-column: 1;
+    inline-size: 100%;
+    min-block-size: var(--space-xl);
+    margin-block-start: calc(var(--space-xl) * -1);
+    padding-block-start: var(--space-s);
+    color: var(--text-color);
+    background: linear-gradient(to bottom, transparent, var(--base-color) 45%);
+    font-size: var(--fs-2);
+    line-height: 1;
+    text-align: center;
+    pointer-events: none;
+  }
+}
 
 .col > * + * {
   margin-block-start: var(--prose-flow, 0.20em);
@@ -595,7 +621,7 @@ footer {
   background-color: var(--text-span);
   border-radius: 50%;
   z-index: 10;
-  visibility: visible;
+  visibility: hidden;
   box-shadow:
     0 6px 14px var(--shadow-color-tertiary),
     0 2px 5px var(--shadow-color-secondary);
@@ -656,6 +682,13 @@ footer {
 }
 
 .back-to-top {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: scale(0) !important;
+  pointer-events: none !important;
+}
+
+html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top {
   visibility: visible !important;
   opacity: 1 !important;
   transform: scale(1) !important;

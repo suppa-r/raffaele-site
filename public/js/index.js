@@ -23,6 +23,10 @@ window.addEventListener("keydown", handleFirstTab);
 const backToTopButton = document.querySelector(".back-to-top");
 let isBackToTopRendered = false;
 
+function getActiveSectionContainer() {
+  return document.querySelector("main > section[id]:target .section-container");
+}
+
 let alterStyles = (isBackToTopRendered) => {
   backToTopButton.style.visibility = isBackToTopRendered ? "visible" : "hidden";
   backToTopButton.style.opacity = isBackToTopRendered ? 1 : 0;
@@ -39,6 +43,38 @@ window.addEventListener("scroll", () => {
     isBackToTopRendered = false;
     alterStyles(isBackToTopRendered);
   }
+});
+
+backToTopButton?.addEventListener("click", (event) => {
+  const sectionContainer = getActiveSectionContainer();
+  if (!sectionContainer && !window.location.hash) {
+    return;
+  }
+
+  event.preventDefault();
+
+  sectionContainer?.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  window.history.pushState(
+    {},
+    "",
+    `${window.location.pathname}${window.location.search}`,
+  );
+  document.documentElement.classList.remove(
+    "intro-section-active",
+    "intro-nav-closing",
+  );
+
+  const headerText = document.querySelector(".intro-1-page-title");
+  if (headerText) {
+    headerText.hidden = false;
+    headerText.setAttribute("aria-hidden", "false");
+  }
+
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 });
 
 const headerText = document.querySelector(".intro-1-page-title");
