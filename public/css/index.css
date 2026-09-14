@@ -2,20 +2,19 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
   }
-
 header {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: center;
-    align-items: center;
-    padding: var(--space-4xs-3xs) var(--padding-inline);
-    z-index: 2002;
-    border-radius: var(--space-l-xl);
-    position: relative;
-    isolation: isolate;
-    line-height: 1;
-    background: transparent;
-}
+  display: grid;
+  align-items: center;
+  row-gap: var(--space-2xs-xs);
+  z-index: 2002;
+  border-radius: var(--space-m-l);
+  position: relative;
+  isolation: isolate;
+  line-height: 1;
+  padding: 0 var(--space-m-l);
+  background: transparent;
+  margin-block-start: var(--space-s);
+ }
 
 .header-text,
 .header-break {

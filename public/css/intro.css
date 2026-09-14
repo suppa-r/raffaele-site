@@ -4,40 +4,45 @@
     letter-spacing: var(--letter-spacing-body);
 }
 
+/* --------------------------------------- */
+/* ----- Header ----- */
+/* --------------------------------------- */
+
 header {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
-    align-items: center;
-    padding-block: var(--space-3xs-2xs) ;
-    z-index: 2002;
-    border-radius: var(--space-l-xl);
-    position: relative;
-    isolation: isolate;
-    line-height: 1;
-    background: transparent;
-}
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2002;
+  border-radius: var(--space-m-l);
+  position: relative;
+  isolation: isolate;
+  line-height: 1;
+  padding: 0 var(--space-m-l);
+  background: transparent;
+  margin-block-start: var(--space-s);
+ }
 
 body[data-page="intro"] header {
-    /* Starts hidden/offset so JS entrance animates in rather than flashing visible first */
-    opacity: 0;
-    transform: translateY(-18vh);
+  opacity: 0;
+  transform: translateY(-18vh);
 }
 
 header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: var(--space-l-xl);
-    background: var(--gradient-header);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    backdrop-filter: var(--backdrop-blur);
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--space-l-xl);
+  background: var(--gradient-header);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  backdrop-filter: var(--backdrop-blur);
+  pointer-events: none;
 }
 
-html.intro-nav-open header::before {
-    opacity: 0;
+header:has(.open-overlay[aria-expanded="true"])::before {
+  opacity: 1;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .logo {
@@ -62,11 +67,11 @@ html.intro-nav-open header::before {
 }
 
 .header-title {
-    padding-inline-start: var(--space-4xs-3xs);
     margin: 0;
     padding-block: 0;
     white-space: nowrap;
     overflow: hidden;
+    font-size: var(--fs-01);
 }
 
 .header-title span {
@@ -74,6 +79,176 @@ html.intro-nav-open header::before {
     font-style: italic;
     margin-inline-end: var(--space-3xs-2xs);
     color: var(--text-span);
+}
+
+/* ====================================
+Burger king
+==================================== */
+
+.open-overlay {
+  opacity: 1;
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  width: var(--space-s-m);
+  z-index: 5000;
+}
+
+body:has(.open-overlay[aria-expanded="true"]) main,
+body:has(.open-overlay[aria-expanded="true"]) footer {
+  opacity: 0;
+  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body:has(.open-overlay[aria-expanded="false"]) main,
+body:has(.open-overlay[aria-expanded="false"]) footer {
+  opacity: 1;
+  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
+}
+
+.open-overlay[aria-expanded="true"] span {
+  display: block;
+  background-color: var(--text-color)
+}
+
+.open-overlay:focus-visible {
+  outline: 1px solid var(--text-color);
+  outline-offset: 3px;
+}
+
+.open-overlay span {
+  display: block;
+  height: 1px;
+  background-color: var(--text-color);
+  margin-bottom: 3px;
+  border-radius: 1px;
+  transform-origin: center;
+  transition: transform .2s ease, background-color .2s ease;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+.animate-top-bar {
+  animation: animate-top-bar .9s ease-in-out 1 both
+}
+
+.animate-bottom-bar {
+  animation: animate-bottom-bar .9s ease-in-out 1 both
+}
+
+.animate-middle-bar {
+  animation: animate-middle-bar .9s ease-in-out 1 both
+}
+
+.animate-out-top-bar {
+  animation: animate-out-top-bar .9s ease-in-out 1 both
+}
+
+.animate-out-bottom-bar {
+  animation: animate-out-bottom-bar .9s ease-in-out 1 both
+}
+
+.animate-out-middle-bar {
+  animation: animate-out-middle-bar .9s ease-in-out 1 both
+}
+
+
+/* ====================================
+Animation keyframes
+==================================== */
+
+@keyframes animate-top-bar {
+  0% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+
+  60% {
+    transform: translateY(5px);
+    background-color: var(--text-color);
+  }
+
+  100% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+}
+
+@keyframes animate-bottom-bar {
+  0% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+
+  60% {
+    transform: translateY(-5px);
+    background-color: var(--text-color);
+  }
+
+  100% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+}
+
+@keyframes animate-middle-bar {
+  0% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+
+  100% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+}
+
+@keyframes animate-out-top-bar {
+  0% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+
+  60% {
+    transform: translateY(5px);
+    background-color: var(--text-color);
+  }
+
+  100% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+}
+
+@keyframes animate-out-bottom-bar {
+  0% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+
+  60% {
+    transform: translateY(-5px);
+    background-color: var(--text-color);
+  }
+
+  100% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+}
+
+@keyframes animate-out-middle-bar {
+  0% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
+
+  100% {
+    transform: translateY(0);
+    background-color: var(--text-color);
+  }
 }
 
 main {
@@ -203,8 +378,6 @@ body[data-page="intro"] .text-with-animation span {
     font-size: var(--fs-02);
 }
 
-
-
 /* --------------------------------------- */
 /* ----- Footer ----- */
 /* --------------------------------------- */
@@ -256,7 +429,17 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
+
+    .header-title {
+    font-size: var(--fs-0);
+    padding-inline-start: var(--space-4xs-3xs);
+    margin: 0;
+    padding-block: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
     main {
         align-content: start;
         padding-block-start: clamp(var(--space-3xs), 4vh, var(--space-l));

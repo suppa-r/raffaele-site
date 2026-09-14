@@ -67,6 +67,7 @@ backToTopButton?.addEventListener("click", (event) => {
     "intro-section-active",
     "intro-nav-closing",
   );
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
 
   const headerText = document.querySelector(".intro-1-page-title");
   if (headerText) {
