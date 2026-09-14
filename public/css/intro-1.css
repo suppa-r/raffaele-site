@@ -55,7 +55,8 @@ header {
   line-height: 1;
   padding: 0 var(--space-l-xl);
   background: transparent;
-  }
+  margin-block-start: var(--space-s-m);
+}
 
 body[data-page="intro-1"] header {
   opacity: 0;
@@ -535,6 +536,7 @@ html:not(.intro-section-active) main > section[id] {
     margin-inline: auto;
     display: grid;
     grid-template-columns: 1fr;
+    grid-auto-flow: row;
     gap: var(--space-m);
     overflow-y: auto;
     overflow-x: hidden;
@@ -542,7 +544,7 @@ html:not(.intro-section-active) main > section[id] {
 }
 
 .section-container p {
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 @media (max-width: 768px) {
@@ -567,7 +569,10 @@ html:not(.intro-section-active) main > section[id] {
 
 .col > * + * {
   margin-block-start: var(--prose-flow, 0.20em);
-  text-wrap: balance;
+}
+
+.col p {
+  text-wrap: pretty;
 }
 
 .col-stack {
@@ -700,6 +705,8 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
 }
 
 @media (min-width: 769px) {
+
+
 .open-overlay {
     display: none;
     pointer-events: none;
@@ -735,11 +742,12 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
     background-size: 100% 2px;
   }
 
-  .section-container {
-    grid-template-columns: 1fr 1fr;
- }
+  /* .section-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: column;
+  } */
 
-   .col-stack {
+  .col-stack {
   display:flex;
   flex-direction: column;
   justify-content:start;
