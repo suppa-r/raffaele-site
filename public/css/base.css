@@ -63,7 +63,7 @@ footer {
     border-radius: 0 0 0.4rem 0.4rem;
     text-decoration: none;
     font-family: var(--primary-font-secondary);
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.04em;
     opacity: 0;
     pointer-events: none;
