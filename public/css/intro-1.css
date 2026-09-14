@@ -429,7 +429,7 @@ main p {
 main>section[id] {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  gap: var(--space-xs-s);
+  gap: var(--space-s);
   position: absolute;
   inset: 0;
   width: 100%;
@@ -438,6 +438,7 @@ main>section[id] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  padding-inline: var(--space-4xs);
 }
 
 .profile-title-container {
@@ -531,15 +532,17 @@ html:not(.intro-section-active) main > section[id] {
 .section-container {
     inline-size: 100%;
     max-inline-size: var(--content-max-width);
-    box-sizing: border-box;
     margin-inline: auto;
-    padding-inline: var(--space-2xs);
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-m);
     overflow-y: auto;
     overflow-x: hidden;
     min-block-size: 0;
+}
+
+.section-container p {
+  text-wrap: balance;
 }
 
 @media (max-width: 768px) {
@@ -734,7 +737,7 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
 
   .section-container {
     grid-template-columns: 1fr 1fr;
-   }
+ }
 
    .col-stack {
   display:flex;
