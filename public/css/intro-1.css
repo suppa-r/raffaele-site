@@ -21,10 +21,7 @@
 /* --------------------------------------- */
 
 header {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   z-index: 2002;
   border-radius: var(--space-m-l);
   position: relative;
@@ -34,6 +31,13 @@ header {
   background: transparent;
   margin-block-start: var(--space-s);
  }
+
+.header-inner {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+}
 
 body[data-page="intro-1"] header {
   opacity: 0;

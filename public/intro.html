@@ -52,19 +52,22 @@
     <div class="support style-query" role="alert" aria-live="assertive">
       ⚠️ Your browser doesn't support Style Queries
     </div>
-    <header>
+    <header class="site-header">
       <a class="skip-link" href="#main-content">Skip to main content</a>
-      <div class="logo"><img src="images/Gmail.JPG" alt="Raffaele Suppa logo" width="50" height="50" />
-        <p class="header-title">
-          sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
-        </p>
+      <div class="header-inner" aria-label="Site header">
+        <div class="logo" aria-label="Raffaele Suppa brand">
+          <img src="images/Gmail.JPG" alt="Raffaele Suppa logo" width="50" height="50" />
+          <p class="header-title">
+            sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
+          </p>
+        </div>
+        <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="intro-overlay-navigation">
+          <span class="bar-top"></span>
+          <span class="bar-middle"></span>
+          <span class="bar-bottom"></span>
+        </button>
       </div>
-      <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false"
-        aria-controls="intro-overlay-navigation">
-        <span class="bar-top"></span>
-        <span class="bar-middle"></span>
-        <span class="bar-bottom"></span>
-      </button>
     </header>
     <div id="intro-overlay-navigation" class="overlay-navigation" aria-hidden="true">
       <nav role="navigation" aria-label="Main navigation">

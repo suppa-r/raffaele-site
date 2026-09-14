@@ -57,23 +57,19 @@ footer {
     left: 1rem;
     transform: translateY(-160%);
     z-index: 3000;
-    visibility: hidden;
-    opacity: 0;
-    padding: 0.65rem 1.5rem;
+    padding: 0.65rem 1rem;
     color: var(--base-color);
     background: var(--text-color);
-    border-radius: 0 0 0.4rem 0.4rem;
+    border-radius: 0 0 0.4rem;
     text-decoration: none;
     font-family: var(--primary-font-secondary);
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1) ease-in;
 }
 
-.skip-link:focus,
 .skip-link:focus-visible {
     transform: translateY(0);
-    visibility: visible;
-    opacity: 1;
-   }
+    outline: 2px solid var(--text-span);
+    outline-offset: 2px;
+}
 
 button {
     cursor: pointer;
