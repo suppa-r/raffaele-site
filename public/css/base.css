@@ -55,7 +55,7 @@ footer {
     position: absolute;
     top: 0;
     left: 1rem;
-    transform: translateY(-160%);
+    transform: translateY(-180%);
     z-index: 3000;
     padding: 0.65rem 1rem;
     color: var(--base-color);
