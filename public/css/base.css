@@ -54,7 +54,7 @@ footer {
 .skip-link {
     position: absolute;
     inset-inline-start: 1rem;
-    inset-block-start: 0;
+    inset-block-start: -5rem;
     z-index: 3000;
     display: inline-block;
     padding: 0.65rem 1rem;
@@ -67,17 +67,14 @@ footer {
     letter-spacing: 0.04em;
     opacity: 0;
     pointer-events: none;
-    clip-path: inset(0 0 100% 0);
-    transform: translateY(-120%);
-    transition: transform 0.2s ease, opacity 0.2s ease, clip-path 0.2s ease, box-shadow 0.2s ease;
+    transition: inset-block-start 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
 .skip-link:focus,
 .skip-link:focus-visible {
     opacity: 1;
     pointer-events: auto;
-    clip-path: inset(0 0 0 0);
-    transform: translateY(0);
+    inset-block-start: 0;
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--text-span) 65%, transparent), 0 0.5rem 1.2rem rgb(0 0 0 / 0.18);
     outline: 2px solid var(--text-span);
     outline-offset: 2px;
