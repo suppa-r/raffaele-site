@@ -5,7 +5,7 @@
             ============================================ */
     --content-max-width: min(420px, 95dvw);
     --margin-inline: auto;
-    --padding-inline: var(--space-s);
+    --padding-inline: var(--space-2xs);
     --layout-block-gap: clamp(0.5rem, 2vw, 0.6rem);
 }
 
@@ -171,7 +171,7 @@ a:focus-visible {
     :root {
         --content-max-width: min(560px, 92dvw);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-        --padding-inline: var(--space-xs);
+        --padding-inline: var(--space-2xs);
     }
 
     .wrapper::before {
