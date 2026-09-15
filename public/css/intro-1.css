@@ -542,7 +542,7 @@ html:not(.intro-section-active) main > section[id] {
 }
 
 .section-container p {
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 @media (max-width: 768px) {
@@ -561,9 +561,6 @@ header {
     color: var(--text-color);
     background: linear-gradient(to bottom, transparent, var(--base-color) 45%);
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-0);
-    font-style: italic;
-    letter-spacing: var(--letter-spacing-body);
     line-height: 1;
     text-align: center;
     pointer-events: none;

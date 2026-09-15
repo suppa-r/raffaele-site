@@ -5,7 +5,8 @@
             ============================================ */
     --content-max-width: min(420px, 95dvw);
     --margin-inline: auto;
-  --layout-block-gap: clamp(0.5rem, 2vw, 0.6rem);
+    --padding-inline: var(--space-3xs);
+    --layout-block-gap: clamp(0.5rem, 2vw, 0.6rem);
 }
 
 html{
@@ -28,7 +29,8 @@ body {
     letter-spacing: var(--letter-spacing-body);
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
-  hyphens: auto;
+    text-wrap: pretty;
+    hyphens: auto;
 }
 
 header,
@@ -37,7 +39,8 @@ footer {
     max-inline-size: var(--content-max-width);
     inline-size: 100%;
     margin-inline: var(--margin-inline);
-  }
+   /* padding-inline: var(--padding-inline); */
+}
 
 .wrapper {
     min-height: 100svh;
@@ -87,7 +90,7 @@ h4,
 h5,
 h6 {
     display: block;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     text-wrap: balance;
     max-inline-size: var(--content-max-width);
@@ -112,7 +115,7 @@ p {
     max-inline-size: 65ch;
     margin-block: var(--layout-block-gap);
     margin-inline: auto;
-    text-wrap: pretty;
+    text-wrap: balance;
 }
 
 a {
@@ -175,7 +178,8 @@ a:focus-visible {
 :root {
         --content-max-width: min(560px, 92dvw);
         --layout-block-gap: clamp(0.6rem, 2vw, 0.95rem);
-      }
+        --padding-inline: var(--space-xs);
+    }
 
     .wrapper::before {
         -webkit-mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
@@ -191,6 +195,7 @@ a:focus-visible {
 :root {
         --content-max-width: min(840px, 95dvw);
         --layout-block-gap: clamp(0.625rem, 2vw, 1rem);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper {
@@ -211,7 +216,8 @@ a:focus-visible {
 :root {
         --content-max-width: min(1040px, 95dvw);
         --layout-block-gap: clamp(0.70rem, 1.5vw, 1rem);
-     }
+        --padding-inline: var(--space-s);
+    }
 
     .wrapper::before {
         -webkit-mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
@@ -227,7 +233,8 @@ a:focus-visible {
 :root {
         --content-max-width: min(1180px, 95dvw);
         --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
-     }
+        --padding-inline: var(--space-s);
+    }
 
     .wrapper::before {
         -webkit-mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
@@ -242,7 +249,7 @@ a:focus-visible {
 @media (min-width: 1440px) {
 :root {
         --content-max-width: min(1400px, 96dvw);
-        --layout-block-gap: clamp(0.75rem, 1.8vw, 1.5rem);
+        --padding-inline: var(--space-m);
     }
 
     .wrapper::before {
@@ -259,7 +266,8 @@ a:focus-visible {
  :root {
         --content-max-width: min(1920px, 95dvw);
         --layout-block-gap: clamp(0.75rem, 1.6vw, 1.75rem);
-      }
+        --padding-inline: var(--space-m);
+    }
 
     .wrapper::before {
         -webkit-mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);

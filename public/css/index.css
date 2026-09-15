@@ -149,16 +149,36 @@ main {
     box-shadow: 0 20px 10px 0 var(--text-color);
     isolation: isolate;
     z-index: 10;
-    border-radius: var(--space-xl-2xl);
+    border-radius: var(--space-2xl-3xl);
     text-decoration: none;
     position: relative;
-    padding: var(--space-2xs-xs) var(--space-m-l);
-    color: var(--text-color);
     background: var(--base-color);
     border: none;
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.button-text {
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    gap: var(--space-2xs-xs);
+    text-align: center;
+    pointer-events: none;
+    position: relative;
+    margin-inline: auto;
+    padding: var(--space-4xs-3xs) var(--space-xl-2xl);
+    z-index: 12;
+    font-size: var(--fs-1);
+}
+
+.btn-description {
+    font-family: var(--primary-font-secondary);
+    font-style: italic;
+    font-weight: 600;
+    font-size: var(--fs-3);
+    color: var(--text-color);
 }
 
 .particle {
@@ -188,9 +208,9 @@ to {
 }
 
 .btn:hover svg {
-    transform: scale(1.5) rotate(45deg);
-    opacity: 0.6;
-}
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
 
 @media (hover:none) and (pointer:coarse) {
 .btn {
@@ -227,19 +247,6 @@ to {
             transform: scale(1.08) rotate(10deg);
         }
     }
-}
-
-.button-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    pointer-events: none;
-    position: relative;
-    margin-inline: auto;
-    padding: var(--space-4xs-3xs) var(--space-2xs-xs);
-    z-index: 12;
 }
 
 /* --------------------------------------- */

@@ -366,6 +366,10 @@ body[data-page="intro"] .text-with-animation span {
     letter-spacing: var(--letter-spacing-animations);
 }
 
+.text-break {
+    display: block;
+}
+
 .fancy-inline {
     display: inline-block;
     white-space: normal;
@@ -392,6 +396,12 @@ footer {
   align-items: center;
   white-space: nowrap;
  }
+
+@media (min-width: 768px) {
+  .text-break {
+    display: inline;
+  }
+}
 
 @media (prefers-reduced-motion:reduce) {
 ::view-transition-group(*),
