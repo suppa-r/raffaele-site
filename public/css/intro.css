@@ -15,9 +15,10 @@ header {
   position: relative;
   isolation: isolate;
   line-height: 1;
-  padding: 0 var(--space-m-l);
+  padding: 0 var(--space-xs-s);
   background: transparent;
   margin-block-start: var(--space-s);
+  font-size: var(--fs-01);
  }
 
 body[data-page="intro"] header {
@@ -275,7 +276,7 @@ main {
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
-    margin-block-end: var(--space-s-m);
+    margin-block-end: var(--space-l-xl);
 }
 
 .text-layer {
@@ -308,12 +309,6 @@ main {
     }
 }
 
-.js-intro-anim .text-with-animation span {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-}
-
 main p {
     margin-block: 0;
     margin-inline: auto;
@@ -336,14 +331,12 @@ main p:not(.wrapper-gradient-text) {
 body[data-page="intro"] main p:not(.wrapper-gradient-text),
 body[data-page="intro"] .wrapper-gradient-text,
 body[data-page="intro"] .wrapper-gradient-text .text-layer,
-body[data-page="intro"] .text-with-animation span,
 body[data-page="intro"] main p:not(.wrapper-gradient-text) .line span {
     opacity: 0;
 }
 
 body[data-page="intro"] .wrapper-gradient-text,
-body[data-page="intro"] .wrapper-gradient-text .text-layer,
-body[data-page="intro"] .text-with-animation span {
+body[data-page="intro"] .wrapper-gradient-text .text-layer {
     transform: translateX(35vw);
 }
 
@@ -398,6 +391,11 @@ footer {
  }
 
 @media (min-width: 768px) {
+header {
+font-size: var(--fs-0);
+ }
+
+
   .text-break {
     display: inline;
   }
