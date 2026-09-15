@@ -20,13 +20,6 @@ header {
   margin-block-start: var(--space-s);
  }
 
-.header-inner {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: space-between;
-  align-items: center;
-}
-
 body[data-page="intro"] header {
   opacity: 0;
   transform: translateY(-18vh);
@@ -47,6 +40,13 @@ header::before {
 header:has(.open-overlay[aria-expanded="true"])::before {
   opacity: 1;
   transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -75,7 +75,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     padding-block: 0;
     white-space: nowrap;
     overflow: hidden;
-    font-size: var(--fs-01);
+    padding-inline-start: var(--space-2xs-xs);
 }
 
 .header-title span {
@@ -386,12 +386,12 @@ body[data-page="intro"] .text-with-animation span {
 /* --------------------------------------- */
 
 footer {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: end;
-    align-items: center;
-    white-space: nowrap;
-}
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: end;
+  align-items: center;
+  white-space: nowrap;
+ }
 
 @media (prefers-reduced-motion:reduce) {
 ::view-transition-group(*),
@@ -429,24 +429,4 @@ footer {
     .text-layer {
         animation: none
     }
-}
-
-@media (min-width: 600px) {
- .header-title {
-    font-size: var(--fs-0);
-    padding-inline-start: var(--space-4xs-3xs);
-    margin: 0;
-    padding-block: 0;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-    main {
-        align-content: start;
-        padding-block-start: clamp(var(--space-3xs), 4vh, var(--space-l));
-    }
-
-    .wrapper-gradient-text {
-        font-size: var(--fs-2);
-     }
 }

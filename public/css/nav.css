@@ -325,13 +325,15 @@ nav ul {
 
   .nav-links li {
     position: relative;
-    flex-basis: 20%;
-    margin:0 var(--space-l);
+    flex: 0 1 clamp(18rem, 30vw, 24rem);
+    min-inline-size: 18rem;
+    margin: var(--space-l);
     padding:var(--space-s) var(--space-2xl);
   }
 
   .nav-links li a {
     font-size: var(--fs-2);
+    white-space: nowrap;
   }
 
   /* the li-anchored line below replaces the mobile a-anchored line */
