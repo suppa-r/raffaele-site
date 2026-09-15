@@ -1,10 +1,8 @@
-/* global gsap */
+
 /*
  * Standalone entrance animations for intro-1.html
  * Uses centralized animation constants from animation-constants.js
  */
-
-const INTRO1_PAGE_MARKER = window.ANIMATION_CONSTANTS.INTRO1.pageSelector;
 const INTRO1_NAV_ITEMS_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.navItems;
 const INTRO1_FOOTER_ENTRIES_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.footerEntries;
 const INTRO1_TITLE_LINE_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLine;
@@ -22,7 +20,7 @@ const INTRO1_TITLE_LINE_SECOND_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timi
 const INTRO1_TITLE_LINE_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineStagger;
 const INTRO1_TITLE_LINE_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDelay;
 const INTRO1_PROFILE_TITLE_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.profileTitleRevealDuration;
-const INTRO1_EASING = window.ANIMATION_CONSTANTS.EASING.standard;
+
 let intro1InitState = "idle";
 
 function intro1IsPage() {
