@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" class="js-intro-anim">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080808" />
+  <title>Raffaele Suppa</title>
+  <meta name="apple-mobile-web-app-title" content="raffaele.site" />
+  <link rel="manifest" href="favicons/site.webmanifest" />
+  <script src="js/theme-bootstrap.js"></script>
+  <!-- Preload critical stylesheets -->
+  <link rel="preload" href="css/tokens.css" as="style" />
+  <link rel="preload" href="css/reset.css" as="style" />
+  <link rel="preload" href="css/color-themes.css" as="style" />
+  <link rel="preload" href="css/base.css" as="style" />
+  <link rel="preload" href="css/transition.css" as="style" />
+  <link rel="preload" href="css/fonts.css" as="style" />
+  <link rel="preload" href="css/theme-switcher.css" as="style" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/color-themes.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/transition.css" />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/theme-switcher.css" />
+  <link rel="stylesheet" href="css/intro.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
+  <link rel="shortcut icon" href="favicons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
+  <!-- Page scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/split-type@0/umd/index.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="js/animation-constants.js" defer></script>
+  <script src="js/intro-theme-selector.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/introgasp.js" defer></script>
+  <script src="js/nav-bar-for-intro.js" defer></script>
+</head>
+
+<body data-page="intro">
+  <div class="wrapper">
+    <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
+    <div class="support view-transition" role="alert" aria-live="assertive">
+      ⚠️ Your browser doesn't support View Transitions
+    </div>
+    <div class="support style-query" role="alert" aria-live="assertive">
+      ⚠️ Your browser doesn't support Style Queries
+    </div>
+    <header class="site-header">
+      <a class="skip-link" href="#main-content">Skip to main content</a>
+      <div class="header-inner" aria-label="Site header">
+        <div class="logo" aria-label="Raffaele Suppa brand">
+          <img src="images/Gmail.JPG" alt="Raffaele Suppa logo" width="50" height="50" />
+          <p class="header-title">
+            sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
+          </p>
+        </div>
+        <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="intro-overlay-navigation">
+          <span class="bar-top"></span>
+          <span class="bar-middle"></span>
+          <span class="bar-bottom"></span>
+        </button>
+      </div>
+    </header>
+    <div id="intro-overlay-navigation" class="overlay-navigation" aria-hidden="true">
+      <nav role="navigation" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" data-content="the beginning again">home</a></li>
+          <li><a href="intro-1.html" data-content="curious?">about me</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main id="main-content" aria-label="Introduction text" tabindex="-1">
+      <h1 class="visually-hidden">Introduction</h1>
+      <p class="wrapper-gradient-text" aria-label=" genesis">
+        <span class="text-layer" aria-hidden="true">genesis</span>
+      </p>
+      <p>Once upon a time it began</p>
+      <p>this is where the apple fell and Eden was changed</p>
+      <p>If I had a secret --- I'm telling it now!</p>
+      <p class="fancy">let the mystery be</p>
+      <p>hit it into the bleachers</p>
+      <p class="fancy-inline">and walk out of <span>The Louvre with a Masterpiece</span></p>
+      <p class="fancy-small">( hey! wait a second; who was that? )</p>
+      <p>it's one Prayer --- one Blessing</p>
+      <p>one Miracle at a time</p>
+      <p class="fancy">Amazing Grace</p>
+     </main>
+    <footer role="contentinfo" class="footer">
+      <div class="theme-selector-container">
+        <label id="theme-selector-label" for="theme-selector">color theme:</label>
+        <div class="theme-selector" data-theme-selector>
+          <button type="button" class="theme-selector-trigger" data-theme-selector-trigger aria-haspopup="listbox"
+            aria-expanded="false" aria-controls="theme-selector-menu"
+            aria-labelledby="theme-selector-label theme-selector-value">
+            <span class="theme-selector-trigger-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <path fill="currentColor"
+                  d="M230.72 145.06a4 4 0 0 0-4-1A92.08 92.08 0 0 1 111.94 29.27a4 4 0 0 0-5-5a100.78 100.78 0 0 0-50.86 35.61a100 100 0 0 0 140 140a100.78 100.78 0 0 0 35.59-50.87a4 4 0 0 0-.95-3.95m-39.42 48.47A92 92 0 0 1 62.47 64.7a93 93 0 0 1 39.88-30.35a100.09 100.09 0 0 0 119.3 119.3a93 93 0 0 1-30.35 39.88" />
+              </svg>
+            </span>
+            <span id="theme-selector-value" class="theme-selector-trigger-text">dark</span>
+            <span class="theme-selector-chevron" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+          <ul id="theme-selector-menu" class="theme-selector-menu" data-theme-selector-menu role="listbox"
+            aria-label="Color theme options" hidden>
+            <li role="presentation">
+              <button type="button" class="theme-selector-option" data-theme-option="light" role="option"
+                aria-selected="false">
+                <span class="theme-option-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="m6.05 4.14l-.39-.39a.993.993 0 0 0-1.4 0l-.01.01a.984.984 0 0 0 0 1.4l.39.39c.39.39 1.01.39 1.4 0l.01-.01a.984.984 0 0 0 0-1.4M3.01 10.5H1.99c-.55 0-.99.44-.99.99v.01c0 .55.44.99.99.99H3c.56.01 1-.43 1-.98v-.01c0-.56-.44-1-.99-1m9-9.95H12c-.56 0-1 .44-1 .99v.96c0 .55.44.99.99.99H12c.56.01 1-.43 1-.98v-.97c0-.55-.44-.99-.99-.99m7.74 3.21c-.39-.39-1.02-.39-1.41-.01l-.39.39a.984.984 0 0 0 0 1.4l.01.01c.39.39 1.02.39 1.4 0l.39-.39a.984.984 0 0 0 0-1.4m-1.81 15.1l.39.39a.996.996 0 1 0 1.41-1.41l-.39-.39a.993.993 0 0 0-1.4 0c-.4.4-.4 1.02-.01 1.41M20 11.49v.01c0 .55.44.99.99.99H22c.55 0 .99-.44.99-.99v-.01c0-.55-.44-.99-.99-.99h-1.01c-.55 0-.99.44-.99.99M12 5.5c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6m-.01 16.95H12c.55 0 .99-.44.99-.99v-.96c0-.55-.44-.99-.99-.99h-.01c-.55 0-.99.44-.99.99v.96c0 .55.44.99.99.99m-7.74-3.21c.39.39 1.02.39 1.41 0l.39-.39a.993.993 0 0 0 0-1.4l-.01-.01a.996.996 0 0 0-1.41 0l-.39.39c-.38.4-.38 1.02.01 1.41" />
+                  </svg>
+                </span>
+                <span class="theme-option-label">light</span>
+              </button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="theme-selector-option" data-theme-option="dark" role="option"
+                aria-selected="true">
+                <span class="theme-option-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                    <path fill="currentColor"
+                      d="M230.72 145.06a4 4 0 0 0-4-1A92.08 92.08 0 0 1 111.94 29.27a4 4 0 0 0-5-5a100.78 100.78 0 0 0-50.86 35.61a100 100 0 0 0 140 140a100.78 100.78 0 0 0 35.59-50.87a4 4 0 0 0-.95-3.95m-39.42 48.47A92 92 0 0 1 62.47 64.7a93 93 0 0 1 39.88-30.35a100.09 100.09 0 0 0 119.3 119.3a93 93 0 0 1-30.35 39.88" />
+                  </svg>
+                </span>
+                <span class="theme-option-label">dark</span>
+              </button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="theme-selector-option" data-theme-option="system" role="option"
+                aria-selected="false">
+                <span class="theme-option-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                    <path fill="currentColor"
+                      d="M2000 1525q12 12 21 29t15 36t9 38t3 36q0 27-10 50t-27 40t-41 28t-50 10H128q-27 0-50-10t-40-27t-28-41t-10-50q0-16 3-35t9-39t15-36t21-29l208-208V384h1536v933zM384 1280h1280V512H384zm1536 384q0-11-4-28t-12-26l-203-202H347l-203 202q-8 8-12 25t-4 29z" />
+                  </svg>
+                </span>
+                <span class="theme-option-label">system (auto)</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <select id="theme-selector" name="theme" class="theme-selector-native" aria-label="Select color theme">
+          <option value="light">light</option>
+          <option value="dark" selected>dark</option>
+          <option value="system">system (auto)</option>
+        </select>
+      </div>
+      <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+    </footer>
+  </div>
+</body>
+
+</html>

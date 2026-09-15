@@ -2,6 +2,7 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
   }
+
 header {
   display: grid;
   align-items: center;
@@ -27,8 +28,7 @@ header {
 
 main {
     display: grid;
-    align-content: center;
-    justify-content: center;
+    place-content: center center;
     text-align: center;
     margin-inline: auto;
     row-gap: var(--space-s-m);
@@ -174,8 +174,7 @@ main {
 }
 
 @keyframes particleAnim {
-
-    to {
+to {
         opacity: 0;
         transform: translate(var(--tx), var(--ty))
     }
@@ -194,8 +193,7 @@ main {
 }
 
 @media (hover:none) and (pointer:coarse) {
-
-    .btn {
+.btn {
         -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
         touch-action: manipulation;
         transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
@@ -215,8 +213,7 @@ main {
     }
 
     @supports (-webkit-touch-callout: none) {
-
-        .btn {
+.btn {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
         }
@@ -258,8 +255,7 @@ footer {
  }
 
 @media (prefers-reduced-motion:reduce) {
-
-    .btn,
+.btn,
     .btn svg {
         transition: none !important;
         transform: none !important

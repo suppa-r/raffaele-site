@@ -266,8 +266,8 @@ main {
 
 .wrapper-gradient-text {
     display:grid;
+    place-content: center;
     justify-content: center;
-    align-content: center;
     text-align: center;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-3);
@@ -299,8 +299,7 @@ main {
 }
 
 @keyframes shadow-drip {
-
-    0% {
+0% {
         text-shadow: 0 0 0 var(--shadow-color-primary), 0 0 0 var(--shadow-color-secondary), 0 0 0 var(--shadow-color-tertiary)
     }
 
@@ -395,8 +394,7 @@ footer {
 }
 
 @media (prefers-reduced-motion:reduce) {
-
-    ::view-transition-group(*),
+::view-transition-group(*),
     ::view-transition-old(*),
     ::view-transition-new(*) {
         animation: none !important
@@ -434,8 +432,7 @@ footer {
 }
 
 @media (min-width: 600px) {
-
-    .header-title {
+ .header-title {
     font-size: var(--fs-0);
     padding-inline-start: var(--space-4xs-3xs);
     margin: 0;

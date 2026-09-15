@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "attr-name-style": "dash",
+    "attr-no-dup": true,
+    "attr-unsafe-chars": true,
+    "attr-value-not-empty": true,
+    "doctype-first": true,
+    "html-req-lang": true,
+    "id-unique": true,
+    "line-end-style": "lf",
+    "tag-close": true,
+    "tag-name-lowercase": true,
+    "title-required": true
+  }
+}

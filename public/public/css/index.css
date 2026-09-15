@@ -1,0 +1,280 @@
+.wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+header {
+  display: grid;
+  align-items: center;
+  row-gap: var(--space-2xs-xs);
+  z-index: 2002;
+  border-radius: var(--space-m-l);
+  position: relative;
+  isolation: isolate;
+  line-height: 1;
+  padding: 0 var(--space-m-l);
+  background: transparent;
+  margin-block-start: var(--space-s);
+ }
+
+.header-text,
+.header-break {
+    inline-size: 100%;
+    white-space: nowrap;
+    margin-block: 0;
+    margin-inline: auto;
+    text-align: center;
+}
+
+main {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    margin-inline: auto;
+    row-gap: var(--space-s-m);
+ }
+
+  main >* {
+    margin-block:0;
+  }
+
+.site-title {
+    font-size: var(--fs-1);
+    white-space: nowrap;
+}
+
+.text-with-animation {
+    inline-size: fit-content;
+    margin-inline: auto;
+    font-family: var(--primary-font-secondary);
+    --main-enter-offset: -6vw;
+    text-align: center;
+    font-size: var(--fs-4);
+    font-style: italic;
+    white-space: nowrap;
+    letter-spacing: var(--letter-spacing-animations);
+}
+
+.text-with-animation span:first-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation span:last-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-1 {
+    inline-size: fit-content;
+    margin-inline: auto;
+    --main-enter-offset: -6vw;
+    text-align: center;
+    font-size: var(--fs-3);
+    font-style: italic;
+    white-space: nowrap;
+    letter-spacing: var(--letter-spacing-animations);
+    font-weight: 500;
+}
+
+.text-with-animation-1 span:first-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-1 span:nth-child(2) {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-1 span:last-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-2 {
+    inline-size: fit-content;
+    margin-inline: auto;
+    --main-enter-offset: -6vw;
+    text-align: center;
+    font-size: var(--fs-3);
+    font-style: italic;
+    white-space: nowrap;
+    letter-spacing: var(--letter-spacing-body);
+    font-weight: 500;
+}
+
+.text-with-animation-2 span:first-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-2 span:nth-child(2) {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation-2 span:last-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation span,
+.text-with-animation-1 span,
+.text-with-animation-2 span {
+    display: inline-flex;
+    will-change: transform, opacity;
+}
+
+.text-with-animation-3 {
+    inline-size: fit-content;
+    margin-inline: auto;
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-7);
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.btn {
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-inline: auto;
+    margin-top: var(--space-m-l);
+    box-shadow: 0 20px 10px 0 var(--text-color);
+    isolation: isolate;
+    z-index: 10;
+    border-radius: var(--space-xl-2xl);
+    text-decoration: none;
+    position: relative;
+    padding: var(--space-2xs-xs) var(--space-m-l);
+    color: var(--text-color);
+    background: var(--base-color);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.particle {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--text-color);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    transform: translate(0, 0);
+    animation: particleAnim 1s ease-out forwards
+}
+
+@keyframes particleAnim {
+
+    to {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty))
+    }
+}
+
+.btn svg {
+    width: var(--space-m-l);
+    height: var(--space-m-l);
+    fill: var(--text-color);
+    transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn:hover svg {
+    transform: scale(1.5) rotate(45deg);
+    opacity: 0.6;
+}
+
+@media (hover:none) and (pointer:coarse) {
+
+    .btn {
+        -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
+        touch-action: manipulation;
+        transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:active {
+        transform: scale(1);
+        box-shadow: 0 12px 8px 0 var(--text-color);
+    }
+
+    .btn svg {
+        transition: fill 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:active svg {
+        transform: scale(1.12) rotate(12deg);
+    }
+
+    @supports (-webkit-touch-callout: none) {
+
+        .btn {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        .btn:active {
+            transform: scale(1);
+            box-shadow: 0 10px 7px 0 var(--text-color);
+        }
+
+        .btn:active svg {
+            transform: scale(1.08) rotate(10deg);
+        }
+    }
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+    position: relative;
+    margin-inline: auto;
+    padding: var(--space-4xs-3xs) var(--space-2xs-xs);
+    z-index: 12;
+}
+
+/* --------------------------------------- */
+/* ----- Footer ----- */
+/* --------------------------------------- */
+
+footer {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: end;
+  align-items: center;
+  white-space: nowrap;
+ }
+
+@media (prefers-reduced-motion:reduce) {
+
+    .btn,
+    .btn svg {
+        transition: none !important;
+        transform: none !important
+    }
+
+
+    .btn:hover {
+        box-shadow: 0 20px 10px 0 var(--text-color)
+    }
+
+
+    .btn:focus-visible {
+        outline: 6px solid var(--focus-ring-color);
+        background-color: var(--text-color);
+        color: var(--base-color);
+        box-shadow: 0 0 50px 10px var(--text-color)
+    }
+}

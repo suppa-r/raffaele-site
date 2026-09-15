@@ -1,7 +1,6 @@
 /* ============================================
    COLOR THEMES - LIGHT & DARK
    ============================================ */
-
 [data-theme="dark"] {
   --base-color: #0a0a0a;
   --text-color: #faf8f8;
@@ -78,9 +77,9 @@
 /* Modern browsers - OKLCH */
 @supports (color: oklch(0% 0 0deg)) {
   [data-theme="dark"] {
-    --base-color: oklch(0% 0 0);
+    --base-color: oklch(0% 0 0deg);
     --text-color: oklch(97.015% 0.0001 271.152deg);
-    --text-span: oklch(55.231% 0.0741 231.595);
+    --text-span: oklch(55.231% 0.0741 231.595deg);
     --nav-contrast-color: oklch(0% 0 0deg);
     --focus-ring-color: oklch(84.522% 0.0001 271.152deg);
     --body-grid-line: oklch(100% 0.0011 271.152deg / 15%);
@@ -110,13 +109,13 @@
     --glow-box-shadow:
       0 0 25px oklch(100% 0.0011 271.152deg / 60%),
       0 0 50px oklch(100% 0.0011 271.152deg / 40%);
-    --linear-gradient-image: oklch(100% 0.00011 271.152 / 0.1);
+    --linear-gradient-image: oklch(100% 0.00011 271.152deg / 0.1);
   }
 
   [data-theme="light"] {
-    --text-color: oklch(0% 0 0);
+    --text-color: oklch(0% 0 0deg);
     --base-color: oklch(98.066% 0.00211 14.279deg);
-    --text-span: oklch(32.078% 0.0541 229.235 / 0.637);
+    --text-span: oklch(32.078% 0.0541 229.235deg / 0.637);
     --nav-contrast-color: oklch(100% 0.0001 271.152deg);
     --focus-ring-color: oklch(28.502% 0.0003 271.152deg);
     --body-grid-line: rgb(0 0 0 / 20%);
@@ -155,7 +154,6 @@
    ============================================ */
 .wrapper {
   position: relative;
-  min-height: 100svh;
 }
 
 .wrapper::before {

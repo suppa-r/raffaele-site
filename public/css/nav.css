@@ -75,8 +75,7 @@ nav ul {
 }
 
 @media (hover: hover) and (pointer: fine) {
-
-  .nav-links li a:hover::before,
+.nav-links li a:hover::before,
   .nav-links li a:focus-visible::before {
     transform: scaleX(1);
     opacity: 1;
@@ -320,15 +319,14 @@ Animation keyframes
 
 
 @media (min-width: 640px) {
-
-  nav ul {
+nav ul {
     flex-direction: row;
   }
 
   .nav-links li {
     position: relative;
-    flex-basis: 18%;
-    margin:var(--space-l);
+    flex-basis: 20%;
+    margin:0 var(--space-l);
     padding:var(--space-s) var(--space-2xl);
   }
 
