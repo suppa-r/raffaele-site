@@ -71,20 +71,22 @@
   }
 
   function attachSectionOverflowCues() {
-    document.querySelectorAll(".section-container").forEach((container) => {
+    document
+      .querySelectorAll(".section-container, .section-container-early")
+      .forEach((container) => {
       if (container.dataset.overflowCueBound === "true") {
         updateSectionOverflowCue(container);
         return;
       }
 
-      container.addEventListener(
-        "scroll",
-        () => updateSectionOverflowCue(container),
-        { passive: true },
-      );
-      container.dataset.overflowCueBound = "true";
-      updateSectionOverflowCue(container);
-    });
+        container.addEventListener(
+          "scroll",
+          () => updateSectionOverflowCue(container),
+          { passive: true },
+        );
+        container.dataset.overflowCueBound = "true";
+        updateSectionOverflowCue(container);
+      });
   }
 
   function isReducedMotionPreferred() {
