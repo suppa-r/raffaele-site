@@ -44,8 +44,7 @@ ul {
 }
 
 @media (prefers-reduced-motion:reduce) {
-
-    html {
+html {
         scroll-behavior: auto
     }
 
