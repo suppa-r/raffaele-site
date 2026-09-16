@@ -1,9 +1,9 @@
 :root {
   --gradient: linear-gradient(
     90deg,
-    var(--base-color),
-    var(--text-color),
-    var(--base-color)
+    color-mix(in oklch, var(--base-color) 72%, var(--text-color)),
+    color-mix(in oklch, var(--text-color) 78%, var(--base-color)),
+    color-mix(in oklch, var(--base-color) 72%, var(--text-color))
   );
   --intro-nav-fade-out-duration: 0.22s;
   --intro-nav-fade-in-duration: 0.4s;
@@ -14,8 +14,10 @@
 }
 
 .wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+    container-type: inline-size;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-0);
 }
 
 /* --------------------------------------- */
@@ -497,7 +499,7 @@ main > section[id] {
 }
 
 main > section[id]:target .profile-title span {
-  animation: gradientAnimation 5s ease-out both infinite;
+  animation: gradientAnimation 8s ease-in-out infinite;
 }
 
 @keyframes gradientAnimation {
