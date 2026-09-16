@@ -74,10 +74,10 @@
     document
       .querySelectorAll(".section-container, .section-container-early")
       .forEach((container) => {
-      if (container.dataset.overflowCueBound === "true") {
-        updateSectionOverflowCue(container);
-        return;
-      }
+        if (container.dataset.overflowCueBound === "true") {
+          updateSectionOverflowCue(container);
+          return;
+        }
 
         container.addEventListener(
           "scroll",
