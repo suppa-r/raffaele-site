@@ -1,10 +1,8 @@
 :root {
-  --gradient: linear-gradient(
-    90deg,
-    color-mix(in oklch, var(--base-color) 72%, var(--text-color)),
-    color-mix(in oklch, var(--text-color) 78%, var(--base-color)),
-    color-mix(in oklch, var(--base-color) 72%, var(--text-color))
-  );
+  --gradient: linear-gradient(90deg,
+      color-mix(in oklch, var(--base-color) 72%, var(--text-color)),
+      color-mix(in oklch, var(--text-color) 78%, var(--base-color)),
+      color-mix(in oklch, var(--base-color) 72%, var(--text-color)));
   --intro-nav-fade-out-duration: 0.22s;
   --intro-nav-fade-in-duration: 0.4s;
   --intro-nav-fade-in-delay: 0.2s;
@@ -14,9 +12,9 @@
 }
 
 .wrapper {
-    container-type: inline-size;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  container-type: inline-size;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   font-size: var(--fs-0);
 }
 
@@ -36,7 +34,6 @@ header {
   line-height: 1;
   padding: var(--space-3xs-2xs) var(--space-m-l);
   background: transparent;
-  /* margin-block-start: var(--space-xs-s); */
   margin-block-start: max(var(--space-s), env(safe-area-inset-top, 0px));
 }
 
@@ -96,15 +93,13 @@ Burger king
 body:has(.open-overlay[aria-expanded="true"]) main,
 body:has(.open-overlay[aria-expanded="true"]) footer {
   opacity: 0;
-  transition: opacity var(--intro-nav-fade-out-duration)
-    cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body:has(.open-overlay[aria-expanded="false"]) main,
 body:has(.open-overlay[aria-expanded="false"]) footer {
   opacity: 1;
-  transition: opacity var(--intro-nav-fade-in-duration)
-    cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
+  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
 .open-overlay[aria-expanded="true"] span {
@@ -437,7 +432,7 @@ main p {
   margin-block: 0;
 }
 
-main > section[id] {
+main>section[id] {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   gap: var(--space-s);
@@ -498,7 +493,7 @@ main > section[id] {
   padding-block: var(--space-2xs);
 }
 
-main > section[id]:target .profile-title span {
+main>section[id]:target .profile-title span {
   animation: gradientAnimation 6s ease-in-out infinite;
 }
 
@@ -516,19 +511,19 @@ main > section[id]:target .profile-title span {
   }
 }
 
-main > section[id]:target {
+main>section[id]:target {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-html:not(.intro-section-active) main > section[id] {
+html:not(.intro-section-active) main>section[id] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.intro-nav-open main > section[id] {
+.intro-nav-open main>section[id] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -546,6 +541,7 @@ html:not(.intro-section-active) main > section[id] {
   overflow-y: auto;
   scrollbar-gutter: stable;
   min-block-size: 0;
+  position: relative;
 }
 
 .section-container p {
@@ -555,10 +551,10 @@ html:not(.intro-section-active) main > section[id] {
 .section-container.has-more-content:not(.at-bottom)::after,
 .section-container-early.has-more-content:not(.at-bottom)::after {
   content: "scroll: read more";
-  position: sticky;
+  position: absolute;
+  inset-inline: 0;
   inset-block-end: 0;
   display: block;
-  grid-column: 1 / -1;
   inline-size: 100%;
   padding-block-start: var(--space-l);
   color: var(--text-color);
@@ -567,12 +563,12 @@ html:not(.intro-section-active) main > section[id] {
   line-height: 1;
   text-align: center;
   pointer-events: none;
-  margin-block: var(--space-s);
+  margin: 0;
   text-wrap: balance;
   z-index: 1;
 }
 
-.col > * + * {
+.col>*+* {
   margin-block-start: var(--prose-flow, 0.16em);
 }
 
@@ -700,8 +696,7 @@ footer {
   pointer-events: none !important;
 }
 
-html.intro-section-active:not(.intro-nav-open, .intro-nav-closing)
-  .back-to-top {
+html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top {
   visibility: visible !important;
   opacity: 1 !important;
   transform: scale(1) !important;
@@ -755,7 +750,7 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing)
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-block: var(--space-m);
+
     padding: 0;
   }
 
@@ -764,7 +759,9 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing)
     max-height: 380px;
     width: auto;
     border-radius: 50%;
+        margin-block: var(--space-l);
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

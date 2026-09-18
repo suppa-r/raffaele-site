@@ -16,8 +16,11 @@ img,
 picture,
 video {
     max-width: 100%;
-    display: block;
-    height: auto
+    height:auto;
+    vertical-align: middle;
+    font-style:italic;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 input,
