@@ -2,7 +2,7 @@
     container-type: inline-size;
     display: grid;
     grid-template-rows: auto 1fr auto;
-  font-size: var(--fs-0);
+    font-size: var(--fs-0);
 }
 /* --------------------------------------- */
 /* ----- Header ----- */

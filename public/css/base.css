@@ -40,6 +40,7 @@ footer {
 }
 
 .wrapper {
+    min-height: 100vh;
     min-height: 100svh;
     padding-block: max(var(--space-xs-s), env(safe-area-inset-top, 0px)) max(var(--space-xs-s), env(safe-area-inset-bottom, 0px));
     overflow: hidden;

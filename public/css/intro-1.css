@@ -499,7 +499,7 @@ main > section[id] {
 }
 
 main > section[id]:target .profile-title span {
-  animation: gradientAnimation 8s ease-in-out infinite;
+  animation: gradientAnimation 6s ease-in-out infinite;
 }
 
 @keyframes gradientAnimation {
