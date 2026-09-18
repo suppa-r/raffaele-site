@@ -2,7 +2,6 @@
     container-type: inline-size;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    font-size: var(--fs-0);
 }
 
 header {
@@ -18,16 +17,15 @@ header {
     padding: 0 var(--space-m-l);
     background: transparent;
     margin-block-start: var(--space-s);
-   box-sizing: border-box;
-   text-align: center;
- }
+    box-sizing: border-box;
+    text-align: center;
+}
 
 .header-text,
 .header-break,
 .site-title {
-  max-inline-size: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
+    max-inline-size: 100%;
+    overflow-wrap: anywhere;
 }
 
 .header-text,
@@ -50,11 +48,6 @@ main>* {
     margin-block: 0;
 }
 
-.site-title {
-    font-size: var(--fs-1);
-    white-space: nowrap;
-}
-
 .text-with-animation {
     inline-size: fit-content;
     margin-inline: auto;
@@ -64,7 +57,7 @@ main>* {
     font-size: var(--fs-4);
     font-style: italic;
     white-space: nowrap;
-    letter-spacing: var(--letter-spacing-animations);
+    letter-spacing: var(--letter-spacing-wide);
 }
 
 .text-with-animation span:first-child {
@@ -85,8 +78,7 @@ main>* {
     font-size: var(--fs-3);
     font-style: italic;
     white-space: nowrap;
-    letter-spacing: var(--letter-spacing-animations);
-    font-weight: 500;
+    letter-spacing: var(--letter-spacing-wide);
 }
 
 .text-with-animation-1 span:first-child {
@@ -112,8 +104,7 @@ main>* {
     font-size: var(--fs-3);
     font-style: italic;
     white-space: nowrap;
-    letter-spacing: var(--letter-spacing-body);
-    font-weight: 500;
+    letter-spacing: var(--letter-spacing-wide);
 }
 
 .text-with-animation-2 span:first-child {
@@ -138,22 +129,9 @@ main>* {
     will-change: transform, opacity;
 }
 
-.text-with-animation-3 {
-    inline-size: fit-content;
-    margin-inline: auto;
-    font-family: var(--primary-font-secondary);
-    font-size: var(--fs-7);
-    text-align: center;
-    font-style: normal;
-    font-weight: 700;
-    opacity: 0;
-    will-change: transform, opacity;
-}
-
 .btn {
     width: fit-content;
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     margin-inline: auto;
@@ -191,6 +169,7 @@ main>* {
     font-weight: 600;
     font-size: var(--fs-3);
     color: var(--text-color);
+    padding-inline-start: var(--space-2xs-xs);
 }
 
 .particle {
@@ -270,7 +249,6 @@ footer {
     grid-template-columns: auto;
     justify-content: end;
     align-items: center;
-    white-space: nowrap;
 }
 
 @media (prefers-reduced-motion:reduce) {
