@@ -15,7 +15,6 @@ header {
   position: relative;
   isolation: isolate;
   line-height: 1;
-
   background: transparent;
   margin-block-start: var(--space-s);
   font-size: var(--fs-01);
@@ -373,11 +372,6 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
        display: block;
    }
 
-.fancy-small {
-    font-style: italic;
-    font-size: var(--fs-02);
-}
-
 /* --------------------------------------- */
 /* ----- Footer ----- */
 /* --------------------------------------- */
@@ -395,8 +389,7 @@ header {
 font-size: var(--fs-0);
  }
 
-
-  .text-break {
+.text-break {
     display: inline;
   }
 }

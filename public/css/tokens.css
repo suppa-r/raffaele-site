@@ -1,67 +1,67 @@
 @property --fs-01 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 14.4px;
+  initial-value: 12.8px;
 }
 
 @property --fs-0 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 18px;
+  initial-value: 16px;
 }
 
 @property --fs-1 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 22.5008px;
+  initial-value: 20px;
 }
 
 @property --fs-2 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 28.125px;
+  initial-value: 25px;
 }
 
 @property --fs-3 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 35.1552px;
+  initial-value: 31.2496px;
 }
 
 @property --fs-4 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 43.9456px;
+  initial-value: 39.0624px;
 }
 
 @property --fs-5 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 54.9312px;
+  initial-value: 48.8288px;
 }
 
 @property --fs-6 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 68.664px;
+  initial-value: 61.0352px;
 }
 
 @property --fs-7 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 85.8304px;
+  initial-value: 76.2944px;
 }
 
 @property --fs-8 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 107.288px;
+  initial-value: 95.368px;
 }
 
 @property --fs-9 {
   syntax: "<length>";
   inherits: true;
-  initial-value: 134.1104px;
+  initial-value: 119.2096px;
 }
 
 @property --space-3xs-2xs {
@@ -198,17 +198,17 @@
 }
 
 :root {
-  --fs-01: clamp(0.9rem, 0.8874rem + 0.0629cqi, 0.9377rem);
-  --fs-0: clamp(1.125rem, 1.0833rem + 0.2083cqi, 1.25rem);
-  --fs-1: clamp(1.4063rem, 1.3196rem + 0.4333cqi, 1.6663rem);
-  --fs-2: clamp(1.7578rem, 1.6034rem + 0.7722cqi, 2.2211rem);
-  --fs-3: clamp(2.1973rem, 1.9428rem + 1.2725cqi, 2.9607rem);
-  --fs-4: clamp(2.7466rem, 2.3466rem + 2.0001cqi, 3.9467rem);
-  --fs-5: clamp(3.4332rem, 2.824rem + 3.0461cqi, 5.2609rem);
-  --fs-6: clamp(4.2915rem, 3.3844rem + 4.5354cqi, 7.0128rem);
-  --fs-7: clamp(5.3644rem, 4.0365rem + 6.6394cqi, 9.3481rem);
-  --fs-8: clamp(6.7055rem, 4.787rem + 9.5924cqi, 12.461rem);
-  --fs-9: clamp(8.3819rem, 5.6391rem + 13.7142cqi, 16.6104rem);
+--fs-01: clamp(0.8rem, 0.76rem + 0.16cqi, 1rem);
+--fs-0:  clamp(1rem, 0.95rem + 0.2cqi, 1.25rem);
+--fs-1:  clamp(1.25rem, 1.1875rem + 0.25cqi, 1.5625rem);
+--fs-2:  clamp(1.5625rem, 1.4844rem + 0.3125cqi, 1.9531rem);
+--fs-3:  clamp(1.9531rem, 1.8555rem + 0.3906cqi, 2.4414rem);
+--fs-4:  clamp(2.4414rem, 2.3193rem + 0.4883cqi, 3.0518rem);
+--fs-5:  clamp(3.0518rem, 2.8992rem + 0.6104cqi, 3.8147rem);
+--fs-6:  clamp(3.8147rem, 3.6239rem + 0.7629cqi, 4.7684rem);
+--fs-7:  clamp(4.7684rem, 4.5299rem + 0.9537cqi, 5.9605rem);
+--fs-8:  clamp(5.9605rem, 5.6625rem + 1.1921cqi, 7.4506rem);
+--fs-9:  clamp(7.4506rem, 7.0781rem + 1.4901cqi, 9.3132rem);
 
   /* Spacing */
  --space-4xs: clamp(0.3125rem, 0.2917rem + 0.1042cqi, 0.375rem);

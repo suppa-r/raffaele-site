@@ -115,7 +115,7 @@ p {
     max-inline-size: 65ch;
     margin-block: var(--layout-block-gap);
     margin-inline: auto;
-    text-wrap: pretty;
+    text-wrap: balance;
 }
 
 a {
