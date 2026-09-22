@@ -22,16 +22,11 @@ header {
 }
 
 .header-text,
-.header-break,
-.site-title {
-    max-inline-size: 100%;
-    overflow-wrap: anywhere;
-}
-
-.header-text,
 .header-break {
     inline-size: 100%;
+    max-inline-size: 100%;
     white-space: nowrap;
+    overflow-wrap: anywhere;
     margin-block: 0;
     margin-inline: auto;
 }
