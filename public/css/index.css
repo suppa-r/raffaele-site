@@ -48,6 +48,15 @@ main>* {
     margin-block: 0;
 }
 
+.hero-title,
+.text-with-animation,
+.text-with-animation-1,
+.text-with-animation-2 {
+    font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+}
+
 .text-with-animation {
     inline-size: fit-content;
     margin-inline: auto;

@@ -270,8 +270,9 @@ main {
     justify-content: center;
     text-align: center;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-3);
-    letter-spacing: var(--letter-spacing-animations);
+  font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
