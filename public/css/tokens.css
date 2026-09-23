@@ -1,3 +1,10 @@
+
+@property --fs-02 {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 12px;
+}
+
 @property --fs-01 {
   syntax: "<length>";
   inherits: true;
@@ -287,6 +294,7 @@
 }
 
 :root {
+  --fs-02: clamp(0.75rem, 0.7rem + 0.15cqi, 0.875rem);
   --fs-01: clamp(0.875rem, 0.82rem + 0.18cqi, 1.0625rem);
   --fs-0: clamp(1.0625rem, 1rem + 0.23cqi, 1.3125rem);
   --fs-1: clamp(1.25rem, 1.2rem + 0.22cqi, 1.5rem);

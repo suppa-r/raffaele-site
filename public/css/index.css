@@ -43,35 +43,11 @@ main>* {
     margin-block: 0;
 }
 
-.hero-title,
-.text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2 {
     font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
     line-height: 0.92;
     letter-spacing: -0.04em;
-}
-
-.text-with-animation {
-    inline-size: fit-content;
-    margin-inline: auto;
-    font-family: var(--primary-font-secondary);
-    --main-enter-offset: -6vw;
-    text-align: center;
-    font-size: var(--fs-4);
-    font-style: italic;
-    white-space: nowrap;
-    letter-spacing: var(--letter-spacing-wide);
-}
-
-.text-with-animation span:first-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation span:last-child {
-    position: relative;
-    opacity: 0;
 }
 
 .text-with-animation-1 {
@@ -126,7 +102,6 @@ main>* {
     opacity: 0;
 }
 
-.text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
     display: inline-flex;
@@ -155,6 +130,7 @@ main>* {
 
 .button-text {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: var(--space-2xs-xs);
@@ -169,12 +145,10 @@ main>* {
 
 .btn-description {
     font-family: var(--primary-font-secondary);
-    font-style: italic;
     font-weight: 600;
-    font-size: var(--fs-3);
+    font-size: var(--fs-4);
     color: var(--text-color);
-    padding-inline-start: var(--space-2xs-xs);
-}
+ }
 
 .particle {
     position: absolute;

@@ -150,7 +150,7 @@ main {
     }
 
     100% {
-        text-shadow: 0 30px 5px var(--shadow-color-primary), 0 10px 10px var(--shadow-color-secondary), 0 5px 5px var(--shadow-color-tertiary)
+        text-shadow: 0 50px 5px var(--shadow-color-primary), 0 20px 10px var(--shadow-color-secondary), 0 10px 5px var(--shadow-color-tertiary)
     }
 }
 
@@ -206,6 +206,12 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     display: block;
 }
 
+.text-break-fancy {
+    font-size: var(--fs-01);
+    display: block;
+    padding-left: 3ch;
+}
+
 .fancy-inline {
     display: inline-block;
     white-space: normal;
@@ -214,6 +220,10 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 
    .fancy-inline span {
        display: block;
+   }
+
+   .fancy-small{
+    font-size: var(--fs-02);
    }
 
 /* --------------------------------------- */
