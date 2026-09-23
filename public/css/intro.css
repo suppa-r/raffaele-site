@@ -9,53 +9,53 @@
 /* --------------------------------------- */
 
 header {
-  display: block;
-  z-index: 2002;
-  border-radius: var(--space-m-l);
-  position: relative;
-  isolation: isolate;
-  line-height: 1;
-  background: transparent;
-  margin-block-start: var(--space-xs);
-  font-size: var(--fs-01);
- }
+    display: block;
+    z-index: 2002;
+    border-radius: var(--space-m-l);
+    position: relative;
+    isolation: isolate;
+    line-height: 1;
+    background: transparent;
+    margin-block-start: var(--space-xs);
+    font-size: var(--fs-01);
+}
 
 body[data-page="intro"] header {
-  opacity: 0;
-  transform: translateY(-18vh);
+    opacity: 0;
+    transform: translateY(-18vh);
 }
 
 header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: var(--space-l-xl);
-  background: var(--gradient-header);
-  -webkit-backdrop-filter: var(--backdrop-blur);
-  backdrop-filter: var(--backdrop-blur);
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: var(--space-l-xl);
+    background: var(--gradient-header);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    backdrop-filter: var(--backdrop-blur);
+    pointer-events: none;
 }
 
 header:has(.open-overlay[aria-expanded="true"])::before {
-  opacity: 1;
-  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 1;
+    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: clamp(0.5rem, 0.3rem + 1.2cqi, 1.25rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(0.5rem, 0.3rem + 1.2cqi, 1.25rem);
 }
 
 .logo {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(0.2rem, 0.16rem + 0.18cqi, 0.48rem);
-  min-width: 0;
-  max-width: 100%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(0.2rem, 0.16rem + 0.18cqi, 0.48rem);
+    min-width: 0;
+    max-width: 100%;
 }
 
 .logo img {
@@ -69,18 +69,18 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 }
 
 .header-title {
-  min-width: 0;
-  white-space: nowrap;
-  overflow: visible;
-  font-size: clamp(0.8rem, 0.68rem + 0.9cqi, 1.2rem);
-  letter-spacing: -0.02em;
-  line-height: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: visible;
+    font-size: clamp(0.8rem, 0.68rem + 0.9cqi, 1.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
 }
 
 .header-title span {
     font-family: var(--primary-font-secondary);
     font-style: italic;
- margin-inline-end: clamp(0.143rem, 0.088rem + 0.22cqi, 0.55rem);
+    margin-inline-end: clamp(0.143rem, 0.088rem + 0.22cqi, 0.55rem);
     color: var(--text-span);
 }
 
@@ -89,13 +89,13 @@ Burger king
 ==================================== */
 
 .open-overlay {
-  opacity: 1;
-  position: relative;
-  border: none;
-  background: none;
-  display: grid;
-  width: var(--space-s-m);
-  z-index: 5000;
+    opacity: 1;
+    position: relative;
+    border: none;
+    background: none;
+    display: grid;
+    width: var(--space-s-m);
+    z-index: 5000;
 }
 
 
@@ -110,14 +110,14 @@ main {
 }
 
 .wrapper-gradient-text {
-    display:grid;
+    display: grid;
     place-content: center;
     justify-content: center;
     text-align: center;
     font-family: var(--primary-font-secondary);
-  font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+    font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
@@ -145,7 +145,7 @@ main {
 }
 
 @keyframes shadow-drip {
-0% {
+    0% {
         text-shadow: 0 0 0 var(--shadow-color-primary), 0 0 0 var(--shadow-color-secondary), 0 0 0 var(--shadow-color-tertiary)
     }
 
@@ -194,62 +194,69 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     transform: translateY(100%);
 }
 
+.text-break {
+    display: block;
+}
+
 .fancy {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-2);
     font-style: italic;
     margin-block: var(--space-3xs-2xs);
-    letter-spacing: var(--letter-spacing-animations);
-}
-
-.text-break {
-    display: block;
-}
-
-.text-break-fancy {
-    font-size: var(--fs-01);
-    display: block;
-    padding-left: 3ch;
 }
 
 .fancy-inline {
     display: inline-block;
     white-space: normal;
     font-style: italic;
-   }
+}
 
-   .fancy-inline span {
-       display: block;
-   }
+.fancy-inline span {
+    display: block;
+}
 
-   .fancy-small{
+.fancy-text-break {
+    font-size: var(--fs-01);
+    display: block;
+    padding-left: 0;
+}
+
+
+
+.fancy-small {
     font-size: var(--fs-02);
-   }
+}
 
 /* --------------------------------------- */
 /* ----- Footer ----- */
 /* --------------------------------------- */
 
 footer {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: end;
-  align-items: center;
-  white-space: nowrap;
- }
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: end;
+    align-items: center;
+    white-space: nowrap;
+}
 
 @media (min-width: 768px) {
-header {
-font-size: var(--fs-0);
- }
+    header {
+        font-size: var(--fs-0);
+    }
 
-.text-break {
-    display: inline;
-  }
+    .text-break {
+        display: inline;
+    }
+
+    .fancy-text-break {
+        font-size: var(--fs-01);
+        display: block;
+        padding-left: 2ch;
+    }
 }
 
 @media (prefers-reduced-motion:reduce) {
-::view-transition-group(*),
+    ::view-transition-group(*),
     ::view-transition-old(*),
     ::view-transition-new(*) {
         animation: none !important
