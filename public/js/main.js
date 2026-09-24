@@ -72,6 +72,7 @@ function bindSneakerButton() {
 }
 
 const GAME_CLICK_REDIRECT_DELAY_MS = 250;
+const GAME_TOUCH_QUERY = "(hover: none) and (pointer: coarse)";
 
 function bindGameClickNavigation() {
   const games = document.querySelectorAll(".game");
@@ -80,28 +81,29 @@ function bindGameClickNavigation() {
   games.forEach((game) => {
     if (game.dataset.clickNavigationBound === "true") return;
 
-    let redirectTimer;
-
     const navigateToIntroOne = (event) => {
+      const usesTouchInteraction = window.matchMedia(GAME_TOUCH_QUERY).matches;
+
+      if (
+        usesTouchInteraction &&
+        event.detail > 0 &&
+        !game.classList.contains("is-revealed")
+      ) {
+        event.preventDefault();
+        document.querySelectorAll(".game.is-revealed").forEach((revealedGame) => {
+          revealedGame.classList.remove("is-revealed");
+        });
+        game.classList.add("is-revealed");
+        return;
+      }
+
       event.preventDefault();
-      clearTimeout(redirectTimer);
-      redirectTimer = setTimeout(() => {
-        window.location.assign("intro-1.html");
+      setTimeout(() => {
+        window.location.assign(game.href);
       }, GAME_CLICK_REDIRECT_DELAY_MS);
     };
 
-    const cancelNavigation = () => {
-      clearTimeout(redirectTimer);
-    };
-
     game.addEventListener("click", navigateToIntroOne);
-    game.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        navigateToIntroOne(event);
-      }
-    });
-    game.addEventListener("blur", cancelNavigation, true);
     game.dataset.clickNavigationBound = "true";
   });
 }
