@@ -32,7 +32,7 @@
    transition: transform var(--card-transition);
 }
 
-.game .front > img {
+.game .front>img {
    display: block;
    width: 100%;
    height: auto;
@@ -114,7 +114,7 @@
    transform: translateY(-8%) scale(0.86);
 }
 
-.game.is-revealed .front > img {
+.game.is-revealed .front>img {
    opacity: 0.25;
    transform: scale(0.7);
 }
@@ -148,8 +148,8 @@
          transform: translateY(-8%) scale(0.86);
       }
 
-      .game:is(:hover, :focus-visible) .front > img {
-         opacity: 0.25;
+      .game:is(:hover, :focus-visible) .front>img {
+         opacity: 1;
          transform: scale(0.7);
       }
 
@@ -189,7 +189,7 @@
 @media (prefers-reduced-motion: reduce) {
    .game,
    .front,
-   .game .front > img,
+   .game .front>img,
    .game .front h1,
    .stats,
    .back,

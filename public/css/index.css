@@ -44,7 +44,7 @@ main>* {
 }
 
 .text-with-animation {
-     inline-size: fit-content;
+    inline-size: fit-content;
     margin-inline: auto;
     --main-enter-offset: -6vw;
     text-align: center;
@@ -175,7 +175,7 @@ main>* {
     font-weight: 600;
     font-size: var(--fs-4);
     color: var(--text-color);
- }
+}
 
 .particle {
     position: absolute;
