@@ -93,8 +93,9 @@
    border-radius: var(--card-radius);
    background: transparent;
    opacity: 0;
+   visibility: hidden;
    transform: scale(0.92, 0.96);
-   transition: opacity 180ms ease, transform var(--card-transition);
+   transition: opacity 180ms ease, visibility 0s linear 180ms, transform var(--card-transition);
 }
 
 .background img {
@@ -157,7 +158,9 @@
 .game.is-revealed .background,
 .game:is(:hover, :focus-visible) .background {
    opacity: 1;
+   visibility: visible;
    transform: var(--card-background-active-transform);
+   transition-delay: 0s;
 }
 
 .game.is-revealed .background img,
