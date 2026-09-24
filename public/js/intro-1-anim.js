@@ -20,6 +20,7 @@ const INTRO1_TITLE_LINE_SECOND_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timi
 const INTRO1_TITLE_LINE_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineStagger;
 const INTRO1_TITLE_LINE_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDelay;
 const INTRO1_PROFILE_TITLE_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.profileTitleRevealDuration;
+const INTRO1_SLIDE_OFFSET = window.ANIMATION_CONSTANTS.INTRO1.slideOffset;
 
 let intro1InitState = "idle";
 
@@ -65,7 +66,7 @@ function intro1HideContent() {
     }
     if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
       gsapLib.set(INTRO1_TITLE_LINE_TARGET, {
-        x: "35vw",
+        x: INTRO1_SLIDE_OFFSET,
         y: 0,
         opacity: 0,
       });

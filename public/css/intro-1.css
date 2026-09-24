@@ -365,6 +365,8 @@ nav {
   inline-size: max-content;
   max-inline-size: none;
   white-space: nowrap;
+  opacity: 0;
+  transform: translateX(100vw);
 }
 
 .intro-1-page-title span {

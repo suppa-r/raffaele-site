@@ -57,6 +57,7 @@ window.ANIMATION_CONSTANTS = {
       titleLineDelay: 0.18,
       profileTitleRevealDuration: 1.6,
     },
+    slideOffset: "100vw",
   },
 
   /* ===== UTILITY FUNCTIONS ===== */
