@@ -10,6 +10,11 @@ const INDEX_HERO_REVEAL_DURATION = 0.9;
 const INDEX_HERO_REVEAL_STAGGER = 0.12;
 const INDEX_HERO_REVEAL_DELAY = 0.1;
 const INDEX_SLIDE_OFFSET = "35vw";
+const INDEX_HEADING_SELECTORS = [
+  ".text-with-animation span",
+  ".text-with-animation-1 span",
+  ".text-with-animation-2 span",
+];
 
 function getSneakerButton() {
   return document.querySelector(".btn");
@@ -109,11 +114,9 @@ function bindGameClickNavigation() {
 }
 
 function animateIndexHeadings() {
-  const headingGroups = [
-    document.querySelectorAll(".text-with-animation span"),
-    document.querySelectorAll(".text-with-animation-1 span"),
-    document.querySelectorAll(".text-with-animation-2 span"),
-  ].filter((group) => group.length);
+  const headingGroups = INDEX_HEADING_SELECTORS.map((selector) =>
+    document.querySelectorAll(selector),
+  ).filter((group) => group.length);
   const headingSpans = headingGroups.flatMap((group) => [...group]);
 
   if (!headingSpans.length) return;

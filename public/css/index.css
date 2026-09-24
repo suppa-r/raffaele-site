@@ -43,6 +43,32 @@ main>* {
     margin-block: 0;
 }
 
+.text-with-animation {
+     inline-size: fit-content;
+    margin-inline: auto;
+    --main-enter-offset: -6vw;
+    text-align: center;
+    font-size: var(--fs-1);
+    font-style: italic;
+    white-space: nowrap;
+    letter-spacing: var(--letter-spacing-body);
+}
+
+.text-with-animation span:first-child {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation span:nth-child(2) {
+    position: relative;
+    opacity: 0;
+}
+
+.text-with-animation span:last-child {
+    position: relative;
+    opacity: 0;
+}
+
 .text-with-animation-1,
 .text-with-animation-2 {
     font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
@@ -102,6 +128,7 @@ main>* {
     opacity: 0;
 }
 
+.text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
     display: inline-flex;
