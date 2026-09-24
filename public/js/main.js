@@ -76,7 +76,6 @@ function bindSneakerButton() {
   bindOnce(".btn", "click", handleSneakerClick);
 }
 
-const GAME_CLICK_REDIRECT_DELAY_MS = 250;
 const GAME_TOUCH_QUERY = "(hover: none) and (pointer: coarse)";
 
 function bindGameClickNavigation() {
@@ -91,9 +90,7 @@ function bindGameClickNavigation() {
     let navigationOnPointerDown = false;
 
     const scheduleNavigation = () => {
-      setTimeout(() => {
-        window.location.assign(game.href);
-      }, GAME_CLICK_REDIRECT_DELAY_MS);
+      window.location.assign(game.href);
     };
 
     game.addEventListener("pointerdown", (event) => {
