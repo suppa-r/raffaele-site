@@ -349,24 +349,29 @@ nav {
 }
 
 .intro-1-page-title {
-  display: grid;
-  place-content: center;
-  height: auto;
   place-self: center;
-  align-self: center;
-  text-align: center;
+  display: grid;
+  place-items: center;
+  gap: var(--space-2xs-xs);
   z-index: 1;
   white-space: nowrap;
   color: var(--text-color);
   view-transition-name: intro1-page-title;
-  word-break: keep-all;
+  margin-inline: auto;
+}
+
+.intro-1-page-title .title-line {
+  margin: 0;
+  inline-size: max-content;
+  max-inline-size: none;
+  white-space: nowrap;
 }
 
 .intro-1-page-title span {
+  display: inline-block;
   font-family: var(--primary-font-secondary);
-  white-space: nowrap;
   font-size: var(--fs-200);
-  padding-inline-start: var(--space-2xs-xs);
+  padding-inline-start: var(--space-4xs-3xs);
 }
 
 .page-entering .intro-1-page-title {
