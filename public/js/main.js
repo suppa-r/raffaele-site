@@ -88,18 +88,31 @@ function bindGameClickNavigation() {
 
     let touchActivation = false;
     let revealedOnPointerDown = false;
+    let navigationOnPointerDown = false;
+
+    const scheduleNavigation = () => {
+      setTimeout(() => {
+        window.location.assign(game.href);
+      }, GAME_CLICK_REDIRECT_DELAY_MS);
+    };
 
     game.addEventListener("pointerdown", (event) => {
       touchActivation = event.pointerType === "touch";
+      if (!touchActivation) return;
 
-      if (touchActivation && !game.classList.contains("is-revealed")) {
-        event.preventDefault();
+      event.preventDefault();
+
+      if (!game.classList.contains("is-revealed")) {
         document.querySelectorAll(".game.is-revealed").forEach((revealedGame) => {
           revealedGame.classList.remove("is-revealed");
         });
         game.classList.add("is-revealed");
         revealedOnPointerDown = true;
+        return;
       }
+
+      navigationOnPointerDown = true;
+      scheduleNavigation();
     });
 
     const navigateToIntroOne = (event) => {
@@ -107,9 +120,10 @@ function bindGameClickNavigation() {
       const isTouchTap = touchActivation || (usesTouchInteraction && event.detail > 0);
       touchActivation = false;
 
-      if (isTouchTap && revealedOnPointerDown) {
+      if (isTouchTap && (revealedOnPointerDown || navigationOnPointerDown)) {
         event.preventDefault();
         revealedOnPointerDown = false;
+        navigationOnPointerDown = false;
         return;
       }
 
@@ -127,9 +141,7 @@ function bindGameClickNavigation() {
       }
 
       event.preventDefault();
-      setTimeout(() => {
-        window.location.assign(game.href);
-      }, GAME_CLICK_REDIRECT_DELAY_MS);
+      scheduleNavigation();
     };
 
     game.addEventListener("click", navigateToIntroOne);
