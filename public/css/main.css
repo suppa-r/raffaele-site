@@ -33,12 +33,15 @@
 }
 
 .front {
+   position: relative;
    height: 100%;
    pointer-events: none;
    transition: transform var(--card-transition);
 }
 
 .game .front>img {
+   position: relative;
+   z-index: 1;
    display: block;
    width: 100%;
    height: auto;
@@ -48,6 +51,8 @@
 }
 
 .game .front h1 {
+   position: relative;
+   z-index: 1;
    margin: 0;
    font-size: var(--fs-2);
    text-align: center;
@@ -55,6 +60,8 @@
 }
 
 .stats {
+   position: relative;
+   z-index: 1;
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
 }
@@ -62,6 +69,7 @@
 .back {
    position: absolute;
    inset: 0;
+   z-index: 2;
    display: grid;
    place-items: center;
    opacity: 0;
@@ -80,7 +88,7 @@
 .background {
    position: absolute;
    inset: 0;
-   z-index: -1;
+   z-index: 0;
    overflow: hidden;
    border-radius: var(--card-radius);
    background: transparent;
