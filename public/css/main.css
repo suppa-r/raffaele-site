@@ -33,6 +33,16 @@
    transition: transform var(--card-transition);
 }
 
+@media (hover: none) and (pointer: coarse) {
+   .game::before {
+      position: absolute;
+      inset: -1rem;
+      z-index: 3;
+      content: "";
+      touch-action: manipulation;
+   }
+}
+
 .front {
    position: relative;
    height: 100%;
