@@ -50,8 +50,10 @@ function emitParticles(button, x, y) {
 }
 
 function handleSneakerClick(event) {
-  const button = getSneakerButton();
+  const button = event.currentTarget || getSneakerButton();
   if (!button) return;
+
+  event.preventDefault();
 
   const rect = button.getBoundingClientRect();
   const x = event.clientX - rect.left;
@@ -61,12 +63,47 @@ function handleSneakerClick(event) {
   emitParticles(button, x, y);
 
   setTimeout(() => {
-    window.location.assign("intro.html");
+    window.location.assign("index-intro.html");
   }, 800);
 }
 
 function bindSneakerButton() {
   bindOnce(".btn", "click", handleSneakerClick);
+}
+
+const GAME_CLICK_REDIRECT_DELAY_MS = 250;
+
+function bindGameClickNavigation() {
+  const games = document.querySelectorAll(".game");
+  if (!games.length) return;
+
+  games.forEach((game) => {
+    if (game.dataset.clickNavigationBound === "true") return;
+
+    let redirectTimer;
+
+    const navigateToIntroOne = (event) => {
+      event.preventDefault();
+      clearTimeout(redirectTimer);
+      redirectTimer = setTimeout(() => {
+        window.location.assign("intro-1.html");
+      }, GAME_CLICK_REDIRECT_DELAY_MS);
+    };
+
+    const cancelNavigation = () => {
+      clearTimeout(redirectTimer);
+    };
+
+    game.addEventListener("click", navigateToIntroOne);
+    game.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        navigateToIntroOne(event);
+      }
+    });
+    game.addEventListener("blur", cancelNavigation, true);
+    game.dataset.clickNavigationBound = "true";
+  });
 }
 
 function animateIndexHeadings() {
@@ -365,6 +402,7 @@ function initNavigationInterception() {
 
 function initMainPage() {
   bindSneakerButton();
+  bindGameClickNavigation();
   animateIndexHeadings();
   initNavigationInterception();
 }
