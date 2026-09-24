@@ -41,6 +41,10 @@
       content: "";
       touch-action: manipulation;
    }
+
+   .game.is-revealed::before {
+      inset: -2rem;
+   }
 }
 
 .front {
