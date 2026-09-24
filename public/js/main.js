@@ -86,12 +86,20 @@ function bindGameClickNavigation() {
   games.forEach((game) => {
     if (game.dataset.clickNavigationBound === "true") return;
 
+    let touchActivation = false;
+
+    game.addEventListener("pointerdown", (event) => {
+      touchActivation = event.pointerType === "touch";
+    });
+
     const navigateToIntroOne = (event) => {
       const usesTouchInteraction = window.matchMedia(GAME_TOUCH_QUERY).matches;
+      const isTouchTap = touchActivation || (usesTouchInteraction && event.detail > 0);
+      touchActivation = false;
 
       if (
         usesTouchInteraction &&
-        event.detail > 0 &&
+        isTouchTap &&
         !game.classList.contains("is-revealed")
       ) {
         event.preventDefault();
