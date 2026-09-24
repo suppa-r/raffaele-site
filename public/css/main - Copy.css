@@ -2,12 +2,6 @@
    --card-radius: 2em;
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
-   --card-active-scale: 1.03;
-   --card-front-active-transform: translateY(-8%) scale(0.86);
-   --card-portrait-active-opacity: 0.3;
-   --card-portrait-active-transform: scale(0.7);
-   --card-background-active-transform: scale(1);
-   --card-background-image-active-transform: scale(1.5);
 }
 
 .wrapper {
@@ -111,50 +105,88 @@
    .game-stat {
       font-size: var(--fs-3);
    }
+
+   .background:hover img {
+      transform: scale(1.5);
+      background-position: center;
+      background-size: cover;
+   }
 }
 
-.game.is-revealed,
-.game:is(:hover, :focus-visible) {
-   transform: scale(var(--card-active-scale));
+.game.is-revealed {
+   transform: scale(1.03);
 }
 
-.game.is-revealed .front,
-.game:is(:hover, :focus-visible) .front {
-   transform: var(--card-front-active-transform);
+.game.is-revealed .front {
+   transform: translateY(-8%) scale(0.86);
 }
 
-.game.is-revealed .front>img,
-.game:is(:hover, :focus-visible) .front>img {
-   opacity: var(--card-portrait-active-opacity);
-   transform: var(--card-portrait-active-transform);
+.game.is-revealed .front>img {
+   opacity: 0.25;
+   transform: scale(0.7);
 }
 
-.game.is-revealed :is(.name, .stats),
-.game:is(:hover, :focus-visible) :is(.name, .stats) {
+.game.is-revealed :is(.name, .stats) {
    visibility: hidden;
    opacity: 0;
 }
 
-.game.is-revealed .back,
-.game:is(:hover, :focus-visible) .back {
+.game.is-revealed .back {
    opacity: 1;
    transform: translateY(0);
 }
 
-.game.is-revealed .game-stat,
-.game:is(:hover, :focus-visible) .game-stat {
+.game.is-revealed .game-stat {
    animation: fade 1.2s ease-in-out infinite alternate;
 }
 
-.game.is-revealed .background,
-.game:is(:hover, :focus-visible) .background {
+.game.is-revealed .background {
    opacity: 1;
-   transform: var(--card-background-active-transform);
+   transform: scale(1);
 }
 
-.game.is-revealed .background img,
-.game:is(:hover, :focus-visible) .background img {
-   transform: var(--card-background-image-active-transform);
+.game.is-revealed .background img {
+   transform: scale(2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+   @container card-page (min-width: 48rem) {
+      .game:is(:hover, :focus-visible) {
+         transform: scale(1.03);
+      }
+
+      .game:is(:hover, :focus-visible) .front {
+         transform: translateY(-8%) scale(0.86);
+      }
+
+      .game:is(:hover, :focus-visible) .front>img {
+         opacity: 0.3;
+         transform: scale(0.7);
+      }
+
+      .game:is(:hover, :focus-visible) :is(.name, .stats) {
+         visibility: hidden;
+         opacity: 0;
+      }
+
+      .game:is(:hover, :focus-visible) .back {
+         opacity: 1;
+         transform: translateY(0);
+      }
+
+      .game:is(:hover, :focus-visible) .game-stat {
+         animation: fade 1.2s ease-in-out infinite alternate;
+      }
+
+      .game:is(:hover, :focus-visible) .background {
+         opacity: 1;
+         transform: scale(1);
+      }
+
+      .game:is(:hover, :focus-visible) .background img {
+         transform: scale(1.28);
+      }
+   }
 }
 
 @keyframes fade {
