@@ -87,15 +87,31 @@ function bindGameClickNavigation() {
     if (game.dataset.clickNavigationBound === "true") return;
 
     let touchActivation = false;
+    let revealedOnPointerDown = false;
 
     game.addEventListener("pointerdown", (event) => {
       touchActivation = event.pointerType === "touch";
+
+      if (touchActivation && !game.classList.contains("is-revealed")) {
+        event.preventDefault();
+        document.querySelectorAll(".game.is-revealed").forEach((revealedGame) => {
+          revealedGame.classList.remove("is-revealed");
+        });
+        game.classList.add("is-revealed");
+        revealedOnPointerDown = true;
+      }
     });
 
     const navigateToIntroOne = (event) => {
       const usesTouchInteraction = window.matchMedia(GAME_TOUCH_QUERY).matches;
       const isTouchTap = touchActivation || (usesTouchInteraction && event.detail > 0);
       touchActivation = false;
+
+      if (isTouchTap && revealedOnPointerDown) {
+        event.preventDefault();
+        revealedOnPointerDown = false;
+        return;
+      }
 
       if (
         usesTouchInteraction &&
