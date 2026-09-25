@@ -12,11 +12,9 @@
 }
 
 .wrapper {
-  container-type: inline-size;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  font-size: var(--fs-0);
-}
+ }
 
 /* --------------------------------------- */
 /* ----- Header ----- */
@@ -27,15 +25,14 @@ header {
   grid-template-columns: auto 1fr auto;
   justify-content: space-between;
   align-items: center;
-  z-index: 2002;
-  border-radius: var(--space-m-l);
-  position: relative;
-  isolation: isolate;
-  line-height: 1;
-  padding: var(--space-3xs-2xs) var(--space-m-l);
-  background: transparent;
-  margin-block-start: max(var(--space-s), env(safe-area-inset-top, 0px));
-}
+    z-index: 2002;
+    border-radius: var(--space-m-l);
+    position: relative;
+    isolation: isolate;
+    line-height: 1;
+    padding: 0 var(--space-m-l);
+    background: transparent;
+  }
 
 body[data-page="intro-1"] header {
   opacity: 0;
@@ -444,6 +441,7 @@ main {
   position: relative;
   overflow: hidden;
   min-height: 0;
+
 }
 
 main p {
@@ -458,6 +456,7 @@ main>section[id] {
   inset: 0;
   min-height: 0;
   visibility: hidden;
+    margin-inline: auto;
 }
 
 .profile-title-container {
@@ -549,7 +548,7 @@ html:not(.intro-section-active) main>section[id] {
 
 .section-container-early,
 .section-container {
-  inline-size: 100%;
+ /* inline-size: 100%; */
   max-inline-size: var(--content-max-width);
   margin-inline: auto;
   display: grid;
@@ -630,7 +629,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   white-space: nowrap;
-  margin-block-start: var(--space-s);
+ /* margin-block-start: var(--space-s); */
 }
 
 /* ----- Back to Top ----- */
@@ -645,7 +644,8 @@ footer {
   min-inline-size: var(--back-to-top-width);
   min-block-size: var(--back-to-top-height);
   padding: 0;
-  background-color: var(--text-span);
+  background-color: var(--text-color);
+  color: var(--base-color);
   border-radius: 50%;
   z-index: 10;
   visibility: hidden;
@@ -663,7 +663,6 @@ footer {
 
 .back-to-top p {
   font-size: var(--fs-0);
-  color: var(--text-color);
   text-align: center;
   line-height: 1;
   margin-block: 0;
@@ -729,6 +728,7 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
 
   nav {
     block-size: auto;
+      padding-block: var(--space-xs-s);
   }
 
   .nav-links {

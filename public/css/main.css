@@ -14,6 +14,7 @@
    container-name: card-page;
    min-height: 100svh;
    display: grid;
+   grid-template-rows: 1fr auto;
    place-items: center;
    overflow: hidden;
 }
@@ -120,6 +121,12 @@
    object-fit: contain;
    object-position: center;
    transition: transform var(--card-transition);
+}
+
+footer {
+ display: grid;
+justify-content: end;
+align-items: center;
 }
 
 @container card-page (min-width: 48rem) {

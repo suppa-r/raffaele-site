@@ -42,6 +42,7 @@ footer {
 }
 
 .wrapper {
+    position: relative;
     container-type: inline-size;
     min-height: 100vh;
     min-height: 100svh;
@@ -185,10 +186,6 @@ a:focus-visible {
     :root {
         --content-max-width: min(560px, 92dvw);
         --padding-inline:0;
-    }
-
-    .wrapper {
-        padding-block: 0;
     }
 
     .wrapper::before {

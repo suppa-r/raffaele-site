@@ -152,10 +152,6 @@
 /* ============================================
    GRID BACKGROUND
    ============================================ */
-.wrapper {
-  position: relative;
-}
-
 .wrapper::before {
   --size: clamp(12px, 2vw, 24px);
   content: "";
