@@ -10,6 +10,7 @@
 .wrapper {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-01);
  }
 
 /* --------------------------------------- */
@@ -598,6 +599,7 @@ html:not(.intro-section-active) main>section[id] {
   align-items: center;
   margin: 0;
   padding: 0;
+  padding-block: var(--space-s);
 }
 
 .row-img img {
@@ -617,9 +619,10 @@ html:not(.intro-section-active) main>section[id] {
     justify-items: center;
   }
 
-  .section-container-early p,
-  .section-container p,
-  .col {
+
+  .section-container-early .col p,
+  .section-container .col p {
+    inline-size: 100%;
     margin-inline: auto;
     text-align: center;
   }
