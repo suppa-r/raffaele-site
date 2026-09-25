@@ -613,7 +613,7 @@ html:not(.intro-section-active) main>section[id] {
   margin-block-start: auto;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .section-container-early,
   .section-container {
     justify-items: center;
@@ -626,7 +626,7 @@ html:not(.intro-section-active) main>section[id] {
     margin-inline: auto;
     text-align: center;
   }
-}
+} */
 
 /* --------------------------------------- */
 /* ----- Footer ----- */
