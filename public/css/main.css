@@ -11,7 +11,6 @@
 }
 
 .wrapper {
-   container-name: card-page;
    min-height: 100svh;
    display: grid;
    grid-template-rows: 1fr auto;
@@ -22,7 +21,7 @@
 .game {
    position: relative;
    display: block;
-   width: min(16rem, calc(100cqi - 2rem));
+   width: min(16rem, calc(100vw - 2rem));
    aspect-ratio: 4 / 5;
    border-radius: var(--card-radius);
    color: inherit;
@@ -129,9 +128,9 @@ justify-content: end;
 align-items: center;
 }
 
-@container card-page (min-width: 48rem) {
+@media (min-width: 48rem) {
    .game {
-      width: clamp(20rem, 30cqi, 28rem);
+   width: clamp(20rem, 30vw, 28rem);
    }
 
    .back {

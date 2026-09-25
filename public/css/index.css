@@ -68,7 +68,7 @@ main>* {
 
 .text-with-animation-1,
 .text-with-animation-2 {
-    font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
+    font-size: clamp(3.2rem, 2.7rem + 2.8vw, 6.4rem);
     line-height: 0.92;
     letter-spacing: -0.04em;
 }

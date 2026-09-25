@@ -222,7 +222,7 @@
    RESPONSIVE - Large Mobile (480px - 767px)
    ============================================ */
 
-@media (min-width: 480px) {
+@media (min-width: 30rem) {
   :root {
     --content-max-width: min(600px, 95vw);
     --padding-inline: var(--space-xs);
@@ -244,7 +244,7 @@
    RESPONSIVE - Tablet (768px - 1023px)
    ============================================ */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   :root {
     --content-max-width: min(900px, 95vw);
     --padding-inline: var(--space-m);
@@ -263,7 +263,7 @@
    RESPONSIVE - Desktop (1024px+)
    ============================================ */
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   :root {
     --content-max-width: min(1200px, 95vw);
     --padding-inline: var(--space-m);
@@ -282,7 +282,7 @@
    RESPONSIVE - XL Desktop (1440px+)
    ============================================ */
 
-@media (min-width: 1200px) {
+@media (min-width: 75rem) {
   :root {
     --content-max-width: min(1400px, 96vw);
     --padding-inline: var(--space-xl);

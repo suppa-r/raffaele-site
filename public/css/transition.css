@@ -8,14 +8,6 @@
     }
 }
 
-@supports (container-type: inline-size) {
- @container not style(--theme: green) {
-.support.style-query {
-            display: none;
-        }
-    }
-}
-
 /* ============================================
    SUPPORT WARNING STYLES
    ============================================ */

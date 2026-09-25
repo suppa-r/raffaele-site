@@ -617,7 +617,7 @@ html:not(.intro-section-active) main>section[id] {
   border-radius: 50%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .section-container-early p,
   .section-container p {
     inline-size: min(100%, 38ch);
@@ -724,7 +724,7 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
   pointer-events: auto !important;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 48.0625rem) {
   .open-overlay {
     display: none;
     pointer-events: none;

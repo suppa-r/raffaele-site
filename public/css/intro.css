@@ -1,5 +1,4 @@
 .wrapper {
-    container-type: inline-size;
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
@@ -46,14 +45,14 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: clamp(0.5rem, 0.3rem + 1.2cqi, 1.25rem);
+    gap: clamp(0.5rem, 0.3rem + 1.2vw, 1.25rem);
 }
 
 .logo {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: clamp(0.2rem, 0.16rem + 0.18cqi, 0.48rem);
+    gap: clamp(0.2rem, 0.16rem + 0.18vw, 0.48rem);
     min-width: 0;
     max-width: 100%;
 }
@@ -61,8 +60,8 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 .logo img {
     display: block;
     object-fit: cover;
-    width: clamp(2rem, 1.6rem + 1.5cqi, 2.8rem);
-    height: clamp(2rem, 1.6rem + 1.5cqi, 2.8rem);
+    width: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
+    height: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 0.5rem var(--text-color);
@@ -72,7 +71,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     min-width: 0;
     white-space: nowrap;
     overflow: visible;
-    font-size: clamp(0.8rem, 0.68rem + 0.9cqi, 1.2rem);
+    font-size: clamp(0.8rem, 0.68rem + 0.9vw, 1.2rem);
     letter-spacing: -0.02em;
     line-height: 1;
 }
@@ -80,7 +79,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 .header-title span {
     font-family: var(--primary-font-secondary);
     font-style: italic;
-    margin-inline-end: clamp(0.143rem, 0.088rem + 0.22cqi, 0.55rem);
+    margin-inline-end: clamp(0.143rem, 0.088rem + 0.22vw, 0.55rem);
     color: var(--text-span);
 }
 
@@ -115,7 +114,7 @@ main {
     justify-content: center;
     text-align: center;
     font-family: var(--primary-font-secondary);
-    font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
+    font-size: clamp(3.2rem, 2.7rem + 2.8vw, 6.4rem);
     line-height: 0.92;
     letter-spacing: -0.04em;
     white-space: nowrap;
@@ -236,7 +235,7 @@ footer {
     white-space: nowrap;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
     header {
         font-size: var(--fs-0);
     }

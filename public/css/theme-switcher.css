@@ -280,7 +280,7 @@ letter-spacing: 0.02em;
   border-width: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .theme-selector-container {
    display: flex;
     flex-direction: column;
