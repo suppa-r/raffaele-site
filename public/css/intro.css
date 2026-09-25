@@ -121,7 +121,7 @@ main {
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
-    margin-block-end: var(--space-l-xl);
+    margin-block-end: var(--space-xl-2xl);
 }
 
 .text-layer {
@@ -205,23 +205,20 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     margin-block: var(--space-3xs-2xs);
 }
 
-.fancy-inline {
-    display: inline-block;
-    white-space: normal;
-    font-style: italic;
-}
-
-.fancy-inline span {
+.fancy-quote {
     display: block;
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-2);
+    font-style: italic;
+    margin-block: var(--space-3xs-2xs);
+    white-space: normal;
 }
 
 .fancy-text-break {
-    font-size: var(--fs-01);
     display: block;
-    padding-left: 0;
+    font-size: var(--fs-01);
+    padding-inline-start: 0;
 }
-
-
 
 .fancy-small {
     font-size: var(--fs-02);
@@ -248,11 +245,16 @@ footer {
         display: inline;
     }
 
-    .fancy-text-break {
-        font-size: var(--fs-01);
-        display: block;
-        padding-left: 2ch;
-    }
+.fancy-quote {
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.fancy-text-break {
+    display: inline;
+    padding-inline-start: 3ch;
+}
 }
 
 @media (prefers-reduced-motion:reduce) {

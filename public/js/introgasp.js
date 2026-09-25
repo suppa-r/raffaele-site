@@ -11,6 +11,8 @@ const THEME_REPLAY_DELAY_MS = 100;
 const INTRO_PAGE_SELECTOR = 'body[data-page="intro"]';
 const INTRO_ANIMATION_TARGET =
   'body[data-page="intro"] main p:not(.wrapper-gradient-text)';
+const INTRO_SPLIT_TARGET =
+  'body[data-page="intro"] main p:not(.wrapper-gradient-text, .fancy-quote)';
 const WRAPPER_GRADIENT_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text';
 const WRAPPER_GRADIENT_WORD_TARGET =
@@ -129,7 +131,7 @@ function initializeAnimations() {
     splitInstance = null;
   }
 
-  splitInstance = new SplitType(INTRO_ANIMATION_TARGET, {
+  splitInstance = new SplitType(INTRO_SPLIT_TARGET, {
     types: "lines",
     tagName: "div",
     lineClass: "line",
@@ -177,6 +179,7 @@ function initializeAnimations() {
     opacity: 1,
     visibility: "visible",
     duration: 0.55,
+    stagger: 0.16,
     ease: "power2.out",
     delay: 0.08,
   });

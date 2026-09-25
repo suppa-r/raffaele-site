@@ -56,8 +56,8 @@ header::before {
 .logo img {
   display: block;
   object-fit: cover;
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
+  width: var(--space-m-l);
+  height: var(--space-m-l);
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 0.5rem var(--text-color);
