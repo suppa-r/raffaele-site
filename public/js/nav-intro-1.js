@@ -238,7 +238,15 @@
     }
 
     if (!mobileQuery.matches) {
-      window.setTimeout(setActiveNavLink, 0);
+      const destination = link.getAttribute("href");
+      if (destination?.startsWith("#")) {
+        window.setTimeout(setActiveNavLink, 0);
+        return;
+      }
+
+      event.preventDefault();
+      document.documentElement.classList.add("intro-nav-closing");
+      window.location.assign(link.href);
       return;
     }
 

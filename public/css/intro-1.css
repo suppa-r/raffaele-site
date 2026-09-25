@@ -1,8 +1,4 @@
 :root {
-  --gradient: linear-gradient(90deg,
-      color-mix(in oklch, var(--base-color) 72%, var(--text-color)),
-      color-mix(in oklch, var(--text-color) 78%, var(--base-color)),
-      color-mix(in oklch, var(--base-color) 72%, var(--text-color)));
   --intro-nav-fade-out-duration: 0.22s;
   --intro-nav-fade-in-duration: 0.4s;
   --intro-nav-fade-in-delay: 0.2s;
@@ -48,17 +44,6 @@ header::before {
   -webkit-backdrop-filter: var(--backdrop-blur);
   backdrop-filter: var(--backdrop-blur);
   pointer-events: none;
-}
-
-.hero-title,
-.site-title,
-.header-title,
-.text-with-animation,
-.text-with-animation-1,
-.text-with-animation-2 {
-  font-size: clamp(3.2rem, 2.7rem + 2.8cqi, 6.4rem);
-  line-height: 0.92;
-  letter-spacing: -0.04em;
 }
 
 .logo {
@@ -107,11 +92,6 @@ body:has(.open-overlay[aria-expanded="false"]) main,
 body:has(.open-overlay[aria-expanded="false"]) footer {
   opacity: 1;
   transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
-}
-
-.open-overlay[aria-expanded="true"] span {
-  display: block;
-  background-color: var(--text-color);
 }
 
 .open-overlay:focus-visible {
@@ -408,7 +388,7 @@ html:not(.intro-section-active) .intro-1-page-title {
 
 .intro-nav-closing main,
 .intro-nav-closing footer {
-  opacity: 0;
+  opacity: 0 !important;
   pointer-events: none;
   transition: none;
 }

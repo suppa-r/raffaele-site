@@ -23,9 +23,9 @@
       rgb(80 146 163 / 20%),
       rgb(52 102 108));
   --gradient: linear-gradient(90deg,
-      var(--text-span),
-      var(--text-color),
-      var(--text-span));
+      rgb(65 122 150),
+      rgb(250 248 248),
+      rgb(65 122 150));
   --backdrop-blur: blur(10px);
   --glow-background: radial-gradient(ellipse,
       rgb(255 255 255 / 40%) 0%,
@@ -34,6 +34,7 @@
   --glow-box-shadow:
     0 0 25px rgb(255 255 255 / 60%), 0 0 50px rgb(255 255 255 / 40%);
   --linear-gradient-image: rgba(255, 255, 255, 0.100);
+  --body-grid-line: rgb(255 255 255 / 15%);
   --blend-mode: screen;
 }
 
@@ -55,14 +56,14 @@
   --shadow-color-secondary: rgb(0 0 0 / 80%);
   --shadow-color-tertiary: rgb(0 0 0 / 60%);
   --gradient-header: linear-gradient(90deg,
-      oklch(88.885% 0.0171 271.23deg / 43.1%),
-      oklch(63.748% 0.1079 249.132deg / 33.7%),
-      oklch(62.281% 0.0719 216.497deg / 20%),
-      oklch(47.793% 0.0546 205.721deg));
+      rgb(224 226 240 / 43.1%),
+      rgb(117 150 192 / 33.7%),
+      rgb(111 137 151 / 20%),
+      rgb(83 100 109));
   --gradient: linear-gradient(90deg,
-      var(--text-span),
-      var(--text-color),
-      var(--text-span));
+      rgb(14 56 73 / 64%),
+      rgb(0 0 0),
+      rgb(14 56 73 / 64%));
   --backdrop-blur: blur(10px);
   --glow-background: radial-gradient(ellipse,
       rgb(20 60 140 / 40%) 0%,
@@ -71,6 +72,7 @@
   --glow-box-shadow:
     0 0 25px rgb(20 60 140 / 60%), 0 0 50px rgb(20 60 140 / 45%);
   --linear-gradient-image: rgba(66, 64, 64, 0.31);
+  --body-grid-line: rgb(0 0 0 / 20%);
   --blend-mode: normal;
 }
 
