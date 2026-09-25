@@ -6,8 +6,6 @@
 const INTRO1_NAV_ITEMS_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.navItems;
 const INTRO1_FOOTER_ENTRIES_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.footerEntries;
 const INTRO1_TITLE_LINE_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLine;
-const INTRO1_TITLE_LINE_FIRST_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLineFirst;
-const INTRO1_TITLE_LINE_SECOND_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLineSecond;
 const INTRO1_PROFILE_TITLE_SPAN_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.profileTitleSpan;
 
 const INTRO1_NAV_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealDuration;
@@ -16,7 +14,6 @@ const INTRO1_FOOTER_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.f
 const INTRO1_FOOTER_REVEAL_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealStagger;
 const INTRO1_FOOTER_REVEAL_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealDelay;
 const INTRO1_TITLE_LINE_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDuration;
-const INTRO1_TITLE_LINE_SECOND_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineSecondDuration;
 const INTRO1_TITLE_LINE_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineStagger;
 const INTRO1_TITLE_LINE_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDelay;
 const INTRO1_PROFILE_TITLE_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.profileTitleRevealDuration;
@@ -157,23 +154,14 @@ function intro1InitializeAnimations() {
   }
 
   if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
-    gsapLib.to(INTRO1_TITLE_LINE_FIRST_TARGET, {
+    gsapLib.to(INTRO1_TITLE_LINE_TARGET, {
       x: 0,
       y: 0,
       opacity: 1,
       duration: INTRO1_TITLE_LINE_DURATION,
       ease: "power3.out",
       delay: INTRO1_TITLE_LINE_DELAY,
-      overwrite: "auto",
-    });
-
-    gsapLib.to(INTRO1_TITLE_LINE_SECOND_TARGET, {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      duration: INTRO1_TITLE_LINE_SECOND_DURATION,
-      ease: "power3.out",
-      delay: INTRO1_TITLE_LINE_DELAY + INTRO1_TITLE_LINE_STAGGER,
+      stagger: INTRO1_TITLE_LINE_STAGGER,
       overwrite: "auto",
     });
   }

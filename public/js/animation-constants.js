@@ -41,8 +41,6 @@ window.ANIMATION_CONSTANTS = {
       navItems: "header",
       footerEntries: "footer.footer > *:not(.theme-selector-container)",
       titleLine: ".intro-1-page-title .title-line",
-      titleLineFirst: ".intro-1-page-title .title-line:first-of-type",
-      titleLineSecond: ".intro-1-page-title .title-line:last-of-type",
       profileTitleSpan: ".profile-title span",
     },
     timing: {
@@ -52,7 +50,6 @@ window.ANIMATION_CONSTANTS = {
       footerRevealStagger: 0.1,
       footerRevealDelay: 1.8,
       titleLineDuration: 1.7,
-      titleLineSecondDuration: 1.7,
       titleLineStagger: 0.18,
       titleLineDelay: 0.18,
       profileTitleRevealDuration: 1.6,
