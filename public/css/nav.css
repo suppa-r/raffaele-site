@@ -1,6 +1,16 @@
 /* ====================================
 Navigation
 ==================================== */
+nav {
+font-size: var(--fs-01);
+
+@media (min-width: 768px) {
+    font-size: var(--fs-0);
+  }
+}
+
+
+
 
 .overlay-navigation {
   position: fixed;

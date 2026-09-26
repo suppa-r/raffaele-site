@@ -20,9 +20,9 @@ html {
 img,
 picture,
 video {
-    max-width: 100%;
+    display: block;
+    max-inline-size: 100%;
     height:auto;
-    vertical-align: middle;
     font-style:italic;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,7 +1,13 @@
 .wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-01);
+
+  @media (min-width: 768px) {
+    font-size: var(--fs-0);
+  }
 }
+
 
 /* --------------------------------------- */
 /* ----- Header ----- */

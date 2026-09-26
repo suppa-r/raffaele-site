@@ -7,7 +7,7 @@
 
   const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
   const NAV_ITEM_SELECTOR = ".nav-item";
-  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  const mobileQuery = window.matchMedia("(max-width: 55.999rem)");
 
   let menuButton = null;
   let navLinks = null;

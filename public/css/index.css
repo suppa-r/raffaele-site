@@ -1,31 +1,59 @@
 .wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-01);
+
+  @media (min-width: 768px) {
+    font-size: var(--fs-0);
+  }
 }
 
 header {
     display: grid;
     justify-content: center;
     align-items: center;
-    row-gap: var(--space-2xs-xs);
+    row-gap: var(--space-4xs-3xs);
     z-index: 2002;
     border-radius: var(--space-m-l);
     position: relative;
     isolation: isolate;
     line-height: 1;
-    padding: 0 var(--space-m-l);
     background: transparent;
-   text-align: center;
+    text-align: center;
+    padding-block: var(--space-2xs-xs);
 }
 
 .header-text,
 .header-break {
     inline-size: 100%;
     max-inline-size: 100%;
+    margin: 0;
+    text-align: center;
+    text-wrap: balance;
     white-space: nowrap;
-    overflow-wrap: anywhere;
-    margin-block: 0;
-    margin-inline: auto;
+}
+
+.header-text {
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
+    font-style: italic;
+    line-height: 1.1;
+}
+
+.header-break {
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-01);
+    line-height: 1;
+}
+
+@media (min-width: 48rem) {
+    .header-text {
+        font-size: var(--fs-1);
+    }
+
+    .header-break {
+        font-size: var(--fs-0);
+    }
 }
 
 main {
@@ -36,101 +64,38 @@ main {
     row-gap: var(--space-s-m);
 }
 
-main>* {
+main > * {
     margin-block: 0;
 }
 
-.text-with-animation {
-    inline-size: fit-content;
-    margin-inline: auto;
-    --main-enter-offset: -6vw;
-    text-align: center;
-    font-size: var(--fs-2);
-    font-style: italic;
-    white-space: nowrap;
-    letter-spacing: var(--letter-spacing-body);
-}
-
-.text-with-animation span:first-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation span:nth-child(2) {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation span:last-child {
-    position: relative;
-    opacity: 0;
-}
-
+.text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2 {
-    font-size: clamp(3.2rem, 2.7rem + 2.8vw, 6.4rem);
+    inline-size: fit-content;
+    margin-inline: auto;
+    --main-enter-offset: -6vw;
+    font-size: var(--fs-3);
+    text-align: center;
+    font-style: italic;
     line-height: 0.92;
-    letter-spacing: -0.04em;
-}
-
-.text-with-animation-1 {
-    inline-size: fit-content;
-    margin-inline: auto;
-    --main-enter-offset: -6vw;
-    text-align: center;
-    font-size: var(--fs-3);
-    font-style: italic;
-    white-space: nowrap;
     letter-spacing: var(--letter-spacing-wide);
-}
-
-.text-with-animation-1 span:first-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-1 span:nth-child(2) {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-1 span:last-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-2 {
-    inline-size: fit-content;
-    margin-inline: auto;
-    --main-enter-offset: -6vw;
-    text-align: center;
-    font-size: var(--fs-3);
-    font-style: italic;
     white-space: nowrap;
-    letter-spacing: var(--letter-spacing-wide);
 }
 
-.text-with-animation-2 span:first-child {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-2 span:nth-child(2) {
-    position: relative;
-    opacity: 0;
-}
-
-.text-with-animation-2 span:last-child {
-    position: relative;
-    opacity: 0;
+.text-with-animation {
+    letter-spacing: 0.02em;
 }
 
 .text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
+    position: relative;
+    opacity: 0;
     display: inline-flex;
     will-change: transform, opacity;
 }
+
+
 
 .btn {
     width: fit-content;
@@ -162,7 +127,7 @@ main>* {
     pointer-events: none;
     position: relative;
     margin-inline: auto;
-    padding: var(--space-4xs-3xs) var(--space-xl-2xl);
+    padding: var(--space-s-m) var(--space-xl-2xl);
     z-index: 12;
     font-size: var(--fs-1);
 }
