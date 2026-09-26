@@ -282,6 +282,24 @@
   initial-value: 208px;
 }
 
+@property --letter-spacing-body {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 3px;
+}
+
+@property --letter-spacing {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 3.8px;
+}
+
+@property --letter-spacing-wide {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 6px;
+}
+
 :root {
 
   /* font-sizes */

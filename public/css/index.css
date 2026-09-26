@@ -20,7 +20,7 @@ header {
     line-height: 1;
     background: transparent;
     text-align: center;
-    padding-block: var(--space-2xs-xs);
+    padding-block: var(--space-4xs-3xs);
 }
 
 .header-text,
@@ -37,22 +37,19 @@ header {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
     font-style: italic;
-    line-height: 1.1;
+    line-height: 1;
 }
 
 .header-break {
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-01);
+    font-size: var(--fs-0);
+    font-style: italic;
     line-height: 1;
 }
 
 @media (min-width: 48rem) {
     .header-text {
         font-size: var(--fs-1);
-    }
-
-    .header-break {
-        font-size: var(--fs-0);
     }
 }
 
@@ -95,8 +92,6 @@ main > * {
     will-change: transform, opacity;
 }
 
-
-
 .btn {
     width: fit-content;
     display: flex;
@@ -107,7 +102,7 @@ main > * {
     box-shadow: 0 20px 10px 0 var(--text-color);
     isolation: isolate;
     z-index: 10;
-    border-radius: var(--space-2xl-3xl);
+    border-radius: var(--space-3xl-4xl);
     text-decoration: none;
     position: relative;
     background: var(--base-color);
@@ -130,14 +125,6 @@ main > * {
     padding: var(--space-s-m) var(--space-xl-2xl);
     z-index: 12;
     font-size: var(--fs-1);
-}
-
-.btn-description {
-    font-family: var(--primary-font-secondary);
-    font-weight: 600;
-    font-size: var(--fs-4);
-    font-style: italic;
-    color: var(--text-color);
 }
 
 .particle {

@@ -3,7 +3,7 @@
                 BASE - Mobile (320px - 479px)
 ============================================ */
     --max-inline-size: min(26.25rem, 95vw);
-    --padding-inline: var(--space-xs);
+    --padding-inline: var(--space-2xs);
 }
 
 html {
@@ -206,7 +206,7 @@ a:focus-visible {
 @media (min-width: 30rem) {
     :root {
         --max-inline-size: min(35rem, 92dvw);
-        --padding-inline: var(--space-m);
+        --padding-inline: var(--space-2xs);
     }
 
 
@@ -224,7 +224,7 @@ a:focus-visible {
 @media (min-width: 48rem) {
     :root {
         --max-inline-size: min(52.5rem, 95dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-2xs);
     }
 
     .wrapper::before {
@@ -240,7 +240,7 @@ a:focus-visible {
 @media (min-width: 64rem) {
     :root {
         --max-inline-size: min(65rem, 95dvw);
-        --padding-inline: var(--space-xs-s);
+        --padding-inline: var(--space-2xs);
     }
 
     .wrapper::before {
@@ -256,7 +256,7 @@ a:focus-visible {
 @media (min-width: 75rem) {
     :root {
         --max-inline-size: min(73.75rem, 95dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-2xs);
     }
 
     .wrapper::before {
@@ -272,7 +272,7 @@ a:focus-visible {
 @media (min-width: 90rem) {
     :root {
         --max-inline-size: min(87.5rem, 96dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-2xs);
     }
 
     .wrapper::before {
@@ -288,7 +288,7 @@ a:focus-visible {
 @media (min-width: 120rem) {
     :root {
         --max-inline-size: min(1920px, 95dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-2xs);
     }
 
     .wrapper::before {

@@ -11,19 +11,19 @@
 }
 
 .wrapper {
-  display: grid;
-  grid-template-rows:1fr auto;
-  font-size: var(--fs-01);
+   display: grid;
+   grid-template-rows: 1fr auto;
+   font-size: var(--fs-01);
 
-  @media (min-width: 768px) {
-    font-size: var(--fs-0);
-  }
+   @media (min-width: 768px) {
+      font-size: var(--fs-0);
+   }
 }
 
 main {
-  display: grid;
-  place-items: center;
- min-block-size: 0;
+   display: grid;
+   place-items: center;
+   min-block-size: 0;
 }
 
 .game {
@@ -129,19 +129,19 @@ main {
    height: 100%;
    object-fit: contain;
    object-position: center;
-    border-radius: 50%;
+   border-radius: 50%;
    transition: transform var(--card-transition);
 }
 
 footer {
- display: grid;
-justify-content: end;
-align-items: center;
+   display: grid;
+   justify-content: end;
+   align-items: center;
 }
 
 @media (min-width: 48rem) {
    .game {
-   width: clamp(20rem, 30vw, 28rem);
+      width: clamp(20rem, 30vw, 28rem);
    }
 
    .game-stat {
