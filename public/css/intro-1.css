@@ -3,8 +3,8 @@
   --intro-nav-fade-in-duration: 0.4s;
   --intro-nav-fade-in-delay: 0.2s;
   --profile-title-inline-size: clamp(18rem, 42vw, 36rem);
-  --back-to-top-width: var(--space-xl);
-  --back-to-top-height: var(--space-xl);
+  --back-to-top-width: var(--space-l-xl);
+  --back-to-top-height: var(--space-l-xl);
 }
 
 .wrapper {
@@ -316,13 +316,13 @@ nav {
   transition: background-size 0.3s ease;
 }
 
-/* .nav-item a span {
+.nav-item a span {
   font-size: var(--fs-0);
-} */
+}
 
 .nav-item svg {
-  height: var(--space-m-l);
-  width: var(--space-m-l);
+  height: var(--space-s-m);
+  width: var(--space-s-m);
   object-fit: cover;
   border-radius: 50%;
   fill: var(--text-color);
@@ -334,7 +334,6 @@ nav {
   place-items: center;
   inline-size: min(100%, var(--content-max-width));
   max-inline-size: 100%;
-  gap: var(--space-2xs-xs);
   z-index: 1;
   white-space: normal;
   color: var(--text-color);
@@ -350,8 +349,6 @@ nav {
   inline-size: 100%;
   max-inline-size: 100%;
   white-space: normal;
-  text-wrap: balance;
-  overflow-wrap: break-word;
   opacity: 0;
   transform: translateX(100vw);
 }
@@ -360,7 +357,7 @@ nav {
   display: inline-block;
   font-family: var(--primary-font-secondary);
   font-size: var(--fs-200);
-  padding-inline-start: var(--space-4xs-3xs);
+  padding-inline-start: var(--space-3xs-2xs);
 }
 
 .page-entering .intro-1-page-title {
@@ -418,12 +415,6 @@ html:not(.intro-section-active) .intro-1-page-title {
   animation: none;
   opacity: 0;
 }
-
-/* =======================================================
-vw fallback - modern browsers only
-Replaces vw-based fluid values with container-query units
-FONT SIZES - custom properties vw fallback (older browsers)
-========================================================== */
 
 main {
   display: grid;
@@ -537,26 +528,14 @@ html:not(.intro-section-active) main>section[id] {
   pointer-events: none;
 }
 
-.section-container-early {
-  inline-size: 100%;
-  max-inline-size: var(--content-max-width);
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-flow: row;
-  overflow-y: auto;
-  scrollbar-gutter: stable;
-  min-block-size: 0;
-  position: relative;
-}
-
+.section-container-early,
 .section-container {
   inline-size: 100%;
   max-inline-size: var(--content-max-width);
   margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-m);
+  grid-auto-flow: row;
   overflow-y: auto;
   scrollbar-gutter: stable;
   min-block-size: 0;
@@ -584,10 +563,6 @@ html:not(.intro-section-active) main>section[id] {
   border: 0.15rem solid var(--base-color);
   border-radius: 999px;
   background: var(--text-span);
-}
-
-.section-container p {
-  text-wrap: balance;
 }
 
 .section-container.has-more-content:not(.at-bottom)::after,
@@ -623,10 +598,6 @@ html:not(.intro-section-active) main>section[id] {
   margin-block-start: var(--prose-flow, 0.16em);
 }
 
-.col p {
-  text-wrap: pretty;
-}
-
 .row-img {
   display: flex;
   justify-content: center;
@@ -637,9 +608,8 @@ html:not(.intro-section-active) main>section[id] {
 .row-img img {
   display: block;
   width: auto;
-  max-height: 250px;
+  max-height: 210px;
   border-radius: 50%;
-  margin-block: var(--space-m);
 }
 
 @media (max-width: 48rem) {
@@ -649,15 +619,12 @@ html:not(.intro-section-active) main>section[id] {
     max-inline-size: 100%;
     margin-inline: auto;
     white-space: normal;
-    text-wrap: pretty;
-    overflow-wrap: break-word;
-    hyphens: auto;
     text-align: center;
   }
 }
 
 /* --------------------------------------- */
-/* ----- Footer ----- */
+/* ----------------- Footer -------------- */
 /* --------------------------------------- */
 
 footer {
@@ -667,7 +634,7 @@ footer {
   align-items: center;
 }
 
-/* ----- Back to Top ----- */
+/* -------------- Back to Top ------------ */
 
 .back-to-top {
   display: flex;
@@ -699,7 +666,7 @@ footer {
 }
 
 .back-to-top p {
-  font-size: var(--fs-0);
+  font-size: var(--fs-01);
   text-align: center;
   line-height: 1;
   margin-block: 0;
@@ -792,6 +759,10 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
     background-size: 100% 2px;
   }
 
+  .nav-item a{
+    font-size: var(--fs-0);
+  }
+
   .section-container-early {
     grid-template-columns: 1fr;
   }
@@ -806,6 +777,10 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
     max-height: 380px;
     margin-block: var(--space-l);
   }
+
+  .back-to-top p {
+  font-size: var(--fs-0);
+ }
 
 }
 
