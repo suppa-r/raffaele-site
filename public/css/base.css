@@ -4,6 +4,11 @@
 ============================================ */
     --max-inline-size: min(26.25rem, 95vw);
     --padding-inline: var(--space-s);
+    --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
+}
+
+:target {
+    scroll-margin-block-start: var(--scroll-offset);
 }
 
 html {
@@ -89,6 +94,8 @@ header {
 
 button {
     cursor: pointer;
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
 }
 
 h1,
@@ -135,11 +142,14 @@ a {
         transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+button:hover,
+button:focus-visible,
 a:hover,
 a:focus-visible {
     text-decoration-thickness: 0.09em;
 }
 
+button:focus-visible,
 a:focus-visible {
     outline: 1.2px solid currentcolor;
     outline-offset: 1.2px;
@@ -173,6 +183,12 @@ a:focus-visible {
     .wrapper::before {
         mask-image: none;
         transition: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
     }
 }
 

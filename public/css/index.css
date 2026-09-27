@@ -1,11 +1,11 @@
 .wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  font-size: var(--fs-01);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-size: var(--fs-01);
 
-  @media (min-width: 768px) {
-    font-size: var(--fs-0);
-  }
+    @media (min-width: 768px) {
+        font-size: var(--fs-0);
+    }
 }
 
 header {
@@ -55,14 +55,14 @@ header {
 
 main {
     display: grid;
-    place-content: center center;
+    place-content: center;
     text-align: center;
-    margin-inline: auto;
     row-gap: var(--space-s-m);
-}
 
-main > * {
-    margin-block: 0;
+    &>* {
+        margin-block: 0;
+        text-box: trim-both cap alphabetic;
+    }
 }
 
 .text-with-animation,
