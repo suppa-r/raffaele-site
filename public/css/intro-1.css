@@ -254,11 +254,9 @@ html:not(.intro-section-active) main>section[id] {
 .section-container-early,
 .section-container {
   inline-size: 100%;
-  max-inline-size: var(--content-max-width);
   margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-flow: row;
   overflow-y: auto;
   scrollbar-gutter: stable;
   min-block-size: 0;
@@ -326,6 +324,8 @@ html:not(.intro-section-active) main>section[id] {
   justify-content: center;
   align-items: center;
   margin-inline: auto;
+  margin:0;
+  padding:0;
 }
 
 .col>*+* {
@@ -337,12 +337,13 @@ html:not(.intro-section-active) main>section[id] {
   justify-content: center;
   align-items: center;
   padding-block: var(--space-s);
+    margin:0;
 }
 
 .row-img img {
   display: block;
-  width: auto;
-  max-height: 210px;
+  max-inline-size: 190px;
+  height: auto;
   border-radius: 50%;
 }
 
@@ -355,13 +356,13 @@ html:not(.intro-section-active) main>section[id] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-flow: column;
   }
-
-  .row-img img {
-    width: 100%;
-    max-height: 380px;
-    margin-block: var(--space-l);
-  }
 }
+
+/* @media (min-width: 48rem) {
+  .row-img img {
+    max-inline-size: 275px;
+  }
+} */
 
 /* --------------------------------------- */
 /* ---------------- Footer-- ------------- */

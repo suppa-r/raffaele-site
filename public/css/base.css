@@ -210,7 +210,7 @@ a:focus-visible {
 @media (min-width: 48rem) {
     :root {
         --max-inline-size: min(60rem, 95dvw);
-        --padding-inline: var(--space-xs);
+        --padding-inline: var(--space-m);
     }
 
     .wrapper::before {
@@ -226,7 +226,7 @@ a:focus-visible {
 @media (min-width: 64rem) {
     :root {
         --max-inline-size: min(65rem, 95dvw);
-        --padding-inline: var(--space-s);
+        --padding-inline: var(--space-m);
     }
 
     .wrapper::before {
@@ -242,7 +242,7 @@ a:focus-visible {
 @media (min-width: 75rem) {
     :root {
         --max-inline-size: min(73.75rem, 95dvw);
-        --padding-inline: var(--space-s);
+        --padding-inline: var(--space-m);
     }
 
     .wrapper::before {
@@ -274,7 +274,7 @@ a:focus-visible {
 @media (min-width: 120rem) {
     :root {
         --max-inline-size: min(1920px, 95dvw);
-        --padding-inline: var(--space-xl);
+        --padding-inline: var(--space-l);
     }
 
     .wrapper::before {
