@@ -103,16 +103,16 @@ Burger king
     z-index: 5000;
 }
 
-
 main {
-    text-align: center;
     display: grid;
-    align-content: center;
-    justify-items: center;
-    line-height: 1.3;
-    width: 100%;
-    box-sizing: border-box;
-}
+    place-content: center;
+    gap: var(--space-3xs-2xs);
+
+       &>* {
+      text-box: trim-both text text;
+    }
+    padding-block:var(--space-s-m);
+   }
 
 .wrapper-gradient-text {
     display: grid;

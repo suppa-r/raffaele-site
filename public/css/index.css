@@ -60,8 +60,7 @@ main {
     row-gap: var(--space-s-m);
 
     &>* {
-        margin-block: 0;
-        text-box: trim-both cap alphabetic;
+      text-box: trim-both text text;
     }
 }
 
