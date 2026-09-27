@@ -2,15 +2,8 @@
 Navigation
 ==================================== */
 nav {
-font-size: var(--fs-01);
-
-@media (min-width: 768px) {
-    font-size: var(--fs-0);
-  }
+  font-size: var(--fs-01);
 }
-
-
-
 
 .overlay-navigation {
   position: fixed;
@@ -328,8 +321,12 @@ Animation keyframes
 }
 
 
-@media (min-width: 40rem) {
-nav ul {
+@media (min-width: 48rem) {
+  nav {
+    font-size: var(--fs-0);
+  }
+
+  nav ul {
     flex-direction: row;
   }
 
