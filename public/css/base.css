@@ -11,14 +11,16 @@
     scroll-margin-block-start: var(--scroll-offset);
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 html,
 body {
     interpolate-size: allow-keywords;
     overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
@@ -155,8 +157,6 @@ a:focus-visible {
     outline-offset: 1.2px;
 }
 
-/* Auto cross-document view transitions double up with intro.html's own JS entrance reveal, causing a load flicker; JS already drives transitions manually. */
-
 .wrapper::before {
     --size: clamp(20px, 3vw, 30px);
     content: "";
@@ -183,12 +183,6 @@ a:focus-visible {
     .wrapper::before {
         mask-image: none;
         transition: none;
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
     }
 }
 
