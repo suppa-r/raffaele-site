@@ -343,4 +343,12 @@ Animation keyframes
     flex: 0 1 var(--space-6xl-7xl);
     inline-size: var(--space-6xl-7xl);
   }
+
+    .nav-item a span {
+    font-size: var(--fs-0);
+    overflow-wrap:anywhere;
+    white-space: nowrap;
+    text-align:left;
+  }
+
 }

@@ -749,7 +749,7 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
   pointer-events: auto !important;
 }
 
-@media (min-width: 56rem) {
+@media (min-width: 48rem) {
   .open-overlay {
     display: none;
     pointer-events: none;
@@ -809,7 +809,7 @@ html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top 
 
 }
 
-@media (min-width: 56rem) and (max-width: 63.999rem) {
+@media (min-width: 48rem) and (max-width: 63.999rem) {
   .logo {
     flex-shrink: 0;
   }
