@@ -67,10 +67,9 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 
 .header-inner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: clamp(0.5rem, 0.3rem + 1.2vw, 1.25rem);
-}
+   align-items: center;
+   gap: var(--space-xs-s);
+  }
 
 .logo {
     display: grid;
@@ -95,15 +94,15 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     min-width: 0;
     white-space: nowrap;
     overflow: visible;
-    font-size: clamp(0.8rem, 0.68rem + 0.9vw, 1.2rem);
     letter-spacing: -0.02em;
     line-height: 1;
+    margin-inline-end:var(--space-m-s);
 }
 
 .header-title span {
     font-family: var(--primary-font-secondary);
     font-style: italic;
-    margin-inline-end: clamp(0.143rem, 0.088rem + 0.22vw, 0.55rem);
+    margin-inline-end:var(--space-xs-s);
     color: var(--text-span);
 }
 
