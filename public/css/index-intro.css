@@ -20,7 +20,7 @@
    }
 }
 
-main {
+main.content {
    display: grid;
    place-content: center;
    min-block-size: 0;

@@ -121,15 +121,6 @@ Burger king
     z-index: 5000;
 }
 
-main {
-    display: grid;
-    place-content: center;
-    gap: var(--space-4xs-3xs);
-
-    &>* {
-        text-box: trim-both text text;
-    }
-}
 
 .wrapper-gradient-text {
     display: grid;

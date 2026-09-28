@@ -53,23 +53,17 @@ header {
     }
 }
 
-main {
-    display: grid;
-    place-content: center;
-    text-align: center;
+main.content {
+display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     row-gap: var(--space-4xs-3xs);
-
-    &>* {
-      text-box: trim-both text text;
-    }
 }
 
 .text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2 {
-    inline-size: min(100%, var(--max-inline-size));
-    max-inline-size: 100%;
-    margin-inline: auto;
     font-size: var(--fs-3);
     font-style: italic;
     line-height: 0.92;
