@@ -23,7 +23,7 @@
 
 header {
   display: grid;
-  grid-template-columns:auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
   justify-content: center;
   align-items: center;
   z-index: 2002;
@@ -141,10 +141,6 @@ main {
 
 }
 
-main p {
-  margin-block: 0;
-}
-
 main>section[id] {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
@@ -192,14 +188,12 @@ main>section[id] {
   text-align: center;
   color: var(--base-color);
   text-shadow: 0 0 0.35rem var(--base-color);
-  background: linear-gradient(
-    90deg,
-    var(--text-color) 0%,
-    var(--text-span) 30%,
-    var(--text-color) 50%,
-    var(--text-span) 70%,
-    var(--text-color) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--text-color) 0%,
+      var(--text-span) 30%,
+      var(--text-color) 50%,
+      var(--text-span) 70%,
+      var(--text-color) 100%);
   background-size: 300% 300%;
   animation: none;
   border-radius: var(--space-l-xl);
@@ -270,15 +264,15 @@ html:not(.intro-section-active) main>section[id] {
 }
 
 .section-container-early p,
-  .section-container p {
-    inline-size: min(100%, 38ch);
-    max-inline-size: 100%;
-    margin-inline: auto;
-    white-space: normal;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    text-align: center;
-  }
+.section-container p {
+  inline-size: min(100%, 38ch);
+  max-inline-size: 100%;
+  margin-inline: auto;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+}
 
 .section-container-early::-webkit-scrollbar,
 .section-container::-webkit-scrollbar {
@@ -323,13 +317,15 @@ html:not(.intro-section-active) main>section[id] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-inline: auto;
-  margin:0;
-  padding:0;
-}
 
-.col>*+* {
-  margin-block-start: var(--prose-flow, 0.16em);
+  &>* {
+    text-box: trim-both text text;
+  }
+
+  &>p {
+    inline-size: min(100%, 75ch);
+    margin-inline: auto;
+  }
 }
 
 .row-img {
@@ -337,7 +333,7 @@ html:not(.intro-section-active) main>section[id] {
   justify-content: center;
   align-items: center;
   padding-block: var(--space-s);
-    margin:0;
+  margin: 0;
 }
 
 .row-img img {
@@ -348,7 +344,7 @@ html:not(.intro-section-active) main>section[id] {
 }
 
 @media (max-width: 48rem) {
-.section-container-early {
+  .section-container-early {
     grid-template-columns: 1fr;
   }
 

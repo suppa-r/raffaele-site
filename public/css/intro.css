@@ -1,11 +1,11 @@
 .wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  font-size: var(--fs-01);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-size: var(--fs-01);
 
-  @media (min-width: 768px) {
-    font-size: var(--fs-0);
-  }
+    @media (min-width: 768px) {
+        font-size: var(--fs-0);
+    }
 }
 
 
@@ -14,32 +14,50 @@
 /* --------------------------------------- */
 
 header {
-    display: block;
-    z-index: 2002;
-    border-radius: var(--space-m-l);
-    position: relative;
-    isolation: isolate;
-    line-height: 1;
-    background: transparent;
-    margin-block-start: var(--space-xs);
-    font-size: var(--fs-01);
+  display: grid;
+  grid-template-columns:1fr auto;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2002;
+  border-radius: var(--space-m-l);
+  position: relative;
+  isolation: isolate;
+  line-height: 1;
+  background: transparent;
 }
 
 body[data-page="intro"] header {
-    opacity: 0;
-    transform: translateY(-18vh);
+  opacity: 0;
+  transform: translateY(-18vh);
 }
 
 header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: var(--space-l-xl);
-    background: var(--gradient-header);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    backdrop-filter: var(--backdrop-blur);
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--space-l-xl);
+  background: var(--gradient-header);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  backdrop-filter: var(--backdrop-blur);
+  pointer-events: none;
+}
+
+header:has(.open-overlay[aria-expanded="true"])::before {
+  opacity: 1;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body:has(.open-overlay[aria-expanded="true"]) main,
+body:has(.open-overlay[aria-expanded="true"]) footer {
+  opacity: 0;
+  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body:has(.open-overlay[aria-expanded="false"]) main,
+body:has(.open-overlay[aria-expanded="false"]) footer {
+  opacity: 1;
+  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
 header:has(.open-overlay[aria-expanded="true"])::before {
@@ -106,13 +124,12 @@ Burger king
 main {
     display: grid;
     place-content: center;
-    gap: var(--space-3xs-2xs);
+    gap: var(--space-4xs-3xs);
 
-       &>* {
-      text-box: trim-both text text;
+    &>* {
+        text-box: trim-both text text;
     }
-    padding-block:var(--space-s-m);
-   }
+}
 
 .wrapper-gradient-text {
     display: grid;
@@ -160,16 +177,9 @@ main {
 }
 
 main p {
+    inline-size: min(100%, 75ch);
     margin-inline: auto;
-    width: min(100%, 75ch);
-    max-width: 75ch;
-    white-space: normal;
-    overflow-wrap: anywhere;
     text-align: center;
-}
-
-main p+p {
-    margin-block-start: clamp(0.125rem, 0.0815rem + 0.2174vw, 0.25rem);
 }
 
 main p:not(.wrapper-gradient-text) {
@@ -219,6 +229,13 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     white-space: normal;
 }
 
+.fancy-quote span {
+    font-style: italic;
+    font-size: var(--fs-1);
+    display: block;
+    margin-inline: auto;
+}
+
 .fancy-text-break {
     display: block;
     font-size: var(--fs-01);
@@ -250,16 +267,22 @@ footer {
         display: inline;
     }
 
-.fancy-quote {
-    width: max-content;
-    max-width: 100%;
-    white-space: nowrap;
-}
+    .fancy-quote {
+        width: max-content;
+        max-width: 100%;
+        white-space: nowrap;
+    }
 
-.fancy-text-break {
-    display: inline;
-    padding-inline-start: 3ch;
-}
+    .fancy-quote span {
+        font-style: italic;
+        font-size: var(--fs-1);
+        display: inline-block;
+    }
+
+    .fancy-text-break {
+        display: inline;
+        padding-inline-start: 3ch;
+    }
 }
 
 @media (prefers-reduced-motion:reduce) {

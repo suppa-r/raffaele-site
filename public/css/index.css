@@ -57,7 +57,7 @@ main {
     display: grid;
     place-content: center;
     text-align: center;
-    row-gap: var(--space-s-m);
+    row-gap: var(--space-4xs-3xs);
 
     &>* {
       text-box: trim-both text text;
@@ -67,28 +67,43 @@ main {
 .text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2 {
-    inline-size: fit-content;
+    inline-size: min(100%, var(--max-inline-size));
+    max-inline-size: 100%;
     margin-inline: auto;
-    --main-enter-offset: -6vw;
     font-size: var(--fs-3);
-    text-align: center;
     font-style: italic;
     line-height: 0.92;
     letter-spacing: var(--letter-spacing-wide);
-    white-space: nowrap;
+    text-wrap: balance;
+    overflow-wrap: break-word;
 }
 
-.text-with-animation {
-    letter-spacing: 0.02em;
+.text-with-animation{
+    letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
 }
 
 .text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
-    position: relative;
     opacity: 0;
     display: inline-flex;
     will-change: transform, opacity;
+}
+
+@media (max-width: 47.999rem) {
+    .text-with-animation {
+        font-size: var(--fs-2);
+        letter-spacing: 0.01rem;
+    }
+}
+
+@media (min-width: 48rem) {
+    .text-with-animation,
+    .text-with-animation-1,
+    .text-with-animation-2 {
+        inline-size: fit-content;
+        white-space: nowrap;
+    }
 }
 
 .btn {

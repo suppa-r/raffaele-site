@@ -21,15 +21,10 @@
 }
 
 main {
-    display: grid;
-    place-content: center;
-  min-block-size: 0;
-
-       &>* {
-      text-box: trim-both text text;
-    }
-    padding-block:var(--space-s-m);
-   }
+   display: grid;
+   place-content: center;
+   min-block-size: 0;
+}
 
 .game {
    position: relative;
