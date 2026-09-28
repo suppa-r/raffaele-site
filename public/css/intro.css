@@ -14,50 +14,50 @@
 /* --------------------------------------- */
 
 header {
-  display: grid;
-  grid-template-columns:1fr auto;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2002;
-  border-radius: var(--space-m-l);
-  position: relative;
-  isolation: isolate;
-  line-height: 1;
-  background: transparent;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2002;
+    border-radius: var(--space-m-l);
+    position: relative;
+    isolation: isolate;
+    line-height: 1;
+    background: transparent;
 }
 
 body[data-page="intro"] header {
-  opacity: 0;
-  transform: translateY(-18vh);
+    opacity: 0;
+    transform: translateY(-18vh);
 }
 
 header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: var(--space-l-xl);
-  background: var(--gradient-header);
-  -webkit-backdrop-filter: var(--backdrop-blur);
-  backdrop-filter: var(--backdrop-blur);
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: var(--space-l-xl);
+    background: var(--gradient-header);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    backdrop-filter: var(--backdrop-blur);
+    pointer-events: none;
 }
 
 header:has(.open-overlay[aria-expanded="true"])::before {
-  opacity: 1;
-  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 1;
+    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body:has(.open-overlay[aria-expanded="true"]) main,
 body:has(.open-overlay[aria-expanded="true"]) footer {
-  opacity: 0;
-  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0;
+    transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body:has(.open-overlay[aria-expanded="false"]) main,
 body:has(.open-overlay[aria-expanded="false"]) footer {
-  opacity: 1;
-  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
+    opacity: 1;
+    transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
 header:has(.open-overlay[aria-expanded="true"])::before {
@@ -121,6 +121,11 @@ Burger king
     z-index: 5000;
 }
 
+.content {
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
 
 .wrapper-gradient-text {
     display: grid;

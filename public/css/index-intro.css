@@ -12,7 +12,7 @@
 
 .wrapper {
    display: grid;
-   grid-template-rows: 1fr auto;
+   grid-template-rows:1fr;
    font-size: var(--fs-01);
 
    @media (min-width: 768px) {
@@ -20,16 +20,17 @@
    }
 }
 
-main.content {
-   display: grid;
-   place-content: center;
-   min-block-size: 0;
+.content {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    min-block-size: 0;
 }
 
 .game {
    position: relative;
    display: block;
-   width: min(16rem, calc(100vw - 2rem));
+   inline-size: min(100%, clamp(16rem, 42vw, 28rem));
    aspect-ratio: 4 / 5;
    border-radius: var(--card-radius);
    color: inherit;
@@ -140,10 +141,6 @@ footer {
 }
 
 @media (min-width: 48rem) {
-   .game {
-      width: clamp(20rem, 30vw, 28rem);
-   }
-
    .game-stat {
       font-size: var(--fs-3);
    }
