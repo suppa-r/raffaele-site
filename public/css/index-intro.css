@@ -7,7 +7,7 @@
    --card-portrait-active-opacity: 0.3;
    --card-portrait-active-transform: scale(0.7);
    --card-background-active-transform: scale(1);
-   --card-background-image-active-transform: scale(1.5);
+   --card-background-image-active-transform: scale(1);
 }
 
 .wrapper {
@@ -130,7 +130,6 @@
    height: 100%;
    object-fit: contain;
    object-position: center;
-   border-radius: 50%;
    transition: transform var(--card-transition);
 }
 
