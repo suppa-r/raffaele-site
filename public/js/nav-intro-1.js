@@ -27,7 +27,7 @@
   }
 
   function refreshElements() {
-    menuButton = document.querySelector(".open-overlay");
+    menuButton = document.querySelector(".intro-1-page-title-trigger");
     navLinks = document.querySelector(".nav-links");
     firstNavLink = navLinks ? navLinks.querySelector("a[href]") : null;
   }
@@ -146,89 +146,50 @@
     );
   }
 
-  function animateHamburgerButton(opening) {
-    if (isReducedMotionPreferred() || !menuButton) {
-      return;
-    }
-
-    const topBar = menuButton.querySelector(".bar-top");
-    const middleBar = menuButton.querySelector(".bar-middle");
-    const bottomBar = menuButton.querySelector(".bar-bottom");
-    if (!topBar || !middleBar || !bottomBar) {
-      return;
-    }
-
-    const toggle = (element, removeClass, addClass) => {
-      element.classList.remove(removeClass, addClass);
-      void element.offsetWidth;
-      element.classList.add(addClass);
-    };
-
-    if (opening) {
-      toggle(topBar, "animate-out-top-bar", "animate-top-bar");
-      toggle(middleBar, "animate-out-middle-bar", "animate-middle-bar");
-      toggle(bottomBar, "animate-out-bottom-bar", "animate-bottom-bar");
-    } else {
-      toggle(middleBar, "animate-middle-bar", "animate-out-middle-bar");
-      toggle(bottomBar, "animate-bottom-bar", "animate-out-bottom-bar");
-    }
-  }
-
   function setMenuState(isOpen, options = {}) {
     refreshElements();
     if (!menuButton || !navLinks) {
       return;
     }
 
-    const { isKeyboard = false } = options;
+    const { isKeyboard = false, returnFocus = true } = options;
     clearTimeout(navCloseTimeoutId);
     isMenuOpen = Boolean(isOpen);
+    const navHasFocus = navLinks.contains(document.activeElement);
+    const focusTarget = isMenuOpen
+      ? null
+      : returnFocus && (isKeyboard || navHasFocus)
+        ? menuButton
+        : !returnFocus && navHasFocus
+          ? document.getElementById("main-content")
+          : null;
 
-    if (!isMenuOpen && navLinks.contains(document.activeElement)) {
-      menuButton.focus({ preventScroll: true });
-    }
+    focusTarget?.focus({ preventScroll: true });
 
     navLinks.classList.toggle("open", isMenuOpen);
     navLinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
     if ("inert" in navLinks) {
-      navLinks.inert = !isMenuOpen && mobileQuery.matches;
+      navLinks.inert = !isMenuOpen;
     }
 
-    menuButton.classList.toggle("is-active", isMenuOpen);
     menuButton.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
-    menuButton.setAttribute(
-      "aria-label",
-      isMenuOpen ? "Close menu" : "Open menu",
-    );
 
     document.documentElement.classList.toggle("intro-nav-open", isMenuOpen);
-    animateHamburgerButton(isMenuOpen);
 
     if (isMenuOpen) {
       animateNavItemsIn();
-      if (isKeyboard && firstNavLink) {
+      if (firstNavLink) {
         firstNavLink.focus({ preventScroll: true });
       }
     } else {
       resetNavItems();
-      if (isKeyboard) {
-        menuButton.focus({ preventScroll: true });
-      }
     }
   }
 
   function handleToggleClick(event) {
     event.preventDefault();
     event.stopPropagation();
-    setMenuState(!isMenuOpen, { isKeyboard: false });
-  }
-
-  function handleToggleKeydown(event) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      event.stopPropagation();
-      setMenuState(!isMenuOpen, { isKeyboard: true });
-    }
+    setMenuState(!isMenuOpen);
   }
 
   function handleNavLinksClick(event) {
@@ -240,6 +201,7 @@
     if (!mobileQuery.matches) {
       const destination = link.getAttribute("href");
       if (destination?.startsWith("#")) {
+        setMenuState(false, { returnFocus: false });
         window.setTimeout(setActiveNavLink, 0);
         return;
       }
@@ -253,7 +215,7 @@
     event.preventDefault();
     navLinks.classList.add("closing");
     document.documentElement.classList.add("intro-nav-closing");
-    setMenuState(false);
+    setMenuState(false, { returnFocus: false });
 
     navCloseTimeoutId = window.setTimeout(() => {
       navLinks.classList.remove("closing");
@@ -263,6 +225,7 @@
         window.scrollTo(0, 0);
         setActiveNavLink();
         document.documentElement.classList.remove("intro-nav-closing");
+        document.getElementById("main-content")?.focus({ preventScroll: true });
       } else {
         document.documentElement.classList.remove("intro-nav-closing");
         window.location.assign(link.href);
@@ -277,17 +240,13 @@
   }
 
   function handleViewportChange() {
-    if (!mobileQuery.matches) {
-      isMenuOpen = false;
-      navLinks?.classList.remove("open");
-      navLinks?.setAttribute("aria-hidden", "false");
-      if (navLinks && "inert" in navLinks) {
-        navLinks.inert = false;
-      }
-      document.documentElement.classList.remove("intro-nav-open");
+    if (!menuButton || !navLinks) {
+      return;
     }
-
-    resetNavItems();
+    setMenuState(false, {
+      returnFocus: navLinks.contains(document.activeElement),
+    });
+    navLinks.classList.remove("closing");
   }
 
   function attachEvents() {
@@ -295,11 +254,15 @@
     if (!menuButton || !navLinks) {
       return;
     }
+    menuButton.setAttribute("aria-expanded", "false");
+    navLinks.setAttribute("aria-hidden", "true");
+    if ("inert" in navLinks) {
+      navLinks.inert = true;
+    }
 
     if (boundMenuButton !== menuButton) {
       boundMenuButton = menuButton;
       menuButton.addEventListener("click", handleToggleClick);
-      menuButton.addEventListener("keydown", handleToggleKeydown);
     }
 
     if (boundNavLinks !== navLinks) {

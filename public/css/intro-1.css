@@ -51,19 +51,14 @@ header::before {
   pointer-events: none;
 }
 
-header:has(.open-overlay[aria-expanded="true"])::before {
-  opacity: 1;
-  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body:has(.open-overlay[aria-expanded="true"]) main,
-body:has(.open-overlay[aria-expanded="true"]) footer {
+body:has(.intro-1-page-title-trigger[aria-expanded="true"]) main,
+body:has(.intro-1-page-title-trigger[aria-expanded="true"]) footer {
   opacity: 0;
   transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body:has(.open-overlay[aria-expanded="false"]) main,
-body:has(.open-overlay[aria-expanded="false"]) footer {
+body:has(.intro-1-page-title-trigger[aria-expanded="false"]) main,
+body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
   opacity: 1;
   transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
@@ -79,6 +74,25 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
   text-align: center;
   font-size: var(--fs-1);
   view-transition-name: intro1-page-title;
+}
+
+.intro-1-page-title-trigger {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: none;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.intro-1-page-title-trigger:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 0.25rem;
 }
 
 .intro-1-page-title .title-line {
@@ -117,8 +131,7 @@ body:has(.open-overlay[aria-expanded="false"]) footer {
   transition: none;
 }
 
-.intro-nav-open .nav-links,
-.intro-nav-open .open-overlay {
+.intro-nav-open .nav-links {
   pointer-events: auto;
 }
 

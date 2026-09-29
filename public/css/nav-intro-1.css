@@ -110,160 +110,6 @@ nav {
   fill: var(--text-color);
 }
 
-/* ====================================
-Burger king
-==================================== */
-
-.open-overlay {
-  opacity: 1;
-  position: relative;
-  border: none;
-  background: none;
-  cursor: pointer;
-  display: grid;
-  width: var(--space-s-m);
-  z-index: 5000;
-}
-
-.open-overlay:focus-visible {
-  outline: 1px solid var(--text-color);
-  outline-offset: 3px;
-}
-
-.open-overlay span {
-  display: block;
-  height: 1px;
-  background-color: var(--text-color);
-  margin-bottom: 3px;
-  border-radius: 1px;
-  transform-origin: center;
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
-  cursor: pointer;
-  margin-top: 3px;
-}
-
-.animate-top-bar {
-  animation: animate-top-bar 0.9s ease-in-out 1 both;
-}
-
-.animate-bottom-bar {
-  animation: animate-bottom-bar 0.9s ease-in-out 1 both;
-}
-
-.animate-middle-bar {
-  animation: animate-middle-bar 0.9s ease-in-out 1 both;
-}
-
-.animate-out-top-bar {
-  animation: animate-out-top-bar 0.9s ease-in-out 1 both;
-}
-
-.animate-out-bottom-bar {
-  animation: animate-out-bottom-bar 0.9s ease-in-out 1 both;
-}
-
-.animate-out-middle-bar {
-  animation: animate-out-middle-bar 0.9s ease-in-out 1 both;
-}
-
-/* ====================================
-Animation keyframes
-==================================== */
-
-@keyframes animate-top-bar {
-  0% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-
-  60% {
-    transform: translateY(5px);
-    background-color: var(--text-color);
-  }
-
-  100% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-}
-
-@keyframes animate-bottom-bar {
-  0% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-
-  60% {
-    transform: translateY(-5px);
-    background-color: var(--text-color);
-  }
-
-  100% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-}
-
-@keyframes animate-middle-bar {
-  0% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-
-  100% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-}
-
-@keyframes animate-out-top-bar {
-  0% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-
-  60% {
-    transform: translateY(5px);
-    background-color: var(--text-color);
-  }
-
-  100% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-}
-
-@keyframes animate-out-bottom-bar {
-  0% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-
-  60% {
-    transform: translateY(-5px);
-    background-color: var(--text-color);
-  }
-
-  100% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-}
-
-@keyframes animate-out-middle-bar {
-  0% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-
-  100% {
-    transform: translateY(0);
-    background-color: var(--text-color);
-  }
-}
-
 @media (min-width: 48rem) {
  nav {
     block-size: auto;
@@ -278,10 +124,16 @@ Animation keyframes
     inline-size: 100%;
     min-block-size: auto;
     flex-direction: row;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    gap: var(--space-4xs-3xs);
+  }
+
+  .nav-links.open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    gap: var(--space-4xs-3xs);
   }
 
   .nav-item {
@@ -328,10 +180,6 @@ Animation keyframes
     fill: var(--text-color);
   }
 
-  .open-overlay {
-    display: none;
-    pointer-events: none;
-  }
 }
 
 @media (min-width: 48rem) and (max-width: 63.999rem) {
