@@ -70,6 +70,8 @@ nav ul {
   align-items: center;
   position: relative;
   top: auto;
+  inline-size: 100%;
+  block-size: 100%;
   color: var(--text-color);
   letter-spacing: 4px;
   text-decoration: none;
@@ -326,6 +328,12 @@ Animation keyframes
     font-size: var(--fs-0);
   }
 
+  /* allow the data-content tooltip to escape the clipped nav bounds */
+  nav,
+  nav ul {
+    overflow: visible;
+  }
+
   nav ul {
     flex-direction: row;
   }
@@ -389,7 +397,7 @@ Animation keyframes
     opacity: 1;
   }
 
-  .nav-links li a:hover::after {
+  .nav-links li:hover a::after {
     transform: translate(-50%, var(--space-s));
     opacity: 1;
   }

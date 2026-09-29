@@ -265,7 +265,8 @@
     setMenuState(false, {
       returnFocus: navLinks.contains(document.activeElement),
     });
-    navLinks.classList.remove("closing");
+    // setMenuState() re-queries the DOM and may null navLinks after a page swap
+    navLinks?.classList.remove("closing");
   }
 
   function attachEvents() {
@@ -296,6 +297,9 @@
 
   function init() {
     if (!isIntroOnePage()) {
+      menuButton = null;
+      navLinks = null;
+      firstNavLink = null;
       boundMenuButton = null;
       boundNavLinks = null;
       isMenuOpen = false;

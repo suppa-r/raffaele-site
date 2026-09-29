@@ -1,11 +1,11 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    font-size: var(--fs-01);
+    font-size: var(--fs-0);
 
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
         font-size: var(--fs-0);
-    }
+    } */
 }
 
 
@@ -67,9 +67,9 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 
 .header-inner {
     display: flex;
-   align-items: center;
-   gap: var(--space-xs-s);
-  }
+    align-items: center;
+    gap: var(--space-xs-s);
+}
 
 .logo {
     display: grid;
@@ -96,13 +96,13 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     overflow: visible;
     letter-spacing: -0.02em;
     line-height: 1;
-    margin-inline-end:var(--space-m-s);
+    margin-inline-end: var(--space-m-s);
 }
 
 .header-title span {
     font-family: var(--primary-font-secondary);
     font-style: italic;
-    margin-inline-end:var(--space-xs-s);
+    margin-inline-end: var(--space-xs-s);
     color: var(--text-span);
 }
 
@@ -207,6 +207,8 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 
 .text-break {
     display: block;
+    padding-block:0;
+    margin-block:0;
 }
 
 .fancy {
@@ -234,12 +236,14 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 
 .fancy-text-break {
     display: block;
-    font-size: var(--fs-01);
+    font-size: var(--fs-1);
     padding-inline-start: 0;
+      padding-block:0;
+    margin-block:0;
 }
 
 .fancy-small {
-    font-size: var(--fs-02);
+    font-size: var(--fs-01);
 }
 
 /* --------------------------------------- */
