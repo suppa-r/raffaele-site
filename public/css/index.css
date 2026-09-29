@@ -57,7 +57,12 @@ header {
     display: grid;
     place-content: center;
     place-items: center;
-    row-gap: var(--space-4xs-3xs);
+    row-gap: 0.2rem;
+}
+
+.content > :is(h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+    padding: 0;
 }
 
 .text-with-animation,
