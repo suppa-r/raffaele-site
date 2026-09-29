@@ -75,6 +75,7 @@ backToTopButton?.addEventListener("click", (event) => {
     headerText.setAttribute("aria-hidden", "false");
   }
 
+  document.querySelector(".intro-1-page-title-trigger")?.click();
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 });
 

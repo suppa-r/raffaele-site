@@ -192,7 +192,26 @@
     setMenuState(!isMenuOpen);
   }
 
+  function handleCloseNavigation(event) {
+    event.preventDefault();
+    window.history.pushState(
+      {},
+      "",
+      `${window.location.pathname}${window.location.search}`,
+    );
+    document.documentElement.classList.remove("intro-nav-closing");
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+    setMenuState(false, { returnFocus: false });
+    menuButton.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
+
   function handleNavLinksClick(event) {
+    if (event.target.closest(".nav-close")) {
+      handleCloseNavigation(event);
+      return;
+    }
+
     const link = event.target.closest("a[href]");
     if (!link) {
       return;
