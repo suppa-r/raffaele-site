@@ -10,11 +10,8 @@
 .wrapper {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  font-size: var(--fs-01);
-
-  @media (min-width: 768px) {
-    font-size: var(--fs-0);
-  }
+  font-size: var(--fs-0);
+  color: var(--text-color);
 }
 
 /* --------------------------------------- */
@@ -63,6 +60,47 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
   transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs-xs);
+}
+
+.logo {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(0.2rem, 0.16rem + 0.18vw, 0.48rem);
+    min-width: 0;
+    max-width: 100%;
+}
+
+.logo img {
+    display: block;
+    object-fit: cover;
+    width: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
+    height: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem var(--text-color);
+}
+
+.header-title {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: visible;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-inline-end: var(--space-xs-s);
+}
+
+.header-title span {
+    font-family: var(--primary-font-secondary);
+    font-style: italic;
+    margin-inline-end: var(--space-xs-s);
+    color: var(--text-span);
+}
+
 .intro-1-page-title {
   place-self: center;
   display: grid;
@@ -77,8 +115,7 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
 }
 
 .intro-1-page-title-trigger {
-  display: grid;
-  place-items: center;
+  display: block;
   inline-size: 100%;
   margin: 0;
   padding: 0;
@@ -95,20 +132,24 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
   outline-offset: 0.25rem;
 }
 
-.intro-1-page-title .title-line {
+.intro-1-page-title {
   margin: 0;
   inline-size: 100%;
   max-inline-size: 100%;
   white-space: wrap;
   overflow-wrap: break-word;
-  opacity: 0;
-  transform: translateX(100vw);
+  font-size: var(--fs-1);
 }
 
-.intro-1-page-title span {
-  font-family: var(--primary-font-secondary);
-  font-size: var(--fs-200);
+.intro-1-page-title-trigger .word {
+  display: inline-block;
+}
+
+.title-emphasis {
   padding-inline-start: var(--space-3xs-2xs);
+  font-family: var(--primary-font-secondary);
+  font-size: var(--fs-3);
+  font-style: italic;
 }
 
 .page-entering .intro-1-page-title,

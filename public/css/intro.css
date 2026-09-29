@@ -2,12 +2,8 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     font-size: var(--fs-0);
-
-    /* @media (min-width: 768px) {
-        font-size: var(--fs-0);
-    } */
+    color: var(--text-color);
 }
-
 
 /* --------------------------------------- */
 /* ----- Header ----- */
@@ -96,7 +92,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
     overflow: visible;
     letter-spacing: -0.02em;
     line-height: 1;
-    margin-inline-end: var(--space-m-s);
+    margin-inline-end: var(--space-xs-s);
 }
 
 .header-title span {
@@ -125,7 +121,6 @@ Burger king
     place-content: center;
     place-items: center;
 }
-
 
 .wrapper-gradient-text {
     display: grid;

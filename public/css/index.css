@@ -1,11 +1,8 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    font-size: var(--fs-01);
-
-    @media (min-width: 768px) {
-        font-size: var(--fs-0);
-    }
+    font-size: var(--fs-0);
+    color: var(--text-color);
 }
 
 header {
@@ -35,22 +32,14 @@ header {
 
 .header-text {
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-0);
     font-style: italic;
     line-height: 1;
 }
 
 .header-break {
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-0);
     font-style: italic;
     line-height: 1;
-}
-
-@media (min-width: 48rem) {
-    .header-text {
-        font-size: var(--fs-1);
-    }
 }
 
 .content {
