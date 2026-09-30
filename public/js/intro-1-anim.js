@@ -132,6 +132,65 @@ function intro1RevealContent() {
     });
 }
 
+function intro1AnimateTitle() {
+  const gsapLib = typeof window !== "undefined" ? window.gsap : null;
+  const titleWords = document.querySelectorAll(INTRO1_TITLE_WORDS_TARGET);
+  const titleEmphasis = document.querySelector(INTRO1_TITLE_EMPHASIS_TARGET);
+
+  if (!titleWords.length) {
+    return;
+  }
+
+  if (
+    !gsapLib ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    titleWords.forEach((word) => {
+      word.style.opacity = "1";
+      word.style.transform = "translate3d(0, 0, 0)";
+    });
+    if (titleEmphasis) {
+      titleEmphasis.style.opacity = "1";
+      titleEmphasis.style.transform = "translate3d(0, 0, 0) scale(1)";
+    }
+    return;
+  }
+
+  gsapLib.killTweensOf([...titleWords, ...(titleEmphasis ? [titleEmphasis] : [])]);
+
+  const titleTimeline = gsapLib.timeline({
+    delay: INTRO1_TITLE_WORD_DELAY,
+    overwrite: "auto",
+  });
+
+  titleTimeline.fromTo(
+    titleWords,
+    { x: INTRO1_TITLE_WORD_OFFSET, opacity: 0 },
+    {
+      x: 0,
+      opacity: 1,
+      duration: INTRO1_TITLE_WORD_DURATION,
+      stagger: INTRO1_TITLE_WORD_STAGGER,
+      ease: INTRO1_TITLE_EASE,
+    },
+  );
+
+  if (titleEmphasis) {
+    titleTimeline.fromTo(
+      titleEmphasis,
+      { y: 16, scale: 0.88, opacity: 0 },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        duration: INTRO1_TITLE_EMPHASIS_DURATION,
+        ease: INTRO1_TITLE_EASE,
+      },
+      `-=${INTRO1_TITLE_EMPHASIS_OVERLAP}`,
+    );
+  }
+}
+
 function intro1InitializeAnimations() {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
 
@@ -171,39 +230,7 @@ function intro1InitializeAnimations() {
     });
   }
 
-  if (intro1HasElements(INTRO1_TITLE_WORDS_TARGET)) {
-    const titleTimeline = gsapLib.timeline({
-      delay: INTRO1_TITLE_WORD_DELAY,
-      overwrite: "auto",
-    });
-
-    titleTimeline.fromTo(
-      INTRO1_TITLE_WORDS_TARGET,
-      { x: INTRO1_TITLE_WORD_OFFSET, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: INTRO1_TITLE_WORD_DURATION,
-        stagger: INTRO1_TITLE_WORD_STAGGER,
-        ease: INTRO1_TITLE_EASE,
-      },
-    );
-
-    if (intro1HasElements(INTRO1_TITLE_EMPHASIS_TARGET)) {
-      titleTimeline.fromTo(
-        INTRO1_TITLE_EMPHASIS_TARGET,
-        { y: 16, scale: 0.88, opacity: 0 },
-        {
-          y: 0,
-          scale: 1,
-          opacity: 1,
-          duration: INTRO1_TITLE_EMPHASIS_DURATION,
-          ease: INTRO1_TITLE_EASE,
-        },
-        `-=${INTRO1_TITLE_EMPHASIS_OVERLAP}`,
-      );
-    }
-  }
+  intro1AnimateTitle();
 }
 
 function intro1PrepareTitleWords() {
@@ -276,4 +303,5 @@ function intro1OnFreshPage() {
 
 document.addEventListener("DOMContentLoaded", intro1OnFreshPage);
 document.addEventListener("page:transitioned", intro1OnFreshPage);
+document.addEventListener("intro-1:replay-title", intro1AnimateTitle);
 window.addEventListener("hashchange", intro1RevealActiveProfileTitle);

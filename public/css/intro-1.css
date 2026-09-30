@@ -129,7 +129,7 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
 
 .intro-1-page-title-trigger:focus-visible {
   outline: 2px solid currentcolor;
-  outline-offset: 0.25rem;
+  outline-offset: 0.5rem;
 }
 
 .intro-1-page-title {
@@ -163,6 +163,15 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
 .intro-nav-open main,
 .intro-nav-open footer {
   pointer-events: none;
+}
+
+html.intro-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expanded="true"]) main {
+  opacity: 1;
+}
+
+.intro-nav-open.intro-nav-title-visible .intro-1-page-title {
+  visibility: visible;
+  opacity: 1;
 }
 
 .intro-nav-closing main,

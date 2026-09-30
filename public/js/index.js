@@ -51,6 +51,9 @@ backToTopButton?.addEventListener("click", (event) => {
     return;
   }
 
+  const wasSectionActive = document.documentElement.classList.contains(
+    "intro-section-active",
+  );
   event.preventDefault();
 
   sectionContainer?.scrollTo({
@@ -75,7 +78,18 @@ backToTopButton?.addEventListener("click", (event) => {
     headerText.setAttribute("aria-hidden", "false");
   }
 
-  document.querySelector(".intro-1-page-title-trigger")?.click();
+  const titleTrigger = document.querySelector(".intro-1-page-title-trigger");
+  if (wasSectionActive) {
+    document.dispatchEvent(new CustomEvent("intro-1:replay-title"));
+    if (window.matchMedia("(max-width: 47.999rem)").matches) {
+      document.documentElement.classList.remove("intro-nav-title-visible");
+    } else {
+      document.documentElement.classList.add("intro-nav-title-visible");
+      titleTrigger?.click();
+    }
+  } else {
+    titleTrigger?.click();
+  }
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 });
 

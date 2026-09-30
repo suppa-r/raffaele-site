@@ -156,13 +156,11 @@
     clearTimeout(navCloseTimeoutId);
     isMenuOpen = Boolean(isOpen);
     const navHasFocus = navLinks.contains(document.activeElement);
-    const focusTarget = isMenuOpen
-      ? null
-      : returnFocus && (isKeyboard || navHasFocus)
-        ? menuButton
-        : !returnFocus && navHasFocus
-          ? document.getElementById("main-content")
-          : null;
+    const shouldReturnFocus =
+      !isMenuOpen && returnFocus && (isKeyboard || navHasFocus);
+    const focusTarget = !isMenuOpen && navHasFocus
+      ? document.getElementById("main-content")
+      : null;
 
     focusTarget?.focus({ preventScroll: true });
 
@@ -175,6 +173,9 @@
     menuButton.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
 
     document.documentElement.classList.toggle("intro-nav-open", isMenuOpen);
+    if (!isMenuOpen) {
+      document.documentElement.classList.remove("intro-nav-title-visible");
+    }
 
     if (isMenuOpen) {
       animateNavItemsIn();
@@ -183,6 +184,23 @@
       }
     } else {
       resetNavItems();
+      if (shouldReturnFocus) {
+        requestAnimationFrame(() => {
+          const titleIsVisible =
+            menuButton.isConnected &&
+            !menuButton.disabled &&
+            menuButton.getClientRects().length > 0 &&
+            getComputedStyle(menuButton).visibility === "visible";
+
+          if (titleIsVisible) {
+            menuButton.focus({ preventScroll: true });
+          } else if (isKeyboard) {
+            document.getElementById("main-content")?.focus({
+              preventScroll: true,
+            });
+          }
+        });
+      }
     }
   }
 
