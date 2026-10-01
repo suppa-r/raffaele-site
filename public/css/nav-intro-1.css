@@ -2,7 +2,7 @@
 /* ------------- Navigation -------------- */
 /* --------------------------------------- */
 
-nav {
+body[data-page="intro-1"] nav {
   block-size: 0;
   inline-size: 100%;
   min-inline-size: 0;
@@ -11,7 +11,7 @@ nav {
   margin-inline: auto;
 }
 
-.nav-links {
+body[data-page="intro-1"] .nav-links {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,7 @@ nav {
      margin-inline:auto;
 }
 
-.nav-links.open {
+body[data-page="intro-1"] .nav-links.open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -41,13 +41,13 @@ nav {
 
 }
 
-.nav-links.closing {
+body[data-page="intro-1"] .nav-links.closing {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.nav-item {
+body[data-page="intro-1"] .nav-item {
   --nav-item-inline-size: min(80vw, 18rem);
   list-style: none;
   display: flex;
@@ -62,7 +62,7 @@ nav {
   pointer-events: all;
 }
 
-.nav-item a {
+body[data-page="intro-1"] .nav-item a {
   font-family: var(--primary-font-secondary);
   display: flex;
   flex: 0 0 100%;
@@ -81,7 +81,7 @@ nav {
   transition: background-size 0.3s ease;
 }
 
-.nav-item .nav-close {
+body[data-page="intro-1"] .nav-item .nav-close {
   display: flex;
   flex: 0 0 100%;
   justify-content: center;
@@ -106,16 +106,16 @@ nav {
   transition: background-size 0.3s ease;
 }
 
-.nav-item .nav-close:hover,
-.nav-item .nav-close:focus-visible {
+body[data-page="intro-1"] .nav-item .nav-close:hover,
+body[data-page="intro-1"] .nav-item .nav-close:focus-visible {
   background-size: 100% 2px;
 }
 
-.nav-item a span {
+body[data-page="intro-1"] .nav-item a span {
   font-size: var(--fs-0);
 }
 
-.nav-item svg {
+body[data-page="intro-1"] .nav-item svg {
   height: var(--space-s);
   width: var(--space-s);
   object-fit: cover;
@@ -124,12 +124,12 @@ nav {
 }
 
 @media (min-width: 48rem) {
- nav {
+ body[data-page="intro-1"] nav {
     block-size: auto;
     min-inline-size: 0;
 }
 
-  .nav-links {
+  body[data-page="intro-1"] .nav-links {
     display: flex;
     justify-content: center;
   align-items: center;
@@ -145,26 +145,26 @@ nav {
     padding-block:var(--space-xs);
   }
 
-  .nav-links.open {
+  body[data-page="intro-1"] .nav-links.open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
   }
 
-  .nav-item {
+  body[data-page="intro-1"] .nav-item {
     list-style: none;
     flex: 1 1 0;
     position: relative;
     pointer-events: all;
   }
 
-  .nav-item a:hover,
-  .nav-item a:focus-visible,
-  .nav-item a.is-current {
+  body[data-page="intro-1"] .nav-item a:hover,
+  body[data-page="intro-1"] .nav-item a:focus-visible,
+  body[data-page="intro-1"] .nav-item a.is-current {
     background-size: 100% 2px;
   }
 
-  .nav-item a {
+  body[data-page="intro-1"] .nav-item a {
     font-family: var(--primary-font-secondary);
     display: flex;
     justify-content: center;
@@ -181,13 +181,13 @@ nav {
     transition: background-size 0.3s ease;
   }
 
-  .nav-item a span {
+  body[data-page="intro-1"] .nav-item a span {
     font-size: var(--fs-0);
     overflow-wrap:anywhere;
     text-align:center;
   }
 
-  .nav-item svg {
+  body[data-page="intro-1"] .nav-item svg {
     height: var(--space-s-m);
     width: var(--space-s-m);
     object-fit: cover;
@@ -198,16 +198,16 @@ nav {
 }
 
 @media (min-width: 48rem) and (max-width: 63.999rem) {
-  .nav-links {
+  body[data-page="intro-1"] .nav-links {
     gap: 0;
   }
 
-  .nav-item {
+  body[data-page="intro-1"] .nav-item {
     flex: 0 1 var(--space-6xl-7xl);
     inline-size: var(--space-6xl-7xl);
   }
 
-    .nav-item a span {
+    body[data-page="intro-1"] .nav-item a span {
     font-size: var(--fs-0);
     overflow-wrap:anywhere;
     white-space: nowrap;

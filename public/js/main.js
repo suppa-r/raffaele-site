@@ -295,8 +295,12 @@ function adoptNewBody(newDocument, savedTheme) {
   newBody.classList.add("page-entering");
   document.documentElement.replaceChild(newBody, document.body);
   document.documentElement.classList.remove(
-    "intro-nav-open",
-    "intro-nav-closing",
+    "intro-page-nav-open",
+    "intro-page-nav-closing",
+    "intro-1-nav-open",
+    "intro-1-nav-closing",
+    "intro-1-section-active",
+    "intro-1-nav-title-visible",
   );
   document.title = newDocument.title;
 

@@ -1,11 +1,11 @@
 /* ====================================
 Navigation
 ==================================== */
-nav {
+body[data-page="intro"] nav {
   font-size: var(--fs-01);
 }
 
-.overlay-navigation {
+body[data-page="intro"] .overlay-navigation {
   position: fixed;
   z-index: 99;
   top: 0;
@@ -15,18 +15,18 @@ nav {
   transform: translateY(-100%);
 }
 
-.overlay-slide-down {
+body[data-page="intro"] .overlay-slide-down {
   transition: all .4s ease-in-out;
   transform: translateY(0)
 }
 
-.overlay-slide-up {
+body[data-page="intro"] .overlay-slide-up {
   transition: all .8s ease-in-out;
   transform: translateY(-100%)
 }
 
-nav,
-nav ul {
+body[data-page="intro"] nav,
+body[data-page="intro"] nav ul {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -35,7 +35,7 @@ nav ul {
   overflow: hidden;
 }
 
-nav ul {
+body[data-page="intro"] nav ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,12 +43,12 @@ nav ul {
   gap: var(--space-xs-s);
 }
 
-.nav-links {
+body[data-page="intro"] .nav-links {
   height: 100%;
   list-style: none;
 }
 
-.nav-links li {
+body[data-page="intro"] .nav-links li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +64,7 @@ nav ul {
   transition: all .2s linear;
 }
 
-.nav-links li a {
+body[data-page="intro"] .nav-links li a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,42 +80,42 @@ nav ul {
 }
 
 @media (hover: hover) and (pointer: fine) {
-.nav-links li a:hover::before,
-  .nav-links li a:focus-visible::before {
+body[data-page="intro"] .nav-links li a:hover::before,
+  body[data-page="intro"] .nav-links li a:focus-visible::before {
     transform: scaleX(1);
     opacity: 1;
   }
 
-  .nav-links li a:hover::after,
-  .nav-links li a:focus-visible::after {
+  body[data-page="intro"] .nav-links li a:hover::after,
+  body[data-page="intro"] .nav-links li a:focus-visible::after {
     transform: translateY(40px);
     opacity: 1;
     display: block;
   }
 }
 
-.nav-links li:nth-of-type(1) {
+body[data-page="intro"] .nav-links li:nth-of-type(1) {
   background-color: #7594a05d
 }
 
-.nav-links li:nth-of-type(2) {
+body[data-page="intro"] .nav-links li:nth-of-type(2) {
   background-color: #2145535d
 }
 
 
-.slide-in-nav-item {
+body[data-page="intro"] .slide-in-nav-item {
   animation: slide-in-nav-item 0.4s linear 1 .2s both;
 }
 
-.slide-in-nav-item-delay-1 {
+body[data-page="intro"] .slide-in-nav-item-delay-1 {
   animation: slide-in-nav-item 0.4s linear 1 .4s both;
 }
 
-.slide-in-nav-item-reverse {
+body[data-page="intro"] .slide-in-nav-item-reverse {
   animation: slide-in-nav-item-reverse .3s linear 1 .5s both;
 }
 
-.slide-in-nav-item-delay-1-reverse {
+body[data-page="intro"] .slide-in-nav-item-delay-1-reverse {
   animation: slide-in-nav-item-reverse .3s linear 1 .4s both;
 }
 
@@ -123,7 +123,7 @@ nav ul {
 Burger king
 ==================================== */
 
-.open-overlay {
+body[data-page="intro"] .open-overlay {
   z-index: 100;
   width: var(--space-s-m);
   display: block;
@@ -133,39 +133,39 @@ Burger king
   padding: 0;
 }
 
-body:has(.open-overlay[aria-expanded="true"]) main,
-body:has(.open-overlay[aria-expanded="true"]) footer {
+body[data-page="intro"]:has(.open-overlay[aria-expanded="true"]) main,
+body[data-page="intro"]:has(.open-overlay[aria-expanded="true"]) footer {
   opacity: 0;
   transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body:has(.open-overlay[aria-expanded="false"]) main,
-body:has(.open-overlay[aria-expanded="false"]) footer {
+body[data-page="intro"]:has(.open-overlay[aria-expanded="false"]) main,
+body[data-page="intro"]:has(.open-overlay[aria-expanded="false"]) footer {
   opacity: 1;
   transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
-header:has(.open-overlay[aria-expanded="true"]) .header-title {
+body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"]) .header-title {
   opacity: 0;
   transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-header:has(.open-overlay[aria-expanded="false"]) .header-title {
+body[data-page="intro"] header:has(.open-overlay[aria-expanded="false"]) .header-title {
   opacity: 1;
   transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
-.open-overlay[aria-expanded="true"] span {
+body[data-page="intro"] .open-overlay[aria-expanded="true"] span {
   display: block;
   background-color: var(--text-color)
 }
 
-.open-overlay:focus-visible {
+body[data-page="intro"] .open-overlay:focus-visible {
   outline: 1px solid var(--text-color);
   outline-offset: 3px;
 }
 
-.open-overlay span {
+body[data-page="intro"] .open-overlay span {
   display: block;
   height: 1px;
   background-color:var(--text-color);
@@ -324,21 +324,21 @@ Animation keyframes
 
 
 @media (min-width: 48rem) {
-  nav {
+  body[data-page="intro"] nav {
     font-size: var(--fs-0);
   }
 
   /* allow the data-content tooltip to escape the clipped nav bounds */
-  nav,
-  nav ul {
+  body[data-page="intro"] nav,
+  body[data-page="intro"] nav ul {
     overflow: visible;
   }
 
-  nav ul {
+  body[data-page="intro"] nav ul {
     flex-direction: row;
   }
 
-  .nav-links li {
+  body[data-page="intro"] .nav-links li {
     position: relative;
     flex: 0 1 clamp(18rem, 30vw, 24rem);
     min-inline-size: 18rem;
@@ -346,17 +346,17 @@ Animation keyframes
     padding:var(--space-s) var(--space-2xl);
   }
 
-  .nav-links li a {
+  body[data-page="intro"] .nav-links li a {
     font-size: var(--fs-2);
     white-space: nowrap;
   }
 
   /* the li-anchored line below replaces the mobile a-anchored line */
-  .nav-links li a::before {
+  body[data-page="intro"] .nav-links li a::before {
     display: none;
   }
 
-  .nav-links li::before {
+  body[data-page="intro"] .nav-links li::before {
     content: '';
     width: 60px;
     height: 1.2px;
@@ -372,7 +372,7 @@ Animation keyframes
     transition: all .2s linear;
   }
 
-  .nav-links li a::after {
+  body[data-page="intro"] .nav-links li a::after {
     content: attr(data-content);
     position: absolute;
     z-index: 100;
@@ -392,12 +392,12 @@ Animation keyframes
     transition: all .2s linear;
   }
 
- .nav-links li:hover::before {
+ body[data-page="intro"] .nav-links li:hover::before {
     transform: scaleX(1);
     opacity: 1;
   }
 
-  .nav-links li:hover a::after {
+  body[data-page="intro"] .nav-links li:hover a::after {
     transform: translate(-50%, var(--space-s));
     opacity: 1;
   }

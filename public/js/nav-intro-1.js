@@ -27,8 +27,9 @@
   }
 
   function refreshElements() {
-    menuButton = document.querySelector(".intro-1-page-title-trigger");
-    navLinks = document.querySelector(".nav-links");
+    const introOnePage = document.querySelector('body[data-page="intro-1"]');
+    menuButton = introOnePage?.querySelector(".intro-1-page-title-trigger") || null;
+    navLinks = introOnePage?.querySelector(".nav-links") || null;
     firstNavLink = navLinks ? navLinks.querySelector("a[href]") : null;
   }
 
@@ -44,7 +45,7 @@
     );
 
     document.documentElement.classList.toggle(
-      "intro-section-active",
+      "intro-1-section-active",
       hasActiveSection,
     );
 
@@ -172,9 +173,9 @@
 
     menuButton.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
 
-    document.documentElement.classList.toggle("intro-nav-open", isMenuOpen);
+    document.documentElement.classList.toggle("intro-1-nav-open", isMenuOpen);
     if (!isMenuOpen) {
-      document.documentElement.classList.remove("intro-nav-title-visible");
+      document.documentElement.classList.remove("intro-1-nav-title-visible");
     }
 
     if (isMenuOpen) {
@@ -217,7 +218,7 @@
       "",
       `${window.location.pathname}${window.location.search}`,
     );
-    document.documentElement.classList.remove("intro-nav-closing");
+    document.documentElement.classList.remove("intro-1-nav-closing");
     window.dispatchEvent(new HashChangeEvent("hashchange"));
     setMenuState(false, { returnFocus: false });
     menuButton.focus({ preventScroll: true });
@@ -244,14 +245,14 @@
       }
 
       event.preventDefault();
-      document.documentElement.classList.add("intro-nav-closing");
+      document.documentElement.classList.add("intro-1-nav-closing");
       window.location.assign(link.href);
       return;
     }
 
     event.preventDefault();
     navLinks.classList.add("closing");
-    document.documentElement.classList.add("intro-nav-closing");
+    document.documentElement.classList.add("intro-1-nav-closing");
     setMenuState(false, { returnFocus: false });
 
     navCloseTimeoutId = window.setTimeout(() => {
@@ -261,10 +262,10 @@
         window.location.hash = destination;
         window.scrollTo(0, 0);
         setActiveNavLink();
-        document.documentElement.classList.remove("intro-nav-closing");
+        document.documentElement.classList.remove("intro-1-nav-closing");
         document.getElementById("main-content")?.focus({ preventScroll: true });
       } else {
-        document.documentElement.classList.remove("intro-nav-closing");
+        document.documentElement.classList.remove("intro-1-nav-closing");
         window.location.assign(link.href);
       }
     }, NAV_CLOSE_DURATION_MS);

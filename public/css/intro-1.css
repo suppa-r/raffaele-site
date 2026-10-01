@@ -153,35 +153,35 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
 }
 
 .page-entering .intro-1-page-title,
-.intro-section-active .intro-1-page-title,
-.intro-nav-open .intro-1-page-title {
+.intro-1-section-active .intro-1-page-title,
+.intro-1-nav-open .intro-1-page-title {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 
-.intro-nav-open main,
-.intro-nav-open footer {
+.intro-1-nav-open main,
+.intro-1-nav-open footer {
   pointer-events: none;
 }
 
-html.intro-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expanded="true"]) main {
+html.intro-1-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expanded="true"]) main {
   opacity: 1;
 }
 
-.intro-nav-open.intro-nav-title-visible .intro-1-page-title {
+.intro-1-nav-open.intro-1-nav-title-visible .intro-1-page-title {
   visibility: visible;
   opacity: 1;
 }
 
-.intro-nav-closing main,
-.intro-nav-closing footer {
+.intro-1-nav-closing main,
+.intro-1-nav-closing footer {
   opacity: 0 !important;
   pointer-events: none;
   transition: none;
 }
 
-.intro-nav-open .nav-links {
+.intro-1-nav-open .nav-links {
   pointer-events: auto;
 }
 
@@ -296,13 +296,13 @@ main>section[id]:target {
   pointer-events: auto;
 }
 
-html:not(.intro-section-active) main>section[id] {
+html:not(.intro-1-section-active) main>section[id] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.intro-nav-open main>section[id] {
+.intro-1-nav-open main>section[id] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -502,14 +502,14 @@ footer {
   }
 }
 
-.intro-nav-open .back-to-top {
+.intro-1-nav-open .back-to-top {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none;
   transform: scale(0) !important;
 }
 
-html.intro-section-active:not(.intro-nav-open, .intro-nav-closing) .back-to-top {
+html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-to-top {
   visibility: visible !important;
   opacity: 1 !important;
   transform: scale(1) !important;

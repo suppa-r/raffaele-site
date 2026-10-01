@@ -13,11 +13,12 @@
   let firstNavLink = null;
   const INTRO_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
   const INTRO_NAV_CLOSE_HIDE_FALLBACK_MS = 320;
-  const INTRO_NAV_CLOSING_CLASS = "intro-nav-closing";
+  const INTRO_NAV_OPEN_CLASS = "intro-page-nav-open";
+  const INTRO_NAV_CLOSING_CLASS = "intro-page-nav-closing";
 
   const introSectionHashes = new Set(
     Array.from(
-      document.querySelectorAll("main > section[id]"),
+      document.querySelectorAll('body[data-page="intro"] main > section[id]'),
       (section) => `#${section.id}`,
     ),
   );
@@ -28,7 +29,12 @@
   let introBoundNavLinksElement = null;
 
   function normalizeIntroOverlayNav() {
-    const overlays = [...document.querySelectorAll(".overlay-navigation")];
+    const introPage = document.querySelector('body[data-page="intro"]');
+    if (!introPage) {
+      return;
+    }
+
+    const overlays = [...introPage.querySelectorAll(".overlay-navigation")];
     if (overlays.length === 0) {
       return;
     }
@@ -77,14 +83,24 @@
   }
 
   function refreshIntroNavElements() {
+    const introPage = document.querySelector('body[data-page="intro"]');
+    if (!introPage) {
+      menu = null;
+      overlayNavigation = null;
+      navlinks = null;
+      pageTitle = null;
+      firstNavLink = null;
+      return;
+    }
+
     normalizeIntroOverlayNav();
-    menu = document.querySelector(".open-overlay");
-    overlayNavigation = document.querySelector(".overlay-navigation");
+    menu = introPage.querySelector(".open-overlay");
+    overlayNavigation = introPage.querySelector(".overlay-navigation");
     navlinks = overlayNavigation
       ? overlayNavigation.querySelector(".nav-links") ||
       overlayNavigation.querySelector("ul")
-      : document.querySelector(".nav-links");
-    pageTitle = document.querySelector(".intro-1-page-title");
+      : introPage.querySelector(".nav-links");
+    pageTitle = introPage.querySelector(".wrapper-gradient-text");
     firstNavLink = navlinks ? navlinks.querySelector("a[href]") : null;
   }
 
@@ -183,7 +199,7 @@
   }
 
   function setIntroNavOpenState(isOpen) {
-    document.documentElement.classList.toggle("intro-nav-open", isOpen);
+    document.documentElement.classList.toggle(INTRO_NAV_OPEN_CLASS, isOpen);
   }
 
   function setIntroNavClosingState(isClosing) {
@@ -308,6 +324,9 @@
   }
 
   function handleViewportChange() {
+    if (!isIntroPage()) {
+      return;
+    }
     setMenuState(false);
   }
 
@@ -354,7 +373,9 @@
     if (introBoundMenuElement !== menu) {
       introBoundMenuElement = menu;
 
-      const openOverlayButton = document.querySelector(".open-overlay");
+      const openOverlayButton = document.querySelector(
+        'body[data-page="intro"] .open-overlay',
+      );
       if (openOverlayButton instanceof HTMLElement) {
         openOverlayButton.addEventListener("click", (event) => {
           event.preventDefault();
@@ -393,6 +414,12 @@
 
   function initIntroNav() {
     if (!isIntroPage()) {
+      menu = null;
+      overlayNavigation = null;
+      navlinks = null;
+      pageTitle = null;
+      firstNavLink = null;
+      isMenuOpen = false;
       introBoundMenuElement = null;
       introBoundNavLinksElement = null;
       return;

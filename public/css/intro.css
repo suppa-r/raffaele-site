@@ -39,24 +39,24 @@ header::before {
     pointer-events: none;
 }
 
-header:has(.open-overlay[aria-expanded="true"])::before {
+body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before {
     opacity: 1;
     transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body:has(.open-overlay[aria-expanded="true"]) main,
-body:has(.open-overlay[aria-expanded="true"]) footer {
+body[data-page="intro"]:has(.open-overlay[aria-expanded="true"]) main,
+body[data-page="intro"]:has(.open-overlay[aria-expanded="true"]) footer {
     opacity: 0;
     transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body:has(.open-overlay[aria-expanded="false"]) main,
-body:has(.open-overlay[aria-expanded="false"]) footer {
+body[data-page="intro"]:has(.open-overlay[aria-expanded="false"]) main,
+body[data-page="intro"]:has(.open-overlay[aria-expanded="false"]) footer {
     opacity: 1;
     transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
-header:has(.open-overlay[aria-expanded="true"])::before {
+body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before {
     opacity: 1;
     transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -106,7 +106,7 @@ header:has(.open-overlay[aria-expanded="true"])::before {
 Burger king
 ==================================== */
 
-.open-overlay {
+body[data-page="intro"] .open-overlay {
     opacity: 1;
     position: relative;
     border: none;
@@ -299,7 +299,7 @@ footer {
     .overlay-slide-up,
     nav li a::before,
     nav li a::after,
-    .open-overlay span {
+    body[data-page="intro"] .open-overlay span {
         transition: none
     }
 
