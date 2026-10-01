@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/theme-switcher.css" />
   <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/whimsy-base.css" />
+      <link rel="stylesheet" href="css/whimsy.css" />
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
@@ -63,7 +65,9 @@
         <span>how</span>&nbsp;<span>it's</span>&nbsp;<span>going</span>
       </h2>
       <!-- ✅ CTA: a link styled as a button keeps the page navigation semantics and still supports the shared particle interaction -->
-      <a class="btn" href="index-intro.html" aria-labelledby="btn-label">
+<button class="btn" data-btn-type="whimsical" type="button" aria-controls="site_nav_links"
+					aria-expanded="false">
+  <a href="index-intro.html" aria-labelledby="btn-label">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" role="img"
           aria-labelledby="sneaker-icon-title">
           <title id="sneaker-icon-title">Sneaker icon</title>
@@ -82,7 +86,13 @@
         </svg>
         <span class="button-text" id="btn-label">ring the bell</span>
       </a>
-    </main>
+  <span class="deco" aria-hidden="true"></span>
+  <span class="deco" aria-hidden="true"></span>
+  <span class="deco" aria-hidden="true"></span>
+  <span class="deco" aria-hidden="true"></span>
+  <span class="deco" aria-hidden="true"></span>
+</button>
+</main>
     <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
     <footer role="contentinfo" class="footer">
       <div class="theme-selector-container">

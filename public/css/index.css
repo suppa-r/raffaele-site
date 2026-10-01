@@ -93,7 +93,7 @@ header {
     }
 }
 
-.btn {
+ /* .btn {
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -128,7 +128,7 @@ header {
     font-size: var(--fs-1);
 }
 
-.particle {
+/* .particle {
     position: absolute;
     width: 18px;
     height: 18px;
