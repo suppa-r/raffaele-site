@@ -14,17 +14,7 @@
   border-radius: 100vw;
   cursor: pointer;
 
-  svg {
-    width: var(--space-l);
-    height: var(--space-l);
-    pointer-events: none;
-  }
-
-  svg:hover {
-    transform: scale(0.5);
-  }
-
-  &[data-btn-type="whimsical"] {
+ &[data-btn-type="whimsical"] {
     --main-color: hsl(260deg, 80%, 70%);
     --deco-size: 7px;
     --deco-timing: 1.5s;
@@ -71,6 +61,17 @@
       }
     }
   }
+}
+
+.btn svg {
+  width: var(--space-l);
+  height: var(--space-l);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.btn:is(:hover, :focus-visible) svg {
+  transform: scale(0.5);
 }
 
 .btn[data-btn-type="whimsical"] .deco {
