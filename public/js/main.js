@@ -5,6 +5,7 @@ const INDEX_HERO_REVEAL_DURATION = 0.9;
 const INDEX_HERO_REVEAL_STAGGER = 0.12;
 const INDEX_HERO_REVEAL_DELAY = 0.1;
 const INDEX_SLIDE_OFFSET = "35vw";
+const MOBILE_CTA_NAVIGATION_DELAY_MS = 900;
 const INDEX_HEADING_SELECTORS = [
   ".text-with-animation span",
   ".text-with-animation-1 span",
@@ -35,9 +36,9 @@ async function handleSneakerClick(event) {
     button.classList.add("is-playing");
     button.setAttribute("aria-busy", "true");
     await new Promise((resolve) => requestAnimationFrame(resolve));
-    await Promise.allSettled(
-      button.getAnimations({ subtree: true }).map((animation) => animation.finished),
-    );
+    await new Promise((resolve) => {
+      window.setTimeout(resolve, MOBILE_CTA_NAVIGATION_DELAY_MS);
+    });
     if (!button.isConnected) return;
   }
 
