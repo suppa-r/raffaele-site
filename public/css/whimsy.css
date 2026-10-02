@@ -1,14 +1,10 @@
 .btn {
-display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-inline: auto;
-margin-top: 2rem;
-  box-shadow: 0 20px 10px 0 var(--text-color);
-
-
-
+  margin-block-start: 3rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 0.75em 2.5em;
   font-size: var(--fs-1);
   font-weight: 500;
@@ -18,28 +14,38 @@ margin-top: 2rem;
   border-radius: 100vw;
   cursor: pointer;
 
+  svg {
+    width: var(--space-l);
+    height: var(--space-l);
+    pointer-events: none;
+  }
+
+  svg:hover {
+    transform: scale(0.5);
+  }
+
   &[data-btn-type="whimsical"] {
     --main-color: hsl(260deg, 80%, 70%);
     --deco-size: 7px;
     --deco-timing: 1.5s;
---deco-1-color: oklch(from var(--main-color) 80% c h);
+ --deco-1-color: oklch(from var(--main-color) 80% c h);
     --deco-1-end-translate: 0 30px;
     --deco-1-end-offset: 80%;
---deco-2-color: oklch(from var(--main-color) 80% c calc(h + 50));
+ --deco-2-color: oklch(from var(--main-color) 80% c calc(h + 50));
     --deco-2-scale: 0.85;
     --deco-2-end-translate: 0 -30px;
     --deco-2-end-offset: 60%;
- --deco-3-color: oklch(from var(--main-color) 70% c calc(h + 20));
+--deco-3-color: oklch(from var(--main-color) 70% c calc(h + 20));
     --deco-3-speed-variation: 0.85;
     --deco-3-scale: 1.15;
     --deco-3-end-translate: 0 -10px;
     --deco-3-end-offset: 70%;
- --deco-4-color: oklch(from var(--main-color) 80% c calc(h - 20));
+--deco-4-color: oklch(from var(--main-color) 80% c calc(h - 20));
     --deco-4-speed-variation: 1.2;
     --deco-4-scale: 0.7;
     --deco-4-end-translate: -20px 50px;
     --deco-4-end-offset: 75%;
- --deco-5-color: oklch(from var(--main-color) 80% c calc(h - 200));
+--deco-5-color: oklch(from var(--main-color) 80% c calc(h - 200));
 
     transition: border-color 0.4s ease;
 
@@ -168,9 +174,4 @@ margin-top: 2rem;
   100% {
     opacity: 0;
   }
-}
-
-a {
-  margin-top: 2rem;
-  text-decoration: none;
 }

@@ -1,8 +1,3 @@
-const PARTICLE_COUNT = 20;
-const PARTICLE_REMOVE_MS = 1000;
-const PAGE_LEAVE_CLASS = "is-leaving";
-const PARTICLE_DISTANCE_MIN = 20;
-const PARTICLE_DISTANCE_MAX = 100;
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
 const MAIN_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INDEX_HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -16,10 +11,6 @@ const INDEX_HEADING_SELECTORS = [
   ".text-with-animation-2 span",
 ];
 
-function getSneakerButton() {
-  return document.querySelector(".btn");
-}
-
 function bindOnce(selector, eventName, handler) {
   document.querySelectorAll(selector).forEach((element) => {
     const key = `bound${eventName}`;
@@ -29,47 +20,9 @@ function bindOnce(selector, eventName, handler) {
   });
 }
 
-function createParticle(x, y) {
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
-  particle.setAttribute("aria-hidden", "true");
-  particle.style.left = `${x}px`;
-  particle.style.top = `${y}px`;
-
-  const angle = Math.random() * 2 * Math.PI;
-  const distance =
-    Math.random() * (PARTICLE_DISTANCE_MAX - PARTICLE_DISTANCE_MIN) +
-    PARTICLE_DISTANCE_MIN;
-  particle.style.setProperty("--tx", `${Math.cos(angle) * distance}px`);
-  particle.style.setProperty("--ty", `${Math.sin(angle) * distance}px`);
-
-  return particle;
-}
-
-function emitParticles(button, x, y) {
-  for (let i = 0; i < PARTICLE_COUNT; i += 1) {
-    const particle = createParticle(x, y);
-    button.appendChild(particle);
-    setTimeout(() => particle.remove(), PARTICLE_REMOVE_MS);
-  }
-}
-
 function handleSneakerClick(event) {
-  const button = event.currentTarget || getSneakerButton();
-  if (!button) return;
-
   event.preventDefault();
-
-  const rect = button.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-
-  document.body.classList.add(PAGE_LEAVE_CLASS);
-  emitParticles(button, x, y);
-
-  setTimeout(() => {
-    window.location.assign("index-intro.html");
-  }, 800);
+  window.location.assign("index-intro.html");
 }
 
 function bindSneakerButton() {
