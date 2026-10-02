@@ -20,9 +20,28 @@ function bindOnce(selector, eventName, handler) {
   });
 }
 
-function handleSneakerClick(event) {
+async function handleSneakerClick(event) {
   event.preventDefault();
-  window.location.assign("index-intro.html");
+  const button = event.currentTarget;
+  if (button.classList.contains("is-playing")) return;
+
+  const destination = button.getAttribute("href") || button.dataset.href || "index-intro.html";
+  const usesTouchInteraction = window.matchMedia(
+    "(hover: none) and (pointer: coarse)",
+  ).matches;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (usesTouchInteraction && !reducedMotion && button.dataset.btnType === "whimsical") {
+    button.classList.add("is-playing");
+    button.setAttribute("aria-busy", "true");
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await Promise.allSettled(
+      button.getAnimations({ subtree: true }).map((animation) => animation.finished),
+    );
+    if (!button.isConnected) return;
+  }
+
+  window.location.assign(destination);
 }
 
 function bindSneakerButton() {

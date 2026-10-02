@@ -1,14 +1,13 @@
 .btn {
-  margin-block-start: 3rem;
+  margin-block-start: var(--space-2xl-3xl);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.75em 2.5em;
+  padding: var(--space-s-m) var(--space-2xl-3xl);
   font-size: var(--fs-1);
-  font-weight: 500;
-  color: var(--text-primary);
+  color: var(--text-color);
   background: var(--surface-1);
   border: 2px solid var(--border-default);
   border-radius: 100vw;
@@ -52,7 +51,8 @@
     }
 
     &:hover,
-    &:focus-visible {
+    &:focus-visible,
+    &.is-playing {
       outline: none;
       border-color: var(--main-color);
 
@@ -64,14 +64,15 @@
 }
 
 .btn svg {
-  width: var(--space-l);
-  height: var(--space-l);
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
   pointer-events: none;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.btn:is(:hover, :focus-visible) svg {
-  transform: scale(0.5);
+.btn:is(:hover, :focus-visible, .is-playing) svg {
+  transform: scale(0.6);
+  opacity: 0.2;
 }
 
 .btn[data-btn-type="whimsical"] .deco {
@@ -107,7 +108,7 @@
   }
 }
 
-.btn[data-btn-type="whimsical"]:is(:hover, :focus-visible) .deco {
+.btn[data-btn-type="whimsical"]:is(:hover, :focus-visible, .is-playing) .deco {
   offset-distance: var(--deco-end-offset, 70%);
   translate: var(--deco-end-translate);
 
@@ -174,5 +175,19 @@
 
   100% {
     opacity: 0;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn[data-btn-type="whimsical"] {
+    touch-action: manipulation;
+  }
+
+  .btn[data-btn-type="whimsical"]:not(.is-playing) .deco {
+    animation: none;
+    transition: none;
+    opacity: 0;
+    translate: 0 0;
+    offset-distance: 0%;
   }
 }
