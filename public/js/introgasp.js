@@ -12,7 +12,7 @@ const INTRO_PAGE_SELECTOR = 'body[data-page="intro"]';
 const INTRO_ANIMATION_TARGET =
   'body[data-page="intro"] main p:not(.wrapper-gradient-text)';
 const INTRO_SPLIT_TARGET =
-  'body[data-page="intro"] main p:not(.wrapper-gradient-text, .fancy-quote)';
+  'body[data-page="intro"] main p:not(.wrapper-gradient-text, .fancy-quote, [data-split="false"])';
 const WRAPPER_GRADIENT_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text';
 const WRAPPER_GRADIENT_WORD_TARGET =
