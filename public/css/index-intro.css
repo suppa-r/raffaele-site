@@ -1,12 +1,12 @@
 /* stylelint-disable media-feature-range-notation */
 :root {
-   --card-radius: 2em;
+   --card-radius:4em;
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
    --card-active-scale: 1.03;
    --card-front-active-transform: translateY(-8%) scale(0.86);
-   --card-portrait-active-opacity: 0.4;
-   --card-portrait-active-transform: scale(0.7);
+   --card-portrait-active-opacity: 0.6;
+   --card-portrait-active-transform: scale(0.6);
    --card-background-active-transform: scale(1);
    --card-background-image-active-transform: scale(1);
 }
@@ -96,7 +96,7 @@ font-size: var(--fs-0);
 .back {
    position: absolute;
    inset: auto 0 0;
-   block-size: 22%;
+   block-size: 25%;
    z-index: 2;
    display: grid;
    place-items: center;
@@ -119,7 +119,7 @@ font-size: var(--fs-0);
 
 .background {
    position: absolute;
-   inset: 2% 2% 35%;
+   inset: 6% 6% 20%;
    z-index: 0;
    overflow: hidden;
    border-radius: var(--card-radius);
@@ -132,9 +132,9 @@ font-size: var(--fs-0);
 
 .background img {
    display: block;
-   width: 400px;
-   height: auto;
-   object-fit: cover;
+   width: auto;
+   height: 400px;
+   object-fit: contain;
    object-position: center;
    transition: transform var(--card-transition);
 z-index:100;
