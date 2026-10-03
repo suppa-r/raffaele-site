@@ -118,8 +118,8 @@ body[data-page="intro"] .open-overlay {
 
 .content {
     display: grid;
-    place-content: center;
-    place-items: center;
+   align-content:start;
+   margin-block-start: var(--space-m-l);
 }
 
 .wrapper-gradient-text {
