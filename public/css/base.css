@@ -3,7 +3,7 @@
                 BASE - Mobile (320px - 479px)
 ============================================ */
     --max-inline-size: min(26.25rem, 95vw);
-    --padding-inline: var(--space-m);
+    --padding-inline: var(--space-2xs);
     --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
 }
 
@@ -33,12 +33,6 @@ body {
     -webkit-font-smoothing: antialiased;
     hyphens: auto;
 }
-
-/* @media (min-width: 48rem) {
-    body {
-        font-size: var(--fs-0);
-    }
-} */
 
 .wrapper {
     position: relative;
@@ -148,6 +142,7 @@ p {
     text-wrap: pretty;
     overflow-wrap: break-word;
     hyphens: auto;
+    margin-block: 0;
 }
 
 a {
@@ -209,7 +204,7 @@ a:focus-visible {
 @media (min-width: 30rem) {
     :root {
         --max-inline-size: min(52.5rem, 95dvw);
-        --padding-inline: var(--space-m);
+        --padding-inline: var(--space-2xs);
     }
 
 

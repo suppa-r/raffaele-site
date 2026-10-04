@@ -167,23 +167,10 @@ body[data-page="intro"] .open-overlay {
     }
 }
 
-main {
-    inline-size: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: 0;
-
-    &>* {
-        text-box: trim-both text text;
-    }
-
-    &>p {
-        inline-size: min(100%, 85ch);
-        margin-inline: auto;
-        text-align: center;
-    }
+main p {
+    inline-size: min(100%, 75ch);
+    margin-inline: auto;
+    text-align: center;
 }
 
 main p:not(.wrapper-gradient-text) {
@@ -213,6 +200,13 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     transform: translateY(100%);
 }
 
+body[data-page="intro"] main > p{
+  padding-block: var(--space-3xs-2xs);
+}
+
+body[data-page="intro"] main>p span {
+    padding-block: var(--space-4xs-3xs);
+}
 
 .text-break {
     display: block;
@@ -265,10 +259,6 @@ footer {
 @media (min-width: 48rem) {
     header {
         font-size: var(--fs-0);
-    }
-
-    main {
-  letter-spacing: var(--letter-spacing-body);
     }
 
     .text-break {
