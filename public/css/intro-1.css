@@ -29,6 +29,7 @@ header {
   isolation: isolate;
   line-height: 1;
   background: transparent;
+    padding-block:0;
 }
 
 body[data-page="intro-1"] header {

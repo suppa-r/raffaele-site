@@ -3,7 +3,7 @@
                 BASE - Mobile (320px - 479px)
 ============================================ */
     --max-inline-size: min(26.25rem, 95vw);
-    --padding-inline: var(--space-2xs);
+    --padding-inline: var(--space-s);
     --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
 }
 
@@ -204,7 +204,7 @@ a:focus-visible {
 @media (min-width: 30rem) {
     :root {
         --max-inline-size: min(52.5rem, 95dvw);
-        --padding-inline: var(--space-2xs);
+        --padding-inline: var(--space-s);
     }
 
 

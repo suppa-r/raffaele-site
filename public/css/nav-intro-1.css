@@ -1,3 +1,4 @@
+/* stylelint-disable media-feature-range-notation */
 /* --------------------------------------- */
 /* ------------- Navigation -------------- */
 /* --------------------------------------- */
@@ -34,6 +35,7 @@ body[data-page="intro-1"] .nav-links {
 }
 
 body[data-page="intro-1"] .nav-links.open {
+  margin-inline: auto;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -48,7 +50,7 @@ body[data-page="intro-1"] .nav-links.closing {
 }
 
 body[data-page="intro-1"] .nav-item {
-  --nav-item-inline-size: min(80vw, 18rem);
+  --nav-item-inline-size: min(100vw, 7rem);
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -60,11 +62,13 @@ body[data-page="intro-1"] .nav-item {
   padding: 0;
   margin: 0;
   pointer-events: all;
+  margin-inline:auto;
 }
 
 body[data-page="intro-1"] .nav-item a {
   font-family: var(--primary-font-secondary);
   display: flex;
+  justify-content:space-between;
   flex: 0 0 100%;
   inline-size: 100%;
   min-inline-size: 0;
@@ -116,14 +120,14 @@ body[data-page="intro-1"] .nav-item a span {
 }
 
 body[data-page="intro-1"] .nav-item svg {
-  height: var(--space-s);
-  width: var(--space-s);
+  height: var(--space-m);
+  width: var(--space-m);
   object-fit: cover;
   border-radius: 50%;
   fill: var(--text-color);
 }
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
  body[data-page="intro-1"] nav {
     block-size: auto;
     min-inline-size: 0;
@@ -188,8 +192,8 @@ body[data-page="intro-1"] .nav-item svg {
   }
 
   body[data-page="intro-1"] .nav-item svg {
-    height: var(--space-s-m);
-    width: var(--space-s-m);
+    height: var(--space-m);
+    width: var(--space-m);
     object-fit: cover;
     border-radius: 50%;
     fill: var(--text-color);
