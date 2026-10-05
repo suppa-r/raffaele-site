@@ -1,34 +1,35 @@
-/* stylelint-disable media-feature-range-notation */
 :root {
-   --card-radius: 4em;
+   --card-radius: 2em;
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
    --card-active-scale: 1.03;
    --card-front-active-transform: translateY(-8%) scale(0.86);
-   --card-portrait-active-opacity: 0.6;
-   --card-portrait-active-transform: scale(0.6);
+   --card-portrait-active-opacity: 0.3;
+   --card-portrait-active-transform: scale(0.7);
    --card-background-active-transform: scale(1);
-   --card-background-image-active-transform: scale(1);
+   --card-background-image-active-transform: scale(1.5);
 }
 
 .wrapper {
    display: grid;
-   grid-template-rows: 1fr;
-   font-size: var(--fs-0);
+   grid-template-rows: 1fr auto;
+   font-size: var(--fs-01);
+
+   @media (min-width: 768px) {
+      font-size: var(--fs-0);
+   }
 }
 
-.content {
+main {
    display: grid;
-   place-content: center;
    place-items: center;
    min-block-size: 0;
-   color: var(--text-color);
 }
 
 .game {
    position: relative;
    display: block;
-   inline-size: min(100%, clamp(16rem, 42vw, 28rem));
+   width: min(16rem, calc(100vw - 2rem));
    aspect-ratio: 4 / 5;
    border-radius: var(--card-radius);
    color: inherit;
@@ -89,14 +90,10 @@
    transition: opacity 180ms ease, visibility 180ms ease;
 }
 
-.stats .viewers {
-   font-size: var(--fs-1);
-}
-
 .back {
    position: absolute;
    inset: auto 0 0;
-   block-size: 20%;
+   block-size: 22%;
    z-index: 2;
    display: grid;
    place-items: center;
@@ -113,13 +110,9 @@
    text-align: center;
 }
 
-.back .viewers {
-   font-size: var(--fs-1);
-}
-
 .background {
    position: absolute;
-   inset: 0 4% 20%;
+   inset: 0 0 22%;
    z-index: 0;
    overflow: hidden;
    border-radius: var(--card-radius);
@@ -135,9 +128,9 @@
    width: 100%;
    height: 100%;
    object-fit: contain;
-   object-position: center top;
+   object-position: center;
+   border-radius: 50%;
    transition: transform var(--card-transition);
-   z-index: 100;
 }
 
 footer {
@@ -146,7 +139,11 @@ footer {
    align-items: center;
 }
 
-@media (width >=48rem) {
+@media (min-width: 48rem) {
+   .game {
+      width: clamp(20rem, 30vw, 28rem);
+   }
+
    .game-stat {
       font-size: var(--fs-3);
    }

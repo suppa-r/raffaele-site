@@ -40,8 +40,7 @@ window.ANIMATION_CONSTANTS = {
     selectors: {
       navItems: "header",
       footerEntries: "footer.footer > *:not(.theme-selector-container)",
-      titleWords: ".intro-1-page-title-trigger .word",
-      titleEmphasis: ".title-emphasis",
+      titleLine: ".intro-1-page-title .title-line",
       profileTitleSpan: ".profile-title span",
     },
     timing: {
@@ -50,14 +49,12 @@ window.ANIMATION_CONSTANTS = {
       footerRevealDuration: 0.6,
       footerRevealStagger: 0.1,
       footerRevealDelay: 1.8,
-      titleWordDuration: 0.9,
-      titleWordStagger: 0.12,
-      titleWordDelay: 0.1,
-      titleWordOffset: "35vw",
-      titleEmphasisDuration: 0.8,
-      titleEmphasisOverlap: 0.45,
+      titleLineDuration: 1.7,
+      titleLineStagger: 0.18,
+      titleLineDelay: 0.18,
       profileTitleRevealDuration: 1.6,
     },
+    slideOffset: "100vw",
   },
 
   /* ===== UTILITY FUNCTIONS ===== */

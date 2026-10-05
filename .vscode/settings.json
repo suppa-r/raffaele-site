@@ -8,13 +8,13 @@
     "editor.endOfLine": "lf"
   },
   "[css]": {
-    "editor.defaultFormatter": "vscode.css-language-features",
+    "editor.defaultFormatter": "stylelint.vscode-stylelint",
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.endOfLine": "lf"
   },
   "[html]": {
-      "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.defaultFormatter": "vscode.html-language-features",
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.endOfLine": "lf"
@@ -25,7 +25,6 @@
     "typescript",
     "typescriptreact"
   ],
-    "css.format.newlineBetweenRules": false,
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "css.lint.enabled": true,

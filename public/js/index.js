@@ -51,9 +51,6 @@ backToTopButton?.addEventListener("click", (event) => {
     return;
   }
 
-  const wasSectionActive = document.documentElement.classList.contains(
-    "intro-1-section-active",
-  );
   event.preventDefault();
 
   sectionContainer?.scrollTo({
@@ -67,8 +64,8 @@ backToTopButton?.addEventListener("click", (event) => {
     `${window.location.pathname}${window.location.search}`,
   );
   document.documentElement.classList.remove(
-    "intro-1-section-active",
-    "intro-1-nav-closing",
+    "intro-section-active",
+    "intro-nav-closing",
   );
   window.dispatchEvent(new HashChangeEvent("hashchange"));
 
@@ -78,18 +75,6 @@ backToTopButton?.addEventListener("click", (event) => {
     headerText.setAttribute("aria-hidden", "false");
   }
 
-  const titleTrigger = document.querySelector(".intro-1-page-title-trigger");
-  if (wasSectionActive) {
-    document.dispatchEvent(new CustomEvent("intro-1:replay-title"));
-    if (window.matchMedia("(max-width: 47.999rem)").matches) {
-      document.documentElement.classList.remove("intro-1-nav-title-visible");
-    } else {
-      document.documentElement.classList.add("intro-1-nav-title-visible");
-      titleTrigger?.click();
-    }
-  } else {
-    titleTrigger?.click();
-  }
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 });
 

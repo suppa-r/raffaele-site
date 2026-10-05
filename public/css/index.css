@@ -1,8 +1,11 @@
 .wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-01);
+
+  @media (min-width: 768px) {
     font-size: var(--fs-0);
-    color: var(--text-color);
+  }
 }
 
 header {
@@ -32,64 +35,163 @@ header {
 
 .header-text {
     font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
     font-style: italic;
     line-height: 1;
 }
 
 .header-break {
     font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
     font-style: italic;
     line-height: 1;
 }
 
-.content {
-    display: grid;
-    place-content: center;
-    place-items: center;
-    row-gap: var(--space-xs);
+@media (min-width: 48rem) {
+    .header-text {
+        font-size: var(--fs-1);
+    }
 }
 
-.content> :is(h1, h2, h3, h4, h5, h6) {
-    margin: 0;
-    padding: 0;
+main {
+    display: grid;
+    place-content: center center;
+    text-align: center;
+    margin-inline: auto;
+    row-gap: var(--space-s-m);
+}
+
+main > * {
+    margin-block: 0;
 }
 
 .text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2 {
+    inline-size: fit-content;
+    margin-inline: auto;
+    --main-enter-offset: -6vw;
     font-size: var(--fs-3);
+    text-align: center;
     font-style: italic;
     line-height: 0.92;
     letter-spacing: var(--letter-spacing-wide);
-    text-wrap: balance;
-    overflow-wrap: break-word;
+    white-space: nowrap;
 }
 
 .text-with-animation {
-    letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
+    letter-spacing: 0.02em;
 }
 
 .text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
+    position: relative;
     opacity: 0;
     display: inline-flex;
     will-change: transform, opacity;
 }
 
-@media (max-width: 47.999rem) {
-    .text-with-animation {
-        font-size: var(--fs-2);
-        letter-spacing: 0.01rem;
+.btn {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-inline: auto;
+    margin-top: var(--space-m-l);
+    box-shadow: 0 20px 10px 0 var(--text-color);
+    isolation: isolate;
+    z-index: 10;
+    border-radius: var(--space-3xl-4xl);
+    text-decoration: none;
+    position: relative;
+    background: var(--base-color);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2xs-xs);
+    text-align: center;
+    pointer-events: none;
+    position: relative;
+    margin-inline: auto;
+    padding: var(--space-s-m) var(--space-xl-2xl);
+    z-index: 12;
+    font-size: var(--fs-1);
+}
+
+.particle {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--text-color);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    transform: translate(0, 0);
+    animation: particleAnim 1s ease-out forwards
+}
+
+@keyframes particleAnim {
+    to {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty))
     }
 }
 
-@media (min-width: 48rem) {
-    .text-with-animation,
-    .text-with-animation-1,
-    .text-with-animation-2 {
-        inline-size: fit-content;
-        white-space: nowrap;
+.btn svg {
+    width: var(--space-m-l);
+    height: var(--space-m-l);
+    fill: var(--text-color);
+    transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn:hover svg {
+    transform: scale(0.8);
+    opacity: 0.5;
+}
+
+@media (hover:none) and (pointer:coarse) {
+    .btn {
+        -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
+        touch-action: manipulation;
+        transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:active {
+        transform: scale(1);
+        box-shadow: 0 12px 8px 0 var(--text-color);
+    }
+
+    .btn svg {
+        transition: fill 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:active svg {
+        transform: scale(1.12) rotate(12deg);
+    }
+
+    @supports (-webkit-touch-callout: none) {
+        .btn {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        .btn:active {
+            transform: scale(1);
+            box-shadow: 0 10px 7px 0 var(--text-color);
+        }
+
+        .btn:active svg {
+            transform: scale(1.08) rotate(10deg);
+        }
     }
 }
 

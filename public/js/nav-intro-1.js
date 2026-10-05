@@ -7,7 +7,7 @@
 
   const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
   const NAV_ITEM_SELECTOR = ".nav-item";
-  const mobileQuery = window.matchMedia("(max-width: 47.999rem)");
+  const mobileQuery = window.matchMedia("(max-width: 55.999rem)");
 
   let menuButton = null;
   let navLinks = null;
@@ -27,9 +27,8 @@
   }
 
   function refreshElements() {
-    const introOnePage = document.querySelector('body[data-page="intro-1"]');
-    menuButton = introOnePage?.querySelector(".intro-1-page-title-trigger") || null;
-    navLinks = introOnePage?.querySelector(".nav-links") || null;
+    menuButton = document.querySelector(".open-overlay");
+    navLinks = document.querySelector(".nav-links");
     firstNavLink = navLinks ? navLinks.querySelector("a[href]") : null;
   }
 
@@ -45,7 +44,7 @@
     );
 
     document.documentElement.classList.toggle(
-      "intro-1-section-active",
+      "intro-section-active",
       hasActiveSection,
     );
 
@@ -147,60 +146,73 @@
     );
   }
 
+  function animateHamburgerButton(opening) {
+    if (isReducedMotionPreferred() || !menuButton) {
+      return;
+    }
+
+    const topBar = menuButton.querySelector(".bar-top");
+    const middleBar = menuButton.querySelector(".bar-middle");
+    const bottomBar = menuButton.querySelector(".bar-bottom");
+    if (!topBar || !middleBar || !bottomBar) {
+      return;
+    }
+
+    const toggle = (element, removeClass, addClass) => {
+      element.classList.remove(removeClass, addClass);
+      void element.offsetWidth;
+      element.classList.add(addClass);
+    };
+
+    if (opening) {
+      toggle(topBar, "animate-out-top-bar", "animate-top-bar");
+      toggle(middleBar, "animate-out-middle-bar", "animate-middle-bar");
+      toggle(bottomBar, "animate-out-bottom-bar", "animate-bottom-bar");
+    } else {
+      toggle(middleBar, "animate-middle-bar", "animate-out-middle-bar");
+      toggle(bottomBar, "animate-bottom-bar", "animate-out-bottom-bar");
+    }
+  }
+
   function setMenuState(isOpen, options = {}) {
     refreshElements();
     if (!menuButton || !navLinks) {
       return;
     }
 
-    const { isKeyboard = false, returnFocus = true } = options;
+    const { isKeyboard = false } = options;
     clearTimeout(navCloseTimeoutId);
     isMenuOpen = Boolean(isOpen);
-    const navHasFocus = navLinks.contains(document.activeElement);
-    const shouldReturnFocus =
-      !isMenuOpen && returnFocus && (isKeyboard || navHasFocus);
-    const focusTarget = !isMenuOpen && navHasFocus
-      ? document.getElementById("main-content")
-      : null;
 
-    focusTarget?.focus({ preventScroll: true });
+    if (!isMenuOpen && navLinks.contains(document.activeElement)) {
+      menuButton.focus({ preventScroll: true });
+    }
 
     navLinks.classList.toggle("open", isMenuOpen);
     navLinks.setAttribute("aria-hidden", isMenuOpen ? "false" : "true");
     if ("inert" in navLinks) {
-      navLinks.inert = !isMenuOpen;
+      navLinks.inert = !isMenuOpen && mobileQuery.matches;
     }
 
+    menuButton.classList.toggle("is-active", isMenuOpen);
     menuButton.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
+    menuButton.setAttribute(
+      "aria-label",
+      isMenuOpen ? "Close menu" : "Open menu",
+    );
 
-    document.documentElement.classList.toggle("intro-1-nav-open", isMenuOpen);
-    if (!isMenuOpen) {
-      document.documentElement.classList.remove("intro-1-nav-title-visible");
-    }
+    document.documentElement.classList.toggle("intro-nav-open", isMenuOpen);
+    animateHamburgerButton(isMenuOpen);
 
     if (isMenuOpen) {
       animateNavItemsIn();
-      if (firstNavLink) {
+      if (isKeyboard && firstNavLink) {
         firstNavLink.focus({ preventScroll: true });
       }
     } else {
       resetNavItems();
-      if (shouldReturnFocus) {
-        requestAnimationFrame(() => {
-          const titleIsVisible =
-            menuButton.isConnected &&
-            !menuButton.disabled &&
-            menuButton.getClientRects().length > 0 &&
-            getComputedStyle(menuButton).visibility === "visible";
-
-          if (titleIsVisible) {
-            menuButton.focus({ preventScroll: true });
-          } else if (isKeyboard) {
-            document.getElementById("main-content")?.focus({
-              preventScroll: true,
-            });
-          }
-        });
+      if (isKeyboard) {
+        menuButton.focus({ preventScroll: true });
       }
     }
   }
@@ -208,29 +220,18 @@
   function handleToggleClick(event) {
     event.preventDefault();
     event.stopPropagation();
-    setMenuState(!isMenuOpen);
+    setMenuState(!isMenuOpen, { isKeyboard: false });
   }
 
-  function handleCloseNavigation(event) {
-    event.preventDefault();
-    window.history.pushState(
-      {},
-      "",
-      `${window.location.pathname}${window.location.search}`,
-    );
-    document.documentElement.classList.remove("intro-1-nav-closing");
-    window.dispatchEvent(new HashChangeEvent("hashchange"));
-    setMenuState(false, { returnFocus: false });
-    menuButton.focus({ preventScroll: true });
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  function handleToggleKeydown(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      event.stopPropagation();
+      setMenuState(!isMenuOpen, { isKeyboard: true });
+    }
   }
 
   function handleNavLinksClick(event) {
-    if (event.target.closest(".nav-close")) {
-      handleCloseNavigation(event);
-      return;
-    }
-
     const link = event.target.closest("a[href]");
     if (!link) {
       return;
@@ -239,21 +240,20 @@
     if (!mobileQuery.matches) {
       const destination = link.getAttribute("href");
       if (destination?.startsWith("#")) {
-        setMenuState(false, { returnFocus: false });
         window.setTimeout(setActiveNavLink, 0);
         return;
       }
 
       event.preventDefault();
-      document.documentElement.classList.add("intro-1-nav-closing");
+      document.documentElement.classList.add("intro-nav-closing");
       window.location.assign(link.href);
       return;
     }
 
     event.preventDefault();
     navLinks.classList.add("closing");
-    document.documentElement.classList.add("intro-1-nav-closing");
-    setMenuState(false, { returnFocus: false });
+    document.documentElement.classList.add("intro-nav-closing");
+    setMenuState(false);
 
     navCloseTimeoutId = window.setTimeout(() => {
       navLinks.classList.remove("closing");
@@ -262,10 +262,9 @@
         window.location.hash = destination;
         window.scrollTo(0, 0);
         setActiveNavLink();
-        document.documentElement.classList.remove("intro-1-nav-closing");
-        document.getElementById("main-content")?.focus({ preventScroll: true });
+        document.documentElement.classList.remove("intro-nav-closing");
       } else {
-        document.documentElement.classList.remove("intro-1-nav-closing");
+        document.documentElement.classList.remove("intro-nav-closing");
         window.location.assign(link.href);
       }
     }, NAV_CLOSE_DURATION_MS);
@@ -278,14 +277,17 @@
   }
 
   function handleViewportChange() {
-    if (!menuButton || !navLinks) {
-      return;
+    if (!mobileQuery.matches) {
+      isMenuOpen = false;
+      navLinks?.classList.remove("open");
+      navLinks?.setAttribute("aria-hidden", "false");
+      if (navLinks && "inert" in navLinks) {
+        navLinks.inert = false;
+      }
+      document.documentElement.classList.remove("intro-nav-open");
     }
-    setMenuState(false, {
-      returnFocus: navLinks.contains(document.activeElement),
-    });
-    // setMenuState() re-queries the DOM and may null navLinks after a page swap
-    navLinks?.classList.remove("closing");
+
+    resetNavItems();
   }
 
   function attachEvents() {
@@ -293,15 +295,11 @@
     if (!menuButton || !navLinks) {
       return;
     }
-    menuButton.setAttribute("aria-expanded", "false");
-    navLinks.setAttribute("aria-hidden", "true");
-    if ("inert" in navLinks) {
-      navLinks.inert = true;
-    }
 
     if (boundMenuButton !== menuButton) {
       boundMenuButton = menuButton;
       menuButton.addEventListener("click", handleToggleClick);
+      menuButton.addEventListener("keydown", handleToggleKeydown);
     }
 
     if (boundNavLinks !== navLinks) {
@@ -316,9 +314,6 @@
 
   function init() {
     if (!isIntroOnePage()) {
-      menuButton = null;
-      navLinks = null;
-      firstNavLink = null;
       boundMenuButton = null;
       boundNavLinks = null;
       isMenuOpen = false;

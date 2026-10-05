@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/theme-switcher.css" />
   <link rel="stylesheet" href="css/intro.css" />
-  <link rel="stylesheet" href="css/nav-intro.css" />
+  <link rel="stylesheet" href="css/nav.css" />
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
@@ -40,7 +40,7 @@
   <script src="js/intro-theme-selector.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/introgasp.js" defer></script>
-  <script src="js/nav-intro.js" defer></script>
+  <script src="js/nav-bar-for-intro.js" defer></script>
 </head>
 
 <body data-page="intro">
@@ -54,18 +54,18 @@
       <div class="header-inner" aria-label="Site header">
         <div class="logo" aria-label="Raffaele Suppa brand">
           <img src="images/Gmail.JPG" alt="Raffaele Suppa logo" width="50" height="50" />
-          </div>
-     <p class="header-title">
+          <p class="header-title">
             sometimes<span>DESIGNER</span>sometimes<span>NOT</span>
           </p>
-          </div>
+        </div>
         <button class="open-overlay" type="button" aria-label="Open menu" aria-expanded="false"
           aria-controls="intro-overlay-navigation">
           <span class="bar-top"></span>
           <span class="bar-middle"></span>
           <span class="bar-bottom"></span>
         </button>
- </header>
+      </div>
+    </header>
     <div id="intro-overlay-navigation" class="overlay-navigation" aria-hidden="true">
       <nav role="navigation" aria-label="Main navigation">
         <ul class="nav-links">
@@ -74,23 +74,22 @@
         </ul>
       </nav>
     </div>
-  <main id="main-content" class="content" aria-labelledby="site-heading" tabindex="-1">
-      <h1 id="site-heading" class="wrapper-gradient-text" aria-label="genesis">
+    <main id="main-content" aria-label="Introduction text" tabindex="-1">
+      <p class="wrapper-gradient-text" aria-label=" genesis">
         <span class="text-layer" aria-hidden="true">genesis</span>
-      </h1>
+      </p>
       <p>Once upon a time it began</p>
-      <p>this is where the apple fell and Eden was changed</p>
-      <p>If I had a secret I'm telling it now</p>
-      <p class="fancy-quote"><em>Amazing Grace</em></p>
-      <p>hit it into the cheap seats</p>
+      <p>this is where the apple fell <span class="text-break">and Eden was changed</span></p>
+      <p>If I had a secret ---<span class="text-break">I'm telling it now!</span></p>
+      <p class="fancy">Amazing Grace</p>
+      <p>hit it into the bleachers</p>
       <p>and walk out of The Louvre with a Masterpiece</p>
       <p class="fancy-small">( hey! wait a second; who was that? )</p>
       <p>it's one Prayer --- one Blessing</p>
       <p>one Miracle at a time</p>
-      <p class="fancy-quote">let the mystery be<span class="fancy-text-break"><em>--iris deMent</em></span></p>
-      <p>fold your Aces and you'll draw a King</p>
-   </main>
-    <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
+      <p class="fancy-quote">let the mystery be<span class="fancy-text-break">--iris deMent</span></p>
+      <p>fold your Aces<span class="text-break">-- and you'll draw a King</span></p>
+    </main>
     <footer role="contentinfo" class="footer">
       <div class="theme-selector-container">
         <label id="theme-selector-label" for="theme-selector">color theme:</label>
@@ -160,7 +159,7 @@
       </div>
       <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
     </footer>
-    </div>
-    </body>
+  </div>
+</body>
 
-    </html>
+</html>

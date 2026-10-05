@@ -1,0 +1,198 @@
+.btn {
+  margin-block-start: var(--space-2xl-3xl);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-s-m) var(--space-2xl-3xl);
+  font-size: var(--fs-1);
+  color: var(--text-color);
+  background:var(--base-color);
+ /* background: var(--surface-1); */
+  border: 2px solid var(--border-default);
+  border-radius: 100vw;
+  cursor: pointer;
+
+ &[data-btn-type="whimsical"] {
+  --main-color: oklch(from var(--text-span) l calc(c * 2.2) h / 1);
+    --deco-size: 7px;
+    --deco-timing: 1.5s;
+ --deco-1-color: oklch(from var(--main-color) 80% c h);
+    --deco-1-end-translate: 0 30px;
+    --deco-1-end-offset: 80%;
+ --deco-2-color: oklch(from var(--main-color) 80% c calc(h + 50));
+    --deco-2-scale: 0.85;
+    --deco-2-end-translate: 0 -30px;
+    --deco-2-end-offset: 60%;
+--deco-3-color: oklch(from var(--main-color) 70% c calc(h + 20));
+    --deco-3-speed-variation: 0.85;
+    --deco-3-scale: 1.15;
+    --deco-3-end-translate: 0 -10px;
+    --deco-3-end-offset: 70%;
+--deco-4-color: oklch(from var(--main-color) 80% c calc(h - 20));
+    --deco-4-speed-variation: 1.2;
+    --deco-4-scale: 0.7;
+    --deco-4-end-translate: -20px 50px;
+    --deco-4-end-offset: 75%;
+--deco-5-color: oklch(from var(--main-color) 80% c calc(h - 200));
+
+    transition: border-color 0.4s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background-color: var(--main-color);
+      border-radius: inherit;
+      z-index: -1;
+      filter: blur(12px);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &.is-playing {
+      outline: none;
+      border-color: var(--main-color);
+
+      &::after {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+[data-theme="light"] .btn[data-btn-type="whimsical"] {
+  --main-color: oklch(from var(--text-span) calc(1 - l) calc(c * 2.2) h / 1);
+}
+
+.btn svg {
+  width: var(--space-l-xl);
+  height: var(--space-l-xl);
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.btn:is(:hover, :focus-visible, .is-playing) svg {
+  transform: scale(0.6);
+  opacity: 1;
+}
+
+.btn[data-btn-type="whimsical"] .deco {
+  position: absolute;
+  offset-path: border-box;
+  offset-rotate: 0deg;
+  width: calc(var(--deco-size) * var(--deco-scale, 1));
+  aspect-ratio: 1 / 3;
+  scale: var(--deco-scale, 1.5);
+  transform-origin: center;
+  border-radius: 50%;
+  background: var(--deco-color, var(--main-color));
+  filter: blur(3px);
+  opacity: 0;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    border-radius: inherit;
+    aspect-ratio: inherit;
+    background-color: inherit;
+    translate: -50%;
+  }
+
+  &::before {
+    rotate: 55deg;
+  }
+
+  &::after {
+    rotate: -55deg;
+  }
+}
+
+.btn[data-btn-type="whimsical"]:is(:hover, :focus-visible, .is-playing) .deco {
+  offset-distance: var(--deco-end-offset, 70%);
+  translate: var(--deco-end-translate);
+
+  transition:
+    translate calc(var(--deco-timing) * var(--deco-speed-variation, 1)),
+    offset-distance calc(var(--deco-timing) * var(--deco-speed-variation, 1));
+  animation: --decoration-life calc(var(--deco-timing) * var(--deco-speed-variation, 1) * 0.85) both;
+
+  &:nth-child(1) {
+    --deco-color: var(--deco-1-color);
+    --deco-scale: var(--deco-1-scale);
+    --deco-start-offset: var(--deco-1-start-offset);
+    --deco-end-offset: var(--deco-1-end-offset);
+    --deco-end-translate: var(--deco-1-end-translate);
+    --deco-speed-variation: var(--deco-1-speed-variation);
+  }
+
+  &:nth-child(2) {
+    --deco-color: var(--deco-2-color);
+    --deco-scale: var(--deco-2-scale);
+    --deco-start-offset: var(--deco-2-start-offset);
+    --deco-end-offset: var(--deco-2-end-offset);
+    --deco-end-translate: var(--deco-2-end-translate);
+    --deco-speed-variation: var(--deco-2-speed-variation);
+  }
+
+  &:nth-child(3) {
+    --deco-color: var(--deco-3-color);
+    --deco-scale: var(--deco-3-scale);
+    --deco-start-offset: var(--deco-3-start-offset);
+    --deco-end-offset: var(--deco-3-end-offset);
+    --deco-end-translate: var(--deco-3-end-translate);
+    --deco-speed-variation: var(--deco-3-speed-variation);
+  }
+
+  &:nth-child(4) {
+    --deco-color: var(--deco-4-color);
+    --deco-scale: var(--deco-4-scale);
+    --deco-start-offset: var(--deco-4-start-offset);
+    --deco-end-offset: var(--deco-4-end-offset);
+    --deco-end-translate: var(--deco-4-end-translate);
+    --deco-speed-variation: var(--deco-4-speed-variation);
+  }
+
+  &:nth-child(5) {
+    --deco-color: var(--deco-5-color);
+    --deco-scale: var(--deco-5-scale);
+    --deco-start-offset: var(--deco-5-start-offset);
+    --deco-end-offset: var(--deco-5-end-offset);
+    --deco-end-translate: var(--deco-5-end-translate);
+    --deco-speed-variation: var(--deco-5-speed-variation);
+  }
+}
+
+@keyframes --decoration-life {
+  0% {
+    opacity: 0;
+  }
+
+  20%,
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn[data-btn-type="whimsical"] {
+    touch-action: manipulation;
+  }
+
+  .btn[data-btn-type="whimsical"]:not(.is-playing) .deco {
+    animation: none;
+    transition: none;
+    opacity: 0;
+    translate: 0 0;
+    offset-distance: 0%;
+  }
+}
