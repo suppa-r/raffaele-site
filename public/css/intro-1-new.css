@@ -105,7 +105,7 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
   place-self: center;
   display: grid;
   place-items: center;
-  inline-size: min(100%, var(--content-max-width));
+  inline-size: min(100%, var(--max-inline-size));
   max-inline-size: 100%;
   z-index: 1;
   margin-inline: auto;
