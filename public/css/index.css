@@ -17,8 +17,7 @@ header {
     line-height: 1;
     background: transparent;
     text-align: center;
-    padding-block-start: var(--space-4xs-3xs);
-}
+ }
 
 .header-text,
 .header-break {
@@ -93,8 +92,7 @@ footer {
     grid-template-columns: auto;
     justify-content: end;
     align-items: center;
-    padding-block-end: var(--space-4xs-3xs);
-}
+  }
 
 @media (prefers-reduced-motion:reduce) {
     .btn,

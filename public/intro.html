@@ -93,7 +93,7 @@
     <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
     <footer role="contentinfo" class="footer">
       <div class="theme-selector-container">
-        <label id="theme-selector-label" for="theme-selector">color theme:</label>
+        <span class="theme-selector-label" id="theme-selector-label">color theme:</span>
         <div class="theme-selector" data-theme-selector>
           <button type="button" class="theme-selector-trigger" data-theme-selector-trigger aria-haspopup="listbox"
             aria-expanded="false" aria-controls="theme-selector-menu"
@@ -152,7 +152,7 @@
             </li>
           </ul>
         </div>
-        <select id="theme-selector" name="theme" class="theme-selector-native" aria-label="Select color theme">
+        <select id="theme-selector" name="theme" class="theme-selector-native" aria-label="Select color theme" aria-hidden="true" tabindex="-1">
           <option value="light">light</option>
           <option value="dark" selected>dark</option>
           <option value="system">system (auto)</option>
