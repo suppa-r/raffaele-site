@@ -90,7 +90,7 @@
 }
 
 .stats .viewers {
-   font-size: var(--fs-1);
+   font-size: var(--fs-01);
 }
 
 .back {
@@ -115,6 +115,7 @@
 
 .back .viewers {
    font-size: var(--fs-1);
+   text-align: center;
 }
 
 .background {
