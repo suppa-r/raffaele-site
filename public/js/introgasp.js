@@ -1,7 +1,6 @@
-/* global SplitType, Lenis */
+/* global Lenis */
 
 let lenis;
-let splitInstance;
 
 let lastInitTimestamp = 0;
 let introInitState = "idle";
@@ -11,20 +10,17 @@ const THEME_REPLAY_DELAY_MS = 100;
 const INTRO_PAGE_SELECTOR = 'body[data-page="intro"]';
 const INTRO_ANIMATION_TARGET =
   'body[data-page="intro"] main p:not(.wrapper-gradient-text)';
-const INTRO_SPLIT_TARGET =
-  'body[data-page="intro"] main p:not(.wrapper-gradient-text, .fancy-quote)';
 const WRAPPER_GRADIENT_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text';
 const WRAPPER_GRADIENT_WORD_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text .text-layer';
 const INTRO_WORDS_TARGET = 'body[data-page="intro"] .text-with-animation span';
 const INTRO_HEADER_TARGET = 'body[data-page="intro"] header';
-const HERO_TEXT_EASE_INTRO = "cubic-bezier(0.22, 1, 0.36, 1)";
-const HERO_REVEAL_DURATION_INTRO = 1.7;
-const HERO_REVEAL_STAGGER_INTRO = 0.18;
-const HERO_REVEAL_DELAY_INTRO = 0.18;
-const INTRO_SLIDE_OFFSET = "35vw";
-const INTRO_HEADER_REVEAL_DURATION = 0.9;
+const HERO_REVEAL_DELAY_INTRO = 0.08;
+const INTRO_TEXT_REVEAL_DURATION = 0.72;
+const INTRO_TEXT_REVEAL_EASE = "power2.out";
+const INTRO_TEXT_REVEAL_STAGGER = 0.2;
+const INTRO_TEXT_REVEAL_OFFSET = 10;
 const INTRO_HEADER_REVEAL_DELAY = 0.05;
 
 if (typeof document !== "undefined") {
@@ -64,35 +60,12 @@ function resetIntroAnimationState() {
   if (gsapLib) {
     [
       INTRO_ANIMATION_TARGET,
-      `${INTRO_ANIMATION_TARGET} .line`,
-      `${INTRO_ANIMATION_TARGET} .line span`,
       INTRO_WORDS_TARGET,
       WRAPPER_GRADIENT_TARGET,
       WRAPPER_GRADIENT_WORD_TARGET,
       INTRO_HEADER_TARGET,
     ].forEach((target) => gsapLib.killTweensOf(target));
   }
-
-  if (splitInstance) {
-    splitInstance.revert();
-    splitInstance = null;
-  }
-
-  document
-    .querySelectorAll(`${INTRO_ANIMATION_TARGET} .line`)
-    .forEach((line) => {
-      line.style.display = "";
-      line.style.overflow = "";
-    });
-
-  document
-    .querySelectorAll(`${INTRO_ANIMATION_TARGET} .line span`)
-    .forEach((span) => {
-      span.style.transform = "";
-      span.style.opacity = "";
-      span.style.removeProperty("transform");
-      span.style.removeProperty("opacity");
-    });
 
   document.querySelectorAll(INTRO_ANIMATION_TARGET).forEach((element) => {
     element.style.opacity = "";
@@ -121,117 +94,52 @@ function initializeAnimations() {
 
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
   resetIntroAnimationState();
-  if (!gsapLib || typeof SplitType === "undefined") {
+  if (!gsapLib) {
     revealIntroContent();
     return;
   }
 
-  if (splitInstance) {
-    splitInstance.revert();
-    splitInstance = null;
-  }
-
-  splitInstance = new SplitType(INTRO_SPLIT_TARGET, {
-    types: "lines",
-    tagName: "div",
-    lineClass: "line",
-  });
-
   if (hasElements(INTRO_HEADER_TARGET)) {
-    gsapLib.set(INTRO_HEADER_TARGET, { y: "-18vh", opacity: 0 });
+    gsapLib.set(INTRO_HEADER_TARGET, { y: INTRO_TEXT_REVEAL_OFFSET, opacity: 0 });
     gsapLib.to(INTRO_HEADER_TARGET, {
       y: 0,
       opacity: 1,
-      duration: INTRO_HEADER_REVEAL_DURATION,
-      ease: "power3.out",
+      duration: INTRO_TEXT_REVEAL_DURATION,
+      ease: INTRO_TEXT_REVEAL_EASE,
       delay: INTRO_HEADER_REVEAL_DELAY,
       overwrite: "auto",
     });
   }
 
-  splitInstance.lines.forEach((line) => {
-    const content = line.innerHTML;
-    line.innerHTML = `<span>${content}</span>`;
+  gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: 0, y: 0, opacity: 1 });
+
+  const contentTimeline = gsapLib.timeline({
+    delay: HERO_REVEAL_DELAY_INTRO,
+    defaults: { ease: INTRO_TEXT_REVEAL_EASE, overwrite: "auto" },
   });
+  const headingTarget = WRAPPER_GRADIENT_TARGET;
 
-  // .line is the clip container; .line span starts below and reveals upward
-  gsapLib.set(`${INTRO_ANIMATION_TARGET} .line`, {
-    display: "block",
-    overflow: "hidden",
-  });
-
-  gsapLib.set(`${INTRO_ANIMATION_TARGET} .line span`, {
-    y: "100%",
-    opacity: 0,
-  });
-
-  gsapLib.to(`${INTRO_ANIMATION_TARGET} .line span`, {
-    y: "0%",
-    opacity: 1,
-    duration: 0.9,
-    stagger: 0.16,
-    ease: "power3.out",
-    delay: 0.12,
-  });
-
-  // Fade in the parent paragraphs at the same time
-  gsapLib.to(INTRO_ANIMATION_TARGET, {
-    opacity: 1,
-    visibility: "visible",
-    duration: 0.55,
-    stagger: 0.16,
-    ease: "power2.out",
-    delay: 0.08,
-  });
-
-  gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, opacity: 1 });
-
-  gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, {
-    x: INTRO_SLIDE_OFFSET,
-    opacity: 0,
-  });
-
-  // Match the side-entry feel used by the hero text animation.
-  if (hasElements(INTRO_WORDS_TARGET)) {
-    gsapLib.set(INTRO_WORDS_TARGET, {
-      x: INTRO_SLIDE_OFFSET,
-      opacity: 0,
-      visibility: "hidden",
-    });
-
-    gsapLib.to(INTRO_WORDS_TARGET, {
+  if (hasElements(headingTarget)) {
+    contentTimeline.fromTo(headingTarget, {
       x: 0,
+      y: INTRO_TEXT_REVEAL_OFFSET,
+      opacity: 0,
+    }, {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      duration: INTRO_TEXT_REVEAL_DURATION,
+    });
+  }
+
+  document.querySelectorAll(INTRO_ANIMATION_TARGET).forEach((paragraph) => {
+    contentTimeline.fromTo(paragraph, { y: INTRO_TEXT_REVEAL_OFFSET, opacity: 0 }, {
+      y: 0,
       opacity: 1,
       visibility: "visible",
-      duration: HERO_REVEAL_DURATION_INTRO,
-      ease: HERO_TEXT_EASE_INTRO,
-      delay: HERO_REVEAL_DELAY_INTRO,
-      stagger: HERO_REVEAL_STAGGER_INTRO,
-      overwrite: "auto",
-    });
-  }
-
-  // The parent remains in place; the updated single text layer owns the entry motion.
-  if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
-    gsapLib.to(WRAPPER_GRADIENT_WORD_TARGET, {
-      x: 0,
-      opacity: 1,
-      duration: HERO_REVEAL_DURATION_INTRO,
-      ease: HERO_TEXT_EASE_INTRO,
-      delay: HERO_REVEAL_DELAY_INTRO,
-      stagger: HERO_REVEAL_STAGGER_INTRO,
-      overwrite: "auto",
-    });
-  } else if (hasElements(WRAPPER_GRADIENT_TARGET)) {
-    gsapLib.to(WRAPPER_GRADIENT_TARGET, {
-      x: 0,
-      opacity: 1,
-      duration: HERO_REVEAL_DURATION_INTRO,
-      ease: HERO_TEXT_EASE_INTRO,
-      delay: HERO_REVEAL_DELAY_INTRO,
-      overwrite: "auto",
-    });
-  }
+      duration: INTRO_TEXT_REVEAL_DURATION,
+    }, `<+=${INTRO_TEXT_REVEAL_STAGGER}`);
+  });
 
   // Remove any inline overflow styles from .text-layer elements
   document.querySelectorAll(".text-layer").forEach((el) => {
@@ -344,10 +252,6 @@ function initPage() {
     if (lenis) {
       lenis.destroy();
       lenis = null;
-    }
-    if (splitInstance) {
-      splitInstance.revert();
-      splitInstance = null;
     }
     introInitState = "idle";
     return;

@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/theme-switcher.css" />
   <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/whimsy.css" />
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
@@ -52,7 +53,7 @@
       </p>
       <p class="header-break" aria-hidden="true">--the beatles</p>
     </header>
-    <main id="main-content" aria-labelledby="site-heading" tabindex="-1">
+    <main id="main-content" class="content" aria-labelledby="site-heading" tabindex="-1">
       <h1 id="site-heading" class="text-with-animation">
         <span>the tracks</span>&nbsp;<span>of</span>&nbsp;<span>my y(t)ears</span>
       </h1>
@@ -63,10 +64,15 @@
         <span>how</span>&nbsp;<span>it's</span>&nbsp;<span>going</span>
       </h2>
       <!-- ✅ CTA: a link styled as a button keeps the page navigation semantics and still supports the shared particle interaction -->
-      <a class="btn" href="index-intro.html" aria-labelledby="btn-label">
+      <button class="btn" data-btn-type="whimsical" data-href="index-intro.html" type="button">
+        <span class="deco" aria-hidden="true"></span>
+        <span class="deco" aria-hidden="true"></span>
+        <span class="deco" aria-hidden="true"></span>
+        <span class="deco" aria-hidden="true"></span>
+        <span class="deco" aria-hidden="true"></span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" role="img"
-          aria-labelledby="sneaker-icon-title">
-          <title id="sneaker-icon-title">Sneaker icon</title>
+          aria-labelledby="bell-icon-title">
+          <title id="bell-icon-title">ring the bell</title>
           <!-- Icon downloaded from https://icon-sets.iconify.design/emojione/bellhop-bell/ -->
           <path fill="#3e4347"
             d="M53.6 51.5c-1.4-.8-3.3-4.7-3.3-4.7H13.6s-1.8 4-3.3 4.7c-1.9 1-5.4 2-5.4 5.7V62h54v-4.8c.1-3.7-3.4-4.7-5.3-5.7" />
@@ -80,8 +86,8 @@
           <path fill="#42ade2"
             d="m51.1 2l-8.9 14.8L56.7 6.4zM12.9 2l8.9 14.8L7.3 6.4zM48 22.8l11.5-6l2.5 6zm-32 0l-11.5-6l-2.5 6z" />
         </svg>
-        <span class="button-text" id="btn-label">ring the bell</span>
-      </a>
+        ring the bell
+      </button>
     </main>
     <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
     <footer role="contentinfo" class="footer">

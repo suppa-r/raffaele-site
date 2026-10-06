@@ -1,8 +1,3 @@
-const PARTICLE_COUNT = 20;
-const PARTICLE_REMOVE_MS = 1000;
-const PAGE_LEAVE_CLASS = "is-leaving";
-const PARTICLE_DISTANCE_MIN = 20;
-const PARTICLE_DISTANCE_MAX = 100;
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
 const MAIN_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INDEX_HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -10,15 +5,12 @@ const INDEX_HERO_REVEAL_DURATION = 0.9;
 const INDEX_HERO_REVEAL_STAGGER = 0.12;
 const INDEX_HERO_REVEAL_DELAY = 0.1;
 const INDEX_SLIDE_OFFSET = "35vw";
+const MOBILE_CTA_NAVIGATION_DELAY_MS = 900;
 const INDEX_HEADING_SELECTORS = [
   ".text-with-animation span",
   ".text-with-animation-1 span",
   ".text-with-animation-2 span",
 ];
-
-function getSneakerButton() {
-  return document.querySelector(".btn");
-}
 
 function bindOnce(selector, eventName, handler) {
   document.querySelectorAll(selector).forEach((element) => {
@@ -29,47 +21,28 @@ function bindOnce(selector, eventName, handler) {
   });
 }
 
-function createParticle(x, y) {
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
-  particle.setAttribute("aria-hidden", "true");
-  particle.style.left = `${x}px`;
-  particle.style.top = `${y}px`;
-
-  const angle = Math.random() * 2 * Math.PI;
-  const distance =
-    Math.random() * (PARTICLE_DISTANCE_MAX - PARTICLE_DISTANCE_MIN) +
-    PARTICLE_DISTANCE_MIN;
-  particle.style.setProperty("--tx", `${Math.cos(angle) * distance}px`);
-  particle.style.setProperty("--ty", `${Math.sin(angle) * distance}px`);
-
-  return particle;
-}
-
-function emitParticles(button, x, y) {
-  for (let i = 0; i < PARTICLE_COUNT; i += 1) {
-    const particle = createParticle(x, y);
-    button.appendChild(particle);
-    setTimeout(() => particle.remove(), PARTICLE_REMOVE_MS);
-  }
-}
-
-function handleSneakerClick(event) {
-  const button = event.currentTarget || getSneakerButton();
-  if (!button) return;
-
+async function handleSneakerClick(event) {
   event.preventDefault();
+  const button = event.currentTarget;
+  if (button.classList.contains("is-playing")) return;
 
-  const rect = button.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
+  const destination = button.getAttribute("href") || button.dataset.href || "index-intro.html";
+  const usesTouchInteraction = window.matchMedia(
+    "(hover: none) and (pointer: coarse)",
+  ).matches;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  document.body.classList.add(PAGE_LEAVE_CLASS);
-  emitParticles(button, x, y);
+  if (usesTouchInteraction && !reducedMotion && button.dataset.btnType === "whimsical") {
+    button.classList.add("is-playing");
+    button.setAttribute("aria-busy", "true");
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await new Promise((resolve) => {
+      window.setTimeout(resolve, MOBILE_CTA_NAVIGATION_DELAY_MS);
+    });
+    if (!button.isConnected) return;
+  }
 
-  setTimeout(() => {
-    window.location.assign("index-intro.html");
-  }, 800);
+  window.location.assign(destination);
 }
 
 function bindSneakerButton() {
@@ -295,8 +268,12 @@ function adoptNewBody(newDocument, savedTheme) {
   newBody.classList.add("page-entering");
   document.documentElement.replaceChild(newBody, document.body);
   document.documentElement.classList.remove(
-    "intro-nav-open",
-    "intro-nav-closing",
+    "intro-page-nav-open",
+    "intro-page-nav-closing",
+    "intro-1-nav-open",
+    "intro-1-nav-closing",
+    "intro-1-section-active",
+    "intro-1-nav-title-visible",
   );
   document.title = newDocument.title;
 

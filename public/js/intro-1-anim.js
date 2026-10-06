@@ -5,7 +5,8 @@
  */
 const INTRO1_NAV_ITEMS_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.navItems;
 const INTRO1_FOOTER_ENTRIES_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.footerEntries;
-const INTRO1_TITLE_LINE_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleLine;
+const INTRO1_TITLE_WORDS_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleWords;
+const INTRO1_TITLE_EMPHASIS_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.titleEmphasis;
 const INTRO1_PROFILE_TITLE_SPAN_TARGET = window.ANIMATION_CONSTANTS.INTRO1.selectors.profileTitleSpan;
 
 const INTRO1_NAV_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.navRevealDuration;
@@ -13,13 +14,17 @@ const INTRO1_NAV_REVEAL_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.navReve
 const INTRO1_FOOTER_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealDuration;
 const INTRO1_FOOTER_REVEAL_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealStagger;
 const INTRO1_FOOTER_REVEAL_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.footerRevealDelay;
-const INTRO1_TITLE_LINE_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDuration;
-const INTRO1_TITLE_LINE_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineStagger;
-const INTRO1_TITLE_LINE_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleLineDelay;
+const INTRO1_TITLE_WORD_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.titleWordDuration;
+const INTRO1_TITLE_WORD_STAGGER = window.ANIMATION_CONSTANTS.INTRO1.timing.titleWordStagger;
+const INTRO1_TITLE_WORD_DELAY = window.ANIMATION_CONSTANTS.INTRO1.timing.titleWordDelay;
+const INTRO1_TITLE_WORD_OFFSET = window.ANIMATION_CONSTANTS.INTRO1.timing.titleWordOffset;
+const INTRO1_TITLE_EMPHASIS_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.titleEmphasisDuration;
+const INTRO1_TITLE_EMPHASIS_OVERLAP = window.ANIMATION_CONSTANTS.INTRO1.timing.titleEmphasisOverlap;
+const INTRO1_TITLE_EASE = window.ANIMATION_CONSTANTS.EASING.standard;
 const INTRO1_PROFILE_TITLE_REVEAL_DURATION = window.ANIMATION_CONSTANTS.INTRO1.timing.profileTitleRevealDuration;
-const INTRO1_SLIDE_OFFSET = window.ANIMATION_CONSTANTS.INTRO1.slideOffset;
 
 let intro1InitState = "idle";
+let intro1TitleSplit = null;
 
 function intro1IsPage() {
   return !!document.querySelector("body[data-page='intro-1']");
@@ -35,13 +40,14 @@ function intro1ResetState() {
     [
       INTRO1_NAV_ITEMS_TARGET,
       INTRO1_FOOTER_ENTRIES_TARGET,
-      INTRO1_TITLE_LINE_TARGET,
+      INTRO1_TITLE_WORDS_TARGET,
+      INTRO1_TITLE_EMPHASIS_TARGET,
     ].forEach((target) => gsapLib.killTweensOf(target));
   }
 
   document
     .querySelectorAll(
-      `${INTRO1_NAV_ITEMS_TARGET}, ${INTRO1_FOOTER_ENTRIES_TARGET}, ${INTRO1_TITLE_LINE_TARGET}`,
+      `${INTRO1_NAV_ITEMS_TARGET}, ${INTRO1_FOOTER_ENTRIES_TARGET}, ${INTRO1_TITLE_WORDS_TARGET}, ${INTRO1_TITLE_EMPHASIS_TARGET}`,
     )
     .forEach((element) => {
       element.style.opacity = "";
@@ -61,10 +67,16 @@ function intro1HideContent() {
     if (intro1HasElements(INTRO1_FOOTER_ENTRIES_TARGET)) {
       gsapLib.set(INTRO1_FOOTER_ENTRIES_TARGET, { y: 16, opacity: 0 });
     }
-    if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
-      gsapLib.set(INTRO1_TITLE_LINE_TARGET, {
-        x: INTRO1_SLIDE_OFFSET,
-        y: 0,
+    if (intro1HasElements(INTRO1_TITLE_WORDS_TARGET)) {
+      gsapLib.set(INTRO1_TITLE_WORDS_TARGET, {
+        x: INTRO1_TITLE_WORD_OFFSET,
+        opacity: 0,
+      });
+    }
+    if (intro1HasElements(INTRO1_TITLE_EMPHASIS_TARGET)) {
+      gsapLib.set(INTRO1_TITLE_EMPHASIS_TARGET, {
+        y: 16,
+        scale: 0.88,
         opacity: 0,
       });
     }
@@ -73,7 +85,7 @@ function intro1HideContent() {
 
   document
     .querySelectorAll(
-      `${INTRO1_NAV_ITEMS_TARGET}, ${INTRO1_FOOTER_ENTRIES_TARGET}, ${INTRO1_TITLE_LINE_TARGET}`,
+      `${INTRO1_NAV_ITEMS_TARGET}, ${INTRO1_FOOTER_ENTRIES_TARGET}, ${INTRO1_TITLE_WORDS_TARGET}, ${INTRO1_TITLE_EMPHASIS_TARGET}`,
     )
     .forEach((el) => {
       el.style.opacity = "0";
@@ -97,15 +109,22 @@ function intro1RevealContent() {
     if (intro1HasElements(INTRO1_FOOTER_ENTRIES_TARGET)) {
       gsapLib.set(INTRO1_FOOTER_ENTRIES_TARGET, { y: 0, opacity: 1 });
     }
-    if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
-      gsapLib.set(INTRO1_TITLE_LINE_TARGET, { x: 0, y: 0, opacity: 1 });
+    if (intro1HasElements(INTRO1_TITLE_WORDS_TARGET)) {
+      gsapLib.set(INTRO1_TITLE_WORDS_TARGET, { x: 0, y: 0, opacity: 1 });
+    }
+    if (intro1HasElements(INTRO1_TITLE_EMPHASIS_TARGET)) {
+      gsapLib.set(INTRO1_TITLE_EMPHASIS_TARGET, {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+      });
     }
     return;
   }
 
   document
     .querySelectorAll(
-      `${INTRO1_NAV_ITEMS_TARGET}, ${INTRO1_FOOTER_ENTRIES_TARGET}, ${INTRO1_TITLE_LINE_TARGET}`,
+      `${INTRO1_NAV_ITEMS_TARGET}, ${INTRO1_FOOTER_ENTRIES_TARGET}, ${INTRO1_TITLE_WORDS_TARGET}, ${INTRO1_TITLE_EMPHASIS_TARGET}`,
     )
     .forEach((el) => {
       el.style.opacity = "1";
@@ -113,9 +132,67 @@ function intro1RevealContent() {
     });
 }
 
+function intro1AnimateTitle() {
+  const gsapLib = typeof window !== "undefined" ? window.gsap : null;
+  const titleWords = document.querySelectorAll(INTRO1_TITLE_WORDS_TARGET);
+  const titleEmphasis = document.querySelector(INTRO1_TITLE_EMPHASIS_TARGET);
+
+  if (!titleWords.length) {
+    return;
+  }
+
+  if (
+    !gsapLib ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    titleWords.forEach((word) => {
+      word.style.opacity = "1";
+      word.style.transform = "translate3d(0, 0, 0)";
+    });
+    if (titleEmphasis) {
+      titleEmphasis.style.opacity = "1";
+      titleEmphasis.style.transform = "translate3d(0, 0, 0) scale(1)";
+    }
+    return;
+  }
+
+  gsapLib.killTweensOf([...titleWords, ...(titleEmphasis ? [titleEmphasis] : [])]);
+
+  const titleTimeline = gsapLib.timeline({
+    delay: INTRO1_TITLE_WORD_DELAY,
+    overwrite: "auto",
+  });
+
+  titleTimeline.fromTo(
+    titleWords,
+    { x: INTRO1_TITLE_WORD_OFFSET, opacity: 0 },
+    {
+      x: 0,
+      opacity: 1,
+      duration: INTRO1_TITLE_WORD_DURATION,
+      stagger: INTRO1_TITLE_WORD_STAGGER,
+      ease: INTRO1_TITLE_EASE,
+    },
+  );
+
+  if (titleEmphasis) {
+    titleTimeline.fromTo(
+      titleEmphasis,
+      { y: 16, scale: 0.88, opacity: 0 },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        duration: INTRO1_TITLE_EMPHASIS_DURATION,
+        ease: INTRO1_TITLE_EASE,
+      },
+      `-=${INTRO1_TITLE_EMPHASIS_OVERLAP}`,
+    );
+  }
+}
+
 function intro1InitializeAnimations() {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
-  intro1ResetState();
 
   if (!gsapLib) {
     intro1RevealContent();
@@ -153,22 +230,26 @@ function intro1InitializeAnimations() {
     });
   }
 
-  if (intro1HasElements(INTRO1_TITLE_LINE_TARGET)) {
-    gsapLib.to(INTRO1_TITLE_LINE_TARGET, {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      duration: INTRO1_TITLE_LINE_DURATION,
-      ease: "power3.out",
-      delay: INTRO1_TITLE_LINE_DELAY,
-      stagger: INTRO1_TITLE_LINE_STAGGER,
-      overwrite: "auto",
-    });
+  intro1AnimateTitle();
+}
+
+function intro1PrepareTitleWords() {
+  const titleButton = document.querySelector(".intro-1-page-title-trigger");
+  if (typeof window.SplitType !== "function" || !titleButton) {
+    return;
   }
+
+  intro1TitleSplit?.revert();
+  intro1TitleSplit = new window.SplitType(titleButton, { types: "words" });
+  intro1TitleSplit.words.forEach((word) => {
+    word.style.display = "inline-block";
+  });
 }
 
 function intro1InitPage() {
   if (!intro1IsPage()) {
+    intro1TitleSplit?.revert();
+    intro1TitleSplit = null;
     intro1InitState = "idle";
     return;
   }
@@ -178,6 +259,8 @@ function intro1InitPage() {
   }
 
   intro1InitState = "running";
+  intro1ResetState();
+  intro1PrepareTitleWords();
   intro1HideContent();
 
   requestAnimationFrame(() => {
@@ -220,4 +303,5 @@ function intro1OnFreshPage() {
 
 document.addEventListener("DOMContentLoaded", intro1OnFreshPage);
 document.addEventListener("page:transitioned", intro1OnFreshPage);
+document.addEventListener("intro-1:replay-title", intro1AnimateTitle);
 window.addEventListener("hashchange", intro1RevealActiveProfileTitle);
