@@ -90,7 +90,8 @@
 }
 
 .stats .viewers {
-   font-size: var(--fs-01);
+   font-size: clamp(0.75rem, 0.72rem + 0.1vw, 0.8rem);
+   white-space: normal;
 }
 
 .back {
@@ -116,6 +117,7 @@
 .back .viewers {
    font-size: var(--fs-1);
    text-align: center;
+   white-space: nowrap;
 }
 
 .background {
@@ -149,8 +151,15 @@ footer {
 
 @media (width >=48rem) {
    .game-stat {
-      font-size: var(--fs-3);
+      font-size: var(--fs-4);
+   white-space: normal;
+      text-align: center;
    }
+
+      .stats .viewers {
+         white-space: normal;
+         text-align: center;
+      }
 }
 
 .game.is-revealed,
