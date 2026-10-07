@@ -17,6 +17,11 @@
    font-size: var(--fs-0);
 }
 
+footer {
+   min-block-size: var(--space-3xl);
+   padding-block: var(--space-2xs-xs);
+}
+
 .content {
    display: grid;
    place-content: safe center center;
@@ -150,8 +155,7 @@ footer {
    display: grid;
    justify-content: end;
    align-items:center;
-   margin-block-end: var(--space-xs-s);
-}
+ }
 
 @media (width >=48rem) {
    .game-stat {

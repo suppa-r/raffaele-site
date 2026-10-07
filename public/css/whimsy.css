@@ -1,5 +1,5 @@
 .btn {
-  margin-block-start: var(--space-2xl-3xl);
+  margin-block-start: var(--space-m-l);
   position: relative;
   display: flex;
   flex-direction: column;
