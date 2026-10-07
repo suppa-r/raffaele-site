@@ -1,3 +1,5 @@
+/* stylelint-disable media-feature-range-notation */
+/* stylelint-disable media-feature-name-no-unknown */
 :root {
     /* ============================================
                 BASE - Mobile (320px - 479px)
@@ -36,9 +38,11 @@ body {
 
 .wrapper {
     position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
-    padding-block: max(var(--space-4xs-3xs), env(safe-area-inset-top, 0px)) max(var(--space-4xs-3xs), env(safe-area-inset-bottom, 0px));
+    block-size: 100vh;
+    block-size: 100svh;
+   padding-block:
+  max(var(--space-2xs-xs), env(safe-area-inset-top, 0px))
+  max(var(--space-2xs-xs), env(safe-area-inset-bottom, 0px));
     overflow: hidden;
     isolation: isolate;
  }
@@ -53,6 +57,28 @@ footer {
     inline-size: 100%;
     margin-inline: auto;
     padding-inline: var(--padding-inline);
+}
+
+main {
+    min-block-size: 0;
+    overflow: hidden auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-span) var(--base-color);
+}
+
+main::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+main::-webkit-scrollbar-track {
+    background: var(--base-color);
+}
+
+main::-webkit-scrollbar-thumb {
+    border: 0.15rem solid var(--base-color);
+    border-radius: 999px;
+    background: var(--text-span);
 }
 
 /* ===============================================
@@ -161,21 +187,22 @@ a:focus-visible {
 
 .wrapper::before {
     --size: clamp(20px, 3vw, 30px);
+    --columns: round(up, 100vw / var(--size), 1);
+    --rows: round(up, 100svh / var(--size), 1);
     content: "";
     position: absolute;
-    inset-block: 0;
-    inset-inline-start: 0;
-    inline-size: 100%;
+    inset: 0;
     pointer-events: none;
-    background-color: var(--grid-background-color, var(--base-color));
-    background-image: linear-gradient(90deg, var(--grid-line-color, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px), linear-gradient(var(--grid-line-color, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px);
+    /* background-color: var(var(--base-color)); */
+    background-image: linear-gradient(90deg, var(--body-grid-line, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px), linear-gradient(var(--body-grid-line, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px);
     background-size: var(--size) var(--size);
-    background-position: center;
+    background-size: calc(100vw / var(--columns)) calc(100svh / var(--rows));
+    background-position: 0 0;
     opacity: 1;
     -webkit-mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
     mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
     mask-size: 100% 100%;
-    mask-position: center;
+    mask-position: center center;
     mask-repeat: no-repeat;
     z-index: -1000;
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
@@ -193,7 +220,7 @@ a:focus-visible {
 /* ===============================================
     SM - Large Mobile / Small Tablet (480px+)
     ============================================ */
-@media (min-width: 30rem) {
+@media (width >= 30rem) {
     :root {
         --max-inline-size: min(52.5rem, 95dvw);
         --padding-inline: var(--space-s);
@@ -211,10 +238,10 @@ a:focus-visible {
     MD - Tablet (768px+)
     ============================================ */
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
     :root {
         --max-inline-size: min(60rem, 95dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
@@ -227,10 +254,10 @@ a:focus-visible {
     LG - Laptop (1024px+)
     ============================================ */
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
     :root {
         --max-inline-size: min(65rem, 95dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
@@ -243,10 +270,10 @@ a:focus-visible {
     XL - Desktop (1200px+)
     ============================================ */
 
-@media (min-width: 75rem) {
+@media (width >= 75rem) {
     :root {
         --max-inline-size: min(73.75rem, 95dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
@@ -259,10 +286,10 @@ a:focus-visible {
     XXL - Wide Desktop (1440px+)
     ============================================ */
 
-@media (min-width: 90rem) {
+@media (width >= 90rem) {
     :root {
         --max-inline-size: min(87.5rem, 96dvw);
-        --padding-inline: var(--space-l);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {
@@ -275,10 +302,10 @@ a:focus-visible {
     3XL - Ultra-Wide / 4K (1920px+)
     ============================================ */
 
-@media (min-width: 120rem) {
+@media (width >= 120rem) {
     :root {
-        --max-inline-size: min(1920px, 95dvw);
-        --padding-inline: var(--space-l);
+        --max-inline-size: min(120rem, 95dvw);
+        --padding-inline: var(--space-s);
     }
 
     .wrapper::before {

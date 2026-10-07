@@ -1,6 +1,6 @@
 .wrapper {
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     font-size: var(--fs-0);
     color: var(--text-color);
 }
@@ -17,7 +17,7 @@ header {
     line-height: 1;
     background: transparent;
     text-align: center;
- }
+}
 
 .header-text,
 .header-break {
@@ -43,10 +43,11 @@ header {
 
 .content {
     display: grid;
-    place-content: center;
+    place-content: safe center center;
     place-items: center;
     row-gap: var(--space-2xs);
     text-align: center;
+    min-block-size: 0;
 }
 
 .text-with-animation {
@@ -92,7 +93,8 @@ footer {
     grid-template-columns: auto;
     justify-content: end;
     align-items: center;
-  }
+    padding-block-end: var(--space-4xs-3xs);
+}
 
 @media (prefers-reduced-motion:reduce) {
     .btn,

@@ -13,13 +13,13 @@
 
 .wrapper {
    display: grid;
-   grid-template-rows: 1fr;
+   grid-template-rows: minmax(0, 1fr) auto;
    font-size: var(--fs-0);
 }
 
 .content {
    display: grid;
-   place-content: center;
+   place-content: safe center center;
    place-items: center;
    min-block-size: 0;
    color: var(--text-color);
@@ -150,7 +150,7 @@ footer {
    display: grid;
    justify-content: end;
    align-items:center;
-   padding-block-end: var(--space-xs-s);
+   margin-block-end: var(--space-xs-s);
 }
 
 @media (width >=48rem) {
