@@ -5,7 +5,7 @@
                 BASE - Mobile (320px - 479px)
 ============================================ */
     --max-inline-size: min(26.25rem, 95vw);
-    --padding-inline: var(--space-s);
+    --padding-inline: var(--space-xs);
     --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
 }
 
@@ -58,6 +58,11 @@ footer {
     padding-inline: var(--padding-inline);
 }
 
+header,
+footer {
+    min-block-size: 0;
+  }
+
 main {
     min-block-size: 0;
     overflow: hidden auto;
@@ -89,6 +94,31 @@ main section p {
     padding-block: var(--space-4xs-3xs);
     inline-size: min(100%, 75ch);
     margin-inline: auto;
+}
+
+.visually-hidden,
+.sr-only,
+.screen-reader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.visually-hidden:focus,
+.visually-hidden:active {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
 }
 
 .skip-link {
@@ -191,9 +221,8 @@ a:focus-visible {
     position: absolute;
     inset-block: 0;
     inset-inline-start: 50%;
-    inline-size: var(--max-inline-size);
+   /* inline-size: var(--max-inline-size); */
     max-inline-size: 100%;
-    padding-inline: var(--padding-inline);
     transform: translateX(-50%);
     pointer-events: none;
     /* background-color: var(var(--base-color)); */
@@ -226,7 +255,7 @@ a:focus-visible {
 @media (width >=30rem) {
     :root {
         --max-inline-size: min(52.5rem, 98dvw);
-        --padding-inline: var(--space-s);
+        --padding-inline: var(--space-xs);
     }
 
 
