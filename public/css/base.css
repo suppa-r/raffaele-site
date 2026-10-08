@@ -150,7 +150,6 @@ h6,
 button,
 input,
 label {
-    margin-block: var(--layout-block-gap);
     text-wrap: balance;
 }
 
