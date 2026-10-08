@@ -40,12 +40,11 @@ body {
     position: relative;
     block-size: 100vh;
     block-size: 100svh;
-   padding-block:
-  max(var(--space-2xs-xs), env(safe-area-inset-top, 0px))
-  max(var(--space-2xs-xs), env(safe-area-inset-bottom, 0px));
+    padding-block:
+        max(var(--space-2xs-xs), env(safe-area-inset-top, 0px)) max(var(--space-2xs-xs), env(safe-area-inset-bottom, 0px));
     overflow: hidden;
     isolation: isolate;
- }
+}
 
 /* ===============================================
     Shared page shell rules
@@ -84,7 +83,7 @@ main::-webkit-scrollbar-thumb {
 /* ===============================================
     Shared content width rules
     =============================================== */
-main > :is(h1, h2, h3, h4, h5, h6, p),
+main> :is(h1, h2, h3, h4, h5, h6, p),
 main section p {
     text-box: trim-both text text;
     padding-block: var(--space-4xs-3xs);
@@ -186,16 +185,21 @@ a:focus-visible {
 
 .wrapper::before {
     --size: clamp(20px, 3vw, 30px);
-    --columns: round(up, 100vw / var(--size), 1);
+    --columns: round(up, var(--max-inline-size) / var(--size), 1);
     --rows: round(up, 100svh / var(--size), 1);
     content: "";
     position: absolute;
-    inset: 0;
+    inset-block: 0;
+    inset-inline-start: 50%;
+    inline-size: var(--max-inline-size);
+    max-inline-size: 100%;
+    padding-inline: var(--padding-inline);
+    transform: translateX(-50%);
     pointer-events: none;
     /* background-color: var(var(--base-color)); */
     background-image: linear-gradient(90deg, var(--body-grid-line, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px), linear-gradient(var(--body-grid-line, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px);
     background-size: var(--size) var(--size);
-    background-size: calc(100vw / var(--columns)) calc(100svh / var(--rows));
+    background-size: calc(var(--max-inline-size) / var(--columns)) calc(100svh / var(--rows));
     background-position: 0 0;
     opacity: 1;
     -webkit-mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
@@ -219,9 +223,9 @@ a:focus-visible {
 /* ===============================================
     SM - Large Mobile / Small Tablet (480px+)
     ============================================ */
-@media (width >= 30rem) {
+@media (width >=30rem) {
     :root {
-        --max-inline-size: min(52.5rem, 95dvw);
+        --max-inline-size: min(52.5rem, 98dvw);
         --padding-inline: var(--space-s);
     }
 
@@ -237,9 +241,9 @@ a:focus-visible {
     MD - Tablet (768px+)
     ============================================ */
 
-@media (width >= 48rem) {
+@media (width >=48rem) {
     :root {
-        --max-inline-size: min(60rem, 95dvw);
+        --max-inline-size: min(60rem, 98dvw);
         --padding-inline: var(--space-s);
     }
 
@@ -253,9 +257,9 @@ a:focus-visible {
     LG - Laptop (1024px+)
     ============================================ */
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
     :root {
-        --max-inline-size: min(65rem, 95dvw);
+        --max-inline-size: min(65rem, 98dvw);
         --padding-inline: var(--space-s);
     }
 
@@ -269,9 +273,9 @@ a:focus-visible {
     XL - Desktop (1200px+)
     ============================================ */
 
-@media (width >= 75rem) {
+@media (width >=75rem) {
     :root {
-        --max-inline-size: min(73.75rem, 95dvw);
+        --max-inline-size: min(73.75rem, 98dvw);
         --padding-inline: var(--space-s);
     }
 
@@ -285,9 +289,9 @@ a:focus-visible {
     XXL - Wide Desktop (1440px+)
     ============================================ */
 
-@media (width >= 90rem) {
+@media (width >=90rem) {
     :root {
-        --max-inline-size: min(87.5rem, 96dvw);
+        --max-inline-size: min(87.5rem, 98dvw);
         --padding-inline: var(--space-s);
     }
 
@@ -301,9 +305,9 @@ a:focus-visible {
     3XL - Ultra-Wide / 4K (1920px+)
     ============================================ */
 
-@media (width >= 120rem) {
+@media (width >=120rem) {
     :root {
-        --max-inline-size: min(120rem, 95dvw);
+        --max-inline-size: min(120rem, 98dvw);
         --padding-inline: var(--space-s);
     }
 
