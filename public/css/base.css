@@ -237,7 +237,6 @@ body::before {
     body::before {
         --size: clamp(20px, 3vw, 30px);
         --columns: round(up, var(--max-inline-size) / var(--size), 1);
-        --columns: round(up, var(--max-inline-size) / var(--size), 1);
         --rows: round(up, 100svh / var(--size), 1);
         content: "";
         position: absolute;
@@ -334,7 +333,6 @@ body::before {
                                     @media (width >=75rem) {
                                         :root {
                                             --max-inline-size: min(73.75rem, 98dvw);
-                                            --max-inline-size: min(73.75rem, 98dvw);
                                         }
 
                                         body::before {
@@ -369,7 +367,6 @@ body::before {
                                                 @media (width >=120rem) {
                                                     @media (width >=120rem) {
                                                         :root {
-                                                            --max-inline-size: min(120rem, 98dvw);
                                                             --max-inline-size: min(120rem, 98dvw);
                                                         }
 
