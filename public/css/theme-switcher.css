@@ -32,18 +32,18 @@
 /* Form Styles for Custom Theme Selector */
 
 .theme-selector-container {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  gap: var(--space-2xs);
+  gap: var(--space-4xs-3xs);
+  /* align-items: flex-start; */
+  inline-size: min(100%, 15rem);
   line-height: 1;
-  font-size: var(--fs-01);
+  font-size: var(--fs-0);
 }
 
 .theme-selector-container label {
   display: inline-flex;
-  align-items: center;
+  justify-content: center;
   line-height: 1;
 }
 
@@ -60,22 +60,22 @@
 }
 
 .theme-selector {
-     max-width: min(100%, 15rem);
+  max-width: min(100%, 15rem);
   --theme-label-default-width: 9ch;
   position: relative;
-  width: 100%;
+  inline-size: 100%;
 }
 
 .theme-selector-menu {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: 1fr;
+}
 
-  .theme-selector-menu li,
-  .theme-selector-option {
-    inline-size: 100%;
-    max-inline-size: 100%;
-    box-sizing: border-box;
-  }
+.theme-selector-menu li,
+.theme-selector-option {
+  inline-size: 100%;
+  max-inline-size: 100%;
+  box-sizing: border-box;
+}
 
 .theme-selector-trigger,
 .theme-selector-option {
@@ -91,20 +91,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4xs);
+  gap: var(--space-4xs-3xs);
   inline-size: 100%;
   width: 100%;
   border: 1px solid var(--text-color);
   border-radius: 999px;
-  padding: var(--space-3xs) var(--space-s);
+  padding: var(--space-4xs-3xs) var(--space-xs-s);
   cursor: pointer;
   background-color: var(--theme-switcher-background-color, var(--base-color));
   color: var(--text-color);
   font: inherit;
-  line-height: 1.2;
+  line-height: 1;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
     border-color 0.3s ease-in-out, transform 0.2s ease;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .theme-selector-trigger:hover,
@@ -125,18 +125,18 @@
 
 .theme-selector-trigger-icon,
 .theme-option-icon {
-  width: var(--space-xs-s);
-  height: var(--space-xs-s);
+  width: var(--theme-icon-size);
+  height: var(--theme-icon-size);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 var(--space-xs-s);
+  flex: 0 0 var(--theme-icon-size);
 }
 
 .theme-selector-trigger-icon svg,
 .theme-option-icon svg {
-  width: var(--space-xs-s);
-  height:var(--space-xs-s);
+  width: 100%;
+  height: 100%;
 }
 
 .theme-selector-trigger-text {
@@ -150,18 +150,18 @@
 }
 
 .theme-selector-chevron {
-  width: var(--space-2xs-xs);
-  height: var(--space-2xs-xs);
+  width: var(--theme-icon-size);
+  height: var(--theme-icon-size);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 var(--space-2xs-xs);
+  flex: 0 0 var(--theme-icon-size);
   transition: transform 0.2s ease;
 }
 
 .theme-selector-chevron svg {
-  width: var(--space-2xs-xs);
-  height: var(--space-2xs-xs);
+  width: 100%;
+  height: 100%;
 }
 
 .theme-selector.is-open .theme-selector-chevron {
@@ -170,14 +170,14 @@
 
 .theme-selector-menu {
   position: absolute;
-  bottom: calc(100% + var(--space-4xs));
+  inset-block-end: calc(100% + var(--space-4xs-3xs));
   left: 0;
   right: 0;
   display: grid;
-  gap: var(--space-xs);
+  gap: var(--space-4xs-3xs);
   z-index: 20;
   margin: 0;
-  padding: var(--space-2xs) 0;
+  padding: var(--space-4xs-3xs) 0;
   list-style: none;
   border: 1px solid var(--text-color);
   border-radius: var(--space-3xs-2xs);
@@ -208,19 +208,19 @@
 }
 
 .theme-selector-option {
-  width: 100%;
+  inline-size: 100%;
   appearance: none;
   border: 0;
   background: transparent;
   color: inherit;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-4xs);
+  gap: var(--space-3xs-2xs);
   text-align: left;
   font: inherit;
   min-width: 0;
   flex-wrap: nowrap;
-  padding: 0 var(--space-4xs);
+  padding: 0 var(--space-xs-s);
   border-radius: var(--space-3xs-2xs);
   cursor: pointer;
 }
@@ -230,12 +230,12 @@
   min-height: var(--space-m-s);
   margin-block: 0;
   line-height: 1;
- }
+}
 
 .theme-selector.is-open .theme-option-icon {
-  width: var(--space-xs-s);
-  height: var(--space-xs-s);
-  flex: 0 0 var(--space-xs-s);
+  width: var(--theme-icon-size);
+  height: var(--theme-icon-size);
+  flex: 0 0 var(--theme-icon-size);
 }
 
 .theme-selector-option:hover,
@@ -265,7 +265,7 @@
   white-space: nowrap;
   overflow-wrap: normal;
   word-break: keep-all;
-letter-spacing: 0.02em;
+  letter-spacing: 0.02em;
 }
 
 .theme-selector-native {
@@ -282,7 +282,7 @@ letter-spacing: 0.02em;
 
 @media (min-width: 48rem) {
   .theme-selector-container {
-   display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -303,7 +303,7 @@ letter-spacing: 0.02em;
     border-width: 0;
   }
 
- .theme-selector-trigger {
+  .theme-selector-trigger {
     gap: var(--space-3xs);
     padding: var(--space-2xs);
   }
@@ -336,7 +336,7 @@ letter-spacing: 0.02em;
 
   .theme-selector-option {
     gap: var(--space-2xs-xs);
-    padding:var(--space-2xs) var(--space-s);
+    padding: var(--space-2xs) var(--space-s);
   }
 
   .theme-selector.is-open .theme-selector-option {
@@ -346,7 +346,7 @@ letter-spacing: 0.02em;
     padding-inline: var(--space-s);
     gap: var(--space-2xs);
     line-height: 1;
-   }
+  }
 
   .theme-selector.is-open .theme-option-icon {
     width: var(--space-s);
@@ -362,7 +362,7 @@ letter-spacing: 0.02em;
 }
 
 @media (prefers-reduced-motion: reduce) {
-.theme-selector-trigger,
+  .theme-selector-trigger,
   .theme-selector-chevron,
   .theme-selector-option {
     transition: none !important;
@@ -370,7 +370,7 @@ letter-spacing: 0.02em;
 }
 
 @media (forced-colors: active) {
-.theme-selector-trigger,
+  .theme-selector-trigger,
   .theme-selector-menu,
   .theme-selector-option {
     forced-color-adjust: auto;
@@ -390,7 +390,8 @@ letter-spacing: 0.02em;
   }
 }
 
-@media (hover: none) and (pointer: coarse) {.theme-selector-trigger:focus-visible,
+@media (hover: none) and (pointer: coarse) {
+  .theme-selector-trigger:focus-visible,
   .theme-selector-option:focus-visible {
     outline: none;
     box-shadow: none;
