@@ -40,7 +40,6 @@
     "source.fixAll.stylelint": "explicit"
   },
   "files.autoSave": "onWindowChange",
-  "editor.defaultFormatter": "vscode.css-language-features",
-  "liveServer.settings.ChromeDebuggingAttachment": false,
-  "liveServer.settings.host": "127.0.0.1"
+  "liveServer.settings.host": "127.0.0.1",
+  "liveServer.settings.port": 8080
 }
