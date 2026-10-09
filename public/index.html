@@ -40,20 +40,22 @@
 </head>
 
 <body data-page="index">
-  <div class="wrapper">
-    <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
+<!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
     <div class="support view-transition" role="alert" aria-live="assertive">
       ⚠️ Your browser doesn't support View Transitions
     </div>
     <!-- ✅ header: labelledby ties header to its quote content -->
-    <header aria-labelledby="site-quote">
+    <header class="site-header" aria-labelledby="site-quote">
+        <div class="wrapper">
       <a class="skip-link" href="#main-content">Skip to main content</a>
       <p id="site-quote" class="header-text">
         "there will be an answer;&nbsp;&nbsp;Let It Be!"
       </p>
       <p class="header-break" aria-hidden="true">--the beatles</p>
+        </div>
     </header>
-    <main id="main-content" class="content" aria-labelledby="site-heading" tabindex="-1">
+    <main id="main-content"  aria-labelledby="site-heading" tabindex="-1">
+      <div class="wrapper content">
       <h1 id="site-heading" class="text-with-animation">
         <span>the tracks</span>&nbsp;<span>of</span>&nbsp;<span>my y(t)ears</span>
       </h1>
@@ -88,9 +90,11 @@
         </svg>
         ring the bell
       </button>
+      </div>
     </main>
     <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
     <footer role="contentinfo" class="footer">
+      <div class="wrapper">
       <div class="theme-selector-container">
         <span class="theme-selector-label" id="theme-selector-label">color theme:</span>
         <div class="theme-selector" data-theme-selector>
@@ -158,8 +162,8 @@
         </select>
       </div>
       <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
-    </footer>
-  </div>
+      </div>
+      </footer>
 </body>
 
 </html>

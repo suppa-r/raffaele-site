@@ -1,40 +1,49 @@
-.wrapper {
+body {
     display: flex;
     flex-direction: column;
-    font-size: var(--fs-0);
-    color: var(--text-color);
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block:
+        max(var(--space-2xs-xs), env(safe-area-inset-top, 0px)) max(var(--space-2xs-xs), env(safe-area-inset-bottom, 0px));
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
+.wrapper {
+    max-width: var(--max-inline-size);
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--padding-inline);
 }
 
 .header-text,
 .header-break {
-    font-family: var(--primary-font-secondary);
-    font-style: italic;
     text-align: center;
-    text-wrap: balance;
     white-space: nowrap;
+    margin-block: var(--space-4xs-3xs);
+}
+
+.header-break {
+    font-size: var(--fs-01);
 }
 
 main {
-    flex: 1 1 auto;
-    min-block-size: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    row-gap: var(--space-2xs-xs);
+    font-style: italic;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: safe center;
-    text-align: center;
+    justify-content: center;
+    row-gap: var(--space-xs-s);
 }
 
 .text-with-animation {
-    font-style: italic;
     overflow-wrap: break-word;
     font-size: var(--fs-2);
     letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
@@ -43,7 +52,6 @@ main {
 .text-with-animation-1,
 .text-with-animation-2 {
     font-size: var(--fs-3);
-    font-style: italic;
     letter-spacing: var(--letter-spacing-wide);
     overflow-wrap: break-word;
 }
@@ -59,12 +67,6 @@ main {
 /* --------------------------------------- */
 /* ------------------ Footer ------------- */
 /* --------------------------------------- */
-
-footer {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
 
 @media (prefers-reduced-motion:reduce) {
     .btn,
