@@ -69,7 +69,7 @@ function getIntroThemeSelectorElements() {
 }
 
 function closeIntroThemeSelector({ returnFocus = false } = {}) {
-  const { root, trigger, menu, options } = getIntroThemeSelectorElements();
+  const { root, trigger, menu } = getIntroThemeSelectorElements();
   if (!root || !trigger || !menu) {
     return;
   }
@@ -77,9 +77,6 @@ function closeIntroThemeSelector({ returnFocus = false } = {}) {
   root.classList.remove("is-open");
   trigger.setAttribute("aria-expanded", "false");
   menu.hidden = true;
-  options.forEach((option) => {
-    option.tabIndex = -1;
-  });
 
   if (returnFocus && trigger instanceof HTMLElement) {
     trigger.focus();
@@ -261,26 +258,14 @@ function focusIntroThemeOption(direction = 1) {
   );
   const startIndex =
     activeIndex >= 0 ? activeIndex : Math.max(selectedIndex, 0);
-  const nextOption =
-    options[(startIndex + direction + options.length) % options.length];
-  options.forEach((option) => {
-    option.tabIndex = option === nextOption ? 0 : -1;
-  });
-  nextOption?.focus();
+  options[(startIndex + direction + options.length) % options.length]?.focus();
 }
 
 function focusSelectedIntroThemeOption() {
   const { options } = getIntroThemeSelectorElements();
-  const selectedOption =
-    options?.find((option) => option.getAttribute("aria-selected") === "true") ||
-    options?.[0];
-  if (!selectedOption) {
-    return;
-  }
-  options.forEach((option) => {
-    option.tabIndex = option === selectedOption ? 0 : -1;
-  });
-  selectedOption.focus();
+  options
+    ?.find((option) => option.getAttribute("aria-selected") === "true")
+    ?.focus() || options?.[0]?.focus();
 }
 
 function selectIntroThemeOption(option) {
@@ -398,21 +383,6 @@ function handleIntroThemeNativeChange(event) {
   }
 }
 
-function handleIntroThemeFocusOut(event) {
-  if (!isIntroThemePage()) {
-    return;
-  }
-
-  const { root } = getIntroThemeSelectorElements();
-  if (
-    root &&
-    (!(event.relatedTarget instanceof Node) ||
-      !root.contains(event.relatedTarget))
-  ) {
-    closeIntroThemeSelector();
-  }
-}
-
 function handleIntroThemeSystemChange() {
   if (getIntroStoredTheme() === "system") {
     setIntroTheme("system", { announce: false, withTransition: false });
@@ -434,7 +404,6 @@ function initIntroThemeSelector() {
     document.addEventListener("click", handleIntroThemeClick);
     document.addEventListener("keydown", handleIntroThemeKeydown);
     document.addEventListener("change", handleIntroThemeNativeChange);
-    document.addEventListener("focusout", handleIntroThemeFocusOut);
   }
 
   if (!introThemeSystemQueryAttached) {

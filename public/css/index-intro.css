@@ -13,27 +13,22 @@
 
 .wrapper {
    display: grid;
-   grid-template-rows: minmax(0, 1fr) auto;
+   grid-template-rows: 1fr;
    font-size: var(--fs-0);
-}
-
-footer {
-   min-block-size: var(--space-3xl);
-   padding-block: var(--space-2xs-xs);
 }
 
 .content {
    display: grid;
-   place-content: safe center center;
+   place-content: center;
    place-items: center;
    min-block-size: 0;
    color: var(--text-color);
-   text-align: center;
 }
 
 .game {
    position: relative;
    display: block;
+   inline-size: min(100%, clamp(16rem, 42vw, 28rem));
    aspect-ratio: 4 / 5;
    border-radius: var(--card-radius);
    color: inherit;
@@ -64,7 +59,6 @@ footer {
    height: 100%;
    pointer-events: none;
    transition: transform var(--card-transition);
-   text-align:center;
 }
 
 .game .front>img {
@@ -86,7 +80,6 @@ footer {
    font-size: var(--fs-2);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
-   padding-block-end: var(--space-xs-s);
 }
 
 .stats {
@@ -97,9 +90,7 @@ footer {
 }
 
 .stats .viewers {
-   font-size: clamp(0.75rem, 0.72rem + 0.1vw, 0.8rem);
-   white-space: nowrap;
-   text-align: center;
+   font-size: var(--fs-1);
 }
 
 .back {
@@ -124,8 +115,6 @@ footer {
 
 .back .viewers {
    font-size: var(--fs-1);
-   text-align: center;
-   white-space: nowrap;
 }
 
 .background {
@@ -154,22 +143,13 @@ footer {
 footer {
    display: grid;
    justify-content: end;
-   align-items:center;
- }
+   align-items: center;
+}
 
 @media (width >=48rem) {
    .game-stat {
-      font-size: var(--fs-4);
-   white-space: nowrap;
-      text-align: center;
-      padding-block-end: var(--space-xs-s);
+      font-size: var(--fs-3);
    }
-
-      .stats .viewers,
-       .game-stat {
-         white-space: nowrap;
-         text-align: center;
-      }
 }
 
 .game.is-revealed,
@@ -221,12 +201,12 @@ footer {
 @keyframes fade {
    from {
       opacity: 0.7;
-      transform: scale(0.6);
+      transform: scale(0.94);
    }
 
    to {
       opacity: 1;
-      transform: scale(1.5);
+      transform: scale(1.06);
    }
 }
 

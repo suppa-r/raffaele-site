@@ -166,7 +166,7 @@
 /* ============================================
    GRID BACKGROUND
    ============================================ */
-.wrapper::before {
+body::before {
   --size: clamp(12px, 2vw, 24px);
   content: "";
   position: absolute;
@@ -200,7 +200,6 @@
   padding-inline: var(--space-xs);
   transition: opacity 0.7s ease-in;
   z-index: -1;
-  inline-size: 100%;
 }
 
 [data-theme] body {
@@ -237,13 +236,14 @@
    ============================================ */
 
 @media (min-width: 30rem) {
-  .wrapper::before {
+  body::before {
     -webkit-mask-image: radial-gradient(circle,
         black clamp(22%, 27% + 3vw, 37%),
         transparent clamp(37%, 42% + 9vw, 60%));
     mask-image: radial-gradient(circle,
         black clamp(22%, 27% + 3vw, 37%),
         transparent clamp(37%, 42% + 9vw, 60%));
+    /* padding-inline: var(--space-m); */
   }
 }
 
@@ -252,10 +252,11 @@
    ============================================ */
 
 @media (min-width: 48rem) {
-  .wrapper::before {
+  body::before {
     mask-image: radial-gradient(circle,
         black clamp(25%, 30% + 3.5vw, 40%),
         transparent clamp(40%, 45% + 10vw, 65%));
+    /* padding-inline: var(--space-l); */
   }
 }
 
@@ -264,10 +265,11 @@
    ============================================ */
 
 @media (min-width: 64rem) {
-  .wrapper::before {
+  body::before {
     mask-image: radial-gradient(circle,
         black clamp(30%, 35% + 4vw, 45%),
         transparent clamp(45%, 50% + 12vw, 70%));
+    /* padding-inline: var(--space-xl); */
   }
 }
 
@@ -276,9 +278,10 @@
    ============================================ */
 
 @media (min-width: 75rem) {
-  .wrapper::before {
+  body::before {
     mask-image: radial-gradient(circle,
         black clamp(30%, 35% + 4vw, 45%),
         transparent clamp(45%, 50% + 12vw, 70%));
+    /* padding-inline: var(--space-2xl); */
   }
 }
