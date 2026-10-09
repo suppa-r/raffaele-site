@@ -23,6 +23,12 @@
   white-space: normal;
 }
 
+:focus-visible {
+  outline: 3px solid var(--focus-ring-color, currentcolor);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--base-color, #ffffff);
+}
+
 /* Form Styles for Custom Theme Selector */
 
 .theme-selector-container {
@@ -35,15 +41,26 @@
   font-size: var(--fs-01);
 }
 
-.theme-selector-container .theme-selector-label {
+.theme-selector-container label {
   display: inline-flex;
   align-items: center;
   line-height: 1;
 }
 
+#theme-selector-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .theme-selector {
-  max-width: min(100%, 15rem);
-  --theme-control-block-size: 2.75rem;
+     max-width: min(100%, 15rem);
   --theme-label-default-width: 9ch;
   position: relative;
   width: 100%;
@@ -77,8 +94,6 @@
   gap: var(--space-4xs);
   inline-size: 100%;
   width: 100%;
-  block-size: var(--theme-control-block-size);
-  min-block-size: var(--theme-control-block-size);
   border: 1px solid var(--text-color);
   border-radius: 999px;
   padding: var(--space-3xs) var(--space-s);
@@ -211,11 +226,11 @@
 }
 
 .theme-selector.is-open .theme-selector-option {
-  block-size: var(--theme-control-block-size);
-  min-block-size: var(--theme-control-block-size);
+  height: var(--space-m-s);
+  min-height: var(--space-m-s);
   margin-block: 0;
   line-height: 1;
-}
+ }
 
 .theme-selector.is-open .theme-option-icon {
   width: var(--space-xs-s);
@@ -276,6 +291,18 @@ letter-spacing: 0.02em;
     font-size: inherit;
   }
 
+  #theme-selector-label {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    border-width: 0;
+  }
+
  .theme-selector-trigger {
     gap: var(--space-3xs);
     padding: var(--space-2xs);
@@ -313,6 +340,8 @@ letter-spacing: 0.02em;
   }
 
   .theme-selector.is-open .theme-selector-option {
+    height: var(--space-l);
+    min-height: var(--space-l);
     padding-block: var(--space-xs);
     padding-inline: var(--space-s);
     gap: var(--space-2xs);
@@ -358,6 +387,13 @@ letter-spacing: 0.02em;
   .theme-selector-option[aria-selected="true"] {
     background-color: Highlight;
     color: HighlightText;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {.theme-selector-trigger:focus-visible,
+  .theme-selector-option:focus-visible {
+    outline: none;
+    box-shadow: none;
   }
 }
 

@@ -1,14 +1,8 @@
 .wrapper {
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto 1fr auto;
     font-size: var(--fs-0);
     color: var(--text-color);
-}
-
-header,
-footer {
-    min-block-size: var(--space-3xl);
-    padding-block: var(--space-2xs-xs);
 }
 
 header {
@@ -16,14 +10,18 @@ header {
     justify-content: center;
     align-items: center;
     row-gap: var(--space-4xs-3xs);
+    z-index: 2002;
+    border-radius: var(--space-m-l);
+    position: relative;
+    isolation: isolate;
     line-height: 1;
+    background: transparent;
     text-align: center;
+    padding-block: var(--space-4xs-3xs);
 }
 
 .header-text,
 .header-break {
-    font-family: var(--primary-font-secondary);
-    font-style: italic;
     inline-size: 100%;
     max-inline-size: 100%;
     margin: 0;
@@ -32,30 +30,43 @@ header {
     white-space: nowrap;
 }
 
+.header-text {
+    font-family: var(--primary-font-secondary);
+    font-style: italic;
+    line-height: 1;
+}
+
+.header-break {
+    font-family: var(--primary-font-secondary);
+    font-style: italic;
+    line-height: 1;
+}
+
 .content {
     display: grid;
-    place-content: safe center center;
+    place-content: center;
     place-items: center;
-    row-gap: var(--space-2xs);
-    text-align: center;
-   min-block-size: 0;
+    row-gap: var(--space-xs);
 }
 
-.text-with-animation {
-    font-style: italic;
-    text-wrap: balance;
-    overflow-wrap: break-word;
-    font-size: var(--fs-2);
-    letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
+.content> :is(h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+    padding: 0;
 }
 
+.text-with-animation,
 .text-with-animation-1,
 .text-with-animation-2 {
     font-size: var(--fs-3);
     font-style: italic;
+    line-height: 0.92;
     letter-spacing: var(--letter-spacing-wide);
     text-wrap: balance;
     overflow-wrap: break-word;
+}
+
+.text-with-animation {
+    letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
 }
 
 .text-with-animation span,
@@ -64,6 +75,13 @@ header {
     opacity: 0;
     display: inline-flex;
     will-change: transform, opacity;
+}
+
+@media (max-width: 47.999rem) {
+    .text-with-animation {
+        font-size: var(--fs-2);
+        letter-spacing: 0.01rem;
+    }
 }
 
 @media (min-width: 48rem) {
