@@ -29,6 +29,7 @@ header {
   isolation: isolate;
   line-height: 1;
   background: transparent;
+    padding-block:0;
 }
 
 body[data-page="intro-1"] header {
@@ -201,7 +202,6 @@ main {
   position: relative;
   overflow: hidden;
   min-height: 0;
-
 }
 
 main>section[id] {
@@ -416,12 +416,6 @@ html:not(.intro-1-section-active) main>section[id] {
     grid-auto-flow: column;
   }
 }
-
-/* @media (min-width: 48rem) {
-  .row-img img {
-    max-inline-size: 275px;
-  }
-} */
 
 /* --------------------------------------- */
 /* ---------------- Footer-- ------------- */

@@ -118,8 +118,8 @@ body[data-page="intro"] .open-overlay {
 
 .content {
     display: grid;
-    place-content: center;
-    place-items: center;
+   align-content:start;
+   margin-block-start: var(--space-s-m);
 }
 
 .wrapper-gradient-text {
@@ -134,7 +134,7 @@ body[data-page="intro"] .open-overlay {
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
-    margin-block-end: var(--space-xl-2xl);
+    margin-block-end: var(--space-s-m);
 }
 
 .text-layer {
@@ -163,14 +163,27 @@ body[data-page="intro"] .open-overlay {
     }
 
     100% {
-        text-shadow: 0 50px 5px var(--shadow-color-primary), 0 20px 10px var(--shadow-color-secondary), 0 10px 5px var(--shadow-color-tertiary)
+        text-shadow: 0 25px 5px var(--shadow-color-primary), 0 12px 10px var(--shadow-color-secondary), 0 6px 5px var(--shadow-color-tertiary)
     }
 }
 
-main p {
-    inline-size: min(100%, 75ch);
-    margin-inline: auto;
-    text-align: center;
+main {
+    inline-size: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0;
+
+    &>* {
+        text-box: trim-both text text;
+    }
+
+    &>p {
+        inline-size: min(100%, 85ch);
+        margin-inline: auto;
+        text-align: center;
+    }
 }
 
 main p:not(.wrapper-gradient-text) {
@@ -200,42 +213,38 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     transform: translateY(100%);
 }
 
+
 .text-break {
     display: block;
-    padding-block:0;
-    margin-block:0;
+    padding-inline-start:var(--space-3xs-2xs);
 }
 
 .fancy {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-2);
     font-style: italic;
-    margin-block: var(--space-3xs-2xs);
-}
+ }
 
 .fancy-quote {
     display: block;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-2);
     font-style: italic;
-    margin-block: var(--space-3xs-2xs);
     white-space: normal;
-}
+   }
 
 .fancy-quote span {
     font-style: italic;
     font-size: var(--fs-1);
     display: block;
     margin-inline: auto;
-}
+       }
 
 .fancy-text-break {
     display: block;
     font-size: var(--fs-1);
     padding-inline-start: 0;
-      padding-block:0;
-    margin-block:0;
-}
+   }
 
 .fancy-small {
     font-size: var(--fs-01);
@@ -256,6 +265,10 @@ footer {
 @media (min-width: 48rem) {
     header {
         font-size: var(--fs-0);
+    }
+
+    main {
+  letter-spacing: var(--letter-spacing-body);
     }
 
     .text-break {

@@ -3,7 +3,6 @@
                 BASE - Mobile (320px - 479px)
 ============================================ */
     --max-inline-size: min(26.25rem, 95vw);
-    --padding-inline: var(--space-m);
     --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
 }
 
@@ -15,6 +14,7 @@ html,
 body {
     interpolate-size: allow-keywords;
     overflow-wrap: anywhere;
+    height: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -34,12 +34,6 @@ body {
     hyphens: auto;
 }
 
-/* @media (min-width: 48rem) {
-    body {
-        font-size: var(--fs-0);
-    }
-} */
-
 .wrapper {
     position: relative;
     min-height: 100vh;
@@ -48,6 +42,7 @@ body {
     overflow: hidden;
     isolation: isolate;
     background-color: var(--base-color);
+    color: var(--text-color);
 }
 
 /* ===============================================
@@ -59,27 +54,89 @@ footer {
     max-inline-size: var(--max-inline-size);
     inline-size: 100%;
     margin-inline: auto;
-    padding-inline: var(--padding-inline);
 }
 
-header {
-    padding-block: var(--space-2xs-xs);
+main {
+    overflow: hidden auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-span) var(--base-color);
+}
+
+main::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+main::-webkit-scrollbar-track {
+    background: var(--base-color);
+}
+
+main::-webkit-scrollbar-thumb {
+    border: 0.15rem solid var(--base-color);
+    border-radius: 999px;
+    background: var(--text-span);
 }
 
 /* ===============================================
     Shared content width rules
     =============================================== */
-main > h1,
-main > h2,
-main > h3,
-main > h4,
-main > h5,
-main > h6,
-main > p {
+main> :is(h1, h2, h3, h4, h5, h6, p),
+main> :is(h1, h2, h3, h4, h5, h6, p),
+main section p {
     text-box: trim-both text text;
     padding-block: var(--space-4xs-3xs);
     inline-size: min(100%, 75ch);
     margin-inline: auto;
+}
+
+.visually-hidden,
+.sr-only,
+.screen-reader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.visually-hidden:focus,
+.visually-hidden:active {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+.visually-hidden,
+.sr-only,
+.screen-reader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.visually-hidden:focus,
+.visually-hidden:active {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
 }
 
 .skip-link {
@@ -140,7 +197,6 @@ h6,
 button,
 input,
 label {
-    margin-block: var(--layout-block-gap);
     text-wrap: balance;
 }
 
@@ -148,6 +204,7 @@ p {
     text-wrap: pretty;
     overflow-wrap: break-word;
     hyphens: auto;
+    margin-block: 0;
 }
 
 a {
@@ -174,128 +231,160 @@ a:focus-visible {
     outline-offset: 1.2px;
 }
 
-.wrapper::before {
-    --size: clamp(20px, 3vw, 30px);
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-color: var(--grid-background-color, var(--base-color));
-    background-image: linear-gradient(90deg, var(--grid-line-color, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px), linear-gradient(var(--grid-line-color, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px);
-    background-size: var(--size) var(--size);
-    background-position: center;
-    opacity: 1;
-    -webkit-mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
-    mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
-    mask-size: 100% 100%;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    z-index: -1000;
-    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    contain: layout;
-}
-
-@media (prefers-reduced-transparency: reduce),
-(prefers-reduced-motion: reduce) {
-    .wrapper::before {
-        mask-image: none;
-        transition: none;
+body::before {
+    body::before {
+        --size: clamp(20px, 3vw, 30px);
+        --columns: round(up, var(--max-inline-size) / var(--size), 1);
+        --rows: round(up, 100svh / var(--size), 1);
+        content: "";
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: 50%;
+        max-inline-size: 100%;
+        transform: translateX(-50%);
+        pointer-events: none;
+        /* background-color: var(var(--base-color)); */
+        background-image: linear-gradient(90deg, var(--body-grid-line, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px), linear-gradient(var(--body-grid-line, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px);
+        background-size: var(--size) var(--size);
+        background-size: calc(var(--max-inline-size) / var(--columns)) calc(100svh / var(--rows));
+        background-size: calc(var(--max-inline-size) / var(--columns)) calc(100svh / var(--rows));
+        background-position: 0 0;
+        opacity: 1;
+        -webkit-mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+        mask-image: radial-gradient(ellipse 72% 52% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+        mask-size: 100% 100%;
+        mask-position: center center;
+        mask-repeat: no-repeat;
+        z-index: -1000;
+        transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        contain: layout;
     }
-}
 
-/* ===============================================
+    @media (prefers-reduced-transparency: reduce),
+    (prefers-reduced-motion: reduce) {
+        body::before {
+            body::before {
+                mask-image: none;
+                transition: none;
+            }
+        }
+
+        /* ===============================================
     SM - Large Mobile / Small Tablet (480px+)
     ============================================ */
-@media (min-width: 30rem) {
-    :root {
-        --max-inline-size: min(52.5rem, 95dvw);
-        --padding-inline: var(--space-m);
-    }
+        @media (width >=30rem) {
+            @media (width >=30rem) {
+                :root {
+                    --max-inline-size: min(52.5rem, 98dvw);
+                }
 
 
-    .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
-    }
-}
+                body::before {
+                    body::before {
+                        -webkit-mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
+                        mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
+                    }
+                }
 
 
-/* ===============================================
+                /* ===============================================
     MD - Tablet (768px+)
     ============================================ */
 
-@media (min-width: 48rem) {
-    :root {
-        --max-inline-size: min(60rem, 95dvw);
-        --padding-inline: var(--space-l);
-    }
+                @media (width >=48rem) {
+                    @media (width >=48rem) {
+                        :root {
+                            --max-inline-size: min(60rem, 95dvw);
+                            --padding-inline: var(--space-l);
+                        }
 
-    .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-    }
-}
+                        body::before {
+                            body::before {
+                                -webkit-mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                            }
+                        }
 
-/* ===============================================
+                        /* ===============================================
     LG - Laptop (1024px+)
     ============================================ */
 
-@media (min-width: 64rem) {
-    :root {
-        --max-inline-size: min(65rem, 95dvw);
-        --padding-inline: var(--space-l);
-    }
+                        @media (width >=64rem) {
+                            @media (width >=64rem) {
+                                :root {
+                                    --max-inline-size: min(65rem, 95dvw);
+                                    --padding-inline: var(--space-l);
+                                }
 
-    .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
-    }
-}
+                                body::before {
+                                    body::before {
+                                        -webkit-mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+                                        mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
+                                    }
+                                }
 
-/* ===============================================
+                                /* ===============================================
     XL - Desktop (1200px+)
     ============================================ */
 
-@media (min-width: 75rem) {
-    :root {
-        --max-inline-size: min(73.75rem, 95dvw);
-        --padding-inline: var(--space-l);
-    }
+                                @media (width >=75rem) {
+                                    @media (width >=75rem) {
+                                        :root {
+                                            --max-inline-size: min(73.75rem, 98dvw);
+                                        }
 
-    .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-    }
-}
+                                        body::before {
+                                            body::before {
+                                                -webkit-mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                                mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                            }
+                                        }
 
-/* ===============================================
+                                        /* ===============================================
     XXL - Wide Desktop (1440px+)
     ============================================ */
 
-@media (min-width: 90rem) {
-    :root {
-        --max-inline-size: min(87.5rem, 96dvw);
-        --padding-inline: var(--space-l);
-    }
+                                        @media (width >=90rem) {
+                                            @media (width >=90rem) {
+                                                :root {
+                                                    --max-inline-size: min(87.5rem, 96dvw);
+                                                    --padding-inline: var(--space-l);
+                                                }
 
-    .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-    }
-}
+                                                body::before {
+                                                    body::before {
+                                                        -webkit-mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                                        mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                                    }
+                                                }
 
-/* ===============================================
+                                                /* ===============================================
     3XL - Ultra-Wide / 4K (1920px+)
     ============================================ */
 
-@media (min-width: 120rem) {
-    :root {
-        --max-inline-size: min(1920px, 95dvw);
-        --padding-inline: var(--space-l);
-    }
+                                                @media (width >=120rem) {
+                                                    @media (width >=120rem) {
+                                                        :root {
+                                                            --max-inline-size: min(120rem, 98dvw);
+                                                        }
 
-    .wrapper::before {
-        -webkit-mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
-        mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                                        body::before {
+                                                            body::before {
+                                                                -webkit-mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                                                mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
