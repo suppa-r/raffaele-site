@@ -44,21 +44,22 @@ main {
 }
 
 .text-with-animation {
-    overflow-wrap: break-word;
-    font-size: var(--fs-2);
+   font-size: var(--fs-1);
     letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
+    white-space: nowrap;
 }
 
 .text-with-animation-1,
 .text-with-animation-2 {
-    font-size: var(--fs-3);
+    font-size: var(--fs-2);
     letter-spacing: var(--letter-spacing-wide);
-    overflow-wrap: break-word;
+   white-space: nowrap;
 }
 
 .text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
+    margin-inline-start: var(--space-xs-s);
     opacity: 0;
     display: inline-flex;
     will-change: transform, opacity;
@@ -67,6 +68,10 @@ main {
 /* --------------------------------------- */
 /* ------------------ Footer ------------- */
 /* --------------------------------------- */
+
+footer {
+  padding-inline: var(--space-xs-s);
+ }
 
 @media (prefers-reduced-motion:reduce) {
     .btn,

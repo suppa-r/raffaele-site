@@ -3,7 +3,8 @@
 .theme-selector-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: var(--space-4xs-3xs);
+ /* align-items: flex-start; */
   inline-size: min(100%, 15rem);
   line-height: 1;
   font-size: var(--fs-0);
@@ -11,7 +12,7 @@
 
 .theme-selector-container .theme-selector-label {
   display: inline-flex;
-  align-items: center;
+justify-content: center;
   line-height: 1;
 }
 
