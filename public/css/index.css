@@ -1,90 +1,77 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block:
+        max(var(--space-2xs-xs), env(safe-area-inset-top, 0px)) max(var(--space-2xs-xs), env(safe-area-inset-bottom, 0px));
+}
+
 .wrapper {
-    display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
-    font-size: var(--fs-0);
-    color: var(--text-color);
-}
-
-header,
-footer {
-    min-block-size: var(--space-3xl);
-    padding-block: var(--space-2xs-xs);
-}
-
-header {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    row-gap: var(--space-4xs-3xs);
-    line-height: 1;
-    text-align: center;
+    max-width: var(--max-inline-size);
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--padding-inline);
 }
 
 .header-text,
 .header-break {
-    font-family: var(--primary-font-secondary);
-    font-style: italic;
-    inline-size: 100%;
-    max-inline-size: 100%;
-    margin: 0;
     text-align: center;
-    text-wrap: balance;
     white-space: nowrap;
+    margin-block: var(--space-4xs-3xs);
+}
+
+.header-break {
+    font-size: var(--fs-01);
+}
+
+main {
+    display: flex;
+    flex: 1 1 auto;
+    min-block-size: 0;
 }
 
 .content {
-    display: grid;
-    place-content: safe center center;
-    place-items: center;
-    row-gap: var(--space-2xs);
+    flex: 1 1 auto;
+    min-block-size: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe center;
+    row-gap: var(--space-xs-s);
     text-align: center;
-   min-block-size: 0;
+    font-style: italic;
 }
 
 .text-with-animation {
-    font-style: italic;
-    text-wrap: balance;
-    overflow-wrap: break-word;
-    font-size: var(--fs-2);
+   font-size: var(--fs-1);
     letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
+    white-space: nowrap;
 }
 
 .text-with-animation-1,
 .text-with-animation-2 {
-    font-size: var(--fs-3);
-    font-style: italic;
+    font-size: var(--fs-2);
     letter-spacing: var(--letter-spacing-wide);
-    text-wrap: balance;
-    overflow-wrap: break-word;
+   white-space: nowrap;
 }
 
 .text-with-animation span,
 .text-with-animation-1 span,
 .text-with-animation-2 span {
+    margin-inline-start: var(--space-xs-s);
     opacity: 0;
     display: inline-flex;
     will-change: transform, opacity;
 }
 
-@media (min-width: 48rem) {
-    .text-with-animation,
-    .text-with-animation-1,
-    .text-with-animation-2 {
-        inline-size: fit-content;
-        white-space: nowrap;
-    }
-}
-
 /* --------------------------------------- */
-/* ----- Footer ----- */
+/* ------------------ Footer ------------- */
 /* --------------------------------------- */
 
 footer {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: end;
-    align-items: center;
-}
+  padding-inline: var(--space-xs-s);
+ }
 
 @media (prefers-reduced-motion:reduce) {
     .btn,

@@ -166,7 +166,7 @@
 /* ============================================
    GRID BACKGROUND
    ============================================ */
-.wrapper::before {
+body::before {
   --size: clamp(12px, 2vw, 24px);
   content: "";
   position: absolute;
@@ -237,7 +237,7 @@
    ============================================ */
 
 @media (min-width: 30rem) {
-  .wrapper::before {
+  body::before {
     -webkit-mask-image: radial-gradient(circle,
         black clamp(22%, 27% + 3vw, 37%),
         transparent clamp(37%, 42% + 9vw, 60%));
@@ -252,7 +252,7 @@
    ============================================ */
 
 @media (min-width: 48rem) {
-  .wrapper::before {
+  body::before {
     mask-image: radial-gradient(circle,
         black clamp(25%, 30% + 3.5vw, 40%),
         transparent clamp(40%, 45% + 10vw, 65%));
@@ -264,7 +264,7 @@
    ============================================ */
 
 @media (min-width: 64rem) {
-  .wrapper::before {
+  body::before {
     mask-image: radial-gradient(circle,
         black clamp(30%, 35% + 4vw, 45%),
         transparent clamp(45%, 50% + 12vw, 70%));
@@ -276,7 +276,7 @@
    ============================================ */
 
 @media (min-width: 75rem) {
-  .wrapper::before {
+  body::before {
     mask-image: radial-gradient(circle,
         black clamp(30%, 35% + 4vw, 45%),
         transparent clamp(45%, 50% + 12vw, 70%));

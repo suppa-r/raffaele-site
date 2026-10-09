@@ -9,10 +9,10 @@
   font-size: var(--fs-1);
   color: var(--text-color);
   background:var(--base-color);
- /* background: var(--surface-1); */
   border: 2px solid var(--border-default);
   border-radius: 100vw;
   cursor: pointer;
+  margin-inline: auto;
 
  &[data-btn-type="whimsical"] {
   --main-color: oklch(from var(--text-span) l calc(c * 2.2) h / 1);

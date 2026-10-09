@@ -40,28 +40,29 @@
 </head>
 
 <body data-page="index">
-  <div class="wrapper">
-    <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
-    <div class="support view-transition" role="alert" aria-live="assertive">
-      ⚠️ Your browser doesn't support View Transitions
-    </div>
-    <!-- ✅ header: labelledby ties header to its quote content -->
-    <header aria-labelledby="site-quote">
+  <!-- ✅ Browser support warnings - hidden by default via CSS @supports -->
+  <div class="support view-transition" role="alert" aria-live="assertive">
+    ⚠️ Your browser doesn't support View Transitions
+  </div>
+  <header class="site-header">
+    <div class="wrapper">
       <a class="skip-link" href="#main-content">Skip to main content</a>
-      <p id="site-quote" class="header-text">
+      <p class="header-text">
         "there will be an answer;&nbsp;&nbsp;Let It Be!"
       </p>
-      <p class="header-break" aria-hidden="true">--the beatles</p>
-    </header>
-    <main id="main-content" class="content" aria-labelledby="site-heading" tabindex="-1">
-      <h1 id="site-heading" class="text-with-animation">
-        <span>the tracks</span>&nbsp;<span>of</span>&nbsp;<span>my y(t)ears</span>
+      <p class="header-break">--the beatles</p>
+    </div>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <div class="wrapper content">
+      <h1 class="text-with-animation">
+        <span>the tracks</span><span>of</span><span>my t(y)ears</span>
       </h1>
-      <h2 id="started-heading" class="text-with-animation-1">
-        <span>how</span>&nbsp;<span>it</span>&nbsp;<span>started</span>
+      <h2 class="text-with-animation-1">
+        <span>how</span><span>it</span><span>started</span>
       </h2>
-      <h2 id="going-heading" class="text-with-animation-2">
-        <span>how</span>&nbsp;<span>it's</span>&nbsp;<span>going</span>
+      <h2 class="text-with-animation-2">
+        <span>how</span><span>it's</span><span>going</span>
       </h2>
       <!-- ✅ CTA: a link styled as a button keeps the page navigation semantics and still supports the shared particle interaction -->
       <button class="btn" data-btn-type="whimsical" data-href="index-intro.html" type="button">
@@ -88,9 +89,11 @@
         </svg>
         ring the bell
       </button>
-    </main>
-    <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
-    <footer role="contentinfo" class="footer">
+    </div>
+  </main>
+  <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
+  <footer role="contentinfo" class="footer">
+    <div class="wrapper">
       <div class="theme-selector-container">
         <span class="theme-selector-label" id="theme-selector-label">color theme:</span>
         <div class="theme-selector" data-theme-selector>
@@ -151,15 +154,16 @@
             </li>
           </ul>
         </div>
-        <select id="theme-selector" name="theme" class="theme-selector-native" aria-label="Select color theme" aria-hidden="true" tabindex="-1">
+        <select id="theme-selector" name="theme" class="theme-selector-native" aria-label="Select color theme"
+          aria-hidden="true" tabindex="-1">
           <option value="light">light</option>
           <option value="dark" selected>dark</option>
           <option value="system">system (auto)</option>
         </select>
       </div>
       <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </body>
 
 </html>
