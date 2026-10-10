@@ -237,9 +237,21 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .btn[data-btn-type="whimsical"],
+  .btn[data-btn-type="whimsical"]::after,
+  .btn[data-btn-type="whimsical"] svg,
   .btn[data-btn-type="whimsical"] .deco {
     animation: none;
     transition: none;
+  }
+
+  .btn[data-btn-type="whimsical"] svg {
+    transform: none;
+  }
+
+  .btn[data-btn-type="whimsical"] .deco {
     opacity: 0;
+    translate: 0 0;
+    offset-distance: 0%;
   }
 }

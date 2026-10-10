@@ -9,7 +9,7 @@ header {
     display: grid;
     justify-content: center;
     align-items: center;
-    row-gap: var(--space-4xs-3xs);
+    row-gap: var(--space-xs-s);
     z-index: 2002;
     border-radius: var(--space-m-l);
     position: relative;
@@ -20,53 +20,37 @@ header {
     padding-block: var(--space-4xs-3xs);
 }
 
-.header-text,
-.header-break {
-    inline-size: 100%;
-    max-inline-size: 100%;
-    margin: 0;
+.header-text {
+    font-style: italic;
+    line-height: 1;
+    font-size: var(--fs-01);
     text-align: center;
     text-wrap: balance;
     white-space: nowrap;
-}
-
-.header-text {
-    font-family: var(--primary-font-secondary);
-    font-style: italic;
-    line-height: 1;
-}
-
-.header-break {
-    font-family: var(--primary-font-secondary);
-    font-style: italic;
-    line-height: 1;
 }
 
 .content {
     display: grid;
     place-content: center;
     place-items: center;
-    row-gap: 0.2rem;
+    row-gap: var(--space-xs-s);
 }
 
-.content> :is(h1, h2, h3, h4, h5, h6) {
-    margin: 0;
-    padding: 0;
-}
-
-.text-with-animation,
-.text-with-animation-1,
-.text-with-animation-2 {
-    font-size: var(--fs-3);
+.text-with-animation {
+    font-size: var(--fs-1);
     font-style: italic;
-    line-height: 0.92;
-    letter-spacing: var(--letter-spacing-wide);
+    letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
     text-wrap: balance;
     overflow-wrap: break-word;
 }
 
-.text-with-animation {
-    letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
+.text-with-animation-1,
+.text-with-animation-2 {
+    font-size: var(--fs-2);
+    font-style: italic;
+    letter-spacing: var(--letter-spacing-wide);
+    text-wrap: balance;
+    overflow-wrap: break-word;
 }
 
 .text-with-animation span,
@@ -77,103 +61,12 @@ header {
     will-change: transform, opacity;
 }
 
-@media (max-width: 47.999rem) {
-    .text-with-animation {
-        font-size: var(--fs-2);
-        letter-spacing: 0.01rem;
-    }
-}
-
-@media (min-width: 48rem) {
+@media (width >=48rem) {
     .text-with-animation,
     .text-with-animation-1,
     .text-with-animation-2 {
         inline-size: fit-content;
         white-space: nowrap;
-    }
-}
-
- /* .btn {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-inline: auto;
-    margin-top: var(--space-m-l);
-    box-shadow: 0 20px 10px 0 var(--text-color);
-    isolation: isolate;
-    z-index: 10;
-    border-radius: var(--space-3xl-4xl);
-    text-decoration: none;
-    position: relative;
-    background: var(--base-color);
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.button-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-2xs-xs);
-    text-align: center;
-    pointer-events: none;
-    position: relative;
-    margin-inline: auto;
-    padding: var(--space-s-m) var(--space-xl-2xl);
-    z-index: 12;
-    font-size: var(--fs-1);
-}
-
-.btn svg {
-    width: var(--space-m-l);
-    height: var(--space-m-l);
-    fill: var(--text-color);
-    transition: fill 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.btn:hover svg {
-    transform: scale(0.8);
-    opacity: 0.5;
-}
-
-@media (hover:none) and (pointer:coarse) {
-    .btn {
-        -webkit-tap-highlight-color: rgb(255 255 255 / 10%);
-        touch-action: manipulation;
-        transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .btn:active {
-        transform: scale(1);
-        box-shadow: 0 12px 8px 0 var(--text-color);
-    }
-
-    .btn svg {
-        transition: fill 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .btn:active svg {
-        transform: scale(1.12) rotate(12deg);
-    }
-
-    @supports (-webkit-touch-callout: none) {
-        .btn {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-        }
-
-        .btn:active {
-            transform: scale(1);
-            box-shadow: 0 10px 7px 0 var(--text-color);
-        }
-
-        .btn:active svg {
-            transform: scale(1.08) rotate(10deg);
-        }
     }
 }
 
@@ -186,25 +79,4 @@ footer {
     grid-template-columns: auto;
     justify-content: end;
     align-items: center;
-}
-
-@media (prefers-reduced-motion:reduce) {
-    .btn,
-    .btn svg {
-        transition: none !important;
-        transform: none !important
-    }
-
-
-    .btn:hover {
-        box-shadow: 0 20px 10px 0 var(--text-color)
-    }
-
-
-    .btn:focus-visible {
-        outline: 6px solid var(--focus-ring-color);
-        background-color: var(--text-color);
-        color: var(--base-color);
-        box-shadow: 0 0 50px 10px var(--text-color)
-    }
 }
