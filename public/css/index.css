@@ -128,25 +128,6 @@ header {
     font-size: var(--fs-1);
 }
 
-/* .particle {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: var(--text-color);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 1;
-    transform: translate(0, 0);
-    animation: particleAnim 1s ease-out forwards
-}
-
-@keyframes particleAnim {
-    to {
-        opacity: 0;
-        transform: translate(var(--tx), var(--ty))
-    }
-}
-
 .btn svg {
     width: var(--space-m-l);
     height: var(--space-m-l);

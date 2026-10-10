@@ -1,8 +1,10 @@
-const PARTICLE_COUNT = 20;
-const PARTICLE_REMOVE_MS = 1000;
 const PAGE_LEAVE_CLASS = "is-leaving";
-const PARTICLE_DISTANCE_MIN = 20;
-const PARTICLE_DISTANCE_MAX = 100;
+const WHIMSY_PLAY_CLASS = "is-playing";
+const WHIMSY_NAVIGATE_DELAY_MS = 800;
+const WHIMSY_TOUCH_NAVIGATE_DELAY_MS = 1400;
+const SNEAKER_DESTINATION = "index-intro.html";
+const TOUCH_INTERACTION_QUERY = "(hover: none) and (pointer: coarse)";
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
 const MAIN_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INDEX_HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -29,54 +31,34 @@ function bindOnce(selector, eventName, handler) {
   });
 }
 
-function createParticle(x, y) {
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
-  particle.setAttribute("aria-hidden", "true");
-  particle.style.left = `${x}px`;
-  particle.style.top = `${y}px`;
-
-  const angle = Math.random() * 2 * Math.PI;
-  const distance =
-    Math.random() * (PARTICLE_DISTANCE_MAX - PARTICLE_DISTANCE_MIN) +
-    PARTICLE_DISTANCE_MIN;
-  particle.style.setProperty("--tx", `${Math.cos(angle) * distance}px`);
-  particle.style.setProperty("--ty", `${Math.sin(angle) * distance}px`);
-
-  return particle;
-}
-
-function emitParticles(button, x, y) {
-  for (let i = 0; i < PARTICLE_COUNT; i += 1) {
-    const particle = createParticle(x, y);
-    button.appendChild(particle);
-    setTimeout(() => particle.remove(), PARTICLE_REMOVE_MS);
-  }
-}
-
 function handleSneakerClick(event) {
   const button = event.currentTarget || getSneakerButton();
   if (!button) return;
 
   event.preventDefault();
 
-  const rect = button.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-
   document.body.classList.add(PAGE_LEAVE_CLASS);
-  emitParticles(button, x, y);
+
+  if (window.matchMedia(REDUCED_MOTION_QUERY).matches) {
+    window.location.assign(SNEAKER_DESTINATION);
+    return;
+  }
+
+  // Touch devices never match :hover, so the decorations need an explicit state class.
+  button.classList.add(WHIMSY_PLAY_CLASS);
+
+  const navigateDelay = window.matchMedia(TOUCH_INTERACTION_QUERY).matches
+    ? WHIMSY_TOUCH_NAVIGATE_DELAY_MS
+    : WHIMSY_NAVIGATE_DELAY_MS;
 
   setTimeout(() => {
-    window.location.assign("index-intro.html");
-  }, 800);
+    window.location.assign(SNEAKER_DESTINATION);
+  }, navigateDelay);
 }
 
 function bindSneakerButton() {
   bindOnce(".btn", "click", handleSneakerClick);
 }
-
-const GAME_TOUCH_QUERY = "(hover: none) and (pointer: coarse)";
 
 function bindGameClickNavigation() {
   const games = document.querySelectorAll(".game");
@@ -113,7 +95,7 @@ function bindGameClickNavigation() {
     });
 
     const navigateToIntroOne = (event) => {
-      const usesTouchInteraction = window.matchMedia(GAME_TOUCH_QUERY).matches;
+      const usesTouchInteraction = window.matchMedia(TOUCH_INTERACTION_QUERY).matches;
       const isTouchTap = touchActivation || (usesTouchInteraction && event.detail > 0);
       touchActivation = false;
 

@@ -1,4 +1,7 @@
 .btn {
+  /* Defined here because the legacy whimsy-base.css that supplied this token was removed. */
+  --border-default: oklch(from var(--text-color) l c h / 35%);
+
   margin-block-start: var(--space-m-l);
   position: relative;
   display: flex;
@@ -77,6 +80,10 @@ a {
   &:focus-visible {
     color: var(--main-color);
   }
+}
+
+.btn[data-btn-type="whimsical"].is-playing a {
+  color: var(--main-color);
 }
 
 [data-theme="light"] .btn[data-btn-type="whimsical"] {
@@ -200,14 +207,39 @@ a {
 
 @media (hover: none) and (pointer: coarse) {
   .btn[data-btn-type="whimsical"] {
+    /* Touch devices never resolve :hover, so a tap adds .is-playing to run the same effect. */
+    --deco-size: 9px;
+    --deco-timing: 1.8s;
+
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .btn[data-btn-type="whimsical"]:not(.is-playing) .deco {
+  .btn[data-btn-type="whimsical"]:not(.is-playing) {
+    border-color: var(--border-default);
+
+    &::after {
+      opacity: 0;
+    }
+
+    & svg {
+      transform: none;
+    }
+
+    & .deco {
+      animation: none;
+      transition: none;
+      opacity: 0;
+      translate: 0 0;
+      offset-distance: 0%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn[data-btn-type="whimsical"] .deco {
     animation: none;
     transition: none;
     opacity: 0;
-    translate: 0 0;
-    offset-distance: 0%;
   }
 }
