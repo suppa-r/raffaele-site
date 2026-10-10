@@ -14,6 +14,8 @@
 	},
 	"urls": [
 		"http://localhost:8082/index.html",
-		"http://localhost:8082/intro.html"
+		"http://localhost:8082/intro.html",
+		"http://localhost:8082/index-intro.html",
+		"http://localhost:8082/intro-1.html"
 	]
 }
