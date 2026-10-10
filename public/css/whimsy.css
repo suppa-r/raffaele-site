@@ -82,7 +82,7 @@ a {
   }
 }
 
-.btn[data-btn-type="whimsical"].is-playing a {
+.btn[data-btn-type="whimsical"].is-playing {
   color: var(--main-color);
 }
 
@@ -144,7 +144,7 @@ a {
     offset-distance calc(var(--deco-timing) * var(--deco-speed-variation, 1));
   animation: --decoration-life calc(var(--deco-timing) * var(--deco-speed-variation, 1) * 0.85) both;
 
-  &:nth-child(1) {
+  &:nth-last-child(5) {
     --deco-color: var(--deco-1-color);
     --deco-scale: var(--deco-1-scale);
     --deco-start-offset: var(--deco-1-start-offset);
@@ -153,7 +153,7 @@ a {
     --deco-speed-variation: var(--deco-1-speed-variation);
   }
 
-  &:nth-child(2) {
+  &:nth-last-child(4) {
     --deco-color: var(--deco-2-color);
     --deco-scale: var(--deco-2-scale);
     --deco-start-offset: var(--deco-2-start-offset);
@@ -162,7 +162,7 @@ a {
     --deco-speed-variation: var(--deco-2-speed-variation);
   }
 
-  &:nth-child(3) {
+  &:nth-last-child(3) {
     --deco-color: var(--deco-3-color);
     --deco-scale: var(--deco-3-scale);
     --deco-start-offset: var(--deco-3-start-offset);
@@ -171,7 +171,7 @@ a {
     --deco-speed-variation: var(--deco-3-speed-variation);
   }
 
-  &:nth-child(4) {
+  &:nth-last-child(2) {
     --deco-color: var(--deco-4-color);
     --deco-scale: var(--deco-4-scale);
     --deco-start-offset: var(--deco-4-start-offset);
@@ -180,7 +180,7 @@ a {
     --deco-speed-variation: var(--deco-4-speed-variation);
   }
 
-  &:nth-child(5) {
+  &:nth-last-child(1) {
     --deco-color: var(--deco-5-color);
     --deco-scale: var(--deco-5-scale);
     --deco-start-offset: var(--deco-5-start-offset);

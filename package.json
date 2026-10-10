@@ -12,8 +12,9 @@
     "lint:css": "stylelint **/*.css",
     "lint:html": "htmlhint **/*.html",
     "serve": "http-server public -p 8080 -s -c-1",
+    "serve:a11y": "http-server public -p 8082 -s -c-1",
     "test:a11y:run": "pa11y-ci",
-    "test:a11y": "start-server-and-test serve http://localhost:8080 test:a11y:run"
+    "test:a11y": "start-server-and-test serve:a11y http://localhost:8082 test:a11y:run"
   },
   "lint-staged": {
     "**/*.css": [
@@ -29,9 +30,11 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "htmlhint": "^1.1.4",
+    "http-server": "^14.1.1",
     "husky": "^8.0.0",
     "lint-staged": "^17.0.8",
     "pa11y-ci": "^4.1.1",
+    "start-server-and-test": "^3.0.13",
     "stylelint": "^16.3.1",
     "stylelint-config-standard": "^36.0.1"
   }

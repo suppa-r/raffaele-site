@@ -1,7 +1,6 @@
 {
 	"defaults": {
 		"chromeLaunchConfig": {
-			"executablePath": "/usr/bin/chromium",
 			"args": [
 				"--no-sandbox",
 				"--disable-setuid-sandbox",
@@ -14,7 +13,7 @@
 		"standard": "WCAG2AA"
 	},
 	"urls": [
-		"http://localhost:8080/index.html",
-		"http://localhost:8080/intro.html"
+		"http://localhost:8082/index.html",
+		"http://localhost:8082/intro.html"
 	]
 }
