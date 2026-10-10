@@ -1,12 +1,5 @@
-const PAGE_LEAVE_CLASS = "is-leaving";
-const WHIMSY_PLAY_CLASS = "is-playing";
-const WHIMSY_NAVIGATE_DELAY_MS = 800;
-const WHIMSY_TOUCH_NAVIGATE_DELAY_MS = 1400;
-const SNEAKER_DESTINATION = "index-intro.html";
 const TOUCH_INTERACTION_QUERY = "(hover: none) and (pointer: coarse)";
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
-const MAIN_COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const INDEX_HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 const INDEX_HERO_REVEAL_DURATION = 0.9;
 const INDEX_HERO_REVEAL_STAGGER = 0.12;
@@ -17,48 +10,6 @@ const INDEX_HEADING_SELECTORS = [
   ".text-with-animation-1 span",
   ".text-with-animation-2 span",
 ];
-
-function getSneakerButton() {
-  return document.querySelector(".btn");
-}
-
-function bindOnce(selector, eventName, handler) {
-  document.querySelectorAll(selector).forEach((element) => {
-    const key = `bound${eventName}`;
-    if (element.dataset[key] === "true") return;
-    element.addEventListener(eventName, handler);
-    element.dataset[key] = "true";
-  });
-}
-
-function handleSneakerClick(event) {
-  const button = event.currentTarget || getSneakerButton();
-  if (!button) return;
-
-  event.preventDefault();
-
-  document.body.classList.add(PAGE_LEAVE_CLASS);
-
-  if (window.matchMedia(REDUCED_MOTION_QUERY).matches) {
-    window.location.assign(SNEAKER_DESTINATION);
-    return;
-  }
-
-  // Touch devices never match :hover, so the decorations need an explicit state class.
-  button.classList.add(WHIMSY_PLAY_CLASS);
-
-  const navigateDelay = window.matchMedia(TOUCH_INTERACTION_QUERY).matches
-    ? WHIMSY_TOUCH_NAVIGATE_DELAY_MS
-    : WHIMSY_NAVIGATE_DELAY_MS;
-
-  setTimeout(() => {
-    window.location.assign(SNEAKER_DESTINATION);
-  }, navigateDelay);
-}
-
-function bindSneakerButton() {
-  bindOnce(".btn", "click", handleSneakerClick);
-}
 
 function bindGameClickNavigation() {
   const games = document.querySelectorAll(".game");
@@ -145,31 +96,54 @@ function animateIndexHeadings() {
 
   if (
     window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-    typeof window.gsap === "undefined"
+    typeof Element.prototype.animate !== "function"
   ) {
     showHeadings();
     return;
   }
 
-  headingGroups.forEach((group, index) => {
-    window.gsap.set(group, {
-      x: index === 1 ? `-${INDEX_SLIDE_OFFSET}` : INDEX_SLIDE_OFFSET,
-      opacity: 0,
-    });
-  });
+  const duration = INDEX_HERO_REVEAL_DURATION * 1000;
+  const stagger = INDEX_HERO_REVEAL_STAGGER * 1000;
+  const groupDuration =
+    duration +
+    Math.max(...headingGroups.map((group) => group.length - 1)) * stagger;
 
-  const timeline = window.gsap.timeline({
-    delay: INDEX_HERO_REVEAL_DELAY,
-    overwrite: "auto",
-  });
+  headingGroups.forEach((group, groupIndex) => {
+    const offset =
+      groupIndex === 1 ? `-${INDEX_SLIDE_OFFSET}` : INDEX_SLIDE_OFFSET;
 
-  headingGroups.forEach((group) => {
-    timeline.to(group, {
-      x: 0,
-      opacity: 1,
-      duration: INDEX_HERO_REVEAL_DURATION,
-      stagger: INDEX_HERO_REVEAL_STAGGER,
-      ease: INDEX_HERO_TEXT_EASE,
+    group.forEach((span, spanIndex) => {
+      const animation = span.animate(
+        [
+          {
+            opacity: 0,
+            transform: `translate3d(${offset}, 0, 0)`,
+          },
+          {
+            opacity: 1,
+            transform: "translate3d(0, 0, 0)",
+          },
+        ],
+        {
+          delay:
+            INDEX_HERO_REVEAL_DELAY * 1000 +
+            groupIndex * groupDuration +
+            spanIndex * stagger,
+          duration,
+          easing: INDEX_HERO_TEXT_EASE,
+          fill: "forwards",
+        },
+      );
+
+      animation.addEventListener(
+        "finish",
+        () => {
+          span.style.opacity = "1";
+          span.style.transform = "translate3d(0, 0, 0)";
+          animation.cancel();
+        },
+        { once: true },
+      );
     });
   });
 }
@@ -180,30 +154,6 @@ function getAbsoluteHref(href, baseUrl) {
   } catch {
     return href;
   }
-}
-
-function getSavedThemePreference() {
-  try {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "auto") {
-      localStorage.setItem("theme", "system");
-      return "system";
-    }
-
-    return ["light", "dark", "system"].includes(savedTheme)
-      ? savedTheme
-      : "system";
-  } catch {
-    return "system";
-  }
-}
-
-function resolveSavedThemePreference(themePreference) {
-  if (themePreference !== "system") {
-    return themePreference;
-  }
-
-  return window.matchMedia(MAIN_COLOR_SCHEME_QUERY).matches ? "dark" : "light";
 }
 
 function loadNewStylesheets(newStylesheets, currentHrefSet, destinationUrl) {
@@ -272,7 +222,7 @@ async function loadMissingScripts(newScripts, currentSrcSet, destinationUrl) {
   }
 }
 
-function adoptNewBody(newDocument, savedTheme) {
+function adoptNewBody(newDocument) {
   const newBody = document.adoptNode(newDocument.body);
   newBody.classList.add("page-entering");
   document.documentElement.replaceChild(newBody, document.body);
@@ -285,11 +235,6 @@ function adoptNewBody(newDocument, savedTheme) {
     "intro-1-nav-title-visible",
   );
   document.title = newDocument.title;
-
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  if (currentTheme !== savedTheme) {
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  }
 
   const newGrid = newDocument.documentElement.getAttribute("data-grid");
   if (newGrid) {
@@ -370,9 +315,8 @@ async function handleNavigation(event) {
       );
       removeOldStylesheets(newHrefSet);
 
-      const savedTheme = resolveSavedThemePreference(getSavedThemePreference());
       if (!document.startViewTransition) {
-        adoptNewBody(newDocument, savedTheme);
+        adoptNewBody(newDocument);
         await loadMissingScripts(
           newScripts,
           currentSrcSet,
@@ -385,7 +329,7 @@ async function handleNavigation(event) {
       }
 
       const transition = document.startViewTransition(() => {
-        adoptNewBody(newDocument, savedTheme);
+        adoptNewBody(newDocument);
       });
 
       transition.ready
@@ -425,7 +369,6 @@ function initNavigationInterception() {
 }
 
 function initMainPage() {
-  bindSneakerButton();
   bindGameClickNavigation();
   animateIndexHeadings();
   initNavigationInterception();

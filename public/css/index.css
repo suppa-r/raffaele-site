@@ -33,6 +33,12 @@ header {
     display: grid;
     place-content: center;
     place-items: center;
+    row-gap: var(--space-s-m);
+}
+
+.hero-title {
+    display: grid;
+    place-items: center;
     row-gap: var(--space-xs-s);
 }
 
@@ -61,13 +67,10 @@ header {
     will-change: transform, opacity;
 }
 
-@media (width >=48rem) {
-    .text-with-animation,
-    .text-with-animation-1,
-    .text-with-animation-2 {
-        inline-size: fit-content;
-        white-space: nowrap;
-    }
+.text-with-animation span + span,
+.text-with-animation-1 span + span,
+.text-with-animation-2 span + span {
+    padding-inline-start: var(--space-2xs-xs);
 }
 
 /* --------------------------------------- */
