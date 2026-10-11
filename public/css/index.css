@@ -1,76 +1,179 @@
 .wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    font-size: var(--fs-0);
-    color: var(--text-color);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-0);
+  color: var(--text-color);
 }
 
 header {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    row-gap: var(--space-xs-s);
-    z-index: 2002;
-    border-radius: var(--space-m-l);
-    position: relative;
-    isolation: isolate;
-    line-height: 1;
-    background: transparent;
-    text-align: center;
-    padding-block: var(--space-4xs-3xs);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  row-gap: var(--space-xs-s);
+  z-index: 2002;
+  border-radius: var(--space-m-l);
+  position: relative;
+  isolation: isolate;
+  line-height: 1;
+  background: transparent;
+  text-align: center;
+  padding-block: var(--space-4xs-3xs);
 }
 
 .header-text {
-    font-style: italic;
-    line-height: 1;
-    font-size: var(--fs-01);
-    text-align: center;
-    text-wrap: balance;
-    white-space: nowrap;
+  font-style: italic;
+  line-height: 1;
+  font-size: var(--fs-01);
+  text-align: center;
+  text-wrap: balance;
+  white-space: nowrap;
 }
 
-.content {
-    display: grid;
-    place-content: center;
-    place-items: center;
-    row-gap: var(--space-s-m);
-}
-
-.hero-title {
-    display: grid;
-    place-items: center;
-    row-gap: var(--space-xs-s);
+main {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  row-gap: var(--space-s-m);
 }
 
 .text-with-animation {
-    font-size: var(--fs-1);
-    font-style: italic;
-    letter-spacing: clamp(0.02rem, 0.005rem + 0.08vw, 0.05rem);
-    text-wrap: balance;
-    overflow-wrap: break-word;
+  font-size: var(--fs-1);
+  animation: main-text-animation 1.7s ease-in-out forwards;
+  color: white;
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
 }
 
-.text-with-animation-1,
-.text-with-animation-2 {
-    font-size: var(--fs-2);
-    font-style: italic;
-    letter-spacing: var(--letter-spacing-wide);
-    text-wrap: balance;
-    overflow-wrap: break-word;
+.subtext-with-animation {
+  font-size: var(--fs-2);
+  text-align: center;
+  width: 100%;
+  color: var(--text-color);
+  letter-spacing: 4px;
+  user-select: none;
+  display: block;
 }
 
-.text-with-animation span,
-.text-with-animation-1 span,
-.text-with-animation-2 span {
+.subtext-with-animation span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.5s forwards;
+}
+
+.subtext-with-animation span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation 0.5s ease-out 1.7s forwards;
+}
+
+.subtext-with-animation-1 {
+  font-size: var(--fs-2);
+  text-align: center;
+  width: 100%;
+  color: var(--text-color);
+  letter-spacing: 4px;
+  user-select: none;
+  display: block;
+}
+
+.subtext-with-animation-1 span:first-of-type {
+  position: relative;
+  opacity: 0;
+  animation: word-animation-1 0.5s ease-out 1.5s forwards;
+}
+
+.subtext-with-animation-1 span:nth-of-type(2) {
+  position: relative;
+  opacity: 0;
+  animation: word-animation-1 0.5s ease-out 1.7s forwards;
+}
+
+@keyframes main-text-animation {
+  0% {
+    letter-spacing: 50vw;
+    word-spacing: 50vw;
     opacity: 0;
-    display: inline-flex;
-    will-change: transform, opacity;
+  }
+
+  100% {
+    letter-spacing: 6px;
+    word-spacing: 1vw;
+    opacity: 1;
+  }
 }
 
-.text-with-animation span + span,
-.text-with-animation-1 span + span,
-.text-with-animation-2 span + span {
-    padding-inline-start: var(--space-2xs-xs);
+@keyframes word-animation {
+  0% {
+    top: 2rem;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes word-animation-1 {
+  0% {
+    bottom: 2rem;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    row-gap: var(--space-2xs-xs);
+  }
+
+  .subtext-with-animation,
+  .subtext-with-animation-1 {
+    letter-spacing: 2px;
+  }
+
+  @keyframes main-text-animation {
+    0% {
+      letter-spacing: 25vw;
+      word-spacing: 25vw;
+      opacity: 0;
+    }
+
+    100% {
+      letter-spacing: 3px;
+      word-spacing: 0.5vw;
+      opacity: 1;
+    }
+  }
+
+  @keyframes word-animation {
+    0% {
+      top: 1rem;
+      opacity: 0;
+    }
+
+    100% {
+      top: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes word-animation-1 {
+    0% {
+      bottom: 1rem;
+      opacity: 0;
+    }
+
+    100% {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
 }
 
 /* --------------------------------------- */
@@ -78,8 +181,9 @@ header {
 /* --------------------------------------- */
 
 footer {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: end;
-    align-items: center;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: end;
+  align-items: center;
+  padding-block-end: var(--space-s-m);
 }

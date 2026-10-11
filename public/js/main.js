@@ -1,15 +1,7 @@
 const TOUCH_INTERACTION_QUERY = "(hover: none) and (pointer: coarse)";
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
-const INDEX_HERO_TEXT_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
-const INDEX_HERO_REVEAL_DURATION = 0.9;
-const INDEX_HERO_REVEAL_STAGGER = 0.12;
-const INDEX_HERO_REVEAL_DELAY = 0.1;
-const INDEX_SLIDE_OFFSET = "35vw";
-const INDEX_HEADING_SELECTORS = [
-  ".text-with-animation span",
-  ".text-with-animation-1 span",
-  ".text-with-animation-2 span",
-];
+const WHIMSY_BUTTON_SELECTOR = '.btn[data-btn-type="whimsical"]';
+const WHIMSY_TOUCH_PLAY_DURATION = 1800;
 
 function bindGameClickNavigation() {
   const games = document.querySelectorAll(".game");
@@ -79,72 +71,34 @@ function bindGameClickNavigation() {
   });
 }
 
-function animateIndexHeadings() {
-  const headingGroups = INDEX_HEADING_SELECTORS.map((selector) =>
-    document.querySelectorAll(selector),
-  ).filter((group) => group.length);
-  const headingSpans = headingGroups.flatMap((group) => [...group]);
+function bindWhimsyButtonTouchPlayback() {
+  const buttons = document.querySelectorAll(WHIMSY_BUTTON_SELECTOR);
+  if (!buttons.length) return;
 
-  if (!headingSpans.length) return;
+  buttons.forEach((button) => {
+    if (button.dataset.whimsyTouchBound === "true") return;
 
-  const showHeadings = () => {
-    headingSpans.forEach((span) => {
-      span.style.opacity = "1";
-      span.style.transform = "translate3d(0, 0, 0)";
-    });
-  };
+    let playbackTimer = 0;
 
-  if (
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-    typeof Element.prototype.animate !== "function"
-  ) {
-    showHeadings();
-    return;
-  }
+    const stopPlayback = () => {
+      window.clearTimeout(playbackTimer);
+      button.classList.remove("is-playing");
+    };
 
-  const duration = INDEX_HERO_REVEAL_DURATION * 1000;
-  const stagger = INDEX_HERO_REVEAL_STAGGER * 1000;
-  const groupDuration =
-    duration +
-    Math.max(...headingGroups.map((group) => group.length - 1)) * stagger;
+    // Touch devices never resolve :hover, so a tap drives the same deco effect.
+    button.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "touch") return;
 
-  headingGroups.forEach((group, groupIndex) => {
-    const offset =
-      groupIndex === 1 ? `-${INDEX_SLIDE_OFFSET}` : INDEX_SLIDE_OFFSET;
-
-    group.forEach((span, spanIndex) => {
-      const animation = span.animate(
-        [
-          {
-            opacity: 0,
-            transform: `translate3d(${offset}, 0, 0)`,
-          },
-          {
-            opacity: 1,
-            transform: "translate3d(0, 0, 0)",
-          },
-        ],
-        {
-          delay:
-            INDEX_HERO_REVEAL_DELAY * 1000 +
-            groupIndex * groupDuration +
-            spanIndex * stagger,
-          duration,
-          easing: INDEX_HERO_TEXT_EASE,
-          fill: "forwards",
-        },
-      );
-
-      animation.addEventListener(
-        "finish",
-        () => {
-          span.style.opacity = "1";
-          span.style.transform = "translate3d(0, 0, 0)";
-          animation.cancel();
-        },
-        { once: true },
+      window.clearTimeout(playbackTimer);
+      button.classList.add("is-playing");
+      playbackTimer = window.setTimeout(
+        stopPlayback,
+        WHIMSY_TOUCH_PLAY_DURATION,
       );
     });
+
+    button.addEventListener("pointercancel", stopPlayback);
+    button.dataset.whimsyTouchBound = "true";
   });
 }
 
@@ -370,7 +324,7 @@ function initNavigationInterception() {
 
 function initMainPage() {
   bindGameClickNavigation();
-  animateIndexHeadings();
+  bindWhimsyButtonTouchPlayback();
   initNavigationInterception();
 }
 
