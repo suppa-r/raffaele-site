@@ -1,8 +1,8 @@
 const TOUCH_INTERACTION_QUERY = "(hover: none) and (pointer: coarse)";
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
 const WHIMSY_BUTTON_SELECTOR = '.btn[data-btn-type="whimsical"]';
-// Touch runs --deco-timing: 1.8s with a 1.2 speed variation on the slowest deco.
-const WHIMSY_TOUCH_PLAY_DURATION = 2160;
+// The touch deco fades out by 1.836s; keep a brief buffer before navigating.
+const WHIMSY_TOUCH_PLAY_DURATION = 1900;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 function bindGameClickNavigation() {
