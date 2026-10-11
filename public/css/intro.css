@@ -71,7 +71,7 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: clamp(0.2rem, 0.16rem + 0.18vw, 0.48rem);
+    gap: var(--space-4xs-3xs);
     min-width: 0;
     max-width: 100%;
 }
@@ -79,8 +79,8 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .logo img {
     display: block;
     object-fit: cover;
-    width: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
-    height: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
+    width: var(--space-m-l);
+    height: var(--space-m-l);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 0.5rem var(--text-color);
@@ -91,7 +91,6 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
     white-space: nowrap;
     overflow: visible;
     letter-spacing: -0.02em;
-    line-height: 1;
     margin-inline-end: var(--space-xs-s);
 }
 
@@ -128,13 +127,13 @@ body[data-page="intro"] .open-overlay {
     justify-content: center;
     text-align: center;
     font-family: var(--primary-font-secondary);
-    font-size: clamp(3.2rem, 2.7rem + 2.8vw, 6.4rem);
+    font-size: var(--fs-3);
     line-height: 0.92;
     letter-spacing: -0.04em;
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
-    margin-block-end: var(--space-xl-2xl);
+    margin-block-end: var(--space-s-m);
 }
 
 .text-layer {
@@ -163,7 +162,7 @@ body[data-page="intro"] .open-overlay {
     }
 
     100% {
-        text-shadow: 0 50px 5px var(--shadow-color-primary), 0 20px 10px var(--shadow-color-secondary), 0 10px 5px var(--shadow-color-tertiary)
+        text-shadow: 0 24px 5px var(--shadow-color-primary), 0 10px 10px var(--shadow-color-secondary), 0 5px 5px var(--shadow-color-tertiary)
     }
 }
 
@@ -202,8 +201,8 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 
 .text-break {
     display: block;
-    padding-block:0;
-    margin-block:0;
+    padding-block: 0;
+    margin-block: 0;
 }
 
 .fancy {
@@ -233,8 +232,8 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     display: block;
     font-size: var(--fs-1);
     padding-inline-start: 0;
-      padding-block:0;
-    margin-block:0;
+    padding-block: 0;
+    margin-block: 0;
 }
 
 .fancy-small {

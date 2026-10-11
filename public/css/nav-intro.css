@@ -12,17 +12,55 @@ body[data-page="intro"] .overlay-navigation {
   left: 0;
   width: 100%;
   height: 100%;
-  transform: translateY(-100%);
+  visibility: hidden;
 }
 
 body[data-page="intro"] .overlay-slide-down {
-  transition: all .4s ease-in-out;
-  transform: translateY(0)
+  visibility: visible;
+  transition: none;
 }
 
+/* Stay visible until both links have exited; nav-intro.js reads this duration to know when to hide the overlay. */
 body[data-page="intro"] .overlay-slide-up {
-  transition: all .8s ease-in-out;
-  transform: translateY(-100%)
+  visibility: hidden;
+  transition: visibility 0s linear 1s;
+}
+
+/* Links slide in one after another, then exit in the same order. */
+body[data-page="intro"] .overlay-navigation .nav-links li {
+  opacity: 0;
+  transform: translate3d(0, -100vh, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition:
+    transform .5s cubic-bezier(0.64, 0, 0.78, 0),
+    opacity .5s ease-in,
+    background-color .2s linear;
+}
+
+body[data-page="intro"] .overlay-slide-up .nav-links li:nth-child(2) {
+  transition-delay: .5s, .5s, 0s;
+}
+
+body[data-page="intro"] .overlay-slide-down .nav-links li {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform .8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity .6s ease-out,
+    background-color .2s linear;
+}
+
+body[data-page="intro"] .overlay-slide-down .nav-links li:nth-child(2) {
+  transition-delay: .35s, .35s, 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="intro"] .overlay-navigation .nav-links li,
+  body[data-page="intro"] .overlay-slide-up,
+  body[data-page="intro"] .overlay-slide-down .nav-links li {
+    transition: none;
+  }
 }
 
 body[data-page="intro"] nav,
