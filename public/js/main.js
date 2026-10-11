@@ -1,7 +1,9 @@
 const TOUCH_INTERACTION_QUERY = "(hover: none) and (pointer: coarse)";
 const NAVIGATION_SCROLL_BEHAVIOR = "manual";
 const WHIMSY_BUTTON_SELECTOR = '.btn[data-btn-type="whimsical"]';
-const WHIMSY_TOUCH_PLAY_DURATION = 1800;
+// Touch runs --deco-timing: 1.8s with a 1.2 speed variation on the slowest deco.
+const WHIMSY_TOUCH_PLAY_DURATION = 2160;
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 function bindGameClickNavigation() {
   const games = document.querySelectorAll(".game");
@@ -79,17 +81,32 @@ function bindWhimsyButtonTouchPlayback() {
     if (button.dataset.whimsyTouchBound === "true") return;
 
     let playbackTimer = 0;
+    let navigationTimer = 0;
+    let playbackStartedAt = 0;
+    let touchActivation = false;
+    let navigationPending = false;
 
     const stopPlayback = () => {
       window.clearTimeout(playbackTimer);
       button.classList.remove("is-playing");
     };
 
+    const cancelPlayback = () => {
+      window.clearTimeout(navigationTimer);
+      navigationPending = false;
+      touchActivation = false;
+      stopPlayback();
+    };
+
     // Touch devices never resolve :hover, so a tap drives the same deco effect.
     button.addEventListener("pointerdown", (event) => {
       if (event.pointerType !== "touch") return;
 
+      touchActivation = true;
+      if (navigationPending) return;
+
       window.clearTimeout(playbackTimer);
+      playbackStartedAt = performance.now();
       button.classList.add("is-playing");
       playbackTimer = window.setTimeout(
         stopPlayback,
@@ -97,7 +114,28 @@ function bindWhimsyButtonTouchPlayback() {
       );
     });
 
-    button.addEventListener("pointercancel", stopPlayback);
+    // Hold the tap navigation until the deco animation has finished playing.
+    button.addEventListener("click", (event) => {
+      const isTouchTap = touchActivation;
+      touchActivation = false;
+
+      if (!isTouchTap || window.matchMedia(REDUCED_MOTION_QUERY).matches) return;
+
+      event.preventDefault();
+
+      if (navigationPending) return;
+      navigationPending = true;
+
+      const elapsed = performance.now() - playbackStartedAt;
+      const remaining = Math.max(WHIMSY_TOUCH_PLAY_DURATION - elapsed, 0);
+
+      navigationTimer = window.setTimeout(() => {
+        navigationPending = false;
+        window.location.assign(button.href);
+      }, remaining);
+    });
+
+    button.addEventListener("pointercancel", cancelPlayback);
     button.dataset.whimsyTouchBound = "true";
   });
 }
