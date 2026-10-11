@@ -1,34 +1,3 @@
-.visually-hidden,
-.sr-only,
-.screen-reader-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-.visually-hidden:focus,
-.visually-hidden:active {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-
-:focus-visible {
-  outline: 3px solid var(--focus-ring-color, currentcolor);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 2px var(--base-color, #ffffff);
-}
-
 /* Form Styles for Custom Theme Selector */
 
 .theme-selector-container {
@@ -45,18 +14,6 @@
   display: inline-flex;
   align-items: center;
   line-height: 1;
-}
-
-#theme-selector-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
 }
 
 .theme-selector {

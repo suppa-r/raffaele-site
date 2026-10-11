@@ -32,12 +32,14 @@ body {
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     hyphens: auto;
+    min-height: 100vh;
+    min-height: 100svh;
 }
 
 .wrapper {
     position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
+    min-block-size: 100vh;
+    min-block-size: 100svh;
     padding-block: max(var(--space-2xs-xs), env(safe-area-inset-top, 0px)) max(var(--space-2xs-xs), env(safe-area-inset-bottom, 0px));
     overflow: hidden;
     isolation: isolate;
@@ -160,6 +162,12 @@ button:focus-visible,
 a:hover,
 a:focus-visible {
     text-decoration-thickness: 0.09em;
+}
+
+:focus-visible {
+    outline: 3px solid var(--focus-ring-color, currentcolor);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 2px var(--base-color, #ffffff);
 }
 
 button:focus-visible,
