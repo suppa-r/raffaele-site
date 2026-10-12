@@ -54,6 +54,7 @@
   --space-10xl-11xl: clamp(12rem, 11.125rem + 4.375vw, 14.625rem);
   --space-11xl-12xl: clamp(13rem, 12.0833rem + 4.5833vw, 15.75rem);
   --space-12xl-13xl: clamp(14rem, 13.0417rem + 4.7917vw, 16.875rem);
+  --space-13xl-14xl: clamp(15rem, 14rem + 5vw, 18rem);
 
   /* ---fonts and letter spacing--- */
   --primary-font: "poiret_oneregular", sans-serif;
