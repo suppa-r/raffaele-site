@@ -71,7 +71,7 @@ main>h5,
 main>h6,
 main>p {
     text-box: trim-both text text;
-    padding-block: var(--space-4xs-3xs);
+    padding-block: var(--space-5xs-4xs);
     inline-size: min(100%, 75ch);
     margin-inline: auto;
 }

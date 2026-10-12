@@ -101,7 +101,7 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 }
 
 /* ====================================
-Burger king
+               Burger king
 ==================================== */
 
 body[data-page="intro"] .open-overlay {
@@ -114,25 +114,16 @@ body[data-page="intro"] .open-overlay {
     z-index: 5000;
 }
 
+/* ====================================
+         End Burger king
+==================================== */
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: var(--stack-gap, var(--space-5xs-4xs));
     flex: 1;
-}
-
-.prose {
-    --prose-flow: 0.25em;
-}
-
-.prose>*+* {
-    margin-block-start: var(--prose-flow);
-}
-
-.prose>p {
-    text-box: normal;
-    line-height: calc(1.3em + var(--prose-flow));
 }
 
 .wrapper-gradient-text {
@@ -181,9 +172,8 @@ main {
 }
 
 main p {
-    inline-size: min(100%, 75ch);
-    margin-inline: auto;
     text-align: center;
+    white-space: normal;
 }
 
 main p:not(.wrapper-gradient-text) {
