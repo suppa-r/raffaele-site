@@ -4,6 +4,7 @@
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
    --card-active-scale: 1.03;
+   --card-portrait-max-height: 65%;
    --card-front-active-transform: translateY(-8%) scale(0.86);
    --card-portrait-active-opacity: 0.6;
    --card-portrait-active-transform: scale(0.6);
@@ -12,16 +13,18 @@
 }
 
 .wrapper {
-   display: grid;
-   grid-template-rows: 1fr;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
    font-size: var(--fs-0);
 }
 
-.content {
-   display: grid;
-   place-content: center;
-   place-items: center;
-   min-block-size: 0;
+main.content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex: 1;
    color: var(--text-color);
 }
 
@@ -67,7 +70,7 @@
    display: block;
    width: 100%;
    height: auto;
-   max-height: 72%;
+   max-height: var(--card-portrait-max-height);
    object-fit: contain;
    border-radius: 50%;
    transition: opacity var(--card-transition), transform var(--card-transition);
@@ -80,6 +83,7 @@
    font-size: var(--fs-2);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
+   margin-block-start: var(--space-s-m);
 }
 
 .stats {
@@ -90,7 +94,7 @@
 }
 
 .stats .viewers {
-   font-size: var(--fs-1);
+   font-size: var(--fs-0);
 }
 
 .back {
@@ -114,7 +118,7 @@
 }
 
 .back .viewers {
-   font-size: var(--fs-1);
+   font-size: var(--fs-0);
 }
 
 .background {
@@ -140,13 +144,23 @@
    z-index: 100;
 }
 
+/* --------------------------------------- */
+/* ----- Footer ----- */
+/* --------------------------------------- */
+
 footer {
-   display: grid;
-   justify-content: end;
-   align-items: center;
+   display: flex;
+   justify-content: flex-end;
+   padding-block-end: var(--space-s-m);
+   margin-inline: 0;
 }
 
 @media (width >=48rem) {
+   .stats .viewers {
+      text-align: center;
+      white-space: normal;
+   }
+
    .game-stat {
       font-size: var(--fs-3);
    }
