@@ -1,6 +1,6 @@
 .wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
     font-size: var(--fs-0);
     color: var(--text-color);
 }
@@ -15,7 +15,6 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 2002;
-    border-radius: var(--space-m-l);
     position: relative;
     isolation: isolate;
     line-height: 1;
@@ -115,10 +114,16 @@ body[data-page="intro"] .open-overlay {
     z-index: 5000;
 }
 
-.content {
-    display: grid;
-    place-content: center;
-    place-items: center;
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.prose>*+* {
+    margin-block-start: var(--prose-flow, 0.05em);
 }
 
 .wrapper-gradient-text {
@@ -127,7 +132,7 @@ body[data-page="intro"] .open-overlay {
     justify-content: center;
     text-align: center;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-3);
+    font-size: var(--fs-2);
     line-height: 0.92;
     letter-spacing: -0.04em;
     white-space: nowrap;
@@ -200,16 +205,9 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 }
 
 .text-break {
-    display: block;
-    padding-block: 0;
-    margin-block: 0;
-}
-
-.fancy {
-    font-family: var(--primary-font-secondary);
-    font-size: var(--fs-2);
-    font-style: italic;
-    margin-block: var(--space-3xs-2xs);
+    /* SplitType sets nested spans to inline-block, so keep this breakpoint override authoritative. */
+    display: block !important;
+    padding-inline-start: 0;
 }
 
 .fancy-quote {
@@ -217,23 +215,14 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-2);
     font-style: italic;
-    margin-block: var(--space-3xs-2xs);
-    white-space: normal;
 }
 
-.fancy-quote span {
+.fancy-quote-author {
+    display: block;
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-0);
     font-style: italic;
-    font-size: var(--fs-1);
-    display: block;
-    margin-inline: auto;
-}
 
-.fancy-text-break {
-    display: block;
-    font-size: var(--fs-1);
-    padding-inline-start: 0;
-    padding-block: 0;
-    margin-block: 0;
 }
 
 .fancy-small {
@@ -253,29 +242,9 @@ footer {
 }
 
 @media (min-width: 48rem) {
-    header {
-        font-size: var(--fs-0);
-    }
-
     .text-break {
-        display: inline;
-    }
-
-    .fancy-quote {
-        width: max-content;
-        max-width: 100%;
-        white-space: nowrap;
-    }
-
-    .fancy-quote span {
-        font-style: italic;
-        font-size: var(--fs-1);
-        display: inline-block;
-    }
-
-    .fancy-text-break {
-        display: inline;
-        padding-inline-start: 3ch;
+        display: inline-block !important;
+        padding-inline-start: var(--space-3xs-2xs);
     }
 }
 
