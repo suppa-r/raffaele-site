@@ -151,45 +151,6 @@
   }
 }
 
-/* ============================================
-   GRID BACKGROUND
-   ============================================ */
-.wrapper::before {
-  --size: clamp(12px, 2vw, 24px);
-  content: "";
-  position: absolute;
-  inset: 0;
-  display: block;
-  pointer-events: none;
-  background-image:
-    linear-gradient(90deg, var(--linear-gradient-image) 1px, transparent 1px),
-    linear-gradient(var(--linear-gradient-image)1px, transparent 1px);
-  background-size: var(--size) var(--size);
-  background-position: center;
-  background-color: var(--base-color);
-  -webkit-mask-image: radial-gradient(circle,
-      black 0%,
-      black 20%,
-      rgba(0, 0, 0, 0.589) 30%,
-      rgba(0, 0, 0, 0.103) 40%,
-      transparent 55%);
-  mask-image: radial-gradient(circle,
-      black 0%,
-      black 20%,
-      rgba(0, 0, 0, 0.8) 30%,
-      rgba(0, 0, 0, 0.4) 40%,
-      transparent 55%);
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  padding-inline: var(--space-xs);
-  transition: opacity 0.7s ease-in;
-  z-index: -1;
-}
-
 [data-theme] body {
   isolation: isolate;
   position: relative;
@@ -219,80 +180,41 @@
 }
 
 /* ============================================
-   RESPONSIVE - Large Mobile (480px - 767px)
-   ============================================ */
+ RESPONSIVE CONTENT WIDTHS
+ ============================================ */
 
 @media (min-width: 30rem) {
   :root {
     --content-max-width: min(600px, 95vw);
-    --padding-inline: var(--space-xs);
-    /* 16px - larger phones */
-  }
-
-  .wrapper::before {
-    -webkit-mask-image: radial-gradient(circle,
-        black clamp(22%, 27% + 3vw, 37%),
-        transparent clamp(37%, 42% + 9vw, 60%));
-    mask-image: radial-gradient(circle,
-        black clamp(22%, 27% + 3vw, 37%),
-        transparent clamp(37%, 42% + 9vw, 60%));
-    /* padding-inline: var(--space-m); */
   }
 }
-
-/* ============================================
-   RESPONSIVE - Tablet (768px - 1023px)
-   ============================================ */
 
 @media (min-width: 48rem) {
   :root {
     --content-max-width: min(900px, 95vw);
-    --padding-inline: var(--space-m);
-    /* 24px - tablets */
-  }
-
-  .wrapper::before {
-    mask-image: radial-gradient(circle,
-        black clamp(25%, 30% + 3.5vw, 40%),
-        transparent clamp(40%, 45% + 10vw, 65%));
-    /* padding-inline: var(--space-l); */
   }
 }
-
-/* ============================================
-   RESPONSIVE - Desktop (1024px+)
-   ============================================ */
 
 @media (min-width: 64rem) {
   :root {
     --content-max-width: min(1200px, 95vw);
-    --padding-inline: var(--space-m);
-    /* 32px - desktop */
-  }
-
-  .wrapper::before {
-    mask-image: radial-gradient(circle,
-        black clamp(30%, 35% + 4vw, 45%),
-        transparent clamp(45%, 50% + 12vw, 70%));
-    /* padding-inline: var(--space-xl); */
   }
 }
-
-/* ============================================
-   RESPONSIVE - XL Desktop (1440px+)
-   ============================================ */
 
 @media (min-width: 75rem) {
   :root {
     --content-max-width: min(1400px, 96vw);
-    --padding-inline: var(--space-xl);
-    /* 48px - desktop */
   }
+}
 
-  .wrapper::before {
-    mask-image: radial-gradient(circle,
-        black clamp(30%, 35% + 4vw, 45%),
-        transparent clamp(45%, 50% + 12vw, 70%));
-    /* padding-inline: var(--space-2xl); */
+@media (min-width: 90rem) {
+  :root {
+    --content-max-width: min(1400px, 96vw);
+  }
+}
+
+@media (min-width: 120rem) {
+  :root {
+    --content-max-width: min(1920px, 95dvw);
   }
 }

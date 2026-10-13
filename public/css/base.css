@@ -3,7 +3,7 @@
                 BASE - Mobile (320px - 479px)
 ============================================ */
     --max-inline-size: min(26.25rem, 95vw);
-    --padding-inline: var(--space-xs);
+    --padding-inline: clamp(1rem, 3vw, 2rem);
     --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
 }
 
@@ -32,6 +32,8 @@ body {
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     hyphens: auto;
+    isolation: isolate;
+    background-color: var(--base-color);
 }
 
 .wrapper {
@@ -41,7 +43,7 @@ body {
     padding-block: max(var(--space-2xs-xs), env(safe-area-inset-top, 0px)) max(var(--space-2xs-xs), env(safe-area-inset-bottom, 0px));
     overflow: hidden;
     isolation: isolate;
-    background-color: var(--base-color);
+    background-color: transparent;
 }
 
 /* ===============================================
@@ -174,10 +176,10 @@ a:focus-visible {
     outline-offset: 1.2px;
 }
 
-.wrapper::before {
+body::before {
     --size: clamp(20px, 3vw, 30px);
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     pointer-events: none;
     background-color: var(--grid-background-color, var(--base-color));
@@ -190,14 +192,13 @@ a:focus-visible {
     mask-size: 100% 100%;
     mask-position: center;
     mask-repeat: no-repeat;
-    z-index: -1000;
+    z-index: -1;
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    contain: layout;
 }
 
 @media (prefers-reduced-transparency: reduce),
 (prefers-reduced-motion: reduce) {
-    .wrapper::before {
+    body::before {
         mask-image: none;
         transition: none;
     }
@@ -209,11 +210,10 @@ a:focus-visible {
 @media (min-width: 30rem) {
     :root {
         --max-inline-size: min(52.5rem, 95dvw);
-        --padding-inline: var(--space-m);
     }
 
 
-    .wrapper::before {
+    body::before {
         -webkit-mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
         mask-image: radial-gradient(ellipse 70% 54% at center, transparent 59%, rgb(0 0 0 / 1) 80%);
     }
@@ -227,10 +227,9 @@ a:focus-visible {
 @media (min-width: 48rem) {
     :root {
         --max-inline-size: min(60rem, 95dvw);
-        --padding-inline: var(--space-l);
     }
 
-    .wrapper::before {
+    body::before {
         -webkit-mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
         mask-image: radial-gradient(ellipse 68% 56% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }
@@ -243,10 +242,9 @@ a:focus-visible {
 @media (min-width: 64rem) {
     :root {
         --max-inline-size: min(65rem, 95dvw);
-        --padding-inline: var(--space-l);
     }
 
-    .wrapper::before {
+    body::before {
         -webkit-mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
         mask-image: radial-gradient(ellipse 60% 58% at center, transparent 58%, rgb(0 0 0 / 1) 80%);
     }
@@ -259,10 +257,9 @@ a:focus-visible {
 @media (min-width: 75rem) {
     :root {
         --max-inline-size: min(73.75rem, 95dvw);
-        --padding-inline: var(--space-l);
     }
 
-    .wrapper::before {
+    body::before {
         -webkit-mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
         mask-image: radial-gradient(ellipse 54% 59% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }
@@ -275,10 +272,9 @@ a:focus-visible {
 @media (min-width: 90rem) {
     :root {
         --max-inline-size: min(87.5rem, 96dvw);
-        --padding-inline: var(--space-l);
     }
 
-    .wrapper::before {
+    body::before {
         -webkit-mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
         mask-image: radial-gradient(ellipse 58% 63% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }
@@ -291,10 +287,9 @@ a:focus-visible {
 @media (min-width: 120rem) {
     :root {
         --max-inline-size: min(1920px, 95dvw);
-        --padding-inline: var(--space-l);
     }
 
-    .wrapper::before {
+    body::before {
         -webkit-mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
         mask-image: radial-gradient(ellipse 52% 65% at center, transparent 60%, rgb(0 0 0 / 1) 80%);
     }

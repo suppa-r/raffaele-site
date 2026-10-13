@@ -210,18 +210,20 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 }
 
 .fancy-quote {
+    margin-inline: auto;
     display: block;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-2);
+    font-size: var(--fs-1);
     font-style: italic;
+    white-space: nowrap;
 }
 
 .fancy-quote-author {
-    display: block;
+    display: inline-block;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-0);
+    font-size: var(--fs-01);
     font-style: italic;
-
+    padding-inline-start: var(--space-3xs-2xs);
 }
 
 .fancy-small {
@@ -241,13 +243,21 @@ footer {
 }
 
 @media (min-width: 48rem) {
-    .prose {
-        --prose-flow: 0.5em;
+    .fancy-quote {
+        margin-inline: auto;
+        display: block;
+        font-family: var(--primary-font-secondary);
+        font-size: var(--fs-2);
+        font-style: italic;
+        white-space: nowrap;
     }
 
-    .prose>p {
-        text-box: trim-both text text;
-        line-height: inherit;
+    .fancy-quote-author {
+        display: inline-block;
+        font-family: var(--primary-font-secondary);
+        font-size: var(--fs-1);
+        font-style: italic;
+        padding-inline-start: var(--space-3xs-2xs);
     }
 
     .text-break {
