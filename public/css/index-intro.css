@@ -3,8 +3,8 @@
    --card-radius: 4em;
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
-   --card-active-scale: 1.03;
-   --card-portrait-max-height: 65%;
+   --card-active-scale: 1;
+   --card-portrait-max-height: 55vh;
    --card-front-active-transform: translateY(-8%) scale(0.86);
    --card-portrait-active-opacity: 0;
    --card-portrait-active-transform: scale(0.6);
@@ -32,7 +32,6 @@ main.content {
    position: relative;
    display: block;
    inline-size: min(100%, clamp(16rem, 42vw, 28rem));
-   aspect-ratio: 4 / 5;
    border-radius: var(--card-radius);
    color: inherit;
    text-decoration: none;
@@ -58,20 +57,29 @@ main.content {
 }
 
 .front {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
    position: relative;
    height: 100%;
    pointer-events: none;
    transition: transform var(--card-transition);
 }
 
-.game .front>img {
+.game .front>picture {
+   display: block;
+   width: 100%;
+}
+
+.game .front>picture>img {
    position: relative;
    z-index: 1;
    display: block;
    width: 100%;
    height: auto;
    max-height: var(--card-portrait-max-height);
-   object-fit: contain;
+   object-fit: cover;
    border-radius: 50%;
    transition: opacity var(--card-transition), transform var(--card-transition);
 }
@@ -147,7 +155,7 @@ main.content {
    display: block;
    width: var(--space-13xl-14xl);
    height: auto;
-   object-fit: contain;
+   object-fit: cover;
    translate: -50% 0;
    transform-origin: bottom center;
 }
@@ -184,8 +192,8 @@ footer {
    transform: var(--card-front-active-transform);
 }
 
-.game.is-revealed .front>img,
-.game:is(:hover, :focus-visible) .front>img {
+.game.is-revealed .front>picture>img,
+.game:is(:hover, :focus-visible) .front>picture>img {
    opacity: var(--card-portrait-active-opacity);
    transform: var(--card-portrait-active-transform);
 }
@@ -235,7 +243,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
    .game,
    .front,
-   .game .front>img,
+   .game .front>picture>img,
    .game .front h1,
    .stats,
    .back,
