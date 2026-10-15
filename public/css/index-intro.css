@@ -4,7 +4,7 @@
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
    --card-active-scale: 1;
-   --card-portrait-max-height: 55vh;
+   --card-portrait-max-height: 40vh;
    --card-front-active-transform: translateY(-8%) scale(0.86);
    --card-portrait-active-opacity: 0;
    --card-portrait-active-transform: scale(0.6);
@@ -31,6 +31,7 @@ main.content {
 .game {
    position: relative;
    display: block;
+   margin: auto;
    inline-size: min(100%, clamp(16rem, 42vw, 28rem));
    border-radius: var(--card-radius);
    color: inherit;
@@ -69,18 +70,17 @@ main.content {
 
 .game .front>picture {
    display: block;
-   width: 100%;
+   max-width: 100%;
 }
 
 .game .front>picture>img {
    position: relative;
    z-index: 1;
    display: block;
-   width: 100%;
+   max-width: 100%;
    height: auto;
    max-height: var(--card-portrait-max-height);
-   object-fit: cover;
-   border-radius: 50%;
+   object-fit: contain;
    transition: opacity var(--card-transition), transform var(--card-transition);
 }
 
@@ -88,7 +88,7 @@ main.content {
    position: relative;
    z-index: 1;
    margin: 0;
-   font-size: var(--fs-2);
+   font-size: var(--fs-1);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
    margin-block: var(--space-3xs-2xs);
