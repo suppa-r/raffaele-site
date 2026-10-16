@@ -125,7 +125,6 @@ main {
 footer {
   display: flex;
   justify-content: flex-end;
-  padding-block-end: var(--space-s-m);
   margin-inline: 0;
 }
 

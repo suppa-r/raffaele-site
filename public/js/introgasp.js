@@ -19,11 +19,17 @@ const WRAPPER_GRADIENT_WORD_TARGET =
   'body[data-page="intro"] .wrapper-gradient-text .text-layer';
 const INTRO_WORDS_TARGET = 'body[data-page="intro"] .text-with-animation span';
 const INTRO_HEADER_TARGET = 'body[data-page="intro"] header';
-const HERO_TEXT_EASE_INTRO = "cubic-bezier(0.22, 1, 0.36, 1)";
+const HERO_TEXT_EASE_INTRO = "power3.out";
 const HERO_REVEAL_DURATION_INTRO = 1.7;
 const HERO_REVEAL_STAGGER_INTRO = 0.18;
 const HERO_REVEAL_DELAY_INTRO = 0.18;
-const INTRO_SLIDE_OFFSET = "35vw";
+const INTRO_SLIDE_OFFSET = "-8vh";
+const INTRO_PARAGRAPH_DELAY = 0.55;
+const INTRO_PARAGRAPH_BEAT = 0.22;
+const INTRO_PARAGRAPH_BEAT_GROWTH = 0.012;
+const INTRO_PARAGRAPH_DURATION = 0.85;
+const INTRO_PARAGRAPH_DURATION_GROWTH = 0.035;
+const INTRO_LINE_STAGGER = 0.12;
 const INTRO_HEADER_REVEAL_DURATION = 0.9;
 const INTRO_HEADER_REVEAL_DELAY = 0.05;
 
@@ -65,7 +71,7 @@ function resetIntroAnimationState() {
     [
       INTRO_ANIMATION_TARGET,
       `${INTRO_ANIMATION_TARGET} .line`,
-      `${INTRO_ANIMATION_TARGET} .line span`,
+      `${INTRO_ANIMATION_TARGET} .line > span`,
       INTRO_WORDS_TARGET,
       WRAPPER_GRADIENT_TARGET,
       WRAPPER_GRADIENT_WORD_TARGET,
@@ -86,7 +92,7 @@ function resetIntroAnimationState() {
     });
 
   document
-    .querySelectorAll(`${INTRO_ANIMATION_TARGET} .line span`)
+    .querySelectorAll(`${INTRO_ANIMATION_TARGET} .line > span`)
     .forEach((span) => {
       span.style.transform = "";
       span.style.opacity = "";
@@ -121,7 +127,11 @@ function initializeAnimations() {
 
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
   resetIntroAnimationState();
-  if (!gsapLib || typeof SplitType === "undefined") {
+  if (
+    !gsapLib ||
+    typeof SplitType === "undefined" ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
     revealIntroContent();
     return;
   }
@@ -154,53 +164,57 @@ function initializeAnimations() {
     line.innerHTML = `<span>${content}</span>`;
   });
 
-  // .line is the clip container; .line span starts below and reveals upward
+  // Clip each line while its content descends into place.
   gsapLib.set(`${INTRO_ANIMATION_TARGET} .line`, {
     display: "block",
     overflow: "hidden",
   });
 
-  gsapLib.set(`${INTRO_ANIMATION_TARGET} .line span`, {
-    y: "100%",
-    opacity: 0,
+  document.querySelectorAll(INTRO_ANIMATION_TARGET).forEach((paragraph, index) => {
+    const lines = Array.from(paragraph.querySelectorAll(".line"), (line) =>
+      line.firstElementChild,
+    );
+    const targets = lines.length ? lines : paragraph;
+    const delay =
+      INTRO_PARAGRAPH_DELAY +
+      index * INTRO_PARAGRAPH_BEAT +
+      (index * (index - 1) * INTRO_PARAGRAPH_BEAT_GROWTH) / 2;
+
+    gsapLib.set(paragraph, { opacity: 1, visibility: "visible" });
+    gsapLib.set(targets, {
+      y: lines.length ? "-100%" : "-2rem",
+      opacity: 0,
+    });
+    gsapLib.to(targets, {
+      y: 0,
+      opacity: 1,
+      duration: INTRO_PARAGRAPH_DURATION + index * INTRO_PARAGRAPH_DURATION_GROWTH,
+      stagger: INTRO_LINE_STAGGER,
+      ease: HERO_TEXT_EASE_INTRO,
+      delay,
+      overwrite: "auto",
+    });
   });
 
-  gsapLib.to(`${INTRO_ANIMATION_TARGET} .line span`, {
-    y: "0%",
-    opacity: 1,
-    duration: 0.9,
-    stagger: 0.16,
-    ease: "power3.out",
-    delay: 0.12,
-  });
-
-  // Fade in the parent paragraphs at the same time
-  gsapLib.to(INTRO_ANIMATION_TARGET, {
-    opacity: 1,
-    visibility: "visible",
-    duration: 0.55,
-    stagger: 0.16,
-    ease: "power2.out",
-    delay: 0.08,
-  });
-
-  gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, opacity: 1 });
+  gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, y: 0, opacity: 1 });
 
   gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, {
-    x: INTRO_SLIDE_OFFSET,
+    x: 0,
+    y: INTRO_SLIDE_OFFSET,
     opacity: 0,
   });
 
-  // Match the side-entry feel used by the hero text animation.
   if (hasElements(INTRO_WORDS_TARGET)) {
     gsapLib.set(INTRO_WORDS_TARGET, {
-      x: INTRO_SLIDE_OFFSET,
+      x: 0,
+      y: INTRO_SLIDE_OFFSET,
       opacity: 0,
       visibility: "hidden",
     });
 
     gsapLib.to(INTRO_WORDS_TARGET, {
       x: 0,
+      y: 0,
       opacity: 1,
       visibility: "visible",
       duration: HERO_REVEAL_DURATION_INTRO,
@@ -215,6 +229,7 @@ function initializeAnimations() {
   if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
     gsapLib.to(WRAPPER_GRADIENT_WORD_TARGET, {
       x: 0,
+      y: 0,
       opacity: 1,
       duration: HERO_REVEAL_DURATION_INTRO,
       ease: HERO_TEXT_EASE_INTRO,
@@ -225,6 +240,7 @@ function initializeAnimations() {
   } else if (hasElements(WRAPPER_GRADIENT_TARGET)) {
     gsapLib.to(WRAPPER_GRADIENT_TARGET, {
       x: 0,
+      y: 0,
       opacity: 1,
       duration: HERO_REVEAL_DURATION_INTRO,
       ease: HERO_TEXT_EASE_INTRO,
@@ -243,19 +259,19 @@ function revealIntroContent() {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
   if (gsapLib) {
     if (hasElements(INTRO_ANIMATION_TARGET)) {
-      gsapLib.set(INTRO_ANIMATION_TARGET, { opacity: 1, visibility: "visible" });
+      gsapLib.set(INTRO_ANIMATION_TARGET, { y: 0, opacity: 1, visibility: "visible" });
     }
 
     if (hasElements(WRAPPER_GRADIENT_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, opacity: 1, visibility: "visible" });
+      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, y: 0, opacity: 1, visibility: "visible" });
     }
 
     if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: 0, opacity: 1, visibility: "visible" });
+      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: 0, y: 0, opacity: 1, visibility: "visible" });
     }
 
     if (hasElements(INTRO_WORDS_TARGET)) {
-      gsapLib.set(INTRO_WORDS_TARGET, { x: 0, opacity: 1, visibility: "visible" });
+      gsapLib.set(INTRO_WORDS_TARGET, { x: 0, y: 0, opacity: 1, visibility: "visible" });
     }
 
     if (hasElements(INTRO_HEADER_TARGET)) {
@@ -268,24 +284,30 @@ function revealIntroContent() {
   document.querySelectorAll(INTRO_ANIMATION_TARGET).forEach((el) => {
     el.style.opacity = "1";
     el.style.visibility = "visible";
+    el.style.transform = "none";
   });
 
   document.querySelectorAll(WRAPPER_GRADIENT_TARGET).forEach((el) => {
     el.style.opacity = "1";
     el.style.visibility = "visible";
-    el.style.transform = "translateX(0)";
+    el.style.transform = "none";
   });
 
   document.querySelectorAll(WRAPPER_GRADIENT_WORD_TARGET).forEach((el) => {
     el.style.opacity = "1";
     el.style.visibility = "visible";
-    el.style.transform = "translateX(0)";
+    el.style.transform = "none";
   });
 
   document.querySelectorAll(INTRO_WORDS_TARGET).forEach((el) => {
     el.style.opacity = "1";
     el.style.visibility = "visible";
-    el.style.transform = "translateX(0)";
+    el.style.transform = "none";
+  });
+
+  document.querySelectorAll(INTRO_HEADER_TARGET).forEach((el) => {
+    el.style.opacity = "1";
+    el.style.transform = "none";
   });
 }
 
@@ -297,15 +319,15 @@ function hideIntroContent() {
     }
 
     if (hasElements(WRAPPER_GRADIENT_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: "100vw", opacity: 0 });
+      gsapLib.set(WRAPPER_GRADIENT_TARGET, { x: 0, y: 0, opacity: 0 });
     }
 
     if (hasElements(WRAPPER_GRADIENT_WORD_TARGET)) {
-      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: "100vw", opacity: 0 });
+      gsapLib.set(WRAPPER_GRADIENT_WORD_TARGET, { x: 0, y: INTRO_SLIDE_OFFSET, opacity: 0 });
     }
 
     if (hasElements(INTRO_WORDS_TARGET)) {
-      gsapLib.set(INTRO_WORDS_TARGET, { x: "100vw", opacity: 0 });
+      gsapLib.set(INTRO_WORDS_TARGET, { x: 0, y: INTRO_SLIDE_OFFSET, opacity: 0 });
     }
 
     if (hasElements(INTRO_HEADER_TARGET)) {
@@ -321,17 +343,17 @@ function hideIntroContent() {
 
   document.querySelectorAll(WRAPPER_GRADIENT_TARGET).forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateX(100vw)";
+    el.style.transform = "none";
   });
 
   document.querySelectorAll(WRAPPER_GRADIENT_WORD_TARGET).forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateX(100vw)";
+    el.style.transform = `translateY(${INTRO_SLIDE_OFFSET})`;
   });
 
   document.querySelectorAll(INTRO_WORDS_TARGET).forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateX(100vw)";
+    el.style.transform = `translateY(${INTRO_SLIDE_OFFSET})`;
   });
 }
 

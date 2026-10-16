@@ -133,7 +133,6 @@ main {
     text-align: center;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-2);
-    line-height: 0.92;
     letter-spacing: -0.04em;
     white-space: nowrap;
     margin-inline: auto;
@@ -183,24 +182,23 @@ main p:not(.wrapper-gradient-text) {
 body[data-page="intro"] main p:not(.wrapper-gradient-text),
 body[data-page="intro"] .wrapper-gradient-text,
 body[data-page="intro"] .wrapper-gradient-text .text-layer,
-body[data-page="intro"] main p:not(.wrapper-gradient-text) .line span {
+body[data-page="intro"] main p:not(.wrapper-gradient-text) .line>span {
     opacity: 0;
 }
 
-body[data-page="intro"] .wrapper-gradient-text,
 body[data-page="intro"] .wrapper-gradient-text .text-layer {
-    transform: translateX(35vw);
+    transform: translateY(-8vh);
 }
 
 .js-intro-anim main p:not(.wrapper-gradient-text),
 .js-intro-anim .wrapper-gradient-text,
 .js-intro-anim .wrapper-gradient-text .text-layer,
-.js-intro-anim main p:not(.wrapper-gradient-text) .line span {
+.js-intro-anim main p:not(.wrapper-gradient-text) .line>span {
     opacity: 0;
 }
 
-.js-intro-anim main p:not(.wrapper-gradient-text) .line span {
-    transform: translateY(100%);
+.js-intro-anim main p:not(.wrapper-gradient-text) .line>span {
+    transform: translateY(-100%);
 }
 
 .text-break {
@@ -242,7 +240,7 @@ footer {
     white-space: nowrap;
 }
 
-@media (min-width: 48rem) {
+@media (width >=48rem) {
     .fancy-quote {
         margin-inline: auto;
         display: block;
@@ -263,6 +261,10 @@ footer {
     .text-break {
         display: inline-block !important;
         padding-inline-start: var(--space-3xs-2xs);
+    }
+
+    .wrapper-gradient-text {
+        font-size: var(--fs-3);
     }
 }
 

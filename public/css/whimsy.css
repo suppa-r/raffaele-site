@@ -1,5 +1,4 @@
 .btn {
-  /* Defined here because the legacy whimsy-base.css that supplied this token was removed. */
   --border-default: oklch(from var(--text-color) l c h / 35%);
 
   margin-block-start: var(--space-m-l);
@@ -12,33 +11,32 @@
   font-size: var(--fs-1);
   color: var(--text-color);
   background: var(--base-color);
-  /* background: var(--surface-1); */
   border: 2px solid var(--border-default);
   border-radius: 100vw;
   cursor: pointer;
 
   &[data-btn-type="whimsical"] {
-    --main-color: oklch(from var(--text-span) l calc(c * 2.2) h / 1);
+    --main-color: var(--text-span);
     --deco-size: 7px;
     --deco-timing: 1.5s;
-    --deco-1-color: oklch(from var(--main-color) 80% c h);
+    --deco-1-color: color-mix(in oklch, white 80%, var(--text-span));
     --deco-1-end-translate: 0 30px;
     --deco-1-end-offset: 80%;
-    --deco-2-color: oklch(from var(--main-color) 80% c calc(h + 50));
+    --deco-2-color: color-mix(in oklch, white 65%, var(--text-span));
     --deco-2-scale: 0.85;
     --deco-2-end-translate: 0 -30px;
     --deco-2-end-offset: 60%;
-    --deco-3-color: oklch(from var(--main-color) 70% c calc(h + 20));
+    --deco-3-color: color-mix(in oklch, white 40%, var(--text-span));
     --deco-3-speed-variation: 0.85;
     --deco-3-scale: 1.15;
     --deco-3-end-translate: 0 -10px;
     --deco-3-end-offset: 70%;
-    --deco-4-color: oklch(from var(--main-color) 80% c calc(h - 20));
+    --deco-4-color: color-mix(in oklch, white 90%, var(--text-span));
     --deco-4-speed-variation: 1.2;
     --deco-4-scale: 0.7;
     --deco-4-end-translate: -20px 50px;
     --deco-4-end-offset: 75%;
-    --deco-5-color: oklch(from var(--main-color) 80% c calc(h - 200));
+    --deco-5-color: var(--text-span);
 
     transition: border-color 0.4s ease;
 
@@ -87,7 +85,13 @@ a {
 }
 
 [data-theme="light"] .btn[data-btn-type="whimsical"] {
-  --main-color: oklch(from var(--text-span) calc(1 - l) calc(c * 2.2) h / 1);
+  --main-color: oklch(from var(--text-span) l c h / 1);
+  --deco-1-color: color-mix(in oklch, white 50%, var(--main-color));
+  --deco-2-color: color-mix(in oklch, white 30%, var(--main-color));
+  --deco-3-color: color-mix(in oklch, white 15%, var(--main-color));
+  --deco-4-color: color-mix(in oklch, white 65%, var(--main-color));
+  --deco-5-color: var(--main-color);
+  --deco-brightness: 1.05;
 }
 
 .btn svg {
@@ -112,7 +116,7 @@ a {
   transform-origin: center;
   border-radius: 50%;
   background: var(--deco-color, var(--main-color));
-  filter: blur(3px);
+  filter: blur(2px) brightness(var(--deco-brightness, 1.5));
   opacity: 0;
 
   &::before,

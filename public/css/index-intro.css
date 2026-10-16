@@ -96,18 +96,25 @@ main.content {
 
 .stats {
    position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
    z-index: 1;
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
 }
 
-.stats .viewers {
-   white-space: nowrap;
-   font-size: var(--fs-0);
+.stats svg {
+   width: var(--space-m-l);
+   height: var(--space-m-l);
+   vertical-align: middle;
+   fill: currentcolor;
 }
 
-.stats .viewers-small {
-   font-size: var(--fs-01);
+.stats .viewer {
+   white-space: nowrap;
+   font-size: var(--fs-0);
 }
 
 .back {
@@ -132,6 +139,7 @@ main.content {
 
 .back .viewers {
    font-size: var(--fs-0);
+   margin-block-start: var(--space-s-m);
 }
 
 .background {
@@ -167,16 +175,10 @@ main.content {
 footer {
    display: flex;
    justify-content: flex-end;
-   padding-block-end: var(--space-s-m);
    margin-inline: 0;
 }
 
 @media (width >=48rem) {
-   .stats .viewers {
-      text-align: center;
-      white-space: normal;
-   }
-
    .game-stat {
       font-size: var(--fs-3);
    }
@@ -212,7 +214,7 @@ footer {
 
 .game.is-revealed .game-stat,
 .game:is(:hover, :focus-visible) .game-stat {
-   animation: fade 1.2s ease-in-out infinite alternate;
+   animation: fade 2s ease-in-out infinite alternate;
 }
 
 .game.is-revealed .background,
@@ -230,13 +232,13 @@ footer {
 
 @keyframes fade {
    from {
-      opacity: 0.7;
-      transform: scale(0.94);
+      opacity: 0;
+      transform: scale(0.5);
    }
 
    to {
       opacity: 1;
-      transform: scale(1.06);
+      transform: scale(1.25);
    }
 }
 
