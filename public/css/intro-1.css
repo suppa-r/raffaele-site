@@ -339,17 +339,6 @@ html:not(.intro-1-section-active) main>section[id] {
   scrollbar-color: var(--text-span) var(--base-color);
 }
 
-.section-container-early p,
-.section-container p {
-  inline-size: min(100%, 38ch);
-  max-inline-size: 100%;
-  margin-inline: auto;
-  white-space: normal;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-align: center;
-}
-
 .section-container-early::-webkit-scrollbar,
 .section-container::-webkit-scrollbar {
   width: 0.6rem;
@@ -393,6 +382,10 @@ html:not(.intro-1-section-active) main>section[id] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
 
   &>* {
     text-box: trim-both text text;
