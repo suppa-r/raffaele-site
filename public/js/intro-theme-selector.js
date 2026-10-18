@@ -175,10 +175,21 @@ function updateIntroThemeFavicon(resolvedTheme) {
   }
 }
 
+function updateIntroWelcomeImage(resolvedTheme) {
+  const image = document.getElementById("welcome-image");
+  if (image) {
+    image.src =
+      resolvedTheme === "light"
+        ? "images/welcome-light.png"
+        : "images/welcome-high res.png";
+  }
+}
+
 function applyIntroThemeState(resolvedTheme, theme, announce) {
   document.documentElement.setAttribute("data-theme", resolvedTheme);
   saveIntroTheme(theme);
   updateIntroThemeFavicon(resolvedTheme);
+  updateIntroWelcomeImage(resolvedTheme);
   updateIntroThemeControls(theme);
 
   if (announce) {
@@ -197,6 +208,7 @@ function setIntroTheme(theme, options = {}) {
     document.documentElement.getAttribute("data-theme") === resolvedTheme &&
     getIntroStoredTheme() === theme
   ) {
+    updateIntroWelcomeImage(resolvedTheme);
     updateIntroThemeControls(theme);
     return;
   }
