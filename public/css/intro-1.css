@@ -8,8 +8,8 @@
 }
 
 .wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   font-size: var(--fs-0);
   color: var(--text-color);
 }
@@ -209,17 +209,21 @@ html.intro-1-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expande
 }
 
 main {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--stack-gap, var(--space-5xs-4xs));
+  flex: 1;
   text-align: center;
   position: relative;
   overflow: hidden;
   min-height: 0;
-
 }
 
 main>section[id] {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: var(--space-s);
   position: absolute;
   inset: 0;
@@ -231,9 +235,10 @@ main>section[id] {
 
 .profile-title-container {
   width: 100%;
-  display: grid;
+  display: flex;
   place-items: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .profile-title {
@@ -325,12 +330,14 @@ html:not(.intro-1-section-active) main>section[id] {
 .section-container {
   inline-size: 100%;
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow-y: auto;
   scrollbar-gutter: stable;
   min-block-size: 0;
   position: relative;
+  flex: 1;
 }
 
 .section-container-early,
@@ -377,11 +384,12 @@ html:not(.intro-1-section-active) main>section[id] {
 }
 
 .col {
-  inline-size: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: var(--stack-gap, var(--space-5xs-4xs));
+  flex: 1;
   white-space: normal;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -414,12 +422,11 @@ html:not(.intro-1-section-active) main>section[id] {
 
 @media (max-width: 48rem) {
   .section-container-early {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .section-container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-flow: column;
+    flex-direction: row;
   }
 }
 
