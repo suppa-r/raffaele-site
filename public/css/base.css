@@ -32,7 +32,6 @@ body {
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     hyphens: auto;
-    isolation: isolate;
     background-color: var(--base-color);
 }
 

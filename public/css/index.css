@@ -6,10 +6,11 @@
 }
 
 header {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: var(--space-xs-s);
+  row-gap: var(--space-2xs-xs);
   line-height: 1;
   text-align: center;
   padding-block: var(--space-4xs-3xs);
@@ -33,15 +34,12 @@ main {
   align-items: center;
   flex: 1;
   row-gap: var(--space-2xs-xs);
-
 }
 
 .text-with-animation {
   font-size: var(--fs-1);
   animation: main-text-animation 1.7s ease-in-out forwards;
-  color: white;
   overflow: hidden;
-  display: block;
   white-space: nowrap;
 }
 
@@ -50,10 +48,8 @@ main {
   font-size: var(--fs-2);
   text-align: center;
   width: 100%;
-  color: var(--text-color);
   letter-spacing: 4px;
   user-select: none;
-  display: block;
 }
 
 .subtext-with-animation span:first-of-type {
@@ -82,21 +78,21 @@ main {
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 50vw;
-    word-spacing: 50vw;
+    letter-spacing: 25vw;
+    word-spacing: 25vw;
     opacity: 0;
   }
 
   100% {
-    letter-spacing: 6px;
-    word-spacing: 0.5vw;
+    letter-spacing: 3px;
+    word-spacing: 0.4vw;
     opacity: 1;
   }
 }
 
 @keyframes word-animation {
   0% {
-    top: 2rem;
+    top: 1rem;
     opacity: 0;
   }
 
@@ -108,7 +104,7 @@ main {
 
 @keyframes word-animation-1 {
   0% {
-    bottom: 2rem;
+    bottom: 1rem;
     opacity: 0;
   }
 
@@ -128,33 +124,24 @@ footer {
   margin-inline: 0;
 }
 
-@media (width <=768px) {
-  main {
-    row-gap: var(--space-2xs-xs);
-  }
-
-  .subtext-with-animation,
-  .subtext-with-animation-1 {
-    letter-spacing: 2px;
-  }
-
+@media (width >=768px) {
   @keyframes main-text-animation {
     0% {
-      letter-spacing: 25vw;
-      word-spacing: 25vw;
+      letter-spacing: 50vw;
+      word-spacing: 50vw;
       opacity: 0;
     }
 
     100% {
-      letter-spacing: 3px;
-      word-spacing: 0.4vw;
+      letter-spacing: 6px;
+      word-spacing: 0.5vw;
       opacity: 1;
     }
   }
 
   @keyframes word-animation {
     0% {
-      top: 1rem;
+      top: 2rem;
       opacity: 0;
     }
 
@@ -166,7 +153,7 @@ footer {
 
   @keyframes word-animation-1 {
     0% {
-      bottom: 1rem;
+      bottom: 2rem;
       opacity: 0;
     }
 
