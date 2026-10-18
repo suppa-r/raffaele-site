@@ -241,8 +241,8 @@ function intro1PrepareTitleWords() {
 
   intro1TitleSplit?.revert();
   intro1TitleSplit = new window.SplitType(titleButton, { types: "words" });
-  intro1TitleSplit.words.forEach((word) => {
-    word.style.display = "inline-block";
+  titleButton.querySelectorAll("p, .title-emphasis").forEach((element) => {
+    element.style.removeProperty("display");
   });
 }
 
@@ -262,6 +262,7 @@ function intro1InitPage() {
   intro1ResetState();
   intro1PrepareTitleWords();
   intro1HideContent();
+  document.querySelector(".intro-1-page-title")?.setAttribute("data-title-ready", "");
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
