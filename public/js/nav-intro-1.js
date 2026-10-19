@@ -6,8 +6,9 @@
   window.__introOneNavBarLoaded = true;
 
   const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+  const reducedMotionQuery = window.matchMedia(REDUCED_MOTION_QUERY);
   const NAV_ITEM_SELECTOR = ".nav-item";
-  const mobileQuery = window.matchMedia("(max-width: 47.999rem)");
+  const mobileQuery = window.matchMedia("(width < 48rem)");
 
   let menuButton = null;
   let navLinks = null;
@@ -16,6 +17,8 @@
   let boundMenuButton = null;
   let boundNavLinks = null;
   let navCloseTimeoutId = null;
+  let inertBackgroundElements = [];
+  let navItemsTween = null;
   const NAV_CLOSE_DURATION_MS = 520;
 
   function isIntroOnePage() {
@@ -54,7 +57,7 @@
         currentHash !== "" && link.getAttribute("href") === currentHash;
       link.classList.toggle("is-current", isCurrent);
       if (isCurrent) {
-        link.setAttribute("aria-current", "true");
+        link.setAttribute("aria-current", "location");
       } else {
         link.removeAttribute("aria-current");
       }
@@ -91,10 +94,12 @@
   }
 
   function isReducedMotionPreferred() {
-    return window.matchMedia(REDUCED_MOTION_QUERY).matches;
+    return reducedMotionQuery.matches;
   }
 
   function resetNavItems() {
+    navItemsTween?.kill();
+    navItemsTween = null;
     const gsapLib = getGsap();
     if (!navLinks) {
       return;
@@ -126,14 +131,23 @@
     }
 
     const navItems = navLinks.querySelectorAll(NAV_ITEM_SELECTOR);
+    navItemsTween?.kill();
+    navItemsTween = null;
     if (!gsapLib || isReducedMotionPreferred()) {
-      gsapLib?.killTweensOf(navItems);
-      gsapLib?.set(navItems, { opacity: 1, y: 0 });
+      if (gsapLib) {
+        gsapLib.killTweensOf(navItems);
+        gsapLib.set(navItems, { opacity: 1, clearProps: "transform" });
+      } else {
+        navItems.forEach((item) => {
+          item.style.opacity = "1";
+          item.style.transform = "none";
+        });
+      }
       return;
     }
 
     gsapLib.killTweensOf(navItems);
-    gsapLib.fromTo(
+    navItemsTween = gsapLib.fromTo(
       navItems,
       { opacity: 0, y: -24 },
       {
@@ -163,6 +177,12 @@
       ? document.getElementById("main-content")
       : null;
 
+    if (!isMenuOpen) {
+      inertBackgroundElements.forEach((element) => {
+        element.inert = false;
+      });
+      inertBackgroundElements = [];
+    }
     focusTarget?.focus({ preventScroll: true });
 
     navLinks.classList.toggle("open", isMenuOpen);
@@ -183,6 +203,12 @@
       if (firstNavLink) {
         firstNavLink.focus({ preventScroll: true });
       }
+      document.querySelectorAll("main, footer").forEach((element) => {
+        if (!element.inert) {
+          element.inert = true;
+          inertBackgroundElements.push(element);
+        }
+      });
     } else {
       resetNavItems();
       if (shouldReturnFocus) {
@@ -222,7 +248,11 @@
     window.dispatchEvent(new HashChangeEvent("hashchange"));
     setMenuState(false, { returnFocus: false });
     menuButton.focus({ preventScroll: true });
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: isReducedMotionPreferred() ? "instant" : "smooth",
+    });
   }
 
   function handleNavLinksClick(event) {
@@ -268,12 +298,24 @@
         document.documentElement.classList.remove("intro-1-nav-closing");
         window.location.assign(link.href);
       }
-    }, NAV_CLOSE_DURATION_MS);
+    }, isReducedMotionPreferred() ? 0 : NAV_CLOSE_DURATION_MS);
   }
 
   function handleDocumentKeydown(event) {
     if (event.key === "Escape" && isMenuOpen) {
       setMenuState(false, { isKeyboard: true });
+    }
+    if (event.key === "Tab" && isMenuOpen) {
+      const controls = [...navLinks.querySelectorAll("a[href], button:not(:disabled)")];
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
     }
   }
 
@@ -330,6 +372,11 @@
   document.addEventListener("keydown", handleDocumentKeydown);
   window.addEventListener("hashchange", setActiveNavLink);
   window.addEventListener("resize", attachSectionOverflowCues);
+  reducedMotionQuery.addEventListener("change", () => {
+    if (isMenuOpen && isReducedMotionPreferred()) {
+      animateNavItemsIn();
+    }
+  });
 
   if (typeof mobileQuery.addEventListener === "function") {
     mobileQuery.addEventListener("change", handleViewportChange);

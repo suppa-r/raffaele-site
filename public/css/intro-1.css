@@ -163,6 +163,7 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
   font-family: var(--primary-font-secondary);
   font-size: var(--fs-1);
   font-style: italic;
+  margin-block-start: var(--space-3xs);
 }
 
 .page-entering .intro-1-page-title,
@@ -530,6 +531,11 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body[data-page="intro-1"] main,
+  body[data-page="intro-1"] footer {
+    transition: none;
+  }
+
   .theme-selector-option {
     animation: none;
   }
