@@ -88,7 +88,7 @@ main.content {
    font-size: var(--fs-1);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
-   margin-block: var(--space-3xs-2xs);
+   margin-block-start: var(--space-xs-s);
 }
 
 .stats {
@@ -107,6 +107,7 @@ main.content {
    height: var(--space-m-l);
    vertical-align: middle;
    fill: currentcolor;
+   margin-block-start: var(--space-s-m);
 }
 
 .stats .viewer {
@@ -132,6 +133,7 @@ main.content {
    font-size: var(--fs-2);
    font-weight: 700;
    text-align: center;
+   margin-block-start: var(--space-l-xl);
 }
 
 .back .viewers {
@@ -151,8 +153,6 @@ main.content {
    transform: scale(0.92, 0.96);
    transition: opacity 180ms ease, visibility 0s linear 180ms, transform var(--card-transition);
 }
-
-
 
 .background>img {
    position: absolute;
