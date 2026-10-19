@@ -1,5 +1,6 @@
 :root {
   /* font-sizes */
+  --fs-02: clamp(0.7rem, 0.6853rem + 0.0733vw, 0.744rem);
   --fs-01: clamp(0.8rem, 0.7853rem + 0.0733vw, 0.844rem);
   --fs-0: clamp(1rem, 0.9583rem + 0.2083vw, 1.125rem);
   --fs-1: clamp(1.25rem, 1.1668rem + 0.416vw, 1.4996rem);
