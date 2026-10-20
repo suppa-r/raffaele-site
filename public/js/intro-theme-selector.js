@@ -176,7 +176,7 @@ function updateIntroThemeFavicon(resolvedTheme) {
 }
 
 function updateIntroWelcomeImage(resolvedTheme) {
-  const image = document.getElementById("welcome-image");
+  const image = document.querySelector(".welcome-image");
   if (image) {
     image.src =
       resolvedTheme === "light"
