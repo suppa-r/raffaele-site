@@ -12,6 +12,13 @@
    --card-background-image-active-transform: scale(1);
 }
 
+body {
+   font-family: var(--primary-font);
+   background-color: var(--base-color);
+   font-size: var(--fs-0);
+   color: var(--text-color);
+}
+
 .wrapper {
    display: flex;
    flex-direction: column;
@@ -154,26 +161,13 @@ main.content {
    transition: opacity 180ms ease, visibility 0s linear 180ms, transform var(--card-transition);
 }
 
-.background>img {
-   position: absolute;
-   inset-block-end: var(--space-l-xl);
-   inset-inline-start: 50%;
-   z-index: 1;
-   display: block;
-   width: var(--space-12xl-13xl);
-   height: auto;
-   object-fit: cover;
-   translate: -50% 0;
-   transform-origin: bottom center;
-}
-
 .background img {
    position: absolute;
    inset-block-end: var(--space-l-xl);
    inset-inline-start: 50%;
    z-index: 1;
    display: block;
-   width: var(--space-12xl-13xl);
+   width: var(--space-11xl-12xl);
    height: auto;
    object-fit: cover;
    translate: -50% 0;
@@ -188,12 +182,6 @@ footer {
    display: flex;
    justify-content: flex-end;
    margin-inline: 0;
-}
-
-@media (width >=48rem) {
-   .game-stat {
-      font-size: var(--fs-3);
-   }
 }
 
 .game.is-revealed,
@@ -268,5 +256,11 @@ footer {
 
    .game-stat {
       animation: none !important;
+   }
+}
+
+@media (width >=48rem) {
+   .game-stat {
+      font-size: var(--fs-3);
    }
 }
