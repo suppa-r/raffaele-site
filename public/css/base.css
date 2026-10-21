@@ -4,7 +4,7 @@
 ===================================================== */
     /* At 16px/rem: 1440px at a 1920px viewport, capped at 1920px from 2880px. */
     --max-inline-size: min(95vw, calc(30rem + 50vw), 120rem);
-    --padding-inline: clamp(1rem, 3vw, 2rem);
+    --padding-inline: clamp(0.6rem, 1.8vw, 1.2rem);
     --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
 }
 
