@@ -7,11 +7,16 @@
   --back-to-top-height: var(--space-l-xl);
 }
 
+body {
+  font-family: var(--primary-font);
+  background-color: var(--base-color);
+  font-size: var(--fs-0);
+  color: var(--text-color);
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
-  font-size: var(--fs-0);
-  color: var(--text-color);
 }
 
 /* --------------------------------------- */

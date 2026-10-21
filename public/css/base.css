@@ -41,7 +41,7 @@ body {
     position: relative;
     min-block-size: 100vh;
     min-block-size: 100svh;
-    padding-block: max(var(--space-3xs), env(safe-area-inset-top, 0px)) max(var(--space-3xs), env(safe-area-inset-bottom, 0px));
+    padding-block: max(var(--space-2xs), env(safe-area-inset-top, 0px)) max(var(--space-2xs), env(safe-area-inset-bottom, 0px));
     overflow: hidden;
     isolation: isolate;
     background-color: transparent;

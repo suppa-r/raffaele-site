@@ -22,8 +22,6 @@ body {
 .wrapper {
    display: flex;
    flex-direction: column;
-   font-size: var(--fs-0);
-   color: var(--text-color);
 }
 
 main.content {

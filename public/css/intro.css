@@ -1,8 +1,13 @@
+body {
+    font-family: var(--primary-font);
+    background-color: var(--base-color);
+    font-size: var(--fs-0);
+    color: var(--text-color);
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
-    font-size: var(--fs-0);
-    color: var(--text-color);
 }
 
 /* --------------------------------------- */
@@ -19,6 +24,7 @@ header {
     isolation: isolate;
     line-height: 1;
     background: transparent;
+    padding-block: var(--space-xs-s);
 }
 
 body[data-page="intro"] header {
