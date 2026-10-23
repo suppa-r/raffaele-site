@@ -211,6 +211,8 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     /* SplitType sets nested spans to inline-block, so keep this breakpoint override authoritative. */
     display: block !important;
     padding-inline-start: 0;
+    white-space: normal;
+    gap: var(--stack-gap, var(--space-5xs-4xs));
 }
 
 .fancy-quote {

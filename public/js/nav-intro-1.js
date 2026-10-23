@@ -8,6 +8,8 @@
   const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
   const reducedMotionQuery = window.matchMedia(REDUCED_MOTION_QUERY);
   const NAV_ITEM_SELECTOR = ".nav-item";
+  const SECTION_CONTAINER_SELECTOR =
+    ".section-container, .section-container-early, .section-container-ryerson, .section-container-architecture";
   const mobileQuery = window.matchMedia("(width < 48rem)");
 
   let menuButton = null;
@@ -62,6 +64,23 @@
         link.removeAttribute("aria-current");
       }
     });
+
+    resetActiveSectionScroll();
+  }
+
+  function resetActiveSectionScroll() {
+    const section = document.querySelector("main > section[id]:target");
+    if (!section) {
+      return;
+    }
+
+    // Hidden sections retain scroll offsets, including after history restoration.
+    [section.parentElement, section, ...section.querySelectorAll(SECTION_CONTAINER_SELECTOR)]
+      .forEach((element) => {
+        element.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      });
+    section.querySelectorAll(SECTION_CONTAINER_SELECTOR)
+      .forEach(updateSectionOverflowCue);
   }
 
   function updateSectionOverflowCue(container) {
@@ -76,7 +95,7 @@
 
   function attachSectionOverflowCues() {
     document
-      .querySelectorAll(".section-container, .section-container-early")
+      .querySelectorAll(SECTION_CONTAINER_SELECTOR)
       .forEach((container) => {
         if (container.dataset.overflowCueBound === "true") {
           updateSectionOverflowCue(container);
@@ -371,6 +390,11 @@
 
   document.addEventListener("keydown", handleDocumentKeydown);
   window.addEventListener("hashchange", setActiveNavLink);
+  window.addEventListener("pageshow", () => {
+    if (isIntroOnePage()) {
+      requestAnimationFrame(setActiveNavLink);
+    }
+  });
   window.addEventListener("resize", attachSectionOverflowCues);
   reducedMotionQuery.addEventListener("change", () => {
     if (isMenuOpen && isReducedMotionPreferred()) {
