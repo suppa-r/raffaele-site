@@ -91,11 +91,11 @@ body[data-page="intro"] .nav-links li {
   justify-content: center;
   align-items: center;
   flex: 0 0 auto;
-  inline-size: 75vw;
-  aspect-ratio: 5 / 1;
+  inline-size: 60vw;
+  aspect-ratio: 5 / 2;
   margin: 0 var(--space-m-l);
   /* top, right, bottom, left */
-  padding: 0 var(--space-m-l);
+  padding: 0 var(--space-l-xl);
   /* space inside each li */
   border-radius: 50%;
   text-align: center;
@@ -118,7 +118,7 @@ body[data-page="intro"] .nav-links li a {
 }
 
 @media (hover: hover) and (pointer: fine) {
-body[data-page="intro"] .nav-links li a:hover::before,
+  body[data-page="intro"] .nav-links li a:hover::before,
   body[data-page="intro"] .nav-links li a:focus-visible::before {
     transform: scaleX(1);
     opacity: 1;
@@ -206,7 +206,7 @@ body[data-page="intro"] .open-overlay:focus-visible {
 body[data-page="intro"] .open-overlay span {
   display: block;
   height: 1px;
-  background-color:var(--text-color);
+  background-color: var(--text-color);
   margin-bottom: 4px;
   border-radius: 1px;
   transform-origin: center;
@@ -381,7 +381,7 @@ Animation keyframes
     flex: 0 1 clamp(18rem, 30vw, 24rem);
     min-inline-size: 18rem;
     margin: var(--space-l);
-    padding:var(--space-s) var(--space-2xl);
+    padding: var(--space-s) var(--space-2xl);
   }
 
   body[data-page="intro"] .nav-links li a {
@@ -398,7 +398,7 @@ Animation keyframes
     content: '';
     width: 60px;
     height: 1.2px;
-    background-color:var(--text-color);
+    background-color: var(--text-color);
     position: absolute;
     top: 50%;
     left: 0;
@@ -415,7 +415,7 @@ Animation keyframes
     position: absolute;
     z-index: 100;
     display: block;
-    color:var(--text-color);
+    color: var(--text-color);
     font-size: var(--fs-2);
     font-style: italic;
     text-transform: none;
@@ -430,7 +430,7 @@ Animation keyframes
     transition: all .2s linear;
   }
 
- body[data-page="intro"] .nav-links li:hover::before {
+  body[data-page="intro"] .nav-links li:hover::before {
     transform: scaleX(1);
     opacity: 1;
   }

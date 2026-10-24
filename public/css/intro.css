@@ -120,16 +120,23 @@ body[data-page="intro"] .open-overlay {
     z-index: 5000;
 }
 
+
+
 /* ========================================================
                     main content
 ======================================================== */
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: var(--stack-gap, var(--space-5xs-4xs));
     flex: 1;
+    margin-block-start: 15svh;
+}
+
+.prose>*+* {
+    margin-block-start: var(--prose-flow, var(--space-3xs-2xs));
+    padding-block: 0;
 }
 
 .wrapper-gradient-text {
@@ -139,6 +146,7 @@ main {
     text-align: center;
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-2);
+    font-weight: 400;
     letter-spacing: -0.04em;
     white-space: nowrap;
     margin-inline: auto;
@@ -253,6 +261,11 @@ footer {
 ======================================================== */
 
 @media (width >=48rem) {
+    main {
+        justify-content: center;
+        margin-block-start: 0;
+    }
+
     .fancy-quote {
         margin-inline: auto;
         display: block;

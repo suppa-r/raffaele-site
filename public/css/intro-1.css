@@ -332,6 +332,11 @@ html:not(.intro-1-section-active) main>section[id] {
   pointer-events: none;
 }
 
+.prose>*+* {
+  margin-block-start: var(--prose-flow, var(--space-3xs-2xs));
+  padding-block: 0;
+}
+
 .section-container-early {
   inline-size: 100%;
   margin-inline: auto;
@@ -407,7 +412,6 @@ html:not(.intro-1-section-active) main>section[id] {
   flex-direction: column;
   justify-content: safe center;
   align-items: center;
-  gap: var(--stack-gap, var(--space-5xs-4xs));
   flex: 1;
   white-space: normal;
   overflow-wrap: break-word;
