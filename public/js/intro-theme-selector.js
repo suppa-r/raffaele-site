@@ -182,6 +182,14 @@ function updateIntroWelcomeImage(resolvedTheme) {
       resolvedTheme === "light"
         ? "images/welcome-light.png"
         : "images/welcome-high res.png";
+
+    const mobileSource = image.closest("picture")?.querySelector("source");
+    if (mobileSource) {
+      mobileSource.srcset =
+        resolvedTheme === "light"
+          ? "images/welcome-light.png"
+          : "images/welcome-mobile.png";
+    }
   }
 }
 

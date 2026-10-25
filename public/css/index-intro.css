@@ -142,7 +142,7 @@ main.content {
    font-size: var(--fs-2);
    font-weight: 700;
    text-align: center;
-   margin-block-start: var(--space-l-xl);
+   margin-block-start: var(--space-xl-2xl);
 }
 
 .back .viewers {
@@ -165,15 +165,13 @@ main.content {
 
 .background img {
    position: absolute;
-   inset-block-end: var(--space-l-xl);
-   inset-inline-start: 50%;
+   inset: 0;
    z-index: 1;
    display: block;
-   width: var(--space-11xl-12xl);
-   height: auto;
-   object-fit: cover;
-   translate: -50% 0;
-   transform-origin: bottom center;
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   transform-origin: center center;
 }
 
 /* ========================================================
@@ -240,7 +238,7 @@ footer {
 
    to {
       opacity: 1;
-      transform: scale(1.25);
+      transform: scale(1.2);
    }
 }
 
