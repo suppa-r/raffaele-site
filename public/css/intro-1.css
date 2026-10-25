@@ -218,27 +218,26 @@ html.intro-1-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expande
                     main content
 ======================================================== */
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--stack-gap, var(--space-5xs-4xs));
-  flex: 1;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  min-height: 0;
-}
-
+main,
 main>section[id] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 0;
+}
+
+main {
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+main>section[id] {
   gap: var(--space-s);
   position: absolute;
   inset: 0;
-  min-height: 0;
   visibility: hidden;
   margin-inline: auto;
   inline-size: 100%;
@@ -320,12 +319,7 @@ main>section[id]:target {
   pointer-events: auto;
 }
 
-html:not(.intro-1-section-active) main>section[id] {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
+html:not(.intro-1-section-active) main>section[id],
 .intro-1-nav-open main>section[id] {
   opacity: 0;
   visibility: hidden;
@@ -337,20 +331,7 @@ html:not(.intro-1-section-active) main>section[id] {
   padding-block: 0;
 }
 
-.section-container-early {
-  inline-size: 100%;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: safe center;
-  align-items: center;
-  overflow-y: auto;
-  scrollbar-gutter: stable;
-  min-block-size: 0;
-  position: relative;
-  flex: 1;
-}
-
+.section-container-early,
 .section-container-ryerson {
   inline-size: 100%;
   margin-inline: auto;
@@ -362,7 +343,7 @@ html:not(.intro-1-section-active) main>section[id] {
   scrollbar-gutter: stable;
   min-block-size: 0;
   position: relative;
-  gap: var(--space-l);
+  flex: 1;
 }
 
 .section-container-early,
@@ -464,7 +445,8 @@ html:not(.intro-1-section-active) main>section[id] {
 
 .row-img-ryerson-title {
   text-align: center;
-  font-family: var(--primary-font-secondary);
+  font-size: var(--fs-1);
+  font-style: italic;
 }
 
 @media (width >=48rem) {
@@ -497,6 +479,11 @@ html:not(.intro-1-section-active) main>section[id] {
 
   .row-img-ryerson-title {
     font-size: var(--fs-2);
+    font-style: italic;
+  }
+
+  .col .small {
+    font-size: var(--fs-02);
   }
 }
 
