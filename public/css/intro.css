@@ -130,6 +130,8 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    text-align: center;
+    white-space: normal;
     flex: 1;
     margin-block-start: 15svh;
 }
@@ -184,19 +186,9 @@ main {
     }
 }
 
-main p {
-    text-align: center;
-    white-space: normal;
-}
-
-main p:not(.wrapper-gradient-text) {
-    opacity: 1;
-}
-
 body[data-page="intro"] main p:not(.wrapper-gradient-text),
 body[data-page="intro"] .wrapper-gradient-text,
-body[data-page="intro"] .wrapper-gradient-text .text-layer,
-body[data-page="intro"] main p:not(.wrapper-gradient-text) .line>span {
+body[data-page="intro"] .wrapper-gradient-text .text-layer {
     opacity: 0;
 }
 
@@ -204,23 +196,11 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     transform: translateY(-8vh);
 }
 
-.js-intro-anim main p:not(.wrapper-gradient-text),
-.js-intro-anim .wrapper-gradient-text,
-.js-intro-anim .wrapper-gradient-text .text-layer,
-.js-intro-anim main p:not(.wrapper-gradient-text) .line>span {
-    opacity: 0;
-}
-
-.js-intro-anim main p:not(.wrapper-gradient-text) .line>span {
-    transform: translateY(-100%);
-}
-
 .text-break {
     /* SplitType sets nested spans to inline-block, so keep this breakpoint override authoritative. */
     display: block !important;
     padding-inline-start: 0;
     white-space: normal;
-    gap: var(--stack-gap, var(--space-5xs-4xs));
 }
 
 .fancy-quote {
@@ -235,7 +215,7 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 .fancy-quote-author {
     display: inline-block;
     font-family: var(--primary-font-secondary);
-    font-size: var(--fs-01);
+    font-size: var(--fs-0);
     font-style: italic;
     padding-inline-start: var(--space-3xs-2xs);
 }
@@ -278,7 +258,7 @@ footer {
     .fancy-quote-author {
         display: inline-block;
         font-family: var(--primary-font-secondary);
-        font-size: var(--fs-1);
+        font-size: var(--fs-0);
         font-style: italic;
         padding-inline-start: var(--space-3xs-2xs);
     }
