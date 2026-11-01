@@ -150,7 +150,7 @@ main.content {
    margin-block-start: var(--space-s-m);
 }
 
-.background {
+.background>picture {
    position: absolute;
    inset: 0 4% 20%;
    z-index: 0;
@@ -163,7 +163,7 @@ main.content {
    transition: opacity 180ms ease, visibility 0s linear 180ms, transform var(--card-transition);
 }
 
-.background img {
+.background>picture>img {
    position: absolute;
    inset: 0;
    z-index: 1;
@@ -217,8 +217,8 @@ footer {
    animation: fade 2s ease-in-out infinite alternate;
 }
 
-.game.is-revealed .background,
-.game:is(:hover, :focus-visible) .background {
+.game.is-revealed .background>picture,
+.game:is(:hover, :focus-visible) .background>picture {
    opacity: 1;
    visibility: visible;
    transform: var(--card-background-active-transform);
@@ -253,7 +253,7 @@ footer {
    .game .front h1,
    .stats,
    .back,
-   .background,
+   .background>picture,
    .background img {
       transition: none;
    }
