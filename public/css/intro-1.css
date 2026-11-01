@@ -115,7 +115,8 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
   z-index: 1;
   margin: 0;
   text-align: center;
-  font-size: var(--fs-1);
+  font-size: var(--fs-2);
+  line-height: 1.4;
   overflow-wrap: break-word;
   view-transition-name: intro1-page-title;
 }
@@ -127,28 +128,28 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
 }
 
 .intro-1-page-title-trigger {
-  display: block;
+  display: grid;
+  place-items: center;
   inline-size: 100%;
   margin: 0;
   padding: 0;
   border: 0;
   color: inherit;
   background: none;
-  font: inherit;
   text-align: inherit;
   cursor: pointer;
 }
 
-.intro-1-page-title-trigger p {
+.intro-1-page-title-trigger .intro-1-title-line {
+  display: block;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.4;
   white-space: nowrap;
 }
 
 .intro-1-page-title svg {
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
-  vertical-align: middle;
+  width: var(--space-xl-2xl);
+  height: var(--space-xl-2xl);
   fill: currentcolor;
   margin-block-start: var(--space-s-m);
 }
@@ -166,7 +167,7 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
   display: block;
   padding-inline-start: 0;
   font-family: var(--primary-font-secondary);
-  font-size: var(--fs-1);
+  font-size: var(--fs-3);
   font-style: italic;
   padding-block-start: var(--stack-gap, var(--space-5xs-4xs));
 }
@@ -423,9 +424,7 @@ html:not(.intro-1-section-active) main>section[id],
 }
 
 .row-img img {
-  display: block;
   max-inline-size: 160px;
-  height: auto;
   border-radius: 50%;
 }
 
@@ -452,6 +451,24 @@ html:not(.intro-1-section-active) main>section[id],
 @media (width >=48rem) {
   main>section[id] {
     justify-content: center;
+  }
+
+  .intro-1-page-title {
+    font-size: var(--fs-2);
+    line-height: 1.4;
+  }
+
+  .intro-1-page-title-trigger .title-emphasis {
+    display: inline-block;
+    padding-inline-start: var(--space-3xs-2xs);
+    font-family: var(--primary-font-secondary);
+    font-size: var(--fs-3);
+    font-style: italic;
+  }
+
+  .row-img img {
+    max-inline-size: 300px;
+    border-radius: 50%;
   }
 
   .section-container-ryerson {
