@@ -327,11 +327,6 @@ html:not(.intro-1-section-active) main>section[id],
   pointer-events: none;
 }
 
-.prose>*+* {
-  margin-block-start: var(--prose-flow, var(--space-3xs-2xs));
-  padding-block: 0;
-}
-
 .section-container-early,
 .section-container-ryerson {
   inline-size: 100%;
@@ -408,6 +403,11 @@ html:not(.intro-1-section-active) main>section[id],
     inline-size: min(100%, 75ch);
     margin-inline: auto;
   }
+}
+
+.prose>*+* {
+  margin-block-start: var(--prose-flow, var(--space-3xs-2xs));
+  padding-block: 0;
 }
 
 .col .small {
