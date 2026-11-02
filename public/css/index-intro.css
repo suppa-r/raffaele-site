@@ -114,7 +114,6 @@ main.content {
 .stats svg {
    width: var(--space-xl);
    height: var(--space-xl);
-   vertical-align: middle;
    fill: currentcolor;
    margin-block-start: var(--space-s-m);
 }
@@ -266,11 +265,5 @@ footer {
 @media (width >=48rem) {
    .game-stat {
       font-size: var(--fs-3);
-   }
-
-   .stats svg {
-      width: var(--space-2xl);
-      height: var(--space-2xl);
-      vertical-align: middle;
    }
 }
