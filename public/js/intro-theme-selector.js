@@ -18,7 +18,13 @@ let introThemeDocumentEventsAttached = false;
 let introThemeSystemQueryAttached = false;
 
 function isIntroThemePage() {
-  return !!document.querySelector(INTRO_THEME_SELECTOR_ROOT);
+  return !!document.querySelector(
+    `${INTRO_THEME_SELECTOR_ROOT}, button[data-theme-toggle], select#theme-selector`,
+  );
+}
+
+function normalizeIntroTheme(theme) {
+  return theme === "auto" ? "system" : theme;
 }
 
 function isIntroThemeReducedMotionPreferred() {
@@ -136,21 +142,24 @@ function syncIntroThemeSelector(theme) {
 }
 
 function updateIntroThemeControls(theme) {
+  const selectedTheme = normalizeIntroTheme(theme);
   document.querySelectorAll("button[data-theme-toggle]").forEach((button) => {
     button.setAttribute(
       "aria-pressed",
-      button.dataset.themeToggle === theme ? "true" : "false",
+      normalizeIntroTheme(button.dataset.themeToggle) === selectedTheme
+        ? "true"
+        : "false",
     );
   });
 
   const nativeSelector = document.getElementById("theme-selector");
   if (nativeSelector instanceof HTMLSelectElement) {
-    nativeSelector.value = INTRO_THEME_VALUES.includes(theme)
-      ? theme
+    nativeSelector.value = INTRO_THEME_VALUES.includes(selectedTheme)
+      ? selectedTheme
       : "system";
   }
 
-  syncIntroThemeSelector(theme);
+  syncIntroThemeSelector(selectedTheme);
 }
 
 function announceIntroTheme(theme) {
@@ -206,6 +215,7 @@ function applyIntroThemeState(resolvedTheme, theme, announce) {
 }
 
 function setIntroTheme(theme, options = {}) {
+  theme = normalizeIntroTheme(theme);
   const { announce = true, withTransition = true } = options;
   if (!INTRO_THEME_VALUES.includes(theme)) {
     return;
@@ -424,6 +434,11 @@ function initIntroThemeSelector() {
     document.addEventListener("click", handleIntroThemeClick);
     document.addEventListener("keydown", handleIntroThemeKeydown);
     document.addEventListener("change", handleIntroThemeNativeChange);
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => updateIntroThemeControls(getIntroStoredTheme()),
+      { once: true },
+    );
   }
 
   if (!introThemeSystemQueryAttached) {

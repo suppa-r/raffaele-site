@@ -1,334 +1,207 @@
-/* Form Styles for Custom Theme Selector */
-
-.theme-selector-container {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: min(100%, 15rem);
-  gap: var(--space-2xs);
-  line-height: 1;
-  font-size: inherit;
-}
-
-.theme-selector-container label {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.theme-selector {
-  width: 100%;
-  max-width: 15rem;
-  --theme-label-default-width: 9ch;
-  position: relative;
-}
-
-.theme-selector-menu {
-  grid-template-columns: 1fr;
-}
-
-.theme-selector-menu li,
-.theme-selector-option {
-  inline-size: 100%;
-  max-inline-size: 100%;
-  box-sizing: border-box;
-}
-
-.theme-selector-trigger,
-.theme-selector-option {
-  outline: none;
-}
-
-.theme-selector-trigger:focus,
-.theme-selector-option:focus {
-  outline: none;
-}
-
-.theme-selector-trigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4xs);
-  inline-size: 100%;
-  width: 100%;
-  block-size: 44px;
-  min-block-size: 44px;
-  border: 1px solid var(--text-color);
-  border-radius: 999px;
-  padding: var(--space-3xs) var(--space-s);
-  cursor: pointer;
-  background-color: var(--theme-switcher-background-color, var(--base-color));
-  color: var(--text-color);
-  font: inherit;
-  line-height: 1.2;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
-    border-color 0.3s ease-in-out, transform 0.2s ease;
-  box-sizing: border-box;
-}
-
-.theme-selector-trigger:hover,
-.theme-selector-trigger:focus-visible,
-.theme-selector.is-open .theme-selector-trigger {
-  background-color: var(--text-color);
-  color: var(--base-color);
-  border-color: var(--base-color);
-  transform: translateY(-1px);
-}
-
-.theme-selector-trigger:focus-visible,
-.theme-selector-option:focus-visible {
-  outline: 3px solid var(--focus-ring-color, currentcolor);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 2px var(--base-color, #ffffff);
-}
-
-.theme-selector-trigger-icon,
-.theme-option-icon {
-  width: var(--space-s);
-  height: var(--space-s);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 var(--space-s);
-}
-
-.theme-selector-trigger-icon svg,
-.theme-option-icon svg {
-  width: var(--space-s);
-  height: var(--space-s);
-}
-
-.theme-selector-trigger-text {
-  flex: 1 1 auto;
-  min-width: 0;
-  min-inline-size: var(--theme-label-default-width);
-  text-align: center;
-  white-space: nowrap;
-  overflow: visible;
-  text-overflow: clip;
-}
-
-.theme-selector-chevron {
-  width: var(--space-s);
-  height: var(--space-s);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 var(--space-s);
-  transition: transform 0.2s ease;
-}
-
-.theme-selector-chevron svg {
-  width: var(--space-s);
-  height: var(--space-s);
-}
-
-.theme-selector.is-open .theme-selector-chevron {
-  transform: rotate(180deg);
-}
-
-.theme-selector-menu {
-  position: absolute;
-  bottom: calc(100% + var(--space-4xs));
-  left: 0;
-  right: 0;
-  display: grid;
-  gap: var(--space-xs);
-  z-index: 20;
-  margin: 0;
-  padding: var(--space-2xs) 0;
-  list-style: none;
-  border: 1px solid var(--text-color);
-  border-radius: var(--space-3xs-2xs);
-  background-color: var(--theme-switcher-background-color, var(--base-color));
-  box-shadow: 0 -10px 24px color-mix(in oklab, var(--text-color) 22%, transparent);
-}
-
-.theme-selector-menu li {
-  width: 100%;
-  margin: 0;
-  padding: 0 var(--space-4xs);
-  line-height: 1;
-}
-
-.theme-selector-menu[hidden] {
-  display: none;
-}
-
-.theme-selector.is-open .theme-selector-menu {
-  grid-template-columns: 1fr;
-}
-
-.theme-selector.is-open .theme-selector-menu li,
-.theme-selector.is-open .theme-selector-option {
-  inline-size: 100%;
-  max-inline-size: 100%;
-  box-sizing: border-box;
-}
-
-.theme-selector-option {
-  width: 100%;
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-4xs);
-  text-align: left;
-  font: inherit;
-  min-width: 0;
-  flex-wrap: nowrap;
-  padding: 0 var(--space-4xs);
-  border-radius: var(--space-3xs-2xs);
-  cursor: pointer;
-}
-
-.theme-selector.is-open .theme-selector-option {
-  block-size: 44px;
-  min-block-size: 44px;
-  margin-block: 0;
-  line-height: 1;
-}
-
-.theme-selector.is-open .theme-option-icon {
-  width: var(--space-s);
-  height: var(--space-s);
-  flex: 0 0 var(--space-s);
-}
-
-.theme-selector-option[aria-selected="true"] {
-  background-color: color-mix(in oklab, var(--text-color) 16%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--text-color) 36%, transparent);
-}
-
-.theme-selector-option:hover,
-.theme-selector-option:focus-visible {
-  background-color: var(--text-color);
-  color: var(--base-color);
-}
-
-.theme-option-label {
-  flex: 1 1 auto;
-  line-height: 1;
-  min-width: 0;
-  min-inline-size: var(--theme-label-default-width);
-  white-space: nowrap;
-}
-
-[data-theme-option] {
-  white-space: nowrap;
-}
-
-[data-theme-option="system"] .theme-option-label {
-  white-space: nowrap;
-  overflow-wrap: normal;
-  word-break: keep-all;
-  letter-spacing: 0.02em;
-}
-
-.theme-selector-native {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-@media (min-width: 48rem) {
-  .theme-selector-container {
+/* ============================================
+   THEME SWITCHER - CONTAINER
+   ============================================ */
+.theme-switcher {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-4xs);
-  }
+    background-color: transparent;
+    border: none;
+}
 
-  #theme-selector-label {
-    position: static;
-    width: auto;
-    height: auto;
+.theme-switcher legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-    border-width: 0;
-  }
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
 
-  .theme-selector-trigger-text {
-    overflow: visible;
-    text-overflow: clip;
-  }
+/* ============================================
+   BUTTON STATES
+   ============================================ */
 
-  .theme-selector-menu {
-    bottom: calc(100% + var(--space-4xs));
-    gap: var(--space-xs);
-    padding: var(--space-xs) 0;
-  }
+.theme-switcher button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: var(--space-2xs-xs);
+    cursor: pointer;
+    min-width: var(--space-l);
+    min-height: var(--space-l);
+}
 
-  .theme-selector-option {
-    gap: var(--space-2xs-xs);
-    padding: var(--space-2xs) var(--space-s);
-  }
+.theme-switcher button:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 3px;
+    background-color: var(--text-color);
+    color: var(--base-color);
+}
 
-  .theme-selector.is-open .theme-selector-option {
-    padding-block: var(--space-xs);
-    padding-inline: var(--space-s);
-    gap: var(--space-2xs);
-    line-height: 1;
-  }
+/* ============================================
+   SVG ICONS
+   ============================================ */
 
-  .theme-option-label {
-    line-height: 1;
-    min-width: 0;
-    white-space: normal;
-  }
+.theme-switcher button svg {
+    width: var(--space-l);
+    height: var(--space-l);
+    stroke-width: 0.15;
+    stroke: var(--text-color);
+    fill: currentcolor;
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
+
+}
+
+/* ============================================
+   HIDE ACTIVE BUTTON  /* Active/pressed state
+   ============================================ */
+
+/* Hide the currently active theme button */
+.theme-switcher button[aria-pressed="true"] {
+    display: none;
+}
+
+/* Always show the auto/system button UNLESS it is the active one */
+.theme-switcher button[data-theme-toggle="auto"]:not([aria-pressed="true"]) {
+    display: flex;
+}
+
+.theme-switcher button:hover {
+    color: var(--base-color);
+    background-color: var(--text-color);
+    /* was on ::after */
+    box-shadow: 0 4px 8px rgba(0 0 0 / 0.2);
+}
+
+/* ============================================
+   THEME SWITCHER - SVG HOVER ANIMATION
+   ============================================ */
+
+.theme-switcher button:hover svg {
+    will-change: transform;
+    animation: spin-and-scale 0.9s ease-in-out;
+}
+
+@keyframes spin-and-scale {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1) rotate(45deg);
+    }
+
+    50% {
+        transform: scale(0.4) rotate(-45deg);
+    }
+
+    75% {
+        transform: scale(1) rotate(45deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+@media (prefers-contrast: high) {
+    /* ✅ Respects dark theme */
+    [data-theme="dark"] {
+        --text-color: #ffffff;
+        --base-color: #000000;
+    }
+
+    /* ✅ Respects light theme */
+    [data-theme="light"] {
+        --text-color: #000000;
+        --base-color: #ffffff;
+    }
+
+    /* ✅ Only theme-switcher needs explicit overrides */
+    .theme-switcher {
+        border: 2px solid var(--text-color);
+        background-color: var(--base-color);
+    }
+
+    .theme-switcher button {
+        border: 2px solid var(--text-color);
+        background-color: var(--base-color);
+    }
+
+    .theme-switcher button:hover {
+        border-width: 3px;
+        background-color: var(--text-color);
+        color: var(--base-color);
+    }
+
+    .theme-switcher button:focus-visible {
+        outline: 3px solid var(--text-color);
+        outline-offset: 3px;
+        border-width: 3px;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICES - Enhanced tap experience
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    .theme-switcher button {
+        /* Touch-specific WebKit properties */
+        -webkit-tap-highlight-color: rgb(255 255 255 / 10);
+        /* iOS-specific */
+        -webkit-touch-callout: none;
+        /* Standard properties */
+        user-select: none;
+        touch-action: manipulation;
+        cursor: pointer;
+        /* WCAG 2.5.5 - Minimum touch target size */
+        min-width: 44px;
+        min-height: 44px;
+        /* Faster transitions for touch */
+        will-change: transform;
+        transition:
+            transform 0.1s ease,
+            background-color 0.2s ease;
+    }
+
+    /* Active state - visual feedback on tap */
+    .theme-switcher button:active {
+        transform: scale(0.95);
+        background-color: var(--text-color);
+        color: var(--base-color);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-selector-trigger,
-  .theme-selector-chevron,
-  .theme-selector-option {
-    transition: none !important;
-  }
+    /* Disable animations on custom elements */
+    .theme-switcher button:hover svg {
+        will-change: transform;
+        animation: none !important;
+        transform: scale(1);
+        /* Simple scale instead */
+    }
 }
 
-@media (forced-colors: active) {
-  .theme-selector-trigger,
-  .theme-selector-menu,
-  .theme-selector-option {
-    forced-color-adjust: auto;
-    border-color: CanvasText;
-    background-color: Canvas;
-    color: CanvasText;
-  }
-
-  .theme-selector-trigger:hover,
-  .theme-selector-trigger:focus-visible,
-  .theme-selector.is-open .theme-selector-trigger,
-  .theme-selector-option:hover,
-  .theme-selector-option:focus-visible,
-  .theme-selector-option[aria-selected="true"] {
-    background-color: Highlight;
-    color: HighlightText;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .theme-selector-trigger:focus-visible,
-  .theme-selector-option:focus-visible {
-    outline: none;
-    box-shadow: none;
-  }
-}
-
-[data-theme="light"] #theme-selector-label {
-  text-shadow: none;
-  font-weight: 600;
-  color: var(--text-color);
+@media (min-width: 768px) {
+    .theme-switcher {
+        position: relative;
+        display: flex;
+        gap: var(--space-s);
+        /* or a fixed value like 0.5rem */
+        background-color: transparent;
+        border: none;
+    }
 }
