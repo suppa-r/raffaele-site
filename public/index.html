@@ -82,7 +82,8 @@
     <!-- ✅ footer: labelledby ties footer to theme switcher legend -->
     <footer role="contentinfo" class="footer">
       <!-- ✅ fieldset/legend is the correct pattern for grouped buttons -->
-      <fieldset class="theme-switcher" aria-label="Theme switcher">
+      <fieldset class="theme-switcher">
+        <legend>Theme switcher</legend>
         <button data-theme-toggle="light" aria-label="Switch to light theme" aria-pressed="false">
           <span class="visually-hidden">Light theme</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
@@ -105,6 +106,7 @@
           </svg>
         </button>
       </fieldset>
+
       <!-- ✅ Live region announces theme changes to screen readers -->
       <div id="theme-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true">
       </div>
