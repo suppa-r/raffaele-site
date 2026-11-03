@@ -1,12 +1,12 @@
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* remove default spacing */
@@ -21,11 +21,17 @@ img,
 picture,
 video {
     display: block;
-    max-inline-size: 100%;
-    height:auto;
-    font-style:italic;
+    height: auto;
+    font-style: italic;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+img,
+picture,
+video,
+svg {
+    max-inline-size: 100%;
 }
 
 input,
@@ -47,44 +53,8 @@ ul {
     list-style: none
 }
 
-:target {
-    scroll-margin-block: 5ex
-}
-
-/* ============================================
-   ACCESSIBILITY VISUALLY HIDDEN UTILITY
-   ============================================ */
-.visually-hidden,
-.sr-only,
-.screen-reader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-.visually-hidden:focus,
-.visually-hidden:active,
-.sr-only:focus,
-.sr-only:active,
-.screen-reader-only:focus,
-.screen-reader-only:active {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip-path: none;
-    white-space: normal;
-}
-
 @media (prefers-reduced-motion:reduce) {
-html {
+    html {
         scroll-behavior: auto
     }
 

@@ -38,13 +38,14 @@ body {
 }
 
 .wrapper {
+    container-type: inline-size;
     position: relative;
     min-block-size: 100vh;
     min-block-size: 100svh;
     padding-block: max(var(--space-2xs), env(safe-area-inset-top, 0px)) max(var(--space-2xs), env(safe-area-inset-bottom, 0px));
     overflow: hidden;
     isolation: isolate;
-    background-color: transparent;
+    /* background-color: transparent; */
 }
 
 /* ====================================================
@@ -71,10 +72,40 @@ main>h4,
 main>h5,
 main>h6,
 main>p {
-    text-box: trim-both text text;
-    padding-block: var(--space-5xs-4xs);
     inline-size: min(100%, 75ch);
     margin-inline: auto;
+}
+
+/* ============================================
+   ACCESSIBILITY VISUALLY HIDDEN UTILITY
+   ============================================ */
+.visually-hidden,
+.sr-only,
+.screen-reader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.visually-hidden:focus,
+.visually-hidden:active,
+.sr-only:focus,
+.sr-only:active,
+.screen-reader-only:focus,
+.screen-reader-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
 }
 
 .skip-link {
@@ -117,9 +148,18 @@ h2,
 h3,
 h4,
 h5,
+h6,
+p {
+    text-box: trim-both text text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
     line-height: 1.2;
-    text-wrap: balance;
     max-inline-size: var(--max-inline-size);
     margin-inline: auto;
 }
@@ -140,7 +180,6 @@ label {
 p {
     text-wrap: pretty;
     overflow-wrap: break-word;
-    hyphens: auto;
 }
 
 a {
@@ -179,8 +218,8 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background-color: var(--grid-background-color, var(--base-color));
-    background-image: linear-gradient(90deg, var(--grid-line-color, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px), linear-gradient(var(--grid-line-color, var(--body-grid-line, var(--linear-gradient-image))) 1px, transparent 1px);
+    background-color: var(--base-color);
+    background-image: linear-gradient(90deg, var(--body-grid-line) 1px, transparent 1px), linear-gradient(var(--body-grid-line) 1px, transparent 1px);
     background-size: var(--size) var(--size);
     background-position: center;
     opacity: 1;

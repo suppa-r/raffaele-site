@@ -1,7 +1,12 @@
 /* =======================================================
             COLOR THEMES - LIGHT & DARK
    ================================================ */
+:root {
+  --backdrop-blur: blur(10px);
+}
+
 [data-theme="dark"] {
+  color-scheme: dark;
   --base-color: #0a0a0a;
   --text-color: #faf8f8;
   --text-span: rgb(65, 122, 150);
@@ -26,7 +31,6 @@
       rgb(65 122 150),
       rgb(250 248 248),
       rgb(65 122 150));
-  --backdrop-blur: blur(10px);
   --glow-background: radial-gradient(ellipse,
       rgb(255 255 255 / 40%) 0%,
       rgb(255 255 255 / 20%) 50%,
@@ -42,6 +46,7 @@
    ===================================================== */
 
 [data-theme="light"] {
+  color-scheme: light;
   --text-color: #000000;
   --base-color: #faf8f8;
   --text-span: #0e3849a2;
@@ -66,7 +71,6 @@
       rgb(14 56 73 / 64%),
       rgb(0 0 0),
       rgb(14 56 73 / 64%));
-  --backdrop-blur: blur(10px);
   --glow-background: radial-gradient(ellipse,
       rgb(20 60 140 / 40%) 0%,
       rgb(20 60 140 / 25%) 50%,
@@ -108,7 +112,6 @@
         var(--text-span),
         var(--text-color),
         var(--text-span));
-    --backdrop-blur: blur(10px);
     --glow-background: radial-gradient(ellipse,
         oklch(100% 0.0001 271.152deg / 40%) 0%,
         oklch(100% 0.0001 271.152deg / 20%) 50%,
@@ -125,7 +128,6 @@
     --text-span: oklch(32.078% 0.0541 229.235deg / 0.637);
     --nav-contrast-color: oklch(100% 0.0001 271.152deg);
     --focus-ring-color: oklch(28.502% 0.0003 271.152deg);
-    --body-grid-line: rgb(0 0 0 / 20%);
     --btn-cell-bg: oklch(14.479% 0.0002 271.152deg);
     --btn-cell-gradient-start: oklch(21.779% 0.0002 271.152deg);
     --btn-cell-gradient-end: oklch(14.479% 0.0002 271.152deg);
@@ -144,7 +146,6 @@
         var(--text-span),
         var(--text-color),
         var(--text-span));
-    --backdrop-blur: blur(10px);
     --glow-background: radial-gradient(ellipse,
         oklch(38.144% 0.1407 262.139deg / 40%) 0%,
         oklch(38.144% 0.1407 262.139deg / 25%) 50%,
