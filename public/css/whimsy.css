@@ -22,11 +22,11 @@
   --deco-4-end-offset: 75%;
   --deco-5-color: var(--text-span);
 
-  margin-block-start: var(--space-m-l);
+  margin-block-start: var(--space-margin-large);
   position: relative;
   display: grid;
   place-items: center;
-  padding: var(--space-s-m);
+  padding: var(--space-margin-large);
   border-radius: 50%;
   text-decoration: none;
   color: var(--text-color);
@@ -71,8 +71,8 @@
 
 .btn[data-btn-type="whimsical"] svg {
   display: block;
-  width: var(--space-l-xl);
-  height: var(--space-l-xl);
+  width: var(--size-whimsical-icon-width);
+  height: var(--size-whimsical-icon-height);
   pointer-events: none;
   transition: transform 0.3s ease;
 }
