@@ -19,6 +19,7 @@
   /* =======================================================
          SPACING SIZES
       ========================================================== */
+  --space-minus-1: calc(0.5rem + (var(--fluid) * 0.375rem));
   --space-0: calc(var(--base) * pow(var(--type-scale), 0));
   --space-1: calc(var(--base) * pow(var(--type-scale), 1));
   --space-2: calc(var(--base) * pow(var(--type-scale), 2));
@@ -39,6 +40,7 @@
   /* =======================================================
            FONT SIZES
         ========================================================== */
+  --fs-minus-1: calc(var(--base) / var(--type-scale));
   --fs-0: var(--base);
   --fs-1: calc(var(--base) * var(--type-scale));
   --fs-2: calc(var(--base) *pow(var(--type-scale), 2));

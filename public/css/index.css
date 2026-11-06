@@ -28,6 +28,7 @@ header {
 .header-text-author {
   text-wrap: balance;
   white-space: nowrap;
+  font-size: var(--fs-minus-1);
 }
 
 /* ========================================================
