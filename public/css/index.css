@@ -47,6 +47,7 @@ main {
 }
 
 .text-with-animation {
+  font-family: var(--primary-font-secondary);
   font-size: var(--fs-1);
   animation: main-text-animation 1.8s ease-in-out forwards;
   overflow: hidden;
@@ -60,6 +61,7 @@ main {
 
 .subtext-with-animation,
 .subtext-with-animation-1 {
+  font-family: var(--primary-font-secondary);
   font-size: var(--fs-2);
   text-align: center;
   width: 100%;

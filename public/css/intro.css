@@ -8,6 +8,8 @@ body {
 .wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* --------------------------------------- */
@@ -24,7 +26,7 @@ header {
     isolation: isolate;
     line-height: 1;
     background: transparent;
-    padding-block: var(--space-xs-s);
+    padding-block: var(--space-0);
 }
 
 body[data-page="intro"] header {
@@ -37,7 +39,7 @@ header::before {
     position: absolute;
     inset: 0;
     z-index: -1;
-    border-radius: var(--space-l-xl);
+    border-radius: var(--space-4);
     background: var(--gradient-header);
     -webkit-backdrop-filter: var(--backdrop-blur);
     backdrop-filter: var(--backdrop-blur);
@@ -69,14 +71,14 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .header-inner {
     display: flex;
     align-items: center;
-    gap: var(--space-xs-s);
+    gap: var(--space-minus-1);
 }
 
 .logo {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: var(--space-4xs-3xs);
+    gap: var(--space-minus-1);
     min-width: 0;
     max-width: 100%;
 }
@@ -84,8 +86,8 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .logo img {
     display: block;
     object-fit: cover;
-    width: var(--space-m-l);
-    height: var(--space-m-l);
+    width: var(--space-3);
+    height: var(--space-3);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 0.5rem var(--text-color);
@@ -96,31 +98,15 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
     white-space: nowrap;
     overflow: visible;
     letter-spacing: -0.02em;
-    margin-inline-end: var(--space-xs-s);
+    margin-inline-end: var(--space-minus-1);
 }
 
 .header-title span {
     font-family: var(--primary-font-secondary);
     font-style: italic;
-    margin-inline-end: var(--space-xs-s);
+    margin-inline-end: var(--space-minus-1);
     color: var(--text-span);
 }
-
-/* ========================================================
-                      Burger king
-======================================================== */
-
-body[data-page="intro"] .open-overlay {
-    opacity: 1;
-    position: relative;
-    border: none;
-    background: none;
-    display: grid;
-    width: var(--space-s-m);
-    z-index: 5000;
-}
-
-
 
 /* ========================================================
                     main content
@@ -133,11 +119,11 @@ main {
     text-align: center;
     white-space: normal;
     flex: 1;
-    margin-block-start: 15svh;
+    margin-block-start: 10svh;
 }
 
 .prose>*+* {
-    margin-block-start: var(--prose-flow, var(--space-3xs-2xs));
+    margin-block-start: var(--prose-flow, var(--space-minus-1));
     padding-block: 0;
 }
 
@@ -153,7 +139,7 @@ main {
     white-space: nowrap;
     margin-inline: auto;
     width: fit-content;
-    margin-block-end: var(--space-s-m);
+    margin-block-end: var(--space-3);
 }
 
 .text-layer {
@@ -217,7 +203,7 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
     font-style: italic;
-    padding-inline-start: var(--space-3xs-2xs);
+    padding-inline-start: var(--space-minus-1);
 }
 
 .fancy-small {
@@ -260,12 +246,12 @@ footer {
         font-family: var(--primary-font-secondary);
         font-size: var(--fs-0);
         font-style: italic;
-        padding-inline-start: var(--space-3xs-2xs);
+        padding-inline-start: var(--space-0);
     }
 
     .text-break {
         display: inline-block !important;
-        padding-inline-start: var(--space-3xs-2xs);
+        padding-inline-start: var(--space-0);
     }
 
     .wrapper-gradient-text {

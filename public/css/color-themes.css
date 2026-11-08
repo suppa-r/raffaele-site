@@ -42,7 +42,7 @@
   --glow-box-shadow:
     0 0 25px rgb(255 255 255 / 60%), 0 0 50px rgb(255 255 255 / 40%);
   --linear-gradient-image: rgba(255, 255, 255, 0.100);
-  --body-grid-line: rgba(255, 255, 255, 0.1);
+  --body-grid-line: rgba(255, 255, 255, 0.2);
   --blend-mode: screen;
 }
 /* =======================================================
@@ -82,7 +82,7 @@
   --glow-box-shadow:
     0 0 25px rgb(20 60 140 / 60%), 0 0 50px rgb(20 60 140 / 45%);
   --linear-gradient-image: rgba(66, 64, 64, 0.596);
-  --body-grid-line: rgba(3, 3, 3, 0.1);
+  --body-grid-line: rgba(3, 3, 3, 0.2);
   --blend-mode: normal;
 }
 
@@ -123,7 +123,7 @@
       0 0 25px oklch(100% 0.0011 271.152deg / 60%),
       0 0 50px oklch(100% 0.0011 271.152deg / 40%);
     --linear-gradient-image: oklch(100% 0.00011 271.152deg / 0.1);
-    --body-grid-line: oklch(100% 0.00011 271.152deg / 0.1);
+    --body-grid-line: oklch(100% 0.00011 271.152deg / 0.2);
   }
 
   [data-theme="light"] {
@@ -158,7 +158,7 @@
       0 0 25px oklch(38.144% 0.1407 262.139deg / 60%),
       0 0 50px oklch(38.144% 0.1407 262.139deg / 45%);
     --linear-gradient-image: oklch(37.346% 0.00272 16.419deg / 0.30);
-    --body-grid-line: oklch(9.693% 0.00001 271.152deg / 0.1);
+    --body-grid-line: oklch(9.693% 0.00001 271.152deg / 0.2);
   }
 }
 
