@@ -6,20 +6,24 @@
    --fluid-vmax: 1440px;
    --base-min: 1rem;
    --base-max: 1.125rem;
-   --type-scale-small: 1.2;
-   --type-scale-large: 1.333;
+   --type-scale-small: 1;
+   --type-scale-large: 1.414;
 
    /* =======================================================
     calculations, never touch these values directly
       ========================================================== */
-   --fluid: progress(100vw, var(--fluid-vmin), var(--fluid-vmax));
+   --fluid: clamp(0, tan(atan2(100vw - var(--fluid-vmin),
+               var(--fluid-vmax) - var(--fluid-vmin))), 1);
    --base: calc(var(--base-min) + (var(--fluid) * (var(--base-max) - var(--base-min))));
    --type-scale: calc(var(--type-scale-small) + (var(--fluid) * (var(--type-scale-large) - var(--type-scale-small))));
 
    /* =======================================================
          SPACING SIZES
       ========================================================== */
-   --space-minus-1: calc(0.5rem + (var(--fluid) * 0.375rem));
+   --space-04: calc(0.5rem + (var(--fluid) * 0.25rem));
+   --space-03: calc(0.5rem + (var(--fluid) * 0.375rem));
+   --space-02: calc(1rem + (var(--fluid) * 0.5rem));
+   --space-01: calc(2rem + (var(--fluid) * 1rem));
    --space-0: calc(var(--base) * pow(var(--type-scale), 0));
    --space-1: calc(var(--base) * pow(var(--type-scale), 1));
    --space-2: calc(var(--base) * pow(var(--type-scale), 2));
@@ -32,14 +36,13 @@
    --space-9: calc(var(--base) * pow(var(--type-scale), 9));
    --space-10: calc(var(--base) * pow(var(--type-scale), 10));
    /* --------------------------------------------------------- */
-   --space-margin-small: calc(0.5rem + (var(--fluid) * 0.25rem));
-   --space-margin-medium: calc(1rem + (var(--fluid) * 0.5rem));
-   --space-margin-large: calc(2rem + (var(--fluid) * 1rem));
+
+
 
    /* =======================================================
            FONT SIZES
         ========================================================== */
-   --fs-minus-1: calc(var(--base) / var(--type-scale));
+   --fs-01: calc(var(--base) / var(--type-scale));
    --fs-0: var(--base);
    --fs-1: calc(var(--base) * var(--type-scale));
    --fs-2: calc(var(--base) *pow(var(--type-scale), 2));
@@ -56,12 +59,9 @@
             ========================================================== */
    --primary-font: "poiret_oneregular", sans-serif;
    --primary-font-secondary: "cormorant_uprightlight", sans-serif;
-   --letter-spacing-small: clamp(0.1875rem, 0.1771rem + 0.1042vw, 0.2rem);
-   --letter-spacing-body: clamp(0.2375rem, 0.2292rem + 0.1042vw, 0.25rem);
-   --letter-spacing-wide: clamp(0.375rem, 0.2917rem + 0.4167vw, 0.625rem);
-   --font-weight: normal;
-   --font-style: normal;
-   --mix-blend-mode: normal;
+   --letter-spacing-small: var(--space-04);
+   --letter-spacing-body: var(--space-03);
+   --letter-spacing-wide: var(--space-02);
    --transition-duration: 400ms;
    --reveal-duration: 4s;
 }
