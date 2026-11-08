@@ -102,8 +102,8 @@ main {
   }
 
   100% {
-    letter-spacing: 3px;
-    word-spacing: 0.4vw;
+    letter-spacing: 10px;
+    word-spacing: 0.6vw;
     opacity: 1;
   }
 }

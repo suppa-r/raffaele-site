@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: var(--space-03);
     background-color: transparent;
     border: none;
 }
@@ -28,14 +29,15 @@
 .theme-switcher button {
     position: relative;
     display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     background-color: transparent;
     color: var(--text-color);
     border: none;
-    padding: var(--space-0);
     cursor: pointer;
-    min-width: var(--space-2);
-    min-height: var(--space-2);
+    min-width: var(--space-3);
+    min-height: var(--space-3);
 }
 
 .theme-switcher button:focus-visible {
@@ -50,10 +52,11 @@
    ============================================ */
 
 .theme-switcher button svg {
-    width: var(--space-2);
-    height: var(--space-2);
+    width: var(--space-3);
+    height: var(--space-3);
+    padding: var(--space-04);
     stroke-width: 0.15;
-    stroke: var(--text-color);
+    stroke: currentcolor;
     fill: currentcolor;
     transform-origin: center;
     position: relative;
@@ -76,10 +79,8 @@
 }
 
 .theme-switcher button:hover {
-    padding: calc(var(--space-0) / 2);
     color: var(--base-color);
     background-color: var(--text-color);
-    /* was on ::after */
     box-shadow: 0 4px 8px rgba(0 0 0 / 0.2);
 }
 
@@ -142,7 +143,6 @@
     }
 
     .theme-switcher button:hover {
-        border-width: 3px;
         background-color: var(--text-color);
         color: var(--base-color);
     }
@@ -150,7 +150,6 @@
     .theme-switcher button:focus-visible {
         outline: 3px solid var(--text-color);
         outline-offset: 3px;
-        border-width: 3px;
     }
 }
 
