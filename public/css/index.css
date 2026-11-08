@@ -1,12 +1,15 @@
 body {
   font-family: var(--primary-font);
   background-color: var(--base-color);
+  font-size: var(--fs-0);
   color: var(--text-color);
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 header {
@@ -16,8 +19,8 @@ header {
   align-items: center;
   line-height: 1;
   text-align: center;
-  gap: var(--space-header-gap);
-  margin-block-start: var(--space-margin-start);
+  gap: var(--space-0);
+  margin-block-start: var(--space-margin-small);
 }
 
 .header-text-quote {
@@ -45,7 +48,7 @@ main {
 
 .text-with-animation {
   font-size: var(--fs-1);
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  animation: main-text-animation 2.8s ease-in-out forwards;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -63,25 +66,25 @@ main {
 .subtext-with-animation span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 0.65s ease-out 2.8s forwards;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.7s forwards;
+  animation: word-animation 0.65s ease-out 3.1s forwards;
 }
 
 .subtext-with-animation-1 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation-1 0.5s ease-out 1.5s forwards;
+  animation: word-animation-1 0.65s ease-out 4s forwards;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation-1 0.5s ease-out 1.7s forwards;
+  animation: word-animation-1 0.65s ease-out 4.3s forwards;
 }
 
 @keyframes main-text-animation {
@@ -128,46 +131,7 @@ main {
 
 footer {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   margin-inline: 0;
-}
-
-@media (width >=768px) {
-  @keyframes main-text-animation {
-    0% {
-      letter-spacing: 50vw;
-      word-spacing: 50vw;
-      opacity: 0;
-    }
-
-    100% {
-      letter-spacing: 6px;
-      word-spacing: 0.5vw;
-      opacity: 1;
-    }
-  }
-
-  @keyframes word-animation {
-    0% {
-      top: 2rem;
-      opacity: 0;
-    }
-
-    100% {
-      top: 0;
-      opacity: 1;
-    }
-  }
-
-  @keyframes word-animation-1 {
-    0% {
-      bottom: 2rem;
-      opacity: 0;
-    }
-
-    100% {
-      bottom: 0;
-      opacity: 1;
-    }
-  }
 }

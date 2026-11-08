@@ -1,68 +1,67 @@
 :root {
-  /* =======================================================
+   /* =======================================================
          Settings
       ========================================================== */
-  --fluid-vmin: 375px;
-  --fluid-vmax: 1440px;
-  --base-min: 1rem;
-  --base-max: 1.125rem;
-  --type-scale-small: 1.2;
-  --type-scale-large: 1.333;
+   --fluid-vmin: 375px;
+   --fluid-vmax: 1440px;
+   --base-min: 1rem;
+   --base-max: 1.125rem;
+   --type-scale-small: 1.2;
+   --type-scale-large: 1.333;
 
-  /* =======================================================
+   /* =======================================================
     calculations, never touch these values directly
       ========================================================== */
-  --fluid: progress(100vw, var(--fluid-vmin), var(--fluid-vmax));
-  --base: calc(var(--base-min) + (var(--fluid) * (var(--base-max) - var(--base-min))));
-  --type-scale: calc(var(--type-scale-small) + (var(--fluid) * (var(--type-scale-large) - var(--type-scale-small))));
+   --fluid: progress(100vw, var(--fluid-vmin), var(--fluid-vmax));
+   --base: calc(var(--base-min) + (var(--fluid) * (var(--base-max) - var(--base-min))));
+   --type-scale: calc(var(--type-scale-small) + (var(--fluid) * (var(--type-scale-large) - var(--type-scale-small))));
 
-  /* =======================================================
+   /* =======================================================
          SPACING SIZES
       ========================================================== */
-  --space-minus-1: calc(0.5rem + (var(--fluid) * 0.375rem));
-  --space-0: calc(var(--base) * pow(var(--type-scale), 0));
-  --space-1: calc(var(--base) * pow(var(--type-scale), 1));
-  --space-2: calc(var(--base) * pow(var(--type-scale), 2));
-  --space-3: calc(var(--base) * pow(var(--type-scale), 3));
-  --space-4: calc(var(--base) * pow(var(--type-scale), 4));
-  --space-header-gap: calc(0.25rem + (var(--fluid) * 0.25rem));
-  --space-margin-start: calc(0.25rem + (var(--fluid) * 0.25rem));
-  --space-margin-small: calc(0.25rem + (var(--fluid) * 0.25rem));
-  --space-margin-medium: calc(0.5rem + (var(--fluid) * 0.25rem));
-  --space-margin-large: calc(2rem + (var(--fluid) * 0.5rem));
+   --space-minus-1: calc(0.5rem + (var(--fluid) * 0.375rem));
+   --space-0: calc(var(--base) * pow(var(--type-scale), 0));
+   --space-1: calc(var(--base) * pow(var(--type-scale), 1));
+   --space-2: calc(var(--base) * pow(var(--type-scale), 2));
+   --space-3: calc(var(--base) * pow(var(--type-scale), 3));
+   --space-4: calc(var(--base) * pow(var(--type-scale), 4));
+   --space-5: calc(var(--base) * pow(var(--type-scale), 5));
+   --space-6: calc(var(--base) * pow(var(--type-scale), 6));
+   --space-7: calc(var(--base) * pow(var(--type-scale), 7));
+   --space-8: calc(var(--base) * pow(var(--type-scale), 8));
+   --space-9: calc(var(--base) * pow(var(--type-scale), 9));
+   --space-10: calc(var(--base) * pow(var(--type-scale), 10));
+   /* --------------------------------------------------------- */
+   --space-margin-small: calc(0.5rem + (var(--fluid) * 0.25rem));
+   --space-margin-medium: calc(1rem + (var(--fluid) * 0.5rem));
+   --space-margin-large: calc(2rem + (var(--fluid) * 1rem));
 
-  /* =======================================================
-           ELEMENT SIZES
-        ========================================================== */
-  --size-whimsical-icon-width: var(--space-2);
-  --size-whimsical-icon-height: var(--space-2);
-
-  /* =======================================================
+   /* =======================================================
            FONT SIZES
         ========================================================== */
-  --fs-minus-1: calc(var(--base) / var(--type-scale));
-  --fs-0: var(--base);
-  --fs-1: calc(var(--base) * var(--type-scale));
-  --fs-2: calc(var(--base) *pow(var(--type-scale), 2));
-  --fs-3: calc(var(--base) *pow(var(--type-scale), 3));
-  --fs-4: calc(var(--base) *pow(var(--type-scale), 4));
-  --fs-5: calc(var(--base) *pow(var(--type-scale), 5));
-  --fs-6: calc(var(--base) *pow(var(--type-scale), 6));
-  --fs-7: calc(var(--base) *pow(var(--type-scale), 7));
-  --fs-8: calc(var(--base) *pow(var(--type-scale), 8));
-  --fs-9: calc(var(--base) *pow(var(--type-scale), 9));
+   --fs-minus-1: calc(var(--base) / var(--type-scale));
+   --fs-0: var(--base);
+   --fs-1: calc(var(--base) * var(--type-scale));
+   --fs-2: calc(var(--base) *pow(var(--type-scale), 2));
+   --fs-3: calc(var(--base) *pow(var(--type-scale), 3));
+   --fs-4: calc(var(--base) *pow(var(--type-scale), 4));
+   --fs-5: calc(var(--base) *pow(var(--type-scale), 5));
+   --fs-6: calc(var(--base) *pow(var(--type-scale), 6));
+   --fs-7: calc(var(--base) *pow(var(--type-scale), 7));
+   --fs-8: calc(var(--base) *pow(var(--type-scale), 8));
+   --fs-9: calc(var(--base) *pow(var(--type-scale), 9));
 
-  /* =======================================================
+   /* =======================================================
                TYPOGRAPHY & TRANSITIONS
             ========================================================== */
-  --primary-font: "poiret_oneregular", sans-serif;
-  --primary-font-secondary: "cormorant_uprightlight", sans-serif;
-  --letter-spacing-small: clamp(0.1875rem, 0.1771rem + 0.1042vw, 0.2rem);
-  --letter-spacing-body: clamp(0.2375rem, 0.2292rem + 0.1042vw, 0.25rem);
-  --letter-spacing-wide: clamp(0.375rem, 0.2917rem + 0.4167vw, 0.625rem);
-  --font-weight: normal;
-  --font-style: normal;
-  --mix-blend-mode: normal;
-  --transition-duration: 400ms;
-  --reveal-duration: 4s;
+   --primary-font: "poiret_oneregular", sans-serif;
+   --primary-font-secondary: "cormorant_uprightlight", sans-serif;
+   --letter-spacing-small: clamp(0.1875rem, 0.1771rem + 0.1042vw, 0.2rem);
+   --letter-spacing-body: clamp(0.2375rem, 0.2292rem + 0.1042vw, 0.25rem);
+   --letter-spacing-wide: clamp(0.375rem, 0.2917rem + 0.4167vw, 0.625rem);
+   --font-weight: normal;
+   --font-style: normal;
+   --mix-blend-mode: normal;
+   --transition-duration: 400ms;
+   --reveal-duration: 4s;
 }

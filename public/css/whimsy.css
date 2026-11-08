@@ -71,8 +71,8 @@
 
 .btn[data-btn-type="whimsical"] svg {
   display: block;
-  width: var(--size-whimsical-icon-width);
-  height: var(--size-whimsical-icon-height);
+  width: var(--space-2);
+  height: var(--space-2);
   pointer-events: none;
   transition: transform 0.3s ease;
 }

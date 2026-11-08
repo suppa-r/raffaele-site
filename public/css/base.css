@@ -42,8 +42,8 @@ body {
     min-block-size: 100vh;
     min-block-size: 100svh;
     padding-block: max(var(--space-minus-1), env(safe-area-inset-top, 0px)) max(var(--space-minus-1), env(safe-area-inset-bottom, 0px));
-    overflow: hidden;
     isolation: isolate;
+    overflow: hidden;
     /* background-color: transparent; */
 }
 

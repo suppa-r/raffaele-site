@@ -4,6 +4,8 @@
 .theme-switcher {
     position: relative;
     display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
     border: none;
 }
@@ -26,16 +28,14 @@
 .theme-switcher button {
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
     background-color: transparent;
     color: var(--text-color);
     border: none;
-    padding: var(--space-2xs-xs);
+    padding: var(--space-minus-1);
     cursor: pointer;
-    min-width: var(--space-l);
-    min-height: var(--space-l);
+    min-width: var(--space-2);
+    min-height: var(--space-2);
 }
 
 .theme-switcher button:focus-visible {
@@ -50,8 +50,8 @@
    ============================================ */
 
 .theme-switcher button svg {
-    width: var(--space-l);
-    height: var(--space-l);
+    width: var(--space-2);
+    height: var(--space-2);
     stroke-width: 0.15;
     stroke: var(--text-color);
     fill: currentcolor;
@@ -199,7 +199,7 @@
     .theme-switcher {
         position: relative;
         display: flex;
-        gap: var(--space-s);
+        gap: var(--space-2);
         /* or a fixed value like 0.5rem */
         background-color: transparent;
         border: none;

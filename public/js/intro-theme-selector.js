@@ -189,14 +189,14 @@ function updateIntroWelcomeImage(resolvedTheme) {
   if (image) {
     image.src =
       resolvedTheme === "light"
-        ? "images/squooshed/welcome-light.png"
+        ? "images/squooshed/welcome-light-Copy.png"
         : "images/squooshed/welcome-high res.png";
 
     const mobileSource = image.closest("picture")?.querySelector("source");
     if (mobileSource) {
       mobileSource.srcset =
         resolvedTheme === "light"
-          ? "images/squooshed/welcome-light.png"
+          ? "images/squooshed/welcome-light-Copy.png"
           : "images/squooshed/welcome-mobile.png";
     }
   }

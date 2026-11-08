@@ -1,6 +1,6 @@
 /* stylelint-disable media-feature-range-notation */
 :root {
-   --card-radius: 4em;
+   --card-radius: 6em;
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
    --card-active-scale: 1.2;
@@ -97,7 +97,7 @@ main.content {
    font-size: var(--fs-1);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
-   margin-block-start: var(--space-xs-s);
+   margin-block-start: var(--space-margin-medium);
 }
 
 .stats {
@@ -112,15 +112,14 @@ main.content {
 }
 
 .stats svg {
-   width: var(--space-xl);
-   height: var(--space-xl);
+   width: var(--space-4);
+   height: var(--space-4);
    fill: currentcolor;
-   margin-block-start: var(--space-s-m);
+   margin-block-start: var(--space-margin-medium);
 }
 
 .stats .viewer {
    white-space: nowrap;
-   font-size: var(--fs-0);
 }
 
 .back {
@@ -141,24 +140,21 @@ main.content {
    font-size: var(--fs-2);
    font-weight: 700;
    text-align: center;
-   margin-block-start: var(--space-xl-2xl);
+   margin-block-start: var(--space-margin-large);
 }
 
 .back .viewers {
-   font-size: var(--fs-0);
-   margin-block-start: var(--space-s-m);
+   margin-block-start: var(--space-margin-medium);
 }
 
 .background>picture {
    position: absolute;
    inset: 0 4% 20%;
    z-index: 0;
-   overflow: hidden;
-   border-radius: var(--card-radius);
    background: transparent;
    opacity: 0;
    visibility: hidden;
-   transform: scale(0.92, 0.96);
+   transform: scale(0.92, 0.92);
    transition: opacity 180ms ease, visibility 0s linear 180ms, transform var(--card-transition);
 }
 
