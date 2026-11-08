@@ -6,7 +6,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-03);
+    gap: clamp(0.25rem, 1vw, 0.75rem);
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
     background-color: transparent;
     border: none;
 }
@@ -31,13 +37,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
+    width: clamp(2.75rem, 4vw, 3.25rem);
+    height: clamp(2.75rem, 4vw, 3.25rem);
     border-radius: 50%;
     background-color: transparent;
     color: var(--text-color);
     border: none;
     cursor: pointer;
-    min-width: var(--space-3);
-    min-height: var(--space-3);
 }
 
 .theme-switcher button:focus-visible {
@@ -52,16 +59,17 @@
    ============================================ */
 
 .theme-switcher button svg {
-    width: var(--space-3);
-    height: var(--space-3);
-    padding: var(--space-04);
+    /* width: clamp(1.25rem, 2.5vw, 1.75rem);
+    height: clamp(1.25rem, 2.5vw, 1.75rem); */
+    width: clamp(2rem, 3vw, 3rem);
+    height: clamp(2rem, 3vw, 3rem);
     stroke-width: 0.15;
     stroke: currentcolor;
     fill: currentcolor;
     transform-origin: center;
     position: relative;
     z-index: 1;
-
+    flex: 0 0 auto;
 }
 
 /* ============================================
@@ -170,6 +178,8 @@
         /* WCAG 2.5.5 - Minimum touch target size */
         min-width: 44px;
         min-height: 44px;
+        width: 44px;
+        height: 44px;
         /* Faster transitions for touch */
         will-change: transform;
         transition:
@@ -192,14 +202,5 @@
         animation: none !important;
         transform: scale(1);
         /* Simple scale instead */
-    }
-}
-
-@media (min-width: 768px) {
-    .theme-switcher {
-        position: relative;
-        display: flex;
-        background-color: transparent;
-        border: none;
     }
 }

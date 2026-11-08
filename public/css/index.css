@@ -44,11 +44,12 @@ main {
   justify-content: center;
   align-items: center;
   flex: 1;
+  margin-inline: auto;
 }
 
 .text-with-animation {
   font-family: var(--primary-font-secondary);
-  font-size: var(--fs-1);
+  font-size: var(--fs-2);
   animation: main-text-animation 1.8s ease-in-out forwards;
   overflow: hidden;
   white-space: nowrap;
@@ -62,7 +63,7 @@ main {
 .subtext-with-animation,
 .subtext-with-animation-1 {
   font-family: var(--primary-font-secondary);
-  font-size: var(--fs-2);
+  font-size: var(--fs-3);
   text-align: center;
   width: 100%;
   letter-spacing: 4px;
@@ -96,21 +97,21 @@ main {
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: clamp(1rem, 10vw, 8rem);
-    word-spacing: clamp(0.5rem, 4vw, 3rem);
+    letter-spacing: var(--space-10);
+    word-spacing: var(--space-2);
     opacity: 0;
   }
 
   100% {
-    letter-spacing: 10px;
-    word-spacing: 0.6vw;
+    letter-spacing: 8px;
+    word-spacing: 0.5vw;
     opacity: 1;
   }
 }
 
 @keyframes word-animation {
   0% {
-    top: var(--space-0);
+    top: var(--space-5);
     opacity: 0;
   }
 
@@ -122,7 +123,7 @@ main {
 
 @keyframes word-animation-1 {
   0% {
-    bottom: var(--space-0);
+    bottom: var(--space-5);
     opacity: 0;
   }
 
