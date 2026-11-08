@@ -48,9 +48,14 @@ main {
 
 .text-with-animation {
   font-size: var(--fs-1);
-  animation: main-text-animation 2.8s ease-in-out forwards;
+  animation: main-text-animation 1.8s ease-in-out forwards;
   overflow: hidden;
   white-space: nowrap;
+}
+
+:root.theme-text-transitioning [data-theme-transition-text] {
+  visibility: hidden;
+  animation: none !important;
 }
 
 .subtext-with-animation,
@@ -66,25 +71,25 @@ main {
 .subtext-with-animation span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.65s ease-out 2.8s forwards;
+  animation: word-animation 0.45s ease-out 1.8s forwards;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.65s ease-out 3.1s forwards;
+  animation: word-animation 0.45s ease-out 2s forwards;
 }
 
 .subtext-with-animation-1 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation-1 0.65s ease-out 4s forwards;
+  animation: word-animation-1 0.45s ease-out 2.6s forwards;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation-1 0.65s ease-out 4.3s forwards;
+  animation: word-animation-1 0.45s ease-out 2.8s forwards;
 }
 
 @keyframes main-text-animation {

@@ -41,5 +41,5 @@
   },
   "files.autoSave": "onWindowChange",
   "liveServer.settings.host": "127.0.0.1",
-  "liveServer.settings.port": 8080
+  "liveServer.settings.port": 8081
 }

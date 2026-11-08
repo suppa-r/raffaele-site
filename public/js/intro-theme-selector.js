@@ -174,6 +174,16 @@ function announceIntroTheme(theme) {
       : `Theme set to ${theme}`;
 }
 
+function replayHomeTextAnimations() {
+  document.documentElement.classList.remove("theme-text-transitioning");
+}
+
+function hideHomeTextAnimations() {
+  if (document.querySelector("[data-theme-transition-text]")) {
+    document.documentElement.classList.add("theme-text-transitioning");
+  }
+}
+
 function updateIntroThemeFavicon(resolvedTheme) {
   const favicon =
     document.getElementById("favicon") ||
@@ -459,3 +469,5 @@ if (document.readyState === "loading") {
 }
 
 document.addEventListener("page:transitioned", initIntroThemeSelector);
+document.addEventListener("theme:transition:start", hideHomeTextAnimations);
+document.addEventListener("theme:transitioned", replayHomeTextAnimations);
