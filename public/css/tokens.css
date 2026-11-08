@@ -20,10 +20,10 @@
    /* =======================================================
          SPACING SIZES
       ========================================================== */
-   --space-04: calc(0.5rem + (var(--fluid) * 0.25rem));
-   --space-03: calc(0.5rem + (var(--fluid) * 0.375rem));
-   --space-02: calc(1rem + (var(--fluid) * 0.5rem));
-   --space-01: calc(2rem + (var(--fluid) * 1rem));
+   --space-04: calc(var(--base) / pow(var(--type-scale), 4));
+   --space-03: calc(var(--base) / pow(var(--type-scale), 3));
+   --space-02: calc(var(--base) / pow(var(--type-scale), 2));
+   --space-01: calc(var(--base) / var(--type-scale));
    --space-0: calc(var(--base) * pow(var(--type-scale), 0));
    --space-1: calc(var(--base) * pow(var(--type-scale), 1));
    --space-2: calc(var(--base) * pow(var(--type-scale), 2));
@@ -35,10 +35,6 @@
    --space-8: calc(var(--base) * pow(var(--type-scale), 8));
    --space-9: calc(var(--base) * pow(var(--type-scale), 9));
    --space-10: calc(var(--base) * pow(var(--type-scale), 10));
-   /* --------------------------------------------------------- */
-
-
-
    /* =======================================================
            FONT SIZES
         ========================================================== */

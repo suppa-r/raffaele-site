@@ -22,6 +22,8 @@ body {
 .wrapper {
    display: flex;
    flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 
 /* ========================================================
@@ -97,7 +99,7 @@ main.content {
    font-size: var(--fs-1);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
-   margin-block-start: var(--space-margin-medium);
+   margin-block-start: var(--space-2);
 }
 
 .stats {
@@ -115,7 +117,7 @@ main.content {
    width: var(--space-4);
    height: var(--space-4);
    fill: currentcolor;
-   margin-block-start: var(--space-margin-medium);
+   margin-block-start: var(--space-2);
 }
 
 .stats .viewer {
@@ -140,11 +142,11 @@ main.content {
    font-size: var(--fs-2);
    font-weight: 700;
    text-align: center;
-   margin-block-start: var(--space-margin-large);
+   margin-block-start: var(--space-3);
 }
 
 .back .viewers {
-   margin-block-start: var(--space-margin-medium);
+   margin-block-start: var(--space-2);
 }
 
 .background>picture {

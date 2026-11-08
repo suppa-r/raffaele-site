@@ -20,7 +20,7 @@ header {
   line-height: 1;
   text-align: center;
   gap: var(--space-0);
-  margin-block-start: var(--space-margin-small);
+  margin-block-start: var(--space-0);
 }
 
 .header-text-quote {
@@ -31,7 +31,7 @@ header {
 .header-text-author {
   text-wrap: balance;
   white-space: nowrap;
-  font-size: var(--fs-minus-1);
+  font-size: var(--fs-01);
 }
 
 /* ========================================================
@@ -67,7 +67,7 @@ main {
   width: 100%;
   letter-spacing: 4px;
   user-select: none;
-  margin-block-start: var(--space-margin-medium);
+  margin-block-start: var(--space-0);
 }
 
 .subtext-with-animation span:first-of-type {
@@ -96,8 +96,8 @@ main {
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 25vw;
-    word-spacing: 25vw;
+    letter-spacing: clamp(1rem, 10vw, 8rem);
+    word-spacing: clamp(0.5rem, 4vw, 3rem);
     opacity: 0;
   }
 
@@ -110,7 +110,7 @@ main {
 
 @keyframes word-animation {
   0% {
-    top: 1rem;
+    top: var(--space-0);
     opacity: 0;
   }
 
@@ -122,7 +122,7 @@ main {
 
 @keyframes word-animation-1 {
   0% {
-    bottom: 1rem;
+    bottom: var(--space-0);
     opacity: 0;
   }
 

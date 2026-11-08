@@ -76,6 +76,7 @@
 }
 
 .theme-switcher button:hover {
+    padding: calc(var(--space-0) / 2);
     color: var(--base-color);
     background-color: var(--text-color);
     /* was on ::after */
@@ -179,7 +180,7 @@
 
     /* Active state - visual feedback on tap */
     .theme-switcher button:active {
-        transform: scale(0.95);
+        transform: scale(0.90);
         background-color: var(--text-color);
         color: var(--base-color);
     }
