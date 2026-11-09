@@ -4,14 +4,13 @@
 .theme-switcher {
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: clamp(0.25rem, 1vw, 0.75rem);
     width: fit-content;
     max-width: 100%;
     min-width: 0;
     margin: 0;
-    padding: 0;
+    padding: var(--space-xs-s) 0;
     flex-wrap: nowrap;
     background-color: transparent;
     border: none;
@@ -59,8 +58,6 @@
    ============================================ */
 
 .theme-switcher button svg {
-    /* width: clamp(1.25rem, 2.5vw, 1.75rem);
-    height: clamp(1.25rem, 2.5vw, 1.75rem); */
     width: clamp(2rem, 3vw, 3rem);
     height: clamp(2rem, 3vw, 3rem);
     stroke-width: 0.15;

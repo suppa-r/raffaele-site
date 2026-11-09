@@ -1,63 +1,325 @@
+@property --space-4xs {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 3px;
+}
+
+@property --space-3xs {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 4px;
+}
+
+@property --space-2xs {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 8px;
+}
+
+@property --space-xs {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 12px;
+}
+
+@property --space-s {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 16px;
+}
+
+@property --space-m {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 24px;
+}
+
+@property --space-l {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 32px;
+}
+
+@property --space-xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 48px;
+}
+
+@property --space-2xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 64px;
+}
+
+@property --space-3xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 80px;
+}
+
+@property --space-4xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 96px;
+}
+
+@property --space-5xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 112px;
+}
+
+@property --space-6xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 128px;
+}
+
+@property --space-7xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 144px;
+}
+
+@property --space-8xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 160px;
+}
+
+@property --space-9xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 176px;
+}
+
+@property --space-10xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 192px;
+}
+
+@property --space-11xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 208px;
+}
+
+@property --space-12xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 224px;
+}
+
+@property --space-13xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 272px;
+}
+
+@property --space-4xs-3xs {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 3px;
+}
+
+@property --space-3xs-2xs {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 4px;
+}
+
+@property --space-2xs-xs {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 8px;
+}
+
+@property --space-xs-s {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 12px;
+}
+
+@property --space-s-m {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 16px;
+}
+
+@property --space-m-l {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 24px;
+}
+
+@property --space-l-xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 32px;
+}
+
+@property --space-xl-2xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 48px;
+}
+
+@property --space-2xl-3xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 64px;
+}
+
+@property --space-3xl-4xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 80px;
+}
+
+@property --space-4xl-5xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 96px;
+}
+
+@property --space-5xl-6xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 112px;
+}
+
+@property --space-6xl-7xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 128px;
+}
+
+@property --space-7xl-8xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 144px;
+}
+
+@property --space-8xl-9xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 160px;
+}
+
+@property --space-9xl-10xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 176px;
+}
+
+@property --space-10xl-11xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 192px;
+}
+
+@property --space-11xl-12xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 208px;
+}
+
+@property --space-12xl-13xl {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 224px;
+}
+
+@property --letter-spacing-small {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 3px;
+}
+
+@property --letter-spacing-body {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 3.8px;
+}
+
+@property --letter-spacing-wide {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 6px;
+}
+
 :root {
    /* =======================================================
-         Settings
-      ========================================================== */
-   --fluid-vmin: 375px;
-   --fluid-vmax: 1440px;
-   --base-min: 1rem;
-   --base-max: 1.125rem;
-   --type-scale-small: 1;
-   --type-scale-large: 1.414;
-
-   /* =======================================================
-    calculations, never touch these values directly
-      ========================================================== */
-   --fluid: clamp(0, tan(atan2(100vw - var(--fluid-vmin),
-               var(--fluid-vmax) - var(--fluid-vmin))), 1);
-   --base: calc(var(--base-min) + (var(--fluid) * (var(--base-max) - var(--base-min))));
-   --type-scale: calc(var(--type-scale-small) + (var(--fluid) * (var(--type-scale-large) - var(--type-scale-small))));
-
-   /* =======================================================
          SPACING SIZES
-      ========================================================== */
-   --space-04: calc(var(--base) / pow(var(--type-scale), 4));
-   --space-03: calc(var(--base) / pow(var(--type-scale), 3));
-   --space-02: calc(var(--base) / pow(var(--type-scale), 2));
-   --space-01: calc(var(--base) / var(--type-scale));
-   --space-0: calc(var(--base) * pow(var(--type-scale), 0));
-   --space-1: calc(var(--base) * pow(var(--type-scale), 1));
-   --space-2: calc(var(--base) * pow(var(--type-scale), 2));
-   --space-3: calc(var(--base) * pow(var(--type-scale), 3));
-   --space-4: calc(var(--base) * pow(var(--type-scale), 4));
-   --space-5: calc(var(--base) * pow(var(--type-scale), 5));
-   --space-6: calc(var(--base) * pow(var(--type-scale), 6));
-   --space-7: calc(var(--base) * pow(var(--type-scale), 7));
-   --space-8: calc(var(--base) * pow(var(--type-scale), 8));
-   --space-9: calc(var(--base) * pow(var(--type-scale), 9));
-   --space-10: calc(var(--base) * pow(var(--type-scale), 10));
+========================================================== */
+   --space-4xs: clamp(0.1875rem, 0.1696rem + 0.0893vw, 0.25rem);
+   --space-3xs: clamp(0.25rem, 0.2321rem + 0.0893vw, 0.3125rem);
+   --space-2xs: clamp(0.5rem, 0.4821rem + 0.0893vw, 0.5625rem);
+   --space-xs: clamp(0.75rem, 0.7143rem + 0.1786vw, 0.875rem);
+   --space-s: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+   --space-m: clamp(1.5rem, 1.4464rem + 0.2679vw, 1.6875rem);
+   --space-l: clamp(2rem, 1.9286rem + 0.3571vw, 2.25rem);
+   --space-xl: clamp(3rem, 2.8929rem + 0.5357vw, 3.375rem);
+   --space-2xl: clamp(4rem, 3.8571rem + 0.7143vw, 4.5rem);
+   --space-3xl: clamp(5rem, 4.8214rem + 0.8929vw, 5.625rem);
+   --space-4xl: clamp(6rem, 5.7857rem + 1.0714vw, 6.75rem);
+   --space-5xl: clamp(7rem, 6.75rem + 1.25vw, 7.875rem);
+   --space-6xl: clamp(8rem, 7.7143rem + 1.4286vw, 9rem);
+   --space-7xl: clamp(9rem, 8.6786rem + 1.6071vw, 10.125rem);
+   --space-8xl: clamp(10rem, 9.6429rem + 1.7857vw, 11.25rem);
+   --space-9xl: clamp(11rem, 10.6071rem + 1.9643vw, 12.375rem);
+   --space-10xl: clamp(12rem, 11.5714rem + 2.1429vw, 13.5rem);
+   --space-11xl: clamp(13rem, 12.5357rem + 2.3214vw, 14.625rem);
+   --space-12xl: clamp(14rem, 13.5rem + 2.5vw, 15.75rem);
+   --space-13xl: clamp(17rem, 16.3929rem + 3.0357vw, 19.125rem);
+
+   /* One-up pairs */
+   --space-4xs-3xs: clamp(0.1875rem, 0.1518rem + 0.1786vw, 0.3125rem);
+   --space-3xs-2xs: clamp(0.25rem, 0.1607rem + 0.4464vw, 0.5625rem);
+   --space-2xs-xs: clamp(0.5rem, 0.3929rem + 0.5357vw, 0.875rem);
+   --space-xs-s: clamp(0.75rem, 0.6429rem + 0.5357vw, 1.125rem);
+   --space-s-m: clamp(1rem, 0.8036rem + 0.9821vw, 1.6875rem);
+   --space-m-l: clamp(1.5rem, 1.2857rem + 1.0714vw, 2.25rem);
+   --space-l-xl: clamp(2rem, 1.6071rem + 1.9643vw, 3.375rem);
+   --space-xl-2xl: clamp(3rem, 2.5714rem + 2.1429vw, 4.5rem);
+   --space-2xl-3xl: clamp(4rem, 3.5357rem + 2.3214vw, 5.625rem);
+   --space-3xl-4xl: clamp(5rem, 4.5rem + 2.5vw, 6.75rem);
+   --space-4xl-5xl: clamp(6rem, 5.4643rem + 2.6786vw, 7.875rem);
+   --space-5xl-6xl: clamp(7rem, 6.4286rem + 2.8571vw, 9rem);
+   --space-6xl-7xl: clamp(8rem, 7.3929rem + 3.0357vw, 10.125rem);
+   --space-7xl-8xl: clamp(9rem, 8.3571rem + 3.2143vw, 11.25rem);
+   --space-8xl-9xl: clamp(10rem, 9.3214rem + 3.3929vw, 12.375rem);
+   --space-9xl-10xl: clamp(11rem, 10.2857rem + 3.5714vw, 13.5rem);
+   --space-10xl-11xl: clamp(12rem, 11.25rem + 3.75vw, 14.625rem);
+   --space-11xl-12xl: clamp(13rem, 12.2143rem + 3.9286vw, 15.75rem);
+   --space-12xl-13xl: clamp(14rem, 12.5357rem + 7.3214vw, 19.125rem);
+
    /* =======================================================
            FONT SIZES
-        ========================================================== */
-   --fs-01: calc(var(--base) / var(--type-scale));
-   --fs-0: var(--base);
-   --fs-1: calc(var(--base) * var(--type-scale));
-   --fs-2: calc(var(--base) *pow(var(--type-scale), 2));
-   --fs-3: calc(var(--base) *pow(var(--type-scale), 3));
-   --fs-4: calc(var(--base) *pow(var(--type-scale), 4));
-   --fs-5: calc(var(--base) *pow(var(--type-scale), 5));
-   --fs-6: calc(var(--base) *pow(var(--type-scale), 6));
-   --fs-7: calc(var(--base) *pow(var(--type-scale), 7));
-   --fs-8: calc(var(--base) *pow(var(--type-scale), 8));
-   --fs-9: calc(var(--base) *pow(var(--type-scale), 9));
-
+========================================================== */
+   --fs-01: clamp(0.8rem, 0.7874rem + 0.0628vw, 0.844rem);
+   --fs-0: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+   --fs-1: clamp(1.25rem, 1.1787rem + 0.3566vw, 1.4996rem);
+   --fs-2: clamp(1.5625rem, 1.4378rem + 0.6236vw, 1.999rem);
+   --fs-3: clamp(1.9531rem, 1.7498rem + 1.0165vw, 2.6647rem);
+   --fs-4: clamp(2.4414rem, 2.1241rem + 1.5866vw, 3.552rem);
+   --fs-5: clamp(3.0518rem, 2.5709rem + 2.4044vw, 4.7348rem);
+   --fs-6: clamp(3.8147rem, 3.1013rem + 3.5669vw, 6.3115rem);
+   --fs-7: clamp(4.7684rem, 3.727rem + 5.207vw, 8.4132rem);
+   --fs-8: clamp(5.9605rem, 4.4592rem + 7.5063vw, 11.2149rem);
+   --fs-9: clamp(7.4506rem, 5.3081rem + 10.7126vw, 14.9494rem);
+   --fs-10: clamp(9.3132rem, 6.2806rem + 15.1633vw, 19.9276rem);
    /* =======================================================
                TYPOGRAPHY & TRANSITIONS
-            ========================================================== */
+               ========================================================== */
    --primary-font: "poiret_oneregular", sans-serif;
    --primary-font-secondary: "cormorant_uprightlight", sans-serif;
-   --letter-spacing-small: var(--space-04);
-   --letter-spacing-body: var(--space-03);
-   --letter-spacing-wide: var(--space-02);
+   --letter-spacing-small: clamp(0.1875rem, 0.1771rem + 0.1042vw, 0.2rem);
+   --letter-spacing-body: clamp(0.2375rem, 0.2292rem + 0.1042vw, 0.25rem);
+   --letter-spacing-wide: clamp(0.375rem, 0.2917rem + 0.4167vw, 0.625rem);
+   --mix-blend-mode: normal;
    --transition-duration: 400ms;
    --reveal-duration: 4s;
 }
