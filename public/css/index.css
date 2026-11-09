@@ -90,13 +90,13 @@ main {
 @keyframes main-text-animation {
   0% {
     letter-spacing: var(--space-9xl-10xl);
-    word-spacing: var(--space-2xs-xs);
+    word-spacing: var(--space-9xl-10xl);
     opacity: 0;
   }
 
   100% {
-    letter-spacing: var(--space-3xs-2xs);
-    word-spacing: var(--space-3xs-2xs);
+    letter-spacing: var(--space-4xs-3xs);
+    word-spacing: var(--space-4xs-3xs);
     opacity: 1;
   }
 }
