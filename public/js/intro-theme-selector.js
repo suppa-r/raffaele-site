@@ -199,15 +199,15 @@ function updateIntroWelcomeImage(resolvedTheme) {
   if (image) {
     image.src =
       resolvedTheme === "light"
-        ? "images/squooshed/merci beaucoup-light.png"
-        : "images/squooshed/merci beaucoup-dark.png";
+        ? "images/squooshed/welcome-desktop-light.png"
+        : "images/squooshed/welcome-desktop-dark.png";
 
     const mobileSource = image.closest("picture")?.querySelector("source");
     if (mobileSource) {
       mobileSource.srcset =
         resolvedTheme === "light"
-          ? "images/squooshed/merci beaucoup-light-mobile.png"
-          : "images/squooshed/merci beaucoup-mobile-dark.png";
+          ? "images/squooshed/welcome-mobile-light.png"
+          : "images/squooshed/welcome-mobile-dark.png";
     }
   }
 }

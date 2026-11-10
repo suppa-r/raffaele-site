@@ -99,7 +99,7 @@ main.content {
    font-size: var(--fs-1);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
-   margin-block-start: var(--space-2);
+   margin-block-start: var(--space-m-l);
 }
 
 .stats {
@@ -114,10 +114,10 @@ main.content {
 }
 
 .stats svg {
-   width: var(--space-4);
-   height: var(--space-4);
+   width: var(--space-l-xl);
+   height: var(--space-l-xl);
    fill: currentcolor;
-   margin-block-start: var(--space-2);
+   margin-block-start: var(--space-l-xl);
 }
 
 .stats .viewer {
@@ -142,11 +142,11 @@ main.content {
    font-size: var(--fs-2);
    font-weight: 700;
    text-align: center;
-   margin-block-start: var(--space-3);
+   margin-block-start: var(--space-xl-2xl);
 }
 
 .back .viewers {
-   margin-block-start: var(--space-2);
+   margin-block-start: var(--space-m-l);
 }
 
 .background>picture {
