@@ -250,6 +250,72 @@
    initial-value: 6px;
 }
 
+@property --fs-01 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 12px;
+}
+
+@property --fs-0 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 14px;
+}
+
+@property --fs-1 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 16px;
+}
+
+@property --fs-2 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 18px;
+}
+
+@property --fs-3 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 20px;
+}
+
+@property --fs-4 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 24px;
+}
+
+@property --fs-5 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 28px;
+}
+
+@property --fs-6 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 32px;
+}
+
+@property --fs-7 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 36px;
+}
+
+@property --fs-8 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 40px;
+}
+
+@property --fs-9 {
+   syntax: '<length>';
+   inherits: true;
+   initial-value: 44px;
+}
+
 :root {
    /* =======================================================
          SPACING SIZES
