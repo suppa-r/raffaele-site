@@ -2,8 +2,10 @@
     /* =================================================
                    BASE - Fluid layout
 ===================================================== */
-    /* At 16px/rem: 1440px at a 1920px viewport, capped at 1920px from 2880px. */
-    --max-inline-size: min(95vw, calc(30rem + 50vw), 120rem);
+    /* Thisraises the cap from 1920px to 2560px at a 16px root font size.
+The width still grows gradually;
+it reaches the new cap at a 4160px viewport */
+    --max-inline-size: min(95vw, calc(30rem + 50vw), 160rem);
     --scroll-offset: max(4rem, env(safe-area-inset-top, 0px));
 }
 
@@ -39,6 +41,7 @@ body {
     position: relative;
     min-block-size: 100vh;
     min-block-size: 100svh;
+    inline-size: 100vw;
     padding-block: max(var(--space-3xs-2xs), env(safe-area-inset-top, 0px)) max(var(--space-3xs-2xs), env(safe-area-inset-bottom, 0px));
     isolation: isolate;
     overflow: hidden;

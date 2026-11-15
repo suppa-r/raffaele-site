@@ -10,8 +10,7 @@
     max-width: 100%;
     min-width: 0;
     margin: 0;
-    padding: var(--space-xs-s) 0;
-    flex-wrap: nowrap;
+    padding: 0;
     background-color: transparent;
     border: none;
 }
@@ -78,11 +77,6 @@
     display: none;
 }
 
-/* Always show the auto/system button UNLESS it is the active one */
-.theme-switcher button[data-theme-toggle="auto"]:not([aria-pressed="true"]) {
-    display: flex;
-}
-
 .theme-switcher button:hover {
     color: var(--base-color);
     background-color: var(--text-color);
@@ -147,14 +141,8 @@
         background-color: var(--base-color);
     }
 
-    .theme-switcher button:hover {
-        background-color: var(--text-color);
-        color: var(--base-color);
-    }
-
     .theme-switcher button:focus-visible {
         outline: 3px solid var(--text-color);
-        outline-offset: 3px;
     }
 }
 
@@ -171,10 +159,7 @@
         /* Standard properties */
         user-select: none;
         touch-action: manipulation;
-        cursor: pointer;
         /* WCAG 2.5.5 - Minimum touch target size */
-        min-width: 44px;
-        min-height: 44px;
         width: 44px;
         height: 44px;
         /* Faster transitions for touch */
@@ -193,11 +178,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    /* Disable animations on custom elements */
     .theme-switcher button:hover svg {
-        will-change: transform;
-        animation: none !important;
-        transform: scale(1);
-        /* Simple scale instead */
+        animation: none;
     }
 }

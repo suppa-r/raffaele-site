@@ -1,8 +1,9 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   justify-content: center;
+  align-items: center;
+  grid-template-rows: auto 1fr auto;
 }
 
 header {
@@ -12,8 +13,8 @@ header {
   align-items: center;
   line-height: 1;
   text-align: center;
-  gap: var(--space-s-m);
-  margin-block-start: var(--space-s-m);
+  gap: var(--space-2xs-xs);
+  margin-block-start: var(--space-2xs-xs);
 }
 
 .header-text-quote {
@@ -32,18 +33,18 @@ header {
 ======================================================== */
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
+  display: grid;
+  gap: var(--space-s-m);
 }
 
 .text-with-animation {
   font-family: var(--primary-font-secondary);
   font-size: var(--fs-2);
-  animation: main-text-animation 1.8s ease-in-out forwards;
+  letter-spacing: var(--space-4xs-3xs);
+  word-spacing: var(--space-4xs-3xs);
+  animation: main-text-animation 1.8s cubic-bezier(0.33, 0, 0.67, 1) forwards;
   overflow: hidden;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -89,15 +90,13 @@ main {
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: var(--space-9xl-10xl);
-    word-spacing: var(--space-9xl-10xl);
     opacity: 0;
+    transform: scaleX(5);
   }
 
   100% {
-    letter-spacing: var(--space-4xs-3xs);
-    word-spacing: var(--space-4xs-3xs);
     opacity: 1;
+    transform: scaleX(1);
   }
 }
 
