@@ -199,15 +199,15 @@ function updateIntroWelcomeImage(resolvedTheme) {
   if (image) {
     image.src =
       resolvedTheme === "light"
-        ? "images/squooshed/welcome-desktop-light.png"
-        : "images/squooshed/welcome-desktop-dark.png";
+        ? "images/squooshed/desktop-light.png"
+        : "images/squooshed/desktop-dark.png";
 
     const mobileSource = image.closest("picture")?.querySelector("source");
     if (mobileSource) {
       mobileSource.srcset =
         resolvedTheme === "light"
-          ? "images/squooshed/welcome-mobile-light.png"
-          : "images/squooshed/welcome-mobile-dark.png";
+          ? "images/squooshed/mobile-light.png"
+          : "images/squooshed/mobile-dark.png";
     }
   }
 }
