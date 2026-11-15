@@ -206,8 +206,8 @@ function updateIntroWelcomeImage(resolvedTheme) {
     if (mobileSource) {
       mobileSource.srcset =
         resolvedTheme === "light"
-          ? "images/squooshed/mobile-light.png"
-          : "images/squooshed/mobile-dark.png";
+          ? "images/squooshed/desktop-light.png"
+          : "images/squooshed/desktop-dark.png";
     }
   }
 }
@@ -264,7 +264,7 @@ function setIntroTheme(theme, options = {}) {
       });
 
       transition.finished
-        .catch(() => {})
+        .catch(() => { })
         .finally(() => {
           document.dispatchEvent(new Event("theme:transitioned"));
           introThemeTransitionTimeoutId = setTimeout(() => {
