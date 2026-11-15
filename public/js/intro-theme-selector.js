@@ -201,14 +201,6 @@ function updateIntroWelcomeImage(resolvedTheme) {
       resolvedTheme === "light"
         ? "images/squooshed/desktop-light.png"
         : "images/squooshed/desktop-dark.png";
-
-    const mobileSource = image.closest("picture")?.querySelector("source");
-    if (mobileSource) {
-      mobileSource.srcset =
-        resolvedTheme === "light"
-          ? "images/squooshed/desktop-light.png"
-          : "images/squooshed/desktop-dark.png";
-    }
   }
 }
 
