@@ -1,10 +1,10 @@
 /* stylelint-disable media-feature-range-notation */
 :root {
-   --card-radius: 4em;
+   --card-radius: 6em;
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
    --card-active-scale: 1.2;
-   --card-portrait-max-height: 40vh;
+   --card-portrait-max-height: 30vh;
    --card-front-active-transform: translateY(-8%) scale(0.86);
    --card-portrait-active-opacity: 0;
    --card-portrait-active-transform: scale(0.6);
@@ -22,6 +22,8 @@ body {
 .wrapper {
    display: flex;
    flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 
 /* ========================================================
@@ -74,12 +76,7 @@ main.content {
    transition: transform var(--card-transition);
 }
 
-.game .front>picture {
-   display: block;
-   max-width: 100%;
-}
-
-.game .front>picture>img {
+.game .front>img {
    position: relative;
    z-index: 1;
    display: block;
@@ -97,7 +94,7 @@ main.content {
    font-size: var(--fs-1);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
-   margin-block-start: var(--space-xs-s);
+   margin-block-start: var(--space-m-l);
 }
 
 .stats {
@@ -112,15 +109,14 @@ main.content {
 }
 
 .stats svg {
-   width: var(--space-xl);
-   height: var(--space-xl);
+   width: var(--space-l-xl);
+   height: var(--space-l-xl);
    fill: currentcolor;
-   margin-block-start: var(--space-s-m);
+   margin-block-start: var(--space-l-xl);
 }
 
 .stats .viewer {
    white-space: nowrap;
-   font-size: var(--fs-0);
 }
 
 .back {
@@ -145,24 +141,21 @@ main.content {
 }
 
 .back .viewers {
-   font-size: var(--fs-0);
-   margin-block-start: var(--space-s-m);
+   margin-block-start: var(--space-m-l);
 }
 
-.background>picture {
+.background {
    position: absolute;
    inset: 0 4% 20%;
    z-index: 0;
-   overflow: hidden;
-   border-radius: var(--card-radius);
    background: transparent;
    opacity: 0;
    visibility: hidden;
-   transform: scale(0.92, 0.96);
+   transform: scale(0.92, 0.92);
    transition: opacity 180ms ease, visibility 0s linear 180ms, transform var(--card-transition);
 }
 
-.background>picture>img {
+.background>img {
    position: absolute;
    inset: 0;
    z-index: 1;
@@ -171,6 +164,7 @@ main.content {
    height: 100%;
    object-fit: contain;
    transform-origin: center center;
+   mix-blend-mode: var(--blend-mode, normal);
 }
 
 /* ========================================================
@@ -193,8 +187,8 @@ footer {
    transform: var(--card-front-active-transform);
 }
 
-.game.is-revealed .front>picture>img,
-.game:is(:hover, :focus-visible) .front>picture>img {
+.game.is-revealed .front>img,
+.game:is(:hover, :focus-visible) .front>img {
    opacity: var(--card-portrait-active-opacity);
    transform: var(--card-portrait-active-transform);
 }
@@ -216,8 +210,8 @@ footer {
    animation: fade 2s ease-in-out infinite alternate;
 }
 
-.game.is-revealed .background>picture,
-.game:is(:hover, :focus-visible) .background>picture {
+.game.is-revealed .background,
+.game:is(:hover, :focus-visible) .background {
    opacity: 1;
    visibility: visible;
    transform: var(--card-background-active-transform);
@@ -248,11 +242,11 @@ footer {
 @media (prefers-reduced-motion: reduce) {
    .game,
    .front,
-   .game .front>picture>img,
+   .game .front>img,
    .game .front h1,
    .stats,
    .back,
-   .background>picture,
+   .background,
    .background img {
       transition: none;
    }

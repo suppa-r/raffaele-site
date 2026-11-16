@@ -1,13 +1,9 @@
-body {
-  font-family: var(--primary-font);
-  background-color: var(--base-color);
-  font-size: var(--fs-0);
-  color: var(--text-color);
-}
-
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: auto 1fr auto;
 }
 
 header {
@@ -15,10 +11,10 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: var(--space-2xs-xs);
   line-height: 1;
   text-align: center;
-  padding-block: var(--space-4xs-3xs);
+  gap: var(--space-2xs-xs);
+  margin-block-start: var(--space-2xs-xs);
 }
 
 .header-text-quote {
@@ -37,71 +33,76 @@ header {
 ======================================================== */
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  row-gap: var(--space-2xs-xs);
+  display: grid;
+  gap: var(--space-s-m);
 }
 
 .text-with-animation {
-  font-size: var(--fs-1);
-  animation: main-text-animation 1.7s ease-in-out forwards;
+  font-family: var(--primary-font-secondary);
+  font-size: var(--fs-2);
+  letter-spacing: var(--space-4xs-3xs);
+  word-spacing: var(--space-4xs-3xs);
+  animation: main-text-animation 1.8s cubic-bezier(0.33, 0, 0.67, 1) forwards;
   overflow: hidden;
+  text-align: center;
   white-space: nowrap;
+}
+
+:root.theme-text-transitioning [data-theme-transition-text] {
+  visibility: hidden;
+  animation: none !important;
 }
 
 .subtext-with-animation,
 .subtext-with-animation-1 {
-  font-size: var(--fs-2);
+  font-family: var(--primary-font-secondary);
+  font-size: var(--fs-3);
   text-align: center;
   width: 100%;
   letter-spacing: 4px;
   user-select: none;
+  margin-block-start: var(--space-s-m);
 }
 
 .subtext-with-animation span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.5s forwards;
+  animation: word-animation 0.8s ease-out 1.8s forwards;
 }
 
 .subtext-with-animation span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation 0.5s ease-out 1.7s forwards;
+  animation: word-animation 0.8s ease-out 2.15s forwards;
 }
 
 .subtext-with-animation-1 span:first-of-type {
   position: relative;
   opacity: 0;
-  animation: word-animation-1 0.5s ease-out 1.5s forwards;
+  animation: word-animation-1 0.8s ease-out 3.1s forwards;
 }
 
 .subtext-with-animation-1 span:nth-of-type(2) {
   position: relative;
   opacity: 0;
-  animation: word-animation-1 0.5s ease-out 1.7s forwards;
+  animation: word-animation-1 0.8s ease-out 3.45s forwards;
 }
 
 @keyframes main-text-animation {
   0% {
-    letter-spacing: 25vw;
-    word-spacing: 25vw;
     opacity: 0;
+    transform: scaleX(5);
   }
 
   100% {
-    letter-spacing: 3px;
-    word-spacing: 0.4vw;
     opacity: 1;
+    transform: scaleX(1);
   }
 }
 
 @keyframes word-animation {
   0% {
-    top: 1rem;
+    top: var(--space-4xl-5xl);
     opacity: 0;
   }
 
@@ -113,7 +114,7 @@ main {
 
 @keyframes word-animation-1 {
   0% {
-    bottom: 1rem;
+    bottom: var(--space-4xl-5xl);
     opacity: 0;
   }
 
@@ -130,45 +131,4 @@ main {
 footer {
   display: flex;
   justify-content: flex-end;
-  margin-inline: 0;
-}
-
-@media (width >=768px) {
-  @keyframes main-text-animation {
-    0% {
-      letter-spacing: 50vw;
-      word-spacing: 50vw;
-      opacity: 0;
-    }
-
-    100% {
-      letter-spacing: 6px;
-      word-spacing: 0.5vw;
-      opacity: 1;
-    }
-  }
-
-  @keyframes word-animation {
-    0% {
-      top: 2rem;
-      opacity: 0;
-    }
-
-    100% {
-      top: 0;
-      opacity: 1;
-    }
-  }
-
-  @keyframes word-animation-1 {
-    0% {
-      bottom: 2rem;
-      opacity: 0;
-    }
-
-    100% {
-      bottom: 0;
-      opacity: 1;
-    }
-  }
 }

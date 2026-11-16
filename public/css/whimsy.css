@@ -20,13 +20,13 @@
   --deco-4-scale: 0.7;
   --deco-4-end-translate: -20px 50px;
   --deco-4-end-offset: 75%;
-  --deco-5-color: var(--text-span);
 
-  margin-block-start: var(--space-m-l);
+  /* margin-block-start: var(--space-xl-2xl); */
   position: relative;
   display: grid;
   place-items: center;
-  padding: var(--space-s-m);
+  justify-self: center;
+  padding: var(--space-l-xl);
   border-radius: 50%;
   text-decoration: none;
   color: var(--text-color);
@@ -65,7 +65,6 @@
   --deco-2-color: color-mix(in oklch, white 30%, var(--main-color));
   --deco-3-color: color-mix(in oklch, white 15%, var(--main-color));
   --deco-4-color: color-mix(in oklch, white 65%, var(--main-color));
-  --deco-5-color: var(--main-color);
   --deco-brightness: 1.05;
 }
 
@@ -116,26 +115,20 @@
 
   &:nth-last-child(5) {
     --deco-color: var(--deco-1-color);
-    --deco-scale: var(--deco-1-scale);
-    --deco-start-offset: var(--deco-1-start-offset);
     --deco-end-offset: var(--deco-1-end-offset);
     --deco-end-translate: var(--deco-1-end-translate);
-    --deco-speed-variation: var(--deco-1-speed-variation);
   }
 
   &:nth-last-child(4) {
     --deco-color: var(--deco-2-color);
     --deco-scale: var(--deco-2-scale);
-    --deco-start-offset: var(--deco-2-start-offset);
     --deco-end-offset: var(--deco-2-end-offset);
     --deco-end-translate: var(--deco-2-end-translate);
-    --deco-speed-variation: var(--deco-2-speed-variation);
   }
 
   &:nth-last-child(3) {
     --deco-color: var(--deco-3-color);
     --deco-scale: var(--deco-3-scale);
-    --deco-start-offset: var(--deco-3-start-offset);
     --deco-end-offset: var(--deco-3-end-offset);
     --deco-end-translate: var(--deco-3-end-translate);
     --deco-speed-variation: var(--deco-3-speed-variation);
@@ -144,19 +137,9 @@
   &:nth-last-child(2) {
     --deco-color: var(--deco-4-color);
     --deco-scale: var(--deco-4-scale);
-    --deco-start-offset: var(--deco-4-start-offset);
     --deco-end-offset: var(--deco-4-end-offset);
     --deco-end-translate: var(--deco-4-end-translate);
     --deco-speed-variation: var(--deco-4-speed-variation);
-  }
-
-  &:nth-last-child(1) {
-    --deco-color: var(--deco-5-color);
-    --deco-scale: var(--deco-5-scale);
-    --deco-start-offset: var(--deco-5-start-offset);
-    --deco-end-offset: var(--deco-5-end-offset);
-    --deco-end-translate: var(--deco-5-end-translate);
-    --deco-speed-variation: var(--deco-5-speed-variation);
   }
 }
 
@@ -219,20 +202,17 @@
 @media (prefers-reduced-motion: reduce) {
   .btn[data-btn-type="whimsical"],
   .btn[data-btn-type="whimsical"]::after,
-  .btn[data-btn-type="whimsical"] svg,
-  .btn[data-btn-type="whimsical"] .deco,
-  .btn[data-btn-type="whimsical"]:is(:hover, :focus-visible, .is-playing) .deco {
-    animation: none;
+  .btn[data-btn-type="whimsical"] svg {
     transition: none;
   }
 
-  .btn[data-btn-type="whimsical"] svg,
   .btn[data-btn-type="whimsical"]:is(:hover, :focus-visible, .is-playing) svg {
     transform: none;
   }
 
-  .btn[data-btn-type="whimsical"] .deco,
   .btn[data-btn-type="whimsical"]:is(:hover, :focus-visible, .is-playing) .deco {
+    animation: none;
+    transition: none;
     opacity: 0;
     translate: 0 0;
     offset-distance: 0%;

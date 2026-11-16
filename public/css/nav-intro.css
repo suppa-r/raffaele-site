@@ -78,7 +78,7 @@ body[data-page="intro"] nav ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--space-xs-s);
+  gap: var(--space-minus-1);
 }
 
 body[data-page="intro"] .nav-links {
@@ -93,9 +93,9 @@ body[data-page="intro"] .nav-links li {
   flex: 0 0 auto;
   inline-size: 60vw;
   aspect-ratio: 5 / 2;
-  margin: 0 var(--space-m-l);
+  margin: 0 var(--space-minus-1);
   /* top, right, bottom, left */
-  padding: 0 var(--space-l-xl);
+  padding: 0 var(--space-minus-1);
   /* space inside each li */
   border-radius: 50%;
   text-align: center;
@@ -163,7 +163,7 @@ Burger king
 
 body[data-page="intro"] .open-overlay {
   z-index: 100;
-  width: var(--space-s-m);
+  width: var(--space-2);
   display: block;
   cursor: pointer;
   background: transparent;
@@ -212,7 +212,7 @@ body[data-page="intro"] .open-overlay span {
   transform-origin: center;
   transition: transform .2s ease, background-color .2s ease;
   cursor: pointer;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .animate-top-bar {
@@ -380,8 +380,8 @@ Animation keyframes
     position: relative;
     flex: 0 1 clamp(18rem, 30vw, 24rem);
     min-inline-size: 18rem;
-    margin: var(--space-l);
-    padding: var(--space-s) var(--space-2xl);
+    margin: var(--space-0);
+    padding: var(--space-0) var(--space-3);
   }
 
   body[data-page="intro"] .nav-links li a {
@@ -421,7 +421,7 @@ Animation keyframes
     text-transform: none;
     white-space: nowrap;
     text-align: center;
-    letter-spacing: var(--header-letter-spacing);
+    letter-spacing: var(--letter-spacing-body);
     opacity: 0;
     left: 50%;
     right: auto;
@@ -436,7 +436,7 @@ Animation keyframes
   }
 
   body[data-page="intro"] .nav-links li:hover a::after {
-    transform: translate(-50%, var(--space-s));
+    transform: translate(-50%, var(--space-0));
     opacity: 1;
   }
 }

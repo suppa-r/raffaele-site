@@ -174,6 +174,16 @@ function announceIntroTheme(theme) {
       : `Theme set to ${theme}`;
 }
 
+function replayHomeTextAnimations() {
+  document.documentElement.classList.remove("theme-text-transitioning");
+}
+
+function hideHomeTextAnimations() {
+  if (document.querySelector("[data-theme-transition-text]")) {
+    document.documentElement.classList.add("theme-text-transitioning");
+  }
+}
+
 function updateIntroThemeFavicon(resolvedTheme) {
   const favicon =
     document.getElementById("favicon") ||
@@ -189,16 +199,8 @@ function updateIntroWelcomeImage(resolvedTheme) {
   if (image) {
     image.src =
       resolvedTheme === "light"
-        ? "images/squooshed/welcome-light.png"
-        : "images/squooshed/welcome-high res.png";
-
-    const mobileSource = image.closest("picture")?.querySelector("source");
-    if (mobileSource) {
-      mobileSource.srcset =
-        resolvedTheme === "light"
-          ? "images/squooshed/welcome-light.png"
-          : "images/squooshed/welcome-mobile.png";
-    }
+        ? "images/squooshed/desktop-light.png"
+        : "images/squooshed/desktop-dark.png";
   }
 }
 
@@ -254,7 +256,7 @@ function setIntroTheme(theme, options = {}) {
       });
 
       transition.finished
-        .catch(() => {})
+        .catch(() => { })
         .finally(() => {
           document.dispatchEvent(new Event("theme:transitioned"));
           introThemeTransitionTimeoutId = setTimeout(() => {
@@ -459,3 +461,5 @@ if (document.readyState === "loading") {
 }
 
 document.addEventListener("page:transitioned", initIntroThemeSelector);
+document.addEventListener("theme:transition:start", hideHomeTextAnimations);
+document.addEventListener("theme:transitioned", replayHomeTextAnimations);

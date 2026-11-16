@@ -3,8 +3,8 @@
   --intro-nav-fade-in-duration: 0.4s;
   --intro-nav-fade-in-delay: 0.2s;
   --profile-title-inline-size: clamp(18rem, 42vw, 36rem);
-  --back-to-top-width: var(--space-l-xl);
-  --back-to-top-height: var(--space-l-xl);
+  --back-to-top-width: var(--space-xl-2xl);
+  --back-to-top-height: var(--space-xl-2xl);
 }
 
 body {
@@ -34,6 +34,7 @@ header {
   isolation: isolate;
   line-height: 1;
   background: transparent;
+  padding-inline: var(--space-m-l);
 }
 
 body[data-page="intro-1"] header {
@@ -91,6 +92,7 @@ body:has(.intro-1-page-title-trigger[aria-expanded="false"]) footer {
 }
 
 .header-title {
+  font-size: var(--fs-1);
   min-width: 0;
   white-space: nowrap;
   overflow: visible;
@@ -366,7 +368,9 @@ html:not(.intro-1-section-active) main>section[id],
 }
 
 .section-container.has-more-content:not(.at-bottom)::after,
-.section-container-early.has-more-content:not(.at-bottom)::after {
+.section-container-early.has-more-content:not(.at-bottom)::after,
+.section-container-ryerson.has-more-content:not(.at-bottom)::after,
+.section-container-architecture.has-more-content:not(.at-bottom)::after {
   content: "scroll: read more";
   position: absolute;
   inset-inline: 0;
@@ -424,7 +428,6 @@ html:not(.intro-1-section-active) main>section[id],
 }
 
 .row-img img {
-  max-inline-size: 160px;
   border-radius: 50%;
 }
 
@@ -467,7 +470,7 @@ html:not(.intro-1-section-active) main>section[id],
   }
 
   .row-img img {
-    max-inline-size: 300px;
+    max-inline-size: 210px;
     border-radius: 50%;
   }
 
@@ -475,7 +478,7 @@ html:not(.intro-1-section-active) main>section[id],
     flex-direction: row;
     justify-content: center;
     align-items: safe center;
-    gap: var(--space-l);
+    gap: var(--space-s);
     flex: 1;
   }
 
@@ -483,13 +486,13 @@ html:not(.intro-1-section-active) main>section[id],
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: var(--space-l);
+    gap: var(--space-s);
 
   }
 
   .row-img-ryerson img {
     display: block;
-    max-inline-size: 450px;
+    max-inline-size: 500px;
     height: auto;
     border-radius: 50%;
   }
@@ -521,6 +524,7 @@ footer {
 
 .back-to-top {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   inline-size: var(--back-to-top-width);
@@ -568,6 +572,19 @@ footer {
   z-index: 100;
 }
 
+.back-to-top svg {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.back-to-top:hover svg {
+  will-change: transform;
+  animation: fade 1s ease-out forwards;
+  z-index: 100;
+}
+
 @keyframes fade {
   0% {
     transform: scale(0.3);
@@ -584,6 +601,8 @@ footer {
     color: var(--base-color);
   }
 }
+
+
 
 .intro-1-nav-open .back-to-top {
   visibility: hidden !important;
