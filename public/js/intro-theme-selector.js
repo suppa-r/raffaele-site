@@ -199,8 +199,8 @@ function updateIntroWelcomeImage(resolvedTheme) {
   if (image) {
     image.src =
       resolvedTheme === "light"
-        ? "images/squooshed/desktop-light.png"
-        : "images/squooshed/desktop-dark.png";
+        ? "images/squooshed/welcome-light.png"
+        : "images/squooshed/welcome-dark.png";
   }
 }
 
