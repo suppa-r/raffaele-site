@@ -2,7 +2,7 @@
 Navigation
 ==================================== */
 body[data-page="intro"] nav {
-  font-size: var(--fs-01);
+  font-size: var(--fs-0);
 }
 
 body[data-page="intro"] .overlay-navigation {
@@ -78,7 +78,7 @@ body[data-page="intro"] nav ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--space-minus-1);
+  gap: var(--space-xs-s);
 }
 
 body[data-page="intro"] .nav-links {
@@ -93,9 +93,9 @@ body[data-page="intro"] .nav-links li {
   flex: 0 0 auto;
   inline-size: 60vw;
   aspect-ratio: 5 / 2;
-  margin: 0 var(--space-minus-1);
+  margin: 0 var(--space-xs-s);
   /* top, right, bottom, left */
-  padding: 0 var(--space-minus-1);
+  padding: 0 var(--space-xs-s);
   /* space inside each li */
   border-radius: 50%;
   text-align: center;
@@ -163,7 +163,7 @@ Burger king
 
 body[data-page="intro"] .open-overlay {
   z-index: 100;
-  width: var(--space-2);
+  width: var(--space-s-m);
   display: block;
   cursor: pointer;
   background: transparent;
@@ -212,7 +212,7 @@ body[data-page="intro"] .open-overlay span {
   transform-origin: center;
   transition: transform .2s ease, background-color .2s ease;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 5px;
 }
 
 .animate-top-bar {
@@ -363,7 +363,7 @@ Animation keyframes
 
 @media (min-width: 48rem) {
   body[data-page="intro"] nav {
-    font-size: var(--fs-0);
+    font-size: var(--fs-1);
   }
 
   /* allow the data-content tooltip to escape the clipped nav bounds */
@@ -380,8 +380,8 @@ Animation keyframes
     position: relative;
     flex: 0 1 clamp(18rem, 30vw, 24rem);
     min-inline-size: 18rem;
-    margin: var(--space-0);
-    padding: var(--space-0) var(--space-3);
+    margin: var(--space-xs-s);
+    padding: var(--space-xs-s) var(--space-m-l);
   }
 
   body[data-page="intro"] .nav-links li a {
@@ -436,7 +436,7 @@ Animation keyframes
   }
 
   body[data-page="intro"] .nav-links li:hover a::after {
-    transform: translate(-50%, var(--space-0));
+    transform: translate(-50%, var(--space-xs-s));
     opacity: 1;
   }
 }
