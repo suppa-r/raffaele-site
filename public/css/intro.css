@@ -20,7 +20,7 @@ header {
     isolation: isolate;
     line-height: 1;
     background: transparent;
-    padding: var(--space-2xs-xs) var(--space-m-l);
+    padding: var(--space-2xs-xs) var(--space-xs-s);
 }
 
 body[data-page="intro"] header {
@@ -65,14 +65,14 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .header-inner {
     display: flex;
     align-items: center;
-    gap: var(--space-s-m);
+    gap: var(--space-2xs-xs);
 }
 
 .logo {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: var(--space-s-m);
+    gap: 0;
     min-width: 0;
     max-width: 100%;
 }
@@ -92,7 +92,7 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
     white-space: nowrap;
     overflow: visible;
     letter-spacing: -0.02em;
-    margin-inline-end: var(--space-2xs-xs);
+    margin-inline-end: 0;
 }
 
 .header-title span {
@@ -116,8 +116,12 @@ main {
     margin-block-start: 10svh;
 }
 
+.prose>*+*,
+.prose p .line+.line {
+    margin-block-start: var(--prose-flow, var(--space-2xs));
+}
+
 .prose>*+* {
-    margin-block-start: var(--prose-flow, var(--space-3xs-2xs));
     padding-block: 0;
 }
 
@@ -189,7 +193,7 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-1);
     font-style: italic;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .fancy-quote-author {
