@@ -130,7 +130,7 @@ main {
 }
 
 .btn {
-  margin-block-start: var(--space-xl-2xl);
+  margin-block-start: var(--space-m-l);
 }
 
 /* ========================================================

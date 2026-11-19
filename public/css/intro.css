@@ -113,7 +113,6 @@ main {
     text-align: center;
     white-space: normal;
     flex: 1;
-    /* margin-block-start: 10svh; */
 }
 
 .prose>*+*,
