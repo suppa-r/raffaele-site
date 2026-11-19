@@ -14,11 +14,13 @@ header {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  gap: var(--space-2xs-xs);
   z-index: 2002;
   position: relative;
   isolation: isolate;
   line-height: 1;
   background: transparent;
+  letter-spacing: var(--letter-spacing-small);
   padding-block-start: var(--space-2xs-xs);
 }
 
@@ -30,7 +32,6 @@ header {
 .header-text-author {
   text-wrap: balance;
   white-space: nowrap;
-  font-size: var(--fs-01);
 }
 
 /* ========================================================
