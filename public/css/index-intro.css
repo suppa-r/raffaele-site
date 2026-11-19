@@ -12,18 +12,11 @@
    --card-background-image-active-transform: scale(1);
 }
 
-body {
-   font-family: var(--primary-font);
-   background-color: var(--base-color);
-   font-size: var(--fs-0);
-   color: var(--text-color);
-}
-
 .wrapper {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 1fr auto;
+   place-items: center;
 }
 
 /* ========================================================
@@ -31,11 +24,8 @@ body {
 ======================================================== */
 
 main.content {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   flex: 1;
+   display: grid;
+   place-items:center;
 }
 
 .game {
@@ -66,10 +56,8 @@ main.content {
 }
 
 .front {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+   display: grid;
+   justify-items: center;
    position: relative;
    height: 100%;
    pointer-events: none;
@@ -99,10 +87,8 @@ main.content {
 
 .stats {
    position: relative;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+   display: grid;
+   justify-items: center;
    z-index: 1;
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
@@ -172,8 +158,8 @@ main.content {
 ======================================================== */
 
 footer {
-   display: flex;
-   justify-content: flex-end;
+   display: grid;
+   justify-items: end;
    margin-inline: 0;
 }
 
