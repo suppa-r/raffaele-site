@@ -260,6 +260,9 @@
         introNavHideTimeoutId = setTimeout(() => {
           if (!isMenuOpen && overlayNavigation) {
             overlayNavigation.hidden = true;
+            if (showTitle && isIntroPage() && overlayNavigation.isConnected) {
+              document.dispatchEvent(new CustomEvent("intro-nav:closed"));
+            }
             setIntroNavClosingState(false);
           }
         }, navCloseHideDelayMs);
@@ -324,7 +327,7 @@
   }
 
   function handleViewportChange() {
-    if (!isIntroPage()) {
+    if (!isIntroPage() || document.documentElement.classList.contains(INTRO_NAV_CLOSING_CLASS)) {
       return;
     }
     setMenuState(false);

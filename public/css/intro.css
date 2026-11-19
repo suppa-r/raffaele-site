@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     grid-template-rows: auto 1fr auto;
+    font-size: var(--fs-0);
 }
 
 /* --------------------------------------- */
@@ -20,7 +21,7 @@ header {
     isolation: isolate;
     line-height: 1;
     background: transparent;
-    padding: var(--space-2xs-xs) var(--space-xs-s);
+    padding: var(--space-2xs-xs) var(--space-2xs);
 }
 
 body[data-page="intro"] header {
@@ -65,7 +66,7 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .header-inner {
     display: flex;
     align-items: center;
-    gap: var(--space-2xs-xs);
+    letter-spacing: var(--letter-spacing-small);
 }
 
 .logo {
@@ -75,6 +76,7 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
     gap: 0;
     min-width: 0;
     max-width: 100%;
+    padding-inline-end: var(--space-3xs);
 }
 
 .logo img {
@@ -84,21 +86,20 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
     height: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 0.5rem var(--text-color);
+    /* box-shadow: 0 0 0.5rem var(--text-color); */
 }
 
 .header-title {
     min-width: 0;
     white-space: nowrap;
     overflow: visible;
-    letter-spacing: -0.02em;
-    margin-inline-end: 0;
+    font-size: var(--fs-01);
 }
 
 .header-title span {
     font-family: var(--primary-font-secondary);
     font-style: italic;
-    margin-inline-end: var(--space-2xs-xs);
+    padding-inline-end: var(--space-4xs);
     color: var(--text-span);
 }
 
@@ -108,12 +109,12 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 main {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     text-align: center;
     white-space: normal;
     flex: 1;
-    margin-block-start: 10svh;
+    /* margin-block-start: 10svh; */
 }
 
 .prose>*+*,
@@ -177,7 +178,7 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 }
 
 body[data-page="intro"] .wrapper-gradient-text .text-layer {
-    transform: translateY(-8vh);
+    transform: translateY(-18vh);
 }
 
 .text-break {
@@ -201,7 +202,7 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-0);
     font-style: italic;
-    padding-inline-start: var(--space-s-m);
+    padding-inline-start: var(--space-xs-s);
 }
 
 .fancy-small {
@@ -225,31 +226,35 @@ footer {
 ======================================================== */
 
 @media (width >=48rem) {
-    main {
-        justify-content: center;
-        margin-block-start: 0;
+    header {
+      padding: var(--space-2xs-xs) var(--space-m);
+        }
+
+.header-title {
+   font-size: var(--fs-0);
+}
+
+.header-title span {
+   padding-inline-end: var(--space-2xs);
+   }
+
+    .logo {
+       padding-inline-end: var(--space-xs);
     }
 
     .fancy-quote {
-        margin-inline: auto;
-        display: block;
-        font-family: var(--primary-font-secondary);
-        font-size: var(--fs-2);
-        font-style: italic;
-        white-space: nowrap;
-    }
+     font-size: var(--fs-2);
+       }
 
     .fancy-quote-author {
-        display: inline-block;
-        font-family: var(--primary-font-secondary);
+
         font-size: var(--fs-0);
-        font-style: italic;
-        padding-inline-start: var(--space-s-m);
+       padding-inline-start: var(--space-xs);
     }
 
     .text-break {
         display: inline-block !important;
-        padding-inline-start: var(--space-s-m);
+        padding-inline-start: var(--space-s);
     }
 
     .wrapper-gradient-text {

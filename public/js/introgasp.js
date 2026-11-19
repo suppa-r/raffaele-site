@@ -64,7 +64,7 @@ function initializeLenis() {
   });
 }
 
-function resetIntroAnimationState() {
+function resetIntroAnimationState({ animateHeader = true } = {}) {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
 
   if (gsapLib) {
@@ -75,8 +75,10 @@ function resetIntroAnimationState() {
       INTRO_WORDS_TARGET,
       WRAPPER_GRADIENT_TARGET,
       WRAPPER_GRADIENT_WORD_TARGET,
-      INTRO_HEADER_TARGET,
-    ].forEach((target) => gsapLib.killTweensOf(target));
+      ...(animateHeader ? [INTRO_HEADER_TARGET] : []),
+    ].forEach((target) => {
+      gsapLib.getTweensOf(target).forEach((tween) => tween.kill());
+    });
   }
 
   if (splitInstance) {
@@ -114,7 +116,7 @@ function resetIntroAnimationState() {
       element.style.transform = "";
     });
 
-  if (hasElements(INTRO_HEADER_TARGET)) {
+  if (animateHeader && hasElements(INTRO_HEADER_TARGET)) {
     document.querySelectorAll(INTRO_HEADER_TARGET).forEach((element) => {
       element.style.opacity = "";
       element.style.transform = "";
@@ -122,11 +124,11 @@ function resetIntroAnimationState() {
   }
 }
 
-function initializeAnimations() {
+function initializeAnimations({ animateHeader = true } = {}) {
   if (!document.querySelector(INTRO_ANIMATION_TARGET)) return;
 
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
-  resetIntroAnimationState();
+  resetIntroAnimationState({ animateHeader });
   if (
     !gsapLib ||
     typeof SplitType === "undefined" ||
@@ -147,7 +149,7 @@ function initializeAnimations() {
     lineClass: "line",
   });
 
-  if (hasElements(INTRO_HEADER_TARGET)) {
+  if (animateHeader && hasElements(INTRO_HEADER_TARGET)) {
     gsapLib.set(INTRO_HEADER_TARGET, { y: "-18vh", opacity: 0 });
     gsapLib.to(INTRO_HEADER_TARGET, {
       y: 0,
@@ -438,6 +440,11 @@ function replayClassicIntroAnimationsForTheme() {
 scheduleIntroInit();
 document.addEventListener("DOMContentLoaded", scheduleIntroInit);
 document.addEventListener("page:transitioned", scheduleIntroInit);
+document.addEventListener("intro-nav:closed", () => {
+  if (isClassicIntroPage()) {
+    initializeAnimations({ animateHeader: false });
+  }
+});
 document.addEventListener("theme:transition:start", () => {
   if (isClassicIntroPage()) {
     hideIntroContent();

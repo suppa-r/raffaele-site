@@ -46,8 +46,8 @@ body[data-page="intro"] .overlay-slide-down .nav-links li {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   transition:
-    transform .8s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity .6s ease-out,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity .9s ease-out,
     background-color .2s linear;
 }
 
@@ -183,14 +183,9 @@ body[data-page="intro"]:has(.open-overlay[aria-expanded="false"]) footer {
   transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
-body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"]) .header-title {
+html.intro-page-nav-closing body[data-page="intro"]:has(.open-overlay[aria-expanded="false"]) main,
+html.intro-page-nav-closing body[data-page="intro"]:has(.open-overlay[aria-expanded="false"]) footer {
   opacity: 0;
-  transition: opacity var(--intro-nav-fade-out-duration) cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body[data-page="intro"] header:has(.open-overlay[aria-expanded="false"]) .header-title {
-  opacity: 1;
-  transition: opacity var(--intro-nav-fade-in-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--intro-nav-fade-in-delay);
 }
 
 body[data-page="intro"] .open-overlay[aria-expanded="true"] span {
