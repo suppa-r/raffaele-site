@@ -1,20 +1,25 @@
 .wrapper {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  justify-content: center;
-  align-items: center;
+  justify-items: center;
   grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-0);
 }
 
+/* --------------------------------------- */
+/* ----- Header ----- */
+/* --------------------------------------- */
+
 header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  z-index: 2002;
+  position: relative;
+  isolation: isolate;
   line-height: 1;
-  text-align: center;
-  gap: var(--space-2xs-xs);
-  margin-block-start: var(--space-2xs-xs);
+  background: transparent;
+  padding-block-start: var(--space-2xs-xs);
 }
 
 .header-text-quote {
@@ -34,18 +39,19 @@ header {
 
 main {
   display: grid;
-  gap: var(--space-s-m);
+  align-content: center;
+  gap: var(--space-xs-s);
 }
 
 .text-with-animation {
   font-family: var(--primary-font-secondary);
   font-size: var(--fs-2);
+  text-align: center;
+  width: 100%;
+  user-select: none;
   letter-spacing: var(--space-4xs-3xs);
   word-spacing: var(--space-4xs-3xs);
   animation: main-text-animation 1.8s cubic-bezier(0.33, 0, 0.67, 1) forwards;
-  overflow: hidden;
-  text-align: center;
-  white-space: nowrap;
 }
 
 :root.theme-text-transitioning [data-theme-transition-text] {
@@ -61,7 +67,6 @@ main {
   width: 100%;
   letter-spacing: 4px;
   user-select: none;
-  margin-block-start: var(--space-s-m);
 }
 
 .subtext-with-animation span:first-of-type {
@@ -124,11 +129,15 @@ main {
   }
 }
 
+.btn {
+  margin-block-start: var(--space-xl-2xl);
+}
+
 /* ========================================================
                         footer
 ======================================================== */
 
 footer {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  justify-content: end;
 }
