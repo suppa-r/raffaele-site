@@ -1,32 +1,36 @@
+/* --------------------------------------- */
+/* ----------- wrapper container --------- */
+/* --------------------------------------- */
+
 .wrapper {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  justify-items: center;
   grid-template-rows: auto 1fr auto;
   font-size: var(--fs-0);
 }
 
 /* --------------------------------------- */
-/* ----- Header ----- */
+/* --------------- Header ---------------- */
 /* --------------------------------------- */
 
 header {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   justify-items: center;
   gap: var(--space-2xs-xs);
   z-index: 2002;
   position: relative;
   isolation: isolate;
+  font-size: clamp(0.75rem, 4vw, var(--fs-0));
   line-height: 1;
   background: transparent;
-  letter-spacing: var(--letter-spacing-small);
+  letter-spacing: clamp(0px, 1vw - 2px, var(--letter-spacing-small));
   padding-block-start: var(--space-2xs-xs);
 }
 
 .header-text-quote {
+  text-align: center;
   text-wrap: balance;
-  white-space: nowrap;
 }
 
 .header-text-author {
@@ -34,24 +38,27 @@ header {
   white-space: nowrap;
 }
 
-/* ========================================================
-                    main content
-======================================================== */
+/* --------------------------------------- */
+/* ------------- Main content ------------ */
+/* --------------------------------------- */
 
 main {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: center;
+  justify-items: center;
   gap: var(--space-xs-s);
+  margin-inline: auto;
+  letter-spacing: var(--letter-spacing-small);
+  word-spacing: var(--letter-spacing-small);
 }
 
 .text-with-animation {
   font-family: var(--primary-font-secondary);
-  font-size: var(--fs-2);
+  font-size: clamp(0.75rem, 5vw, var(--fs-2));
   text-align: center;
   width: 100%;
   user-select: none;
-  letter-spacing: var(--space-4xs-3xs);
-  word-spacing: var(--space-4xs-3xs);
   animation: main-text-animation 1.8s cubic-bezier(0.33, 0, 0.67, 1) forwards;
 }
 
@@ -134,9 +141,9 @@ main {
   margin-block-start: var(--space-m-l);
 }
 
-/* ========================================================
-                        footer
-======================================================== */
+/* --------------------------------------- */
+/* --------------- Footer ---------------- */
+/* --------------------------------------- */
 
 footer {
   display: grid;

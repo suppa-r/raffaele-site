@@ -2,6 +2,7 @@
 
 let lenis;
 let splitInstance;
+let splitViewportWidth;
 
 let lastInitTimestamp = 0;
 let introInitState = "idle";
@@ -148,6 +149,7 @@ function initializeAnimations({ animateHeader = true } = {}) {
     tagName: "div",
     lineClass: "line",
   });
+  splitViewportWidth = window.innerWidth;
 
   if (animateHeader && hasElements(INTRO_HEADER_TARGET)) {
     gsapLib.set(INTRO_HEADER_TARGET, { y: "-18vh", opacity: 0 });
@@ -437,9 +439,27 @@ function replayClassicIntroAnimationsForTheme() {
   });
 }
 
+function releaseSplitLines() {
+  if (!splitInstance) {
+    return;
+  }
+
+  const gsapLib = window.gsap;
+  gsapLib.killTweensOf(`${INTRO_SPLIT_TARGET} .line > span`);
+  splitInstance.revert();
+  splitInstance = null;
+  gsapLib.set(INTRO_SPLIT_TARGET, { opacity: 1, visibility: "visible" });
+}
+
 scheduleIntroInit();
 document.addEventListener("DOMContentLoaded", scheduleIntroInit);
 document.addEventListener("page:transitioned", scheduleIntroInit);
+window.addEventListener("resize", () => {
+  if (splitInstance && window.innerWidth !== splitViewportWidth) {
+    releaseSplitLines();
+  }
+});
+document.fonts.addEventListener("loadingdone", releaseSplitLines);
 document.addEventListener("intro-nav:closed", () => {
   if (isClassicIntroPage()) {
     initializeAnimations({ animateHeader: false });

@@ -12,7 +12,7 @@
 
 header {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     justify-content: space-between;
     align-items: center;
     z-index: 2002;
@@ -65,7 +65,8 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .header-inner {
     display: flex;
     align-items: center;
-    letter-spacing: var(--letter-spacing-small);
+    min-width: 0;
+    letter-spacing: clamp(0px, 1vw - 2.4px, var(--letter-spacing-small));
 }
 
 .logo {
@@ -90,9 +91,8 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 
 .header-title {
     min-width: 0;
-    white-space: nowrap;
     overflow: visible;
-    font-size: var(--fs-01);
+    font-size: clamp(0.625rem, 3.9vw, var(--fs-01));
 }
 
 .header-title span {
@@ -180,9 +180,9 @@ body[data-page="intro"] .wrapper-gradient-text .text-layer {
 }
 
 .text-break {
-    /* SplitType sets nested spans to inline-block, so keep this breakpoint override authoritative. */
-    display: block !important;
-    padding-inline-start: 0;
+    /* Override SplitType's inline display style on nested spans. */
+    display: inline !important;
+    padding-inline-start: var(--space-xs);
     white-space: normal;
 }
 
@@ -251,7 +251,6 @@ footer {
     }
 
     .text-break {
-        display: inline-block !important;
         padding-inline-start: var(--space-s);
     }
 
