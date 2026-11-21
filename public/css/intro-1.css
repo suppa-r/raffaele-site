@@ -89,8 +89,8 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .logo img {
   display: block;
   object-fit: cover;
-  width: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
-  height: clamp(2rem, 1.6rem + 1.5vw, 2.8rem);
+  width: clamp(1.3125rem, 1.125rem + 1.5vw, 2.8rem);
+  height: clamp(1.3125rem, 1.125rem + 1.5vw, 2.8rem);
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 0.5rem var(--text-color);
