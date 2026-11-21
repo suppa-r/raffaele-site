@@ -1,0 +1,45 @@
+{
+  "editor.formatOnSave": true,
+  "editor.endOfLine": "lf",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.endOfLine": "lf"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.endOfLine": "lf"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.endOfLine": "lf"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "css.format.newlineBetweenRules": false,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "css.lint.enabled": true,
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "postcss"],
+  "html.validate.styles": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "files.autoSave": "onWindowChange",
+  "liveServer.settings.host": "127.0.0.1",
+  "liveServer.settings.port": 8081
+}
