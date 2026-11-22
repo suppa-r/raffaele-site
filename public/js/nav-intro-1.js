@@ -311,8 +311,12 @@
     if (!mobileQuery.matches) {
       const destination = link.getAttribute("href");
       if (destination?.startsWith("#")) {
+        document.documentElement.classList.add("intro-1-nav-closing");
         setMenuState(false, { returnFocus: false });
-        window.setTimeout(setActiveNavLink, 0);
+        window.setTimeout(() => {
+          setActiveNavLink();
+          document.documentElement.classList.remove("intro-1-nav-closing");
+        }, 0);
         return;
       }
 
@@ -371,6 +375,7 @@
     syncBackToTopTarget();
     // setMenuState() re-queries the DOM and may null navLinks after a page swap
     navLinks?.classList.remove("closing");
+    document.documentElement.classList.remove("intro-1-nav-closing");
   }
 
   function attachEvents() {

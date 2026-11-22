@@ -186,7 +186,8 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 
 .page-entering .intro-1-page-title,
 .intro-1-section-active .intro-1-page-title,
-.intro-1-nav-open .intro-1-page-title {
+.intro-1-nav-open .intro-1-page-title,
+.intro-1-nav-closing .intro-1-page-title {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
@@ -231,22 +232,20 @@ html.intro-1-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expande
 ======================================================== */
 
 main,
-main>section[id] {
+main>section[id]:where(#early, #ryerson, #architecture, #stuff, #contact) {
   display: grid;
   justify-items: center;
   min-height: 0;
+  align-self: stretch;
 }
 
 main {
-  align-self: stretch;
-  justify-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-main>section[id] {
-  align-self: stretch;
+main>section[id]:where(#early, #ryerson, #architecture, #stuff, #contact) {
   gap: var(--space-s-m);
   position: absolute;
   inset: 0;
@@ -259,8 +258,6 @@ main>section[id] {
   width: 100%;
   display: grid;
   place-items: center;
-  align-items: center;
-  grid-auto-flow: row;
 }
 
 .profile-title {
@@ -275,7 +272,6 @@ main>section[id] {
   color: var(--base-color);
   border-radius: var(--space-l-xl);
   display: block;
-  box-sizing: border-box;
   z-index: 1000;
   isolation: isolate;
   margin-inline: auto;
@@ -299,7 +295,6 @@ main>section[id] {
   display: block;
   inline-size: 100%;
   max-inline-size: 100%;
-  box-sizing: border-box;
   font-variant-ligatures: none;
   font-kerning: normal;
   margin-inline: auto;
@@ -350,17 +345,11 @@ html:not(.intro-1-section-active) main>section[id],
 .section-container-ryerson {
   margin-inline: auto;
   display: grid;
-  grid-auto-flow: row;
   justify-items: center;
   overflow-y: auto;
   scrollbar-gutter: stable;
   min-block-size: 0;
-  align-self: stretch;
   position: relative;
-}
-
-.section-container-early,
-.section-container-ryerson {
   scrollbar-width: thin;
   scrollbar-color: var(--text-span) var(--base-color);
 }
@@ -384,7 +373,6 @@ html:not(.intro-1-section-active) main>section[id],
 
 main>section[id]:has(> :is(.section-container-early, .section-container-ryerson)),
 main>section[id]:has(> :is(.section-container, .section-container-architecture).has-more-content) {
-  /* grid-template-rows: auto minmax(0, 1fr) auto; */
   grid-template-rows: auto minmax(0, 1fr);
 }
 
@@ -392,7 +380,7 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   content: "scroll to read more";
   display: block;
   inline-size: 100%;
-  padding-block-end: var(--space-xl);
+  padding-block-end: var(--space-xs-s);
   color: var(--text-color);
   background: transparent;
   line-height: 1;
@@ -405,35 +393,10 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   visibility: hidden;
 }
 
-.center-vertically {
-  display: grid;
-  align-content: safe center;
-}
-
-.col {
-  display: grid;
-  inline-size: min(100%, 75ch);
-  grid-template-columns: minmax(0, 1fr);
-  grid-auto-flow: row;
-  justify-items: center;
-  white-space: normal;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-align: center;
-
-  &>* {
-    text-box: trim-both text text;
-  }
-
-  &>p {
-    inline-size: 100%;
-    margin-inline: auto;
-  }
-}
-
 .prose {
   display: grid;
-  grid-auto-flow: row;
+  max-inline-size: min(100%, 75ch);
+  grid-template-columns: minmax(0, 1fr);
   justify-items: center;
 }
 
@@ -442,32 +405,35 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   padding-block: 0;
 }
 
-.col .small {
-  font-size: var(--fs-02);
+.center-vertically {
+  display: grid;
+  align-content: safe center;
+}
+
+.prose .small {
+  font-size: var(--fs-01);
 }
 
 .row-img-early,
 .row-img-ryerson {
   display: grid;
-  grid-auto-flow: row;
   justify-items: center;
   padding-block: var(--space-s);
-  gap: var(--space-s-m);
-  margin: 0;
+}
+
+.row-img-early img,
+.row-img-ryerson img {
+  display: block;
+  height: auto;
+  border-radius: 50%;
 }
 
 .row-img-early img {
-  display: block;
   max-inline-size: 175px;
-  height: auto;
-  border-radius: 50%;
 }
 
 .row-img-ryerson img {
-  display: block;
   max-inline-size: 250px;
-  height: auto;
-  border-radius: 50%;
 }
 
 .row-img-ryerson-title {
@@ -626,10 +592,7 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
   }
 
   .row-img-early img {
-    display: block;
     max-inline-size: min(100%, 250px);
-    height: auto;
-    border-radius: 50%;
   }
 
   .section-container,
@@ -642,27 +605,15 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
   }
 
   .row-img-ryerson {
-    display: grid;
-    grid-auto-flow: row;
-    justify-items: center;
     gap: var(--space-s);
-
   }
 
   .row-img-ryerson img {
-    display: block;
     max-inline-size: min(100%, 400px);
-    height: auto;
-    border-radius: 50%;
   }
 
   .row-img-ryerson-title {
     font-size: var(--fs-2);
-    font-style: italic;
-  }
-
-  .col .small {
-    font-size: var(--fs-02);
   }
 
   .back-to-top {
