@@ -275,7 +275,7 @@ main>section[id]:where(#early, #ryerson, #architecture, #stuff, #contact) {
   z-index: 1000;
   isolation: isolate;
   margin-inline: auto;
-  padding-block-start: var(--space-2xs-xs);
+  padding-block-start: var(--space-s-m);
 }
 
 .profile-title span {
@@ -418,8 +418,13 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
 .row-img-ryerson {
   display: grid;
   justify-items: center;
-  padding-block: var(--space-s);
+  padding-block: var(--space-2xs-xs);
 }
+
+.row-img-early,
+.row-img-ryerson {
+    gap: var(--space-s);
+  }
 
 .row-img-early img,
 .row-img-ryerson img {
@@ -436,6 +441,7 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   max-inline-size: 250px;
 }
 
+.row-img-early-title,
 .row-img-ryerson-title {
   text-align: center;
   font-size: var(--fs-1);
@@ -580,7 +586,7 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
 
   .intro-1-page-title {
     font-size: var(--fs-2);
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   .intro-1-page-title-trigger .title-emphasis {
@@ -589,10 +595,6 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
     font-family: var(--primary-font-secondary);
     font-size: var(--fs-3);
     font-style: italic;
-  }
-
-  .row-img-early img {
-    max-inline-size: min(100%, 250px);
   }
 
   .section-container,
@@ -604,9 +606,10 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
     justify-items: start;
   }
 
-  .row-img-ryerson {
-    gap: var(--space-s);
+  .row-img-early img {
+    max-inline-size: min(100%, 250px);
   }
+
 
   .row-img-ryerson img {
     max-inline-size: min(100%, 400px);
