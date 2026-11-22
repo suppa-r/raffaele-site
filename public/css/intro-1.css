@@ -387,10 +387,10 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
 }
 
 main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content:not(.at-bottom))::after {
-  content: "scroll toread more";
+  content: "scroll to read more";
   display: block;
   inline-size: 100%;
-  padding-block-end: var(--space-s);
+  padding-block-end: var(--space-xl);
   color: var(--text-color);
   background: transparent;
   line-height: 1;
