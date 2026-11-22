@@ -234,9 +234,8 @@ html.intro-1-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expande
 main,
 main>section[id]:where(#early, #ryerson, #architecture, #stuff, #contact) {
   display: grid;
-  justify-items: center;
+  place-items: start;
   min-height: 0;
-  align-self: stretch;
 }
 
 main {
@@ -397,7 +396,7 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   display: grid;
   max-inline-size: min(100%, 75ch);
   grid-template-columns: minmax(0, 1fr);
-  justify-items: center;
+  align-content: center;
 }
 
 .prose>*+* {
@@ -575,9 +574,17 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
 }
 
 @media (width >=48rem) {
+  main {
+    align-self: stretch;
+  }
+
   main>section[id] {
-    justify-content: center;
+    place-content: center;
     align-items: center;
+  }
+
+  main>section[id]> :is(.section-container-early, .section-container-ryerson) {
+    align-self: stretch;
   }
 
   .intro-1-page-title {
@@ -599,13 +606,11 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
   .section-container-architecture {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    justify-items: start;
   }
 
   .row-img-early img {
     max-inline-size: min(100%, 250px);
   }
-
 
   .row-img-ryerson img {
     max-inline-size: min(100%, 400px);
