@@ -419,12 +419,8 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   display: grid;
   justify-items: center;
   padding-block: var(--space-2xs-xs);
+  gap: var(--space-s);
 }
-
-.row-img-early,
-.row-img-ryerson {
-    gap: var(--space-s);
-  }
 
 .row-img-early img,
 .row-img-ryerson img {
