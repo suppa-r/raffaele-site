@@ -208,7 +208,6 @@ html.intro-1-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expande
 
 .intro-1-nav-closing main,
 .intro-1-nav-closing footer {
-  opacity: 0 !important;
   pointer-events: none;
   transition: none;
 }
@@ -247,9 +246,8 @@ main {
 }
 
 main>section[id] {
-  gap: var(--space-s);
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr);
+  align-self: stretch;
+  gap: var(--space-s-m);
   position: absolute;
   inset: 0;
   visibility: hidden;
@@ -357,6 +355,7 @@ html:not(.intro-1-section-active) main>section[id],
   overflow-y: auto;
   scrollbar-gutter: stable;
   min-block-size: 0;
+  align-self: stretch;
   position: relative;
 }
 
@@ -383,8 +382,10 @@ html:not(.intro-1-section-active) main>section[id],
   background: var(--text-span);
 }
 
-main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content) {
-  grid-template-rows: auto minmax(0, 1fr) auto;
+main>section[id]:has(> :is(.section-container-early, .section-container-ryerson)),
+main>section[id]:has(> :is(.section-container, .section-container-architecture).has-more-content) {
+  /* grid-template-rows: auto minmax(0, 1fr) auto; */
+  grid-template-rows: auto minmax(0, 1fr);
 }
 
 main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content)::after {
@@ -430,6 +431,12 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   }
 }
 
+.prose {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+}
+
 .prose>*+* {
   margin-block-start: var(--prose-flow, var(--space-3xs-2xs));
   padding-block: 0;
@@ -445,6 +452,7 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   grid-auto-flow: row;
   justify-items: center;
   padding-block: var(--space-s);
+  gap: var(--space-s-m);
   margin: 0;
 }
 
@@ -492,20 +500,11 @@ footer {
   min-inline-size: var(--back-to-top-width);
   min-block-size: var(--back-to-top-height);
   padding: 0;
-  background-color: var(--text-color);
-  color: var(--base-color);
+  background-color: var(--base-color);
+  color: var(--text-color);
   border-radius: 50%;
   z-index: 10;
   visibility: hidden;
-  box-shadow:
-    0 6px 14px var(--shadow-color-tertiary),
-    0 2px 5px var(--shadow-color-secondary);
-  transition:
-    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.32s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
   transform: scale(0);
   pointer-events: none;
@@ -521,14 +520,22 @@ footer {
 }
 
 .back-to-top:hover {
-  background-color: var(--text-color);
-  box-shadow: 0 5px 8px var(--text-color, rgba(0 0 0 0.2%));
+  box-shadow:
+    0 -14px 14px var(--text-span),
+    0 -14px 14px var(--text-span);
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  /* box-shadow: 0.0001px 0.0001px 15px var(--text-color, rgba(0 0 0 0.5%)); */
   z-index: 100;
 }
 
 .back-to-top:hover p {
   will-change: transform;
-  animation: fade 1s ease-out forwards;
+  animation: fade 1s ease-out both;
   z-index: 100;
 }
 
@@ -541,24 +548,24 @@ footer {
 
 .back-to-top:hover svg {
   will-change: transform;
-  animation: fade 1s ease-out forwards;
+  animation: fade 1s ease-out both;
   z-index: 100;
 }
 
 @keyframes fade {
   0% {
-    transform: scale(0.3);
-    color: var(--base-color);
+    transform: scale(0);
+    color: var(--text-color);
   }
 
   50% {
-    transform: scale(0.5);
-    color: var(--base-color);
+    transform: scale(0.7);
+    color: var(--text-color);
   }
 
   100% {
     transform: scale(1);
-    color: var(--base-color);
+    color: var(--text-color);
   }
 }
 

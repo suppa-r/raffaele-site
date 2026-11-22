@@ -108,7 +108,7 @@
 
   function updateSectionOverflowCue(container) {
     const hasMoreContent =
-      container.scrollHeight > container.clientHeight + 1;
+      container.scrollHeight > container.clientHeight + 2;
     const atBottom =
       container.scrollTop + container.clientHeight >= container.scrollHeight - 1;
 
