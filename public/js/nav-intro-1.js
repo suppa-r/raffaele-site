@@ -14,10 +14,12 @@
 
   let menuButton = null;
   let navLinks = null;
+  let backToTop = null;
   let firstNavLink = null;
   let isMenuOpen = false;
   let boundMenuButton = null;
   let boundNavLinks = null;
+  let boundBackToTop = null;
   let navCloseTimeoutId = null;
   let inertBackgroundElements = [];
   let navItemsTween = null;
@@ -35,7 +37,28 @@
     const introOnePage = document.querySelector('body[data-page="intro-1"]');
     menuButton = introOnePage?.querySelector(".intro-1-page-title-trigger") || null;
     navLinks = introOnePage?.querySelector(".nav-links") || null;
+    backToTop = introOnePage?.querySelector(".back-to-top") || null;
     firstNavLink = navLinks ? navLinks.querySelector("a[href]") : null;
+  }
+
+  function syncBackToTopTarget() {
+    if (!backToTop) {
+      return;
+    }
+
+    backToTop.setAttribute(
+      "href",
+      mobileQuery.matches ? "#open-nav" : "#site_nav_links",
+    );
+  }
+
+  function handleBackToTopClick(event) {
+    if (!mobileQuery.matches) {
+      return;
+    }
+
+    event.preventDefault();
+    setMenuState(true);
   }
 
   function setActiveNavLink() {
@@ -345,6 +368,7 @@
     setMenuState(false, {
       returnFocus: navLinks.contains(document.activeElement),
     });
+    syncBackToTopTarget();
     // setMenuState() re-queries the DOM and may null navLinks after a page swap
     navLinks?.classList.remove("closing");
   }
@@ -354,6 +378,7 @@
     if (!menuButton || !navLinks) {
       return;
     }
+    syncBackToTopTarget();
     menuButton.setAttribute("aria-expanded", "false");
     navLinks.setAttribute("aria-hidden", "true");
     if ("inert" in navLinks) {
@@ -368,6 +393,11 @@
     if (boundNavLinks !== navLinks) {
       boundNavLinks = navLinks;
       navLinks.addEventListener("click", handleNavLinksClick);
+    }
+
+    if (boundBackToTop !== backToTop && backToTop) {
+      boundBackToTop = backToTop;
+      backToTop.addEventListener("click", handleBackToTopClick);
     }
 
     resetNavItems();

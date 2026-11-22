@@ -3,8 +3,8 @@
   --intro-nav-fade-in-duration: 0.4s;
   --intro-nav-fade-in-delay: 0.2s;
   --profile-title-inline-size: clamp(18rem, 42vw, 36rem);
-  --back-to-top-width: var(--space-xl-2xl);
-  --back-to-top-height: var(--space-xl-2xl);
+  --back-to-top-width: var(--space-2xl-3xl);
+  --back-to-top-height: var(--space-2xl-3xl);
 }
 
 .wrapper {
@@ -387,7 +387,7 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
 }
 
 main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content:not(.at-bottom))::after {
-  content: "scroll: read more";
+  content: "scroll toread more";
   display: block;
   inline-size: 100%;
   padding-block-end: var(--space-s);
@@ -481,7 +481,7 @@ footer {
 .back-to-top {
   display: grid;
   grid-auto-flow: row;
-  justify-items: center;
+  place-content: center;
   inline-size: var(--back-to-top-width);
   block-size: var(--back-to-top-height);
   min-inline-size: var(--back-to-top-width);
@@ -508,7 +508,7 @@ footer {
 }
 
 .back-to-top p {
-  font-size: var(--fs-01);
+  font-size: var(--fs-0);
   text-align: center;
   line-height: 1;
   margin-block: 0;
@@ -529,7 +529,7 @@ footer {
 
 .back-to-top svg {
   display: block;
-  width: 50%;
+  width: 40%;
   height: auto;
   margin-inline: auto;
 }
@@ -629,16 +629,6 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
     justify-items: start;
   }
 
-  /* .section-container-early>.col {
-    grid-column: 1;
-  }
-
-  .section-container-early>.row-img-early {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    align-self: center;
-  } */
-
   .row-img-ryerson {
     display: grid;
     grid-auto-flow: row;
@@ -661,5 +651,16 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
 
   .col .small {
     font-size: var(--fs-02);
+  }
+
+  .back-to-top {
+    padding: var(--space-3xs);
+  }
+
+  .back-to-top svg {
+    display: block;
+    width: 60%;
+    height: auto;
+    margin-inline: auto;
   }
 }
