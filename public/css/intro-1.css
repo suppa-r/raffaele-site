@@ -345,6 +345,7 @@ html:not(.intro-1-section-active) main>section[id],
 .section-container-ryerson,
 .section-container-architecture {
   inline-size: 100%;
+  overscroll-behavior-y: none;
 }
 
 .section-container-early,
@@ -382,11 +383,11 @@ html:not(.intro-1-section-active) main>section[id],
   background: var(--text-span);
 }
 
-main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content:not(.at-bottom)) {
+main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content) {
   grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
-main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content:not(.at-bottom))::after {
+main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content)::after {
   content: "scroll to read more";
   display: block;
   inline-size: 100%;
@@ -397,6 +398,10 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   text-align: center;
   pointer-events: none;
   text-wrap: balance;
+}
+
+main>section[id]:has(> :is(.section-container, .section-container-early, .section-container-ryerson, .section-container-architecture).has-more-content.at-bottom)::after {
+  visibility: hidden;
 }
 
 .center-vertically {
