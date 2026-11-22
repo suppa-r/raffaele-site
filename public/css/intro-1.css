@@ -419,7 +419,7 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   display: grid;
   justify-items: center;
   padding-block: var(--space-2xs-xs);
-  gap: var(--space-s);
+  gap: var(--space-2xs-xs);
 }
 
 .row-img-early img,
@@ -434,14 +434,14 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
 }
 
 .row-img-ryerson img {
-  max-inline-size: 250px;
+  max-inline-size: 200px;
 }
 
-.row-img-early-title,
 .row-img-ryerson-title {
   text-align: center;
   font-size: var(--fs-1);
   font-style: italic;
+  padding-block-end: var(--space-xs-s);
 }
 
 /* ========================================================
