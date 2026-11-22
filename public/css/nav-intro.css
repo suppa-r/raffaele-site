@@ -78,7 +78,7 @@ body[data-page="intro"] nav ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--space-xs-s);
+  gap: var(--space-xl-2xl);
 }
 
 body[data-page="intro"] .nav-links {

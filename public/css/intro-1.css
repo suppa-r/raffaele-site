@@ -177,6 +177,11 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
   padding-block-start: var(--stack-gap, var(--space-5xs-4xs));
 }
 
+.page-entering header,
+.page-entering footer.footer > *:not(.theme-selector-container) {
+  opacity: 0;
+}
+
 .page-entering .intro-1-page-title,
 .intro-1-section-active .intro-1-page-title,
 .intro-1-nav-open .intro-1-page-title {
@@ -604,8 +609,6 @@ footer {
     color: var(--base-color);
   }
 }
-
-
 
 .intro-1-nav-open .back-to-top {
   visibility: hidden !important;

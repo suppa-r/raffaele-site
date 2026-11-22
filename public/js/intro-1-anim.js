@@ -194,7 +194,10 @@ function intro1AnimateTitle() {
 function intro1InitializeAnimations() {
   const gsapLib = typeof window !== "undefined" ? window.gsap : null;
 
-  if (!gsapLib) {
+  if (
+    !gsapLib ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
     intro1RevealContent();
     return;
   }

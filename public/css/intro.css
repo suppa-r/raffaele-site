@@ -10,9 +10,13 @@
 /* ----- Header ----- */
 /* --------------------------------------- */
 
+/* ========================================================
+                        header
+======================================================== */
+
 header {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1fr auto;
     justify-content: space-between;
     align-items: center;
     z-index: 2002;
@@ -20,7 +24,7 @@ header {
     isolation: isolate;
     line-height: 1;
     background: transparent;
-    padding-block: var(--space-xs);
+    padding: var(--space-2xs-xs) var(--space-s-m);
 }
 
 body[data-page="intro"] header {
@@ -65,8 +69,7 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 .header-inner {
     display: flex;
     align-items: center;
-    min-width: 0;
-    letter-spacing: clamp(0px, 1vw - 2.4px, var(--letter-spacing-small));
+    gap: var(--space-2xs-xs);
 }
 
 .logo {
@@ -76,7 +79,6 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
     gap: 0;
     min-width: 0;
     max-width: 100%;
-    padding-inline-end: var(--space-3xs);
 }
 
 .logo img {
@@ -91,14 +93,16 @@ body[data-page="intro"] header:has(.open-overlay[aria-expanded="true"])::before 
 
 .header-title {
     min-width: 0;
+    white-space: nowrap;
     overflow: visible;
-    font-size: clamp(0.625rem, 3.9vw, var(--fs-01));
+    letter-spacing: -0.02em;
+    margin-inline-end: 0;
 }
 
 .header-title span {
     font-family: var(--primary-font-secondary);
     font-style: italic;
-    padding-inline-end: var(--space-4xs);
+    margin-inline-end: var(--space-2xs-xs);
     color: var(--text-span);
 }
 
@@ -222,6 +226,31 @@ footer {
 /* ========================================================
                       @media queries
 ======================================================== */
+
+@media (width < 48rem) {
+    .intro-single-line {
+        font-size: min(var(--fs-0), 5vw);
+        letter-spacing: 0.025em;
+    }
+
+    .intro-single-line.fancy-quote {
+        font-size: min(var(--fs-1), 6vw);
+    }
+
+    .intro-single-line .fancy-quote-author {
+        font-size: min(var(--fs-0), 5vw);
+    }
+
+    .intro-single-line,
+    .intro-single-line .text-break {
+        white-space: nowrap;
+    }
+
+    .intro-single-line .text-break,
+    .intro-single-line .fancy-quote-author {
+        padding-inline-start: 0.5em;
+    }
+}
 
 @media (width >=48rem) {
     header {

@@ -311,6 +311,11 @@
     const isIntroSectionHash =
     href.startsWith("#") && introSectionHashes.has(href);
 
+    // Keep the menu intact for the outgoing page snapshot.
+    if (!href.startsWith("#")) {
+      return;
+    }
+
     setPageTitleVisibility(false);
     setMenuState(false, { showTitle: false });
 

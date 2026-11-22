@@ -150,6 +150,7 @@ function getAbsoluteHref(href, baseUrl) {
 
 function loadNewStylesheets(newStylesheets, currentHrefSet, destinationUrl) {
   const promises = [];
+  const pendingStylesheets = [];
 
   newStylesheets.forEach((link) => {
     const href = link.getAttribute("href");
@@ -159,16 +160,20 @@ function loadNewStylesheets(newStylesheets, currentHrefSet, destinationUrl) {
     if (currentHrefSet.has(absoluteHref)) return;
 
     const clone = link.cloneNode(true);
-    const loadPromise = new Promise((resolve) => {
+    clone.media = "not all";
+    pendingStylesheets.push({ clone, media: link.getAttribute("media") });
+    const loadPromise = new Promise((resolve, reject) => {
       clone.addEventListener("load", resolve, { once: true });
-      clone.addEventListener("error", resolve, { once: true });
+      clone.addEventListener("error", () => {
+        reject(new Error(`Stylesheet failed to load: ${absoluteHref}`));
+      }, { once: true });
     });
 
     promises.push(loadPromise);
     document.head.appendChild(clone);
   });
 
-  return Promise.all(promises);
+  return Promise.all(promises).then(() => pendingStylesheets);
 }
 
 function removeOldStylesheets(newHrefSet) {
@@ -191,7 +196,7 @@ async function loadMissingScripts(newScripts, currentSrcSet, destinationUrl) {
     const absoluteSrc = getAbsoluteHref(src, destinationUrl);
     if (currentSrcSet.has(absoluteSrc)) continue;
 
-    await new Promise((resolve) => {
+    await new Promise((resolve, reject) => {
       const clone = document.createElement("script");
       clone.src = absoluteSrc;
 
@@ -207,7 +212,9 @@ async function loadMissingScripts(newScripts, currentSrcSet, destinationUrl) {
       clone.async = false;
       clone.defer = true;
       clone.addEventListener("load", resolve, { once: true });
-      clone.addEventListener("error", resolve, { once: true });
+      clone.addEventListener("error", () => {
+        reject(new Error(`Script failed to load: ${absoluteSrc}`));
+      }, { once: true });
       document.head.appendChild(clone);
       currentSrcSet.add(absoluteSrc);
     });
@@ -264,13 +271,12 @@ async function handleNavigation(event) {
 
   event.intercept({
     handler: async () => {
-      const overlayNav = document.querySelector(".overlay-navigation");
-      if (overlayNav) overlayNav.remove();
-
       let newDocument;
       try {
         newDocument = await fetchDocument(event.destination.url);
-      } catch {
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error("Page navigation failed:", error);
         window.location.href = event.destination.url;
         return;
       }
@@ -300,14 +306,29 @@ async function handleNavigation(event) {
           .map((href) => getAbsoluteHref(href, event.destination.url)),
       );
 
-      await loadNewStylesheets(
-        newStylesheets,
-        currentHrefSet,
-        event.destination.url,
-      );
-      removeOldStylesheets(newHrefSet);
+      let pendingStylesheets;
+      try {
+        pendingStylesheets = await loadNewStylesheets(
+          newStylesheets,
+          currentHrefSet,
+          event.destination.url,
+        );
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error("Page styles failed to load:", error);
+        window.location.href = event.destination.url;
+        return;
+      }
 
-      if (!document.startViewTransition) {
+      const updatePage = async () => {
+        pendingStylesheets.forEach(({ clone, media }) => {
+          if (media === null) {
+            clone.removeAttribute("media");
+          } else {
+            clone.media = media;
+          }
+        });
+        removeOldStylesheets(newHrefSet);
         adoptNewBody(newDocument);
         await loadMissingScripts(
           newScripts,
@@ -315,14 +336,24 @@ async function handleNavigation(event) {
           event.destination.url,
         );
         window.scrollTo(0, 0);
+      };
+
+      if (!document.startViewTransition) {
+        try {
+          await updatePage();
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.error("Page initialization failed:", error);
+          window.location.href = event.destination.url;
+          return;
+        }
         document.body.classList.remove("page-entering");
         document.dispatchEvent(new CustomEvent("page:transitioned"));
         return;
       }
 
-      const transition = document.startViewTransition(() => {
-        adoptNewBody(newDocument);
-      });
+      document.documentElement.classList.add("page-transitioning");
+      const transition = document.startViewTransition(updatePage);
 
       transition.ready
         .then(() => {
@@ -333,17 +364,22 @@ async function handleNavigation(event) {
         });
 
       try {
+        await transition.updateCallbackDone;
+      } catch (error) {
+        document.documentElement.classList.remove("page-transitioning");
+        // eslint-disable-next-line no-console
+        console.error("Page initialization failed:", error);
+        window.location.href = event.destination.url;
+        return;
+      }
+
+      try {
         await transition.finished;
       } catch {
         // no-op: transition finished may reject when interrupted
       }
 
-      await loadMissingScripts(
-        newScripts,
-        currentSrcSet,
-        event.destination.url,
-      );
-
+      document.documentElement.classList.remove("page-transitioning");
       document.body.classList.remove("page-entering");
       document.dispatchEvent(new CustomEvent("page:transitioned"));
     },

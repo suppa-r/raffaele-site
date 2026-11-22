@@ -43,6 +43,28 @@
 
 /* Theme toggles use the same root transition motion as regular theme changes. */
 
+:root.page-transitioning::view-transition {
+    background: var(--base-color);
+}
+
+:root.page-transitioning::view-transition-old(root) {
+    animation: 0.4s ease-in-out both page-fade-out;
+}
+
+:root.page-transitioning::view-transition-new(root) {
+    animation: 0.4s ease-in-out both page-fade-in;
+}
+
+@keyframes page-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes page-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 :root.theme-transitioning::view-transition-old(root) {
     animation: 0.9s cubic-bezier(0.87, 0, 0.13, 1) both move-out !important;
 }
