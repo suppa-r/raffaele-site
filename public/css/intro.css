@@ -229,8 +229,8 @@ footer {
 
 @media (width < 48rem) {
     .intro-single-line {
-        font-size: min(var(--fs-0), 5vw);
-        letter-spacing: 0.025em;
+        font-size: var(--fs-0);
+        letter-spacing: 0.03em;
     }
 
     .intro-single-line.fancy-quote {
