@@ -234,7 +234,7 @@ html.intro-1-nav-title-visible body:has(.intro-1-page-title-trigger[aria-expande
 main,
 main>section[id]:where(#early, #ryerson, #architecture, #stuff, #contact) {
   display: grid;
-  place-items: start;
+  align-self: stretch;
   min-height: 0;
 }
 
@@ -245,12 +245,12 @@ main {
 }
 
 main>section[id]:where(#early, #ryerson, #architecture, #stuff, #contact) {
-  gap: var(--space-s-m);
+  gap: var(--space-xs-s);
   position: absolute;
-  inset: 0;
+  inset-block: 0;
+  inset-inline: var(--page-inline-padding);
   visibility: hidden;
   margin-inline: auto;
-  inline-size: 100%;
 }
 
 .profile-title-container {
@@ -260,7 +260,7 @@ main>section[id]:where(#early, #ryerson, #architecture, #stuff, #contact) {
 }
 
 .profile-title {
-  inline-size: min(95vw, var(--profile-title-inline-size));
+  inline-size: min(100%, var(--profile-title-inline-size));
   font-size: var(--fs-1);
   position: relative;
   text-align: center;
@@ -353,6 +353,10 @@ html:not(.intro-1-section-active) main>section[id],
   scrollbar-color: var(--text-span) var(--base-color);
 }
 
+.section-container-early {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .section-container-early::-webkit-scrollbar,
 .section-container-ryerson::-webkit-scrollbar {
   width: 0.6rem;
@@ -368,6 +372,10 @@ html:not(.intro-1-section-active) main>section[id],
   border: 0.15rem solid var(--base-color);
   border-radius: 999px;
   background: var(--text-span);
+}
+
+main>section[id]:has(> :is(.section-container-early, .section-container-ryerson)) {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 main>section[id]:has(> :is(.section-container-early, .section-container-ryerson)),
@@ -404,43 +412,42 @@ main>section[id]:has(> :is(.section-container, .section-container-early, .sectio
   padding-block: 0;
 }
 
-.center-vertically {
-  display: grid;
-  align-content: safe center;
+.img-early {
+  display: block;
+  height: auto;
+  border-radius: 50%;
+  max-inline-size: 175px;
+  padding-block: var(--space-xs-s);
+  margin-inline: auto;
 }
 
 .prose .small {
   font-size: var(--fs-01);
 }
 
-.row-img-early,
-.row-img-ryerson {
-  display: grid;
-  justify-items: center;
-  padding-block: var(--space-2xs-xs);
-  gap: var(--space-2xs-xs);
-}
-
-.row-img-early img,
-.row-img-ryerson img {
-  display: block;
-  height: auto;
-  border-radius: 50%;
-}
-
-.row-img-early img {
-  max-inline-size: 175px;
-}
-
-.row-img-ryerson img {
-  max-inline-size: 200px;
-}
 
 .row-img-ryerson-title {
   text-align: center;
   font-size: var(--fs-1);
   font-style: italic;
   padding-block-end: var(--space-xs-s);
+}
+
+.row-img-ryerson {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--space-s-m);
+}
+
+.row-img-ryerson img {
+  display: block;
+  height: auto;
+  border-radius: 50%;
+}
+
+.row-img-ryerson img {
+  max-inline-size: 200px;
 }
 
 /* ========================================================
@@ -601,7 +608,6 @@ html.intro-1-section-active:not(.intro-1-nav-open, .intro-1-nav-closing) .back-t
   }
 
   .section-container,
-  .section-container-early,
   .section-container-ryerson,
   .section-container-architecture {
     display: grid;

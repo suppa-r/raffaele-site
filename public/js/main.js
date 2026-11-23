@@ -5,6 +5,39 @@ const WHIMSY_BUTTON_SELECTOR = '.btn[data-btn-type="whimsical"]';
 const WHIMSY_TOUCH_PLAY_DURATION = 1000;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
+function initHomeTitleAnimation() {
+  const title = document.querySelector(".text-with-animation[data-theme-transition-text]");
+  if (!title || title.querySelector(".title-letters") || !Intl.Segmenter) return;
+
+  const text = title.textContent;
+  const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+  const characters = Array.from(segmenter.segment(text), ({ segment }) => segment);
+  const midpoint = Math.floor(characters.filter((character) => character.trim()).length / 2);
+  const accessibleText = document.createElement("span");
+  accessibleText.className = "visually-hidden";
+  accessibleText.textContent = text;
+
+  const letters = document.createElement("span");
+  letters.className = "title-letters";
+  letters.setAttribute("aria-hidden", "true");
+
+  let letterIndex = 0;
+  characters.forEach((character) => {
+    if (!character.trim()) {
+      letters.appendChild(document.createTextNode(character));
+      return;
+    }
+
+    const letter = document.createElement("span");
+    letter.textContent = character;
+    if (letterIndex >= midpoint) letter.classList.add("title-letter-from-right");
+    letterIndex += 1;
+    letters.appendChild(letter);
+  });
+
+  title.replaceChildren(accessibleText, letters);
+}
+
 function bindGameClickNavigation() {
   const games = document.querySelectorAll(".game");
   if (!games.length) return;
@@ -330,6 +363,7 @@ async function handleNavigation(event) {
         });
         removeOldStylesheets(newHrefSet);
         adoptNewBody(newDocument);
+        initHomeTitleAnimation();
         await loadMissingScripts(
           newScripts,
           currentSrcSet,
@@ -397,6 +431,7 @@ function initNavigationInterception() {
 }
 
 function initMainPage() {
+  initHomeTitleAnimation();
   bindGameClickNavigation();
   bindWhimsyButtonTouchPlayback();
   initNavigationInterception();

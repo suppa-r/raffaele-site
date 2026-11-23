@@ -285,9 +285,14 @@ function intro1RevealActiveProfileTitle() {
   if (!titleSpan) return;
 
   gsapLib.killTweensOf(titleSpan);
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    gsapLib.set(titleSpan, { y: "0%", opacity: 1 });
+    return;
+  }
+
   gsapLib.fromTo(
     titleSpan,
-    { y: "60%", opacity: 0 },
+    { y: "200%", opacity: 0 },
     {
       y: "0%",
       opacity: 1,
