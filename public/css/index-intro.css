@@ -4,7 +4,7 @@
    --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
    --card-transition: 250ms var(--card-ease);
    --card-active-scale: 1.2;
-   --card-portrait-max-height: 30vh;
+   --card-portrait-max-height: 20vh;
    --card-front-active-transform: translateY(-8%) scale(0.86);
    --card-portrait-active-opacity: 0;
    --card-portrait-active-transform: scale(0.6);
@@ -25,7 +25,7 @@
 
 main.content {
    display: grid;
-   place-items:center;
+   place-items: center;
 }
 
 .game {
@@ -82,7 +82,7 @@ main.content {
    font-size: var(--fs-1);
    text-align: center;
    transition: opacity 180ms ease, visibility 180ms ease;
-   margin-block-start: var(--space-m-l);
+   margin-block-start: var(--space-s-m);
 }
 
 .stats {
@@ -98,11 +98,7 @@ main.content {
    width: var(--space-l-xl);
    height: var(--space-l-xl);
    fill: currentcolor;
-   margin-block-start: var(--space-l-xl);
-}
-
-.stats .viewer {
-   white-space: nowrap;
+   margin-block-start: var(--space-m-l);
 }
 
 .back {

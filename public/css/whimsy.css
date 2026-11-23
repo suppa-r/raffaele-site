@@ -3,19 +3,19 @@
   --main-color: var(--text-span);
   --deco-size: 7px;
   --deco-timing: 1.5s;
-  --deco-1-color: color-mix(in oklch, white 80%, var(--text-span));
+  --deco-1-color: rgb(150 150 165);
   --deco-1-end-translate: 0 30px;
   --deco-1-end-offset: 80%;
-  --deco-2-color: color-mix(in oklch, white 65%, var(--text-span));
+  --deco-2-color: rgb(118 166 200);
   --deco-2-scale: 0.85;
   --deco-2-end-translate: 0 -30px;
   --deco-2-end-offset: 60%;
-  --deco-3-color: color-mix(in oklch, white 40%, var(--text-span));
+  --deco-3-color: rgb(55 110 125);
   --deco-3-speed-variation: 0.85;
   --deco-3-scale: 1.15;
   --deco-3-end-translate: 0 -10px;
   --deco-3-end-offset: 70%;
-  --deco-4-color: color-mix(in oklch, white 90%, var(--text-span));
+  --deco-4-color: rgb(35 75 82);
   --deco-4-speed-variation: 1.2;
   --deco-4-scale: 0.7;
   --deco-4-end-translate: -20px 50px;
@@ -61,10 +61,6 @@
 
 [data-theme="light"] .btn[data-btn-type="whimsical"] {
   --main-color: oklch(from var(--text-span) l c h / 1);
-  --deco-1-color: color-mix(in oklch, white 50%, var(--main-color));
-  --deco-2-color: color-mix(in oklch, white 30%, var(--main-color));
-  --deco-3-color: color-mix(in oklch, white 15%, var(--main-color));
-  --deco-4-color: color-mix(in oklch, white 65%, var(--main-color));
   --deco-brightness: 1.05;
 }
 
@@ -72,6 +68,7 @@
   display: block;
   width: var(--space-l-xl);
   height: var(--space-l-xl);
+  color: var(--text-color);
   pointer-events: none;
   transition: transform 0.3s ease;
 }
