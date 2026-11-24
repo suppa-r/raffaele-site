@@ -332,6 +332,14 @@ html:not(.intro-1-section-active) main>section[id],
   pointer-events: none;
 }
 
+@media (width < 48rem) {
+  html.intro-1-nav-closing main>section[id] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
 .section-container,
 .section-container-early,
 .section-container-ryerson,
