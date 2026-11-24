@@ -341,7 +341,6 @@
         document.documentElement.classList.remove("intro-1-nav-closing");
         document.getElementById("main-content")?.focus({ preventScroll: true });
       } else {
-        document.documentElement.classList.remove("intro-1-nav-closing");
         window.location.assign(link.href);
       }
     }, isReducedMotionPreferred() ? 0 : NAV_CLOSE_DURATION_MS);
